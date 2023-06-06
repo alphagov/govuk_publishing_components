@@ -42,7 +42,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
-      data.index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(data.index)
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')

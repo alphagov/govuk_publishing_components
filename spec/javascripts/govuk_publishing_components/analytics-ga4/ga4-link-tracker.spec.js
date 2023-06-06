@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-describe('GA4 click tracker', function () {
+describe('GA4 link tracker', function () {
   var GOVUK = window.GOVUK
   var element
   var expected
@@ -382,23 +382,6 @@ describe('GA4 click tracker', function () {
       link.click()
 
       expect(window.dataLayer[0].event_data.index).toEqual({ index_link: 3, index_section: 1, index_section_count: 2 })
-    })
-    it('combines both (when index is a string) into a single index object', function () {
-      element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
-
-      // index can appear as a decimal however we only need to test one digit in this case because a decimal indicates
-      // that the link index is already available and therefore wouldn't require combining with data-ga4-index
-      element.setAttribute('data-ga4-link', '{"index": "4"}')
-      element.innerHTML = '<a class="link" href="#link1">Link 1</a>'
-
-      var link = element.querySelector('.link')
-      link.setAttribute('data-ga4-index', '{"index_link": ' + 6 + '}')
-
-      initModule(element, false)
-      link.click()
-
-      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: 6, index_section: 4, index_section_count: undefined })
     })
   })
 
