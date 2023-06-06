@@ -11,6 +11,7 @@
 
 * Remove hardcoded examples in the component guide ([3418](https://github.com/alphagov/govuk_publishing_components/pull/3418))
 * Remove list-style for govspeak ordered lists ([PR #3413](https://github.com/alphagov/govuk_publishing_components/pull/3413))
+* Fix some issues with GA4 indexes ([PR #3426](https://github.com/alphagov/govuk_publishing_components/pull/3426))
 
 ## 35.5.0
 
