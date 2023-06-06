@@ -256,11 +256,12 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         var totalLinks = 0
         for (var i = 0; i < links.length; i++) {
           var link = links[i]
-          // Only index links that are not search results
-          if (!link.getAttribute('data-ga4-ecommerce-path')) {
-            totalLinks++
-            link.setAttribute('data-ga4-index', '{"index_link": ' + totalLinks + '}')
+          // Only index links that are not search results or do not have a data-ga4-do-not-index attribute
+          if (link.getAttribute('data-ga4-ecommerce-path') || link.getAttribute('data-ga4-do-not-index') !== null) {
+            continue
           }
+          totalLinks++
+          link.setAttribute('data-ga4-index', '{"index_link": ' + totalLinks + '}')
         }
 
         try {

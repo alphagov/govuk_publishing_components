@@ -15,6 +15,7 @@
 * Fix some issues with GA4 indexes ([PR #3426](https://github.com/alphagov/govuk_publishing_components/pull/3426))
 * Fix PII on referrer parameter ([PR #3430](https://github.com/alphagov/govuk_publishing_components/pull/3430))
 * Add GA4 tracking for content navigation ([PR #3420](https://github.com/alphagov/govuk_publishing_components/pull/3420))
+* Update setIndexes function ([PR #3435](https://github.com/alphagov/govuk_publishing_components/pull/3435))
 
 ## 35.5.0
 
