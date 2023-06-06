@@ -192,3 +192,22 @@ examples:
             text: 2. Numbers not parsed
           - href: "#third-thing"
             text: 3. Numbers are just text
+  with_ga4_tracking:
+    description: Enables the GA4 link tracker on the list.
+    data:
+      ga4_tracking: true
+      contents:
+        - href: "#first-thing"
+          text: 1. First thing
+          items:
+          - href: "#second-thing"
+            text: 1. Nested Item
+          - href: "#third-thing"
+            text: 2. Nested Item
+        - href: "#first-thing"
+          text: 2. Second thing
+          items:
+          - href: "#second-thing"
+            text: 1. Nested Item
+          - href: "#third-thing"
+            text: 2. Nested Item

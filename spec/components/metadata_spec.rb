@@ -206,6 +206,21 @@ describe "Metadata", type: :view do
     assert_select '.gem-c-metadata.govuk-\!-margin-bottom-2'
   end
 
+  it "adds GA4 tracking to the 'see all updates' link when GA4 tracking is true" do
+    render_component(last_updated: "Hello World", see_updates_link: true, ga4_tracking: true)
+
+    expected_ga4_json = {
+      "event_name": "navigation",
+      "type": "content",
+      "section": "Top",
+    }.to_json
+
+    assert_select ".js-see-all-updates-link" do |see_all_updates_link|
+      expect(see_all_updates_link.attr("data-module").to_s).to eq "ga4-link-tracker"
+      expect(see_all_updates_link.attr("data-ga4-link").to_s).to eq expected_ga4_json
+    end
+  end
+
   def assert_truncation(length, limit)
     assert_select ".gem-c-metadata__toggle-items", count: 1
     assert_select ".gem-c-metadata__definition > a", count: limit
