@@ -9,7 +9,8 @@
 
 ## Unreleased
 
-* Remove hardcoded examples in the component guide ([3418](https://github.com/alphagov/govuk_publishing_components/pull/3418))
+* Fix GA4 tracking on step nav related ([PR #3431](https://github.com/alphagov/govuk_publishing_components/pull/3431))
+* Remove hardcoded examples in the component guide ([PR #3418](https://github.com/alphagov/govuk_publishing_components/pull/3418))
 * Remove list-style for govspeak ordered lists ([PR #3413](https://github.com/alphagov/govuk_publishing_components/pull/3413))
 * Fix some issues with GA4 indexes ([PR #3426](https://github.com/alphagov/govuk_publishing_components/pull/3426))
 * Fix PII on referrer parameter ([PR #3430](https://github.com/alphagov/govuk_publishing_components/pull/3430))

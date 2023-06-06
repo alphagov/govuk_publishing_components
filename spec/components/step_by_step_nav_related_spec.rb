@@ -145,7 +145,7 @@ describe "Step by step navigation related", type: :view do
   end
 
   it "adds GA4 data attributes on multiple links when ga4_tracking is true" do
-    render_component(links: two_links, ga4_tracking: true)
+    render_component(pretitle: "Some more text", links: two_links, ga4_tracking: true)
 
     link_one = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']"
     link_two = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
@@ -155,7 +155,7 @@ describe "Step by step navigation related", type: :view do
       "type": "related content",
       "index": { "index_link": "1" },
       "index_total": "2",
-      "section": "Part of",
+      "section": "Some more text",
     }
 
     expected_two = {
@@ -163,7 +163,7 @@ describe "Step by step navigation related", type: :view do
       "type": "related content",
       "index": { "index_link": "2" },
       "index_total": "2",
-      "section": "Part of",
+      "section": "Some more text",
     }
 
     assert_select "#{link_one}[data-ga4-link='#{expected_one.to_json}']"
