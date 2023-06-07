@@ -276,7 +276,7 @@ describe('GA4 core', function () {
       expect(domains).toContain('gov.uk')
     })
 
-    describe('when the data-ga4-set-indexes property exists on the module', function () {
+    describe('when the data-ga4-set-indexes attribute exists on the module', function () {
       var module
 
       beforeEach(function () {
@@ -310,6 +310,57 @@ describe('GA4 core', function () {
         for (var i = 0; i < links.length; i++) {
           var linkIndex = links[i].getAttribute('data-ga4-index')
           expect(linkIndex).toEqual('{"index_link": ' + (i + 1) + '}')
+        }
+      })
+    })
+
+    describe('when the data-ga4-set-indexes attribute exists on a module that contains search results or links with a data-ga4-do-not-index attribute', function () {
+      var module
+
+      beforeEach(function () {
+        module = document.createElement('div')
+        module.setAttribute('data-ga4-link', '{"someData": "blah"}')
+        module.innerHTML = '<a id="example1" href="www.example1.com">Example link 1</a>' +
+        '<a id="example2" href="www.example2.com" data-ga4-do-not-index>Do not index link 1</a>' +
+        '<a id="example3" href="www.example3.com">Example link 2</a>' +
+        '<a id="example4" href="www.example4.com" data-ga4-ecommerce-path="/path">Search result 1</a>' +
+        '<a id="example5" href="www.example5.com">Example link 3</a>' +
+        '<a id="example6" href="www.example6.com" data-ga4-ecommerce-path="/path">Search result 2</a>' +
+        '<a id="example7" href="www.example7.com">Example link 4</a>' +
+        '<a id="example8" href="www.example8.com" data-ga4-do-not-index>Do not index link 2</a>' +
+        '<a id="example9" href="www.example9.com">Example link 5</a>'
+
+        window.dataLayer = []
+        document.body.appendChild(module)
+        GOVUK.analyticsGa4.core.trackFunctions.setIndexes(module)
+      })
+
+      afterEach(function () {
+        window.dataLayer = []
+        document.body.removeChild(module)
+      })
+
+      it('ignores search results and links with a data-ga4-do-not-index attribute when calculating the index total', function () {
+        var data = JSON.parse(module.getAttribute('data-ga4-link'))
+
+        expect(data.index_total).toEqual(5)
+      })
+
+      it('does not set the index object of search results', function () {
+        var searchResults = module.querySelectorAll('[data-ga4-ecommerce-path]')
+
+        for (var i = 0; i < searchResults.length; i++) {
+          var searchResultsIndex = searchResults[i].getAttribute('data-ga4-index')
+          expect(searchResultsIndex).toEqual(null)
+        }
+      })
+
+      it('does not set the index object of links with a data-ga4-do-not-index attribute', function () {
+        var ignoredLinks = module.querySelectorAll('[data-ga4-do-not-index]')
+
+        for (var i = 0; i < ignoredLinks.length; i++) {
+          var ignoredLinksIndex = ignoredLinks[i].getAttribute('data-ga4-index')
+          expect(ignoredLinksIndex).toEqual(null)
         }
       })
     })
