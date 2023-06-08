@@ -20,6 +20,11 @@
   classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 
   ga4_tracking ||= false
+  ga4_object = {
+    event_name: "navigation",
+    type: "content",
+    section: "Top"
+  }.to_json
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle metadata" } do %>
   <dl class="gem-c-metadata__list" data-module="gem-track-click">
@@ -48,19 +53,15 @@
       <dd class="gem-c-metadata__definition">
         <%= last_updated %>
         <% if local_assigns.include?(:see_updates_link) %>
-          &#8212; <a href="#full-publication-update-history" class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link"
-                             data-track-category="content-history"
-                             data-track-action="see-all-updates-link-clicked"
-                             data-track-label="history"
-                             <% if ga4_tracking %>
-                              data-module="ga4-link-tracker"
-                              data-ga4-link="<%= {
-                                event_name: "navigation",
-                                type: "content",
-                                section: "Top"
-                              }.to_json %>"
-                             <% end%>
-                             >
+          &#8212; <a href="#full-publication-update-history"
+                    class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link"
+                    data-track-category="content-history"
+                    data-track-action="see-all-updates-link-clicked"
+                    data-track-label="history"
+                    <% if ga4_tracking %>
+                      data-module="ga4-link-tracker"
+                      data-ga4-link="<%= ga4_object %>"
+                    <% end%>>
             <%= t("components.metadata.see_all_updates") %>
           </a>
         <% end %>
@@ -74,7 +75,12 @@
         %>
         <% if definition.any? %>
           <dt class="gem-c-metadata__term"><%= title %>:</dt>
-          <dd class="gem-c-metadata__definition">
+          <dd class="gem-c-metadata__definition"
+              <% if ga4_tracking %>
+                data-module="ga4-link-tracker"
+                data-ga4-track-links-only
+                data-ga4-link="<%= ga4_object %>"
+              <% end%>>
             <%= render 'govuk_publishing_components/components/metadata/sentence', items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
           </dd>
         <% end %>
