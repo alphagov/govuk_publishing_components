@@ -35,9 +35,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
 
-      if (data.index) {
-        data.index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(data.index)
-      }
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')
 

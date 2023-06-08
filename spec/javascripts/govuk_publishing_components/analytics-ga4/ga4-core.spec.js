@@ -366,42 +366,6 @@ describe('GA4 core', function () {
     })
 
     describe('when handling the index parameter', function () {
-      it('converts a three digit index into sub-parameters as expected', function () {
-        var expected = {
-          index_section: 2,
-          index_link: 3
-        }
-        expect(GOVUK.analyticsGa4.core.trackFunctions.createIndexObject('1.2.3')).toEqual(expected)
-      })
-
-      it('converts a two digit index into sub-parameters as expected', function () {
-        var expected = {
-          index_section: 1,
-          index_link: 2
-        }
-        expect(GOVUK.analyticsGa4.core.trackFunctions.createIndexObject('1.2')).toEqual(expected)
-      })
-
-      it('converts a one digit index into sub-parameters as expected', function () {
-        var expected = {
-          index_section: 1
-        }
-        expect(GOVUK.analyticsGa4.core.trackFunctions.createIndexObject('1')).toEqual(expected)
-      })
-
-      it('copes when passed an actual number', function () {
-        expect(GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(1)).toEqual({ index_section: 1 })
-      })
-
-      it('returns the object if an object is passed', function () {
-        var expected = { index: 1 }
-        expect(GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(expected)).toEqual(expected)
-      })
-
-      it('returns undefined if undefined is passed', function () {
-        expect(GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(undefined)).toEqual(undefined)
-      })
-
       describe('returns undefined for unset index keys', function () {
         var ga4Data, expectedData
         beforeEach(function () {

@@ -274,37 +274,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         }
       },
 
-      // index is given as a string of the form 1.2.3 or 1.2
-      // split this into named sub-parameters
-      createIndexObject: function (index) {
-        if (typeof index === 'undefined') {
-          return undefined
-        }
-        if (typeof index === 'object') {
-          return index
-        }
-
-        index = index.toString().split('.')
-        // this will soon include 'index_section_count'
-        // number of sections overall in the thing being tracked (but not yet in use)
-        switch (index.length) {
-          case 1:
-            return {
-              index_section: parseInt(index[0])
-            }
-          case 2:
-            return {
-              index_section: parseInt(index[0]),
-              index_link: parseInt(index[1])
-            }
-          case 3:
-            return {
-              index_section: parseInt(index[1]),
-              index_link: parseInt(index[2])
-            }
-        }
-      },
-
       addAttributesToElements: function (selector, dataAttributes) {
         var targetElements = document.querySelectorAll(selector)
 

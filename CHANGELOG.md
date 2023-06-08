@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove GA4 index parsing code ([PR #3434](https://github.com/alphagov/govuk_publishing_components/pull/3434))
 * Fix GA4 tracking on step nav related ([PR #3431](https://github.com/alphagov/govuk_publishing_components/pull/3431))
 * Remove hardcoded examples in the component guide ([PR #3418](https://github.com/alphagov/govuk_publishing_components/pull/3418))
 * Remove list-style for govspeak ordered lists ([PR #3413](https://github.com/alphagov/govuk_publishing_components/pull/3413))

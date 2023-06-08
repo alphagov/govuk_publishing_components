@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-describe('Google Analytics event tracking', function () {
+describe('Google Analytics event tracker', function () {
   var GOVUK = window.GOVUK
   var element
   var expected
@@ -532,7 +532,9 @@ describe('Google Analytics event tracking', function () {
           type: 'header menu bar',
           text: button.textContent,
           section: button.textContent,
-          index: i + 1,
+          index: {
+            index_section: i + 1
+          },
           index_total: buttons.length
         }))
 

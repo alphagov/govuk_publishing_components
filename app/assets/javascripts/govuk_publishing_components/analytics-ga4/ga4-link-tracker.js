@@ -111,9 +111,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Ga4LinkTracker.prototype.setIndex = function (indexData, target) {
-    var index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(indexData)
-
+  Ga4LinkTracker.prototype.setIndex = function (index, target) {
     if (target.getAttribute('data-ga4-index')) {
       try {
         var indexLink = JSON.parse(target.getAttribute('data-ga4-index'))
