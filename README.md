@@ -58,6 +58,7 @@ yarn run jasmine:ci
 - [Testing a component](docs/testing-components.md)
 - [Component auditing](docs/auditing.md)
 - [Code documentation on rubydoc.info](http://www.rubydoc.info/gems/govuk_publishing_components)
+- [Our analytics approach](docs/analytics-ga4/analytics.md)
 
 More documentation can be found in the [docs directory](docs/).
 
