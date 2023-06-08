@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.6.0
 
 * Remove GA4 index parsing code ([PR #3434](https://github.com/alphagov/govuk_publishing_components/pull/3434))
 * Fix GA4 tracking on step nav related ([PR #3431](https://github.com/alphagov/govuk_publishing_components/pull/3431))
