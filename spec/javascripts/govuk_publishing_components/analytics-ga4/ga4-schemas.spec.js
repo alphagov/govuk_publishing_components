@@ -27,9 +27,9 @@ describe('Google Analytics schemas', function () {
         url: undefined,
         text: undefined,
         index: {
-          index_link: this.undefined,
-          index_section: this.undefined,
-          index_section_count: this.undefined
+          index_link: undefined,
+          index_section: undefined,
+          index_section_count: undefined
         },
         index_total: undefined,
         section: undefined,
@@ -61,9 +61,9 @@ describe('Google Analytics schemas', function () {
         url: undefined,
         text: undefined,
         index: {
-          index_link: this.undefined,
+          index_link: undefined,
           index_section: '1',
-          index_section_count: this.undefined
+          index_section_count: undefined
         },
         index_total: undefined,
         section: undefined,
@@ -96,7 +96,7 @@ describe('Google Analytics schemas', function () {
         index: {
           index_link: '3',
           index_section: '1',
-          index_section_count: this.undefined
+          index_section_count: undefined
         },
         index_total: undefined,
         section: undefined,
@@ -105,6 +105,76 @@ describe('Google Analytics schemas', function () {
         method: undefined,
         link_domain: undefined,
         link_path_parts: undefined,
+        tool_name: undefined,
+        percent_scrolled: undefined
+      }
+    }
+    var returned = schemas.mergeProperties(data, 'example')
+    expect(returned).toEqual(expected)
+  })
+
+  it('does not overwrite the schema if an undefined value is passed', function () {
+    var data = {
+      event_name: 'test_event_name',
+      index: undefined
+    }
+    var expected = {
+      event: 'example',
+      event_data: {
+        event_name: 'test_event_name',
+        type: undefined,
+        url: undefined,
+        text: undefined,
+        index: {
+          index_link: undefined,
+          index_section: undefined,
+          index_section_count: undefined
+        },
+        index_total: undefined,
+        section: undefined,
+        action: undefined,
+        external: undefined,
+        method: undefined,
+        link_domain: undefined,
+        link_path_parts: undefined,
+        tool_name: undefined,
+        percent_scrolled: undefined
+      }
+    }
+    var returned = schemas.mergeProperties(data, 'example')
+    expect(returned).toEqual(expected)
+  })
+
+  it('handles exceptions', function () {
+    var data = {
+      event_name: 'test_event_name',
+      link_path_parts: {
+        1: 'something',
+        not: 'defined by the schema'
+      }
+    }
+    var expected = {
+      event: 'example',
+      event_data: {
+        event_name: 'test_event_name',
+        type: undefined,
+        url: undefined,
+        text: undefined,
+        index: {
+          index_link: undefined,
+          index_section: undefined,
+          index_section_count: undefined
+        },
+        index_total: undefined,
+        section: undefined,
+        action: undefined,
+        external: undefined,
+        method: undefined,
+        link_domain: undefined,
+        link_path_parts: {
+          1: 'something',
+          not: 'defined by the schema'
+        },
         tool_name: undefined,
         percent_scrolled: undefined
       }

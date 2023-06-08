@@ -412,8 +412,13 @@ describe('GA4 link tracker', function () {
 
       initModule(element, false)
       link.click()
+      var expected = {
+        index_link: undefined,
+        index_section: undefined,
+        index_section_count: undefined
+      }
 
-      expect(window.dataLayer[0].event_data.index).toEqual(undefined)
+      expect(window.dataLayer[0].event_data.index).toEqual(expected)
     })
   })
 
