@@ -25,6 +25,19 @@ examples:
       base_path: '/current-page-path'
       data_attributes:
         test_attribute: "testing"
+  with_ga4_tracking:
+    description: To add GA4 tracking, pass a `ga4_data_attributes` object with the necessary properties to the component. For example:-
+    data:
+      base_path: '/current-page-path'
+      ga4_data_attributes:
+        module: "ga4-link-tracker"
+        ga4_link:
+          event_name: "navigation"
+          type: "subscribe"
+          index:
+            index_link: 1
+          index_total: 1
+          section: "Top"
   with_margin_bottom:
     description: |
       The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 15px.
