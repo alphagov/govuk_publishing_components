@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fully implement loading of individual stylesheets in component guide ([PR #3379](https://github.com/alphagov/govuk_publishing_components/pull/3379))
+
 ## 35.6.0
 
 * Remove GA4 index parsing code ([PR #3434](https://github.com/alphagov/govuk_publishing_components/pull/3434))
