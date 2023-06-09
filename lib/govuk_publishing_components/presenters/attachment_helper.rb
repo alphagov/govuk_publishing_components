@@ -7,7 +7,7 @@ module GovukPublishingComponents
 
       # Expects a hash of attachment data
       # * title and url are required
-      # * content_type, filename, file_size, number of pages, alternative_format_contact_email can be provided
+      # * type, content_type, filename, file_size, number of pages, alternative_format_contact_email can be provided
       def initialize(attachment_data)
         @attachment_data = attachment_data.with_indifferent_access
       end
@@ -22,6 +22,14 @@ module GovukPublishingComponents
 
       def url
         attachment_data.fetch(:url)
+      end
+
+      def type
+        attachment_data.fetch(:type, "file")
+      end
+
+      def html?
+        type == "html"
       end
 
       def content_type

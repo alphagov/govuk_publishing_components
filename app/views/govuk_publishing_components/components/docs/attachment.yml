@@ -177,3 +177,15 @@ examples:
         content_type: application/pdf
         file_size: 20000
         thumbnail_url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/thumbnail_the_government_financial_reporting_review_web.pdf.png"
+  html_attachment:
+    data:
+      attachment:
+        title: "Smart meters: unlocking the future"
+        url: https://www.gov.uk/government/publications/smart-meters-unlocking-the-future/smart-meters-unlocking-the-future
+        type: html
+  external_attachment:
+    data:
+      attachment:
+        title: "Architects Registration Board annual report 2021"
+        url: https://arb.org.uk/wp-content/uploads/ARB-Annual-Report-and-Financial-Statement-2021-published.pdf
+        type: external

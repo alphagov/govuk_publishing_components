@@ -15,6 +15,7 @@ describe "Attachment", type: :view do
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
     assert_select ".gem-c-attachment"
     assert_select "a[href='https://gov.uk/attachment']", text: "Attachment"
+    assert_thumbnail "generic"
   end
 
   it "can have a target specified" do
@@ -38,6 +39,7 @@ describe "Attachment", type: :view do
     assert_select "abbr.gem-c-attachment__abbr[title='Portable Document Format']", text: "PDF"
     expect(rendered).to match(/2 KB/)
     expect(rendered).to match(/2 pages/)
+    assert_thumbnail "document"
   end
 
   it "can show file type that doesn't have an abbreviation" do
@@ -72,6 +74,7 @@ describe "Attachment", type: :view do
       },
     )
     assert_select "a[href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation']"
+    assert_thumbnail "spreadsheet"
   end
 
   it "shows section to request a different format if a contact email is provided that is not in the pilot" do
@@ -129,7 +132,8 @@ describe "Attachment", type: :view do
     assert_select ".gem-c-attachment__metadata:nth-of-type(1)", text: "Ref: ISBN 978-1-5286-1173-2, 2259, Cd. 67"
   end
 
-  it "shows PDF thumbnails previews for PDF attachments" do
+  it "shows a custom thumbnail image when one is provided" do
+    thumbnail_url = "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/thumbnail_the_government_financial_reporting_review_web.pdf.png"
     render_component(
       attachment: {
         title: "The government financial reporting review",
@@ -141,10 +145,10 @@ describe "Attachment", type: :view do
         isbn: "978-1-5286-1173-2",
         unique_reference: "2259",
         command_paper_number: "Cd. 67",
-        thumbnail_url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/thumbnail_the_government_financial_reporting_review_web.pdf.png",
+        thumbnail_url: thumbnail_url,
       },
     )
-    rendered.should include("https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/thumbnail_the_government_financial_reporting_review_web.pdf.png")
+    assert_thumbnail "custom", src: thumbnail_url
   end
 
   it "shows unnumbered details on the second metadata line if marked so" do
@@ -205,5 +209,23 @@ describe "Attachment", type: :view do
   it "defaults to h2 if heading_level is not specified" do
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
     assert_select "h2.gem-c-attachment__title .gem-c-attachment__link", text: "Attachment"
+  end
+
+  it "renders HTML attachments" do
+    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment", type: "html" })
+    assert_select ".gem-c-attachment__metadata", text: "HTML"
+    assert_thumbnail "html"
+  end
+
+  it "renders External attachments" do
+    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment", type: "external" })
+    assert_select ".gem-c-attachment__metadata", text: "https://gov.uk/attachment"
+    assert_thumbnail "generic"
+  end
+
+  def assert_thumbnail(type, src: nil)
+    assert_select ".gem-c-attachment__thumbnail-image.gem-c-attachment__thumbnail-image--#{type}" do |thumbnail|
+      expect(thumbnail.first.attr("src")).to eq(src) if type == "custom"
+    end
   end
 end
