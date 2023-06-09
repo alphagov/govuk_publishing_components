@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fully implement loading of individual stylesheets in component guide ([PR #3379](https://github.com/alphagov/govuk_publishing_components/pull/3379))
+* Add support for HTML and external attachment types ([PR #3442](https://github.com/alphagov/govuk_publishing_components/pull/3442))
 
 ## 35.6.0
 
