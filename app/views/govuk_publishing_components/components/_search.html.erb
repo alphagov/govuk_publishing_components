@@ -49,6 +49,7 @@
 
 <div class="<%= classes.join(" ") %>" data-module="gem-toggle-input-class-on-focus">
   <% if wrap_label_in_a_heading %>
+    <% add_gem_component_stylesheet("label") %>
     <%= content_tag(shared_helper.get_heading_level, class: "govuk-!-margin-0") do %>
       <%= tag_label %>
     <% end %>

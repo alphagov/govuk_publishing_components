@@ -1,3 +1,25 @@
+<% content_for :body do %>
+  <% if @preview %>
+    <main id="wrapper" class="govuk-width-container">
+      <%= yield %>
+    </main>
+  <% else %>
+    <%= render "govuk_publishing_components/components/layout_header", {
+      environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
+      product_name: GovukPublishingComponents::Config.component_guide_title,
+      href: component_guide_path
+    } %>
+    <div class="govuk-width-container app-width-container--wide">
+      <% if @guide_breadcrumbs %>
+        <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
+      <% end %>
+      <main id="wrapper" class="govuk-main-wrapper">
+        <%= yield %>
+      </main>
+    </div>
+    <%= render "govuk_publishing_components/components/layout_footer" %>
+  <% end %>
+<% end %>
 <!DOCTYPE html>
 <html lang="en" class="<%= "govuk-template" unless @preview %>">
   <head>
@@ -27,26 +49,7 @@
     <%= javascript_tag nonce: true do -%>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     <% end -%>
-    <% if @preview %>
-      <main id="wrapper" class="govuk-width-container">
-        <%= yield %>
-      </main>
-    <% else %>
-      <%= render "govuk_publishing_components/components/layout_header", {
-        environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
-        product_name: GovukPublishingComponents::Config.component_guide_title,
-        href: component_guide_path
-      } %>
-      <div class="govuk-width-container app-width-container--wide">
-        <% if @guide_breadcrumbs %>
-          <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
-        <% end %>
-        <main id="wrapper" class="govuk-main-wrapper">
-          <%= yield %>
-        </main>
-      </div>
-      <%= render "govuk_publishing_components/components/layout_footer" %>
-    <% end %>
+    <%= yield :body %>
 
     <%= javascript_include_tag "component_guide/application" %>
     <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
