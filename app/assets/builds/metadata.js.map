@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../javascripts/govuk_publishing_components/modules/metadata.js"],
+  "sourcesContent": ["class Metadata {\n  constructor($module) {\n    this.$module = $module\n  }\n\n  init() {\n    var seeAllUpdates = this.$module.querySelector('.js-see-all-updates-link')\n\n    if (seeAllUpdates) {\n      var target = document.querySelector(seeAllUpdates.getAttribute('href'))\n\n      if (target) {\n        seeAllUpdates.addEventListener('click', function () {\n          var targetToggleTrigger = target.querySelector('[aria-expanded]')\n          if (targetToggleTrigger && targetToggleTrigger.getAttribute('aria-expanded') !== 'true') {\n            targetToggleTrigger.click()\n          }\n        })\n      }\n    }    \n  }\n}\n\nexport default Metadata;"],
+  "mappings": ";;AAAA,MAAM,WAAN,MAAe;AAAA,IACb,YAAY,SAAS;AACnB,WAAK,UAAU;AAAA,IACjB;AAAA,IAEA,OAAO;AACL,UAAI,gBAAgB,KAAK,QAAQ,cAAc,0BAA0B;AAEzE,UAAI,eAAe;AACjB,YAAI,SAAS,SAAS,cAAc,cAAc,aAAa,MAAM,CAAC;AAEtE,YAAI,QAAQ;AACV,wBAAc,iBAAiB,SAAS,WAAY;AAClD,gBAAI,sBAAsB,OAAO,cAAc,iBAAiB;AAChE,gBAAI,uBAAuB,oBAAoB,aAAa,eAAe,MAAM,QAAQ;AACvF,kCAAoB,MAAM;AAAA,YAC5B;AAAA,UACF,CAAC;AAAA,QACH;AAAA,MACF;AAAA,IACF;AAAA,EACF;AAEA,MAAO,mBAAQ;",
+  "names": []
+}

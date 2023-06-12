@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../javascripts/govuk_publishing_components/modules/image-card.js"],
+  "sourcesContent": ["class ImageCard {\n  constructor($module) {\n    this.$module = $module;\n    this.$module.youtubeLink = this.$module.querySelector('.gem-c-image-card__image-wrapper div');\n  }\n\n  init() {\n    var ytLink = new window.GOVUK.GovspeakYoutubeLinkEnhancement(\n      this.$module.youtubeLink,\n      'gem-c-govspeak__youtube-video gem-c-image-card__youtube-video-embed'\n    );\n    ytLink.init();    \n  }\n}\n\nexport default ImageCard;"],
+  "mappings": ";;AAAA,MAAM,YAAN,MAAgB;AAAA,IACd,YAAY,SAAS;AACnB,WAAK,UAAU;AACf,WAAK,QAAQ,cAAc,KAAK,QAAQ,cAAc,sCAAsC;AAAA,IAC9F;AAAA,IAEA,OAAO;AACL,UAAI,SAAS,IAAI,OAAO,MAAM;AAAA,QAC5B,KAAK,QAAQ;AAAA,QACb;AAAA,MACF;AACA,aAAO,KAAK;AAAA,IACd;AAAA,EACF;AAEA,MAAO,qBAAQ;",
+  "names": []
+}

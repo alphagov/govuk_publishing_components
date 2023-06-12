@@ -103,16 +103,3 @@
     <% end %>
   <% end %>
 <% end %>
-
-<%= javascript_tag nonce: true, type: "module" do -%>
-    import Accordion from "<%= asset_path('govuk-esm/components/accordion/accordion.mjs') %>";
-    import GemAccordion from "<%= asset_path('govuk_publishing_components/modules/accordion.js') %>";
-
-    const el = document.querySelector("#<%= id %>");
-
-    const gemAccordion = new GemAccordion(el);
-    const accordion = new Accordion(el);
-
-    accordion.init();
-    gemAccordion.init();
-<% end -%>

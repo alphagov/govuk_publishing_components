@@ -9,7 +9,6 @@
 
 //= link_directory ../javascripts/govuk_publishing_components/modules
 
-
 //= link_tree ../../../node_modules/govuk-frontend/govuk-esm/
 
 //= link_tree ../builds

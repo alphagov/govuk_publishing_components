@@ -9,7 +9,7 @@
     "jasmine:prepare": "bundle exec rake app:assets:clobber app:assets:precompile",
     "jasmine:ci": "yarn run jasmine:prepare && yarn run jasmine-browser-runner runSpecs",
     "jasmine:browser": "yarn run jasmine:prepare && yarn run jasmine-browser-runner",
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/assets/javascripts/govuk_publishing_components/modules/* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   },
   "standardx": {
     "ignore": [

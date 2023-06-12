@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../javascripts/govuk_publishing_components/modules/govspeak.js"],
+  "sourcesContent": ["class Govspeak {\n  constructor($module, YoutubeLinkEnhancement) {\n    this.$module = $module\n    this.youtubeLinkEnhancement = YoutubeLinkEnhancement\n  }\n\n  init() {\n    if (this.$module.className.indexOf('disable-youtube') === -1) {\n      this.embedYoutube()\n    }\n\n    // this.createBarcharts()    \n  }\n\n  embedYoutube() {\n    var enhancement = new this.youtubeLinkEnhancement(this.$module)\n    enhancement.init()\n  }\n\n  // createBarcharts() {\n  //   var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)\n  //   enhancement.init()\n  // }\n}\n\nexport default Govspeak;"],
+  "mappings": ";;AAAA,MAAM,WAAN,MAAe;AAAA,IACb,YAAY,SAAS,wBAAwB;AAC3C,WAAK,UAAU;AACf,WAAK,yBAAyB;AAAA,IAChC;AAAA,IAEA,OAAO;AACL,UAAI,KAAK,QAAQ,UAAU,QAAQ,iBAAiB,MAAM,IAAI;AAC5D,aAAK,aAAa;AAAA,MACpB;AAAA,IAGF;AAAA,IAEA,eAAe;AACb,UAAI,cAAc,IAAI,KAAK,uBAAuB,KAAK,OAAO;AAC9D,kBAAY,KAAK;AAAA,IACnB;AAAA;AAAA;AAAA;AAAA;AAAA,EAMF;AAEA,MAAO,mBAAQ;",
+  "names": []
+}

@@ -123,14 +123,4 @@
       <% end %>
     </ol>
   </div>
-
-  <%= javascript_tag nonce: true, type: "module" do -%>
-      import StepByStepNav from "<%= asset_path('govuk_publishing_components/modules/step-by-step-nav.js') %>";
-
-      const el = document.querySelector("#step-by-step-nav-<%= randomId %>");
-
-      const stepByStepNav = new StepByStepNav(el);
-
-      stepByStepNav.init()
-  <% end -%>
 <% end %>
