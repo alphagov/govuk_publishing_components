@@ -9,30 +9,44 @@
   data_attributes ||= {}
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  if attachment.content_type_name
-    content = if attachment.content_type_abbr
-                raw tag.abbr(attachment.content_type.abbr,
-                             title: attachment.content_type_name,
-                             class: "gem-c-attachment__abbr")
-              else
-                attachment.content_type_name
-              end
-    attributes << tag.span(content, class: "gem-c-attachment__attribute")
-  end
+  case attachment.type
+  when "file"
+    if attachment.content_type_name
+      content = if attachment.content_type_abbr
+                  raw tag.abbr(attachment.content_type.abbr,
+                              title: attachment.content_type_name,
+                              class: "gem-c-attachment__abbr")
+                else
+                  attachment.content_type_name
+                end
+      attributes << tag.span(content, class: "gem-c-attachment__attribute")
+    end
 
-  if attachment.file_size
+    if attachment.file_size
+      attributes << tag.span(
+        number_to_human_size(attachment.file_size),
+        class: "gem-c-attachment__attribute",
+      )
+    end
+
+    if attachment.number_of_pages
+      attributes << tag.span(
+        t("components.attachment.page", count: attachment.number_of_pages),
+        class: "gem-c-attachment__attribute",
+      )
+    end
+  when "html"
     attributes << tag.span(
-      number_to_human_size(attachment.file_size),
+      "HTML",
+      class: "gem-c-attachment__attribute",
+    )
+  when "external"
+    attributes << tag.span(
+      attachment.url,
       class: "gem-c-attachment__attribute",
     )
   end
-
-  if attachment.number_of_pages
-    attributes << tag.span(
-      t("components.attachment.page", count: attachment.number_of_pages),
-      class: "gem-c-attachment__attribute",
-    )
-  end
+  
 %>
 <%= tag.section class: "gem-c-attachment govuk-!-display-none-print" do %>
   <%= tag.div class: "gem-c-attachment__thumbnail" do %>
@@ -42,8 +56,10 @@
                 tabindex: "-1",
                 "aria-hidden": true,
                 data: data_attributes do %>
-      <% if attachment.thumbnail_url %>
-        <% image_tag(attachment.thumbnail_url, alt: "") %>
+      <% if attachment.thumbnail_url.present? %>
+        <% image_tag(attachment.thumbnail_url, alt: "", class: "gem-c-attachment__thumbnail-image gem-c-attachment__thumbnail-image--custom") %>
+      <% elsif attachment.html? %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_html" %>
       <% elsif attachment.document? %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_document" %>
       <% elsif attachment.spreadsheet? %>

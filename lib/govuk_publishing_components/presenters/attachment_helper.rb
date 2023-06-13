@@ -7,7 +7,7 @@ module GovukPublishingComponents
 
       # Expects a hash of attachment data
       # * title and url are required
-      # * content_type, filename, file_size, number of pages, alternative_format_contact_email can be provided
+      # * type, content_type, filename, file_size, number of pages, alternative_format_contact_email can be provided
       def initialize(attachment_data)
         @attachment_data = attachment_data.with_indifferent_access
       end
@@ -22,6 +22,14 @@ module GovukPublishingComponents
 
       def url
         attachment_data.fetch(:url)
+      end
+
+      def type
+        attachment_data.fetch(:type, "file")
+      end
+
+      def html?
+        type == "html"
       end
 
       def content_type
@@ -86,11 +94,11 @@ module GovukPublishingComponents
           { content_type: "application/rtf", abbr: "RTF", name: "Rich Text Format" }.freeze,
           { content_type: "application/vnd.ms-excel", name: "MS Excel Spreadsheet", spreadsheet: true }.freeze,
           { content_type: "application/vnd.ms-excel.sheet.macroenabled.12", abbr: "XLSM", name: "MS Excel Macro-Enabled Workbook" }.freeze,
-          { content_type: "application/vnd.ms-powerpoint", name: "MS Powerpoint Presentation" }.freeze, # ppt
+          { content_type: "application/vnd.ms-powerpoint", name: "MS PowerPoint Presentation" }.freeze, # ppt
           { content_type: "application/vnd.oasis.opendocument.presentation", abbr: "ODP", name: "OpenDocument Presentation", opendocument: true }.freeze,
           { content_type: "application/vnd.oasis.opendocument.spreadsheet", abbr: "ODS", name: "OpenDocument Spreadsheet", opendocument: true, spreadsheet: true }.freeze,
           { content_type: "application/vnd.oasis.opendocument.text", abbr: "ODT", name: "OpenDocument Text document", opendocument: true, document: true }.freeze,
-          { content_type: "application/vnd.openxmlformats-officedocument.presentationml.presentation", name: "MS Powerpoint Presentation" }.freeze, # pptx
+          { content_type: "application/vnd.openxmlformats-officedocument.presentationml.presentation", name: "MS PowerPoint Presentation" }.freeze, # pptx
           { content_type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", name: "MS Excel Spreadsheet", spreadsheet: true }.freeze, # xlsx
           { content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", name: "MS Word Document", document: true }.freeze, # docx
           { content_type: "application/xml", abbr: "XML", name: "XML Document" }.freeze,
