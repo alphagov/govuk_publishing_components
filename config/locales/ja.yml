@@ -18,6 +18,7 @@ ja:
       order_a_copy: コピーを注文する
       page:
         other: "％{count}ページ"
+      preview_link:
       reference: 参照：%{reference}
       request_format_cta: アクセス可能なフォーマットをリクエストしてください。
       request_format_details_html: 支援技術（スクリーンリーダーなど）を使用していて、このドキュメントのよりアクセスしやすい形式のバージョンが必要な場合は、<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>。必要なフォーマットを教えてください。使用している支援技術を教えていただければ助かります。

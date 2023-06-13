@@ -23,6 +23,7 @@ ar:
         other: "%{count} صفحات"
         two:
         zero:
+      preview_link:
       reference: 'مرجع: %{reference}'
       request_format_cta: طلب تنسيق يمكن الاطلاع عليه.
       request_format_details_html: إذا كنت تستخدم تكنولوجيا مساعِدة (مثل قارئ للشاشة) وتحتاج إلى إصدار من هذا المستند بتنسيق يسهل الاطلاع عليه، فيُرجى التواصل عبر البريد الإلكتروني <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. من فضلك أخبرنا بالتنسيق الذي تحتاجه. إذا أخبرتنا بالتكنولوجيا المساعدة التي تستخدمها، فهذا سيساعدنا.

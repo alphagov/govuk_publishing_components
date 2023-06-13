@@ -19,6 +19,7 @@ bn:
       page:
         one: 1 পেজ
         other: "%{count} পেজ"
+      preview_link:
       reference: 'সুত্র: %{reference}'
       request_format_cta: একটি প্রবেশযোগ্য ফরম্যাটের অনুরোধ করুন।
       request_format_details_html: আপনি যদি সহায়তামূলক প্রযুক্তি (যেমন স্ক্রিন রিডার) ব্যবহার করেন এবং এই নথির একটি সংস্করণ আরও ভালোভাবে ব্যবহার করার ফরম্যাটে প্রয়োজন হয়, তবে অনুগ্রহ করে <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>-এ ইমেইল করুন। আপনার কোন ফরম্যাট প্রয়োজন অনুগ্রহ করে তা আমাদেরকে জানান। আপনি কোন সহায়তামূলক প্রযুক্তি ব্যবহার করেন তা জানালে আমাদের জন্য সহায়ক হবে।

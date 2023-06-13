@@ -21,6 +21,7 @@ uk:
         many:
         one: 1 сторінка
         other: "%{count} сторінок"
+      preview_link:
       reference: 'Посилання: %{reference}'
       request_format_cta: Надішліть запит на доступний формат.
       request_format_details_html: Якщо ви використовуєте допоміжну технологію (наприклад, програму зчитування з екрана) і вам потрібна версія цього докумену у більш доступному форматі, надішліть електронний лист <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Повідомте, який формат вам потрібен. Нам допоможе, якщо ви повідомите нам, які допоміжні технології використовуєте.

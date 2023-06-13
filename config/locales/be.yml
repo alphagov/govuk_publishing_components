@@ -21,6 +21,7 @@ be:
         many:
         one: 1 старонка
         other: "%{count} старонкi"
+      preview_link:
       reference: 'Спасылка: %{reference}'
       request_format_cta: Запрасіць файл у іншым фармаце.
       request_format_details_html: Калі вы выкарыстоўваеце дапаможных тэхналогіi (такiя як экранны дыктар) i патрэбна версiя гэтага дакумента  ў больш даступным фармаце, напішыце, калі ласка  на электронную пошту <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Калі ласка, паведаміце нам, які фармат вам патрэбен. Нам будзе лягчэй, калі вы паведаміце, якія дапаможныя тэхналогіi вы выкарыстоўваеце.

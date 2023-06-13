@@ -19,6 +19,7 @@ fr:
       page:
         one: 1 page
         other: "%{count} pages"
+      preview_link:
       reference: 'Réf.: %{reference}'
       request_format_cta: Demandez un format accessible.
       request_format_details_html: Si vous utilisez une technologie d'assistance (comme un lecteur d'écran) et avez besoin d'une version de ce document dans un format plus accessible, veuillez envoyer un courriel à <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Veuillez nous indiquer le format dont vous avez besoin. Cela nous aidera de savoir quelle technologie d'assistance vous utilisez.

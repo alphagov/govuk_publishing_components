@@ -19,6 +19,7 @@ tk:
       page:
         one: 1 sahypa
         other: "%{count} sahypalar"
+      preview_link:
       reference: 'Salgylanma: %{reference}'
       request_format_cta: Elýeterli formaty talap etmek.
       request_format_details_html: Eger siz kömekçi tehnologiýany ulanýan bolsaňyz (meselem, ekran okaýjy ýaly) we bu resminamanyň has elýeterli wersiýasy gerek bolsa, %{email} e-poçta iberiň <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Size haýsy format gerekdigini aýdyň. Haýsy kömekçi tehnologiýany ulanýandygyňyzy aýtsaňyz bu bize kömek bolar.

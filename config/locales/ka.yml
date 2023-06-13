@@ -19,6 +19,7 @@ ka:
       page:
         one: 1 გვერი
         other: "%{count} გვერდები"
+      preview_link:
       reference: 'მითითება: %{reference}'
       request_format_cta: ხელმისაწვდომი ფორმატის მოთხოვნა.
       request_format_details_html: თუ იყენებთ დამხმარე ტექნოლოგიას (როგორიც ეკრანის წამკითხველია) და გჭირდებათ ამ დოკუმენტის ვერსია უფრო მოსახერხებელ ფორმატში, გთხოვთ დაუკავშირდით ელ.ფოსტით <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. გთხოვთ, გვითხარით რა ფორმატი გჭირდებათ. თუ გვეტვყით რომელ დამხმარე ტექნოლოგიას იყენებთ ძალიან დაგვეხმარებით.

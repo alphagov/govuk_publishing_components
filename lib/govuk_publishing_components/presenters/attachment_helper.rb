@@ -16,6 +16,10 @@ module GovukPublishingComponents
         @attachment_data[:thumbnail_url]
       end
 
+      def preview_url
+        @attachment_data[:preview_url]
+      end
+
       def title
         attachment_data.fetch(:title)
       end

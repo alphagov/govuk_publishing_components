@@ -18,6 +18,7 @@ zh:
       order_a_copy: 订购副本
       page:
         other: "%{count} 页"
+      preview_link:
       reference: 参考号：%{reference}
       request_format_cta: 申请可访问格式。
       request_format_details_html: '如果您使用辅助技术（如屏幕阅读器），并需要更易于访问的格式，请发送电子邮件 <a href=''mailto:%{alternative_format_contact_email}'' target=''_blank'' class=''govuk-link''>%{alternative_format_contact_email}</a>。请告诉我们您需要什么格式。如果您能说出自己使用的辅助技术，这对我们很有帮助。  '

@@ -19,6 +19,7 @@ ur:
       page:
         one: 1 صفحہ
         other: "%{count} صفحات"
+      preview_link:
       reference: 'حوالہ: %{reference}'
       request_format_cta: قابل رسائی فارمیٹ کی درخواست دیں۔
       request_format_details_html: اگر آپ کوئی معاونتی ٹیکنالوجی (جیسے کہ پڑھنے والے کی اسکرین) استعمال کرتے ہیں اور مزید قابل رسائی فارمیٹ میں اس دستاویز کا ورژن درکار ہے، تو براہ کرم <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> پر ای میل کریں براہ کرم ہمیں آگاہ کریں کہ آپ کو کون سا فارمیٹ درکار ہے۔ اگر آپ بتائیں کہ آپ کون سی معاونتی ٹیکنالوجی استعمال کرتے ہیں تو ہمیں اس سے مدد ملے گی۔

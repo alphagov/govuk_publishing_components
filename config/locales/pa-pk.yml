@@ -19,6 +19,7 @@ pa-pk:
       page:
         one: پہلا ورق
         other: ورقے {count}%
+      preview_link:
       reference: حوالہ:{reference}%
       request_format_cta: اک طریقے تک پوہنچن لئی اِک درخواست دیو۔
       request_format_details_html: اگر تُسی مدد گار ٹیکنالوجی نوں استعمال کردے او )  جیوں اک سکرین ریڈر( تے تہانوں ایس دستاویز دا ترجمہ چائی دا اے جہیڑا کہ ہور پہنچن والی شکل وچ اے، تے برائے مہربانی  ایندے تےای میل کرو <a href='mailto:%{alternative_format_contact_email}' target='_blank class='govuk-link'>%{alternative_format_contact_email}</a>. برائے مہربانی تہانوں جس شکل دی لوڑ اے اوندے بارے سانوں دسو۔اے ساڈے لئی مدد گار ہوؤئے گا کہ تُسی کس مدد گار ٹیکنالوجی نوں استعمال کر رئے آو۔

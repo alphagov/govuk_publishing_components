@@ -168,6 +168,33 @@ describe "Attachment", type: :view do
     assert_select ".gem-c-attachment__metadata:nth-of-type(2)", text: "Unnumbered command paper"
   end
 
+  it "shows 'View online' preview link if preview_url is provided" do
+    render_component(
+      attachment: {
+        title: "Consular data: February 2018",
+        url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/687542/February_2018_Consular_MI.csv",
+        filename: "February_2018_Consular_MI.csv",
+        content_type: "text/csv",
+        file_size: 51_496,
+        preview_url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/687542/February_2018_Consular_MI.csv/preview",
+      },
+    )
+    assert_select ".gem-c-attachment__metadata .govuk-link", text: "View online"
+  end
+
+  it "does not show 'View online' preview_url is omitted" do
+    render_component(
+      attachment: {
+        title: "Consular data: February 2018",
+        url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/687542/February_2018_Consular_MI.csv",
+        filename: "February_2018_Consular_MI.csv",
+        content_type: "text/csv",
+        file_size: 51_496,
+      },
+    )
+    assert_select "a", text: "View online", count: 0
+  end
+
   it "shows 'Order a copy' link on the third metadata line if it's an official document" do
     render_component(
       attachment: {

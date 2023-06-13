@@ -19,6 +19,7 @@ az:
       page:
         one:
         other: "%{count} səhifə"
+      preview_link:
       reference: 'İst: %{reference}'
       request_format_cta: İstifadə edilə bilən format tələb edin.
       request_format_details_html: Köməkçi texnologiyalardan (ekran oxuyucusu kimi) istifadə edirsinizsə və sizə bu sənədin daha rahat istifadə edilə bilən formatda olan versiyası lazımdırsa, aşağıdakı ünvana e-məktubla müraciət edin <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Sizə hansı formatın lazım olduğunu bizə söyləyin. Hansı köməkçi texnologiyadan istifadə etdiyinizi bildirməyiniz bizə kömək edəcək.

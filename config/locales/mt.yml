@@ -21,6 +21,7 @@ mt:
         many:
         one: 1 paġna
         other: "%{count} paġni"
+      preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Itlob format aċċessibbli.
       request_format_details_html: Jekk tuża teknoloġija assistiva (bħal qarrej tal-iskrin) u għandek bżonn verżjoni ta' dan id-dokument b'format iktar aċċessibbli, jekk jogħġbok ibgħat imejl <a href='mailto:%{alternative_format_contact_email}' target='_blank'  class='govuk-link'>%{alternative_format_contact_email}</a>.Jekk jogħġbok għidilna liema format għandek bżonn. Dan jgħinna jekk tgħid liema teknoloġija ta 'għajnuna tuża.

@@ -21,6 +21,7 @@ ru:
         many:
         one: 1 страница
         other: "%{count} страниц"
+      preview_link:
       reference: 'Ссылка: %{reference}'
       request_format_cta: Запросить в доступном формате.
       request_format_details_html: "Если вы используете вспомогательные технологии (например, программу чтения с экрана), \nи вам нужна версия этого документа в более доступном формате, отправьте \nписьмо по адресу электронной почты <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. В нем укажите, какой формат вам нужен. Хорошо было бы, если бы вы также указали, какие вспомогательные технологии вы используете."

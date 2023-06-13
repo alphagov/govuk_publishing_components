@@ -19,6 +19,7 @@ hi:
       page:
         one: 1 पेज
         other: "%{count} पेज"
+      preview_link:
       reference: 'संदर्भ: %{reference}'
       request_format_cta: एक सुलभ प्रारूप का अनुरोध करें।
       request_format_details_html: अगर आप सहायक तकनीक (जैसे स्क्रीन रीडर) का उपयोग करते हैं और इस दस्तावेज़ के अधिक सुलभ प्रारूप वाले संस्करण की ज़रूरत है, तो कृपया <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> पर ईमेल करें। कृपया हमें बताएं कि आपको कौन सा प्रारूप चाहिए। अगर आप बताते हैं कि आप किस सहायक तकनीक का उपयोग करते हैं, तो हमें मदद मिलेगी।

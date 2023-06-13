@@ -19,6 +19,7 @@ fi:
       page:
         one: 1 sivu
         other: "%{count} pages"
+      preview_link:
       reference: 'Viite: %{reference}'
       request_format_cta: Pyydä helppokäyttöistä muotoa.
       request_format_details_html: Jos käytät apuvälinetekniikkaa (kuten näytönlukuohjelmaa) ja tarvitset tämän asiakirjan version helppokäyttöisemmään muotoon, lähetä sähköpostia osoitteeseen <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Kerro meille, missä muodossa tarvitset. Se auttaa meitä, jos sanot, mitä apuvälineteknologiaa käytät.

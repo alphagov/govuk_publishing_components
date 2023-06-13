@@ -19,6 +19,7 @@ de:
       page:
         one: 1 Seite
         other: "%{count} Seiten"
+      preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Fordern Sie ein zugängliches Format an.
       request_format_details_html: Sollten Sie Hilfsmittel (wie z. B. einen Bildschirmleser) verwenden und eine Version dieses Dokuments in einem leichter zugänglichen Format benötigen, senden Sie bitte eine Email an <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Bitte teilen Sie uns mit, welches Format Sie benötigen. Es erleichtert uns die Arbeit, wenn Sie uns mitteilen, welche Hilfsmittel Sie verwenden.

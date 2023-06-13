@@ -19,6 +19,7 @@ tr:
       page:
         one: 1 sayfa
         other: "%{count} sayfa"
+      preview_link:
       reference: 'İlgi: %{reference}'
       request_format_cta: Erişilebilir bir format talep edin.
       request_format_details_html: Destekleyici teknoloji (örneğin bir ekran okuyucu gibi) kullanıyorsanız ve bu belgenin daha ulaşılabilir bir formatına ihtiyacınız varsa, lütfen şu adrese bir e-posta gönderin <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Lütfen bize hangi formata ihtiyaç duyduğunuzu söyleyin. Hangi destekleyici teknolojiyi kullandığınızı söylemeniz bize yardımcı olur.
