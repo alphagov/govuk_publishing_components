@@ -5,6 +5,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function AuditFilter ($module) {
     this.module = $module
     this.data = this.module.querySelector('[data-audit-list]')
+    this.headings = this.module.querySelector('[data-audit-headings]')
   }
 
   AuditFilter.prototype.init = function () {
@@ -14,6 +15,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       this.filterComponentsFunction = this.filterComponents.bind(this)
       this.select.addEventListener('change', this.filterComponentsFunction)
+      this.setHeadingCount()
     }
   }
 
@@ -75,6 +77,49 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
     }
+    this.setHeadingCount()
+  }
+
+  AuditFilter.prototype.setHeadingCount = function () {
+    if (this.headings) {
+      var visibleRows = this.data.querySelectorAll('[data-application]:not([hidden])')
+
+      if (!this.headingLabels) {
+        this.headingLabels = this.getHeadingLabels()
+      }
+      // need an array of zeroes same length as headingLabels to store the counts
+      var headingCounts = new Array(this.headingLabels.length)
+      for (var i = 0; i < this.headingLabels.length; ++i) {
+        headingCounts[i] = 0
+      }
+
+      for (var j = 0; j < visibleRows.length; j++) {
+        for (var k = 0; k < this.headingLabels.length; k++) {
+          var cell = visibleRows[j].querySelector('[data-component-type=' + this.headingLabels[k] + ']')
+          if (cell.textContent.trim().length) {
+            headingCounts[k] += 1
+          }
+        }
+      }
+
+      var reg = /\([0-9]+\)/i
+      for (var l = 0; l < this.headingLabels.length; l++) {
+        var headingItem = this.headings.querySelector('[data-component-type=' + this.headingLabels[l] + ']')
+        headingItem.textContent = headingItem.textContent.replace(reg, '') + ' (' + headingCounts[l] + ')'
+      }
+    }
+  }
+
+  AuditFilter.prototype.getHeadingLabels = function () {
+    var headings = this.headings.querySelectorAll('[data-component-type]')
+    var labels = []
+    for (var i = 0; i < headings.length; i++) {
+      var label = headings[i].getAttribute('data-component-type')
+      if (labels.indexOf(label) === -1) {
+        labels.push(label)
+      }
+    }
+    return labels
   }
 
   Modules.AuditFilter = AuditFilter
