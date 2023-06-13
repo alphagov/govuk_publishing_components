@@ -9,7 +9,7 @@
     "jasmine:prepare": "bundle exec rake app:assets:clobber app:assets:precompile",
     "jasmine:ci": "yarn run jasmine:prepare && yarn run jasmine-browser-runner runSpecs",
     "jasmine:browser": "yarn run jasmine:prepare && yarn run jasmine-browser-runner",
-    "build": "esbuild app/assets/javascripts/govuk_publishing_components/modules/* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "rollup -c --bundleConfigAsCjs rollup.config.js"
   },
   "standardx": {
     "ignore": [
@@ -30,9 +30,12 @@
   "dependencies": {
     "axe-core": "^4.7.2",
     "govuk-frontend": "^4.6.0",
+    "@rollup/plugin-buble": "^1.0.2",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "axe-core": "^4.6.3",
-    "esbuild": "^0.17.8",
+    "glob": "^10.2.7",
     "govuk-frontend": "^4.5.0",
+    "rollup": "^3.25.1",
     "sortablejs": "^1.15.0"
   },
   "devDependencies": {

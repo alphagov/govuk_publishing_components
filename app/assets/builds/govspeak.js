@@ -1,24 +1,31 @@
-(() => {
-  // app/assets/javascripts/govuk_publishing_components/modules/govspeak.js
-  var Govspeak = class {
-    constructor($module, YoutubeLinkEnhancement) {
-      this.$module = $module;
-      this.youtubeLinkEnhancement = YoutubeLinkEnhancement;
-    }
-    init() {
-      if (this.$module.className.indexOf("disable-youtube") === -1) {
-        this.embedYoutube();
-      }
-    }
-    embedYoutube() {
-      var enhancement = new this.youtubeLinkEnhancement(this.$module);
-      enhancement.init();
-    }
-    // createBarcharts() {
-    //   var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
-    //   enhancement.init()
-    // }
+
+  var Govspeak = (function () {
+  'use strict';
+
+  var Govspeak = function Govspeak($module, YoutubeLinkEnhancement) {
+    this.$module = $module;
+    this.youtubeLinkEnhancement = YoutubeLinkEnhancement;
   };
-  var govspeak_default = Govspeak;
+
+  Govspeak.prototype.init = function init () {
+    if (this.$module.className.indexOf('disable-youtube') === -1) {
+      this.embedYoutube();
+    }
+
+    // this.createBarcharts()    
+  };
+
+  Govspeak.prototype.embedYoutube = function embedYoutube () {
+    var enhancement = new this.youtubeLinkEnhancement(this.$module);
+    enhancement.init();
+  };
+
+  return Govspeak;
+
 })();
-//# sourceMappingURL=assets/govspeak.js.map
+//# sourceMappingURL=govspeak.js.map
+
+  document.querySelectorAll('[data-module*="govspeak"]').forEach((el) => {
+    var instance = new Govspeak(el);
+    instance.init();
+  })

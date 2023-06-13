@@ -1,24 +1,34 @@
-(() => {
-  // app/assets/javascripts/govuk_publishing_components/modules/metadata.js
-  var Metadata = class {
-    constructor($module) {
-      this.$module = $module;
-    }
-    init() {
-      var seeAllUpdates = this.$module.querySelector(".js-see-all-updates-link");
-      if (seeAllUpdates) {
-        var target = document.querySelector(seeAllUpdates.getAttribute("href"));
-        if (target) {
-          seeAllUpdates.addEventListener("click", function() {
-            var targetToggleTrigger = target.querySelector("[aria-expanded]");
-            if (targetToggleTrigger && targetToggleTrigger.getAttribute("aria-expanded") !== "true") {
-              targetToggleTrigger.click();
-            }
-          });
-        }
-      }
-    }
+
+  var Metadata = (function () {
+  'use strict';
+
+  var Metadata = function Metadata($module) {
+    this.$module = $module;
   };
-  var metadata_default = Metadata;
+
+  Metadata.prototype.init = function init () {
+    var seeAllUpdates = this.$module.querySelector('.js-see-all-updates-link');
+
+    if (seeAllUpdates) {
+      var target = document.querySelector(seeAllUpdates.getAttribute('href'));
+
+      if (target) {
+        seeAllUpdates.addEventListener('click', function () {
+          var targetToggleTrigger = target.querySelector('[aria-expanded]');
+          if (targetToggleTrigger && targetToggleTrigger.getAttribute('aria-expanded') !== 'true') {
+            targetToggleTrigger.click();
+          }
+        });
+      }
+    }    
+  };
+
+  return Metadata;
+
 })();
-//# sourceMappingURL=assets/metadata.js.map
+//# sourceMappingURL=metadata.js.map
+
+  document.querySelectorAll('[data-module*="metadata"]').forEach((el) => {
+    var instance = new Metadata(el);
+    instance.init();
+  })
