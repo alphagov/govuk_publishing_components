@@ -1,6 +1,7 @@
 module GovukPublishingComponents
   module Presenters
     class PublicLayoutHelper
+      BLUE_BAR_BACKGROUND_COLOURS = %w[browse].freeze
       FOOTER_NAVIGATION_COLUMNS = [2, 1].freeze
       FOOTER_TRACK_ACTIONS = %w[topicsLink governmentactivityLink].freeze
       FOOTER_META = {
@@ -67,6 +68,10 @@ module GovukPublishingComponents
 
       def footer_track_actions
         FOOTER_TRACK_ACTIONS
+      end
+
+      def blue_bar_background_colours
+        BLUE_BAR_BACKGROUND_COLOURS
       end
 
       def generate_data_attribute(link, track_action)

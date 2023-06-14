@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add option for blue bar background to public_layout ([PR #3380](https://github.com/alphagov/govuk_publishing_components/pull/3380))
+
 ## 35.7.0
 
 * Component auditing improvements ([PR #3423](https://github.com/alphagov/govuk_publishing_components/pull/3423))

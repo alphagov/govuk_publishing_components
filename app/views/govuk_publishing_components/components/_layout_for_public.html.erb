@@ -3,9 +3,11 @@
 
   emergency_banner ||= nil
   full_width ||= false
+  blue_bar ||= local_assigns.include?(:blue_bar) ? local_assigns[:blue_bar] : !full_width
   global_bar ||= nil
   html_lang ||= "en"
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
+  blue_bar_background_colour = layout_helper.blue_bar_background_colours.include?(blue_bar_background_colour) ? blue_bar_background_colour : nil
   logo_link ||= "/"
   navigation_items ||= []
   omit_feedback_form ||= false
@@ -44,6 +46,9 @@
   blue_bar_dedupe = !full_width && global_bar.present?
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
+
+  blue_bar_wrapper_classes = %w()
+  blue_bar_wrapper_classes << "gem-c-layout-for-public__blue-bar-wrapper--#{blue_bar_background_colour}" if blue_bar_background_colour
 -%>
 <!DOCTYPE html>
   <!--[if lt IE 9]><html class="lte-ie8 govuk-template" lang="<%= html_lang %>"><![endif]-->
@@ -117,8 +122,10 @@
 
     <%= raw(emergency_banner) %>
 
-    <% unless full_width %>
-      <div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
+    <% if (blue_bar && !global_bar.present?) || (blue_bar_dedupe) %>
+      <%= content_tag(:div, class: blue_bar_wrapper_classes) do %>
+        <div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
+      <% end %>
     <% end %>
 
     <% if global_bar.present? %>
