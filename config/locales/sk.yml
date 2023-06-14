@@ -20,6 +20,7 @@ sk:
         few:
         one: 1 strana
         other: "%{count} strán"
+      preview_link:
       reference: 'Odkaz: %{reference}'
       request_format_cta: Vyžiadajte si prístupný formát.
       request_format_details_html: Ak používate asistenčnú technológiu (napríklad čítačku obrazovky) a potrebujete verziu tohto dokumentu v prístupnejšom formáte, napíšte nám <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Povedzte nám, aký formát potrebujete. Pomôže nám, ak poviete, akú asistenčnú technológiu používate.

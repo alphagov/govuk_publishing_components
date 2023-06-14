@@ -16,6 +16,7 @@ en:
     attachment:
       opendocument_html: This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
       order_a_copy: Order a copy
+      preview_link: View online
       page:
         one: 1 page
         other: "%{count} pages"

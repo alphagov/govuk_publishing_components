@@ -18,6 +18,7 @@ th:
       order_a_copy: สั่งซื้อสำเนา
       page:
         other: "%{count} หน้า"
+      preview_link:
       reference: 'อ้างอิง: %{reference}'
       request_format_cta: ขอรูปแบบไฟล์ที่สามารถเข้าถึงได้
       request_format_details_html: หากคุณใช้เทคโนโลยีอำนวยความสะดวก (เช่น โปรแกรมอ่านหน้าจอ) และต้องการเอกสารนี้ในฉบับที่เป็นรูปแบบไฟล์ที่ช่วยให้สามารถเข้าถึงได้ง่ายขึ้น โปรดส่งอีเมลไปที่ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> โปรดบอกเราว่าคุณต้องการรูปแบบไฟล์แบบใด จะเป็นการช่วยเราอย่างมาก หากคุณบอกว่าคุณใช้เทคโนโลยีเพื่อการช่วยเหลือแบบใด

@@ -19,6 +19,7 @@ si:
       page:
         one: පිටු 1ක්
         other: පිටු %{count}ක්
+      preview_link:
       reference: 'යොමුව: %{reference}'
       request_format_cta: පිවිසිය හැකි ආකෘතියක් ඉල්ලන්න.
       request_format_details_html: ඔබේ ආධාරක තාක්ෂණය (තිර කියවන්නා වැනි) භාවිතා කරන්නේ නම් සහ මෙම ලේඛනයේ වඩාත් පිවිසිය හැකි ආකෘතියක අනුවාදයක් අවශ්‍ය නම්, කරුණාකර <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> වෙත විද්‍යුත් තැපෑලක් යවන්න. කරුණාකර ඔබට අවශ්ය ආකෘතිය කුමක්දැයි අපට කියන්න. ඔබ භාවිතා කරන ආධාරක තාක්ෂණය කුමක්දැයි ඔබ පැවසුවහොත් එය අපට උපකාරී වනු ඇත.

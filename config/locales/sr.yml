@@ -20,6 +20,7 @@ sr:
         few:
         one: 1 stranica
         other: "%{count} str."
+      preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Zatražite format kom možete da pristupite.
       request_format_details_html: Ako koristite pomoćnu tehnologiju (na primer čitač ekrana) i potrebna vam je verzija dokumenta u pristupačnijem formatu, pošaljite e-poruku na <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Recite nam koji vam format treba. Bilo bi od pomoći da znamo koju vrstu pomoćne tehnologije koristite.

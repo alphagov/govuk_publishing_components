@@ -21,6 +21,7 @@ sl:
         one: 1 stran
         other: "%{count} strani"
         two:
+      preview_link:
       reference: 'Referenca: % (reference}'
       request_format_cta: Zahtevajte dostopen format.
       request_format_details_html: |-

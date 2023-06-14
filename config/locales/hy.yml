@@ -19,6 +19,7 @@ hy:
       page:
         one: 1 էջ
         other: "%{count} էջ"
+      preview_link:
       reference: Հղում՝ %{reference}
       request_format_cta: 'Նշեք համապատասխան ձևաչափ:'
       request_format_details_html: |-

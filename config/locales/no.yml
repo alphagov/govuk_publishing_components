@@ -19,6 +19,7 @@
       page:
         one: 1 side
         other: "%{count} sider"
+      preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Be om et tilgjengelig format.
       request_format_details_html: Hvis du bruker hjelpemiddel (for eksempel en skjermleser) og trenger en versjon av dette dokumentet i et mer tilgjengelig format, kan du sende en e-post til <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Fortell oss hvilket format du trenger. Det vil hjelpe oss hvis du forteller hvilken hjelpeteknologi du bruker.

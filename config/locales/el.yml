@@ -19,6 +19,7 @@ el:
       page:
         one: 1 σελίδα
         other: "%{count} σελίδες"
+      preview_link:
       reference: 'Αναφ.: %{reference}'
       request_format_cta: Ζητήστε μια προσβάσιμη μορφή.
       request_format_details_html: Εάν χρησιμοποιείτε βοηθητική τεχνολογία (όπως ένα πρόγραμμα ανάγνωσης οθόνης) και χρειάζεστε μια έκδοση αυτού του εγγράφου σε πιο προσβάσιμη μορφή, στείλτε email στην διεύθυνση <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Πείτε μας τι μορφή χρειάζεστε. Θα μας βοηθήσει αν πείτε ποια βοηθητική τεχνολογία χρησιμοποιείτε.

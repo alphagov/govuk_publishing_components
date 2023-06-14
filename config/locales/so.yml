@@ -19,6 +19,7 @@ so:
       page:
         one: 1 boga
         other: "%{count} bogaga"
+      preview_link:
       reference: 'Tixraac: %{reference}'
       request_format_cta: Codso nidaam la gali karo.
       request_format_details_html: Hadii aad isticmaalayso tiknoolajiyad ku caawinaysa (sida akhriyaha shaashada) oo aad u baahantahay qayb dhokumantigan ah oo leh nooc la heli karo oo badan, fadlan iimayl u dir<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Fadlan noo sheeg nooca qaabka aad u baahantahay. Waxay naga caawinaysaa hadii aad dhahdo waa maxay tiknoolajiyada aad isticmaasho.

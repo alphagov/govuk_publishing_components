@@ -12,6 +12,7 @@
 * Component auditing improvements ([PR #3423](https://github.com/alphagov/govuk_publishing_components/pull/3423))
 * Fully implement loading of individual stylesheets in component guide ([PR #3379](https://github.com/alphagov/govuk_publishing_components/pull/3379))
 * Add support for HTML and external attachment types ([PR #3442](https://github.com/alphagov/govuk_publishing_components/pull/3442))
+* Add 'View online' preview link to Attachment ([PR #3449](https://github.com/alphagov/govuk_publishing_components/pull/3449))
 
 ## 35.6.0
 

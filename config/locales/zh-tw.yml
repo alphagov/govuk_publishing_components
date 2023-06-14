@@ -18,6 +18,7 @@ zh-tw:
       order_a_copy: 預定副本
       page:
         other: "%{count} 頁面"
+      preview_link:
       reference: 參考：%{reference}
       request_format_cta: 請求可參閱格式。
       request_format_details_html: 如果使用輔助科技（例如屏幕閱讀器）並需要更易於參閱格式的文檔版本，請發送電子郵件至 <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>。請告訴我們需要什麼格式。這將很幫助，如果能告知所使用的輔助科技。

@@ -18,6 +18,7 @@ zh-hk:
       order_a_copy: 索取副本
       page:
         other: "%{count} 頁"
+      preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: 索取可讀取之格式。
       request_format_details_html: 如您使用輔助技術（例如螢幕閱讀器），並需要本文件之無障礙格式版本，請寄電子郵件至 <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>。請告知我們您需要的格式。這將在您說明需要使用何種輔助技術時有助於我們。

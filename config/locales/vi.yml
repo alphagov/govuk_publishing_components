@@ -18,6 +18,7 @@ vi:
       order_a_copy: Đặt hàng một bản sao
       page:
         other: "%{count} trang"
+      preview_link:
       reference: 'Tham khảo: %{reference}'
       request_format_cta: Yêu cầu một định dạng có thể truy cập.
       request_format_details_html: Nếu bạn sử dụng công nghệ hỗ trợ (chẳng hạn như trình đọc màn hình) và cần phiên bản của tài liệu này ở định dạng dễ truy cập hơn, vui lòng gửi email tới <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Vui lòng cho chúng tôi biết bạn cần định dạng nào. Vui lòng cho biết bạn sử dụng công nghệ hỗ trợ nào.
