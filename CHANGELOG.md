@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.7.0
 
 * Component auditing improvements ([PR #3423](https://github.com/alphagov/govuk_publishing_components/pull/3423))
 * Fully implement loading of individual stylesheets in component guide ([PR #3379](https://github.com/alphagov/govuk_publishing_components/pull/3379))
