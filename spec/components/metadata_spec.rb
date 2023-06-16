@@ -207,7 +207,7 @@ describe "Metadata", type: :view do
   end
 
   it "adds GA4 tracking to the 'see all updates' link when GA4 tracking is true" do
-    render_component(last_updated: "Hello World", see_updates_link: true, ga4_tracking: true)
+    render_component(last_updated: "Hello World", see_updates_link: true, ga4_tracking: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
 
     expected_ga4_json = {
       "event_name": "navigation",
@@ -218,6 +218,12 @@ describe "Metadata", type: :view do
     assert_select ".js-see-all-updates-link" do |see_all_updates_link|
       expect(see_all_updates_link.attr("data-module").to_s).to eq "ga4-link-tracker"
       expect(see_all_updates_link.attr("data-ga4-link").to_s).to eq expected_ga4_json
+    end
+
+    assert_select ".gem-c-metadata__definition:nth-of-type(2)" do |alternate_see_all_updates_container|
+      expect(alternate_see_all_updates_container.attr("data-module").to_s).to eq "ga4-link-tracker"
+      expect(alternate_see_all_updates_container.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(alternate_see_all_updates_container.attr("data-ga4-link").to_s).to eq expected_ga4_json
     end
   end
 
