@@ -30,32 +30,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       firstScript.parentNode.insertBefore(newScript, firstScript)
     },
 
-    ensureIndexesArePopulated: function (data) {
-      if (!data.event_data) {
-        return data
-      }
-
-      if (!data.event_data.index) {
-        return data
-      }
-
-      var indexKeys = ['index_link', 'index_section', 'index_section_count']
-
-      for (var i = 0; i < indexKeys.length; i++) {
-        var indexKey = indexKeys[i]
-
-        // If the index key isn't in the object, populate it. However if it's set to 0, leave it as 0. 0 is falsy so we have to add this extra check.
-        if (!data.event_data.index[indexKey] && data.event_data.index[indexKey] !== 0) {
-          data.event_data.index[indexKey] = undefined
-        }
-      }
-
-      return data
-    },
-
     sendData: function (data) {
-      data = this.ensureIndexesArePopulated(data)
-
       data.govuk_gem_version = this.getGemVersion()
       // set this in the console as a debugging aid
       if (window.GOVUK.analyticsGa4.showDebug) {
