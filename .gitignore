@@ -10,3 +10,7 @@ tmp/failures.txt
 node_modules
 yarn-error.log
 coverage
+
+# See https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.yarn/cache/
+.yarn/install-state.gz
