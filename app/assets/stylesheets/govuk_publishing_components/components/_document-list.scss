@@ -8,10 +8,14 @@
 }
 
 .gem-c-document-list__item {
-  margin-bottom: govuk-spacing(5);
+  margin-top: govuk-spacing(5);
   padding-top: govuk-spacing(2);
   border-top: 1px solid $govuk-border-colour;
   list-style: none;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .gem-c-document-list__item-title {
@@ -84,14 +88,6 @@
     padding-right: 0;
     padding-left: govuk-spacing(4);
   }
-}
-
-.gem-c-document-list--bottom-margin {
-  margin-bottom: govuk-spacing(4);
-}
-
-.gem-c-document-list--top-margin {
-  margin-top: govuk-spacing(4);
 }
 
 .gem-c-document-list__multi-list {

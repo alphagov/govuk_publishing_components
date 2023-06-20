@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Refactor document list component ([PR #3454](https://github.com/alphagov/govuk_publishing_components/pull/3454))
 * Add option for blue bar background to public_layout ([PR #3380](https://github.com/alphagov/govuk_publishing_components/pull/3380))
 * Add ga4-link attribute for other 'see all updates' link ([PR #3451](https://github.com/alphagov/govuk_publishing_components/pull/3451/))
 

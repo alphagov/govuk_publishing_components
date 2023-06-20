@@ -37,6 +37,23 @@ examples:
         metadata:
           public_updated_at: 2016-09-05 16:48:27
           document_type: 'Statutory guidance'
+  with_margin:
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 5 (25px).
+    data:
+      margin_bottom: 9
+      items:
+      - link:
+          text: 'Alternative provision'
+          path: '/government/publications/alternative-provision'
+        metadata:
+          public_updated_at: 2016-06-27 10:29:44
+          document_type: 'Statutory guidance'
+      - link:
+          text: 'Behaviour and discipline in schools: guide for governing bodies'
+          path: '/government/publications/behaviour-and-discipline-in-schools-guidance-for-governing-bodies'
+        metadata:
+          public_updated_at: 2015-09-24 16:42:48
+          document_type: 'Statutory guidance'
   without_links:
     data:
       items:
