@@ -1,5 +1,8 @@
 
-  var YoutubeLinkEnhancement = (function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+var YoutubeLinkEnhancement = (function () {
   'use strict';
 
   var YoutubeLinkEnhancement = function YoutubeLinkEnhancement($element, $classOverride) {
@@ -223,7 +226,5 @@
 })();
 //# sourceMappingURL=youtube-link-enhancement.js.map
 
-  document.querySelectorAll('[data-module*="youtube-link-enhancement"]').forEach((el) => {
-    var instance = new YoutubeLinkEnhancement(el);
-    instance.init();
-  })
+
+window.GOVUK.Modules.YoutubeLinkEnhancement = YoutubeLinkEnhancement

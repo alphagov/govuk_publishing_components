@@ -1,5 +1,8 @@
 
-  var StepByStepNav = (function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+var StepByStepNav = (function () {
   'use strict';
 
   // A helper that sends a custom event request to Google Analytics if
@@ -517,7 +520,5 @@
 })();
 //# sourceMappingURL=step-by-step-nav.js.map
 
-  document.querySelectorAll('[data-module*="step-by-step-nav"]').forEach((el) => {
-    var instance = new StepByStepNav(el);
-    instance.init();
-  })
+
+window.GOVUK.Modules.StepByStepNav = StepByStepNav

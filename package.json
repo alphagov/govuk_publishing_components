@@ -33,10 +33,13 @@
     "@rollup/plugin-buble": "^1.0.2",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "axe-core": "^4.6.3",
+    "classlist-polyfill": "^1.2.0",
     "glob": "^10.2.7",
     "govuk-frontend": "^4.5.0",
     "rollup": "^3.25.1",
-    "sortablejs": "^1.15.0"
+    "rollup-plugin-polyfill": "^4.1.0",
+    "sortablejs": "^1.15.0",
+    "uglify-js": "^3.17.4"
   },
   "devDependencies": {
     "@percy/cli": "^1.25.0",

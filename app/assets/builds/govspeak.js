@@ -1,5 +1,8 @@
 
-  var Govspeak = (function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+var Govspeak = (function () {
   'use strict';
 
   var Govspeak = function Govspeak($module, YoutubeLinkEnhancement) {
@@ -25,7 +28,5 @@
 })();
 //# sourceMappingURL=govspeak.js.map
 
-  document.querySelectorAll('[data-module*="govspeak"]').forEach((el) => {
-    var instance = new Govspeak(el);
-    instance.init();
-  })
+
+window.GOVUK.Modules.Govspeak = Govspeak

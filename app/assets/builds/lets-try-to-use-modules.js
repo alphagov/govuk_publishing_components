@@ -1,26 +1,14 @@
 
-  (function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+(function () {
 	'use strict';
 
-	console.log("HELLO");
 
-	// import GemAccordion from './accordion.js';
-	// import Metadata from './metadata.js';
-	// import StepByStepNav from './step-by-step-nav.js';
-	// import Govspeak from './govspeak.js';
-
-
-	// hmm should the GemAccordion have an override for selector?
-	// should the init be overridable 
-
-	// console.log(GemAccordion)
-
-	console.log("BYE");
 
 })();
 //# sourceMappingURL=lets-try-to-use-modules.js.map
 
-  document.querySelectorAll('[data-module*="lets-try-to-use-modules"]').forEach((el) => {
-    var instance = new LetsTryToUseModules(el);
-    instance.init();
-  })
+
+window.GOVUK.Modules.LetsTryToUseModules = LetsTryToUseModules

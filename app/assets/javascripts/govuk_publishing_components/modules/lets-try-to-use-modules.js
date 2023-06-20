@@ -1,4 +1,4 @@
-console.log("HELLO")
+// console.log("HELLO")
 
 // import GemAccordion from './accordion.js';
 // import Metadata from './metadata.js';
@@ -11,4 +11,4 @@ console.log("HELLO")
 
 // console.log(GemAccordion)
 
-console.log("BYE")
+// console.log("BYE")

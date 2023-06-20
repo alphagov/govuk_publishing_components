@@ -1,5 +1,8 @@
 
-  var LayoutSuperNavigationHeader = (function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+var LayoutSuperNavigationHeader = (function () {
   'use strict';
 
   var SETTINGS = {
@@ -191,7 +194,5 @@
 })();
 //# sourceMappingURL=layout-super-navigation-header.js.map
 
-  document.querySelectorAll('[data-module*="layout-super-navigation-header"]').forEach((el) => {
-    var instance = new LayoutSuperNavigationHeader(el);
-    instance.init();
-  })
+
+window.GOVUK.Modules.LayoutSuperNavigationHeader = LayoutSuperNavigationHeader

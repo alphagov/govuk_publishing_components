@@ -1,5 +1,8 @@
 
-  var ImageCard = (function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+var ImageCard = (function () {
   'use strict';
 
   var ImageCard = function ImageCard($module) {
@@ -20,7 +23,5 @@
 })();
 //# sourceMappingURL=image-card.js.map
 
-  document.querySelectorAll('[data-module*="image-card"]').forEach((el) => {
-    var instance = new ImageCard(el);
-    instance.init();
-  })
+
+window.GOVUK.Modules.ImageCard = ImageCard

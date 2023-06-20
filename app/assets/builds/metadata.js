@@ -1,5 +1,8 @@
 
-  var Metadata = (function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
+var Metadata = (function () {
   'use strict';
 
   var Metadata = function Metadata($module) {
@@ -28,7 +31,5 @@
 })();
 //# sourceMappingURL=metadata.js.map
 
-  document.querySelectorAll('[data-module*="metadata"]').forEach((el) => {
-    var instance = new Metadata(el);
-    instance.init();
-  })
+
+window.GOVUK.Modules.Metadata = Metadata
