@@ -87,7 +87,7 @@ module GovukPublishingComponents
       end
 
       def viewing_component_guide?
-        request.path.include?("/component-guide")
+        request&.path&.include?("/component-guide")
       end
     end
   end
