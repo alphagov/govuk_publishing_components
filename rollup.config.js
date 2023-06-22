@@ -44,7 +44,7 @@ window.GOVUK.Modules.${capitalizer(name)} = ${capitalizer(name)}
 const defaultConfig = input => ({
   input,
   output: {
-    file: `app/assets/builds/${input.match(/(\w|-)+(?=\.js)/g)[0]}.js`,
+    file: `app/assets/javascripts/builds/${input.match(/(\w|-)+(?=\.js)/g)[0]}.js`,
     format: "iife",
     name: capitalizer(input.match(/(\w|-)+(?=\.js)/g)[0]),
     sourcemap: true // maybe? idk
