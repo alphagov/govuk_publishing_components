@@ -119,7 +119,7 @@ describe "Step by step navigation related", type: :view do
 
     expected = {
       "event_name": "navigation",
-      "type": "related content",
+      "type": "part of",
       "index": { "index_link": "1" },
       "index_total": "1",
       "section": "Some text",
@@ -152,7 +152,7 @@ describe "Step by step navigation related", type: :view do
 
     expected_one = {
       "event_name": "navigation",
-      "type": "related content",
+      "type": "part of",
       "index": { "index_link": "1" },
       "index_total": "2",
       "section": "Some more text",
@@ -160,7 +160,7 @@ describe "Step by step navigation related", type: :view do
 
     expected_two = {
       "event_name": "navigation",
-      "type": "related content",
+      "type": "part of",
       "index": { "index_link": "2" },
       "index_total": "2",
       "section": "Some more text",
