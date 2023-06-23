@@ -13,10 +13,8 @@ describe "Document list", type: :view do
     assert_empty render_component(items: [])
   end
 
-  it "adds spacing around the document list when margin flags are set" do
+  it "applies default margin to the component" do
     render_component(
-      margin_bottom: true,
-      margin_top: true,
       items: [
         {
           link: {
@@ -31,7 +29,27 @@ describe "Document list", type: :view do
       ],
     )
 
-    assert_select ".gem-c-document-list.gem-c-document-list--top-margin.gem-c-document-list--bottom-margin"
+    assert_select '.gem-c-document-list.govuk-\!-margin-bottom-5'
+  end
+
+  it "applies margin to the component" do
+    render_component(
+      margin_bottom: 6,
+      items: [
+        {
+          link: {
+            text: "School behaviour and attendance: parental responsibility measures",
+            path: "/government/publications/parental-responsibility-measures-for-behaviour-and-attendance",
+          },
+          metadata: {
+            public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
+            document_type: "Statutory guidance",
+          },
+        },
+      ],
+    )
+
+    assert_select '.gem-c-document-list.govuk-\!-margin-bottom-6'
   end
 
   it "renders a document list correctly" do

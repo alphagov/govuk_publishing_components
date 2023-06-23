@@ -1,14 +1,15 @@
 <%
   add_gem_component_stylesheet("document-list")
 
+  local_assigns[:margin_bottom] ||= 5
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   items ||= []
 
-  classes = "gem-c-document-list"
-  classes << " gem-c-document-list--top-margin" if local_assigns[:margin_top]
-  classes << " gem-c-document-list--bottom-margin" if local_assigns[:margin_bottom]
-  classes << " gem-c-document-list--no-underline" if local_assigns[:remove_underline]
-  classes << " gem-c-document-list--no-top-border" if local_assigns[:remove_top_border]
-  classes << " gem-c-document-list--no-top-border-first-child" if local_assigns[:remove_top_border_from_first_child]
+  classes = %w[gem-c-document-list]
+  classes << "gem-c-document-list--no-underline" if local_assigns[:remove_underline]
+  classes << "gem-c-document-list--no-top-border" if local_assigns[:remove_top_border]
+  classes << "gem-c-document-list--no-top-border-first-child" if local_assigns[:remove_top_border_from_first_child]
+  classes << shared_helper.get_margin_bottom
 
   within_multitype_list ||= false
   within_multitype_list_class = " gem-c-document-list__multi-list" if within_multitype_list
@@ -19,7 +20,7 @@
 %>
 <% if items.any? %>
   <% unless within_multitype_list %>
-    <ul class="<%= classes %>">
+    <ul class="<%= classes.join(" ") %>">
   <% end %>
     <% items.each do |item| %>
       <% highlight_class = " gem-c-document-list__item--highlight" if item[:highlight] %>
