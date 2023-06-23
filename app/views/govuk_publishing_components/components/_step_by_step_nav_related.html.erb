@@ -26,7 +26,7 @@
             <% if ga4_tracking 
               ga4_attributes = {
                 event_name: "navigation",
-                type: "related content",
+                type: "part of",
                 index:{
                   "index_link": "1"
                 },
@@ -56,7 +56,7 @@
                 <% if ga4_tracking 
                   ga4_attributes = {
                     event_name: "navigation",
-                    type: "related content",
+                    type: "part of",
                     index:{
                       "index_link": (index + 1).to_s
                     },
