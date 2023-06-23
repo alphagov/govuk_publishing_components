@@ -211,7 +211,7 @@ var StepByStepNav = (function () {
 
     // if GA4 is enabled, set attributes on 'show all sections' for tracking using ga4-event-tracker
     if (this.$module.isGa4Enabled) {
-      var showAllAttributesGa4 = { event_name: 'select_content', type: 'step by step', index: 0, index_total: this.$module.totalSteps };
+      var showAllAttributesGa4 = { event_name: 'select_content', type: 'step by step', index: { index_section: 0, index_section_count: this.$module.totalSteps } };
       this.$module.showOrHideAllButton.setAttribute('data-ga4-event', JSON.stringify(showAllAttributesGa4));
     }
   };
@@ -323,8 +323,11 @@ var StepByStepNav = (function () {
           event_name: 'select_content',
           type: 'step by step',
           text: titleText.trim(),
-          index: i + 1,
-          index_total: this.$module.totalSteps
+          index: {
+            index_section: i + 1,
+            index_section_count: this.$module.totalSteps
+          },
+          index_total: thisel.querySelectorAll('a').length
         };
 
         var button = thisel.querySelector('.js-step-title-button');

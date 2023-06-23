@@ -20,8 +20,10 @@ var GemAccordion = (function () {
    * This seems to fail in IE8, requires more investigation.
    * See: https://github.com/imagitama/nodelist-foreach-polyfill
    *
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
-   * @param {nodeListIterator} callback - Callback function to run for each node
+   * @deprecated Will be made private in v5.0
+   * @template {Node} ElementType
+   * @param {NodeListOf<ElementType>} nodes - NodeList from querySelectorAll()
+   * @param {nodeListIterator<ElementType>} callback - Callback function to run for each node
    * @returns {void}
    */
   function nodeListForEach$1 (nodes, callback) {
@@ -40,6 +42,7 @@ var GemAccordion = (function () {
    * (e.g. {'i18n.showSection': 'Show section'}) and combines them together, with
    * greatest priority on the LAST item passed in.
    *
+   * @deprecated Will be made private in v5.0
    * @returns {Object<string, unknown>} A flattened object of key-value pairs.
    */
   function mergeConfigs (/* configObject1, configObject2, ...configObjects */) {
@@ -56,6 +59,7 @@ var GemAccordion = (function () {
      */
     var flattenObject = function (configObject) {
       // Prepare an empty return object
+      /** @type {Object<string, unknown>} */
       var flattenedObject = {};
 
       /**
@@ -92,6 +96,7 @@ var GemAccordion = (function () {
     };
 
     // Start with an empty object as our base
+    /** @type {Object<string, unknown>} */
     var formattedConfigObject = {};
 
     // Loop through each of the remaining passed objects and push their keys
@@ -113,6 +118,7 @@ var GemAccordion = (function () {
    * Extracts keys starting with a particular namespace from a flattened config
    * object, removing the namespace in the process.
    *
+   * @deprecated Will be made private in v5.0
    * @param {Object<string, unknown>} configObject - The object to extract key-value pairs from.
    * @param {string} namespace - The namespace to filter keys with.
    * @returns {Object<string, unknown>} Flattened object with dot-separated key namespace removed
@@ -124,10 +130,14 @@ var GemAccordion = (function () {
     if (!configObject || typeof configObject !== 'object') {
       throw new Error('Provide a `configObject` of type "object".')
     }
+
     if (!namespace || typeof namespace !== 'string') {
       throw new Error('Provide a `namespace` of type "string" to filter the `configObject` by.')
     }
+
+    /** @type {Object<string, unknown>} */
     var newObject = {};
+
     for (var key in configObject) {
       // Split the key into parts, using . as our namespace separator
       var keyParts = key.split('.');
@@ -147,15 +157,8 @@ var GemAccordion = (function () {
     return newObject
   }
 
-  /**
-   * @callback nodeListIterator
-   * @param {Element} value - The current node being iterated on
-   * @param {number} index - The current index in the iteration
-   * @param {NodeListOf<Element>} nodes - NodeList from querySelectorAll()
-   * @returns {void}
-   */
-
-  (function(undefined$1) {
+  // @ts-nocheck
+  (function (undefined$1) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Object/defineProperty/detect.js
   var detect = (
@@ -242,7 +245,8 @@ var GemAccordion = (function () {
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined$1) {
+  // @ts-nocheck
+  (function (undefined$1) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Document/detect.js
   var detect = ("Document" in this);
@@ -268,6 +272,8 @@ var GemAccordion = (function () {
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined$1) {
 
@@ -382,6 +388,8 @@ var GemAccordion = (function () {
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-library/13cf7c340974d128d557580b5e2dafcd1b1192d1/polyfills/Element/prototype/dataset/detect.js
@@ -402,10 +410,10 @@ var GemAccordion = (function () {
         var element = this;
         var attributes = this.attributes;
         var map = {};
-    
+
         for (var i = 0; i < attributes.length; i++) {
           var attribute = attributes[i];
-    
+
           // This regex has been edited from the original polyfill, to add
           // support for period (.) separators in data-* attribute names. These
           // are allowed in the HTML spec, but were not covered by the original
@@ -413,11 +421,11 @@ var GemAccordion = (function () {
           if (attribute && attribute.name && (/^data-\w[.\w-]*$/).test(attribute.name)) {
             var name = attribute.name;
             var value = attribute.value;
-    
+
             var propName = name.substr(5).replace(/-./g, function (prop) {
               return prop.charAt(1).toUpperCase();
             });
-            
+
             // If this browser supports __defineGetter__ and __defineSetter__,
             // continue using defineProperty. If not (like IE 8 and below), we use
             // a hacky fallback which at least gives an object in the right format
@@ -441,18 +449,19 @@ var GemAccordion = (function () {
 
           }
         }
-    
+
         return map;
       }
     });
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined$1) {
+  // @ts-nocheck
+  (function (undefined$1) {
 
       // Detection from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
       var detect = ('trim' in String.prototype);
-      
+
       if (detect) { return }
 
       // Polyfill from https://github.com/mdn/content/blob/cf607d68522cd35ee7670782d3ee3a361eaef2e4/files/en-us/web/javascript/reference/global_objects/string/trim/index.md#polyfill
@@ -463,7 +472,6 @@ var GemAccordion = (function () {
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
   /* eslint-disable es-x/no-string-prototype-trim -- Polyfill imported */
-
 
   /**
    * Normalise string
@@ -476,6 +484,7 @@ var GemAccordion = (function () {
    * Designed to be used to convert config passed via data attributes (which are
    * always strings) into something sensible.
    *
+   * @deprecated Will be made private in v5.0
    * @param {string} value - The value to normalise
    * @returns {string | boolean | number | undefined} Normalised data
    */
@@ -496,7 +505,7 @@ var GemAccordion = (function () {
 
     // Empty / whitespace-only strings are considered finite so we need to check
     // the length of the trimmed string as well
-    if (trimmedValue.length > 0 && isFinite(trimmedValue)) {
+    if (trimmedValue.length > 0 && isFinite(Number(trimmedValue))) {
       return Number(trimmedValue)
     }
 
@@ -508,10 +517,12 @@ var GemAccordion = (function () {
    *
    * Loop over an object and normalise each value using normaliseData function
    *
+   * @deprecated Will be made private in v5.0
    * @param {DOMStringMap} dataset - HTML element dataset
    * @returns {Object<string, unknown>} Normalised dataset
    */
   function normaliseDataset (dataset) {
+    /** @type {Object<string, unknown>} */
     var out = {};
 
     for (var key in dataset) {
@@ -556,17 +567,17 @@ var GemAccordion = (function () {
     }
 
     // If the `count` option is set, determine which plural suffix is needed and
-    // change the lookupKey to match. We check to see if it's undefined instead of
+    // change the lookupKey to match. We check to see if it's numeric instead of
     // falsy, as this could legitimately be 0.
-    if (options && typeof options.count !== 'undefined') {
+    if (options && typeof options.count === 'number') {
       // Get the plural suffix
       lookupKey = lookupKey + '.' + this.getPluralSuffix(lookupKey, options.count);
     }
 
-    if (lookupKey in this.translations) {
-      // Fetch the translation string for that lookup key
-      var translationString = this.translations[lookupKey];
+    // Fetch the translation string for that lookup key
+    var translationString = this.translations[lookupKey];
 
+    if (typeof translationString === 'string') {
       // Check for ${} placeholders in the translation string
       if (translationString.match(/%{(.\S+)}/)) {
         if (!options) {
@@ -593,32 +604,46 @@ var GemAccordion = (function () {
    * @returns {string} The translation string to output, with ${} placeholders replaced
    */
   I18n.prototype.replacePlaceholders = function (translationString, options) {
+    /** @type {Intl.NumberFormat | undefined} */
     var formatter;
 
     if (this.hasIntlNumberFormatSupport()) {
       formatter = new Intl.NumberFormat(this.locale);
     }
 
-    return translationString.replace(/%{(.\S+)}/g, function (placeholderWithBraces, placeholderKey) {
-      if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
-        var placeholderValue = options[placeholderKey];
+    return translationString.replace(
+      /%{(.\S+)}/g,
 
-        // If a user has passed `false` as the value for the placeholder
-        // treat it as though the value should not be displayed
-        if (placeholderValue === false) {
-          return ''
+      /**
+       * Replace translation string placeholders
+       *
+       * @param {string} placeholderWithBraces - Placeholder with braces
+       * @param {string} placeholderKey - Placeholder key
+       * @returns {string} Placeholder value
+       */
+      function (placeholderWithBraces, placeholderKey) {
+        if (Object.prototype.hasOwnProperty.call(options, placeholderKey)) {
+          var placeholderValue = options[placeholderKey];
+
+          // If a user has passed `false` as the value for the placeholder
+          // treat it as though the value should not be displayed
+          if (placeholderValue === false || (
+            typeof placeholderValue !== 'number' &&
+            typeof placeholderValue !== 'string')
+          ) {
+            return ''
+          }
+
+          // If the placeholder's value is a number, localise the number formatting
+          if (typeof placeholderValue === 'number') {
+            return formatter ? formatter.format(placeholderValue) : placeholderValue.toString()
+          }
+
+          return placeholderValue
+        } else {
+          throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
         }
-
-        // If the placeholder's value is a number, localise the number formatting
-        if (typeof placeholderValue === 'number' && formatter) {
-          return formatter.format(placeholderValue)
-        }
-
-        return placeholderValue
-      } else {
-        throw new Error('i18n: no data found to replace ' + placeholderWithBraces + ' placeholder in string')
-      }
-    })
+      })
   };
 
   /**
@@ -734,7 +759,7 @@ var GemAccordion = (function () {
    * regardless of region. There are exceptions, however, (e.g. Portuguese) so
    * this searches by both the full and shortened locale codes, just to be sure.
    *
-   * @returns {PluralRuleName | undefined} The name of the pluralisation rule to use (a key for one
+   * @returns {string | undefined} The name of the pluralisation rule to use (a key for one
    *   of the functions in this.pluralRules)
    */
   I18n.prototype.getPluralRulesForLocale = function () {
@@ -785,7 +810,7 @@ var GemAccordion = (function () {
    * Spanish: European Portuguese (pt-PT), Italian (it), Spanish (es)
    * Welsh: Welsh (cy)
    *
-   * @type {Object<PluralRuleName, string[]>}
+   * @type {Object<string, string[]>}
    */
   I18n.pluralRulesMap = {
     arabic: ['ar'],
@@ -873,34 +898,8 @@ var GemAccordion = (function () {
     /* eslint-enable jsdoc/require-jsdoc */
   };
 
-  /**
-   * Supported languages for plural rules
-   *
-   * @typedef {'arabic' | 'chinese' | 'french' | 'german' | 'irish' | 'russian' | 'scottish' | 'spanish' | 'welsh'} PluralRuleName
-   */
-
-  /**
-   * Plural rule category mnemonic tags
-   *
-   * @typedef {'zero' | 'one' | 'two' | 'few' | 'many' | 'other'} PluralRule
-   */
-
-  /**
-   * Translated message by plural rule they correspond to.
-   *
-   * Allows to group pluralised messages under a single key when passing
-   * translations to a component's constructor
-   *
-   * @typedef {object} TranslationPluralForms
-   * @property {string} [other] - General plural form
-   * @property {string} [zero] - Plural form used with 0
-   * @property {string} [one] - Plural form used with 1
-   * @property {string} [two] - Plural form used with 2
-   * @property {string} [few] - Plural form used for a few
-   * @property {string} [many] - Plural form used for many
-   */
-
-  (function(undefined$1) {
+  // @ts-nocheck
+  (function (undefined$1) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/master/packages/polyfill-library/polyfills/DOMTokenList/detect.js
       var detect = (
@@ -1165,6 +1164,8 @@ var GemAccordion = (function () {
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined$1) {
 
       // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/8717a9e04ac7aff99b4980fbedead98036b0929a/packages/polyfill-library/polyfills/Element/prototype/classList/detect.js
@@ -1255,7 +1256,8 @@ var GemAccordion = (function () {
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined$1) {
+  // @ts-nocheck
+  (function (undefined$1) {
 
     // Detection from https://raw.githubusercontent.com/Financial-Times/polyfill-service/1f3c09b402f65bf6e393f933a15ba63f1b86ef1f/packages/polyfill-library/polyfills/Element/prototype/matches/detect.js
     var detect = (
@@ -1278,6 +1280,8 @@ var GemAccordion = (function () {
     };
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined$1) {
 
@@ -1302,7 +1306,8 @@ var GemAccordion = (function () {
 
   }).call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
-  (function(undefined$1) {
+  // @ts-nocheck
+  (function (undefined$1) {
 
   // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Window/detect.js
   var detect = ('Window' in this);
@@ -1322,6 +1327,8 @@ var GemAccordion = (function () {
 
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
+
+  // @ts-nocheck
 
   (function(undefined$1) {
 
@@ -1572,6 +1579,8 @@ var GemAccordion = (function () {
   })
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
+  // @ts-nocheck
+
   (function(undefined$1) {
     // Detection from https://github.com/Financial-Times/polyfill-service/blob/master/packages/polyfill-library/polyfills/Function/prototype/bind/detect.js
     var detect = 'bind' in Function.prototype;
@@ -1731,8 +1740,6 @@ var GemAccordion = (function () {
   .call('object' === typeof window && window || 'object' === typeof self && self || 'object' === typeof global && global || {});
 
   /* eslint-disable es-x/no-function-prototype-bind -- Polyfill imported */
-  /* eslint-disable es-x/no-string-prototype-trim -- Polyfill imported */
-
 
   /**
    * @constant
@@ -1762,57 +1769,119 @@ var GemAccordion = (function () {
    * attribute, which also provides accessibility.
    *
    * @class
-   * @param {HTMLElement} $module - HTML element to use for accordion
+   * @param {Element} $module - HTML element to use for accordion
    * @param {AccordionConfig} [config] - Accordion config
    */
   function Accordion ($module, config) {
+    if (!($module instanceof HTMLElement)) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
     this.$module = $module;
 
     var defaultConfig = {
-      i18n: ACCORDION_TRANSLATIONS
+      i18n: ACCORDION_TRANSLATIONS,
+      rememberExpanded: true
     };
 
+    /**
+     * @deprecated Will be made private in v5.0
+     * @type {AccordionConfig}
+     */
     this.config = mergeConfigs(
       defaultConfig,
       config || {},
       normaliseDataset($module.dataset)
     );
 
+    /** @deprecated Will be made private in v5.0 */
     this.i18n = new I18n(extractConfigByNamespace(this.config, 'i18n'));
 
+    /** @deprecated Will be made private in v5.0 */
     this.controlsClass = 'govuk-accordion__controls';
+
+    /** @deprecated Will be made private in v5.0 */
     this.showAllClass = 'govuk-accordion__show-all';
+
+    /** @deprecated Will be made private in v5.0 */
     this.showAllTextClass = 'govuk-accordion__show-all-text';
 
+    /** @deprecated Will be made private in v5.0 */
     this.sectionClass = 'govuk-accordion__section';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionExpandedClass = 'govuk-accordion__section--expanded';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionButtonClass = 'govuk-accordion__section-button';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeaderClass = 'govuk-accordion__section-header';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingClass = 'govuk-accordion__section-heading';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingDividerClass = 'govuk-accordion__section-heading-divider';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingTextClass = 'govuk-accordion__section-heading-text';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionHeadingTextFocusClass = 'govuk-accordion__section-heading-text-focus';
 
+    /** @deprecated Will be made private in v5.0 */
     this.sectionShowHideToggleClass = 'govuk-accordion__section-toggle';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionShowHideToggleFocusClass = 'govuk-accordion__section-toggle-focus';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionShowHideTextClass = 'govuk-accordion__section-toggle-text';
+
+    /** @deprecated Will be made private in v5.0 */
     this.upChevronIconClass = 'govuk-accordion-nav__chevron';
+
+    /** @deprecated Will be made private in v5.0 */
     this.downChevronIconClass = 'govuk-accordion-nav__chevron--down';
 
+    /** @deprecated Will be made private in v5.0 */
     this.sectionSummaryClass = 'govuk-accordion__section-summary';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionSummaryFocusClass = 'govuk-accordion__section-summary-focus';
+
+    /** @deprecated Will be made private in v5.0 */
     this.sectionContentClass = 'govuk-accordion__section-content';
 
-    this.$sections = this.$module.querySelectorAll('.' + this.sectionClass);
+    var $sections = this.$module.querySelectorAll('.' + this.sectionClass);
+    if (!$sections.length) {
+      return this
+    }
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$sections = $sections;
+
+    /** @deprecated Will be made private in v5.0 */
     this.browserSupportsSessionStorage = helper.checkForSessionStorage();
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$showAllButton = null;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$showAllIcon = null;
+
+    /** @deprecated Will be made private in v5.0 */
+    this.$showAllText = null;
   }
 
   /**
    * Initialise component
    */
   Accordion.prototype.init = function () {
-    // Check for module
-    if (!this.$module) {
+    // Check that required elements are present
+    if (!this.$module || !this.$sections) {
       return
     }
 
@@ -1826,6 +1895,8 @@ var GemAccordion = (function () {
 
   /**
    * Initialise controls and set attributes
+   *
+   * @deprecated Will be made private in v5.0
    */
   Accordion.prototype.initControls = function () {
     // Create "Show all" button and set attributes
@@ -1861,28 +1932,38 @@ var GemAccordion = (function () {
 
   /**
    * Initialise section headers
+   *
+   * @deprecated Will be made private in v5.0
    */
   Accordion.prototype.initSectionHeaders = function () {
-    // Loop through section headers
-    nodeListForEach$1(this.$sections, function ($section, i) {
+    var $component = this;
+    var $sections = this.$sections;
+
+    // Loop through sections
+    nodeListForEach$1($sections, function ($section, i) {
+      var $header = $section.querySelector('.' + $component.sectionHeaderClass);
+      if (!$header) {
+        return
+      }
+
       // Set header attributes
-      var $header = $section.querySelector('.' + this.sectionHeaderClass);
-      this.constructHeaderMarkup($header, i);
-      this.setExpanded(this.isExpanded($section), $section);
+      $component.constructHeaderMarkup($header, i);
+      $component.setExpanded($component.isExpanded($section), $section);
 
       // Handle events
-      $header.addEventListener('click', this.onSectionToggle.bind(this, $section));
+      $header.addEventListener('click', $component.onSectionToggle.bind($component, $section));
 
       // See if there is any state stored in sessionStorage and set the sections to
       // open or closed.
-      this.setInitialState($section);
-    }.bind(this));
+      $component.setInitialState($section);
+    });
   };
 
   /**
    * Construct section header
    *
-   * @param {HTMLDivElement} $header - Section header
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $header - Section header
    * @param {number} index - Section index
    */
   Accordion.prototype.constructHeaderMarkup = function ($header, index) {
@@ -1890,10 +1971,14 @@ var GemAccordion = (function () {
     var $heading = $header.querySelector('.' + this.sectionHeadingClass);
     var $summary = $header.querySelector('.' + this.sectionSummaryClass);
 
+    if (!$span || !$heading) {
+      return
+    }
+
     // Create a button element that will replace the '.govuk-accordion__section-button' span
     var $button = document.createElement('button');
     $button.setAttribute('type', 'button');
-    $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1));
+    $button.setAttribute('aria-controls', this.$module.id + '-content-' + (index + 1).toString());
 
     // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from $span to $button
     for (var i = 0; i < $span.attributes.length; i++) {
@@ -1947,7 +2032,7 @@ var GemAccordion = (function () {
     $button.appendChild(this.getButtonPunctuationEl());
 
     // If summary content exists add to DOM in correct order
-    if (typeof ($summary) !== 'undefined' && $summary !== null) {
+    if ($summary) {
       // Create a new `span` element and copy the summary line content from the original `div` to the
       // new `span`
       // This is because the summary line text is now inside a button element, which can only contain
@@ -1984,10 +2069,19 @@ var GemAccordion = (function () {
   /**
    * When a section is opened by the user agent via the 'beforematch' event
    *
+   * @deprecated Will be made private in v5.0
    * @param {Event} event - Generic event
    */
   Accordion.prototype.onBeforeMatch = function (event) {
-    var $section = event.target.closest('.' + this.sectionClass);
+    var $fragment = event.target;
+
+    // Handle elements with `.closest()` support only
+    if (!($fragment instanceof Element)) {
+      return
+    }
+
+    // Handle when fragment is inside section
+    var $section = $fragment.closest('.' + this.sectionClass);
     if ($section) {
       this.setExpanded(true, $section);
     }
@@ -1996,7 +2090,8 @@ var GemAccordion = (function () {
   /**
    * When section toggled, set and store state
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.onSectionToggle = function ($section) {
     var expanded = this.isExpanded($section);
@@ -2008,26 +2103,31 @@ var GemAccordion = (function () {
 
   /**
    * When Open/Close All toggled, set and store state
+   *
+   * @deprecated Will be made private in v5.0
    */
   Accordion.prototype.onShowOrHideAllToggle = function () {
-    var $module = this;
+    var $component = this;
     var $sections = this.$sections;
+
     var nowExpanded = !this.checkIfAllSectionsOpen();
 
+    // Loop through sections
     nodeListForEach$1($sections, function ($section) {
-      $module.setExpanded(nowExpanded, $section);
+      $component.setExpanded(nowExpanded, $section);
       // Store the state in sessionStorage when a change is triggered
-      $module.storeState($section);
+      $component.storeState($section);
     });
 
-    $module.updateShowAllButton(nowExpanded);
+    $component.updateShowAllButton(nowExpanded);
   };
 
   /**
    * Set section attributes when opened/closed
    *
+   * @deprecated Will be made private in v5.0
    * @param {boolean} expanded - Section expanded
-   * @param {HTMLElement} $section - Section element
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.setExpanded = function (expanded, $section) {
     var $showHideIcon = $section.querySelector('.' + this.upChevronIconClass);
@@ -2035,23 +2135,30 @@ var GemAccordion = (function () {
     var $button = $section.querySelector('.' + this.sectionButtonClass);
     var $content = $section.querySelector('.' + this.sectionContentClass);
 
+    if (!$showHideIcon ||
+      !($showHideText instanceof HTMLElement) ||
+      !$button ||
+      !$content) {
+      return
+    }
+
     var newButtonText = expanded
       ? this.i18n.t('hideSection')
       : this.i18n.t('showSection');
 
     $showHideText.innerText = newButtonText;
-    $button.setAttribute('aria-expanded', expanded);
+    $button.setAttribute('aria-expanded', expanded.toString());
 
     // Update aria-label combining
     var ariaLabelParts = [];
 
     var $headingText = $section.querySelector('.' + this.sectionHeadingTextClass);
-    if ($headingText) {
+    if ($headingText instanceof HTMLElement) {
       ariaLabelParts.push($headingText.innerText.trim());
     }
 
     var $summary = $section.querySelector('.' + this.sectionSummaryClass);
-    if ($summary) {
+    if ($summary instanceof HTMLElement) {
       ariaLabelParts.push($summary.innerText.trim());
     }
 
@@ -2086,7 +2193,8 @@ var GemAccordion = (function () {
   /**
    * Get state of section
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    * @returns {boolean} True if expanded
    */
   Accordion.prototype.isExpanded = function ($section) {
@@ -2096,6 +2204,7 @@ var GemAccordion = (function () {
   /**
    * Check if all sections are open
    *
+   * @deprecated Will be made private in v5.0
    * @returns {boolean} True if all sections are open
    */
   Accordion.prototype.checkIfAllSectionsOpen = function () {
@@ -2111,6 +2220,7 @@ var GemAccordion = (function () {
   /**
    * Update "Show all sections" button
    *
+   * @deprecated Will be made private in v5.0
    * @param {boolean} expanded - Section expanded
    */
   Accordion.prototype.updateShowAllButton = function (expanded) {
@@ -2118,7 +2228,7 @@ var GemAccordion = (function () {
       ? this.i18n.t('hideAllSections')
       : this.i18n.t('showAllSections');
 
-    this.$showAllButton.setAttribute('aria-expanded', expanded);
+    this.$showAllButton.setAttribute('aria-expanded', expanded.toString());
     this.$showAllText.innerText = newButtonText;
 
     // Swap icon, toggle class
@@ -2152,10 +2262,11 @@ var GemAccordion = (function () {
   /**
    * Set the state of the accordions in sessionStorage
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.storeState = function ($section) {
-    if (this.browserSupportsSessionStorage) {
+    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
       // We need a unique way of identifying each content in the Accordion. Since
       // an `#id` should be unique and an `id` is required for `aria-` attributes
       // `id` can be safely used.
@@ -2176,10 +2287,11 @@ var GemAccordion = (function () {
   /**
    * Read the state of the accordions from sessionStorage
    *
-   * @param {HTMLElement} $section - Section element
+   * @deprecated Will be made private in v5.0
+   * @param {Element} $section - Section element
    */
   Accordion.prototype.setInitialState = function ($section) {
-    if (this.browserSupportsSessionStorage) {
+    if (this.browserSupportsSessionStorage && this.config.rememberExpanded) {
       var $button = $section.querySelector('.' + this.sectionButtonClass);
 
       if ($button) {
@@ -2200,7 +2312,8 @@ var GemAccordion = (function () {
    * into thematic chunks.
    * See https://github.com/alphagov/govuk-frontend/issues/2327#issuecomment-922957442
    *
-   * @returns {HTMLElement} DOM element
+   * @deprecated Will be made private in v5.0
+   * @returns {Element} DOM element
    */
   Accordion.prototype.getButtonPunctuationEl = function () {
     var $punctuationEl = document.createElement('span');
@@ -2208,35 +2321,6 @@ var GemAccordion = (function () {
     $punctuationEl.innerHTML = ', ';
     return $punctuationEl
   };
-
-  /**
-   * Accordion config
-   *
-   * @typedef {object} AccordionConfig
-   * @property {AccordionTranslations} [i18n = ACCORDION_TRANSLATIONS] - See constant {@link ACCORDION_TRANSLATIONS}
-   */
-
-  /**
-   * Accordion translations
-   *
-   * @typedef {object} AccordionTranslations
-   *
-   * Messages used by the component for the labels of its buttons. This includes
-   * the visible text shown on screen, and text to help assistive technology users
-   * for the buttons toggling each section.
-   * @property {string} [hideAllSections] - The text content for the 'Hide all
-   * sections' button, used when at least one section is expanded.
-   * @property {string} [hideSection] - The text content for the 'Hide'
-   * button, used when a section is expanded.
-   * @property {string} [hideSectionAriaLabel] - The text content appended to the
-   * 'Hide' button's accessible name when a section is expanded.
-   * @property {string} [showAllSections] - The text content for the 'Show all
-   * sections' button, used when all sections are collapsed.
-   * @property {string} [showSection] - The text content for the 'Show'
-   * button, used when a section is collapsed.
-   * @property {string} [showSectionAriaLabel] - The text content appended to the
-   * 'Show' button's accessible name when a section is expanded.
-   */
 
   var GemAccordion = function GemAccordion($module) {
     this.$module = $module;
@@ -2300,7 +2384,7 @@ var GemAccordion = (function () {
     var isGa4Enabled = dataModule ? dataModule.indexOf('ga4-event-tracker') !== -1 : false;
     if (isGa4Enabled) {
       var indexTotal = this.$module.querySelectorAll('.govuk-accordion__section').length;
-      var showAllAttributesGa4 = { event_name: 'select_content', type: 'accordion', index: 0, index_total: indexTotal };
+      var showAllAttributesGa4 = { event_name: 'select_content', type: 'accordion', index: { index_section: 0, index_section_count: indexTotal } };
       showAll = this.$module.querySelector(this.showAllControls);
       showAll.setAttribute('data-ga4-event', JSON.stringify(showAllAttributesGa4));
     }    

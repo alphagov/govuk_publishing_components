@@ -5,14 +5,6 @@
 
 // Create asset files of each of the files in these directory
 //= link_directory ../javascripts/component_guide
-//= link_directory ../javascripts/govuk_publishing_components
-
-//= link_directory ../javascripts/govuk_publishing_components/modules
-
-//= link_tree ../../../node_modules/govuk-frontend/govuk-esm/
-
-//= link_tree ../builds
-
 
 // Pre-compile these specific files
 //= link govuk_publishing_components/vendor/modernizr.js
