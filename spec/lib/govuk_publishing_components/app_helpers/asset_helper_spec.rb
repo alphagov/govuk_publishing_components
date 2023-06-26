@@ -4,6 +4,16 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
   describe "Asset helper" do
     include GovukPublishingComponents::AppHelpers::AssetHelper
 
+    it "exclude stylesheets already in static when exclude_css_from_static is true and the request object is not available" do
+      GovukPublishingComponents.configure do |config|
+        config.exclude_css_from_static = true
+      end
+
+      add_gem_component_stylesheet("button")
+      expect(all_component_stylesheets_being_used).to eql([])
+    end
+
+    # Create a mock request
     def request
       double(ActionDispatch::Request, { path: "/" })
     end
