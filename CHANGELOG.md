@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.8.0
 
 * Upgrade LUX to version 309 ([PR #3458](https://github.com/alphagov/govuk_publishing_components/pull/3458))
 * Refactor document list component ([PR #3454](https://github.com/alphagov/govuk_publishing_components/pull/3454))
