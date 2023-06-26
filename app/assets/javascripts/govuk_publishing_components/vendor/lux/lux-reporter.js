@@ -42,7 +42,6 @@
     var autoMode = getProperty(obj, "auto", true);
     return {
       auto: autoMode,
-      autoWhenHidden: getProperty(obj, "autoWhenHidden", false),
       beaconUrl: getProperty(obj, "beaconUrl", "https://lux.speedcurve.com/lux/"),
       conversions: getProperty(obj, "conversions", undefined),
       customerid: getProperty(obj, "customerid", undefined),
@@ -54,9 +53,12 @@
       maxErrors: getProperty(obj, "maxErrors", 5),
       maxMeasureTime: getProperty(obj, "maxMeasureTime", 60000),
       minMeasureTime: getProperty(obj, "minMeasureTime", 0),
+      newBeaconOnPageShow: getProperty(obj, "newBeaconOnPageShow", false),
       samplerate: getProperty(obj, "samplerate", 100),
       sendBeaconOnPageHidden: getProperty(obj, "sendBeaconOnPageHidden", autoMode),
+      serverTiming: getProperty(obj, "serverTiming", undefined),
       trackErrors: getProperty(obj, "trackErrors", true),
+      trackHiddenPages: getProperty(obj, "trackHiddenPages", false),
       pagegroups: getProperty(obj, "pagegroups", undefined),
     };
   }
@@ -102,9 +104,9 @@
   function valuesToString(values) {
     var strings = [];
     for (var key in values) {
-              // Convert all values to strings
+      // Convert all values to strings
       var value = "" + values[key];
-              // Strip out reserved characters (, and | are used as delimiters)
+      // Strip out reserved characters (, and | are used as delimiters)
       key = key.replace(/,/g, "").replace(/\|/g, "");
       value = value.replace(/,/g, "").replace(/\|/g, "");
       strings.push(key + "|" + value);
@@ -114,6 +116,13 @@
 
   function floor(x) {
     return Math.floor(x);
+  }
+  var max = Math.max;
+  /**
+   * Clamp a number so that it is never less than 0
+   */
+  function clamp(x) {
+    return max(0, x);
   }
 
   function now() {
@@ -147,10 +156,13 @@
   function getNavigationEntry() {
     var navEntries = getEntriesByType("navigation");
     if (navEntries.length) {
-      var entry_1 = navEntries[0];
-      entry_1.navigationStart = 0;
-      if (typeof entry_1.activationStart === "undefined") {
-        entry_1.activationStart = 0;
+      var nativeEntry = navEntries[0];
+      var entry_1 = {
+        navigationStart: 0,
+        activationStart: 0,
+      };
+      for (var key in nativeEntry) {
+        entry_1[key] = nativeEntry[key];
       }
       return entry_1;
     }
@@ -164,7 +176,7 @@
     if (__ENABLE_POLYFILLS) {
       for (var key in timing) {
         if (typeof timing[key] === "number" && key !== "navigationStart") {
-          entry[key] = Math.max(0, timing[key] - timing.navigationStart);
+          entry[key] = floor(timing[key] - timing.navigationStart);
         }
       }
     }
@@ -189,25 +201,38 @@
     if (document.visibilityState) {
       return document.visibilityState === "visible";
     }
-          // For browsers that don't support document.visibilityState, we assume the page is visible.
+    // For browsers that don't support document.visibilityState, we assume the page is visible.
     return true;
   }
   function onVisible(cb) {
-    if (isVisible()) {
-      cb();
+    afterPrerender(function () {
+      if (isVisible()) {
+        cb();
+      }
+      else {
+        var onVisibleCallback_1 = function () {
+          if (isVisible()) {
+            cb();
+            removeEventListener("visibilitychange", onVisibleCallback_1);
+          }
+        };
+        addEventListener("visibilitychange", onVisibleCallback_1, true);
+      }
+    });
+  }
+  function afterPrerender(cb) {
+    if (document.prerendering) {
+      document.addEventListener("prerenderingchange", cb, true);
     }
     else {
-      var onVisibleCallback_1 = function () {
-        if (isVisible()) {
-          cb();
-          removeEventListener("visibilitychange", onVisibleCallback_1);
-        }
-      };
-      addEventListener("visibilitychange", onVisibleCallback_1, true);
+      cb();
     }
   }
   function wasPrerendered() {
     return document.prerendering || getNavigationEntry().activationStart > 0;
+  }
+  function wasRedirected() {
+    return getNavigationEntry().redirectCount > 0 || timing.redirectEnd > 0;
   }
 
   var Flags = {
@@ -222,6 +247,7 @@
     PageLabelFromGlobalVariable: 1 << 8,
     PageLabelFromPagegroup: 1 << 9,
     PageWasPrerendered: 1 << 10,
+    PageWasBfCacheRestored: 1 << 11,
   };
   function addFlag(flags, flag) {
     return flags | flag;
@@ -235,8 +261,8 @@
   }
 
   /**
-  * Get the interaction attribution name for an element
-  */
+   * Get the interaction attribution name for an element
+   */
   function interactionAttributionForElement(el) {
     // Our first preference is to use the data-sctrack attribute from anywhere in the tree
     var trackId = getClosestScTrackAttribute(el);
@@ -291,6 +317,7 @@
     UnloadHandlerTriggered: 10,
     OnloadHandlerTriggered: 11,
     MarkLoadTimeCalled: 12,
+    SendCancelledPageHidden: 13,
     // Data collection events
     SessionIsSampled: 21,
     SessionIsNotSampled: 22,
@@ -315,39 +342,45 @@
     PaintTimingNotSupported: 72,
   };
   var Logger = /** @class */ (function () {
-  function Logger() {
-    this.events = [];
-  }
-  Logger.prototype.logEvent = function (event, args) {
-    if (args === void 0) { args = []; }
-    this.events.push([now(), event, args]);
-  };
-  Logger.prototype.getEvents = function () {
-    return this.events;
-  };
-  return Logger;
+    function Logger() {
+      this.events = [];
+    }
+    Logger.prototype.logEvent = function (event, args) {
+      if (args === void 0) { args = []; }
+      this.events.push([now(), event, args]);
+    };
+    Logger.prototype.getEvents = function () {
+      return this.events;
+    };
+    return Logger;
   }());
   var sessionValue = 0;
   var sessionEntries = [];
+  var maximumSessionValue = 0;
   function addEntry$2(entry) {
     if (!entry.hadRecentInput) {
       var firstEntry = sessionEntries[0];
       var latestEntry = sessionEntries[sessionEntries.length - 1];
       if (sessionEntries.length &&
         (entry.startTime - latestEntry.startTime >= 1000 ||
-          entry.startTime - firstEntry.startTime >= 5000)) {
-        reset$1();
+        entry.startTime - firstEntry.startTime >= 5000)) {
+        sessionValue = entry.value;
+        sessionEntries = [entry];
       }
-      sessionValue += entry.value;
-      sessionEntries.push(entry);
+      else {
+        sessionValue += entry.value;
+        sessionEntries.push(entry);
+      }
+      maximumSessionValue = max(maximumSessionValue, sessionValue);
     }
   }
   function reset$1() {
     sessionValue = 0;
     sessionEntries = [];
+    maximumSessionValue = 0;
   }
   function getCLS() {
-    return sessionValue;
+    return maximumSessionValue;
   }
 
   /**
@@ -372,7 +405,7 @@
       var duration = entry.duration, startTime = entry.startTime, interactionId = entry.interactionId;
       var existingEntry = slowestEntriesMap[interactionId];
       if (existingEntry) {
-        existingEntry.duration = Math.max(duration, existingEntry.duration);
+        existingEntry.duration = max(duration, existingEntry.duration);
       }
       else {
         interactionCountEstimate++;
@@ -405,44 +438,6 @@
     return interactionCountEstimate;
   }
 
-  /**
-   * Get the number of milliseconds between navigationStart and the given PerformanceNavigationTiming key
-   */
-  function getNavTimingValue(key) {
-    var navEntry = getNavigationEntry();
-    var relativeTo = key === "activationStart" ? 0 : navEntry.activationStart;
-    if (typeof navEntry[key] === "number") {
-      return Math.max(0, navEntry[key] - relativeTo);
-    }
-    return undefined;
-  }
-
-  /******************************************************************************
-  Copyright (c) Microsoft Corporation.
-
-  Permission to use, copy, modify, and/or distribute this software for any
-  purpose with or without fee is hereby granted.
-
-  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-  REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-  AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-  INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-  LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-  OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-  PERFORMANCE OF THIS SOFTWARE.
-  ***************************************************************************** */
-
-  var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-      for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-      }
-      return t;
-    };
-    return __assign.apply(this, arguments);
-  };
-
   var ALL_ENTRIES = [];
   function observe(type, callback, options) {
     if (typeof PerformanceObserver === "function" &&
@@ -450,10 +445,10 @@
       var po = new PerformanceObserver(function (list) {
         list.getEntries().forEach(function (entry) { return callback(entry); });
       });
-    po.observe(__assign({ type: type, buffered: true }, options));
-    return po;
-  }
-  return undefined;
+      po.observe(Object.assign({ type: type, buffered: true }, { options: options }));
+      return po;
+    }
+    return undefined;
   }
   function getEntries(type) {
     return ALL_ENTRIES.filter(function (entry) { return entry.entryType === type; });
@@ -463,6 +458,39 @@
   }
   function clearEntries() {
     ALL_ENTRIES.splice(0);
+  }
+
+  /**
+   * A server timing metric that has its value set to the duration field
+   */
+  var TYPE_DURATION = "r";
+  /**
+   * When a description metric has no value, we consider it to be a boolean and set it to this value.
+   */
+  var BOOLEAN_TRUE_VALUE = "true";
+  function getKeyValuePairs(config, serverTiming) {
+    var pairs = {};
+    serverTiming.forEach(function (stEntry) {
+      var name = stEntry.name;
+      var description = stEntry.description;
+      if (name in config) {
+        var spec = config[name];
+        var multiplier = spec[1];
+        if (spec[0] === TYPE_DURATION) {
+          pairs[name] = stEntry.duration * (multiplier || 1);
+        }
+        else if (description && multiplier) {
+          var numericValue = parseFloat(description);
+          if (!isNaN(numericValue)) {
+            pairs[name] = numericValue * multiplier;
+          }
+        }
+        else {
+          pairs[name] = description || BOOLEAN_TRUE_VALUE;
+        }
+      }
+    });
+    return pairs;
   }
 
   function getMatchesFromPatternMap(patternMap, hostname, pathname, firstOnly) {
@@ -496,7 +524,7 @@
     return regex.test(hostname + pathname);
   }
   function createRegExpFromPattern(pattern) {
-    return new RegExp("^" + escapeStringForRegExp(pattern).replaceAll("*", ".*") + "$", "i");
+    return new RegExp("^" + escapeStringForRegExp(pattern).replace(/\*/g, ".*") + "$", "i");
   }
   function escapeStringForRegExp(str) {
     // Note: we don't escape * because it's our own special symbol!
@@ -514,7 +542,7 @@
     // -------------------------------------------------------------------------
     /// End
     // -------------------------------------------------------------------------
-    var SCRIPT_VERSION = "308";
+    var SCRIPT_VERSION = "309";
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
     logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
@@ -585,7 +613,7 @@
       observe("first-input", function (entry) {
         var fid = entry.processingStart - entry.startTime;
         if (!gFirstInputDelay || gFirstInputDelay < fid) {
-          gFirstInputDelay = fid;
+          gFirstInputDelay = floor(fid);
         }
         // Allow first-input events to be considered for INP
         addEntry$1(entry);
@@ -612,7 +640,13 @@
     var gUid = refreshUniqueId(gSyncId); // cookie for this session ("Unique ID")
     var gCustomerDataTimeout; // setTimeout timer for sending a Customer Data beacon after onload
     var gMaxMeasureTimeout; // setTimeout timer for sending the beacon after a maximum measurement time
-    var navEntry = getNavigationEntry();
+    var pageRestoreTime; // ms since navigationStart representing when the page was restored from the bfcache
+    /**
+     * To measure the way a user experienced a metric, we measure metrics relative to the time the user
+     * started viewing the page. On prerendered pages, this is activationStart. On bfcache restores, this
+     * is the page restore time. On all other pages this value will be zero.
+     */
+    var getZeroTime = function () { return pageRestoreTime || getNavigationEntry().activationStart; };
     if (_sample()) {
       logger.logEvent(LogEvent.SessionIsSampled, [globalConfig.samplerate]);
     }
@@ -713,7 +747,7 @@
       var startMark = _getMark(START_MARK);
       // For SPA page views, we use our internal mark as a reference point
       if (startMark && !absolute) {
-        return sinceNavigationStart - startMark.startTime;
+        return floor(sinceNavigationStart - startMark.startTime);
       }
       // For "regular" page views, we can use performance.now() if it's available...
       return sinceNavigationStart;
@@ -796,6 +830,7 @@
       }
       // ...Otherwise provide a polyfill
       if (__ENABLE_POLYFILLS) {
+        var navEntry = getNavigationEntry();
         var startTime = typeof startMarkName === "number" ? startMarkName : 0;
         var endTime = typeof endMarkName === "number" ? endMarkName : _now();
         var throwError = function (missingMark) {
@@ -906,7 +941,7 @@
           hUT[name] = { startTime: startTime };
         }
         else {
-          hUT[name].startTime = Math.max(startTime, hUT[name].startTime);
+          hUT[name].startTime = max(startTime, hUT[name].startTime);
         }
       });
       // measures
@@ -939,7 +974,7 @@
     function elementTimingValues() {
       var aET = [];
       var startMark = _getMark(START_MARK);
-      var tZero = startMark ? startMark.startTime : 0;
+      var tZero = startMark ? startMark.startTime : getZeroTime();
       getEntries("element").forEach(function (entry) {
         if (entry.identifier && entry.startTime) {
           logger.logEvent(LogEvent.PerformanceEntryProcessed, [entry]);
@@ -1164,17 +1199,25 @@
       var nThis = ("" + gUid).substr(-2); // number for THIS page - from 00 to 99
       return parseInt(nThis) < globalConfig.samplerate;
     }
-    // _init()
-    // Use this function in Single Page Apps to reset things.
-    // This function should ONLY be called within a SPA!
-    // Otherwise, you might clear marks & measures that were set by a shim.
-    function _init() {
+    /**
+     * Re-initialize lux.js to start a new "page". This is typically called within a SPA at the
+     * beginning of a page transition, but is also called internally when the BF cache is restored.
+     */
+    function _init(startTime) {
       // Some customers (incorrectly) call LUX.init on the very first page load of a SPA. This would
       // cause some first-page-only data (like paint metrics) to be lost. To prevent this, we silently
       // bail from this function when we detect an unnecessary LUX.init call.
       var endMark = _getMark(END_MARK);
       if (!endMark) {
         return;
+      }
+      // Mark the "navigationStart" for this SPA page. A start time can be passed through, for example
+      // to set a page's start time as an event timestamp.
+      if (startTime) {
+        _mark(START_MARK, { startTime: startTime });
+      }
+      else {
+        _mark(START_MARK);
       }
       logger.logEvent(LogEvent.InitCalled);
       // Clear all interactions from the previous "page".
@@ -1197,8 +1240,6 @@
       // Clear flags then set the flag that init was called (ie, this is a SPA).
       gFlags = 0;
       gFlags = addFlag(gFlags, Flags.InitCalled);
-      // Mark the "navigationStart" for this SPA page.
-      _mark(START_MARK);
       // Reset the maximum measure timeout
       createMaxMeasureTimeout();
     }
@@ -1305,8 +1346,9 @@
       var ns = timing.navigationStart;
       var startMark = _getMark(START_MARK);
       var endMark = _getMark(END_MARK);
-      if (startMark && endMark) {
+      if (startMark && endMark && !pageRestoreTime) {
         // This is a SPA page view, so send the SPA marks & measures instead of Nav Timing.
+        // Note: pageRestoreTime indicates this was a bfcache restore, which we don't want to treat as a SPA.
         var start = floor(startMark.startTime); // the start mark is "zero"
         ns += start; // "navigationStart" for a SPA is the real navigationStart plus the start mark
         var end = floor(endMark.startTime) - start; // delta from start mark
@@ -1322,21 +1364,33 @@
       }
       else if (performance.timing) {
         // Return the real Nav Timing metrics because this is the "main" page view (not a SPA)
+        var navEntry_1 = getNavigationEntry();
         var startRender = getStartRender();
         var fcp = getFcp();
         var lcp = getLcp();
         var prefixNTValue = function (key, prefix) {
-          var value = getNavTimingValue(key);
-          if (typeof value === "undefined") {
-            return "";
+          // activationStart is always absolute. Other values are relative to activationStart.
+          var zero = key === "activationStart" ? 0 : getZeroTime();
+          if (typeof navEntry_1[key] === "number") {
+            var value = clamp(floor(navEntry_1[key] - zero));
+            return prefix + value;
           }
-          return prefix + value;
+          return "";
         };
+        var loadEventStartStr = prefixNTValue("loadEventStart", "ls");
+        var loadEventEndStr = prefixNTValue("loadEventEnd", "le");
+        if (pageRestoreTime && startMark && endMark) {
+          // For bfcache restores, we set the load time to the time it took for the page to be restored.
+          var loadTime = floor(endMark.startTime - startMark.startTime);
+          loadEventStartStr = "ls" + loadTime;
+          loadEventEndStr = "le" + loadTime;
+        }
+        var redirect = wasRedirected();
         s = [
           ns,
           prefixNTValue("activationStart", "as"),
-          prefixNTValue("redirectStart", "rs"),
-          prefixNTValue("redirectEnd", "re"),
+          redirect ? prefixNTValue("redirectStart", "rs") : "",
+          redirect ? prefixNTValue("redirectEnd", "re") : "",
           prefixNTValue("fetchStart", "fs"),
           prefixNTValue("domainLookupStart", "ds"),
           prefixNTValue("domainLookupEnd", "de"),
@@ -1350,11 +1404,11 @@
           prefixNTValue("domContentLoadedEventStart", "os"),
           prefixNTValue("domContentLoadedEventEnd", "oe"),
           prefixNTValue("domComplete", "oc"),
-          prefixNTValue("loadEventStart", "ls"),
-          prefixNTValue("loadEventEnd", "le"),
-          typeof startRender !== "undefined" ? "sr" + startRender : "",
-          typeof fcp !== "undefined" ? "fc" + fcp : "",
-          typeof lcp !== "undefined" ? "lc" + lcp : "",
+          loadEventStartStr,
+          loadEventEndStr,
+          typeof startRender !== "undefined" ? "sr" + clamp(startRender) : "",
+          typeof fcp !== "undefined" ? "fc" + clamp(fcp) : "",
+          typeof lcp !== "undefined" ? "lc" + clamp(lcp) : "",
         ].join("");
       }
       else if (endMark) {
@@ -1378,7 +1432,7 @@
       for (var i = 0; i < paintEntries.length; i++) {
         var entry = paintEntries[i];
         if (entry.name === "first-contentful-paint") {
-          return floor(entry.startTime);
+          return floor(entry.startTime - getZeroTime());
         }
       }
       return undefined;
@@ -1389,7 +1443,7 @@
       if (lcpEntries.length) {
         var lastEntry = lcpEntries[lcpEntries.length - 1];
         logger.logEvent(LogEvent.PerformanceEntryProcessed, [lastEntry]);
-        return floor(lastEntry.startTime);
+        return floor(lastEntry.startTime - getZeroTime());
       }
       return undefined;
     }
@@ -1402,7 +1456,7 @@
         if (paintEntries.length) {
           // If the Paint Timing API is supported, use the value of the first paint event
           var paintValues = paintEntries.map(function (entry) { return entry.startTime; });
-          return floor(Math.min.apply(null, paintValues));
+          return floor(Math.min.apply(null, paintValues) - getZeroTime());
         }
       }
       if (performance.timing && timing.msFirstPaint && __ENABLE_POLYFILLS) {
@@ -1474,17 +1528,17 @@
     }
     function docHeight(doc) {
       var body = doc.body, docelem = doc.documentElement;
-      var height = Math.max(body ? body.scrollHeight : 0, body ? body.offsetHeight : 0, docelem ? docelem.clientHeight : 0, docelem ? docelem.scrollHeight : 0, docelem ? docelem.offsetHeight : 0);
+      var height = max(body ? body.scrollHeight : 0, body ? body.offsetHeight : 0, docelem ? docelem.clientHeight : 0, docelem ? docelem.scrollHeight : 0, docelem ? docelem.offsetHeight : 0);
       return height;
     }
     function docWidth(doc) {
       var body = doc.body, docelem = doc.documentElement;
-      var width = Math.max(body ? body.scrollWidth : 0, body ? body.offsetWidth : 0, docelem ? docelem.clientWidth : 0, docelem ? docelem.scrollWidth : 0, docelem ? docelem.offsetWidth : 0);
+      var width = max(body ? body.scrollWidth : 0, body ? body.offsetWidth : 0, docelem ? docelem.clientWidth : 0, docelem ? docelem.scrollWidth : 0, docelem ? docelem.offsetWidth : 0);
       return width;
     }
     // Return the main HTML document transfer size (in bytes).
     function docSize() {
-      return navEntry.encodedBodySize || 0;
+      return getNavigationEntry().encodedBodySize || 0;
     }
     // Return the connection type based on Network Information API.
     // Note this API is in flux.
@@ -1624,6 +1678,10 @@
     // Beacon back the LUX data.
     function _sendLux() {
       var _a;
+      if (!isVisible() && !globalConfig.trackHiddenPages) {
+        logger.logEvent(LogEvent.SendCancelledPageHidden);
+        return;
+      }
       clearMaxMeasureTimeout();
       var customerid = getCustomerId();
       if (!customerid ||
@@ -1662,6 +1720,15 @@
       }
       if (wasPrerendered()) {
         gFlags = addFlag(gFlags, Flags.PageWasPrerendered);
+      }
+      if (globalConfig.serverTiming) {
+        var navEntry = getNavigationEntry();
+        if (navEntry.serverTiming) {
+          var stPairs = getKeyValuePairs(globalConfig.serverTiming, navEntry.serverTiming);
+          for (var name_2 in stPairs) {
+            _addData(name_2, stPairs[name_2]);
+          }
+        }
       }
       if (LUX.conversions) {
         getMatchesFromPatternMap(LUX.conversions, location.hostname, location.pathname).forEach(function (conversion) {
@@ -1757,7 +1824,7 @@
       var sIx = ixValues(); // Interaction Metrics
       var INP = getINP();
       if (sIx) {
-      var beaconUrl = _getBeaconUrl(getUpdatedCustomData()) +
+        var beaconUrl = _getBeaconUrl(getUpdatedCustomData()) +
         "&IX=" +
         sIx +
         (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
@@ -2031,14 +2098,39 @@
           setTimeout(sendBeaconAfterMinimumMeasureTime_1, timeRemaining);
         }
       };
-      if (globalConfig.autoWhenHidden) {
-        // The autoWhenHidden config forces the beacon to be sent even when the page is not visible.
+      if (globalConfig.trackHiddenPages) {
+        // The trackHiddenPages config forces the beacon to be sent even when the page is not visible.
         sendBeaconAfterMinimumMeasureTime_1();
       }
       else {
         // Otherwise we only send the beacon when the page is visible.
         onVisible(sendBeaconAfterMinimumMeasureTime_1);
       }
+    }
+    // When newBeaconOnPageShow = true, we initiate a new page view whenever a page is restored from
+    // bfcache. Since we have no "onload" event to hook into after a bfcache restore, we rely on the
+    // unload and maxMeasureTime handlers to send the beacon.
+    if (globalConfig.newBeaconOnPageShow) {
+      window.addEventListener("pageshow", function (event) {
+        if (event.persisted) {
+          // Record the timestamp of the bfcache restore
+          pageRestoreTime = event.timeStamp;
+          // In Chromium, document.visibilityState is still "hidden" when pageshow fires after a bfcache
+          // restore. Wrapping this in a setTimeout ensures the browser has enough time to update the
+          // visibility.
+          // See https://bugs.chromium.org/p/chromium/issues/detail?id=1133363
+          setTimeout(function () {
+            if (gbLuxSent) {
+              // If the beacon was already sent for this page, we start a new page view and mark the
+              // load time as the time it took to restore the page.
+              _init(pageRestoreTime);
+              _markLoadTime();
+            }
+            // Flag the current page as a bfcache restore
+            gFlags = addFlag(gFlags, Flags.PageWasBfCacheRestored);
+          }, 0);
+        }
+      });
     }
     // Add the unload handlers when sendBeaconOnPageHidden is enabled
     if (globalConfig.sendBeaconOnPageHidden) {
