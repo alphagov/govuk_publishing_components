@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix GA4 accordion tracking bugs ([PR #3461](https://github.com/alphagov/govuk_publishing_components/pull/3461))
+
 ## 35.8.0
 
 * Upgrade LUX to version 309 ([PR #3458](https://github.com/alphagov/govuk_publishing_components/pull/3458))
