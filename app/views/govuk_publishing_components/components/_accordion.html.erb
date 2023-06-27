@@ -40,11 +40,12 @@
         ga4_link_data_attributes ||= nil
 
         if ga4_tracking
+          heading_text = Nokogiri::HTML(item[:heading][:text]).text
           item[:data_attributes] ||= {}
           item[:data_attributes][:ga4_event] = {
             event_name: "select_content",
             type: "accordion",
-            text: item[:heading][:text],
+            text: heading_text,
             index: {
               index_section: index,
               index_section_count: items.length,
@@ -56,12 +57,12 @@
           # tracking attributes
           ga4_link_data_attributes = {}
           ga4_link_data_attributes[:module] = "ga4-link-tracker"
-          ga4_link_data_attributes[:ga4_tracks_links_only] = ""
+          ga4_link_data_attributes[:ga4_track_links_only] = ""
           ga4_link_data_attributes[:ga4_set_indexes] = ""
           ga4_link_data_attributes[:ga4_link] = {
             event_name: "navigation",
             type: "accordion",
-            section: item[:heading][:text],
+            section: heading_text,
             index: {
               index_section: index,
               index_section_count: (items.length),
