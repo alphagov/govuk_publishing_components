@@ -12,6 +12,7 @@
 * Fix GA4 accordion tracking bugs ([PR #3461](https://github.com/alphagov/govuk_publishing_components/pull/3461))
 * Add ga4 tracking to single page notifications button ([PR #3443](https://github.com/alphagov/govuk_publishing_components/pull/3443))
 * Update notice component example ([PR #3465](https://github.com/alphagov/govuk_publishing_components/pull/3465))
+* Ensure GA4 link text is 'image' when the event target is an image ([PR #3462](https://github.com/alphagov/govuk_publishing_components/pull/3462))
 
 ## 35.8.0
 

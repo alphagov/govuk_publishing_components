@@ -82,7 +82,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
       data.text = this.PIIRemover.stripPIIWithOverride(data.text, true, true)
-      if (!data.text && (element.querySelector('img') || element.querySelector('svg'))) {
+      if (!data.text && (element.querySelector('img') || element.querySelector('svg') || element.tagName === 'IMG' || element.closest('svg'))) {
         data.text = 'image'
       }
       var url = data.url || this.findLink(event.target).getAttribute('href')
