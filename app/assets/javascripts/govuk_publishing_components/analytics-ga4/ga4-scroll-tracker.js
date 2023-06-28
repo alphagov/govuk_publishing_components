@@ -32,18 +32,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     this.trackType = this.$module.getAttribute('data-ga4-track-type')
-    var trackHeadings = this.$module.getAttribute('data-ga4-track-headings')
-    if (trackHeadings) {
-      try {
-        this.config.trackHeadings = JSON.parse(trackHeadings)
-      } catch (e) {
-        // if there's a problem with the config, don't start the tracker
-        console.error('GA4 scroll tracker configuration error: ' + e.message, window.location)
-        window.GOVUK.analyticsGa4.vars.scrollTrackerStarted = false
-        return
-      }
-    }
-
     window.GOVUK.analyticsGa4.vars.scrollTrackerStarted = true
 
     if (this.trackType === 'headings') {
@@ -165,7 +153,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4ScrollTracker.Heading.prototype.findAllowedHeadings = function () {
     var headingsFound = []
     var headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-    var trackHeadings = this.config.trackHeadings
 
     // this is a loop that only happens once as we currently only have one
     // allowed element for headings to be in - 'main'
@@ -174,13 +161,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       for (var e = 0; e < insideElements.length; e++) {
         var found = insideElements[e].querySelectorAll(headings)
         for (var f = 0; f < found.length; f++) {
-          if (trackHeadings) {
-            if (trackHeadings.includes(found[f].textContent.trim())) {
-              headingsFound.push(found[f])
-            }
-          } else {
-            headingsFound.push(found[f])
-          }
+          headingsFound.push(found[f])
         }
       }
     }

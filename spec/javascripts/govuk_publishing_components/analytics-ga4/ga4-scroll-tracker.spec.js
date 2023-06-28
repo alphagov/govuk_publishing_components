@@ -65,48 +65,6 @@ describe('GA4 scroll tracker', function () {
     expect(scrollTracker2.getWindowDetails).not.toHaveBeenCalled()
   })
 
-  describe('with invalid configuration', function () {
-    beforeEach(function () {
-      var el = document.createElement('div')
-      var data = 'invalid'
-      el.setAttribute('data-ga4-track-headings', data)
-      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
-    })
-
-    it('does not start scroll tracking', function () {
-      scrollTracker.init()
-
-      expect(window.GOVUK.analyticsGa4.vars.scrollTrackerStarted).toEqual(false)
-    })
-  })
-
-  describe('tracking specific headings', function () {
-    var el
-
-    beforeEach(function () {
-      var headings = '<main><h1>First heading</h1><h2>Second heading</h2><h2>Third heading</h2></main>'
-      el = document.createElement('div')
-      el.innerHTML = headings
-      document.body.appendChild(el)
-      var data = '["First heading", "Third heading"]'
-      el.setAttribute('data-ga4-track-headings', data)
-      el.setAttribute('data-ga4-track-type', 'headings')
-      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
-    })
-
-    afterEach(function () {
-      document.body.removeChild(el)
-    })
-
-    it('only tracks those headings', function () {
-      scrollTracker.init()
-
-      expect(scrollTracker.trackedNodes.length).toEqual(2)
-      expect(scrollTracker.trackedNodes[0].eventData.text).toEqual('First heading')
-      expect(scrollTracker.trackedNodes[1].eventData.text).toEqual('Third heading')
-    })
-  })
-
   describe('when tracking headings', function () {
     var el
 
