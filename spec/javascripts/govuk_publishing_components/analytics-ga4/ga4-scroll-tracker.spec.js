@@ -14,7 +14,11 @@ describe('GA4 scroll tracker', function () {
         action: 'scroll',
         event_name: 'scroll',
         external: undefined,
-        index: undefined,
+        index: {
+          index_link: undefined,
+          index_section: undefined,
+          index_section_count: undefined
+        },
         index_total: undefined,
         link_domain: undefined,
         link_path_parts: undefined,
@@ -88,6 +92,7 @@ describe('GA4 scroll tracker', function () {
       scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
       scrollTracker.init()
       expected.event_data.type = 'heading'
+      expected.event_data.index.index_section_count = 3
     })
 
     afterEach(function () {
@@ -96,6 +101,7 @@ describe('GA4 scroll tracker', function () {
 
     it('should send a tracking event on initialisation for headings that are already visible', function () {
       expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
@@ -108,6 +114,7 @@ describe('GA4 scroll tracker', function () {
     it('should track headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
       el.querySelector('h3').style.marginTop = '0px'
@@ -117,12 +124,14 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(2)
       expected.event_data.text = 'Heading 3'
+      expected.event_data.index.index_section = 3
       expect(window.dataLayer[1]).toEqual(expected)
     })
 
     it('should track newly visible headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
       el.querySelector('h2').style.display = 'block'
@@ -131,6 +140,7 @@ describe('GA4 scroll tracker', function () {
       jasmine.clock().tick(200)
 
       expected.event_data.text = 'Heading 2'
+      expected.event_data.index.index_section = 2
       expect(window.dataLayer[1]).toEqual(expected)
       expect(window.dataLayer.length).toEqual(2)
     })
@@ -138,6 +148,7 @@ describe('GA4 scroll tracker', function () {
     it('should track when the body height changes', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
       var pageHeight = document.querySelector('body').clientHeight
@@ -147,6 +158,7 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(2)
       expected.event_data.text = 'Heading 3'
+      expected.event_data.index.index_section = 3
       expect(window.dataLayer[1]).toEqual(expected)
 
       document.querySelector('body').removeAttribute('style')
@@ -155,6 +167,7 @@ describe('GA4 scroll tracker', function () {
     it('should not track headings wrapped in ignored elements', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
       el.querySelector('h4').style.display = 'block'
@@ -276,6 +289,8 @@ describe('GA4 scroll tracker', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
       expected.event_data.type = 'heading'
+      expected.event_data.index.index_section = 1
+      expected.event_data.index.index_section_count = 2
       expect(window.dataLayer[0]).toEqual(expected)
     })
   })

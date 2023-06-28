@@ -109,8 +109,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
 
         data.type = node.eventData.type
-        data.text = node.eventData.text // will be undefined if tracking percent
-        data.percent_scrolled = node.eventData.percent_scrolled // will be undefined if tracking headings
+        // following will be undefined if tracking percentages
+        data.text = node.eventData.text
+        data.index = window.GOVUK.analyticsGa4.core.ensureIndexesArePopulated(node.eventData.index || {})
+        // following will be undefined if tracking headings
+        data.percent_scrolled = node.eventData.percent_scrolled
 
         var schemas = new window.GOVUK.analyticsGa4.Schemas()
         var schema = schemas.mergeProperties(data, 'event_data')
@@ -131,8 +134,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4ScrollTracker.Heading.prototype.getTrackingNodes = function () {
     var headingsDetails = []
     var headingsFound = this.findAllowedHeadings()
+    var totalHeadings = headingsFound.length
 
-    for (var i = 0; i < headingsFound.length; i++) {
+    for (var i = 0; i < totalHeadings; i++) {
       var heading = headingsFound[i]
       // only track headings that are visible i.e. not inside display: none
       if (this.visible(heading)) {
@@ -142,7 +146,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           alreadySeen: heading.getAttribute('data-ga4-scrolltracker-already-seen'),
           top: pos.top + document.documentElement.scrollTop,
           bottom: pos.bottom + document.documentElement.scrollTop,
-          eventData: { type: 'heading', text: heading.textContent.replace(/\s+/g, ' ').trim() }
+          eventData: {
+            type: 'heading',
+            text: heading.textContent.replace(/\s+/g, ' ').trim(),
+            index: {
+              index_section: i + 1,
+              index_section_count: totalHeadings
+            }
+          }
         })
       }
     }
