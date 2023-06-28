@@ -137,4 +137,38 @@ describe "Single page notification button", type: :view do
 
     assert_select ".gem-c-single-page-notification-button[data-track-action='Subscribe-button']"
   end
+
+  it "renders the GA4 data attributes and module that it is passed" do
+    local_assigns = {
+      base_path: "/the-current-page",
+      ga4_data_attributes: {
+        module: "ga4-link-tracker",
+        ga4_link: {
+          event_name: "navigation",
+          type: "subscribe",
+          index: {
+            index_link: 1,
+          },
+          index_total: 2,
+          section: "Top",
+        },
+      },
+    }
+    render_component(local_assigns)
+
+    assert_select "[data-module='gem-track-click ga4-link-tracker']"
+    assert_select ".gem-c-single-page-notification-button__submit" do |button|
+      expect(button.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"subscribe","index":{"index_link":1},"index_total":2,"section":"Top","url":"/email/subscriptions/single-page/new"}'
+    end
+  end
+
+  it "does not render any GA4 data attributes or modules that it isn't passed" do
+    render_component({ base_path: "/the-current-page" })
+
+    assert_select "[data-module='gem-track-click']"
+    assert_select "[data-module='gem-track-click ga4-link-tracker']", false
+    assert_select ".gem-c-single-page-notification-button__submit" do |button|
+      expect(button.attr("data-ga4-link")).to eq nil
+    end
+  end
 end
