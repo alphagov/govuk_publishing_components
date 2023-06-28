@@ -1,6 +1,9 @@
-class GemDetails {
+import { Details } from 'govuk-frontend';
+
+class GemDetails extends Details {
   constructor($module) {
-    this.$module = $module
+    super($module);
+
     this.$summary = this.$module.querySelector('.govuk-details__summary')
 
     this.customTrackLabel = this.$summary.getAttribute('data-track-label')
@@ -8,6 +11,8 @@ class GemDetails {
   }
 
   init() {
+    super.init();
+    
     if (this.customTrackLabel) { // If a custom label has been provided, we can simply call the tracking module
       var trackDetails = new window.GOVUK.Modules.GemTrackClick(this.$summary)
       trackDetails.init()
