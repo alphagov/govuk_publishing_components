@@ -35,7 +35,7 @@ examples:
       title: 'Advisory Committee on Novel Foods and Processes has a <a href="http://www.food.gov.uk/acnfp">separate website</a>'
   without_title:
     data:
-      description_govspeak: '<p>Scheduled to publish at 8am on 25 April 2019<br/><a href="change-date">Change date</a><br/><a href="stop-scheduled-publishing">Stop scheduled publishing</a></p>'
+      description_govspeak: '<p>Scheduled to publish at 8am on 25 April 2019</p><ul><li><a href="change-date">Change date</a></li><li><a href="stop-scheduled-publishing">Stop scheduled publishing</a></li></ul>'
   with_aria_live:
     description: Passing the aria live flag to the notice component will read the notice out to users if the notice changes, e.g on form submission the notice may go from hidden to visible.
     data:
