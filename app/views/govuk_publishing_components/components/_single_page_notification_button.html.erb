@@ -22,7 +22,7 @@
 <%= tag.div(**component_helper.all_attributes) do %>
   <%= tag.form class: spnb_helper.classes, action: spnb_helper.form_action, method: "POST", data: spnb_helper.data do %>
     <input type="hidden" name="base_path" value="<%= spnb_helper.base_path %>">
-    <% if spnb_helper.skip_account %>
+    <% if spnb_helper.skip_the_gov_uk_account? %>
       <input type="hidden" name="<%= spnb_helper.skip_account_param %>" value="true">
       <input type="hidden" name="link" value="<%= spnb_helper.base_path %>">
     <% end %>

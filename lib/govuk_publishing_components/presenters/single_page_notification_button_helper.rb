@@ -61,7 +61,11 @@ module GovukPublishingComponents
       end
 
       def form_action
-        @skip_account ? email_alert_frontend_endpoint_no_account : email_alert_frontend_endpoint_enforce_account
+        if skip_the_gov_uk_account?
+          email_alert_frontend_endpoint_no_account
+        else
+          email_alert_frontend_endpoint_enforce_account
+        end
       end
 
       def email_alert_frontend_endpoint_enforce_account
@@ -74,6 +78,10 @@ module GovukPublishingComponents
 
       def skip_account_param
         "single_page_subscription"
+      end
+
+      def skip_the_gov_uk_account?
+        @skip_account == "true"
       end
     end
   end

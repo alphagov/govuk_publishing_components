@@ -59,7 +59,19 @@ describe "Single page notification button", type: :view do
     assert_select "input[name='base_path']", value: "/the-current-page"
   end
 
-  it "sets a form action of '/email-signup' and adds a hidden link param if skip_account is provided" do
+  it "set the default form action of '/email/subscriptions/single-page/new' if skip_account is present but not 'true' " do
+    local_assigns = {
+      base_path: "/the-current-page",
+      skip_account: "anything-goes",
+    }
+    render_component(local_assigns)
+    assert_select "form[action='/email/subscriptions/single-page/new']"
+    assert_select "input[name='base_path']", value: "/the-current-page"
+    assert_select "input[name='single_page_subscription']", false
+    assert_select "input[name='link']", false
+  end
+
+  it "sets a form action of '/email-signup' and adds a hidden link param if skip_account is 'true'" do
     local_assigns = {
       base_path: "/the-current-page",
       skip_account: "true",
