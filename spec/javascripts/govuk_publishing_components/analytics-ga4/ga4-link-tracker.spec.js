@@ -452,5 +452,23 @@ describe('GA4 link tracker', function () {
         expect(window.dataLayer[0].event_data.text).toEqual('image')
       }
     })
+
+    it('sets the text property to image when the nested elements are clicked', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.innerHTML = '<a href="#link1"><img class="link" src=""/></a>' +
+      '<a href="#link1"><svg class="link"></svg></a>' +
+      '<a href="#link1"><svg><path class="link"></path></svg></a>'
+
+      var links = element.querySelectorAll('.link')
+
+      for (var i = 0; i < links.length; i++) {
+        window.dataLayer = []
+        initModule(element, false)
+        window.GOVUK.triggerEvent(links[i], 'click')
+        expect(window.dataLayer[0].event_data.text).toEqual('image')
+      }
+    })
   })
 })
