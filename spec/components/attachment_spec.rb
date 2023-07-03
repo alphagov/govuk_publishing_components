@@ -255,4 +255,17 @@ describe "Attachment", type: :view do
       expect(thumbnail.first.attr("src")).to eq(src) if type == "custom"
     end
   end
+
+  it "accepts margin_bottom" do
+    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" }, margin_bottom: 6)
+    assert_select '.gem-c-attachment[class~="govuk-!-margin-bottom-6"]'
+
+    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" }, margin_bottom: 3)
+    assert_select '.gem-c-attachment[class~="govuk-!-margin-bottom-3"]'
+  end
+
+  it "defaults to no margin_bottom" do
+    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
+    assert_select '.gem-c-attachment:not([class*="govuk-!-margin-bottom-"])'
+  end
 end
