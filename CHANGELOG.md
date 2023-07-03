@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.9.0
 
 * Update single page notification button ([PR #3471](https://github.com/alphagov/govuk_publishing_components/pull/3471))
 * Fix GA4 accordion tracking bugs ([PR #3461](https://github.com/alphagov/govuk_publishing_components/pull/3461))
