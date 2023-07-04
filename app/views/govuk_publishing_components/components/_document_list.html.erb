@@ -29,35 +29,37 @@
           <p class='gem-c-document-list__highlight-text'><%= item[:highlight_text] %></p>
         <% end %>
 
-        <%=
-          item_classes = "gem-c-document-list__item-title #{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
+        <%= content_tag :div, class: "gem-c-document-list__item-title" do -%>
+          <%=
+            item_classes = "#{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
 
-          if item[:link][:path]
-            rel = [
-              "external",
-              "nofollow",
-              "noopener",
-              "noreferrer",
-              "opener",
-            ].include?(item[:link][:rel]) ? item[:link][:rel] : nil
+            if item[:link][:path]
+              rel = [
+                "external",
+                "nofollow",
+                "noopener",
+                "noreferrer",
+                "opener",
+              ].include?(item[:link][:rel]) ? item[:link][:rel] : nil
 
-            link_to(
-              item[:link][:text],
-              item[:link][:path],
-              data: item[:link][:data_attributes],
-              class: "#{item_classes} govuk-link",
-              lang: item[:link][:locale].presence,
-              rel: rel,
-            )
-          else
-            content_tag(
-              "span",
-              item[:link][:text],
-              data: item[:link][:data_attributes],
-              class: item_classes,
-            )
-          end
-        %>
+              link_to(
+                item[:link][:text],
+                item[:link][:path],
+                data: item[:link][:data_attributes],
+                class: "#{item_classes} govuk-link",
+                lang: item[:link][:locale].presence,
+                rel: rel,
+              )
+            else
+              content_tag(
+                "span",
+                item[:link][:text],
+                data: item[:link][:data_attributes],
+                class: item_classes,
+              )
+            end
+          %>
+        <% end %>
 
         <% if item[:link][:context] %>
           <span class="gem-c-document-list__item-context"><%= item[:link][:context] %></span>

@@ -25,7 +25,9 @@
 
 .gem-c-document-list--no-underline {
   .gem-c-document-list__item-title {
-    text-decoration: none;
+    .govuk-link {
+      text-decoration: none;
+    }
   }
 }
 

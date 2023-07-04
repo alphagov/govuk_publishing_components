@@ -11,6 +11,7 @@
 
 * Extend component wrapper helper and use on heading component ([PR #3519](https://github.com/alphagov/govuk_publishing_components/pull/3519))
 * Remove licence-finder from list of audited applications ([PR #3518](https://github.com/alphagov/govuk_publishing_components/pull/3518))
+* Fix inconsistent focus state on document list component ([PR #3468](https://github.com/alphagov/govuk_publishing_components/pull/3468))
 
 ## 35.12.0
 
