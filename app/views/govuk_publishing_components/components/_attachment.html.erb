@@ -9,6 +9,9 @@
   data_attributes ||= {}
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
+  container_class_names = %w[gem-c-attachment govuk-!-display-none-print]
+  container_class_names << shared_helper.get_margin_bottom if local_assigns.key?(:margin_bottom)
+
   case attachment.type
   when "file"
     if attachment.content_type_name
@@ -48,7 +51,7 @@
   end
   
 %>
-<%= tag.section class: "gem-c-attachment govuk-!-display-none-print" do %>
+<%= tag.section class: class_names(container_class_names) do %>
   <%= tag.div class: "gem-c-attachment__thumbnail" do %>
     <%= link_to attachment.url,
                 class: "govuk-link",

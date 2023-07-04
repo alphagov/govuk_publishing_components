@@ -86,6 +86,16 @@ examples:
         file_size: 20000
       data_attributes:
         gtm: "attachment-preview"
+  with_margin_bottom:
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to no margin bottom.
+    data:
+      attachment:
+        title: "Department for Transport information asset register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/747661/department-for-transport-information-asset-register.csv
+        filename: department-for-transport-information-asset-register.csv
+        content_type: application/pdf
+        file_size: 20000
+      margin_bottom: 9
   command_paper_numbered:
     description: |
       Command paper, numbered
