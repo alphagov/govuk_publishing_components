@@ -11,7 +11,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       percentages: [20, 40, 60, 80, 100],
       scrollTimeoutDelay: 20,
       resizeTimeoutDelay: 100,
-      pageHeightTimeoutDelay: 500
+      pageHeightTimeoutDelay: 500,
+      markerAttribute: 'data-ga4-scroll-marker'
     }
   }
 
@@ -35,6 +36,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     window.GOVUK.analyticsGa4.vars.scrollTrackerStarted = true
 
     if (this.trackType === 'headings') {
+      this.track = new Ga4ScrollTracker.Heading(this.config)
+    } else if (this.trackType === 'markers') {
+      this.config.trackMarkers = true
       this.track = new Ga4ScrollTracker.Heading(this.config)
     } else {
       this.track = new Ga4ScrollTracker.Percentage(this.config)
@@ -138,6 +142,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     for (var i = 0; i < totalHeadings; i++) {
       var heading = headingsFound[i]
+      var type = this.config.trackMarkers ? 'marker' : 'heading'
       // only track headings that are visible i.e. not inside display: none
       if (this.visible(heading)) {
         var pos = heading.getBoundingClientRect()
@@ -147,7 +152,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           top: pos.top + document.documentElement.scrollTop,
           bottom: pos.bottom + document.documentElement.scrollTop,
           eventData: {
-            type: 'heading',
+            type: type,
             text: heading.textContent.replace(/\s+/g, ' ').trim(),
             index: {
               index_section: i + 1,
@@ -164,6 +169,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4ScrollTracker.Heading.prototype.findAllowedHeadings = function () {
     var headingsFound = []
     var headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+    if (this.config.trackMarkers) {
+      headings = ['[' + this.config.markerAttribute + ']']
+    }
 
     // this is a loop that only happens once as we currently only have one
     // allowed element for headings to be in - 'main'

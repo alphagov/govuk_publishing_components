@@ -252,6 +252,115 @@ describe('GA4 scroll tracker', function () {
     }
   })
 
+  describe('when tracking markers', function () {
+    var el
+
+    beforeEach(function () {
+      var extremeHeight = window.innerHeight + 1000
+      var FIXTURE =
+        '<main style="position: absolute; top: 0px;">' +
+          '<h1 data-ga4-scroll-marker>Heading 1</h1>' +
+          '<div style="height:' + extremeHeight + 'px">' +
+            '<h2 data-ga4-scroll-marker style="display: none;">Heading 2</h2>' +
+            '<h3 data-ga4-scroll-marker style="margin-top: ' + extremeHeight + 'px;">Heading 3</h3>' +
+          '</div>' +
+        '</main>' +
+        '<div>' +
+          '<h4 data-ga4-scroll-marker style="display: none;">Never track</h4>' +
+        '</div>'
+      el = document.createElement('div')
+      el.setAttribute('data-ga4-track-type', 'markers')
+      el.innerHTML = FIXTURE
+      document.body.appendChild(el)
+      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
+      scrollTracker.init()
+      expected.event_data.type = 'marker'
+      expected.event_data.index.index_section_count = 3
+    })
+
+    afterEach(function () {
+      document.body.removeChild(el)
+    })
+
+    it('should send a tracking event on initialisation for headings that are already visible', function () {
+      expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('should not track a heading more than once', function () {
+      GOVUK.triggerEvent(document.body, 'scroll')
+      jasmine.clock().tick(200)
+      expect(window.dataLayer.length).toEqual(1)
+    })
+
+    it('should track headings on scroll and ignore already tracked headings', function () {
+      expect(window.dataLayer.length).toEqual(1)
+      expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      el.querySelector('h3').style.marginTop = '0px'
+      GOVUK.triggerEvent(document.body, 'resize')
+      GOVUK.triggerEvent(document.body, 'scroll')
+      jasmine.clock().tick(200)
+
+      expect(window.dataLayer.length).toEqual(2)
+      expected.event_data.text = 'Heading 3'
+      expected.event_data.index.index_section = 3
+      expect(window.dataLayer[1]).toEqual(expected)
+    })
+
+    it('should track newly visible headings on scroll and ignore already tracked headings', function () {
+      expect(window.dataLayer.length).toEqual(1)
+      expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      el.querySelector('h2').style.display = 'block'
+      // call resize to trigger the tracker to re-assess the headings
+      GOVUK.triggerEvent(document.body, 'resize')
+      jasmine.clock().tick(200)
+
+      expected.event_data.text = 'Heading 2'
+      expected.event_data.index.index_section = 2
+      expect(window.dataLayer[1]).toEqual(expected)
+      expect(window.dataLayer.length).toEqual(2)
+    })
+
+    it('should track when the body height changes', function () {
+      expect(window.dataLayer.length).toEqual(1)
+      expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      var pageHeight = document.querySelector('body').clientHeight
+      el.querySelector('h3').style.marginTop = '0px'
+      document.querySelector('body').style.height = (pageHeight + 1) + 'px'
+      jasmine.clock().tick(600)
+
+      expect(window.dataLayer.length).toEqual(2)
+      expected.event_data.text = 'Heading 3'
+      expected.event_data.index.index_section = 3
+      expect(window.dataLayer[1]).toEqual(expected)
+
+      document.querySelector('body').removeAttribute('style')
+    })
+
+    it('should not track headings wrapped in ignored elements', function () {
+      expect(window.dataLayer.length).toEqual(1)
+      expected.event_data.text = 'Heading 1'
+      expected.event_data.index.index_section = 1
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      el.querySelector('h4').style.display = 'block'
+      GOVUK.triggerEvent(document.body, 'resize')
+      jasmine.clock().tick(200)
+
+      expect(window.dataLayer.length).toEqual(1)
+    })
+  })
+
   describe('when the URL includes a hash', function () {
     var el
 
