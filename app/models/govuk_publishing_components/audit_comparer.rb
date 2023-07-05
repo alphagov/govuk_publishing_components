@@ -18,12 +18,42 @@ module GovukPublishingComponents
           whitehall
         ]
 
+        @components_using_javascript = %w[
+          accordion
+          button
+          character-count
+          checkboxes
+          contextual-guidance
+          cookie-banner
+          copy-to-clipboard
+          component_file_details
+          error-summary
+          feedback
+          govspeak
+          image-card
+          intervention
+          layout-header
+          layout-super-navigation-header
+          metadata
+          modal-dialogue
+          print-link
+          radio
+          reorderable-list
+          show-password
+          single-page-notification-button
+          skip-link
+          step-by-step-nav
+          table
+          tabs
+        ]
+
         @static_data = find_static(results)
         @gem_data = gem_data
         @applications_data = sort_results(results)
         @gem_data[:components_by_application] = get_components_by_application || []
         @gem_data[:helpers_used_by_applications] = get_helpers_used_by_applications || []
         @gem_data[:component_file_details] = combine_all_component_file_details(@gem_data[:component_file_details], @applications_data)
+        get_javascript_per_partial_by_application
       end
     end
 
@@ -94,6 +124,7 @@ module GovukPublishingComponents
           data << {
             name: result[:name],
             application_found: result[:application_found],
+            templates_length: result[:templates_length] || 0,
             uses_static: application_uses_static,
             summary: summary,
             warnings: warnings,
@@ -252,6 +283,41 @@ module GovukPublishingComponents
 
     def find_missing(needle, haystack)
       (haystack - needle).flatten.sort
+    end
+
+    def get_javascript_per_partial_by_application
+      results = {}
+
+      @applications_data.each do |application|
+        number_of_partials_using_js_components = 0
+        @gem_data[:component_file_details].each do |component|
+          component_name = component[:name]
+
+          next unless application[:application_found] && @components_using_javascript.include?(component[:name]) && application[:component_locations][component_name.to_sym]
+
+          application[:component_locations][component_name.to_sym].each do | partial |
+            results[application[:name]] ||= {}
+            number_of_partials_using_js_components += 1 if results[application[:name]][partial].nil?
+            results[application[:name]][partial] ||= {}
+            results[application[:name]][partial].merge!({
+              "#{component[:name]}": 1
+            })
+            results[application[:name]][partial].merge!({
+              "button": 1
+            }) if component[:name] == "govspeak"
+          end
+        end
+
+        if results[application[:name]]
+          results[application[:name]][:average_number_of_js_components_per_partial] = ((results[application[:name]].values.reduce(0){ | sum, x | x.length + sum }) / results[application[:name]].values.length.to_f).round
+          results[application[:name]][:total_number_of_partials] = application[:templates_length]
+          results[application[:name]][:number_of_partials_using_js_components] = number_of_partials_using_js_components
+          results[application[:name]][:percentage_number_of_partials_using_js_components] = ((number_of_partials_using_js_components / (application[:templates_length] || 0).to_f) * 100).round
+        end
+      end
+
+      p "starts here"
+      p results.to_json
     end
 
     # returns details of component inclusion by applications

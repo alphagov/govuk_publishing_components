@@ -18,6 +18,7 @@ module GovukPublishingComponents
 
         find_components = /(?<=govuk_publishing_components\/components\/)[a-zA-Z_-]+(?=['"])/
 
+        @templates_length = templates.length
         @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/ # if using the all stylesheets option
         @find_individual_asset_model = /render_component_stylesheets/ # if using per page component asset loading
         @uses_individual_asset_model = false
@@ -73,6 +74,7 @@ module GovukPublishingComponents
       @data = {
         name: name,
         application_found: application_found,
+        templates_length: @templates_length || 0,
         components_found: components_found,
         gem_style_references: @gem_style_references.flatten.uniq.sort,
         jquery_references: @jquery_references.flatten.uniq.sort,
