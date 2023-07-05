@@ -48,7 +48,9 @@ module GovukPublishingComponents
 
       application_dirs.each do |application|
         application_path = [path, application].join("/")
-        app = AuditApplications.new(application_path, application)
+        dir = application
+        dir = Rails.application.class.module_parent_name.underscore.dasherize unless ENV["MAIN_COMPONENT_GUIDE"]
+        app = AuditApplications.new(application_path, application, dir)
         applications_found += 1 if app.data[:application_found]
         results << app.data
       end

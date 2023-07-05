@@ -156,6 +156,7 @@ describe "Comparing data from an application with the components" do
     application = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         components_found: [
           {
@@ -196,6 +197,7 @@ describe "Comparing data from an application with the components" do
     expected = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         uses_static: false,
         summary: [
@@ -255,6 +257,7 @@ describe "Comparing data from an application with the components" do
     application = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         components_found: [
           {
@@ -287,6 +290,7 @@ describe "Comparing data from an application with the components" do
     expected = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         uses_static: false,
         summary: [
@@ -335,6 +339,7 @@ describe "Comparing data from an application with the components" do
     application = [
       {
         name: "collections",
+        dir: "collections-dir",
         application_found: true,
         components_found: [
           {
@@ -366,6 +371,7 @@ describe "Comparing data from an application with the components" do
       },
       {
         name: "static",
+        dir: "static-dir",
         application_found: true,
         components_found: [
           {
@@ -403,6 +409,7 @@ describe "Comparing data from an application with the components" do
     expected = [
       {
         name: "collections",
+        dir: "collections-dir",
         application_found: true,
         uses_static: true,
         summary: [
@@ -447,6 +454,7 @@ describe "Comparing data from an application with the components" do
       },
       {
         name: "static",
+        dir: "static-dir",
         application_found: true,
         uses_static: false,
         summary: [
@@ -485,6 +493,7 @@ describe "Comparing data from an application with the components" do
     application = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         components_found: [
           {
@@ -519,6 +528,7 @@ describe "Comparing data from an application with the components" do
     expected = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         uses_static: false,
         summary: [
@@ -562,6 +572,7 @@ describe "Comparing data from an application with the components" do
     application = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         components_found: [
           {
@@ -603,6 +614,7 @@ describe "Comparing data from an application with the components" do
     expected = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         uses_static: false,
         summary: [
@@ -670,6 +682,7 @@ describe "Comparing data from an application with the components" do
     application = [
       {
         name: "Dummy application",
+        dir: "dummy-app",
         application_found: true,
         components_found: [
           {

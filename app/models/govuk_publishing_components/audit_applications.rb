@@ -2,7 +2,7 @@ module GovukPublishingComponents
   class AuditApplications
     attr_reader :data
 
-    def initialize(path, name)
+    def initialize(path, name, dir)
       @path = path
       application_found = application_exists(path)
       components_found = []
@@ -59,6 +59,7 @@ module GovukPublishingComponents
         # applications might not have all of these things for all components
         options = {
           application_name: name,
+          application_dir: dir,
           templates_path: "app/views/components",
           stylesheets_path: "app/assets/stylesheets/components",
           javascripts_path: "app/assets/javascripts/components/",
@@ -72,6 +73,7 @@ module GovukPublishingComponents
 
       @data = {
         name: name,
+        dir: dir,
         application_found: application_found,
         components_found: components_found,
         gem_style_references: @gem_style_references.flatten.uniq.sort,
