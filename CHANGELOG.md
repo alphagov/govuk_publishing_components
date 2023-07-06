@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.10.0
 
 * Add margin_bottom param to Attachment component ([PR #3475](https://github.com/alphagov/govuk_publishing_components/pull/3475))
 
