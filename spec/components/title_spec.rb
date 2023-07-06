@@ -23,7 +23,7 @@ describe "Title", type: :view do
 
   it "renders no title context inside" do
     render_component(title: "Hello World", context: "Format")
-    assert_select ".gem-c-title__text > .gem-c-title__context", false, text: "Format"
+    assert_select ".gem-c-title__text > .gem-c-title__context", false
   end
 
   it "title context appears inside" do
@@ -33,7 +33,7 @@ describe "Title", type: :view do
 
   it "renders no title context adjacent to title" do
     render_component(title: "Hello World", context: "Format", context_inside: true)
-    assert_select ".gem-c-title > .gem-c-title__context", false, text: "Format"
+    assert_select ".gem-c-title > .gem-c-title__context", false
   end
 
   it "applies context language if supplied to a context string" do
