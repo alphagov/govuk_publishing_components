@@ -23,6 +23,12 @@ on:
       - "README.md"
       - "LICENCE.md"
       - "SUPPORT.md"
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'The branch, tag or SHA to checkout'
+        default: main
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name || github.run_id }}
@@ -33,6 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref || github.ref }}
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true # Also runs `bundle install`
@@ -41,6 +49,6 @@ jobs:
           node-version: lts/* # use the latest LTS release
           cache: yarn
       - run: yarn install --frozen-lockfile
-      - run: npx percy exec -- bundle exec rspec --tag visual_regression
+      - run: yarn run percy exec -- bundle exec rspec --tag visual_regression
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
