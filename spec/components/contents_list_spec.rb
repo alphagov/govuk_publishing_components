@@ -128,34 +128,33 @@ describe "Contents list", type: :view do
   it "ga4 tracking is added when ga4_tracking is true" do
     render_component(contents: contents_list_with_active_item, ga4_tracking: true)
 
-    # Test component attributes
-
     expected_ga4_json = {
       event_name: "navigation",
       type: "content",
       section: "Contents",
-    }.to_json
+    }
+
+    # Parent element attributes
 
     assert_select ".gem-c-contents-list" do |contents_list|
-      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json
-      expect(contents_list.attr("data-ga4-track-links-only").to_s).to eq ""
-      expect(contents_list.attr("data-ga4-set-indexes").to_s).to eq ""
+      expect(contents_list.attr("data-module").to_s).to eq "gem-track-click ga4-link-tracker"
     end
 
-    # Test child link indexes
+    # Child link attributes
 
-    expected_ga4_json = { index: { index_link: 1 }, index_total: 3 }.to_json
+    expected_ga4_json[:index] = { index_link: 1 }
+    expected_ga4_json[:index_total] = 3
 
     assert_select ".gem-c-contents-list__list-item:first-of-type a" do |contents_list|
-      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json
+      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
     end
 
-    expected_ga4_json = { index: { index_link: 3 }, index_total: 3 }.to_json
+    expected_ga4_json[:index] = { index_link: 3 }
 
     # Test the third link in the list. The 2nd list item is the active item, so it's just text. But the index position of that item should still be respected.
     # Therefore the third link should still have an index of 3 even though there's only two <a> tags.
     assert_select ".gem-c-contents-list__list-item:last-of-type a" do |contents_list|
-      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json
+      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
     end
   end
 
