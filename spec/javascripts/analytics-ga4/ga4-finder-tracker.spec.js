@@ -65,7 +65,29 @@ describe('GA4 finder change tracker', function () {
 
     expected.event_data.event_name = 'search'
     expected.event_data.url = window.location.pathname
-    expected.event_data.text = 'Hello world my postcode is [postcode]. My birthday is [date]. My email is [email]'
+    expected.event_data.text = 'hello world my postcode is [postcode]. my birthday is [date]. my email is [email]'
+    expected.event_data.section = 'Search'
+    expected.event_data.action = 'search'
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('trims extra spaces and converts downcases characters on a search box keyword update', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
+
+    input = document.createElement('input')
+    input.setAttribute('type', 'search')
+    input.value = ' I    have a lot of   SPACES   in a lot of PLACES         '
+
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.event_name = 'search'
+    expected.event_data.url = window.location.pathname
+    expected.event_data.text = 'i have a lot of spaces in a lot of places'
     expected.event_data.section = 'Search'
     expected.event_data.action = 'search'
 
