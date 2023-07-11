@@ -130,6 +130,8 @@
           schema.event_data.section = 'Search'
           schema.event_data.action = 'search'
           schema.event_data.text = PIIRemover.stripPIIWithOverride(schema.event_data.text, true, true)
+          schema.event_data.text = GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(schema.event_data.text)
+          schema.event_data.text = schema.event_data.text.toLowerCase()
           break
 
         case 'clear-all-filters':
