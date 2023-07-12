@@ -213,6 +213,7 @@ describe "Metadata", type: :view do
       "event_name": "navigation",
       "type": "content",
       "section": "Top",
+      "action": "opened",
     }.to_json
 
     assert_select ".js-see-all-updates-link" do |see_all_updates_link|
