@@ -10,6 +10,7 @@
 ## Unreleased
 
 * GA4 content navigation fixes ([PR #3495](https://github.com/alphagov/govuk_publishing_components/pull/3495))
+* Fix feedback component spacing ([PR #3470](https://github.com/alphagov/govuk_publishing_components/pull/3470))
 
 ## 35.10.0
 
