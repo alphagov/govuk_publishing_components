@@ -11,6 +11,7 @@
 
 * GA4 content navigation fixes ([PR #3495](https://github.com/alphagov/govuk_publishing_components/pull/3495))
 * Fix feedback component spacing ([PR #3470](https://github.com/alphagov/govuk_publishing_components/pull/3470))
+* Fix attachment metadata styling issue ([PR #3501](https://github.com/alphagov/govuk_publishing_components/pull/3501))
 
 ## 35.10.0
 
