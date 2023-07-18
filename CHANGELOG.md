@@ -7,16 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.11.0
 
 * GA4 content navigation fixes ([PR #3495](https://github.com/alphagov/govuk_publishing_components/pull/3495))
 * Fix feedback component spacing ([PR #3470](https://github.com/alphagov/govuk_publishing_components/pull/3470))
 * Fix attachment metadata styling issue ([PR #3501](https://github.com/alphagov/govuk_publishing_components/pull/3501))
+* Improve the govspeak table layout when text direction is right-to-left ([PR #3466](https://github.com/alphagov/govuk_publishing_components/pull/3466))
 
 ## 35.10.0
 
 * Add margin_bottom param to Attachment component ([PR #3475](https://github.com/alphagov/govuk_publishing_components/pull/3475))
-* Improve the govspeak table layout when text direction is right-to-left ([PR #3466](https://github.com/alphagov/govuk_publishing_components/pull/3466))
 
 ## 35.9.0
 
