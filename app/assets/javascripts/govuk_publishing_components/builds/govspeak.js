@@ -1,9 +1,8 @@
-
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
-var Govspeak = (function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUK = global.GOVUK || {}, global.GOVUK.Modules = global.GOVUK.Modules || {}, global.GOVUK.Modules.Govspeak = factory()));
+})(this, (function () { 'use strict';
 
   var Govspeak = function Govspeak($module, YoutubeLinkEnhancement) {
     this.$module = $module;
@@ -25,8 +24,5 @@ var Govspeak = (function () {
 
   return Govspeak;
 
-})();
+}));
 //# sourceMappingURL=govspeak.js.map
-
-
-window.GOVUK.Modules.Govspeak = Govspeak

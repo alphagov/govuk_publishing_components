@@ -8,4 +8,4 @@
 //= link components/_app-component.css
 
 //= link views/_app-view.css
-//= link_tree ../builds
+//= link_tree ../assets/javascripts/builds

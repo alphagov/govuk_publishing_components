@@ -1,9 +1,8 @@
-
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
-var ImageCard = (function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUK = global.GOVUK || {}, global.GOVUK.Modules = global.GOVUK.Modules || {}, global.GOVUK.Modules.ImageCard = factory()));
+})(this, (function () { 'use strict';
 
   var ImageCard = function ImageCard($module) {
     this.$module = $module;
@@ -20,8 +19,5 @@ var ImageCard = (function () {
 
   return ImageCard;
 
-})();
+}));
 //# sourceMappingURL=image-card.js.map
-
-
-window.GOVUK.Modules.ImageCard = ImageCard

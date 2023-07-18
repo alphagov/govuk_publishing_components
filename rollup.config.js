@@ -45,8 +45,8 @@ const defaultConfig = input => ({
   input,
   output: {
     file: `app/assets/javascripts/govuk_publishing_components/builds/${input.match(/(\w|-)+(?=\.js)/g)[0]}.js`,
-    format: "iife",
-    name: capitalizer(input.match(/(\w|-)+(?=\.js)/g)[0]),
+    format: "umd",
+    name: `GOVUK.Modules.${capitalizer(input.match(/(\w|-)+(?=\.js)/g)[0])}`,
     sourcemap: true // maybe? idk
   },
   plugins: [
@@ -55,9 +55,9 @@ const defaultConfig = input => ({
     {
       writeBundle: ({ file }) => {
         const data = fs.readFileSync(file, {encoding:'utf8'});
-        // uglify works fine, but im gonna not use it for now for easier debugging
         // fs.writeFileSync(file, uglify.minify(templateForExportedJS(data, file.match(/(\w|-)+(?=\.js)/g)[0])).code, {encoding:'utf8'});
-        fs.writeFileSync(file, templateForExportedJS(data, file.match(/(\w|-)+(?=\.js)/g)[0]), {encoding:'utf8'});
+        // fs.writeFileSync(file, templateForExportedJS(data, file.match(/(\w|-)+(?=\.js)/g)[0]), {encoding:'utf8'});
+        fs.writeFileSync(file, data, {encoding:'utf8'});
       }
     },
   ],

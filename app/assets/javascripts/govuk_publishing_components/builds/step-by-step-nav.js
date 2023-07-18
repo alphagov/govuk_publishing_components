@@ -1,9 +1,8 @@
-
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
-var StepByStepNav = (function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUK = global.GOVUK || {}, global.GOVUK.Modules = global.GOVUK.Modules || {}, global.GOVUK.Modules.StepByStepNav = factory()));
+})(this, (function () { 'use strict';
 
   // A helper that sends a custom event request to Google Analytics if
   // the GOVUK module is setup
@@ -520,8 +519,5 @@ var StepByStepNav = (function () {
 
   return StepByStepNavigation;
 
-})();
+}));
 //# sourceMappingURL=step-by-step-nav.js.map
-
-
-window.GOVUK.Modules.StepByStepNav = StepByStepNav

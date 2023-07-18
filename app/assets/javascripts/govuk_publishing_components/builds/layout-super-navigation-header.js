@@ -1,9 +1,8 @@
-
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
-var LayoutSuperNavigationHeader = (function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUK = global.GOVUK || {}, global.GOVUK.Modules = global.GOVUK.Modules || {}, global.GOVUK.Modules.LayoutSuperNavigationHeader = factory()));
+})(this, (function () { 'use strict';
 
   var SETTINGS = {
     breakpoint: {
@@ -191,8 +190,5 @@ var LayoutSuperNavigationHeader = (function () {
 
   return LayoutSuperNavigationHeader;
 
-})();
+}));
 //# sourceMappingURL=layout-super-navigation-header.js.map
-
-
-window.GOVUK.Modules.LayoutSuperNavigationHeader = LayoutSuperNavigationHeader

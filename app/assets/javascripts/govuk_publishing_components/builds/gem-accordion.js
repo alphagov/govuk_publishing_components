@@ -1,9 +1,8 @@
-
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
-var GemAccordion = (function () {
-  'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (global.GOVUK = global.GOVUK || {}, global.GOVUK.Modules = global.GOVUK.Modules || {}, global.GOVUK.Modules.GemAccordion = factory()));
+})(this, (function () { 'use strict';
 
   /**
    * Common helpers which do not require polyfill.
@@ -2501,8 +2500,5 @@ var GemAccordion = (function () {
 
   return GemAccordion;
 
-})();
+}));
 //# sourceMappingURL=gem-accordion.js.map
-
-
-window.GOVUK.Modules.GemAccordion = GemAccordion
