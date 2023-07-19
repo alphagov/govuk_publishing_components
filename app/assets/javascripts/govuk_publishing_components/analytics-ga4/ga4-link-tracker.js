@@ -81,12 +81,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
-      data.text = this.PIIRemover.stripPIIWithOverride(data.text, true, true)
+      data.text = window.GOVUK.analyticsGa4.core.trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, data.text)
       if (!data.text && (element.querySelector('img') || element.querySelector('svg') || element.tagName === 'IMG' || element.closest('svg'))) {
         data.text = 'image'
       }
       var url = data.url || this.findLink(event.target).getAttribute('href')
-      data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(this.PIIRemover.stripPIIWithOverride(url, true, true))
+      data.url = window.GOVUK.analyticsGa4.core.trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(url))
       data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
       data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)

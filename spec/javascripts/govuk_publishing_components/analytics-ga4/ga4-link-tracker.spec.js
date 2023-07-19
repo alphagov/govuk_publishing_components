@@ -433,6 +433,40 @@ describe('GA4 link tracker', function () {
       expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('#/[date]/[postcode]/[email]')
       expect(window.dataLayer[0].event_data.text).toEqual('[date] [postcode] [email]')
     })
+
+    it('does not redact information when the \'data-ga4-do-not-redact\' attribute exists on a link', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.innerHTML = '<a class="link" href="#/2022-02-02/SW10AA/email@example.com">2022-02-02 SW1 0AA email@example.com</a>'
+
+      var link = element.querySelector('.link')
+      link.setAttribute('data-ga4-do-not-redact', '')
+
+      initModule(element, false)
+      link.click()
+
+      expect(window.dataLayer[0].event_data.url).toEqual('#/2022-02-02/SW10AA/email@example.com')
+      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('#/2022-02-02/SW10AA/email@example.com')
+      expect(window.dataLayer[0].event_data.text).toEqual('2022-02-02 SW1 0AA email@example.com')
+    })
+
+    it('does not redact information when the \'data-ga4-do-not-redact\' attribute exists on a parent element', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.setAttribute('data-ga4-do-not-redact', '')
+      element.innerHTML = '<a class="link" href="#/2022-02-02/SW10AA/email@example.com">2022-02-02 SW1 0AA email@example.com</a>'
+
+      var link = element.querySelector('.link')
+
+      initModule(element, false)
+      link.click()
+
+      expect(window.dataLayer[0].event_data.url).toEqual('#/2022-02-02/SW10AA/email@example.com')
+      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('#/2022-02-02/SW10AA/email@example.com')
+      expect(window.dataLayer[0].event_data.text).toEqual('2022-02-02 SW1 0AA email@example.com')
+    })
   })
 
   describe('if the link is an on an image with no inner text', function () {
