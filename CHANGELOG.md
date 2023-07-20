@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Ensure search forms have their text sent to GA4 in lowercase ([PR #3504](https://github.com/alphagov/govuk_publishing_components/pull/3504))
+
 ## 35.11.0
 
 * GA4 content navigation fixes ([PR #3495](https://github.com/alphagov/govuk_publishing_components/pull/3495))

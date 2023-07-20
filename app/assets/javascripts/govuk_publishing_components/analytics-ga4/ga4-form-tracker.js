@@ -45,6 +45,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var formData = this.getInputValues(formInputs)
       data.text = data.text || (this.combineGivenAnswers(formData) || 'No answer given')
 
+      if (data.action === 'search') {
+        data.text = data.text.toLowerCase()
+      }
+
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')
       window.GOVUK.analyticsGa4.core.sendData(schema)

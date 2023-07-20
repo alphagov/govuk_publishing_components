@@ -259,4 +259,36 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
   })
+
+  describe('when tracking search forms', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'header menu bar',
+        section: 'Search',
+        action: 'search'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-include-text', '')
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'form_response'
+      expected.event_data.type = 'header menu bar'
+      expected.event_data.section = 'Search'
+      expected.event_data.action = 'search'
+      expected.govuk_gem_version = 'aVersion'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('converts search terms to lowercase', function () {
+      element.innerHTML =
+        '<label for="text">Search</label>' +
+        '<input type="text" id="text" name="text" value="I SHOULD BE LOWERCASE"/>'
+
+      expected.event_data.text = 'i should be lowercase'
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
 })
