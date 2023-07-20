@@ -268,4 +268,20 @@ describe "Attachment", type: :view do
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
     assert_select '.gem-c-attachment:not([class*="govuk-!-margin-bottom-"])'
   end
+
+  it "adds GA4 tracking on HTML attachment links" do
+    render_component(
+      attachment: {
+        title: "Test",
+        url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/687542/February_2018_Consular_MI.csv",
+        filename: "test",
+        type: "html",
+      },
+    )
+
+    assert_select "h2 a[data-module=ga4-link-tracker]"
+    assert_select ".gem-c-attachment__thumbnail a[data-module=ga4-link-tracker]"
+    assert_select "h2 a[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
+    assert_select ".gem-c-attachment__thumbnail a[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
+  end
 end

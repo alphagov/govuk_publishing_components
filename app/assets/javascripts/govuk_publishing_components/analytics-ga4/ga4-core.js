@@ -272,31 +272,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           // if there's a problem with the config, don't start the tracker
           console.error('Unable to JSON.parse or JSON.stringify index: ' + e.message, window.location)
         }
-      },
-
-      addAttributesToElements: function (selector, dataAttributes) {
-        var targetElements = document.querySelectorAll(selector)
-
-        for (var i = 0; i < targetElements.length; i++) {
-          var element = targetElements[i]
-
-          for (var j = 0; j < dataAttributes.length; j++) {
-            var key = dataAttributes[j].key
-            var value = dataAttributes[j].value
-
-            // value must check for undefined only as it would return false on an empty string, the number 0, etc.
-            if (key && value !== undefined) {
-              var existingAttributeValue = element.getAttribute(key)
-
-              if (key === 'data-module' && existingAttributeValue) {
-                // Combines values to prevent replacing any existing data-module values.
-                element.setAttribute(key, existingAttributeValue + ' ' + value)
-              } else {
-                element.setAttribute(key, value)
-              }
-            }
-          }
-        }
       }
     },
 

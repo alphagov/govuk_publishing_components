@@ -43,13 +43,15 @@
       "HTML",
       class: "gem-c-attachment__attribute",
     )
+    data_attributes[:module] ? data_attributes[:module] << " ga4-link-tracker" : data_attributes[:module] = "ga4-link-tracker"
+    data_attributes[:ga4_link] = { "event_name": "navigation", "type": "attachment" }.to_json
   when "external"
     attributes << tag.span(
       attachment.url,
       class: "gem-c-attachment__attribute",
     )
   end
-  
+
 %>
 <%= tag.section class: class_names(container_class_names) do %>
   <%= tag.div class: "gem-c-attachment__thumbnail" do %>

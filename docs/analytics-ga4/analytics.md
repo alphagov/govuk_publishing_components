@@ -62,8 +62,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
 When cookie consent is given, `init-ga4.js` looks through the `analyticsModules` object for anything with an `init` function, and executes them if found. This means that analytics code will not be executed unless consent is given, and gives a standard way to add more analytics code without additional initialisation.
 
-`init-ga4.js` also handles adding data attributes to certain HTML elements, such as attachment links defined in our `whitehall` repo. This approach is used when it is difficult to maintain data attributes directly on the tracked elements' HTML. In the case of the attachment links, it would require republishing thousands of documents each time the attachment link data attributes need changing. Therefore, it is more efficient to add the GA4 HTML attributes via JavaScript as it is easier to just redeploy `govuk_publishing_components` instead with changes. The code for adding these attributes sits in `init-ga4.js` as the attributes need to exist before `analyticsModules` are run. This is so that when trackers initialise, they can find the data attributes (i.e. `data-module='ga4-link-tracker'`), and will therefore know to add the right event listeners to the elements in question.
-
 ### Code structure for Modules
 
 Where analytics code is required as a [GOV.UK JavaScript Module](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md), the code structure for the [existing model for deferred loading](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md#modules-and-cookie-consent) should be used.
