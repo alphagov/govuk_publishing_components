@@ -47,6 +47,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       if (data.action === 'search') {
         data.text = data.text.toLowerCase()
+        data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(data.text)
       }
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()

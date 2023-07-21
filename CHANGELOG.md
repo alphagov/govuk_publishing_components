@@ -12,6 +12,7 @@
 * Ensure search forms have their text sent to GA4 in lowercase ([PR #3504](https://github.com/alphagov/govuk_publishing_components/pull/3504))
 * Add GA4 HTML attachment tracking to attachment component ([PR #3500](https://github.com/alphagov/govuk_publishing_components/pull/3500))
 * Add functionality for preventing the redaction of publicly available information ([PR #3509](https://github.com/alphagov/govuk_publishing_components/pull/3509))
+* Ensure extra spaces are removed from search forms ([PR #3512](https://github.com/alphagov/govuk_publishing_components/pull/3512))
 
 ## 35.11.0
 

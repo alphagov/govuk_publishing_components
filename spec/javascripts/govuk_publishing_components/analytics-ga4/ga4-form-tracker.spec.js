@@ -290,5 +290,15 @@ describe('Google Analytics form tracking', function () {
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })
+
+    it('removes extra spaces', function () {
+      element.innerHTML =
+        '<label for="text">Search</label>' +
+        '<input type="text" id="text" name="text" value="  there  should     be    no  extra  spaces     "/>'
+
+      expected.event_data.text = 'there should be no extra spaces'
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 })
