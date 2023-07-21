@@ -112,6 +112,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
           xhr.addEventListener('loadend', this.done)
           xhr.open('POST', url, true)
+          xhr.setRequestHeader('Accept', 'application/json')
           xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
           this.disableSubmitFormButton($form)
