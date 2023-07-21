@@ -230,11 +230,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // if the response is not a 404 or 500, show the error message if it exists
     // otherwise show the generic message
     if ('response' in error) {
-      if (typeof error.response === 'object' && error.response !== null) {
-        error = error.response.message === 'email survey sign up failure' ? genericError : error.response.message
-      } else {
-        error = genericError
-      }
+      error = this.handleResponseMessage(error, genericError)
     } else if (error.status === 422) {
       // there's clobbering by nginx on all 422 requests, which is why the response returns a rendered html page instead of the expected JSON
       // this is a temporary workaround to ensure that we are displaying relevant error messages to the users
@@ -246,6 +242,32 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     $errors.innerHTML = error
     $errors.hidden = false
     $errors.focus()
+  }
+
+  Feedback.prototype.handleResponseMessage = function (error, genericError) {
+    var responseMessage = this.hasResponseMessage(error.response)
+    switch (responseMessage) {
+      case 'email survey sign up failure':
+        return genericError
+      case false:
+        return genericError
+      default:
+        return responseMessage
+    }
+  }
+
+  Feedback.prototype.hasResponseMessage = function (response) {
+    if (!response) return false
+    try {
+      var parsedResponse = JSON.parse(response)
+      if (typeof parsedResponse !== 'undefined' && Object.prototype.hasOwnProperty.call(parsedResponse, 'message')) {
+        return parsedResponse.message
+      } else {
+        return false
+      }
+    } catch (e) {
+      return false
+    }
   }
 
   Feedback.prototype.showFormSuccess = function () {
