@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.12.0
 
 * Change how GA4 schema construction works ([PR #3436](https://github.com/alphagov/govuk_publishing_components/pull/3436))
 * Add GA4 scroll tracker ([PR #3464](https://github.com/alphagov/govuk_publishing_components/pull/3464))
