@@ -10,4 +10,5 @@
 //= require ./analytics-ga4/ga4-form-tracker
 //= require ./analytics-ga4/ga4-auto-tracker
 //= require ./analytics-ga4/ga4-smart-answer-results-tracker
+//= require ./analytics-ga4/ga4-scroll-tracker
 //= require ./analytics-ga4/init-ga4
