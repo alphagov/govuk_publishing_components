@@ -7,22 +7,30 @@
   panel_css_classes << "gem-c-tabs__panel--no-border" if panel_border == false
   panel_css_classes = panel_css_classes.join(" ")
 
+  as_links ||= false
   ga4_tracking ||= false
-  data_module = "govuk-tabs"
-  data_module << " ga4-event-tracker" if ga4_tracking
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("govuk-tabs gem-c-tabs")
+  component_helper.add_data_attribute({ module: "govuk-tabs" }) unless as_links
+
+  if ga4_tracking
+    component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless as_links
+    component_helper.add_data_attribute({ module: "ga4-link-tracker" }) if as_links
+  end
 %>
 <% if tabs.count > 1 %>
-  <div class="govuk-tabs gem-c-tabs" data-module="<%= data_module %>">
+  <%= tag.div(**component_helper.all_attributes) do %>
     <h2 class="govuk-tabs__title">
       <%= t("components.tabs.contents") %>
     </h2>
     <ul class="govuk-tabs__list">
       <% tabs.each_with_index do |tab, index| %>
-      <li class="govuk-tabs__list-item">
+      <li class="govuk-tabs__list-item <%= "govuk-tabs__list-item--selected" if tab[:active] %>">
         <%
           tab[:tab_data_attributes] ||= {}
           if ga4_tracking
-            tab[:tab_data_attributes][:ga4_event] = {
+            ga4_attributes = {
               event_name: "select_content",
               type: "tabs",
               text: tab[:label],
@@ -31,24 +39,32 @@
                 index_section_count: tabs.length,
               },
             }
+            ga4_attributes[:event_name] = "navigation" if as_links
+            tab[:tab_data_attributes][:ga4_link] = ga4_attributes if as_links
+            tab[:tab_data_attributes][:ga4_event] = ga4_attributes unless as_links
           end
+
+          tab_link = "##{tab[:id]}"
+          tab_link = tab[:href] if as_links
         %>
         <%= link_to(tab[:label],
-                    "##{tab[:id]}",
+                    tab_link,
                     class: "govuk-tabs__tab",
                     data: tab[:tab_data_attributes]) %>
       </li>
       <% end %>
     </ul>
-    <% tabs.each do |tab| %>
-      <section class="<%= panel_css_classes %>" id="<%= tab[:id] %>">
-        <% if tab[:title] %>
-          <h2 class="govuk-heading-l"><%= tab[:title] %></h2>
-        <% end %>
-        <%= tab[:content] %>
-      </section>
+    <% unless as_links %>
+      <% tabs.each do |tab| %>
+        <section class="<%= panel_css_classes %>" id="<%= tab[:id] %>">
+          <% if tab[:title] %>
+            <h2 class="govuk-heading-l"><%= tab[:title] %></h2>
+          <% end %>
+          <%= tab[:content] %>
+        </section>
+      <% end %>
     <% end %>
-  </div>
+  <% end %>
 <% end %>
 <% if tabs.count == 1 %>
     <section id="<%= tabs[0][:id] %>">

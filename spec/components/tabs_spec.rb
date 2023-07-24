@@ -31,7 +31,29 @@ describe "Tabs", type: :view do
     assert_select "#tab1"
   end
 
-  it "renders with GA4 tracking" do
+  it "renders tabs as links" do
+    render_component(
+      as_links: true,
+      tabs: [
+        {
+          label: "First section",
+          href: "/page1",
+        },
+        {
+          label: "Second section",
+          href: "/page2",
+        },
+      ],
+    )
+
+    assert_select ".govuk-tabs"
+    assert_select ".govuk-tabs__tab", 2
+    assert_select ".govuk-tabs__list-item", 2
+    assert_select "a.govuk-tabs__tab[href='/page1']"
+    assert_select "a.govuk-tabs__tab[href='/page2']"
+  end
+
+  it "renders with GA4 tracking on tabs" do
     render_component(
       ga4_tracking: true,
       tabs: [
@@ -57,5 +79,32 @@ describe "Tabs", type: :view do
     assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"First section\",\"index\":{\"index_section\":1,\"index_section_count\":3}}']"
     assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"Second section\",\"index\":{\"index_section\":2,\"index_section_count\":3}}']"
     assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"Third section\",\"index\":{\"index_section\":3,\"index_section_count\":3}}']"
+  end
+
+  it "renders with GA4 tracking on tabs as links" do
+    render_component(
+      ga4_tracking: true,
+      as_links: true,
+      tabs: [
+        {
+          href: "tab1",
+          label: "First section",
+          active: true,
+        },
+        {
+          href: "tab2",
+          label: "Second section",
+        },
+        {
+          href: "tab3",
+          label: "Third section",
+        },
+      ],
+    )
+
+    assert_select ".govuk-tabs[data-module='ga4-link-tracker']"
+    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"First section\",\"index\":{\"index_section\":1,\"index_section_count\":3}}']"
+    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"Second section\",\"index\":{\"index_section\":2,\"index_section_count\":3}}']"
+    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"Third section\",\"index\":{\"index_section\":3,\"index_section_count\":3}}']"
   end
 end
