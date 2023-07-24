@@ -108,8 +108,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // because if headings appear/disappear (e.g. inside an accordion)
         // the order changes, so we can't refer to the previous trackedNodes
         // as we do with percentages
-        if (node.node) {
-          node.node.setAttribute('data-ga4-scrolltracker-already-seen', true)
+        if (node.element) {
+          node.element.setAttribute('data-ga4-scrolltracker-already-seen', true)
         }
 
         data.type = node.eventData.type
@@ -147,7 +147,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (this.visible(heading)) {
         var pos = heading.getBoundingClientRect()
         headingsDetails.push({
-          node: heading,
+          element: heading,
           alreadySeen: heading.getAttribute('data-ga4-scrolltracker-already-seen'),
           top: pos.top + document.documentElement.scrollTop,
           bottom: pos.bottom + document.documentElement.scrollTop,
