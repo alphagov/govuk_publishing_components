@@ -37,6 +37,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (this.module.hasAttribute('data-ga4-set-indexes')) {
         window.GOVUK.analyticsGa4.core.trackFunctions.setIndexes(this.module)
       }
+      if (this.module.hasAttribute('data-ga4-index-group-number')) {
+        window.GOVUK.analyticsGa4.core.trackFunctions.bundleIndexes(this.module.getAttribute('data-ga4-index-group-number'), this.module)
+      }
     }
   }
 

@@ -8,6 +8,9 @@ var initFunction = function () {
     window.GOVUK.analyticsGa4.vars.internalDomains = []
     window.GOVUK.analyticsGa4.vars.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
+    if (document.querySelectorAll('[data-ga4-index-group-number]').length > 0) {
+      window.GOVUK.analyticsGa4.vars.indexGroups = {}
+    }
     window.GOVUK.analyticsGa4.core.load()
 
     var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules

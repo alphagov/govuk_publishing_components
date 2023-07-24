@@ -249,6 +249,24 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         }
       },
 
+      bundleIndexes: function (groupNumber, module) {
+        var indexGroups = window.GOVUK.analyticsGa4.vars.indexGroups
+
+        if (typeof parseInt(groupNumber) === 'number' && !isNaN(groupNumber)) {
+          var indexGroupLinks = document.querySelectorAll('[data-ga4-index-group-number="' + groupNumber + '"] a')
+          var ga4LinkData = JSON.parse(module.getAttribute('data-ga4-link'))
+          ga4LinkData.index_total = indexGroupLinks.length
+          module.setAttribute('data-ga4-link', JSON.stringify(ga4LinkData))
+
+          if (!Object.prototype.hasOwnProperty.call(indexGroups, 'groupNumber' + groupNumber)) {
+            indexGroups['groupNumber' + groupNumber] = indexGroupLinks
+            for (var i = 0; i < indexGroupLinks.length; i++) {
+              indexGroups['groupNumber' + groupNumber][i].setAttribute('data-ga4-index', '{"index_link": ' + (i + 1) + '}')
+            }
+          }
+        }
+      },
+
       applyRedactionIfRequired: function (PIIRemover, element, data) {
         return element.closest('[data-ga4-do-not-redact]') ? data : PIIRemover.stripPIIWithOverride(data, true, true)
       }

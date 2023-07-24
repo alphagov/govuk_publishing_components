@@ -510,4 +510,111 @@ describe('GA4 link tracker', function () {
       }
     })
   })
+
+  describe('if multiple link tracker modules have a data-ga4-index-group-number attribute', function () {
+    beforeEach(function () {
+      window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
+      window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
+      window.GOVUK.analyticsGa4.vars.indexGroups = {}
+    })
+
+    it('combines the link indexes as if they were in the same module', function () {
+      var module1 = document.createElement('div')
+      module1.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      module1.setAttribute('data-ga4-index-group-number', '1')
+      module1.innerHTML =
+        '<a class="link" href="#link1">Link 1</a>' +
+        '<a class="link" href="#link2">Link 2</a>' +
+        '<a class="link" href="#link3">Link 3</a>'
+
+      var module2 = document.createElement('div')
+      module2.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      module2.setAttribute('data-ga4-index-group-number', '1')
+      module2.innerHTML =
+        '<a class="link" href="#link4">Link 4</a>' +
+        '<a class="link" href="#link5">Link 5</a>'
+
+      var module3 = document.createElement('div')
+      module3.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      module3.setAttribute('data-ga4-index-group-number', '1')
+      module3.innerHTML =
+        '<a class="link" href="#link6">Link 6</a>'
+
+      document.body.append(module1)
+      document.body.append(module2)
+      document.body.append(module3)
+
+      var links = document.querySelectorAll("[data-ga4-index-group-number='1'] .link")
+
+      initModule(module1, false)
+      initModule(module2, false)
+      initModule(module3, false)
+
+      for (var i = 0; i < links.length; i++) {
+        links[i].click()
+
+        expect(window.dataLayer[i].event_data.index_total).toEqual(6)
+        expect(window.dataLayer[i].event_data.index).toEqual({ index_link: (i + 1), index_section: undefined, index_section_count: undefined })
+      }
+    })
+
+    it('only combines indexes when data-ga4-index-group-number is set to a number', function () {
+      var module1 = document.createElement('div')
+      module1.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      module1.setAttribute('data-ga4-index-group-number', 'hello')
+      module1.innerHTML =
+        '<a class="link" href="#link1">Link 1</a>' +
+        '<a class="link" href="#link2">Link 2</a>' +
+        '<a class="link" href="#link3">Link 3</a>'
+
+      var module2 = document.createElement('div')
+      module2.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      module2.setAttribute('data-ga4-index-group-number', 'hello')
+      module2.innerHTML =
+        '<a class="link" href="#link4">Link 4</a>' +
+        '<a class="link" href="#link5">Link 5</a>'
+
+      document.body.append(module1)
+      document.body.append(module2)
+
+      var links = document.querySelectorAll('.link')
+
+      initModule(module1, false)
+      initModule(module2, false)
+
+      for (var i = 0; i < links.length; i++) {
+        links[i].click()
+
+        expect(window.dataLayer[i].event_data.index_total).toEqual(undefined)
+        expect(window.dataLayer[i].event_data.index).toEqual({ index_link: undefined, index_section: undefined, index_section_count: undefined })
+      }
+    })
+
+    it('only calls the bundle index function if data-ga4-index-group-number exists', function () {
+      var module1 = document.createElement('div')
+      module1.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      module1.innerHTML = '<a class="link" href="#link1">Link 1</a>'
+
+      var module2 = document.createElement('div')
+      module2.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      module2.setAttribute('data-ga4-index-group-number', '1')
+      module2.innerHTML = '<a class="link" href="#link2">Link 2</a>' +
+
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'bundleIndexes')
+
+      initModule(module1, false)
+      expect(GOVUK.analyticsGa4.core.trackFunctions.bundleIndexes).not.toHaveBeenCalled()
+
+      initModule(module2, false)
+      expect(GOVUK.analyticsGa4.core.trackFunctions.bundleIndexes).toHaveBeenCalled()
+    })
+
+    afterEach(function () {
+      window.dataLayer = []
+      var modulesWithIndexGroup = document.querySelectorAll('[data-ga4-index-group-number]')
+      for (var i = 0; i < modulesWithIndexGroup.length; i++) {
+        document.body.removeChild(modulesWithIndexGroup[i])
+      }
+    })
+  })
 })
