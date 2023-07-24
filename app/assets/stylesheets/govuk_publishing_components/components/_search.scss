@@ -110,6 +110,10 @@ $large-input-size: 50px;
   border: 0;
   cursor: pointer;
   border-radius: 0;
+  // render a border in high contrast mode
+  outline: $govuk-border-width-form-element solid transparent;
+  // Ensure outline appears outside of the element
+  outline-offset: 0;
   position: relative;
   padding: 0;
   width: $input-size;
@@ -124,8 +128,6 @@ $large-input-size: 50px;
   &:focus {
     z-index: 2;
     outline: $govuk-focus-width solid $govuk-focus-colour;
-    // Ensure outline appears outside of the element
-    outline-offset: 0;
     // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width` - this is for consistency with
     // Also, `outline` cannot be utilised
     // here as it is already used for the yellow focus state.
@@ -161,6 +163,10 @@ $large-input-size: 50px;
 
   .gem-c-search__input {
     border-width: 0;
+    // Render a border in high contrast mode
+    outline: $govuk-border-width-form-element solid transparent;
+    // Ensure outline appears outside of the element
+    outline-offset: 0;
 
     // no need for black outline as there is enough contrast
     // with the blue background
