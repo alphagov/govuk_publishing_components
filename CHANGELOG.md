@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Change how GA4 schema construction works ([PR #3436](https://github.com/alphagov/govuk_publishing_components/pull/3436))
 * Add GA4 scroll tracker ([PR #3464](https://github.com/alphagov/govuk_publishing_components/pull/3464))
 * Ensure search forms have their text sent to GA4 in lowercase ([PR #3504](https://github.com/alphagov/govuk_publishing_components/pull/3504))
 * Add GA4 HTML attachment tracking to attachment component ([PR #3500](https://github.com/alphagov/govuk_publishing_components/pull/3500))
