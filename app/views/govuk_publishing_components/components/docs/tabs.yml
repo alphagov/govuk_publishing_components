@@ -17,7 +17,7 @@ accessibility_criteria: |
     * be usable with touch
     * be usable with voice commands
     * have visible text
-
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
