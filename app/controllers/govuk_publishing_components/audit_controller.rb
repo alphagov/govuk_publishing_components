@@ -14,7 +14,6 @@ module GovukPublishingComponents
         government-frontend
         govspeak-preview
         info-frontend
-        licence-finder
         release
         search-admin
         signon
