@@ -98,7 +98,7 @@ describe('GA4 finder change tracker', function () {
     inputParent = document.createElement('div')
     inputParent.setAttribute('data-ga4-change-category', 'update-filter checkbox')
     inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
-    var index = { index_section: 1, index_section_count: 1, index_link: undefined }
+    var index = { index_section: 1, index_section_count: 1 }
     inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
 
     input = document.createElement('input')
@@ -119,7 +119,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'All types of chocolate'
     expected.event_data.action = 'select'
-    expected.event_data.index = index
+    expected.event_data.index = { index_section: 1, index_section_count: 1, index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
@@ -127,7 +127,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(input, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = undefined
+    expected.event_data.index = { index_section: undefined, index_section_count: undefined, index_link: undefined }
 
     expect(window.dataLayer[1]).toEqual(expected)
   })
@@ -136,7 +136,7 @@ describe('GA4 finder change tracker', function () {
     inputParent = document.createElement('div')
     inputParent.setAttribute('data-ga4-change-category', 'update-filter radio')
     inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
-    var index = { index_section: 1, index_section_count: 1, index_link: undefined }
+    var index = { index_section: 1, index_section_count: 1 }
     inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
 
     option1 = document.createElement('input')
@@ -170,7 +170,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'Belgian chocolate'
     expected.event_data.action = 'select'
-    expected.event_data.index = index
+    expected.event_data.index = { index_section: 1, index_section_count: 1, index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
@@ -179,7 +179,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(option1, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = undefined
+    expected.event_data.index = { index_section: undefined, index_section_count: undefined, index_link: undefined }
     expected.event_data.text = 'All types of chocolate (default)'
 
     expect(window.dataLayer[1]).toEqual(expected)
@@ -189,7 +189,7 @@ describe('GA4 finder change tracker', function () {
     inputParent = document.createElement('div')
     inputParent.setAttribute('data-ga4-change-category', 'update-filter select')
     inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
-    var index = { index_section: 5, index_section_count: 15, index_link: undefined }
+    var index = { index_section: 5, index_section_count: 15 }
     inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
 
     input = document.createElement('select')
@@ -218,7 +218,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'Belgian chocolate'
     expected.event_data.action = 'select'
-    expected.event_data.index = index
+    expected.event_data.index = { index_section: 5, index_section_count: 15, index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
@@ -226,7 +226,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(input, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = undefined
+    expected.event_data.index = { index_link: undefined, index_section: undefined, index_section_count: undefined }
     expected.event_data.text = 'All types of chocolate (default)'
 
     expect(window.dataLayer[1]).toEqual(expected)
@@ -236,7 +236,7 @@ describe('GA4 finder change tracker', function () {
     inputParent = document.createElement('div')
     inputParent.setAttribute('data-ga4-change-category', 'update-filter text')
     inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
-    var index = { index_section: 2, index_section_count: 2, index_link: undefined }
+    var index = { index_section: 2, index_section_count: 2 }
     inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
 
     input = document.createElement('input')
@@ -252,7 +252,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'Here is an email that should not get redacted email@example.com'
     expected.event_data.action = 'search'
-    expected.event_data.index = index
+    expected.event_data.index = { index_section: 2, index_section_count: 2, index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
@@ -260,7 +260,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(input, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = undefined
+    expected.event_data.index = { index_section: undefined, index_section_count: undefined, index_link: undefined }
     expected.event_data.text = undefined
 
     expect(window.dataLayer[1]).toEqual(expected)

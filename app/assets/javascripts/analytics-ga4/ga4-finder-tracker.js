@@ -37,17 +37,18 @@
         return
       }
 
-      var schema = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      schema.event = 'event_data'
-      schema.event_data.type = 'finder'
-      schema.event_data.event_name = 'select_content'
+      var data = {}
+      data.type = 'finder'
+      data.event_name = 'select_content'
 
       var elementInfo = this.getElementInfo(eventTarget, elementType, section)
       var elementValue = elementInfo.elementValue
-      schema.event_data.text = elementValue
-
+      data.text = elementValue
       var wasFilterRemoved = elementInfo.wasFilterRemoved
-      schema = this.setSchemaBasedOnChangeType(schema, elementValue, elementType, wasFilterRemoved, changeType, section)
+      data = this.setSchemaBasedOnChangeType(data, elementValue, elementType, wasFilterRemoved, changeType, section)
+
+      var schemas = new window.GOVUK.analyticsGa4.Schemas()
+      var schema = schemas.mergeProperties(data, 'event_data')
 
       window.GOVUK.analyticsGa4.core.sendData(schema)
     },
@@ -112,36 +113,36 @@
       switch (changeType) {
         case 'update-filter':
           if (section) {
-            schema.event_data.section = section.getAttribute('data-ga4-section')
+            schema.section = section.getAttribute('data-ga4-section')
           }
 
           if (wasFilterRemoved) {
-            schema.event_data.action = 'remove'
-            schema.event_data.text = elementType === 'text' ? undefined : elementValue
+            schema.action = 'remove'
+            schema.text = elementType === 'text' ? undefined : elementValue
           } else {
-            schema.event_data.action = elementType === 'text' ? 'search' : 'select'
-            schema.event_data.index = this.getSectionIndex(section)
+            schema.action = elementType === 'text' ? 'search' : 'select'
+            schema.index = this.getSectionIndex(section)
           }
           break
 
         case 'update-keyword':
-          schema.event_data.event_name = 'search'
-          schema.event_data.url = window.location.pathname
-          schema.event_data.section = 'Search'
-          schema.event_data.action = 'search'
-          schema.event_data.text = PIIRemover.stripPIIWithOverride(schema.event_data.text, true, true)
-          schema.event_data.text = GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(schema.event_data.text)
-          schema.event_data.text = schema.event_data.text.toLowerCase()
+          schema.event_name = 'search'
+          schema.url = window.location.pathname
+          schema.section = 'Search'
+          schema.action = 'search'
+          schema.text = PIIRemover.stripPIIWithOverride(schema.text, true, true)
+          schema.text = GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(schema.text)
+          schema.text = schema.text.toLowerCase()
           break
 
         case 'clear-all-filters':
-          schema.event_data.action = 'remove'
-          schema.event_data.text = 'Clear all filters'
+          schema.action = 'remove'
+          schema.text = 'Clear all filters'
           break
 
         case 'update-sort':
-          schema.event_data.action = 'sort'
-          schema.event_data.section = 'Sort by'
+          schema.action = 'sort'
+          schema.section = 'Sort by'
           break
       }
       return schema
