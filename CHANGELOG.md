@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove licence-finder from list of audited applications ([PR #3518](https://github.com/alphagov/govuk_publishing_components/pull/3518))
+
 ## 35.12.0
 
 * Change how GA4 schema construction works ([PR #3436](https://github.com/alphagov/govuk_publishing_components/pull/3436))

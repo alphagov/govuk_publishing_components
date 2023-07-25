@@ -12,7 +12,6 @@ module GovukPublishingComponents
           frontend
           government-frontend
           info-frontend
-          licence-finder
           service-manual-frontend
           smart-answers
           whitehall
