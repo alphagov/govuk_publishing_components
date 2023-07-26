@@ -78,15 +78,15 @@ describe "Document list", type: :view do
         },
       ],
     )
-    li = ".gem-c-document-list__item-title"
+    div = ".gem-c-document-list__item-title"
     attribute = ".gem-c-document-list__attribute"
 
-    assert_select "#{li}[href='/government/publications/parental-responsibility-measures-for-behaviour-and-attendance']", text: "School behaviour and attendance: parental responsibility measures"
+    assert_select "#{div} a[href='/government/publications/parental-responsibility-measures-for-behaviour-and-attendance']", text: "School behaviour and attendance: parental responsibility measures"
     assert_select "#{attribute} time", text: "5 January 2017"
     assert_select "#{attribute} time[datetime='2017-01-05T14:50:33Z']"
     assert_select ".gem-c-document-list__attribute", text: "Statutory guidance"
 
-    assert_select "#{li}[href='/become-an-apprentice']", text: "Become an apprentice"
+    assert_select "#{div} a[href='/become-an-apprentice']", text: "Become an apprentice"
     assert_select ".gem-c-document-list__item-description", text: "Becoming an apprentice - what to expect"
     assert_select "#{attribute} time", text: "19 July 2017"
     assert_select "#{attribute} time[datetime='2017-07-19T15:01:48Z']"
@@ -108,7 +108,7 @@ describe "Document list", type: :view do
       ],
     )
 
-    assert_select ".gem-c-document-list__item-title[href='/timeless-news']", text: "Some news stories are timeless"
+    assert_select ".gem-c-document-list__item-title a[href='/timeless-news']", text: "Some news stories are timeless"
     assert_select ".gem-c-document-list__attribute", text: "News Story"
   end
 
@@ -156,19 +156,19 @@ describe "Document list", type: :view do
       ],
     )
 
-    li = "a.gem-c-document-list__item-title"
+    a = ".gem-c-document-list__item-title a"
 
-    assert_select "#{li}[href='/link1']", text: "Link 1"
-    assert_select "#{li}[data-track-category='navDocumentCollectionLinkClicked']", text: "Link 1"
-    assert_select "#{li}[data-track-action='1.1']", text: "Link 1"
-    assert_select "#{li}[data-track-label='/link1']", text: "Link 1"
-    assert_select "#{li}[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 1\"}']", text: "Link 1"
+    assert_select "#{a}[href='/link1']", text: "Link 1"
+    assert_select "#{a}[data-track-category='navDocumentCollectionLinkClicked']", text: "Link 1"
+    assert_select "#{a}[data-track-action='1.1']", text: "Link 1"
+    assert_select "#{a}[data-track-label='/link1']", text: "Link 1"
+    assert_select "#{a}[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 1\"}']", text: "Link 1"
 
-    assert_select "#{li}[href='/link2']", text: "Link 2"
-    assert_select "#{li}[data-track-category='navDocumentCollectionLinkClicked']", text: "Link 2"
-    assert_select "#{li}[data-track-action='1.2']", text: "Link 2"
-    assert_select "#{li}[data-track-label='/link2']", text: "Link 2"
-    assert_select "#{li}[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 2\"}']", text: "Link 2"
+    assert_select "#{a}[href='/link2']", text: "Link 2"
+    assert_select "#{a}[data-track-category='navDocumentCollectionLinkClicked']", text: "Link 2"
+    assert_select "#{a}[data-track-action='1.2']", text: "Link 2"
+    assert_select "#{a}[data-track-label='/link2']", text: "Link 2"
+    assert_select "#{a}[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 2\"}']", text: "Link 2"
   end
 
   it "renders a document list without links" do
@@ -187,10 +187,10 @@ describe "Document list", type: :view do
       ],
     )
 
-    span = "span.gem-c-document-list__item-title"
+    div = "div.gem-c-document-list__item-title"
 
-    assert_select "#{span}:first-of-type", text: "School behaviour and attendance: parental responsibility measures"
-    assert_select "#{span}:last-of-type", text: "Become an apprentice"
+    assert_select "#{div}:first-of-type", text: "School behaviour and attendance: parental responsibility measures"
+    assert_select "#{div}:last-of-type", text: "Become an apprentice"
   end
 
   it "adds branding correctly" do
@@ -211,7 +211,7 @@ describe "Document list", type: :view do
     )
 
     assert_select ".gem-c-document-list__item.brand--attorney-generals-office"
-    assert_select ".gem-c-document-list .gem-c-document-list__item-title.brand__color"
+    assert_select ".gem-c-document-list .gem-c-document-list__item-title .brand__color"
   end
 
   it "does not wrap link in heading element if no description or metadata provided" do
@@ -503,7 +503,7 @@ describe "Document list", type: :view do
       ],
     )
 
-    assert_select ".gem-c-document-list__item-title[lang=\"cy\"]", text: "Tryloywder Uwch Staff Ysgrifennydd Gwladol Cymru Ionawr-Mawrth 2020"
+    assert_select ".gem-c-document-list__item-title a[lang=\"cy\"]", text: "Tryloywder Uwch Staff Ysgrifennydd Gwladol Cymru Ionawr-Mawrth 2020"
     assert_select ".gem-c-document-list__attribute[lang=\"cy\"]", text: "Data tryloywder"
     assert_select ".gem-c-document-list__attribute:not([lang=\"cy\"])", text: "English text"
   end
