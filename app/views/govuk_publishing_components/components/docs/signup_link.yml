@@ -37,3 +37,10 @@ examples:
       link_text: 'Click right here to sign up!!'
       link_href: '/this-signs-you-up'
       heading_level: 1
+  with_aria_label:
+    description: Add visually hidden link text to make the text more meaningful to screen reader users
+    data:
+      heading: 'Sign up for email notifications about this topic'
+      link_text: 'Click right here to sign up!!'
+      link_href: '/this-signs-you-up'
+      aria_label: 'Sign up for email notifications about corporate information'

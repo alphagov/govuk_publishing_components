@@ -6,6 +6,7 @@
   link_text ||= false
   link_href ||= false
   heading ||= false
+  aria_label ||= nil
   background ||= false
   data ||= false
 
@@ -25,7 +26,10 @@
       <%= content_tag(shared_helper.get_heading_level, heading, class: "govuk-heading-s gem-c-signup-link__title") if heading %>
       <%= link_to( link_text, link_href, {
         class: "govuk-link gem-c-signup-link__link",
-        data: data
+        data: data,
+        aria: {
+          label: aria_label
+        }
       }) %>
     </div>
   </div>
