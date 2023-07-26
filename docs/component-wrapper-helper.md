@@ -29,8 +29,9 @@ The component wrapper helper accepts the following options.
 - `aria` - accepts a hash of aria attributes
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
 - `role` - accepts a space separated string of roles
+- `lang` - accepts a language attribute value
 
-The helper checks that any passed `id` attribute is valid, specifically that it does not start with a number or contain whitespace or contain any characters other than letters, numbers, and `_` or `-`. It also checks that role attribute values are valid, along with some other checks detailed below.
+The helper checks that any passed `id` attribute is valid, specifically that it does not start with a number or contain whitespace or contain any characters other than letters, numbers, and `_` or `-`. It also checks that role and lang attribute values are valid, along with some other checks detailed below.
 
 ### Data and aria
 
@@ -73,6 +74,7 @@ The helper includes additional methods to make this possible.
 - `add_data_attribute({ module: "ga4-event-tracker" })` - combines the given data attributes with any that have been passed, merging duplicate keys, e.g. if `{ module: "gem-track-click", a: "1" }` had been passed, the result would be `{ module: "ga4-event-tracker gem-track-click", a: "1" }`
 - `add_aria_attribute()` - works the same as `add_data_attribute`
 - `add_role()` - works the same as `add_class`
+- `set_lang()` - works the same as `set_id`
 
 This is an example component template using some of these methods.
 

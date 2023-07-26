@@ -10,6 +10,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
           labelledby: "element",
         },
         role: "navigation",
+        lang: "en",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -21,14 +22,15 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
           labelledby: "element",
         },
         role: "navigation",
+        lang: "en",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
 
     it "accepts valid class names" do
-      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "gem-c-component govuk-component")
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "gem-c-component govuk-component brand--thing brand__thing")
       expected = {
-        class: "gem-c-component govuk-component",
+        class: "gem-c-component govuk-component brand--thing brand__thing",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -86,6 +88,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         data_attributes: nil,
         aria: nil,
         role: nil,
+        lang: nil,
       )
       expect(component_helper.all_attributes).to eql({})
 
@@ -95,6 +98,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         data_attributes: "",
         aria: "",
         role: "",
+        lang: "",
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -158,6 +162,13 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       expect {
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation")
         helper.add_role("alert custarddoughnuts moose")
+      }.to raise_error(ArgumentError, error)
+    end
+
+    it "does not accept an invalid lang" do
+      error = "lang attribute (klingon) is not recognised"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(lang: "klingon")
       }.to raise_error(ArgumentError, error)
     end
   end

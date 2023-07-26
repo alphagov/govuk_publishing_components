@@ -7,15 +7,18 @@
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
 
   classes = %w(gem-c-heading)
   classes << heading_helper.classes
   classes << brand_helper.brand_class
   classes << brand_helper.border_color_class
   classes << shared_helper.get_margin_bottom if [*0..9].include?(local_assigns[:margin_bottom])
+
+  component_helper.add_class(classes.join(" "))
+  component_helper.set_id(heading_helper.id)
+  element = shared_helper.get_heading_level
 %>
-<%= content_tag(shared_helper.get_heading_level, text,
-  class: classes,
-  id: heading_helper.id,
-  lang: lang
-) %>
+<%= content_tag(element, component_helper.all_attributes) do %>
+  <%= text %>
+<% end %>
