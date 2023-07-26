@@ -13,6 +13,7 @@ module GovukPublishingComponents
       @helpers_path = options[:helpers_path] || "lib/govuk_publishing_components/presenters"
 
       @application_name = options[:application_name] || "govuk_publishing_components"
+      @application_dir = options[:application_dir] || "govuk_publishing_components"
       @all_templates = Dir["#{path}/#{@templates_path}/*.erb"].sort
       @templates_full_path = "#{path}/#{@templates_path}/"
 
@@ -57,7 +58,7 @@ module GovukPublishingComponents
       component_templates.each do |component|
         component_detail = {}
         component_detail[:name] = component
-        component_detail[:application] = @application_name
+        component_detail[:application] = @application_dir
         component_detail[:link] = get_component_link(component) unless @auditing_an_application
         file_details = [
           {
@@ -214,7 +215,7 @@ module GovukPublishingComponents
 
     def get_asset_link(a_thing, component)
       url = "https://github.com/alphagov"
-      repo = @application_name
+      repo = @application_dir
       blob = "blob/main"
       link = nil
       link = "#{url}/#{repo}/#{blob}/#{@templates_path}/_#{component.gsub(' ', '_')}.html.erb" if a_thing == "template"

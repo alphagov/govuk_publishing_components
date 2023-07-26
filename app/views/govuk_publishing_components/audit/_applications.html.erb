@@ -34,7 +34,7 @@
 
     <% accordion_content = capture do %>
       <% if application[:application_found] %>
-        <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
+        <% github_link = 'https://github.com/alphagov/' + application[:dir] + '/blob/main/' %>
 
         <% if @other_applications %>
           <% if application[:uses_individual_asset_model] %>

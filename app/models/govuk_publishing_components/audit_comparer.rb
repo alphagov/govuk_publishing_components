@@ -92,6 +92,7 @@ module GovukPublishingComponents
 
           data << {
             name: result[:name],
+            dir: result[:dir],
             application_found: result[:application_found],
             uses_static: application_uses_static,
             summary: summary,

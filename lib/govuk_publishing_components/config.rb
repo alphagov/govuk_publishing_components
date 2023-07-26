@@ -9,6 +9,9 @@ module GovukPublishingComponents
     mattr_accessor :component_guide_title
     self.component_guide_title = "Component Guide"
 
+    mattr_accessor :application_dir
+    self.application_dir = ""
+
     mattr_accessor :application_stylesheet
     self.application_stylesheet = "application"
 
