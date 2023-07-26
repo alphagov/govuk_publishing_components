@@ -347,7 +347,7 @@ describe('Feedback component', function () {
         fillAndSubmitSomethingIsWrongForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'text/plain',
           responseText: '{ "message": "ok" }'
         })
@@ -382,7 +382,7 @@ describe('Feedback component', function () {
         fillAndSubmitSomethingIsWrongForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })
@@ -398,7 +398,7 @@ describe('Feedback component', function () {
         fillAndSubmitSomethingIsWrongForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })
@@ -411,7 +411,7 @@ describe('Feedback component', function () {
         fillAndSubmitSomethingIsWrongForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })
@@ -424,7 +424,7 @@ describe('Feedback component', function () {
         fillAndSubmitSomethingIsWrongForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })
@@ -447,7 +447,7 @@ describe('Feedback component', function () {
         fillAndSubmitPageIsNotUsefulForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'text/plain',
           responseText: '{ "message": "ok" }'
         })
@@ -476,7 +476,7 @@ describe('Feedback component', function () {
         fillAndSubmitPageIsNotUsefulForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })
@@ -492,7 +492,7 @@ describe('Feedback component', function () {
         fillAndSubmitPageIsNotUsefulForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })
@@ -505,7 +505,7 @@ describe('Feedback component', function () {
         fillAndSubmitPageIsNotUsefulForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })
@@ -518,7 +518,7 @@ describe('Feedback component', function () {
         fillAndSubmitPageIsNotUsefulForm()
 
         jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
+          status: 201,
           contentType: 'application/json',
           responseText: '{}'
         })

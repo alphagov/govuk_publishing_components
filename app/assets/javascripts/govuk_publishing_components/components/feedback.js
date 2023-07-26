@@ -97,7 +97,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           params = new URLSearchParams(params).toString()
 
           this.done = function () {
-            if (xhr.status === 200) {
+            if (xhr.status === 201) {
               this.trackEvent(this.getTrackEventParams($form))
               this.showFormSuccess(xhr.message)
               this.revealInitialPrompt()
