@@ -198,7 +198,7 @@ describe('GA4 scroll tracker', function () {
     })
 
     it('should send a tracking event on page load for positions that are already visible', function () {
-      setPageHeight(10)
+      setPageHeight(window.innerHeight)
 
       expect(window.dataLayer.length).toEqual(5)
 
