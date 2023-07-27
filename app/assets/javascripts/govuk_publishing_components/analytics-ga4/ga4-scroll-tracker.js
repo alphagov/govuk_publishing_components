@@ -199,14 +199,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4ScrollTracker.Percentage.prototype.getTrackingNodes = function (trackedNodes) {
     var body = document.body
     var html = document.documentElement
-    var pageHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight)
+    // remove 20px from the calculated page height to allow for a possible horizontal scrollbar
+    var pageHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight) - 20
 
     var percentDetails = []
 
     for (var i = 0; i < this.config.percentages.length; i++) {
       var percent = this.config.percentages[i]
-      // subtract 1 pixel to solve a bug where 100% can't be reached in some cases
-      var pos = ((pageHeight / 100) * percent) - 1
+      var pos = ((pageHeight / 100) * percent)
       var alreadySeen = false
       if (trackedNodes.length) {
         alreadySeen = trackedNodes[i].alreadySeen
