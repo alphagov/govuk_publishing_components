@@ -21,6 +21,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             title: this.getTitle(),
             status_code: this.getStatusCode(),
 
+            ab_test: this.getMetaContent('ab-test'),
             document_type: this.getMetaContent('format'),
             publishing_app: this.getMetaContent('publishing-app'),
             rendering_app: this.getMetaContent('rendering-app'),

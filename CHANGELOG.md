@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add GA4 pageview meta tag: ab_test ([PR #3523](https://github.com/alphagov/govuk_publishing_components/pull/3523))
+
 ## 35.13.0
 
 * Fix 100% scroll problem ([PR #3521](https://github.com/alphagov/govuk_publishing_components/pull/3521))
