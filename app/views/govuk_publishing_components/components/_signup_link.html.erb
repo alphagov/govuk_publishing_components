@@ -5,8 +5,8 @@
   local_assigns[:margin_bottom] ||= 0
   link_text ||= false
   link_href ||= false
+  link_aria_label ||= nil
   heading ||= false
-  aria_label ||= nil
   background ||= false
   data ||= false
 
@@ -28,7 +28,7 @@
         class: "govuk-link gem-c-signup-link__link",
         data: data,
         aria: {
-          label: aria_label
+          label: link_aria_label
         }
       }) %>
     </div>

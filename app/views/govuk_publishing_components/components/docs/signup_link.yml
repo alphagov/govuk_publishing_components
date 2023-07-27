@@ -43,4 +43,4 @@ examples:
       heading: 'Sign up for email notifications about this topic'
       link_text: 'Click right here to sign up!!'
       link_href: '/this-signs-you-up'
-      aria_label: 'Sign up for email notifications about corporate information'
+      link_aria_label: 'Sign up for email notifications about corporate information'
