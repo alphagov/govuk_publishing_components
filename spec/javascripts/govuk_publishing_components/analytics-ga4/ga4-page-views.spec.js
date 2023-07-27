@@ -21,6 +21,7 @@ describe('Google Tag Manager page view tracking', function () {
         title: 'This here page',
         status_code: '200',
 
+        ab_test: undefined,
         document_type: undefined,
         publishing_app: undefined,
         rendering_app: undefined,
@@ -379,5 +380,12 @@ describe('Google Tag Manager page view tracking', function () {
 
       expect(window.dataLayer[0]).toEqual(expected)
     })
+  })
+
+  it('correctly sets the ab-test parameter', function () {
+    createMetaTags('ab-test', 'BankHolidaysTest:A')
+    expected.page_view.ab_test = 'BankHolidaysTest:A'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
   })
 })
