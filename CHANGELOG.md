@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add GA4 pageview meta tag: ab_test ([PR #3523](https://github.com/alphagov/govuk_publishing_components/pull/3523))
+* Add bundleIndexes ([PR #3528](https://github.com/alphagov/govuk_publishing_components/pull/3528))
 
 ## 35.13.0
 
