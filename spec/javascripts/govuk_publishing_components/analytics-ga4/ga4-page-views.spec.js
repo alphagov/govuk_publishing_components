@@ -29,6 +29,7 @@ describe('Google Tag Manager page view tracking', function () {
         content_id: undefined,
 
         browse_topic: undefined,
+        navigation_page_type: undefined,
         taxonomy_main: undefined,
         taxonomy_main_id: undefined,
         taxonomy_level1: undefined,
@@ -385,6 +386,13 @@ describe('Google Tag Manager page view tracking', function () {
   it('correctly sets the ab-test parameter', function () {
     createMetaTags('ab-test', 'BankHolidaysTest:A')
     expected.page_view.ab_test = 'BankHolidaysTest:A'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('correctly sets the navigation-type parameter', function () {
+    createMetaTags('navigation-page-type', 'Browse level 2')
+    expected.page_view.navigation_page_type = 'Browse level 2'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
