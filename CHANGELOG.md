@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+## 35.13.1
+
 * Add GA4 pageview meta tag: ab_test ([PR #3523](https://github.com/alphagov/govuk_publishing_components/pull/3523))
 * Wrap the text of `start` buttons in a `span` ([PR #3478](https://github.com/alphagov/govuk_publishing_components/pull/3478))
 
