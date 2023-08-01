@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (35.13.0)
+    govuk_publishing_components (35.13.1)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -195,7 +195,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.4)
     minitest (5.19.0)
-    net-imap (0.3.6)
+    net-imap (0.3.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -309,7 +309,7 @@ GEM
       opentelemetry-api (~> 1.1.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
       opentelemetry-instrumentation-rack (~> 0.21)
-    opentelemetry-instrumentation-graphql (0.26.2)
+    opentelemetry-instrumentation-graphql (0.26.3)
       opentelemetry-api (~> 1.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
     opentelemetry-instrumentation-http (0.23.1)
@@ -336,7 +336,7 @@ GEM
       opentelemetry-api (~> 1.0)
       opentelemetry-common (~> 0.19.3)
       opentelemetry-instrumentation-base (~> 0.22.1)
-    opentelemetry-instrumentation-pg (0.25.2)
+    opentelemetry-instrumentation-pg (0.25.3)
       opentelemetry-api (~> 1.0)
       opentelemetry-instrumentation-base (~> 0.22.1)
     opentelemetry-instrumentation-que (0.6.1)
@@ -569,7 +569,7 @@ GEM
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.8.1)
-    websocket-driver (0.7.5)
+    websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
