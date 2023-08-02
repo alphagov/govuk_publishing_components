@@ -116,6 +116,9 @@
             // https://github.com/alphagov/govuk_publishing_components/pull/908#discussion_r302913995
             var videoTitle = options.title
             event.target.getIframe().title = videoTitle + ' (video)'
+            if (window.GOVUK.analyticsGa4.analyticsModules.VideoTracker) {
+              window.GOVUK.analyticsGa4.analyticsModules.VideoTracker.configureVideo(event)
+            }
           },
           onStateChange: function (event) {
             var eventData = event.data
@@ -139,6 +142,10 @@
               }
 
               window.GOVUK.analytics.trackEvent(tracking.category, tracking.action, tracking.label)
+            }
+
+            if (window.GOVUK.analyticsGa4.analyticsModules.VideoTracker) {
+              window.GOVUK.analyticsGa4.analyticsModules.VideoTracker.trackVideo(event, states[eventData])
             }
           }
         }
