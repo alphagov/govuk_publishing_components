@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Add navigation-page-type GA4 pageview attribute ([PR #3529](https://github.com/alphagov/govuk_publishing_components/pull/3529))
+
 ## 35.13.1
 
 * Add GA4 pageview meta tag: ab_test ([PR #3523](https://github.com/alphagov/govuk_publishing_components/pull/3523))

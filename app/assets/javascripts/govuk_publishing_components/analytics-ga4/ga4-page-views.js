@@ -29,6 +29,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             content_id: this.getMetaContent('content-id'),
 
             browse_topic: this.getMetaContent('section'),
+            navigation_page_type: this.getMetaContent('navigation-page-type'),
             taxonomy_level1: this.getMetaContent('themes'),
             taxonomy_main: this.getMetaContent('taxon-slug'),
             taxonomy_main_id: this.getMetaContent('taxon-id'),
