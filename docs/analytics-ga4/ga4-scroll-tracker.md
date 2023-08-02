@@ -55,6 +55,7 @@ When tracking headings, the following data will be pushed to the dataLayer.
       index_section_count: 5 // total number of headings being tracked
     },
     text: "Text of heading",
+    section: "Text of heading",
     type: "heading"
   }
 }
@@ -96,6 +97,7 @@ When tracking markers, the following data will be pushed to the dataLayer.
       index_section_count: 2 // total number of markers being tracked
     },
     text: "Some content",
+    section: "Some content",
     type: "marker"
   }
 }

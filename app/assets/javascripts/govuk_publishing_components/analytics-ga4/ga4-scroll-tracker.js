@@ -115,6 +115,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         data.type = node.eventData.type
         // following will be undefined if tracking percentages
         data.text = node.eventData.text
+        data.section = node.eventData.text
         data.index = node.eventData.index
         // following will be undefined if tracking headings
         data.percent_scrolled = node.eventData.percent_scrolled
