@@ -2,5 +2,6 @@
 @import "govuk/components/select/select";
 
 .gem-c-select__select--full-width {
-  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
 }

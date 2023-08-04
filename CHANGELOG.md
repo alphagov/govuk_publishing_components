@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix select width overlap bug ([PR #3538](https://github.com/alphagov/govuk_publishing_components/pull/3538))
 * Add section attribute to scroll tracking ([PR #3537](https://github.com/alphagov/govuk_publishing_components/pull/3537))
 * Add navigation-page-type GA4 pageview attribute ([PR #3529](https://github.com/alphagov/govuk_publishing_components/pull/3529))
 
