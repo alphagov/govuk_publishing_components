@@ -241,7 +241,8 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
         try {
           var ga4LinkData = JSON.parse(module.getAttribute('data-ga4-link'))
-          ga4LinkData.index_total = totalLinks
+          // use index_total if it already exists, otherwise calculate it and set it
+          ga4LinkData.index_total = ga4LinkData.index_total || totalLinks
           module.setAttribute('data-ga4-link', JSON.stringify(ga4LinkData))
         } catch (e) {
           // if there's a problem with the config, don't start the tracker
