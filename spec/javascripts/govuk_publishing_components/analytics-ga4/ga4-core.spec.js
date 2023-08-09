@@ -312,6 +312,17 @@ describe('GA4 core', function () {
           expect(linkIndex).toEqual('{"index_link": ' + (i + 1) + '}')
         }
       })
+
+      it('allows the index_total to be set manually in rare circumstances', function () {
+        var data = JSON.parse(module.getAttribute('data-ga4-link'))
+        expect(data.index_total).toEqual(5)
+
+        module.setAttribute('data-ga4-link', '{"someData": "blah", "index_total": 9000}')
+        GOVUK.analyticsGa4.core.trackFunctions.setIndexes(module)
+
+        data = JSON.parse(module.getAttribute('data-ga4-link'))
+        expect(data.index_total).toEqual(9000)
+      })
     })
 
     describe('when the data-ga4-set-indexes attribute exists on a module that contains search results or links with a data-ga4-do-not-index attribute', function () {
