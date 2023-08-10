@@ -1,14 +1,14 @@
-## Set up individual component CSS loading
+# Set up individual component CSS loading
 
 Set the component gem up so that rendering applications can (optionally) load each component's stylesheet individually, as described in [RFC #149](https://github.com/alphagov/govuk-rfcs/pull/152).
 
-### TL;DR
+## TL;DR
 
 An array for stylesheet names is set up in the rendering application using a helper. Templates can then add the names of stylesheets to the array, which is then used by the application to output all the stylesheets needed on the page.
 
-Example of rendering application upgrade: https://github.com/alphagov/frontend/pull/3342/
+Example of rendering application upgrade: <https://github.com/alphagov/government-frontend/pull/2734>
 
-### Initial set up
+## Initial set up
 
 There are 3 types of stylesheet that are used across GOVUK:
 
@@ -47,19 +47,19 @@ There is also 1 generic method that takes a file path:
 add_stylesheet_path("views/dir-1/_partial.css")
 ```
 
-### Precompiling
+## Precompiling
 
 Gem component stylesheets are automatically precompiled. Application component and view stylesheets should be added to the application's manifest file to be precompiled, included and served.
 
-### Known problems
+## Known problems
 
-#### Nested components in GOV.UK Frontend
+### Nested components in GOV.UK Frontend
 
 GOV.UK Frontend has components that use other components - for example, both the radio button and character count component include the label component. These are deduped by GOV.UK Frontend when compiling the CSS to a single file.
 
 As this pull request includes the stylesheets for the components individually, this will mean that both the radio stylesheet and the character count stylesheet will include the label component.
 
-This shouldn't make a difference in visual appearance of the site, since the stylesheets were included in alphabetical order and continue to do so. However, it means that there still is some CSS that is unnecessarily included twice.
+This shouldn't make a difference in visual appearance of the site, but does mean some CSS is unnecessarily included twice.
 
 The page sizes were calculated from individual compiled CSS files, so there still is a performance improvement - but it could be further improved.
 
@@ -72,21 +72,17 @@ add_gem_component_stylesheet("radio")
 
 which would then be deduped before being added to the array of stylesheets.
 
-#### Increased request header size
+### Increased request header size
 
-Rails automatically adds the stylesheets on the page to the request `preload` header. This means that it gets bigger with every additional stylesheet that's added to the page. Coupled with a large Content Security Policy (CSP), this means that some pages have a header size that nginx doesn't like at all - so causes nginx to return a 502 error. This error is seen on Integration, but not locally or on Heroku.
+Starting with Rails 6.1 [preload_links_header](https://guides.rubyonrails.org/configuring.html#config-action-view-preload-links-header) is set to `true` by default, this ensures the `javascript_include_tag` and `stylesheet_link_tag` will generate a [Link header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link) that preloads assets.
 
-A pull request has been raised to fix this by [increasing the cache size in NGINX](https://github.com/alphagov/govuk-puppet/pull/11846).
+If your application is using the individual loading of stylesheets feature and `preload_links_header` is set to `true`, you will likely see an increase in the header size for each page. This is important to be aware of as you may need to configure your web server to allow for larger header sizes, example PR - [increasing the cache size in NGINX](https://github.com/alphagov/govuk-puppet/pull/11846).
 
-**Note:**
+## Step by step changes to the rendering application
 
-We will use this feature in the `frontend` app first and review the performance impact before rolling out to other frontend apps.
+### Set up the stylesheets to be precompiled
 
-The increased cache size in NGINX is large enough for the loading of individual CSS assets in the `frontend` app. However, we will need to increase the cache size further before being used in other apps such as `government-frontend` that use a larger number of components, and before it is used to load individual JS assets.
-
-### Step by step changes to the rendering application
-
-**Set up the stylesheets to be precompiled**. Add any app components and views in `app/assets/config/manifest.js`.
+Add any app components and views in `app/assets/config/manifest.js`.
 
 ```diff
 +  //= link components/_calendar.css
@@ -101,9 +97,11 @@ Remove gem component imports from `app/assets/stylesheets/application.scss`:
 - @import "govuk_publishing_components/components/big-number";
 ```
 
-#### Using the publishing components gem without the `static` rendering app
+### Using the publishing components gem without the `static` rendering app
 
-The `static` rendering application already includes several components from the publishing components gem. To avoid requesting the same stylesheet twice, we exclude any stylesheets included in `static` by default.
+The `static` rendering application already includes several components from the publishing components gem - [static application.scss](https://github.com/alphagov/static/blob/main/app/assets/stylesheets/application.scss)
+
+To avoid requesting the same stylesheet twice, we exclude any stylesheets included in `static` by default.
 
 If you are using the individual assets loading feature in an app that does not rely on `static`, we recommend adding the config file below in your application to ensure that the components render correctly.
 
@@ -114,9 +112,11 @@ GovukPublishingComponents.configure do |c|
 end
 ```
 
-**Add the app components and views** to the array. This bit will likely take the most time - and really benefits from a comprehensive list of what pages use which templates (and template variations).
+#### Add the app components and views to the stylesheet array
 
-Add the `add_view_stylesheet` and `add_app_component_stylesheet` to the top of each partial template that needs it:
+This bit will likely take the most time - and really benefits from a comprehensive list of what pages use which templates (and template variations).
+
+Add the `add_view_stylesheet` and `add_app_component_stylesheet` helpers to each view, usually this will be at the top of the file.
 
 ```rb
 add_view_stylesheet("homepage")
@@ -132,7 +132,7 @@ Each stylesheet that is used individually will need an extra `@import` added to 
 @import "govuk_publishing_components/individual_component_support";
 ```
 
-**Hoist body content to the top of your layouts**
+#### Hoist body content to the top of your layouts
 
 This will ensure that all components and views are discovered, before `render_component_stylesheets` is called, and their respective stylesheets added inside the `<head>`. Otherwise, components and view partials added in body content are not rendered in time and associated stylesheets are not included.
 
@@ -153,7 +153,7 @@ Use `yield` to add body content between `<body>` and `</body>`:
 <%= yield :body %>
 ```
 
-**Add the stylesheets just before the closing `</head>` tag of the base template**:
+##### Add the stylesheets just before the closing `</head>` tag of the base template
 
 ```rb
   <head>
