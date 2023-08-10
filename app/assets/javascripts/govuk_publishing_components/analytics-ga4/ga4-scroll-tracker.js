@@ -60,6 +60,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       window.addEventListener('scroll', this.scrollEvent)
       this.resizeEvent = this.onResize.bind(this)
       window.addEventListener('resize', this.resizeEvent)
+      this.resetEvent = this.onReset.bind(this)
+      window.addEventListener('dynamic-page-update', this.resetEvent)
 
       // check if the page height changes e.g. accordion opened
       this.interval = window.setInterval(function () {
@@ -130,6 +132,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4ScrollTracker.prototype.isVisible = function (top, bottom) {
     var scroll = window.scrollY || document.documentElement.scrollTop // IE fallback
     return scroll <= top && (scroll + this.windowHeight) >= bottom
+  }
+
+  // if reset, we set all nodes 'alreadySeen' to false
+  // used when the page content is dynamically updated e.g. search
+  Ga4ScrollTracker.prototype.onReset = function () {
+    for (var i = 0; i < this.trackedNodes.length; i++) {
+      this.trackedNodes[i].alreadySeen = false
+    }
   }
 
   Ga4ScrollTracker.Heading = function (config) {

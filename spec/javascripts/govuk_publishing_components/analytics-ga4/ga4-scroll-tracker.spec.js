@@ -51,6 +51,7 @@ describe('GA4 scroll tracker', function () {
   function stopComponent (tracker) {
     window.removeEventListener('scroll', tracker.scrollEvent)
     window.removeEventListener('resize', tracker.resizeEvent)
+    window.removeEventListener('dynamic-page-update', tracker.resetEvent)
     clearInterval(tracker.interval)
   }
 
@@ -184,6 +185,14 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(1)
     })
+
+    it('should reset alreadyFound nodes when a dynamic page update event occurs', function () {
+      expect(scrollTracker.trackedNodes[0].alreadySeen).toEqual(true)
+      GOVUK.triggerEvent(document.body, 'dynamic-page-update')
+      for (var i = 0; i < scrollTracker.trackedNodes.length; i++) {
+        expect(scrollTracker.trackedNodes[i].alreadySeen).toEqual(false)
+      }
+    })
   })
 
   describe('when tracking by percentage scrolled', function () {
@@ -241,6 +250,18 @@ describe('GA4 scroll tracker', function () {
       expect(window.dataLayer[3]).toEqual(expected)
       expected.event_data.percent_scrolled = '100'
       expect(window.dataLayer[4]).toEqual(expected)
+    })
+
+    it('should reset alreadyFound nodes when a dynamic page update event occurs', function () {
+      // change the page height to begin with to set some nodes to alreadySeen true
+      setPageHeight(10)
+      var height = window.innerHeight
+      setPageHeight(height * 4)
+      expect(scrollTracker.trackedNodes[0].alreadySeen).toEqual(true)
+      GOVUK.triggerEvent(document.body, 'dynamic-page-update')
+      for (var i = 0; i < scrollTracker.trackedNodes.length; i++) {
+        expect(scrollTracker.trackedNodes[i].alreadySeen).toEqual(false)
+      }
     })
 
     function setPageHeight (height) {
