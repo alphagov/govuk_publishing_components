@@ -8,30 +8,12 @@ describe('GA4 scroll tracker', function () {
     window.dataLayer = []
     window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
     jasmine.clock().install()
-    expected = {
-      event: 'event_data',
-      event_data: {
-        action: 'scroll',
-        event_name: 'scroll',
-        external: undefined,
-        index: {
-          index_link: undefined,
-          index_section: undefined,
-          index_section_count: undefined
-        },
-        index_total: undefined,
-        link_domain: undefined,
-        link_path_parts: undefined,
-        method: undefined,
-        percent_scrolled: undefined,
-        section: undefined,
-        text: undefined,
-        tool_name: undefined,
-        type: undefined,
-        url: undefined
-      },
-      govuk_gem_version: 'gem-version'
-    }
+
+    expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+    expected.event = 'event_data'
+    expected.event_data.action = 'scroll'
+    expected.event_data.event_name = 'scroll'
+    expected.govuk_gem_version = 'gem-version'
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('gem-version')
   })
 
@@ -215,7 +197,7 @@ describe('GA4 scroll tracker', function () {
     })
 
     it('should send a tracking event on page load for positions that are already visible', function () {
-      setPageHeight(window.innerHeight)
+      setPageHeight(10)
 
       expect(window.dataLayer.length).toEqual(5)
 

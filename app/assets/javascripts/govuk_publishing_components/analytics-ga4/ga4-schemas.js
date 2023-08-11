@@ -29,7 +29,10 @@
         link_domain: this.undefined,
         link_path_parts: this.undefined,
         tool_name: this.undefined,
-        percent_scrolled: this.undefined
+        percent_scrolled: this.undefined,
+        video_current_time: this.undefined,
+        video_duration: this.undefined,
+        video_percent: this.undefined
       }
     }
   }
