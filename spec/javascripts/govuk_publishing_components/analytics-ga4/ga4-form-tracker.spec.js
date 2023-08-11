@@ -130,9 +130,9 @@ describe('Google Analytics form tracking', function () {
         '<label for="textid1">Label</label>' +
         '<input type="text" id="textid1" name="test-text1" value="text 1"/>' +
         '<label for="textid2">Label</label>' +
-        '<input type="text" id="textid2" name="test-text2"/>' +
+        '<input type="search" id="textid2" name="test-text2"/>' +
         '<label for="textid3">Label</label>' +
-        '<input type="text" id="textid3" name="test-text3" value="text 3"/>'
+        '<input type="email" id="textid3" name="test-text3" value="text 3"/>'
       expected.event_data.text = '[REDACTED]'
 
       window.GOVUK.triggerEvent(element, 'submit')
@@ -254,6 +254,23 @@ describe('Google Analytics form tracking', function () {
         '<label for="searchid">Label for search</label>' +
         '<input type="search" id="searchid" name="test-search" value="test-search-value"/>'
       expected.event_data.text = 'test-text-value,test-search-value'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('does not redact data from multiple text inputs of different types', function () {
+      element.innerHTML =
+        '<label for="textid1">Label</label>' +
+        '<input type="text" id="textid1" name="test-text1" value="text 1"/>' +
+        '<label for="textid2">Label</label>' +
+        '<input type="search" id="textid2" name="test-text2" value="text 2"/>' +
+        '<label for="textid3">Label</label>' +
+        '<input type="email" id="textid3" name="test-text3" value="text 3"/>' +
+        '<label for="textid4">Label</label>' +
+        '<input type="number" id="textid4" name="test-text4" value="4"/>'
+      element.setAttribute('data-ga4-form-include-text', true)
+      expected.event_data.text = 'text 1,text 2,text 3,4'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
