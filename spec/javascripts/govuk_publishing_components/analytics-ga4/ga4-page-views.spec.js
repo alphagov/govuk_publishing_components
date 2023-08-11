@@ -30,6 +30,8 @@ describe('Google Tag Manager page view tracking', function () {
 
         browse_topic: undefined,
         navigation_page_type: undefined,
+        navigation_list_type: undefined,
+        step_navs: undefined,
         taxonomy_main: undefined,
         taxonomy_main_id: undefined,
         taxonomy_level1: undefined,
@@ -390,9 +392,23 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('correctly sets the navigation-type parameter', function () {
+  it('correctly sets the navigation-page-type parameter', function () {
     createMetaTags('navigation-page-type', 'Browse level 2')
     expected.page_view.navigation_page_type = 'Browse level 2'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('correctly sets the navigation-list-type parameter', function () {
+    createMetaTags('navigation-list-type', 'curated')
+    expected.page_view.navigation_list_type = 'curated'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('correctly sets the step-navs parameter', function () {
+    createMetaTags('stepnavs', 'e01e924b-9c7c-4c71-8241-66a575c2f61f')
+    expected.page_view.step_navs = 'e01e924b-9c7c-4c71-8241-66a575c2f61f'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
