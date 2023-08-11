@@ -84,12 +84,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var labelText = input.label.innerText || input.label.textContent
       var inputType = elem.getAttribute('type')
       var inputNodename = elem.nodeName
+      var inputTypes = ['text', 'search', 'email', 'number']
 
       if (inputType === 'checkbox' && elem.checked) {
         input.answer = labelText
       } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex].value) {
         input.answer = elem.options[elem.selectedIndex].text
-      } else if ((inputType === 'text' || inputType === 'search') && elem.value) {
+      } else if (inputTypes.indexOf(inputType) !== -1 && elem.value) {
         if (this.includeTextInputValues) {
           var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
           input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
