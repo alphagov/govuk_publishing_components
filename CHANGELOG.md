@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add a reset option into the GA4 scrolltracker ([PR #3544](https://github.com/alphagov/govuk_publishing_components/pull/3544))
 * Adjust core functions setIndexes ([PR #3541](https://github.com/alphagov/govuk_publishing_components/pull/3541))
 * GA4 pageview changes ([PR #3542](https://github.com/alphagov/govuk_publishing_components/pull/3542))
 * Fix select width overlap bug ([PR #3538](https://github.com/alphagov/govuk_publishing_components/pull/3538))
