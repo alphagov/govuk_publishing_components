@@ -13,6 +13,7 @@ describe "Emergency Banner", type: :view do
       link: options[:link],
       link_text: options[:link_text],
       homepage: options[:homepage],
+      ga4_tracking: options[:ga4_tracking],
     }
   end
 
@@ -76,5 +77,14 @@ describe "Emergency Banner", type: :view do
     id = css_select(".gem-c-emergency-banner h2")[0][:id]
     # check that the aria-labelledby points to that header using the header id
     assert_select(".gem-c-emergency-banner[aria-labelledby='#{id}']")
+  end
+
+  it "renders banner with ga4 attributes" do
+    render_component(emergency_banner_attributes({ campaign_class: "notable-death", ga4_tracking: true }))
+    assert_select ".gem-c-emergency-banner[data-ga4-emergency-banner]"
+    assert_select ".gem-c-emergency-banner[data-module=ga4-link-tracker]"
+    assert_select ".gem-c-emergency-banner[data-ga4-track-links-only]"
+    assert_select ".gem-c-emergency-banner[data-ga4-set-indexes]"
+    assert_select ".gem-c-emergency-banner[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"emergency banner\",\"section\":\"His Royal Highness Henry VIII\"}']"
   end
 end
