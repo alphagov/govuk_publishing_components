@@ -9,8 +9,21 @@
 
 ## Unreleased
 
-* Add GA4 pageview meta tag: ab_test ([PR #3523](https://github.com/alphagov/govuk_publishing_components/pull/3523))
+* Add a reset option into the GA4 scrolltracker ([PR #3544](https://github.com/alphagov/govuk_publishing_components/pull/3544))
+* Expand GA4 form tracker ([PR #3546](https://github.com/alphagov/govuk_publishing_components/pull/3546))
+* Adjust core functions setIndexes ([PR #3541](https://github.com/alphagov/govuk_publishing_components/pull/3541))
+* GA4 pageview changes ([PR #3542](https://github.com/alphagov/govuk_publishing_components/pull/3542))
+* Fix select width overlap bug ([PR #3538](https://github.com/alphagov/govuk_publishing_components/pull/3538))
+* Add section attribute to scroll tracking ([PR #3537](https://github.com/alphagov/govuk_publishing_components/pull/3537))
+* Add navigation-page-type GA4 pageview attribute ([PR #3529](https://github.com/alphagov/govuk_publishing_components/pull/3529))
+* Update the documentation for loading component stylesheets individually ([PR #3543](https://github.com/alphagov/govuk_publishing_components/pull/3543))
+* Add GA4 video tracking ([PR #3535](https://github.com/alphagov/govuk_publishing_components/pull/3535))
 * Move GA4 attachment link tracking to all attachment links ([PR #3515](https://github.com/alphagov/govuk_publishing_components/pull/3515))
+
+## 35.13.1
+
+* Add GA4 pageview meta tag: ab_test ([PR #3523](https://github.com/alphagov/govuk_publishing_components/pull/3523))
+* Wrap the text of `start` buttons in a `span` ([PR #3478](https://github.com/alphagov/govuk_publishing_components/pull/3478))
 
 ## 35.13.0
 

@@ -39,7 +39,10 @@ describe('Google Analytics schemas', function () {
         link_domain: undefined,
         link_path_parts: undefined,
         tool_name: undefined,
-        percent_scrolled: undefined
+        percent_scrolled: undefined,
+        video_current_time: this.undefined,
+        video_duration: this.undefined,
+        video_percent: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -73,7 +76,10 @@ describe('Google Analytics schemas', function () {
         link_domain: undefined,
         link_path_parts: undefined,
         tool_name: undefined,
-        percent_scrolled: undefined
+        percent_scrolled: undefined,
+        video_current_time: this.undefined,
+        video_duration: this.undefined,
+        video_percent: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -106,7 +112,10 @@ describe('Google Analytics schemas', function () {
         link_domain: undefined,
         link_path_parts: undefined,
         tool_name: undefined,
-        percent_scrolled: undefined
+        percent_scrolled: undefined,
+        video_current_time: this.undefined,
+        video_duration: this.undefined,
+        video_percent: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -138,7 +147,10 @@ describe('Google Analytics schemas', function () {
         link_domain: undefined,
         link_path_parts: undefined,
         tool_name: undefined,
-        percent_scrolled: undefined
+        percent_scrolled: undefined,
+        video_current_time: this.undefined,
+        video_duration: this.undefined,
+        video_percent: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -176,7 +188,10 @@ describe('Google Analytics schemas', function () {
           not: 'defined by the schema'
         },
         tool_name: undefined,
-        percent_scrolled: undefined
+        percent_scrolled: undefined,
+        video_current_time: this.undefined,
+        video_duration: this.undefined,
+        video_percent: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')

@@ -8,30 +8,12 @@ describe('GA4 scroll tracker', function () {
     window.dataLayer = []
     window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
     jasmine.clock().install()
-    expected = {
-      event: 'event_data',
-      event_data: {
-        action: 'scroll',
-        event_name: 'scroll',
-        external: undefined,
-        index: {
-          index_link: undefined,
-          index_section: undefined,
-          index_section_count: undefined
-        },
-        index_total: undefined,
-        link_domain: undefined,
-        link_path_parts: undefined,
-        method: undefined,
-        percent_scrolled: undefined,
-        section: undefined,
-        text: undefined,
-        tool_name: undefined,
-        type: undefined,
-        url: undefined
-      },
-      govuk_gem_version: 'gem-version'
-    }
+
+    expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+    expected.event = 'event_data'
+    expected.event_data.action = 'scroll'
+    expected.event_data.event_name = 'scroll'
+    expected.govuk_gem_version = 'gem-version'
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('gem-version')
   })
 
@@ -51,6 +33,7 @@ describe('GA4 scroll tracker', function () {
   function stopComponent (tracker) {
     window.removeEventListener('scroll', tracker.scrollEvent)
     window.removeEventListener('resize', tracker.resizeEvent)
+    window.removeEventListener('dynamic-page-update', tracker.resetEvent)
     clearInterval(tracker.interval)
   }
 
@@ -101,6 +84,7 @@ describe('GA4 scroll tracker', function () {
 
     it('should send a tracking event on initialisation for headings that are already visible', function () {
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -114,6 +98,7 @@ describe('GA4 scroll tracker', function () {
     it('should track headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -124,6 +109,7 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(2)
       expected.event_data.text = 'Heading 3'
+      expected.event_data.section = 'Heading 3'
       expected.event_data.index.index_section = 3
       expect(window.dataLayer[1]).toEqual(expected)
     })
@@ -131,6 +117,7 @@ describe('GA4 scroll tracker', function () {
     it('should track newly visible headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -140,6 +127,7 @@ describe('GA4 scroll tracker', function () {
       jasmine.clock().tick(200)
 
       expected.event_data.text = 'Heading 2'
+      expected.event_data.section = 'Heading 2'
       expected.event_data.index.index_section = 2
       expect(window.dataLayer[1]).toEqual(expected)
       expect(window.dataLayer.length).toEqual(2)
@@ -148,6 +136,7 @@ describe('GA4 scroll tracker', function () {
     it('should track when the body height changes', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -158,6 +147,7 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(2)
       expected.event_data.text = 'Heading 3'
+      expected.event_data.section = 'Heading 3'
       expected.event_data.index.index_section = 3
       expect(window.dataLayer[1]).toEqual(expected)
 
@@ -167,6 +157,7 @@ describe('GA4 scroll tracker', function () {
     it('should not track headings wrapped in ignored elements', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -175,6 +166,14 @@ describe('GA4 scroll tracker', function () {
       jasmine.clock().tick(200)
 
       expect(window.dataLayer.length).toEqual(1)
+    })
+
+    it('should reset alreadyFound nodes when a dynamic page update event occurs', function () {
+      expect(scrollTracker.trackedNodes[0].alreadySeen).toEqual(true)
+      GOVUK.triggerEvent(document.body, 'dynamic-page-update')
+      for (var i = 0; i < scrollTracker.trackedNodes.length; i++) {
+        expect(scrollTracker.trackedNodes[i].alreadySeen).toEqual(false)
+      }
     })
   })
 
@@ -198,7 +197,7 @@ describe('GA4 scroll tracker', function () {
     })
 
     it('should send a tracking event on page load for positions that are already visible', function () {
-      setPageHeight(window.innerHeight)
+      setPageHeight(10)
 
       expect(window.dataLayer.length).toEqual(5)
 
@@ -233,6 +232,18 @@ describe('GA4 scroll tracker', function () {
       expect(window.dataLayer[3]).toEqual(expected)
       expected.event_data.percent_scrolled = '100'
       expect(window.dataLayer[4]).toEqual(expected)
+    })
+
+    it('should reset alreadyFound nodes when a dynamic page update event occurs', function () {
+      // change the page height to begin with to set some nodes to alreadySeen true
+      setPageHeight(10)
+      var height = window.innerHeight
+      setPageHeight(height * 4)
+      expect(scrollTracker.trackedNodes[0].alreadySeen).toEqual(true)
+      GOVUK.triggerEvent(document.body, 'dynamic-page-update')
+      for (var i = 0; i < scrollTracker.trackedNodes.length; i++) {
+        expect(scrollTracker.trackedNodes[i].alreadySeen).toEqual(false)
+      }
     })
 
     function setPageHeight (height) {
@@ -284,6 +295,7 @@ describe('GA4 scroll tracker', function () {
 
     it('should send a tracking event on initialisation for headings that are already visible', function () {
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -297,6 +309,7 @@ describe('GA4 scroll tracker', function () {
     it('should track headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -307,6 +320,7 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(2)
       expected.event_data.text = 'Heading 3'
+      expected.event_data.section = 'Heading 3'
       expected.event_data.index.index_section = 3
       expect(window.dataLayer[1]).toEqual(expected)
     })
@@ -314,6 +328,7 @@ describe('GA4 scroll tracker', function () {
     it('should track newly visible headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -323,6 +338,7 @@ describe('GA4 scroll tracker', function () {
       jasmine.clock().tick(200)
 
       expected.event_data.text = 'Heading 2'
+      expected.event_data.section = 'Heading 2'
       expected.event_data.index.index_section = 2
       expect(window.dataLayer[1]).toEqual(expected)
       expect(window.dataLayer.length).toEqual(2)
@@ -331,6 +347,7 @@ describe('GA4 scroll tracker', function () {
     it('should track when the body height changes', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -341,6 +358,7 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(2)
       expected.event_data.text = 'Heading 3'
+      expected.event_data.section = 'Heading 3'
       expected.event_data.index.index_section = 3
       expect(window.dataLayer[1]).toEqual(expected)
 
@@ -350,6 +368,7 @@ describe('GA4 scroll tracker', function () {
     it('should not track headings wrapped in ignored elements', function () {
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.index.index_section = 1
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -397,6 +416,7 @@ describe('GA4 scroll tracker', function () {
 
       expect(window.dataLayer.length).toEqual(1)
       expected.event_data.text = 'Heading 1'
+      expected.event_data.section = 'Heading 1'
       expected.event_data.type = 'heading'
       expected.event_data.index.index_section = 1
       expected.event_data.index.index_section_count = 2
