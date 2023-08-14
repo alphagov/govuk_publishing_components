@@ -18,6 +18,7 @@
 * Add navigation-page-type GA4 pageview attribute ([PR #3529](https://github.com/alphagov/govuk_publishing_components/pull/3529))
 * Update the documentation for loading component stylesheets individually ([PR #3543](https://github.com/alphagov/govuk_publishing_components/pull/3543))
 * Add GA4 video tracking ([PR #3535](https://github.com/alphagov/govuk_publishing_components/pull/3535))
+* Move GA4 attachment link tracking to all attachment links ([PR #3515](https://github.com/alphagov/govuk_publishing_components/pull/3515))
 
 ## 35.13.1
 
