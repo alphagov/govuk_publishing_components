@@ -6,7 +6,7 @@
   <% else %>
     <%= render "govuk_publishing_components/components/layout_header", {
       environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
-      product_name: GovukPublishingComponents::Config.component_guide_title,
+      product_name: "#{GovukPublishingComponents::Config.component_guide_title} #{GovukPublishingComponents::VERSION}",
       href: component_guide_path
     } %>
     <div class="govuk-width-container app-width-container--wide">
