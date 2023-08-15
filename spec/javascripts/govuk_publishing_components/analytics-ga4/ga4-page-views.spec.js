@@ -50,7 +50,8 @@ describe('Google Tag Manager page view tracking', function () {
         organisations: undefined,
         world_locations: undefined,
 
-        dynamic: 'false'
+        dynamic: 'false',
+        emergency_banner: undefined
       }
     }
     window.dataLayer = []
@@ -411,5 +412,15 @@ describe('Google Tag Manager page view tracking', function () {
     expected.page_view.step_navs = 'e01e924b-9c7c-4c71-8241-66a575c2f61f'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('correctly sets the emergency_banner parameter', function () {
+    var div = document.createElement('div')
+    div.setAttribute('data-ga4-emergency-banner', '')
+    document.body.appendChild(div)
+    expected.page_view.emergency_banner = 'true'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    document.body.removeChild(div)
   })
 })

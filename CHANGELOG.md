@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add GA4 tracking to the emergency banner ([PR #3549](https://github.com/alphagov/govuk_publishing_components/pull/3549))
+
 ## 35.13.2
 
 * Add a reset option into the GA4 scrolltracker ([PR #3544](https://github.com/alphagov/govuk_publishing_components/pull/3544))
