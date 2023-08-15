@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.13.2
 
 * Add a reset option into the GA4 scrolltracker ([PR #3544](https://github.com/alphagov/govuk_publishing_components/pull/3544))
 * Expand GA4 form tracker ([PR #3546](https://github.com/alphagov/govuk_publishing_components/pull/3546))
