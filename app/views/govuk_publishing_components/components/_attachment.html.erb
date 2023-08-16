@@ -11,6 +11,7 @@
 
   container_class_names = %w[gem-c-attachment govuk-!-display-none-print]
   container_class_names << shared_helper.get_margin_bottom if local_assigns.key?(:margin_bottom)
+  ga4_link = { 'event_name': 'navigation', 'type': 'attachment' }
 
   case attachment.type
   when "file"
@@ -38,6 +39,9 @@
         class: "gem-c-attachment__attribute",
       )
     end
+
+    ga4_link[:event_name] = 'file_download'
+
   when "html"
     attributes << tag.span(
       "HTML",
@@ -51,7 +55,7 @@
   end
 
 %>
-<%= tag.section class: class_names(container_class_names), data: { module: "ga4-link-tracker", ga4_track_links_only: "", ga4_link: { 'event_name': 'navigation', 'type': 'attachment' } } do %>
+<%= tag.section class: class_names(container_class_names), data: { module: "ga4-link-tracker", ga4_track_links_only: "", ga4_link: ga4_link } do %>
   <%= tag.div class: "gem-c-attachment__thumbnail" do %>
     <%= link_to attachment.url,
                 class: "govuk-link",
