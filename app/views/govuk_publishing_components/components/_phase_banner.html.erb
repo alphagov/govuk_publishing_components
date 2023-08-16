@@ -5,6 +5,7 @@ app_name ||= nil
 phase ||= nil
 message ||= nil
 inverse ||= false
+ga4_tracking ||= false
 
 unless message.present?
   if phase == "beta"
@@ -16,9 +17,24 @@ end
 
 container_css_classes = %w(gem-c-phase-banner govuk-phase-banner)
 container_css_classes << "gem-c-phase-banner--inverse" if inverse
+
+data_attributes = {}
+
+if ga4_tracking
+  data_attributes[:ga4_phase_banner] = phase
+  data_attributes[:module] = "ga4-link-tracker"
+  data_attributes[:ga4_track_links_only] = ""
+  data_attributes[:ga4_set_indexes] = ""
+  data_attributes[:ga4_link] = {
+    event_name: "navigation",
+    type: "phase banner",
+    section: Nokogiri::HTML(message).text,
+  }.to_json
+end
+
 %>
 
-<%= tag.div class: container_css_classes do %>
+<%= tag.div class: container_css_classes, data: data_attributes do %>
   <%= tag.p class: "govuk-phase-banner__content" do %>
     <%= tag.strong app_name, class: "govuk-phase-banner__content__app-name" if app_name %>
     <%= tag.strong phase, class: "govuk-tag govuk-phase-banner__content__tag" if phase %>

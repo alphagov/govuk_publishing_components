@@ -32,3 +32,11 @@ examples:
       app_name: Skittles Maker
       phase: beta
       inverse: true
+  with_ga4_tracking:
+    description: |
+      Enables GA4 tracking on the banner. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
+    data:
+      app_name: Skittles Maker
+      phase: beta
+      inverse: true
+      ga4_tracking: true

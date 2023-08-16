@@ -11,6 +11,7 @@
 
 * Add GA4 tracking to the emergency banner ([PR #3549](https://github.com/alphagov/govuk_publishing_components/pull/3549))
 * Ensure file attachments have the GA4 event_name 'file_download' ([PR #3553](https://github.com/alphagov/govuk_publishing_components/pull/3553))
+* Add GA4 tracking to the phase banner ([PR #3552](https://github.com/alphagov/govuk_publishing_components/pull/3552))
 
 ## 35.13.2
 

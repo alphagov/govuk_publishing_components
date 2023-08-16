@@ -51,7 +51,8 @@ describe('Google Tag Manager page view tracking', function () {
         world_locations: undefined,
 
         dynamic: 'false',
-        emergency_banner: undefined
+        emergency_banner: undefined,
+        phase_banner: undefined
       }
     }
     window.dataLayer = []
@@ -419,6 +420,16 @@ describe('Google Tag Manager page view tracking', function () {
     div.setAttribute('data-ga4-emergency-banner', '')
     document.body.appendChild(div)
     expected.page_view.emergency_banner = 'true'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    document.body.removeChild(div)
+  })
+
+  it('correctly sets the phase_banner parameter', function () {
+    var div = document.createElement('div')
+    div.setAttribute('data-ga4-phase-banner', 'beta')
+    document.body.appendChild(div)
+    expected.page_view.phase_banner = 'beta'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
     document.body.removeChild(div)

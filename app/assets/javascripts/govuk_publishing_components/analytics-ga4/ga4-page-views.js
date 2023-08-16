@@ -54,7 +54,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             and therefore we can use it to set the dynamic property appropriately. This value is used by PA's to differentiate
             between fresh page loads and dynamic page updates. */
             dynamic: referrer ? 'true' : 'false',
-            emergency_banner: document.querySelector('[data-ga4-emergency-banner]') ? 'true' : undefined
+            emergency_banner: document.querySelector('[data-ga4-emergency-banner]') ? 'true' : undefined,
+            phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
@@ -89,6 +90,13 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return tag.getAttribute('content')
       } else {
         return this.nullValue
+      }
+    },
+
+    getElementAttribute: function (attributeName) {
+      var el = document.querySelector('[' + attributeName + ']')
+      if (el) {
+        return el.getAttribute(attributeName)
       }
     },
 
