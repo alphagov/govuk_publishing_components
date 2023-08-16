@@ -269,7 +269,7 @@ describe "Attachment", type: :view do
     assert_select '.gem-c-attachment:not([class*="govuk-!-margin-bottom-"])'
   end
 
-  it "includes GA4 tracking on attachment links by default" do
+  it "includes GA4 tracking on HTML attachment links by default" do
     render_component(
       attachment: {
         title: "Test",
@@ -281,6 +281,21 @@ describe "Attachment", type: :view do
 
     assert_select "section[data-module=ga4-link-tracker]"
     assert_select "section[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
+    assert_select "section[data-ga4-track-links-only]"
+  end
+
+  it "includes GA4 tracking on file attachment links by default" do
+    render_component(
+      attachment: {
+        title: "Test",
+        url: "https://example.com",
+        filename: "test",
+        content_type: "application/pdf",
+      },
+    )
+
+    assert_select "section[data-module=ga4-link-tracker]"
+    assert_select "section[data-ga4-link='{\"event_name\":\"file_download\",\"type\":\"attachment\"}']"
     assert_select "section[data-ga4-track-links-only]"
   end
 end
