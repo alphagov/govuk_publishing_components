@@ -169,10 +169,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       removeCrossDomainParams: function (href) {
         if (href.indexOf('_ga') !== -1 || href.indexOf('_gl') !== -1) {
           // _ga & _gl are values needed for cross domain tracking, but we don't want them included in our click tracking.
-          href = href.replaceAll(/_g[al]=([^&]*)/g, '')
+          href = href.replace(/_g[al]=([^&]*)/g, '')
 
           // The following code cleans up inconsistencies such as gov.uk/&&, gov.uk/?&hello=world, gov.uk/?, and gov.uk/&.
-          href = href.replaceAll(/(&&)+/g, '&')
+          href = href.replace(/(&&)+/g, '&')
           href = href.replace('?&', '?')
           if (this.stringEndsWith(href, '?') || this.stringEndsWith(href, '&')) {
             href = href.substring(0, href.length - 1)
