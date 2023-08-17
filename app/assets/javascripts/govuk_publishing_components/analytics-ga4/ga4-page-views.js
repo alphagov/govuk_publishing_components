@@ -55,7 +55,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             between fresh page loads and dynamic page updates. */
             dynamic: referrer ? 'true' : 'false',
             emergency_banner: document.querySelector('[data-ga4-emergency-banner]') ? 'true' : undefined,
-            phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined
+            phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined,
+            devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)

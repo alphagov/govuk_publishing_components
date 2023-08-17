@@ -89,3 +89,19 @@ examples:
       national_applicability:
         england:
           applicable: true
+  with_ga4_tracking:
+    description: |
+      Enables GA4 tracking on the banner. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
+    data:
+      national_applicability:
+        england:
+          applicable: true
+        scotland:
+          applicable: true
+        wales:
+          applicable: true
+        northern_ireland:
+          applicable: false
+          alternative_url: /
+      type: detailed_guide
+      ga4_tracking: true

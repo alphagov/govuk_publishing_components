@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add GA4 tracking to devolved nations banners ([PR #3556](https://github.com/alphagov/govuk_publishing_components/pull/3556))
+
 ## 35.14.0
 
 * Add GA4 tracking to the emergency banner ([PR #3549](https://github.com/alphagov/govuk_publishing_components/pull/3549))

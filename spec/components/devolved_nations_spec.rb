@@ -157,4 +157,49 @@ describe "Devolved Nations", type: :view do
     )
     assert_select ".gem-c-devolved-nations > h3", text: "Applies to England"
   end
+
+  it "renders a devolved nations component, with ga4 tracking, correctly" do
+    render_component(
+      national_applicability: {
+        england: {
+          applicable: true,
+        },
+        northern_ireland: {
+          applicable: false,
+          alternative_url: "/publication-northern-ireland",
+        },
+        scotland: {
+          applicable: true,
+          alternative_url: "/publication-scotland",
+        },
+        wales: {
+          applicable: true,
+          alternative_url: "/publication-wales",
+        },
+      },
+      ga4_tracking: true,
+    )
+    assert_select ".gem-c-devolved-nations[data-ga4-devolved-nations-banner='England, Scotland, Wales']"
+    assert_select ".gem-c-devolved-nations[data-module=ga4-link-tracker]"
+    assert_select ".gem-c-devolved-nations[data-ga4-track-links-only]"
+    assert_select ".gem-c-devolved-nations[data-ga4-set-indexes]"
+    assert_select ".gem-c-devolved-nations[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"devolved nations banner\",\"section\":\"Applies to England, Scotland and Wales\"}']"
+  end
+
+  it "renders a devolved nations component, without ga4 tracking, correctly" do
+    render_component(
+      national_applicability: {
+        england: {
+          applicable: true,
+        },
+      },
+      ga4_tracking: false,
+    )
+
+    assert_no_selector ".gem-c-devolved-nations[data-ga4-devolved-nations-banner]"
+    assert_no_selector ".gem-c-devolved-nations[data-module=ga4-link-tracker]"
+    assert_no_selector ".gem-c-devolved-nations[data-ga4-track-links-only]"
+    assert_no_selector ".gem-c-devolved-nations[data-ga4-set-indexes]"
+    assert_no_selector ".gem-c-devolved-nations[data-ga4-link]"
+  end
 end
