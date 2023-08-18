@@ -1,6 +1,6 @@
 # Google Analytics 4 and Google Tag Manager
 
-This document describes the use of Google Tag Manager (GTM) with Google Analytics 4 (GA4) on GOV.UK Publishing.
+This document describes the use of Google Tag Manager (GTM) with Google Analytics 4 (GA4) on GOV.UK Publishing. Further information on our data schemas can be found in our [Implementation record](https://docs.publishing.service.gov.uk/analytics/).
 
 No analytics code is initialised and no data is gathered without user consent.
 
@@ -65,6 +65,18 @@ When cookie consent is given, `init-ga4.js` looks through the `analyticsModules`
 ### Code structure for Modules
 
 Where analytics code is required as a [GOV.UK JavaScript Module](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md), the code structure for the [existing model for deferred loading](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md#modules-and-cookie-consent) should be used.
+
+### Core code
+
+General analytics code and reused functions are kept in [ga4-core.js](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/ga4-core.js).
+
+This includes the code that initialises Google Tag Manager and pushes data to the dataLayer, as well as shared functions for link and ecommerce tracking.
+
+### Code in other applications
+
+While our aim is to keep the majority of the analytics code in `govuk_publishing_components` it makes sense to put analytics code specific to a certain page in the application that renders that page. GA4 analytics documentation can also be found in the following applications.
+
+- [finder-frontend](https://github.com/alphagov/finder-frontend/tree/main/docs/analytics-ga4)
 
 ## Data schemas
 
