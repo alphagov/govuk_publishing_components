@@ -49,4 +49,13 @@ describe "Phase banner", type: :view do
     assert_select ".gem-c-phase-banner[data-ga4-set-indexes]"
     assert_select ".gem-c-phase-banner[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"phase banner\",\"section\":\"This part of GOV.UK is being rebuilt – find out what beta means\"}']"
   end
+
+  it "renders banner without ga4 attributes" do
+    render_component(phase: "beta", ga4_tracking: false)
+    assert_no_selector ".gem-c-phase-banner[data-ga4-phase-banner]"
+    assert_no_selector ".gem-c-phase-banner[data-module=ga4-link-tracker]"
+    assert_no_selector ".gem-c-phase-banner[data-ga4-track-links-only]"
+    assert_no_selector ".gem-c-phase-banner[data-ga4-set-indexes]"
+    assert_no_selector ".gem-c-phase-banner[data-ga4-link]"
+  end
 end

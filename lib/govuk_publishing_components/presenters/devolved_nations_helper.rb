@@ -8,15 +8,27 @@ module GovukPublishingComponents
         @type = local_assigns[:type] || "publication"
       end
 
-      def applicable_nations_title_text
+      def applicable_nations_title_text(use_english_translation = nil)
         @national_applicability
           .select { |_, v| v[:applicable] == true }
-          .map { |k, _| I18n.t("components.devolved_nations.#{k}") }
+          .map { |k, _| get_translation("components.devolved_nations.#{k}", use_english_translation) }
           .sort
           .to_sentence(
-            two_words_connector: I18n.t("components.devolved_nations.connectors.two_words"),
-            last_word_connector: I18n.t("components.devolved_nations.connectors.last_word"),
+            two_words_connector: get_translation("components.devolved_nations.connectors.two_words", use_english_translation),
+            last_word_connector: get_translation("components.devolved_nations.connectors.last_word", use_english_translation),
           )
+      end
+
+      def get_translation(key, use_english_translation = nil)
+        return I18n.t(key, locale: :en) if use_english_translation
+
+        I18n.t(key)
+      end
+
+      def ga4_applicable_nations_title_text(remove_connector_word = nil)
+        return applicable_nations_title_text(true).gsub(" and", ",") if remove_connector_word
+
+        applicable_nations_title_text(true)
       end
 
       def nations_with_urls
