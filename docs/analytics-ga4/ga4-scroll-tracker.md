@@ -117,6 +117,12 @@ A single template may render multiple pages and different configurations may be 
 <% end %>
 ```
 
+## Tracking dynamic pages
+
+Dynamically updated pages like the search pages present a challenge for scroll tracking. Since scroll events are only recorded once, if the page content changes and users have already scrolled, those scroll events will not fire again even though the page has changed.
+
+It is possible to 'reset' the behaviour of the scroll tracker on dynamic pages by creating an event called `dynamic-page-update`. This is used on the [search pages](https://github.com/alphagov/finder-frontend/pull/3129/files#diff-fe1355439297aa459f871621b4f95627ea330655c7c6eb08ef10bda7ab66c0feR510) where the event is fired when the page is updated with new search results. Once this has happened previously tracked scroll positions will be tracked again.
+
 ## Behaviour
 
 The scroll tracker finds the position of things (percentages and headings, including the text of headings) on page load to minimise calculations when the user scrolls. This finding of positions is repeated if any of the following occur:
