@@ -4,7 +4,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function CookieBanner ($module) {
     this.$module = $module
-    this.$module.cookieBanner = document.querySelector('.gem-c-cookie-banner')
     this.$module.cookieBannerConfirmationMessage = this.$module.querySelector('.gem-c-cookie-banner__confirmation')
     this.$module.cookieBannerConfirmationMessageText = this.$module.querySelector('.gem-c-cookie-banner__confirmation-message')
   }
@@ -100,16 +99,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   CookieBanner.prototype.showConfirmationMessage = function () {
-    this.$cookieBannerHeader = document.querySelector('.govuk-cookie-banner__heading')
+    this.$cookieBannerHeader = this.$module.querySelector('.govuk-cookie-banner__heading')
     this.$cookieBannerHeader.hidden = true
 
-    this.$cookieBannerMainContent = document.querySelector('.gem-c-cookie-banner__content')
+    this.$cookieBannerMainContent = this.$module.querySelector('.gem-c-cookie-banner__content')
     this.$cookieBannerMainContent.hidden = true
 
-    this.$cookieBannerConfirmationButtons = document.querySelector('.js-confirmation-buttons')
+    this.$cookieBannerConfirmationButtons = this.$module.querySelector('.js-confirmation-buttons')
     this.$cookieBannerConfirmationButtons.hidden = true
 
-    this.$cookieBannerHideButton = document.querySelector('.js-hide-button')
+    this.$cookieBannerHideButton = this.$module.querySelector('.js-hide-button')
     this.$cookieBannerHideButton.hidden = false
   }
 

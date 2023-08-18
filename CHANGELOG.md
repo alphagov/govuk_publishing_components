@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add GA4 tracking to devolved nations banners ([PR #3556](https://github.com/alphagov/govuk_publishing_components/pull/3556))
+* Add GA4 tracking to the cookie banner ([PR #3564](https://github.com/alphagov/govuk_publishing_components/pull/3564))
 
 ## 35.14.0
 
