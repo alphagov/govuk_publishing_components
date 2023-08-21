@@ -53,7 +53,8 @@ describe('Google Tag Manager page view tracking', function () {
         dynamic: 'false',
         emergency_banner: undefined,
         phase_banner: undefined,
-        devolved_nations_banner: undefined
+        devolved_nations_banner: undefined,
+        cookie_banner: undefined
       }
     }
     window.dataLayer = []
@@ -441,6 +442,16 @@ describe('Google Tag Manager page view tracking', function () {
     div.setAttribute('data-ga4-devolved-nations-banner', 'England, Scotland, Wales')
     document.body.appendChild(div)
     expected.page_view.devolved_nations_banner = 'England, Scotland, Wales'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    document.body.removeChild(div)
+  })
+
+  it('correctly sets the cookie_banner parameter', function () {
+    var div = document.createElement('div')
+    div.setAttribute('data-ga4-cookie-banner', '')
+    document.body.appendChild(div)
+    expected.page_view.cookie_banner = 'true'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
     document.body.removeChild(div)

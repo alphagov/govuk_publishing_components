@@ -49,3 +49,8 @@ examples:
         cookie_preferences:
           text: How we use cookies
           href: "/cookies"
+  with_ga4_tracking:
+    description: |
+      Enables GA4 tracking on the banner. This includes link tracking on the "You have accepted cookies" section, and allows the pageview event that is sent when GA4 initialises to record the presence of the cookie acceptance message.
+    data:
+      ga4_tracking: true
