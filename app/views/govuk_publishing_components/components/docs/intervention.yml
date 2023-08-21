@@ -65,8 +65,8 @@ examples:
 
   with_data_attributes:
     description: |
-      This example shows the use of `suggestion_data_attributes` and
-      `dismiss_data_attributes` for click tracking.
+      This example shows the use of `suggestion_data_attributes`,
+      `dismiss_data_attributes` for click tracking on the dismiss section <p> tag, and `dismiss_link_data_attributes` for adding attributes to the dismiss link <a> tag.
 
       Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
@@ -87,6 +87,8 @@ examples:
         track-dimension: Hide this suggestion
         track-dimension-index: 29
         track-label: hide the intervention
+      dismiss_link_data_attributes:
+        track-category: example
   with_ga4_tracking:
     description: |
       Enables GA4 tracking on the banner. This includes link tracking on the component itself, event tracking on the 'Hide' link, and allows pageviews to record the presence of the banner on page load.
