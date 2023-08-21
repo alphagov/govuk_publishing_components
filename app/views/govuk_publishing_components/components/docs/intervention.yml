@@ -87,3 +87,13 @@ examples:
         track-dimension: Hide this suggestion
         track-dimension-index: 29
         track-label: hide the intervention
+  with_ga4_tracking:
+    description: |
+      Enables GA4 tracking on the banner. This includes link tracking on the component itself, event tracking on the 'Hide' link, and allows pageviews to record the presence of the banner on page load.
+    data:
+      ga4_tracking: true
+      suggestion_text: Based on your browsing you might be interested in
+      suggestion_link_text: "Travel abroad: step by step"
+      suggestion_link_url: /travel-abroad
+      dismiss_text: Hide this suggestion
+      name: another-campaign-name
