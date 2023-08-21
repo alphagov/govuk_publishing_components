@@ -6,6 +6,7 @@
   blue_bar ||= local_assigns.include?(:blue_bar) ? local_assigns[:blue_bar] : !full_width
   global_bar ||= nil
   html_lang ||= "en"
+  homepage ||= false
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
   blue_bar_background_colour = layout_helper.blue_bar_background_colours.include?(blue_bar_background_colour) ? blue_bar_background_colour : nil
   logo_link ||= "/"
@@ -103,9 +104,15 @@
 
     <% unless omit_header %>
       <% if show_explore_header %>
-        <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
-          logo_link: logo_link,
-        } %>
+        <% if homepage %>
+          <%= render "govuk_publishing_components/components/layout_for_public/layout_super_navigation_header_homepage", {
+            logo_link: logo_link,
+          } %>
+        <% else %>
+          <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
+            logo_link: logo_link,
+          } %>
+        <% end %>
       <% else %>
         <%= render "govuk_publishing_components/components/layout_header", {
           search: show_search,
@@ -122,7 +129,7 @@
 
     <%= raw(emergency_banner) %>
 
-    <% if (blue_bar && !global_bar.present?) || (blue_bar_dedupe) %>
+    <% if (blue_bar && !global_bar.present? && !homepage) || (blue_bar_dedupe) %>
       <%= content_tag(:div, class: blue_bar_wrapper_classes) do %>
         <div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
       <% end %>
