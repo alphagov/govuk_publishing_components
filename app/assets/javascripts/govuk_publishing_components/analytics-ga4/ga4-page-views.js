@@ -17,7 +17,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             location: this.getLocation(),
             /* If the init() function receives a referrer parameter, this indicates that it has been called as a part of an AJAX request and
             this.getReferrer() will not return the correct value. Therefore we need to rely on the referrer parameter. */
-            referrer: referrer ? this.PIIRemover.stripPIIWithOverride(referrer, true, true) : this.getReferrer(),
+            referrer: this.getReferrer(referrer),
             title: this.getTitle(),
             status_code: this.getStatusCode(),
 
@@ -65,11 +65,19 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getLocation: function () {
-      return this.PIIRemover.stripPII(document.location.href)
+      return this.PIIRemover.stripPII(this.stripGaParam(document.location.href))
     },
 
-    getReferrer: function () {
-      return this.PIIRemover.stripPIIWithOverride(document.referrer, true, true)
+    getReferrer: function (referrer) {
+      referrer = this.stripGaParam(referrer || document.referrer)
+      return this.PIIRemover.stripPIIWithOverride(referrer, true, true)
+    },
+
+    // remove GA parameters of the form _ga=2320.021-012302 or _gl=02.10320.01230-123
+    stripGaParam: function (str) {
+      str = str.replace(/(_ga=[0-9.-]+)/g, '_ga=[id]')
+      str = str.replace(/(_gl=[0-9.-]+)/g, '_gl=[id]')
+      return str
     },
 
     getTitle: function () {
