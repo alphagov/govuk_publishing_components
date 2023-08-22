@@ -125,14 +125,14 @@ describe "Cookie banner", type: :view do
 
   it "renders without GA4 attributes when ga4_tracking is false" do
     render_component({ ga4_tracking: false })
-    assert_no_selector ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-cookie-banner]"
-    assert_no_selector ".gem-c-cookie-banner__confirmation-message--accepted[data-module]"
-    assert_no_selector ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-track-links-only]"
-    assert_no_selector ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-set-indexes]"
-    assert_no_selector ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-link]"
+    assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-cookie-banner]", false
+    assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-module]", false
+    assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-track-links-only]", false
+    assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-set-indexes]", false
+    assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-link]", false
 
     assert_select ".gem-c-cookie-banner__hide-button[data-module='gem-track-click']"
-    assert_no_selector ".gem-c-cookie-banner__hide-button[data-module='gem-track-click ga4-event-tracker']"
-    assert_no_selector ".gem-c-cookie-banner__hide-button[data-ga4-event]"
+    assert_select ".gem-c-cookie-banner__hide-button[data-module='gem-track-click ga4-event-tracker']", false
+    assert_select ".gem-c-cookie-banner__hide-button[data-ga4-event]", false
   end
 end
