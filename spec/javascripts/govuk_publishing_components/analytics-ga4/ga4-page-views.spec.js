@@ -54,7 +54,8 @@ describe('Google Tag Manager page view tracking', function () {
         emergency_banner: undefined,
         phase_banner: undefined,
         devolved_nations_banner: undefined,
-        cookie_banner: undefined
+        cookie_banner: undefined,
+        intervention: undefined
       }
     }
     window.dataLayer = []
@@ -490,6 +491,16 @@ describe('Google Tag Manager page view tracking', function () {
     div.setAttribute('data-ga4-cookie-banner', '')
     document.body.appendChild(div)
     expected.page_view.cookie_banner = 'true'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    document.body.removeChild(div)
+  })
+
+  it('correctly sets the intervention parameter', function () {
+    var div = document.createElement('div')
+    div.setAttribute('data-ga4-intervention-banner', '')
+    document.body.appendChild(div)
+    expected.page_view.intervention = 'true'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
     document.body.removeChild(div)

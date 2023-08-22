@@ -57,7 +57,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             emergency_banner: document.querySelector('[data-ga4-emergency-banner]') ? 'true' : undefined,
             phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined,
             devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined,
-            cookie_banner: document.querySelector('[data-ga4-cookie-banner]') ? 'true' : undefined
+            cookie_banner: document.querySelector('[data-ga4-cookie-banner]') ? 'true' : undefined,
+            intervention: document.querySelector('[data-ga4-intervention-banner]') ? 'true' : undefined
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
