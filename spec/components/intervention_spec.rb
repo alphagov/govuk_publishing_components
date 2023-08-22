@@ -19,6 +19,42 @@ describe "Intervention", type: :view do
     assert_select ".gem-c-intervention .govuk-link", text: /Hide this suggestion/
   end
 
+  it "renders the component with GA4 tracking when ga4_tracking is true" do
+    render_component(
+      name: "test-campaign",
+      suggestion_text: "You might be interested in",
+      suggestion_link_text: "Travel abroad",
+      suggestion_link_url: "/travel-abroad",
+      dismiss_text: "Hide this suggestion",
+      ga4_tracking: true,
+    )
+
+    assert_select ".gem-c-intervention[data-ga4-intervention-banner]"
+    assert_select ".gem-c-intervention a:first-of-type[data-module='ga4-link-tracker']"
+    assert_select ".gem-c-intervention a:first-of-type[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"intervention\",\"section\":\"You might be interested in\",\"index\":1,\"index_total\":1}']"
+
+    assert_select ".js-dismiss-link[data-module=ga4-event-tracker]"
+    assert_select ".js-dismiss-link[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"intervention\",\"section\":\"You might be interested in\",\"action\":\"closed\"}']"
+  end
+
+  it "renders the component with GA4 tracking when ga4_tracking is false" do
+    render_component(
+      name: "test-campaign",
+      suggestion_text: "You might be interested in",
+      suggestion_link_text: "Travel abroad",
+      suggestion_link_url: "/travel-abroad",
+      dismiss_text: "Hide this suggestion",
+      ga4_tracking: false,
+    )
+
+    assert_select ".gem-c-intervention[data-ga4-intervention-banner]", false
+    assert_select ".gem-c-intervention a:first-of-type[data-module=ga4-link-tracker]", false
+    assert_select ".gem-c-intervention a:first-of-type[data-ga4-link]", false
+
+    assert_select ".js-dismiss-link[data-module=ga4-event-tracker]", false
+    assert_select ".js-dismiss-link[data-ga4-event]", false
+  end
+
   it "renders the component without dismiss button" do
     render_component(
       suggestion_text: "You might be interested in",
