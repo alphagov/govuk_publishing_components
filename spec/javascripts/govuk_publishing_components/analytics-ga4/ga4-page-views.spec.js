@@ -372,6 +372,41 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
+  it('can redact ga parameters as expected', function () {
+    var url = 'https://www.gov.uk/welfare?'
+    var param1 = '_ga=2.237932419.220854294.1692605006-1618308030.1687790776'
+    var param2 = '_gl=32.23434234.243-32434220-230442300234.234324.42304-09320'
+
+    expect(GOVUK.analyticsGa4.analyticsModules.PageViewTracker.stripGaParam(url + param1)).toEqual(url + '_ga=[id]')
+    expect(GOVUK.analyticsGa4.analyticsModules.PageViewTracker.stripGaParam(url + param2)).toEqual(url + '_gl=[id]')
+  })
+
+  it('redacts ga parameters from the location and referrer before they are mistaken for PII', function () {
+    // We can't spy on location, so instead we use an anchor link to change the URL temporarily
+
+    // Reset the URL so we can build the expected link string
+    var linkForURLMock = document.createElement('a')
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+    var location = document.location.href
+
+    expected.page_view.location = location + '[email]'
+
+    // Add email address to the current page location
+    linkForURLMock.href = '#example@gov.uk?_gl=2012-01-05.2022-01-23'
+    linkForURLMock.click()
+    expected.page_view.location = document.location.href.replace('#example@gov.uk?_gl=2012-01-05.2022-01-23', '#[email]?_gl=[id]')
+
+    spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/?_ga=2012-01-05.2022-01-23&date=2021-01-02')
+    expected.page_view.referrer = 'https://gov.uk/?_ga=[id]&date=[date]'
+
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    // Reset the page location for other tests
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+  })
+
   describe('correctly sets the referrer and dynamic properties', function () {
     it('when not passed a parameter', function () {
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
