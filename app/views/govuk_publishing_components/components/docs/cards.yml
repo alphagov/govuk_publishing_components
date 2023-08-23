@@ -20,7 +20,7 @@ uses_component_wrapper_helper: true
 examples:
   default:
     data:
-      heading: Topics
+      heading: Services and information
       items:
         - link:
             text: Benefits
@@ -109,7 +109,7 @@ examples:
 
       Override default subheading level by passing through `sub_heading_level` parameter (defaults to `<h3>`)
     data:
-      heading: Topics
+      heading: Services and information
       heading_level: 3
       sub_heading_level: 4
       items:

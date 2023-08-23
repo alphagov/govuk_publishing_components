@@ -693,7 +693,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-.gem-c-layout-super-navigation-header__navigation-second-items--topics {
+.gem-c-layout-super-navigation-header__navigation-second-items--services-and-information {
   @include govuk-media-query($until: "desktop") {
     border-bottom: 1px solid govuk-colour("mid-grey");
   }
