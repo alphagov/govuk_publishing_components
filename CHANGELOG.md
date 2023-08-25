@@ -12,6 +12,7 @@
 * Improve GA URL parameter stripping ([PR #3603](https://github.com/alphagov/govuk_publishing_components/pull/3603))
 * Fix bug with GA4 search results count ([PR #3594](https://github.com/alphagov/govuk_publishing_components/pull/3594))
 * Check HTML attribute when populating GA4 language ([PR #3598](https://github.com/alphagov/govuk_publishing_components/pull/3598))
+* Add GA4 tracking to the intervention banner ([PR #3567](https://github.com/alphagov/govuk_publishing_components/pull/3567))
 
 ## 35.15.2
 

@@ -58,7 +58,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined,
             devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined,
             cookie_banner: document.querySelector('[data-ga4-cookie-banner]') ? 'true' : undefined,
-            intervention: document.querySelector('[data-ga4-intervention-banner]') ? 'true' : undefined
+            intervention: this.getInterventionPresence()
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
@@ -129,6 +129,25 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     getWithDrawn: function () {
       var withdrawn = this.getMetaContent('withdrawn')
       return (withdrawn === 'withdrawn') ? 'true' : 'false'
+    },
+
+    getInterventionPresence: function () {
+      /* If the user hides the banner using JS, a cookie is set to hide it on future page loads.
+       * Therefore we need to start the intervention banner early so that it hides if this cookie exists.
+       * Without this, our pageview object will track the banner as visible before it gets hidden. */
+
+      var intervention = document.querySelector('[data-ga4-intervention-banner]')
+
+      if (intervention) {
+        window.GOVUK.modules.start(intervention)
+        var interventionHidden = intervention.getAttribute('hidden') === '' || intervention.getAttribute('hidden')
+
+        if (interventionHidden) {
+          return undefined
+        }
+        return 'true'
+      }
+      return undefined
     },
 
     splitLongMetaContent: function (metatag) {

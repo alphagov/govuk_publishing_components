@@ -33,8 +33,9 @@
   dismiss_href = intervention_helper.dismiss_link
 
   ga4_tracking ||= false
-  suggestion_data_attributes[:module] = suggestion_data_attributes[:module] ? suggestion_data_attributes[:module] + " ga4-link-tracker" : "ga4-link-tracker" if ga4_tracking
+  suggestion_data_attributes[:module] = "#{suggestion_data_attributes[:module]} ga4-link-tracker".strip if ga4_tracking
   suggestion_data_attributes[:ga4_link] = { event_name: "navigation", type: "intervention", section: suggestion_text, index: 1, index_total: 1 }.to_json if ga4_tracking
+  data_attributes[:ga4_intervention_banner] = "" if ga4_tracking # Added to the parent element for the GA4 pageview object to use
 
   suggestion_tag_options = {
     class: "govuk-link",
@@ -51,8 +52,6 @@
     suggestion_link_text = intervention_helper.accessible_text
   end
 
-  data_attributes[:ga4_intervention_banner] = "" if ga4_tracking
-
   section_options = {
     class: "gem-c-intervention",
     role: "region", aria: aria_attributes,
@@ -60,7 +59,7 @@
   }
   section_options.merge!({ hidden: true }) if hide
 
-  dismiss_link_data_attributes[:module] = dismiss_link_data_attributes[:module] ? dismiss_link_data_attributes[:module] + " ga4-event-tracker" : "ga4-event-tracker" if ga4_tracking
+  dismiss_link_data_attributes[:module] = "#{dismiss_link_data_attributes[:module]} ga4-event-tracker".strip if ga4_tracking
   dismiss_link_data_attributes[:ga4_event] = { event_name: "select_content", type: "intervention", section: suggestion_text, action: 'closed' }.to_json if ga4_tracking
 %>
 <% if intervention_helper.show? %>
