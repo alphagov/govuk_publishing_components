@@ -91,7 +91,7 @@ en:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
       licence_html: All content is available under the <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
       navigation_links:
-      - title: Topics
+      - title: Services and information
         menu_contents:
         - text: Benefits
           href: "/browse/benefits"
@@ -171,7 +171,7 @@ en:
         href: "/browse"
         label: Menu
       navigation_links_columns:
-      - label: Topics
+      - label: Services and information
         size: 2
         menu_contents:
         - label: Benefits

@@ -217,11 +217,11 @@
                 end
               %>
 
-              <div class="<%= width_class %> gem-c-layout-super-navigation-header__column--<%= column[:label].downcase.sub(" ", "-") %>">
+              <div class="<%= width_class %> gem-c-layout-super-navigation-header__column--<%= column[:label].downcase.gsub(" ", "-") %>">
                 <h3 class="govuk-heading-m gem-c-layout-super-navigation-header__column-header">
                   <%= column[:label] %>
                 </h3>
-                <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= column[:label].downcase.sub(" ", "-") %>">
+                <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= column[:label].downcase.gsub(" ", "-") %>">
                   <% index_total = column[:menu_contents].length %>
                   <% column[:menu_contents].each_with_index do | item, index | %>
                       <%
