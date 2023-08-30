@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.15.0
 
 * Change "Topics" to "Services and information" ([PR #3570](https://github.com/alphagov/govuk_publishing_components/pull/3570))
 * Redact GA params from pageview data ([PR #3568](https://github.com/alphagov/govuk_publishing_components/pull/3568))
