@@ -32,6 +32,11 @@ namespace :assets do
   end
 end
 
+desc "Build the Sass files"
+task :dartsass do
+  Rake::Task["app:dartsass:build"].invoke
+end
+
 desc "Linting for Ruby, JS and SASS"
 task lint: %i[rubocop environment] do
   sh "yarn run lint"
@@ -42,4 +47,4 @@ task :jasmine do
   sh "yarn run jasmine:ci"
 end
 
-task default: %i[lint spec jasmine]
+task default: %i[dartsass lint spec jasmine]
