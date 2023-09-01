@@ -17,6 +17,12 @@
     display: block !important; // stylelint-disable-line declaration-no-important
   }
 
+  .js-enabled .govuk-accordion__section-content[hidden] {
+    @supports (content-visibility: hidden) {
+      content-visibility: auto;
+    }
+  }
+
   // Change the colour from the blue link colour to black.
   .govuk-accordion__section-button {
     color: govuk-colour("black") !important; // stylelint-disable-line declaration-no-important
