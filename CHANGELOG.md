@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add new rule to fix accordion print style ([PR #3582](https://github.com/alphagov/govuk_publishing_components/pull/3582))
+
 ## 35.15.0
 
 * Change "Topics" to "Services and information" ([PR #3570](https://github.com/alphagov/govuk_publishing_components/pull/3570))
