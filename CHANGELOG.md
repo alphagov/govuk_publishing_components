@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add new rule to fix accordion print style ([PR #3582](https://github.com/alphagov/govuk_publishing_components/pull/3582))
+* Fix GA4 bug - all attachments links tracked with the same JSON ([PR #3577](https://github.com/alphagov/govuk_publishing_components/pull/3577))
 
 ## 35.15.0
 
@@ -17,7 +18,6 @@
 * Redact GA params from pageview data ([PR #3568](https://github.com/alphagov/govuk_publishing_components/pull/3568))
 * Add GA4 tracking to devolved nations banners ([PR #3556](https://github.com/alphagov/govuk_publishing_components/pull/3556))
 * Add GA4 tracking to the cookie banner ([PR #3564](https://github.com/alphagov/govuk_publishing_components/pull/3564))
-* Fix GA4 bug - all attachments links tracked with the same JSON ([PR #3577](https://github.com/alphagov/govuk_publishing_components/pull/3577))
 
 ## 35.14.0
 
