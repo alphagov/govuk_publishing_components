@@ -158,13 +158,13 @@ examples:
         - text: £95
           format: numeric
       -
-        - text: February
+        - text: February February February February February
         - text: £75
           format: numeric
         - text: £55
           format: numeric
       -
-        - text: March
+        - text: March March March March March March March March March March March
         - text: £165
           format: numeric
         - text: £125
