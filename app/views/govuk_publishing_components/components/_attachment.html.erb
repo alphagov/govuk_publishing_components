@@ -54,8 +54,9 @@
     )
   end
 
+  data_attributes[:ga4_link] = ga4_link
 %>
-<%= tag.section class: class_names(container_class_names), data: { module: "ga4-link-tracker", ga4_track_links_only: "", ga4_link: ga4_link } do %>
+<%= tag.section class: class_names(container_class_names), data: { module: "ga4-link-tracker" } do %>
   <%= tag.div class: "gem-c-attachment__thumbnail" do %>
     <%= link_to attachment.url,
                 class: "govuk-link",

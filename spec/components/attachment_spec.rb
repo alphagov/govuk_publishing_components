@@ -278,10 +278,9 @@ describe "Attachment", type: :view do
         type: "html",
       },
     )
-
     assert_select "section[data-module=ga4-link-tracker]"
-    assert_select "section[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
-    assert_select "section[data-ga4-track-links-only]"
+    assert_select ".gem-c-attachment__thumbnail a[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
+    assert_select ".gem-c-attachment__link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
   end
 
   it "includes GA4 tracking on file attachment links by default" do
@@ -295,7 +294,7 @@ describe "Attachment", type: :view do
     )
 
     assert_select "section[data-module=ga4-link-tracker]"
-    assert_select "section[data-ga4-link='{\"event_name\":\"file_download\",\"type\":\"attachment\"}']"
-    assert_select "section[data-ga4-track-links-only]"
+    assert_select ".gem-c-attachment__thumbnail a[data-ga4-link='{\"event_name\":\"file_download\",\"type\":\"attachment\"}']"
+    assert_select ".gem-c-attachment__link[data-ga4-link='{\"event_name\":\"file_download\",\"type\":\"attachment\"}']"
   end
 end
