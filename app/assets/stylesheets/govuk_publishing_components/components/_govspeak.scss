@@ -34,6 +34,12 @@
   // stylelint-disable max-nesting-depth
 
   .gem-c-govspeak {
+    a[href^="/"]:after,a[href^="http://"]:after,a[href^="https://"]:after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+      word-wrap: break-word;
+    }
+
     .media-player {
       display: none;
     }
