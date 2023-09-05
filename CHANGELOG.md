@@ -12,6 +12,8 @@
 * Add new rule to fix accordion print style ([PR #3582](https://github.com/alphagov/govuk_publishing_components/pull/3582))
 * Fix GA4 bug - all attachments links tracked with the same JSON ([PR #3577](https://github.com/alphagov/govuk_publishing_components/pull/3577))
 * LUX version 311 ([PR #3572](https://github.com/alphagov/govuk_publishing_components/pull/3572))
+* Enable GA4 tracking on the phase banner ([PR #3588](https://github.com/alphagov/govuk_publishing_components/pull/3588))
+* Add expansion to print style for govspeak links ([PR #3584](https://github.com/alphagov/govuk_publishing_components/pull/3584))
 
 ## 35.15.0
 
