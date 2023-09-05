@@ -205,6 +205,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         }
       },
 
+      getPathname: function () {
+        return window.location.pathname
+      },
+
       getProtocol: function () {
         return window.location.protocol
       },
@@ -252,6 +256,13 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
       applyRedactionIfRequired: function (PIIRemover, element, data) {
         return element.closest('[data-ga4-do-not-redact]') ? data : PIIRemover.stripPIIWithOverride(data, true, true)
+      },
+
+      appendPathToAnchorLinks: function (url) {
+        if (!this.stringStartsWith(url, '#') || this.getPathname() === '/') {
+          return url
+        }
+        return this.getPathname() + url
       }
     },
 

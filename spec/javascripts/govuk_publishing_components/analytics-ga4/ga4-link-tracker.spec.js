@@ -510,4 +510,23 @@ describe('GA4 link tracker', function () {
       }
     })
   })
+
+  describe('if the link is an anchor', function () {
+    beforeEach(function () {
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getPathname').and.returnValue('/hello-world')
+    })
+
+    it('adds the page path to the url value', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"event_name": "navigation"}')
+      element.innerHTML = '<a class="link1" href="#link1"><img src=""/></a>'
+
+      initModule(element, true)
+      var link = element.querySelector('.link1')
+
+      link.click()
+      expect(window.dataLayer[0].event_data.url).toEqual('/hello-world#link1')
+    })
+  })
 })

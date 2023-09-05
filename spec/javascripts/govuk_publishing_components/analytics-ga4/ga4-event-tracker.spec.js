@@ -431,17 +431,19 @@ describe('Google Analytics event tracker', function () {
         '</div>'
       document.body.appendChild(element)
       new GOVUK.Modules.Ga4EventTracker(element).init()
+
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getPathname').and.returnValue('/hello-world')
     })
 
-    it('should track tab click url locations', function () {
+    it('should track tab click url locations, with the page path appended if it\'s an anchor link', function () {
       var clickOn = element.querySelector('.tab-1')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.url).toEqual('#tab-location-1')
+      expect(window.dataLayer[0].event_data.url).toEqual('/hello-world#tab-location-1')
 
       window.dataLayer = []
       clickOn = element.querySelector('.tab-2')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.url).toEqual('#tab-location-2')
+      expect(window.dataLayer[0].event_data.url).toEqual('/hello-world#tab-location-2')
 
       window.dataLayer = []
       clickOn = element.querySelector('.random-list-item')

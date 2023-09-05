@@ -74,7 +74,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         if (aTag) {
           var href = aTag.getAttribute('href')
           if (href) {
-            schema.event_data.url = href
+            schema.event_data.url = window.GOVUK.analyticsGa4.core.trackFunctions.appendPathToAnchorLinks(href)
           }
         }
       }
