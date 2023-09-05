@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.15.1
 
 * Add new rule to fix accordion print style ([PR #3582](https://github.com/alphagov/govuk_publishing_components/pull/3582))
 * Fix GA4 bug - all attachments links tracked with the same JSON ([PR #3577](https://github.com/alphagov/govuk_publishing_components/pull/3577))
