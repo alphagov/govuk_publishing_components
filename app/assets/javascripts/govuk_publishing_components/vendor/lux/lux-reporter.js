@@ -21,33 +21,34 @@
 
 (function () {
   'use strict';
+
   /**
-   * Fit an array of user timing delimited strings into a URL and return both the entries that fit and
-   * the remaining entries that didn't fit.
-   */
+  * Fit an array of user timing delimited strings into a URL and return both the entries that fit and
+  * the remaining entries that didn't fit.
+  */
   function fitUserTimingEntries(utValues, config, url) {
     // Start with the maximum allowed UT entries per beacon
     var beaconUtValues = utValues.slice(0, config.maxBeaconUTEntries);
     var remainingUtValues = utValues.slice(config.maxBeaconUTEntries);
     // Trim UT entries until they fit within the maximum URL length, ensuring at least one UT entry
     // is included.
-    while ((url + "&UT=" + beaconUtValues.join(",")).length > config.maxBeaconUrlLength &&
-      beaconUtValues.length > 1) {
+    while ((url + "&UT=" + beaconUtValues.join(",")).length > config.maxBeaconUrlLength && beaconUtValues.length > 1) {
       remainingUtValues.unshift(beaconUtValues.pop());
     }
     return [beaconUtValues, remainingUtValues];
   }
 
+  var luxOrigin = "https://lux.speedcurve.com";
   function fromObject(obj) {
     var autoMode = getProperty(obj, "auto", true);
     return {
       auto: autoMode,
-      beaconUrl: getProperty(obj, "beaconUrl", "https://lux.speedcurve.com/lux/"),
-      conversions: getProperty(obj, "conversions", undefined),
-      customerid: getProperty(obj, "customerid", undefined),
-      errorBeaconUrl: getProperty(obj, "errorBeaconUrl", "https://lux.speedcurve.com/error/"),
-      jspagelabel: getProperty(obj, "jspagelabel", undefined),
-      label: getProperty(obj, "label", undefined),
+      beaconUrl: getProperty(obj, "beaconUrl", luxOrigin + "/lux/"),
+      conversions: getProperty(obj, "conversions"),
+      customerid: getProperty(obj, "customerid"),
+      errorBeaconUrl: getProperty(obj, "errorBeaconUrl", luxOrigin + "/error/"),
+      jspagelabel: getProperty(obj, "jspagelabel"),
+      label: getProperty(obj, "label"),
       maxBeaconUrlLength: getProperty(obj, "maxBeaconUrlLength", 8190),
       maxBeaconUTEntries: getProperty(obj, "maxBeaconUTEntries", 20),
       maxErrors: getProperty(obj, "maxErrors", 5),
@@ -56,10 +57,10 @@
       newBeaconOnPageShow: getProperty(obj, "newBeaconOnPageShow", false),
       samplerate: getProperty(obj, "samplerate", 100),
       sendBeaconOnPageHidden: getProperty(obj, "sendBeaconOnPageHidden", autoMode),
-      serverTiming: getProperty(obj, "serverTiming", undefined),
+      serverTiming: getProperty(obj, "serverTiming"),
       trackErrors: getProperty(obj, "trackErrors", true),
       trackHiddenPages: getProperty(obj, "trackHiddenPages", false),
-      pagegroups: getProperty(obj, "pagegroups", undefined),
+      pagegroups: getProperty(obj, "pagegroups"),
     };
   }
   function getProperty(obj, key, defaultValue) {
@@ -99,8 +100,8 @@
     updatedCustomData = {};
   }
   /**
-   * Convert a set of custom data values to the string format expected by the backend.
-   */
+  * Convert a set of custom data values to the string format expected by the backend.
+  */
   function valuesToString(values) {
     var strings = [];
     for (var key in values) {
@@ -119,10 +120,13 @@
   }
   var max = Math.max;
   /**
-   * Clamp a number so that it is never less than 0
-   */
+  * Clamp a number so that it is never less than 0
+  */
   function clamp(x) {
     return max(0, x);
+  }
+  function sortNumeric(a, b) {
+    return a - b;
   }
 
   function now() {
@@ -173,7 +177,7 @@
       startTime: 0,
       type: navType == 2 ? "back_forward" : navType === 1 ? "reload" : "navigate",
     };
-    if (__ENABLE_POLYFILLS) {
+    {
       for (var key in timing) {
         if (typeof timing[key] === "number" && key !== "navigationStart") {
           entry[key] = floor(timing[key] - timing.navigationStart);
@@ -183,10 +187,10 @@
     return entry;
   }
   /**
-   * Simple wrapper around performance.getEntriesByType to provide fallbacks for
-   * legacy browsers, and work around edge cases where undefined is returned instead
-   * of an empty PerformanceEntryList.
-   */
+  * Simple wrapper around performance.getEntriesByType to provide fallbacks for
+  * legacy browsers, and work around edge cases where undefined is returned instead
+  * of an empty PerformanceEntryList.
+  */
   function getEntriesByType(type) {
     if (typeof performance.getEntriesByType === "function") {
       var entries = performance.getEntriesByType(type);
@@ -245,7 +249,7 @@
     PageLabelFromDocumentTitle: 1 << 6,
     PageLabelFromLabelProp: 1 << 7,
     PageLabelFromGlobalVariable: 1 << 8,
-    PageLabelFromPagegroup: 1 << 9,
+    PageLabelFromUrlPattern: 1 << 9,
     PageWasPrerendered: 1 << 10,
     PageWasBfCacheRestored: 1 << 11,
   };
@@ -261,8 +265,8 @@
   }
 
   /**
-   * Get the interaction attribution name for an element
-   */
+  * Get the interaction attribution name for an element
+  */
   function interactionAttributionForElement(el) {
     // Our first preference is to use the data-sctrack attribute from anywhere in the tree
     var trackId = getClosestScTrackAttribute(el);
@@ -354,6 +358,7 @@
     };
     return Logger;
   }());
+
   var sessionValue = 0;
   var sessionEntries = [];
   var maximumSessionValue = 0;
@@ -363,9 +368,9 @@
       var latestEntry = sessionEntries[sessionEntries.length - 1];
       if (sessionEntries.length &&
         (entry.startTime - latestEntry.startTime >= 1000 ||
-        entry.startTime - firstEntry.startTime >= 5000)) {
-        sessionValue = entry.value;
-        sessionEntries = [entry];
+          entry.startTime - firstEntry.startTime >= 5000)) {
+          sessionValue = entry.value;
+          sessionEntries = [entry];
       }
       else {
         sessionValue += entry.value;
@@ -384,9 +389,9 @@
   }
 
   /**
-   * This implementation is based on the web-vitals implementation, however it is stripped back to the
-   * bare minimum required to measure just the INP value and does not store the actual event entries.
-   */
+  * This implementation is based on the web-vitals implementation, however it is stripped back to the
+  * bare minimum required to measure just the INP value and does not store the actual event entries.
+  */
   // The maximum number of interactions to store
   var MAX_INTERACTIONS = 10;
   // A list of the slowest interactions
@@ -423,9 +428,9 @@
     return slowestEntries.some(function (e2) { return e1.startTime === e2.startTime && e1.duration === e2.duration; });
   }
   /**
-   * Returns an estimated high percentile INP value based on the total number of interactions on the
-   * current page.
-   */
+  * Returns an estimated high percentile INP value based on the total number of interactions on the
+  * current page.
+  */
   function getHighPercentileINP() {
     var _a;
     var index = Math.min(slowestEntries.length - 1, Math.floor(getInteractionCount() / 50));
@@ -440,8 +445,7 @@
 
   var ALL_ENTRIES = [];
   function observe(type, callback, options) {
-    if (typeof PerformanceObserver === "function" &&
-      PerformanceObserver.supportedEntryTypes.includes(type)) {
+    if (typeof PerformanceObserver === "function" && PerformanceObserver.supportedEntryTypes.includes(type)) {
       var po = new PerformanceObserver(function (list) {
         list.getEntries().forEach(function (entry) { return callback(entry); });
       });
@@ -456,17 +460,14 @@
   function addEntry(entry) {
     ALL_ENTRIES.push(entry);
   }
-  function clearEntries() {
-    ALL_ENTRIES.splice(0);
-  }
 
   /**
-   * A server timing metric that has its value set to the duration field
-   */
+  * A server timing metric that has its value set to the duration field
+  */
   var TYPE_DURATION = "r";
   /**
-   * When a description metric has no value, we consider it to be a boolean and set it to this value.
-   */
+  * When a description metric has no value, we consider it to be a boolean and set it to this value.
+  */
   var BOOLEAN_TRUE_VALUE = "true";
   function getKeyValuePairs(config, serverTiming) {
     var pairs = {};
@@ -500,7 +501,7 @@
       if (Array.isArray(patterns)) {
         for (var i in patterns) {
           var pattern = patterns[i];
-          if (patternMatchesUrl(pattern, hostname, pathname)) {
+          if (typeof pattern === "string" && patternMatchesUrl(pattern, hostname, pathname)) {
             if (firstOnly) {
               return key;
             }
@@ -542,10 +543,18 @@
     // -------------------------------------------------------------------------
     /// End
     // -------------------------------------------------------------------------
-    var SCRIPT_VERSION = "309";
+    var SCRIPT_VERSION = "311";
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
     logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
+    // Variable aliases that allow the minifier to reduce file size.
+    var document = window.document;
+    var addEventListener = window.addEventListener;
+    var removeEventListener = window.removeEventListener;
+    var setTimeout = window.setTimeout;
+    var clearTimeout = window.clearTimeout;
+    var encodeURIComponent = window.encodeURIComponent;
+    var thisScript = document.currentScript || {};
     // Log JS errors.
     var nErrors = 0;
     function errorHandler(e) {
@@ -560,30 +569,30 @@
           // Sample & limit other errors.
           // Send the error beacon.
           new Image().src =
-            globalConfig.errorBeaconUrl +
-            "?v=" +
-            SCRIPT_VERSION +
-            "&id=" +
-            getCustomerId() +
-            "&fn=" +
-            encodeURIComponent(e.filename) +
-            "&ln=" +
-            e.lineno +
-            "&cn=" +
-            e.colno +
-            "&msg=" +
-            encodeURIComponent(e.message) +
-            "&l=" +
-            encodeURIComponent(_getPageLabel()) +
-            (connectionType() ? "&ct=" + connectionType() : "") +
-            "&HN=" +
-            encodeURIComponent(document.location.hostname) +
-            "&PN=" +
-            encodeURIComponent(document.location.pathname);
+          globalConfig.errorBeaconUrl +
+          "?v=" +
+          SCRIPT_VERSION +
+          "&id=" +
+          getCustomerId() +
+          "&fn=" +
+          encodeURIComponent(e.filename) +
+          "&ln=" +
+          e.lineno +
+          "&cn=" +
+          e.colno +
+          "&msg=" +
+          encodeURIComponent(e.message) +
+          "&l=" +
+          encodeURIComponent(_getPageLabel()) +
+          (connectionType() ? "&ct=" + connectionType() : "") +
+          "&HN=" +
+          encodeURIComponent(document.location.hostname) +
+          "&PN=" +
+          encodeURIComponent(document.location.pathname);
         }
       }
     }
-    window.addEventListener("error", errorHandler);
+    addEventListener("error", errorHandler);
     var logEntry = function (entry) {
       logger.logEvent(LogEvent.PerformanceEntryReceived, [entry]);
     };
@@ -611,9 +620,9 @@
         logEntry(entry);
       });
       observe("first-input", function (entry) {
-        var fid = entry.processingStart - entry.startTime;
-        if (!gFirstInputDelay || gFirstInputDelay < fid) {
-          gFirstInputDelay = floor(fid);
+        var entryTime = entry.processingStart - entry.startTime;
+        if (!gFirstInputDelay || gFirstInputDelay < entryTime) {
+          gFirstInputDelay = floor(entryTime);
         }
         // Allow first-input events to be considered for INP
         addEntry$1(entry);
@@ -642,11 +651,24 @@
     var gMaxMeasureTimeout; // setTimeout timer for sending the beacon after a maximum measurement time
     var pageRestoreTime; // ms since navigationStart representing when the page was restored from the bfcache
     /**
-     * To measure the way a user experienced a metric, we measure metrics relative to the time the user
-     * started viewing the page. On prerendered pages, this is activationStart. On bfcache restores, this
-     * is the page restore time. On all other pages this value will be zero.
-     */
-    var getZeroTime = function () { return pageRestoreTime || getNavigationEntry().activationStart; };
+    * To measure the way a user experienced a metric, we measure metrics relative to the time the user
+    * started viewing the page. On prerendered pages, this is activationStart. On bfcache restores, this
+    * is the page restore time. On all other pages this value will be zero.
+    */
+    var getZeroTime = function () {
+      var _a;
+      return Math.max(pageRestoreTime || 0, getNavigationEntry().activationStart, ((_a = _getMark(START_MARK)) === null || _a === void 0 ? void 0 : _a.startTime) || 0);
+    };
+    /**
+    * Most time-based metrics that LUX reports should be relative to the "zero" marker, rounded down
+    * to the nearest unit so as not to report times in the future, and clamped to zero.
+    */
+    var processTimeMetric = function (value) { return clamp(floor(value - getZeroTime())); };
+    /**
+    * Some values should only be reported if they are non-zero. The exception to this is when the page
+    * was prerendered or restored from BF cache
+    */
+    var shouldReportValue = function (value) { return value > 0 || pageRestoreTime || wasPrerendered(); };
     if (_sample()) {
       logger.logEvent(LogEvent.SessionIsSampled, [globalConfig.samplerate]);
     }
@@ -688,11 +710,11 @@
         removeListeners();
       }
       function removeListeners() {
-        window.removeEventListener("pointerup", onPointerUp, ghListenerOptions);
-        window.removeEventListener("pointercancel", onPointerCancel, ghListenerOptions);
+        removeEventListener("pointerup", onPointerUp, ghListenerOptions);
+        removeEventListener("pointercancel", onPointerCancel, ghListenerOptions);
       }
-      window.addEventListener("pointerup", onPointerUp, ghListenerOptions);
-      window.addEventListener("pointercancel", onPointerCancel, ghListenerOptions);
+      addEventListener("pointerup", onPointerUp, ghListenerOptions);
+      addEventListener("pointercancel", onPointerCancel, ghListenerOptions);
     }
     // Record FID as the delta between when the event happened and when the
     // listener was able to execute.
@@ -732,16 +754,16 @@
     }
     // Attach event listener to input events.
     gaEventTypes.forEach(function (eventType) {
-      window.addEventListener(eventType, onInput, ghListenerOptions);
+      addEventListener(eventType, onInput, ghListenerOptions);
     });
     ////////////////////// FID END
     /**
-     * Returns the time elapsed (in ms) since navigationStart. For SPAs, returns
-     * the time elapsed since the last LUX.init call.
-     *
-     * When `absolute = true` the time is always relative to navigationStart, even
-     * in SPAs.
-     */
+    * Returns the time elapsed (in ms) since navigationStart. For SPAs, returns
+    * the time elapsed since the last LUX.init call.
+    *
+    * When `absolute = true` the time is always relative to navigationStart, even
+    * in SPAs.
+    */
     function _now(absolute) {
       var sinceNavigationStart = msSinceNavigationStart();
       var startMark = _getMark(START_MARK);
@@ -766,7 +788,7 @@
         return performance.mark.apply(performance, args);
       }
       // ...Otherwise provide a polyfill
-      if (__ENABLE_POLYFILLS) {
+      {
         var name_1 = args[0];
         var detail = ((_a = args[1]) === null || _a === void 0 ? void 0 : _a.detail) || null;
         var startTime = ((_b = args[1]) === null || _b === void 0 ? void 0 : _b.startTime) || _now();
@@ -829,14 +851,14 @@
         return performance.measure.apply(performance, args);
       }
       // ...Otherwise provide a polyfill
-      if (__ENABLE_POLYFILLS) {
+      {
         var navEntry = getNavigationEntry();
         var startTime = typeof startMarkName === "number" ? startMarkName : 0;
         var endTime = typeof endMarkName === "number" ? endMarkName : _now();
         var throwError = function (missingMark) {
           throw new DOMException("Failed to execute 'measure' on 'Performance': The mark '" +
-            missingMark +
-            "' does not exist");
+          missingMark +
+          "' does not exist");
         };
         if (typeof startMarkName === "string") {
           var startMark = _getMark(startMarkName);
@@ -924,7 +946,7 @@
       var startMark = _getMark(START_MARK);
       // For user timing values taken in a SPA page load, we need to adjust them
       // so that they're zeroed against the last LUX.init() call.
-      var tZero = startMark ? startMark.startTime : 0;
+      var tZero = getZeroTime();
       // marks
       _getMarks().forEach(function (mark) {
         var name = mark.name;
@@ -973,12 +995,13 @@
     // Return a string of Element Timing Metrics formatted for beacon querystring.
     function elementTimingValues() {
       var aET = [];
-      var startMark = _getMark(START_MARK);
-      var tZero = startMark ? startMark.startTime : getZeroTime();
       getEntries("element").forEach(function (entry) {
         if (entry.identifier && entry.startTime) {
-          logger.logEvent(LogEvent.PerformanceEntryProcessed, [entry]);
-          aET.push(entry.identifier + "|" + floor(entry.startTime - tZero));
+          var value = processTimeMetric(entry.startTime);
+          if (shouldReportValue(value)) {
+            logger.logEvent(LogEvent.PerformanceEntryProcessed, [entry]);
+            aET.push(entry.identifier + "|" + value);
+          }
         }
       });
       return aET.join(",");
@@ -995,20 +1018,7 @@
       var longTaskEntries = getEntries("longtask");
       // Add up totals for each "type" of long task
       if (longTaskEntries.length) {
-        // Long Task start times are relative to NavigationStart which is "0".
-        // But if it is a SPA then the relative start time is gStartMark.
-        var startMark = _getMark(START_MARK);
-        var tZero_1 = startMark ? startMark.startTime : 0;
-        // Do not include Long Tasks that start after the page is done.
-        // For full page loads, "done" is loadEventEnd.
-        var tEnd_1 = timing.loadEventEnd - timing.navigationStart;
-        if (startMark) {
-          // For SPA page loads (determined by the presence of a start mark), "done" is gEndMark.
-          var endMark = _getMark(END_MARK);
-          if (endMark) {
-            tEnd_1 = endMark.startTime;
-          }
-        }
+        var tZero_1 = getZeroTime();
         longTaskEntries.forEach(function (entry) {
           var dur = floor(entry.duration);
           if (entry.startTime < tZero_1) {
@@ -1016,21 +1026,18 @@
             // LUX.init() was called. If so, only include the duration after tZero.
             dur -= tZero_1 - entry.startTime;
           }
-          else if (entry.startTime >= tEnd_1) {
-            // In a SPA it is possible that a Long Task started after loadEventEnd but before our
-            // callback from setTimeout(200) happened. Do not include anything that started after tEnd.
-            return;
+          // Only process entries that we calculated to have a valid duration
+          if (dur > 0) {
+            logger.logEvent(LogEvent.PerformanceEntryProcessed, [entry]);
+            var type = entry.attribution[0].name;
+            if (!hCPU[type]) {
+              hCPU[type] = 0;
+              hCPUDetails[type] = "";
+            }
+            hCPU[type] += dur;
+            // Send back the raw startTime and duration, as well as the adjusted duration.
+            hCPUDetails[type] += "," + floor(entry.startTime) + "|" + dur;
           }
-          logger.logEvent(LogEvent.PerformanceEntryProcessed, [entry]);
-          var type = entry.attribution[0].name; // TODO - is there ever more than 1 attribution???
-          if (!hCPU[type]) {
-            // initialize this category
-            hCPU[type] = 0;
-            hCPUDetails[type] = "";
-          }
-          hCPU[type] += dur;
-          // Send back the raw startTime and duration, as well as the adjusted duration.
-          hCPUDetails[type] += "," + floor(entry.startTime) + "|" + dur;
         });
       }
       // TODO - Add more types if/when they become available.
@@ -1042,12 +1049,12 @@
       }
       var hStats = cpuStats(hCPUDetails[jsType]);
       var sStats = ",n|" +
-        hStats["count"] +
-        ",d|" +
-        hStats["median"] +
-        ",x|" +
-        hStats["max"] +
-        (0 === hStats["fci"] ? "" : ",i|" + hStats["fci"]); // only add FCI if it is non-zero
+      hStats.count +
+      ",d|" +
+      hStats.median +
+      ",x|" +
+      hStats.max +
+      (typeof hStats.fci === "undefined" ? "" : ",i|" + hStats.fci);
       sCPU += "s|" + hCPU[jsType] + sStats + hCPUDetails[jsType];
       return sCPU;
     }
@@ -1055,11 +1062,11 @@
     function cpuStats(sDetails) {
       // tuples of starttime|duration, eg: ,456|250,789|250,1012|250
       var max = 0;
-      var fci = getFcp() || 0; // FCI is beginning of 5 second window of no Long Tasks _after_ first contentful paint
-      // If FCP is 0 then that means FCP is not supported.
-      // If FCP is not supported then we can NOT calculate a valid FCI.
-      // Thus, leave FCI = 0 and exclude it from the beacon above.
-      var bFoundFci = 0 === fci ? true : false;
+      // FCI is beginning of 5 second window of no Long Tasks _after_ first contentful paint
+      var fcp = getFcp();
+      var fci = fcp || 0;
+      // If FCP is not supported, we can't calculate a valid FCI.
+      var bFoundFci = typeof fcp === "undefined";
       var aValues = [];
       var aTuples = sDetails.split(",");
       for (var i = 0; i < aTuples.length; i++) {
@@ -1079,7 +1086,10 @@
             }
             else {
               // Less than 5 seconds of inactivity
-              fci = start + dur; // FCI is now the end of this Long Task
+              var val = processTimeMetric(start + dur);
+              if (shouldReportValue(val)) {
+                fci = val; // FCI is now the end of this Long Task
+              }
             }
           }
         }
@@ -1102,9 +1112,7 @@
         return 0;
       }
       var half = floor(aValues.length / 2);
-      aValues.sort(function (a, b) {
-        return a - b;
-      });
+      aValues.sort(sortNumeric);
       if (aValues.length % 2) {
         // Return the middle value.
         return aValues[half];
@@ -1119,42 +1127,39 @@
       var sLuxjs = "";
       if (performance.getEntriesByName) {
         // Get the lux script URL (including querystring params).
-        var luxScript = getScriptElement("/js/lux.js");
-        if (luxScript) {
-          var aResources = performance.getEntriesByName(luxScript.src);
-          if (aResources && aResources.length) {
-            var r = aResources[0];
-            // DO NOT USE DURATION!!!!!
-            // See https://www.stevesouders.com/blog/2014/11/25/serious-confusion-with-resource-timing/
-            var dns = floor(r.domainLookupEnd - r.domainLookupStart);
-            var tcp = floor(r.connectEnd - r.connectStart);
-            var fb = floor(r.responseStart - r.requestStart);
-            var content = floor(r.responseEnd - r.responseStart);
-            var networkDuration = dns + tcp + fb + content;
-            var parseEval = scriptEndTime - scriptStartTime;
-            var transferSize = r.encodedBodySize ? r.encodedBodySize : 0;
-            // Instead of a delimiter use a 1-letter abbreviation as a separator.
-            sLuxjs =
-              "d" +
-              dns +
-              "t" +
-              tcp +
-              "f" +
-              fb +
-              "c" +
-              content +
-              "n" +
-              networkDuration +
-              "e" +
-              parseEval +
-              "r" +
-              globalConfig.samplerate + // sample rate
-              (typeof transferSize === "number" ? "x" + transferSize : "") +
-              (typeof gLuxSnippetStart === "number" ? "l" + gLuxSnippetStart : "") +
-              "s" +
-              (scriptStartTime - timing.navigationStart) + // when lux.js started getting evaluated relative to navigationStart
-              "";
-          }
+        var aResources = performance.getEntriesByName(thisScript.src);
+        if (aResources && aResources.length) {
+          var r = aResources[0];
+          // DO NOT USE DURATION!!!!!
+          // See https://www.stevesouders.com/blog/2014/11/25/serious-confusion-with-resource-timing/
+          var dns = floor(r.domainLookupEnd - r.domainLookupStart);
+          var tcp = floor(r.connectEnd - r.connectStart);
+          var fb = floor(r.responseStart - r.requestStart);
+          var content = floor(r.responseEnd - r.responseStart);
+          var networkDuration = dns + tcp + fb + content;
+          var parseEval = scriptEndTime - scriptStartTime;
+          var transferSize = r.encodedBodySize ? r.encodedBodySize : 0;
+          // Instead of a delimiter use a 1-letter abbreviation as a separator.
+          sLuxjs =
+          "d" +
+          dns +
+          "t" +
+          tcp +
+          "f" +
+          fb +
+          "c" +
+          content +
+          "n" +
+          networkDuration +
+          "e" +
+          parseEval +
+          "r" +
+          globalConfig.samplerate + // sample rate
+          (typeof transferSize === "number" ? "x" + transferSize : "") +
+          (typeof gLuxSnippetStart === "number" ? "l" + gLuxSnippetStart : "") +
+          "s" +
+          (scriptStartTime - timing.navigationStart) + // when lux.js started getting evaluated relative to navigationStart
+          "";
         }
       }
       return sLuxjs;
@@ -1185,9 +1190,9 @@
         if (gCustomerDataTimeout) {
           // Cancel the timer for any previous beacons so that if they have not
           // yet been sent we can combine all the data in a new beacon.
-          window.clearTimeout(gCustomerDataTimeout);
+          clearTimeout(gCustomerDataTimeout);
         }
-        gCustomerDataTimeout = window.setTimeout(_sendCustomerData, 100);
+        gCustomerDataTimeout = setTimeout(_sendCustomerData, 100);
       }
     }
     // _sample()
@@ -1200,9 +1205,9 @@
       return parseInt(nThis) < globalConfig.samplerate;
     }
     /**
-     * Re-initialize lux.js to start a new "page". This is typically called within a SPA at the
-     * beginning of a page transition, but is also called internally when the BF cache is restored.
-     */
+    * Re-initialize lux.js to start a new "page". This is typically called within a SPA at the
+    * beginning of a page transition, but is also called internally when the BF cache is restored.
+    */
     function _init(startTime) {
       // Some customers (incorrectly) call LUX.init on the very first page load of a SPA. This would
       // cause some first-page-only data (like paint metrics) to be lost. To prevent this, we silently
@@ -1232,7 +1237,6 @@
       gbFirstPV = 0;
       gSyncId = createSyncId();
       gUid = refreshUniqueId(gSyncId);
-      clearEntries();
       reset$1();
       reset();
       nErrors = 0;
@@ -1353,14 +1357,17 @@
         ns += start; // "navigationStart" for a SPA is the real navigationStart plus the start mark
         var end = floor(endMark.startTime) - start; // delta from start mark
         s =
-          ns +
-          "fs" +
-          0 + // fetchStart is the same as navigationStart for a SPA
-          "ls" +
-          end +
-          "le" +
-          end +
-          "";
+        ns +
+        // fetchStart and activationStart are the same as navigationStart for a SPA
+        "as" +
+        0 +
+        "fs" +
+        0 +
+        "ls" +
+        end +
+        "le" +
+        end +
+        "";
       }
       else if (performance.timing) {
         // Return the real Nav Timing metrics because this is the "main" page view (not a SPA)
@@ -1368,17 +1375,20 @@
         var startRender = getStartRender();
         var fcp = getFcp();
         var lcp = getLcp();
-        var prefixNTValue = function (key, prefix) {
-          // activationStart is always absolute. Other values are relative to activationStart.
-          var zero = key === "activationStart" ? 0 : getZeroTime();
+        var prefixNTValue = function (key, prefix, ignoreZero) {
           if (typeof navEntry_1[key] === "number") {
-            var value = clamp(floor(navEntry_1[key] - zero));
-            return prefix + value;
+            var value = navEntry_1[key];
+            // We allow zero values for most navigation timing metrics, but for some metrics we want
+            // to ignore zeroes. The exceptions are that all metrics can be zero if the page was either
+            // prerendered or restored from the BF cache.
+            if (shouldReportValue(value) || !ignoreZero) {
+              return prefix + processTimeMetric(value);
+            }
           }
           return "";
         };
-        var loadEventStartStr = prefixNTValue("loadEventStart", "ls");
-        var loadEventEndStr = prefixNTValue("loadEventEnd", "le");
+        var loadEventStartStr = prefixNTValue("loadEventStart", "ls", true);
+        var loadEventEndStr = prefixNTValue("loadEventEnd", "le", true);
         if (pageRestoreTime && startMark && endMark) {
           // For bfcache restores, we set the load time to the time it took for the page to be restored.
           var loadTime = floor(endMark.startTime - startMark.startTime);
@@ -1386,43 +1396,44 @@
           loadEventEndStr = "le" + loadTime;
         }
         var redirect = wasRedirected();
+        var isSecure = document.location.protocol === "https:";
         s = [
           ns,
-          prefixNTValue("activationStart", "as"),
-          redirect ? prefixNTValue("redirectStart", "rs") : "",
-          redirect ? prefixNTValue("redirectEnd", "re") : "",
+          "as" + clamp(navEntry_1.activationStart),
+          redirect && !pageRestoreTime ? prefixNTValue("redirectStart", "rs") : "",
+          redirect && !pageRestoreTime ? prefixNTValue("redirectEnd", "re") : "",
           prefixNTValue("fetchStart", "fs"),
           prefixNTValue("domainLookupStart", "ds"),
           prefixNTValue("domainLookupEnd", "de"),
           prefixNTValue("connectStart", "cs"),
-          prefixNTValue("secureConnectionStart", "sc"),
+          isSecure ? prefixNTValue("secureConnectionStart", "sc") : "",
           prefixNTValue("connectEnd", "ce"),
           prefixNTValue("requestStart", "qs"),
           prefixNTValue("responseStart", "bs"),
           prefixNTValue("responseEnd", "be"),
-          prefixNTValue("domInteractive", "oi"),
-          prefixNTValue("domContentLoadedEventStart", "os"),
-          prefixNTValue("domContentLoadedEventEnd", "oe"),
-          prefixNTValue("domComplete", "oc"),
+          prefixNTValue("domInteractive", "oi", true),
+          prefixNTValue("domContentLoadedEventStart", "os", true),
+          prefixNTValue("domContentLoadedEventEnd", "oe", true),
+          prefixNTValue("domComplete", "oc", true),
           loadEventStartStr,
           loadEventEndStr,
-          typeof startRender !== "undefined" ? "sr" + clamp(startRender) : "",
-          typeof fcp !== "undefined" ? "fc" + clamp(fcp) : "",
-          typeof lcp !== "undefined" ? "lc" + clamp(lcp) : "",
+          typeof startRender !== "undefined" ? "sr" + startRender : "",
+          typeof fcp !== "undefined" ? "fc" + fcp : "",
+          typeof lcp !== "undefined" ? "lc" + lcp : "",
         ].join("");
       }
       else if (endMark) {
         // This is a "main" page view that does NOT support Navigation Timing - strange.
         var end = floor(endMark.startTime);
         s =
-          ns +
-          "fs" +
-          0 + // fetchStart is the same as navigationStart
-          "ls" +
-          end +
-          "le" +
-          end +
-          "";
+        ns +
+        "fs" +
+        0 + // fetchStart is the same as navigationStart
+        "ls" +
+        end +
+        "le" +
+        end +
+        "";
       }
       return s;
     }
@@ -1432,7 +1443,10 @@
       for (var i = 0; i < paintEntries.length; i++) {
         var entry = paintEntries[i];
         if (entry.name === "first-contentful-paint") {
-          return floor(entry.startTime - getZeroTime());
+          var value = processTimeMetric(entry.startTime);
+          if (shouldReportValue(value)) {
+            return value;
+          }
         }
       }
       return undefined;
@@ -1442,8 +1456,11 @@
       var lcpEntries = getEntries("largest-contentful-paint");
       if (lcpEntries.length) {
         var lastEntry = lcpEntries[lcpEntries.length - 1];
-        logger.logEvent(LogEvent.PerformanceEntryProcessed, [lastEntry]);
-        return floor(lastEntry.startTime - getZeroTime());
+        var value = processTimeMetric(lastEntry.startTime);
+        if (shouldReportValue(value)) {
+          logger.logEvent(LogEvent.PerformanceEntryProcessed, [lastEntry]);
+          return value;
+        }
       }
       return undefined;
     }
@@ -1454,12 +1471,17 @@
       if ("PerformancePaintTiming" in self) {
         var paintEntries = getEntriesByType("paint");
         if (paintEntries.length) {
-          // If the Paint Timing API is supported, use the value of the first paint event
-          var paintValues = paintEntries.map(function (entry) { return entry.startTime; });
-          return floor(Math.min.apply(null, paintValues) - getZeroTime());
+          var paintValues = paintEntries.map(function (entry) { return entry.startTime; }).sort(sortNumeric);
+          // Use the earliest valid paint entry as the start render time.
+          for (var i = 0; i < paintValues.length; i++) {
+            var value = processTimeMetric(paintValues[i]);
+            if (shouldReportValue(value)) {
+              return value;
+            }
+          }
         }
       }
-      if (performance.timing && timing.msFirstPaint && __ENABLE_POLYFILLS) {
+      if (performance.timing && timing.msFirstPaint && true) {
         // If IE/Edge, use the prefixed `msFirstPaint` property (see http://msdn.microsoft.com/ff974719).
         return floor(timing.msFirstPaint - timing.navigationStart);
       }
@@ -1473,39 +1495,10 @@
       return getHighPercentileINP();
     }
     function getCustomerId() {
-      if (typeof LUX.customerid === "undefined") {
-        // Extract the id of the lux.js script element.
-        var luxScript = getScriptElement("/js/lux.js");
-        if (luxScript) {
-          LUX.customerid = getQuerystringParam(luxScript.src, "id");
-        }
+      if (!LUX.customerid) {
+        LUX.customerid = thisScript.src.match(/id=(\d+)/).pop();
       }
       return LUX.customerid || "";
-    }
-    // Return the SCRIPT DOM element whose SRC contains the URL snippet.
-    // This is used to find the LUX script element.
-    function getScriptElement(urlsnippet) {
-      var aScripts = document.getElementsByTagName("script");
-      for (var i = 0, len = aScripts.length; i < len; i++) {
-        var script = aScripts[i];
-        if (script.src && -1 !== script.src.indexOf(urlsnippet)) {
-          return script;
-        }
-      }
-      return undefined;
-    }
-    function getQuerystringParam(url, name) {
-      var qs = url.split("?")[1];
-      var aTuples = qs.split("&");
-      for (var i = 0, len = aTuples.length; i < len; i++) {
-        var tuple = aTuples[i];
-        var aTuple = tuple.split("=");
-        var key = aTuple[0];
-        if (name === key) {
-          return aTuple[1];
-        }
-      }
-      return undefined;
     }
     function avgDomDepth() {
       var aElems = document.getElementsByTagName("*");
@@ -1645,14 +1638,14 @@
     }
     function createMaxMeasureTimeout() {
       clearMaxMeasureTimeout();
-      gMaxMeasureTimeout = window.setTimeout(function () {
+      gMaxMeasureTimeout = setTimeout(function () {
         gFlags = addFlag(gFlags, Flags.BeaconSentAfterTimeout);
         _sendLux();
       }, globalConfig.maxMeasureTime - _now());
     }
     function clearMaxMeasureTimeout() {
       if (gMaxMeasureTimeout) {
-        window.clearTimeout(gMaxMeasureTimeout);
+        clearTimeout(gMaxMeasureTimeout);
       }
     }
     function _getBeaconUrl(customData) {
@@ -1688,7 +1681,7 @@
         !gSyncId ||
         !_sample() || // OUTSIDE the sampled range
         gbLuxSent // LUX data already sent
-      ) {
+        ) {
         return;
       }
       logger.logEvent(LogEvent.DataCollectionStart);
@@ -1741,49 +1734,49 @@
       var is = inlineTagSize("script");
       var ic = inlineTagSize("style");
       var metricsQueryString =
-        // only send Nav Timing and lux.js metrics on initial pageload (not for SPA page views)
-        (gbNavSent ? "" : "&NT=" + getNavTiming()) +
-        (gbFirstPV ? "&LJS=" + sLuxjs : "") +
-        // Page Stats
-        "&PS=ns" +
-        numScripts() +
-        "bs" +
-        blockingScripts() +
-        (is > -1 ? "is" + is : "") +
-        "ss" +
-        numStylesheets() +
-        "bc" +
-        blockingStylesheets() +
-        (ic > -1 ? "ic" + ic : "") +
-        "ia" +
-        imagesATF().length +
-        "it" +
-        document.getElementsByTagName("img").length + // total number of images
-        "dd" +
-        avgDomDepth() +
-        "nd" +
-        document.getElementsByTagName("*").length + // numdomelements
-        "vh" +
-        document.documentElement.clientHeight + // see http://www.quirksmode.org/mobile/viewports.html
-        "vw" +
-        document.documentElement.clientWidth +
-        "dh" +
-        docHeight(document) +
-        "dw" +
-        docWidth(document) +
-        (docSize() ? "ds" + docSize() : "") + // document HTTP transfer size (bytes)
-        (connectionType() ? "ct" + connectionType() + "_" : "") + // delimit with "_" since values can be non-numeric so need a way to extract with regex in VCL
-        "er" +
-        nErrors +
-        "nt" +
-        navigationType() +
-        (navigator.deviceMemory ? "dm" + Math.round(navigator.deviceMemory) : "") + // device memory (GB)
-        (sIx ? "&IX=" + sIx : "") +
-        (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
-        (sCPU ? "&CPU=" + sCPU : "") +
-        (sET ? "&ET=" + sET : "") + // element timing
-        (typeof CLS !== "undefined" ? "&CLS=" + CLS : "") +
-        (typeof INP !== "undefined" ? "&INP=" + INP : "");
+      // only send Nav Timing and lux.js metrics on initial pageload (not for SPA page views)
+      (gbNavSent ? "" : "&NT=" + getNavTiming()) +
+      (gbFirstPV ? "&LJS=" + sLuxjs : "") +
+      // Page Stats
+      "&PS=ns" +
+      numScripts() +
+      "bs" +
+      blockingScripts() +
+      (is > -1 ? "is" + is : "") +
+      "ss" +
+      numStylesheets() +
+      "bc" +
+      blockingStylesheets() +
+      (ic > -1 ? "ic" + ic : "") +
+      "ia" +
+      imagesATF().length +
+      "it" +
+      document.getElementsByTagName("img").length + // total number of images
+      "dd" +
+      avgDomDepth() +
+      "nd" +
+      document.getElementsByTagName("*").length + // numdomelements
+      "vh" +
+      document.documentElement.clientHeight + // see http://www.quirksmode.org/mobile/viewports.html
+      "vw" +
+      document.documentElement.clientWidth +
+      "dh" +
+      docHeight(document) +
+      "dw" +
+      docWidth(document) +
+      (docSize() ? "ds" + docSize() : "") + // document HTTP transfer size (bytes)
+      (connectionType() ? "ct" + connectionType() + "_" : "") + // delimit with "_" since values can be non-numeric so need a way to extract with regex in VCL
+      "er" +
+      nErrors +
+      "nt" +
+      navigationType() +
+      (navigator.deviceMemory ? "dm" + Math.round(navigator.deviceMemory) : "") + // device memory (GB)
+      (sIx ? "&IX=" + sIx : "") +
+      (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
+      (sCPU ? "&CPU=" + sCPU : "") +
+      (sET ? "&ET=" + sET : "") + // element timing
+      (typeof CLS !== "undefined" ? "&CLS=" + CLS : "") +
+      (typeof INP !== "undefined" ? "&INP=" + INP : "");
       // We add the user timing entries last so that we can split them to reduce the URL size if necessary.
       var utValues = userTimingValues();
       var _b = fitUserTimingEntries(utValues, globalConfig, baseUrl + metricsQueryString), beaconUtValues = _b[0], remainingUtValues = _b[1];
@@ -1807,8 +1800,8 @@
     }
     var ixTimerId;
     function _sendIxAfterDelay() {
-      window.clearTimeout(ixTimerId);
-      ixTimerId = window.setTimeout(_sendIx, 100);
+      clearTimeout(ixTimerId);
+      ixTimerId = setTimeout(_sendIx, 100);
     }
     // Beacon back the IX data separately (need to sync with LUX beacon on the backend).
     function _sendIx() {
@@ -1842,7 +1835,7 @@
         !gSyncId ||
         !_sample() || // OUTSIDE the sampled range
         !gbLuxSent // LUX has NOT been sent yet, so wait to include it there
-      ) {
+        ) {
         return;
       }
       var sCustomerData = valuesToString(getUpdatedCustomData());
@@ -1870,6 +1863,19 @@
       }
     }
     function _keyHandler(e) {
+      var keyCode = e.keyCode;
+      /**
+      * Ignore modifier keys
+      *
+      * 16 = Shift
+      * 17 = Control
+      * 18 = Alt
+      * 20 = Caps Lock
+      * 224 = Meta/Command
+      */
+      if (keyCode === 16 || keyCode === 17 || keyCode === 18 || keyCode === 20 || keyCode === 224) {
+        return;
+      }
       _removeIxHandlers();
       if (typeof ghIx["k"] === "undefined") {
         ghIx["k"] = _now();
@@ -1914,10 +1920,10 @@
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function addListener(type, callback, useCapture) {
       if (useCapture === void 0) { useCapture = false; }
-      if (window.addEventListener) {
-        window.addEventListener(type, callback, useCapture);
+      if (addEventListener) {
+        addEventListener(type, callback, useCapture);
       }
-      else if (window.attachEvent && __ENABLE_POLYFILLS) {
+      else if (window.attachEvent && true) {
         window.attachEvent("on" + type, callback);
       }
     }
@@ -1925,10 +1931,10 @@
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     function removeListener(type, callback, useCapture) {
       if (useCapture === void 0) { useCapture = false; }
-      if (window.removeEventListener) {
-        window.removeEventListener(type, callback, useCapture);
+      if (removeEventListener) {
+        removeEventListener(type, callback, useCapture);
       }
-      else if (window.detachEvent && __ENABLE_POLYFILLS) {
+      else if (window.detachEvent && true) {
         window.detachEvent("on" + type, callback);
       }
     }
@@ -2016,7 +2022,7 @@
       if (typeof LUX.pagegroups !== "undefined") {
         var label = getMatchesFromPatternMap(LUX.pagegroups, location.hostname, location.pathname, true);
         if (label) {
-          gFlags = addFlag(gFlags, Flags.PageLabelFromPagegroup);
+          gFlags = addFlag(gFlags, Flags.PageLabelFromUrlPattern);
           return label;
         }
       }
@@ -2057,11 +2063,11 @@
     function _setCookie(name, value, seconds) {
       try {
         document.cookie =
-          name +
-          "=" +
-          escape(value) +
-          (seconds ? "; max-age=" + seconds : "") +
-          "; path=/; SameSite=Lax";
+        name +
+        "=" +
+        escape(value) +
+        (seconds ? "; max-age=" + seconds : "") +
+        "; path=/; SameSite=Lax";
       }
       catch (e) {
         logger.logEvent(LogEvent.CookieSetError);
@@ -2111,7 +2117,7 @@
     // bfcache. Since we have no "onload" event to hook into after a bfcache restore, we rely on the
     // unload and maxMeasureTime handlers to send the beacon.
     if (globalConfig.newBeaconOnPageShow) {
-      window.addEventListener("pageshow", function (event) {
+      addEventListener("pageshow", function (event) {
         if (event.persisted) {
           // Record the timestamp of the bfcache restore
           pageRestoreTime = event.timeStamp;
@@ -2141,9 +2147,9 @@
     // Set the maximum measurement timer
     createMaxMeasureTimeout();
     /**
-     * LUX functions and properties must be attached to the existing global object to ensure that
-     * changes made to the global object are reflected in the "internal" LUX object, and vice versa.
-     */
+    * LUX functions and properties must be attached to the existing global object to ensure that
+    * changes made to the global object are reflected in the "internal" LUX object, and vice versa.
+    */
     var globalLux = globalConfig;
     // Functions
     globalLux.mark = _mark;
@@ -2168,8 +2174,8 @@
     // Public properties
     globalLux.version = SCRIPT_VERSION;
     /**
-     * Run a command from the command queue
-     */
+    * Run a command from the command queue
+    */
     function _runCommand(_a) {
       var fn = _a[0], args = _a.slice(1);
       if (typeof globalLux[fn] === "function") {
