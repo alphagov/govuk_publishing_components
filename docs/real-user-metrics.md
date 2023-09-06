@@ -28,9 +28,9 @@ The customer ID is an identifier for the site using LUX, not for the user visiti
 
 When loading `lux.js` from SpeedCurve's CDN, the customer ID is appended to the end of the URI as a query string. The script looks for a script in the DOM with a source of `lux.js`, and from that extracts the customer ID.
 
-Rails adds a fingerprint to the URI which means that `lux.js` becomes (for example) `lux.self-7137780d5344a93190a2c698cd660619d4197420b9b1ef963b639a825a6aa5ff.js` and the script can't find itself.
+Rails adds a fingerprint to the URI which means that `lux.js` becomes (for example) `lux.self-7137780d5344a93190a2c698cd660619d4197420b9b1ef963b639a825a6aa5ff.js` and the script can't find itself. Because of this that part of the script would fail. Instead, we modify the `getCustomerId()` function to simply return `LUX.customerid`.
 
-Because of this the customer ID needs to be set at the end of the `lux.js` file:
+Because of this the customer ID needs to be set in the `lux.js` file:
 
 ```javascript
 LUX.customerid = 47044334

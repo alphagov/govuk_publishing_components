@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix error in LUX script ([PR #3592](https://github.com/alphagov/govuk_publishing_components/pull/3592))
 * Prepend page path when tracking anchor links in GA4 ([PR #3590](https://github.com/alphagov/govuk_publishing_components/pull/3590))
 
 ## 35.15.1
