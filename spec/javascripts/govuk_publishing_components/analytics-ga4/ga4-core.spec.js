@@ -269,6 +269,20 @@ describe('GA4 core', function () {
       })
     })
 
+    describe('when tracking anchor links', function () {
+      beforeEach(function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getPathname').and.returnValue('/hello-world')
+      })
+
+      it('appends the page path to anchor links', function () {
+        var href = '#heading1'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.appendPathToAnchorLinks(href)).toEqual('/hello-world#heading1')
+
+        href = '/not-an-anchor-link'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.appendPathToAnchorLinks(href)).toEqual(href)
+      })
+    })
+
     it('accepts an array of domains and increases it to include variants without www at the start', function () {
       var domains = ['www.gov.uk']
       GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(domains)

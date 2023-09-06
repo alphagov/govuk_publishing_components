@@ -62,13 +62,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Ga4LinkTracker.prototype.trackClick = function (event) {
     var element = event.target
-
+    var trackFunctions = window.GOVUK.analyticsGa4.core.trackFunctions
     // don't track this link if it's already being tracked by the ecommerce tracker
     if (element.closest('[data-ga4-ecommerce-path]')) {
       return
     }
 
-    var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
+    var target = trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
     if (target) {
       try {
         var data = target.getAttribute(this.trackingTrigger)
@@ -80,17 +80,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       var text = data.text || event.target.textContent
-      data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
-      data.text = window.GOVUK.analyticsGa4.core.trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, data.text)
+      data.text = trackFunctions.removeLinesAndExtraSpaces(text)
+      data.text = trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, data.text)
       if (!data.text && (element.querySelector('img') || element.querySelector('svg') || element.tagName === 'IMG' || element.closest('svg'))) {
         data.text = 'image'
       }
       var url = data.url || this.findLink(event.target).getAttribute('href')
-      data.url = window.GOVUK.analyticsGa4.core.trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(url))
-      data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
-      data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
-      data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
-      data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
+      data.url = trackFunctions.removeCrossDomainParams(url)
+      data.url = trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, data.url)
+      data.url = trackFunctions.appendPathToAnchorLinks(data.url)
+      data.link_domain = trackFunctions.populateLinkDomain(data.url)
+      data.link_path_parts = trackFunctions.populateLinkPathParts(data.url)
+      data.method = trackFunctions.getClickType(event)
+      data.external = trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
       data.index = this.setIndex(data.index, event.target)
 
       if (data.type === 'smart answer' && data.action === 'change response') {

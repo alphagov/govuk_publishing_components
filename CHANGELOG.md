@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Prepend page path when tracking anchor links in GA4 ([PR #3590](https://github.com/alphagov/govuk_publishing_components/pull/3590))
+
 ## 35.15.1
 
 * Add new rule to fix accordion print style ([PR #3582](https://github.com/alphagov/govuk_publishing_components/pull/3582))
