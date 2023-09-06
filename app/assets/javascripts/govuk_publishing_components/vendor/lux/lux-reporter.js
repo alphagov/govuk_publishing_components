@@ -538,6 +538,10 @@
     // -------------------------------------------------------------------------
     // Settings
     // -------------------------------------------------------------------------
+    // This ID usually appended to the end of the lux.js as a query string when
+    // using the SpeedCurve hosted version - but we have to include it here as
+    // this is self hosted.
+    LUX.customerid = 47044334;
     // Set the sample rate to 1% to avoid all events being sent.
     LUX.samplerate = 1;
     // -------------------------------------------------------------------------
@@ -1494,10 +1498,9 @@
       }
       return getHighPercentileINP();
     }
+    // function simplified for our use, original would get the customerid from the script src URL
+    // but we set it inside the code in this file, so this function just returns that
     function getCustomerId() {
-      if (!LUX.customerid) {
-        LUX.customerid = thisScript.src.match(/id=(\d+)/).pop();
-      }
       return LUX.customerid || "";
     }
     function avgDomDepth() {
@@ -2200,11 +2203,6 @@
   // More settings
   // ---------------------------------------------------------------------------
   //
-  // This ID usually appended to the end of the lux.js as a query string when
-  // using the SpeedCurve hosted version - but we have to include it here as
-  // this is self hosted.
-  LUX.customerid = 47044334;
-
   // Setting debug to `true` shows what happening as it happens. Running
   // `LUX.getDebug()` in the browser's console will show the history of what's
   // happened.
