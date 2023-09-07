@@ -16,6 +16,7 @@
   simple ||= false
   simple_light ||= false
   dark_icon ||= false
+  dark_large_icon ||= false
   small_icon ||= false
   nhs_icon ||= false
   brexit_icon ||= false
@@ -27,6 +28,7 @@
   css_classes = %w(gem-c-action-link)
   css_classes << "gem-c-action-link--light-text" if light_text
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
+  css_classes << "gem-c-action-link--dark-large-icon" if dark_large_icon
   css_classes << "gem-c-action-link--small-icon" if small_icon
   css_classes << "gem-c-action-link--transparent-icon" if transparent_icon
   css_classes << "gem-c-action-link--nhs" if nhs_icon

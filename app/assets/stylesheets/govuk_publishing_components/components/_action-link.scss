@@ -150,6 +150,22 @@
   }
 }
 
+.gem-c-action-link--dark-large-icon {
+  &:before {
+    background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
+    background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
+    height: 34px;
+    width: 40px;
+    background-repeat: no-repeat;
+    background-size: 32px auto;
+    background-position: 0 2px;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: govuk-spacing(2);
+  }
+}
+
 .gem-c-action-link--dark-icon,
 .gem-c-action-link--small-icon {
   max-width: none;
