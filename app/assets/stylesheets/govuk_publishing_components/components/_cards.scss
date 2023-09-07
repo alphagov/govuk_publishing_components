@@ -13,11 +13,8 @@
   margin: 0 govuk-spacing(-3);
 
   display: grid;
-  grid-auto-flow: row;
-  // Use CSS grid to calculate the number of rows
-  grid-template-rows: auto;
-  // Use the tallest cell in the grid to set the height for all rows
-  grid-auto-rows: fractions(1);
+  grid-auto-flow: row;   // Use CSS grid to calculate the number of rows
+  grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
   grid-template-columns: fractions(1);
 
   @include govuk-media-query($from: "tablet") {

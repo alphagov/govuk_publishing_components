@@ -30,6 +30,7 @@
 * Redact GA params from pageview data ([PR #3568](https://github.com/alphagov/govuk_publishing_components/pull/3568))
 * Add GA4 tracking to devolved nations banners ([PR #3556](https://github.com/alphagov/govuk_publishing_components/pull/3556))
 * Add GA4 tracking to the cookie banner ([PR #3564](https://github.com/alphagov/govuk_publishing_components/pull/3564))
+* Fix row spacing on topics browse pages ([PR #3540](https://github.com/alphagov/govuk_publishing_components/pull/3540))
 
 ## 35.14.0
 
