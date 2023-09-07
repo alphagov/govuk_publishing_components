@@ -41,6 +41,13 @@
   }
 }
 
+@include govuk-media-query($from: tablet) {
+  .gem-c-image-card.gem-c-image-card--two-thirds {
+    margin: 0 (- govuk-spacing(3)) govuk-spacing(6) (- govuk-spacing(3));
+    display: block;
+  }
+}
+
 @include govuk-media-query($from: mobile, $until: tablet) {
   .gem-c-image-card {
     margin: 0 (- govuk-spacing(3)) govuk-spacing(6) (- govuk-spacing(3));
@@ -52,6 +59,25 @@
 
   .gem-c-image-card__text-wrapper {
     @include govuk-grid-column($width: one-half, $at: mobile);
+  }
+
+  .gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--two-thirds {
+    @include govuk-grid-column($width: one-third, $float: right, $at: mobile);
+  }
+
+  .gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds {
+    @include govuk-grid-column($width: two-thirds, $float: right, $at: mobile);
+  }
+}
+
+@include govuk-media-query($from: tablet) {
+  .gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--two-thirds {
+    @include govuk-grid-column($width: one-third, $float: right, $at: tablet);
+  }
+
+  .gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds {
+    @include govuk-grid-column($width: two-thirds, $float: right, $at: tablet);
+    padding-left: 0;
   }
 }
 

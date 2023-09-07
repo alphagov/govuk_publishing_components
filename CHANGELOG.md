@@ -15,6 +15,7 @@
 
 * Add query string to GA4 pageview tracking ([PR #3609](https://github.com/alphagov/govuk_publishing_components/pull/3609))
 * Add large dark icon for action link ([PR #3594](https://github.com/alphagov/govuk_publishing_components/pull/3596))
+* Image card Two Thirds variant ([PR #3597](https://github.com/alphagov/govuk_publishing_components/pull/3597))
 
 ## 35.15.3
 

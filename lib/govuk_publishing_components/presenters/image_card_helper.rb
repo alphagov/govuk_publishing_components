@@ -4,7 +4,7 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :href_data_attributes, :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :youtube_video_id, :image_src
+      attr_reader :href_data_attributes, :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :youtube_video_id, :image_src, :two_thirds
 
       def initialize(local_assigns, brand_helper)
         @href = local_assigns[:href]
@@ -20,6 +20,7 @@ module GovukPublishingComponents
         @context = local_assigns[:context]
         @description = local_assigns[:description]
         @large = local_assigns[:large]
+        @two_thirds = local_assigns[:two_thirds] || false
         @heading_text = local_assigns[:heading_text]
         @extra_details_no_indent = local_assigns[:extra_details_no_indent]
         @metadata = local_assigns[:metadata]
@@ -60,8 +61,11 @@ module GovukPublishingComponents
       end
 
       def image
+        classes = %w[gem-c-image-card__image-wrapper]
+        classes << "gem-c-image-card__image-wrapper--two-thirds" if @two_thirds
+
         if @image_src
-          content_tag(:figure, class: "gem-c-image-card__image-wrapper") do
+          content_tag(:figure, class: classes) do
             image_tag(
               @image_src,
               class: "gem-c-image-card__image",
