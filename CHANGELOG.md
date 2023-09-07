@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix bug with GA4 search results count ([PR #3594](https://github.com/alphagov/govuk_publishing_components/pull/3594))
+
 ## 35.15.2
 
 * Fix error in LUX script ([PR #3592](https://github.com/alphagov/govuk_publishing_components/pull/3592))

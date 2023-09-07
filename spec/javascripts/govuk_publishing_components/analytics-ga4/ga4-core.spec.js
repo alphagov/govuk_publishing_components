@@ -418,6 +418,12 @@ describe('GA4 core', function () {
         expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual(54321)
         expect(typeof GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual('number')
       })
+
+      it('handles new lines and extra spaces', function () {
+        resultCountContainer.innerHTML = '<span id="results-count"> \n   54321 results    \n</span>'
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual(54321)
+        expect(typeof GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual('number')
+      })
     })
 
     describe('the correct index of the result is returned', function () {
