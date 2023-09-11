@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add new light action link variant ([PR #3602](https://github.com/alphagov/govuk_publishing_components/pull/3602))
+
 ## 35.16.1
 
 * Add GA4 to nested contents item links ([PR #3638](https://github.com/alphagov/govuk_publishing_components/pull/3638))
