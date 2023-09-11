@@ -55,7 +55,7 @@ $large-input-size: 50px;
   }
 }
 
-%gem-c-search-input-focus {
+@mixin gem-c-search-input-focus {
   outline: $govuk-focus-width solid $govuk-focus-colour;
   // Ensure outline appears outside of the element
   outline-offset: 0;
@@ -89,7 +89,7 @@ $large-input-size: 50px;
   }
 
   &:focus {
-    @extend %gem-c-search-input-focus;
+    @include gem-c-search-input-focus;
   }
 }
 
@@ -168,10 +168,9 @@ $large-input-size: 50px;
     // Ensure outline appears outside of the element
     outline-offset: 0;
 
-    // no need for black outline as there is enough contrast
-    // with the blue background
     &:focus {
-      box-shadow: none;
+      @include gem-c-search-input-focus;
+      box-shadow: inset 0 0 0 4px;
     }
   }
 
@@ -187,6 +186,17 @@ $large-input-size: 50px;
   .js-enabled & {
     .gem-c-search__label {
       color: $govuk-secondary-text-colour;
+    }
+  }
+}
+
+.gem-c-search--homepage {
+  .gem-c-search__submit {
+    background-color: #d2e2f1;
+    color: govuk-colour("blue");
+
+    &:hover {
+      background-color: lighten(#d2e2f1, 5%);
     }
   }
 }
@@ -211,6 +221,10 @@ $large-input-size: 50px;
   }
 }
 
+.gem-c-search__label--white {
+  color: govuk-colour("white");
+}
+
 .gem-c-search--no-border {
   .gem-c-search__label {
     color: govuk-colour("white");
@@ -218,6 +232,11 @@ $large-input-size: 50px;
 
   .gem-c-search__input[type="search"] {
     border: 0;
+
+    &:focus {
+      @include gem-c-search-input-focus;
+      box-shadow: inset 0 0 0 4px;
+    }
   }
 
   .js-enabled & {

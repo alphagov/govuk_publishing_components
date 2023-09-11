@@ -10,6 +10,8 @@
 ## Unreleased
 
 * Add new light action link variant ([PR #3602](https://github.com/alphagov/govuk_publishing_components/pull/3602))
+* Add new homepage variant to search component ([PR #3599](https://github.com/alphagov/govuk_publishing_components/pull/3599))
+
 
 ## 35.16.1
 
