@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Improve GA URL parameter stripping ([PR #3603](https://github.com/alphagov/govuk_publishing_components/pull/3603))
 * Fix bug with GA4 search results count ([PR #3594](https://github.com/alphagov/govuk_publishing_components/pull/3594))
 
 ## 35.15.2

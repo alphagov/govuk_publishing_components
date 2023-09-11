@@ -76,7 +76,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     // remove GA parameters of the form _ga=2320.021-012302 or _gl=02.10320.01230-123
     stripGaParam: function (str) {
       str = str.replace(/(_ga=[0-9.-]+)/g, '_ga=[id]')
-      str = str.replace(/(_gl=[0-9.-]+)/g, '_gl=[id]')
+      str = str.replace(/(_gl=[a-zA-Z0-9._\-*]+)/g, '_gl=[id]')
       return str
     },
 
