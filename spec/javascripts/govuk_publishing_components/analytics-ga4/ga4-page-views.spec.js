@@ -376,9 +376,12 @@ describe('Google Tag Manager page view tracking', function () {
     var url = 'https://www.gov.uk/welfare?'
     var param1 = '_ga=2.237932419.220854294.1692605006-1618308030.1687790776'
     var param2 = '_gl=32.23434234.243-32434220-230442300234.234324.42304-09320'
+    var param3 = '_gl=1*18346yi*_ga*OTkxOTU4OTU5LjE2OTQ0MzQyNTg.*_ga_HYBY4V8XVT*MTY5NDQzNDI1OC4xLjAuMTY5NDQzNDI1OC4wLjAuMA..'
 
     expect(GOVUK.analyticsGa4.analyticsModules.PageViewTracker.stripGaParam(url + param1)).toEqual(url + '_ga=[id]')
     expect(GOVUK.analyticsGa4.analyticsModules.PageViewTracker.stripGaParam(url + param2)).toEqual(url + '_gl=[id]')
+    expect(GOVUK.analyticsGa4.analyticsModules.PageViewTracker.stripGaParam(url + param1 + '&' + param2)).toEqual(url + '_ga=[id]&_gl=[id]')
+    expect(GOVUK.analyticsGa4.analyticsModules.PageViewTracker.stripGaParam(url + param3)).toEqual(url + '_gl=[id]')
   })
 
   it('redacts ga parameters from the location and referrer before they are mistaken for PII', function () {
