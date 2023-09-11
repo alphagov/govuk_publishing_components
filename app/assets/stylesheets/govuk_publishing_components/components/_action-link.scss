@@ -154,8 +154,8 @@
   &:before {
     width: 36px;
     height: 28px;
-    background: image-url("govuk_publishing_components/action-link-arrow--blue.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--homepage.svg"), linear-gradient(transparent, transparent);
+    background-image: image-url("govuk_publishing_components/action-link-arrow--blue.png");
+    background-image: image-url("govuk_publishing_components/action-link-arrow--homepage.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-size: 28px auto;
     background-position: 0 0;
