@@ -208,4 +208,35 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_no_selector "a", text: "School curriculum"
     assert_no_selector "a", text: "Education, training and skills"
   end
+
+  it "renders navigation breadcrumb if page is travel advice" do
+    content_item = example_document_for("travel_advice", "full-country")
+    content_item = set_parent_titles_to_businesses(content_item)
+
+    content_item["links"]["taxons"] = [
+      {
+        api_path: "/api/content/business/competition",
+        base_path: "/business/competition",
+        document_type: "taxon",
+        phase: "live",
+        links: {
+          parent_taxons: [
+            {
+              api_path: "/api/content/business-and-industry/business-regulation",
+              base_path: "/business-and-industry/business-regulation",
+              document_type: "taxon",
+              phase: "live",
+              links: {},
+            },
+          ],
+        },
+      },
+    ]
+    render_component(content_item: content_item)
+    assert_select "a", text: "Home"
+    assert_select "a", text: "Business and self-employed"
+    assert_select "a", text: "Licences and licence applications"
+    assert_no_selector "a", text: "School curriculum"
+    assert_no_selector "a", text: "Education, training and skills"
+  end
 end

@@ -1,5 +1,6 @@
 module GovukPublishingComponents
   module Presenters
+
     class BreadcrumbSelector
       attr_reader :content_item, :request, :prioritise_taxon_breadcrumbs
 
@@ -18,6 +19,10 @@ module GovukPublishingComponents
         best_match_option[:step_by_step]
       end
 
+      def breadcrumb_constructor_for(content_item)
+        # content_item.
+      end
+
     private
 
       def best_match_option
@@ -32,47 +37,35 @@ module GovukPublishingComponents
       def options(navigation)
         if navigation.content_tagged_to_a_finder?
           {
-            step_by_step: false,
             breadcrumbs: navigation.finder_breadcrumbs,
           }
         elsif navigation.content_tagged_to_current_step_by_step?
           {
-            step_by_step: true,
             breadcrumbs: navigation.step_nav_helper.header(@ga4_tracking),
           }
         elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
           {
-            step_by_step: false,
             breadcrumbs: navigation.taxon_breadcrumbs,
           }
-        elsif navigation.content_tagged_to_mainstream_browse_pages?
+        elsif navigation.content_tagged_to_mainstream_browse_pages? || navigation.content_is_travel_advice?
           {
-            step_by_step: false,
-            breadcrumbs: navigation.breadcrumbs,
-          }
-        elsif navigation.content_is_travel_advice?
-          {
-            step_by_step: false,
             breadcrumbs: navigation.breadcrumbs,
           }
         elsif navigation.content_has_a_topic?
           {
-            step_by_step: false,
             breadcrumbs: navigation.topic_breadcrumbs,
           }
         elsif navigation.use_taxon_breadcrumbs?
           {
-            step_by_step: false,
             breadcrumbs: navigation.taxon_breadcrumbs,
           }
         elsif navigation.breadcrumbs.any?
           {
-            step_by_step: false,
             breadcrumbs: navigation.breadcrumbs,
           }
         else
           {}
-        end
+        end.merge(step_by_step: navigation.content_tagged_to_current_step_by_step?)
       end
 
       def content_item_navigation
