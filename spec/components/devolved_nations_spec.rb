@@ -196,10 +196,10 @@ describe "Devolved Nations", type: :view do
       ga4_tracking: false,
     )
 
-    assert_no_selector ".gem-c-devolved-nations[data-ga4-devolved-nations-banner]"
-    assert_no_selector ".gem-c-devolved-nations[data-module=ga4-link-tracker]"
-    assert_no_selector ".gem-c-devolved-nations[data-ga4-track-links-only]"
-    assert_no_selector ".gem-c-devolved-nations[data-ga4-set-indexes]"
-    assert_no_selector ".gem-c-devolved-nations[data-ga4-link]"
+    assert_select ".gem-c-devolved-nations[data-ga4-devolved-nations-banner]", false
+    assert_select ".gem-c-devolved-nations[data-module=ga4-link-tracker]", false
+    assert_select ".gem-c-devolved-nations[data-ga4-track-links-only]", false
+    assert_select ".gem-c-devolved-nations[data-ga4-set-indexes]", false
+    assert_select ".gem-c-devolved-nations[data-ga4-link]", false
   end
 end

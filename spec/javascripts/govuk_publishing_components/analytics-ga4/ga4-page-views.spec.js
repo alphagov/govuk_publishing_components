@@ -54,7 +54,8 @@ describe('Google Tag Manager page view tracking', function () {
         emergency_banner: undefined,
         phase_banner: undefined,
         devolved_nations_banner: undefined,
-        cookie_banner: undefined
+        cookie_banner: undefined,
+        intervention: undefined
       }
     }
     window.dataLayer = []
@@ -493,5 +494,37 @@ describe('Google Tag Manager page view tracking', function () {
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
     document.body.removeChild(div)
+  })
+
+  describe('intervention banner', function () {
+    var div
+    beforeEach(function () {
+      div = document.createElement('div')
+      div.setAttribute('data-ga4-intervention-banner', '')
+      document.body.appendChild(div)
+    })
+
+    afterEach(function () {
+      document.body.removeChild(div)
+    })
+
+    it('correctly sets the parameter when the banner exists and no cookie exists', function () {
+      div.setAttribute('data-intervention-name', 'hello-world')
+      div.setAttribute('data-module', 'intervention')
+      expected.page_view.intervention = 'true'
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('doesn\'t set the intervention parameter when the banner is hidden via the cookie', function () {
+      div.setAttribute('data-ga4-intervention-banner', '')
+      div.setAttribute('data-module', 'intervention')
+      div.setAttribute('data-intervention-name', 'hello-world')
+      window.GOVUK.setCookie('intervention_campaign', 'hello-world')
+      expected.page_view.intervention = undefined
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+      window.GOVUK.setCookie('intervention_campaign', '')
+    })
   })
 })

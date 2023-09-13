@@ -90,10 +90,10 @@ describe "Emergency Banner", type: :view do
 
   it "renders banner without ga4 attributes" do
     render_component(emergency_banner_attributes({ campaign_class: "notable-death", ga4_tracking: false }))
-    assert_no_selector ".gem-c-emergency-banner[data-ga4-emergency-banner]"
-    assert_no_selector ".gem-c-emergency-banner[data-module=ga4-link-tracker]"
-    assert_no_selector ".gem-c-emergency-banner[data-ga4-track-links-only]"
-    assert_no_selector ".gem-c-emergency-banner[data-ga4-set-indexes]"
-    assert_no_selector ".gem-c-emergency-banner[data-ga4-link]"
+    assert_select ".gem-c-emergency-banner[data-ga4-emergency-banner]", false
+    assert_select ".gem-c-emergency-banner[data-module=ga4-link-tracker]", false
+    assert_select ".gem-c-emergency-banner[data-ga4-track-links-only]", false
+    assert_select ".gem-c-emergency-banner[data-ga4-set-indexes]", false
+    assert_select ".gem-c-emergency-banner[data-ga4-link]", false
   end
 end
