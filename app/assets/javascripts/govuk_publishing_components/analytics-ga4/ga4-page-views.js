@@ -58,7 +58,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined,
             devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined,
             cookie_banner: document.querySelector('[data-ga4-cookie-banner]') ? 'true' : undefined,
-            intervention: this.getInterventionPresence()
+            intervention: this.getInterventionPresence(),
+            query_string: this.getQueryString()
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
@@ -67,6 +68,20 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
     getLocation: function () {
       return this.PIIRemover.stripPII(this.stripGaParam(document.location.href))
+    },
+
+    getSearch: function () {
+      return window.location.search
+    },
+
+    getQueryString: function () {
+      var queryString = this.getSearch()
+      if (queryString) {
+        queryString = this.PIIRemover.stripPIIWithOverride(queryString, true, true)
+        queryString = this.stripGaParam(queryString)
+        queryString = queryString.substring(1) // removes the '?' character from the start.
+        return queryString
+      }
     },
 
     getReferrer: function (referrer) {

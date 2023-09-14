@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add query string to GA4 pageview tracking ([PR #3609](https://github.com/alphagov/govuk_publishing_components/pull/3609))
+
 ## 35.15.3
 
 * Improve GA URL parameter stripping ([PR #3603](https://github.com/alphagov/govuk_publishing_components/pull/3603))

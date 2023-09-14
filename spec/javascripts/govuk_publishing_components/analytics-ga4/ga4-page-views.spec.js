@@ -55,7 +55,8 @@ describe('Google Tag Manager page view tracking', function () {
         phase_banner: undefined,
         devolved_nations_banner: undefined,
         cookie_banner: undefined,
-        intervention: undefined
+        intervention: undefined,
+        query_string: undefined
       }
     }
     window.dataLayer = []
@@ -526,5 +527,12 @@ describe('Google Tag Manager page view tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
       window.GOVUK.setCookie('intervention_campaign', '')
     })
+  })
+
+  it('correctly sets the query_string parameter with PII and _ga/_gl values redacted', function () {
+    spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?query1=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=1234.567&_gl=1234.567')
+    expected.page_view.query_string = 'query1=hello&query2=world&email=[email]&postcode=[postcode]&birthday=[date]&_ga=[id]&_gl=[id]'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
   })
 })
