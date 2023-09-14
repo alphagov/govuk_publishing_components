@@ -241,6 +241,8 @@ en:
         href: "/sign-in-universal-credit"
       - label: Check your National Insurance record
         href: "/check-national-insurance-record"
+      - label: 'Check MOT history of a vehicle'
+        href: /check-mot-history
       popular_links_heading: Popular on GOV.UK
       search_text: Search GOV.UK
     metadata:
