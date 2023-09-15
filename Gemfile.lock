@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (35.15.3)
+    govuk_publishing_components (35.15.4)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -127,7 +127,7 @@ GEM
     google-protobuf (3.24.3)
     googleapis-common-protos-types (1.8.0)
       google-protobuf (~> 3.18)
-    govuk_app_config (9.1.0)
+    govuk_app_config (9.2.0)
       logstasher (~> 2.1)
       opentelemetry-exporter-otlp (>= 0.25, < 0.27)
       opentelemetry-instrumentation-all (>= 0.39.1, < 0.41.0)
