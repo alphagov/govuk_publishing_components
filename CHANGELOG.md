@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add query string to GA4 pageview tracking ([PR #3609](https://github.com/alphagov/govuk_publishing_components/pull/3609))
+* Add large dark icon for action link ([PR #3594](https://github.com/alphagov/govuk_publishing_components/pull/3596))
 
 ## 35.15.3
 

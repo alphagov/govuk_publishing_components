@@ -118,6 +118,15 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link--dark-icon"
   end
 
+  it "renders dark large icon version" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      dark_large_icon: true,
+    )
+    assert_select ".gem-c-action-link--dark-large-icon"
+  end
+
   it "renders small icon version" do
     render_component(
       text: "Get more info",
