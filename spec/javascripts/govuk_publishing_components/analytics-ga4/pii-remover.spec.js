@@ -213,6 +213,11 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     })
   })
 
+  it('ensures the email address regex does not include the + character', function () {
+    var string = pii.stripPIIWithOverride('hello+world+email@example.com+SW12AA+1990-01-01', false, false)
+    expect(string).toEqual('hello+world+[email]+SW12AA+1990-01-01')
+  })
+
   function resetHead () {
     $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
     $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()
