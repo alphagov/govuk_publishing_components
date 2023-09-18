@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## 35.15.4
+## Unreleased
 
 * Add query string to GA4 pageview tracking ([PR #3609](https://github.com/alphagov/govuk_publishing_components/pull/3609))
 * Add large dark icon for action link ([PR #3594](https://github.com/alphagov/govuk_publishing_components/pull/3596))
