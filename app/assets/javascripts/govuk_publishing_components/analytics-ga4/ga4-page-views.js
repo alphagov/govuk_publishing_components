@@ -59,7 +59,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined,
             cookie_banner: document.querySelector('[data-ga4-cookie-banner]') ? 'true' : undefined,
             intervention: this.getInterventionPresence(),
-            query_string: this.getQueryString()
+            query_string: this.getQueryString(),
+            search_term: this.getSearchTerm()
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
@@ -72,6 +73,23 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
     getSearch: function () {
       return window.location.search
+    },
+
+    getSearchTerm: function () {
+      var queryString = this.getSearch()
+
+      if (!queryString) {
+        return undefined
+      }
+
+      var searchTerm = queryString.match(/keywords=([^&]*)/)
+      if (!searchTerm) {
+        return undefined
+      }
+
+      searchTerm = searchTerm[0].replace('keywords=', '')
+      searchTerm = this.PIIRemover.stripPIIWithOverride(searchTerm, true, true)
+      return searchTerm
     },
 
     getQueryString: function () {

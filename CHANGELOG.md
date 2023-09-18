@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Image card Two Thirds variant ([PR #3597](https://github.com/alphagov/govuk_publishing_components/pull/3597))
+* Add 'search_term' to GA4 pageview object ([PR #3615](https://github.com/alphagov/govuk_publishing_components/pull/3615))
 
 ## 35.15.5
 
