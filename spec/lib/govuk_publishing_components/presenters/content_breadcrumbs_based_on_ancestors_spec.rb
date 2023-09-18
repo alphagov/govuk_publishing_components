@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnAncestors do
   describe "#breadcrumbs" do
     it "can handle any valid content item" do
-      payload = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder")
+      payload = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide")
 
       expect { described_class.new(payload).breadcrumbs }.to_not raise_error
     end
@@ -87,7 +87,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnA
   end
 
   def breadcrumbs_for(content_item)
-    fully_valid_content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder") do |random_item|
+    fully_valid_content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide") do |random_item|
       random_item.merge(content_item)
     end
 

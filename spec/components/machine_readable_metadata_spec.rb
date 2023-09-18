@@ -6,7 +6,7 @@ describe "Machine readable metadata", type: :view do
   end
 
   it "generates machine readable JSON-LD for articles" do
-    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "generic")
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide")
     render_component(content_item: example, schema: :article)
 
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
@@ -60,7 +60,7 @@ describe "Machine readable metadata", type: :view do
   end
 
   it "escapes harmful HTML in the JSON" do
-    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "generic")
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide")
     example["description"] = bad_html
 
     render_component(content_item: example, schema: :article)
@@ -76,7 +76,7 @@ describe "Machine readable metadata", type: :view do
           "bar" => bad_html,
         },
       }))
-    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "generic")
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide")
 
     render_component(content_item: example, schema: :article)
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
