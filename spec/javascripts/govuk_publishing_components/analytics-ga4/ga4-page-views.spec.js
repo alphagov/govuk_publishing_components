@@ -488,7 +488,7 @@ describe('Google Tag Manager page view tracking', function () {
     document.body.removeChild(div)
   })
 
-  it('correctly sets the cookie_banner parameter', function () {
+  it('correctly sets the cookie_banner parameter when the banner exists and no cookie exists', function () {
     var div = document.createElement('div')
     div.setAttribute('data-ga4-cookie-banner', '')
     document.body.appendChild(div)
@@ -496,6 +496,17 @@ describe('Google Tag Manager page view tracking', function () {
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
     document.body.removeChild(div)
+  })
+
+  it('doesn\'t set the cookie parameter when the banner is hidden via the cookie', function () {
+    var div = document.createElement('div')
+    div.setAttribute('data-ga4-cookie-banner', '')
+    div.setAttribute('data-module', 'cookie-banner')
+    window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}')
+    expected.page_view.cookie_banner = undefined
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    window.GOVUK.setCookie('cookie_policy', '')
   })
 
   describe('intervention banner', function () {

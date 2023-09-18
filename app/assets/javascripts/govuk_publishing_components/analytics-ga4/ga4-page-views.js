@@ -57,8 +57,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             emergency_banner: document.querySelector('[data-ga4-emergency-banner]') ? 'true' : undefined,
             phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined,
             devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined,
-            cookie_banner: document.querySelector('[data-ga4-cookie-banner]') ? 'true' : undefined,
-            intervention: this.getInterventionPresence(),
+            cookie_banner: this.getBannerPresence('[data-ga4-cookie-banner]'),
+            intervention: this.getBannerPresence('[data-ga4-intervention-banner]'),
             query_string: this.getQueryString(),
             search_term: this.getSearchTerm()
           }
@@ -167,18 +167,18 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       return (withdrawn === 'withdrawn') ? 'true' : 'false'
     },
 
-    getInterventionPresence: function () {
+    getBannerPresence: function (bannerSelector) {
       /* If the user hides the banner using JS, a cookie is set to hide it on future page loads.
-       * Therefore we need to start the intervention banner early so that it hides if this cookie exists.
+       * Therefore we need to start the banner module early so that it hides if this cookie exists.
        * Without this, our pageview object will track the banner as visible before it gets hidden. */
 
-      var intervention = document.querySelector('[data-ga4-intervention-banner]')
+      var banner = document.querySelector(bannerSelector)
 
-      if (intervention) {
-        window.GOVUK.modules.start(intervention)
-        var interventionHidden = intervention.getAttribute('hidden') === '' || intervention.getAttribute('hidden')
+      if (banner) {
+        window.GOVUK.modules.start(banner)
+        var bannerHidden = banner.getAttribute('hidden') === '' || banner.getAttribute('hidden')
 
-        if (interventionHidden) {
+        if (bannerHidden) {
           return undefined
         }
         return 'true'

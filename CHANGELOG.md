@@ -14,6 +14,7 @@
 * Remove option select GA4 attributes ([PR #3625](https://github.com/alphagov/govuk_publishing_components/pull/3625))
 * Fix various bugs with the GA4 pageview tracker ([PR #3626](https://github.com/alphagov/govuk_publishing_components/pull/3626))
 * Add 'ga4-browse-topic' meta tag to track the mainstream browse topic ([PR #3628](https://github.com/alphagov/govuk_publishing_components/pull/3628))
+* Ensure cookie banner isn't tracked as visible when it is hidden via JS ([PR #3612](https://github.com/alphagov/govuk_publishing_components/pull/3612))
 
 ## 35.16.0
 
