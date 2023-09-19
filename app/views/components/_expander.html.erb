@@ -1,0 +1,24 @@
+<% add_app_component_stylesheet("expander") %>
+<%
+  title ||= false
+  open_on_load ||= false
+  margin_bottom ||= 0
+
+  content_id = "expander-content-#{SecureRandom.hex(4)}"
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  css_classes = %w( app-c-expander )
+  css_classes << (shared_helper.get_margin_bottom) unless margin_bottom == 0
+%>
+<% if title %>
+  <%= tag.div class: css_classes, data: { module: "expander", 'open-on-load': open_on_load, 'ga4-filter-parent': '' } do %>
+    <h3 class="app-c-expander__heading">
+      <span class="app-c-expander__title js-toggle"><%= title %></span>
+      <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-expander__icon app-c-expander__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"/></svg>
+      <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-expander__icon app-c-expander__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"/></svg>
+    </h3>
+    <div class="app-c-expander__content js-content <%= 'app-c-expander__content--visible' if open_on_load %>" id="<%= content_id %>">
+      <%= yield %>
+    </div>
+  <% end %>
+<% end %>

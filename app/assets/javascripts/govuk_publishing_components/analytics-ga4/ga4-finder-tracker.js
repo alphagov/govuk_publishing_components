@@ -7,7 +7,7 @@
 
   GOVUK.analyticsGa4.Ga4FinderTracker = {
 
-    // Finds the parent div containing the filters. Loops through each child div that has data-ga4-section on it . Sets an index on each of these child divs.
+    // Finds the parent div containing the filters. Loops through each child div that has data-ga4-filter-parent on it . Sets an index on each of these child divs.
     setFilterIndexes: function () {
       var filterContainer = document.querySelector('[data-ga4-filter-container]')
 
@@ -15,10 +15,10 @@
         return
       }
 
-      var filterSections = filterContainer.querySelectorAll('[data-ga4-section]')
+      var filterParents = filterContainer.querySelectorAll('[data-ga4-filter-parent]')
 
-      for (var i = 0; i < filterSections.length; i++) {
-        filterSections[i].setAttribute('data-ga4-index', JSON.stringify({ index_section: i + 1, index_section_count: filterSections.length }))
+      for (var i = 0; i < filterParents.length; i++) {
+        filterParents[i].setAttribute('data-ga4-index', JSON.stringify({ index_section: i + 1, index_section_count: filterParents.length }))
       }
 
       window.GOVUK.triggerEvent(window, 'ga4-filter-indexes-added')
@@ -28,6 +28,7 @@
     // changeEventMetadata is a string referring to the type of form change and the element type that triggered it. For example 'update-filter checkbox'.
     trackChangeEvent: function (eventTarget, changeEventMetadata) {
       changeEventMetadata = changeEventMetadata.split(' ')
+      var filterParent = eventTarget.closest('[data-ga4-filter-parent]')
       var section = eventTarget.closest('[data-ga4-section]')
       var changeType = changeEventMetadata[0]
       var elementType = changeEventMetadata[1]
@@ -45,7 +46,7 @@
       var elementValue = elementInfo.elementValue
       data.text = elementValue
       var wasFilterRemoved = elementInfo.wasFilterRemoved
-      data = this.setSchemaBasedOnChangeType(data, elementValue, elementType, wasFilterRemoved, changeType, section)
+      data = this.setSchemaBasedOnChangeType(data, elementValue, elementType, wasFilterRemoved, changeType, section, filterParent)
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')
@@ -107,7 +108,7 @@
     },
 
     // Takes the GTM schema, the event target value, the event target HTML type, whether the filter was removed, the type of filter change it was, and the parent section heading. Populates the GTM object based on these values.
-    setSchemaBasedOnChangeType: function (schema, elementValue, elementType, wasFilterRemoved, changeType, section) {
+    setSchemaBasedOnChangeType: function (schema, elementValue, elementType, wasFilterRemoved, changeType, section, filterParent) {
       var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
 
       switch (changeType) {
@@ -121,7 +122,7 @@
             schema.text = elementType === 'text' ? undefined : elementValue
           } else {
             schema.action = elementType === 'text' ? 'search' : 'select'
-            schema.index = this.getSectionIndex(section)
+            schema.index = this.getSectionIndex(filterParent)
           }
           break
 

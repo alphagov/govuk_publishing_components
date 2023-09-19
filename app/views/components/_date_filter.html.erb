@@ -1,0 +1,44 @@
+<%
+  key ||= false
+  name ||= false
+  from_value ||= ""
+  to_value ||= ""
+  aria_controls_id ||= false
+  date_errors_from ||= nil
+  date_errors_to ||= nil
+%>
+<% if key && name %>
+  <%= render "components/expander", { title: name } do %>
+    <div class="govuk-!-margin-bottom-0" id="<%= key %>">
+      <%= render "govuk_publishing_components/components/input", {
+        label: {
+          text: name + " after"
+        },
+        name: key + "[from]",
+        id: key + "[from]",
+        value: from_value,
+        controls: aria_controls_id,
+        hint: "For example, 2005 or 21/11/2014",
+        error_message: date_errors_from,
+        data: {
+          ga4_section: name + " after"
+        }
+      } %>
+
+      <%= render "govuk_publishing_components/components/input", {
+        label: {
+          text: name + " before"
+        },
+        name: key + "[to]",
+        id: key + "[to]",
+        value: to_value,
+        controls: aria_controls_id,
+        hint: "For example, 2005 or 21/11/2014",
+        error_message: date_errors_to,
+        data: {
+          ga4_section: name + " before"
+        }
+      } %>
+    </div>
+  <% end %>
+<% end %>
