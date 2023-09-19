@@ -138,6 +138,10 @@ da:
       close_modal: Luk den modale dialog
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Find alt indhold fra %{organisation}
     previous_and_next_navigation:

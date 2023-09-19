@@ -135,6 +135,10 @@ zh-hk:
       close_modal: 關閉互動視窗對話
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: 從 %{organisation} 獲得更多內容
     previous_and_next_navigation:

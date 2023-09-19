@@ -136,6 +136,10 @@ ms:
       close_modal: Tutup dialog mod
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Cari semua kandungan dari %{organisation}
     previous_and_next_navigation:

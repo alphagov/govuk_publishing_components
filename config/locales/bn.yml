@@ -138,6 +138,10 @@ bn:
       close_modal: ক্লোজ মোডাল ডায়ালগ
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-এর সকল বিষয়বস্তু খুঁজে বের করুন"
     previous_and_next_navigation:

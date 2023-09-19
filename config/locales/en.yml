@@ -256,6 +256,10 @@ en:
       close_modal: Close modal dialogue
     notice:
       banner_title: Important
+    option_select:
+      found_single: option found
+      found_multiple: options found
+      selected: selected
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     previous_and_next_navigation:

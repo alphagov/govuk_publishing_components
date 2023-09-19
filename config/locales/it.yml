@@ -137,6 +137,10 @@ it:
       close_modal: Chiudi dialogo modale
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Trova tutto il contenuto da %{organisation}
     previous_and_next_navigation:

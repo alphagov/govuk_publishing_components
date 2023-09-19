@@ -137,6 +137,10 @@ hi:
       close_modal: मॉडल संवाद बंद करें
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: "%{organization} से सभी सामग्री खोजें"
     previous_and_next_navigation:

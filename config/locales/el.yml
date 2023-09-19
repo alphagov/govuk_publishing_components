@@ -137,6 +137,10 @@ el:
       close_modal: Κλείσιμο παράθυρου διαλόγου
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Εύρεση όλου του περιεχομένου από τον οργανισμό %{Organization}
     previous_and_next_navigation:
