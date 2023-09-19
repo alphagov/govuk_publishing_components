@@ -114,7 +114,7 @@ describe "Specimen usage of step by step navigation helpers" do
     end
   end
 
-  def content_store_has_random_item(base_path:, schema: "placeholder", part_of_step_navs: [])
+  def content_store_has_random_item(base_path:, schema: "guide", part_of_step_navs: [])
     links = if part_of_step_navs
               { "part_of_step_navs" => part_of_step_navs }
             else

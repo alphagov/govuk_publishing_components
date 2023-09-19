@@ -10,12 +10,12 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
   describe "#related_navigation" do
     it "can handle randomly generated content" do
-      expect { payload_for("placeholder", {}) }.to_not raise_error
+      expect { payload_for("guide", {}) }.to_not raise_error
     end
 
     it "returns empty arrays if there are no related navigation sidebar links" do
       nothing = payload_for(
-        "placeholder",
+        "guide",
         "details" => {
           "external_related_links" => [],
         },
@@ -219,7 +219,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
     it "returns an Elsewhere on the web section for external related links" do
       payload = payload_for(
-        "placeholder",
+        "guide",
         "details" => {
           "external_related_links" => [
             {
@@ -262,7 +262,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
     it "returns live taxons" do
       payload = payload_for(
-        "placeholder",
+        "guide",
         "details" => {
           "external_related_links" => [],
         },
@@ -308,7 +308,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
     end
 
     context "for a sidebar" do
-      subject(:payload) { payload_for("placeholder", {}, :sidebar) }
+      subject(:payload) { payload_for("guide", {}, :sidebar) }
 
       it "only includes collections, guides and related items" do
         expect(payload).to include(
@@ -329,7 +329,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
     end
 
     context "for a footer" do
-      subject(:payload) { payload_for("placeholder", {}, :footer) }
+      subject(:payload) { payload_for("guide", {}, :footer) }
 
       it "only includes contacts external links, statistical datasets, topical events, topics and world locations" do
         expect(payload).to include(

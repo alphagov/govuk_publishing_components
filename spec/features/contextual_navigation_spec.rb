@@ -325,7 +325,7 @@ describe "Contextual navigation" do
   end
 
   def not_step_by_step_content
-    not_step_by_step_content = random_item("placeholder")
+    not_step_by_step_content = random_item("guide")
     not_step_by_step_content["links"].delete("part_of_step_navs")
     not_step_by_step_content["links"].delete("secondary_to_step_navs")
     not_step_by_step_content
@@ -341,7 +341,7 @@ describe "Contextual navigation" do
   def given_there_is_a_parent_page_with_a_step_by_step
     step_by_step = random_step_nav_item("step_by_step_nav").merge("title" => "A step by step page")
 
-    @parent = random_item("placeholder")
+    @parent = random_item("guide")
     @parent["links"]["part_of_step_navs"] = [step_by_step]
     @parent["links"].delete("finder")
   end
