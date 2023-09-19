@@ -7,8 +7,8 @@ This script is used to add GA4 tracking to the GOVUK finders in `finder-frontend
 ```html
 <form id="myForm">
   <div data-ga4-filter-container>
-    <div data-ga4-section="Topics">
-        <select data-ga4-change-category="update-filter select">
+    <div data-ga4-filter-parent>
+        <select data-ga4-change-category="update-filter select" data-ga4-section="Topic">
             <option value="1">Default option</option>
             <option value="2">Option 1</option>
             <option value="3">Option 2</option>
@@ -38,7 +38,7 @@ The flow of the tracker is:
 
     a. Tag the parent `<div>` or wrapper element for your filters with `data-ga4-filter-container`. This tells our code where to look for filter sections, so that we can set an `index_section` for each filter.
 
-    b. Tag each filter's wrapper element with a `data-ga4-section` attribute. This key can also be populated with a string value, which will be used to populate the `section` value of our GTM object. For example, on a "Topics" filter `<div>` you could add `data-ga4-section="Topics"` or just `data-ga4-section`.
+    b. Tag each filter's wrapper element with a `data-ga4-filter-parent` attribute, so that indexes can be set. Tag each individual filter with `data-ga4-section="Topics"` to populate the GA4 section value for that filter.
 
     c. Tag each element of the form that can trigger a `change` event with a `data-ga4-change-category`. This will contain some metadata about what the change is. The current categories are: `update-filter`, `update-sort`, `clear-all-filters` and `update-keyword`. As well as this, add the type of element that the filter is (further details on what types are tracked is documented below.) This assists with our tracker extracting the value of the filter. For example, a `<select>` element that updates a filter would have `data-ga4-change-category="update-filter select"`. A search box would have `data-ga4-change-category="update-keyword text"`.
 
