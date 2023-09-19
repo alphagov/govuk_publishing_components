@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 35.15.5
+
+* Use an absolute URL for og:image Open Graph property ([PR #3619](https://github.com/alphagov/govuk_publishing_components/pull/3619))
+
 ## 35.15.4
 
 * Add query string to GA4 pageview tracking ([PR #3609](https://github.com/alphagov/govuk_publishing_components/pull/3609))
