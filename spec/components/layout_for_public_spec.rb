@@ -281,4 +281,12 @@ describe "Layout for public", type: :view do
 
     assert_select ".gem-c-layout-for-public.govuk-template__body.draft"
   end
+
+  it "has an Open Graph image with an absolute URL" do
+    render_component({})
+
+    assert_select "meta[property='og:image']" do |meta|
+      expect(meta.first["content"]).to match(%r{^https?://})
+    end
+  end
 end
