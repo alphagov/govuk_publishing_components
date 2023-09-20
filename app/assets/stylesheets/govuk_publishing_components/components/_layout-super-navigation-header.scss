@@ -436,7 +436,7 @@ $after-button-padding-left: govuk-spacing(4);
     &::after {
       background-color: govuk-colour("black");
     }
-
+    // stylelint-disable max-nesting-depth
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-color: $govuk-focus-colour;
 
@@ -444,6 +444,7 @@ $after-button-padding-left: govuk-spacing(4);
         @include chevron(govuk-colour("black"), true);
       }
     }
+    // stylelint-enable max-nesting-depth
   }
 
   // Undoes the :focus styles *only* for browsers that support :focus-visible.
@@ -453,6 +454,7 @@ $after-button-padding-left: govuk-spacing(4);
     box-shadow: none;
     color: govuk-colour("white");
 
+    // stylelint-disable max-nesting-depth
     &:hover {
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         &::before {
@@ -476,6 +478,7 @@ $after-button-padding-left: govuk-spacing(4);
         }
       }
     }
+    // stylelint-enable max-nesting-depth
   }
 
   // Open button modifier
@@ -597,11 +600,13 @@ $after-button-padding-left: govuk-spacing(4);
       box-shadow: none;
       color: $govuk-focus-colour;
 
+      // stylelint-disable max-nesting-depth
       @include govuk-media-query($from: 360px) {
         &::before {
           @include chevron($govuk-focus-colour, true);
         }
       }
+      // stylelint-enable max-nesting-depth
     }
 
     @include focus-not-focus-visible {
