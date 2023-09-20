@@ -205,6 +205,19 @@ examples:
       <div class="govuk-!-width-full">
         <%= component %>
       </div>
+  two_thirds_column:
+    description: This variant is used for the featured section on the homepage.
+    data:
+      two_thirds: true
+      href: "/still-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/91397/s712_SG_Swear_in_1_.jpg"
+      image_alt: "some meaningful alt text please"
+      heading_text: "Something has happened nearby possibly"
+      description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
+    embed: |
+      <div class="govuk-!-width-full">
+        <%= component %>
+      </div>
   youtube_video:
     description: |
       Given a Youtube video id, the image card will render a Youtube embed instead of an image. If Javascript fails to execute for any reason, then a fallback link to the Youtube video will be rendered instead.

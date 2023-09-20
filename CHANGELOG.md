@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Image card Two Thirds variant ([PR #3597](https://github.com/alphagov/govuk_publishing_components/pull/3597))
+
 ## 35.15.5
 
 * Use an absolute URL for og:image Open Graph property ([PR #3619](https://github.com/alphagov/govuk_publishing_components/pull/3619))

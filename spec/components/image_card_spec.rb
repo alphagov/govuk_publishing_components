@@ -108,6 +108,13 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card.gem-c-image-card--large"
   end
 
+  it "renders two thirds variant" do
+    render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text", heading_text: "test", two_thirds: true)
+    assert_select ".gem-c-image-card.gem-c-image-card--two-thirds"
+    assert_select ".gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds"
+    assert_select ".gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--one-third"
+  end
+
   it "applies tracking attributes" do
     render_component(href: "#", href_data_attributes: { track_category: "cat" }, heading_text: "test")
     assert_select ".gem-c-image-card[data-module='gem-track-click ga4-link-tracker']"
