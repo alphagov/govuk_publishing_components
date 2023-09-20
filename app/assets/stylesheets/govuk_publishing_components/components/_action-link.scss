@@ -3,7 +3,7 @@
 .gem-c-action-link {
   display: table;
 
-  &:before {
+  &::before {
     content: "";
     display: table-cell;
     width: 60px;
@@ -66,7 +66,7 @@
   .gem-c-action-link__subtext {
     padding: 0;
 
-    &:before {
+    &::before {
       display: none;
     }
   }
@@ -82,7 +82,7 @@
     position: relative;
     padding-left: govuk-spacing(4);
 
-    &:before {
+    &::before {
       content: "";
       position: absolute;
       top: 10%;
@@ -95,14 +95,14 @@
 }
 
 .gem-c-action-link--white-arrow {
-  &:before {
+  &::before {
     background-image: image-url("govuk_publishing_components/action-link-arrow--white.png");
     background-image: image-url("govuk_publishing_components/action-link-arrow--white.svg"), linear-gradient(transparent, transparent);
   }
 }
 
 .gem-c-action-link--blue-arrow {
-  &:before {
+  &::before {
     width: 36px;
     height: 28px;
     background: image-url("govuk_publishing_components/action-link-arrow--blue.png");
@@ -120,7 +120,7 @@
 }
 
 .gem-c-action-link--simple {
-  &:before {
+  &::before {
     width: 30px;
     height: 30px;
     background: image-url("govuk_publishing_components/action-link-arrow--simple.png");
@@ -132,7 +132,7 @@
 }
 
 .gem-c-action-link--simple-light {
-  &:before {
+  &::before {
     width: 30px;
     height: 30px;
     background: image-url("govuk_publishing_components/action-link-arrow--simple-light.png");
@@ -144,14 +144,14 @@
 }
 
 .gem-c-action-link--dark-icon {
-  &:before {
+  &::before {
     background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
     background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
   }
 }
 
 .gem-c-action-link--dark-large-icon {
-  &:before {
+  &::before {
     background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
     background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
     height: 34px;
@@ -174,7 +174,7 @@
     margin-bottom: govuk-spacing(2);
   }
 
-  &:before {
+  &::before {
     height: 30px;
     width: 35px;
     background-repeat: no-repeat;
@@ -184,7 +184,7 @@
 }
 
 .gem-c-action-link--transparent-icon {
-  &:before {
+  &::before {
     background-image: image-url("govuk_publishing_components/action-link-arrow--transparent.svg");
   }
 }
@@ -192,7 +192,7 @@
 .gem-c-action-link--brexit {
   max-width: none;
 
-  &:before {
+  &::before {
     height: 30px;
     width: 30px;
     background-image: image-url("govuk_publishing_components/action-link-arrow--brexit.svg");
@@ -208,7 +208,7 @@
   @include govuk-media-query($from: tablet) {
     margin-bottom: govuk-spacing(2);
 
-    &:before {
+    &::before {
       width: 35px;
       background-position: 0 4px;
       background-size: 25px auto;
@@ -217,7 +217,7 @@
 }
 
 .gem-c-action-link--nhs {
-  &:before {
+  &::before {
     width: 80px;
     height: 70px;
     background: image-url("govuk_publishing_components/action-link--nhs.png");
@@ -232,7 +232,7 @@
   color: govuk-colour("white");
 
   .gem-c-action-link__subtext {
-    &:before {
+    &::before {
       border-color: govuk-colour("white");
     }
   }

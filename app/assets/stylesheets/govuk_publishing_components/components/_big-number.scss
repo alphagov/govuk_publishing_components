@@ -17,7 +17,7 @@
 
   // This pseudo element is to bypass an issue with NVDA where block level elements are dictated separately.
   // What's happening here is that the label and the number technically have an inline relationship but appear to have a block relationship thanks to this element
-  &:before {
+  &::before {
     content: "";
     display: block;
   }

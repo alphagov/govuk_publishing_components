@@ -135,7 +135,7 @@
   padding-left: govuk-spacing(5);
   padding-top: govuk-spacing(2);
 
-  &:before {
+  &::before {
     content: "—";
     position: absolute;
     left: 0;
@@ -146,7 +146,7 @@
     padding: 0;
     padding-bottom: govuk-spacing(2);
 
-    &:before {
+    &::before {
       display: none;
     }
   }

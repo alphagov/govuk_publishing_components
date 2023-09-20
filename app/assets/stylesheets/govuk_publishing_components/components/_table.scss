@@ -44,7 +44,7 @@ $table-row-even-background-colour: govuk-colour("light-grey", $legacy: "grey-4")
       @include govuk-focused-text;
     }
 
-    .app-table__sort-link:after {
+    .app-table__sort-link::after {
       content: "";
       position: absolute;
       top: 5px;
@@ -52,7 +52,7 @@ $table-row-even-background-colour: govuk-colour("light-grey", $legacy: "grey-4")
       @include govuk-shape-arrow($direction: up, $base: $sort-link-arrow-size-small, $display: block);
     }
 
-    .app-table__sort-link:before {
+    .app-table__sort-link::before {
       content: "";
       position: absolute;
       top: 13px;
@@ -80,12 +80,12 @@ $table-row-even-background-colour: govuk-colour("light-grey", $legacy: "grey-4")
       }
     }
 
-    .app-table__sort-link--ascending:before,
-    .app-table__sort-link--descending:before {
+    .app-table__sort-link--ascending::before,
+    .app-table__sort-link--descending::before {
       content: none;
     }
 
-    .app-table__sort-link--ascending:after {
+    .app-table__sort-link--ascending::after {
       content: "";
       position: absolute;
       top: $sort-link-arrow-spacing;
@@ -95,7 +95,7 @@ $table-row-even-background-colour: govuk-colour("light-grey", $legacy: "grey-4")
       @include govuk-shape-arrow($direction: up, $base: $sort-link-arrow-size, $display: inline-block);
     }
 
-    .app-table__sort-link--descending:after {
+    .app-table__sort-link--descending::after {
       content: "";
       position: absolute;
       top: $sort-link-arrow-spacing;

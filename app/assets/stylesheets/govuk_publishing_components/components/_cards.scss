@@ -65,7 +65,7 @@
 
 .gem-c-cards__link {
   // Make the entire list item area clickable
-  &:after {
+  &::after {
     bottom: 0;
     content: "";
     left: 0;
@@ -74,7 +74,7 @@
     top: 0;
   }
 
-  &:before {
+  &::before {
     $dimension: 7px;
     $width: 3px;
 
@@ -90,13 +90,13 @@
   }
 
   &:hover {
-    &:before {
+    &::before {
       border-color: $govuk-link-hover-colour;
     }
   }
 
   &:focus {
-    &:before {
+    &::before {
       border-color: $govuk-focus-text-colour;
     }
   }
@@ -120,7 +120,7 @@
     margin-bottom: govuk-spacing(1);
   }
 
-  .gem-c-cards__link:before {
+  .gem-c-cards__link::before {
     display: none;
   }
 }
