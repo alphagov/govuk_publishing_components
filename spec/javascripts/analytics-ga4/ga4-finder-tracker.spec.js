@@ -233,6 +233,23 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.text = 'All types of chocolate (default)'
 
     expect(window.dataLayer[1]).toEqual(expected)
+
+    // Ensure the section changes when data-ga4-section is set on individual inputs within the same data-ga4-filter-parent
+    var input2 = document.createElement('select')
+    input2.setAttribute('name', 'chocolates')
+    input2.setAttribute('data-ga4-section', 'Your second favourite chocolate')
+    input2.id = 'chocolates2'
+    input2.appendChild(option1)
+    input2.appendChild(option2)
+    inputParent.appendChild(input2)
+
+    window.GOVUK.triggerEvent(input2, 'change')
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.section = 'Your second favourite chocolate'
+    expected.event_data.text = 'Belgian chocolate'
+    expected.event_data.action = 'select'
+    expected.event_data.index = { index_section: 5, index_section_count: 15, index_link: undefined }
   })
 
   it('creates the correct GA4 object for adding/removing a text filter', function () {
@@ -268,21 +285,6 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.text = undefined
 
     expect(window.dataLayer[1]).toEqual(expected)
-
-    // Ensure the section changes when data-ga4-section is set on individual inputs within the same data-ga4-filter-parent
-    var input2 = document.createElement('select')
-    input2.setAttribute('name', 'chocolates')
-    input2.setAttribute('data-ga4-section', 'Your second favourite chocolate')
-    input2.id = 'chocolates2'
-    input2.appendChild(option1)
-    input2.appendChild(option2)
-    inputParent.appendChild(input2)
-    window.GOVUK.triggerEvent(input2, 'change')
-    expected.event_data.event_name = 'select_content'
-    expected.event_data.section = 'Your second favourite chocolate'
-    expected.event_data.text = 'Belgian chocolate'
-    expected.event_data.action = 'select'
-    expected.event_data.index = { index_section: 5, index_section_count: 15, index_link: undefined }
   })
 
   it('creates the correct GA4 object for clearing all filters', function () {
