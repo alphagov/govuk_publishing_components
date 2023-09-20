@@ -137,6 +137,10 @@ es-419:
       close_modal: Cerrar diálogo modal
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Buscar todo el contenido de %{organisation}
     previous_and_next_navigation:

@@ -141,6 +141,10 @@ cy:
       close_modal: Cau'r ddeialog foddol
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Dod o hyd i'r holl gynnwys gan %{organisation}
     previous_and_next_navigation:

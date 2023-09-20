@@ -133,6 +133,10 @@ pa-pk:
       close_modal: موڈیل ڈائیلاگ نوں بند کرو
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: "%{organisation} توں سارا مواد تلاش کرو"
     previous_and_next_navigation:

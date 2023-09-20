@@ -144,6 +144,10 @@ uk:
       close_modal: Закрити модальний діалог
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Знайти весь вміст від %{organization}
     previous_and_next_navigation:

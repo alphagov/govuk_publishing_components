@@ -138,6 +138,10 @@ hr:
       close_modal: Zatvorite modalni dijalog
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Pronađi sav sadržaj %{organization}
     previous_and_next_navigation:

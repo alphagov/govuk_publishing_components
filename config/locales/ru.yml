@@ -141,6 +141,10 @@ ru:
       close_modal: Закрыть модальное диалоговое окно
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Найти весь контент от %{organization}
     previous_and_next_navigation:

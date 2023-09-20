@@ -60,6 +60,7 @@
 //= link govuk_publishing_components/components/_metadata.css
 //= link govuk_publishing_components/components/_modal-dialogue.css
 //= link govuk_publishing_components/components/_notice.css
+//= link govuk_publishing_components/components/_option-select.css
 //= link govuk_publishing_components/components/_organisation-logo.css
 //= link govuk_publishing_components/components/_panel.css
 //= link govuk_publishing_components/components/_phase-banner.css

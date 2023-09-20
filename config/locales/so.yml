@@ -137,6 +137,10 @@ so:
       close_modal: Kusoo dhawoow wada hadal dhex dhexaad ah
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Raadi dhamaan waxyaabaha uu ka koobanyahay %{organisation}
     previous_and_next_navigation:

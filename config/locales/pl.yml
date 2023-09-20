@@ -141,6 +141,10 @@ pl:
       close_modal: Zamknij okno modalne
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Znajdź całą zawartość od %{organizacja}
     previous_and_next_navigation:

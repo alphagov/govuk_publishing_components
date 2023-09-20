@@ -137,6 +137,10 @@ az:
       close_modal: Modal dialoqu bağla
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-dan bütün məzmunu tap"
     previous_and_next_navigation:

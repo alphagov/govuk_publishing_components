@@ -144,6 +144,10 @@ sl:
       close_modal: Zapri modalno okno
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Oglejte si vse gradivo %{organisation}
     previous_and_next_navigation:

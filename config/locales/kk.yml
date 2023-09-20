@@ -137,6 +137,10 @@ kk:
       close_modal: Жабық модальды диалог
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: "%{organisation} ішіндегі барлық мазмұнды табу"
     previous_and_next_navigation:

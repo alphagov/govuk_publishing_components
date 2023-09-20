@@ -137,6 +137,10 @@ pa:
       close_modal: ਮਾਡਲ ਸੰਵਾਦ ਬੰਦ ਕਰੋ
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: "%{organisation} ਤੋਂ ਸਾਰੀ ਸਮਗਰੀ ਲੱਭੋ"
     previous_and_next_navigation:

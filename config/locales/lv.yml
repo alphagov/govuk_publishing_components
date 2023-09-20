@@ -141,6 +141,10 @@ lv:
       close_modal: Aizvērt modālo dialogu
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Meklēt visu saturu no %{organisation}
     previous_and_next_navigation:

@@ -137,6 +137,10 @@ is:
       close_modal: Loka glugga
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Finna allt efni frá %{organisation}
     previous_and_next_navigation:

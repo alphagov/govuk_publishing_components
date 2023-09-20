@@ -134,6 +134,10 @@ ps:
       close_modal: موډل ډیالوګ بند کړئ
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: له%{organization} څخه ټوله مینځپانګه ومومئ
     previous_and_next_navigation:

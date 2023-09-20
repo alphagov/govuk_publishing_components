@@ -140,6 +140,10 @@ ar:
       close_modal: إغلاق مربع الحوار المشروط
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: العثور عن كل المحتوى من %{organisation}
     previous_and_next_navigation:

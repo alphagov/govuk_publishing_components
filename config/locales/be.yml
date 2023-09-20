@@ -143,6 +143,10 @@ be:
       close_modal: Зачыніць мадальны дыялог
     notice:
       banner_title:
+    option_select:
+      found_single:
+      found_multiple:
+      selected:
     organisation_schema:
       all_content_search_description: Шукаць увесь змест з %{organisation}
     previous_and_next_navigation:
