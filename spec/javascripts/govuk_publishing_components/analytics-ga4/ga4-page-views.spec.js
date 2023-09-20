@@ -56,7 +56,8 @@ describe('Google Tag Manager page view tracking', function () {
         devolved_nations_banner: undefined,
         cookie_banner: undefined,
         intervention: undefined,
-        query_string: undefined
+        query_string: undefined,
+        search_term: undefined
       }
     }
     window.dataLayer = []
@@ -534,5 +535,38 @@ describe('Google Tag Manager page view tracking', function () {
     expected.page_view.query_string = 'query1=hello&query2=world&email=[email]&postcode=[postcode]&birthday=[date]&_ga=[id]&_gl=[id]'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  describe('search_term parameter', function () {
+    it('correctly sets the parameter using ?keywords= with PII values redacted', function () {
+      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
+      expected.page_view.query_string = 'keywords=hello+world+[email]+[postcode]+[date]&another=one'
+      expected.page_view.search_term = 'hello+world+[email]+[postcode]+[date]'
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('correctly sets the  parameter using &keywords= with PII values redacted', function () {
+      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?test=true&keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
+      expected.page_view.query_string = 'test=true&keywords=hello+world+[email]+[postcode]+[date]&another=one'
+      expected.page_view.search_term = 'hello+world+[email]+[postcode]+[date]'
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('correctly ignores other query string values', function () {
+      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?keywordss=not+search&keyywords=not+search+either&hello=world')
+      expected.page_view.query_string = 'keywordss=not+search&keyywords=not+search+either&hello=world'
+      expected.page_view.search_term = undefined
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('functions correctly when there is no query string', function () {
+      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('')
+      expected.page_view.search_term = undefined
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 })
