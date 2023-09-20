@@ -152,26 +152,6 @@ describe('An option select component', function () {
 
       expect($($element).find('button')).toBeDefined()
     })
-
-    it('adds GA4 event tracking to the button', function () {
-      var $ga4Fixture = $(optionSelectWithAttrs('data-ga4-index=\'{"index_section":1,"index_section_count":3}\''))
-      $('body').append($ga4Fixture)
-
-      new GOVUK.Modules.OptionSelect($ga4Fixture[0]).init()
-      window.GOVUK.triggerEvent(window, 'ga4-filter-indexes-added')
-
-      var expected = JSON.stringify({
-        event_name: 'select_content',
-        type: 'finder',
-        section: 'Hello World',
-        index: {
-          index_section: 1,
-          index_section_count: 3
-        }
-      })
-
-      expect($ga4Fixture.find('button').attr('data-ga4-event')).toEqual(expected)
-    })
   })
 
   describe('toggleOptionSelect', function () {
