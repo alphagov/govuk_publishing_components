@@ -124,6 +124,7 @@
   .gem-c-option-select__heading {
     position: relative;
     padding: 10px 8px 5px 43px;
+    margin: 0;
   }
 
   [aria-expanded="true"] ~ .gem-c-option-select__icon--up {
