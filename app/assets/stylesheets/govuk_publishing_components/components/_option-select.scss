@@ -112,12 +112,15 @@
 
 .gem-c-option-select__filter-input {
   @include govuk-font(19);
-  padding-left: 33px;
   background: image-url("option-select/input-icon.svg") govuk-colour("white") no-repeat -5px -3px;
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
   }
+}
+
+.gem-c-option-select__filter-input.govuk-input {
+  padding-left: 33px;
 }
 
 .js-enabled {
