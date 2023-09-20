@@ -1,0 +1,12 @@
+<span data-ga4-change-category="update-filter text">
+  <%= render "components/date_filter", {
+    name: date_facet.name,
+    key: date_facet.key,
+    from_value: date_facet.user_supplied_from_date,
+    to_value: date_facet.user_supplied_to_date,
+    aria_controls_id: "js-search-results-info",
+    date_errors_to: date_facet.error_message_to(@search_query),
+    date_errors_from: date_facet.error_message_from(@search_query),
+    data_attributes:  { "ga4-filter-parent": date_facet.ga4_section, "ga4-index": { index_section: index + 1, index_section_count: count } }
+  } %>
+</span>

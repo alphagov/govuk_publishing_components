@@ -46,7 +46,13 @@
           </div>
         </div>
         <div class="facets__content" data-module="ga4-event-tracker" data-ga4-filter-container>
+<<<<<<< HEAD
           <%= render facets.select(&:filterable?) %>
+=======
+          <% facets.each_with_index_and_count do |facet, index, count| %>
+            <%= render partial: facet, object: facet, locals: { index:, count: } %>
+          <% end %>
+>>>>>>> 69e149bcd (WIP: Add ga4-index data attrs in Ruby vs JS)
           <div class="facets__tags-block js-mobile-facet-tag-block"  data-module="remove-filter">
             <%= render "facet_tags", facet_tags.present %>
           </div>

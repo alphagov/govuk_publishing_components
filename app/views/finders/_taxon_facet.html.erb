@@ -1,6 +1,11 @@
 <% unless i_am_a_topic_page_finder %>
   <%= render "components/expander", {
+<<<<<<< HEAD
     title: "Topic"
+=======
+    title: "Topic",
+    data_attributes: { "ga4-filter-parent": taxon_facet.ga4_section, "ga4-index": { index_section: index + 1, index_section_count: count } }
+>>>>>>> 69e149bcd (WIP: Add ga4-index data attrs in Ruby vs JS)
   } do %>
     <div class="js-taxonomy-select" data-ga4-change-category="update-filter select" data-ga4-section="Topic">
 
