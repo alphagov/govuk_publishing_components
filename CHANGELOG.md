@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add option select component ([PR #3623](https://github.com/alphagov/govuk_publishing_components/pull/3623))
 * Image card Two Thirds variant ([PR #3597](https://github.com/alphagov/govuk_publishing_components/pull/3597))
 * Add 'search_term' to GA4 pageview object ([PR #3615](https://github.com/alphagov/govuk_publishing_components/pull/3615))
 
