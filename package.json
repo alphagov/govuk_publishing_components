@@ -36,12 +36,13 @@
     "jasmine-browser-runner": "^2.3.0",
     "jasmine-core": "^5.1.1",
     "postcss": "^8.4.30",
+    "prettier": "3.0.3",
     "standardx": "^7.0.0",
     "stylelint": "^15.10.3",
     "stylelint-config-gds": "^1.0.0"
   },
   "resolutions": {
     "stylelint/strip-ansi": "6.0.1",
-    "stylelint/string-width": "4.2.3"    
+    "stylelint/string-width": "4.2.3"
   }
 }

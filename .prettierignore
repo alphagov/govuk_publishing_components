@@ -1,0 +1,13 @@
+app/assets/javascripts
+bin
+config
+docs
+lib
+spec/javascripts/helpers
+spec/javascripts/vendor
+spec/support
+CHANGELOG.md
+
+**/*.erb
+**/*.rb
+**/*.yml
