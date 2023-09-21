@@ -268,32 +268,32 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     return visibleCheckboxes
   }
 
-  OptionSelect.prototype.isFacetsContainerHidden = function isFacetsContainerHidden () {
-    var facetsContent = this.$optionSelect.parentElement
-    var isFacetsContentHidden = false
+  OptionSelect.prototype.isComponentParentHidden = function isComponentParentHidden () {
+    var parentContent = this.$optionSelect.parentElement
+    var isparentContentHidden = false
     // check whether this is hidden by progressive disclosure,
     // because height calculations won't work
     // would use offsetParent === null but for IE10+
-    if (facetsContent) {
-      isFacetsContentHidden = !(facetsContent.offsetWidth || facetsContent.offsetHeight || facetsContent.getClientRects().length)
+    if (parentContent) {
+      isparentContentHidden = !(parentContent.offsetWidth || parentContent.offsetHeight || parentContent.getClientRects().length)
     }
 
-    return isFacetsContentHidden
+    return isparentContentHidden
   }
 
   OptionSelect.prototype.setupHeight = function setupHeight () {
     var initialOptionContainerHeight = this.$optionsContainer.clientHeight
     var height = this.$optionList.offsetHeight
 
-    var isFacetsContainerHidden = this.isFacetsContainerHidden()
+    var isComponentParentHidden = this.isComponentParentHidden()
 
-    if (isFacetsContainerHidden) {
+    if (isComponentParentHidden) {
       initialOptionContainerHeight = 200
       height = 200
     }
 
     // Resize if the list is only slightly bigger than its container
-    // If isFacetsContainerHidden is true, then 200 < 250
+    // If isComponentParentHidden is true, then 200 < 250
     // And the container height is always set to 201px
     if (height < initialOptionContainerHeight + 50) {
       this.setContainerHeight(height + 1)
