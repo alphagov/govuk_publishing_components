@@ -18,6 +18,7 @@
 * Add 'ga4-browse-topic' meta tag to track the mainstream browse topic ([PR #3628](https://github.com/alphagov/govuk_publishing_components/pull/3628))
 * Ensure cookie banner isn't tracked as visible when it is hidden via JS ([PR #3612](https://github.com/alphagov/govuk_publishing_components/pull/3612))
 * Add spelling_suggestion meta tag to the GA4 pageview object ([PR #3633](https://github.com/alphagov/govuk_publishing_components/pull/3633))
+* Add an `aria-label` to the attachment preview link ([PR #3630](https://github.com/alphagov/govuk_publishing_components/pull/3630))
 
 ## 35.16.0
 
