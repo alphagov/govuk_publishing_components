@@ -24,7 +24,12 @@
     }
   },
   "stylelint": {
-    "extends": "stylelint-config-gds/scss"
+    "extends": ["stylelint-config-gds/scss", "stylelint-stylistic/config"],
+    "rules": {
+      "stylistic/number-leading-zero": null,
+      "stylistic/max-line-length": 160,
+      "stylistic/block-closing-brace-newline-after": "never-single-line"
+    }
   },
   "dependencies": {
     "axe-core": "^4.8.1",
@@ -38,10 +43,11 @@
     "postcss": "^8.4.30",
     "standardx": "^7.0.0",
     "stylelint": "^15.10.3",
-    "stylelint-config-gds": "^1.0.0"
+    "stylelint-config-gds": "^1.0.0",
+    "stylelint-stylistic": "^0.4.3"
   },
   "resolutions": {
     "stylelint/strip-ansi": "6.0.1",
-    "stylelint/string-width": "4.2.3"    
+    "stylelint/string-width": "4.2.3"
   }
 }
