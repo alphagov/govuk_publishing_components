@@ -68,7 +68,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getLocation: function () {
-      return this.PIIRemover.stripPII(this.stripGaParam(document.location.href))
+      return this.PIIRemover.stripPIIWithOverride(this.stripGaParam(document.location.href), true, true)
     },
 
     getSearch: function () {
@@ -115,7 +115,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getTitle: function () {
-      return this.PIIRemover.stripPII(document.title)
+      return this.PIIRemover.stripPIIWithOverride(document.title, true, true)
     },
 
     // window.httpStatusCode is set in the source of the error page in static

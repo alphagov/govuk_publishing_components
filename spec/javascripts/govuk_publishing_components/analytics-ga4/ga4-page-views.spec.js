@@ -345,12 +345,12 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('removes email pii from the title, location and referrer', function () {
-    document.title = 'example@gov.uk'
-    expected.page_view.title = '[email]'
+  it('removes email, postcode, and date pii from the title, location and referrer', function () {
+    document.title = 'example@gov.uk - SW12AA - 2020-01-01'
+    expected.page_view.title = '[email] - [postcode] - [date]'
 
-    spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/example@gov.uk')
-    expected.page_view.referrer = 'https://gov.uk/[email]'
+    spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/example@gov.uk/SW12AA/2020-01-01')
+    expected.page_view.referrer = 'https://gov.uk/[email]/[postcode]/[date]'
 
     // We can't spy on location, so instead we use an anchor link to change the URL temporarily
 
@@ -360,10 +360,10 @@ describe('Google Tag Manager page view tracking', function () {
     linkForURLMock.click()
     var location = document.location.href
 
-    expected.page_view.location = location + '[email]'
+    expected.page_view.location = location + '[email]/[postcode]/[date]'
 
-    // Add email address to the current page location
-    linkForURLMock.href = '#example@gov.uk'
+    // Add personally identifiable information to the current page location
+    linkForURLMock.href = '#example@gov.uk/SW12AA/2020-01-01'
     linkForURLMock.click()
 
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
