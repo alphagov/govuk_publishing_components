@@ -148,7 +148,9 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       var content = document.getElementById('content')
       var html = document.querySelector('html')
       if (content) {
-        return content.getAttribute('lang') || this.nullValue
+        if (content.getAttribute('lang')) {
+          return content.getAttribute('lang')
+        }
       }
       // html.getAttribute('lang') is untested - Jasmine would not allow lang to be set on <html>.
       return html.getAttribute('lang') || this.nullValue
