@@ -95,8 +95,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     getQueryString: function () {
       var queryString = this.getSearch()
       if (queryString) {
-        queryString = this.PIIRemover.stripPIIWithOverride(queryString, true, true)
         queryString = this.stripGaParam(queryString)
+        queryString = this.PIIRemover.stripPIIWithOverride(queryString, true, true)
         queryString = queryString.substring(1) // removes the '?' character from the start.
         return queryString
       }
