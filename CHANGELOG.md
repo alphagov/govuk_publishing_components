@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove option select GA4 attributes ([PR #3625](https://github.com/alphagov/govuk_publishing_components/pull/3625))
+
 ## 35.16.0
 
 * Add option select component ([PR #3623](https://github.com/alphagov/govuk_publishing_components/pull/3623))
