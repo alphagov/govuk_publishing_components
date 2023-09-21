@@ -19,6 +19,7 @@ sw:
       page:
         one: Ukurasa mmoja (1)
         other: Kurasa %{count}
+      preview_aria_label:
       preview_link:
       reference: 'Marejeleo: %{reference}'
       request_format_cta: Omba muundo unaoweza kutumika.

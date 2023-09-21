@@ -18,6 +18,7 @@ zh-tw:
       order_a_copy: 預定副本
       page:
         other: "%{count} 頁面"
+      preview_aria_label:
       preview_link:
       reference: 參考：%{reference}
       request_format_cta: 請求可參閱格式。

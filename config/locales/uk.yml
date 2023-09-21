@@ -21,6 +21,7 @@ uk:
         many:
         one: 1 сторінка
         other: "%{count} сторінок"
+      preview_aria_label:
       preview_link:
       reference: 'Посилання: %{reference}'
       request_format_cta: Надішліть запит на доступний формат.

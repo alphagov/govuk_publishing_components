@@ -19,6 +19,7 @@ ta:
       page:
         one: 1 பக்கம்
         other: "%{count} பக்கங்கள்"
+      preview_aria_label:
       preview_link:
       reference: 'பார்வை: %{reference}'
       request_format_cta: அணுகக்கூடிய வடிவத்தைக் கோருக.

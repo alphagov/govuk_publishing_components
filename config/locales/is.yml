@@ -19,6 +19,7 @@ is:
       page:
         one: 1 síða
         other: "%{count} síður"
+      preview_aria_label:
       preview_link:
       reference: 'Tilv: %{reference}'
       request_format_cta: Óska eftir aðgengilegu sniði.

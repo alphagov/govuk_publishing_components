@@ -19,6 +19,7 @@ lv:
       page:
         one: 1 lapa
         other: "%{count} lapas"
+      preview_aria_label:
       preview_link:
       reference: 'Ref.: %{reference}'
       request_format_cta: Pieprasīt pieejamu formātu.

@@ -19,6 +19,7 @@ de:
       page:
         one: 1 Seite
         other: "%{count} Seiten"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Fordern Sie ein zugängliches Format an.

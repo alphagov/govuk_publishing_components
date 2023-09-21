@@ -19,6 +19,7 @@ pa:
       page:
         one: 1 ਪੰਨਾ
         other: "%{count} ਪੰਨੇ"
+      preview_aria_label:
       preview_link:
       reference: 'ਹਵਾਲਾ: %{reference}'
       request_format_cta: ਇੱਕ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਦੀ ਬੇਨਤੀ ਕਰੋ।

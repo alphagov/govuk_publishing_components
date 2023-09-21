@@ -18,6 +18,7 @@ zh:
       order_a_copy: 订购副本
       page:
         other: "%{count} 页"
+      preview_aria_label:
       preview_link:
       reference: 参考号：%{reference}
       request_format_cta: 申请可访问格式。

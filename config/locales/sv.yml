@@ -19,6 +19,7 @@ sv:
       page:
         one: 1 sida
         other: "%{count} sidor"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Begär ett tillgängligt format.

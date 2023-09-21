@@ -18,6 +18,7 @@ ms:
       order_a_copy: Pesan satu salinan
       page:
         other: "%{count} halaman"
+      preview_aria_label:
       preview_link:
       reference: 'Ruj: %{reference}'
       request_format_cta: Minta format yang boleh diakses.

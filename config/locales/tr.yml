@@ -19,6 +19,7 @@ tr:
       page:
         one: 1 sayfa
         other: "%{count} sayfa"
+      preview_aria_label:
       preview_link:
       reference: 'İlgi: %{reference}'
       request_format_cta: Erişilebilir bir format talep edin.

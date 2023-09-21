@@ -19,6 +19,7 @@ tk:
       page:
         one: 1 sahypa
         other: "%{count} sahypalar"
+      preview_aria_label:
       preview_link:
       reference: 'Salgylanma: %{reference}'
       request_format_cta: Elýeterli formaty talap etmek.

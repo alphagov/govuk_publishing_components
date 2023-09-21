@@ -23,6 +23,7 @@ ar:
         other: "%{count} صفحات"
         two:
         zero:
+      preview_aria_label:
       preview_link:
       reference: 'مرجع: %{reference}'
       request_format_cta: طلب تنسيق يمكن الاطلاع عليه.

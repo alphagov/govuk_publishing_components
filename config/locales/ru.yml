@@ -21,6 +21,7 @@ ru:
         many:
         one: 1 страница
         other: "%{count} страниц"
+      preview_aria_label:
       preview_link:
       reference: 'Ссылка: %{reference}'
       request_format_cta: Запросить в доступном формате.

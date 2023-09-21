@@ -18,6 +18,7 @@ id:
       order_a_copy: Pesan salinan
       page:
         other: "%{count} halaman"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Minta format yang dapat diakses.

@@ -19,6 +19,7 @@ gu:
       page:
         one: 1 પૃષ્ઠ
         other: "%{count} પૃષ્ઠો"
+      preview_aria_label:
       preview_link:
       reference: સંદર્ભ:%{reference}
       request_format_cta: કોઈ એક્સેસિબલ ફોરમેટ માટે વિનંતી કરો.

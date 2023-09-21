@@ -20,6 +20,7 @@ sr:
         few:
         one: 1 stranica
         other: "%{count} str."
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Zatražite format kom možete da pristupite.

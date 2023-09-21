@@ -21,6 +21,7 @@ gd:
         one: 1 leathanach
         other: "%{count} leathanaigh"
         two:
+      preview_aria_label:
       preview_link:
       reference: 'Tagairt: %{reference}'
       request_format_cta: Is féidir leat formáid inrochtana a iarraidh.

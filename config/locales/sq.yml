@@ -19,6 +19,7 @@ sq:
       page:
         one: 1 faqe
         other: "%{count} faqet"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Kërkoni një format të arritshëm.

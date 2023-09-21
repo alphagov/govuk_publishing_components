@@ -99,7 +99,7 @@
     <% end %>
 
     <% if attachment.preview_url.present? %>
-      <%= tag.p link_to(t("components.attachment.preview_link"), attachment.preview_url, class: "govuk-link"), class: "gem-c-attachment__metadata" %>
+      <%= tag.p link_to(t("components.attachment.preview_link"), attachment.preview_url, class: "govuk-link", "aria-label": t("components.attachment.preview_aria_label", title: attachment.title)), class: "gem-c-attachment__metadata" %>
     <% end %>
 
     <% if attachment.is_official_document && !hide_order_copy_link %>

@@ -19,6 +19,7 @@ hu:
       page:
         one: 1 oldal
         other: "%{count} oldal"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Kérjen hozzáférhető formátumot.

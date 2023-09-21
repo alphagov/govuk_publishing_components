@@ -19,6 +19,7 @@ so:
       page:
         one: 1 boga
         other: "%{count} bogaga"
+      preview_aria_label:
       preview_link:
       reference: 'Tixraac: %{reference}'
       request_format_cta: Codso nidaam la gali karo.

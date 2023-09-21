@@ -18,6 +18,7 @@ vi:
       order_a_copy: Đặt hàng một bản sao
       page:
         other: "%{count} trang"
+      preview_aria_label:
       preview_link:
       reference: 'Tham khảo: %{reference}'
       request_format_cta: Yêu cầu một định dạng có thể truy cập.
