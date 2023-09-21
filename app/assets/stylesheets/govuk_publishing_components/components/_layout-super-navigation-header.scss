@@ -182,7 +182,7 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
 
-    &:after {
+    &::after {
       @include make-selectable-area-bigger;
       @include pseudo-underline($left: $after-link-padding, $right: $after-link-padding);
     }
@@ -193,14 +193,14 @@ $after-button-padding-left: govuk-spacing(4);
     font-size: govuk-px-to-rem(16px);
     height: govuk-spacing(4);
 
-    &:before {
+    &::before {
       @include chevron(govuk-colour("white"), true);
     }
 
     &:hover {
       color: govuk-colour("mid-grey");
 
-      &:after {
+      &::after {
         background: govuk-colour("mid-grey");
       }
     }
@@ -216,7 +216,7 @@ $after-button-padding-left: govuk-spacing(4);
         box-shadow: none;
         color: $govuk-focus-text-colour;
 
-        &:after {
+        &::after {
           background: $govuk-focus-text-colour;
         }
       }
@@ -235,12 +235,12 @@ $after-button-padding-left: govuk-spacing(4);
       &:hover {
         color: govuk-colour("mid-grey");
 
-        &:after {
+        &::after {
           background: govuk-colour("mid-grey");
         }
       }
 
-      &:after {
+      &::after {
         background: none;
       }
     }
@@ -255,14 +255,14 @@ $after-button-padding-left: govuk-spacing(4);
       padding: 0;
       margin: 0;
 
-      &:after {
+      &::after {
         @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right, $width: 100%);
       }
     }
     // stylelint-enable max-nesting-depth
   }
 
-  &:after {
+  &::after {
     @include make-selectable-area-bigger;
   }
 }
@@ -299,7 +299,7 @@ $after-button-padding-left: govuk-spacing(4);
     &:hover {
       background: govuk-colour("black");
 
-      &:before {
+      &::before {
         left: 0;
         right: 0;
       }
@@ -308,12 +308,12 @@ $after-button-padding-left: govuk-spacing(4);
     &:focus {
       background: $govuk-focus-colour;
 
-      &:before {
+      &::before {
         content: none;
       }
     }
 
-    &:after {
+    &::after {
       left: 0;
       right: 0;
       width: 100%;
@@ -332,8 +332,8 @@ $after-button-padding-left: govuk-spacing(4);
         background: $govuk-focus-colour;
       }
 
-      &:after,
-      &:hover:after {
+      &::after,
+      &:hover::after {
         background: $govuk-focus-colour;
       }
     }
@@ -364,19 +364,19 @@ $after-button-padding-left: govuk-spacing(4);
   @include govuk-link-style-no-visited-state;
   @include govuk-link-style-no-underline;
 
-  &:after {
+  &::after {
     @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right);
   }
 
   &:hover {
     color: govuk-colour("mid-grey");
 
-    &:after {
+    &::after {
       background: govuk-colour("mid-grey");
     }
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      &:before {
+      &::before {
         border-color: govuk-colour("mid-grey");
       }
     }
@@ -411,11 +411,11 @@ $after-button-padding-left: govuk-spacing(4);
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         color: govuk-colour("black");
 
-        &:after {
+        &::after {
           background: govuk-colour("black");
         }
 
-        &:before {
+        &::before {
           @include chevron(govuk-colour("black"), true);
         }
       }
@@ -428,22 +428,23 @@ $after-button-padding-left: govuk-spacing(4);
     box-shadow: none;
 
     &:hover {
-      &:after {
+      &::after {
         background-color: govuk-colour("black");
       }
     }
 
-    &:after {
+    &::after {
       background-color: govuk-colour("black");
     }
-
+    // stylelint-disable max-nesting-depth
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-color: $govuk-focus-colour;
 
-      &:before {
+      &::before {
         @include chevron(govuk-colour("black"), true);
       }
     }
+    // stylelint-enable max-nesting-depth
   }
 
   // Undoes the :focus styles *only* for browsers that support :focus-visible.
@@ -453,16 +454,17 @@ $after-button-padding-left: govuk-spacing(4);
     box-shadow: none;
     color: govuk-colour("white");
 
+    // stylelint-disable max-nesting-depth
     &:hover {
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        &:before {
+        &::before {
           @include chevron(govuk-colour("mid-grey"), true);
         }
 
         color: govuk-colour("mid-grey");
       }
 
-      &:after {
+      &::after {
         background: govuk-colour("mid-grey");
       }
     }
@@ -471,11 +473,12 @@ $after-button-padding-left: govuk-spacing(4);
       border-color: $button-pipe-colour;
 
       @include govuk-media-query($from: 360px) {
-        &:before {
+        &::before {
           @include chevron(govuk-colour("white"), true);
         }
       }
     }
+    // stylelint-enable max-nesting-depth
   }
 
   // Open button modifier
@@ -485,7 +488,7 @@ $after-button-padding-left: govuk-spacing(4);
       @include govuk-focused-text;
       box-shadow: none;
 
-      &:after {
+      &::after {
         background-color: govuk-colour("black");
       }
 
@@ -494,7 +497,7 @@ $after-button-padding-left: govuk-spacing(4);
         border-color: $govuk-focus-colour;
 
         @include govuk-media-query($from: 360px) {
-          &:before {
+          &::before {
             @include chevron(govuk-colour("black"), true);
             @include prefixed-transform($rotate: 225deg, $translateY: 1px);
           }
@@ -505,7 +508,7 @@ $after-button-padding-left: govuk-spacing(4);
     @include focus-not-focus-visible {
       background: govuk-colour("light-grey");
 
-      &:after {
+      &::after {
         background-color: $govuk-link-colour;
       }
 
@@ -514,7 +517,7 @@ $after-button-padding-left: govuk-spacing(4);
         border-color: govuk-colour("light-grey");
 
         @include govuk-media-query($from: 360px) {
-          &:before {
+          &::before {
             @include chevron($govuk-link-colour);
             @include prefixed-transform($rotate: 225deg, $translateY: 1px);
           }
@@ -533,7 +536,7 @@ $after-button-padding-left: govuk-spacing(4);
   padding: govuk-spacing(1) govuk-spacing(4);
 
   @include govuk-media-query($from: 360px) {
-    &:before {
+    &::before {
       @include chevron(govuk-colour("white"));
     }
   }
@@ -597,11 +600,13 @@ $after-button-padding-left: govuk-spacing(4);
       box-shadow: none;
       color: $govuk-focus-colour;
 
+      // stylelint-disable max-nesting-depth
       @include govuk-media-query($from: 360px) {
-        &:before {
+        &::before {
           @include chevron($govuk-focus-colour, true);
         }
       }
+      // stylelint-enable max-nesting-depth
     }
 
     @include focus-not-focus-visible {
@@ -708,14 +713,14 @@ $after-button-padding-left: govuk-spacing(4);
   font-size: govuk-px-to-rem(16px);
   font-weight: bold;
 
-  &:after {
+  &::after {
     @include make-selectable-area-bigger;
   }
 
   @include govuk-media-query($from: "desktop") {
     padding: 0;
 
-    &:after {
+    &::after {
       @include make-selectable-area-bigger;
     }
   }
@@ -726,7 +731,7 @@ $after-button-padding-left: govuk-spacing(4);
   font-size: govuk-px-to-rem(16px);
   font-weight: bold;
 
-  &:after {
+  &::after {
     @include make-selectable-area-bigger;
     height: calc(100% - 20px);
   }
@@ -756,7 +761,7 @@ $after-button-padding-left: govuk-spacing(4);
   font-size: govuk-px-to-rem(16px);
   padding: 0;
 
-  &:after {
+  &::after {
     @include make-selectable-area-bigger;
   }
 }

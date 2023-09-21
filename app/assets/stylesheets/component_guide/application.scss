@@ -145,7 +145,7 @@ $gem-guide-border-width: 1px;
   border: 0;
   padding: govuk-spacing(2);
 
-  &:before {
+  &::before {
     display: none;
   }
 }
@@ -187,7 +187,7 @@ $gem-guide-border-width: 1px;
     font-style: italic;
   }
 
-  &:before {
+  &::before {
     @include govuk-font($size: 14);
     content: attr(data-content);
     position: absolute;
@@ -201,7 +201,7 @@ $gem-guide-border-width: 1px;
 .component-guide-preview--warning {
   border-color: govuk-colour("yellow");
 
-  &:before {
+  &::before {
     background-color: govuk-colour("yellow");
   }
 }
@@ -209,7 +209,7 @@ $gem-guide-border-width: 1px;
 .component-guide-preview--violation {
   border-color: govuk-colour("red");
 
-  &:before {
+  &::before {
     background-color: govuk-colour("red");
     color: govuk-colour("white");
   }
@@ -516,11 +516,11 @@ $code-delete-bg: #fadddd;
 }
 
 .component__count {
-  &:before {
+  &::before {
     content: "(";
   }
 
-  &:after {
+  &::after {
     content: ")";
   }
 }

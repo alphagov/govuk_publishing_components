@@ -65,7 +65,7 @@
     text-decoration: none;
   }
 
-  &:before {
+  &::before {
     content: none;
   }
 }
@@ -97,7 +97,7 @@
     text-decoration: none;
   }
 
-  &:before {
+  &::before {
     content: none;
   }
 }

@@ -18,7 +18,7 @@
   color: govuk-colour("white");
 }
 
-.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item:before {
+.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item::before {
   border-color: govuk-colour("white");
 }
 
@@ -40,11 +40,11 @@
       padding-bottom: 14px;
     }
 
-    .govuk-breadcrumbs__list-item:before {
+    .govuk-breadcrumbs__list-item::before {
       top: 18px;
     }
 
-    .govuk-breadcrumbs__link:after {
+    .govuk-breadcrumbs__link::after {
       content: "";
       position: absolute;
       top: 0;

@@ -63,7 +63,7 @@
   }
 
   // Extend the touch area of the button to span the heading
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     top: 0;

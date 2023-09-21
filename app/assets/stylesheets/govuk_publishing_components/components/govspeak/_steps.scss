@@ -17,7 +17,8 @@
       width: 100%;
       box-sizing: border-box;
 
-      &:before {
+      // stylelint-disable max-nesting-depth
+      &::before {
         background-color: govuk-colour("black");
         border-radius: 50%;
         color: govuk-colour("white");
@@ -37,6 +38,7 @@
           content: "#{$i}";
         }
       }
+      // stylelint-enable max-nesting-depth
     }
   }
 }

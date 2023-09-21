@@ -89,7 +89,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 
   // Create inner chevron arrow
-  &:after {
+  &::after {
     content: "";
     box-sizing: border-box;
     display: block;
@@ -128,7 +128,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
       background: govuk-colour("black");
     }
 
-    .gem-c-step-nav__chevron:after {
+    .gem-c-step-nav__chevron::after {
       color: govuk-colour("light-grey");
     }
 
@@ -145,7 +145,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
       background: govuk-colour("black");
     }
 
-    .gem-c-step-nav__chevron:after {
+    .gem-c-step-nav__chevron::after {
       color: $govuk-focus-colour;
     }
 
@@ -234,7 +234,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   list-style: none;
 
   // line down the side of a step
-  &:after {
+  &::after {
     @include step-nav-vertical-line;
     @include step-nav-line-position;
     top: govuk-em(govuk-spacing(3), 16);
@@ -244,7 +244,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
     @include govuk-media-query($from: tablet) {
       padding-left: govuk-em(govuk-spacing(9), 16);
 
-      &:after { // stylelint-disable-line max-nesting-depth
+      &::after { // stylelint-disable-line max-nesting-depth
         @include step-nav-line-position-large;
         top: govuk-em(govuk-spacing(6), 16);
       }
@@ -254,7 +254,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 .gem-c-step-nav__step:last-child {
   // little dash at the bottom of the line
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     z-index: 6;
@@ -266,23 +266,23 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
     border-bottom: solid $stroke-width govuk-colour("mid-grey", $legacy: "grey-2");
   }
 
-  &:after {
+  &::after {
     height: -webkit-calc(100% - #{govuk-spacing(3)}); // fallback for iphone 4
     height: calc(100% - #{govuk-spacing(3)});
   }
 
-  .gem-c-step-nav__help:after {
+  .gem-c-step-nav__help::after {
     height: 100%;
   }
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      &:before {
+      &::before {
         margin-left: $number-circle-size-large / 4;
         width: $number-circle-size-large / 2;
       }
 
-      &:after {
+      &::after {
         height: calc(100% - #{govuk-spacing(6)});
       }
     }
@@ -290,10 +290,10 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 }
 
 .gem-c-step-nav__step--active {
-  &:last-child:before,
+  &:last-child::before,
   .gem-c-step-nav__circle--number,
-  &:after,
-  .gem-c-step-nav__help:after {
+  &::after,
+  .gem-c-step-nav__help::after {
     border-color: govuk-colour("black");
   }
 }
@@ -468,13 +468,13 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   margin-left: $links-margin;
   list-style: disc;
 
-  .gem-c-step-nav__list-item--active:before {
+  .gem-c-step-nav__list-item--active::before {
     left: -(govuk-spacing(6) + govuk-spacing(3)) - $links-margin;
   }
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      .gem-c-step-nav__list-item--active:before {
+      .gem-c-step-nav__list-item--active::before {
         left: -(govuk-spacing(9)) - $links-margin;
       }
     }
@@ -497,7 +497,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__list-item--active {
   position: relative;
 
-  &:before {
+  &::before {
     box-sizing: border-box;
     content: "";
     position: absolute;
@@ -513,7 +513,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      &:before {
+      &::before {
         left: -(govuk-spacing(9));
         margin-left: ($number-circle-size-large / 2);
       }
@@ -530,7 +530,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   font-weight: normal;
   color: govuk-colour("dark-grey", $legacy: "grey-1");
 
-  &:before {
+  &::before {
     content: " \2013\00a0"; // dash followed by &nbsp;
   }
 }

@@ -103,7 +103,7 @@
   // the after element extends the link to cover the image, removing the
   // need for a duplicate link. Other elements apart from the image are given
   // position relative and a higher z-index to put them above the after element
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -117,7 +117,7 @@
   }
 
   @include govuk-media-query($from: mobile, $until: tablet) {
-    &:after {
+    &::after {
       left: govuk-spacing(3);
       right: govuk-spacing(3);
     }
@@ -176,7 +176,7 @@
     .gem-c-image-card__list-item {
       position: relative;
 
-      &:before { // stylelint-disable-line max-nesting-depth
+      &::before { // stylelint-disable-line max-nesting-depth
         content: "-";
         position: absolute;
         left: (- govuk-spacing(3));
@@ -226,7 +226,7 @@
     padding-bottom: govuk-spacing(2);
   }
 
-  .gem-c-image-card__title-link:after {
+  .gem-c-image-card__title-link::after {
     left: 0;
     right: 0;
   }
@@ -289,7 +289,7 @@
 .gem-c-image-card__youtube-thumbnail-image-container {
   position: relative;
 
-  &:before {
+  &::before {
     background: url("govuk_publishing_components/youtube-play-icon.png");
     background: url("govuk_publishing_components/youtube-play-icon.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;

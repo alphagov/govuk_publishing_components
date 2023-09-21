@@ -37,7 +37,7 @@
   border-top: 7px solid #fed700;
   position: relative;
 
-  &:before {
+  &::before {
     content: "";
     position: absolute;
     left: 0;
