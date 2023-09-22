@@ -87,7 +87,7 @@ describe "Previous and next navigation", type: :view do
 
     expected_ga4_json = {
       "event_name": "navigation",
-      "type": "content",
+      "type": "previous and next",
       "text": "Previous page",
       "section": "Previous",
     }.to_json
@@ -98,7 +98,7 @@ describe "Previous and next navigation", type: :view do
 
     expected_ga4_json = {
       "event_name": "navigation",
-      "type": "content",
+      "type": "previous and next",
       "text": "Next page",
       "section": "Next",
     }.to_json
