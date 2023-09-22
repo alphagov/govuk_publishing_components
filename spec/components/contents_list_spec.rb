@@ -130,7 +130,7 @@ describe "Contents list", type: :view do
 
     expected_ga4_json = {
       event_name: "navigation",
-      type: "content",
+      type: "contents list",
       section: "Contents",
     }
 
