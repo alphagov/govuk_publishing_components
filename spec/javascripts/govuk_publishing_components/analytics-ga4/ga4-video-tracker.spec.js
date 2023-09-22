@@ -16,7 +16,7 @@ describe('Google Analytics video tracker', function () {
           return 0
         },
         getVideoUrl: function () {
-          return 'youtube/something'
+          return 'https://www.youtube.com/watch?t=26&v=abcdef'
         },
         getDuration: function () {
           return 500
@@ -44,7 +44,7 @@ describe('Google Analytics video tracker', function () {
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.type = 'video'
-      expected.event_data.url = 'youtube/something'
+      expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       expected.event_data.video_duration = 500
       expected.govuk_gem_version = 'aVersion'
     })
@@ -69,6 +69,46 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.video_percent = 100
 
       expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
+  describe('cleans urls', function () {
+    beforeEach(function () {
+      videoTracker.configureVideo(event)
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.type = 'video'
+      expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
+      expected.event_data.video_duration = 500
+      expected.govuk_gem_version = 'aVersion'
+      expected.event_data.event_name = 'video_start'
+      expected.event_data.action = 'start'
+      expected.event_data.video_current_time = 0
+      expected.event_data.video_percent = 0
+    })
+
+    it('with a time as the first parameter', function () {
+      event.target.getVideoUrl = function () {
+        return 'https://www.youtube.com/watch?t=26&v=abcdef'
+      }
+      videoTracker.trackVideo(event, 'VideoUnstarted')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('with a time not as the first parameter', function () {
+      event.target.getVideoUrl = function () {
+        return 'https://www.youtube.com/watch?v=abcdef&t=03434'
+      }
+      expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
+      videoTracker.trackVideo(event, 'VideoUnstarted')
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      event.target.getVideoUrl = function () {
+        return 'https://www.youtube.com/watch?v=abcdef&t=03434&test=test'
+      }
+      expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef&test=test'
+      videoTracker.trackVideo(event, 'VideoUnstarted')
+      expect(window.dataLayer[1]).toEqual(expected)
     })
   })
 
@@ -109,7 +149,7 @@ describe('Google Analytics video tracker', function () {
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.type = 'video'
-      expected.event_data.url = 'youtube/something'
+      expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       expected.event_data.video_duration = 500
       expected.event_data.event_name = 'video_progress'
       expected.event_data.action = 'progress'
@@ -183,7 +223,7 @@ describe('Google Analytics video tracker', function () {
           return 0
         },
         getVideoUrl: function () {
-          return 'youtube/somethingElse'
+          return 'https://www.youtube.com/watch?t=26&v=abcdef'
         },
         getDuration: function () {
           return 1000
