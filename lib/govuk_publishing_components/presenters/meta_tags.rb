@@ -48,6 +48,9 @@ module GovukPublishingComponents
         primary_publisher = content_item.dig(:links, :primary_publishing_organisation)
         primary_publisher = primary_publisher.first[:title] unless primary_publisher.blank?
         meta_tags["govuk:primary-publishing-organisation"] = primary_publisher unless primary_publisher.blank?
+        ga4_browse_topic = content_item.dig(:links, :ordered_related_items, 0, :links, :mainstream_browse_pages, 0, :links, :parent, 0, :title)
+        ga4_browse_topic = ga4_browse_topic.downcase if ga4_browse_topic
+        meta_tags["govuk:ga4-browse-topic"] = ga4_browse_topic if ga4_browse_topic
 
         meta_tags
       end

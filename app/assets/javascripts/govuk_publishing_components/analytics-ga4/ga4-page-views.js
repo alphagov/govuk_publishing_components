@@ -28,7 +28,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             schema_name: this.getMetaContent('schema-name'),
             content_id: this.getMetaContent('content-id'),
 
-            browse_topic: this.getMetaContent('section'),
+            browse_topic: this.getMetaContent('ga4-browse-topic'),
             navigation_page_type: this.getMetaContent('navigation-page-type'),
             navigation_list_type: this.getMetaContent('navigation-list-type'),
             step_navs: this.getMetaContent('stepnavs'),
@@ -68,7 +68,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getLocation: function () {
-      return this.PIIRemover.stripPII(this.stripGaParam(document.location.href))
+      return this.PIIRemover.stripPIIWithOverride(this.stripGaParam(document.location.href), true, true)
     },
 
     getSearch: function () {
@@ -95,8 +95,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     getQueryString: function () {
       var queryString = this.getSearch()
       if (queryString) {
-        queryString = this.PIIRemover.stripPIIWithOverride(queryString, true, true)
         queryString = this.stripGaParam(queryString)
+        queryString = this.PIIRemover.stripPIIWithOverride(queryString, true, true)
         queryString = queryString.substring(1) // removes the '?' character from the start.
         return queryString
       }
@@ -115,7 +115,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getTitle: function () {
-      return this.PIIRemover.stripPII(document.title)
+      return this.PIIRemover.stripPIIWithOverride(document.title, true, true)
     },
 
     // window.httpStatusCode is set in the source of the error page in static
@@ -148,7 +148,10 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       var content = document.getElementById('content')
       var html = document.querySelector('html')
       if (content) {
-        return content.getAttribute('lang') || this.nullValue
+        var contentLanguage = content.getAttribute('lang')
+        if (contentLanguage) {
+          return contentLanguage
+        }
       }
       // html.getAttribute('lang') is untested - Jasmine would not allow lang to be set on <html>.
       return html.getAttribute('lang') || this.nullValue
