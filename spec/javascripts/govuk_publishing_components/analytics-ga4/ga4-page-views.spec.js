@@ -141,7 +141,7 @@ describe('Google Tag Manager page view tracking', function () {
     var tags = [
       {
         gtmName: 'browse_topic',
-        tagName: 'section',
+        tagName: 'ga4-browse-topic',
         value: 'this section'
       },
       {

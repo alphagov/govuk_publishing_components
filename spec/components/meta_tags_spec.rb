@@ -434,6 +434,19 @@ describe "Meta tags", type: :view do
     end
   end
 
+  it "renders govuk:ga4-browse-topic by digging down mainstream_browse_pages" do
+    render_component(content_item: example_document_for("transaction", "transaction"))
+    assert_meta_tag("govuk:ga4-browse-topic", "housing and local services")
+  end
+
+  it "doesn't render govuk:ga4-browse-topic if the dig doesn't return anything" do
+    content_item = {
+      "links": nil,
+    }
+    render_component(content_item: example_document_for("transaction", "transaction").merge(content_item))
+    assert_no_meta_tag("govuk:ga4-browse-topic")
+  end
+
   def assert_political_status_for(political, current, expected_political_status)
     render_component(content_item: { details: { political: political, government: { current: current, slug: "government" } } })
     assert_meta_tag("govuk:political-status", expected_political_status)

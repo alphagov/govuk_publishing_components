@@ -28,7 +28,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             schema_name: this.getMetaContent('schema-name'),
             content_id: this.getMetaContent('content-id'),
 
-            browse_topic: this.getMetaContent('section'),
+            browse_topic: this.getMetaContent('ga4-browse-topic'),
             navigation_page_type: this.getMetaContent('navigation-page-type'),
             navigation_list_type: this.getMetaContent('navigation-list-type'),
             step_navs: this.getMetaContent('stepnavs'),
