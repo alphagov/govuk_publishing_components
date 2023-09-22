@@ -365,7 +365,11 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   $shadow-colour: govuk-colour("white");
 
   // to make numbers readable for users zooming text only in browsers such as Firefox
-  text-shadow: 0 -#{$shadow-offset} 0 $shadow-colour, $shadow-offset 0 0 $shadow-colour, 0 $shadow-offset 0 $shadow-colour, -#{$shadow-offset} 0 0 $shadow-colour;
+  text-shadow:
+    0 -#{$shadow-offset} 0 $shadow-colour,
+    $shadow-offset 0 0 $shadow-colour,
+    0 $shadow-offset 0 $shadow-colour,
+    -#{$shadow-offset} 0 0 $shadow-colour;
 }
 
 .gem-c-step-nav__circle-step-label,
