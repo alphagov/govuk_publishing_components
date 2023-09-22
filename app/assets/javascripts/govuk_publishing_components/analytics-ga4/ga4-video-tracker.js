@@ -70,7 +70,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       var data = {}
       data.event_name = 'video_' + event
       data.type = 'video'
-      data.url = player.getVideoUrl()
+      data.url = this.cleanVideoUrl(player.getVideoUrl())
       data.text = player.videoTitle
       data.action = event
       data.video_current_time = Math.round(player.getCurrentTime())
@@ -81,6 +81,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       var schema = schemas.mergeProperties(data, 'event_data')
 
       window.GOVUK.analyticsGa4.core.sendData(schema)
+    },
+
+    cleanVideoUrl: function (url) {
+      url = url.replace(/[?]{1}t=[0-9]+[&]{1}/, '?') // replace ?t=123& with ?
+      url = url.replace(/[&]{1}t=[0-9]+/, '') // replace &t=123 with ''
+      return url
     }
   }
 
