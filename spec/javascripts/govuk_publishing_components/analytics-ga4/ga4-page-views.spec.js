@@ -57,7 +57,8 @@ describe('Google Tag Manager page view tracking', function () {
         cookie_banner: undefined,
         intervention: undefined,
         query_string: undefined,
-        search_term: undefined
+        search_term: undefined,
+        spelling_suggestion: undefined
       }
     }
     window.dataLayer = []
@@ -579,5 +580,12 @@ describe('Google Tag Manager page view tracking', function () {
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
     })
+  })
+
+  it('correctly sets the spelling_suggestion parameter', function () {
+    createMetaTags('spelling-suggestion', 'tax')
+    expected.page_view.spelling_suggestion = 'tax'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
   })
 })
