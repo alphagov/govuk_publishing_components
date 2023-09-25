@@ -214,3 +214,9 @@ examples:
       right_to_left: true
       right_to_left_help: false
       error_message: "An error message that displays in the same text direction as the label"
+  with_error_but_no_error_message_or_error_items:
+    data:
+      label:
+        text: "Day"
+      name: "day"
+      has_error: true

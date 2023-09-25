@@ -228,8 +228,8 @@ describe "Input", type: :view do
       assert_select "input.govuk-input--error"
     end
 
-    it "renders the error message" do
-      assert_select ".govuk-error-message"
+    it "does not render the error message" do
+      assert_select ".govuk-error-message", false
     end
   end
 
