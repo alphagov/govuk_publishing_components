@@ -20,6 +20,7 @@ cs:
         few:
         one: Strana 1
         other: "%{count} stránek"
+      preview_aria_label:
       preview_link:
       reference: 'Odkaz: %{reference}'
       request_format_cta: Vyžádejte si přístupný formát.

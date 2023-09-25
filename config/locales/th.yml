@@ -18,6 +18,7 @@ th:
       order_a_copy: สั่งซื้อสำเนา
       page:
         other: "%{count} หน้า"
+      preview_aria_label:
       preview_link:
       reference: 'อ้างอิง: %{reference}'
       request_format_cta: ขอรูปแบบไฟล์ที่สามารถเข้าถึงได้

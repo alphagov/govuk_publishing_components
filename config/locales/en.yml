@@ -16,10 +16,11 @@ en:
     attachment:
       opendocument_html: This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
       order_a_copy: Order a copy
-      preview_link: View online
       page:
         one: 1 page
         other: "%{count} pages"
+      preview_aria_label: View %{title} online
+      preview_link: View online
       reference: 'Ref: %{reference}'
       request_format_cta: Request an accessible format.
       request_format_details_html: If you use assistive technology (such as a screen reader) and need a version of this document in a more accessible format, please email <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Please tell us what format you need. It will help us if you say what assistive technology you use.

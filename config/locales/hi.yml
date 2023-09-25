@@ -19,6 +19,7 @@ hi:
       page:
         one: 1 पेज
         other: "%{count} पेज"
+      preview_aria_label:
       preview_link:
       reference: 'संदर्भ: %{reference}'
       request_format_cta: एक सुलभ प्रारूप का अनुरोध करें।

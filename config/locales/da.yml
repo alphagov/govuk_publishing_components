@@ -19,6 +19,7 @@ da:
       page:
         one: 1 side
         other: "%{count} sider"
+      preview_aria_label:
       preview_link:
       reference: 'Henvisning: %{reference}'
       request_format_cta: Anmod om et tilgængeligt format.

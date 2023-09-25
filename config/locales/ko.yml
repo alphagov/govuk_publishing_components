@@ -18,6 +18,7 @@ ko:
       order_a_copy:
       page:
         other:
+      preview_aria_label:
       preview_link:
       reference:
       request_format_cta:

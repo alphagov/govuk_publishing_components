@@ -19,6 +19,7 @@ et:
       page:
         one: 1 leht
         other: "%{count} lehte"
+      preview_aria_label:
       preview_link:
       reference: 'Viide: %{reference}'
       request_format_cta: Taotlege juurdepääsetavat vormingut.

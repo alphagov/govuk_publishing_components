@@ -19,6 +19,7 @@ pa-pk:
       page:
         one: پہلا ورق
         other: ورقے {count}%
+      preview_aria_label:
       preview_link:
       reference: حوالہ:{reference}%
       request_format_cta: اک طریقے تک پوہنچن لئی اِک درخواست دیو۔

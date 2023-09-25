@@ -19,6 +19,7 @@ ps:
       page:
         one: 1 پاڼه
         other: "%{count} پاڼې"
+      preview_aria_label:
       preview_link:
       reference: حواله:%{reference}
       request_format_cta: د لاسرسي وړ پاڼه غوښتنه وکړئ.

@@ -19,6 +19,7 @@ he:
       page:
         one: דף 1
         other: "%{count} דפים"
+      preview_aria_label:
       preview_link:
       reference: 'הפניה: %{reference}'
       request_format_cta: בקש פורמט נגיש.

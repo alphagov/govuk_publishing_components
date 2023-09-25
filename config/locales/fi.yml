@@ -19,6 +19,7 @@ fi:
       page:
         one: 1 sivu
         other: "%{count} pages"
+      preview_aria_label:
       preview_link:
       reference: 'Viite: %{reference}'
       request_format_cta: Pyydä helppokäyttöistä muotoa.

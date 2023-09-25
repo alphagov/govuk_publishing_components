@@ -21,6 +21,7 @@ pl:
         many:
         one: 1 strona
         other: "%{count} strony"
+      preview_aria_label:
       preview_link:
       reference: 'Odnośnik: %{reference}'
       request_format_cta: Poproś o inny format.

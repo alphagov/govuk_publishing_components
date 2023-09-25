@@ -19,6 +19,7 @@ az:
       page:
         one:
         other: "%{count} səhifə"
+      preview_aria_label:
       preview_link:
       reference: 'İst: %{reference}'
       request_format_cta: İstifadə edilə bilən format tələb edin.

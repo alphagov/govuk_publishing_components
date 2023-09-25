@@ -19,6 +19,7 @@ el:
       page:
         one: 1 σελίδα
         other: "%{count} σελίδες"
+      preview_aria_label:
       preview_link:
       reference: 'Αναφ.: %{reference}'
       request_format_cta: Ζητήστε μια προσβάσιμη μορφή.

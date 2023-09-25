@@ -19,6 +19,7 @@ nl:
       page:
         one: 1 pagina
         other: "%{count} pagina's"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Vraag een toegankelijk formaat aan.

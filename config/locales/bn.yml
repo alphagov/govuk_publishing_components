@@ -19,6 +19,7 @@ bn:
       page:
         one: 1 পেজ
         other: "%{count} পেজ"
+      preview_aria_label:
       preview_link:
       reference: 'সুত্র: %{reference}'
       request_format_cta: একটি প্রবেশযোগ্য ফরম্যাটের অনুরোধ করুন।

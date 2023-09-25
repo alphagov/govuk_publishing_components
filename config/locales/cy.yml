@@ -23,6 +23,7 @@ cy:
         other: "%{count} o dudalennau"
         two:
         zero:
+      preview_aria_label:
       preview_link:
       reference: 'Cyfeirnod: %{reference}'
       request_format_cta: Gwneud cais am fformat hygyrch.

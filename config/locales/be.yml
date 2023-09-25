@@ -21,6 +21,7 @@ be:
         many:
         one: 1 старонка
         other: "%{count} старонкi"
+      preview_aria_label:
       preview_link:
       reference: 'Спасылка: %{reference}'
       request_format_cta: Запрасіць файл у іншым фармаце.

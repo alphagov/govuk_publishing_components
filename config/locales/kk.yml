@@ -19,6 +19,7 @@ kk:
       page:
         one: 1 бет
         other: "%{count} бет"
+      preview_aria_label:
       preview_link:
       reference: 'Сілтеме: %{reference}'
       request_format_cta: Қолжетімді пішімді сұраңыз.

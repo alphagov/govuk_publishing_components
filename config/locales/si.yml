@@ -19,6 +19,7 @@ si:
       page:
         one: පිටු 1ක්
         other: පිටු %{count}ක්
+      preview_aria_label:
       preview_link:
       reference: 'යොමුව: %{reference}'
       request_format_cta: පිවිසිය හැකි ආකෘතියක් ඉල්ලන්න.

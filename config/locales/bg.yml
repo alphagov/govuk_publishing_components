@@ -19,6 +19,7 @@ bg:
       page:
         one: 1-ва страница
         other: "%{count} страници"
+      preview_aria_label:
       preview_link:
       reference: 'Реф: %{reference}'
       request_format_cta: Поискайте достъпен формат.

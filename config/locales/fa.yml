@@ -19,6 +19,7 @@ fa:
       page:
         one:
         other: "%{count} صفحه"
+      preview_aria_label:
       preview_link:
       reference: 'مرجع: %{reference}'
       request_format_cta: درخواست یک قالب با قابلیت دسترسی بهتر.

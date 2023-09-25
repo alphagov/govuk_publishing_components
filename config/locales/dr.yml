@@ -19,6 +19,7 @@ dr:
       page:
         one: صفحهء 1
         other: "%{count} صفحات"
+      preview_aria_label:
       preview_link:
       reference: "%{reference}:مرجع"
       request_format_cta: یک فارمت قابل دسترس را درخواست کنید.

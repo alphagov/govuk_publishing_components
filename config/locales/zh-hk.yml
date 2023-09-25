@@ -18,6 +18,7 @@ zh-hk:
       order_a_copy: 索取副本
       page:
         other: "%{count} 頁"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: 索取可讀取之格式。

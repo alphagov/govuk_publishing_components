@@ -19,6 +19,7 @@ ur:
       page:
         one: 1 صفحہ
         other: "%{count} صفحات"
+      preview_aria_label:
       preview_link:
       reference: 'حوالہ: %{reference}'
       request_format_cta: قابل رسائی فارمیٹ کی درخواست دیں۔

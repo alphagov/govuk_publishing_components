@@ -20,6 +20,7 @@ ro:
         few:
         one: 1 pagină
         other: "%{count} pagini"
+      preview_aria_label:
       preview_link:
       reference: 'Referință: %{reference}'
       request_format_cta: Solicitați un format accesibil.

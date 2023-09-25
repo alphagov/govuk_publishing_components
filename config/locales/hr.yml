@@ -20,6 +20,7 @@ hr:
         few:
         one: 1 stranica
         other: "%{count} stranice"
+      preview_aria_label:
       preview_link:
       reference: 'Referenca: %{reference}'
       request_format_cta: Zatražite pristupačan format.

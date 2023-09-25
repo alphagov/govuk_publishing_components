@@ -20,6 +20,7 @@ lt:
         few:
         one: 1 puslapis
         other: "%{count} puslapių"
+      preview_aria_label:
       preview_link:
       reference: 'Nuoroda: %{reference}'
       request_format_cta: Prašyti prieinamo formato.

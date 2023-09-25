@@ -19,6 +19,7 @@ ka:
       page:
         one: 1 გვერი
         other: "%{count} გვერდები"
+      preview_aria_label:
       preview_link:
       reference: 'მითითება: %{reference}'
       request_format_cta: ხელმისაწვდომი ფორმატის მოთხოვნა.

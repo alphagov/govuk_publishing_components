@@ -21,6 +21,7 @@ mt:
         many:
         one: 1 paġna
         other: "%{count} paġni"
+      preview_aria_label:
       preview_link:
       reference: 'Ref: %{reference}'
       request_format_cta: Itlob format aċċessibbli.

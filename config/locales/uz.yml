@@ -19,6 +19,7 @@ uz:
       page:
         one: 1 саҳифа
         other: "%{count} саҳифа"
+      preview_aria_label:
       preview_link:
       reference: 'Ҳавола:  %{reference}'
       request_format_cta: Мақбул форматни олишга сўров.

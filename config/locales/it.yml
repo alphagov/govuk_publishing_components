@@ -19,6 +19,7 @@ it:
       page:
         one: 1 pagina
         other: "%{count} pagine"
+      preview_aria_label:
       preview_link:
       reference: 'Rif: %{reference}'
       request_format_cta: Richiedi un formato accessibile.

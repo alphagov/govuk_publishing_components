@@ -18,6 +18,7 @@ ja:
       order_a_copy: コピーを注文する
       page:
         other: "％{count}ページ"
+      preview_aria_label:
       preview_link:
       reference: 参照：%{reference}
       request_format_cta: アクセス可能なフォーマットをリクエストしてください。
