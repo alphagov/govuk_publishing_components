@@ -204,6 +204,7 @@ examples:
             text: 1. Nested Item
           - href: "#third-thing"
             text: 2. Nested Item
+            active: true
         - href: "#first-thing"
           text: 2. Second thing
           items:

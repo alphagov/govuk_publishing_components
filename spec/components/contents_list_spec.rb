@@ -27,6 +27,7 @@ describe "Contents list", type: :view do
       items: [
         { href: "/nested-one", text: "Nested one" },
         { href: "/nested-two", text: "Nested two" },
+        { text: "Active", active: true },
         { href: "/nested-four", text: "4. Four" },
       ],
     }
@@ -126,7 +127,7 @@ describe "Contents list", type: :view do
   end
 
   it "ga4 tracking is added when ga4_tracking is true" do
-    render_component(contents: contents_list_with_active_item, ga4_tracking: true)
+    render_component(contents: nested_contents_list, ga4_tracking: true)
 
     expected_ga4_json = {
       event_name: "navigation",
@@ -135,26 +136,24 @@ describe "Contents list", type: :view do
     }
 
     # Parent element attributes
-
     assert_select ".gem-c-contents-list" do |contents_list|
       expect(contents_list.attr("data-module").to_s).to eq "gem-track-click ga4-link-tracker"
     end
 
     # Child link attributes
-
+    expected_ga4_json[:index_total] = 7
     expected_ga4_json[:index] = { index_link: 1 }
-    expected_ga4_json[:index_total] = 3
 
-    assert_select ".gem-c-contents-list__list-item:first-of-type a" do |contents_list|
-      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
-    end
+    contents_list_links = assert_select(".gem-c-contents-list__list-item a")
 
-    expected_ga4_json[:index] = { index_link: 3 }
-
-    # Test the third link in the list. The 2nd list item is the active item, so it's just text. But the index position of that item should still be respected.
-    # Therefore the third link should still have an index of 3 even though there's only two <a> tags.
-    assert_select ".gem-c-contents-list__list-item:last-of-type a" do |contents_list|
-      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
+    # Test the links in the list. The 6th list item is the active item, so it's just text, but the index position of that item
+    # should still be respected. Therefore the final link should still have an index of 7 even though there's only 6 <a> tags.
+    index_links = [1, 2, 3, 4, 5, 7]
+    texts = ["1. One", "2. Two", "3. Three", "Nested one", "Nested two", "4. Four"]
+    contents_list_links.each_with_index do |link, index|
+      expected_ga4_json[:index] = { index_link: index_links[index] }
+      expect(link.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
+      expect(link).to have_text(texts[index])
     end
   end
 

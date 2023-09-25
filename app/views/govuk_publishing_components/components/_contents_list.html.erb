@@ -14,9 +14,10 @@
 
   ga4_tracking ||= false
   ga4_data = {
-      event_name: "navigation",
-      type: "contents list",
-      section: t("components.contents_list.contents", locale: :en) || ""
+    event_name: "navigation",
+    type: "contents list",
+    section: t("components.contents_list.contents", locale: :en) || "",
+    index_total: cl_helper.get_index_total
   } if ga4_tracking
   local_assigns[:aria] ||= {}
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
@@ -37,15 +38,15 @@
     <% end %>
 
     <ol class="gem-c-contents-list__list">
+      <% index_link = 1 if ga4_tracking %>
       <% contents.each.with_index(1) do |contents_item, position| %>
         <li class="<%= cl_helper.list_item_classes(contents_item, false) %>" <%= "aria-current=true" if contents_item[:active] %>>
           <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : contents_item[:text]
-             if ga4_tracking
+            if ga4_tracking
               ga4_data[:index] = {
-                  "index_link": position,
+                "index_link": index_link,
               }
-              ga4_data[:index_total] = contents.length
-             end
+            end
           %>
           <%= link_to_if !contents_item[:active], link_text, contents_item[:href],
             class:  link_classes,
@@ -59,11 +60,18 @@
               ga4_link: (ga4_tracking ? ga4_data.to_json : nil)
             }
           %>
-
+          <% index_link += 1 if ga4_tracking %>
           <% if contents_item[:items] && contents_item[:items].any? %>
             <ol class="gem-c-contents-list__nested-list">
               <% contents_item[:items].each.with_index(1) do |nested_contents_item, nested_position| %>
                 <li class="<%= cl_helper.list_item_classes(nested_contents_item, true) %>" <%= "aria-current=true" if nested_contents_item[:active] %>>
+                  <%
+                    if ga4_tracking
+                      ga4_data[:index] = {
+                        "index_link": index_link,
+                      }
+                    end
+                  %>
                   <%= link_to_if !nested_contents_item[:active], nested_contents_item[:text], nested_contents_item[:href],
                     class: link_classes,
                     data: {
@@ -72,13 +80,15 @@
                       track_label: nested_contents_item[:href],
                       track_options: {
                         dimension29: nested_contents_item[:text]
-                      }
+                      },
+                      ga4_link: (ga4_tracking ? ga4_data.to_json : nil)
                     }
                   %>
                 </li>
+                <% index_link += 1 if ga4_tracking %>
               <% end %>
             </ol>
-            <% end %>
+          <% end %>
         </li>
       <% end %>
     </ol>
