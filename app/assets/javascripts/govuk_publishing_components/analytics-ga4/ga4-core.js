@@ -288,11 +288,8 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           return null
         }
 
-        // In order to extract the number of results from resultCount (which is a string at this point (e.g. '12,345 results')), we remove the comma and
-        // split string at the space character so it can be parsed as an integer
-        resultCount = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(resultCount.textContent)
-        resultCount = resultCount.replace(',', '')
-        resultCount = resultCount.split(' ')[0]
+        // Remove anything that isn't a number from the result count heading. E.g. 'Results:' or the comma in '1,234'
+        resultCount = resultCount.textContent.replace(/[^0-9]+/g, '')
 
         return parseInt(resultCount)
       },

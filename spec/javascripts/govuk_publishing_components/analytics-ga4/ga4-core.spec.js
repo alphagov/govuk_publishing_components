@@ -404,7 +404,7 @@ describe('GA4 core', function () {
       var resultCountContainer
 
       resultCountContainer = document.createElement('span')
-      resultCountContainer.innerHTML = '<span id="results-count">54321 results</span>'
+      resultCountContainer.innerHTML = '<span id="results-count">54,321 results</span>'
 
       beforeEach(function () {
         document.body.appendChild(resultCountContainer)
@@ -420,7 +420,13 @@ describe('GA4 core', function () {
       })
 
       it('handles new lines and extra spaces', function () {
-        resultCountContainer.innerHTML = '<span id="results-count"> \n   54321 results    \n</span>'
+        resultCountContainer.innerHTML = '<span id="results-count"> \n   54,321 results    \n</span>'
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual(54321)
+        expect(typeof GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual('number')
+      })
+
+      it('handles "Results:" at the start of the string ', function () {
+        resultCountContainer.innerHTML = '<span id="results-count">Results: 54,321 licences</span>'
         expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual(54321)
         expect(typeof GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual('number')
       })
