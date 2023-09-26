@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.16.1
 
 * Add GA4 to nested contents item links ([PR #3638](https://github.com/alphagov/govuk_publishing_components/pull/3638))
 * Change GA4 contents list type ([PR #3635](https://github.com/alphagov/govuk_publishing_components/pull/3635))
