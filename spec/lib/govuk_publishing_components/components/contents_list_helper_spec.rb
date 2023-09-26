@@ -74,6 +74,28 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
       expected = '<a href="#run-an-effective-welfare-system">Run an effective welfare system part 1. Social Care</a>'
       expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
     end
+
+    it "counts the number of links in the component" do
+      contents = [
+        {
+          text: "test1",
+          items: [
+            {
+              text: "test2",
+            },
+            {
+              text: "test3",
+              active: true,
+            },
+          ],
+        },
+        {
+          text: "test3",
+        },
+      ]
+      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({ contents: contents })
+      expect(cl.get_index_total).to eql(4)
+    end
   end
 
   def assert_split_number_and_text(number_and_text, number, text)

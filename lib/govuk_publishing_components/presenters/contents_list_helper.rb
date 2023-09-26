@@ -40,6 +40,14 @@ module GovukPublishingComponents
         end
       end
 
+      def get_index_total
+        total = @contents.length
+        @contents.each do |parent|
+          total += parent[:items].length if parent[:items]
+        end
+        total
+      end
+
     private
 
       def parent_modifier

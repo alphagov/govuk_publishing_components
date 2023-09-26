@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add GA4 to nested contents item links ([PR #3638](https://github.com/alphagov/govuk_publishing_components/pull/3638))
 * Change GA4 contents list type ([PR #3635](https://github.com/alphagov/govuk_publishing_components/pull/3635))
 * Change prev and next GA4 type ([PR #3631](https://github.com/alphagov/govuk_publishing_components/pull/3631))
 * Remove timestamps from GA4 video urls ([PR #3632](https://github.com/alphagov/govuk_publishing_components/pull/3632))
