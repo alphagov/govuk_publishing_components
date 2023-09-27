@@ -39,6 +39,11 @@ describe "Search", type: :view do
     end
   end
 
+  it "applies homepage class if homepage set to true" do
+    render_component(homepage: true)
+    assert_select ".gem-c-search--homepage"
+  end
+
   it "renders a search box with a custom id" do
     render_component(id: "my-unique-id")
     assert_select ".gem-c-search #my-unique-id.gem-c-search__input"
