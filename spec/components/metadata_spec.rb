@@ -211,7 +211,7 @@ describe "Metadata", type: :view do
 
     expected_ga4_json = {
       "event_name": "navigation",
-      "type": "content",
+      "type": "content history",
       "section": "Top",
       "action": "opened",
     }.to_json
