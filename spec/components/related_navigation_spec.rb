@@ -27,7 +27,7 @@ describe "Related navigation", type: :view do
     content_item["links"] = construct_links(
       "ordered_related_items", "/apprenticeships", "Apprenticeships"
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__main-heading", text: "Related content"
     assert_select ".gem-c-related-navigation__section-link--other[href=\"/apprenticeships\"]", text: "Apprenticeships"
@@ -38,7 +38,7 @@ describe "Related navigation", type: :view do
     content_item["links"] = construct_links(
       "related_guides", "/something-a-bit-like-this", "Some other guidance"
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "Detailed guidance"
     assert_select ".gem-c-related-navigation__section-link[href=\"/something-a-bit-like-this\"]", text: "Some other guidance"
@@ -49,7 +49,7 @@ describe "Related navigation", type: :view do
     content_item["links"] = construct_links(
       "topics", "/finding-a-job", "Finding a job", "topic"
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "Explore the topic"
     assert_select ".gem-c-related-navigation__section-link[href=\"/finding-a-job\"]", text: "Finding a job"
@@ -63,7 +63,7 @@ describe "Related navigation", type: :view do
       "Air quality statistics",
       "statistical_data_set",
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "Statistical data set"
     assert_select ".gem-c-related-navigation__section-link[href=\"/air-quality-statistics\"]", text: "Air quality statistics"
@@ -72,7 +72,7 @@ describe "Related navigation", type: :view do
   it "renders world locations section when passed world location items with base path" do
     content_item = {}
     content_item["links"] = construct_links("world_locations", "/uk-mission-to-the-eu", "UK Mission to the European Union")
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
     assert_select ".gem-c-related-navigation__section-link[href=\"/uk-mission-to-the-eu\"]", text: "UK Mission to the European Union"
@@ -81,7 +81,7 @@ describe "Related navigation", type: :view do
   it "renders world locations section when passed world location items without base path" do
     content_item = {}
     content_item["links"] = construct_links("world_locations", nil, "USA")
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/usa/news\"]", text: "USA"
@@ -95,7 +95,7 @@ describe "Related navigation", type: :view do
       "The future of jobs and skills",
       "document_collection",
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "Collection"
     assert_select ".gem-c-related-navigation__section-link[href=\"/government/collections/the-future-of-jobs-and-skills\"]", text: "The future of jobs and skills"
@@ -109,7 +109,7 @@ describe "Related navigation", type: :view do
       "UK-China High-Level People to People Dialogue 2017",
       "topical_event",
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "Topical event"
     assert_select ".gem-c-related-navigation__section-link[href=\"/government/topical-events/uk-china-high-level-people-to-people-dialogue-2017\"]", text: "UK-China High-Level People to People Dialogue 2017"
@@ -125,7 +125,7 @@ describe "Related navigation", type: :view do
         },
       ],
     }
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading--other", text: "Elsewhere on the web"
     assert_select ".gem-c-related-navigation__section-link--other[href=\"https://www.thestudentroom.co.uk/content.php?r=5967-Repaying-your-student-loan\"][rel=\"external\"]", text: "The Student Room repaying your student loan"
@@ -139,7 +139,7 @@ describe "Related navigation", type: :view do
       "A related contact",
       "contact",
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading--other", text: "Other contacts"
     assert_select ".gem-c-related-navigation__section-link--other[href=\"/ye-olde-contact\"]", text: "A related contact"
@@ -153,7 +153,7 @@ describe "Related navigation", type: :view do
       "Apprenticeships",
       "topic",
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__nav-section[aria-labelledby]"
   end
@@ -163,7 +163,7 @@ describe "Related navigation", type: :view do
     %w[USA Wales Fiji Iceland Sweden Mauritius Brazil].each do |country|
       content_item["links"]["world_locations"] << { "title" => country }
     end
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more"
@@ -177,7 +177,7 @@ describe "Related navigation", type: :view do
     %w[USA Wales Fiji Iceland Sweden Mauritius].each do |country|
       content_item["links"]["world_locations"] << { "title" => country }
     end
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap", false, "Progressive disclosure should not display for only 1 link"
@@ -189,7 +189,7 @@ describe "Related navigation", type: :view do
       "ordered_related_items", "/apprenticeships", "Apprenticeships"
     )
     content_item["links"] = ordered_related_items
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__main-heading", text: "Related content"
     assert_select ".gem-c-related-navigation__section-link--other[href=\"/apprenticeships\"]", text: "Apprenticeships"
@@ -200,7 +200,7 @@ describe "Related navigation", type: :view do
     content_item["links"] = construct_links(
       "topics", "/apprenticeships", "Apprenticeships", "topic"
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click']"
     assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
@@ -244,7 +244,7 @@ describe "Related navigation", type: :view do
       content_item["links"]["world_locations"] << { "title" => country }
     end
 
-    render_component(content_item: content_item, ga4_tracking: true)
+    render_component(content_item:, ga4_tracking: true)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":{\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"3\"},\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Fishing"
@@ -263,7 +263,7 @@ describe "Related navigation", type: :view do
     content_item["links"] = construct_links(
       "topics", "/apprenticeships", "Apprenticeships", "topic", "ko"
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[lang='ko']"
   end
@@ -273,7 +273,7 @@ describe "Related navigation", type: :view do
     content_item["links"] = construct_links(
       "topics", "/apprenticeships", "Apprenticeships", "topic", I18n.locale
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[lang='#{I18n.locale}']", false
   end
@@ -283,7 +283,7 @@ describe "Related navigation", type: :view do
     content_item["links"] = construct_links(
       "topics", "/apprenticeships", "Apprenticeships", "topic"
     )
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[lang]", false
   end

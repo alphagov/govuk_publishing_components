@@ -6,7 +6,7 @@ describe "ContextualBreadcrumbs", type: :view do
   end
 
   def example_document_for(schema_name, example_name)
-    GovukSchemas::Example.find(schema_name, example_name: example_name)
+    GovukSchemas::Example.find(schema_name, example_name:)
   end
 
   def remove_mainstream_browse(content_item)
@@ -41,7 +41,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_mainstream_browse(content_item)
     content_item = remove_curated_related_item(content_item)
     content_item = set_live_taxons(content_item)
-    render_component(content_item: content_item)
+    render_component(content_item:)
     assert_select ".gem-c-breadcrumbs.govuk-breadcrumbs--collapse-on-mobile"
   end
 
@@ -50,7 +50,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_mainstream_browse(content_item)
     content_item = remove_curated_related_item(content_item)
     content_item = set_live_taxons(content_item)
-    render_component(content_item: content_item, collapse_on_mobile: false)
+    render_component(content_item:, collapse_on_mobile: false)
     assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile", false
   end
 
@@ -76,7 +76,7 @@ describe "ContextualBreadcrumbs", type: :view do
   it "renders curated related items breadcrumbs if the content_item has curated related items" do
     content_item = example_document_for("licence", "licence_without_continuation_link")
     content_item = remove_mainstream_browse(content_item)
-    render_component(content_item: content_item)
+    render_component(content_item:)
     assert_no_selector(".gem-c-step-nav-header")
     assert_select "a", text: "Home"
     assert_select "a", text: "Business and self-employed"
@@ -89,7 +89,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_curated_related_item(content_item)
     content_item = set_live_taxons(content_item)
     content_item = remove_topics(content_item)
-    render_component(content_item: content_item)
+    render_component(content_item:)
     assert_no_selector(".gem-c-step-nav-header")
     assert_select "a", text: "Home"
     assert_select "a", text: "School curriculum"
@@ -101,7 +101,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_mainstream_browse(content_item)
     content_item = remove_curated_related_item(content_item)
     content_item = set_live_taxons(content_item)
-    render_component(content_item: content_item, inverse: true)
+    render_component(content_item:, inverse: true)
     assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
   end
 
@@ -136,7 +136,7 @@ describe "ContextualBreadcrumbs", type: :view do
       },
     ]
 
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select "a", text: "Home"
     assert_select "a", text: "Competition and Markets Authority cases"
@@ -144,7 +144,7 @@ describe "ContextualBreadcrumbs", type: :view do
 
   it "renders parent finder breadcrumb if content has a finder linked" do
     content_item = example_document_for("guide", "guide-with-facet-groups")
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     assert_select "a", text: "Home"
     assert_select "a", text: "EU Withdrawal Act 2018 statutory instruments"
@@ -152,7 +152,7 @@ describe "ContextualBreadcrumbs", type: :view do
 
   it "renders parent finder breadcrumb if content has a finder linked and taxon is prioritised" do
     content_item = example_document_for("guide", "guide-with-facet-groups")
-    render_component(content_item: content_item, prioritise_taxon_breadcrumbs: true)
+    render_component(content_item:, prioritise_taxon_breadcrumbs: true)
 
     assert_select "a", text: "Home"
     assert_select "a", text: "EU Withdrawal Act 2018 statutory instruments"
@@ -160,7 +160,7 @@ describe "ContextualBreadcrumbs", type: :view do
 
   it "renders inverse parent finder breadcrumb" do
     content_item = example_document_for("guide", "guide-with-facet-groups")
-    render_component(content_item: content_item, prioritise_taxon_breadcrumbs: true, inverse: true)
+    render_component(content_item:, prioritise_taxon_breadcrumbs: true, inverse: true)
     assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
   end
 
@@ -177,7 +177,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = example_document_for("guide", "guide")
     content_item = set_parent_titles_to_businesses(content_item)
     content_item = set_live_taxons(content_item)
-    render_component(content_item: content_item, prioritise_taxon_breadcrumbs: true)
+    render_component(content_item:, prioritise_taxon_breadcrumbs: true)
     assert_select "a", text: "Home"
     assert_no_selector "a", text: "Business and self-employed"
     assert_no_selector "a", text: "Licences and licence applications"
@@ -189,7 +189,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = example_document_for("guide", "guide")
     content_item = set_parent_titles_to_businesses(content_item)
     content_item = set_live_taxons(content_item)
-    render_component(content_item: content_item, prioritise_taxon_breadcrumbs: false)
+    render_component(content_item:, prioritise_taxon_breadcrumbs: false)
     assert_select "a", text: "Home"
     assert_select "a", text: "Business and self-employed"
     assert_select "a", text: "Licences and licence applications"
@@ -201,7 +201,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = example_document_for("guide", "guide")
     content_item = set_parent_titles_to_businesses(content_item)
     content_item = set_live_taxons(content_item)
-    render_component(content_item: content_item)
+    render_component(content_item:)
     assert_select "a", text: "Home"
     assert_select "a", text: "Business and self-employed"
     assert_select "a", text: "Licences and licence applications"

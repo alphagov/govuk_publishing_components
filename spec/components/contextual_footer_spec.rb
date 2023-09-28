@@ -13,7 +13,7 @@ RSpec.describe "Contextual footer", type: :view do
       payload
     end
 
-    render_component(content_item: content_item)
+    render_component(content_item:)
 
     has_selector? ".gem-c-contextual-footer"
   end
@@ -45,7 +45,7 @@ RSpec.describe "Contextual footer", type: :view do
       ],
     }
 
-    render_component(content_item: content_item, ga4_tracking: true)
+    render_component(content_item:, ga4_tracking: true)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"contextual footer\",\"index\":{\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"1\"},\"index_total\":\"2\",\"section\":\"Explore the topic\"}']", text: "Skating"

@@ -95,8 +95,8 @@ module GovukPublishingComponents
             dir: result[:dir],
             application_found: result[:application_found],
             uses_static: application_uses_static,
-            summary: summary,
-            warnings: warnings,
+            summary:,
+            warnings:,
             warning_count: warnings.length,
             gem_style_references: result[:gem_style_references],
             jquery_references: result[:jquery_references],
@@ -126,8 +126,8 @@ module GovukPublishingComponents
 
     def create_warning(component, message)
       {
-        component: component,
-        message: message,
+        component:,
+        message:,
       }
     end
 
@@ -280,7 +280,7 @@ module GovukPublishingComponents
         results << {
           name: component_name,
           count: locations.length,
-          locations: locations,
+          locations:,
         }
       end
 

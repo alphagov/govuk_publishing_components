@@ -88,7 +88,7 @@ module GovukPublishingComponents
             title: current_step_nav.title,
             path: current_step_nav.base_path,
             tracking_id: current_step_nav.content_id,
-            ga4_tracking: ga4_tracking,
+            ga4_tracking:,
           }
         else
           {}

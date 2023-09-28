@@ -20,7 +20,7 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
     end
     let(:page_data) do
       {
-        content_item: content_item,
+        content_item:,
         schema: :html_publication,
       }
     end

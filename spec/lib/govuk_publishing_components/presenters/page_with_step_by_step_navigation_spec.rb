@@ -181,7 +181,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           path: "/learn-to-spacewalk",
           title: "Learn to spacewalk: small step by giant leap",
           tracking_id: "cccc-dddd",
-          ga4_tracking: ga4_tracking,
+          ga4_tracking:,
         )
 
         expect(step_nav_links.show_related_links?).to be true
@@ -518,7 +518,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             path: "/lose-your-lunch",
             title: "Lose your lunch: lurch by lurch",
             tracking_id: "aaaa-bbbb",
-            ga4_tracking: ga4_tracking,
+            ga4_tracking:,
           )
 
           expect(step_nav_links.show_related_links?).to be true
@@ -623,7 +623,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             path: "/PRIMARY-lose-your-lunch",
             title: "PRIMARY Lose your lunch: lurch by lurch",
             tracking_id: "PRIMARY-aaaa-bbbb",
-            ga4_tracking: ga4_tracking,
+            ga4_tracking:,
           )
 
           expect(step_nav_links.show_related_links?).to be true
@@ -673,7 +673,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             path: "/PRIMARY-lose-your-lunch",
             title: "PRIMARY Lose your lunch: lurch by lurch",
             tracking_id: "PRIMARY-aaaa-bbbb",
-            ga4_tracking: ga4_tracking,
+            ga4_tracking:,
           )
 
           expect(step_nav_links.show_related_links?).to be true

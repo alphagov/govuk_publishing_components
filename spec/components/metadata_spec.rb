@@ -246,6 +246,6 @@ describe "Metadata", type: :view do
   end
 
   def assert_link_with_text_in(selector, link, text)
-    assert_select "#{selector} a[href=\"#{link}\"]", text: text
+    assert_select "#{selector} a[href=\"#{link}\"]", text:
   end
 end

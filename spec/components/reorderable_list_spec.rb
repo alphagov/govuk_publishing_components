@@ -36,7 +36,7 @@ describe "Reorderable list", type: :view do
   end
 
   it "renders a list of items" do
-    render_component(items: items)
+    render_component(items:)
 
     assert_select ".gem-c-reorderable-list"
     assert_select ".gem-c-reorderable-list__item", 5
@@ -54,7 +54,7 @@ describe "Reorderable list", type: :view do
   end
 
   it "renders allows custom input names" do
-    render_component(items: items, input_name: "attachments[ordering]")
+    render_component(items:, input_name: "attachments[ordering]")
 
     assert_select ".gem-c-reorderable-list"
     assert_select ".gem-c-reorderable-list__item" do |elements|

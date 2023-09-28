@@ -40,7 +40,7 @@ describe "Contextual sidebar", type: :view do
 
     render_component(
       ga4_tracking: true,
-      content_item: content_item,
+      content_item:,
     )
     index_total = 4 # have to hard code this here but if ukraine links change this number may change, and test will fail
     assert_select ".gem-c-contextual-sidebar .gem-c-contextual-sidebar__cta--ukraine[data-module='gem-track-click ga4-link-tracker']"

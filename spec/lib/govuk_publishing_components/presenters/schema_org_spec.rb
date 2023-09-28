@@ -13,7 +13,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -34,7 +34,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -74,7 +74,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :dataset,
       ).structured_data
 
@@ -124,7 +124,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = transaction_content_item([], [])
 
         structured_data = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :government_service,
         ).structured_data
 
@@ -138,7 +138,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = transaction_content_item([], @ordered_related_items)
 
         structured_data = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :government_service,
         ).structured_data
 
@@ -162,7 +162,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = transaction_content_item(@organisations, [])
 
         structured_data = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :government_service,
         ).structured_data
 
@@ -173,7 +173,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = transaction_content_item(@organisations, [])
 
         structured_data = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :government_service,
         ).structured_data
 
@@ -197,7 +197,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = transaction_content_item([], @ordered_related_items)
 
         structured_data = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :government_service,
         ).structured_data
 
@@ -232,7 +232,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer")
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :news_article,
       ).structured_data
 
@@ -251,7 +251,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = dragon_guide
 
         structured_data = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :faq,
           body: part_body,
         ).structured_data
@@ -281,7 +281,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = dragon_guide
 
         q_and_a = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :faq,
           body: part_body,
         ).structured_data["mainEntity"]
@@ -300,7 +300,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = dragon_guide
 
         q_and_a = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :faq,
           body: part_body,
         ).structured_data["mainEntity"]
@@ -314,7 +314,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         content_item = dragon_guide
 
         q_and_a = generate_structured_data(
-          content_item: content_item,
+          content_item:,
           schema: :faq,
           body: empty_part_body,
         ).structured_data["mainEntity"]
@@ -339,7 +339,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "person")
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :person,
       ).structured_data
 
@@ -361,7 +361,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       }
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :organisation,
       ).structured_data
 
@@ -393,7 +393,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       )
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :organisation,
       ).structured_data
 
@@ -440,7 +440,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :organisation,
       ).structured_data
 
@@ -473,7 +473,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :organisation,
       ).structured_data
 
@@ -489,7 +489,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
         canonical_url: "https://www.gov.uk/foo/bar",
       ).structured_data
@@ -508,7 +508,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
         body: "Bar",
       ).structured_data
@@ -533,7 +533,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -547,7 +547,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -561,7 +561,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
         image_placeholders: [1, 2],
       ).structured_data
@@ -575,7 +575,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -601,7 +601,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -623,7 +623,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -664,7 +664,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 
@@ -707,7 +707,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       structured_data = generate_structured_data(
-        content_item: content_item,
+        content_item:,
         schema: :article,
       ).structured_data
 

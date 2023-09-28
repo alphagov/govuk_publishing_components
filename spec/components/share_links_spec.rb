@@ -26,13 +26,13 @@ describe "ShareLinks", type: :view do
   end
 
   it "renders share links correctly" do
-    render_component(links: links)
+    render_component(links:)
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"]", /Share.+on.+Facebook.+\(opens.+in.+new.+tab\)/m
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]", /Tweet.+to.+Twitter.+\(opens.+in.+new.+tab\)/m
   end
 
   it "renders a custom title" do
-    render_component(links: links, title: "Share this page")
+    render_component(links:, title: "Share this page")
     assert_select ".gem-c-share-links .govuk-heading-s", text: "Share this page"
   end
 
@@ -48,7 +48,7 @@ describe "ShareLinks", type: :view do
     attributes = {
       module: "test",
     }
-    render_component(links: links, data_attributes: attributes)
+    render_component(links:, data_attributes: attributes)
     assert_select ".gem-c-share-links[data-module='test gem-track-click']"
   end
 
@@ -104,17 +104,17 @@ describe "ShareLinks", type: :view do
   end
 
   it "accepts the stacking option" do
-    render_component(links: links, stacked: true)
+    render_component(links:, stacked: true)
     assert_select ".gem-c-share-links.gem-c-share-links--stacked"
   end
 
   it "displays the visually hidden text 'Share on' if custom hidden_text is not specified" do
-    render_component(links: links)
+    render_component(links:)
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"] .govuk-visually-hidden", text: "Share on"
   end
 
   it "displays the provided visually hidden text" do
-    render_component(links: links)
+    render_component(links:)
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: "Tweet to"
   end
 end
