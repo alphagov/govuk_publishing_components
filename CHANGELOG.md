@@ -11,6 +11,7 @@
 
 * Add new light action link variant ([PR #3602](https://github.com/alphagov/govuk_publishing_components/pull/3602))
 * Add new homepage variant to search component ([PR #3599](https://github.com/alphagov/govuk_publishing_components/pull/3599))
+* Change GA4 type for show/hide update links ([PR #3643](https://github.com/alphagov/govuk_publishing_components/pull/3643))
 
 
 ## 35.16.1
