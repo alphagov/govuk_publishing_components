@@ -37,6 +37,11 @@ $share-button-height: 30px;
   line-height: $share-button-height;
 }
 
+.gem-c-share-links__svg {
+  width: 100%;
+  height: 100%;
+}
+
 .direction-rtl {
   .gem-c-share-links__link {
     display: inline-block;
