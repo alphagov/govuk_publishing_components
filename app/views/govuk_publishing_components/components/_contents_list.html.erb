@@ -15,7 +15,6 @@
   ga4_tracking ||= false
   ga4_data = {
     event_name: "navigation",
-    type: "contents list",
     section: t("components.contents_list.contents", locale: :en) || "",
     index_total: cl_helper.get_index_total
   } if ga4_tracking
@@ -46,6 +45,7 @@
               ga4_data[:index] = {
                 "index_link": index_link,
               }
+              ga4_data[:type] = cl_helper.get_ga4_type(contents_item[:href]) if contents_item[:href]
             end
           %>
           <%= link_to_if !contents_item[:active], link_text, contents_item[:href],
@@ -70,6 +70,7 @@
                       ga4_data[:index] = {
                         "index_link": index_link,
                       }
+                      ga4_data[:type] = cl_helper.get_ga4_type(nested_contents_item[:href]) if nested_contents_item[:href]
                     end
                   %>
                   <%= link_to_if !nested_contents_item[:active], nested_contents_item[:text], nested_contents_item[:href],

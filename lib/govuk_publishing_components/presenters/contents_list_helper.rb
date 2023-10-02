@@ -48,6 +48,12 @@ module GovukPublishingComponents
         total
       end
 
+      def get_ga4_type(link)
+        return "select content" if link.start_with?("#")
+
+        "contents list"
+      end
+
     private
 
       def parent_modifier

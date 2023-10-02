@@ -96,6 +96,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({ contents: contents })
       expect(cl.get_index_total).to eql(4)
     end
+
+    it "returns the required GA4 type" do
+      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      expect(cl.get_ga4_type("#anchor")).to eql("select content")
+      expect(cl.get_ga4_type("https://www.gov.uk")).to eql("contents list")
+    end
   end
 
   def assert_split_number_and_text(number_and_text, number, text)

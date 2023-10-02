@@ -197,18 +197,17 @@ examples:
     data:
       ga4_tracking: true
       contents:
-        - href: "#first-thing"
+        - href: "https://www.gov.uk"
           text: 1. First thing
           items:
           - href: "#second-thing"
             text: 1. Nested Item
-          - href: "#third-thing"
-            text: 2. Nested Item
+          - text: 2. Nested Item
             active: true
         - href: "#first-thing"
           text: 2. Second thing
           items:
           - href: "#second-thing"
             text: 1. Nested Item
-          - href: "#third-thing"
+          - href: "https://www.gov.uk/browse"
             text: 2. Nested Item
