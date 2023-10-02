@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change GA4 type on contents lists ([PR #3647](https://github.com/alphagov/govuk_publishing_components/pull/3647))
+
 ## 35.17.0
 
 * Add new light action link variant ([PR #3602](https://github.com/alphagov/govuk_publishing_components/pull/3602))
