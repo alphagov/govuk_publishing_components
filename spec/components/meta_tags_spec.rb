@@ -6,7 +6,7 @@ describe "Meta tags", type: :view do
   end
 
   def example_document_for(schema_name, example_name)
-    GovukSchemas::Example.find(schema_name, example_name: example_name)
+    GovukSchemas::Example.find(schema_name, example_name:)
   end
 
   it "renders with an example case study" do
@@ -49,7 +49,7 @@ describe "Meta tags", type: :view do
       },
     }
 
-    render_component(content_item: content_item)
+    render_component(content_item:)
     assert_meta_tag("govuk:analytics:organisations", "<O1><W4>")
   end
 
@@ -67,7 +67,7 @@ describe "Meta tags", type: :view do
       },
     }
 
-    render_component(content_item: content_item)
+    render_component(content_item:)
     assert_meta_tag("govuk:analytics:world-locations", "<WL3><WL123>")
   end
 
@@ -448,7 +448,7 @@ describe "Meta tags", type: :view do
   end
 
   def assert_political_status_for(political, current, expected_political_status)
-    render_component(content_item: { details: { political: political, government: { current: current, slug: "government" } } })
+    render_component(content_item: { details: { political:, government: { current:, slug: "government" } } })
     assert_meta_tag("govuk:political-status", expected_political_status)
   end
 

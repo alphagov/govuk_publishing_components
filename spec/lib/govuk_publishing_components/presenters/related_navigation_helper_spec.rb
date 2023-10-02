@@ -5,7 +5,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: schema) do |payload|
       payload.merge(content_item)
     end
-    described_class.new(content_item: example, context: context).related_navigation
+    described_class.new(content_item: example, context:).related_navigation
   end
 
   describe "#related_navigation" do

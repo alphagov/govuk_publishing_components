@@ -98,7 +98,7 @@ module GovukPublishingComponents
         data[:behaviour] = "exclusive" if checkbox[:exclusive]
 
         capture do
-          concat check_box_tag checkbox_name, checkbox[:value], checked, class: "govuk-checkboxes__input", id: checkbox_id, data: data
+          concat check_box_tag(checkbox_name, checkbox[:value], checked, class: "govuk-checkboxes__input", id: checkbox_id, data:)
           concat content_tag(:label, checkbox[:label], for: checkbox_id, class: "govuk-label govuk-checkboxes__label")
           concat content_tag(:span, checkbox[:hint], id: "#{checkbox_id}-item-hint", class: "govuk-hint govuk-checkboxes__hint") if checkbox[:hint]
         end

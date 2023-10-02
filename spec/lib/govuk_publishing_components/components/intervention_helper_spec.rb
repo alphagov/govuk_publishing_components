@@ -11,7 +11,7 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
       it "appends the dismiss query string parameter" do
         query_string = "?a=b"
 
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(query_string: query_string)
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(query_string:)
         new_query_string = intervention_helper.dismiss_link
 
         expect(new_query_string).to eql("?a=b&hide-intervention=true")
@@ -21,7 +21,7 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
         existing_query_string = ""
         request = Rack::Utils.parse_nested_query(existing_query_string)
 
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(request: request)
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(request:)
         new_query_string = intervention_helper.dismiss_link
 
         expect(new_query_string).to eql("?hide-intervention=true")
@@ -45,7 +45,7 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
         params = {
           "hide-intervention" => "true",
         }
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page", params: params })
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page", params: })
 
         expect(intervention_helper.show?).to be_falsey
       end

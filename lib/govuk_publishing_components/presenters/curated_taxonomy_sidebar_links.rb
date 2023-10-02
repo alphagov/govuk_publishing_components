@@ -1,5 +1,3 @@
-require "set"
-
 module GovukPublishingComponents
   module Presenters
     # @private

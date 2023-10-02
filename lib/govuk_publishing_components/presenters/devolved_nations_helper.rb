@@ -43,9 +43,9 @@ module GovukPublishingComponents
         nation = I18n.t("components.devolved_nations.#{name}")
 
         if I18n.exists?("components.devolved_nations.type.#{@type}")
-          I18n.t("components.devolved_nations.type.#{@type}", nation: nation)
+          I18n.t("components.devolved_nations.type.#{@type}", nation:)
         else
-          I18n.t("components.devolved_nations.type.publication", nation: nation)
+          I18n.t("components.devolved_nations.type.publication", nation:)
         end
       end
     end

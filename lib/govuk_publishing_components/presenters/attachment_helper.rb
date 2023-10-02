@@ -119,7 +119,7 @@ module GovukPublishingComponents
         def self.find(content_type, extension = nil)
           matching_types = TYPES.select { |type| type[:content_type] == content_type }
 
-          return UnsupportedContentType.new(content_type: content_type) if matching_types.empty?
+          return UnsupportedContentType.new(content_type:) if matching_types.empty?
 
           extension_match = if matching_types.length > 1
                               matching_types.find { |type| type[:extension] == extension }

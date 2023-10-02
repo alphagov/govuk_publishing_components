@@ -93,7 +93,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
           text: "test3",
         },
       ]
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({ contents: contents })
+      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({ contents: })
       expect(cl.get_index_total).to eql(4)
     end
 

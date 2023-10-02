@@ -33,7 +33,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
 
       res = {
         track_category: "footerClicked",
-        track_action: track_action,
+        track_action:,
         track_label: "/help",
         track_options: {
           dimension29: "Help",
@@ -54,7 +54,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
             an_attribute: "still present",
             data: {
               track_category: "footerClicked",
-              track_action: track_action,
+              track_action:,
               track_label: "/help",
               track_options: {
                 dimension29: "Help",

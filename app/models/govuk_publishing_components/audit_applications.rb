@@ -72,10 +72,10 @@ module GovukPublishingComponents
       end
 
       @data = {
-        name: name,
-        dir: dir,
-        application_found: application_found,
-        components_found: components_found,
+        name:,
+        dir:,
+        application_found:,
+        components_found:,
         gem_style_references: @gem_style_references.flatten.uniq.sort,
         jquery_references: @jquery_references.flatten.uniq.sort,
         component_locations: @component_locations,

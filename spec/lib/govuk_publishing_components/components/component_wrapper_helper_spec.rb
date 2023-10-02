@@ -38,7 +38,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     it "rejects invalid class names" do
       classes = "js-okay not-cool-man"
       expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: classes)
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes:)
       }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
     end
 
@@ -52,7 +52,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       ["2idstartingwithanumber", "id containing spaces", "idwitha.character"].each do |id|
         error = "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`"
         expect {
-          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: id)
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id:)
         }.to raise_error(ArgumentError, error)
       end
     end

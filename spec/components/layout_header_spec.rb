@@ -56,7 +56,7 @@ describe "Layout header", type: :view do
       { text: "Hello", href: "/hello", show_only_in_collapsed_menu: true },
     ]
 
-    render_component(environment: "staging", navigation_items: navigation_items)
+    render_component(environment: "staging", navigation_items:)
 
     assert_select ".govuk-header__navigation .govuk-header__menu-button", text: "Menu"
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--active", text: "Foo"
@@ -72,7 +72,7 @@ describe "Layout header", type: :view do
       { text: "Hello", href: "/hello", show_only_in_collapsed_menu: true },
     ]
 
-    render_component(environment: "staging", navigation_items: navigation_items, navigation_aria_label: "My fancy label")
+    render_component(environment: "staging", navigation_items:, navigation_aria_label: "My fancy label")
 
     assert_select ".gem-c-header__nav[aria-label='My fancy label']"
   end
@@ -95,7 +95,7 @@ describe "Layout header", type: :view do
       },
     ]
 
-    render_component(navigation_items: navigation_items)
+    render_component(navigation_items:)
 
     assert_select ".gem-c-header__nav .govuk-header__link[data-hello='world']", text: "Foo"
     assert_select ".gem-c-header__nav .govuk-header__link[data-more-than-one-word='test']", text: "Bar"

@@ -53,7 +53,7 @@ describe "Organisation logo", type: :view do
       },
     }
 
-    render_component(organisation: { url: "/some-link", data_attributes: data_attributes })
+    render_component(organisation: { url: "/some-link", data_attributes: })
 
     assert_select ".gem-c-organisation-logo[data-module='gem-track-click']"
     assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-category='someLinkClicked']"
@@ -67,7 +67,7 @@ describe "Organisation logo", type: :view do
       track_category: "someLinkClicked",
     }
 
-    render_component(organisation: { data_attributes: data_attributes })
+    render_component(organisation: { data_attributes: })
     assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-category='someLinkClicked']", false
   end
 

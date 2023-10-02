@@ -119,7 +119,7 @@ module GovukPublishingComponents
 
       def as_taxonomy_sidebar_link
         {
-          title: title,
+          title:,
           link: base_path,
         }
       end

@@ -6,7 +6,7 @@ describe "Lead paragraph", type: :view do
   end
 
   def assert_lead_paragraph_matches(text, expected_text)
-    render_component(text: text)
+    render_component(text:)
     assert_select ".gem-c-lead-paragraph", text: expected_text
   end
 

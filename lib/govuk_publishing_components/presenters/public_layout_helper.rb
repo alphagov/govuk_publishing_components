@@ -77,7 +77,7 @@ module GovukPublishingComponents
       def generate_data_attribute(link, track_action)
         {
           track_category: "footerClicked",
-          track_action: track_action,
+          track_action:,
           track_label: link[:href],
           track_options: {
             dimension29: link[:text],

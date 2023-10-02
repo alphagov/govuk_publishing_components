@@ -6,7 +6,7 @@ describe "Breadcrumbs", type: :view do
   end
 
   def assert_link_with_text_in(selector, link, text)
-    assert_select "#{selector} a[href=\"#{link}\"]", text: text
+    assert_select "#{selector} a[href=\"#{link}\"]", text:
   end
 
   it "no error if no parameters passed in" do
@@ -110,7 +110,7 @@ describe "Breadcrumbs", type: :view do
       { title: "Section 2", url: "/section-2" },
       { title: "Section 3", url: "/section-3" },
     ]
-    render_component(breadcrumbs: breadcrumbs)
+    render_component(breadcrumbs:)
 
     expected_tracking_options = [
       { dimension28: "3", dimension29: "Section 1" },

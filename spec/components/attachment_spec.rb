@@ -145,7 +145,7 @@ describe "Attachment", type: :view do
         isbn: "978-1-5286-1173-2",
         unique_reference: "2259",
         command_paper_number: "Cd. 67",
-        thumbnail_url: thumbnail_url,
+        thumbnail_url:,
       },
     )
     assert_thumbnail "custom", src: thumbnail_url

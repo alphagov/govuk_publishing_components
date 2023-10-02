@@ -189,7 +189,7 @@ describe "Contextual navigation" do
     part_of_step_navs[1]["content_id"] = "8ad999bd-8603-40eb-97c0-999cb22047cd"
     part_of_step_navs[1]["title"] = "PRIMARY STEP BY STEP - INTERACTING WITH"
 
-    content_store_has_random_item(links: { part_of_step_navs: part_of_step_navs })
+    content_store_has_random_item(links: { part_of_step_navs: })
   end
 
   def given_theres_a_page_with_a_secondary_step_by_step
@@ -205,7 +205,7 @@ describe "Contextual navigation" do
     secondary_to_step_navs[0]["title"] = "SECONDARY STEP BY STEP"
 
     content_store_has_random_item(links: {
-      secondary_to_step_navs: secondary_to_step_navs,
+      secondary_to_step_navs:,
       part_of_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") },
     })
   end
@@ -230,7 +230,7 @@ describe "Contextual navigation" do
     secondary_to_step_nav["title"] = "SECONDARY STEP BY STEP"
 
     content_store_has_random_item(links: {
-      part_of_step_navs: part_of_step_navs,
+      part_of_step_navs:,
       secondary_to_step_navs: [secondary_to_step_nav],
     })
   end
@@ -536,7 +536,7 @@ describe "Contextual navigation" do
   end
 
   def example_item(schema_name, example_name)
-    GovukSchemas::Example.find(schema_name, example_name: example_name)
+    GovukSchemas::Example.find(schema_name, example_name:)
   end
 
   def random_item(schema_name, merge_with = {})
