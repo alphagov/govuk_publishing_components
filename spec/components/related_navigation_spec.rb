@@ -247,11 +247,11 @@ describe "Related navigation", type: :view do
     render_component(content_item:, ga4_tracking: true)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
-    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":{\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"3\"},\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Fishing"
-    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":{\"index_section\":\"1\",\"index_link\":\"2\",\"index_section_count\":\"3\"},\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Surfing"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"3\",\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Fishing"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"1\",\"index_link\":\"2\",\"index_section_count\":\"3\",\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Surfing"
 
-    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":{\"index_section\":\"2\",\"index_link\":\"1\",\"index_section_count\":\"3\"},\"index_total\":\"3\",\"section\":\"Explore the topic\"}']", text: "Skating"
-    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":{\"index_section\":\"2\",\"index_link\":\"2\",\"index_section_count\":\"3\"},\"index_total\":\"3\",\"section\":\"Explore the topic\"}']", text: "Paragliding"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"2\",\"index_link\":\"1\",\"index_section_count\":\"3\",\"index_total\":\"3\",\"section\":\"Explore the topic\"}']", text: "Skating"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"2\",\"index_link\":\"2\",\"index_section_count\":\"3\",\"index_total\":\"3\",\"section\":\"Explore the topic\"}']", text: "Paragliding"
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']"
