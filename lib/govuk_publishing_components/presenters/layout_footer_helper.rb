@@ -23,11 +23,9 @@ module GovukPublishingComponents
         {
           "event_name": "navigation",
           "type": "footer",
-          "index": {
-            "index_link": (index_link + 1).to_s,
-            "index_section": (index_section + 1).to_s,
-            "index_section_count": @ga4_index_section_count.to_s,
-          },
+          "index_link": (index_link + 1).to_s,
+          "index_section": (index_section + 1).to_s,
+          "index_section_count": @ga4_index_section_count.to_s,
           "index_total": index_total.to_s,
           "section": section,
         }
