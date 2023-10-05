@@ -89,6 +89,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       }
 
       searchTerm = searchTerm[0].replace('keywords=', '')
+      searchTerm = searchTerm.replace(/\++/g, ' ')
+      searchTerm = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(searchTerm)
       searchTerm = this.PIIRemover.stripPIIWithOverride(searchTerm, true, true)
       return searchTerm
     },
