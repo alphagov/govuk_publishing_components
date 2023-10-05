@@ -61,9 +61,7 @@ module GovukPublishingComponents
           ga4_link: {
             event_name: "navigation",
             type: "breadcrumb",
-            index: {
-              index_link: index.to_s,
-            },
+            index_link: index.to_s,
             index_total: breadcrumbs_length.to_s,
           },
         }
