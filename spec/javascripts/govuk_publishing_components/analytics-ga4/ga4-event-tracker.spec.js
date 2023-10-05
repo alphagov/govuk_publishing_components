@@ -534,9 +534,7 @@ describe('Google Analytics event tracker', function () {
           type: 'header menu bar',
           text: button.textContent,
           section: button.textContent,
-          index: {
-            index_section: i + 1
-          },
+          index_section: i + 1,
           index_total: buttons.length
         }))
 
