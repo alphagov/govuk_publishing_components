@@ -5,6 +5,12 @@
   logo_link ||= "https://www.gov.uk/"
   logo_link_title ||= t("components.layout_super_navigation_header.logo_link_title")
   logo_text = t("components.layout_super_navigation_header.logo_text")
+
+  hide_logo_text ||= false
+  hide_button_left_border ||= false
+  blue_background ||= false
+  large_navbar ||= false
+
   navigation_links_columns = t("components.layout_super_navigation_header.navigation_links_columns")
   navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
   navigation_search_heading = t("components.layout_super_navigation_header.navigation_search_heading")
@@ -17,63 +23,124 @@
   show_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "search")
   hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
   show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
+
+  top_toggle_button_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button
+  )
+  top_toggle_button_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background" if blue_background
+  top_toggle_button_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar" if large_navbar
+
+  top_toggle_button_inner_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner)
+  top_toggle_button_inner_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--no-left-border" if hide_button_left_border
+  top_toggle_button_inner_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background" if blue_background
+
+  search_toggle_button_classes = %w(gem-c-layout-super-navigation-header__search-toggle-button)
+  search_toggle_button_classes << "gem-c-layout-super-navigation-header__search-toggle-button--blue-background" if blue_background
+  search_toggle_button_classes << "gem-c-layout-super-navigation-header__search-toggle-button--large-navbar" if large_navbar
+
+  layout_super_navigation_header_classes = %w(gem-c-layout-super-navigation-header)
+  layout_super_navigation_header_classes << "gem-c-layout-super-navigation-header--blue-background" if blue_background
+
+  item_link_classes = %w(gem-c-layout-super-navigation-header__navigation-item-link)
+  item_link_classes << "gem-c-layout-super-navigation-header__navigation-item-link--blue-background" if blue_background
+  item_link_classes << "gem-c-layout-super-navigation-header__navigation-item-link--large-navbar" if large_navbar
+
+  item_link_inner_classes = %w(
+    gem-c-layout-super-navigation-header__navigation-item-link-inner
+  )
+  item_link_inner_classes << "gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background" if blue_background
+
+  search_item_link_classes = %w(gem-c-layout-super-navigation-header__search-item-link)
+  search_item_link_classes << "gem-c-layout-super-navigation-header__search-item-link--blue-background" if blue_background
+  search_item_link_classes << "gem-c-layout-super-navigation-header__search-item-link--large-navbar" if large_navbar
+
+  header_logo_classes = %w(gem-c-layout-super-navigation-header__header-logo)
+  header_logo_classes << "gem-c-layout-super-navigation-header__header-logo--large-navbar" if large_navbar
+
+  logotype_classes = %w(govuk-header__logotype-crown gem-c-layout-super-navigation-header__logotype-crown)
+  logotype_classes << "gem-c-layout-super-navigation-header__logotype-crown--large-navbar" if large_navbar
+
+  header_link_classes = %w(govuk-header__link govuk-header__link--homepage)
+  header_link_classes << "gem-c-header__link--large-navbar" if large_navbar
+
+  button_container_classes = %w(gem-c-layout-super-navigation-header__button-container)
+  button_container_classes << "gem-c-layout-super-navigation-header__button-container--large-navbar" if large_navbar
+
+
 %>
-<header role="banner" class="gem-c-layout-super-navigation-header" data-module="gem-track-click ga4-event-tracker ga4-link-tracker" data-track-links-only data-ga4-expandable>
+<%= content_tag("header",
+  {
+    role: "banner",
+    class: layout_super_navigation_header_classes,
+    data: {
+      module: "gem-track-click ga4-event-tracker ga4-link-tracker",
+      "track-links-only": '',
+      "ga4-expandable": '',
+    }
+}) do %>
   <div class="gem-c-layout-super-navigation-header__container govuk-clearfix">
     <div class="govuk-width-container">
-      <div class="gem-c-layout-super-navigation-header__header-logo">
-        <a
-          class="govuk-header__link govuk-header__link--homepage"
-          data-track-action="logoLink"
-          data-track-category="headerClicked"
-          data-track-label="<%= logo_link %>"
-          data-track-dimension="<%= logo_text %>"
-          data-track-dimension-index="29"
-          href="<%= logo_link %>"
-          id="logo"
-          title="<%= logo_link_title %>"
-          data-ga4-link="<%= {
-            "event_name": "navigation",
-            "type": "header menu bar",
-            "external": "false",
-            "text": "GOV.UK",
-            "section": "Logo",
-            "index": {
-              "index_link": 1,
-              "index_section": 0,
-              "index_section_count": 2,
-            },
-            "index_total": 1
-          }.to_json %>"
-        >
+      <%= content_tag(:div, {
+        class: header_logo_classes
+      }) do %>
+        <%= link_to logo_link, {
+          class: header_link_classes,
+          data: {
+            "track-action": "logoLink",
+            "track-category": "headerClicked",
+            "track-label": logo_link,
+            "track-dimension": logo_text,
+            "track-dimension-index": "29",
+            "ga4-link": {
+              "event_name": "navigation",
+              "type": "header menu bar",
+              "external": "false",
+              "text": "GOV.UK",
+              "section": "Logo",
+              "index": {
+                "index_link": 1,
+                "index_section": 0,
+                "index_section_count": 2,
+              },
+              "index_total": 1
+            }.to_json
+          },
+          id: "logo",
+          aria: {
+            label: logo_link_title,
+          }
+        } do %>
           <span class="govuk-header__logotype">
             <!--[if gt IE 8]><!-->
-            <svg
-              aria-hidden="true"
-              class="govuk-header__logotype-crown gem-c-layout-super-navigation-header__logotype-crown"
-              focusable="false"
-              height="30"
-              viewBox="0 0 132 97"
-              width="36"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <%= content_tag(:svg, {
+              aria: {
+                hidden: true,
+              },
+              class: logotype_classes,
+              height: "30",
+              width: "36",    
+              focusable: "false",
+              viewBox: "0 0 132 97",
+              xmlns: "http://www.w3.org/2000/svg",
+            }) do %>
               <path
                 d="M25 30.2c3.5 1.5 7.7-.2 9.1-3.7 1.5-3.6-.2-7.8-3.9-9.2-3.6-1.4-7.6.3-9.1 3.9-1.4 3.5.3 7.5 3.9 9zM9 39.5c3.6 1.5 7.8-.2 9.2-3.7 1.5-3.6-.2-7.8-3.9-9.1-3.6-1.5-7.6.2-9.1 3.8-1.4 3.5.3 7.5 3.8 9zM4.4 57.2c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.5-1.5-7.6.3-9.1 3.8-1.4 3.5.3 7.6 3.9 9.1zm38.3-21.4c3.5 1.5 7.7-.2 9.1-3.8 1.5-3.6-.2-7.7-3.9-9.1-3.6-1.5-7.6.3-9.1 3.8-1.3 3.6.4 7.7 3.9 9.1zm64.4-5.6c-3.6 1.5-7.8-.2-9.1-3.7-1.5-3.6.2-7.8 3.8-9.2 3.6-1.4 7.7.3 9.2 3.9 1.3 3.5-.4 7.5-3.9 9zm15.9 9.3c-3.6 1.5-7.7-.2-9.1-3.7-1.5-3.6.2-7.8 3.7-9.1 3.6-1.5 7.7.2 9.2 3.8 1.5 3.5-.3 7.5-3.8 9zm4.7 17.7c-3.6 1.5-7.8-.2-9.2-3.8-1.5-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.3 3.5-.4 7.6-3.9 9.1zM89.3 35.8c-3.6 1.5-7.8-.2-9.2-3.8-1.4-3.6.2-7.7 3.9-9.1 3.6-1.5 7.7.3 9.2 3.8 1.4 3.6-.3 7.7-3.9 9.1zM69.7 17.7l8.9 4.7V9.3l-8.9 2.8c-.2-.3-.5-.6-.9-.9L72.4 0H59.6l3.5 11.2c-.3.3-.6.5-.9.9l-8.8-2.8v13.1l8.8-4.7c.3.3.6.7.9.9l-5 15.4v.1c-.2.8-.4 1.6-.4 2.4 0 4.1 3.1 7.5 7 8.1h.2c.3 0 .7.1 1 .1.4 0 .7 0 1-.1h.2c4-.6 7.1-4.1 7.1-8.1 0-.8-.1-1.7-.4-2.4V34l-5.1-15.4c.4-.2.7-.6 1-.9zM66 92.8c16.9 0 32.8 1.1 47.1 3.2 4-16.9 8.9-26.7 14-33.5l-9.6-3.4c1 4.9 1.1 7.2 0 10.2-1.5-1.4-3-4.3-4.2-8.7L108.6 76c2.8-2 5-3.2 7.5-3.3-4.4 9.4-10 11.9-13.6 11.2-4.3-.8-6.3-4.6-5.6-7.9 1-4.7 5.7-5.9 8-.5 4.3-8.7-3-11.4-7.6-8.8 7.1-7.2 7.9-13.5 2.1-21.1-8 6.1-8.1 12.3-4.5 20.8-4.7-5.4-12.1-2.5-9.5 6.2 3.4-5.2 7.9-2 7.2 3.1-.6 4.3-6.4 7.8-13.5 7.2-10.3-.9-10.9-8-11.2-13.8 2.5-.5 7.1 1.8 11 7.3L80.2 60c-4.1 4.4-8 5.3-12.3 5.4 1.4-4.4 8-11.6 8-11.6H55.5s6.4 7.2 7.9 11.6c-4.2-.1-8-1-12.3-5.4l1.4 16.4c3.9-5.5 8.5-7.7 10.9-7.3-.3 5.8-.9 12.8-11.1 13.8-7.2.6-12.9-2.9-13.5-7.2-.7-5 3.8-8.3 7.1-3.1 2.7-8.7-4.6-11.6-9.4-6.2 3.7-8.5 3.6-14.7-4.6-20.8-5.8 7.6-5 13.9 2.2 21.1-4.7-2.6-11.9.1-7.7 8.8 2.3-5.5 7.1-4.2 8.1.5.7 3.3-1.3 7.1-5.7 7.9-3.5.7-9-1.8-13.5-11.2 2.5.1 4.7 1.3 7.5 3.3l-4.7-15.4c-1.2 4.4-2.7 7.2-4.3 8.7-1.1-3-.9-5.3 0-10.2l-9.5 3.4c5 6.9 9.9 16.7 14 33.5 14.8-2.1 30.8-3.2 47.7-3.2z"
                 fill="currentColor"
                 fill-rule="evenodd"
               >
               </path>
-            </svg>
+            <% end %>
             <!--<![endif]-->
             <!--[if IE 8]>
             <img src="<%= asset_path('govuk-logotype-crown.png') %>" alt="" class="govuk-header__logotype-crown-fallback-image" width="36" height="32">
             <![endif]-->
-            <span class="govuk-header__logotype-text">
-              <%= logo_text %>
-            </span>
+            <% unless hide_logo_text %>
+              <span class="govuk-header__logotype-text">
+                <%= logo_text %>
+              </span>
+            <% end %>
           </span>
-        </a>
-      </div>
+        <% end %>
+      <% end %>
     </div>
     <nav
       aria-labelledby="super-navigation-menu-heading"
@@ -93,10 +160,12 @@
       %>
 
       <div class="govuk-width-container gem-c-layout-super-navigation-header__button-width-container">
-        <div class="gem-c-layout-super-navigation-header__button-container">
+        <%= content_tag(:div, {
+          class: button_container_classes
+        }) do %>
           <div class="gem-c-layout-super-navigation-header__navigation-item">
             <%= link_to link[:href], {
-              class: "gem-c-layout-super-navigation-header__navigation-item-link",
+              class: item_link_classes,
               data: {
                 track_action: "#{tracking_label}Link",
                 track_category: "headerClicked",
@@ -105,9 +174,11 @@
                 track_dimension_index: "29",
               }
             } do %>
-              <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+              <% content_tag(:span, {
+                class: item_link_inner_classes
+              }) do %>
                 <%= link[:label] %>
-              </span>
+              <% end %>
             <% end %>
 
             <%= content_tag(:button, {
@@ -116,7 +187,7 @@
                 expanded: false,
                 label: show_menu_text,
               },
-              class: "gem-c-layout-super-navigation-header__navigation-top-toggle-button",
+              class: top_toggle_button_classes,
               data: {
                 text_for_hide: hide_menu_text,
                 text_for_show: show_menu_text,
@@ -138,35 +209,40 @@
               id: "super-navigation-menu-#{unique_id}-toggle",
               type: "button",
             }) do %>
-              <%= tag.span link[:label], class: "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner" %>
+              <%= tag.span link[:label], class: top_toggle_button_inner_classes %>
             <% end %>
           </div>
 
           <div class="gem-c-layout-super-navigation-header__search-item">
-            <button
-              aria-controls="super-search-menu"
-              aria-expanded="true"
-              aria-label="<%= hide_search_menu_text %>"
-              class="gem-c-layout-super-navigation-header__search-toggle-button"
-              data-text-for-hide="<%= hide_search_menu_text %>"
-              data-text-for-show="<%= show_search_menu_text %>"
-              data-toggle-mobile-group="top"
-              data-toggle-desktop-group="top"
-              data-tracking-key="search"
-              hidden
-              id="super-search-menu-toggle"
-              type="button"
-              data-ga4-event="<%= {
-                "event_name": "select_content",
-                "type": "header menu bar",
-                "text": "Search",
-                "index": {
-                  "index_section": 2,
-                  "index_section_count": 2,
-                },
-                "section": "Search"
-              }.to_json %>"
-            >
+            <%= content_tag(:button, {
+              id: "super-search-menu-toggle",
+              class: search_toggle_button_classes,
+              aria: {
+                controls: "super-search-menu",
+                expanded: "true",
+                label: hide_search_menu_text,
+              },
+              data: {
+                "text-for-hide": hide_search_menu_text,
+                "text-for-show": show_search_menu_text,
+                "toggle-mobile-group": "top",
+                "toggle-desktop-group": "top",
+                "tracking-key": "search",
+                "ga4-event": "#{{
+                  "event_name": "select_content",
+                  "type": "header menu bar",
+                  "text": "Search",
+                  "index": {
+                    "index_section": 2,
+                    "index_section_count": 2,
+                  },
+                  "section": "Search"
+                  }.to_json
+                }"
+              },
+              hidden: true,
+              type: "button",
+            }) do %>
               <span class="govuk-visually-hidden">
                 <%= search_text %>
               </span>
@@ -182,9 +258,11 @@
               >
                 &times;
               </span>
-            </button>
+            <% end %>
 
-            <a class="gem-c-layout-super-navigation-header__search-item-link" href="/search">
+            <%= link_to "/search", {
+              class: search_item_link_classes
+            } do %>
               <span class="govuk-visually-hidden">
                 <%= search_text %>
               </span>
@@ -193,9 +271,9 @@
                   classes: %w[gem-c-layout-super-navigation-header__search-item-link-icon],
                 }
               %>
-            </a>
+            <% end %>
           </div>
-        </div>
+        <% end %>
       </div>
 
       <div
@@ -336,4 +414,4 @@
       </div>
     </nav>
   </div>
-</header>
+<% end %>

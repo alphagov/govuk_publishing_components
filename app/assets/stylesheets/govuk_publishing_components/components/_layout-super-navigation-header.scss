@@ -8,6 +8,10 @@ $search-width-or-height: $black-bar-height;
 $pseudo-underline-height: 3px;
 $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
+$large-navbar-height: 86px;
+
+$pale-blue-colour: #d2e2f1;
+
 $after-link-padding: govuk-spacing(4);
 $after-button-padding-right: govuk-spacing(4);
 $after-button-padding-left: govuk-spacing(4);
@@ -89,6 +93,11 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+.gem-c-layout-super-navigation-header--blue-background {
+  background: $govuk-brand-colour;
+  border-top: 1px solid $govuk-brand-colour;
+}
+
 .gem-c-layout-super-navigation-header__container {
   position: relative;
 }
@@ -128,7 +137,6 @@ $after-button-padding-left: govuk-spacing(4);
 
 .gem-c-layout-super-navigation-header__navigation-item,
 .gem-c-layout-super-navigation-header__search-item {
-  background: govuk-colour("black");
   display: block;
   float: left;
   margin: 0;
@@ -205,6 +213,17 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
 
+    &.gem-c-layout-super-navigation-header__navigation-item-link--blue-background,
+    &.gem-c-layout-super-navigation-header__search-item-link--blue-background {
+      &:hover {
+        color: govuk-colour("white");
+
+        &::after {
+          background: govuk-colour("white");
+        }
+      }
+    }
+
     @include focus-and-focus-visible {
       .gem-c-layout-super-navigation-header__navigation-item-link-inner {
         border-color: $govuk-focus-colour;
@@ -267,6 +286,17 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// to stop the black underline appearing underneath the menu
+// after it has been toggled closed if the blue background has
+// been enabled
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
+  &:focus:not(:focus-visible) {
+    &::after {
+      background: none;
+    }
+  }
+}
+
 .gem-c-layout-super-navigation-header__navigation-item-link {
   @include govuk-media-query($from: "desktop") {
     padding: govuk-spacing(3) 0;
@@ -279,9 +309,13 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__navigation-item-link-inner {
-  background-color: govuk-colour("black");
   border-left: 1px solid $button-pipe-colour;
   padding: govuk-spacing(1) $after-link-padding;
+}
+
+.gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background {
+  border-left: 0;
+  border-right: 1px solid $pale-blue-colour;
 }
 
 // Search link and dropdown.
@@ -297,8 +331,6 @@ $after-button-padding-left: govuk-spacing(4);
     background: $govuk-brand-colour;
 
     &:hover {
-      background: govuk-colour("black");
-
       &::before {
         left: 0;
         right: 0;
@@ -321,10 +353,6 @@ $after-button-padding-left: govuk-spacing(4);
 
     @include focus-not-focus-visible {
       background: $govuk-link-colour;
-
-      &:hover {
-        background: govuk-colour("black");
-      }
     }
 
     @include focus-and-focus-visible {
@@ -345,6 +373,10 @@ $after-button-padding-left: govuk-spacing(4);
   height: 20px;
   pointer-events: none;
   width: 21px;
+}
+
+.gem-c-layout-super-navigation-header__open-button .gem-c-layout-super-navigation-header__search-toggle-button-link-icon {
+  display: none;
 }
 
 // Search and popular content dropdown.
@@ -472,15 +504,23 @@ $after-button-padding-left: govuk-spacing(4);
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-color: $button-pipe-colour;
 
+      &.gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background {
+        border-color: $pale-blue-colour;
+      }
+
       @include govuk-media-query($from: 360px) {
         &::before {
           @include chevron(govuk-colour("white"), true);
         }
       }
     }
+
     // stylelint-enable max-nesting-depth
   }
+}
 
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background,
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
     // stylelint-disable max-nesting-depth
@@ -528,6 +568,24 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
+  @include focus-not-focus-visible {
+    &:hover {
+      &::after {
+        background: govuk-colour("white");
+      }
+
+      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+        color: govuk-colour("white");
+
+        &::before {
+          border-color: govuk-colour("white");
+        }
+      }
+    }
+  }
+}
+
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
   display: inline-block;
   border-left: 1px solid govuk-colour("white");
@@ -540,6 +598,10 @@ $after-button-padding-left: govuk-spacing(4);
       @include chevron(govuk-colour("white"));
     }
   }
+}
+
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--no-left-border {
+  border-left: 0;
 }
 
 // Styles for search toggle button.
@@ -580,9 +642,30 @@ $after-button-padding-left: govuk-spacing(4);
     }
 
     &:hover {
-      background: govuk-colour("black");
       border-bottom: $pseudo-underline-height solid govuk-colour("mid-grey");
       color: govuk-colour("mid-grey");
+    }
+
+    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+      &:hover {
+        border-bottom: $pseudo-underline-height solid govuk-colour("white");
+        color: govuk-colour("white");
+      }
+
+      // stylelint-disable max-nesting-depth
+      @include focus-not-focus-visible {
+        border-bottom: none;
+      }
+      // stylelint-enable max-nesting-depth
+    }
+
+    &:focus-visible {
+      &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+        &:hover {
+          border-bottom: $pseudo-underline-height solid $govuk-focus-colour;
+          color: govuk-colour("black");
+        }
+      }
     }
 
     @include focus-and-focus-visible {
@@ -594,6 +677,13 @@ $after-button-padding-left: govuk-spacing(4);
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
+    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+      &:hover {
+        border-bottom: $pseudo-underline-height solid govuk-colour("white");
+        color: govuk-colour("white");
+      }
+    }
+
     @include focus-and-focus-visible {
       @include govuk-focused-text;
       border-color: $govuk-focus-colour;
@@ -625,9 +715,7 @@ $after-button-padding-left: govuk-spacing(4);
   font-weight: normal;
   left: 0;
   line-height: 22px;
-  padding: govuk-spacing(3) 0;
   pointer-events: none;
-  position: absolute;
   right: 0;
   text-align: center;
   top: 0;
@@ -786,5 +874,53 @@ $after-button-padding-left: govuk-spacing(4);
 @include govuk-media-query($media-type: print) {
   .gem-c-layout-super-navigation-header__content {
     display: none;
+  }
+}
+
+@include govuk-media-query($from: desktop) {
+  // can't use govuk-spacing here because the navbar height
+  // isn't a multiple of 5 :(
+  .gem-c-layout-super-navigation-header__navigation-item-link--large-navbar,
+  .gem-c-layout-super-navigation-header__search-item-link--large-navbar {
+    padding-top: 33px;
+    padding-bottom: 33px;
+  }
+
+  .gem-c-layout-super-navigation-header__logotype-crown--large-navbar {
+    height: 36px;
+    width: 49px;
+  }
+
+  .gem-c-header__link--large-navbar:focus {
+    box-shadow: 0 -4px 0 18px $govuk-focus-colour;
+    border-bottom: $govuk-focus-width solid govuk-colour("black");
+    padding-bottom: 10px;
+  }
+
+  .gem-c-header__link--large-navbar:hover {
+    padding-bottom: 10px;
+  }
+
+  .gem-c-layout-super-navigation-header__header-logo--large-navbar {
+    height: 35px;
+    padding-bottom: govuk-spacing(5);
+    padding-top: govuk-spacing(5);
+  }
+
+  .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
+    height: $large-navbar-height;
+  }
+
+  // to stop the search icon moving on hover
+  .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar:hover {
+    padding-bottom: 12px;
+  }
+
+  .gem-c-layout-super-navigation-header__button-container--large-navbar {
+    top: -$large-navbar-height;
+  }
+
+  .gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar {
+    height: $large-navbar-height;
   }
 }

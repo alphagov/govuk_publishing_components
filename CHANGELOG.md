@@ -11,6 +11,7 @@
 
 * Change GA4 type on contents lists ([PR #3647](https://github.com/alphagov/govuk_publishing_components/pull/3647))
 * Bump Ruby version and use floating patch version ([PR #3646](https://github.com/alphagov/govuk_publishing_components/pull/3646))
+* Add homepage variant of navbar for new design of homepage ([PR #3566](https://github.com/alphagov/govuk_publishing_components/pull/3566))
 
 ## 35.17.0
 
