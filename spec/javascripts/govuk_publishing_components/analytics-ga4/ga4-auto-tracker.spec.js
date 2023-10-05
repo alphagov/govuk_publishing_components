@@ -105,11 +105,9 @@ describe('Google Analytics auto tracker', function () {
         event_name: 'select_content',
         type: 'tabs',
         not_a_schema_attribute: 'something',
-        index: {
-          index_section: 7,
-          index_link: undefined,
-          index_section_count: undefined
-        }
+        index_section: 7,
+        index_link: undefined,
+        index_section_count: undefined
       }
       element.setAttribute('data-ga4-auto', JSON.stringify(attributes))
       new GOVUK.Modules.Ga4AutoTracker(element).init()
