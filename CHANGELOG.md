@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.18.0
 
 * Change GA4 type on contents lists ([PR #3647](https://github.com/alphagov/govuk_publishing_components/pull/3647))
 * Bump Ruby version and use floating patch version ([PR #3646](https://github.com/alphagov/govuk_publishing_components/pull/3646))
