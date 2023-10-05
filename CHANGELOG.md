@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add GA4 'print intent' tracker ([PR #3652](https://github.com/alphagov/govuk_publishing_components/pull/3652))
+
 ## 35.19.0
 
 * Improve attachment details styles ([PR #3668](https://github.com/alphagov/govuk_publishing_components/pull/3668))
