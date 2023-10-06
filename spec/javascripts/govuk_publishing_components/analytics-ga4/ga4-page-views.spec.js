@@ -553,15 +553,23 @@ describe('Google Tag Manager page view tracking', function () {
     it('correctly sets the parameter using ?keywords= with PII values redacted', function () {
       spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
       expected.page_view.query_string = 'keywords=hello+world+[email]+[postcode]+[date]&another=one'
-      expected.page_view.search_term = 'hello+world+[email]+[postcode]+[date]'
+      expected.page_view.search_term = 'hello world [email] [postcode] [date]'
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
-    it('correctly sets the  parameter using &keywords= with PII values redacted', function () {
+    it('correctly sets the parameter using &keywords= with PII values redacted', function () {
       spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?test=true&keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
       expected.page_view.query_string = 'test=true&keywords=hello+world+[email]+[postcode]+[date]&another=one'
-      expected.page_view.search_term = 'hello+world+[email]+[postcode]+[date]'
+      expected.page_view.search_term = 'hello world [email] [postcode] [date]'
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('replaces plusses with spaces', function () {
+      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?test=true&keywords=hello++++world+there+are+spaces++in+++a+lot++++of+++places')
+      expected.page_view.query_string = 'test=true&keywords=hello++++world+there+are+spaces++in+++a+lot++++of+++places'
+      expected.page_view.search_term = 'hello world there are spaces in a lot of places'
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
     })
