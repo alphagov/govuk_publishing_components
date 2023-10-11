@@ -95,6 +95,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       data.external = trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
       data.index = this.setIndex(data.index, event.target)
 
+      // flatten the attributes in index into the main data
+      if (data.index) {
+        for (var prop in data.index) {
+          data[prop] = data.index[prop]
+        }
+        delete data.index
+      }
+
       if (data.type === 'smart answer' && data.action === 'change response') {
         data.section = this.PIIRemover.stripPIIWithOverride(data.section, true, true)
       }
@@ -117,7 +125,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (target.getAttribute('data-ga4-index')) {
       try {
         var indexLink = JSON.parse(target.getAttribute('data-ga4-index'))
-
         // Check whether the index object already exists on a parent element, as is the case with tracking accordion links.
         // If true, combine data-ga4-index with the index object. Otherwise, just return indexLink
         index = index ? window.GOVUK.extendObject(index, indexLink) : indexLink
@@ -126,7 +133,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
     }
-
     return index
   }
 
