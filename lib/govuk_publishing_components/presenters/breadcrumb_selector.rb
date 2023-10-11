@@ -35,37 +35,10 @@ module GovukPublishingComponents
       end
 
       def options(navigation)
-        if navigation.content_tagged_to_a_finder?
-          {
-            breadcrumbs: navigation.finder_breadcrumbs,
-          }
-        elsif navigation.content_tagged_to_current_step_by_step?
-          {
-            breadcrumbs: navigation.step_nav_helper.header(@ga4_tracking),
-          }
-        elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
-          {
-            breadcrumbs: navigation.taxon_breadcrumbs,
-          }
-        elsif navigation.content_tagged_to_mainstream_browse_pages? || navigation.content_is_travel_advice?
-          {
-            breadcrumbs: navigation.breadcrumbs,
-          }
-        elsif navigation.content_has_a_topic?
-          {
-            breadcrumbs: navigation.topic_breadcrumbs,
-          }
-        elsif navigation.use_taxon_breadcrumbs?
-          {
-            breadcrumbs: navigation.taxon_breadcrumbs,
-          }
-        elsif navigation.breadcrumbs.any?
-          {
-            breadcrumbs: navigation.breadcrumbs,
-          }
-        else
-          {}
-        end.merge(step_by_step: navigation.content_tagged_to_current_step_by_step?)
+        {
+          step_by_step: navigation.content_tagged_to_current_step_by_step?,  
+          breadcrumbs: ContextualNavigation.new(content_item, request).breadcrumbs
+        }
       end
 
       def content_item_navigation

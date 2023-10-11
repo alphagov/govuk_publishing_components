@@ -12,6 +12,28 @@ module GovukPublishingComponents
         @query_parameters = request.query_parameters
       end
 
+      def breadcrumbs
+        if content_tagged_to_a_finder?
+          finder_breadcrumbs
+        elsif content_tagged_to_current_step_by_step?
+          # step_nav_helper.header(@ga4_tracking)
+        elsif content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
+          taxon_breadcrumbs
+        elsif content_is_travel_advice?
+          ancestor_breadcrumbs
+        elsif content_tagged_to_mainstream_browse_pages?
+          ancestor_breadcrumbs
+        elsif content_has_a_topic?
+          topic_breadcrumbs
+        elsif use_taxon_breadcrumbs?
+          taxon_breadcrumbs
+        elsif ancestor_breadcrumbs.any?
+          ancestor_breadcrumbs
+        else
+          nil
+        end
+      end
+
       def simple_smart_answer?
         content_item["document_type"] == "simple_smart_answer"
       end
@@ -37,23 +59,12 @@ module GovukPublishingComponents
         @topic_breadcrumbs ||= ContentBreadcrumbsBasedOnTopic.call(content_item)
       end
 
-      def breadcrumbs
-        breadcrumbs_based_on_ancestors
+      def ancestor_breadcrumbs
+       @ancestor_breadcrumbs ||= ContentBreadcrumbsBasedOnAncestors.call(content_item)
       end
 
       def finder_breadcrumbs
-        return [] unless parent_finder
-
-        [
-          {
-            title: "Home",
-            url: "/",
-          },
-          {
-            title: parent_finder["title"],
-            url: parent_finder["base_path"],
-          },
-        ]
+        @finder_breadcrumbs ||= ContentBreadcrumbsBasedOnFinder.call(content_item)
       end
 
       def use_taxon_breadcrumbs?
@@ -117,17 +128,10 @@ module GovukPublishingComponents
         content_tagged_to_ukraine_topical_event?
       end
 
-      def breadcrumbs_based_on_ancestors
-        ContentBreadcrumbsBasedOnAncestors.call(content_item)
-      end
-
       def step_nav_helper
         @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path, query_parameters)
       end
 
-      def parent_finder
-        @parent_finder ||= content_item.dig("links", "finder", 0)
-      end
     end
   end
 end
