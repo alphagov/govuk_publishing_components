@@ -206,11 +206,11 @@ examples:
         <%= component %>
       </div>
   two_thirds_column:
-    description: This variant is used for the featured section on the homepage.
+    description: This variant is used for the featured section on the homepage, the aspect ratio used is 1:1
     data:
       two_thirds: true
       href: "/still-not-a-page"
-      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/91397/s712_SG_Swear_in_1_.jpg"
+      image_src: "https://www.gov.uk/assets/static/govuk-apple-touch-icon-180x180-026deaa34fa328ae5f1f519a37dbd15e6555c5086e1ba83986cd0827a7209902.png"
       image_alt: "some meaningful alt text please"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
