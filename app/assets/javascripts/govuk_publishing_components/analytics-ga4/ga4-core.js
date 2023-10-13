@@ -335,6 +335,11 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           }
         } else {
           for (var i = 0; i < items.length; i++) {
+            // GA4 limits us to 200 items, so we should limit the array to this size.
+            if (i === 200) {
+              break
+            }
+
             var item = items[i]
             var path = item.getAttribute('data-ga4-ecommerce-path')
 
