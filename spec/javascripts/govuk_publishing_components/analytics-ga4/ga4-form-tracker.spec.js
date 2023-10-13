@@ -224,6 +224,44 @@ describe('Google Analytics form tracking', function () {
     })
   })
 
+  describe('when tracking a form with undefined instead of no answer given', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-no-answer-undefined', '')
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'form_response'
+      expected.event_data.type = 'smart answer'
+      expected.event_data.section = 'What is the title of this question?'
+      expected.event_data.action = 'Continue'
+      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected.govuk_gem_version = 'aVersion'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('allows the fallback value when the text is empty to be undefined', function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      window.GOVUK.triggerEvent(element, 'submit')
+      expected.event_data.text = undefined
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('when tracking a form with text redaction disabled', function () {
     beforeEach(function () {
       var attributes = {

@@ -36,3 +36,5 @@ In the example above, the following would be pushed to the dataLayer. Note that 
   }
 }
 ```
+
+When a form is submitted with an empty input value, the tracker will set the `text` value in the dataLayer to `"No answer given"`. If you require empty input to be sent as `undefined` instead, add the `data-ga4-form-no-answer-undefined` attribute to the form.
