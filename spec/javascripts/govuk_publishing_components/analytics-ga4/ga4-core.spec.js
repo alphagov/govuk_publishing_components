@@ -582,6 +582,37 @@ describe('GA4 core', function () {
 
         expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
       })
+
+      it('the ecommerce items array is limited to 200 items', function () {
+        var innerHTML = ''
+        var ecommerceItems = []
+
+        // Adds 500 search results to the DOM, but only adds 200 to our expected ecommerce object array
+        for (var i = 0; i < 500; i++) {
+          innerHTML = innerHTML + '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ecommerce-index="' + (i + 1) + '">Check if you’re eligible for the Warm Home Discount scheme</a>'
+
+          if (i < 200) {
+            ecommerceItems.push({
+              item_id: 'https://www.gov.uk/the-warm-home-discount-scheme',
+              item_list_name: 'Smart answer results',
+              index: i + 1
+            })
+          }
+        }
+
+        resultsCount.innerHTML = '500 results'
+        results.innerHTML = innerHTML
+        expectedEcommerceObject.search_results.results = 500
+        expectedEcommerceObject.search_results.ecommerce.items = ecommerceItems
+
+        var builtEcommerceObject = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
+          element: resultsParentEl,
+          resultsId: 'result-count'
+        })
+
+        expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
+        expect(builtEcommerceObject.search_results.ecommerce.items.length).toEqual(200)
+      })
     })
   })
 })
