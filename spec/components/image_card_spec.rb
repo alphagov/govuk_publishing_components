@@ -108,11 +108,13 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card.gem-c-image-card--large"
   end
 
-  it "renders two thirds variant" do
+  it "renders two thirds variant with correct image width and height attributes" do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text", heading_text: "test", two_thirds: true)
     assert_select ".gem-c-image-card.gem-c-image-card--two-thirds"
     assert_select ".gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds"
     assert_select ".gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--one-third"
+    assert_select ".gem-c-image-card__image[width='90']"
+    assert_select ".gem-c-image-card__image[height='90']"
   end
 
   it "applies tracking attributes" do
@@ -145,6 +147,12 @@ describe "ImageCard", type: :view do
   it "checks image loading attribute is 'auto' when value 'image_loading' is not specified" do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text")
     assert_select ".gem-c-image-card__image[loading='auto']"
+  end
+
+  it "applies correct default width and height attributes to the image" do
+    render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text")
+    assert_select ".gem-c-image-card__image[width='300']"
+    assert_select ".gem-c-image-card__image[height='200']"
   end
 
   it "applies the sizes attribute to image if specified" do
