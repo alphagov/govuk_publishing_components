@@ -134,7 +134,11 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     getMetaContent: function (name) {
       var tag = document.querySelector('meta[name="govuk:' + name + '"]')
       if (tag) {
-        return tag.getAttribute('content')
+        var contentAttribute = tag.getAttribute('content')
+        if (contentAttribute === '') {
+          return undefined
+        }
+        return contentAttribute
       } else {
         return this.nullValue
       }

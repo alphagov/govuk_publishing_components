@@ -346,6 +346,13 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
+  it('returns undefined if the content attribute is an empty string', function () {
+    createMetaTags('spelling-suggestion', '')
+    expected.page_view.spelling_suggestion = undefined
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
   it('removes email, postcode, and date pii from the title, location and referrer', function () {
     document.title = 'example@gov.uk - SW12AA - 2020-01-01'
     expected.page_view.title = '[email] - [postcode] - [date]'
