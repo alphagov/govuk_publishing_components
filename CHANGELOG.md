@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add viewport size to GA4 page view ([PR #3665](https://github.com/alphagov/govuk_publishing_components/pull/3665))
 * Replace '+' in GA4 search term values with an actual space ([PR #3653](https://github.com/alphagov/govuk_publishing_components/pull/3653))
 * Update image card two thirds variation #3661 ([PR #3661](https://github.com/alphagov/govuk_publishing_components/pull/3661))
 * Update logo spacing for new homepage design #3658 ([PR #3658](https://github.com/alphagov/govuk_publishing_components/pull/3658))

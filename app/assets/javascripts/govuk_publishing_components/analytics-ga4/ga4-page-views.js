@@ -20,6 +20,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             referrer: this.getReferrer(referrer),
             title: this.getTitle(),
             status_code: this.getStatusCode(),
+            viewport_size: this.getViewPort(),
 
             ab_test: this.getMetaContent('ab-test'),
             document_type: this.getMetaContent('format'),
@@ -129,6 +130,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       } else {
         return '200'
       }
+    },
+
+    getViewPort: function () {
+      var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+      var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+      return vw + 'x' + vh
     },
 
     getMetaContent: function (name) {
