@@ -132,6 +132,7 @@ describe "Contents list", type: :view do
     expected_ga4_json = {
       event_name: "navigation",
       section: "Contents",
+      type: "contents list",
     }
 
     # Parent element attributes
@@ -149,10 +150,10 @@ describe "Contents list", type: :view do
     # should still be respected. Therefore the final link should still have an index of 7 even though there's only 6 <a> tags.
     index_links = [1, 2, 3, 4, 5, 7]
     texts = ["1. One", "2. Two", "3. Three", "Nested one", "Nested two", "4. Four"]
-    types = ["contents list", "select content", "contents list", "contents list", "contents list", "select content"]
+    events = %w[navigation select_content navigation navigation navigation select_content]
 
     contents_list_links.each_with_index do |link, index|
-      expected_ga4_json[:type] = types[index]
+      expected_ga4_json[:event_name] = events[index]
       expected_ga4_json[:index] = { index_link: index_links[index] }
       expect(link.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
       expect(link).to have_text(texts[index])
