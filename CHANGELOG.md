@@ -13,6 +13,7 @@
 * Update image card two thirds variation #3661 ([PR #3661](https://github.com/alphagov/govuk_publishing_components/pull/3661))
 * Update logo spacing for new homepage design #3658 ([PR #3658](https://github.com/alphagov/govuk_publishing_components/pull/3658))
 * Limit GA4 ecommerce arrays to 200 items ([PR #3662](https://github.com/alphagov/govuk_publishing_components/pull/3662))
+* Allow GA4 Form text values to be undefined instead of 'No answer given' ([PR #3663](https://github.com/alphagov/govuk_publishing_components/pull/3663))
 
 ## 35.18.0
 
