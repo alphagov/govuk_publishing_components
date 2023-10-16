@@ -65,7 +65,8 @@
   button_container_classes = %w(gem-c-layout-super-navigation-header__button-container)
   button_container_classes << "gem-c-layout-super-navigation-header__button-container--large-navbar" if large_navbar
 
-
+  dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
+  dropdown_menu_classes << "gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar" if large_navbar
 %>
 <%= content_tag("header",
   {
@@ -270,10 +271,11 @@
         <% end %>
       </div>
 
-      <div
-        id="super-navigation-menu-<%= unique_id %>" hidden
-        class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
-      >
+      <%= content_tag(:div, {
+        id: "super-navigation-menu-#{unique_id}",
+        hidden: "",
+        class: dropdown_menu_classes,
+      }) do %>
         <div class="govuk-width-container">
           <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
 
@@ -330,9 +332,13 @@
             <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
 
-      <div id="super-search-menu" hidden class="gem-c-layout-super-navigation-header__navigation-dropdown-menu">
+      <%= content_tag(:div, {
+        id: "super-search-menu",
+        hidden: "",
+        class: dropdown_menu_classes,
+      }) do %>        
         <div class="govuk-width-container gem-c-layout-super-navigation-header__search-container gem-c-layout-super-navigation-header__search-items">
           <h3 class="govuk-visually-hidden">
             <%= navigation_search_subheading %>
@@ -355,6 +361,7 @@
                   label_size: "m",
                   label_text: search_text,
                   size: "large",
+                  margin_bottom: 0,
                   data_attributes: {
                     track_category: "headerClicked",
                     track_action: "searchSubmitted",
@@ -401,7 +408,7 @@
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </nav>
   </div>
 <% end %>
