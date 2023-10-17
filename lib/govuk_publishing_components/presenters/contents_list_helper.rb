@@ -48,10 +48,10 @@ module GovukPublishingComponents
         total
       end
 
-      def get_ga4_type(link)
-        return "select content" if link.start_with?("#")
+      def get_ga4_event_name(link)
+        return "select_content" if link.start_with?("#")
 
-        "contents list"
+        "navigation"
       end
 
     private

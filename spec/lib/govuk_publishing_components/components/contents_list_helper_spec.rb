@@ -97,10 +97,10 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
       expect(cl.get_index_total).to eql(4)
     end
 
-    it "returns the required GA4 type" do
+    it "returns the required GA4 event name" do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
-      expect(cl.get_ga4_type("#anchor")).to eql("select content")
-      expect(cl.get_ga4_type("https://www.gov.uk")).to eql("contents list")
+      expect(cl.get_ga4_event_name("#anchor")).to eql("select_content")
+      expect(cl.get_ga4_event_name("https://www.gov.uk")).to eql("navigation")
     end
   end
 
