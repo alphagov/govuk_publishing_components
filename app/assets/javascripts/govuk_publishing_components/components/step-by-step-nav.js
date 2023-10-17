@@ -84,7 +84,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // if GA4 is enabled, set attributes on 'show all sections' for tracking using ga4-event-tracker
     if (this.$module.isGa4Enabled) {
-      var showAllAttributesGa4 = { event_name: 'select_content', type: 'step by step', index: { index_section: 0, index_section_count: this.$module.totalSteps } }
+      var showAllAttributesGa4 = { event_name: 'select_content', type: 'step by step', index_section: 0, index_section_count: this.$module.totalSteps }
       this.$module.showOrHideAllButton.setAttribute('data-ga4-event', JSON.stringify(showAllAttributesGa4))
     }
   }
@@ -196,10 +196,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           event_name: 'select_content',
           type: 'step by step',
           text: titleText.trim(),
-          index: {
-            index_section: i + 1,
-            index_section_count: this.$module.totalSteps
-          },
+          index_section: i + 1,
+          index_section_count: this.$module.totalSteps,
           index_total: thisel.querySelectorAll('a').length
         }
 
