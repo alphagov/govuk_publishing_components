@@ -9,6 +9,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.trackingTrigger = 'data-ga4-form' // elements with this attribute get tracked
     this.includeTextInputValues = this.module.hasAttribute('data-ga4-form-include-text')
     this.redacted = false
+    this.useFallbackValue = this.module.hasAttribute('data-ga4-form-no-answer-undefined') ? undefined : 'No answer given'
   }
 
   Ga4FormTracker.prototype.init = function () {
@@ -43,7 +44,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var formInputs = this.getFormInputs()
       var formData = this.getInputValues(formInputs)
-      data.text = data.text || (this.combineGivenAnswers(formData) || 'No answer given')
+      data.text = data.text || this.combineGivenAnswers(formData) || this.useFallbackValue
 
       if (data.action === 'search') {
         data.text = data.text.toLowerCase()

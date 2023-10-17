@@ -20,6 +20,7 @@ describe('Google Tag Manager page view tracking', function () {
         referrer: document.referrer,
         title: 'This here page',
         status_code: '200',
+        viewport_size: GOVUK.analyticsGa4.analyticsModules.PageViewTracker.getViewPort(),
 
         ab_test: undefined,
         document_type: undefined,
