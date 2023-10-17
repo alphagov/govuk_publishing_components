@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Improve attachment details styles ([PR #3668](https://github.com/alphagov/govuk_publishing_components/pull/3668))
 * Fix GA4 contents list events ([PR #3667](https://github.com/alphagov/govuk_publishing_components/pull/3667))
 * Add viewport size to GA4 page view ([PR #3665](https://github.com/alphagov/govuk_publishing_components/pull/3665))
 * Replace '+' in GA4 search term values with an actual space ([PR #3653](https://github.com/alphagov/govuk_publishing_components/pull/3653))
