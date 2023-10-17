@@ -8,7 +8,7 @@ This script is intended for adding GA4 tracking to links. It depends upon the ma
 <a
   href="/link"
   data-module="ga4-link-tracker"
-  data-ga4-link='{ "event_name": "navigation", "type": "home page", "index": { "index_link": 1, "index_section": 1, "index_section_count": 3 }, "index_total": 1, "section": "name of section" }'>
+  data-ga4-link='{ "event_name": "navigation", "type": "home page", "index_link": 1, "index_section": 1, "index_section_count": 3, "index_total": 1, "section": "name of section" }'>
     Link
 </a>
 ```
@@ -23,12 +23,12 @@ Specific tracking can be applied to multiple elements within a container, by app
 <div data-module="ga4-link-tracker">
   <a
     href="/a-page"
-    data-ga4-link='{ "event_name": "navigation", "type": "browse", "index": { "index_link": 1, "index_section": 1, "index_section_count": 2 }, "index_total": "2", "section": "name of section" }'>
+    data-ga4-link='{ "event_name": "navigation", "type": "browse", "index_link": 1, "index_section": 1, "index_section_count": 2, "index_total": "2", "section": "name of section" }'>
     Link 1
   </a>
   <a
     href="/another-page"
-    data-ga4-link='{ "event_name": "navigation", "type": "browse", "index": { "index_link": 2, "index_section": 1, "index_section_count": 2 }, "index_total": "2", "section": "name of section" }'>
+    data-ga4-link='{ "event_name": "navigation", "type": "browse", "index_link": 2, "index_section": 1, "index_section_count": 2, "index_total": "2", "section": "name of section" }'>
     Link 2
   </a>
 </div>
@@ -44,7 +44,7 @@ The text of the link can be overridden by another value if passed in the data at
 <a
   href="/link"
   data-module="ga4-link-tracker"
-  data-ga4-link='{ "event_name": "navigation", "type": "home page", "index": { "index_link": 1, "index_section": 1, "index_section_count": 3 }, "index_total": 1, "section": "name of section", "text": "This text will be recorded in the GA event" }'>
+  data-ga4-link='{ "event_name": "navigation", "type": "home page", "index_link": 1, "index_section": 1, "index_section_count": 3, "index_total": 1, "section": "name of section", "text": "This text will be recorded in the GA event" }'>
     This text will not be recorded
 </a>
 ```
