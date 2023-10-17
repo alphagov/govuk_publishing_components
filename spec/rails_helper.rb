@@ -7,7 +7,7 @@ require "capybara/rails"
 require "govuk_test"
 
 GovukTest.configure
-Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs: { browser: "ALL" })
+Selenium::WebDriver::Options.chrome(loggingPrefs: { browser: "ALL" })
 
 RSpec.configure do |config|
   config.include Capybara::DSL
