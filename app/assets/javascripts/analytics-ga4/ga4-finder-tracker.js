@@ -167,7 +167,11 @@
       try {
         var index = button.closest('[data-ga4-index]') || undefined
         if (index) {
-          ga4JSON.index = JSON.parse(index.getAttribute('data-ga4-index'))
+          var indexData = JSON.parse(index.getAttribute('data-ga4-index'))
+          // flatten the attributes in index into the main data
+          for (var prop in indexData) {
+            ga4JSON[prop] = indexData[prop]
+          }
         } else {
           console.warn('No data-ga4-index found on the following element or its parents:')
           console.warn(button)
