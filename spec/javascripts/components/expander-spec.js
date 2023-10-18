@@ -145,10 +145,8 @@ describe('An expander module', function () {
         event_name: 'select_content',
         type: 'finder',
         section: 'Organisation',
-        index: {
-          index_section: 1,
-          index_section_count: 3
-        }
+        index_section: 1,
+        index_section_count: 3
       })
 
       expect($button.attr('data-ga4-event')).toEqual(expected)
