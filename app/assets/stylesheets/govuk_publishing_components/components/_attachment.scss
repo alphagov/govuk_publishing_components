@@ -14,8 +14,8 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey", $legacy: "grey-3");
   @include govuk-clearfix;
   position: relative;
 
-  .govuk-details__summary {
-    @include govuk-font($size: 14);
+  .govuk-details {
+    margin: govuk-spacing(3) 0;
   }
 }
 
