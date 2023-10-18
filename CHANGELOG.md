@@ -7,14 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.19.0
 
 * Improve attachment details styles ([PR #3668](https://github.com/alphagov/govuk_publishing_components/pull/3668))
 * Fix GA4 contents list events ([PR #3667](https://github.com/alphagov/govuk_publishing_components/pull/3667))
 * Add viewport size to GA4 page view ([PR #3665](https://github.com/alphagov/govuk_publishing_components/pull/3665))
 * Replace '+' in GA4 search term values with an actual space ([PR #3653](https://github.com/alphagov/govuk_publishing_components/pull/3653))
-* Update image card two thirds variation #3661 ([PR #3661](https://github.com/alphagov/govuk_publishing_components/pull/3661))
-* Update logo spacing for new homepage design #3658 ([PR #3658](https://github.com/alphagov/govuk_publishing_components/pull/3658))
+* Update image card two thirds variation ([PR #3661](https://github.com/alphagov/govuk_publishing_components/pull/3661))
+* Update logo spacing for new homepage design ([PR #3658](https://github.com/alphagov/govuk_publishing_components/pull/3658))
 * Limit GA4 ecommerce arrays to 200 items ([PR #3662](https://github.com/alphagov/govuk_publishing_components/pull/3662))
 * Allow GA4 Form text values to be undefined instead of 'No answer given' ([PR #3663](https://github.com/alphagov/govuk_publishing_components/pull/3663))
 * Return undefined for meta tags if content is an empty string ([PR #3664](https://github.com/alphagov/govuk_publishing_components/pull/3664))
