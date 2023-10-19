@@ -285,13 +285,25 @@ describe('Google Analytics form tracking', function () {
       tracker.init()
     })
 
-    it('does not redact data from text inputs', function () {
+    it('does not redact all data from text inputs', function () {
       element.innerHTML =
         '<label for="textid">Label for text</label>' +
         '<input type="text" id="textid" name="test-text" value="test-text-value"/>' +
         '<label for="searchid">Label for search</label>' +
         '<input type="search" id="searchid" name="test-search" value="test-search-value"/>'
       expected.event_data.text = 'test-text-value,test-search-value'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('strips PII from text inputs', function () {
+      element.innerHTML =
+        '<label for="textid">Label for text</label>' +
+        '<input type="text" id="textid" name="test-text" value="email@example.com"/>' +
+        '<label for="searchid">Label for search</label>' +
+        '<input type="search" id="searchid" name="test-search" value="another email@example.com"/>'
+      expected.event_data.text = '[email],another [email]'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
