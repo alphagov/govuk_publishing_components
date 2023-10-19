@@ -34,7 +34,7 @@
 
   ga4_tracking ||= false
   suggestion_data_attributes[:module] = "#{suggestion_data_attributes[:module]} ga4-link-tracker".strip if ga4_tracking
-  suggestion_data_attributes[:ga4_link] = { event_name: "navigation", type: "intervention", section: suggestion_text, index: 1, index_total: 1 }.to_json if ga4_tracking
+  suggestion_data_attributes[:ga4_link] = { event_name: "navigation", type: "intervention", section: suggestion_text, index_link: 1, index_total: 1 }.to_json if ga4_tracking
   data_attributes[:ga4_intervention_banner] = "" if ga4_tracking # Added to the parent element for the GA4 pageview object to use
 
   suggestion_tag_options = {

@@ -69,7 +69,7 @@ describe "Intervention", type: :view do
 
     assert_select ".gem-c-intervention[data-ga4-intervention-banner]"
     assert_select ".gem-c-intervention a:first-of-type[data-module='ga4-link-tracker']"
-    assert_select ".gem-c-intervention a:first-of-type[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"intervention\",\"section\":\"You might be interested in\",\"index\":1,\"index_total\":1}']"
+    assert_select ".gem-c-intervention a:first-of-type[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"intervention\",\"section\":\"You might be interested in\",\"index_link\":1,\"index_total\":1}']"
 
     assert_select ".js-dismiss-link[data-module=ga4-event-tracker]"
     assert_select ".js-dismiss-link[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"intervention\",\"section\":\"You might be interested in\",\"action\":\"closed\"}']"
