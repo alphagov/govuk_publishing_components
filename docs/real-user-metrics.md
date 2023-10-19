@@ -81,7 +81,7 @@ The [icinga alert was originally added in this PR](https://github.com/alphagov/g
 
 ### Getting the new code
 
-You will need to download the new script from [the SpeedCurve github repo](https://github.com/SpeedCurve-Metrics/lux.js). This is a private repo and you will need to request access. Matt Hobbs (head of frontend) is our point of contact for this. Once you have access it's worth turning on notifications for this repo in case the icinga alert fails.
+You will need to download the new script from [the SpeedCurve github repo](https://github.com/SpeedCurve-Metrics/lux.js). It's worth turning on notifications for this repo in case the icinga alert fails.
 
 The script is written in TypeScript so you will first need to `npm install` and `npm run build` to create a JavaScript version of the file (see repo README for details).
 
@@ -92,15 +92,15 @@ Update `lux-reporter.js` by copying `dist/lux.js` from the SpeedCurve github rep
 Instructions for how to update are in our copy of the file. In summary:
 
 - `customerid` and `samplerate` are the things we need to set (copy them from the current version)
-- the structure of the file sometimes changes so you might need to comb through to find them (`samplerate` is currently around line 443, but might change)
-- `customerid` has to be at the end of the file
+- `customerid` has to be inside the `LUX = (function () {` declaration
+- update the `getCustomerId` function to simply return the customerid, see [this PR for related information](https://github.com/alphagov/govuk_publishing_components/pull/3592)
 
 ### Testing
 
 You can test the changes locally to ensure the file has been updated correctly.
 
 - temporarily set the `debug` option in the reporter to `true` for testing purposes
-- load your local system and accept cookies
+- load a local application pointed at your local components gem, and accept cookies
 - paste this command into the browser console: `copy(window.LUX.getDebug())` (it'll say `undefined` but the output will be in your copy/paste buffer)
 - visit the [SpeedCurve debugging tool](https://speedcurve-metrics.github.io/lux.js/debug-parser.html) and paste the output into it, and check the output for errors
 
