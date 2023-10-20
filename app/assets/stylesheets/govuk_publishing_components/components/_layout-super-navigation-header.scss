@@ -726,11 +726,7 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__search-container {
-  padding-bottom: govuk-spacing(3);
-
-  @include govuk-media-query($from: "desktop") {
-    padding-bottom: govuk-spacing(7);
-  }
+  padding-bottom: govuk-spacing(7);
 }
 
 // Dropdown menu.
@@ -751,6 +747,30 @@ $after-button-padding-left: govuk-spacing(4);
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar {
   @include govuk-media-query($from: "desktop") {
     margin-bottom: govuk-spacing(6);
+  }
+
+  @include govuk-media-query($until: "desktop") {
+    .gem-c-layout-super-navigation-header__search-items {
+      margin: 0 24px;
+    }
+  }
+}
+
+// padding to make it the same as the padding for the redesign of the homepage
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information,
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--government-activity {
+  padding: 0 24px;
+}
+
+@include govuk-media-query($from: "desktop") {
+  // padding to make it the same as the padding for the redesign of the homepage
+  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information {
+    padding-right: 0;
+  }
+
+  // padding to make it the same as the padding for the redesign of the homepage
+  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--government-activity {
+    padding-left: 0;
   }
 }
 
@@ -843,6 +863,7 @@ $after-button-padding-left: govuk-spacing(4);
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__navigation-second-item-description {
   font-size: 19px;
   font-size: govuk-px-to-rem(19px);
+  margin-top: govuk-spacing(2);
 }
 
 .gem-c-layout-super-navigation-header__search-form {
@@ -946,5 +967,21 @@ $after-button-padding-left: govuk-spacing(4);
 
   .gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar {
     height: $large-navbar-height;
+  }
+}
+
+@include govuk-media-query($until: tablet) {
+  .gem-c-layout-super-navigation-header__popular-links-heading--large-navbar {
+    font-size: 24px;
+    font-size: govuk-px-to-rem(24px);
+  }
+
+  // can't disable responsive styling because using override classes
+  // from govuk-frontend which are all responsive so have to supply
+  // custom class to the label of the search component to turn off
+  // the responsive font size
+  .gem-c-layout-super-navigation-header__search-label--large-navbar {
+    font-size: 24px;
+    font-size: govuk-px-to-rem(24px);
   }
 }

@@ -67,6 +67,9 @@
 
   dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
   dropdown_menu_classes << "gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar" if large_navbar
+
+  popular_links_heading_classes = %w(govuk-heading-m)
+  popular_links_heading_classes << "gem-c-layout-super-navigation-header__popular-links-heading--large-navbar" if large_navbar
 %>
 <%= content_tag("header",
   {
@@ -360,6 +363,7 @@
                   inline_label: false,
                   label_size: "m",
                   label_text: search_text,
+                  label_custom_class: "gem-c-layout-super-navigation-header__search-label--large-navbar",
                   size: "large",
                   margin_bottom: 0,
                   data_attributes: {
@@ -375,7 +379,11 @@
           </div>
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-              <h3 class="govuk-heading-m"><%= popular_links_heading %></h3>
+              <%= content_tag(:h3, {
+                class: popular_links_heading_classes
+              }) do %>
+                <%= popular_links_heading %>
+              <% end %>
               <ul class="govuk-list">
                 <% index_total = popular_links.length %>
                 <% popular_links.each_with_index do | popular_link, index | %>
