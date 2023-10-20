@@ -76,9 +76,9 @@ describe "Tabs", type: :view do
     )
 
     assert_select ".govuk-tabs[data-module='govuk-tabs ga4-event-tracker']"
-    assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"First section\",\"index\":{\"index_section\":1,\"index_section_count\":3}}']"
-    assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"Second section\",\"index\":{\"index_section\":2,\"index_section_count\":3}}']"
-    assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"Third section\",\"index\":{\"index_section\":3,\"index_section_count\":3}}']"
+    assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"First section\",\"index_section\":1,\"index_section_count\":3}']"
+    assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"Second section\",\"index_section\":2,\"index_section_count\":3}']"
+    assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"Third section\",\"index_section\":3,\"index_section_count\":3}']"
   end
 
   it "renders with GA4 tracking on tabs as links" do
@@ -103,8 +103,8 @@ describe "Tabs", type: :view do
     )
 
     assert_select ".govuk-tabs[data-module='ga4-link-tracker']"
-    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"First section\",\"index\":{\"index_section\":1,\"index_section_count\":3}}']"
-    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"Second section\",\"index\":{\"index_section\":2,\"index_section_count\":3}}']"
-    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"Third section\",\"index\":{\"index_section\":3,\"index_section_count\":3}}']"
+    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"First section\",\"index_section\":1,\"index_section_count\":3}']"
+    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"Second section\",\"index_section\":2,\"index_section_count\":3}']"
+    assert_select ".govuk-tabs__tab[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"tabs\",\"text\":\"Third section\",\"index_section\":3,\"index_section_count\":3}']"
   end
 end

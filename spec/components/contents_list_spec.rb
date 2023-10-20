@@ -142,7 +142,7 @@ describe "Contents list", type: :view do
 
     # Child link attributes
     expected_ga4_json[:index_total] = 7
-    expected_ga4_json[:index] = { index_link: 1 }
+    expected_ga4_json[:index_link] = 1
 
     contents_list_links = assert_select(".gem-c-contents-list__list-item a")
 
@@ -154,7 +154,7 @@ describe "Contents list", type: :view do
 
     contents_list_links.each_with_index do |link, index|
       expected_ga4_json[:event_name] = events[index]
-      expected_ga4_json[:index] = { index_link: index_links[index] }
+      expected_ga4_json[:index_link] = index_links[index]
       expect(link.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
       expect(link).to have_text(texts[index])
     end

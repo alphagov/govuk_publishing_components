@@ -26,6 +26,15 @@
     tracking_options ||= ({ dimension96: tracking_id }).to_json
   end
 
+  if ga4_tracking
+    ga4_data = {
+      event_name: "navigation",
+      type: "super breadcrumb",
+      index_link: "1",
+      index_total: "1",
+    }.to_json
+  end
+
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   classes = %w[gem-c-step-nav-header]
   classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
@@ -44,7 +53,7 @@
         data-track-action="<%= tracking_action %>"
         data-track-label="<%= tracking_label %>"
         <% if ga4_tracking %>
-          data-ga4-link='{"event_name":"navigation", "type":"super breadcrumb", "index":{"index_link": "1"}, "index_total":"1"}'
+          data-ga4-link='<%= ga4_data %>'
         <% end %>
         <% if tracking_dimension_enabled %>
           data-track-dimension="<%= tracking_dimension %>"

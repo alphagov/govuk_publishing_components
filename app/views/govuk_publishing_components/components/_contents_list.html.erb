@@ -44,9 +44,7 @@
           <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : contents_item[:text]
             if ga4_tracking
               ga4_data[:event_name] = cl_helper.get_ga4_event_name(contents_item[:href]) if contents_item[:href]
-              ga4_data[:index] = {
-                "index_link": index_link,
-              }
+              ga4_data[:index_link] = index_link
             end
           %>
           <%= link_to_if !contents_item[:active], link_text, contents_item[:href],
@@ -69,9 +67,7 @@
                   <%
                     if ga4_tracking
                       ga4_data[:event_name] = cl_helper.get_ga4_event_name(nested_contents_item[:href]) if nested_contents_item[:href]
-                      ga4_data[:index] = {
-                        "index_link": index_link,
-                      }
+                      ga4_data[:index_link] = index_link
                     end
                   %>
                   <%= link_to_if !nested_contents_item[:active], nested_contents_item[:text], nested_contents_item[:href],

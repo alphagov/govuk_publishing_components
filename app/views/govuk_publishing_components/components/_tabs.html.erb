@@ -34,10 +34,8 @@
               event_name: "select_content",
               type: "tabs",
               text: tab[:label],
-              index: {
-                index_section: index + 1,
-                index_section_count: tabs.length,
-              },
+              index_section: index + 1,
+              index_section_count: tabs.length,
             }
             ga4_attributes[:event_name] = "navigation" if as_links
             tab[:tab_data_attributes][:ga4_link] = ga4_attributes if as_links

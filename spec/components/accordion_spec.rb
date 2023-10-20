@@ -214,8 +214,8 @@ describe "Accordion", type: :view do
 
     assert_select ".govuk-accordion[data-ga4-expandable]"
     assert_select '.govuk-accordion[data-module="govuk-accordion gem-accordion ga4-event-tracker"]'
-    assert_select '.govuk-accordion__section-heading[data-ga4-event=\'{"event_name":"select_content","type":"accordion","text":"Heading 1","index":{"index_section":1,"index_section_count":2}}\']'
-    assert_select '.govuk-accordion__section-heading[data-ga4-event=\'{"event_name":"select_content","type":"accordion","text":"Heading 2","index":{"index_section":2,"index_section_count":2}}\']'
+    assert_select '.govuk-accordion__section-heading[data-ga4-event=\'{"event_name":"select_content","type":"accordion","text":"Heading 1","index_section":1,"index_section_count":2}\']'
+    assert_select '.govuk-accordion__section-heading[data-ga4-event=\'{"event_name":"select_content","type":"accordion","text":"Heading 2","index_section":2,"index_section_count":2}\']'
   end
 
   it '`data-module="govuk-accordion"` attribute is present when no custom data attributes given' do

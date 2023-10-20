@@ -107,10 +107,8 @@ describe('Accordion component', function () {
     var ga4Object = {
       event_name: 'select_content',
       type: 'accordion',
-      index: {
-        index_section: 0,
-        index_section_count: 3
-      }
+      index_section: 0,
+      index_section_count: 3
     }
     accordion.setAttribute('data-show-all-attributes', JSON.stringify(wrappingObject))
     accordion.setAttribute('data-module', accordion.getAttribute('data-module') + ' ga4-event-tracker')

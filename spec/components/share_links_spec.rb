@@ -82,7 +82,7 @@ describe "ShareLinks", type: :view do
     assert_select '.gem-c-share-links__link[data-track-category="social media"][data-track-action="facebook"]'
     assert_select '.gem-c-share-links__link[data-track-options=\'{"socialAction":"share","socialNetwork":"facebook","socialTarget":"/facebook"}\']'
 
-    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"share page\",\"index\":{\"index_link\":1},\"index_total\":1,\"text\":\"facebook\"}"]'
+    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"share page\",\"index_link\":1,\"index_total\":1,\"text\":\"facebook\"}"]'
   end
 
   it "adds social interactions tracking for following" do
@@ -90,7 +90,7 @@ describe "ShareLinks", type: :view do
     assert_select '.gem-c-share-links[data-module="gem-track-click ga4-link-tracker"]'
     assert_select '.gem-c-share-links__link[data-track-category="social media"][data-track-action="facebook"]'
 
-    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"follow us\",\"index\":{\"index_link\":1},\"index_total\":1}"]'
+    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"follow us\",\"index_link\":1,\"index_total\":1}"]'
   end
 
   it "adds branding correctly" do

@@ -86,6 +86,22 @@ describe "Step by step navigation header", type: :view do
     assert_select "#{link}[data-track-options='{\"dimension96\":\"tracking-id\"}']"
   end
 
+  it "adds GA4 tracking" do
+    render_component(
+      title: "This is my title",
+      path: "/notalink",
+      ga4_tracking: true,
+    )
+    expected = {
+      event_name: "navigation",
+      type: "super breadcrumb",
+      index_link: "1",
+      index_total: "1",
+    }.to_json
+    assert_select(".gem-c-step-nav-header[data-module='gem-track-click ga4-link-tracker']")
+    assert_select(".gem-c-step-nav-header__title[data-ga4-link='#{expected}']")
+  end
+
   it "adds a custom tracking without tracking id or custom dimensions" do
     render_component(
       title: "This is my title",

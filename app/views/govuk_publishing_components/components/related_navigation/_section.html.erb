@@ -24,7 +24,7 @@
   <% end %>
 
   <ul class="gem-c-related-navigation__link-list">
-    <% 
+    <%
       constructed_link_array = []
       section_link_limit = related_nav_helper.calculate_section_link_limit(links)
       index_total = links.length
@@ -35,11 +35,9 @@
         ga4_attributes = {
           event_name: "navigation",
           type: ga4_type,
-          index: {
-            index_section: "#{section_index}",
-            index_link: "#{index}",
-            index_section_count: "#{section_count}",
-          },
+          index_section: "#{section_index}",
+          index_link: "#{index}",
+          index_section_count: "#{section_count}",
           index_total: "#{index_total}",
           section: ga4_heading_text,
         } if ga4_tracking
@@ -70,7 +68,7 @@
 
     <% if links.length > section_link_limit %>
       <%
-        classes = "gem-c-related-navigation__link toggle-wrap"      
+        classes = "gem-c-related-navigation__link toggle-wrap"
         data_attributes_li = { module: "ga4-event-tracker" } if ga4_tracking
         data_attributes_link = {
           controls: "toggle_#{section_title}",
@@ -83,7 +81,7 @@
         <%= link_to("#", class: "gem-c-related-navigation__toggle", data: data_attributes_link) do %>
           <%= t("common.toggle_more",
             show: t('common.show'),
-            number: related_nav_helper.remaining_link_count(links)) %>        
+            number: related_nav_helper.remaining_link_count(links)) %>
         <% end %>
       <% end %>
 

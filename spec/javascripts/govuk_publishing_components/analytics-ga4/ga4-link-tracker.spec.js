@@ -101,9 +101,7 @@ describe('GA4 link tracker', function () {
       attributes = {
         event_name: 'navigation',
         type: 'a link',
-        index: {
-          index_link: 1
-        }
+        index_link: 1
       }
       expected.event = 'event_data'
       expected.event_data.type = 'a link'

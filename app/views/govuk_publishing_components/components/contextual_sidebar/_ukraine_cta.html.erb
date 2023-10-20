@@ -1,4 +1,4 @@
-<% 
+<%
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   title = t("components.related_navigation.ukraine.title")
   lang = shared_helper.t_locale("components.related_navigation.ukraine.title")
@@ -15,11 +15,9 @@
           ga4_attributes = {
             event_name: "navigation",
             type: "related content",
-            index: {
-              index_section: "#{ga4_tracking_counts.index_section_count}",
-              index_link: "#{index + 1}",
-              index_section_count: "#{ga4_tracking_counts.index_section_count}",
-            },
+            index_section: "#{ga4_tracking_counts.index_section_count}",
+            index_link: "#{index + 1}",
+            index_section_count: "#{ga4_tracking_counts.index_section_count}",
             index_total: "#{index_total}",
             section: title,
           } if ga4_tracking

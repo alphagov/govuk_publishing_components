@@ -44,7 +44,7 @@ describe "Contextual sidebar", type: :view do
     )
     index_total = 4 # have to hard code this here but if ukraine links change this number may change, and test will fail
     assert_select ".gem-c-contextual-sidebar .gem-c-contextual-sidebar__cta--ukraine[data-module='gem-track-click ga4-link-tracker']"
-    assert_select ".gem-c-contextual-sidebar .gem-c-contextual-sidebar__cta--ukraine .govuk-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":{\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"1\"},\"index_total\":\"#{index_total}\",\"section\":\"Invasion of Ukraine\"}']"
-    assert_select ".gem-c-contextual-sidebar .gem-c-contextual-sidebar__cta--ukraine .govuk-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":{\"index_section\":\"1\",\"index_link\":\"2\",\"index_section_count\":\"1\"},\"index_total\":\"#{index_total}\",\"section\":\"Invasion of Ukraine\"}']"
+    assert_select ".gem-c-contextual-sidebar .gem-c-contextual-sidebar__cta--ukraine .govuk-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"1\",\"index_total\":\"#{index_total}\",\"section\":\"Invasion of Ukraine\"}']"
+    assert_select ".gem-c-contextual-sidebar .gem-c-contextual-sidebar__cta--ukraine .govuk-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"1\",\"index_link\":\"2\",\"index_section_count\":\"1\",\"index_total\":\"#{index_total}\",\"section\":\"Invasion of Ukraine\"}']"
   end
 end

@@ -56,11 +56,9 @@ RSpec.describe GovukPublishingComponents::Presenters::LayoutFooterHelper do
       expected = {
         "event_name": "navigation",
         "type": "footer",
-        "index": {
-          "index_link": "1",
-          "index_section": "1",
-          "index_section_count": "4",
-        },
+        "index_link": "1",
+        "index_section": "1",
+        "index_section_count": "4",
         "index_total": "5",
         "section": "Test",
       }

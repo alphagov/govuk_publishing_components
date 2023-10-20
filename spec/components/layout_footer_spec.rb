@@ -252,19 +252,19 @@ describe "Layout footer", type: :view do
     # Note that in these tests, the index_section_count will always be 2 higher than the amount
     # in the above render_component, due to the OGL and Crown Copyright link always being rendered by default.
     assert_select ".govuk-footer__link[href='/link1']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"1","index_section_count":"4"},"index_total":"2","section":"Section 1"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"1","index_section_count":"4","index_total":"2","section":"Section 1"}'
     end
 
     assert_select ".govuk-footer__link[href='/link2']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"1","index_section_count":"4"},"index_total":"2","section":"Section 1"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"1","index_section_count":"4","index_total":"2","section":"Section 1"}'
     end
 
     assert_select ".govuk-footer__link[href='/link3']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"2","index_section_count":"4"},"index_total":"2","section":"Section 2"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"2","index_section_count":"4","index_total":"2","section":"Section 2"}'
     end
 
     assert_select ".govuk-footer__link[href='/link4']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"2","index_section_count":"4"},"index_total":"2","section":"Section 2"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"2","index_section_count":"4","index_total":"2","section":"Section 2"}'
     end
   end
 
@@ -287,11 +287,11 @@ describe "Layout footer", type: :view do
     # Note that in these tests, the index_total and index_section_count will always be 2 higher than the amount
     # in the above render_component, due to the OGL and Crown Copyright link always being rendered by default.
     assert_select ".govuk-footer__link[href='/link1']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"1","index_section_count":"3"},"index_total":"2","section":"Support links"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"1","index_section_count":"3","index_total":"2","section":"Support links"}'
     end
 
     assert_select ".govuk-footer__link[href='/link2']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"1","index_section_count":"3"},"index_total":"2","section":"Support links"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"1","index_section_count":"3","index_total":"2","section":"Support links"}'
     end
   end
 
@@ -299,7 +299,7 @@ describe "Layout footer", type: :view do
     render_component(navigation: [])
     assert_select ".govuk-footer__licence-description" do |link_parent|
       expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
-      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index":{"index_section":"1","index_link":"1","index_section_count":"2"},"text":"Open Government Licence v3.0","index_total":"1","type":"footer"}'
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index_section":"1","index_link":"1","index_section_count":"2","text":"Open Government Licence v3.0","index_total":"1","type":"footer"}'
     end
   end
 
@@ -307,7 +307,7 @@ describe "Layout footer", type: :view do
     render_component(navigation: [])
     assert_select ".govuk-footer__meta-item[data-ga4-link]" do |link_parent|
       expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
-      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index":{"index_section":"2","index_link":"1","index_section_count":"2"},"text":"© Crown copyright","index_total":"1","type":"footer"}'
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index_section":"2","index_link":"1","index_section_count":"2","text":"© Crown copyright","index_total":"1","type":"footer"}'
     end
   end
 
@@ -367,40 +367,40 @@ describe "Layout footer", type: :view do
     # Navigation links
 
     assert_select ".govuk-footer__link[href='/link1']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"1","index_section_count":"5"},"index_total":"2","section":"Section 1"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"1","index_section_count":"5","index_total":"2","section":"Section 1"}'
     end
 
     assert_select ".govuk-footer__link[href='/link2']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"1","index_section_count":"5"},"index_total":"2","section":"Section 1"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"1","index_section_count":"5","index_total":"2","section":"Section 1"}'
     end
 
     assert_select ".govuk-footer__link[href='/link3']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"2","index_section_count":"5"},"index_total":"2","section":"Section 2"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"2","index_section_count":"5","index_total":"2","section":"Section 2"}'
     end
 
     assert_select ".govuk-footer__link[href='/link4']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"2","index_section_count":"5"},"index_total":"2","section":"Section 2"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"2","index_section_count":"5","index_total":"2","section":"Section 2"}'
     end
 
     # Meta links
     assert_select ".govuk-footer__link[href='/link5']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"3","index_section_count":"5"},"index_total":"3","section":"Support links"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"3","index_section_count":"5","index_total":"3","section":"Support links"}'
     end
 
     assert_select ".govuk-footer__link[href='/link6']" do |link|
-      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"3","index_section_count":"5"},"index_total":"3","section":"Support links"}'
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"3","index_section_count":"5","index_total":"3","section":"Support links"}'
     end
 
     # OGL link
     assert_select ".govuk-footer__licence-description" do |link_parent|
       expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
-      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index":{"index_section":"4","index_link":"1","index_section_count":"5"},"text":"Open Government Licence v3.0","index_total":"1","type":"footer"}'
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index_section":"4","index_link":"1","index_section_count":"5","text":"Open Government Licence v3.0","index_total":"1","type":"footer"}'
     end
 
     # Crown Copyright link
     assert_select ".govuk-footer__meta-item[data-ga4-link]" do |link_parent|
       expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
-      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index":{"index_section":"5","index_link":"1","index_section_count":"5"},"text":"© Crown copyright","index_total":"1","type":"footer"}'
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index_section":"5","index_link":"1","index_section_count":"5","text":"© Crown copyright","index_total":"1","type":"footer"}'
     end
   end
 end

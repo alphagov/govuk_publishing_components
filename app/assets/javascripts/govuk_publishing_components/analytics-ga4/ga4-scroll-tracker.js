@@ -118,7 +118,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // following will be undefined if tracking percentages
         data.text = node.eventData.text
         data.section = node.eventData.text
-        data.index = node.eventData.index
+        data.index_section = node.eventData.index_section
+        data.index_section_count = node.eventData.index_section_count
         // following will be undefined if tracking headings
         data.percent_scrolled = node.eventData.percent_scrolled
 
@@ -165,10 +166,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           eventData: {
             type: type,
             text: heading.textContent.replace(/\s+/g, ' ').trim(),
-            index: {
-              index_section: i + 1,
-              index_section_count: totalHeadings
-            }
+            index_section: i + 1,
+            index_section_count: totalHeadings
           }
         })
       }
