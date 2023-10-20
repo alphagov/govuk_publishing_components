@@ -28,15 +28,15 @@ describe('Google Analytics ecommerce tracking', function () {
 
     searchResults = document.createElement('div')
     searchResults.innerHTML =
-      '<a data-ga4-ecommerce-path="/coronavirus" data-ecommerce-row="1" data-ecommerce-index="1" href="/coronavirus">Coronavirus (COVID-19): guidance and support</a>' +
+      '<a data-ga4-ecommerce-path="/coronavirus" data-ecommerce-row="1" data-ecommerce-index="1" data-ga4-ecommerce-content-id="test0" href="/coronavirus">Coronavirus (COVID-19): guidance and support</a>' +
 
-      '<a data-ga4-ecommerce-path="/guidance/travel-abroad-from-england-during-coronavirus-covid-19" data-ecommerce-row="1" data-ecommerce-index="2" href="/guidance/travel-abroad">Travel abroad</a>' +
+      '<a data-ga4-ecommerce-path="/guidance/travel-abroad-from-england-during-coronavirus-covid-19" data-ga4-ecommerce-content-id="test1" data-ecommerce-row="1" data-ecommerce-index="2" href="/guidance/travel-abroad">Travel abroad</a>' +
 
-      '<a data-ga4-ecommerce-path="/guidance/people-with-symptoms-of-a-respiratory-infection-including-covid-19" data-ecommerce-row="1" data-ecommerce-index="3" href="/guidance/people">People</a>' +
+      '<a data-ga4-ecommerce-path="/guidance/people-with-symptoms-of-a-respiratory-infection-including-covid-19" data-ga4-ecommerce-content-id="test2" data-ecommerce-row="1" data-ecommerce-index="3" href="/guidance/people">People</a>' +
 
-      '<a data-ga4-ecommerce-path="/foreign-travel-advice" onclick="event.preventDefault()" data-ecommerce-row="1" data-ecommerce-index="4" href="/foreign-travel-advice">Foreign travel advice</a>' +
+      '<a data-ga4-ecommerce-path="/foreign-travel-advice" onclick="event.preventDefault()" data-ecommerce-row="1" data-ga4-ecommerce-content-id="test3" data-ecommerce-index="4" href="/foreign-travel-advice">Foreign travel advice</a>' +
 
-      '<a data-ga4-ecommerce-path="/guidance/living-safely-with-respiratory-infections-including-covid-19" data-ecommerce-row="1" data-ecommerce-index="5" href="/guidance/living-safely">Living safely</a>'
+      '<a data-ga4-ecommerce-path="/guidance/living-safely-with-respiratory-infections-including-covid-19" data-ga4-ecommerce-content-id="test4" data-ecommerce-row="1" data-ecommerce-index="5" href="/guidance/living-safely">Living safely</a>'
 
     onPageLoadExpected = {
       event: 'search_results',
@@ -50,26 +50,31 @@ describe('Google Analytics ecommerce tracking', function () {
           items: [
             {
               item_id: '/coronavirus',
+              item_content_id: 'test0',
               item_list_name: 'test-list-title',
               index: 1
             },
             {
               item_id: '/guidance/travel-abroad-from-england-during-coronavirus-covid-19',
+              item_content_id: 'test1',
               item_list_name: 'test-list-title',
               index: 2
             },
             {
               item_id: '/guidance/people-with-symptoms-of-a-respiratory-infection-including-covid-19',
+              item_content_id: 'test2',
               item_list_name: 'test-list-title',
               index: 3
             },
             {
               item_id: '/foreign-travel-advice',
+              item_content_id: 'test3',
               item_list_name: 'test-list-title',
               index: 4
             },
             {
               item_id: '/guidance/living-safely-with-respiratory-infections-including-covid-19',
+              item_content_id: 'test4',
               item_list_name: 'test-list-title',
               index: 5
             }
@@ -141,6 +146,15 @@ describe('Google Analytics ecommerce tracking', function () {
       var searchResults = window.dataLayer[1].search_results.ecommerce.items
       for (var i = 0; i < searchResults.length; i++) {
         expect(searchResults[i].item_id).toBe(onPageLoadExpected.search_results.ecommerce.items[i].item_id)
+      }
+    })
+
+    it('should get the item content id for each search result', function () {
+      GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
+
+      var searchResults = window.dataLayer[1].search_results.ecommerce.items
+      for (var i = 0; i < searchResults.length; i++) {
+        expect(searchResults[i].item_content_id).toBe(onPageLoadExpected.search_results.ecommerce.items[i].item_content_id)
       }
     })
 
@@ -240,6 +254,7 @@ describe('Google Analytics ecommerce tracking', function () {
             items: [
               {
                 item_id: '/foreign-travel-advice',
+                item_content_id: 'test3',
                 item_name: 'Foreign travel advice',
                 item_list_name: 'test-list-title',
                 index: 4

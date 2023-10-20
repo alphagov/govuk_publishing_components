@@ -46,26 +46,31 @@ describe('GA4 smart answer results tracking', function () {
           items: [
             {
               item_id: 'https://www.gov.uk/the-warm-home-discount-scheme',
+              item_content_id: undefined,
               item_list_name: 'Smart answer results',
               index: 1
             },
             {
               item_id: '/apply-council-tax-reduction',
+              item_content_id: undefined,
               item_list_name: 'Smart answer results',
               index: 2
             },
             {
               item_id: '/budgeting-help-benefits',
+              item_content_id: undefined,
               item_list_name: 'Smart answer results',
               index: 3
             },
             {
               item_id: 'https://www.nhs.uk/nhs-services/help-with-health-costs',
+              item_content_id: undefined,
               item_list_name: 'Smart answer results',
               index: 4
             },
             {
               item_id: 'https://www.gov.uk/support-for-mortgage-interest',
+              item_content_id: undefined,
               item_list_name: 'Smart answer results',
               index: 5
             }
@@ -172,6 +177,7 @@ describe('GA4 smart answer results tracking', function () {
             items: [
               {
                 item_id: '/budgeting-help-benefits',
+                item_content_id: undefined,
                 item_name: 'Check if you’re eligible for a Budgeting Loan',
                 item_list_name: 'Smart answer results',
                 index: 3

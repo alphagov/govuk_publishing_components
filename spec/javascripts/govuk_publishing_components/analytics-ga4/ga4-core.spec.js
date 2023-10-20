@@ -534,26 +534,31 @@ describe('GA4 core', function () {
               items: [
                 {
                   item_id: 'https://www.gov.uk/the-warm-home-discount-scheme',
+                  item_content_id: undefined,
                   item_list_name: 'Smart answer results',
                   index: 1
                 },
                 {
                   item_id: '/apply-council-tax-reduction',
+                  item_content_id: undefined,
                   item_list_name: 'Smart answer results',
                   index: 2
                 },
                 {
                   item_id: '/budgeting-help-benefits',
+                  item_content_id: undefined,
                   item_list_name: 'Smart answer results',
                   index: 3
                 },
                 {
                   item_id: 'https://www.nhs.uk/nhs-services/help-with-health-costs',
+                  item_content_id: undefined,
                   item_list_name: 'Smart answer results',
                   index: 4
                 },
                 {
                   item_id: 'https://www.gov.uk/support-for-mortgage-interest',
+                  item_content_id: undefined,
                   item_list_name: 'Smart answer results',
                   index: 5
                 }
@@ -594,6 +599,7 @@ describe('GA4 core', function () {
           if (i < 200) {
             ecommerceItems.push({
               item_id: 'https://www.gov.uk/the-warm-home-discount-scheme',
+              item_content_id: undefined,
               item_list_name: 'Smart answer results',
               index: i + 1
             })

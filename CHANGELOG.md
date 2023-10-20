@@ -12,6 +12,7 @@
 * Flatten GA4 data attributes ([PR #3649](https://github.com/alphagov/govuk_publishing_components/pull/3649))
 * Add GA4 'print intent' tracker ([PR #3652](https://github.com/alphagov/govuk_publishing_components/pull/3652))
 * Update LUX to version 312 ([PR #3672](https://github.com/alphagov/govuk_publishing_components/pull/3672))
+* Grab data-ga4-ecommerce-content-id in GA4 ecommerce tracking ([PR #3676](https://github.com/alphagov/govuk_publishing_components/pull/3676))
 
 ## 35.19.0
 
