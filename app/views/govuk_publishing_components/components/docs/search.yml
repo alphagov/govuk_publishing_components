@@ -108,3 +108,8 @@ examples:
     data:
       label_margin_bottom: 9
       inline_label: false
+  with_custom_label_class:
+    description: |
+      Allows adding a custom class to the label of the component.
+    data:
+      label_custom_class: "govuk-heading-xl"

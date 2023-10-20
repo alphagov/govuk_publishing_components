@@ -11,6 +11,7 @@
   label_margin_bottom ||= nil
   label_size ||= nil
   label_text ||= t("components.search_box.label")
+  label_custom_class ||= nil
   name ||= "q"
   homepage ||= false
   no_border ||= false
@@ -42,6 +43,7 @@
     label_classes << "gem-c-search__label"
   end
   label_classes << "govuk-!-margin-bottom-#{label_margin_bottom}" if [*1..9].include?(label_margin_bottom) and local_assigns.include?(:inline_label)
+  label_classes << label_custom_class if label_custom_class
 
   tag_label = capture do
     tag.label(for: id, class: label_classes) do
