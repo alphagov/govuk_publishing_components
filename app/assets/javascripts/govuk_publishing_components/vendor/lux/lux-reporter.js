@@ -366,11 +366,9 @@
     if (!entry.hadRecentInput) {
       var firstEntry = sessionEntries[0];
       var latestEntry = sessionEntries[sessionEntries.length - 1];
-      if (sessionEntries.length &&
-        (entry.startTime - latestEntry.startTime >= 1000 ||
-          entry.startTime - firstEntry.startTime >= 5000)) {
-          sessionValue = entry.value;
-          sessionEntries = [entry];
+      if (sessionEntries.length && (entry.startTime - latestEntry.startTime >= 1000 || entry.startTime - firstEntry.startTime >= 5000)) {
+        sessionValue = entry.value;
+        sessionEntries = [entry];
       }
       else {
         sessionValue += entry.value;
@@ -445,7 +443,8 @@
 
   var ALL_ENTRIES = [];
   function observe(type, callback, options) {
-    if (typeof PerformanceObserver === "function" && PerformanceObserver.supportedEntryTypes.includes(type)) {
+    if (typeof PerformanceObserver === "function" &&
+    PerformanceObserver.supportedEntryTypes.includes(type)) {
       var po = new PerformanceObserver(function (list) {
         list.getEntries().forEach(function (entry) { return callback(entry); });
       });
@@ -547,7 +546,7 @@
     // -------------------------------------------------------------------------
     /// End
     // -------------------------------------------------------------------------
-    var SCRIPT_VERSION = "311";
+    var SCRIPT_VERSION = "312";
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
     logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
@@ -695,7 +694,7 @@
     // Record the FIRST input delay.
     function recordDelay(delay) {
       if (!gFirstInputDelay) {
-        gFirstInputDelay = delay;
+        gFirstInputDelay = floor(delay);
         // remove event listeners
         gaEventTypes.forEach(function (eventType) {
           removeEventListener(eventType, onInput, ghListenerOptions);
@@ -1265,10 +1264,7 @@
       var num = 0;
       for (var i = 0, len = aElems.length; i < len; i++) {
         var e = aElems[i];
-        if (e.src &&
-          !e.async &&
-          !e.defer &&
-          0 !== (e.compareDocumentPosition(lastViewportElem) & 4)) {
+        if (e.src && !e.async && !e.defer && 0 !== (e.compareDocumentPosition(lastViewportElem) & 4)) {
           // If the script has a SRC and async is false and it occurs BEFORE the last viewport element,
           // then increment the counter.
           num++;
@@ -1498,8 +1494,6 @@
       }
       return getHighPercentileINP();
     }
-    // function simplified for our use, original would get the customerid from the script src URL
-    // but we set it inside the code in this file, so this function just returns that
     function getCustomerId() {
       return LUX.customerid || "";
     }
@@ -1609,12 +1603,7 @@
       var vw = document.documentElement.clientWidth;
       // Return true if the top-left corner is in the viewport and it has width & height.
       var lt = findPos(e);
-      return (lt[0] >= 0 &&
-        lt[1] >= 0 &&
-        lt[0] < vw &&
-        lt[1] < vh &&
-        e.offsetWidth > 0 &&
-        e.offsetHeight > 0);
+      return (lt[0] >= 0 && lt[1] >= 0 && lt[0] < vw && lt[1] < vh && e.offsetWidth > 0 && e.offsetHeight > 0);
     }
     // Return an array containing the top & left coordinates of the element.
     // from http://www.quirksmode.org/js/findpos.html
@@ -1838,7 +1827,7 @@
         !gSyncId ||
         !_sample() || // OUTSIDE the sampled range
         !gbLuxSent // LUX has NOT been sent yet, so wait to include it there
-        ) {
+      ) {
         return;
       }
       var sCustomerData = valuesToString(getUpdatedCustomData());
@@ -2083,6 +2072,14 @@
     // Set "LUX.auto=false" to disable send results automatically and
     // instead you must call LUX.send() explicitly.
     if (globalConfig.auto) {
+      var sendBeaconWhenVisible_1 = function () {
+        if (globalConfig.trackHiddenPages) {
+          _sendLux();
+        }
+        else {
+          onVisible(_sendLux);
+        }
+      };
       var sendBeaconAfterMinimumMeasureTime_1 = function () {
         var elapsedTime = _now();
         var timeRemaining = globalConfig.minMeasureTime - elapsedTime;
@@ -2093,12 +2090,12 @@
           ]);
           if (document.readyState === "complete") {
             // If onload has already passed, send the beacon now.
-            _sendLux();
+            sendBeaconWhenVisible_1();
           }
           else {
             // Ow, send the beacon slightly after window.onload.
             addListener("load", function () {
-              setTimeout(_sendLux, 200);
+              setTimeout(sendBeaconWhenVisible_1, 200);
             });
           }
         }
@@ -2107,14 +2104,7 @@
           setTimeout(sendBeaconAfterMinimumMeasureTime_1, timeRemaining);
         }
       };
-      if (globalConfig.trackHiddenPages) {
-        // The trackHiddenPages config forces the beacon to be sent even when the page is not visible.
-        sendBeaconAfterMinimumMeasureTime_1();
-      }
-      else {
-        // Otherwise we only send the beacon when the page is visible.
-        onVisible(sendBeaconAfterMinimumMeasureTime_1);
-      }
+      sendBeaconAfterMinimumMeasureTime_1();
     }
     // When newBeaconOnPageShow = true, we initiate a new page view whenever a page is restored from
     // bfcache. Since we have no "onload" event to hook into after a bfcache restore, we rely on the
