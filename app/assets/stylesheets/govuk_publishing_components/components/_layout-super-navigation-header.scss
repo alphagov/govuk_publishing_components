@@ -8,7 +8,7 @@ $search-width-or-height: $black-bar-height;
 $pseudo-underline-height: 3px;
 $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
-$large-navbar-height: 86px;
+$large-navbar-height: 72px;
 
 $pale-blue-colour: #d2e2f1;
 
@@ -918,12 +918,12 @@ $after-button-padding-left: govuk-spacing(4);
   }
 
   .gem-c-layout-super-navigation-header__logotype-crown--large-navbar {
-    height: 36px;
-    width: 49px;
+    height: 32px;
+    width: 44px;
   }
 
   .gem-c-header__link--large-navbar:focus {
-    box-shadow: 0 -4px 0 18px $govuk-focus-colour;
+    box-shadow: 0 -6px 0 12px $govuk-focus-colour;
     border-bottom: $govuk-focus-width solid govuk-colour("black");
     padding-bottom: 10px;
   }
@@ -933,9 +933,9 @@ $after-button-padding-left: govuk-spacing(4);
   }
 
   .gem-c-layout-super-navigation-header__header-logo--large-navbar {
-    height: 35px;
-    padding-bottom: govuk-spacing(5);
-    padding-top: govuk-spacing(5);
+    height: 32px;
+    padding-bottom: govuk-spacing(4);
+    padding-top: govuk-spacing(4);
   }
 
   .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
