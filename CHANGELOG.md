@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.20.0
 
 * Flatten GA4 data attributes ([PR #3649](https://github.com/alphagov/govuk_publishing_components/pull/3649))
 * Use custom SVG for search 'cancel' icon ([PR #3673](https://github.com/alphagov/govuk_publishing_components/pull/3673))
