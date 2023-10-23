@@ -14,6 +14,7 @@
 * Add GA4 'print intent' tracker ([PR #3652](https://github.com/alphagov/govuk_publishing_components/pull/3652))
 * Update LUX to version 312 ([PR #3672](https://github.com/alphagov/govuk_publishing_components/pull/3672))
 * Grab data-ga4-ecommerce-content-id in GA4 ecommerce tracking ([PR #3676](https://github.com/alphagov/govuk_publishing_components/pull/3676))
+* Update the styling of image-card two thirds variation ([PR #3671](https://github.com/alphagov/govuk_publishing_components/pull/3671))
 
 ## 35.19.0
 

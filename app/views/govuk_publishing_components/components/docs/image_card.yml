@@ -205,8 +205,8 @@ examples:
       <div class="govuk-!-width-full">
         <%= component %>
       </div>
-  two_thirds_column:
-    description: This variant is used for the featured section on the homepage, the aspect ratio used is 1:1
+  two_thirds:
+    description: This variant is used for the featured section on the homepage. The aspect ratio used is 1:1 and the width of the image is constrained to 80px wide.
     data:
       two_thirds: true
       href: "/still-not-a-page"
