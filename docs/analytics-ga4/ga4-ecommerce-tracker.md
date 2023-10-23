@@ -114,6 +114,7 @@ If a user clicks on a search result, the following object will be pushed to the 
                 {
                     "index": 1,
                     "item_id": "/vehicle-tax",
+                    "item_content_id": "fa748fae-3de4-4266-ae85-0797ada3f40c",
                     "item_list_name": "Search",
                     "item_name": "Tax your vehicle"
                 }
