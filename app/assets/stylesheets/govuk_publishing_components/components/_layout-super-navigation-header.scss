@@ -758,18 +758,6 @@ $after-button-padding-left: govuk-spacing(4);
   padding: 0 24px;
 }
 
-@include govuk-media-query($from: "desktop") {
-  // padding to make it the same as the padding for the redesign of the homepage
-  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information {
-    padding-right: 0;
-  }
-
-  // padding to make it the same as the padding for the redesign of the homepage
-  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--government-activity {
-    padding-left: 0;
-  }
-}
-
 // Dropdown menu description.
 .gem-c-layout-super-navigation-header__menu-description {
   display: none;
