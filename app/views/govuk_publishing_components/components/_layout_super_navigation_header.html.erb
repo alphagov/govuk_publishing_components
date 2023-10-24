@@ -65,7 +65,11 @@
   button_container_classes = %w(gem-c-layout-super-navigation-header__button-container)
   button_container_classes << "gem-c-layout-super-navigation-header__button-container--large-navbar" if large_navbar
 
+  dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
+  dropdown_menu_classes << "gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar" if large_navbar
 
+  popular_links_heading_classes = %w(govuk-heading-m)
+  popular_links_heading_classes << "gem-c-layout-super-navigation-header__popular-links-heading--large-navbar" if large_navbar
 %>
 <%= content_tag("header",
   {
@@ -270,10 +274,11 @@
         <% end %>
       </div>
 
-      <div
-        id="super-navigation-menu-<%= unique_id %>" hidden
-        class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
-      >
+      <%= content_tag(:div, {
+        id: "super-navigation-menu-#{unique_id}",
+        hidden: "",
+        class: dropdown_menu_classes,
+      }) do %>
         <div class="govuk-width-container">
           <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
 
@@ -330,9 +335,13 @@
             <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
 
-      <div id="super-search-menu" hidden class="gem-c-layout-super-navigation-header__navigation-dropdown-menu">
+      <%= content_tag(:div, {
+        id: "super-search-menu",
+        hidden: "",
+        class: dropdown_menu_classes,
+      }) do %>        
         <div class="govuk-width-container gem-c-layout-super-navigation-header__search-container gem-c-layout-super-navigation-header__search-items">
           <h3 class="govuk-visually-hidden">
             <%= navigation_search_subheading %>
@@ -354,7 +363,9 @@
                   inline_label: false,
                   label_size: "m",
                   label_text: search_text,
+                  label_custom_class: "gem-c-layout-super-navigation-header__search-label--large-navbar",
                   size: "large",
+                  margin_bottom: 0,
                   data_attributes: {
                     track_category: "headerClicked",
                     track_action: "searchSubmitted",
@@ -368,7 +379,11 @@
           </div>
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-              <h3 class="govuk-heading-m"><%= popular_links_heading %></h3>
+              <%= content_tag(:h3, {
+                class: popular_links_heading_classes
+              }) do %>
+                <%= popular_links_heading %>
+              <% end %>
               <ul class="govuk-list">
                 <% index_total = popular_links.length %>
                 <% popular_links.each_with_index do | popular_link, index | %>
@@ -401,7 +416,7 @@
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </nav>
   </div>
 <% end %>

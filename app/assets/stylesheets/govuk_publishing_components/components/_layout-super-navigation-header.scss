@@ -679,7 +679,7 @@ $after-button-padding-left: govuk-spacing(4);
   &.gem-c-layout-super-navigation-header__open-button {
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
       &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("white");
+        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
         color: govuk-colour("white");
       }
     }
@@ -726,7 +726,7 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__search-container {
-  padding-bottom: govuk-spacing(3);
+  padding-bottom: govuk-spacing(7);
 }
 
 // Dropdown menu.
@@ -740,7 +740,23 @@ $after-button-padding-left: govuk-spacing(4);
   padding-top: govuk-spacing(6);
 
   @include govuk-media-query($from: "desktop") {
-    padding-top: govuk-spacing(5);
+    padding-top: govuk-spacing(8);
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar {
+  @include govuk-media-query($until: "desktop") {
+    .gem-c-layout-super-navigation-header__search-items {
+      margin: 0 24px;
+    }
+  }
+}
+
+@include govuk-media-query($until: "tablet") {
+  // padding to make it the same as the padding for the redesign of the homepage
+  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information,
+  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--government-activity {
+    padding: 0 24px;
   }
 }
 
@@ -814,6 +830,11 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__navigation-second-item-link {
+  font-size: 19px;
+  font-size: govuk-px-to-rem(19px);
+}
+
 .gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
@@ -825,16 +846,14 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-.gem-c-layout-super-navigation-header__navigation-second-item-description {
-  @include govuk-typography-common;
-  font-size: 16px;
-  font-size: govuk-px-to-rem(16px);
-  font-weight: normal;
-  margin: govuk-spacing(1) 0 0 0;
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__navigation-second-item-description {
+  font-size: 19px;
+  font-size: govuk-px-to-rem(19px);
+  margin-top: govuk-spacing(2);
 }
 
 .gem-c-layout-super-navigation-header__search-form {
-  padding: govuk-spacing(2) 0 govuk-spacing(6) 0;
+  padding: 0 0 govuk-spacing(8) 0;
 }
 
 // Popular links.
@@ -852,6 +871,11 @@ $after-button-padding-left: govuk-spacing(4);
   &::after {
     @include make-selectable-area-bigger;
   }
+}
+
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__popular-link {
+  font-size: 19px;
+  font-size: govuk-px-to-rem(19px);
 }
 
 .gem-c-layout-super-navigation-header__width-container {
@@ -929,5 +953,21 @@ $after-button-padding-left: govuk-spacing(4);
 
   .gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar {
     height: $large-navbar-height;
+  }
+}
+
+@include govuk-media-query($until: tablet) {
+  .gem-c-layout-super-navigation-header__popular-links-heading--large-navbar {
+    font-size: 24px;
+    font-size: govuk-px-to-rem(24px);
+  }
+
+  // can't disable responsive styling because using override classes
+  // from govuk-frontend which are all responsive so have to supply
+  // custom class to the label of the search component to turn off
+  // the responsive font size
+  .gem-c-layout-super-navigation-header__search-label--large-navbar {
+    font-size: 24px;
+    font-size: govuk-px-to-rem(24px);
   }
 }

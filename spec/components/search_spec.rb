@@ -181,4 +181,11 @@ describe "Search", type: :view do
     })
     assert_select 'h6.govuk-\!-margin-0 > label', count: 1
   end
+
+  it "adds custom class to the label if one specified" do
+    render_component({
+      label_custom_class: "custom-class-label",
+    })
+    assert_select ".custom-class-label"
+  end
 end
