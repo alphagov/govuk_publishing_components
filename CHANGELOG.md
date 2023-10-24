@@ -14,6 +14,7 @@
 * Allow GA4 to be disabled via query string parameters ([PR #3731](https://github.com/alphagov/govuk_publishing_components/pull/3731))
 * Consolidate GA4 schema calls ([PR #3725](https://github.com/alphagov/govuk_publishing_components/pull/3725))
 * Make data-ga4-set-indexes ignore links with no href ([PR #3723](https://github.com/alphagov/govuk_publishing_components/pull/3723))
+* Improve PII date removal ([PR #3709](https://github.com/alphagov/govuk_publishing_components/pull/3709))
 
 ## 35.23.0
 
