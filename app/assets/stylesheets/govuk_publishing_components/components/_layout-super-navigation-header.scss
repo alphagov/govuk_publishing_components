@@ -745,10 +745,6 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar {
-  @include govuk-media-query($from: "desktop") {
-    margin-bottom: govuk-spacing(6);
-  }
-
   @include govuk-media-query($until: "desktop") {
     .gem-c-layout-super-navigation-header__search-items {
       margin: 0 24px;
