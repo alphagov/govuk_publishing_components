@@ -846,6 +846,19 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar {
+  .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+}
+
+.gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 68px;
+}
+
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__navigation-second-item-description {
   font-size: 19px;
   font-size: govuk-px-to-rem(19px);
