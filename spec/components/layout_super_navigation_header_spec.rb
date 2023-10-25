@@ -103,12 +103,13 @@ describe "Super navigation header", type: :view do
     assert_select "a.govuk-header__link--homepage[href='https://www.example.com/']", count: 1
   end
 
-  it "hides logo text" do
+  it "hides logo text and renders visually hidden span" do
     render_component({
       hide_logo_text: true,
     })
 
-    assert_select "a.govuk-header__link--homepage[href='https://www.gov.uk/']", ""
+    assert_select "a.govuk-header__link--homepage[href='https://www.gov.uk/']", "GOV.UK"
+    assert_select "a.govuk-header__link--homepage .govuk-visually-hidden"
   end
 
   it "hides left border of button" do

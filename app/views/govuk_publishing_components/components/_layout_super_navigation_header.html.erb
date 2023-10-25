@@ -111,6 +111,11 @@
             label: logo_link_title,
           }
         } do %>
+          <% if hide_logo_text %>
+            <span class="govuk-visually-hidden">
+              <%= logo_text %>
+            </span>
+          <% end %>
           <span class="govuk-header__logotype">
             <!--[if gt IE 8]><!-->
             <%= content_tag(:svg, {
