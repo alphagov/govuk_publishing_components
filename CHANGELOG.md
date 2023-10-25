@@ -12,6 +12,7 @@
 * Adjustments to the navbar for the homepage ([PR #3666](https://github.com/alphagov/govuk_publishing_components/pull/3666))
 * Adjust the size of large navbar super navigation header ([PR #3677](https://github.com/alphagov/govuk_publishing_components/pull/3677))
 * Add visually hidden text to the navbar ([PR #3684](https://github.com/alphagov/govuk_publishing_components/pull/3684))
+* Add data-ga4-form-no-answer-undefined to header search form ([PR #3682](https://github.com/alphagov/govuk_publishing_components/pull/3682))
 
 ## 35.20.0
 
