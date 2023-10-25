@@ -654,7 +654,7 @@ $after-button-padding-left: govuk-spacing(4);
 
       // stylelint-disable max-nesting-depth
       @include focus-not-focus-visible {
-        border-bottom: none;
+        border-bottom: $pseudo-underline-height solid $govuk-brand-colour;
       }
       // stylelint-enable max-nesting-depth
     }
@@ -953,10 +953,7 @@ $after-button-padding-left: govuk-spacing(4);
 
   .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
     height: $large-navbar-height;
-  }
-
-  // to stop the search icon moving on hover
-  .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar:hover {
+    // to stop the search icon moving on hover
     padding-bottom: 12px;
   }
 
