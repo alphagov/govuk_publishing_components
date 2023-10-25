@@ -630,6 +630,12 @@ $after-button-padding-left: govuk-spacing(4);
     color: govuk-colour("white");
   }
 
+  &:focus-visible {
+    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+      border-bottom: $pseudo-underline-height solid govuk-colour("black");
+    }
+  }
+
   @include govuk-media-query($from: "desktop") {
     border: 0;
     margin: 0;
@@ -654,15 +660,21 @@ $after-button-padding-left: govuk-spacing(4);
 
       // stylelint-disable max-nesting-depth
       @include focus-not-focus-visible {
-        border-bottom: none;
+        border-bottom: $pseudo-underline-height solid $govuk-brand-colour;
+
+        &:hover {
+          border-bottom: $pseudo-underline-height solid govuk-colour("white");
+        }
       }
       // stylelint-enable max-nesting-depth
     }
 
     &:focus-visible {
       &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+        color: govuk-colour("black");
+
         &:hover {
-          border-bottom: $pseudo-underline-height solid $govuk-focus-colour;
+          border-bottom: $pseudo-underline-height solid govuk-colour("black");
           color: govuk-colour("black");
         }
       }
@@ -681,6 +693,11 @@ $after-button-padding-left: govuk-spacing(4);
       &:hover {
         border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
         color: govuk-colour("white");
+      }
+
+      &:focus-visible {
+        border-bottom: $pseudo-underline-height solid govuk-colour("black");
+        color: govuk-colour("black");
       }
     }
 
@@ -704,6 +721,10 @@ $after-button-padding-left: govuk-spacing(4);
       border-bottom-color: govuk-colour("light-grey");
       color: govuk-colour("light-grey");
       outline: 1px solid govuk-colour("light-grey"); // overlap the border of the nav menu so it won't appear when menu open
+
+      &:hover {
+        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
+      }
     }
   }
 }
@@ -953,10 +974,7 @@ $after-button-padding-left: govuk-spacing(4);
 
   .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
     height: $large-navbar-height;
-  }
-
-  // to stop the search icon moving on hover
-  .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar:hover {
+    // to stop the search icon moving on hover
     padding-bottom: 12px;
   }
 

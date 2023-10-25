@@ -13,6 +13,7 @@
 * Adjust the size of large navbar super navigation header ([PR #3677](https://github.com/alphagov/govuk_publishing_components/pull/3677))
 * Add visually hidden text to the navbar ([PR #3684](https://github.com/alphagov/govuk_publishing_components/pull/3684))
 * Add data-ga4-form-no-answer-undefined to header search form ([PR #3682](https://github.com/alphagov/govuk_publishing_components/pull/3682))
+* Stop search icon from moving up and down ([PR #3685](https://github.com/alphagov/govuk_publishing_components/pull/3685))
 
 ## 35.20.0
 
