@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-describe('Google Analytics ecommerce tracking', function () {
+describe('Google Analytics 4 ecommerce tracking', function () {
   var GOVUK = window.GOVUK
   var searchResultsParentEl
   var searchResults
@@ -21,22 +21,22 @@ describe('Google Analytics ecommerce tracking', function () {
 
     searchResultsParentEl = document.createElement('div')
     searchResultsParentEl.setAttribute('data-ga4-ecommerce', '')
-    searchResultsParentEl.setAttribute('data-search-query', 'test-search-query')
-    searchResultsParentEl.setAttribute('data-ecommerce-variant', 'test-ecommerce-variant')
-    searchResultsParentEl.setAttribute('data-list-title', 'test-list-title')
-    searchResultsParentEl.setAttribute('data-ecommerce-start-index', '1')
+    searchResultsParentEl.setAttribute('data-ga4-search-query', 'test-search-query')
+    searchResultsParentEl.setAttribute('data-ga4-ecommerce-variant', 'test-ecommerce-variant')
+    searchResultsParentEl.setAttribute('data-ga4-list-title', 'test-list-title')
+    searchResultsParentEl.setAttribute('data-ga4-ecommerce-start-index', '1')
 
     searchResults = document.createElement('div')
     searchResults.innerHTML =
-      '<a data-ga4-ecommerce-path="/coronavirus" data-ecommerce-row="1" data-ecommerce-index="1" data-ga4-ecommerce-content-id="test0" href="/coronavirus">Coronavirus (COVID-19): guidance and support</a>' +
+      '<a data-ga4-ecommerce-path="/coronavirus" data-ga4-ecommerce-row="1" data-ga4-ecommerce-index="1" data-ga4-ecommerce-content-id="test0" href="/coronavirus">Coronavirus (COVID-19): guidance and support</a>' +
 
-      '<a data-ga4-ecommerce-path="/guidance/travel-abroad-from-england-during-coronavirus-covid-19" data-ga4-ecommerce-content-id="test1" data-ecommerce-row="1" data-ecommerce-index="2" href="/guidance/travel-abroad">Travel abroad</a>' +
+      '<a data-ga4-ecommerce-path="/guidance/travel-abroad-from-england-during-coronavirus-covid-19" data-ga4-ecommerce-content-id="test1" data-ga4-ecommerce-row="1" data-ga4-ecommerce-index="2" href="/guidance/travel-abroad">Travel abroad</a>' +
 
-      '<a data-ga4-ecommerce-path="/guidance/people-with-symptoms-of-a-respiratory-infection-including-covid-19" data-ga4-ecommerce-content-id="test2" data-ecommerce-row="1" data-ecommerce-index="3" href="/guidance/people">People</a>' +
+      '<a data-ga4-ecommerce-path="/guidance/people-with-symptoms-of-a-respiratory-infection-including-covid-19" data-ga4-ecommerce-content-id="test2" data-ga4-ecommerce-row="1" data-ga4-ecommerce-index="3" href="/guidance/people">People</a>' +
 
-      '<a data-ga4-ecommerce-path="/foreign-travel-advice" onclick="event.preventDefault()" data-ecommerce-row="1" data-ga4-ecommerce-content-id="test3" data-ecommerce-index="4" href="/foreign-travel-advice">Foreign travel advice</a>' +
+      '<a data-ga4-ecommerce-path="/foreign-travel-advice" onclick="event.preventDefault()" data-ga4-ecommerce-row="1" data-ga4-ecommerce-content-id="test3" data-ga4-ecommerce-index="4" href="/foreign-travel-advice">Foreign travel advice</a>' +
 
-      '<a data-ga4-ecommerce-path="/guidance/living-safely-with-respiratory-infections-including-covid-19" data-ga4-ecommerce-content-id="test4" data-ecommerce-row="1" data-ecommerce-index="5" href="/guidance/living-safely">Living safely</a>'
+      '<a data-ga4-ecommerce-path="/guidance/living-safely-with-respiratory-infections-including-covid-19" data-ga4-ecommerce-content-id="test4" data-ga4-ecommerce-row="1" data-ga4-ecommerce-index="5" href="/guidance/living-safely">Living safely</a>'
 
     onPageLoadExpected = {
       event: 'search_results',
@@ -104,7 +104,7 @@ describe('Google Analytics ecommerce tracking', function () {
 
     it('should get the search query', function () {
       onPageLoadExpected.search_results.term = 'coronavirus'
-      searchResultsParentEl.setAttribute('data-search-query', 'coronavirus')
+      searchResultsParentEl.setAttribute('data-ga4-search-query', 'coronavirus')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
       expect(window.dataLayer[1].search_results.term).toBe(onPageLoadExpected.search_results.term)
@@ -112,7 +112,7 @@ describe('Google Analytics ecommerce tracking', function () {
 
     it('should remove PII from search query', function () {
       onPageLoadExpected.search_results.term = '[email]'
-      searchResultsParentEl.setAttribute('data-search-query', 'email@example.com')
+      searchResultsParentEl.setAttribute('data-ga4-search-query', 'email@example.com')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
       expect(window.dataLayer[1].search_results.term).toBe(onPageLoadExpected.search_results.term)
@@ -120,15 +120,15 @@ describe('Google Analytics ecommerce tracking', function () {
 
     it('should get the variant', function () {
       onPageLoadExpected.search_results.sort = 'Relevance'
-      searchResultsParentEl.setAttribute('data-ecommerce-variant', 'Relevance')
+      searchResultsParentEl.setAttribute('data-ga4-ecommerce-variant', 'Relevance')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
       expect(window.dataLayer[1].search_results.sort).toBe(onPageLoadExpected.search_results.sort)
     })
 
-    it('should set the variant to undefined when the data-ecommerce-variant does not exist', function () {
+    it('should set the variant to undefined when the data-ga4-ecommerce-variant does not exist', function () {
       onPageLoadExpected.search_results.sort = undefined
-      searchResultsParentEl.removeAttribute('data-ecommerce-variant')
+      searchResultsParentEl.removeAttribute('data-ga4-ecommerce-variant')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
       expect(window.dataLayer[1].search_results.sort).toBe(onPageLoadExpected.search_results.sort)
@@ -167,11 +167,11 @@ describe('Google Analytics ecommerce tracking', function () {
       }
     })
 
-    it('should set the item list name to \'Site search results\' when the data-list-title does not exist', function () {
+    it('should set the item list name to \'Site search results\' when the data-ga4-list-title does not exist', function () {
       for (var i = 0; i < onPageLoadExpected.search_results.ecommerce.items.length; i++) {
         onPageLoadExpected.search_results.ecommerce.items[i].item_list_name = 'Site search results'
       }
-      searchResultsParentEl.removeAttribute('data-list-title')
+      searchResultsParentEl.removeAttribute('data-ga4-list-title')
 
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
@@ -181,7 +181,7 @@ describe('Google Analytics ecommerce tracking', function () {
       }
     })
 
-    it('should get the index for each search result using the data-ecommerce-index attribute', function () {
+    it('should get the index for each search result using the data-ga4-ecommerce-index attribute', function () {
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
       var searchResults = window.dataLayer[1].search_results.ecommerce.items
@@ -191,10 +191,10 @@ describe('Google Analytics ecommerce tracking', function () {
       }
     })
 
-    it('should get the index for each search result using the for loop index if the data-ecommerce-index attribute does not exist', function () {
-      var ecommerceRows = document.querySelectorAll('[data-ecommerce-row]')
+    it('should get the index for each search result using the for loop index if the data-ga4-ecommerce-index attribute does not exist', function () {
+      var ecommerceRows = document.querySelectorAll('[data-ga4-ecommerce-row]')
       for (var i = 0; i < ecommerceRows.length; i++) {
-        ecommerceRows[i].removeAttribute('data-ecommerce-index')
+        ecommerceRows[i].removeAttribute('data-ga4-ecommerce-index')
       }
 
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()

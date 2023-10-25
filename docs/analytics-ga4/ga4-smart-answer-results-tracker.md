@@ -5,9 +5,9 @@ This script is intended for adding GA4 tracking to the Cost of Living smart answ
 ## Overview
 
 ```html
-<div data-module="ga4-smart-answer-results-tracker" data-list-title="Title of smart answer">
+<div data-module="ga4-smart-answer-results-tracker" data-ga4-list-title="Title of smart answer">
     <span id="result-count">5 results</span>
-    <a href="/example-smart-answer-result" data-ga4-ecommerce-path="/example-smart-answer-result" data-ecommerce-index="1">Example smart answer result</a>
+    <a href="/example-smart-answer-result" data-ga4-ecommerce-path="/example-smart-answer-result" data-ga4-ecommerce-index="1">Example smart answer result</a>
     ... remaining smart answer results
 </div>
 ```

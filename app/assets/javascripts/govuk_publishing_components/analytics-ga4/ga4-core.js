@@ -272,7 +272,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       },
 
       getIndex: function (element, startPosition) {
-        var index = element.getAttribute('data-ecommerce-index')
+        var index = element.getAttribute('data-ga4-ecommerce-index')
 
         if (!index) {
           return null
@@ -298,7 +298,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         var element = data.element
         var resultsId = data.resultsId
         var isClickEvent = data.event !== undefined
-        var isSearchResult = element.getAttribute('data-search-query')
+        var isSearchResult = element.getAttribute('data-ga4-search-query')
 
         var ecommerceSchema = new window.GOVUK.analyticsGa4.Schemas().ecommerceSchema()
         var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
@@ -306,14 +306,14 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
         if (isSearchResult) {
           // Limiting to 100 characters to avoid noise from extra long search queries and to stop the size of the payload going over 8k limit.
-          var searchQuery = PIIRemover.stripPII(element.getAttribute('data-search-query')).substring(0, 100).toLowerCase()
-          var variant = element.getAttribute('data-ecommerce-variant')
+          var searchQuery = PIIRemover.stripPII(element.getAttribute('data-ga4-search-query')).substring(0, 100).toLowerCase()
+          var variant = element.getAttribute('data-ga4-ecommerce-variant')
           DEFAULT_LIST_TITLE = 'Site search results'
         }
 
         var items = element.querySelectorAll('[data-ga4-ecommerce-path]')
-        var listTitle = element.getAttribute('data-list-title') || DEFAULT_LIST_TITLE
-        var startPosition = parseInt(element.getAttribute('data-ecommerce-start-index'), 10)
+        var listTitle = element.getAttribute('data-ga4-list-title') || DEFAULT_LIST_TITLE
+        var startPosition = parseInt(element.getAttribute('data-ga4-ecommerce-start-index'), 10)
 
         ecommerceSchema.event = 'search_results'
         ecommerceSchema.search_results.event_name = isClickEvent ? 'select_item' : 'view_item_list'
@@ -344,10 +344,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
             var item = items[i]
             var path = item.getAttribute('data-ga4-ecommerce-path')
 
-            // If the element does not have a data-ecommerce-index attribute, we set one so that we can use it later when setting the index property
+            // If the element does not have a data-ga4-ecommerce-index attribute, we set one so that we can use it later when setting the index property
             // on the ecommerce object.
-            if (!item.getAttribute('data-ecommerce-index')) {
-              item.setAttribute('data-ecommerce-index', i + 1)
+            if (!item.getAttribute('data-ga4-ecommerce-index')) {
+              item.setAttribute('data-ga4-ecommerce-index', i + 1)
             }
 
             ecommerceSchema.search_results.ecommerce.items.push({
