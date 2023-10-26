@@ -46,7 +46,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var formData = this.getInputValues(formInputs)
       data.text = data.text || this.combineGivenAnswers(formData) || this.useFallbackValue
 
-      if (data.action === 'search') {
+      if (data.action === 'search' && data.text) {
         data.text = data.text.toLowerCase()
         data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(data.text)
       }
