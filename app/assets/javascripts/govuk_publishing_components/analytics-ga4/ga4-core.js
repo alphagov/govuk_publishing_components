@@ -30,7 +30,16 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       firstScript.parentNode.insertBefore(newScript, firstScript)
     },
 
+    getUserAgent: function () {
+      return navigator.userAgent
+    },
+
     sendData: function (data) {
+      // Prevent any GA4 data being sent during Smokey tests
+      if (this.getUserAgent() === 'Smokey Test / Ruby') {
+        return
+      }
+
       data.govuk_gem_version = this.getGemVersion()
       // set this in the console as a debugging aid
       if (window.GOVUK.analyticsGa4.showDebug) {

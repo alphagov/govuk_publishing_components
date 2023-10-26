@@ -68,6 +68,15 @@ describe('GA4 core', function () {
     })
   })
 
+  it('does not push data to the dataLayer if it is a Smokey test', function () {
+    spyOn(GOVUK.analyticsGa4.core, 'getUserAgent').and.returnValue('Smokey Test / Ruby')
+    var data = {
+      hello: 'I must be going'
+    }
+    GOVUK.analyticsGa4.core.sendData(data)
+    expect(window.dataLayer).toEqual([])
+  })
+
   describe('link tracking functions', function () {
     describe('find tracking attributes on elements', function () {
       var element
