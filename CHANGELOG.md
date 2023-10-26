@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add metadata inverse no padding option ([PR #3689](https://github.com/alphagov/govuk_publishing_components/pull/3689))
+
 ## 35.20.1
 
 * Adjustments to the navbar for the homepage ([PR #3666](https://github.com/alphagov/govuk_publishing_components/pull/3666))

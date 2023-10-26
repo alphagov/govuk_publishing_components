@@ -197,7 +197,14 @@ describe "Metadata", type: :view do
   it "renders the component on a dark background" do
     render_component(from: "<a href='/link'>Department</a>", inverse: true)
 
+    assert_select ".gem-c-metadata.gem-c-metadata--inverse.gem-c-metadata--inverse-padded"
+  end
+
+  it "renders the component on a dark background without extra padding" do
+    render_component(from: "<a href='/link'>Department</a>", inverse: true, inverse_compress: true)
+
     assert_select ".gem-c-metadata.gem-c-metadata--inverse"
+    assert_select ".gem-c-metadata.gem-c-metadata--inverse.gem-c-metadata--inverse-padded", false
   end
 
   it "applies a custom margin-bottom class if margin_bottom is specified" do
