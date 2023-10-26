@@ -880,6 +880,10 @@ $after-button-padding-left: govuk-spacing(4);
   width: 68px;
 }
 
+.gem-c-layout-super-navigation-header__navigation-second-item-description {
+  margin-top: govuk-spacing(1);
+}
+
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__navigation-second-item-description {
   font-size: 19px;
   font-size: govuk-px-to-rem(19px);
