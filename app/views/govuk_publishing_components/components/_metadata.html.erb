@@ -9,6 +9,7 @@
 
   other ||= nil
   inverse ||= false
+  inverse_compress ||= false
 
   direction_class = ""
   direction_class = " direction-#{direction}" if local_assigns.include?(:direction)
@@ -16,7 +17,13 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   classes = %w(gem-c-metadata)
   classes << "direction-#{direction}" if local_assigns.include?(:direction)
-  classes << "gem-c-metadata--inverse" if inverse
+
+  if inverse && inverse_compress
+    classes << "gem-c-metadata--inverse"
+  elsif inverse
+    classes << "gem-c-metadata--inverse gem-c-metadata--inverse-padded"
+  end
+
   classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 
   ga4_tracking ||= false
