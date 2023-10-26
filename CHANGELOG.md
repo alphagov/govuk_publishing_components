@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add metadata inverse no padding option ([PR #3689](https://github.com/alphagov/govuk_publishing_components/pull/3689))
+* Prevent GA4 data sending during Smokey tests ([PR #3680](https://github.com/alphagov/govuk_publishing_components/pull/3680))
 
 ## 35.20.1
 
