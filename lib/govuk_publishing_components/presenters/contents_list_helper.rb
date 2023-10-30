@@ -24,13 +24,13 @@ module GovukPublishingComponents
 
       def wrap_numbers_with_spans(content_item_link)
         content_item_text = strip_tags(content_item_link) # just the text of the link
-
+        content_item_text_stripped = content_item_text.strip # strip trailing spaces for the regex. Keep original content_item_text for the string replacement.
         # Must start with a number
         # Number must be between 1 and 999 (ie not 2014)
         # Must be followed by a space
         # May contain a period `1.`
         # May be a decimal `1.2`
-        number = /^\d{1,3}(\.?|\.\d{1,2})(?=\s)/.match(content_item_text)
+        number = /^\d{1,3}(\.?|\.\d{1,2})(?=\s)/.match(content_item_text_stripped)
 
         if number
           words = content_item_text.sub(number.to_s, "").strip # remove the number from the text
