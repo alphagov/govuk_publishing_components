@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix visual bug with contents list manually numbered headings ([PR #3694](https://github.com/alphagov/govuk_publishing_components/pull/3694))
+
 ## 35.21.0
 
 * Add metadata inverse no padding option ([PR #3689](https://github.com/alphagov/govuk_publishing_components/pull/3689))

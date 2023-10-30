@@ -11,6 +11,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
       assert_split_number_and_text("100. Thing", "100.", "Thing")
     end
 
+    it "accounts for trailing spaces in the heading" do
+      assert_split_number_and_text(" 1. Thing", "1.", "Thing")
+      assert_split_number_and_text(" 10. Thing ", "10.", "Thing")
+      assert_split_number_and_text("100. Thing ", "100.", "Thing")
+    end
+
     it "keeps a space between number and text for screen reader pronunciation" do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
       # 1.Thing can be pronounced "1 dot Thing"
