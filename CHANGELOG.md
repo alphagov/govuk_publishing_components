@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.21.2
 
 * Revert nav menu font changes ([PR #3696](https://github.com/alphagov/govuk_publishing_components/pull/3696))
 
