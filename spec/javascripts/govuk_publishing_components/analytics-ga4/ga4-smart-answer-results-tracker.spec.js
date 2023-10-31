@@ -19,20 +19,20 @@ describe('GA4 smart answer results tracking', function () {
     smartAnswerResultsCount.innerHTML = '5 results'
 
     smartAnswerResultsParentEl = document.createElement('div')
-    smartAnswerResultsParentEl.setAttribute('data-module', 'ga4-smart-answer-results-tracker')
-    smartAnswerResultsParentEl.setAttribute('data-list-title', 'Smart answer results')
-    smartAnswerResultsParentEl.setAttribute('data-ecommerce-start-index', '1')
+    smartAnswerResultsParentEl.setAttribute('data-ga4-module', 'ga4-smart-answer-results-tracker')
+    smartAnswerResultsParentEl.setAttribute('data-ga4-list-title', 'Smart answer results')
+    smartAnswerResultsParentEl.setAttribute('data-ga4-ecommerce-start-index', '1')
 
     smartAnswerResults = document.createElement('div')
-    smartAnswerResults.innerHTML = '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ecommerce-index="1">Check if you’re eligible for the Warm Home Discount scheme</a>' +
+    smartAnswerResults.innerHTML = '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ga4-ecommerce-index="1">Check if you’re eligible for the Warm Home Discount scheme</a>' +
 
-      '<a data-ga4-ecommerce-path="/apply-council-tax-reduction" href="/apply-council-tax-reduction" data-ecommerce-index="2">Check if you’re eligible for Council Tax Reduction</a>' +
+      '<a data-ga4-ecommerce-path="/apply-council-tax-reduction" href="/apply-council-tax-reduction" data-ga4-ecommerce-index="2">Check if you’re eligible for Council Tax Reduction</a>' +
 
-      '<a data-ga4-ecommerce-path="/budgeting-help-benefits" href="/budgeting-help-benefits" data-ecommerce-index="3" onclick="event.preventDefault()">Check if you’re eligible for a Budgeting Loan</a>' +
+      '<a data-ga4-ecommerce-path="/budgeting-help-benefits" href="/budgeting-help-benefits" data-ga4-ecommerce-index="3" onclick="event.preventDefault()">Check if you’re eligible for a Budgeting Loan</a>' +
 
-      '<a data-ga4-ecommerce-path="https://www.nhs.uk/nhs-services/help-with-health-costs" href="https://www.nhs.uk/nhs-services/help-with-health-costs" data-ecommerce-index="4">Check if you’re eligible for help with health costs on the NHS website</a>' +
+      '<a data-ga4-ecommerce-path="https://www.nhs.uk/nhs-services/help-with-health-costs" href="https://www.nhs.uk/nhs-services/help-with-health-costs" data-ga4-ecommerce-index="4">Check if you’re eligible for help with health costs on the NHS website</a>' +
 
-      '<a data-ga4-ecommerce-path="https://www.gov.uk/support-for-mortgage-interest" href="https://www.gov.uk/support-for-mortgage-interest" data-ecommerce-index="5">Check if you’re eligible for Support for Mortgage Interest</a>'
+      '<a data-ga4-ecommerce-path="https://www.gov.uk/support-for-mortgage-interest" href="https://www.gov.uk/support-for-mortgage-interest" data-ga4-ecommerce-index="5">Check if you’re eligible for Support for Mortgage Interest</a>'
 
     onPageLoadExpected = {
       event: 'search_results',
@@ -122,11 +122,11 @@ describe('GA4 smart answer results tracking', function () {
       }
     })
 
-    it('should set the item list name to \'Smart answer results\' when the data-list-title does not exist', function () {
+    it('should set the item list name to \'Smart answer results\' when the data-ga4-list-title does not exist', function () {
       for (var i = 0; i < onPageLoadExpected.search_results.ecommerce.items.length; i++) {
         onPageLoadExpected.search_results.ecommerce.items[i].item_list_name = 'Smart answer results'
       }
-      smartAnswerResultsParentEl.removeAttribute('data-list-title')
+      smartAnswerResultsParentEl.removeAttribute('data-ga4-list-title')
 
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
@@ -136,7 +136,7 @@ describe('GA4 smart answer results tracking', function () {
       }
     })
 
-    it('should get the index for each result using the data-ecommerce-index attribute', function () {
+    it('should get the index for each result using the data-ga4-ecommerce-index attribute', function () {
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       var smartAnswerResultItems = window.dataLayer[1].search_results.ecommerce.items
@@ -146,10 +146,10 @@ describe('GA4 smart answer results tracking', function () {
       }
     })
 
-    it('should get the index for each search result using the for loop index if the data-ecommerce-index attribute does not exist', function () {
+    it('should get the index for each search result using the for loop index if the data-ga4-ecommerce-index attribute does not exist', function () {
       var smartAnswerResults = document.querySelectorAll('[data-ga4-ecommerce-path]')
       for (var i = 0; i < smartAnswerResults.length; i++) {
-        smartAnswerResults[i].removeAttribute('data-ecommerce-index')
+        smartAnswerResults[i].removeAttribute('data-ga4-ecommerce-index')
       }
 
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()

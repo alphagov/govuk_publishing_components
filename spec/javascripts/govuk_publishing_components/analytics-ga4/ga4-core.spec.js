@@ -443,13 +443,13 @@ describe('GA4 core', function () {
 
     describe('the correct index of the result is returned', function () {
       var result1 = document.createElement('div')
-      result1.setAttribute('data-ecommerce-index', '1')
+      result1.setAttribute('data-ga4-ecommerce-index', '1')
 
       var result2 = document.createElement('div')
-      result2.setAttribute('data-ecommerce-index', '5')
+      result2.setAttribute('data-ga4-ecommerce-index', '5')
 
       var result3 = document.createElement('div')
-      result3.setAttribute('data-ecommerce-index', '123')
+      result3.setAttribute('data-ga4-ecommerce-index', '123')
 
       beforeEach(function () {
         document.body.appendChild(result1)
@@ -516,20 +516,20 @@ describe('GA4 core', function () {
         resultsCount.innerHTML = '5 results'
 
         resultsParentEl = document.createElement('div')
-        resultsParentEl.setAttribute('data-module', 'ga4-smart-answer-results-tracker')
-        resultsParentEl.setAttribute('data-list-title', 'Smart answer results')
-        resultsParentEl.setAttribute('data-ecommerce-start-index', '1')
+        resultsParentEl.setAttribute('data-ga4-module', 'ga4-smart-answer-results-tracker')
+        resultsParentEl.setAttribute('data-ga4-list-title', 'Smart answer results')
+        resultsParentEl.setAttribute('data-ga4-ecommerce-start-index', '1')
 
         results = document.createElement('div')
-        results.innerHTML = '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ecommerce-index="1">Check if you’re eligible for the Warm Home Discount scheme</a>' +
+        results.innerHTML = '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ga4-ecommerce-index="1">Check if you’re eligible for the Warm Home Discount scheme</a>' +
 
-        '<a data-ga4-ecommerce-path="/apply-council-tax-reduction" href="/apply-council-tax-reduction" data-ecommerce-index="2">Check if you’re eligible for Council Tax Reduction</a>' +
+        '<a data-ga4-ecommerce-path="/apply-council-tax-reduction" href="/apply-council-tax-reduction" data-ga4-ecommerce-index="2">Check if you’re eligible for Council Tax Reduction</a>' +
 
-        '<a data-ga4-ecommerce-path="/budgeting-help-benefits" href="/budgeting-help-benefits" data-ecommerce-index="3" onclick="event.preventDefault()">Check if you’re eligible for a Budgeting Loan</a>' +
+        '<a data-ga4-ecommerce-path="/budgeting-help-benefits" href="/budgeting-help-benefits" data-ga4-ecommerce-index="3" onclick="event.preventDefault()">Check if you’re eligible for a Budgeting Loan</a>' +
 
-        '<a data-ga4-ecommerce-path="https://www.nhs.uk/nhs-services/help-with-health-costs" href="https://www.nhs.uk/nhs-services/help-with-health-costs" data-ecommerce-index="4">Check if you’re eligible for help with health costs on the NHS website</a>' +
+        '<a data-ga4-ecommerce-path="https://www.nhs.uk/nhs-services/help-with-health-costs" href="https://www.nhs.uk/nhs-services/help-with-health-costs" data-ga4-ecommerce-index="4">Check if you’re eligible for help with health costs on the NHS website</a>' +
 
-        '<a data-ga4-ecommerce-path="https://www.gov.uk/support-for-mortgage-interest" href="https://www.gov.uk/support-for-mortgage-interest" data-ecommerce-index="5">Check if you’re eligible for Support for Mortgage Interest</a>'
+        '<a data-ga4-ecommerce-path="https://www.gov.uk/support-for-mortgage-interest" href="https://www.gov.uk/support-for-mortgage-interest" data-ga4-ecommerce-index="5">Check if you’re eligible for Support for Mortgage Interest</a>'
 
         expectedEcommerceObject = {
           event: 'search_results',
@@ -603,7 +603,7 @@ describe('GA4 core', function () {
 
         // Adds 500 search results to the DOM, but only adds 200 to our expected ecommerce object array
         for (var i = 0; i < 500; i++) {
-          innerHTML = innerHTML + '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ecommerce-index="' + (i + 1) + '">Check if you’re eligible for the Warm Home Discount scheme</a>'
+          innerHTML = innerHTML + '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ga4-ecommerce-index="' + (i + 1) + '">Check if you’re eligible for the Warm Home Discount scheme</a>'
 
           if (i < 200) {
             ecommerceItems.push({
