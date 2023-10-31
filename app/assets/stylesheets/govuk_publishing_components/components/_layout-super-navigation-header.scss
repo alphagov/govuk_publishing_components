@@ -851,11 +851,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__navigation-second-item-link {
-  font-size: 19px;
-  font-size: govuk-px-to-rem(19px);
-}
-
 .gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
@@ -881,13 +876,11 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
-  margin-top: govuk-spacing(1);
-}
-
-.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__navigation-second-item-description {
-  font-size: 19px;
-  font-size: govuk-px-to-rem(19px);
-  margin-top: govuk-spacing(2);
+  @include govuk-typography-common;
+  font-size: 16px;
+  font-size: govuk-px-to-rem(16px);
+  font-weight: normal;
+  margin: govuk-spacing(1) 0 0 0;
 }
 
 .gem-c-layout-super-navigation-header__search-form {
@@ -909,11 +902,6 @@ $after-button-padding-left: govuk-spacing(4);
   &::after {
     @include make-selectable-area-bigger;
   }
-}
-
-.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__popular-link {
-  font-size: 19px;
-  font-size: govuk-px-to-rem(19px);
 }
 
 .gem-c-layout-super-navigation-header__width-container {

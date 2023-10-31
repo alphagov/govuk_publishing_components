@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Revert nav menu font changes ([PR #3696](https://github.com/alphagov/govuk_publishing_components/pull/3696))
+
 ## 35.21.1
 
 * Replace UA ecommerce tracking attributes with GA4 specific ones ([PR #3688](https://github.com/alphagov/govuk_publishing_components/pull/3688))
