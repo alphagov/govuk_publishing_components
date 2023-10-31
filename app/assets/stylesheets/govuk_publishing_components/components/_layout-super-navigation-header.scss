@@ -815,6 +815,13 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+.gem-c-layout-super-navigation-header__navigation-second-items--government-activity 
+.gem-c-layout-super-navigation-header__dropdown-list-item {
+  @include govuk-media-query($from: "desktop") {
+    padding-bottom: 0;
+  }
+}
+
 .gem-c-layout-super-navigation-header__column--government-activity {
   position: relative;
 
