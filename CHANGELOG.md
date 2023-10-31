@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.21.1
 
+* Replace UA ecommerce tracking attributes with GA4 specific ones ([PR #3688](https://github.com/alphagov/govuk_publishing_components/pull/3688))
 * Fix visual bug with contents list manually numbered headings ([PR #3694](https://github.com/alphagov/govuk_publishing_components/pull/3694))
 
 ## 35.21.0
