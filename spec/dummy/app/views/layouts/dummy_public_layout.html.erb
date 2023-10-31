@@ -3,6 +3,21 @@
     global_bar: '<div class="govuk-width-container govuk-!-margin-top-2"><p class="govuk-body">This is the global bar slot.</p></div>',
     title: "Example public page",
     show_explore_header: true,
+    homepage: true,
 } do %>
   <%= yield %>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop">
+
+  <%= render "govuk_publishing_components/components/image_card", {
+  two_thirds: true,
+  href: "/still-not-a-page",
+  image_src: "https://www.gov.uk/assets/static/govuk-apple-touch-icon-180x180-026deaa34fa328ae5f1f519a37dbd15e6555c5086e1ba83986cd0827a7209902.png",
+  image_alt: "some meaningful alt text please",
+  heading_text: "Something has happened nearby possibly",
+  description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
+} %>
+</div>
+</div>
 <% end %>
