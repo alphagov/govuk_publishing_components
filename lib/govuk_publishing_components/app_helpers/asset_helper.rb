@@ -10,6 +10,22 @@ module GovukPublishingComponents
         "govuk_publishing_components/components/_#{component_name}.css"
       }.freeze
 
+      COMPONENT_JS_PATHS = Dir.glob("#{GovukPublishingComponents::Config.gem_directory}/app/assets/javascripts/govuk_publishing_components/components/*.js").map { |path|
+        filename = path.split("/").last
+        component_name = filename.sub("_", "").sub(".scss", "")
+        "govuk_publishing_components/components/_#{component_name}.css"
+      }.freeze
+
+      STATIC_JS_LIST = %w[
+        govuk_publishing_components/components/layout-super-navigation-header.js
+        govuk_publishing_components/components/button.js
+        govuk_publishing_components/components/cookie-banner.js
+        govuk_publishing_components/components/feedback.js
+        govuk_publishing_components/components/layout-header.js
+        govuk_publishing_components/components/layout-super-navigation-header.js
+        govuk_publishing_components/components/skip-link.js
+      ]
+
       # This list includes components already included in Static; taken from
       # https://github.com/alphagov/static/blob/198a598682df40ce4a2c3c286c06244297c18cf0/app/assets/stylesheets/application.scss
 
@@ -35,8 +51,14 @@ module GovukPublishingComponents
         govuk_publishing_components/components/_layout-super-navigation-header.css
       ].freeze
 
+      def add_javascript_path(component_path)
+        unless is_javascript_already_used?(component_path)
+          all_component_javascripts_being_used << component_path
+        end
+      end
+
       def add_stylesheet_path(component_path)
-        unless is_already_used?(component_path)
+        unless is_stylesheet_already_used?(component_path)
           all_component_stylesheets_being_used << component_path
         end
       end
@@ -61,11 +83,21 @@ module GovukPublishingComponents
         @all_component_stylesheets_being_used ||= []
       end
 
+      def all_component_javascripts_being_used
+        @all_component_javascripts_being_used ||= []
+      end
+
       def render_component_stylesheets
         list_of_stylesheets = all_component_stylesheets_being_used.map do |component|
           stylesheet_link_tag(component, integrity: false)
         end
         raw(list_of_stylesheets.join(""))
+      end
+
+      def render_component_javascripts
+        list_of_javascripts = all_components_javascripts_being_used.map do |component|
+          javascript_include_tag(component, { type: "module" })
+        end
       end
 
       def get_component_css_paths
@@ -77,12 +109,19 @@ module GovukPublishingComponents
       end
 
     private
-
-      def is_already_used?(component)
+      def is_stylesheet_already_used?(component)
         if GovukPublishingComponents::Config.exclude_css_from_static && !viewing_component_guide?
           all_component_stylesheets_being_used.include?(component) || STATIC_STYLESHEET_LIST.include?(component)
         else
           all_component_stylesheets_being_used.include?(component)
+        end
+      end
+
+      def is_javascript_already_used?(component)
+        if GovukPublishingComponents::Config.exclude_js_from_static && !viewing_component_guide?
+          all_component_javascripts_being_used.include?(component) || STATIC_JS_LIST.include?(component)
+        else
+          all_component_javascripts_being_used.include?(component)
         end
       end
 
