@@ -80,13 +80,30 @@ If your application is using the individual loading of stylesheets feature and `
 
 ## Step by step changes to the rendering application
 
-### Set up the stylesheets to be precompiled
+### Add stylesheets to be precompiled
 
-Add any app components and views in `app/assets/config/manifest.js`.
+Add stylesheet paths in `app/assets/config/manifest.js`:
 
 ```diff
-+  //= link components/_calendar.css
-+  //= link views/_homepage.css
++  //= link govuk_publishing_components/components/_accordion.css
++  //= link govuk_publishing_components/components/_action-link.css
++  //= link govuk_publishing_components/components/_attachment.css
++  //= link govuk_publishing_components/components/_attachment-link.css
+   ...
+```
+
+**Note**, that while GOV.UK Publishing Components supports applications which include both LibSass or Dart Sass, you'll need to add and remove stylesheet paths in two separate locations:
+
+- the Sprockets manifest as detailed above and
+- the `ALL_ASSETS` config hash in `/lib/govuk_publishing_components/config.rb` which is utilised by the `dartsass.builds` [config](https://github.com/rails/dartsass-rails#configuring-builds):
+
+```ruby
+  ALL_ASSETS = {
+    "#{GovukPublishingComponents::Config.gem_directory}/app/assets/stylesheets/govuk_publishing_components/components/_accordion.scss" => "govuk_publishing_components/components/_accordion.css",
+    "#{GovukPublishingComponents::Config.gem_directory}/app/assets/stylesheets/govuk_publishing_components/components/_action-link.scss" => "govuk_publishing_components/components/_action-link.css",
+    "#{GovukPublishingComponents::Config.gem_directory}/app/assets/stylesheets/govuk_publishing_components/components/_attachment.scss" => "govuk_publishing_components/components/_attachment.css",
+    "#{GovukPublishingComponents::Config.gem_directory}/app/assets/stylesheets/govuk_publishing_components/components/_attachment-link.scss" => "govuk_publishing_components/components/_attachment-link.css",
+    ...
 ```
 
 Remove gem component imports from `app/assets/stylesheets/application.scss`:
@@ -94,7 +111,9 @@ Remove gem component imports from `app/assets/stylesheets/application.scss`:
 ```diff
 - @import "govuk_publishing_components/components/accordion";
 - @import "govuk_publishing_components/components/action-link";
-- @import "govuk_publishing_components/components/big-number";
+- @import "govuk_publishing_components/components/attachment";
+- @import "govuk_publishing_components/components/attachment-link";
+  ...
 ```
 
 ### Using the publishing components gem without the `static` rendering app
