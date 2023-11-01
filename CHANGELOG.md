@@ -13,6 +13,7 @@
 * Remove doNotTrack from GTM component ([PR #3760](https://github.com/alphagov/govuk_publishing_components/pull/3760))
 * Fix rendering of the image card YouTube variation #3757 ([PR #3757](https://github.com/alphagov/govuk_publishing_components/pull/3757))
 * Move image-card overrides from frontend app ([PR #3752](https://github.com/alphagov/govuk_publishing_components/pull/3752))
+* Migrate to Dart Sass from LibSass ([PR #3604](https://github.com/alphagov/govuk_publishing_components/pull/3604))
 
 ## 36.1.0
 
