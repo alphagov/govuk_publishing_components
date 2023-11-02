@@ -1,0 +1,1 @@
+window.GOVUKFrontend.initAll = function () {}

@@ -51,6 +51,7 @@
     <% end -%>
     <%= yield :body %>
 
+    <%= render_component_javascripts %>
     <%= javascript_include_tag "component_guide/application" %>
     <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
   </body>

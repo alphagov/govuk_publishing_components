@@ -10,10 +10,10 @@ module GovukPublishingComponents
         "govuk_publishing_components/components/_#{component_name}.css"
       }.freeze
 
-      COMPONENT_JS_PATHS = Dir.glob("#{GovukPublishingComponents::Config.gem_directory}/app/assets/javascripts/govuk_publishing_components/components/*.js").map { |path|
+      COMPONENT_JS_PATHS = Dir.glob("#{GovukPublishingComponents::Config.gem_directory}/app/assets/javascripts/govuk_publishing_components/components-new/*.js").map { |path|
         filename = path.split("/").last
-        component_name = filename.sub("_", "").sub(".scss", "")
-        "govuk_publishing_components/components/_#{component_name}.css"
+        component_name = filename.sub(".js", "")
+        "govuk_publishing_components/components/#{component_name}.js"
       }.freeze
 
       STATIC_JS_LIST = %w[
@@ -57,10 +57,32 @@ module GovukPublishingComponents
         end
       end
 
+      def add_govuk_frontend_javascript_path(component_path)
+        unless is_javascript_already_used?(component_path)
+          all_component_javascripts_being_used << component_path
+          all_govuk_frontend_javascripts_being_used << component_path
+        end
+      end
+
+      def add_all_other_javascript_path(component_path)
+        unless is_javascript_already_used?(component_path)
+          all_component_javascripts_being_used << component_path
+          all_other_javascripts_being_used << component_path
+        end
+      end
+
       def add_stylesheet_path(component_path)
         unless is_stylesheet_already_used?(component_path)
           all_component_stylesheets_being_used << component_path
         end
+      end
+
+      def add_govuk_frontend_component_javascript(gem_component)
+        add_govuk_frontend_javascript_path("govuk/components/#{gem_component}/#{gem_component}.js")
+      end
+
+      def add_gem_component_javascript(gem_component)
+        add_all_other_javascript_path("govuk_publishing_components/components-new/#{gem_component}.js")
       end
 
       # Used to add a component that exists in the gem to the list
@@ -87,6 +109,14 @@ module GovukPublishingComponents
         @all_component_javascripts_being_used ||= []
       end
 
+      def all_govuk_frontend_javascripts_being_used 
+        @all_govuk_frontend_javascripts_being_used ||= []
+      end
+
+      def all_other_javascripts_being_used
+        @all_govuk_frontend_javascripts_being_used ||= []
+      end
+
       def render_component_stylesheets
         list_of_stylesheets = all_component_stylesheets_being_used.map do |component|
           stylesheet_link_tag(component, integrity: false)
@@ -95,9 +125,21 @@ module GovukPublishingComponents
       end
 
       def render_component_javascripts
-        list_of_javascripts = all_components_javascripts_being_used.map do |component|
-          javascript_include_tag(component, { type: "module" })
+        list_of_govuk_frontend_javascripts = all_govuk_frontend_javascripts_being_used.map do |component|
+          Rails.configuration.assets.precompile += [component]
+          javascript_include_tag(component, nonce: true)
         end
+
+        list_of_all_other_javascripts = all_other_javascripts_being_used.map do |component|
+          Rails.configuration.assets.precompile += [component]
+          javascript_include_tag(component, nonce: true)
+        end
+
+        raw([
+          list_of_govuk_frontend_javascripts.join(""),
+          javascript_include_tag("govuk_publishing_components/init-govuk-frontend.js", nonce: true),
+          list_of_all_other_javascripts.join("")
+        ].join(""))
       end
 
       def get_component_css_paths
@@ -118,7 +160,7 @@ module GovukPublishingComponents
       end
 
       def is_javascript_already_used?(component)
-        if GovukPublishingComponents::Config.exclude_js_from_static && !viewing_component_guide?
+        if GovukPublishingComponents::Config.exclude_js_from_static
           all_component_javascripts_being_used.include?(component) || STATIC_JS_LIST.include?(component)
         else
           all_component_javascripts_being_used.include?(component)
