@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Make global relative links absolute ([PR #3699](https://github.com/alphagov/govuk_publishing_components/pull/3699))
 * Remove duplicate GA4 tracking ([PR #3781](https://github.com/alphagov/govuk_publishing_components/pull/3781))
 * Delete unused builds folder ([PR #3778](https://github.com/alphagov/govuk_publishing_components/pull/3778))
 

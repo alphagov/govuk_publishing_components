@@ -70,6 +70,8 @@
 
   popular_links_heading_classes = %w(govuk-heading-m)
   popular_links_heading_classes << "gem-c-layout-super-navigation-header__popular-links-heading--large-navbar" if large_navbar
+
+  absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
 %>
 <%= content_tag("header",
   {
@@ -311,9 +313,10 @@
                         link_classes = %w[govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link]
                         link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
                         tracking_label = column[:label].downcase.gsub(/\s+/, "")
+                        link_href = absolute_links_helper.make_url_absolute(item[:href])
                       %>
                       <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
-                        <%= link_to item[:label], item[:href], {
+                        <%= link_to item[:label], link_href, {
                           class: link_classes,
                           data: {
                             track_action: "#{tracking_label}Link",
@@ -360,7 +363,7 @@
                 data-ga4-form='{ "event_name": "search", "type": "header menu bar", "section": "Search GOV.UK", "action": "search", "url": "/search/all" }'
                 data-ga4-form-include-text
                 data-ga4-form-no-answer-undefined
-                action="/search"
+                action="<%= absolute_links_helper.make_url_absolute('/search') %>"
                 method="get"
                 role="search"
                 aria-label="Site-wide"
@@ -394,7 +397,8 @@
                 <% index_total = popular_links.length %>
                 <% popular_links.each_with_index do | popular_link, index | %>
                   <li class="gem-c-layout-super-navigation-header__popular-item">
-                    <%= link_to popular_link[:label], popular_link[:href], {
+                    <% link_href = absolute_links_helper.make_url_absolute(popular_link[:href]) %>
+                    <%= link_to popular_link[:label], link_href, {
                       class: [
                         "govuk-link",
                         "gem-c-layout-super-navigation-header__popular-link",

@@ -7,7 +7,6 @@ describe "Layout footer", type: :view do
 
   it "renders the footer" do
     render_component({})
-
     assert_select ".govuk-footer"
   end
 
@@ -23,7 +22,7 @@ describe "Layout footer", type: :view do
       },
     )
 
-    assert_select ".govuk-footer__meta .govuk-footer__link[href='/help']", text: "Help"
+    assert_select ".govuk-footer__meta .govuk-footer__link[href='http://www.dev.gov.uk/help']", text: "Help"
   end
 
   it "renders the footer with navigation with multiple links" do
@@ -47,7 +46,7 @@ describe "Layout footer", type: :view do
     )
 
     assert_select ".govuk-footer__navigation .govuk-footer__heading", text: "Services and information"
-    assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-footer__link[href='/browse/benefits']", text: "Benefits"
+    assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-footer__link[href='http://www.dev.gov.uk/browse/benefits']", text: "Benefits"
   end
 
   it "renders the footer with navigation with one link" do
@@ -68,7 +67,7 @@ describe "Layout footer", type: :view do
 
     assert_select ".govuk-footer__navigation .govuk-footer__list--columns-3", false
     assert_select ".govuk-footer__navigation .govuk-footer__heading", text: "Coronavirus (COVID-19)"
-    assert_select ".govuk-footer__navigation .govuk-footer__link[href='/coronavirus']", text: "Coronavirus (COVID-19): guidance and support"
+    assert_select ".govuk-footer__navigation .govuk-footer__link[href='http://www.dev.gov.uk/coronavirus']", text: "Coronavirus (COVID-19): guidance and support"
   end
 
   it "renders the footer with attributes" do
@@ -251,19 +250,19 @@ describe "Layout footer", type: :view do
 
     # Note that in these tests, the index_section_count will always be 2 higher than the amount
     # in the above render_component, due to the OGL and Crown Copyright link always being rendered by default.
-    assert_select ".govuk-footer__link[href='/link1']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link1']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"1","index_section_count":"4","index_total":"2","section":"Section 1"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link2']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link2']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"1","index_section_count":"4","index_total":"2","section":"Section 1"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link3']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link3']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"2","index_section_count":"4","index_total":"2","section":"Section 2"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link4']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link4']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"2","index_section_count":"4","index_total":"2","section":"Section 2"}'
     end
   end
@@ -286,11 +285,11 @@ describe "Layout footer", type: :view do
 
     # Note that in these tests, the index_total and index_section_count will always be 2 higher than the amount
     # in the above render_component, due to the OGL and Crown Copyright link always being rendered by default.
-    assert_select ".govuk-footer__link[href='/link1']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link1']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"1","index_section_count":"3","index_total":"2","section":"Support links"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link2']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link2']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"1","index_section_count":"3","index_total":"2","section":"Support links"}'
     end
   end
@@ -366,28 +365,28 @@ describe "Layout footer", type: :view do
 
     # Navigation links
 
-    assert_select ".govuk-footer__link[href='/link1']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link1']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"1","index_section_count":"5","index_total":"2","section":"Section 1"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link2']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link2']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"1","index_section_count":"5","index_total":"2","section":"Section 1"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link3']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link3']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"2","index_section_count":"5","index_total":"2","section":"Section 2"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link4']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link4']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"2","index_section_count":"5","index_total":"2","section":"Section 2"}'
     end
 
     # Meta links
-    assert_select ".govuk-footer__link[href='/link5']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link5']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"1","index_section":"3","index_section_count":"5","index_total":"3","section":"Support links"}'
     end
 
-    assert_select ".govuk-footer__link[href='/link6']" do |link|
+    assert_select ".govuk-footer__link[href='http://www.dev.gov.uk/link6']" do |link|
       expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index_link":"2","index_section":"3","index_section_count":"5","index_total":"3","section":"Support links"}'
     end
 
