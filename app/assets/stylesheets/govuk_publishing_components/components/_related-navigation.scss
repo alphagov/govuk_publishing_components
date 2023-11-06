@@ -14,7 +14,7 @@
 
 .gem-c-related-navigation__sub-heading {
   @include govuk-font(16);
-  border-top: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
+  border-top: 1px solid govuk-colour("mid-grey");
   margin: 0;
   padding-top: govuk-spacing(3);
 }
