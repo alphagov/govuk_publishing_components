@@ -7,7 +7,7 @@ $thumbnail-background: govuk-colour("white");
 $thumbnail-border-colour: rgba(11, 12, 12, .1);
 $thumbnail-shadow-colour: rgba(11, 12, 12, .4);
 $thumbnail-shadow-width: 0 2px 2px;
-$thumbnail-icon-border-colour: govuk-colour("mid-grey", $legacy: "grey-3");
+$thumbnail-icon-border-colour: govuk-colour("mid-grey");
 
 .gem-c-attachment {
   @include govuk-font(19);
