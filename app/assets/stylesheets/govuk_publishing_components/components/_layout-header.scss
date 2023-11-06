@@ -5,7 +5,7 @@
 @import "govuk/components/tag/tag";
 
 .gem-c-layout-header--production .govuk-header__container {
-  border-bottom-color: govuk-colour("red", $legacy: "bright-red");
+  border-bottom-color: govuk-colour("red");
 }
 
 .gem-c-layout-header--integration .govuk-header__container,
@@ -18,7 +18,7 @@
 }
 
 .gem-c-layout-header--development .govuk-header__container {
-  border-bottom-color: govuk-colour("dark-grey", $legacy: "grey-1");
+  border-bottom-color: govuk-colour("dark-grey");
 }
 
 .gem-c-layout-header--no-bottom-border,
@@ -124,7 +124,7 @@
 }
 
 .gem-c-environment-tag--production {
-  background-color: govuk-colour("red", $legacy: "bright-red");
+  background-color: govuk-colour("red");
 }
 
 .gem-c-environment-tag--example {
@@ -132,7 +132,7 @@
 }
 
 .gem-c-environment-tag--development {
-  background-color: govuk-colour("dark-grey", $legacy: "grey-1");
+  background-color: govuk-colour("dark-grey");
 }
 
 .gem-c-environment-tag--staging,

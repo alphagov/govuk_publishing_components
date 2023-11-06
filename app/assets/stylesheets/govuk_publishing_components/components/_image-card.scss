@@ -187,7 +187,7 @@
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   margin: 0 0 calc(govuk-spacing(3) / 2);
-  color: govuk-colour("dark-grey", $legacy: "grey-1");
+  color: govuk-colour("dark-grey");
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
@@ -213,7 +213,7 @@
   }
 
   .gem-c-image-card__list-item--text {
-    color: govuk-colour("dark-grey", $legacy: "grey-1");
+    color: govuk-colour("dark-grey");
   }
 
   .gem-c-image-card__list-item-link {
