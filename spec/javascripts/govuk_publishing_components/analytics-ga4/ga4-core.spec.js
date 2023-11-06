@@ -77,6 +77,22 @@ describe('GA4 core', function () {
     expect(window.dataLayer).toEqual([])
   })
 
+  it('sorts event data alphabetically for debug mode', function () {
+    var data = {
+      c: 'c_data',
+      b: 'b_data',
+      a: {},
+      q: 'q_data'
+    }
+    var expected = {
+      a: {},
+      b: 'b_data',
+      c: 'c_data',
+      q: 'q_data'
+    }
+    expect(GOVUK.analyticsGa4.core.sortEventData(data)).toEqual(expected)
+  })
+
   describe('link tracking functions', function () {
     describe('find tracking attributes on elements', function () {
       var element
