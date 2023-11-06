@@ -19,6 +19,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.mq = window.matchMedia('(min-width: 641px)')
     this.isClosedOnLoad = this.$optionSelect.getAttribute('data-closed-on-load')
     this.isClosedOnLoadMobile = this.$optionSelect.getAttribute('data-closed-on-load-mobile')
+
+    this.init()
   }
 
   OptionSelect.prototype.init = function () {
