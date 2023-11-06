@@ -21,6 +21,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.jshiddenClass = 'js-hidden'
     this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
     this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
+
+    this.init()
   }
 
   Feedback.prototype.init = function () {

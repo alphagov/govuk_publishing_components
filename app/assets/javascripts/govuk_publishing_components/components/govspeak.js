@@ -4,6 +4,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function Govspeak ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   Govspeak.prototype.init = function () {

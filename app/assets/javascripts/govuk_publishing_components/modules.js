@@ -37,9 +37,10 @@
           var started = element.getAttribute('data-' + moduleNames[j] + '-module-started')
           if (typeof GOVUK.Modules[moduleName] === 'function' && !started) {
             // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend Modules
-            if (GOVUK.Modules[moduleName].prototype.init) {
+            if (GOVUK.Modules[moduleName]) {
               try {
-                new GOVUK.Modules[moduleName](element).init()
+                /* eslint-disable no-new */
+                new GOVUK.Modules[moduleName](element)
                 element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
               } catch (e) {
                 // if there's a problem with the module, catch the error to allow other modules to start
