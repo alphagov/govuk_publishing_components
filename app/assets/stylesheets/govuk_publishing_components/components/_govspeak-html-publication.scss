@@ -77,7 +77,7 @@
       // and make all of thead and tfoot stand out
       thead,
       tfoot {
-        background-color: govuk-colour("light-grey", $legacy: "grey-3");
+        background-color: govuk-colour("light-grey");
       }
 
       thead th,
@@ -122,7 +122,7 @@
       // total and subtotal rows
       tr.subtotal > *,
       tr.total > * {
-        border-top: 3px solid govuk-colour("mid-grey", $legacy: "grey-2");
+        border-top: 3px solid govuk-colour("mid-grey");
       }
 
       tr.total > *,
@@ -133,7 +133,7 @@
       // the total is usually in the tfoot, so already has that background colour
       // but when it's used inside the tbody, it should also be highlighted
       tr.total {
-        background-color: govuk-colour("light-grey", $legacy: "grey-3");
+        background-color: govuk-colour("light-grey");
       }
     }
     // stylelint-enable selector-no-qualifying-type
