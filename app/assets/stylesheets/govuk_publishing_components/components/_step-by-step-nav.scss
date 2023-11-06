@@ -3,7 +3,7 @@
 $stroke-width: 1px;
 $number-circle-size: 30px;
 $number-circle-size-large: 35px;
-$top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
+$top-border: solid 1px govuk-colour("mid-grey");
 
 @mixin step-nav-vertical-line($line-style: solid) {
   content: "";
@@ -11,7 +11,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   z-index: 2;
   width: 0;
   height: 100%;
-  border-left: $line-style $stroke-width govuk-colour("mid-grey", $legacy: "grey-2");
+  border-left: $line-style $stroke-width govuk-colour("mid-grey");
   background: govuk-colour("white");
 }
 
@@ -263,7 +263,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
     margin-left: calc($number-circle-size / 4);
     width: calc($number-circle-size / 2);
     height: 0;
-    border-bottom: solid $stroke-width govuk-colour("mid-grey", $legacy: "grey-2");
+    border-bottom: solid $stroke-width govuk-colour("mid-grey");
   }
 
   &::after {
@@ -322,7 +322,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 .gem-c-step-nav__circle--number {
   @include step-nav-font(16, $weight: bold, $line-height: 29px);
-  border: solid $stroke-width govuk-colour("mid-grey", $legacy: "grey-2");
+  border: solid $stroke-width govuk-colour("mid-grey");
 
   .gem-c-step-nav--large & {
     @include step-nav-font(16, $tablet-size: 19, $weight: bold, $line-height: 29px, $tablet-line-height: 34px);
@@ -532,7 +532,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__context {
   display: inline-block;
   font-weight: normal;
-  color: govuk-colour("dark-grey", $legacy: "grey-1");
+  color: govuk-colour("dark-grey");
 
   &::before {
     content: " \2013\00a0"; // dash followed by &nbsp;
