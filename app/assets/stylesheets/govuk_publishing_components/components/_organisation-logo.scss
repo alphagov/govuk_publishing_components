@@ -82,19 +82,19 @@
 }
 
 @mixin crest($crest) {
-  background: image-url("govuk_publishing_components/crests/#{$crest}_13px.png") no-repeat 5px 0;
+  background: url("govuk_publishing_components/crests/#{$crest}_13px.png") no-repeat 5px 0;
   background-size: auto 20px;
 
   @include govuk-device-pixel-ratio {
-    background-image: image-url("govuk_publishing_components/crests/#{$crest}_13px_x2.png");
+    background-image: url("govuk_publishing_components/crests/#{$crest}_13px_x2.png");
   }
 
   @include govuk-media-query($from: tablet) {
-    background: image-url("govuk_publishing_components/crests/#{$crest}_18px.png") no-repeat 6px 0;
+    background: url("govuk_publishing_components/crests/#{$crest}_18px.png") no-repeat 6px 0;
     background-size: auto 26px;
 
     @include govuk-device-pixel-ratio {
-      background-image: image-url("govuk_publishing_components/crests/#{$crest}_18px_x2.png");
+      background-image: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png");
     }
   }
 }

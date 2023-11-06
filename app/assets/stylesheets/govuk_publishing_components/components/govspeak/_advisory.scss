@@ -4,7 +4,7 @@ $high-alert-border: #cc0000;
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .advisory {
-    background-image: image-url("govuk_publishing_components/icon-important.svg");
+    background-image: url("govuk_publishing_components/icon-important.svg");
     background-repeat: no-repeat;
     background-size: 30px 30px;
     background-position: 98% center;

@@ -8,8 +8,8 @@
     display: table-cell;
     width: 60px;
     height: 45px;
-    background: image-url("govuk_publishing_components/action-link-arrow.png");
-    background: image-url("govuk_publishing_components/action-link-arrow.svg"), linear-gradient(transparent, transparent);
+    background: url("govuk_publishing_components/action-link-arrow.png");
+    background: url("govuk_publishing_components/action-link-arrow.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-position: 0 50%;
     background-size: 45px auto;
@@ -98,8 +98,8 @@
   &::before {
     width: 30px;
     height: 30px;
-    background: image-url("govuk_publishing_components/action-link-arrow--simple.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--simple.svg"), linear-gradient(transparent, transparent);
+    background: url("govuk_publishing_components/action-link-arrow--simple.png");
+    background: url("govuk_publishing_components/action-link-arrow--simple.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
@@ -110,8 +110,8 @@
   &::before {
     width: 30px;
     height: 30px;
-    background: image-url("govuk_publishing_components/action-link-arrow--simple-light.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--simple-light.svg"), linear-gradient(transparent, transparent);
+    background: url("govuk_publishing_components/action-link-arrow--simple-light.png");
+    background: url("govuk_publishing_components/action-link-arrow--simple-light.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
@@ -120,8 +120,8 @@
 
 .gem-c-action-link--dark-large-icon {
   &::before {
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
+    background: url("govuk_publishing_components/action-link-arrow--dark.png");
+    background: url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
     height: 34px;
     width: 40px;
     background-repeat: no-repeat;
@@ -138,8 +138,8 @@
   &::before {
     width: 36px;
     height: 28px;
-    background: image-url("govuk_publishing_components/action-link-arrow--light.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--light.svg"), linear-gradient(transparent, transparent);
+    background: url("govuk_publishing_components/action-link-arrow--light.png");
+    background: url("govuk_publishing_components/action-link-arrow--light.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-size: 28px auto;
     background-position: 0 0;
@@ -162,8 +162,8 @@
   &::before {
     height: 30px;
     width: 35px;
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
+    background: url("govuk_publishing_components/action-link-arrow--dark.png");
+    background: url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
