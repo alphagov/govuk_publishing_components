@@ -8,6 +8,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$closeButton = this.$module.querySelector('.gem-c-modal-dialogue__close-button')
     this.$html = document.querySelector('html')
     this.$body = document.querySelector('body')
+
+    this.init()
   }
 
   ModalDialogue.prototype.init = function () {
