@@ -112,7 +112,7 @@
 
 .gem-c-option-select__filter-input {
   @include govuk-font(19);
-  background: image-url("option-select/input-icon.svg") govuk-colour("white") no-repeat -5px -3px;
+  background: url("option-select/input-icon.svg") govuk-colour("white") no-repeat -5px -3px;
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);

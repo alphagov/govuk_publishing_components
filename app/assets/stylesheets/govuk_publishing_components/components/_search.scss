@@ -281,7 +281,7 @@ $large-input-size: 50px;
 .search-toggle {
   display: none;
   background-color: govuk-colour("blue");
-  background-image: image-url("govuk_publishing_components/search-button.png");
+  background-image: url("govuk_publishing_components/search-button.png");
   background-position: 0 50%;
   background-repeat: no-repeat;
   float: right;
