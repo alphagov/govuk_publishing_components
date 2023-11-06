@@ -4,6 +4,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function PrintLink ($module) {
     this.$module = $module
+    this.init()
   }
 
   PrintLink.prototype.init = function () {

@@ -1,13 +1,10 @@
-// = require govuk/components/details/details.js
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.GovukDetails = window.GOVUKFrontend.Details;
+window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   function GemDetails ($module) {
     this.$module = $module
     this.$summary = this.$module.querySelector('.govuk-details__summary')
-
     this.customTrackLabel = this.$summary.getAttribute('data-track-label')
     this.detailsClick = this.$module.querySelector('[data-details-track-click]')
   }

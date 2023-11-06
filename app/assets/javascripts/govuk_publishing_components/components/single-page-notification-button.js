@@ -12,6 +12,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.personalisationEndpoint = '/api/personalisation/check-email-subscription?base_path=' + this.basePath
     // This attribute is passed through to the personalisation API to ensure the updated button has the same button_location for analytics
     if (this.buttonLocation) this.personalisationEndpoint += '&button_location=' + this.buttonLocation
+
+    this.init()
   }
 
   SinglePageNotificationButton.prototype.init = function () {
