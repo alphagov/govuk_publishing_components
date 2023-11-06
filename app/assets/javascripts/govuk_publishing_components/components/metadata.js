@@ -4,6 +4,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function Metadata ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   Metadata.prototype.init = function () {

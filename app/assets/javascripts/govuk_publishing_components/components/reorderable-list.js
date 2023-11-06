@@ -7,6 +7,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module
     this.$upButtons = this.$module.querySelectorAll('.js-reorderable-list-up')
     this.$downButtons = this.$module.querySelectorAll('.js-reorderable-list-down')
+
+    this.init()
   }
 
   ReorderableList.prototype.init = function () {

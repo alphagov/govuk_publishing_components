@@ -6,6 +6,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module
     this.$input = this.$module.querySelector('.gem-c-input')
     this.$copyButton = this.$module.querySelector('.gem-c-button')
+
+    this.init()
   }
 
   CopyToClipboard.prototype.init = function () {

@@ -105,6 +105,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     )
 
     this.hiddenButtons = this.$module.querySelectorAll('button[hidden]')
+
+    this.init()
   }
 
   SuperNavigationMegaMenu.prototype.buttonHandler = function (event) {

@@ -8,6 +8,8 @@ window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
     this.$module = $module
     this.$checkboxes = this.$module.querySelectorAll('input[type=checkbox]')
     this.$nestedCheckboxes = this.$module.querySelectorAll('[data-nested=true] input[type=checkbox]')
+
+    this.init()
   }
 
   GemCheckboxes.prototype.init = function () {
