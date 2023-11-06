@@ -24,7 +24,10 @@
     }
   },
   "stylelint": {
-    "extends": ["stylelint-config-gds/scss", "stylelint-stylistic/config"],
+    "extends": [
+      "stylelint-config-gds/scss",
+      "stylelint-stylistic/config"
+    ],
     "rules": {
       "stylistic/number-leading-zero": null,
       "stylistic/max-line-length": 160,
@@ -33,7 +36,7 @@
   },
   "dependencies": {
     "axe-core": "^4.8.2",
-    "govuk-frontend": "^4.7.0",
+    "govuk-frontend": "5.0.0-beta.1",
     "sortablejs": "^1.15.0"
   },
   "devDependencies": {
