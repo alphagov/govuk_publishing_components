@@ -10,9 +10,9 @@ return unless Rails.application.config.respond_to?(:assets)
 Rails.application.config.assets.precompile += %w[govuk_publishing_components_manifest.js]
 
 Rails.application.config.assets.paths += %W[
-  #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/images
-  #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/fonts
-  #{__dir__}/../../node_modules/govuk-frontend/
+  #{__dir__}/../../node_modules/govuk-frontend/dist/govuk/assets/images
+  #{__dir__}/../../node_modules/govuk-frontend/dist/govuk/assets/fonts
+  #{__dir__}/../../node_modules/govuk-frontend/dist
   #{__dir__}/../../node_modules/
 ]
 
