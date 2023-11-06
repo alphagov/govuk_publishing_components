@@ -12,6 +12,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.activeStepClass = 'gem-c-step-nav__step--active'
     this.$module.activeLinkHref = '#content'
     this.$module.uniqueId = false
+
+    this.init()
   }
 
   Gemstepnav.prototype.init = function () {

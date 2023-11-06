@@ -5,6 +5,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function ShowPassword ($module) {
     this.$module = $module
     this.input = this.$module.querySelector('.gem-c-input')
+    this.init()
   }
 
   ShowPassword.prototype.init = function () {

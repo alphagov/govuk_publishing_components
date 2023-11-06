@@ -21,6 +21,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.jshiddenClass = 'js-hidden'
     this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
     this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
+
+    this.init()
   }
 
   Feedback.prototype.init = function () {
@@ -73,6 +75,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       } else {
         gaClientId = window.GOVUK.cookie('_ga').split('.').slice(-2).join('.')
       }
+
       this.setHiddenValuesNotUsefulForm(gaClientId)
     }.bind(this))
 

@@ -19,6 +19,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.mq = window.matchMedia('(min-width: 641px)')
     this.isClosedOnLoad = this.$optionSelect.getAttribute('data-closed-on-load')
     this.isClosedOnLoadMobile = this.$optionSelect.getAttribute('data-closed-on-load-mobile')
+
+    this.init()
   }
 
   OptionSelect.prototype.init = function () {
@@ -155,6 +157,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
      * We do this in the JavaScript because if the JavaScript is not active then the button shouldn't
      * be there as there is no JS to handle the click event.
     */
+
     var containerHead = this.$optionSelect.querySelector('.js-container-button')
     var jsContainerHeadHTML = containerHead.innerHTML
 

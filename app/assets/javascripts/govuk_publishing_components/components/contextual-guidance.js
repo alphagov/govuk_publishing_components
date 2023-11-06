@@ -7,6 +7,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$guidance = this.$module.querySelector('.gem-c-contextual-guidance__wrapper')
     this.$inputId = this.$guidance.getAttribute('for')
     this.$input = this.$module.querySelector('#' + this.$inputId)
+
+    this.init()
   }
 
   ContextualGuidance.prototype.init = function () {

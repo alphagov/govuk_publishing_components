@@ -1,13 +1,13 @@
-// = require govuk/components/checkboxes/checkboxes.js
-window.GOVUK = window.GOVUK || {}
+// = require govuk/components/checkboxes/checkboxes.bundle.js
 window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
+window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes.Checkboxes;
 
 (function (Modules) {
   function GemCheckboxes ($module) {
     this.$module = $module
     this.$checkboxes = this.$module.querySelectorAll('input[type=checkbox]')
     this.$nestedCheckboxes = this.$module.querySelectorAll('[data-nested=true] input[type=checkbox]')
+    this.init()
   }
 
   GemCheckboxes.prototype.init = function () {
