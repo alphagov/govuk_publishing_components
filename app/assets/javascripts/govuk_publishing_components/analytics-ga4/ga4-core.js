@@ -43,6 +43,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       data.govuk_gem_version = this.getGemVersion()
       // set this in the console as a debugging aid
       if (window.GOVUK.analyticsGa4.showDebug) {
+        data.event_data = this.sortEventData(data.event_data)
         console.info(JSON.stringify(data, null, ' '))
       }
       window.dataLayer.push(data)
@@ -50,6 +51,20 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
     getGemVersion: function () {
       return window.GOVUK.analyticsGa4.vars.gem_version || 'not found'
+    },
+
+    sortEventData: function (eventData) {
+      if (!Object.keys) { // check for IE9 and below
+        return eventData
+      }
+
+      var keys = Object.keys(eventData)
+      keys.sort()
+      var newEventData = {}
+      for (var i = 0; i < keys.length; i++) {
+        newEventData[keys[i]] = eventData[keys[i]]
+      }
+      return newEventData
     },
 
     trackFunctions: {
