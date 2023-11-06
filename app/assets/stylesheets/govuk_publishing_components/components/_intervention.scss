@@ -4,7 +4,7 @@
   @include govuk-text-colour;
   @include govuk-responsive-padding(3);
   @include govuk-responsive-margin(6, "bottom");
-  background-color: govuk-colour("light-grey", $legacy: "grey-4");
+  background-color: govuk-colour("light-grey");
   border-left: 10px solid $govuk-success-colour;
 
   .govuk-body:last-of-type {
