@@ -1,4 +1,3 @@
-// = require govuk/vendor/polyfills/Element/prototype/closest.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
 window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analyticsModules || {};
