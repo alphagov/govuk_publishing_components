@@ -138,7 +138,10 @@ describe "Layout for public", type: :view do
   it "renders homepage variant of layout super navigation header if `homepage` is true" do
     render_component(show_explore_header: true, homepage: true)
 
-    assert page.has_no_selector?(".govuk-header__logotype-text")
+    assert_select ".govuk-header__logotype[width='32']"
+    assert_select ".govuk-header__logotype[height='30']"
+    assert_select ".gem-c-layout-super-navigation-header--blue-background"
+    assert_select ".gem-c-layout-super-navigation-header__header-logo--large-navbar"
   end
 
   it "renders the blue bar if `full_width` is true and `blue_bar` is true" do
