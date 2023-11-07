@@ -780,7 +780,8 @@ describe('Feedback component', function () {
   })
 
   function loadFeedbackComponent () {
-    new GOVUK.Modules.Feedback($('.gem-c-feedback')[0]).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.Feedback($('.gem-c-feedback')[0])
   }
 
   function fillAndSubmitSomethingIsWrongForm () {

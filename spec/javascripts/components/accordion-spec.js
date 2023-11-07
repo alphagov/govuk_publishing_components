@@ -48,7 +48,8 @@ describe('Accordion component', function () {
     '</div>'
 
   function startAccordion () {
-    new GOVUK.Modules.GemAccordion(accordion).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.GemAccordion(accordion)
   }
 
   beforeEach(function () {
