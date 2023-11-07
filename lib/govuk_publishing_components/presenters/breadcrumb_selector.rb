@@ -3,11 +3,11 @@ module GovukPublishingComponents
     class BreadcrumbSelector
       attr_reader :content_item, :request, :prioritise_taxon_breadcrumbs
 
-      def initialize(content_item, request, prioritise_taxon_breadcrumbs, ga4_tracking)
+      def initialize(content_item, request, prioritise_taxon_breadcrumbs, disable_ga4)
         @content_item = content_item
         @request = request
         @prioritise_taxon_breadcrumbs = prioritise_taxon_breadcrumbs
-        @ga4_tracking = ga4_tracking
+        @disable_ga4 = disable_ga4
       end
 
       def breadcrumbs
@@ -38,7 +38,7 @@ module GovukPublishingComponents
         elsif navigation.content_tagged_to_current_step_by_step?
           {
             step_by_step: true,
-            breadcrumbs: navigation.step_nav_helper.header(@ga4_tracking),
+            breadcrumbs: navigation.step_nav_helper.header(@disable_ga4),
           }
         elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
           {
