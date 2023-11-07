@@ -21,14 +21,14 @@ describe "Layout header", type: :view do
     render_component(environment: "staging")
 
     assert_select ".govuk-header.gem-c-layout-header--staging"
-    assert_select ".gem-c-environment-tag", text: "staging"
+    assert_select ".gem-c-environment-tag", text: "Staging"
   end
 
   it "renders the product name" do
     render_component(environment: "staging", product_name: "Product name")
 
     assert_select ".govuk-header__product-name", text: "Product name"
-    assert_select ".gem-c-environment-tag", text: "staging"
+    assert_select ".gem-c-environment-tag", text: "Staging"
   end
 
   it "renders at a constrained width by default" do
