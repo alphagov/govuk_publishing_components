@@ -1,4 +1,4 @@
-//= require govuk/vendor/polyfills/Element/prototype/classList.js
+//= require ../vendor/polyfills-govuk-frontend-v4/Element/prototype/classList.js
 //= require ../vendor/polyfills/closest.js
 //= require ../vendor/polyfills/indexOf.js
 
