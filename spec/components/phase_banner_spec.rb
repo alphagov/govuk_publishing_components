@@ -20,20 +20,20 @@ describe "Phase banner", type: :view do
   it "shows the alpha phase" do
     render_component(phase: "alpha")
 
-    assert_select ".govuk-phase-banner__content__tag", text: "alpha"
+    assert_select ".govuk-phase-banner__content__tag", text: "Alpha"
   end
 
   it "shows the beta phase" do
     render_component(phase: "beta")
 
-    assert_select ".govuk-phase-banner__content__tag", text: "beta"
+    assert_select ".govuk-phase-banner__content__tag", text: "Beta"
   end
 
   it "shows the app name" do
     render_component(app_name: "Skittles Maker", phase: "beta")
 
     assert_select ".govuk-phase-banner__content__app-name", text: "Skittles Maker"
-    assert_select ".govuk-phase-banner__content__tag", text: "beta"
+    assert_select ".govuk-phase-banner__content__tag", text: "Beta"
   end
 
   it "correctly uses inverse mode " do
