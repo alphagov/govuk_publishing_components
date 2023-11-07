@@ -125,6 +125,7 @@
 
 .gem-c-environment-tag--production {
   background-color: govuk-colour("red");
+  color: govuk-colour("white");
 }
 
 .gem-c-environment-tag--example {
@@ -133,6 +134,7 @@
 
 .gem-c-environment-tag--development {
   background-color: govuk-colour("dark-grey");
+  color: govuk-colour("white");
 }
 
 .gem-c-environment-tag--staging,
