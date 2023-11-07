@@ -37,7 +37,7 @@ end
 <%= tag.div class: container_css_classes, data: data_attributes do %>
   <%= tag.p class: "govuk-phase-banner__content" do %>
     <%= tag.strong app_name, class: "govuk-phase-banner__content__app-name" if app_name %>
-    <%= tag.strong phase, class: "govuk-tag govuk-phase-banner__content__tag" if phase %>
+    <%= tag.strong phase.titleize, class: "govuk-tag govuk-phase-banner__content__tag" if phase %>
     <%= tag.span message, class: "govuk-phase-banner__text" if message %>
   <% end %>
 <% end %>
