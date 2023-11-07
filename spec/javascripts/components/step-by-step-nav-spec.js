@@ -120,7 +120,8 @@ describe('A stepnav module', function () {
 
   beforeEach(function () {
     $element = $(html)
-    new GOVUK.Modules.Gemstepnav($element[0]).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.Gemstepnav($element[0])
     expectedstepnavStepCount = $element.find('.gem-c-step-nav__step').length
     expectedstepnavContentCount = $element.find('.gem-c-step-nav__step').first().find('.js-link').length
     expectedstepnavLinkCount = $element.find('.gem-c-step-nav__list-item').length
@@ -382,7 +383,8 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -430,7 +432,8 @@ describe('A stepnav module', function () {
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-three"]')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -469,7 +472,8 @@ describe('A stepnav module', function () {
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -487,7 +491,8 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.attr('data-remember', true)
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -512,7 +517,8 @@ describe('A stepnav module', function () {
     beforeEach(function () {
       $element = $(html)
       $element.find('#topic-step-two').attr('data-show', '')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     it('shows the step it\'s supposed to', function () {
@@ -533,7 +539,8 @@ describe('A stepnav module', function () {
     beforeEach(function () {
       $element = $(html)
       $element.addClass('gem-c-step-nav--large')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     it('triggers a google analytics custom event when clicking on the title on a big stepnav', function () {
@@ -683,7 +690,8 @@ describe('A stepnav module', function () {
     beforeEach(function () {
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -742,7 +750,8 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       window.sessionStorage.setItem('govuk-step-nav-active-link_unique-id', '3.5')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -765,7 +774,8 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       window.sessionStorage.setItem('govuk-step-nav-active-link_unique-id', 'definitelynotvalid')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -784,7 +794,8 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       $element.find('.gem-c-step-nav__step').removeClass('gem-c-step-nav__step--active')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     afterEach(function () {
@@ -802,7 +813,8 @@ describe('A stepnav module', function () {
     beforeEach(function () {
       $element = $(html)
       $element.removeAttr('data-id')
-      new GOVUK.Modules.Gemstepnav($element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav($element[0])
     })
 
     it('triggers a google analytics custom event on show all', function () {
@@ -929,7 +941,8 @@ describe('A stepnav module', function () {
       element.childNodes[0].setAttribute('data-module', 'gemstepnav ga4-event-tracker')
       element.childNodes[0].setAttribute('data-ga4-expandable', '')
       element.querySelector('.js-step-title').innerText = "This title's got quotation marks \" in it."
-      new GOVUK.Modules.Gemstepnav(element.childNodes[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Gemstepnav(element.childNodes[0])
     })
 
     it('adds the "Show all" JSON to the JS generated "show all steps" button', function () {

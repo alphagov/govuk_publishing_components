@@ -6,7 +6,8 @@ describe('Details component', function () {
 
   function loadDetailsComponent () {
     var element = document.querySelector('[data-module="gem-details"]')
-    new GOVUK.Modules.GemDetails(element).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.GemDetails(element)
   }
 
   beforeEach(function () {

@@ -104,7 +104,8 @@ describe('An option select component', function () {
       var $closedOnLoadFixture = $(optionSelectWithAttrs('data-closed-on-load=true'))
       $('body').append($closedOnLoadFixture)
 
-      new GOVUK.Modules.OptionSelect($closedOnLoadFixture[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.OptionSelect($closedOnLoadFixture[0])
 
       expect($closedOnLoadFixture.find('button').attr('aria-expanded')).toBe('false')
     })
@@ -113,7 +114,8 @@ describe('An option select component', function () {
       var $openOnLoadFixture = $(optionSelectWithAttrs('data-closed-on-load=false'))
       $('body').append($openOnLoadFixture)
 
-      new GOVUK.Modules.OptionSelect($openOnLoadFixture[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.OptionSelect($openOnLoadFixture[0])
 
       expect($openOnLoadFixture.find('button').attr('aria-expanded')).toBe('true')
       expect($('body').find('.js-options-container').is(':visible')).toBe(true)
@@ -123,7 +125,8 @@ describe('An option select component', function () {
       var $openOnLoadFixture = $(optionSelectWithAttrs(''))
       $('body').append($openOnLoadFixture)
 
-      new GOVUK.Modules.OptionSelect($openOnLoadFixture[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.OptionSelect($openOnLoadFixture[0])
 
       expect($openOnLoadFixture.find('button').attr('aria-expanded')).toBe('true')
       expect($('body').find('.js-options-container').is(':visible')).toBe(true)
@@ -132,7 +135,8 @@ describe('An option select component', function () {
     it('sets the height of the options container as part of initialisation', function () {
       $element = document.createElement('div')
       $element.innerHTML = html
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select'))
 
       expect($($element).find('.js-options-container').attr('style')).toContain('height')
     })
@@ -140,7 +144,8 @@ describe('An option select component', function () {
     it('doesn\'t set the height of the options container as part of initialisation if closed-on-load is true', function () {
       var $closedOnLoadFixture = $(optionSelectWithAttrs('data-closed-on-load=true'))
 
-      new GOVUK.Modules.OptionSelect($closedOnLoadFixture[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.OptionSelect($closedOnLoadFixture[0])
 
       expect($closedOnLoadFixture.find('.js-options-container').attr('style')).not.toContain('height')
     })
@@ -148,7 +153,8 @@ describe('An option select component', function () {
     it('replaces the `span.gem-c-option-select__title` with a button', function () {
       $element = document.createElement('div')
       $element.innerHTML = html
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select'))
 
       expect($($element).find('button')).toBeDefined()
     })
@@ -187,7 +193,6 @@ describe('An option select component', function () {
       $('body').append($element)
 
       optionSelect = new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select'))
-      optionSelect.init()
     })
 
     it('calls optionSelect.close() if the optionSelect is currently open', function () {
@@ -211,7 +216,8 @@ describe('An option select component', function () {
       $element.innerHTML = html
       $('body').append($element)
 
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select'))
     })
 
     it('closes and opens the option select', function () {
@@ -241,7 +247,6 @@ describe('An option select component', function () {
       $('body').append($element)
 
       optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
-      optionSelect.init()
       optionSelect.setContainerHeight(100)
       firstCheckbox = optionSelect.$allCheckboxes[0]
       lastCheckbox = optionSelect.$allCheckboxes[optionSelect.$allCheckboxes.length - 1]
@@ -263,7 +268,6 @@ describe('An option select component', function () {
       $element = $(html)
       $('body').append($element)
       optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
-      optionSelect.init()
     })
 
     it('returns all the checkboxes if the container doesn\'t overflow', function () {
@@ -303,7 +307,6 @@ describe('An option select component', function () {
       })
 
       $checkboxListInner = $checkboxList.find(' > .js-auto-height-inner')
-      optionSelect.init()
     })
 
     it('expands the checkbox-container to fit checkbox list if the list is < 50px larger than the container', function () {
@@ -334,7 +337,6 @@ describe('An option select component', function () {
       $wrapper.hide()
 
       optionSelect = new GOVUK.Modules.OptionSelect($wrapper.find('.gem-c-option-select')[0])
-      optionSelect.init()
     })
 
     afterEach(function () {
@@ -354,7 +356,6 @@ describe('An option select component', function () {
       var $wrapper = $('<div/>').addClass('wrapper').hide().html($element)
       $('body').append($wrapper)
       optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
-      optionSelect.init()
     })
 
     afterEach(function () {
@@ -388,7 +389,6 @@ describe('An option select component', function () {
       $element.find('.gem-c-checkboxes').prepend($(filterSpan))
       $('body').append($element)
       optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
-      optionSelect.init()
 
       jasmine.clock().install()
       $filterInput = document.querySelector('[name="option-select-filter"]')
