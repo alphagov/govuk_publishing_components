@@ -34,7 +34,7 @@ accessibility_criteria: |
 
   * be fully expanded
   * not be marked as expandable
-uses_component_wrapper_helper: true  
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 examples:
@@ -182,11 +182,11 @@ examples:
                     <a class="govuk-link" href="#">Retiring your service</a>
                   </li>
               </ul>'
-  with_ga4_tracking:
+  without_ga4_tracking:
     description: |
-      Allows you to add GA4 tracking to an accordion. This will add a data module and data-attributes with JSONs to the accordion. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
+      Disables GA4 tracking on the accordion. Tracking is enabled by default. This adds a data module and data-attributes with JSONs to the accordion. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       items:
         - heading:
             text: Writing well for the web

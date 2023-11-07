@@ -194,10 +194,9 @@ describe "Accordion", type: :view do
     assert_select ".govuk-accordion[data-show-all-attributes='{\"module\":\"example\",\"track_action\":\"click\"}']"
   end
 
-  it "ga4 data attributes are present when required" do
+  it "ga4 data attributes are present by default" do
     test_data = {
       id: "test-for-data-attributes",
-      ga4_tracking: true,
       items: [
         {
           heading: { text: "Heading 1" },
@@ -218,6 +217,30 @@ describe "Accordion", type: :view do
     assert_select '.govuk-accordion__section-heading[data-ga4-event=\'{"event_name":"select_content","type":"accordion","text":"Heading 2","index_section":2,"index_section_count":2}\']'
   end
 
+  it "ga4 can be disabled" do
+    test_data = {
+      id: "test-for-data-attributes",
+      disable_ga4: true,
+      items: [
+        {
+          heading: { text: "Heading 1" },
+          content: { html: "<p>Content 1.</p>" },
+        },
+        {
+          heading: { text: "Heading 2" },
+          content: { html: "<p>Content 2.</p>" },
+        },
+      ],
+    }
+
+    render_component(test_data)
+
+    assert_select ".govuk-accordion[data-ga4-expandable]", false
+    assert_select '.govuk-accordion[data-module="govuk-accordion gem-accordion"]'
+    assert_select '.govuk-accordion[data-module="govuk-accordion gem-accordion ga4-event-tracker"]', false
+    assert_select ".govuk-accordion__section-heading[data-ga4-event]", false
+  end
+
   it '`data-module="govuk-accordion"` attribute is present when no custom data attributes given' do
     test_data = {
       id: "test-for-module-data-attributes",
@@ -233,7 +256,7 @@ describe "Accordion", type: :view do
       ],
     }
     render_component(test_data)
-    assert_select "[data-module='govuk-accordion gem-accordion']", count: 1
+    assert_select "[data-module='govuk-accordion gem-accordion ga4-event-tracker']", count: 1
   end
 
   it '`data-module="govuk-accordion"` attribute is present when custom data attributes given' do
@@ -260,7 +283,7 @@ describe "Accordion", type: :view do
       ],
     }
     render_component(test_data)
-    assert_select "[data-module='govuk-accordion gem-accordion']", count: 1
+    assert_select "[data-module='govuk-accordion gem-accordion ga4-event-tracker']", count: 1
     assert_select "[data-gtm]", count: 2
     assert_select "[data-gtm='this-is-gtm']", count: 1
     assert_select "[data-gtm='this-is-a-second-gtm']", count: 1
@@ -281,7 +304,7 @@ describe "Accordion", type: :view do
       ],
     }
     render_component(test_data)
-    assert_select "[data-module='gem-track-click govuk-accordion gem-accordion']", count: 1
+    assert_select "[data-module='gem-track-click govuk-accordion gem-accordion ga4-event-tracker']", count: 1
   end
 
   it "section has class added when expanded flag is present" do
