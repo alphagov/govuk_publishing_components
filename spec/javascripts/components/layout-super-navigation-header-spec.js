@@ -5,7 +5,6 @@ describe('The super header navigation', function () {
   'use strict'
 
   var container
-  var thisModule
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -198,10 +197,6 @@ describe('The super header navigation', function () {
       '</nav>'
 
     document.body.appendChild(container)
-
-    var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
-    thisModule = new GOVUK.Modules.SuperNavigationMegaMenu($element)
-
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
@@ -215,7 +210,9 @@ describe('The super header navigation', function () {
 
   describe('on both small and large screens', function () {
     beforeEach(function () {
-      thisModule.init()
+      var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
+      /* eslint-disable no-new */
+      new GOVUK.Modules.SuperNavigationMegaMenu($element)
     })
 
     it('has the initialised class once the JavaScript has run', function () {
@@ -229,7 +226,9 @@ describe('The super header navigation', function () {
     var $button
 
     beforeEach(function () {
-      thisModule.init()
+      var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
+      /* eslint-disable no-new */
+      new GOVUK.Modules.SuperNavigationMegaMenu($element)
       $button = document.querySelector('#super-navigation-menu-toggle')
     })
 
@@ -347,7 +346,9 @@ describe('The super header navigation', function () {
     var $button
 
     beforeEach(function () {
-      thisModule.init()
+      var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
+      /* eslint-disable no-new */
+      new GOVUK.Modules.SuperNavigationMegaMenu($element)
       $button = document.querySelector('#super-search-menu-toggle')
     })
 
