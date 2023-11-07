@@ -3,7 +3,8 @@
 
 describe('Checkboxes component', function () {
   function loadCheckboxesComponent () {
-    new GOVUK.Modules.GemCheckboxes($('.gem-c-checkboxes')[0]).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.GemCheckboxes($('.gem-c-checkboxes')[0])
   }
 
   var FIXTURE =

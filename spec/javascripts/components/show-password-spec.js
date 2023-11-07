@@ -14,7 +14,9 @@ describe('A show password component', function () {
           '</div>' +
         '</div>'
       )
-      new GOVUK.Modules.ShowPassword(element[0]).init()
+      /* eslint-disable no-new */
+      /* eslint-disable no-new */
+      new GOVUK.Modules.ShowPassword(element[0])
     })
 
     afterEach(function () {
@@ -67,7 +69,9 @@ describe('A show password component', function () {
         '</form>'
       )
       $('body').append(element)
-      new GOVUK.Modules.ShowPassword(element.find('.gem-c-show-password')[0]).init()
+      /* eslint-disable no-new */
+      /* eslint-disable no-new */
+      new GOVUK.Modules.ShowPassword(element.find('.gem-c-show-password')[0])
       $('body').on('submit', function (e) {
         e.preventDefault()
       })
@@ -104,7 +108,9 @@ describe('A show password component', function () {
         '</form>'
       )
       $('body').append(element)
-      new GOVUK.Modules.ShowPassword(element.find('.gem-c-show-password')[0]).init()
+      /* eslint-disable no-new */
+      /* eslint-disable no-new */
+      new GOVUK.Modules.ShowPassword(element.find('.gem-c-show-password')[0])
       $('body').on('submit', function (e) {
         e.preventDefault()
       })
@@ -137,7 +143,8 @@ describe('A show password component', function () {
           '</div>' +
         '</div>'
       )
-      new GOVUK.Modules.ShowPassword(element[0]).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.ShowPassword(element[0])
     })
 
     afterEach(function () {

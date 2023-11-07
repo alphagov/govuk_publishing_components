@@ -69,6 +69,7 @@ describe('Google Analytics auto tracker', function () {
   describe('configuring tracking without any data', function () {
     beforeEach(function () {
       element.setAttribute('data-ga4-auto', '')
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4AutoTracker(element).init()
     })
 
@@ -80,6 +81,7 @@ describe('Google Analytics auto tracker', function () {
   describe('configuring tracking with incorrect data', function () {
     beforeEach(function () {
       element.setAttribute('data-ga4-auto', 'invalid json')
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4AutoTracker(element).init()
     })
 
@@ -110,6 +112,7 @@ describe('Google Analytics auto tracker', function () {
         index_section_count: undefined
       }
       element.setAttribute('data-ga4-auto', JSON.stringify(attributes))
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4AutoTracker(element).init()
     })
 
