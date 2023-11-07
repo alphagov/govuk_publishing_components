@@ -1,4 +1,4 @@
-//= require govuk/vendor/polyfills/Element/prototype/classList.js
+//= require ../../vendor/polyfills-govuk-frontend-v4/Element/prototype/classList.js
 // This is a non-jQuery version of Magna Charta: https://github.com/alphagov/magna-charta
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
