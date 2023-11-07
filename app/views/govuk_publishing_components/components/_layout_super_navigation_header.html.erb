@@ -117,7 +117,6 @@
             </span>
           <% end %>
           <span class="govuk-header__logotype">
-            <!--[if gt IE 8]><!-->
             <%= content_tag(:svg, {
               aria: {
                 hidden: true,
@@ -136,10 +135,6 @@
               >
               </path>
             <% end %>
-            <!--<![endif]-->
-            <!--[if IE 8]>
-            <img src="<%= asset_path('govuk-logotype-crown.png') %>" alt="" class="govuk-header__logotype-crown-fallback-image" width="36" height="32">
-            <![endif]-->
             <% unless hide_logo_text %>
               <span class="govuk-header__logotype-text">
                 <%= logo_text %>
