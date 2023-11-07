@@ -110,18 +110,21 @@ describe('GA4 smart answer results tracking', function () {
 
   describe('on page load', function () {
     it('should push a nullified ecommerce object to the dataLayer', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       expect(window.dataLayer[0].search_results.ecommerce).toBe(null)
     })
 
     it('should get the number of results i.e. 5 results in this test case', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       expect(window.dataLayer[1].search_results.results).toBe(onPageLoadExpected.search_results.results)
     })
 
     it('should get the item id for each result', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       var smartAnswerResultItems = window.dataLayer[1].search_results.ecommerce.items
@@ -131,6 +134,7 @@ describe('GA4 smart answer results tracking', function () {
     })
 
     it('should get the item list name for each result', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       var smartAnswerResultItems = window.dataLayer[1].search_results.ecommerce.items
@@ -145,6 +149,7 @@ describe('GA4 smart answer results tracking', function () {
       }
       smartAnswerResultsParentEl.removeAttribute('data-ga4-list-title')
 
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       var smartAnswerResultItems = window.dataLayer[1].search_results.ecommerce.items
@@ -154,6 +159,7 @@ describe('GA4 smart answer results tracking', function () {
     })
 
     it('should get the index for each result using the data-ga4-ecommerce-index attribute', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       var smartAnswerResultItems = window.dataLayer[1].search_results.ecommerce.items
@@ -169,6 +175,7 @@ describe('GA4 smart answer results tracking', function () {
         smartAnswerResults[i].removeAttribute('data-ga4-ecommerce-index')
       }
 
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       var smartAnswerResultItems = window.dataLayer[1].search_results.ecommerce.items
@@ -210,6 +217,7 @@ describe('GA4 smart answer results tracking', function () {
     })
 
     it('should push a nullified ecommerce object to the dataLayer', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       expect(window.dataLayer[0].search_results.ecommerce).toBe(null)
@@ -226,6 +234,7 @@ describe('GA4 smart answer results tracking', function () {
     })
 
     it('should push 1 search result to the dataLayer (i.e. the clicked search result)', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       smartAnswerResultToBeClicked.click()
@@ -233,6 +242,7 @@ describe('GA4 smart answer results tracking', function () {
     })
 
     it('should add the event_data property to the object and set it appropriately', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       smartAnswerResultToBeClicked.click()
@@ -241,6 +251,7 @@ describe('GA4 smart answer results tracking', function () {
     })
 
     it('should set the remaining properties appropriately', function () {
+      /* eslint-disable no-new */
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()
 
       smartAnswerResultToBeClicked.click()
