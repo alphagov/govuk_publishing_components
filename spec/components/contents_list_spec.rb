@@ -84,7 +84,7 @@ describe "Contents list", type: :view do
   it "renders data attributes for tracking" do
     render_component(contents: nested_contents_list)
 
-    assert_select ".gem-c-contents-list[data-module='gem-track-click']"
+    assert_select ".gem-c-contents-list[data-module='gem-track-click ga4-link-tracker']"
 
     assert_tracking_link("category", "contentsClicked", 6)
     assert_tracking_link("action", "content_item 1")
@@ -126,8 +126,8 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list[aria-label=\"All pages in this guide\"]"
   end
 
-  it "ga4 tracking is added when ga4_tracking is true" do
-    render_component(contents: nested_contents_list, ga4_tracking: true)
+  it "GA4 tracking is added by default" do
+    render_component(contents: nested_contents_list)
 
     expected_ga4_json = {
       event_name: "navigation",
@@ -158,6 +158,16 @@ describe "Contents list", type: :view do
       expect(link.attr("data-ga4-link").to_s).to eq expected_ga4_json.to_json
       expect(link).to have_text(texts[index])
     end
+  end
+
+  it "GA4 tracking can be disabled" do
+    render_component(contents: nested_contents_list, disable_ga4: true)
+
+    assert_select ".gem-c-contents-list" do |contents_list|
+      expect(contents_list.attr("data-module").to_s).to eq "gem-track-click"
+    end
+
+    assert_select ".gem-c-contents-list__list-item a[data-ga4-link]", false
   end
 
   it "applies branding correctly" do
