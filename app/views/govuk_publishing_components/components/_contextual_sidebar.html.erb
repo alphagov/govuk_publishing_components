@@ -1,8 +1,8 @@
 <%
   add_gem_component_stylesheet("contextual-sidebar")
 
-  ga4_tracking ||= false
-  request.query_parameters[:ga4_tracking] = ga4_tracking
+  disable_ga4 ||= false
+  request.query_parameters[:disable_ga4] = disable_ga4
   navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   show_ukraine_cta = navigation.show_ukraine_cta?
@@ -13,7 +13,7 @@
 <div class="gem-c-contextual-sidebar">
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
     <%# Rendering step by step related items because there are a few but not too many of them %>
-    <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links, ga4_tracking: ga4_tracking %>
+    <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links, disable_ga4: disable_ga4 %>
   <% end %>
 
   <% if navigation.content_tagged_to_current_step_by_step? %>
@@ -21,7 +21,7 @@
     <%= render 'govuk_publishing_components/components/step_by_step_nav', navigation.step_nav_helper.sidebar %>
   <% else %>
     <%# Rendering related navigation sidebar because no step by step list %>
-    <%= render 'govuk_publishing_components/components/related_navigation', content_item: content_item, context: :sidebar, ga4_tracking: ga4_tracking, ga4_tracking_counts: ga4_tracking_counts %>
+    <%= render 'govuk_publishing_components/components/related_navigation', content_item: content_item, context: :sidebar, disable_ga4: disable_ga4, ga4_tracking_counts: ga4_tracking_counts %>
   <% end %>
 
   <% if navigation.content_tagged_to_other_step_by_steps? %>
@@ -30,11 +30,11 @@
       pretitle: t("components.contextual_sidebar.pretitle"),
       links: navigation.step_nav_helper.also_part_of_step_nav,
       always_display_as_list: true,
-      ga4_tracking: ga4_tracking
+      disable_ga4: disable_ga4
     } %>
   <% end %>
 
   <% if show_ukraine_cta %>
-    <%= render 'govuk_publishing_components/components/contextual_sidebar/ukraine_cta', content_item: content_item, ga4_tracking: ga4_tracking, ga4_tracking_counts: ga4_tracking_counts %>
+    <%= render 'govuk_publishing_components/components/contextual_sidebar/ukraine_cta', content_item: content_item, disable_ga4: disable_ga4, ga4_tracking_counts: ga4_tracking_counts %>
   <% end %>
 </div>
