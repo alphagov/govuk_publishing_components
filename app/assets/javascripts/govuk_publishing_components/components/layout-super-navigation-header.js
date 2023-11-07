@@ -1,5 +1,3 @@
-//= require govuk/vendor/polyfills/Element/prototype/classList.js
-
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
