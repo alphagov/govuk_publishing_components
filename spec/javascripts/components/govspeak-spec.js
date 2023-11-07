@@ -26,6 +26,7 @@ describe('Govspeak', function () {
       document.body.appendChild(container)
 
       var element = document.querySelector('[data-module="govspeak"]')
+      /* eslint-disable no-new */
       new GOVUK.Modules.Govspeak(element).init()
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(1)
@@ -40,6 +41,7 @@ describe('Govspeak', function () {
       document.body.appendChild(container)
 
       var element = document.querySelector('[data-module="govspeak"]')
+      /* eslint-disable no-new */
       new GOVUK.Modules.Govspeak(element).init()
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
@@ -62,6 +64,7 @@ describe('Govspeak', function () {
       document.body.appendChild(container)
 
       var element = document.querySelector('[data-module="govspeak"]')
+      /* eslint-disable no-new */
       new GOVUK.Modules.Govspeak(element).init()
 
       expect(document.querySelectorAll('.mc-chart').length).toBe(1)
