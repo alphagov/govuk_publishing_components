@@ -10,6 +10,7 @@ PATH
       rouge
       sprockets (>= 3)
       sprockets-rails
+      terser
 
 GEM
   remote: https://rubygems.org/
