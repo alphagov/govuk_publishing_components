@@ -7,13 +7,13 @@ describe "warning text", type: :view do
 
   it "renders warning text" do
     render_component(text: "You can be fined up to £5,000 if you don’t register.")
-    assert_select(".govuk-warning-text__assistive", text: "Warning")
+    assert_select(".govuk-visually-hidden", text: "Warning")
     assert_select(".govuk-warning-text__text", text: /You can be fined up to £5,000 if you don’t register?/i)
   end
 
   it "renders custom assistive text" do
     render_component(text_assistive: "Danger", text: "You can be fined up to £5,000 if you don’t register.")
-    assert_select(".govuk-warning-text__assistive", text: "Danger")
+    assert_select(".govuk-visually-hidden", text: "Danger")
     assert_select(".govuk-warning-text__text", text: /You can be fined up to £5,000 if you don’t register?/i)
   end
 
@@ -46,6 +46,6 @@ describe "warning text", type: :view do
   it "renders as a heading" do
     render_component(text: "Because", heading_level: 1)
     assert_select("h1.govuk-warning-text__text", text: /Because/i)
-    assert_select("h1.govuk-warning-text__text .govuk-warning-text__assistive", text: /Warning/i)
+    assert_select("h1.govuk-warning-text__text .govuk-visually-hidden", text: /Warning/i)
   end
 end

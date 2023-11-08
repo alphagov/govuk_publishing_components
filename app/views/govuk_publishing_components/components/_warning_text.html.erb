@@ -21,7 +21,7 @@
     <%= tag.span text_icon, class: "govuk-warning-text__icon", "aria-hidden": "true" %>
   <% end %>
   <% inner_text = capture do %>
-    <%= tag.span text_assistive, class: "govuk-warning-text__assistive" %>
+    <%= tag.span text_assistive, class: "govuk-visually-hidden" %>
     <%= text %>
   <% end %>
   <% if heading_level > 0 %>
