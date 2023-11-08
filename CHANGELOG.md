@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* GA4 auto tracker add PII redaction ([PR #3707](https://github.com/alphagov/govuk_publishing_components/pull/3707))
+
 ## 35.21.2
 
 * Revert nav menu font changes ([PR #3696](https://github.com/alphagov/govuk_publishing_components/pull/3696))

@@ -121,4 +121,27 @@ describe('Google Analytics auto tracker', function () {
       expect(window.dataLayer[0].not_a_schema_attribute).toEqual(undefined)
     })
   })
+
+  describe('PII removal', function () {
+    beforeEach(function () {
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'select_content'
+      expected.event_data.type = 'tabs'
+      expected.event_data.text = '/[date]/[postcode]/[email]'
+      expected.govuk_gem_version = 'aVersion'
+
+      var attributes = {
+        event_name: 'select_content',
+        type: 'tabs',
+        text: '/2022-02-02/SW10AA/email@example.com'
+      }
+      element.setAttribute('data-ga4-auto', JSON.stringify(attributes))
+      new GOVUK.Modules.Ga4AutoTracker(element).init()
+    })
+
+    it('redacts dates, postcodes and emails from text', function () {
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
 })
