@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 6"
   s.add_dependency "rouge"
   s.add_dependency "sprockets", ">= 3"
+  s.add_dependency "terser"
 
   s.add_development_dependency "capybara"
   s.add_development_dependency "faker"
@@ -37,7 +38,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rubocop-govuk"
   s.add_development_dependency "sassc-rails"
-  s.add_development_dependency "uglifier"
+  s.add_development_dependency "terser"
   s.add_development_dependency "webmock"
   s.add_development_dependency "yard"
 end
