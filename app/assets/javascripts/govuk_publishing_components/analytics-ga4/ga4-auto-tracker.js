@@ -7,6 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function Ga4AutoTracker (module) {
     this.module = module
     this.trackingTrigger = 'data-ga4-auto'
+    this.PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
   }
 
   Ga4AutoTracker.prototype.init = function () {
@@ -35,6 +36,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
 
+      data.text = this.PIIRemover.stripPIIWithOverride(data.text, true, true)
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')
 
