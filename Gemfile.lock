@@ -128,7 +128,7 @@ GEM
     domain_name (0.6.20240107)
     drb (2.2.1)
     erubi (1.12.0)
-    execjs (2.8.1)
+    execjs (2.9.1)
     faker (3.3.1)
       i18n (>= 1.8.11, < 2)
     gds-api-adapters (95.1.0)
@@ -599,12 +599,12 @@ GEM
     stringio (3.1.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
+    terser (1.2.0)
+      execjs (>= 0.3.0, < 3)
     thor (1.3.1)
     timeout (0.4.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
     webmock (3.23.0)
       addressable (>= 2.8.0)
@@ -638,7 +638,7 @@ DEPENDENCIES
   rake
   rspec-rails
   rubocop-govuk
-  uglifier
+  terser
   webmock
   yard
 
