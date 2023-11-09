@@ -177,7 +177,6 @@ describe "Devolved Nations", type: :view do
           alternative_url: "/publication-wales",
         },
       },
-      ga4_tracking: true,
     )
     assert_select ".gem-c-devolved-nations[data-ga4-devolved-nations-banner='England, Scotland, Wales']"
     assert_select ".gem-c-devolved-nations[data-module=ga4-link-tracker]"
@@ -193,7 +192,7 @@ describe "Devolved Nations", type: :view do
           applicable: true,
         },
       },
-      ga4_tracking: false,
+      disable_ga4: true,
     )
 
     assert_select ".gem-c-devolved-nations[data-ga4-devolved-nations-banner]", false
