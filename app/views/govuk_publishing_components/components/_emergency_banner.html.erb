@@ -7,7 +7,7 @@
   link_text ||= "More information"
   campaign_class ||= nil
   homepage ||= false
-  ga4_tracking ||= false
+  disable_ga4 ||= false
 
   emergency_banner_helper = GovukPublishingComponents::Presenters::EmergencyBannerHelper.new()
 
@@ -29,12 +29,11 @@
   description_classes = %w[gem-c-emergency-banner__description]
   description_classes << "gem-c-emergency-banner__description--homepage" if homepage
 
-
   data_attributes = {
     "nosnippet": true,
   }
 
-  if ga4_tracking
+  unless disable_ga4
     data_attributes[:ga4_emergency_banner] = ""
     data_attributes[:module] = "ga4-link-tracker"
     data_attributes[:ga4_track_links_only] = ""
@@ -46,7 +45,6 @@
     }.to_json
   end
 %>
-
 <%= content_tag('section', class: banner_classes, "aria-labelledby": "emergency-banner-heading", data: data_attributes) do %>
   <div class="govuk-width-container">
     <div class="govuk-grid-row">

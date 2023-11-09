@@ -13,7 +13,7 @@ describe "Emergency Banner", type: :view do
       link: options[:link],
       link_text: options[:link_text],
       homepage: options[:homepage],
-      ga4_tracking: options[:ga4_tracking],
+      disable_ga4: options[:disable_ga4],
     }
   end
 
@@ -80,7 +80,7 @@ describe "Emergency Banner", type: :view do
   end
 
   it "renders banner with ga4 attributes" do
-    render_component(emergency_banner_attributes({ campaign_class: "notable-death", ga4_tracking: true }))
+    render_component(emergency_banner_attributes({ campaign_class: "notable-death" }))
     assert_select ".gem-c-emergency-banner[data-ga4-emergency-banner]"
     assert_select ".gem-c-emergency-banner[data-module=ga4-link-tracker]"
     assert_select ".gem-c-emergency-banner[data-ga4-track-links-only]"
@@ -89,7 +89,7 @@ describe "Emergency Banner", type: :view do
   end
 
   it "renders banner without ga4 attributes" do
-    render_component(emergency_banner_attributes({ campaign_class: "notable-death", ga4_tracking: false }))
+    render_component(emergency_banner_attributes({ campaign_class: "notable-death", disable_ga4: true }))
     assert_select ".gem-c-emergency-banner[data-ga4-emergency-banner]", false
     assert_select ".gem-c-emergency-banner[data-module=ga4-link-tracker]", false
     assert_select ".gem-c-emergency-banner[data-ga4-track-links-only]", false

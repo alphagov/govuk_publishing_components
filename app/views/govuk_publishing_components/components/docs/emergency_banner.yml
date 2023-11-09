@@ -45,13 +45,13 @@ examples:
       short_description: "1491 to 1547"
       link: "https://www.gov.uk/"
       homepage: true
-  with_ga4_tracking:
+  without_ga4_tracking:
     description: |
-      Enables GA4 tracking on the banner. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
+      Disables GA4 tracking on the banner. Tracking is enabled by default. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
     data:
       campaign_class: "notable-death"
       heading: "His Royal Highness Henry VIII"
       short_description: "1491 to 1547"
       link: "https://www.gov.uk/"
       homepage: true
-      ga4_tracking: true
+      disable_ga4: true
