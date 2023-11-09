@@ -18,12 +18,12 @@
 
   step_nav_helper = GovukPublishingComponents::Presenters::StepByStepNavHelper.new
 
-  ga4_tracking ||= false
+  disable_ga4 ||= false
 %>
 <% if steps %>
   <div
-    data-module="gemstepnav<% if ga4_tracking %> ga4-event-tracker<% end %>"
-    <%= "data-ga4-expandable" if ga4_tracking %>
+    data-module="gemstepnav<% unless disable_ga4 %> ga4-event-tracker<% end %>"
+    <%= "data-ga4-expandable" unless disable_ga4 %>
     class="gem-c-step-nav js-hidden <% if small %>govuk-!-display-none-print<% end %> <% unless small %>gem-c-step-nav--large<% end %>"
     <%= "data-remember" if remember_last_step %>
     <%= "data-id=#{tracking_id}" if tracking_id %>
@@ -76,7 +76,7 @@
           <%
             ga4_link_data = {}
 
-            if ga4_tracking
+            unless disable_ga4
               ga4_link_data = {
                 "module": "ga4-link-tracker",
                 "ga4-track-links-only": "",
@@ -99,7 +99,7 @@
               options[:step_title] = step[:title]
               options[:step_index] = step_index
               options[:link_index] = 0
-              options[:ga4_tracking] = ga4_tracking
+              options[:disable_ga4] = disable_ga4
             %>
             <% step[:contents].each do |element| %>
               <%= step_nav_helper.render_step_nav_element(element, options) %>

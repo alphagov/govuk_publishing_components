@@ -72,17 +72,13 @@ examples:
           ]
         }
       ]
-  with_google_analytics_4_tracking:
+  without_google_analytics_4_tracking:
     description: |
-      The ga4_tracking boolean allows you to add Google Analytics 4 (GA4) tracking to your component.
-      Setting this to true will add the `ga4-event-tracker` module to your component. The JavaScript will then add a `data-ga4-event` attribute and `data-ga4-expandable` attribute to the "Show all steps" button, and each clickable Step heading.
-      GA4 will then track these elements when they are expanded or collapsed.
-      `data-ga4-event` contains a JSON with event data relevant to our tracking. `data-ga4-expandable` enables the value of `aria-expanded` to be captured.
-      See the [ga4-event-tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) docs for more information.
-      Links are also tracked with the [ga4-link-tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md).
-      Therefore the `ga4-link-tracker` data module also exists on these step by step components. Any links will contain a data attribute of `ga4-link`, which contains the relevant tracking data as a JSON.
+      Disables GA4 tracking on the component. Tracking is enabled by default. This includes the [ga4-event-tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) module as well as `data-ga4-event` and `data-ga4-expandable` attributes on the "Show all steps" button, and each clickable Step heading. `data-ga4-event` contains JSON with event data relevant to tracking. `data-ga4-expandable` enables the value of `aria-expanded` to be captured.
+
+      Links within steps are tracked with the [ga4-link-tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md). Links are given a data attribute of `ga4-link`, which contains the relevant tracking data as JSON.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       steps: [
         {
           title: "Do something",
@@ -128,7 +124,7 @@ examples:
       ]
   with_unique_tracking:
     description: |
-      In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Google Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav page.
+      In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Universal Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav page.
 
       This includes show/hide all, show/hide step and any link clicks.
     data:
@@ -531,7 +527,7 @@ examples:
 
           No change. Active step by step will be expanded.
 
-      4. Content item is part of multiple primary step by steps and a single secondary step by step 
+      4. Content item is part of multiple primary step by steps and a single secondary step by step
 
           No change. Show "Part of" step by steps list. Secondary step by step won't be shown.
 
