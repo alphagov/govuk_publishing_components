@@ -64,10 +64,10 @@ examples:
         url: next-page
         title: Next
         label: 'Driver CPC part 1 test: theory'
-  with_ga4_tracking:
-    description: Enables the GA4 link tracker on the links.
+  without_ga4_tracking:
+    description: Disables the GA4 link tracker on the links. Tracking is enabled by default.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       previous_page:
         url: previous-page
         title: Previous
