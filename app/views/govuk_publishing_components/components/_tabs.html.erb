@@ -8,13 +8,13 @@
   panel_css_classes = panel_css_classes.join(" ")
 
   as_links ||= false
-  ga4_tracking ||= false
+  disable_ga4 ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-tabs gem-c-tabs")
   component_helper.add_data_attribute({ module: "govuk-tabs" }) unless as_links
 
-  if ga4_tracking
+  unless disable_ga4
     component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless as_links
     component_helper.add_data_attribute({ module: "ga4-link-tracker" }) if as_links
   end
@@ -29,7 +29,7 @@
       <li class="govuk-tabs__list-item <%= "govuk-tabs__list-item--selected" if tab[:active] %>">
         <%
           tab[:tab_data_attributes] ||= {}
-          if ga4_tracking
+          unless disable_ga4
             ga4_attributes = {
               event_name: "select_content",
               type: "tabs",
@@ -65,10 +65,10 @@
   <% end %>
 <% end %>
 <% if tabs.count == 1 %>
-    <section id="<%= tabs[0][:id] %>">
-      <% if tabs[0][:title] %>
-        <h2 class="govuk-heading-l"><%= tabs[0][:title] %></h2>
-      <% end %>
-      <%= tabs[0][:content] %>
-    </section>
+  <section id="<%= tabs[0][:id] %>">
+    <% if tabs[0][:title] %>
+      <h2 class="govuk-heading-l"><%= tabs[0][:title] %></h2>
+    <% end %>
+    <%= tabs[0][:content] %>
+  </section>
 <% end %>

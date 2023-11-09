@@ -95,10 +95,10 @@ examples:
             tracking: GTM-123AB
           content: |
             <p class="govuk-body-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
-  with_ga4_tracking_on_tabs:
-    description: Enables GA4 tracking by adding the event tracker and required data attributes to the tabs. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
+  without_ga4_tracking_on_tabs:
+    description: Disables GA4 tracking on tabs. Tracking is enabled by default. This includes the event tracker and required data attributes. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       tabs:
         - id: "tab-with-ga4-tracking-1"
           label: "First section"
@@ -110,8 +110,8 @@ examples:
           title: "Second section"
           content: |
             <p class="govuk-body-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
-  with_ga4_tracking_on_tabs_as_links:
-    description: Enables GA4 tracking by adding the link tracker and required data attributes to the tabs. See the [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+  without_ga4_tracking_on_tabs_as_links:
+    description: Disables GA4 tracking on tabs as links. Tracking is enabled by default.
     data:
       as_links: true
       ga4_tracking: true
