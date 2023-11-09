@@ -64,7 +64,7 @@ examples:
       ]
   always_display_as_a_list:
     description: |
-      when this component is rendered alongside an expanded step by step, we want it to render as a heading. 
+      when this component is rendered alongside an expanded step by step, we want it to render as a heading.
       However, in some cases the component will not be followed by a step by step, for example [Book Driving Test](https://www.gov.uk/book-driving-test).
       In these cases, the heading is not followed by any content, so it should be rendered as a list instead.
     data:
@@ -76,10 +76,10 @@ examples:
           text: 'Learn to drive a motorbike: step by step'
         }
       ]
-  with_ga4_tracking:
-    description: The ga4_tracking boolean allows you to add Google Analytics 4 (GA4) tracking to your component. Setting this to true will add the `ga4-link-tracker` module to your component. The JavaScript will then add a `data-ga4-link` attribute which contains a JSON object with data relevant to our tracking. See the [ga4-link-tracker docs](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+  without_ga4_tracking:
+    description: Disables GA4 tracking on the component. Tracking is enabled by default. This includes the `ga4-link-tracker` module and `data-ga4-link` attributes. See the [ga4-link-tracker docs](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       pretitle: 'Example pretitle'
       links: [
         {
