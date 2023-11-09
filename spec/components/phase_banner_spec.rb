@@ -42,7 +42,7 @@ describe "Phase banner", type: :view do
   end
 
   it "renders banner with ga4 attributes" do
-    render_component(phase: "beta", ga4_tracking: true)
+    render_component(phase: "beta")
     assert_select ".gem-c-phase-banner[data-ga4-phase-banner=beta]"
     assert_select ".gem-c-phase-banner[data-module=ga4-link-tracker]"
     assert_select ".gem-c-phase-banner[data-ga4-track-links-only]"
@@ -51,7 +51,7 @@ describe "Phase banner", type: :view do
   end
 
   it "renders banner without ga4 attributes" do
-    render_component(phase: "beta", ga4_tracking: false)
+    render_component(phase: "beta", disable_ga4: true)
     assert_select ".gem-c-phase-banner[data-ga4-phase-banner]", false
     assert_select ".gem-c-phase-banner[data-module=ga4-link-tracker]", false
     assert_select ".gem-c-phase-banner[data-ga4-track-links-only]", false
