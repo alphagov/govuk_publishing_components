@@ -213,8 +213,8 @@ describe "Metadata", type: :view do
     assert_select '.gem-c-metadata.govuk-\!-margin-bottom-2'
   end
 
-  it "adds GA4 tracking to the 'see all updates' link when GA4 tracking is true" do
-    render_component(last_updated: "Hello World", see_updates_link: true, ga4_tracking: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
+  it "adds GA4 tracking to the 'see all updates' link" do
+    render_component(last_updated: "Hello World", see_updates_link: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
 
     expected_ga4_json = {
       "event_name": "navigation",
@@ -233,6 +233,14 @@ describe "Metadata", type: :view do
       expect(alternate_see_all_updates_container.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(alternate_see_all_updates_container.attr("data-ga4-link").to_s).to eq expected_ga4_json
     end
+  end
+
+  it "allows GA4 tracking to be disabled" do
+    render_component(last_updated: "Hello World", see_updates_link: true, disable_ga4: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
+
+    assert_select ".js-see-all-updates-link[data-module='ga4-link-tracker']", false
+    assert_select ".gem-c-metadata__definition:nth-of-type(2)[data-module='ga4-link-tracker']", false
+    assert_select ".gem-c-metadata__definition:nth-of-type(2)[data-ga4-track-links-only]", false
   end
 
   def assert_truncation(length, limit)
