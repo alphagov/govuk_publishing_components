@@ -25,5 +25,8 @@
     <% end -%>
     <%= yield %>
     <%= javascript_include_tag js_filename %>
+    <% if GovukPublishingComponents::Config.use_es6_components %>
+      <%= javascript_include_tag 'es6-components', type: "module" %>
+    <% end %>
   </body>
 </html>
