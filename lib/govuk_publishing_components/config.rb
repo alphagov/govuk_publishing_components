@@ -21,6 +21,9 @@ module GovukPublishingComponents
     mattr_accessor :exclude_css_from_static
     self.exclude_css_from_static = true
 
+    mattr_accessor :use_es6_components
+    self.use_es6_components = false
+
     def self.component_directory_name
       APP_COMPONENT_DIRECTORY
     end
