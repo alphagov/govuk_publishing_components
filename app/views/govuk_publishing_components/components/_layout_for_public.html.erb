@@ -188,5 +188,8 @@
       } %>
     <% end %>
     <%= javascript_include_tag 'application' %>
+    <% if GovukPublishingComponents::Config.use_es6_components %>
+      <%= javascript_include_tag 'es6-components', type: "module" %>
+    <% end %>
   <% end %>
 </html>
