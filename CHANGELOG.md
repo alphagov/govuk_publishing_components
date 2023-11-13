@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.21.4
 
 * Metadata component inverse option remove background ([PR #3711](https://github.com/alphagov/govuk_publishing_components/pull/3711))
 
