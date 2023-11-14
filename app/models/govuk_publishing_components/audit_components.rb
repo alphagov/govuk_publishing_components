@@ -118,6 +118,11 @@ module GovukPublishingComponents
         else
           @component_numbers[type.to_sym] += 1
           details["#{type}_exists".to_sym] = true
+
+          if type == "javascript" && uses_govuk_frontend?(file)
+            details[:uses_govuk_frontend] = true
+          end
+
           details["#{type}_lines".to_sym] = count_lines_in(file)
           details["#{type}_link".to_sym] = get_asset_link(type, component)
         end
@@ -128,6 +133,10 @@ module GovukPublishingComponents
 
     def count_lines_in(file)
       File.read(file).each_line.count
+    end
+
+    def uses_govuk_frontend?(file)
+      File.read(file).match(/require govuk\/components/)
     end
 
     def clean_files(files, replace)
