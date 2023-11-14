@@ -12,6 +12,7 @@ describe('Google Analytics video tracker', function () {
     event = {
       target: {
         id: 1,
+        videoTitle: 'An example video',
         getCurrentTime: function () {
           return 0
         },
@@ -32,7 +33,10 @@ describe('Google Analytics video tracker', function () {
       'video-1-50-percent-begin': 250,
       'video-1-50-percent-end': 252,
       'video-1-75-percent-begin': 375,
-      'video-1-75-percent-end': 377
+      'video-1-75-percent-end': 377,
+      'video-1-duration': 500,
+      'video-1-title': 'An example video',
+      'video-1-url': 'https://www.youtube.com/watch?v=abcdef'
     }
     videoTracker.configureVideo(event)
     expect(videoTracker.handlers).toEqual(expectedHandlers)
@@ -44,6 +48,7 @@ describe('Google Analytics video tracker', function () {
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.type = 'video'
+      expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       expected.event_data.video_duration = 500
       expected.govuk_gem_version = 'aVersion'
@@ -74,10 +79,10 @@ describe('Google Analytics video tracker', function () {
 
   describe('cleans urls', function () {
     beforeEach(function () {
-      videoTracker.configureVideo(event)
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.type = 'video'
+      expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       expected.event_data.video_duration = 500
       expected.govuk_gem_version = 'aVersion'
@@ -91,24 +96,29 @@ describe('Google Analytics video tracker', function () {
       event.target.getVideoUrl = function () {
         return 'https://www.youtube.com/watch?t=26&v=abcdef'
       }
+      videoTracker.configureVideo(event)
       videoTracker.trackVideo(event, 'VideoUnstarted')
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
-    it('with a time not as the first parameter', function () {
+    it('with a time as the second parameter', function () {
       event.target.getVideoUrl = function () {
         return 'https://www.youtube.com/watch?v=abcdef&t=03434'
       }
+      videoTracker.configureVideo(event)
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       videoTracker.trackVideo(event, 'VideoUnstarted')
       expect(window.dataLayer[0]).toEqual(expected)
+    })
 
+    it('with another random parameter', function () {
       event.target.getVideoUrl = function () {
         return 'https://www.youtube.com/watch?v=abcdef&t=03434&test=test'
       }
+      videoTracker.configureVideo(event)
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef&test=test'
       videoTracker.trackVideo(event, 'VideoUnstarted')
-      expect(window.dataLayer[1]).toEqual(expected)
+      expect(window.dataLayer[0]).toEqual(expected)
     })
   })
 
@@ -149,6 +159,7 @@ describe('Google Analytics video tracker', function () {
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.type = 'video'
+      expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       expected.event_data.video_duration = 500
       expected.event_data.event_name = 'video_progress'
@@ -219,11 +230,12 @@ describe('Google Analytics video tracker', function () {
     var event2 = {
       target: {
         id: 2,
+        videoTitle: 'Another example video',
         getCurrentTime: function () {
           return 0
         },
         getVideoUrl: function () {
-          return 'https://www.youtube.com/watch?t=26&v=abcdef'
+          return 'https://www.youtube.com/watch?t=26&v=xyz'
         },
         getDuration: function () {
           return 1000
@@ -252,12 +264,18 @@ describe('Google Analytics video tracker', function () {
         'video-1-50-percent-end': 252,
         'video-1-75-percent-begin': 375,
         'video-1-75-percent-end': 377,
+        'video-1-duration': 500,
+        'video-1-title': 'An example video',
+        'video-1-url': 'https://www.youtube.com/watch?v=abcdef',
         'video-2-25-percent-begin': 250,
         'video-2-25-percent-end': 252,
         'video-2-50-percent-begin': 500,
         'video-2-50-percent-end': 502,
         'video-2-75-percent-begin': 750,
-        'video-2-75-percent-end': 752
+        'video-2-75-percent-end': 752,
+        'video-2-duration': 1000,
+        'video-2-title': 'Another example video',
+        'video-2-url': 'https://www.youtube.com/watch?v=xyz'
       }
       expect(videoTracker.handlers).toEqual(expectedHandlers)
     })
