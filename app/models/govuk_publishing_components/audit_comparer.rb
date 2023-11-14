@@ -277,6 +277,7 @@ module GovukPublishingComponents
 
         results << {
           name: component_name,
+          govuk_frontend: component[:uses_govuk_frontend],
           count: locations.length,
           locations:,
         }

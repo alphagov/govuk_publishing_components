@@ -6,6 +6,9 @@
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               <%= item[:name] %> (<%= pluralize(item[:count], 'use') %>)
+              <% if item[:govuk_frontend] %>
+                <span class="govuk-tag">ES6 JS</span>
+              <% end %>
             </dt>
             <dd class="govuk-summary-list__value">
               <% item[:locations].each do |application| %>
