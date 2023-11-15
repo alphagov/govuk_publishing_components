@@ -28,6 +28,7 @@ module GovukPublishingComponents
         govuk_publishing_components/components/_title.css
 
         govuk_publishing_components/components/_cookie-banner.css
+        govuk_publishing_components/components/_cross-service-header.css
         govuk_publishing_components/components/_feedback.css
         govuk_publishing_components/components/_layout-footer.css
         govuk_publishing_components/components/_layout-for-public.css
