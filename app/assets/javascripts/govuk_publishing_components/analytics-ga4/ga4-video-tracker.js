@@ -13,7 +13,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     configureVideo: function (event) {
       var player = event.target
       var videoId = player.id
-      var duration = player.getDuration()
+      var duration = Math.ceil(player.getDuration())
       var percentages = [25, 50, 75]
 
       for (var i = 0; i < percentages.length; i++) {
@@ -23,6 +23,10 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         // interval is once a second, so end point must be at least one second beyond begin point
         this.handlers['video-' + videoId + '-' + percent + '-percent-end'] = position + 2
       }
+      // store all these values otherwise we have to get them for every event
+      this.handlers['video-' + videoId + '-duration'] = duration // store initially, as number returned from API varies
+      this.handlers['video-' + videoId + '-title'] = player.videoTitle
+      this.handlers['video-' + videoId + '-url'] = this.cleanVideoUrl(player.getVideoUrl())
     },
 
     trackVideo: function (event, state) {
@@ -68,13 +72,13 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
     sendData: function (player, event, position) {
       var data = {}
+      data.action = event
       data.event_name = 'video_' + event
       data.type = 'video'
-      data.url = this.cleanVideoUrl(player.getVideoUrl())
-      data.text = player.videoTitle
-      data.action = event
+      data.url = this.handlers['video-' + player.id + '-url']
+      data.text = this.handlers['video-' + player.id + '-title']
       data.video_current_time = Math.round(player.getCurrentTime())
-      data.video_duration = Math.ceil(player.getDuration()) // number returned from the API varies, so round up
+      data.video_duration = this.handlers['video-' + player.id + '-duration']
       data.video_percent = position
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change GA4 video tracking duration handling ([PR #3717](https://github.com/alphagov/govuk_publishing_components/pull/3717))
+
 ## 35.21.4
 
 * Metadata component inverse option remove background ([PR #3711](https://github.com/alphagov/govuk_publishing_components/pull/3711))
