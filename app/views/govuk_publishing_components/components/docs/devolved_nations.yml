@@ -19,14 +19,14 @@ examples:
       national_applicability:
         england:
           applicable: true
-  applies_to_two_nations:  
+  applies_to_two_nations:
     data:
       national_applicability:
         england:
           applicable: true
         wales:
           applicable: true
-  applies_to_three_nations:  
+  applies_to_three_nations:
     data:
       national_applicability:
         england:
@@ -89,9 +89,9 @@ examples:
       national_applicability:
         england:
           applicable: true
-  with_ga4_tracking:
+  without_ga4_tracking:
     description: |
-      Enables GA4 tracking on the banner. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
+      Disables GA4 tracking on the banner. Tracking is enabled by default. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
     data:
       national_applicability:
         england:

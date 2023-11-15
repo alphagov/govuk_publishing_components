@@ -69,10 +69,10 @@ examples:
           ordered_related_items:
             - title: "Find an apprenticeship"
               base_path: "/apply-apprenticeship"
-  with_ga4_tracking:
-    description: Adds Google Analytics 4 tracking to the Related Navigation component, if it is visible.
+  without_ga4_tracking:
+    description: Disables GA4 tracking on the component. Tracking is enabled by default.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       content_item:
         title: "A content item"
         links:

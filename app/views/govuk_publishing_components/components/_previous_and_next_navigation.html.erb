@@ -1,6 +1,6 @@
 <%
   add_gem_component_stylesheet("previous-and-next-navigation")
-  ga4_tracking ||= false
+  disable_ga4 ||= false
 
   if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page)
 %>
@@ -8,7 +8,7 @@
     class="govuk-pagination govuk-pagination--block"
     role="navigation"
     aria-label="<%= t("components.previous_and_next_navigation.pagination") %>"
-    <% if ga4_tracking %>
+    <% unless disable_ga4 %>
       data-module="ga4-link-tracker"
     <% end %>
   >
@@ -27,7 +27,7 @@
           data-track-label="<%= previous_page[:url] %>"
           data-track-dimension="previous"
           data-track-dimension-index="29"
-          <% if ga4_tracking %>
+          <% unless disable_ga4 %>
             data-ga4-link = "<%= {
               event_name: "navigation",
               type: "previous and next",
@@ -63,7 +63,7 @@
           data-track-label="<%= next_page[:url] %>"
           data-track-dimension="next"
           data-track-dimension-index="29"
-          <% if ga4_tracking %>
+          <% unless disable_ga4 %>
             data-ga4-link = "<%= {
               event_name: "navigation",
               type: "previous and next",

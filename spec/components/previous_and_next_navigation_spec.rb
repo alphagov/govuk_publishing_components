@@ -68,7 +68,7 @@ describe "Previous and next navigation", type: :view do
     assert_select ".govuk-pagination__next .govuk-pagination__link .govuk-visually-hidden", false
   end
 
-  it "adds GA4 tracking when ga4_tracking is true" do
+  it "includes GA4 tracking" do
     render_component(
       previous_page: {
         url: "previous-page",
@@ -78,7 +78,6 @@ describe "Previous and next navigation", type: :view do
         url: "next-page",
         title: "Next page",
       },
-      ga4_tracking: true,
     )
 
     assert_select ".govuk-pagination" do |pagination|
@@ -106,6 +105,24 @@ describe "Previous and next navigation", type: :view do
     assert_select ".govuk-pagination__next a" do |pagination_link|
       expect(pagination_link.attr("data-ga4-link").to_s).to eq expected_ga4_json
     end
+  end
+
+  it "allows GA4 tracking to be disabled" do
+    render_component(
+      disable_ga4: true,
+      previous_page: {
+        url: "previous-page",
+        title: "Previous page",
+      },
+      next_page: {
+        url: "next-page",
+        title: "Next page",
+      },
+    )
+
+    assert_select ".govuk-pagination[data-module='ga4-link-tracker']", false
+    assert_select ".govuk-pagination__prev a[data-ga4-link]", false
+    assert_select ".govuk-pagination__next a[data-ga4-link]", false
   end
 
   def assert_link(link)

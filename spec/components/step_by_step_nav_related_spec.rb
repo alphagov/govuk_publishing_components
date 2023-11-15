@@ -112,8 +112,8 @@ describe "Step by step navigation related", type: :view do
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']", text: "Link 1"
   end
 
-  it "adds GA4 data attributes when ga4_tracking is true" do
-    render_component(pretitle: "Some text", links: one_link, ga4_tracking: true)
+  it "adds GA4 data attributes" do
+    render_component(pretitle: "Some text", links: one_link)
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .govuk-link"
 
@@ -128,8 +128,8 @@ describe "Step by step navigation related", type: :view do
     assert_select "#{this_link}[data-ga4-link='#{expected.to_json}']"
   end
 
-  it "does not add GA4 data attributes when ga4_tracking is false" do
-    render_component(links: one_link, ga4_tracking: false)
+  it "does not add GA4 data attributes when disable_ga4 is true" do
+    render_component(links: one_link, disable_ga4: true)
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .govuk-link"
 

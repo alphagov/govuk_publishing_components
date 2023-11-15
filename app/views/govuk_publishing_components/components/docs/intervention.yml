@@ -6,9 +6,9 @@ body: |
   that would be useful to them. This component would be used to add this personalised content and would
   indicate to the user that this is not normally part of the page, but has been added for them specifically.
 
-  The dismiss link works without Javascript by pointing to the current URL with the "hide-intervention" 
-  query string parameter set to "true". It's progressively enhanced and sets a cookie to remember that 
-  the user has dismissed the banner before. The cookie requires a "name" parameter, the value of which 
+  The dismiss link works without Javascript by pointing to the current URL with the "hide-intervention"
+  query string parameter set to "true". It's progressively enhanced and sets a cookie to remember that
+  the user has dismissed the banner before. The cookie requires a "name" parameter, the value of which
   is stored in the cookie to distinguish which campaign banner the user has dismissed.
 
 accessibility_criteria: |
@@ -33,8 +33,8 @@ examples:
       suggestion_link_url: /travel-abroad
 
   with_dismiss_link:
-    description: | 
-      Name is required in order to set a cookie. The name value should be distinct to the campaign for the banner, 
+    description: |
+      Name is required in order to set a cookie. The name value should be distinct to the campaign for the banner,
       so that other banners using this component are not hidden by accident.
     data:
       suggestion_text: You should renew your permit every 6 months.
@@ -89,11 +89,11 @@ examples:
         track-label: hide the intervention
       dismiss_link_data_attributes:
         track-category: example
-  with_ga4_tracking:
+  without_ga4_tracking:
     description: |
-      Enables GA4 tracking on the banner. This includes link tracking on the component itself, event tracking on the 'Hide' link, and allows pageviews to record the presence of the banner on page load.
+      Disables GA4 tracking on the banner. Tracking is enabled by default. This includes link tracking on the component itself, event tracking on the 'Hide' link, and allows pageviews to record the presence of the banner on page load.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       suggestion_text: Based on your browsing you might be interested in
       suggestion_link_text: "Travel abroad: step by step"
       suggestion_link_url: /travel-abroad

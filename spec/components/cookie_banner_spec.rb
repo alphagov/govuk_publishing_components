@@ -47,7 +47,7 @@ describe "Cookie banner", type: :view do
     render_component({})
 
     assert_select ".govuk-button-group .gem-c-cookie-banner__hide-button", text: "Hide this message"
-    assert_select '.gem-c-cookie-banner__hide-button[data-module=gem-track-click][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
+    assert_select '.gem-c-cookie-banner__hide-button[data-module="gem-track-click ga4-event-tracker"][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
   end
 
   it "renders with custom content" do
@@ -111,8 +111,8 @@ describe "Cookie banner", type: :view do
     assert_select ".govuk-button-group .govuk-link[href='/cookies']", text: "How we use cookies"
   end
 
-  it "renders with GA4 attributes when ga4_tracking is true" do
-    render_component({ ga4_tracking: true })
+  it "renders with GA4 attributes" do
+    render_component({})
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-cookie-banner]"
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-module=ga4-link-tracker]"
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-track-links-only]"
@@ -123,8 +123,8 @@ describe "Cookie banner", type: :view do
     assert_select ".gem-c-cookie-banner__hide-button[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"cookie banner\",\"action\":\"closed\",\"section\":\"You have accepted additional cookies\"}']"
   end
 
-  it "renders without GA4 attributes when ga4_tracking is false" do
-    render_component({ ga4_tracking: false })
+  it "renders without GA4 attributes when disable_ga4 is true" do
+    render_component({ disable_ga4: true })
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-cookie-banner]", false
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-module]", false
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-track-links-only]", false

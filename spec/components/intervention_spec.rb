@@ -75,7 +75,7 @@ describe "Intervention", type: :view do
     assert_select ".js-dismiss-link[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"intervention\",\"section\":\"You might be interested in\",\"action\":\"closed\"}']"
   end
 
-  it "ensures data modules are combined correctly when GA4 tracking is true" do
+  it "ensures data modules are combined correctly for GA4 tracking" do
     render_component(
       name: "test-campaign",
       suggestion_text: "You might be interested in",
@@ -88,21 +88,20 @@ describe "Intervention", type: :view do
       dismiss_link_data_attributes: {
         module: "hello-world",
       },
-      ga4_tracking: true,
     )
 
     assert_select ".gem-c-intervention a:first-of-type[data-module='hello-world ga4-link-tracker']"
     assert_select ".js-dismiss-link[data-module='hello-world ga4-event-tracker']"
   end
 
-  it "renders the component without GA4 tracking when ga4_tracking is false" do
+  it "renders the component without GA4 tracking when disable_ga4 is true" do
     render_component(
       name: "test-campaign",
       suggestion_text: "You might be interested in",
       suggestion_link_text: "Travel abroad",
       suggestion_link_url: "/travel-abroad",
       dismiss_text: "Hide this suggestion",
-      ga4_tracking: false,
+      disable_ga4: true,
     )
 
     assert_select ".gem-c-intervention[data-ga4-intervention-banner]", false

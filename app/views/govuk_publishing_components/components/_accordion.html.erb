@@ -10,7 +10,7 @@
   anchor_navigation ||= false
   track_show_all_clicks ||= false
   track_sections ||= false
-  ga4_tracking ||= false
+  disable_ga4 ||= false
   data_attributes_show_all ||= nil
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
@@ -19,8 +19,8 @@
   component_helper.add_class(shared_helper.get_margin_bottom)
 
   component_helper.add_data_attribute({ module: "govuk-accordion gem-accordion" })
-  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) if ga4_tracking
-  component_helper.add_data_attribute({ ga4_expandable: "" }) if ga4_tracking
+  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
+  component_helper.add_data_attribute({ ga4_expandable: "" }) unless disable_ga4
   component_helper.add_data_attribute({ anchor_navigation: anchor_navigation }) if anchor_navigation
   component_helper.add_data_attribute({ track_show_all_clicks: track_show_all_clicks }) if track_show_all_clicks
   component_helper.add_data_attribute({ track_sections: track_sections }) if track_sections
@@ -39,7 +39,7 @@
         item[:data_attributes] ||= nil
         ga4_link_data_attributes ||= nil
 
-        if ga4_tracking
+        unless disable_ga4
           heading_text = Nokogiri::HTML(item[:heading][:text]).text
           item[:data_attributes] ||= {}
           item[:data_attributes][:ga4_event] = {

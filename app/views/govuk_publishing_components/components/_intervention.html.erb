@@ -32,10 +32,10 @@
   intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(options)
   dismiss_href = intervention_helper.dismiss_link
 
-  ga4_tracking ||= false
-  suggestion_data_attributes[:module] = "#{suggestion_data_attributes[:module]} ga4-link-tracker".strip if ga4_tracking
-  suggestion_data_attributes[:ga4_link] = { event_name: "navigation", type: "intervention", section: suggestion_text, index_link: 1, index_total: 1 }.to_json if ga4_tracking
-  data_attributes[:ga4_intervention_banner] = "" if ga4_tracking # Added to the parent element for the GA4 pageview object to use
+  disable_ga4 ||= false
+  suggestion_data_attributes[:module] = "#{suggestion_data_attributes[:module]} ga4-link-tracker".strip unless disable_ga4
+  suggestion_data_attributes[:ga4_link] = { event_name: "navigation", type: "intervention", section: suggestion_text, index_link: 1, index_total: 1 }.to_json unless disable_ga4
+  data_attributes[:ga4_intervention_banner] = "" unless disable_ga4 # Added to the parent element for the GA4 pageview object to use
 
   suggestion_tag_options = {
     class: "govuk-link",
@@ -59,8 +59,8 @@
   }
   section_options.merge!({ hidden: true }) if hide
 
-  dismiss_link_data_attributes[:module] = "#{dismiss_link_data_attributes[:module]} ga4-event-tracker".strip if ga4_tracking
-  dismiss_link_data_attributes[:ga4_event] = { event_name: "select_content", type: "intervention", section: suggestion_text, action: 'closed' }.to_json if ga4_tracking
+  dismiss_link_data_attributes[:module] = "#{dismiss_link_data_attributes[:module]} ga4-event-tracker".strip unless disable_ga4
+  dismiss_link_data_attributes[:ga4_event] = { event_name: "select_content", type: "intervention", section: suggestion_text, action: 'closed' }.to_json unless disable_ga4
 %>
 <% if intervention_helper.show? %>
   <%= tag.section **section_options do %>

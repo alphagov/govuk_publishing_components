@@ -255,10 +255,17 @@ describe "step nav", type: :view do
   end
 
   it "adds ga4 attributes" do
-    render_component(steps: stepnav, ga4_tracking: true)
+    render_component(steps: stepnav)
 
     assert_select ".gem-c-step-nav[data-ga4-expandable]"
     assert_select ".gem-c-step-nav[data-module='gemstepnav ga4-event-tracker']"
+  end
+
+  it "allows GA4 to be disabled" do
+    render_component(steps: stepnav, disable_ga4: true)
+
+    assert_select ".gem-c-step-nav[data-ga4-expandable]", false
+    assert_select ".gem-c-step-nav[data-module='gemstepnav ga4-event-tracker']", false
   end
 
   it "adds ga4 link attributes when there is one section per step" do
@@ -291,7 +298,7 @@ describe "step nav", type: :view do
           },
         ],
       },
-    ], ga4_tracking: true)
+    ])
 
     expected = {
       "event_name": "navigation",
@@ -323,7 +330,7 @@ describe "step nav", type: :view do
   end
 
   it "adds ga4 link attributes when there are variable sections per step" do
-    render_component(steps: stepnav, ga4_tracking: true)
+    render_component(steps: stepnav)
 
     expected = {
       "event_name": "navigation",

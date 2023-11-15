@@ -103,10 +103,10 @@ examples:
               title: "Russian invasion of Ukraine: UK government response"
               base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
               locale: "en"
-  with_ga4_tracking_on_related_navigation:
-    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
+  without_ga4_tracking_on_related_navigation:
+    description: Disables GA4 tracking on components within the sidebar. Tracking is enabled by default. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA have tracking.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       content_item:
         title: "UK forces arrive to reinforce NATO’s eastern flank"
         content_id: "a342fd46-d801-4c1e-9d8f-f41fba6da563"
@@ -129,10 +129,10 @@ examples:
               title: "Russian invasion of Ukraine: UK government response"
               base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
               locale: "en"
-  with_ga4_tracking_on_step_by_step:
-    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
+  without_ga4_tracking_on_step_by_step:
+    description: Disables GA4 tracking on components within the sidebar. Tracking is enabled by default. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       content_item:
         title: "A content item"
         links:
@@ -157,10 +157,10 @@ examples:
                       - text: Arrange the funeral
                         href: "/after-a-death/arrange-the-funeral"
                     optional: false
-  with_ga4_tracking_on_part_of_step_by_step_heading(s):
-    description: Adds Google Analytics 4 tracking to the "Part of" step by step heading(s) in the sidebar. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
+  without_ga4_tracking_on_part_of_step_by_step_heading(s):
+    description: Disables GA4 tracking on the "Part of" step by step heading(s) in the sidebar. Tracking is enabled by default. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
     data:
-      ga4_tracking: true
+      disable_ga4: true
       content_item:
         links:
           part_of_step_navs:

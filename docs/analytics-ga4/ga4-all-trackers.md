@@ -2,7 +2,7 @@
 
 For tracking different kinds of data on GOV.UK we have built several different trackers. Each type of tracking is handled by a separate script, but some code is shared between them as they often do similar things.
 
-Most of the trackers work by adding a `data-module` attribute to an element along with additional data attributes to provide specific tracking information. Some components have this already built into their code, which is usually activated using a `ga4_tracking: true` option.
+Most of the trackers work by adding a `data-module` attribute to an element along with additional data attributes to provide specific tracking information. Some components have this already built into their code by default. These components should also include a `disable_ga4` option as a failsafe.
 
 ## Auto tracking
 

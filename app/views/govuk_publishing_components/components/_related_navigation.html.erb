@@ -1,11 +1,11 @@
 <%
   related_nav_helper = GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  ga4_tracking ||= false
+  disable_ga4 ||= false
   ga4_type = local_assigns[:context] == :footer ? "contextual footer" : "related content"
   data = {}
   data[:module] = "gem-track-click"
-  data[:module] << " ga4-link-tracker" if ga4_tracking
+  data[:module] << " ga4-link-tracker" unless disable_ga4
   ga4_tracking_counts ||= OpenStruct.new(index_section_count: 0)
   ga4_tracking_counts.index_section_count += related_nav_helper.index_section_count
 
@@ -43,7 +43,7 @@
         section_index: section_index,
         section_count: ga4_tracking_counts.index_section_count,
         random: random,
-        ga4_tracking: ga4_tracking,
+        disable_ga4: disable_ga4,
         ga4_type: ga4_type %>
     <% end %>
   <% end %>

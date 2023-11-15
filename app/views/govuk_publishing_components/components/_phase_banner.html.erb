@@ -5,7 +5,7 @@ app_name ||= nil
 phase ||= nil
 message ||= nil
 inverse ||= false
-ga4_tracking ||= false
+disable_ga4 ||= false
 
 unless message.present?
   if phase == "beta"
@@ -20,7 +20,7 @@ container_css_classes << "gem-c-phase-banner--inverse" if inverse
 
 data_attributes = {}
 
-if ga4_tracking
+unless disable_ga4
   data_attributes[:ga4_phase_banner] = phase
   data_attributes[:module] = "ga4-link-tracker"
   data_attributes[:ga4_track_links_only] = ""

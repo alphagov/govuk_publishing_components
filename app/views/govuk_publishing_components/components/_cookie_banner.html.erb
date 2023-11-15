@@ -31,7 +31,7 @@
   css_classes = %w(gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper)
   css_classes << "gem-c-cookie-banner--services" if services_cookies
 
-  ga4_tracking ||= false
+  disable_ga4 ||= false
 %>
 
 <div id="<%= id %>" class="<%= css_classes.join(' ') %>" data-module="cookie-banner" data-nosnippet role="region" aria-label="<%= title %>">
@@ -42,7 +42,7 @@
         <div tabindex="-1" class="govuk-cookie-banner__content gem-c-cookie-banner__confirmation">
           <span class="gem-c-cookie-banner__content"><%= text %></span>
           <p class="gem-c-cookie-banner__confirmation-message--accepted govuk-body" hidden
-          <% if ga4_tracking %>
+          <% unless disable_ga4 %>
             data-ga4-cookie-banner <%# GA4 pageview JS looks for data-ga4-cookie-banner %>
             data-module="ga4-link-tracker"
             data-ga4-track-links-only
@@ -96,14 +96,14 @@
     <div hidden class="js-hide-button govuk-button-group">
       <%
         button_data_module = "gem-track-click"
-        button_data_module << " ga4-event-tracker" if ga4_tracking
+        button_data_module << " ga4-event-tracker" unless disable_ga4
 
         ga4_event = {
           event_name: "select_content",
           type: "cookie banner",
           action: "closed",
           section: t("components.cookie_banner.confirmation_message.accepted", locale: :en)
-        }.to_json if ga4_tracking
+        }.to_json unless disable_ga4
       %>
       <button
         class="gem-c-cookie-banner__hide-button govuk-button"
@@ -111,7 +111,7 @@
         data-module="<%= button_data_module %>"
         data-track-category="cookieBanner"
         data-track-action="Hide cookie banner"
-        <% if ga4_tracking %> data-ga4-event="<%= ga4_event %>" <% end %>>
+        <% unless disable_ga4 %> data-ga4-event="<%= ga4_event %>" <% end %>>
           <%= t("components.cookie_banner.hide") %>
         </button>
     </div>

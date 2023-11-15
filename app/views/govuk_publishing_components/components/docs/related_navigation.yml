@@ -306,10 +306,10 @@ examples:
               title: "Student loans: terms and conditions 2017 to 2018 (PDF, 136KB)"
             - title: The Student Room repaying your student loan
               url: https://www.thestudentroom.co.uk/content.php?r=5967-Repaying-your-student-loan
-  with_ga4_tracking:
-    description: Adds Google Analytics 4 tracking to the component, using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md).
+  without_ga4_tracking:
+    description: Disables GA4 tracking on the banner. Tracking is enabled by default and uses the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md).
     data:
-      ga4_tracking: true
+      disable_ga4: true
       content_item:
         links:
           ordered_related_items:
@@ -352,4 +352,3 @@ examples:
               base_path: /world/chile/news
             - title: China
               base_path: /world/China/news
- 

@@ -167,7 +167,7 @@ describe "Related navigation", type: :view do
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more"
-    assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']", false
+    assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']"
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/mauritius/news\"]", text: "Mauritius"
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/brazil/news\"]", text: "Brazil"
   end
@@ -202,7 +202,7 @@ describe "Related navigation", type: :view do
     )
     render_component(content_item:)
 
-    assert_select ".gem-c-related-navigation[data-module='gem-track-click']"
+    assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
     assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
     assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Explore the topic']"
     assert_select ".gem-c-related-navigation__section-link[data-track-label='/apprenticeships']"
@@ -244,7 +244,7 @@ describe "Related navigation", type: :view do
       content_item["links"]["world_locations"] << { "title" => country }
     end
 
-    render_component(content_item:, ga4_tracking: true)
+    render_component(content_item:)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"3\",\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Fishing"
@@ -256,6 +256,51 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']"
     assert_select ".gem-c-related-navigation__toggle[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"related content\"}']", text: "Show 2 more"
+  end
+
+  it "allows GA4 to be disabled" do
+    content_item = {}
+    content_item["links"] = {
+      "ordered_related_items" => [
+        {
+          "base_path" => "/fishing",
+          "title" => "Fishing",
+        },
+        {
+          "base_path" => "/surfing",
+          "title" => "Surfing",
+        },
+      ],
+      "topics" => [
+        {
+          "base_path" => "/skating",
+          "title" => "Skating",
+          "document_type" => "topic",
+        },
+        {
+          "base_path" => "/paragliding",
+          "title" => "Paragliding",
+          "document_type" => "topic",
+        },
+        {
+          "base_path" => "/knitting",
+          "title" => "Knitting",
+          "document_type" => "topic",
+        },
+      ],
+      "world_locations" => [],
+    }
+    %w[USA Wales Fiji Iceland Sweden Mauritius Brazil].each do |country|
+      content_item["links"]["world_locations"] << { "title" => country }
+    end
+
+    render_component(content_item:, disable_ga4: true)
+
+    assert_select ".gem-c-related-navigation[data-module='gem-track-click']"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link]", false
+
+    assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']", false
+    assert_select ".gem-c-related-navigation__toggle[data-ga4-event]", false
   end
 
   it "uses lang when locale is set" do
