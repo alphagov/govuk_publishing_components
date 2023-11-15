@@ -93,6 +93,42 @@ If your application does use Slimmer/Static:
 //= require govuk_publishing_components/components/button
 ```
 
+#### Create a separate JS bundle for govuk-frontend components
+
+As of [govuk-frontend v5.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.0.0), the target for browser support has changed to browsers that support using the `type="module"` attribute on `script` tags. This means that govuk_publishing_components JavaScript files that include files from govuk-frontend will now error ungracefully and potentially function in an unpredictable way if a browser that doesn't support `type="module"`, tries to evaluate the Javascript in a script tag without the `type="module"` attribute.
+
+To ensure that [grade X browsers](https://frontend.design-system.service.gov.uk/browser-support/#grade-x) don't evaluate the JavaScript that they don't support, consider using a separate file called `es6-components.js` for these components, for example:
+
+```rb
+# es6-components.js
+//= require govuk_publishing_components/lib
+//= require govuk_publishing_components/components/accordion
+```
+
+Then include this in a script tag with the `type="module` attribute:
+
+```ruby
+# application.html.erb
+<%= javascript_include_tag 'es6-components.js', type: "module" %>
+```
+
+This will ensure that browsers will only be able to load the JavaScript that they are capable of running.
+
+### New `use_es6_components` config option
+
+If you are using the `layout_for_public` or `layout_for_admin` templates, you can use the new `use_es6_components` config option in your application to load the `es6-components.js` bundle you create. If this config is set to true and there is no `es6-components.js` file then an error will occur.
+
+```ruby
+# config/initializers/govuk_publishing_components.rb
+GovukPublishingComponents.configure do |config|
+  config.use_es6_components = true
+end
+```
+
+### Using the type="module" attribute
+
+Scripts that use type=”module” will run in strict mode and be deferred by default. Please refer to the "Stop Internet Explorer 11 and other older browsers running unsupported JavaScript" section of the [govuk-frontend v5.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.0.0) release notes further details and recommendations.
+
 ### Import all JavaScript (deprecated, will be removed in a later version)
 
 If your application doesn't use Slimmer/Static:
