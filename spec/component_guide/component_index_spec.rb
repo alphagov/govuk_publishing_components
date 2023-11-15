@@ -52,6 +52,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/button';
 @import 'govuk_publishing_components/components/contextual-sidebar';
 @import 'govuk_publishing_components/components/cookie-banner';
+@import 'govuk_publishing_components/components/cross-service-header';
 @import 'govuk_publishing_components/components/details';
 @import 'govuk_publishing_components/components/error-message';
 @import 'govuk_publishing_components/components/error-summary';
@@ -90,6 +91,7 @@ describe "Component guide index" do
 //= require govuk_publishing_components/components/accordion
 //= require govuk_publishing_components/components/button
 //= require govuk_publishing_components/components/cookie-banner
+//= require govuk_publishing_components/components/cross-service-header
 //= require govuk_publishing_components/components/details
 //= require govuk_publishing_components/components/error-summary
 //= require govuk_publishing_components/components/feedback
