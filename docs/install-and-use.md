@@ -93,6 +93,26 @@ If your application does use Slimmer/Static:
 //= require govuk_publishing_components/components/button
 ```
 
+As of v5.0.0, the target for browser support for govuk-frontend has changed to browsers that support using the `type="module"` attribute on `script` tags. This means that that govuk_publishing_components Javascript files that include files govuk-frontend will now error ungracefully and potentially function in an unpredictable way if a browser that doesn't support `type="module"` tries to evaluate the Javascript in a script tag without the `type="module"` attribute.
+
+To ensure that browsers that are below the target don't evaluate the Javascript that they don't support, consider using a separate file called `es6-components.js` for these components:
+
+```ruby
+# es6-components.js
+//= require govuk_publishing_components/lib
+//= require govuk_publishing_components/components/accordion
+```
+
+and then include this in a script tag with `type="module`:
+
+```ruby
+# application.html.erb
+<%= javascript_include_tag 'es6-components.js', type: "module" %>
+```
+
+This will ensure that browsers will only be able to load the Javascript that they are capable of running.
+
+
 ### Import all JavaScript (deprecated, will be removed in a later version)
 
 If your application doesn't use Slimmer/Static:
