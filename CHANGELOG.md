@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.22.0
 
 * Enable GA4 by default on components ([PR #3705](https://github.com/alphagov/govuk_publishing_components/pull/3705))
 * Change GA4 video tracking duration handling ([PR #3717](https://github.com/alphagov/govuk_publishing_components/pull/3717))
