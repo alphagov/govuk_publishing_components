@@ -280,6 +280,25 @@ describe('A specialist link tracker', function () {
       }
     })
 
+    it('detects alt/option click events on external links', function () {
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
+        clickEvent.altKey = true
+        link.dispatchEvent(clickEvent)
+        expected.event_data.link_domain = link.getAttribute('link_domain')
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
+        expected.event_data.method = 'alt/option click'
+        var linkPath = link.getAttribute('path')
+        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
     it('ignores links that are already being tracked by the other link tracker', function () {
       links.querySelector('.alreadytracked').click()
       expect(window.dataLayer).toEqual([])
