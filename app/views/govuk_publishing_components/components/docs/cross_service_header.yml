@@ -1,0 +1,64 @@
+name: Cross service header
+description: | 
+  The One Login header contains two distinct navigation menus - one for GOV.UK One Login links and another for internal service navigation.
+body: |
+  The header contains two links:
+
+  * "GOV.UK One Login": this takes the user to their One Login ‘home’ area, where they can manage their credentials and see and access the services they've used - you don't need to update the url this points to
+  * "Sign out": you'll need to adapt this link so that it signs the user out of your service and signs them out of One Login - how you do this will depend on how you've implemented sign out functionality in your service
+shared_accessibility_criteria:
+  - link
+accessibility_criteria:
+accessibility_excluded_rules:
+  - landmark-banner-is-top-level
+  - duplicate-id-aria
+  - landmark-no-duplicate-banner
+  - landmark-unique
+examples:
+  default:
+    description:
+    data:
+      show_account_layout: true
+      show_cross_service_header: true
+      product_name: GOV.UK email subscriptions
+      one_login_navigation_items:
+        one_login_home:
+          href: "#"
+        one_login_sign_out:
+          text: Sign out
+  with_data_attributes:
+    data:
+      show_account_layout: true
+      show_cross_service_header: true
+      product_name: GOV.UK email subscriptions
+      one_login_navigation_items:
+        one_login_home:
+          href: "#"
+          data:
+            module: explicit-cross-domain-links
+        one_login_sign_out:
+          text: Sign out
+          data:
+            module: explicit-cross-domain-links
+  with_service_navigation_links:
+    description: The header has space to optionally add links to different parts of your service, just as the current 'service header' component from the Design System does. Follow the same patterns for internal service navigation links as you do with the [Design System service header](https://design-system.service.gov.uk/components/header/).
+    data:
+      show_account_layout: true
+      show_cross_service_header: true
+      product_name: GOV.UK email subscriptions
+      one_login_navigation_items:
+        one_login_home:
+          href: "#"
+          data:
+            module: explicit-cross-domain-links
+        one_login_sign_out:
+          text: Sign out
+          data:
+            module: explicit-cross-domain-links
+      service_navigation_items:
+        - text: Example link 1
+          href: "#"
+        - text: Example link 2
+          href: "#"
+        - text: Example link 3
+          href: "#"

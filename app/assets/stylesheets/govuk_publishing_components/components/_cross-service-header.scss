@@ -1,0 +1,430 @@
+@import "govuk_publishing_components/individual_component_support";
+
+// start mixins and variables
+$govuk-header-link-underline-thickness: 3px;
+
+@mixin toggle-button-focus($default-text-colour) {
+  color: $default-text-colour;
+  // apply focus style on :focus for browsers which support :focus but not :focus-visible
+  &:focus {
+    @include govuk-focused-text;
+
+    // overwrite previous styles for browsers which support :focus-visible
+    &:not(:focus-visible) {
+      outline: none;
+      color: $default-text-colour;
+      background: none;
+      box-shadow: none;
+    }
+
+    // apply focus style on :focus-visible for browsers which support :focus-visible
+    &-visible {
+      @include govuk-focused-text;
+    }
+  }
+}
+
+@mixin nav-style($nav-open-class) {
+  display: block;
+  // if JS is unavailable, the nav links are expanded and the toggle button is hidden
+  .gem-c-cross-service-header.js-enabled & {
+    display: none;
+
+    &#{$nav-open-class} {
+      display: block;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      display: block;
+    }
+  }
+
+  @include govuk-media-query($until: tablet) {
+    width: 100%;
+  }
+}
+// end mixins and variables
+
+.gem-c-cross-service-header__button {
+  display: none;
+
+  .gem-c-cross-service-header.js-enabled & {
+    display: inline;
+    display: flex;
+
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+  }
+
+  @include govuk-font($size: 19, $weight: bold);
+  position: relative;
+  align-items: center;
+  cursor: pointer;
+  min-width: 240px;
+  min-width: max-content;
+  border: 0;
+  margin: 0;
+  padding: govuk-spacing(2) 0 govuk-spacing(1) govuk-spacing(4);
+  background: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.15rem;
+    top: 50%;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    transform: translateY(-65%) rotate(135deg);
+    border-top: 0.15rem solid;
+    border-right: 0.15rem solid;
+  }
+
+  &.gem-c-cross-service-header__button--open {
+    &::before {
+      transform: translateY(-15%) rotate(-45deg);
+    }
+  }
+
+  &.gem-c-cross-service-header__button--service-header {
+    @include toggle-button-focus($govuk-link-colour);
+  }
+
+  &.gem-c-cross-service-header__button--one-login {
+    @include toggle-button-focus(govuk-colour("white"));
+  }
+}
+
+.gem-c-cross-service-header__button-icon {
+  margin-left: govuk-spacing(2);
+  font-size: 0;
+
+  &.gem-c-cross-service-header__button-icon--focus {
+    display: none;
+  }
+
+  // apply focus style on :focus for browsers which support :focus but not :focus-visible
+  .gem-c-cross-service-header__button:focus & {
+    &.gem-c-cross-service-header__button-icon--default {
+      display: none;
+    }
+
+    &.gem-c-cross-service-header__button-icon--focus {
+      display: inline;
+    }
+  }
+
+  // overwrite previous styles for browsers which support :focus-visible
+  .gem-c-cross-service-header__button:focus:not(:focus-visible) & {
+    &.gem-c-cross-service-header__button-icon--default {
+      display: inline;
+    }
+
+    &.gem-c-cross-service-header__button-icon--focus {
+      display: none;
+    }
+  }
+
+  // apply focus style on :focus-visible for browsers which support :focus-visible
+  .gem-c-cross-service-header__button:focus-visible & {
+    &.gem-c-cross-service-header__button-icon--default {
+      display: none;
+    }
+
+    &.gem-c-cross-service-header__button-icon--focus {
+      display: inline;
+    }
+  }
+}
+
+// start One Login header styles
+.gem-c-one-login-header {
+  @include govuk-font($size: 19);
+  color: govuk-colour("white");
+  background: govuk-colour("black");
+  border-bottom: govuk-spacing(2) solid $govuk-link-colour;
+  position: relative;
+}
+
+.gem-c-one-login-header__container {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gem-c-one-login-header__logo {
+  min-width: max-content;
+  padding-top: govuk-spacing(2);
+  padding-bottom: govuk-spacing(2);
+  max-width: 33.33%;
+  @include govuk-media-query($from: desktop) {
+    width: 33.33%;
+    padding-right: govuk-spacing(3);
+  }
+}
+
+.gem-c-one-login-header__link,
+.gem-c-one-login-header__nav__link {
+  &:link,
+  &:visited {
+    @include govuk-typography-common;
+    @include govuk-link-style-inverse;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-thickness: $govuk-header-link-underline-thickness;
+
+      @if $govuk-link-underline-offset {
+        text-underline-offset: $govuk-link-underline-offset;
+      }
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+    }
+  }
+}
+
+.gem-c-one-login-header__logotype {
+  display: inline-block;
+
+  // Add a gap after the logo in case it's followed by a product name. This
+  // gets removed later if the logotype is a :last-child.
+  margin-right: govuk-spacing(1);
+
+  // Prevent readability backplate from obscuring underline in Windows High
+  // Contrast Mode
+  @media (forced-colors: active) {
+    forced-color-adjust: none;
+    color: linktext;
+  }
+
+  // Remove the gap after the logo if there's no product name to keep hover
+  // and focus states neat
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.gem-c-one-login-header__logotype-crown {
+  position: relative;
+  top: -1px;
+  margin-right: 1px;
+  fill: currentcolor;
+  vertical-align: top;
+}
+
+.gem-c-one-login-header__logotype-crown-fallback-image {
+  width: 36px;
+  height: 32px;
+  border: 0;
+  vertical-align: bottom;
+}
+
+.gem-c-one-login-header__link--homepage {
+  // Font size needs to be set on the link so that the box sizing is correct
+  // in Firefox
+  @include govuk-font($size: false, $weight: bold);
+
+  display: inline-block;
+  margin-right: govuk-spacing(2);
+  font-size: 30px; // We don't have a mixin that produces 30px font size
+  line-height: 1;
+
+  @include govuk-media-query($from: tablet) {
+    display: inline;
+
+    &:focus {
+      // Replicate the focus box shadow but without the -2px y-offset of the first yellow shadow
+      // This is to stop the logo getting cut off by the box shadow when focused on above a product name
+      box-shadow: 0 0 $govuk-focus-colour;
+    }
+  }
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    // Negate the added border
+    margin-bottom: $govuk-header-link-underline-thickness * -1;
+    // Omitting colour will use default value of currentColor – if we
+    // specified currentColor explicitly IE8 would ignore this rule.
+    border-bottom: $govuk-header-link-underline-thickness solid;
+  }
+
+  // Remove any borders that show when focused and hovered.
+  &:focus {
+    margin-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.gem-c-one-login-header__nav {
+  @include nav-style(".gem-c-one-login-header__nav--open");
+  @include govuk-media-query($from: tablet) {
+    max-width: 66%;
+  }
+}
+
+.gem-c-one-login-header__nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(2) 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.gem-c-one-login-header__nav__list-item {
+  display: inline-block;
+  padding: govuk-spacing(2) 0;
+
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(2) 0 govuk-spacing(2) govuk-spacing(6);
+    border-left: 1px solid $govuk-border-colour;
+    align-self: stretch;
+
+    &:not(:last-child) {
+      margin-right: govuk-spacing(4);
+    }
+  }
+
+  @include govuk-media-query($until: tablet) {
+    width: 100%;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $govuk-border-colour;
+    }
+  }
+}
+
+.gem-c-one-login-header__nav__link {
+  font-weight: bold;
+
+  &.gem-c-one-login-header__nav__link--one-login {
+    @include govuk-media-query($from: tablet) {
+      display: flex;
+      justify-content: center;
+
+      // stylelint-disable max-nesting-depth
+      &:focus {
+        .gem-c-cross-service-header__button-icon {
+          display: none;
+        }
+
+        .gem-c-cross-service-header__button-icon--focus {
+          display: inline;
+        }
+      }
+    }
+
+    @include govuk-media-query($until: tablet) {
+      .gem-c-cross-service-header__button-icon {
+        display: none;
+      }
+    }
+  }
+}
+// end One Login header styles
+
+// start service navigation styles
+.gem-c-service-header {
+  background-color: govuk-colour("light-grey");
+  border-bottom: 1px solid govuk-colour("mid-grey");
+}
+
+.gem-c-service-header__container {
+  padding-top: govuk-spacing(1);
+
+  @include govuk-media-query ($until: tablet) {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  @include govuk-media-query ($from: tablet) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.gem-c-service-header__heading {
+  @include govuk-font($size: 24, $weight: bold);
+  color: $govuk-text-colour;
+  padding: govuk-spacing(3) 0;
+  margin: 0;
+  flex-grow: 1;
+
+  @include govuk-media-query($until: tablet) {
+    padding: govuk-spacing(1) 0;
+  }
+}
+
+.gem-c-service-header__nav {
+  @include nav-style(".gem-c-service-header__nav--open");
+}
+
+.gem-c-service-header__nav-list {
+  @include govuk-font($size: 19, $weight: bold);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include govuk-media-query($from: tablet) {
+    @include govuk-font($size: 19, $weight: bold);
+  }
+}
+
+.gem-c-service-header__nav-list-item {
+  margin: govuk-spacing(3) 0 govuk-spacing(4);
+
+  &.gem-c-service-header__nav-list-item--active {
+    padding-left: govuk-spacing(3);
+    border-left: govuk-spacing(1) solid $govuk-link-colour;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    margin: 0 govuk-spacing(6) 0 0;
+    border-bottom: govuk-spacing(1) solid transparent;
+
+    &:last-of-type {
+      margin: 0;
+    }
+
+    &.gem-c-service-header__nav-list-item--active {
+      border-left: 0;
+      padding-left: 0;
+      border-bottom: govuk-spacing(1) solid $govuk-link-colour;
+    }
+  }
+}
+
+.gem-c-service-header__nav-list-item-link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+  @include govuk-link-style-no-visited-state;
+
+  &:not(:hover) {
+    text-decoration: none;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    padding: govuk-spacing(3) 0 govuk-spacing(3);
+
+    &:focus {
+      box-shadow: 0 (-(govuk-spacing(1))) $govuk-focus-colour, 0 govuk-spacing(1) $govuk-focus-text-colour;
+    }
+  }
+}
+// end service navigation styles

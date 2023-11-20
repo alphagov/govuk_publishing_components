@@ -1,0 +1,19 @@
+<%
+  add_gem_component_stylesheet("cross-service-header")
+
+  product_name ||= nil
+  one_login_navigation_items ||= []
+  service_navigation_items ||= []
+  service_navigation_aria_label ||= "Service menu"
+%>
+
+<header class="gem-c-cross-service-header" role="banner" data-module="cross-service-header">
+  <%= render "govuk_publishing_components/components/cross_service_header/one_login_header", {
+    one_login_navigation_items: one_login_navigation_items,
+  } %>
+  <%= render "govuk_publishing_components/components/cross_service_header/service_header", {
+    service_navigation_aria_label: service_navigation_aria_label,
+    service_navigation_items: service_navigation_items,
+    product_name: product_name,
+  } %>
+</header>

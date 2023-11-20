@@ -30,6 +30,7 @@
 //= link govuk_publishing_components/components/_contextual-sidebar.css
 //= link govuk_publishing_components/components/_cookie-banner.css
 //= link govuk_publishing_components/components/_copy-to-clipboard.css
+//= link govuk_publishing_components/components/_cross-service-header.css
 //= link govuk_publishing_components/components/_date-input.css
 //= link govuk_publishing_components/components/_details.css
 //= link govuk_publishing_components/components/_devolved-nations.css
