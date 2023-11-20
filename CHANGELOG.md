@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Implement One Login "cross service header" ([PR #3659](https://github.com/alphagov/govuk_publishing_components/pull/3659))
+
 ## 35.22.0
 
 * Enable GA4 by default on components ([PR #3705](https://github.com/alphagov/govuk_publishing_components/pull/3705))
