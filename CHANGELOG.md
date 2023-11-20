@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Implement One Login "cross service header" ([PR #3659](https://github.com/alphagov/govuk_publishing_components/pull/3659))
+* Add alt/option click tracking to GA4 link tracker ([PR #3720](https://github.com/alphagov/govuk_publishing_components/pull/3720))
 
 ## 35.22.0
 

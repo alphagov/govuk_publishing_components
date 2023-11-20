@@ -135,6 +135,8 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
               return 'command/win click'
             } else if (event.shiftKey) {
               return 'shift click'
+            } else if (event.altKey) {
+              return 'alt/option click'
             } else {
               return 'primary click'
             }

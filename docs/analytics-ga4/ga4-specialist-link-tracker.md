@@ -111,3 +111,4 @@ For `method`:
 - Meta key clicks are `command/win click`
 - Shift key clicks are `shift click`
 - Control clicks are `ctrl click`
+- Alt clicks are `alt/option click`

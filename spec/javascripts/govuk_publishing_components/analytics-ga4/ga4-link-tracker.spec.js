@@ -209,6 +209,92 @@ describe('GA4 link tracker', function () {
     })
   })
 
+  describe('different types of clicks', function () {
+    beforeEach(function () {
+      attributes = {
+        event_name: 'navigation',
+        type: 'a link',
+        index_link: 1
+      }
+      expected.event = 'event_data'
+      expected.event_data.type = 'a link'
+      expected.event_data.external = 'false'
+      expected.event_data.index = {
+        index_link: 1,
+        index_section: undefined,
+        index_section_count: undefined
+      }
+      var link = '#aNormalLink'
+      element = document.createElement('a')
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
+      element.setAttribute('href', link)
+      var linkText = 'A normal link'
+      element.textContent = linkText
+      expected.event_data.text = linkText
+      expected.event_data.url = link
+      expected.event_data.link_path_parts['1'] = link
+    })
+
+    it('tracks primary clicks on a single link', function () {
+      expected.event_data.method = 'primary click'
+      initModule(element, true)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('tracks ctrl clicks on a single link', function () {
+      expected.event_data.method = 'ctrl click'
+      initModule(element, false)
+      var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
+      clickEvent.ctrlKey = true
+      element.dispatchEvent(clickEvent)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('tracks shift clicks on a single link', function () {
+      expected.event_data.method = 'shift click'
+      initModule(element, false)
+      var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
+      clickEvent.shiftKey = true
+      element.dispatchEvent(clickEvent)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('tracks alt/option clicks on a single link', function () {
+      expected.event_data.method = 'alt/option click'
+      initModule(element, false)
+      var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
+      clickEvent.altKey = true
+      element.dispatchEvent(clickEvent)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('tracks command/win clicks on a single link', function () {
+      expected.event_data.method = 'command/win click'
+      initModule(element, false)
+      var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
+      clickEvent.metaKey = true
+      element.dispatchEvent(clickEvent)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('tracks middle mouse clicks on a single link', function () {
+      expected.event_data.method = 'middle click'
+      initModule(element, false)
+      var clickEvent = new window.CustomEvent('mousedown', { cancelable: true, bubbles: true })
+      clickEvent.button = 1
+      element.dispatchEvent(clickEvent)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('tracks right clicks on a single link', function () {
+      expected.event_data.method = 'secondary click'
+      initModule(element, false)
+      var clickEvent = new window.CustomEvent('contextmenu', { cancelable: true, bubbles: true })
+      element.dispatchEvent(clickEvent)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('when the track links only feature is enabled', function () {
     beforeEach(function () {
       attributes = {
