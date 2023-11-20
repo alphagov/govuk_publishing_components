@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make data-ga4-set-indexes ignore links with no href ([PR #3723](https://github.com/alphagov/govuk_publishing_components/pull/3723))
+
 ## 35.23.0
 
 * Implement One Login "cross service header" ([PR #3659](https://github.com/alphagov/govuk_publishing_components/pull/3659))
