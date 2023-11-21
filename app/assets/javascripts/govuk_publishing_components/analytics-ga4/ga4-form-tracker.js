@@ -50,10 +50,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         data.text = data.text.toLowerCase()
         data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(data.text)
       }
-
-      var schemas = new window.GOVUK.analyticsGa4.Schemas()
-      var schema = schemas.mergeProperties(data, 'event_data')
-      window.GOVUK.analyticsGa4.core.sendData(schema)
+      window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
     }
   }
 

@@ -15,6 +15,7 @@ describe('GA4 core', function () {
     window.GOVUK.analyticsGa4.vars.id = undefined
     window.GOVUK.analyticsGa4.vars.auth = undefined
     window.GOVUK.analyticsGa4.vars.preview = undefined
+    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
   })
 
   afterEach(function () {
@@ -60,7 +61,6 @@ describe('GA4 core', function () {
     var data = {
       hello: 'I must be going'
     }
-    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
     GOVUK.analyticsGa4.core.sendData(data)
     expect(window.dataLayer[0]).toEqual({
       hello: 'I must be going',
@@ -91,6 +91,20 @@ describe('GA4 core', function () {
       q: 'q_data'
     }
     expect(GOVUK.analyticsGa4.core.sortEventData(data)).toEqual(expected)
+  })
+
+  it('uses the schema to control data sent to the dataLayer', function () {
+    var data = {
+      index_link: 3,
+      not_a_property: '1'
+    }
+    var schemas = new window.GOVUK.analyticsGa4.Schemas()
+    var expected = schemas.mergeProperties(data, 'test')
+    expected.govuk_gem_version = 'aVersion'
+    expected.event_data.index.index_link = 3
+
+    GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'test')
+    expect(window.dataLayer[0]).toEqual(expected)
   })
 
   describe('link tracking functions', function () {
