@@ -362,6 +362,37 @@ describe('GA4 core', function () {
         data = JSON.parse(module.getAttribute('data-ga4-link'))
         expect(data.index_total).toEqual(9000)
       })
+
+      it('ignores links without a href', function () {
+        module = document.createElement('div')
+        module.setAttribute('data-ga4-link', '{"someData": "blah"}')
+        module.innerHTML = '<a id="example1" href="www.example1.com">Example link 1</a>' +
+        '<a id="example2" href="www.example2.com">Example link 2</a>' +
+        '<a id="example3" href="">Example link 3</a>' +
+        '<a id="example4" href="www.example4.com">Example link 4</a>' +
+        '<a id="example5">Example link 5</a>'
+
+        window.dataLayer = []
+        document.body.appendChild(module)
+        GOVUK.analyticsGa4.core.trackFunctions.setIndexes(module)
+        var links = module.querySelectorAll('a')
+
+        // Manually track the indexes as there are two links which won't have an index, so we can't use the loop's i variable to check the indexes are correct.
+        var index = 0
+
+        for (var i = 0; i < links.length; i++) {
+          var linkIndexAttribute = links[i].getAttribute('data-ga4-index')
+
+          // The links with no href should have no data-ga4-index attribute
+          if (i === 2 || i === 4) {
+            expect(linkIndexAttribute).toEqual(null)
+          } else {
+          // Increment the index as the following link should have the data-ga4-index-attribute
+            index++
+            expect(linkIndexAttribute).toEqual('{"index_link": ' + (index) + '}')
+          }
+        }
+      })
     })
 
     describe('when the data-ga4-set-indexes attribute exists on a module that contains search results or links with a data-ga4-do-not-index attribute', function () {

@@ -261,8 +261,8 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         var totalLinks = 0
         for (var i = 0; i < links.length; i++) {
           var link = links[i]
-          // Only index links that are not search results or do not have a data-ga4-do-not-index attribute
-          if (link.getAttribute('data-ga4-ecommerce-path') || link.getAttribute('data-ga4-do-not-index') !== null) {
+          // Ignore links that don't have a href, have a data-ga4-do-not-index attribute on them, or are search result links.
+          if (!link.getAttribute('href') || link.getAttribute('data-ga4-ecommerce-path') || link.getAttribute('data-ga4-do-not-index') !== null) {
             continue
           }
           totalLinks++
