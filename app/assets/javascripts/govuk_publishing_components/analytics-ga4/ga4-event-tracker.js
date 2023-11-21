@@ -43,9 +43,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
 
-      var schemas = new window.GOVUK.analyticsGa4.Schemas()
-      var schema = schemas.mergeProperties(data, 'event_data')
-
       /* Ensure it only tracks aria-expanded in an element with data-ga4-expandable on it. */
       if (target.closest('[data-ga4-expandable]')) {
         var ariaExpanded = this.getClosestAttribute(target, 'aria-expanded')
@@ -59,12 +56,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var detailsElement = target.closest('details')
 
       if (ariaExpanded) {
-        schema.event_data.text = data.text || target.innerText
-        schema.event_data.action = (ariaExpanded === 'false') ? 'opened' : 'closed'
+        data.text = data.text || target.innerText
+        data.action = (ariaExpanded === 'false') ? 'opened' : 'closed'
       } else if (detailsElement) {
-        schema.event_data.text = data.text || detailsElement.textContent
+        data.text = data.text || detailsElement.textContent
         var openAttribute = detailsElement.getAttribute('open')
-        schema.event_data.action = (openAttribute == null) ? 'opened' : 'closed'
+        data.action = (openAttribute == null) ? 'opened' : 'closed'
       }
 
       /* If a tab was clicked, grab the href of the clicked tab (usually an anchor # link) */
@@ -74,12 +71,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         if (aTag) {
           var href = aTag.getAttribute('href')
           if (href) {
-            schema.event_data.url = window.GOVUK.analyticsGa4.core.trackFunctions.appendPathToAnchorLinks(href)
+            data.url = window.GOVUK.analyticsGa4.core.trackFunctions.appendPathToAnchorLinks(href)
           }
         }
       }
-
-      window.GOVUK.analyticsGa4.core.sendData(schema)
+      window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
     }
   }
 
