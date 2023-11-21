@@ -378,7 +378,6 @@ describe('GA4 core', function () {
       })
 
       it('ignores links without a href', function () {
-        module = document.createElement('div')
         module.setAttribute('data-ga4-link', '{"someData": "blah"}')
         module.innerHTML = '<a id="example1" href="www.example1.com">Example link 1</a>' +
         '<a id="example2" href="www.example2.com">Example link 2</a>' +
@@ -386,8 +385,6 @@ describe('GA4 core', function () {
         '<a id="example4" href="www.example4.com">Example link 4</a>' +
         '<a id="example5">Example link 5</a>'
 
-        window.dataLayer = []
-        document.body.appendChild(module)
         GOVUK.analyticsGa4.core.trackFunctions.setIndexes(module)
         var links = module.querySelectorAll('a')
 
