@@ -44,30 +44,12 @@ The value for `text` will be determined based on the text of the element, or a v
 
 ## Advanced use
 
-In some scenarios we use components that cannot be modified directly (i.e. unable to place the `data-ga4-event` attribute on the element as shown in the 'Basic use' section). In these cases, we attach the necessary data attributes for tracking by passing an argument containing our data attributes to the render method.
+Sometimes it isn't possible to use the event tracker as shown above as the requirements are more complicated. For example when tracking dynamic elements like the 'Show/hide all sections' links on accordions. In this situation tracking has to be built into the component itself.
 
-Many components already accept data attributes in this way (see the [component guide](https://components.publishing.service.gov.uk/component-guide) for examples) but some, like the accordion, are more complicated.
+This is because the element being tracked is created and updated dynamically using JavaScript, and the state of the element and the data to be recorded changes on interaction (i.e. whether it was opened or closed).
 
-### Overview
+This is further complicated as the JavaScript that creates this element is imported from `govuk-frontend` and therefore can't be modified directly. In order to get attributes onto this link, we have to do the following.
 
-To track clicks on the 'Show/hide all sections' accordion link, use the `ga4_tracking` option as shown.
-
-```erb
-<div data-module="ga4-event-tracker">
-  <%= render 'govuk_publishing_components/components/accordion', {
-    ga4_tracking: true,
-    items: []
-  } %>
-</div>
-```
-
-### Detailed guide
-
-In some situations we want to track dynamic elements like the 'Show/hide all sections' links on accordions. This is complicated by the element being created and updated dynamically using JavaScript and the need to track the state of the element when clicked (to record whether it was opened or closed).
-
-It is also complicated by the fact that the JavaScript that creates this element is imported from `govuk-frontend` and therefore can't be modified directly. In order to get attributes onto this link, we have to do the following.
-
-- Enable tracking for an accordion using the `ga4_tracking` option
 - the 'Show/hide all' link is created by `govuk-frontend` JavaScript
 - the accordion JavaScript checks for `ga4-event-tracker`
   - it adds `data-ga4-event` with the relevant GTM JSON to the 'Show/hide all' link

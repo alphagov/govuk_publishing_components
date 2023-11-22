@@ -78,6 +78,14 @@ While our aim is to keep the majority of the analytics code in `govuk_publishing
 
 - [finder-frontend](https://github.com/alphagov/finder-frontend/tree/main/docs/analytics-ga4)
 
+### Code in components
+
+Often tracking will need to be built into components, either using an [existing tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-all-trackers.md) or some custom code, or a combination of both.
+
+Where component tracking needs additional data to be passed (for example `index` or `section` values to show where the component is on a page) this should be built into the component and the data required documented in the component guide.
+
+Where component tracking can be entirely self contained (i.e. nothing needs to be passed) tracking should be enabled by default, but a `disable_ga4` option should be included and documented to allow the tracking to be disabled if required. See the [tabs component](https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_tabs.html.erb#L11) for an example.
+
 ## Data schemas
 
 All of the data sent to GTM is based on a common schema.
