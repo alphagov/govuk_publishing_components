@@ -195,12 +195,6 @@
   }
 }
 
-.gem-c-action-link--transparent-icon {
-  &::before {
-    background-image: image-url("govuk_publishing_components/action-link-arrow--transparent.svg");
-  }
-}
-
 .gem-c-action-link--brexit {
   max-width: none;
 

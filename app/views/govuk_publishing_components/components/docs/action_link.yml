@@ -25,14 +25,6 @@ examples:
       light_text: true
     context:
       dark_background: true
-  with_transparent_svg:
-    data:
-      text: Find out what you need to do
-      href: "/page"
-      light_text: true
-      transparent_icon: true
-    context:
-      dark_background: true
   with_subtext:
     data:
       text: Emergency something
