@@ -13,12 +13,6 @@ examples:
       text: Look at this margin
       href: "/page"
       margin_bottom: 9
-  with_js_classes:
-    description: Use `js-` prefixed classes only as interaction hooks – to query and operate on elements via JavaScript. Classes are added to the link itself.
-    data:
-      text: "Coronavirus (COVID-19)"
-      href: "/page"
-      classes: 'js-hook'
   with_no_wrapping_text:
     data:
       text: "Coronavirus (COVID-19):"

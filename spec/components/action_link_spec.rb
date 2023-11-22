@@ -26,15 +26,6 @@ describe "Action link", type: :view do
     assert_select '.gem-c-action-link.govuk-\!-margin-bottom-6'
   end
 
-  it "adds js- prefixed classes to the component" do
-    render_component(
-      text: "Get more info",
-      href: "/coronavirus",
-      classes: "js-hook",
-    )
-    assert_select ".gem-c-action-link .gem-c-action-link__link.js-hook"
-  end
-
   it "renders non wrapping text if nowrap text is passed through" do
     render_component(
       text: "Get more info",

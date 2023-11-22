@@ -22,7 +22,6 @@
   nhs_icon ||= false
   brexit_icon ||= false
   transparent_icon ||= false
-  classes ||= nil
   font_size ||= nil
 
   css_classes = %w(gem-c-action-link)
@@ -43,7 +42,6 @@
   css_classes << shared_helper.get_margin_bottom
 
   link_classes = %w(govuk-link gem-c-action-link__link)
-  link_classes << shared_helper.classes if classes
   link_classes << "govuk-link--inverse" if light_text
   link_classes << shared_helper.get_heading_size(font_size, 'm') if font_size
 
