@@ -41,6 +41,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion.Accordion;
     }
     // Feature flag for each section GA click event tracking
     if (this.$module.getAttribute('data-track-sections') === 'true') {
+      console.log('data-track-sections is true')
       this.addEventListenerSections()
     }
 
@@ -152,12 +153,16 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion.Accordion;
   GemAccordion.prototype.addEventListenerSections = function () {
     var sections = this.$module.querySelectorAll(this.sectionButton)
     nodeListForEach(sections, function (section) {
+      console.log('adding this to ' + section)
       section.addEventListener('click', this.addAccordionSectionTracking.bind(this, section))
     }.bind(this))
   }
 
   // If the Accordion's sections are opened on click, then pass them to the GA event tracking
   GemAccordion.prototype.addAccordionSectionTracking = function (section) {
+
+    console.log('accordion section click tracking')
+
     var expanded = section.getAttribute('aria-expanded') === 'false'
     var label = section.querySelector(this.headingText).textContent
     var action = expanded ? 'accordionOpened' : 'accordionClosed'
@@ -176,6 +181,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion.Accordion;
     }
 
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      console.log('send the event')
       window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
     }
   }
