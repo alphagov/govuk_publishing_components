@@ -13,12 +13,6 @@ examples:
       text: Look at this margin
       href: "/page"
       margin_bottom: 9
-  with_data_attributes:
-    data:
-      text: "Coronavirus (COVID-19)"
-      href: "/page"
-      data:
-        attr_test: "hasDataAttribute"
   with_js_classes:
     description: Use `js-` prefixed classes only as interaction hooks – to query and operate on elements via JavaScript. Classes are added to the link itself.
     data:
@@ -124,7 +118,7 @@ examples:
     data:
       text: Coronavirus (COVID-19)
       href: "/my-test-page"
-      light_icon: true      
+      light_icon: true
   with_brexit_icon_and_custom_font_size:
     data:
       text: Guidance for businesses

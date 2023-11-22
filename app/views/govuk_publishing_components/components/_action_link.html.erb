@@ -22,7 +22,6 @@
   nhs_icon ||= false
   brexit_icon ||= false
   transparent_icon ||= false
-  data ||= nil
   classes ||= nil
   font_size ||= nil
 
@@ -61,7 +60,7 @@
         <% end %>
 
         <% if href.present? %>
-          <%= link_to href, class: link_classes, data: data do %>
+          <%= link_to href, class: link_classes do %>
             <%= main_text %>
           <% end %>
         <% else %>
@@ -73,7 +72,7 @@
         <span class="gem-c-action-link__subtext-wrapper">
           <% if subtext_href %>
             <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") do %>
-              <%= link_to subtext, subtext_href, class: link_classes, data: data %>
+              <%= link_to subtext, subtext_href, class: link_classes %>
             <% end %>
           <% else %>
             <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>

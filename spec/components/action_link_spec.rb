@@ -171,15 +171,4 @@ describe "Action link", type: :view do
     )
     assert_select ".gem-c-action-link--light-text"
   end
-
-  it "has data attributes if data attributes are passed in" do
-    render_component(
-      text: "Get more info",
-      href: "/coronavirus",
-      data: {
-        testing: "hasDataAttribute",
-      },
-    )
-    assert_select ".gem-c-action-link__link[data-testing='hasDataAttribute']"
-  end
 end
