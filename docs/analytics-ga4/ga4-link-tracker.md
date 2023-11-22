@@ -98,14 +98,3 @@ To apply tracking to links within a specific element within part of a page, use 
   </div>
 </div>
 ```
-
-## Using the link tracker on components
-
-If a component needs the link tracker adding to it (rather than a single component instance being wrapped in it) make sure that it is possible to disable this tracking, in the event that this default tracking would collide with other tracking. Implement a `disable_ga4` option as shown below. See existing components for examples.
-
-```erb
-<%= render 'govuk_publishing_components/components/contextual_breadcrumbs', {
-  disable_ga4: true,
-  items: []
-} %>
-```
