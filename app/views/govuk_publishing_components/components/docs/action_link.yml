@@ -119,10 +119,3 @@ examples:
       href: "/guidance-for-businesses"
       brexit_icon: true
       font_size: m
-  with_nhs_icon:
-    data:
-      text: Something about the NHS
-      subtext: Perhaps you'd like to click here
-      subtext_href: "/page"
-      mobile_subtext: true
-      nhs_icon: true

@@ -145,15 +145,6 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link__link.govuk-heading-l"
   end
 
-  it "renders NHS icon version" do
-    render_component(
-      text: "Get more info",
-      href: "/coronavirus",
-      nhs_icon: true,
-    )
-    assert_select ".gem-c-action-link--nhs"
-  end
-
   it "renders light text version" do
     render_component(
       text: "Get more info",

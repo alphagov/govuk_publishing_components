@@ -234,18 +234,6 @@
   }
 }
 
-.gem-c-action-link--nhs {
-  &::before {
-    width: 80px;
-    height: 70px;
-    background: image-url("govuk_publishing_components/action-link--nhs.png");
-    background: image-url("govuk_publishing_components/action-link--nhs.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-size: 85% auto;
-    background-position: 0 50%;
-  }
-}
-
 .gem-c-action-link--light-text {
   color: govuk-colour("white");
 
