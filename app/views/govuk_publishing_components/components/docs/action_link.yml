@@ -87,9 +87,3 @@ examples:
       text: Coronavirus (COVID-19)
       href: "/my-test-page"
       light_icon: true
-  with_brexit_icon_and_custom_font_size:
-    data:
-      text: Guidance for businesses
-      href: "/guidance-for-businesses"
-      brexit_icon: true
-      font_size: m

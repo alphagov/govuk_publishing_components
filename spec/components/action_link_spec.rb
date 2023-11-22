@@ -100,15 +100,6 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link--dark-large-icon"
   end
 
-  it "renders with a custom font size" do
-    render_component(
-      text: "Guidance for businesses",
-      href: "/guidance-for-businesses",
-      font_size: "l",
-    )
-    assert_select ".gem-c-action-link__link.govuk-heading-l"
-  end
-
   it "renders light text version" do
     render_component(
       text: "Get more info",

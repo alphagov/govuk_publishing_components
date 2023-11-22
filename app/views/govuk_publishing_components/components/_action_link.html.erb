@@ -16,15 +16,12 @@
   dark_icon ||= false
   dark_large_icon ||= false
   light_icon ||= false
-  brexit_icon ||= false
-  font_size ||= nil
 
   css_classes = %w(gem-c-action-link)
   css_classes << "gem-c-action-link--light-text" if light_text
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
   css_classes << "gem-c-action-link--dark-large-icon" if dark_large_icon
   css_classes << "gem-c-action-link--light-icon" if light_icon
-  css_classes << "gem-c-action-link--brexit" if brexit_icon
   css_classes << "gem-c-action-link--simple" if simple
   css_classes << "gem-c-action-link--simple-light" if simple_light
   css_classes << "gem-c-action-link--with-subtext" if subtext
@@ -33,7 +30,6 @@
 
   link_classes = %w(govuk-link gem-c-action-link__link)
   link_classes << "govuk-link--inverse" if light_text
-  link_classes << shared_helper.get_heading_size(font_size, 'm') if font_size
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class(css_classes.join(" "))
