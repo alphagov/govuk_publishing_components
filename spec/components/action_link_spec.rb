@@ -64,15 +64,6 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link .gem-c-action-link__subtext .govuk-link[href='/subtext-href']"
   end
 
-  it "renders blue icon version" do
-    render_component(
-      text: "Get more info",
-      href: "/coronavirus",
-      blue_arrow: true,
-    )
-    assert_select ".gem-c-action-link--blue-arrow"
-  end
-
   it "renders simple icon version" do
     render_component(
       text: "Get more info",
