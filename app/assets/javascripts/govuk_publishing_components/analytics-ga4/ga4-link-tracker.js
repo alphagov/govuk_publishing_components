@@ -106,10 +106,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (data.type === 'smart answer' && data.action === 'change response') {
         data.section = this.PIIRemover.stripPIIWithOverride(data.section, true, true)
       }
-
-      var schemas = new window.GOVUK.analyticsGa4.Schemas()
-      var schema = schemas.mergeProperties(data, 'event_data')
-      window.GOVUK.analyticsGa4.core.sendData(schema)
+      window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
     }
   }
 

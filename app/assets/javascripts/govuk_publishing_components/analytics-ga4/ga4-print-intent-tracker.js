@@ -13,9 +13,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
           type: 'print page',
           method: 'browser print'
         }
-        var schema = new window.GOVUK.analyticsGa4.Schemas()
-        schema = schema.mergeProperties(data, 'event_data')
-        window.GOVUK.analyticsGa4.core.sendData(schema)
+        window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
       })
     }
   }

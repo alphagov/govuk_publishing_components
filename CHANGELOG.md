@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Consolidate GA4 schema calls ([PR #3725](https://github.com/alphagov/govuk_publishing_components/pull/3725))
 * Make data-ga4-set-indexes ignore links with no href ([PR #3723](https://github.com/alphagov/govuk_publishing_components/pull/3723))
 
 ## 35.23.0

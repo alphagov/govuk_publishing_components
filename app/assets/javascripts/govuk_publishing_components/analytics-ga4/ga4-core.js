@@ -55,6 +55,12 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       window.dataLayer.push(data)
     },
 
+    applySchemaAndSendData: function (data, name) {
+      var schemas = new window.GOVUK.analyticsGa4.Schemas()
+      var schema = schemas.mergeProperties(data, name)
+      this.sendData(schema)
+    },
+
     getGemVersion: function () {
       return window.GOVUK.analyticsGa4.vars.gem_version || 'not found'
     },

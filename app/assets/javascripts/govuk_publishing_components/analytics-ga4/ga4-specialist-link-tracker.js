@@ -81,10 +81,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
           data.text = 'image'
         }
         data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
-
-        var schemas = new window.GOVUK.analyticsGa4.Schemas()
-        var schema = schemas.mergeProperties(data, 'event_data')
-        window.GOVUK.analyticsGa4.core.sendData(schema)
+        window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
       }
     },
 

@@ -123,9 +123,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // following will be undefined if tracking headings
         data.percent_scrolled = node.eventData.percent_scrolled
 
-        var schemas = new window.GOVUK.analyticsGa4.Schemas()
-        var schema = schemas.mergeProperties(data, 'event_data')
-        window.GOVUK.analyticsGa4.core.sendData(schema)
+        window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
       }
     }
   }

@@ -35,12 +35,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         console.error('GA4 configuration error: ' + e.message, window.location)
         return
       }
-
       data.text = this.PIIRemover.stripPIIWithOverride(data.text, true, true)
-      var schemas = new window.GOVUK.analyticsGa4.Schemas()
-      var schema = schemas.mergeProperties(data, 'event_data')
-
-      window.GOVUK.analyticsGa4.core.sendData(schema)
+      window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
     }
   }
 
