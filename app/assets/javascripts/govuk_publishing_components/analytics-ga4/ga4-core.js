@@ -43,7 +43,13 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       data.govuk_gem_version = this.getGemVersion()
       // set this in the console as a debugging aid
       if (window.GOVUK.analyticsGa4.showDebug) {
-        data.event_data = this.sortEventData(data.event_data)
+        if (data.event_data) {
+          data.event_data = this.sortEventData(data.event_data)
+        } else if (data.page_view) {
+          data.page_view = this.sortEventData(data.page_view)
+        } else if (data.search_results) {
+          data.search_results = this.sortEventData(data.search_results)
+        }
         console.info(JSON.stringify(data, null, ' '))
       }
       window.dataLayer.push(data)
