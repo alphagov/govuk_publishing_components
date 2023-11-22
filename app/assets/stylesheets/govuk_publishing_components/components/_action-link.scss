@@ -143,13 +143,6 @@
   }
 }
 
-.gem-c-action-link--dark-icon {
-  &::before {
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
-  }
-}
-
 .gem-c-action-link--dark-large-icon {
   &::before {
     background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
@@ -184,8 +177,7 @@
   }
 }
 
-.gem-c-action-link--dark-icon,
-.gem-c-action-link--small-icon {
+.gem-c-action-link--dark-icon {
   max-width: none;
 
   @include govuk-media-query($until: tablet) {
@@ -195,6 +187,8 @@
   &::before {
     height: 30px;
     width: 35px;
+    background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
+    background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
