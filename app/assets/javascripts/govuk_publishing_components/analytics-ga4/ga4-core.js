@@ -101,21 +101,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         }
       },
 
-      splitStringIntoParts: function (string) {
-        /*
-        This will create an object with 5 keys that are indexes ("1", "2", etc.)
-        The values will be each part of the string split every 100 characters, or undefined.
-        For example: {"1": "/hello/world/etc...", "2": "/more/path/text...", "3": undefined, "4": undefined, "5": undefined}
-        Undefined values are needed to override the persistent object in GTM so that any values from old pushes are overwritten.
-        */
-        var parts = string.match(/.{1,100}/g)
-        var obj = {}
-        for (var i = 0; i < 5; i++) {
-          obj[(i + 1).toString()] = parts[i]
-        }
-        return obj
-      },
-
       hrefIsRelative: function (href) {
         // Checks that a href is relative by the lack of http:, https:// or // at the start of the href.
         var domain = this.getDomainRegex().exec(href)
