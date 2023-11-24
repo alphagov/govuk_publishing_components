@@ -10,7 +10,6 @@ describe('A specialist link tracker', function () {
   var preventDefault = function (e) {
     e.preventDefault()
   }
-  var defaultLinkPathParts
 
   beforeAll(function () {
     window.GOVUK.analyticsGa4.vars.internalDomains = ['www.gov.uk']
@@ -23,16 +22,6 @@ describe('A specialist link tracker', function () {
   afterAll(function () {
     window.dataLayer = []
     window.history.replaceState(null, null, '#')
-  })
-
-  beforeEach(function () {
-    defaultLinkPathParts = {
-      1: undefined,
-      2: undefined,
-      3: undefined,
-      4: undefined,
-      5: undefined
-    }
   })
 
   describe('when tracking external links', function () {
@@ -109,8 +98,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -125,10 +113,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
-        var linkPath = link.getAttribute('path')
-        if (linkPath) {
-          expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
-        }
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -144,10 +129,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.link_domain = '//nationalarchives.gov.uk'
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
-        var linkPath = link.getAttribute('path')
-        if (linkPath) {
-          expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
-        }
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -200,8 +182,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.method = 'ctrl click'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -219,8 +200,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.method = 'command/win click'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -238,8 +218,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.method = 'middle click'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -257,8 +236,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.method = 'shift click'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -274,8 +252,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.method = 'secondary click'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -293,8 +270,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.method = 'alt/option click'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -390,8 +366,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expected.event_data.external = link.getAttribute('external')
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -408,8 +383,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.text = 'image'
         expected.event_data.type = 'generic download'
         expected.event_data.external = link.closest('a').getAttribute('external')
-        var linkPath = link.closest('a').getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -426,8 +400,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expected.event_data.external = link.getAttribute('external')
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -444,8 +417,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expected.event_data.external = 'false'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -476,8 +448,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.type = 'generic link'
         expected.govuk_gem_version = 'aVersion'
         expected.event_data.external = 'true'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -494,8 +465,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expected.event_data.external = 'false'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -512,8 +482,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.type = 'preview'
         expected.event_data.text = link.innerText.trim()
         expected.event_data.external = 'true'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -530,8 +499,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expected.event_data.external = 'true'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -580,7 +548,6 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.govuk_gem_version = 'aVersion'
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: 'mailto:example@gov.uk' })
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -666,71 +633,6 @@ describe('A specialist link tracker', function () {
         expect(window.dataLayer[0].event_data.text).toEqual(expectedText[i])
       }
     })
-
-    it('splits hrefs longer than 100 characters into an object of parts', function () {
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
-      linkTracker.init()
-
-      links.innerHTML = '<div class="long-links">' +
-      '<a href="https://example.com/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-">100 char path</a>' +
-      '<a href="https://example.com/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragili">200 char path</a>' +
-      '<a href="https://example.com/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-so">500 char path</a>' +
-      '<a href="https://example.com/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-sound-precocious">Over 500 char path</a>' +
-      '<a href="https://example.com/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-qui/https://example.com/test">check regex replace only replaces first domain match</a>' +
-      '<a href="https://assets.publishing.service.gov.uk/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-qui">check regex replace works with a long subdomain </a>' +
-      '<a href="//assets.publishing.service.gov.uk/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-qui">check regex replace works with protocal relative domain </a>' +
-      '</div>'
-
-      var expectedLinkPathParts = [
-        {
-          1: '/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-'
-        },
-        {
-          1: '/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-',
-          2: 'say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragili'
-        },
-        {
-          1: '/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-',
-          2: 'say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragili',
-          3: 'sticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enoug',
-          4: 'h-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragilisticexpialidociou',
-          5: 's-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-so'
-        },
-        {
-          1: '/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-',
-          2: 'say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragili',
-          3: 'sticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enoug',
-          4: 'h-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragilisticexpialidociou',
-          5: 's-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-so'
-        },
-        {
-          1: '/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-qui/https://example.com',
-          2: '/test'
-        },
-        {
-          1: '/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-qui'
-        },
-        {
-          1: '/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-qui'
-        }
-      ]
-
-      var linksToTest = document.querySelectorAll('.long-links a')
-      for (var i = 0; i < linksToTest.length; i++) {
-        defaultLinkPathParts = {
-          1: undefined,
-          2: undefined,
-          3: undefined,
-          4: undefined,
-          5: undefined
-        }
-        window.dataLayer = []
-        var link = linksToTest[i]
-        GOVUK.triggerEvent(link, 'click')
-        var expectedObject = window.GOVUK.extendObject(defaultLinkPathParts, expectedLinkPathParts[i])
-        expect(window.dataLayer[0].event_data.link_path_parts).toEqual(expectedObject)
-      }
-    })
   })
 
   describe('PII removal', function () {
@@ -752,7 +654,7 @@ describe('A specialist link tracker', function () {
       linkTracker.stopTracking()
     })
 
-    it('redacts postcodes and dates from the URL and link_path_parts', function () {
+    it('redacts postcodes and dates from the URL', function () {
       links.innerHTML = '<div>' +
         '<a href="https://example.com/SW1A0AA/2022-02-22" class="link">SW1A0AA 2022-02-22</a>' +
       '</div>'
@@ -760,18 +662,16 @@ describe('A specialist link tracker', function () {
       var linkToTest = document.querySelector('.link')
       GOVUK.triggerEvent(linkToTest, 'click')
       expect(window.dataLayer[0].event_data.text).toEqual('[postcode] [date]')
-      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('/[postcode]/[date]')
       expect(window.dataLayer[0].event_data.url).toEqual('https://example.com/[postcode]/[date]')
     })
 
-    it('doesnt redact email addresses from the URL and link_path_parts', function () {
+    it('doesnt redact email addresses from the URL', function () {
       links.innerHTML = '<div>' +
         '<a href="mailto:email@example.com" class="email">mailto:email@example.com</a>' +
       '</div>'
 
       var linkToTest = document.querySelector('.email')
       GOVUK.triggerEvent(linkToTest, 'click')
-      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('mailto:email@example.com')
       expect(window.dataLayer[0].event_data.url).toEqual('mailto:email@example.com')
     })
   })
