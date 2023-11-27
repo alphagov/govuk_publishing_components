@@ -94,31 +94,6 @@
   }
 }
 
-.gem-c-action-link--white-arrow {
-  &::before {
-    background-image: image-url("govuk_publishing_components/action-link-arrow--white.png");
-    background-image: image-url("govuk_publishing_components/action-link-arrow--white.svg"), linear-gradient(transparent, transparent);
-  }
-}
-
-.gem-c-action-link--blue-arrow {
-  &::before {
-    width: 36px;
-    height: 28px;
-    background: image-url("govuk_publishing_components/action-link-arrow--blue.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--blue.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-size: 28px auto;
-    background-position: 0 0;
-
-    @include govuk-media-query($from: tablet) {
-      width: 45px;
-      height: 35px;
-      background-size: 35px auto;
-    }
-  }
-}
-
 .gem-c-action-link--simple {
   &::before {
     width: 30px;
@@ -140,13 +115,6 @@
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
-  }
-}
-
-.gem-c-action-link--dark-icon {
-  &::before {
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
-    background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
   }
 }
 
@@ -184,8 +152,7 @@
   }
 }
 
-.gem-c-action-link--dark-icon,
-.gem-c-action-link--small-icon {
+.gem-c-action-link--dark-icon {
   max-width: none;
 
   @include govuk-media-query($until: tablet) {
@@ -195,54 +162,11 @@
   &::before {
     height: 30px;
     width: 35px;
+    background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
+    background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
-  }
-}
-
-.gem-c-action-link--transparent-icon {
-  &::before {
-    background-image: image-url("govuk_publishing_components/action-link-arrow--transparent.svg");
-  }
-}
-
-.gem-c-action-link--brexit {
-  max-width: none;
-
-  &::before {
-    height: 30px;
-    width: 30px;
-    background-image: image-url("govuk_publishing_components/action-link-arrow--brexit.svg");
-    background-repeat: no-repeat;
-    background-size: 18px auto;
-    background-position: 0 2px;
-  }
-
-  @include govuk-media-query($until: tablet) {
-    margin-bottom: govuk-spacing(2);
-  }
-
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(2);
-
-    &::before {
-      width: 35px;
-      background-position: 0 4px;
-      background-size: 25px auto;
-    }
-  }
-}
-
-.gem-c-action-link--nhs {
-  &::before {
-    width: 80px;
-    height: 70px;
-    background: image-url("govuk_publishing_components/action-link--nhs.png");
-    background: image-url("govuk_publishing_components/action-link--nhs.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-size: 85% auto;
-    background-position: 0 50%;
   }
 }
 
