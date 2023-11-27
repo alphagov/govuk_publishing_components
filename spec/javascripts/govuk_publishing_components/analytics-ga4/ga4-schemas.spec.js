@@ -49,44 +49,7 @@ describe('Google Analytics schemas', function () {
     expect(returned).toEqual(expected)
   })
 
-  it('handles nested input correctly', function () {
-    var data = {
-      event_name: 'test_event_name',
-      index: {
-        index_section: '1'
-      }
-    }
-    var expected = {
-      event: 'example',
-      event_data: {
-        event_name: 'test_event_name',
-        type: undefined,
-        url: undefined,
-        text: undefined,
-        index: {
-          index_link: undefined,
-          index_section: '1',
-          index_section_count: undefined
-        },
-        index_total: undefined,
-        section: undefined,
-        action: undefined,
-        external: undefined,
-        method: undefined,
-        link_domain: undefined,
-        link_path_parts: undefined,
-        tool_name: undefined,
-        percent_scrolled: undefined,
-        video_current_time: this.undefined,
-        video_duration: this.undefined,
-        video_percent: this.undefined
-      }
-    }
-    var returned = schemas.mergeProperties(data, 'example')
-    expect(returned).toEqual(expected)
-  })
-
-  it('handles unnested input correctly', function () {
+  it('inserts data into the right place in the schema', function () {
     var data = {
       event_name: 'test_event_name',
       index_section: '1',
@@ -125,6 +88,7 @@ describe('Google Analytics schemas', function () {
   it('does not overwrite the schema if an undefined value is passed', function () {
     var data = {
       event_name: 'test_event_name',
+      index_link: 1,
       index: undefined
     }
     var expected = {
@@ -135,7 +99,7 @@ describe('Google Analytics schemas', function () {
         url: undefined,
         text: undefined,
         index: {
-          index_link: undefined,
+          index_link: 1,
           index_section: undefined,
           index_section_count: undefined
         },
@@ -146,47 +110,6 @@ describe('Google Analytics schemas', function () {
         method: undefined,
         link_domain: undefined,
         link_path_parts: undefined,
-        tool_name: undefined,
-        percent_scrolled: undefined,
-        video_current_time: this.undefined,
-        video_duration: this.undefined,
-        video_percent: this.undefined
-      }
-    }
-    var returned = schemas.mergeProperties(data, 'example')
-    expect(returned).toEqual(expected)
-  })
-
-  it('handles exceptions', function () {
-    var data = {
-      event_name: 'test_event_name',
-      link_path_parts: {
-        1: 'something',
-        not: 'defined by the schema'
-      }
-    }
-    var expected = {
-      event: 'example',
-      event_data: {
-        event_name: 'test_event_name',
-        type: undefined,
-        url: undefined,
-        text: undefined,
-        index: {
-          index_link: undefined,
-          index_section: undefined,
-          index_section_count: undefined
-        },
-        index_total: undefined,
-        section: undefined,
-        action: undefined,
-        external: undefined,
-        method: undefined,
-        link_domain: undefined,
-        link_path_parts: {
-          1: 'something',
-          not: 'defined by the schema'
-        },
         tool_name: undefined,
         percent_scrolled: undefined,
         video_current_time: this.undefined,

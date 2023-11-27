@@ -1,6 +1,6 @@
 # Google Analytics 4 and Google Tag Manager
 
-This document describes the use of Google Tag Manager (GTM) with Google Analytics 4 (GA4) on GOV.UK Publishing. Further information on our data schemas can be found in our [Implementation record](https://docs.publishing.service.gov.uk/analytics/).
+This document describes the use of Google Tag Manager (GTM) with Google Analytics 4 (GA4) on GOV.UK Publishing. Further information can be found in our [Implementation record](https://docs.publishing.service.gov.uk/analytics/).
 
 No analytics code is initialised and no data is gathered without user consent.
 
@@ -107,7 +107,7 @@ All of the data sent to GTM is based on a common schema.
 
 `search_results` is defined in the [ga4-ecommerce-tracker script](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/ga4-ecommerce-tracker.js).
 
-For more details of our data schema, see our [implementation record](https://docs.publishing.service.gov.uk/analytics/).
+For more details of how our data schemas work, read our [data schemas documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-schemas.md) or for the structure read our [Implementation record](https://docs.publishing.service.gov.uk/analytics/).
 
 ## How the dataLayer works
 
