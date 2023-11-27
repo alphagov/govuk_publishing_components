@@ -2,7 +2,6 @@
 
 describe('Cross Domain Tracking', function () {
   'use strict'
-  var module
   var GOVUK = window.GOVUK
 
   beforeEach(function () {
@@ -20,7 +19,8 @@ describe('Cross Domain Tracking', function () {
     anchorToTest.setAttribute('data-tracking-name', 'transactionTracker')
     anchorToTest.textContent = 'Start Now'
 
-    module = new GOVUK.Modules.CrossDomainTracking($(anchorToTest)[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossDomainTracking($(anchorToTest)[0])
 
     expect(
       GOVUK.analytics.addLinkedTrackerDomain
@@ -37,7 +37,8 @@ describe('Cross Domain Tracking', function () {
     var wrapperDiv = document.createElement('div')
     wrapperDiv.appendChild(anchorToTest)
 
-    module = new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
 
     expect(
       GOVUK.analytics.addLinkedTrackerDomain
@@ -71,7 +72,8 @@ describe('Cross Domain Tracking', function () {
     wrapperDiv.appendChild(anchorToTest)
     wrapperDiv.appendChild(secondAnchorToTest)
 
-    module = new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
 
     expect(
       GOVUK.analytics.addLinkedTrackerDomain
