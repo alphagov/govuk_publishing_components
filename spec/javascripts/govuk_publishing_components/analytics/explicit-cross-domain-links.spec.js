@@ -4,7 +4,6 @@
 describe('Explicit cross-domain linker', function () {
   'use strict'
 
-  var explicitCrossDomainLinks
   var element
   var linker
   var trackers
@@ -29,7 +28,8 @@ describe('Explicit cross-domain linker', function () {
     }
 
     element = $('<a href="#">')
-    explicitCrossDomainLinks = new GOVUK.Modules.ExplicitCrossDomainLinks(element[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.ExplicitCrossDomainLinks(element[0])
 
     spyOn(window.gaplugins, 'Linker').and.returnValue(linker)
     spyOn(linker, 'decorate').and.callFake(function (url) {
@@ -111,7 +111,9 @@ describe('Explicit cross-domain linker', function () {
                '<input type="hidden" name="key" value="value" />' +
                '<button type="submit">Create a GOV.UK account</button>' +
              '</form>')
-      explicitCrossDomainLinks = new GOVUK.Modules.ExplicitCrossDomainLinks(element[0])
+
+      /* eslint-disable no-new */
+      new GOVUK.Modules.ExplicitCrossDomainLinks(element[0])
     })
 
     it('modifies the form action to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is "false"', function () {

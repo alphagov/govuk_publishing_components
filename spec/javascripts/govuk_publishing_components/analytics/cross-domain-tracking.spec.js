@@ -89,7 +89,8 @@ describe('Cross Domain Tracking', function () {
     var wrapperDiv = document.createElement('div')
     wrapperDiv.appendChild(anchorToTest)
 
-    module = new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
 
     expect(GOVUK.analytics.addLinkedTrackerDomain).not.toHaveBeenCalled()
   })
@@ -108,7 +109,8 @@ describe('Cross Domain Tracking', function () {
     var wrapperDiv = document.createElement('div')
     wrapperDiv.appendChild(anchorToTest)
 
-    module = new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
 
     expect(
       GOVUK.analytics.addLinkedTrackerDomain
@@ -144,9 +146,11 @@ describe('Cross Domain Tracking', function () {
     wrapperDiv.appendChild(anchor1)
     wrapperDiv.appendChild(anchor2)
 
-    module = new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossDomainTracking($(wrapperDiv)[0])
 
-    var moduleDup = new GOVUK.Modules.CrossDomainTracking($(anchor2)[0])
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossDomainTracking($(anchor2)[0])
 
     expect(GOVUK.analytics.addLinkedTrackerDomain.calls.count()).toBe(1)
 

@@ -41,7 +41,7 @@ describe('GOVUK.AutoScrollTracker', function () {
     var el2 = document.createElement('div')
     scrollTracker2 = new GOVUK.Modules.AutoScrollTracker(el2)
 
-    expect(GOVUK.Modules.AutoScrollTracker.prototype.getWindowDetails).toHaveBeenCalledTimes(1);
+    expect(GOVUK.Modules.AutoScrollTracker.prototype.getWindowDetails).toHaveBeenCalledTimes(1)
   })
 
   describe('with invalid configuration', function () {
