@@ -4,6 +4,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function AutoTrackEvent ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   AutoTrackEvent.prototype.init = function () {

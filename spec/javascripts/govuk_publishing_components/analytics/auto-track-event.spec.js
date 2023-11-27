@@ -28,7 +28,7 @@ describe('An auto event tracker', function () {
     )
 
     tracker = new GOVUK.Modules.AutoTrackEvent(element[0])
-    tracker.init()
+
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category', 'action', { nonInteraction: 1 })
   })
@@ -45,7 +45,7 @@ describe('An auto event tracker', function () {
     )
 
     tracker = new GOVUK.Modules.AutoTrackEvent(element[0])
-    tracker.init()
+    
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category', 'action', { label: 'label', value: 10, nonInteraction: 1 })
   })

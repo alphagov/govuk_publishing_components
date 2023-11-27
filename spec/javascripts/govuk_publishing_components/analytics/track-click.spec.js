@@ -5,7 +5,8 @@ describe('A click tracker', function () {
   var element
 
   function initModule (element, click) {
-    new GOVUK.Modules.GemTrackClick(element).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.GemTrackClick(element)
     if (click) {
       GOVUK.triggerEvent(element, 'click')
     }

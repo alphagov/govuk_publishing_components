@@ -14,6 +14,8 @@ window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {};
       resizeTimeoutDelay: 100,
       pageHeightTimeoutDelay: 500
     }
+
+    this.init()
   }
 
   AutoScrollTracker.prototype.init = function () {

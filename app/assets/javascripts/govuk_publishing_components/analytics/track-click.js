@@ -6,6 +6,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function GemTrackClick ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   GemTrackClick.prototype.init = function () {
