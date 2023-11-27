@@ -35,11 +35,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
     },
 
     sendData: function (data) {
-      // Prevent any GA4 data being sent during Smokey tests
-      if (this.getUserAgent() === 'Smokey Test / Ruby') {
-        return
-      }
-
       data.govuk_gem_version = this.getGemVersion()
       // set this in the console as a debugging aid
       if (window.GOVUK.analyticsGa4.showDebug) {
@@ -52,6 +47,14 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         }
         console.info(JSON.stringify(data, null, ' '))
       }
+
+      // Send GA4 data to a fake dataLayer if smokey_cachebust or disable_ga4 is in the query string. Used to prevent Smokey/other tests from spamming our analytics.
+      if (this.trackFunctions.getSearch().match(/[?&](disable_ga4|smokey_cachebust){1}/)) {
+        window.fakeDataLayer = window.fakeDataLayer || []
+        window.fakeDataLayer.push(data)
+        return
+      }
+
       window.dataLayer.push(data)
     },
 
@@ -84,6 +87,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       getDomainRegex: function () {
         // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
         return /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
+      },
+
+      getSearch: function () {
+        return window.location.search
       },
 
       findTrackingAttributes: function (clicked, trackingTrigger) {

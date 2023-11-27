@@ -551,7 +551,7 @@ describe('Google Tag Manager page view tracking', function () {
   })
 
   it('correctly sets the query_string parameter with PII and _ga/_gl values redacted', function () {
-    spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?query1=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=19900101.567&_gl=19900101.567')
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?query1=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=19900101.567&_gl=19900101.567')
     expected.page_view.query_string = 'query1=hello&query2=world&email=[email]&postcode=[postcode]&birthday=[date]&_ga=[id]&_gl=[id]'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
@@ -559,7 +559,7 @@ describe('Google Tag Manager page view tracking', function () {
 
   describe('search_term parameter', function () {
     it('correctly sets the parameter using ?keywords= with PII values redacted', function () {
-      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
       expected.page_view.query_string = 'keywords=hello+world+[email]+[postcode]+[date]&another=one'
       expected.page_view.search_term = 'hello world [email] [postcode] [date]'
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
@@ -567,7 +567,7 @@ describe('Google Tag Manager page view tracking', function () {
     })
 
     it('correctly sets the parameter using &keywords= with PII values redacted', function () {
-      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?test=true&keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
       expected.page_view.query_string = 'test=true&keywords=hello+world+[email]+[postcode]+[date]&another=one'
       expected.page_view.search_term = 'hello world [email] [postcode] [date]'
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
@@ -575,7 +575,7 @@ describe('Google Tag Manager page view tracking', function () {
     })
 
     it('replaces plusses with spaces', function () {
-      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?test=true&keywords=hello++++world+there+are+spaces++in+++a+lot++++of+++places')
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello++++world+there+are+spaces++in+++a+lot++++of+++places')
       expected.page_view.query_string = 'test=true&keywords=hello++++world+there+are+spaces++in+++a+lot++++of+++places'
       expected.page_view.search_term = 'hello world there are spaces in a lot of places'
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
@@ -583,7 +583,7 @@ describe('Google Tag Manager page view tracking', function () {
     })
 
     it('correctly ignores other query string values', function () {
-      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('?keywordss=not+search&keyywords=not+search+either&hello=world')
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywordss=not+search&keyywords=not+search+either&hello=world')
       expected.page_view.query_string = 'keywordss=not+search&keyywords=not+search+either&hello=world'
       expected.page_view.search_term = undefined
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
@@ -591,7 +591,7 @@ describe('Google Tag Manager page view tracking', function () {
     })
 
     it('functions correctly when there is no query string', function () {
-      spyOn(GOVUK.analyticsGa4.analyticsModules.PageViewTracker, 'getSearch').and.returnValue('')
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('')
       expected.page_view.search_term = undefined
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
