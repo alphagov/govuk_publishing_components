@@ -37,18 +37,17 @@ describe('Google Analytics auto tracker', function () {
   describe('when the user has a cookie consent choice', function () {
     it('starts the module if consent has already been given', function () {
       agreeToCookies()
+      spyOn(GOVUK.Modules.Ga4AutoTracker.prototype, 'startModule')
       var tracker = new GOVUK.Modules.Ga4AutoTracker(element)
-      spyOn(tracker, 'startModule').and.callThrough()
-      tracker.init()
 
       expect(tracker.startModule).toHaveBeenCalled()
     })
 
     it('starts the module on the same page as cookie consent is given', function () {
       denyCookies()
+      spyOn(GOVUK.Modules.Ga4AutoTracker.prototype, 'sendEvent')
       var tracker = new GOVUK.Modules.Ga4AutoTracker(element)
-      spyOn(tracker, 'sendEvent')
-      tracker.init()
+
       expect(tracker.sendEvent).not.toHaveBeenCalled()
 
       // page has not been reloaded, user consents to cookies
@@ -58,9 +57,8 @@ describe('Google Analytics auto tracker', function () {
 
     it('does not do anything if consent is not given', function () {
       denyCookies()
+      spyOn(GOVUK.Modules.Ga4AutoTracker.prototype, 'sendEvent')
       var tracker = new GOVUK.Modules.Ga4AutoTracker(element)
-      spyOn(tracker, 'sendEvent')
-      tracker.init()
 
       expect(tracker.sendEvent).not.toHaveBeenCalled()
     })
@@ -113,7 +111,7 @@ describe('Google Analytics auto tracker', function () {
       }
       element.setAttribute('data-ga4-auto', JSON.stringify(attributes))
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4AutoTracker(element).init()
+      new GOVUK.Modules.Ga4AutoTracker(element)
     })
 
     it('pushes ga4 attributes to the dataLayer', function () {
@@ -140,7 +138,7 @@ describe('Google Analytics auto tracker', function () {
         text: '/2022-02-02/SW10AA/email@example.com'
       }
       element.setAttribute('data-ga4-auto', JSON.stringify(attributes))
-      new GOVUK.Modules.Ga4AutoTracker(element).init()
+      new GOVUK.Modules.Ga4AutoTracker(element)
     })
 
     it('redacts dates, postcodes and emails from text', function () {
