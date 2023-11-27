@@ -32,12 +32,14 @@ describe('Google Analytics event tracker', function () {
   })
 
   describe('when the user has a cookie consent choice', function () {
+    beforeEach(function () {
+      spyOn(GOVUK.Modules.Ga4EventTracker.prototype, 'trackClick')
+    })
+
     it('starts the module if consent has already been given', function () {
       agreeToCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4EventTracker(element)
-      spyOn(tracker, 'trackClick')
-      tracker.init()
 
       element.click()
       expect(tracker.trackClick).toHaveBeenCalled()
@@ -47,8 +49,6 @@ describe('Google Analytics event tracker', function () {
       denyCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4EventTracker(element)
-      spyOn(tracker, 'trackClick')
-      tracker.init()
 
       element.click()
       expect(tracker.trackClick).not.toHaveBeenCalled()
@@ -64,8 +64,6 @@ describe('Google Analytics event tracker', function () {
       denyCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4EventTracker(element)
-      spyOn(tracker, 'trackClick')
-      tracker.init()
 
       element.click()
       expect(tracker.trackClick).not.toHaveBeenCalled()
@@ -77,7 +75,7 @@ describe('Google Analytics event tracker', function () {
       element.setAttribute('data-ga4-event', '')
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('does not cause an error or fire an event', function () {
@@ -91,7 +89,7 @@ describe('Google Analytics event tracker', function () {
       element.setAttribute('data-ga4-event', 'invalid json')
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('does not cause an error', function () {
@@ -117,7 +115,7 @@ describe('Google Analytics event tracker', function () {
       element.setAttribute('data-ga4-event', JSON.stringify(attributes))
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('pushes ga4 attributes to the dataLayer', function () {
@@ -150,7 +148,7 @@ describe('Google Analytics event tracker', function () {
       element.setAttribute('data-ga4-event', JSON.stringify(attributes))
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
       expected.event_data.text = 'text from the button'
 
       element.click()
@@ -162,7 +160,7 @@ describe('Google Analytics event tracker', function () {
       element.setAttribute('data-ga4-event', JSON.stringify(attributes))
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
       expected.event_data.text = 'text from the attributes'
 
       element.click()
@@ -203,7 +201,7 @@ describe('Google Analytics event tracker', function () {
         '></div>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('pushes ga4 attributes to the dataLayer', function () {
@@ -226,7 +224,7 @@ describe('Google Analytics event tracker', function () {
       element.setAttribute('aria-expanded', 'false')
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('includes the expanded state in the ga4 attributes', function () {
@@ -264,7 +262,7 @@ describe('Google Analytics event tracker', function () {
         '</details>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('includes the open state in the ga4 attributes', function () {
@@ -304,7 +302,7 @@ describe('Google Analytics event tracker', function () {
         '</div>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('includes the expanded state in the ga4 attributes', function () {
@@ -348,7 +346,7 @@ describe('Google Analytics event tracker', function () {
         '</details>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('includes the open state in the ga4 attributes', function () {
@@ -392,7 +390,7 @@ describe('Google Analytics event tracker', function () {
         '</div>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('should not track the aria-expanded state', function () {
@@ -416,7 +414,7 @@ describe('Google Analytics event tracker', function () {
         '</div>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('should not track the open/closed state', function () {
@@ -443,7 +441,7 @@ describe('Google Analytics event tracker', function () {
         '</div>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
 
       spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getPathname').and.returnValue('/hello-world')
     })
@@ -491,7 +489,7 @@ describe('Google Analytics event tracker', function () {
 
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
 
       window.dataLayer = []
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -529,7 +527,7 @@ describe('Google Analytics event tracker', function () {
       '</nav></header>'
       document.body.appendChild(element)
       /* eslint-disable no-new */
-      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element)
     })
 
     it('tracks expanding/collapsing sections under the data-ga4-expandable attribute', function () {

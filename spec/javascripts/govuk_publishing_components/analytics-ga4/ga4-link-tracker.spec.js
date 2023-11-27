@@ -7,7 +7,8 @@ describe('GA4 link tracker', function () {
   var attributes
 
   function initModule (element, click) {
-    new GOVUK.Modules.Ga4LinkTracker(element).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.Ga4LinkTracker(element)
     if (click) {
       GOVUK.triggerEvent(element, 'click')
     }
