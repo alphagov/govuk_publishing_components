@@ -144,64 +144,6 @@ describe('GA4 core', function () {
       })
     })
 
-    describe('dealing with long URLs', function () {
-      var path = '/thisstringispreciselyfiftycharactersintotallength'
-      var domains = [
-        'https://www.gov.uk',
-        'http://www.gov.uk',
-        '//www.gov.uk',
-        'https://gov.uk',
-        'http://gov.uk',
-        '//gov.uk'
-      ]
-
-      it('preserves the path as an object for a relative URL', function () {
-        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(path)).toEqual({
-          1: path,
-          2: undefined,
-          3: undefined,
-          4: undefined,
-          5: undefined
-        })
-      })
-
-      it('preserves a really long path correctly', function () {
-        var href = path + path + path + path + path + path
-        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(href)).toEqual({
-          1: path + path,
-          2: path + path,
-          3: path + path,
-          4: undefined,
-          5: undefined
-        })
-      })
-
-      it('obeys the limit of 500 characters for really long paths', function () {
-        var href = path + path + path + path + path + path + path + path + path + path + path + path + 'hello!'
-        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(href)).toEqual({
-          1: path + path,
-          2: path + path,
-          3: path + path,
-          4: path + path,
-          5: path + path
-        })
-      })
-
-      it('preserves only the path as an object when a domain is present for all variants of GOV.UK', function () {
-        var href
-        for (var i = 0; i < domains.length; i++) {
-          href = domains[i] + path
-          expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(href)).toEqual({
-            1: path,
-            2: undefined,
-            3: undefined,
-            4: undefined,
-            5: undefined
-          })
-        }
-      })
-    })
-
     it('correctly identifies relative URLs', function () {
       var relativeURLs = [
         'g',

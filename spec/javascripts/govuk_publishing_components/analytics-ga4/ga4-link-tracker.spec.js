@@ -37,13 +37,6 @@ describe('GA4 link tracker', function () {
     expected.event_data.event_name = 'navigation'
     expected.govuk_gem_version = 'aVersion'
     expected.event_data.link_domain = 'https://www.gov.uk'
-    expected.event_data.link_path_parts = {
-      1: undefined,
-      2: undefined,
-      3: undefined,
-      4: undefined,
-      5: undefined
-    }
     agreeToCookies()
   })
 
@@ -133,7 +126,6 @@ describe('GA4 link tracker', function () {
       element.textContent = linkText
       expected.event_data.text = linkText
       expected.event_data.url = link
-      expected.event_data.link_path_parts['1'] = link
 
       initModule(element, true)
       expect(window.dataLayer[0]).toEqual(expected)
@@ -150,7 +142,6 @@ describe('GA4 link tracker', function () {
       element.setAttribute('href', link)
       expected.event_data.text = recordText
       expected.event_data.url = link
-      expected.event_data.link_path_parts['1'] = link
 
       initModule(element, true)
       expect(window.dataLayer[0]).toEqual(expected)
@@ -166,7 +157,6 @@ describe('GA4 link tracker', function () {
 
       expected.event_data.url = linkOverride
       expected.event_data.link_domain = 'https://nationalarchives.gov.uk'
-      expected.event_data.link_path_parts['1'] = '/test123'
       expected.event_data.external = 'true'
       expected.event_data.text = ''
 
@@ -189,15 +179,11 @@ describe('GA4 link tracker', function () {
 
       expected.event_data.text = 'Link 1'
       expected.event_data.url = longLink
-      expected.event_data.link_path_parts['1'] = '#link1-that-is-deliberately-really-long-to-test-the-url-being-split-into-parts-is-this-a-hundred-cha'
-      expected.event_data.link_path_parts['2'] = 'racters-yet'
       element.querySelector('.first').click()
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected.event_data.text = 'Link 2'
       expected.event_data.url = '#link2'
-      expected.event_data.link_path_parts['1'] = '#link2'
-      expected.event_data.link_path_parts['2'] = undefined
       element.querySelector('.second').click()
       expect(window.dataLayer[1]).toEqual(expected)
 
@@ -232,7 +218,6 @@ describe('GA4 link tracker', function () {
       element.textContent = linkText
       expected.event_data.text = linkText
       expected.event_data.url = link
-      expected.event_data.link_path_parts['1'] = link
     })
 
     it('tracks primary clicks on a single link', function () {
@@ -321,19 +306,16 @@ describe('GA4 link tracker', function () {
 
       expected.event_data.text = 'Link 1'
       expected.event_data.url = '#link1'
-      expected.event_data.link_path_parts['1'] = '#link1'
       element.querySelector('.first').click()
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected.event_data.text = 'Link 2'
       expected.event_data.url = '#link2'
-      expected.event_data.link_path_parts['1'] = '#link2'
       element.querySelector('.second').click()
       expect(window.dataLayer[1]).toEqual(expected)
 
       expected.event_data.text = 'Link 3'
       expected.event_data.url = '#link3'
-      expected.event_data.link_path_parts['1'] = '#link3'
       element.querySelector('.third').click()
       expect(window.dataLayer[2]).toEqual(expected)
 
@@ -371,19 +353,16 @@ describe('GA4 link tracker', function () {
 
       expected.event_data.text = 'Link 1'
       expected.event_data.url = '#link1'
-      expected.event_data.link_path_parts['1'] = '#link1'
       element.querySelector('.first').click()
       expect(window.dataLayer[0]).toEqual(undefined)
 
       expected.event_data.text = 'Link 2'
       expected.event_data.url = '#link2'
-      expected.event_data.link_path_parts['1'] = '#link2'
       element.querySelector('.second').click()
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected.event_data.text = 'Link 3'
       expected.event_data.url = '#link3'
-      expected.event_data.link_path_parts['1'] = '#link3'
       element.querySelector('.third').click()
       expect(window.dataLayer[1]).toEqual(expected)
 
@@ -519,7 +498,6 @@ describe('GA4 link tracker', function () {
       link.click()
 
       expect(window.dataLayer[0].event_data.url).toEqual('#/[date]/[postcode]/[email]')
-      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('#/[date]/[postcode]/[email]')
       expect(window.dataLayer[0].event_data.text).toEqual('[date] [postcode] [email]')
     })
 
@@ -536,7 +514,6 @@ describe('GA4 link tracker', function () {
       link.click()
 
       expect(window.dataLayer[0].event_data.url).toEqual('#/2022-02-02/SW10AA/email@example.com')
-      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('#/2022-02-02/SW10AA/email@example.com')
       expect(window.dataLayer[0].event_data.text).toEqual('2022-02-02 SW1 0AA email@example.com')
     })
 
@@ -553,7 +530,6 @@ describe('GA4 link tracker', function () {
       link.click()
 
       expect(window.dataLayer[0].event_data.url).toEqual('#/2022-02-02/SW10AA/email@example.com')
-      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('#/2022-02-02/SW10AA/email@example.com')
       expect(window.dataLayer[0].event_data.text).toEqual('2022-02-02 SW1 0AA email@example.com')
     })
   })

@@ -36,8 +36,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             taxonomy_level1: this.getMetaContent('themes'),
             taxonomy_main: this.getMetaContent('taxon-slug'),
             taxonomy_main_id: this.getMetaContent('taxon-id'),
-            taxonomy_all: this.splitLongMetaContent('taxon-slugs'),
-            taxonomy_all_ids: this.splitLongMetaContent('taxon-ids'),
+            taxonomy_all: this.getMetaContent('taxon-slugs'),
+            taxonomy_all_ids: this.getMetaContent('taxon-ids'),
 
             language: this.getLanguage(),
             history: this.getHistory(),
@@ -194,13 +194,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return 'true'
       }
       return undefined
-    },
-
-    splitLongMetaContent: function (metatag) {
-      var tag = this.getMetaContent(metatag)
-      if (tag) {
-        return window.GOVUK.analyticsGa4.core.trackFunctions.splitStringIntoParts(tag)
-      }
     },
 
     // return only the date from given timestamps of the form

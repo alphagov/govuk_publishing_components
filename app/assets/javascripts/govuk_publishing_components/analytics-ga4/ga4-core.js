@@ -101,39 +101,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         }
       },
 
-      // create an object to split up long URLs and get around the 100 character limit on GTM data
-      // this gets reassembled in GA4
-      populateLinkPathParts: function (href) {
-        var path = ''
-        if (this.hrefIsRelative(href) || this.isMailToLink(href)) {
-          path = href
-        } else {
-          // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
-          path = href.replace(/^(http:||https:)?(\/\/)([^\/]*)/, '') // eslint-disable-line no-useless-escape
-        }
-
-        if (path === '/' || path.length === 0) {
-          return
-        }
-
-        return this.splitStringIntoParts(path)
-      },
-
-      splitStringIntoParts: function (string) {
-        /*
-        This will create an object with 5 keys that are indexes ("1", "2", etc.)
-        The values will be each part of the string split every 100 characters, or undefined.
-        For example: {"1": "/hello/world/etc...", "2": "/more/path/text...", "3": undefined, "4": undefined, "5": undefined}
-        Undefined values are needed to override the persistent object in GTM so that any values from old pushes are overwritten.
-        */
-        var parts = string.match(/.{1,100}/g)
-        var obj = {}
-        for (var i = 0; i < 5; i++) {
-          obj[(i + 1).toString()] = parts[i]
-        }
-        return obj
-      },
-
       hrefIsRelative: function (href) {
         // Checks that a href is relative by the lack of http:, https:// or // at the start of the href.
         var domain = this.getDomainRegex().exec(href)

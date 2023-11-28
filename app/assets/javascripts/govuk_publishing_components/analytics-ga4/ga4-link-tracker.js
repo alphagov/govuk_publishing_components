@@ -90,7 +90,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       data.url = trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, data.url)
       data.url = trackFunctions.appendPathToAnchorLinks(data.url)
       data.link_domain = trackFunctions.populateLinkDomain(data.url)
-      data.link_path_parts = trackFunctions.populateLinkPathParts(data.url)
       data.method = trackFunctions.getClickType(event)
       data.external = trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
       data.index = this.setIndex(data.index, event.target)

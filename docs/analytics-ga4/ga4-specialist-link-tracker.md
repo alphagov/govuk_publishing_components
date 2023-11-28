@@ -27,21 +27,6 @@ Events can either have an `event_name` of `navigation`, `file_download`, or `sha
 
 Link URLs are stripped of the `_ga` and `_gl` query parameters. These are only relevant for cross domain tracking and aren't useful for our click tracking. Link text is stripped of multiple lines and multiple spaces, as this causes issues in the analytics dashboards.
 
-GA4 only allows event values to have a maximum character length of 100. This is a problem for tracking URLs, as many of them exceed 100 characters. Therefore, to solve this we have:
-- Added a separate `link_domain` value which captures the protocol and domain of a link, such as `https://www.gov.uk`
-- Created an object called `link_path_parts`, which splits the path into 100 character segments (max 5 segments, or 500 characters). For example, if your link was `https://gov.uk/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragili`, your GA4 push would contain:
-     ```JavaScript
-     "link_domain": "https://www.gov.uk",
-     "link_path_parts": {
-          "1": "/supercalifragilisticexpialidocious-even-though-the-sound-of-it-is-something-quite-atrocious-if-you-",
-          "2": "say-it-loud-enough-youll-always-sound-precocious-supercalifragilisticexpialidocious-supercalifragili",
-          "3": undefined,
-          "4": undefined,
-          "5": undefined
-        },
-    ```
-- The link is then reconstructed in Data Studio.
-
 ## Basic use
 
 ```JavaScript
@@ -85,10 +70,6 @@ In the example above, on a left click of the link, the following would be pushed
         "external": "true",
         "method": "primary click",
         "link_domain": "https://assets.publishing.service.gov.uk",
-        "link_path_parts": {
-            "1": "/government/uploads/system/uploads/attachment_data/file/742746/A_quick_guide_to_govt_healthy_eating_",
-            "2": "update.pdf"
-        }
     }
 }
 ```
