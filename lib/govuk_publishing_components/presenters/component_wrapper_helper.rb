@@ -76,7 +76,7 @@ module GovukPublishingComponents
         return if classes.blank?
 
         class_array = classes.split(" ")
-        unless class_array.all? { |c| c.start_with?("js-", "gem-c-", "govuk-", "brand--", "brand__") }
+        unless class_array.all? { |c| c.start_with?("js-", "gem-c-", "govuk-", "app-c-", "brand--", "brand__") }
           raise(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
         end
       end

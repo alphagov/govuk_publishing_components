@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Let applications use the component wrapper helper ([PR #3736](https://github.com/alphagov/govuk_publishing_components/pull/3736))
 * [BREAKING] Change action link component options ([PR #3729](https://github.com/alphagov/govuk_publishing_components/pull/3729))
 * Remove attribute nesting handling from GA4 schemas ([PR #3718](https://github.com/alphagov/govuk_publishing_components/pull/3718))
 * Allow GA4 to be disabled via query string parameters ([PR #3731](https://github.com/alphagov/govuk_publishing_components/pull/3731))
