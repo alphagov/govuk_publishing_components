@@ -20,6 +20,11 @@ describe "Breadcrumbs", type: :view do
     assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/section", "Section")
   end
 
+  it "has the component wrapper installed correctly" do
+    render_component(breadcrumbs: [{ title: "Section", url: "/section" }], component_wrapper_test: true)
+    assert_select ".gem-c-breadcrumbs[data-componentwrappertest='component wrapper installed']"
+  end
+
   it "renders schema data" do
     breadcrumbs = [
       { title: "Section 1", url: "/section-1" },
