@@ -10,7 +10,7 @@ describe "Details", type: :view do
       "This is more info"
     end
 
-    assert_select "details.gem-c-details[data-module='govuk-details gem-details ga4-event-tracker']"
+    assert_select "details.gem-c-details[data-module='gem-details ga4-event-tracker']"
     assert_select ".govuk-details__summary-text[data-ga4-expandable]", text: "Some title"
     assert_select ".govuk-details__text", text: "This is more info"
   end
