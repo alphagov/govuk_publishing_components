@@ -218,6 +218,58 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     expect(string).toEqual('hello+world+[email]+SW12AA+1990-01-01')
   })
 
+  it('can strip a wide range of dates', function () {
+    var dates = [
+      '01/01/1990', '01-01-1990', '1-1-1990', '1/1/1990', '01\\01\\1990', '1\\1\\1990',
+      '1990/01/01', '1990-01-01', '1990-1-1', '1990/1/1', '1990\\1\\1', '1990\\01\\01',
+      '19900101'
+    ]
+
+    // Use a for loop to create all the possible string date combinations
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
+      'Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug', 'Sep', 'Sept', 'Oct', 'Nov', 'Dec']
+
+    for (var i = 0; i < months.length; i++) {
+      var month = months[i]
+      var monthVariations = [month, month.toLowerCase(), month.toUpperCase()] // Test multiple character case types e.g. 'January', 'JANUARY, 'january'
+
+      for (var j = 0; j < monthVariations; j++) {
+        var monthVariation = monthVariations[j]
+        dates.push('1st of ' + monthVariation + ' 1990')
+        dates.push('1st ' + monthVariation + ' 1990')
+        dates.push('1 ' + monthVariation + ' 1990')
+        dates.push('1 of ' + monthVariation + ' 1990')
+        dates.push('2nd of ' + monthVariation + ' 1990')
+        dates.push('2nd ' + monthVariation + ' 1990')
+        dates.push('3rd of ' + monthVariation + ' 1990')
+        dates.push('3rd ' + monthVariation + ' 1990')
+        dates.push('4th of ' + monthVariation + ' 1990')
+        dates.push('4th ' + monthVariation + ' 1990')
+        dates.push('10th of ' + monthVariation + ' 1990')
+        dates.push('10th ' + monthVariation + ' 1990')
+        dates.push('10 of ' + monthVariation + ' 1990')
+        dates.push('25th of ' + monthVariation + ' 90')
+        dates.push('25th of ' + monthVariation + " '90")
+
+        dates.push(monthVariation + ' 1st 1990')
+        dates.push(monthVariation + ' 2nd 1990')
+        dates.push(monthVariation + ' 3rd 1990')
+        dates.push(monthVariation + ' 4th 1990')
+        dates.push(monthVariation + ' 10th 1990')
+        dates.push(monthVariation + ' 1 1990')
+        dates.push(monthVariation + ' 10 1990')
+        dates.push(monthVariation + ' 10 90')
+        dates.push(monthVariation + " 10 '90")
+      }
+    }
+
+    for (i = 0; i < dates.length; i++) {
+      var date = dates[i]
+      var string = pii.stripPIIWithOverride(date, true, true)
+      expect(string).toEqual('[date]')
+    }
+  })
+
   function resetHead () {
     $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
     $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()
