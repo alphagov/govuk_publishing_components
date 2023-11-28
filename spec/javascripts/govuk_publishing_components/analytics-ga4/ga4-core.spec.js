@@ -68,13 +68,27 @@ describe('GA4 core', function () {
     })
   })
 
-  it('does not push data to the dataLayer if it is a Smokey test', function () {
-    spyOn(GOVUK.analyticsGa4.core, 'getUserAgent').and.returnValue('Smokey Test / Ruby')
-    var data = {
-      hello: 'I must be going'
+  describe('query strings allow pushing to a fake dataLayer', function () {
+    var data
+
+    beforeEach(function () {
+      data = {
+        hello: 'I must be going'
+      }
+      window.fakeDataLayer = []
+    })
+
+    var queryStringsToTest = ['?smokey_cachebust', '&smokey_cachebust', '?disable_ga4', '&disable_ga4']
+
+    for (var i = 0; i < queryStringsToTest.length; i++) {
+      var queryString = queryStringsToTest[i]
+      it('pushes to the fakeDataLayer if the page query string contains ' + queryString, function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue(queryString + '=123456')
+        GOVUK.analyticsGa4.core.sendData(data)
+        expect(window.dataLayer).toEqual([])
+        expect(window.fakeDataLayer[0]).toEqual(data)
+      })
     }
-    GOVUK.analyticsGa4.core.sendData(data)
-    expect(window.dataLayer).toEqual([])
   })
 
   it('sorts event data alphabetically for debug mode', function () {

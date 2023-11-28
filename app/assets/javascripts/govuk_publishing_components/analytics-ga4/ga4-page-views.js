@@ -73,12 +73,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       return this.PIIRemover.stripPIIWithOverride(this.stripGaParam(document.location.href), true, true)
     },
 
-    getSearch: function () {
-      return window.location.search
-    },
-
     getSearchTerm: function () {
-      var queryString = this.getSearch()
+      var queryString = window.GOVUK.analyticsGa4.core.trackFunctions.getSearch()
 
       if (!queryString) {
         return undefined
@@ -97,7 +93,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getQueryString: function () {
-      var queryString = this.getSearch()
+      var queryString = window.GOVUK.analyticsGa4.core.trackFunctions.getSearch()
       if (queryString) {
         queryString = this.stripGaParam(queryString)
         queryString = this.PIIRemover.stripPIIWithOverride(queryString, true, true)
