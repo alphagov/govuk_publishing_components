@@ -9,6 +9,15 @@ describe "Action link", type: :view do
     assert_empty render_component(href: "/coronavirus")
   end
 
+  it "has the component wrapper installed correctly" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      component_wrapper_test: true,
+    )
+    assert_select ".gem-c-action-link[data-componentwrappertest='component wrapper installed']"
+  end
+
   it "applies default margin to the component" do
     render_component(
       text: "Get more info",
