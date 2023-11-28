@@ -307,6 +307,22 @@ describe "Accordion", type: :view do
     assert_select "[data-module='gem-track-click govuk-accordion gem-accordion ga4-event-tracker']", count: 1
   end
 
+  it "has the component wrapper installed correctly" do
+    test_data = {
+      id: "test-for-heading-and-content",
+      component_wrapper_test: true,
+      items: [
+        {
+          heading: { text: "Heading 1" },
+          content: { html: "<p>Content 1.</p>" },
+        },
+      ],
+    }
+
+    render_component(test_data)
+    assert_select ".gem-c-accordion[data-componentwrappertest='component wrapper installed']"
+  end
+
   it "section has class added when expanded flag is present" do
     test_data = {
       id: "test-for-expanded-layout",
