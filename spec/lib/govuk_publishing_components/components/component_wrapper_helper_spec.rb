@@ -27,6 +27,35 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       expect(component_helper.all_attributes).to eql(expected)
     end
 
+    it "has an option to allow components to test it is installed and working correctly" do
+      args = {
+        component_wrapper_test: true,
+      }
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
+      expected = {
+        data: {
+          componentwrappertest: "component wrapper installed",
+        },
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+
+      # check that the test doesn't conflict with passed data attributes
+      args = {
+        component_wrapper_test: true,
+        data_attributes: {
+          module: "module",
+        },
+      }
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
+      expected = {
+        data: {
+          module: "module",
+          componentwrappertest: "component wrapper installed",
+        },
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+    end
+
     it "accepts valid class names" do
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "gem-c-component govuk-component brand--thing brand__thing")
       expected = {

@@ -22,6 +22,11 @@ module GovukPublishingComponents
         attributes[:role] = @options[:role] unless @options[:role].blank?
         attributes[:lang] = @options[:lang] unless @options[:lang].blank?
 
+        if @options[:component_wrapper_test]
+          attributes[:data] = {} if attributes[:data].blank?
+          attributes[:data][:componentwrappertest] = "component wrapper installed"
+        end
+
         attributes
       end
 
