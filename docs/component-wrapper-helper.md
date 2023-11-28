@@ -55,7 +55,7 @@ The helper checks that passed aria attributes are valid, based on a hard coded l
 
 Classes can be passed to components. To prevent breaking [component isolation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_principles.md#a-component-is-isolated-when), passed classes should only be used for JavaScript hooks and not styling. All component styling should be included only in the component itself.
 
-Any passed classes should be prefixed with `js-`. To allow for extending this option, classes prefixed with `gem-c-` or `govuk-` are also permitted, but should only be used within the component and not passed to it.
+Any passed classes should be prefixed with `js-`. To allow for extending this option, classes prefixed with `gem-c-`, `app-c-` or `govuk-` are also permitted, but should only be used within the component and not passed to it.
 
 ```
 <%= render "govuk_publishing_components/components/example", {
