@@ -268,9 +268,23 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
+  it('returns a pageview on a page marked with a publishing government (GA4 alternative meta tag)', function () {
+    createMetaTags('ga4-publishing-government', 'labour')
+    expected.page_view.publishing_government = 'labour'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
   it('returns a pageview on a page marked with a political status', function () {
     createMetaTags('political-status', 'ongoing')
     expected.page_view.political_status = 'ongoing'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page marked with a political status (GA4 alternative meta tag)', function () {
+    createMetaTags('ga4-political-status', 'historic')
+    expected.page_view.political_status = 'historic'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })

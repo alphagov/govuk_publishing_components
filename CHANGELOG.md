@@ -17,6 +17,7 @@
 * Make data-ga4-set-indexes ignore links with no href ([PR #3723](https://github.com/alphagov/govuk_publishing_components/pull/3723))
 * Improve PII date removal ([PR #3709](https://github.com/alphagov/govuk_publishing_components/pull/3709))
 * Decommission GA4 link_path_parts and splitting of taxonomy_all and taxonomy_all_ids ([PR #3730](https://github.com/alphagov/govuk_publishing_components/pull/3730))
+* Create new political meta tags for GA4 ([PR #3706](https://github.com/alphagov/govuk_publishing_components/pull/3706))
 
 ## 35.23.0
 

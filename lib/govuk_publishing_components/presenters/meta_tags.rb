@@ -19,6 +19,7 @@ module GovukPublishingComponents
       def meta_tags
         meta_tags = {}
         meta_tags = add_core_tags(meta_tags)
+        meta_tags = add_ga4_political_tags(meta_tags)
         meta_tags = add_organisation_tags(meta_tags)
         meta_tags = add_political_tags(meta_tags)
         meta_tags = add_taxonomy_tags(meta_tags)
@@ -48,6 +49,8 @@ module GovukPublishingComponents
         primary_publisher = content_item.dig(:links, :primary_publishing_organisation)
         primary_publisher = primary_publisher.first[:title] unless primary_publisher.blank?
         meta_tags["govuk:primary-publishing-organisation"] = primary_publisher unless primary_publisher.blank?
+
+        # Some browse topics are nested in the content item, we want to grab these for GA4 tracking.
         ga4_browse_topic = content_item.dig(:links, :ordered_related_items, 0, :links, :mainstream_browse_pages, 0, :links, :parent, 0, :title)
         ga4_browse_topic = ga4_browse_topic.downcase if ga4_browse_topic
         meta_tags["govuk:ga4-browse-topic"] = ga4_browse_topic if ga4_browse_topic
@@ -79,6 +82,24 @@ module GovukPublishingComponents
 
           meta_tags["govuk:political-status"] = political_status
           meta_tags["govuk:publishing-government"] = details[:government][:slug]
+        end
+
+        meta_tags
+      end
+
+      # Some 'government' objects are nested in the content item on some pages. We want to grab these for GA4 tracking.
+      # We only add the publishing government if 'political' is true, otherwise some content items get incorrectly linked to a government
+      def add_ga4_political_tags(meta_tags)
+        government = content_item.dig(:links, :government, 0)
+
+        # political: true/false is in a different place to current: true/false, which is why we have 'details' and 'government[:details]'
+        if government && details[:political]
+          meta_tags["govuk:ga4-political-status"] = government[:details][:current] ? "political" : "historic"
+
+          government_title = government[:title]
+          if government_title && !government[:details][:current]
+            meta_tags["govuk:ga4-publishing-government"] = government_title
+          end
         end
 
         meta_tags
