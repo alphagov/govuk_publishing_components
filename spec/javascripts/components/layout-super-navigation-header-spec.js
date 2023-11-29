@@ -333,7 +333,9 @@ describe('The super header navigation', function () {
     var $lastSearchMenuTabbable
 
     beforeEach(function () {
-      thisModule.init()
+      var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
+      /* eslint-disable no-new */
+      new GOVUK.Modules.SuperNavigationMegaMenu($element)
       $navMenuButton = document.querySelector('#super-navigation-menu-toggle')
       $searchMenuButton = document.querySelector('#super-search-menu-toggle')
       $navMenu = document.querySelector('#super-navigation-menu')
@@ -400,7 +402,9 @@ describe('The super header navigation', function () {
     var $searchMenuButton
 
     beforeEach(function () {
-      thisModule.init()
+      var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
+      /* eslint-disable no-new */
+      new GOVUK.Modules.SuperNavigationMegaMenu($element)
       $navMenu = document.querySelector('#super-navigation-menu')
       $navMenuButton = document.querySelector('#super-navigation-menu-toggle')
       $searchMenu = document.querySelector('#super-search-menu')
