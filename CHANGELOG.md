@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 36.0.1
 
 * Use component wrapper on option select ([PR #3738](https://github.com/alphagov/govuk_publishing_components/pull/3738))
 
