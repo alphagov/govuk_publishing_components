@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 36.0.0
 
 * Let applications use the component wrapper helper ([PR #3736](https://github.com/alphagov/govuk_publishing_components/pull/3736))
 * [BREAKING] Change action link component options ([PR #3729](https://github.com/alphagov/govuk_publishing_components/pull/3729))
