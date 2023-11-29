@@ -122,7 +122,10 @@
             schema.text = elementType === 'text' ? undefined : elementValue
           } else {
             schema.action = elementType === 'text' ? 'search' : 'select'
-            schema.index = this.getSectionIndex(filterParent)
+            var index = this.getSectionIndex(filterParent)
+            schema.index_link = index.index_link || undefined
+            schema.index_section = index.index_section || undefined
+            schema.index_section_count = index.index_section_count || undefined
           }
           break
 
