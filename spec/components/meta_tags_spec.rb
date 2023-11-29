@@ -447,6 +447,57 @@ describe "Meta tags", type: :view do
     assert_no_meta_tag("govuk:ga4-browse-topic")
   end
 
+  it "renders GA4 political tags by digging down to links > government in the content item" do
+    render_component(content_item: example_document_for("html_publication", "published_with_history_mode"))
+    assert_meta_tag("govuk:ga4-publishing-government", "2010 to 2015 Conservative and Liberal Democrat coalition government")
+    assert_meta_tag("govuk:ga4-political-status", "historic")
+  end
+
+  it "doesn't render GA4 political tags if the government object doesn't exist in the content item" do
+    content_item = {
+      "links": {
+        "government": nil,
+      },
+    }
+    render_component(content_item: example_document_for("html_publication", "published_with_history_mode").merge(content_item))
+    assert_no_meta_tag("govuk:ga4-publishing-government")
+    assert_no_meta_tag("govuk:ga4-political-status")
+  end
+
+  it "doesn't render GA4 political tags if the government object exists in the content item, but political is false" do
+    content_item = {
+      "political": false,
+      "links": {
+        "government": {
+          "details": {
+            "current": false,
+          },
+          "title": "2005 to 2010 Labour government",
+        },
+      },
+    }
+    render_component(content_item: example_document_for("html_publication", "published_with_history_mode").merge(content_item))
+    assert_no_meta_tag("govuk:ga4-publishing-government")
+    assert_no_meta_tag("govuk:ga4-political-status")
+  end
+
+  it "doesn't render GA4 political tags if the government object exists in the content item, but it refers to the current government" do
+    content_item = {
+      "political": true,
+      "links": {
+        "government": {
+          "details": {
+            "current": true,
+          },
+          "title": "2015 Conservative government",
+        },
+      },
+    }
+    render_component(content_item: example_document_for("html_publication", "published_with_history_mode").merge(content_item))
+    assert_no_meta_tag("govuk:ga4-publishing-government")
+    assert_no_meta_tag("govuk:ga4-political-status")
+  end
+
   def assert_political_status_for(political, current, expected_political_status)
     render_component(content_item: { details: { political:, government: { current:, slug: "government" } } })
     assert_meta_tag("govuk:political-status", expected_political_status)
