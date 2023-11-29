@@ -103,12 +103,9 @@
   }
 }
 
-.gem-c-header__logotype {
-  vertical-align: middle;
-}
-
 .gem-c-header__product-name {
   display: none;
+  margin-top: govuk-spacing(-1);
 
   @include govuk-media-query($from: tablet) {
     display: inline-block;
@@ -119,6 +116,7 @@
 .gem-c-environment-tag {
   padding: 2px 5px 0;
   margin-left: 3px;
+  margin-top: govuk-spacing(-2);  
   vertical-align: middle;
 }
 
