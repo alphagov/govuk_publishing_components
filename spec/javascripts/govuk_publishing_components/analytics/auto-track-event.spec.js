@@ -5,8 +5,7 @@ var $ = window.jQuery
 describe('An auto event tracker', function () {
   'use strict'
   var GOVUK = window.GOVUK
-  var tracker,
-    element
+  var element
 
   beforeEach(function () {
     spyOn(GOVUK.analytics, 'trackEvent')
@@ -27,8 +26,9 @@ describe('An auto event tracker', function () {
       '</div>'
     )
 
-    tracker = new GOVUK.Modules.AutoTrackEvent(element[0])
-    tracker.init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.AutoTrackEvent(element[0])
+
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category', 'action', { nonInteraction: 1 })
   })
@@ -44,8 +44,9 @@ describe('An auto event tracker', function () {
       '</div>'
     )
 
-    tracker = new GOVUK.Modules.AutoTrackEvent(element[0])
-    tracker.init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.AutoTrackEvent(element[0])
+
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category', 'action', { label: 'label', value: 10, nonInteraction: 1 })
   })

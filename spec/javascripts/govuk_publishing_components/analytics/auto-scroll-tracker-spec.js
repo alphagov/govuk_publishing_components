@@ -33,18 +33,15 @@ describe('GOVUK.AutoScrollTracker', function () {
   }
 
   it('should only initialise once on a page', function () {
+    spyOn(GOVUK.Modules.AutoScrollTracker.prototype, 'getWindowDetails')
+
     var el = document.createElement('div')
     scrollTracker = new GOVUK.Modules.AutoScrollTracker(el)
-    spyOn(scrollTracker, 'getWindowDetails')
-    scrollTracker.init()
 
     var el2 = document.createElement('div')
     scrollTracker2 = new GOVUK.Modules.AutoScrollTracker(el2)
-    spyOn(scrollTracker2, 'getWindowDetails')
-    scrollTracker2.init()
 
-    expect(scrollTracker.getWindowDetails).toHaveBeenCalled()
-    expect(scrollTracker2.getWindowDetails).not.toHaveBeenCalled()
+    expect(GOVUK.Modules.AutoScrollTracker.prototype.getWindowDetails).toHaveBeenCalledTimes(1)
   })
 
   describe('with invalid configuration', function () {
@@ -56,8 +53,6 @@ describe('GOVUK.AutoScrollTracker', function () {
     })
 
     it('does not start scroll tracking', function () {
-      scrollTracker.init()
-
       expect(window.GOVUK.analyticsVars.scrollTrackerStarted).toEqual(false)
     })
   })
@@ -81,8 +76,6 @@ describe('GOVUK.AutoScrollTracker', function () {
     })
 
     it('only tracks those headings', function () {
-      scrollTracker.init()
-
       expect(scrollTracker.trackedNodes.length).toEqual(2)
       expect(scrollTracker.trackedNodes[0].eventData.label).toEqual('First heading')
       expect(scrollTracker.trackedNodes[1].eventData.label).toEqual('Third heading')
@@ -110,7 +103,6 @@ describe('GOVUK.AutoScrollTracker', function () {
       el.innerHTML = FIXTURE
       document.body.appendChild(el)
       scrollTracker = new GOVUK.Modules.AutoScrollTracker(el)
-      scrollTracker.init()
     })
 
     afterEach(function () {
@@ -187,7 +179,6 @@ describe('GOVUK.AutoScrollTracker', function () {
       el = document.createElement('div')
       document.body.appendChild(el)
       scrollTracker = new GOVUK.Modules.AutoScrollTracker(el)
-      scrollTracker.init()
     })
 
     afterEach(function () {
@@ -264,14 +255,14 @@ describe('GOVUK.AutoScrollTracker', function () {
     it('does not track headings on initial page load', function () {
       window.location.hash = 'testId'
       scrollTracker = new GOVUK.Modules.AutoScrollTracker(el)
-      scrollTracker.init()
+
       expect(GOVUK.analytics.trackEvent.calls.count()).toBe(0)
     })
 
     it('does track headings on initial page load if there is a hash but it does not match an ID on the page', function () {
       window.location.hash = 'notAThing'
       scrollTracker = new GOVUK.Modules.AutoScrollTracker(el)
-      scrollTracker.init()
+
       expect(GOVUK.analytics.trackEvent.calls.count()).toBe(1)
       expect(GOVUK.analytics.trackEvent.calls.argsFor(0)).toEqual(['ScrollTo', 'Heading', { label: 'Heading 1', nonInteraction: true }])
     })

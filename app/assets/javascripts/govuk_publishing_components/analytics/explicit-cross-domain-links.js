@@ -4,6 +4,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function ExplicitCrossDomainLinks ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   ExplicitCrossDomainLinks.prototype.init = function () {
