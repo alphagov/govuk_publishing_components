@@ -18,6 +18,7 @@ end
 Rails.application.config.assets.paths += %W[
   #{__dir__}/../../node_modules/govuk-frontend/dist/govuk/assets/images
   #{__dir__}/../../node_modules/govuk-frontend/dist/govuk/assets/fonts
+  #{__dir__}/../../node_modules/govuk-frontend/dist/govuk/assets
   #{__dir__}/../../node_modules/govuk-frontend/dist
   #{__dir__}/../../node_modules/
 ]
