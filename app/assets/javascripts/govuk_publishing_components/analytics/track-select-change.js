@@ -4,6 +4,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function TrackSelectChange ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   TrackSelectChange.prototype.init = function ($module) {

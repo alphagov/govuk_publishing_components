@@ -5,6 +5,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function CrossDomainTracking ($module) {
     this.$module = $module
     Modules.crossDomainLinkedTrackers = Modules.crossDomainLinkedTrackers || []
+
+    this.init()
   }
 
   CrossDomainTracking.prototype.init = function () {
