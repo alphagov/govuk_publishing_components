@@ -22,6 +22,7 @@ accessibility_criteria: |
   - inform the user that is it an editable field
   - inform the user when there are matches, or if there are no matches
   - inform the user as the number of matches changes
+uses_component_wrapper_helper: true
 examples:
   default:
     data:

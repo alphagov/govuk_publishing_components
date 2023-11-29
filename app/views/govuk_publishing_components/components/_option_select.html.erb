@@ -7,15 +7,10 @@
   checkboxes_count_id = checkboxes_id + "-count"
   show_filter ||= false
   large ||= false
-
-  classes = %w[gem-c-option-select__container js-options-container]
-  classes << "gem-c-option-select__container--large" if large
 %>
 
 <% if show_filter %>
-  <%
-    filter_id ||= "input-#{SecureRandom.hex(4)}"
-  %>
+  <% filter_id ||= "input-#{SecureRandom.hex(4)}" %>
   <% filter = capture do %>
     <%= tag.label for: filter_id, class: "govuk-label govuk-visually-hidden" do %>
       Filter <%= title %>
@@ -34,20 +29,27 @@
   <% filter_element = CGI::escapeHTML(filter) %>
 <% end %>
 
-<div
-  class="gem-c-option-select" data-module="option-select"
-  <% if local_assigns.include?(:closed_on_load) && closed_on_load %>data-closed-on-load="true"<% end %>
-  <% if local_assigns.include?(:closed_on_load_mobile) && closed_on_load_mobile %>data-closed-on-load-mobile="true"<% end %>
-  <% if local_assigns.include?(:aria_controls_id) %>data-input-aria-controls="<%= aria_controls_id %>"<% end %>
-  <% if show_filter %>data-filter-element="<%= filter_element %>"<% end %>
->
+<%
+  helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  helper.add_class("gem-c-option-select")
+  helper.add_data_attribute({ module: "option-select" })
+  helper.add_data_attribute({ "closed-on-load": true }) if local_assigns.include?(:closed_on_load) && closed_on_load
+  helper.add_data_attribute({ "closed-on-load-mobile": "true" }) if local_assigns.include?(:closed_on_load_mobile) && closed_on_load_mobile
+  helper.add_data_attribute({ "input-aria-controls": aria_controls_id }) if local_assigns.include?(:aria_controls_id)
+  helper.add_data_attribute({ "filter-element": filter_element }) if show_filter
+
+  options_container_classes = %w[gem-c-option-select__container js-options-container]
+  options_container_classes << "gem-c-option-select__container--large" if large
+%>
+
+<%= tag.div(**helper.all_attributes) do %>
   <h3 class="gem-c-option-select__heading js-container-heading">
     <span class="gem-c-option-select__title js-container-button" id="<%= title_id %>"><%= title %></span>
     <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="0" height="0" class="gem-c-option-select__icon gem-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"/></svg>
     <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="0" height="0" class="gem-c-option-select__icon gem-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"/></svg>
   </h3>
 
-  <%= content_tag(:div, role: "group", aria: { labelledby: title_id }, class: classes, id: options_container_id, tabindex: "-1") do %>
+  <%= content_tag(:div, role: "group", aria: { labelledby: title_id }, class: options_container_classes, id: options_container_id, tabindex: "-1") do %>
     <div class="gem-c-option-select__container-inner js-auto-height-inner">
       <% if show_filter %>
         <span id="<%= checkboxes_count_id %>"
@@ -68,4 +70,4 @@
       } %>
     </div>
   <% end %>
-</div>
+<% end %>
