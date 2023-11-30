@@ -27,15 +27,11 @@ In the example above, the following would be pushed to the dataLayer. Note that 
   'event_data': {
     'event_name': 'select_content',
     'type': 'something',
-    'url': null,
     'text': 'Click me',
     'index': {
       index_section: '0'
     },
-    'index_total': '1',
-    'section': null,
-    'action': null,
-    'external': null
+    'index_total': '1'
   }
 }
 ```
