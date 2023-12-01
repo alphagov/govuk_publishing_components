@@ -23,26 +23,32 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   // Wrapper functions to contain all of the mechanisms needed for hiding and
   // toggling the menus.
-  var hide = function ($button, $menu) {
+  var hide = function ($button, $menu, $superNavigationHeader) {
     $button.setAttribute('aria-expanded', false)
     $button.classList.remove('gem-c-layout-super-navigation-header__open-button')
     $menu.setAttribute('hidden', 'hidden')
     setLabel($button, 'show')
+    if ($superNavigationHeader) {
+      $superNavigationHeader.classList.remove('gem-c-layout-super-navigation-header--menu-open')
+    }
   }
-  var show = function ($button, $menu) {
+  var show = function ($button, $menu, $superNavigationHeader) {
     $button.setAttribute('aria-expanded', true)
     $button.classList.add('gem-c-layout-super-navigation-header__open-button')
     $menu.removeAttribute('hidden')
     setLabel($button, 'hide')
+    if ($superNavigationHeader) {
+      $superNavigationHeader.classList.add('gem-c-layout-super-navigation-header--menu-open')
+    }
   }
 
-  var toggle = function ($button, $menu) {
+  var toggle = function ($button, $menu, $superNavigationHeader) {
     var isOpen = $button.getAttribute('aria-expanded') === 'true'
     var trackingLabel = $button.getAttribute('data-tracking-key')
     if (isOpen) {
-      hide($button, $menu)
+      hide($button, $menu, $superNavigationHeader)
     } else {
-      show($button, $menu)
+      show($button, $menu, $superNavigationHeader)
     }
 
     // Fire analytics if analytics are available
@@ -105,6 +111,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     )
 
     this.hiddenButtons = this.$module.querySelectorAll('button[hidden]')
+    this.$superNavigationHeader = null
   }
 
   SuperNavigationMegaMenu.prototype.buttonHandler = function (event) {
@@ -119,11 +126,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var $element = toggleGroupList[k]
       if ($element !== $target) {
         var $menu = this.$module.querySelector('#' + $element.getAttribute('aria-controls'))
-        hide($element, $menu)
+        hide($element, $menu, this.$superNavigationHeader)
       }
     }
 
-    toggle($target, $targetMenu)
+    toggle($target, $targetMenu, this.$superNavigationHeader)
   }
 
   SuperNavigationMegaMenu.prototype.init = function () {
@@ -153,6 +160,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.querySelector('.gem-c-layout-super-navigation-header__search-item-link')
       .setAttribute('hidden', 'hidden')
 
+    this.$superNavigationHeader = document.querySelector('.gem-c-layout-super-navigation-header')
+
     // Navigation menu and search menu are hardcoded to be open in the markup -
     // this means that the menu still makes sense with CSS and JavaScript turned
     // off.
@@ -162,7 +171,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     //   - On mobile, this means hiding the navigation
     //   - On desktop, this means hiding the navigation button, showing the
     //     second level navigation menu
-    hide(this.$searchToggle, this.$searchMenu)
+    hide(this.$searchToggle, this.$searchMenu, this.superNavigationHeader)
 
     this.$module.classList.add('js-module-initialised')
   }
