@@ -278,10 +278,12 @@ describe('The super header navigation', function () {
     describe('updates correctly when clicked once', function () {
       var $button
       var $menu
+      var $superNavigationHeader
 
       beforeEach(function () {
         $button = document.querySelector('#super-navigation-menu-toggle')
         $menu = document.querySelector('#super-navigation-menu')
+        $superNavigationHeader = document.querySelector('.gem-c-layout-super-navigation-header')
 
         $button.click()
       })
@@ -304,15 +306,21 @@ describe('The super header navigation', function () {
           label: 'none'
         })
       })
+
+      it('adds the `gem-c-layout-super-navigation-header--menu-open` class to the super navigation header element', function () {
+        expect($superNavigationHeader).toHaveClass('gem-c-layout-super-navigation-header--menu-open')
+      })
     })
 
     describe('updates correctly when clicked twice', function () {
       var $button
       var $menu
+      var $superNavigationHeader
 
       beforeEach(function () {
         $button = document.querySelector('#super-navigation-menu-toggle')
         $menu = document.querySelector('#super-navigation-menu')
+        $superNavigationHeader = document.querySelector('.gem-c-layout-super-navigation-header')
 
         $button.click()
       })
@@ -340,6 +348,12 @@ describe('The super header navigation', function () {
         expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('headerClicked', 'testingClosed', {
           label: 'none'
         })
+      })
+
+      it('adds and then removes the `gem-c-layout-super-navigation-header--menu-open` class from the super navigation header element', function () {
+        expect($superNavigationHeader).toHaveClass('gem-c-layout-super-navigation-header--menu-open')
+        $button.click()
+        expect($superNavigationHeader).not.toHaveClass('gem-c-layout-super-navigation-header--menu-open')
       })
     })
 
@@ -396,10 +410,12 @@ describe('The super header navigation', function () {
     describe('updates correctly when clicked once', function () {
       var $button
       var $menu
+      var $superNavigationHeader
 
       beforeEach(function () {
         $button = document.querySelector('#super-search-menu-toggle')
         $menu = document.querySelector('#super-search-menu')
+        $superNavigationHeader = document.querySelector('.gem-c-layout-super-navigation-header')
 
         $button.click()
       })
@@ -416,15 +432,21 @@ describe('The super header navigation', function () {
         var hideLabel = $button.getAttribute('data-text-for-hide')
         expect($button).toHaveAttr('aria-label', hideLabel)
       })
+
+      it('adds the `gem-c-layout-super-navigation-header--menu-open` class to the super navigation header element', function () {
+        expect($superNavigationHeader).toHaveClass('gem-c-layout-super-navigation-header--menu-open')
+      })
     })
 
     describe('updates correctly when clicked twice', function () {
       var $button
       var $menu
+      var $superNavigationHeader
 
       beforeEach(function () {
         $button = document.querySelector('#super-search-menu-toggle')
         $menu = document.querySelector('#super-search-menu')
+        $superNavigationHeader = document.querySelector('.gem-c-layout-super-navigation-header')
 
         $button.click()
       })
@@ -445,6 +467,12 @@ describe('The super header navigation', function () {
         expect($button).toHaveAttr('aria-label', 'Hide search menu')
         $button.click()
         expect($button).toHaveAttr('aria-label', 'Show search menu')
+      })
+
+      it('adds and then removes the `gem-c-layout-super-navigation-header--menu-open` class from the super navigation header element', function () {
+        expect($superNavigationHeader).toHaveClass('gem-c-layout-super-navigation-header--menu-open')
+        $button.click()
+        expect($superNavigationHeader).not.toHaveClass('gem-c-layout-super-navigation-header--menu-open')
       })
     })
 
