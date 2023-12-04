@@ -358,12 +358,22 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
-    it('removes extra spaces', function () {
+    it('converts plusses to spaces, and then removes extra lines and spaces', function () {
       element.innerHTML =
         '<label for="text">Search</label>' +
-        '<input type="text" id="text" name="text" value="  there  should     be    no  extra  spaces     "/>'
+        '<input type="text" id="text" name="text" value="  there+%2B++  \n \r should     be    no  extra  spaces     "/>'
 
       expected.event_data.text = 'there should be no extra spaces'
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('redacts PII', function () {
+      element.innerHTML =
+        '<label for="text">Search</label>' +
+        '<input type="text" id="text" name="text" value="email@example.com SW1A 2AA Jan 1st 1990"/>'
+
+      expected.event_data.text = '[email] [postcode] [date]'
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })

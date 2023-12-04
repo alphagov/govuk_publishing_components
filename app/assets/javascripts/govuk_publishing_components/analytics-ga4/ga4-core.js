@@ -275,6 +275,19 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           return url
         }
         return this.getPathname() + url
+      },
+
+      standardiseSearchTerm: function (searchTerm) {
+        if (!searchTerm) {
+          return undefined // Prevents conversion of undefined to a string by this function.
+        }
+
+        var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+        searchTerm = searchTerm.replace(/\++|(%2B)+/gm, ' ') // Turn + characters or unicode + characters (%2B) into a space.
+        searchTerm = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(searchTerm)
+        searchTerm = PIIRemover.stripPIIWithOverride(searchTerm, true, true)
+        searchTerm = searchTerm.toLowerCase()
+        return searchTerm
       }
     },
 
@@ -313,12 +326,11 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         var isSearchResult = element.getAttribute('data-ga4-search-query')
 
         var ecommerceSchema = new window.GOVUK.analyticsGa4.Schemas().ecommerceSchema()
-        var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
         var DEFAULT_LIST_TITLE = 'Smart answer results'
 
         if (isSearchResult) {
           // Limiting to 100 characters to avoid noise from extra long search queries and to stop the size of the payload going over 8k limit.
-          var searchQuery = PIIRemover.stripPII(element.getAttribute('data-ga4-search-query')).substring(0, 100).toLowerCase()
+          var searchQuery = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(element.getAttribute('data-ga4-search-query')).substring(0, 100)
           var variant = element.getAttribute('data-ga4-ecommerce-variant')
           DEFAULT_LIST_TITLE = 'Site search results'
         }
