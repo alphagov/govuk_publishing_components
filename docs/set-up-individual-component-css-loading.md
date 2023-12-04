@@ -166,6 +166,12 @@ Use `yield` to add body content between `<body>` and `</body>`:
   </head>
 ```
 
+### Check stylesheets are loading individually
+
+When the setup is complete, only the component stylesheets required to render the page are requested. For example, the screenshot below displays network activity for a [browse page e.g. benefits](https://www.gov.uk/browse/benefits) and shows separate network requests for the `browse`, `lead-paragraph` and `cards` stylesheets:
+
+![Network requests for individual stylesheets](./images/individual-stylesheets.png)
+
 ## Why
 
 See [RFC #149](https://github.com/alphagov/govuk-rfcs/pull/152) for more details about this approach.
