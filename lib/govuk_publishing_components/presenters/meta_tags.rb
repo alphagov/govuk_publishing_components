@@ -92,13 +92,12 @@ module GovukPublishingComponents
       def add_ga4_political_tags(meta_tags)
         government = content_item.dig(:links, :government, 0)
 
-        # political: true/false is in a different place to current: true/false, which is why we have 'details' and 'government[:details]'
+        # political: true/false is in a different place to current: true/false, which is why we have 'details' and 'government.dig(:details)'
         if government && details[:political]
-          meta_tags["govuk:ga4-political-status"] = government[:details][:current] ? "political" : "historic"
-
-          government_title = government[:title]
-          if government_title && !government[:details][:current]
-            meta_tags["govuk:ga4-publishing-government"] = government_title
+          current_government = government.dig(:details, :current)
+          unless current_government
+            meta_tags["govuk:ga4-political-status"] = "historic"
+            meta_tags["govuk:ga4-publishing-government"] = government[:title] if government[:title]
           end
         end
 
