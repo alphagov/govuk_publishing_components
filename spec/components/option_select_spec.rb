@@ -117,6 +117,20 @@ describe "option select", type: :view do
     expect(rendered).to have_no_selector(".gem-c-option-select__count")
   end
 
+  it "accepts button data attributes" do
+    options = option_select_arguments
+    button_attrs = {
+      ga4_expandable: "true",
+      ga4_event: {
+        event_name: "select_content",
+        type: "finder",
+      },
+    }
+    options[:button_data_attributes] = button_attrs
+    render_component(options)
+    expect(rendered).to have_selector(".gem-c-option-select[data-button-data-attributes='#{button_attrs.to_json}']")
+  end
+
   def expect_label_and_checked_checkbox(label, id, value)
     expect_label_and_checkbox(label, id, value, checked: true)
   end

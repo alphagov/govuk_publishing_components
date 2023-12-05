@@ -37,6 +37,7 @@
   helper.add_data_attribute({ "closed-on-load-mobile": "true" }) if local_assigns.include?(:closed_on_load_mobile) && closed_on_load_mobile
   helper.add_data_attribute({ "input-aria-controls": aria_controls_id }) if local_assigns.include?(:aria_controls_id)
   helper.add_data_attribute({ "filter-element": filter_element }) if show_filter
+  helper.add_data_attribute({ "button-data-attributes": button_data_attributes }) if local_assigns.include?(:button_data_attributes)
 
   options_container_classes = %w[gem-c-option-select__container js-options-container]
   options_container_classes << "gem-c-option-select__container--large" if large
