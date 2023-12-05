@@ -537,10 +537,18 @@ describe('Google Tag Manager page view tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
-    it('replaces plusses with spaces', function () {
-      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello++++world+there+are+spaces++in+++a+lot++++of+++places')
-      expected.page_view.query_string = 'test=true&keywords=hello++++world+there+are+spaces++in+++a+lot++++of+++places'
+    it('replaces plusses with spaces, and removes extra lines and spaces', function () {
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello++%2B+world+there+are+spaces++in+++a+lot++++of++\n++places')
+      expected.page_view.query_string = 'test=true&keywords=hello++%2B+world+there+are+spaces++in+++a+lot++++of++\n++places'
       expected.page_view.search_term = 'hello world there are spaces in a lot of places'
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('sets the search term to lowercase', function () {
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=I+AM+LOWERCASE')
+      expected.page_view.query_string = 'test=true&keywords=I+AM+LOWERCASE'
+      expected.page_view.search_term = 'i am lowercase'
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
     })

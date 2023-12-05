@@ -103,35 +103,50 @@ describe('Google Analytics 4 ecommerce tracking', function () {
     })
 
     it('should get the search query', function () {
-      onPageLoadExpected.search_results.term = 'coronavirus'
+      var expected = 'coronavirus'
       searchResultsParentEl.setAttribute('data-ga4-search-query', 'coronavirus')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
-      expect(window.dataLayer[1].search_results.term).toBe(onPageLoadExpected.search_results.term)
+      expect(window.dataLayer[1].search_results.term).toBe(expected)
     })
 
     it('should remove PII from search query', function () {
-      onPageLoadExpected.search_results.term = '[email]'
+      var expected = '[email]'
       searchResultsParentEl.setAttribute('data-ga4-search-query', 'email@example.com')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
-      expect(window.dataLayer[1].search_results.term).toBe(onPageLoadExpected.search_results.term)
+      expect(window.dataLayer[1].search_results.term).toBe(expected)
+    })
+
+    it('should replace plusses with spaces, and remove extra lines/spaces from search query', function () {
+      var expected = 'i have a lot of spaces'
+      searchResultsParentEl.setAttribute('data-ga4-search-query', '%2Bi++have+\n+\r+a+lot+of+   spaces')
+      GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
+
+      expect(window.dataLayer[1].search_results.term).toBe(expected)
+    })
+
+    it('should set the search query to lowercase', function () {
+      var expected = 'i am lowercase'
+      searchResultsParentEl.setAttribute('data-ga4-search-query', 'I AM LOWERCASE')
+      GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
+
+      expect(window.dataLayer[1].search_results.term).toBe(expected)
     })
 
     it('should get the variant', function () {
-      onPageLoadExpected.search_results.sort = 'Relevance'
+      var expected = 'Relevance'
       searchResultsParentEl.setAttribute('data-ga4-ecommerce-variant', 'Relevance')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
-      expect(window.dataLayer[1].search_results.sort).toBe(onPageLoadExpected.search_results.sort)
+      expect(window.dataLayer[1].search_results.sort).toBe(expected)
     })
 
     it('should set the variant to undefined when the data-ga4-ecommerce-variant does not exist', function () {
-      onPageLoadExpected.search_results.sort = undefined
       searchResultsParentEl.removeAttribute('data-ga4-ecommerce-variant')
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
 
-      expect(window.dataLayer[1].search_results.sort).toBe(onPageLoadExpected.search_results.sort)
+      expect(window.dataLayer[1].search_results.sort).toBe(undefined)
     })
 
     it('should get the number of search results i.e. 12345 search results in this test case', function () {

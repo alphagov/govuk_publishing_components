@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Standardise search term formatting across GA4 trackers ([PR #3746](https://github.com/alphagov/govuk_publishing_components/pull/3746))
+
 ## 36.0.2
 
 * Prevent government_frontend test failure if meta tag key doesn't exist ([PR #3741](https://github.com/alphagov/govuk_publishing_components/pull/3741))
