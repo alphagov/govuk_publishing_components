@@ -589,4 +589,22 @@ describe('GA4 link tracker', function () {
       expect(window.dataLayer[0].event_data.url).toEqual('/hello-world#link1')
     })
   })
+
+  describe('clicking an element that is not a link', function () {
+    beforeEach(function () {
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getPathname').and.returnValue('/hello-world')
+    })
+
+    it('does not crash', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-link', '{"event_name": "navigation"}')
+      element.innerHTML = '<span class="not-a-link">I am not a link</span>'
+
+      initModule(element, true)
+      var link = element.querySelector('.not-a-link')
+
+      link.click()
+      expect(window.dataLayer).toEqual([])
+    })
+  })
 })

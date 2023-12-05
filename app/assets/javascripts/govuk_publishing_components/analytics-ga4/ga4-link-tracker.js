@@ -85,7 +85,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (!data.text && (element.querySelector('img') || element.querySelector('svg') || element.tagName === 'IMG' || element.closest('svg'))) {
         data.text = 'image'
       }
-      var url = data.url || this.findLink(event.target).getAttribute('href')
+      try {
+        var url = data.url || this.findLink(event.target).getAttribute('href')
+      } catch (e) {
+        // no href found, so abort
+        return
+      }
+
       data.url = trackFunctions.removeCrossDomainParams(url)
       data.url = trackFunctions.applyRedactionIfRequired(this.PIIRemover, element, data.url)
       data.url = trackFunctions.appendPathToAnchorLinks(data.url)
