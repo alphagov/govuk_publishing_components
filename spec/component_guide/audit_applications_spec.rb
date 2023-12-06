@@ -45,7 +45,7 @@ describe "Auditing the components in applications" do
         "error summary": ["app/views/welcome/error_summary.html.erb"],
         details: ["app/views/welcome/asset_helper.html.erb"],
         feedback: ["app/views/layouts/application.html.erb"],
-        govspeak: ["app/views/welcome/contextual_navigation.html.erb", "lib/test_file_1.rb"],
+        govspeak: ["app/views/welcome/contextual_navigation.html.erb", "lib/1_test_file_1.rb"],
         input: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/error_summary.html.erb"],
         "layout footer": ["app/views/layouts/dummy_admin_layout.html.erb"],
         "layout for admin": ["app/views/layouts/dummy_admin_layout.html.erb"],
