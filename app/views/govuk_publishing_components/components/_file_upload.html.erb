@@ -1,6 +1,8 @@
 <%
   add_gem_component_stylesheet("file-upload")
 
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   id ||= "file-upload-#{SecureRandom.hex(4)}"
   value ||= nil
   accept ||= nil
@@ -13,6 +15,8 @@
   has_error = error_message || error_items.any?
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
+  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
+  heading_level ||= nil
 
   css_classes = %w(gem-c-file-upload govuk-file-upload)
   css_classes << "govuk-file-upload--error" if has_error
@@ -30,7 +34,20 @@
 
 <%= content_tag :div, class: form_group_css_classes do %>
   <% if label %>
-    <%= render "govuk_publishing_components/components/label", { html_for: id, text: label[:text] }.merge(label.symbolize_keys) %>
+    <% label_markup = capture do %>
+      <%= render "govuk_publishing_components/components/label", {
+        html_for: id,
+        heading_size: heading_size
+      }.merge(label.symbolize_keys) %>
+    <% end %>
+
+    <% if heading_level %>
+      <%= content_tag(shared_helper.get_heading_level, class: "govuk-label-wrapper") do %>
+        <%= label_markup %>
+      <% end %>
+    <% else %>
+      <%= label_markup %>
+    <% end %>
   <% end %>
 
   <% if hint %>

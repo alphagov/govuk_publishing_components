@@ -48,3 +48,14 @@ examples:
         text: "Upload an image"
       name: "file-upload-specific"
       accept: "image/*"
+  with_label_as_heading:
+    description: |
+      Wraps the label in a heading tag. Valid options are `1` to `6`. To adjust the size of the label/heading, use the `heading_size` option. Valid options are `s`, `m`, `l` and `xl`.
+
+      Based on the [heading/label pattern](https://design-system.service.gov.uk/patterns/question-pages/) in the GOV.UK Design System.
+    data:
+      label:
+        text: "This is a heading 1 and a label"
+      name: "name"
+      heading_level: 1
+      heading_size: "l"
