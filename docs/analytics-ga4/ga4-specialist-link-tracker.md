@@ -14,14 +14,14 @@ When one of these listeners are fired, they check if the `event.target` is an `<
 - A `preview` link - This is either a href to `assets.publishing.service.gov.uk` or a href on the `www.gov.uk` domain pointing to the `/government/uploads/` path which has `/preview` in the URL after the file path.
 - A `mailto` link - This is an email href that starts with `mailto:`.
 - An `generic link`  - This is a href that is not on the internal domains. Internal domains include the current hostname, and any domains passed through to the `init({internalDomains: []})` array.
-    - To calculate this, it checks the start of the href. If we were to use `www.gov.uk` as an example, it would check if the href starts with:
-        - `http://www.gov.uk/`,
-        - `https://www.gov.uk/`,
-        - `//www.gov.uk/`,
-        - `www.gov.uk/`,
-        - (NB: `www.gov.uk/` is technically a relative link, as a href must contain a `/` or http method at the start to be treated as non-relative).
-    - It also checks if a `href` starts with `/` and does not start with `//` to determine if it's a relative link like `/bank-holidays` , but not a protocol relative link such as `//google.com`.
-    - If the `href` does not meet the above criteria, then it is considered an external link.
+  - To calculate this, it checks the start of the href. If we were to use `www.gov.uk` as an example, it would check if the href starts with:
+    - `http://www.gov.uk/`,
+    - `https://www.gov.uk/`,
+    - `//www.gov.uk/`,
+    - `www.gov.uk/`,
+    - (NB: `www.gov.uk/` is technically a relative link, as a href must contain a `/` or http method at the start to be treated as non-relative).
+  - It also checks if a `href` starts with `/` and does not start with `//` to determine if it's a relative link like `/bank-holidays` , but not a protocol relative link such as `//google.com`.
+  - If the `href` does not meet the above criteria, then it is considered an external link.
 
 Events can either have an `event_name` of `navigation`, `file_download`, or `share`. Download and preview links will use the `file_download` value, while generic external links, mailto links, and follow links will use `navigation`. Share links use `share`.
 
@@ -44,9 +44,9 @@ Passing a config object with arrays to `init()` is optional, but passing each ar
 //= require ./analytics-ga4/ga4-link-tracker
 
 window.GOVUK.analyticsGa4.linkTracker.init({
-    internalDomains: ['www.gov.uk'],
-    internalDownloadPaths: ['/government/uploads/', '/downloads/'],
-    dedicatedDownloadDomains: ['assets.publishing.service.gov.uk', 'dropbox.com'],
+  internalDomains: ['www.gov.uk'],
+  internalDownloadPaths: ['/government/uploads/', '/downloads/'],
+  dedicatedDownloadDomains: ['assets.publishing.service.gov.uk', 'dropbox.com'],
 })
 
 ```
@@ -57,20 +57,16 @@ In the example above, on a left click of the link, the following would be pushed
 
 ```JSON
 {
-    "event": "event_data",
-    "event_data": {
-        "event_name": "file_download",
-        "type": "generic download",
-        "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/742746/A_quick_guide_to_govt_healthy_eating_update.pdf",
-        "text": "A Quick Guide to the Government’s Healthy Eating Recommendations",
-        "index": null,
-        "index_total": null,
-        "section": null,
-        "action": null,
-        "external": "true",
-        "method": "primary click",
-        "link_domain": "https://assets.publishing.service.gov.uk",
-    }
+  "event": "event_data",
+  "event_data": {
+    "event_name": "file_download",
+    "type": "generic download",
+    "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/742746/A_quick_guide_to_govt_healthy_eating_update.pdf",
+    "text": "A Quick Guide to the Government’s Healthy Eating Recommendations",
+    "external": "true",
+    "method": "primary click",
+    "link_domain": "https://assets.publishing.service.gov.uk",
+  }
 }
 ```
 

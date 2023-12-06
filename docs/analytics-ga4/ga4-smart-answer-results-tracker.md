@@ -23,11 +23,8 @@ In the example above, the following would be pushed to the dataLayer:
 ```
 {
   'event': 'search_results',
-  'event_data': undefined,
   'search_results': {
     'event_name': 'select_item',
-    'term': undefined,
-    'sort': undefined,
     'results': 5,
     'ecommerce': {
       'items': [
@@ -55,8 +52,6 @@ When a result is clicked, `populateEcommerceSchema()` is called with the `data.e
     },
   'search_results': {
     'event_name': 'select_item',
-    'term': undefined,
-    'sort': undefined,
     'results': 5,
     'ecommerce': {
       'items': [
