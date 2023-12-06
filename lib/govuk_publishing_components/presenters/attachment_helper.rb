@@ -105,6 +105,7 @@ module GovukPublishingComponents
           { content_type: "application/vnd.openxmlformats-officedocument.presentationml.presentation", name: "MS PowerPoint Presentation" }.freeze, # pptx
           { content_type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", name: "MS Excel Spreadsheet", spreadsheet: true }.freeze, # xlsx
           { content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", name: "MS Word Document", document: true }.freeze, # docx
+          { content_type: "application/zip", abbr: "ZIP", name: "Zip archive" }.freeze,
           { content_type: "application/xml", abbr: "XML", name: "XML Document" }.freeze,
           { content_type: "image/gif", abbr: "GIF", name: "Graphics Interchange Format" }.freeze,
           { content_type: "image/jpeg", name: "JPEG" }.freeze,
