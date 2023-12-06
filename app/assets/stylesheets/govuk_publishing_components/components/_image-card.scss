@@ -97,6 +97,33 @@
   align-items: flex-end;
 }
 
+.gem-c-image-card--two-thirds {
+  .gem-c-image-card__image {
+    border-top: none;
+  }
+
+  // TODO: Temporary fixes to ensure the layout
+  // renders correctly on screen sizes less than 320px wide
+  @include govuk-media-query($until: "mobile") {
+    padding: 0 govuk-spacing(3);
+  }
+
+  .gem-c-image-card__image-wrapper {
+    @include govuk-media-query($until: "mobile") {
+      margin-bottom: govuk-spacing(2);
+    }
+  }
+
+  // Ensures the font-size is 19px on all screen sizes
+  .gem-c-image-card__title-link--large-font-size-mobile,
+  .gem-c-image-card__description--large-font-size-mobile {
+    @include govuk-media-query($until: "tablet") {
+      font-size: 19px;
+      font-size: govuk-px-to-rem(19);
+    }
+  }
+}
+
 .gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--one-third {
   // The first two values set flex-grow and flex-basis to 0
   // This ensures that the flex item does not grow or shrink
