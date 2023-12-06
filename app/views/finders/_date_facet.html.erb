@@ -7,6 +7,15 @@
     aria_controls_id: "js-search-results-info",
     date_errors_to: date_facet.error_message_to(@search_query),
     date_errors_from: date_facet.error_message_from(@search_query),
-    data_attributes:  { "ga4-filter-parent": date_facet.ga4_section, "ga4-index": { index_section: index + 1, index_section_count: count } }
+    data_attributes:  { "ga4-filter-parent": date_facet.ga4_section, "ga4-index": { index_section: index + 1, index_section_count: count } },
+    button_data_attributes: {
+      ga4_expandable: "",
+      ga4_event: {
+        event_name: 'select_content',
+        type: 'finder',
+        section: date_facet.name,
+        index: { index_section: index + 1, index_section_count: count }
+      }
+    }
   } %>
 </span>

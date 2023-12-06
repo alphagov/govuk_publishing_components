@@ -54,11 +54,9 @@
 
     if (document.readyState === 'complete') {
       this.Ga4EcommerceTracking()
-      this.ga4SetFilterIndexes()
     } else {
       window.addEventListener('DOMContentLoaded', function () {
         this.Ga4EcommerceTracking()
-        this.ga4SetFilterIndexes()
       }.bind(this))
     }
 
@@ -603,20 +601,6 @@
             GOVUK.analyticsGa4.Ga4FinderTracker.trackChangeEvent(event.target, ga4ChangeCategory)
           }
         }
-      }
-    }
-  }
-
-  LiveSearch.prototype.ga4SetFilterIndexes = function () {
-    if (GOVUK.analyticsGa4 && GOVUK.analyticsGa4.Ga4FinderTracker) {
-      var consentCookie = GOVUK.getConsentCookie()
-
-      if (consentCookie && consentCookie.settings) {
-        GOVUK.analyticsGa4.Ga4FinderTracker.setFilterIndexes()
-      } else {
-        window.addEventListener('cookie-consent', function () {
-          GOVUK.analyticsGa4.Ga4FinderTracker.setFilterIndexes()
-        })
       }
     }
   }

@@ -6,9 +6,17 @@
   aria_controls_id ||= false
   date_errors_from ||= nil
   date_errors_to ||= nil
+<<<<<<< HEAD
 %>
 <% if key && name %>
   <%= render "components/expander", { title: name } do %>
+=======
+  data_attributes ||= nil
+  button_data_attributes ||= nil
+%>
+<% if key && name %>
+  <%= render "components/expander", { title: name, data_attributes:, button_data_attributes: } do %>
+>>>>>>> b3a60ec8a (Pass GA4 tracking attributes to components)
     <div class="govuk-!-margin-bottom-0" id="<%= key %>">
       <%= render "govuk_publishing_components/components/input", {
         label: {

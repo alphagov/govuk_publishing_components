@@ -17,6 +17,15 @@
     :closed_on_load_mobile => option_select_facet.closed_on_load_mobile?,
     :show_filter => option_select_facet.show_option_select_filter,
     :large => option_select_facet.large?,
-    :data_attributes => { "ga4-change-category": "update-filter checkbox", "ga4-filter-parent": "", "ga4-section": option_select_facet.ga4_section, "ga4-index": { index_section: index + 1, index_section_count: count } }
+    :data_attributes => { "ga4-change-category": "update-filter checkbox", "ga4-filter-parent": "", "ga4-section": option_select_facet.ga4_section, "ga4-index": { index_section: index + 1, index_section_count: count } },
+    :button_data_attributes => {
+      "ga4-expandable": "",
+      "ga4-event": {
+        event_name: 'select_content',
+        type: 'finder',
+        section: option_select_facet.name,
+        index: { index_section: index + 1, index_section_count: count }
+      }
+    }
   } %>
 <% end %>
