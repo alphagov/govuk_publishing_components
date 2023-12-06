@@ -78,7 +78,7 @@ describe('GA4 finder change tracker', function () {
 
     input = document.createElement('input')
     input.setAttribute('type', 'search')
-    input.value = ' I    have a lot of   SPACES   in a lot of PLACES         '
+    input.value = ' I    have a lot of   SPACES   in a lot of PLACES         \n \r'
 
     inputParent.appendChild(input)
     form.appendChild(inputParent)
@@ -88,6 +88,28 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.event_name = 'search'
     expected.event_data.url = window.location.pathname
     expected.event_data.text = 'i have a lot of spaces in a lot of places'
+    expected.event_data.section = 'Search'
+    expected.event_data.action = 'search'
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('replaces + characters with spaces on a search box keyword update', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
+
+    input = document.createElement('input')
+    input.setAttribute('type', 'search')
+    input.value = 'i+have%2Bspaces+in+places'
+
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.event_name = 'search'
+    expected.event_data.url = window.location.pathname
+    expected.event_data.text = 'i have spaces in places'
     expected.event_data.section = 'Search'
     expected.event_data.action = 'search'
 
