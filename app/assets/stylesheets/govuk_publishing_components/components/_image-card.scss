@@ -259,6 +259,11 @@
   }
 }
 
+.gem-c-image-card__youtube-video-embed iframe {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
 .gem-c-image-card__youtube-thumbnail-image-container {
   position: relative;
 
