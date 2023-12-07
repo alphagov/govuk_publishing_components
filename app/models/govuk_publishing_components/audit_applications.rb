@@ -161,7 +161,7 @@ module GovukPublishingComponents
     end
 
     def clean_file_path(file)
-      file[/(?<=#{Regexp.escape(@path.to_s)}\/)[\/a-zA-Z_-]+.[a-zA-Z+.]+/]
+      file[/(?<=#{Regexp.escape(@path.to_s)}\/)[\/0-9a-zA-Z_-]+.[0-9a-zA-Z+.]+/]
     end
 
     def clean_file_name(name)
