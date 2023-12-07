@@ -259,54 +259,20 @@
   }
 }
 
-// The following two rules are used to 'trick' the
-// Youtube embed into using the desktop styles. Without
-// this, the Youtube embed will use mobile styles in
-// desktop viewports. The Youtube mobile styles are more
-// challenging to use with a keyboard as they are designed
-// for a touch screen interface. There is seemingly no way
-// to make an iframe request the desktop version of a site
-// and there is no parameter in the Youtube embed that would
-// force the desktop styles. Hence this workaround.
-
-// In the first rule, we are adding an arbitrarly large
-// enough px to the width of the Youtube iframe so that
-// it will use the desktop styling. Unfortunately, this width
-// would result in the Youtube embed overlapping into the
-// text content. To stop this happening, we scale the size of
-// the embed down.
+// Ensure the YouTube video has a fluid width
+// https://alistapart.com/article/creating-intrinsic-ratios-for-video/
+.gem-c-image-card__youtube-video-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
 
 .gem-c-image-card__youtube-video-embed iframe {
-  @include govuk-media-query($from: tablet) {
-    transform: scale(.7);
-    width: calc(100% + 45px);
-  }
-  z-index: 1;
-}
-
-// In the second rule, we scale the container of the embed
-// up by the amount that we scaled the Youtube embed down.
-// This results in the embed being the correct size and the
-// desktop styles being used.
-
-.gem-c-image-card__youtube-video-embed {
-  @include govuk-media-query($from: tablet) {
-    transform: scale(1.3);
-  }
-  margin: 0;
-  padding-bottom: 68%;
-}
-
-// This rule is to reposition the embed to the correct
-// place in the image card. As the embed has been scaled
-// down and then scaled up again, it is misaligned and
-// here we correct that misalignment.
-
-.gem-c-image-card__youtube-video-embed.gem-c-govspeak__youtube-video iframe {
-  @include govuk-media-query($from: tablet) {
-    left: -22px;
-    top: -10px;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .gem-c-image-card__youtube-thumbnail-image-container {
