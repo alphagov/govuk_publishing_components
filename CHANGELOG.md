@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix rendering of the image card YouTube variation #3757 ([PR #3757](https://github.com/alphagov/govuk_publishing_components/pull/3757))
+
 ## 36.1.0
 
 * Add heading option to file input component ([PR #3755](https://github.com/alphagov/govuk_publishing_components/pull/3755))
