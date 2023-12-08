@@ -79,7 +79,7 @@ Our date filters have `data-ga4-change-category="update-filter text"` on them. T
 
 Search boxes have `data-ga4-change-category="update-keyword text"` on them. The value we grab on change is the text that was input into the text box.  Regardless if text is available in the text box, we always treat it as a "search" event. This is because an empty search box is still as search event but it just searches for everything in our database.
 
-We apply the maximum level of PII removal on the user input.
+The search value is sanitised with PII removal, + characters converted to spaces, spaces and new lines trimmed, and downcasing.
 
 
 ### Clear all filters button

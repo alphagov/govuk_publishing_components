@@ -109,8 +109,6 @@
 
     // Takes the GTM schema, the event target value, the event target HTML type, whether the filter was removed, the type of filter change it was, and the parent section heading. Populates the GTM object based on these values.
     setSchemaBasedOnChangeType: function (schema, elementValue, elementType, wasFilterRemoved, changeType, section, filterParent) {
-      var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-
       switch (changeType) {
         case 'update-filter':
           if (section) {
@@ -134,9 +132,7 @@
           schema.url = window.location.pathname
           schema.section = 'Search'
           schema.action = 'search'
-          schema.text = PIIRemover.stripPIIWithOverride(schema.text, true, true)
-          schema.text = GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(schema.text)
-          schema.text = schema.text.toLowerCase()
+          schema.text = GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(schema.text)
           break
 
         case 'clear-all-filters':
