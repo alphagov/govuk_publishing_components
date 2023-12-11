@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add GA4 copy event tracker ([PR #3761](https://github.com/alphagov/govuk_publishing_components/pull/3761))
+
 ## 37.0.0
 
 * [BREAKING] Data attributes for option select button ([PR #3750](https://github.com/alphagov/govuk_publishing_components/pull/3750))
