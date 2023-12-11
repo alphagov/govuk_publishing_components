@@ -152,6 +152,32 @@ describe('An option select component', function () {
 
       expect($($element).find('button')).toBeDefined()
     })
+
+    it('accepts data attributes to be applied to the button element', function () {
+      $element = document.createElement('div')
+      $element.innerHTML = html
+      var buttonAttrs = {
+        ga4_expandable: '',
+        ga4_event: {
+          event_name: 'select_content',
+          type: 'finder'
+        }
+      }
+      $element.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', JSON.stringify(buttonAttrs))
+
+      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      expect($($element).find('.gem-c-option-select__button').attr('data-ga4-expandable')).toBe('')
+      expect($($element).find('.gem-c-option-select__button').attr('data-ga4-event')).toBe(JSON.stringify(buttonAttrs.ga4_event))
+    })
+
+    it('does not error if invalid data attributes are passed for the button element', function () {
+      $element = document.createElement('div')
+      $element.innerHTML = html
+      $element.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', 'not JSON')
+
+      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      expect($($element).find('.gem-c-option-select__button').attr('data-ga4-expandable')).toBe(undefined)
+    })
   })
 
   describe('toggleOptionSelect', function () {

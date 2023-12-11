@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* [BREAKING] Data attributes for option select button ([PR #3750](https://github.com/alphagov/govuk_publishing_components/pull/3750))
 * Remove doNotTrack from GTM component ([PR #3760](https://github.com/alphagov/govuk_publishing_components/pull/3760))
 * Fix rendering of the image card YouTube variation #3757 ([PR #3757](https://github.com/alphagov/govuk_publishing_components/pull/3757))
 

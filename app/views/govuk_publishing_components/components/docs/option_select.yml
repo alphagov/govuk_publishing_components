@@ -156,6 +156,24 @@ examples:
           track_label: "high_heels"
           track_options:
             dimension28: 1
+  with_button_data_attributes:
+    description: Allows data attributes to be passed to the component to be added to the expand/collapse button. The attributes are written to the parent element then read by the JavaScript and applied to the button. This is used for tracking purposes.
+    data:
+      key: market_sector
+      title: Market sector
+      options_container_id: list_of_sectors
+      button_data_attributes:
+        ga4_expandable: ""
+        ga4_event:
+          event_name: "select_content"
+          type: "finder"
+      options:
+      - value: aerospace
+        label: Aerospace
+        id: aerospace
+      - value: agriculture-environment-and-natural-resources
+        label: Agriculture, environment and natural resources
+        id: agriculture-environment-and-natural-resources
   with_filter:
     description: Adds a filter to allow users to narrow the checkboxes down. Checkboxes will only show if they match what the user has typed, or if they are already checked. The filter is case insensitive and strips out punctuation characters and duplicate whitespace, and sees '&' and 'and' as the same, to make filtering easier.
     data:

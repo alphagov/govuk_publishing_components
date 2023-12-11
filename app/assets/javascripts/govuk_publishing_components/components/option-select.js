@@ -166,17 +166,24 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     button.setAttribute('aria-expanded', true)
     button.setAttribute('id', containerHead.getAttribute('id'))
     button.setAttribute('aria-controls', this.$optionsContainer.getAttribute('id'))
+
+    var buttonAttributes = this.$optionSelect.getAttribute('data-button-data-attributes')
+    if (buttonAttributes) {
+      try {
+        buttonAttributes = JSON.parse(buttonAttributes)
+        for (var rawKey in buttonAttributes) {
+          var key = rawKey.replace(/_/i, '-').toLowerCase()
+          var rawValue = buttonAttributes[rawKey]
+          var value = typeof rawValue === 'object' ? JSON.stringify(rawValue) : rawValue
+          button.setAttribute('data-' + key, value)
+        }
+      } catch (e) {
+        console.error('Error with option select button data attributes, invalid JSON passed' + e.message, window.location)
+      }
+    }
+
     button.innerHTML = jsContainerHeadHTML
     containerHead.parentNode.replaceChild(button, containerHead)
-
-    // GA4 Accordion tracking. Relies on the ga4-finder-tracker setting the index first, so we wrap this in a custom event.
-    window.addEventListener('ga4-filter-indexes-added', function () {
-      if (window.GOVUK.analyticsGa4) {
-        if (window.GOVUK.analyticsGa4.Ga4FinderTracker) {
-          window.GOVUK.analyticsGa4.Ga4FinderTracker.addFilterButtonTracking(button, button.innerHTML)
-        }
-      }
-    })
   }
 
   OptionSelect.prototype.attachCheckedCounter = function attachCheckedCounter (checkedString) {
