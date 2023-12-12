@@ -12,6 +12,7 @@
 * [BREAKING] Data attributes for option select button ([PR #3750](https://github.com/alphagov/govuk_publishing_components/pull/3750))
 * Remove doNotTrack from GTM component ([PR #3760](https://github.com/alphagov/govuk_publishing_components/pull/3760))
 * Fix rendering of the image card YouTube variation #3757 ([PR #3757](https://github.com/alphagov/govuk_publishing_components/pull/3757))
+* Move image-card overrides from frontend app ([PR #3752](https://github.com/alphagov/govuk_publishing_components/pull/3752))
 
 ## 36.1.0
 
@@ -21,7 +22,6 @@
 
 * Standardise search term formatting across GA4 trackers ([PR #3746](https://github.com/alphagov/govuk_publishing_components/pull/3746))
 * Add ZIP file support to attachment component ([PR #3751](https://github.com/alphagov/govuk_publishing_components/pull/3751))
-* Move image-card overrides from frontend app ([PR #3752](https://github.com/alphagov/govuk_publishing_components/pull/3752))
 
 ## 36.0.2
 
