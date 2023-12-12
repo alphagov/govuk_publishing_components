@@ -96,6 +96,18 @@ $after-button-padding-left: govuk-spacing(4);
 .gem-c-layout-super-navigation-header--blue-background {
   background: $govuk-brand-colour;
   border-top: 1px solid $govuk-brand-colour;
+
+  // Add a blue section to the bottom of the open menu
+  .gem-c-layout-super-navigation-header__content {
+    @include govuk-media-query($from: "desktop") {
+      &::after {
+        content: "";
+        height: 35px;
+        background-color: $govuk-brand-colour;
+        display: block;
+      }
+    }
+  }
 }
 
 .gem-c-layout-super-navigation-header__container {
