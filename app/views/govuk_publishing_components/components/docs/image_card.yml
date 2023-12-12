@@ -206,7 +206,10 @@ examples:
         <%= component %>
       </div>
   two_thirds:
-    description: This variant is used for the featured section on the homepage. The aspect ratio used is 1:1 and the width of the image is constrained to 80px wide.
+    description: |
+      This variant is used for the featured section on the homepage. The aspect ratio used is 1:1 and the width of the image is constrained to 80px wide.
+
+      Setting `large_font_size_mobile` to `true` will ensure that the font size for the title and description will be 19px on all screen sizes.
     data:
       two_thirds: true
       href: "/still-not-a-page"
@@ -214,6 +217,7 @@ examples:
       image_alt: "some meaningful alt text please"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
+      large_font_size_mobile: true
     embed: |
       <div class="govuk-!-width-full">
         <%= component %>

@@ -4,7 +4,7 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :href_data_attributes, :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :youtube_video_id, :image_src, :two_thirds
+      attr_reader :href_data_attributes, :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :youtube_video_id, :image_src, :two_thirds, :large_font_size_mobile
 
       def initialize(local_assigns, brand_helper)
         @href = local_assigns[:href]
@@ -21,6 +21,7 @@ module GovukPublishingComponents
         @description = local_assigns[:description]
         @large = local_assigns[:large]
         @two_thirds = local_assigns[:two_thirds] || false
+        @large_font_size_mobile = local_assigns[:large_font_size_mobile] || false
         @heading_text = local_assigns[:heading_text]
         @extra_details_no_indent = local_assigns[:extra_details_no_indent]
         @metadata = local_assigns[:metadata]
@@ -41,6 +42,13 @@ module GovukPublishingComponents
         # the small variant, large will be always
         # true if a youtube_video_id is supplied
         @youtube_video_id || @large
+      end
+
+      def large_mobile_font_size?
+        # allow the font-size to be 19px on mobile
+        # for the two-thirds varation of the
+        # image card component
+        @two_thirds && @large_font_size_mobile
       end
 
       def is_tracking?
@@ -104,6 +112,8 @@ module GovukPublishingComponents
       end
 
       def description
+        return content_tag(:div, @description, class: "gem-c-image-card__description gem-c-image-card__description--large-font-size-mobile") if @description && large_mobile_font_size?
+
         content_tag(:div, @description, class: "gem-c-image-card__description") if @description
       end
 

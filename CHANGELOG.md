@@ -21,6 +21,7 @@
 
 * Standardise search term formatting across GA4 trackers ([PR #3746](https://github.com/alphagov/govuk_publishing_components/pull/3746))
 * Add ZIP file support to attachment component ([PR #3751](https://github.com/alphagov/govuk_publishing_components/pull/3751))
+* Move image-card overrides from frontend app ([PR #3752](https://github.com/alphagov/govuk_publishing_components/pull/3752))
 
 ## 36.0.2
 
