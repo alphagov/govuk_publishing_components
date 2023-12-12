@@ -95,7 +95,7 @@ $large-input-size: 50px;
   // Note: this is a non-standard CSS feature and will not do anything in Firefox. https://bugzilla.mozilla.org/show_bug.cgi?id=1417753
   &::-webkit-search-cancel-button {
     -webkit-appearance: none;
-    background-image: image-url("govuk_publishing_components/icon-close.svg");
+    background-image: url("govuk_publishing_components/icon-close.svg");
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -281,7 +281,7 @@ $large-input-size: 50px;
 .search-toggle {
   display: none;
   background-color: govuk-colour("blue");
-  background-image: image-url("govuk_publishing_components/search-button.png");
+  background-image: url("govuk_publishing_components/search-button.png");
   background-position: 0 50%;
   background-repeat: no-repeat;
   float: right;

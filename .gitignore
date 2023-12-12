@@ -4,6 +4,8 @@ pkg/
 spec/dummy/log/*.log
 spec/dummy/tmp/
 spec/dummy/public/assets/
+spec/dummy/app/assets/builds/*
+!spec/dummy/app/assets/builds/.keep
 doc
 .yardoc
 tmp/failures.txt

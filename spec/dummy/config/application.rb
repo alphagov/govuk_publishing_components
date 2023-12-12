@@ -3,7 +3,8 @@ require_relative "boot"
 require "action_controller/railtie"
 require "action_view/railtie"
 require "action_mailer/railtie"
-require "sassc-rails"
+require "sprockets/railtie"
+require "dartsass-rails"
 
 # In a heroku environment we don't have chrome and chromedriver available
 # so loading these gems fails.

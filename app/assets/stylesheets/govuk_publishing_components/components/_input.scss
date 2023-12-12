@@ -12,7 +12,7 @@ $search-icon-size: 40px;
   width: $search-icon-size;
   height: $search-icon-size;
   height: govuk-px-to-rem($search-icon-size);
-  background: image-url("govuk_publishing_components/icon-search.svg") no-repeat -3px center;
+  background: url("govuk_publishing_components/icon-search.svg") no-repeat -3px center;
 }
 
 // this overrides styles from static that break the look of the component

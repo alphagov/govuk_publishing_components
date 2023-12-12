@@ -1,2 +1,15 @@
-$govuk-image-url-function: "image-url";
-$govuk-font-url-function: "font-url";
+// Custom image URL function
+// https://github.com/alphagov/govuk-frontend/blob/9f05cea739d14d4cbf18e79b17228045ca84b3ba/packages/govuk-frontend/src/govuk/settings/_assets.scss#L30-L55
+
+@function app-image-url($filename) {
+  @return url("#{$filename}");
+}
+// Custom font URL function
+// https://github.com/alphagov/govuk-frontend/blob/9f05cea739d14d4cbf18e79b17228045ca84b3ba/packages/govuk-frontend/src/govuk/settings/_assets.scss#L57-L82
+
+@function app-font-url($filename) {
+  @return url("#{$filename}");
+}
+
+$govuk-image-url-function: "app-image-url";
+$govuk-font-url-function: "app-font-url";
