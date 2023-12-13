@@ -6,24 +6,6 @@
   GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
 
   GOVUK.analyticsGa4.Ga4FinderTracker = {
-
-    // Finds the parent div containing the filters. Loops through each child div that has data-ga4-filter-parent on it . Sets an index on each of these child divs.
-    setFilterIndexes: function () {
-      var filterContainer = document.querySelector('[data-ga4-filter-container]')
-
-      if (!filterContainer) {
-        return
-      }
-
-      var filterParents = filterContainer.querySelectorAll('[data-ga4-filter-parent]')
-
-      for (var i = 0; i < filterParents.length; i++) {
-        filterParents[i].setAttribute('data-ga4-index', JSON.stringify({ index_section: i + 1, index_section_count: filterParents.length }))
-      }
-
-      window.GOVUK.triggerEvent(window, 'ga4-filter-indexes-added')
-    },
-
     // Called when the search results updates. Takes the event target, and a string containing the type of change and element type. Creates the GTM schema and pushes it.
     // changeEventMetadata is a string referring to the type of form change and the element type that triggered it. For example 'update-filter checkbox'.
     trackChangeEvent: function (eventTarget, changeEventMetadata) {
@@ -157,31 +139,6 @@
       } catch (e) {
         console.error('GA4 configuration error: ' + e.message, window.location)
       }
-    },
-
-    addFilterButtonTracking: function (button, section) {
-      button.setAttribute('data-ga4-expandable', '')
-      var ga4JSON = { event_name: 'select_content', type: 'finder', section: section }
-
-      try {
-        var index = button.closest('[data-ga4-index]') || undefined
-        if (index) {
-          var indexData = JSON.parse(index.getAttribute('data-ga4-index'))
-          // flatten the attributes in index into the main data
-          for (var prop in indexData) {
-            ga4JSON[prop] = indexData[prop]
-          }
-        } else {
-          console.warn('No data-ga4-index found on the following element or its parents:')
-          console.warn(button)
-        }
-      } catch (e) {
-        // if there's a problem with the index object, don't add the attribute
-        console.error('GA4 configuration error: ' + e.message, window.location)
-        return
-      }
-
-      button.setAttribute('data-ga4-event', JSON.stringify(ga4JSON))
     }
   }
 
