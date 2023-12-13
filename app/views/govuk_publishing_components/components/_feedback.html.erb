@@ -9,10 +9,14 @@
   email_regex = /[^\s=\/?&]+(?:@|%40)[^\s=\/?&]+/
   url_without_pii = utf_encode(request.original_url.gsub(email_regex, '[email]'))
   path_without_pii = utf_encode(request.fullpath.gsub(email_regex, '[email]'))
+
+  disable_ga4 ||= false
+  data_module = "feedback"
+  data_module << " ga4-event-tracker" unless disable_ga4
 %>
 
-<div class="gem-c-feedback govuk-!-display-none-print" data-module="feedback ga4-event-tracker">
-  <%= render "govuk_publishing_components/components/feedback/yes_no_banner" %>
-  <%= render "govuk_publishing_components/components/feedback/problem_form", url_without_pii: url_without_pii %>
-  <%= render "govuk_publishing_components/components/feedback/survey_signup_form", path_without_pii: path_without_pii %>
+<div class="gem-c-feedback govuk-!-display-none-print" data-module="<%= data_module %>">
+  <%= render "govuk_publishing_components/components/feedback/yes_no_banner", disable_ga4: %>
+  <%= render "govuk_publishing_components/components/feedback/problem_form", url_without_pii: url_without_pii, disable_ga4: %>
+  <%= render "govuk_publishing_components/components/feedback/survey_signup_form", path_without_pii: path_without_pii, disable_ga4: %>
 </div>
