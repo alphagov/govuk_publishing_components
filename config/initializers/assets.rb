@@ -16,8 +16,8 @@ elsif Gem.loaded_specs.key?("sassc-rails")
 end
 
 Rails.application.config.assets.paths += %W[
+  #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/
   #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/images
-  #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/fonts
   #{__dir__}/../../node_modules/govuk-frontend/
   #{__dir__}/../../node_modules/
 ]
