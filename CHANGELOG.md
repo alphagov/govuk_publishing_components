@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove hardcoded text from GA4 'Feedback component' tracking, and add disable_ga4 option ([PR #3769](https://github.com/alphagov/govuk_publishing_components/pull/3769))
 * Add GA4 copy event tracker ([PR #3761](https://github.com/alphagov/govuk_publishing_components/pull/3761))
 
 ## 37.0.0
