@@ -4,6 +4,7 @@
 //= require ./analytics-ga4/pii-remover
 //= require ./analytics-ga4/ga4-page-views
 //= require ./analytics-ga4/ga4-print-intent-tracker
+//= require ./analytics-ga4/ga4-copy-tracker
 //= require ./analytics-ga4/ga4-specialist-link-tracker
 //= require ./analytics-ga4/ga4-link-tracker
 //= require ./analytics-ga4/ga4-event-tracker

@@ -78,7 +78,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       data.url = this.handlers['video-' + player.id + '-url']
       data.text = this.handlers['video-' + player.id + '-title']
       data.video_current_time = Math.round(player.getCurrentTime())
-      data.video_duration = this.handlers['video-' + player.id + '-duration']
+      data.length = this.handlers['video-' + player.id + '-duration']
       data.video_percent = position
 
       window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')

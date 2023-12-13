@@ -40,7 +40,7 @@ The event tracker will read this attribute and pass it to the schemas, where it 
     tool_name: undefined,
     percent_scrolled: undefined,
     video_current_time: undefined,
-    video_duration: undefined,
+    length: undefined,
     video_percent: undefined
   }
 }
