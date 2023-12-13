@@ -50,7 +50,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.type = 'video'
       expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
-      expected.event_data.video_duration = 500
+      expected.event_data.length = 500
       expected.govuk_gem_version = 'aVersion'
     })
 
@@ -84,7 +84,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.type = 'video'
       expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
-      expected.event_data.video_duration = 500
+      expected.event_data.length = 500
       expected.govuk_gem_version = 'aVersion'
       expected.event_data.event_name = 'video_start'
       expected.event_data.action = 'start'
@@ -161,7 +161,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.type = 'video'
       expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
-      expected.event_data.video_duration = 500
+      expected.event_data.length = 500
       expected.event_data.event_name = 'video_progress'
       expected.event_data.action = 'progress'
       expected.govuk_gem_version = 'aVersion'

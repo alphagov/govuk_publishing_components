@@ -18,7 +18,7 @@ These events only fire once for each video on any given page. Below is an exampl
     'text': 'My first Self Assessment tax return',
     'action': 'start',
     'video_current_time': 0,
-    'video_duration': 152,
+    'length': 152,
     'video_percent': 0
   }
 }

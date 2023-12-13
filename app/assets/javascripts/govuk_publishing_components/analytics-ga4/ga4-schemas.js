@@ -30,7 +30,7 @@
         tool_name: this.undefined,
         percent_scrolled: this.undefined,
         video_current_time: this.undefined,
-        video_duration: this.undefined,
+        length: this.undefined,
         video_percent: this.undefined
       }
     }
