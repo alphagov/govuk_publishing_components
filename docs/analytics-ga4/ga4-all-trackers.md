@@ -4,15 +4,19 @@ For tracking different kinds of data on GOV.UK we have built several different t
 
 Most of the trackers work by adding a `data-module` attribute to an element along with additional data attributes to provide specific tracking information. Some components have this already built into their code by default. These components should also include a `disable_ga4` option as a failsafe.
 
-## Auto tracking
+## Auto tracker
 
 The [auto tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-auto-tracker.md) is used to cause an event to occur as soon as a page has finished loading (but after a page view). This is used to track significant moments in journeys, such as the successful completion of a smart answer, or an error.
+
+## Copy tracker
+
+The [copy tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-copy-tracker.md) fires an event when text is copied from a page.
 
 ## Ecommerce tracker
 
 The [ecommerce tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-ecommerce-tracker.md) is used to track things like search results within a finder.
 
-## Event tracking
+## Event tracker
 
 The [event tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) handles tracking on buttons or other interactive elements, such as tabs and details elements.
 
@@ -20,7 +24,7 @@ The [event tracker](https://github.com/alphagov/govuk_publishing_components/blob
 
 The [form tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-form-tracker.md) is designed to capture data about a form when it has been submitted.
 
-## Link tracking
+## Link tracker
 
 There are several types of link tracking. To distinguish them and simplify the code, we define them as follows.
 
