@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add GA4 copy event tracker ([PR #3761](https://github.com/alphagov/govuk_publishing_components/pull/3761))
+* Silence Sass deprecation warnings for dependencies ([PR #3771](https://github.com/alphagov/govuk_publishing_components/pull/3771))
 
 ## 37.0.0
 
