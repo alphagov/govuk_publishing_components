@@ -157,7 +157,7 @@ describe('An option select component', function () {
       $element = document.createElement('div')
       $element.innerHTML = html
       var buttonAttrs = {
-        ga4_expandable: '',
+        test_attribute_with_many_underscores: 'oh yes',
         ga4_event: {
           event_name: 'select_content',
           type: 'finder'
@@ -166,7 +166,7 @@ describe('An option select component', function () {
       $element.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', JSON.stringify(buttonAttrs))
 
       new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
-      expect($($element).find('.gem-c-option-select__button').attr('data-ga4-expandable')).toBe('')
+      expect($($element).find('.gem-c-option-select__button').attr('data-test-attribute-with-many-underscores')).toBe('oh yes')
       expect($($element).find('.gem-c-option-select__button').attr('data-ga4-event')).toBe(JSON.stringify(buttonAttrs.ga4_event))
     })
 
@@ -176,7 +176,7 @@ describe('An option select component', function () {
       $element.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', 'not JSON')
 
       new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
-      expect($($element).find('.gem-c-option-select__button').attr('data-ga4-expandable')).toBe(undefined)
+      expect($($element).find('.gem-c-option-select__button').attr('data-test-attribute-with-many-underscores')).toBe(undefined)
     })
   })
 
