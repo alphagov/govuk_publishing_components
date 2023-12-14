@@ -38,15 +38,21 @@
         rows: 3
       } %>
 
+      <%
+        unless disable_ga4 
+          ga4_submit_button_event = {
+            event_name: "form_submit",
+            type: "feedback",
+            text: t("components.feedback.send", locale: :en),
+            section: t("components.feedback.help_us_improve_govuk", locale: :en),
+          }.to_json
+        end
+      %>
+
       <%= render "govuk_publishing_components/components/button", {
         text: t("components.feedback.send"),
         data_attributes: {
-          ga4_event: {
-            event_name: "form_submit",
-            type: "feedback",
-            text: "Send",
-            section: "Help us improve GOV.UK",
-          }
+          ga4_event: ga4_submit_button_event
         }
       } %>
 

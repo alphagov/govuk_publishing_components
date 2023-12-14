@@ -25,15 +25,21 @@
         describedby: "survey_explanation"
       } %>
 
+      <%
+        unless disable_ga4
+          ga4_send_button_event = {
+            event_name: "form_submit",
+            type: "feedback",
+            text: t("components.feedback.send_me_survey", locale: :en),
+            section: t("components.feedback.help_us_improve_govuk", locale: :en),
+          }.to_json
+        end
+      %>
+
       <%= render "govuk_publishing_components/components/button", {
         text: t("components.feedback.send_me_survey"),
         data_attributes: {
-          ga4_event: {
-            event_name: "form_submit",
-            type: "feedback",
-            text: "Send me the survey",
-            section: "Help us improve GOV.UK",
-          }
+          ga4_event: ga4_send_button_event
         }
       } %>
 

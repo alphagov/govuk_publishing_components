@@ -1,3 +1,28 @@
+<%
+  unless disable_ga4
+    ga4_yes_button_event = {
+      "event_name": "form_submit",
+      "type": "feedback",
+      "text": t("components.feedback.yes", locale: :en), 
+      "section": t("components.feedback.is_this_page_useful", locale: :en),
+      }.to_json
+
+    ga4_no_button_event = {
+      "event_name": "form_submit",
+      "type": "feedback",
+      "text": t("components.feedback.no", locale: :en),
+      "section": t("components.feedback.is_this_page_useful", locale: :en)
+      }.to_json
+
+    ga4_problem_button_event = {
+      "event_name": "form_submit",
+      "type": "feedback",
+      "text": t("components.feedback.something_wrong", locale: :en),
+      "section": t("components.feedback.is_this_page_useful", locale: :en)
+    }.to_json
+  end
+%>
+
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
   <div class="gem-c-feedback__prompt-content">
     <div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>
@@ -20,14 +45,31 @@
             <% end %>
           </li>
           <li class="gem-c-feedback__option-list-item">
-            <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" data-ga4-event='{"event_name":"form_submit","type":"feedback","text":"Yes", "section": "Is this page useful?"}'>
+            <%= tag.button(
+              class: "govuk-button gem-c-feedback__prompt-link js-page-is-useful",
+              data: {
+                track_category: "yesNoFeedbackForm",
+                track_action: "ffYesClick",
+                ga4_event: ga4_yes_button_event,
+              }) do %>
               <%= t("components.feedback.yes") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_useful") %></span>
-            </button>
+            <% end %>
           </li>
           <li class="gem-c-feedback__option-list-item">
-            <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false" data-ga4-event='{"event_name":"form_submit","type":"feedback","text":"No", "section": "Is this page useful?"}'>
+
+            <%= tag.button(
+              class: "govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful",
+              aria: {
+                controls: "page-is-not-useful",
+                expanded: "false",
+              },
+              data: {
+                track_category: "yesNoFeedbackForm",
+                track_action: "ffNoClick",
+                ga4_event: ga4_no_button_event,
+              }) do %>
               <%= t("components.feedback.no") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful") %></span>
-            </button>
+            <% end %>
           </li>
         </ul>
       </div>
@@ -38,9 +80,19 @@
     </div>
 
     <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" hidden>
-      <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" aria-controls="something-is-wrong" aria-expanded="false" data-ga4-event='{"event_name":"form_submit","type":"feedback","text":"Report a problem with this page", "section": "Is this page useful?"}'>
+      <%= tag.button(
+        class: "govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong",
+        aria: {
+          expanded: "false",
+          controls: "something-is-wrong"
+        },
+        data: {
+          track_category: "Onsite Feedback",
+          track_action: "GOV-UK Open Form",
+          ga4_event: ga4_problem_button_event,
+        }) do %>
         <%= t("components.feedback.something_wrong") %>
-      </button>
+      <% end %>
     </div>
   </div>
 </div>
