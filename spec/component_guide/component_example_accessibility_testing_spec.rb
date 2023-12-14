@@ -15,7 +15,7 @@ describe "Component example with automated testing", js: true do
     visit "/component-guide/test_component_with_a11y_issue"
     expect(page).to have_selector(".js-test-a11y-failed.js-test-a11y-finished")
 
-    expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }).not_to be_empty
+    expect(page.driver.browser.logs.get(:browser)[0].message.include?("Accessibility issues"))
 
     selector_with_error = page.first(".selector").text
     expect(page).to have_selector(selector_with_error, visible: false)
