@@ -11,5 +11,3 @@
 //= link govuk_publishing_components/vendor/modernizr.js
 //= link govuk_publishing_components/vendor/lux/lux-reporter.js
 //= link govuk_publishing_components/vendor/lux/lux-measurer.js
-
-//= link_tree ../builds
