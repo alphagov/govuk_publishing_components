@@ -65,11 +65,7 @@
                     class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link"
                     data-track-category="content-history"
                     data-track-action="see-all-updates-link-clicked"
-                    data-track-label="history"
-                    <% unless disable_ga4 %>
-                      data-module="ga4-link-tracker"
-                      data-ga4-link="<%= ga4_object %>"
-                    <% end%>>
+                    data-track-label="history">
             <%= t("components.metadata.see_all_updates") %>
           </a>
         <% end %>
