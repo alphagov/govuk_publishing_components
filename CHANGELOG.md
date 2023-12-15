@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Delete unused builds folder ([PR #3778](https://github.com/alphagov/govuk_publishing_components/pull/3778))
+
 ## 37.1.0
 
 * Remove hardcoded text from GA4 'Feedback component' tracking, and add disable_ga4 option ([PR #3769](https://github.com/alphagov/govuk_publishing_components/pull/3769))
