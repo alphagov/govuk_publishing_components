@@ -12,10 +12,11 @@ describe "Component example with automated testing", js: true do
   end
 
   # not_applicable: true has been added temporarily to skip this test, as it is causing CI to fail
-  it "shows accessibility violations on the page and through browser console", not_applicable: true do
+  it "shows accessibility violations on the page and through browser console" do
     visit "/component-guide/test_component_with_a11y_issue"
     expect(page).to have_selector(".js-test-a11y-failed.js-test-a11y-finished")
 
+    puts page.driver.browser.methods
     expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }).not_to be_empty
 
     selector_with_error = page.first(".selector").text
