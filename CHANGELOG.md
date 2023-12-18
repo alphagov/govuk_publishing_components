@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove duplicate GA4 tracking ([PR #3781](https://github.com/alphagov/govuk_publishing_components/pull/3781))
 * Delete unused builds folder ([PR #3778](https://github.com/alphagov/govuk_publishing_components/pull/3778))
 
 ## 37.1.0
