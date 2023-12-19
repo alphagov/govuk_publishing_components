@@ -61,6 +61,27 @@ examples:
         tracking: GTM-123AB
       block: |
         We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+  with_ga4_tracking:
+    description: |
+      GA4 tracking is mostly handled internally by the component, apart from the required attribute `index_section_count`. This records the number of details components on the page and must be passed by the hosting application. Other GA4 attributes can also be passed if required, including to override attributes set by the component (for some reason this doesn't work in the component guide but works in applications).
+
+      The tracking automatically includes `index_section` as the index of the component on the page compared with other instances of the component that are also being tracked, e.g. the first details component on a page will be `index_section` 1, the second `index_section` 2, etc.
+
+      Link tracking for the contents of the details component is not included due to varying tracking requirements. If you need to track links in the component, wrap it in the application with the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md).
+    data:
+      title: What did the ground say to the train?
+      ga4_attributes: {
+        index_section_count: 6,
+        type: "not the default"
+      }
+      block: |
+        Between you and me, I've been tracked.
+  disable_ga4_tracking:
+    description: Disables GA4 tracking on the component. Tracking is enabled by default.
+    data:
+      title: No tracking here
+      disable_ga4: true
+      block: Or here, but thanks for looking.
   open:
     data:
       title: Help with nationality

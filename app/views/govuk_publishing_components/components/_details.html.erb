@@ -2,23 +2,39 @@
   add_gem_component_stylesheet("details")
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-
   open ||= nil
+  disable_ga4 ||= false
+  @ga4 ||= OpenStruct.new(index_section: 0) unless disable_ga4
+  @ga4[:index_section] += 1 unless disable_ga4
+  ga4_attributes ||= {}
+
   margin_bottom ||= 3
   css_classes = %w(gem-c-details govuk-details)
   css_classes << shared_helper.get_margin_bottom
 
   details_data_attributes = {}
   details_data_attributes[:module] = 'govuk-details gem-details'
+  details_data_attributes[:module] = 'govuk-details gem-details ga4-event-tracker' unless disable_ga4
 
   data_attributes ||= {}
   data_attributes[:details_track_click] = ''
+  unless disable_ga4
+    ga4_event = {
+      event_name: "select_content",
+      type: "detail",
+      text: title,
+      section: title,
+      index_section: @ga4[:index_section],
+    }
+    ga4_event.merge!(ga4_attributes)
+    data_attributes[:ga4_event] = ga4_event
+  end
 
   summary_aria_attributes ||= {}
 %>
 <%= tag.details class: css_classes, data: details_data_attributes, open: open do %>
   <%= tag.summary class: "govuk-details__summary", data: data_attributes, aria: summary_aria_attributes do %>
-    <span class="govuk-details__summary-text">
+    <span class="govuk-details__summary-text" <% unless disable_ga4 %>data-ga4-expandable<% end %>>
       <%= title %>
     </span>
   <% end %>
