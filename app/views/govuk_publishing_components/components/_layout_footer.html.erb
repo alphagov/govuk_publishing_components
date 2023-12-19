@@ -7,6 +7,7 @@
   classes = %w(gem-c-layout-footer govuk-footer)
   classes << "gem-c-layout-footer--border" if with_border
   layout_footer_helper = GovukPublishingComponents::Presenters::LayoutFooterHelper.new(navigation, meta)
+  absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
 %>
 <%= tag.footer class: classes, role: "contentinfo", 'data-module': "ga4-link-tracker" do %>
   <div class="govuk-width-container">
@@ -51,6 +52,8 @@
                           unless attributes[:data][:ga4_link]
                             attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, ga4_section_index, section[:title], index_total)
                           end
+
+                          item[:href] = absolute_links_helper.make_url_absolute(item[:href])
                         %>
                         <%= link_to item[:text], item[:href], attributes %>
                       </li>
@@ -82,6 +85,8 @@
                   unless attributes[:data][:ga4_link]
                     attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, navigation.length, "Support links", index_total)
                   end
+
+                  item[:href] = absolute_links_helper.make_url_absolute(item[:href])
                 %>
                 <%= link_to item[:text], item[:href], attributes %>
               </li>

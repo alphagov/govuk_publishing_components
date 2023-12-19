@@ -1,4 +1,8 @@
-<form action="/contact/govuk/problem_reports"
+<%
+ absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
+%>
+
+<form action="<%= absolute_links_helper.make_url_absolute('/contact/govuk/problem_reports') %>"
   id="something-is-wrong"
   class="gem-c-feedback__form js-feedback-form"
   data-track-category="Onsite Feedback"

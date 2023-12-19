@@ -1,4 +1,8 @@
-<form action="/contact/govuk/email-survey-signup"
+<%
+ absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
+%>
+
+<form action="<%= absolute_links_helper.make_url_absolute('/contact/govuk/email-survey-signup') %>"
   id="page-is-not-useful"
   class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form"
   data-track-category="yesNoFeedbackForm"
