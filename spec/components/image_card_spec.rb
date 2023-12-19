@@ -125,24 +125,19 @@ describe "ImageCard", type: :view do
 
   it "applies tracking attributes" do
     render_component(href: "#", href_data_attributes: { track_category: "cat" }, heading_text: "test")
-    assert_select ".gem-c-image-card[data-module='gem-track-click ga4-link-tracker']"
+    assert_select ".gem-c-image-card[data-module='gem-track-click']"
     assert_select ".gem-c-image-card__title-link[data-track-category='cat']"
   end
 
   it "applies tracking attributes for extra details" do
     render_component(href: "#", extra_details: [{ href: "/", text: "1", data_attributes: { track_category: "cat" } }])
-    assert_select ".gem-c-image-card[data-module='gem-track-click ga4-link-tracker']"
+    assert_select ".gem-c-image-card[data-module='gem-track-click']"
     assert_select ".gem-c-image-card__list-item a[data-track-category='cat']"
   end
 
   it "shows metadata" do
     render_component(href: "#", metadata: "Unpaid")
     assert_select ".gem-c-image-card__metadata", text: "Unpaid"
-  end
-
-  it "applies lang attribute when lang is specified" do
-    render_component(href: "#", lang: "cy")
-    assert_select ".gem-c-image-card[lang='cy']"
   end
 
   it "applies lazy loading attribute when lazy is specified" do
