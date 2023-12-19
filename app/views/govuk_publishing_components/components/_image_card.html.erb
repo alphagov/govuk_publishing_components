@@ -3,6 +3,7 @@
 
   sizes ||= false
   brand ||= false
+  disable_ga4 ||= false
 
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns, brand_helper)
@@ -35,7 +36,8 @@
   extra_link_classes << brand_helper.color_class
 
   data_modules = %w[]
-  data_modules << "gem-track-click ga4-link-tracker" if card_helper.is_tracking?
+  data_modules << "gem-track-click" if card_helper.is_tracking?
+  data_modules << "ga4-link-tracker" unless disable_ga4
   data_modules << "image-card" if card_helper.youtube_video_id
 %>
 <% if card_helper.href || card_helper.extra_details.any? %>

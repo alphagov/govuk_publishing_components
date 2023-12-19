@@ -246,7 +246,7 @@ examples:
         <%= component %>
       </div>
   with_data_attributes:
-    description: Data attributes can be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
+    description: Data attributes can be applied as required. Note that the component does not include built in tracking for UA. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       href: "/i-am-not-a-valid-link"
       href_data_attributes: {
@@ -276,6 +276,32 @@ examples:
           }
         }
       ]
+  with_ga4_tracking:
+    description: The link tracker is enabled by default on the image card component, but in order to track `data-ga4-link` data must be passed to the component. See the [GA4 link tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+    data:
+      href: "/not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "News headline"
+      href_data_attributes: {
+        ga4_link: {
+          event_name: "navigation",
+          type: "homepage",
+          index_link: 1,
+          index_section: 1,
+          index_section_count: 1,
+          index_total: 1,
+          section: "name of section"
+        }
+      }
+  without_ga4_tracking:
+    description: Disables GA4 tracking.
+    data:
+      href: "/not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "News headline"
+      disable_ga4: true
   with_metadata:
     description: Can be used for links to people pages to indicate payment type
     data:

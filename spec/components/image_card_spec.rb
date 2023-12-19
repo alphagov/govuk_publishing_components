@@ -11,8 +11,9 @@ describe "ImageCard", type: :view do
 
   it "shows an image" do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text")
+    assert_select ".gem-c-image-card[data-module='ga4-link-tracker']"
     assert_select ".gem-c-image-card .gem-c-image-card__image[src='/moo.jpg'][alt='some meaningful alt text']"
-    assert_select ".gem-c-image-card[data-module='gem-track-click ga4-link-tracker']", false
+    assert_select ".gem-c-image-card[data-module='gem-track-click']", false
   end
 
   it "shows heading text" do
@@ -129,6 +130,11 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card__title-link[data-track-category='cat']"
   end
 
+  it "can disable GA4 tracking" do
+    render_component(href: "#", image_src: "/moo.jpg", image_alt: "alt text", disable_ga4: true)
+    assert_select ".gem-c-image-card[data-module='ga4-link-tracker']", false
+  end
+
   it "applies tracking attributes for extra details" do
     render_component(href: "#", extra_details: [{ href: "/", text: "1", data_attributes: { track_category: "cat" } }])
     assert_select ".gem-c-image-card[data-module='gem-track-click ga4-link-tracker']"
@@ -180,7 +186,7 @@ describe "ImageCard", type: :view do
 
   it "adds the imagecard module if youtube video id added" do
     render_component(youtube_video_id: "EXAMPLE", image_src: "/moo.jpg", image_alt: "some meaningful alt text", sizes: "100vw, 300vw")
-    assert_select ".gem-c-image-card[data-module='image-card']"
+    assert_select ".gem-c-image-card[data-module='ga4-link-tracker image-card']"
   end
 
   it "generates youtube fallback link if youtube video id supplied" do
