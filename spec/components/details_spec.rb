@@ -10,8 +10,8 @@ describe "Details", type: :view do
       "This is more info"
     end
 
-    assert_select "details.gem-c-details"
-    assert_select ".govuk-details__summary-text", text: "Some title"
+    assert_select "details.gem-c-details[data-module='govuk-details gem-details ga4-event-tracker']"
+    assert_select ".govuk-details__summary-text[data-ga4-expandable]", text: "Some title"
     assert_select ".govuk-details__text", text: "This is more info"
   end
 
@@ -65,5 +65,38 @@ describe "Details", type: :view do
     )
 
     assert_select '.govuk-details.govuk-\!-margin-bottom-3'
+  end
+
+  it "increments the GA4 index_section parameter when more than one component instance" do
+    render_component(title: "first details")
+    assert_select '.govuk-details__summary[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"first details","section":"first details","index_section":1}\']'
+
+    render_component(title: "second details")
+    assert_select '.govuk-details__summary[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"second details","section":"second details","index_section":2}\']'
+  end
+
+  it "accepts GA4 event data parameters" do
+    render_component(
+      title: "some title",
+      ga4_attributes: { index_section_count: 12 },
+    )
+    assert_select '.govuk-details__summary[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"some title","section":"some title","index_section":1,"index_section_count":12}\']'
+  end
+
+  it "can override GA4 event data parameters" do
+    render_component(
+      title: "some title",
+      ga4_attributes: { type: "a mouse!", index_section_count: 12 },
+    )
+    assert_select '.govuk-details__summary[data-ga4-event=\'{"event_name":"select_content","type":"a mouse!","text":"some title","section":"some title","index_section":1,"index_section_count":12}\']'
+  end
+
+  it "can disable GA4" do
+    render_component(
+      title: "some title",
+      disable_ga4: true,
+    )
+    assert_select ".govuk-details__summary[data-ga4-event]", false
+    assert_select ".govuk-details__summary-text[data-ga4-expandable]", false
   end
 end

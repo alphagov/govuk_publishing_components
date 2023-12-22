@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Details component GA4 tracking ([PR #3786](https://github.com/alphagov/govuk_publishing_components/pull/3786))
+
 ## 37.1.1
 
 * Make global relative links absolute ([PR #3699](https://github.com/alphagov/govuk_publishing_components/pull/3699))
