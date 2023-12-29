@@ -219,6 +219,16 @@ $govuk-header-link-underline-thickness: 3px;
   vertical-align: top;
 }
 
+// TODO: temporary add styles from govuk-frontend to test changes, remove when govuk-frontend 4.8 is merged in
+// https://github.com/alphagov/govuk-frontend/pull/4278/files#diff-eaf850885e67da30b24ca0362dea2f057a259f734eeb0b19399e80c9b051ed71R65-R71
+
+// Spacing adjustment for Tudor crown, as the new graphic is narrower than the
+// existing crown. In Frontend v5, this rule should replace the equivalent in
+// the block above.
+.gem-c-one-login-header__logotype-crown[width="32"] {
+  margin-right: 4px;
+}
+
 .gem-c-one-login-header__logotype-crown-fallback-image {
   width: 36px;
   height: 32px;
