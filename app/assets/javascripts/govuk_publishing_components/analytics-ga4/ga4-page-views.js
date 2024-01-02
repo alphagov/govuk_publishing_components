@@ -7,6 +7,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
   var PageViewTracker = {
     PIIRemover: new window.GOVUK.analyticsGa4.PIIRemover(), // imported in analytics-ga4.js
+    getMetaContent: window.GOVUK.analyticsGa4.core.getMetaContent,
     nullValue: undefined,
 
     init: function (referrer) {
@@ -131,19 +132,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
       var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
       return vw + 'x' + vh
-    },
-
-    getMetaContent: function (name) {
-      var tag = document.querySelector('meta[name="govuk:' + name + '"]')
-      if (tag) {
-        var contentAttribute = tag.getAttribute('content')
-        if (contentAttribute === '') {
-          return undefined
-        }
-        return contentAttribute
-      } else {
-        return this.nullValue
-      }
     },
 
     getElementAttribute: function (attributeName) {

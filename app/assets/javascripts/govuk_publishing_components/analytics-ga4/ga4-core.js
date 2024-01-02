@@ -68,6 +68,19 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       return window.GOVUK.analyticsGa4.vars.gem_version || 'not found'
     },
 
+    getMetaContent: function (name) {
+      var tag = document.querySelector('meta[name="govuk:' + name + '"]')
+      if (tag) {
+        var contentAttribute = tag.getAttribute('content')
+        if (contentAttribute === '') {
+          return undefined
+        }
+        return contentAttribute
+      } else {
+        return undefined
+      }
+    },
+
     sortEventData: function (eventData) {
       if (!Object.keys) { // check for IE9 and below
         return eventData

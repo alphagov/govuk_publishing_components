@@ -68,6 +68,32 @@ describe('GA4 core', function () {
     })
   })
 
+  describe('metatags', function () {
+    afterEach(function () {
+      var head = document.getElementsByTagName('head')[0]
+      var metas = document.querySelectorAll("[name^='govuk']")
+      for (var i = 0; i < metas.length; i++) {
+        head.removeChild(metas[i])
+      }
+    })
+
+    function createMetaTags (key, value) {
+      var metatag = document.createElement('meta')
+      metatag.setAttribute('name', 'govuk:' + key)
+      metatag.setAttribute('content', value)
+      document.getElementsByTagName('head')[0].appendChild(metatag)
+    }
+
+    it('can be read when a metatag exists', function () {
+      createMetaTags('example', 'of a thing')
+      expect(GOVUK.analyticsGa4.core.getMetaContent('example')).toEqual('of a thing')
+    })
+
+    it('can be read when a metatag does not exist', function () {
+      expect(GOVUK.analyticsGa4.core.getMetaContent('notreal')).toEqual(undefined)
+    })
+  })
+
   describe('query strings allow pushing to a fake dataLayer', function () {
     var data
 
