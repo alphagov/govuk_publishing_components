@@ -354,7 +354,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
         ecommerceSchema.event = 'search_results'
         ecommerceSchema.search_results.event_name = isClickEvent ? 'select_item' : 'view_item_list'
-        ecommerceSchema.search_results.results = window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(element, resultsId)
+        ecommerceSchema.search_results.results = window.GOVUK.analyticsGa4.core.getMetaContent('search-result-count') || window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(element, resultsId)
         ecommerceSchema.search_results.term = searchQuery || undefined
         ecommerceSchema.search_results.sort = variant || undefined
 
