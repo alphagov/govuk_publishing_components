@@ -75,14 +75,14 @@
   // given an object and a key, insert a value into object[key] if it exists
   Schemas.prototype.addToObject = function (obj, key, value) {
     if (key in obj) {
-      obj[key] = value
+      obj[key] = value + '' // ensure is a string
       return obj
     } else {
       // check for one level of nesting in the object
       for (var property in obj) {
         if (this.isAnObject(obj[property])) {
           if (key in obj[property]) {
-            obj[property][key] = value
+            obj[property][key] = value + '' // ensure is a string
             return obj
           }
         }

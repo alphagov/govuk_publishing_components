@@ -25,7 +25,7 @@ describe('Google Analytics 4 copy tracker', function () {
   it('triggers a GA4 event when the copy event is fired', function () {
     var text = 'This is some text'
     expected.event_data.text = text
-    expected.event_data.length = 17
+    expected.event_data.length = '17'
     spyOn(window, 'getSelection').and.returnValue(text)
 
     window.GOVUK.triggerEvent(window, 'copy')
@@ -65,7 +65,7 @@ describe('Google Analytics 4 copy tracker', function () {
   it('cleans line breaks and other characters from copied text', function () {
     var text = 'This is some text\n\nThis is some more\tAnd some more\n     and     some spaces    \n'
     expected.event_data.text = 'This is some text This is some'
-    expected.event_data.length = 65
+    expected.event_data.length = '65'
     spyOn(window, 'getSelection').and.returnValue(text)
 
     window.GOVUK.triggerEvent(window, 'copy')
@@ -75,7 +75,7 @@ describe('Google Analytics 4 copy tracker', function () {
   it('only records a maximum of 30 characters', function () {
     var text = "The first problem is where to get a lot of text. That's actually not so hard if you think about it - all you have to do is write some words down, any words that come to mind."
     expected.event_data.text = 'The first problem is where to '
-    expected.event_data.length = 174
+    expected.event_data.length = '174'
     spyOn(window, 'getSelection').and.returnValue(text)
 
     window.GOVUK.triggerEvent(window, 'copy')
@@ -85,7 +85,7 @@ describe('Google Analytics 4 copy tracker', function () {
   it('redacts PII from the text it collects', function () {
     var text = 'some email@example.com SW1A 2AA Jan 1st 1990'
     expected.event_data.text = 'some [email] [postcode] [date]'
-    expected.event_data.length = 30
+    expected.event_data.length = '30'
     spyOn(window, 'getSelection').and.returnValue(text)
 
     window.GOVUK.triggerEvent(window, 'copy')

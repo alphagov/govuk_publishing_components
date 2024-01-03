@@ -95,7 +95,7 @@ describe('Google Analytics auto tracker', function () {
       expected.event_data.event_name = 'select_content'
       expected.event_data.type = 'tabs'
       expected.event_data.index = {
-        index_section: 7,
+        index_section: '7',
         index_link: undefined,
         index_section_count: undefined
       }

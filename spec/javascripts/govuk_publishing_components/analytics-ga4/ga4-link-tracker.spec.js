@@ -101,7 +101,7 @@ describe('GA4 link tracker', function () {
       expected.event_data.method = 'primary click'
       expected.event_data.external = 'false'
       expected.event_data.index = {
-        index_link: 1,
+        index_link: '1',
         index_section: undefined,
         index_section_count: undefined
       }
@@ -206,7 +206,7 @@ describe('GA4 link tracker', function () {
       expected.event_data.type = 'a link'
       expected.event_data.external = 'false'
       expected.event_data.index = {
-        index_link: 1,
+        index_link: '1',
         index_section: undefined,
         index_section_count: undefined
       }
@@ -414,7 +414,7 @@ describe('GA4 link tracker', function () {
 
       initModule(element, true)
 
-      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: 123, index_section: undefined, index_section_count: undefined })
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: '123', index_section: undefined, index_section_count: undefined })
     })
   })
 
@@ -427,7 +427,7 @@ describe('GA4 link tracker', function () {
 
       initModule(element, true)
 
-      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: 123, index_section: undefined, index_section_count: undefined })
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: '123', index_section: undefined, index_section_count: undefined })
     })
   })
 
@@ -444,7 +444,7 @@ describe('GA4 link tracker', function () {
       initModule(element, false)
       link.click()
 
-      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: 3, index_section: 1, index_section_count: 2 })
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: '3', index_section: '1', index_section_count: '2' })
     })
   })
 
@@ -460,7 +460,7 @@ describe('GA4 link tracker', function () {
       initModule(element, false)
       link.click()
 
-      expect(window.dataLayer[0].event_data.index).toEqual({ index_section: 1, index_section_count: 2, index_link: undefined })
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_section: '1', index_section_count: '2', index_link: undefined })
     })
   })
 
