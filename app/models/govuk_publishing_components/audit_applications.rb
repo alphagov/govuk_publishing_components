@@ -157,7 +157,7 @@ module GovukPublishingComponents
     end
 
     def find_code_references(file, src, regex)
-      return clean_file_path(file) if regex.match?(src)
+      clean_file_path(file) if regex.match?(src)
     end
 
     def clean_file_path(file)
