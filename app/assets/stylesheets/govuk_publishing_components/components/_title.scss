@@ -32,6 +32,10 @@
 }
 
 @include govuk-media-query($media-type: print) {
+  .gem-c-title--inverse {
+    color: govuk-colour("black");
+  }
+
   .gem-c-title__context {
     margin: 0;
   }

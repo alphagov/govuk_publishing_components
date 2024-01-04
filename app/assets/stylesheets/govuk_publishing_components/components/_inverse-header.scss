@@ -27,3 +27,17 @@
 .gem-c-inverse-header--padding-top {
   padding-top: govuk-spacing(3);
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-inverse-header {
+    background-color: govuk-colour("white");
+    color: govuk-colour("black");
+    padding: 0;
+    margin: 0;
+  }
+
+  .gem-c-inverse-header .gem-c-inverse-header__supplement,
+  .gem-c-inverse-header .publication-header__last-changed {
+    color: govuk-colour("black");
+  }
+}

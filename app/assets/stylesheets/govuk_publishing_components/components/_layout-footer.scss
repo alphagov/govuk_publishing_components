@@ -20,3 +20,9 @@
   // the right column.
   margin-bottom: 20px;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-layout-footer {
+    display: none;
+  }
+}
