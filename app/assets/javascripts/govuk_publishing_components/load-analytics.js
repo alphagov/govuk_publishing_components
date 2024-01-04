@@ -21,6 +21,9 @@ window.GOVUK.loadAnalytics = {
   developmentDomains: [
     'localhost', '127.0.0.1', '0.0.0.0'
   ],
+  devdocsDomains: [
+    'docs.publishing.service.gov.uk'
+  ],
 
   // For Universal Analytics' cross domain tracking. linkedDomains is defined by the require statement at the top of the file.
   linkedDomains: window.GOVUK.analytics.linkedDomains,
@@ -28,22 +31,33 @@ window.GOVUK.loadAnalytics = {
   ga4EnvironmentVariables: {
     // initialiseGA4 is used to enable/disable GA4 on specific environments
     production: {
-      initialiseGA4: true
+      initialiseGA4: true,
+      id: 'GTM-MG7HG5W'
     },
     staging: {
       initialiseGA4: true,
+      id: 'GTM-MG7HG5W',
       auth: 'oJWs562CxSIjZKn_GlB5Bw',
       preview: 'env-5'
     },
     integration: {
       initialiseGA4: true,
+      id: 'GTM-MG7HG5W',
       auth: 'C7iYdcsOlYgGmiUJjZKrHQ',
       preview: 'env-4'
     },
     development: {
       initialiseGA4: true,
+      id: 'GTM-MG7HG5W',
       auth: 'bRiZ-jiEHtw6hHpGd6dF9w',
       preview: 'env-3'
+    },
+    devdocs: {
+      initialiseGA4: true,
+      id: 'GTM-TNKCK97',
+      // auth and preview not required for devdocs
+      auth: '',
+      preview: ''
     }
   },
 
@@ -87,6 +101,8 @@ window.GOVUK.loadAnalytics = {
       environment = 'integration'
     } else if (this.arrayContains(currentDomain, this.developmentDomains) || currentDomain.indexOf('.dev.gov.uk') !== -1) {
       environment = 'development'
+    } else if (this.arrayContains(currentDomain, this.devdocsDomains)) {
+      environment = 'devdocs'
     }
 
     // If we recognise the environment (i.e. the string isn't empty), load in GA4
@@ -95,7 +111,7 @@ window.GOVUK.loadAnalytics = {
       if (typeof window.GOVUK.analyticsGa4.init !== 'undefined' && this.ga4EnvironmentVariables[environment].initialiseGA4) {
         window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
         window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-        window.GOVUK.analyticsGa4.vars.id = 'GTM-MG7HG5W'
+        window.GOVUK.analyticsGa4.vars.id = this.ga4EnvironmentVariables[environment].id
         window.GOVUK.analyticsGa4.vars.auth = this.ga4EnvironmentVariables[environment].auth
         window.GOVUK.analyticsGa4.vars.preview = this.ga4EnvironmentVariables[environment].preview
         window.GOVUK.analyticsGa4.vars.environment = environment // Used for testing and debugging
