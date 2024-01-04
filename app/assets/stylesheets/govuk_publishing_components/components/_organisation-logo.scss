@@ -158,3 +158,10 @@
   @include crest("wales_crest");
   @include tall-crest;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-organisation-logo__container {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
