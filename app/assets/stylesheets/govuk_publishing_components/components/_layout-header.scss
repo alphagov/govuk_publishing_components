@@ -120,7 +120,7 @@
   padding: 2px 5px 0;
   margin-left: 3px;
   vertical-align: middle;
-  @include govuk-font($size: 14, $weight: "bold");
+  @include govuk-font($size: 16, $weight: "bold");
 }
 
 .gem-c-environment-tag--production {
