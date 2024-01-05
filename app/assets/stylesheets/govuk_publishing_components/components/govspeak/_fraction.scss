@@ -11,7 +11,7 @@
   .fraction {
     sup,
     sub {
-      @include govuk-font($size: 14);
+      @include govuk-font($size: 16);
     }
 
     img {
