@@ -14,6 +14,7 @@
 * Ensure all GA4 data values are strings ([PR #3800](https://github.com/alphagov/govuk_publishing_components/pull/3800))
 * Refactor image card tracking ([PR #3789](https://github.com/alphagov/govuk_publishing_components/pull/3789))
 * Details component GA4 tracking ([PR #3786](https://github.com/alphagov/govuk_publishing_components/pull/3786))
+* Fix Sass deprecation warnings ([PR #3807](https://github.com/alphagov/govuk_publishing_components/pull/3807))
 
 ## 37.1.1
 
