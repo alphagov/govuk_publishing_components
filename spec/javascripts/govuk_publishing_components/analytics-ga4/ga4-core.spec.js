@@ -58,13 +58,15 @@ describe('GA4 core', function () {
   })
 
   it('pushes data to the dataLayer', function () {
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
     var data = {
       hello: 'I must be going'
     }
     GOVUK.analyticsGa4.core.sendData(data)
     expect(window.dataLayer[0]).toEqual({
       hello: 'I must be going',
-      govuk_gem_version: 'aVersion'
+      govuk_gem_version: 'aVersion',
+      timestamp: '123456'
     })
   })
 
@@ -116,7 +118,8 @@ describe('GA4 core', function () {
     var expected = schemas.mergeProperties(data, 'test')
     expected.govuk_gem_version = 'aVersion'
     expected.event_data.index.index_link = '3'
-
+    expected.timestamp = '123456'
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
     GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'test')
     expect(window.dataLayer[0]).toEqual(expected)
   })
@@ -650,6 +653,13 @@ describe('GA4 core', function () {
         expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
         expect(builtEcommerceObject.search_results.ecommerce.items.length).toEqual(200)
       })
+    })
+
+    it('populates the timestamp value correctly', function () {
+      GOVUK.analyticsGa4.core.sendData({})
+      var timestamp = Date.now().toString()
+
+      expect(window.dataLayer[0].timestamp).toEqual(timestamp)
     })
   })
 })

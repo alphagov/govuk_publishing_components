@@ -37,7 +37,9 @@ describe('GA4 link tracker', function () {
     expected.event_data.event_name = 'navigation'
     expected.govuk_gem_version = 'aVersion'
     expected.event_data.link_domain = 'https://www.gov.uk'
+    expected.timestamp = '123456'
     agreeToCookies()
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   afterEach(function () {

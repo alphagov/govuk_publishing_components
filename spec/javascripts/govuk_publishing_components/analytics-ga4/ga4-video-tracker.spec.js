@@ -24,6 +24,7 @@ describe('Google Analytics video tracker', function () {
         }
       }
     }
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   it('performs initial setup', function () {
@@ -52,6 +53,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       expected.event_data.length = '500'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
     })
 
     it('when a video starts', function () {
@@ -86,6 +88,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
       expected.event_data.length = '500'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
       expected.event_data.event_name = 'video_start'
       expected.event_data.action = 'start'
       expected.event_data.video_current_time = '0'
@@ -165,6 +168,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.event_name = 'video_progress'
       expected.event_data.action = 'progress'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       jasmine.clock().install()
     })

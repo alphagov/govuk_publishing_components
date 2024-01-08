@@ -21,6 +21,7 @@ describe('Google Analytics event tracker', function () {
     window.dataLayer = []
     element = document.createElement('div')
     agreeToCookies()
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   afterEach(function () {
@@ -106,6 +107,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.type = 'tabs'
       expected.event_data.text = ''
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       var attributes = {
         event_name: 'select_content',
@@ -136,6 +138,7 @@ describe('Google Analytics event tracker', function () {
       expected.event = 'event_data'
       expected.event_data.event_name = 'select_content'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       attributes = {
         event_name: 'select_content'
@@ -175,12 +178,14 @@ describe('Google Analytics event tracker', function () {
       expected1.event_data.event_name = 'event1-name'
       expected1.event_data.text = ''
       expected1.govuk_gem_version = 'aVersion'
+      expected1.timestamp = '123456'
 
       expected2 = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected2.event = 'event_data'
       expected2.event_data.event_name = 'event2-name'
       expected2.event_data.text = ''
       expected2.govuk_gem_version = 'aVersion'
+      expected2.timestamp = '123456'
 
       var attributes1 = {
         event_name: 'event1-name'
@@ -230,6 +235,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -238,6 +244,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       element.setAttribute('aria-expanded', 'true')
       element.click()
@@ -268,6 +275,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -276,6 +284,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       clickOn.setAttribute('open', '')
       clickOn.click()
@@ -308,6 +317,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Show'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -317,6 +327,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Hide'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       element.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'true')
       element.querySelector('button').textContent = 'Hide'
@@ -351,6 +362,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Example'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -360,6 +372,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Example'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       element.setAttribute('open', '')
       clickOn.click()
@@ -486,6 +499,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.type = 'feedback'
       expected.event_data.section = 'Is this page useful?'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
     })
 
     it('should track "Yes" button clicks', function () {
@@ -523,6 +537,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.event_name = 'select_content'
       expected.event_data.type = 'header menu bar'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
       var buttons = document.querySelectorAll('button')
       expected.event_data.index_total = buttons.length + ''
 

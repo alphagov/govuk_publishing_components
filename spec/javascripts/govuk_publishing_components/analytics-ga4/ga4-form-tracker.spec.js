@@ -24,6 +24,7 @@ describe('Google Analytics form tracking', function () {
     element = document.createElement('form')
     document.body.appendChild(element)
     agreeToCookies()
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   afterEach(function () {
@@ -90,6 +91,7 @@ describe('Google Analytics form tracking', function () {
       expected.event_data.action = 'Continue'
       expected.event_data.tool_name = 'What is the title of this smart answer?'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       tracker.init()
     })
@@ -243,6 +245,7 @@ describe('Google Analytics form tracking', function () {
       expected.event_data.action = 'Continue'
       expected.event_data.tool_name = 'What is the title of this smart answer?'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       tracker.init()
     })
@@ -281,6 +284,7 @@ describe('Google Analytics form tracking', function () {
       expected.event_data.action = 'Continue'
       expected.event_data.tool_name = 'What is the title of this smart answer?'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       tracker.init()
     })
@@ -344,6 +348,7 @@ describe('Google Analytics form tracking', function () {
       expected.event_data.section = 'Search'
       expected.event_data.action = 'search'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       tracker.init()
     })
