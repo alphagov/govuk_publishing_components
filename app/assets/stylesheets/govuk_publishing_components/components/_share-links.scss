@@ -18,7 +18,7 @@ $share-button-height: 30px;
   padding-left: ($share-button-width + govuk-spacing(2));
   padding-right: govuk-spacing(2);
   margin-bottom: govuk-spacing(2);
-  font-size: calc($share-button-height / 2);
+  font-size: $share-button-height / 2;
 }
 
 .gem-c-share-links__link {

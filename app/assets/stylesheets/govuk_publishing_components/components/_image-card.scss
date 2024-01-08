@@ -186,7 +186,7 @@
   @include govuk-font($size: false);
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
-  margin: 0 0 calc(govuk-spacing(3) / 2);
+  margin: 0 0 (govuk-spacing(3) / 2);
   color: govuk-colour("dark-grey", $legacy: "grey-1");
 
   @include govuk-media-query($from: tablet) {
@@ -196,7 +196,7 @@
 
 .gem-c-image-card__description {
   @include govuk-font($size: 19);
-  padding-top: calc(govuk-spacing(3) / 2);
+  padding-top: (govuk-spacing(3) / 2);
   word-wrap: break-word;
 }
 
@@ -204,7 +204,7 @@
   @include govuk-font($size: 19);
   position: relative;
   z-index: 2;
-  padding: calc(govuk-spacing(3) / 2) 0 0 0;
+  padding: (govuk-spacing(3) / 2) 0 0 0;
   margin: 0;
   list-style: none;
 
