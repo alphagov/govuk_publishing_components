@@ -34,8 +34,14 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       return navigator.userAgent
     },
 
+    getTimestamp: function () {
+      return Date.now().toString()
+    },
+
     sendData: function (data) {
       data.govuk_gem_version = this.getGemVersion()
+      data.timestamp = this.getTimestamp()
+
       // set this in the console as a debugging aid
       if (window.GOVUK.analyticsGa4.showDebug) {
         if (data.event_data) {

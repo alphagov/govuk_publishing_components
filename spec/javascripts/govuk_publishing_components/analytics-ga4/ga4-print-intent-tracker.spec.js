@@ -18,6 +18,8 @@ describe('Google Analytics 4 print intent tracker', function () {
     expected.event_data.type = 'print page'
     expected.event_data.method = 'browser print'
     expected.govuk_gem_version = 'aVersion'
+    expected.timestamp = '123456'
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   it('triggers a GA4 event when the \'beforeprint\' event is fired', function () {

@@ -24,6 +24,7 @@ describe('Google Analytics auto tracker', function () {
     element = document.createElement('form')
     document.body.appendChild(element)
     agreeToCookies()
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   afterEach(function () {
@@ -100,6 +101,7 @@ describe('Google Analytics auto tracker', function () {
         index_section_count: undefined
       }
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       var attributes = {
         event_name: 'select_content',
@@ -130,6 +132,7 @@ describe('Google Analytics auto tracker', function () {
       expected.event_data.type = 'tabs'
       expected.event_data.text = '/[date]/[postcode]/[email]'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       var attributes = {
         event_name: 'select_content',

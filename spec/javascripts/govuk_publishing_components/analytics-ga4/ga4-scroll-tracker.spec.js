@@ -14,7 +14,9 @@ describe('GA4 scroll tracker', function () {
     expected.event_data.action = 'scroll'
     expected.event_data.event_name = 'scroll'
     expected.govuk_gem_version = 'gem-version'
+    expected.timestamp = '123456'
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('gem-version')
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   afterEach(function () {

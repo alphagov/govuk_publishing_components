@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add timestamp value to GA4 dataLayer pushes ([PR #3790](https://github.com/alphagov/govuk_publishing_components/pull/3790))
 * Allow GA4 tracking on dev docs ([PR #3802](https://github.com/alphagov/govuk_publishing_components/pull/3802))
 * Ensure all GA4 data values are strings ([PR #3800](https://github.com/alphagov/govuk_publishing_components/pull/3800))
 * Refactor image card tracking ([PR #3789](https://github.com/alphagov/govuk_publishing_components/pull/3789))

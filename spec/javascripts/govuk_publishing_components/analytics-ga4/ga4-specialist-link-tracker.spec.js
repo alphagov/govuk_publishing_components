@@ -24,6 +24,10 @@ describe('A specialist link tracker', function () {
     window.history.replaceState(null, null, '#')
   })
 
+  beforeEach(function () {
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
+  })
+
   describe('when tracking external links', function () {
     beforeEach(function () {
       window.dataLayer = []
@@ -34,6 +38,8 @@ describe('A specialist link tracker', function () {
       expected.event_data.method = 'primary click'
       expected.event_data.external = 'true'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
+
       links = document.createElement('div')
       /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
       The value differs for each link, so we can't hardcode the expected value inside the test itself. */
@@ -295,6 +301,7 @@ describe('A specialist link tracker', function () {
       expected.event_data.type = 'generic download'
       expected.event_data.method = 'primary click'
       expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
 
       links = document.createElement('div')
       /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
@@ -447,6 +454,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.text = link.innerText.trim()
         expected.event_data.type = 'generic link'
         expected.govuk_gem_version = 'aVersion'
+        expected.timestamp = '123456'
         expected.event_data.external = 'true'
 
         expect(window.dataLayer[0]).toEqual(expected)
@@ -548,6 +556,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.govuk_gem_version = 'aVersion'
+        expected.timestamp = '123456'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })

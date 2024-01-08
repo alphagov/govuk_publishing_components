@@ -15,6 +15,7 @@ describe('Google Tag Manager page view tracking', function () {
     expected = {
       event: 'page_view',
       govuk_gem_version: 'aVersion',
+      timestamp: '123456',
       page_view: {
         location: document.location.href,
         referrer: document.referrer,
@@ -62,6 +63,7 @@ describe('Google Tag Manager page view tracking', function () {
         spelling_suggestion: undefined
       }
     }
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
     window.dataLayer = []
   })
 

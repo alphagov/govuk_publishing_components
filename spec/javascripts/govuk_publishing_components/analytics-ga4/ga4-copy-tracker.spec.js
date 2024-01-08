@@ -20,6 +20,8 @@ describe('Google Analytics 4 copy tracker', function () {
     expected.event_data.action = 'copy'
     expected.event_data.method = 'browser copy'
     expected.govuk_gem_version = 'aVersion'
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
+    expected.timestamp = '123456'
   })
 
   it('triggers a GA4 event when the copy event is fired', function () {
