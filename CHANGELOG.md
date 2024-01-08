@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.2.0
 
 * Add timestamp value to GA4 dataLayer pushes ([PR #3790](https://github.com/alphagov/govuk_publishing_components/pull/3790))
 * Allow GA4 tracking on dev docs ([PR #3802](https://github.com/alphagov/govuk_publishing_components/pull/3802))
