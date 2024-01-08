@@ -48,7 +48,7 @@
 ///  }
 ///
 @mixin columns($items, $columns, $selector: "*", $flow: row) {
-  $rows: ceil(calc($items / $columns));
+  $rows: ceil($items / $columns);
 
   display: -ms-grid;
   display: grid;

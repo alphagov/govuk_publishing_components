@@ -40,7 +40,7 @@
   list-style-type: none;
 
   @include govuk-media-query($from: tablet) {
-    padding-top: calc(govuk-spacing(6) / 4);
+    padding-top: govuk-spacing(6) / 4;
   }
 }
 

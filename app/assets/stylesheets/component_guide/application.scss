@@ -165,7 +165,7 @@ $gem-guide-border-width: 1px;
   h3,
   h4 {
     margin-top: 0;
-    margin-bottom: calc($govuk-gutter / 2);
+    margin-bottom: $govuk-gutter / 2;
   }
 
   h3 a {
