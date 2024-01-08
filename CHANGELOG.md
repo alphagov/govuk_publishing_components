@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Revert changes to fix Sass deprecation warnings ([PR #3810](https://github.com/alphagov/govuk_publishing_components/pull/3810))
+
 ## 37.2.0
 
 * Add timestamp value to GA4 dataLayer pushes ([PR #3790](https://github.com/alphagov/govuk_publishing_components/pull/3790))
