@@ -115,7 +115,7 @@ describe('GA4 core', function () {
     var schemas = new window.GOVUK.analyticsGa4.Schemas()
     var expected = schemas.mergeProperties(data, 'test')
     expected.govuk_gem_version = 'aVersion'
-    expected.event_data.index.index_link = 3
+    expected.event_data.index.index_link = '3'
 
     GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'test')
     expect(window.dataLayer[0]).toEqual(expected)

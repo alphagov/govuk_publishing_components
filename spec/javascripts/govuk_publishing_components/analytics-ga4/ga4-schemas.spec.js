@@ -39,9 +39,9 @@ describe('Google Analytics schemas', function () {
         link_domain: undefined,
         tool_name: undefined,
         percent_scrolled: undefined,
-        video_current_time: this.undefined,
-        length: this.undefined,
-        video_percent: this.undefined
+        video_current_time: undefined,
+        length: undefined,
+        video_percent: undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -74,9 +74,9 @@ describe('Google Analytics schemas', function () {
         link_domain: undefined,
         tool_name: undefined,
         percent_scrolled: undefined,
-        video_current_time: this.undefined,
-        length: this.undefined,
-        video_percent: this.undefined
+        video_current_time: undefined,
+        length: undefined,
+        video_percent: undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -97,7 +97,7 @@ describe('Google Analytics schemas', function () {
         url: undefined,
         text: undefined,
         index: {
-          index_link: 1,
+          index_link: '1',
           index_section: undefined,
           index_section_count: undefined
         },
@@ -109,9 +109,45 @@ describe('Google Analytics schemas', function () {
         link_domain: undefined,
         tool_name: undefined,
         percent_scrolled: undefined,
-        video_current_time: this.undefined,
-        length: this.undefined,
-        video_percent: this.undefined
+        video_current_time: undefined,
+        length: undefined,
+        video_percent: undefined
+      }
+    }
+    var returned = schemas.mergeProperties(data, 'example')
+    expect(returned).toEqual(expected)
+  })
+
+  it('ensures that all attribute values are strings', function () {
+    var data = {
+      event_name: 4,
+      index_link: 1,
+      section: '3',
+      action: '5_string'
+    }
+    var expected = {
+      event: 'example',
+      event_data: {
+        event_name: '4',
+        type: undefined,
+        url: undefined,
+        text: undefined,
+        index: {
+          index_link: '1',
+          index_section: undefined,
+          index_section_count: undefined
+        },
+        index_total: undefined,
+        section: '3',
+        action: '5_string',
+        external: undefined,
+        method: undefined,
+        link_domain: undefined,
+        tool_name: undefined,
+        percent_scrolled: undefined,
+        video_current_time: undefined,
+        length: undefined,
+        video_percent: undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')

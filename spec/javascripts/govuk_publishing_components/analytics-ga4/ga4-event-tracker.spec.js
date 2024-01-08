@@ -524,7 +524,7 @@ describe('Google Analytics event tracker', function () {
       expected.event_data.type = 'header menu bar'
       expected.govuk_gem_version = 'aVersion'
       var buttons = document.querySelectorAll('button')
-      expected.event_data.index_total = buttons.length
+      expected.event_data.index_total = buttons.length + ''
 
       for (var i = 0; i < buttons.length; i++) {
         window.dataLayer = []
@@ -534,8 +534,8 @@ describe('Google Analytics event tracker', function () {
           type: 'header menu bar',
           text: button.textContent,
           section: button.textContent,
-          index_section: i + 1,
-          index_total: buttons.length
+          index_section: i + 1 + '',
+          index_total: buttons.length + ''
         }))
 
         button.click()
@@ -543,7 +543,7 @@ describe('Google Analytics event tracker', function () {
         expected.event_data.text = button.textContent
         expected.event_data.section = button.textContent
         expected.event_data.index = {
-          index_section: i + 1,
+          index_section: i + 1 + '',
           index_link: undefined,
           index_section_count: undefined
         }

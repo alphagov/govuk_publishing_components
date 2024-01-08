@@ -50,7 +50,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.type = 'video'
       expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
-      expected.event_data.length = 500
+      expected.event_data.length = '500'
       expected.govuk_gem_version = 'aVersion'
     })
 
@@ -58,8 +58,8 @@ describe('Google Analytics video tracker', function () {
       videoTracker.trackVideo(event, 'VideoUnstarted')
       expected.event_data.event_name = 'video_start'
       expected.event_data.action = 'start'
-      expected.event_data.video_current_time = 0
-      expected.event_data.video_percent = 0
+      expected.event_data.video_current_time = '0'
+      expected.event_data.video_percent = '0'
 
       expect(window.dataLayer[0]).toEqual(expected)
       // stop the interval from continuing and interfering with other tests
@@ -70,8 +70,8 @@ describe('Google Analytics video tracker', function () {
       videoTracker.trackVideo(event, 'VideoEnded')
       expected.event_data.event_name = 'video_complete'
       expected.event_data.action = 'complete'
-      expected.event_data.video_current_time = 0
-      expected.event_data.video_percent = 100
+      expected.event_data.video_current_time = '0'
+      expected.event_data.video_percent = '100'
 
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -84,12 +84,12 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.type = 'video'
       expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
-      expected.event_data.length = 500
+      expected.event_data.length = '500'
       expected.govuk_gem_version = 'aVersion'
       expected.event_data.event_name = 'video_start'
       expected.event_data.action = 'start'
-      expected.event_data.video_current_time = 0
-      expected.event_data.video_percent = 0
+      expected.event_data.video_current_time = '0'
+      expected.event_data.video_percent = '0'
     })
 
     it('with a time as the first parameter', function () {
@@ -161,7 +161,7 @@ describe('Google Analytics video tracker', function () {
       expected.event_data.type = 'video'
       expected.event_data.text = 'An example video'
       expected.event_data.url = 'https://www.youtube.com/watch?v=abcdef'
-      expected.event_data.length = 500
+      expected.event_data.length = '500'
       expected.event_data.event_name = 'video_progress'
       expected.event_data.action = 'progress'
       expected.govuk_gem_version = 'aVersion'
@@ -177,8 +177,8 @@ describe('Google Analytics video tracker', function () {
       event.target.getCurrentTime = function () {
         return 125
       }
-      expected.event_data.video_current_time = 125
-      expected.event_data.video_percent = 25
+      expected.event_data.video_current_time = '125'
+      expected.event_data.video_percent = '25'
 
       videoTracker.trackVideo(event, 'VideoPlaying')
       jasmine.clock().tick(1000)
@@ -189,8 +189,8 @@ describe('Google Analytics video tracker', function () {
       event.target.getCurrentTime = function () {
         return 250
       }
-      expected.event_data.video_current_time = 250
-      expected.event_data.video_percent = 50
+      expected.event_data.video_current_time = '250'
+      expected.event_data.video_percent = '50'
 
       videoTracker.trackVideo(event, 'VideoPlaying')
       jasmine.clock().tick(1000)
@@ -201,8 +201,8 @@ describe('Google Analytics video tracker', function () {
       event.target.getCurrentTime = function () {
         return 375
       }
-      expected.event_data.video_current_time = 375
-      expected.event_data.video_percent = 75
+      expected.event_data.video_current_time = '375'
+      expected.event_data.video_percent = '75'
 
       videoTracker.trackVideo(event, 'VideoPlaying')
       jasmine.clock().tick(1000)
@@ -213,8 +213,8 @@ describe('Google Analytics video tracker', function () {
       event.target.getCurrentTime = function () {
         return 250
       }
-      expected.event_data.video_current_time = 250
-      expected.event_data.video_percent = 50
+      expected.event_data.video_current_time = '250'
+      expected.event_data.video_percent = '50'
 
       videoTracker.trackVideo(event, 'VideoPlaying')
       jasmine.clock().tick(1000)
