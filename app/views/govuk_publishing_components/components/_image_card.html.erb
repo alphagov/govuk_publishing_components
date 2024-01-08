@@ -7,13 +7,13 @@
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns, brand_helper)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-
-  classes = %w[gem-c-image-card]
-  classes << "govuk-grid-row" if card_helper.two_thirds
-  classes << "gem-c-image-card--large" if card_helper.large
-  classes << "gem-c-image-card--two-thirds" if card_helper.two_thirds
-  classes << "gem-c-image-card--no-image" unless (card_helper.image_src || card_helper.youtube_video_id)
-  classes << brand_helper.brand_class if brand_helper.brand_class
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-image-card")
+  component_helper.add_class("govuk-grid-row") if card_helper.two_thirds
+  component_helper.add_class("gem-c-image-card--large") if card_helper.large
+  component_helper.add_class("gem-c-image-card--two-thirds") if card_helper.two_thirds
+  component_helper.add_class("gem-c-image-card--no-image") unless (card_helper.image_src || card_helper.youtube_video_id)
+  component_helper.add_class(brand_helper.brand_class) if brand_helper.brand_class
 
   text_wrapper_classes = %w[gem-c-image-card__text-wrapper]
   text_wrapper_classes << "gem-c-image-card__text-wrapper--two-thirds" if card_helper.two_thirds
@@ -34,12 +34,12 @@
   ]
   extra_link_classes << brand_helper.color_class
 
-  data_modules = %w[]
-  data_modules << "gem-track-click ga4-link-tracker" if card_helper.is_tracking?
-  data_modules << "image-card" if card_helper.youtube_video_id
+  component_helper.add_data_attribute({ module: "gem-track-click" }) if card_helper.is_tracking?
+  component_helper.add_data_attribute({ module: "image-card" }) if card_helper.youtube_video_id
+  component_helper.set_lang(card_helper.lang)
 %>
 <% if card_helper.href || card_helper.extra_details.any? %>
-  <%= content_tag(:div, class: classes, "data-module": data_modules, lang: card_helper.lang) do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <%= content_tag(:div, class: text_wrapper_classes) do %>
       <div class="gem-c-image-card__header-and-context-wrapper">
         <% if card_helper.heading_text %>

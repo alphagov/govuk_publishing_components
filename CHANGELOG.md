@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Refactor image card tracking ([PR #3789](https://github.com/alphagov/govuk_publishing_components/pull/3789))
 * Details component GA4 tracking ([PR #3786](https://github.com/alphagov/govuk_publishing_components/pull/3786))
 
 ## 37.1.1

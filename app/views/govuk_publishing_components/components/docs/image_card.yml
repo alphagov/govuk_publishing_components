@@ -12,6 +12,7 @@ accessibility_criteria: |
   - include alt text for images when present
   - not have duplicate links for the image and the text
   - if the contents of the component are in a different language than the rest of the document, include an appropriate `lang` attribute to correctly identify the language used in the component
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 embed: |
@@ -276,6 +277,23 @@ examples:
           }
         }
       ]
+  with_ga4_tracking:
+    description: The component does not include an option for GA4 tracking, but data attributes to enable the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) can be passed as shown.
+    data:
+      href: "/not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "News headline"
+      data_attributes:
+        module: "ga4-link-tracker"
+        ga4_link:
+          event_name: "navigation"
+          type: "homepage"
+          index_section: 1
+          index_link: 1
+          index_section_count: 1
+          index_total: 1
+          section: "homepage"
   with_metadata:
     description: Can be used for links to people pages to indicate payment type
     data:
@@ -293,17 +311,6 @@ examples:
         }
       ]
       extra_details_no_indent: true
-  with_lang:
-    description: |
-      Pass through an appropriate `lang` to set a HTML lang attribute for the component.
-
-      The `lang` attribute **must** be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
-    data:
-      href: "/not-a-page"
-      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
-      image_alt: "some meaningful alt text please"
-      heading_text: Yr hyn rydym ni'n ei wneud
-      lang: cy
   with_sizes_attribute:
     description: |
       `sizes` is an attribute that makes use of html's native responsive images functionality.
