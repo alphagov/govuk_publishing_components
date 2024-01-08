@@ -74,7 +74,7 @@ describe('Analytics loading', function () {
 
     it('loads GA4 on development domains', function () {
       var domains = [
-        'localhost', '127.0.0.1', '0.0.0.0', 'static.dev.gov.uk'
+        'localhost', '127.0.0.1', '0.0.0.0', '//static.dev.gov.uk'
       ]
 
       for (var i = 0; i < domains.length; i++) {
@@ -133,10 +133,10 @@ describe('Analytics loading', function () {
     })
 
     it('doesnt load GA4 variables if initialiseGA4 is set to false', function () {
-      window.GOVUK.loadAnalytics.ga4EnvironmentVariables.production.initialiseGA4 = false
-      window.GOVUK.loadAnalytics.loadGa4('www.gov.uk')
+      window.GOVUK.loadAnalytics.domains[0].initialiseGA4 = false
+      window.GOVUK.loadAnalytics.loadGa4('localhost')
       expect(window.GOVUK.analyticsGa4.vars).toEqual(null)
-      window.GOVUK.loadAnalytics.ga4EnvironmentVariables.production.initialiseGA4 = true
+      window.GOVUK.loadAnalytics.domains[0].initialiseGA4 = true
     })
   })
 
