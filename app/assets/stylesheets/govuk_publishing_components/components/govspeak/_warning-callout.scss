@@ -23,10 +23,10 @@
     padding-left: $icon-size;
 
     // Center the icon around the baseline
-    padding-top: ($icon-size - $line-height-mobile) / 2;
+    padding-top: calc(($icon-size - $line-height-mobile) / 2);
 
     @include govuk-media-query($from: tablet) {
-      padding-top: ($icon-size - $line-height-tablet) / 2;
+      padding-top: calc(($icon-size - $line-height-tablet) / 2);
     }
 
     p {

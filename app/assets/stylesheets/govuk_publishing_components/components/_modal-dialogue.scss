@@ -46,7 +46,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
     bottom: inherit;
     left: inherit;
     width: auto;
-    max-width: $govuk-page-width * 2 / 3;
+    max-width: $govuk-page-width * calc(2 / 3);
     height: auto;
     margin: $govuk-modal-margin auto;
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
