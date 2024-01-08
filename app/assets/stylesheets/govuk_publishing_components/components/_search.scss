@@ -65,7 +65,7 @@ $large-input-size: 50px;
 }
 
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
-  @include govuk-font($size: 19, $line-height: (28 / 19));
+  @include govuk-font($size: 19, $line-height: calc(28 / 19));
   margin: 0;
   width: 100%;
   height: govuk-em(40, 16);
@@ -108,7 +108,7 @@ $large-input-size: 50px;
 
 @mixin icon-positioning($container-size) {
   $icon-dimension: 20px;
-  $icon-position: ($container-size - $icon-dimension) / 2;
+  $icon-position: calc(($container-size - $icon-dimension) / 2);
 
   display: block;
   pointer-events: none;
