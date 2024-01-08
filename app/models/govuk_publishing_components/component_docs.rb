@@ -31,7 +31,7 @@ module GovukPublishingComponents
     end
 
     def component_in_use(component)
-      return true if @limit_to.include?(component)
+      true if @limit_to.include?(component)
     end
 
     def fetch_component_doc(id)
