@@ -277,6 +277,30 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
+  it('handles removing hyphens and downcases from the publishing government meta tag', function () {
+    createMetaTags('ga4-publishing-government', '2005-To-2010-Labour-GOVERNMENT')
+    expected.page_view.publishing_government = '2005 to 2010 labour government'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+
+    createMetaTags('publishing-government', '2005-To-2010-Labour-GOVERNMENT-2')
+    expected.page_view.publishing_government = '2005 to 2010 labour government 2'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[1]).toEqual(expected)
+  })
+
+  it('handles removing hyphens and downcases when the publishing government meta tags are falsy', function () {
+    createMetaTags('ga4-publishing-government', '')
+    expected.page_view.publishing_government = undefined
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+
+    createMetaTags('publishing-government', '')
+    expected.page_view.publishing_government = undefined
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[1]).toEqual(expected)
+  })
+
   it('returns a pageview on a page marked with a political status', function () {
     createMetaTags('political-status', 'ongoing')
     expected.page_view.political_status = 'ongoing'

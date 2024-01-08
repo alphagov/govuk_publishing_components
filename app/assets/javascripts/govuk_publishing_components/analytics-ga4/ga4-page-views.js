@@ -45,7 +45,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             first_published_at: this.stripTimeFrom(this.getMetaContent('first-published-at')),
             updated_at: this.stripTimeFrom(this.getMetaContent('updated-at')),
             public_updated_at: this.stripTimeFrom(this.getMetaContent('public-updated-at')),
-            publishing_government: this.getMetaContent('publishing-government') || this.getMetaContent('ga4-publishing-government'),
+            publishing_government: this.removeHyphensAndDowncase(this.getMetaContent('publishing-government') || this.getMetaContent('ga4-publishing-government')),
             political_status: this.getMetaContent('political-status') || this.getMetaContent('ga4-political-status'),
             primary_publishing_organisation: this.getMetaContent('primary-publishing-organisation'),
             organisations: this.getMetaContent('analytics:organisations'),
@@ -66,6 +66,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
+      }
+    },
+
+    removeHyphensAndDowncase: function (text) {
+      if (text) {
+        return text.replace(/-/g, ' ').toLowerCase()
       }
     },
 
