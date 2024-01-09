@@ -3,7 +3,7 @@ require "rails_helper"
 describe "All components" do
   Dir.glob("app/views/govuk_publishing_components/components/*.erb").each do |filename|
     template = filename.split("/").last
-    component_name = template.sub("_", "").sub(".html.erb", "")
+    component_name = template.sub("_", "").sub(".html", "").sub(".erb", "").gsub("-", "_")
 
     describe component_name do
       yaml_file = "#{__dir__}/../../app/views/govuk_publishing_components/components/docs/#{component_name}.yml"
@@ -33,6 +33,12 @@ describe "All components" do
         class_name = "gem-c-#{component_name.dasherize}"
 
         expect(erb).to match(class_name), class_name
+      end
+
+      it "has a correctly named template file" do
+        template_file = "#{__dir__}/../../app/views/govuk_publishing_components/components/_#{component_name}.html.erb"
+
+        expect(File).to exist(template_file)
       end
 
       it "has a correctly named spec file" do
