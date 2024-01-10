@@ -305,7 +305,7 @@ en:
       label: Search on GOV.UK
       search_button: Search
     share_links:
-      all_opens_in_new_tab: Sharing will open the page in a new tab
+      all_opens_in_new_tab: The following links open in a new tab
       opens_in_new_tab: "(opens in new tab)"
     show_password:
       announce_hide: Your password is hidden
