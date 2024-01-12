@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove hyphens and downcase the GA4 publishing government value ([PR #3808](https://github.com/alphagov/govuk_publishing_components/pull/3808))
+* Fix Sass negative mixin / value issue ([PR #3816](https://github.com/alphagov/govuk_publishing_components/pull/3816))
 
 ## 37.2.1
 
