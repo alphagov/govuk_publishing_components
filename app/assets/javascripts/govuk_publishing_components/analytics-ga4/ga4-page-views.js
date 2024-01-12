@@ -80,18 +80,26 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getSearchTerm: function () {
-      var queryString = window.GOVUK.analyticsGa4.core.trackFunctions.getSearch()
+      // Using the data-attribute has the benefit that none of the characters are URI encoded i.e. [] remains [] instead of %5B%5D.
+      var searchTerm = this.getElementAttribute('data-ga4-search-query')
 
-      if (!queryString) {
-        return undefined
-      }
-
-      var searchTerm = queryString.match(/keywords=([^&]*)/)
+      /*
+        Fallback to the keywords URL parameter if the attribute does not exist.
+        There is a small downside to this method. If the user uses an & in their search term, it breaks as we can't determine
+        if this & is a part of their search term or the start of another query parameter.
+        The potential solution may be to URL encode the keywords parameter in finder-frontend.
+      */
       if (!searchTerm) {
-        return undefined
+        var queryString = window.GOVUK.analyticsGa4.core.trackFunctions.getSearch()
+
+        searchTerm = queryString.match(/keywords=([^&]*)/)
+        if (!searchTerm) {
+          return undefined
+        }
+        searchTerm = searchTerm[0].replace('keywords=', '')
+        searchTerm = decodeURIComponent(searchTerm).replace(/'&quot;'/g, '"')
       }
 
-      searchTerm = searchTerm[0].replace('keywords=', '')
       searchTerm = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(searchTerm)
 
       return searchTerm
