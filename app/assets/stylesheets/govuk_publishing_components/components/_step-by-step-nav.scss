@@ -449,7 +449,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
   .gem-c-step-nav--large & + .gem-c-step-nav__list {
     @include govuk-media-query($from: tablet) {
-      margin-top: -govuk-spacing(3);
+      margin-top: -(govuk-spacing(3));
     }
   }
 }
