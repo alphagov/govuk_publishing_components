@@ -76,6 +76,19 @@ examples:
         content_type: application/pdf
         file_size: 20000
         alternative_format_contact_email: defra.helpline@defra.gsi.gov.uk
+  with_contact_email_and_ga4_tracking:
+    description: The attachment component can contain the details component as shown. The details component provides all of its own GA4 tracking, but in most situations also requires an `index_section_count` attribute to be passed manually. This can be done via the attachment component as shown (along with any other needed GA4 attributes).
+    data:
+      attachment:
+        title: "Department for Transport information asset register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/747661/department-for-transport-information-asset-register.csv
+        filename: department-for-transport-information-asset-register.csv
+        content_type: application/pdf
+        file_size: 20000
+        alternative_format_contact_email: defra.helpline@defra.gsi.gov.uk
+      details_ga4_attributes: {
+        index_section_count: 4
+      }
   with_data_attributes:
     data:
       attachment:

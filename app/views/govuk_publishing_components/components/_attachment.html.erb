@@ -7,6 +7,7 @@
   hide_order_copy_link ||= false
   attributes = []
   data_attributes ||= {}
+  details_ga4_attributes ||= {}
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   container_class_names = %w[gem-c-attachment govuk-!-display-none-print]
@@ -118,7 +119,8 @@
     <% if attachment.alternative_format_contact_email %>
       <%= tag.p t("components.attachment.request_format_text"), class: "gem-c-attachment__metadata" %>
       <%= render "govuk_publishing_components/components/details", {
-        title: t("components.attachment.request_format_cta")
+        title: t("components.attachment.request_format_cta"),
+        ga4_attributes: details_ga4_attributes,
       } do %>
         <%= t("components.attachment.request_format_details_html", alternative_format_contact_email: attachment.alternative_format_contact_email) %>
       <% end %>

@@ -89,6 +89,32 @@ describe "Attachment", type: :view do
     assert_select "a[href='mailto:defra.helpline@defra.gsi.gov.uk']"
   end
 
+  it "shows section to request a different format with GA4 tracking on the details component" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "application/vnd.oasis.opendocument.spreadsheet",
+        alternative_format_contact_email: "defra.helpline@defra.gsi.gov.uk",
+      },
+      details_ga4_attributes: {
+        index_section_count: 4,
+        another_attribute: "here",
+      },
+    )
+    assert_select "a[href='mailto:defra.helpline@defra.gsi.gov.uk']"
+    attributes = {
+      event_name: "select_content",
+      type: "detail",
+      text: "Request an accessible format.",
+      section: "Request an accessible format.",
+      index_section: 1,
+      index_section_count: 4,
+      another_attribute: "here",
+    }.to_json
+    assert_select ".govuk-details__summary[data-ga4-event='#{attributes}']"
+  end
+
   it "does not show opendocument metadata if disabled" do
     render_component(
       attachment: {
