@@ -7,11 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.2.2
 
 * Remove hyphens and downcase the GA4 publishing government value ([PR #3808](https://github.com/alphagov/govuk_publishing_components/pull/3808))
 * Fix Sass negative mixin / value issue ([PR #3816](https://github.com/alphagov/govuk_publishing_components/pull/3816))
 * Change social media links advice text ([PR #3814](https://github.com/alphagov/govuk_publishing_components/pull/3814))
+* Remove current-location.js ([PR #3812](https://github.com/alphagov/govuk_publishing_components/pull/3812))
 
 ## 37.2.1
 
