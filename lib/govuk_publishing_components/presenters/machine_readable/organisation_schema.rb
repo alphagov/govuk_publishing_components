@@ -19,6 +19,7 @@ module GovukPublishingComponents
           "name" => page.title,
           "description" => page.description || page.body,
         }
+        .merge(govuk_logo)
         .merge(members)
         .merge(parent_organisations)
         .merge(sub_organisations)
@@ -81,6 +82,15 @@ module GovukPublishingComponents
 
       def role_url(minister)
         "#{website_root}#{minister['role_href']}"
+      end
+
+      def govuk_logo
+        logo = page.local_assigns[:logo_url]
+        return {} unless logo
+
+        {
+          "logo" => logo,
+        }
       end
 
       def website_root

@@ -363,11 +363,40 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       structured_data = generate_structured_data(
         content_item:,
         schema: :organisation,
+        logo_url: "https://example.png",
       ).structured_data
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
       expect(structured_data["name"]).to eq("Ministry of Magic")
       expect(structured_data["description"]).to eq("The magical ministry.")
+      expect(structured_data["logo"]).to eq("https://example.png")
+      expect(structured_data["mainEntityOfPage"]["@id"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
+      expect(structured_data["potentialAction"]).to eq(search_action)
+    end
+
+    it "generates schema.org GovernmentOrganization when logo_url does not exist in the page's local_assigns" do
+      content_item = generate_org(
+        "base_path" => "/ministry-of-magic",
+        "title" => "Ministry of Magic",
+        "description" => "The magical ministry.",
+      )
+
+      search_action = {
+        "@type": "SearchAction",
+        "description": "Find all content from Ministry of Magic",
+        "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&organisations%5B%5D=ministry-of-magic",
+        "query": "required",
+      }
+
+      structured_data = generate_structured_data(
+        content_item:,
+        schema: :organisation,
+      ).structured_data
+
+      expect(structured_data["@type"]).to eq("GovernmentOrganization")
+      expect(structured_data["name"]).to eq("Ministry of Magic")
+      expect(structured_data["description"]).to eq("The magical ministry.")
+      expect(structured_data["logo"]).to eq(nil)
       expect(structured_data["mainEntityOfPage"]["@id"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
       expect(structured_data["potentialAction"]).to eq(search_action)
     end
