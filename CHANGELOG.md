@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.2.3
 
 * Add GOVUK logo to GovernmentOrganization schema.org schemas ([PR #3827](https://github.com/alphagov/govuk_publishing_components/pull/3827))
 
