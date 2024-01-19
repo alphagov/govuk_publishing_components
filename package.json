@@ -34,7 +34,7 @@
   "dependencies": {
     "axe-core": "^4.8.3",
     "govuk-frontend": "^4.7.0",
-    "sortablejs": "^1.15.1"
+    "sortablejs": "^1.15.2"
   },
   "devDependencies": {
     "@percy/cli": "^1.27.7",
