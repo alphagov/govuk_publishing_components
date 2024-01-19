@@ -148,7 +148,7 @@
 
   window.GOVUK.checkConsentCookie = function (cookieName, cookieValue) {
     // If we're setting the consent cookie OR deleting a cookie, allow by default
-    if (cookieName === 'cookies_policy' || (cookieValue === null || cookieValue === false)) {
+    if (cookieName === 'cookies_policy' || cookieName === 'gov_singleconsent_uid' || (cookieValue === null || cookieValue === false)) {
       return true
     }
 

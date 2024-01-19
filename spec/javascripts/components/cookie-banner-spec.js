@@ -11,6 +11,9 @@ describe('Cookie banner', function () {
   window.GOVUK.analyticsVars.gaProperty = 'UA-123456-7'
 
   beforeEach(function () {
+    spyOn(window.GOVUK.singleConsent, 'init').and.returnValue('')
+    spyOn(window.GOVUK.singleConsent, 'acceptAll').and.returnValue('')
+    spyOn(window.GOVUK.singleConsent, 'rejectAll').and.returnValue('')
     container = document.createElement('div')
 
     container.innerHTML =
@@ -161,7 +164,10 @@ describe('Cookie banner', function () {
 
   it('shows a confirmation message when cookies have been accepted', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
+    var cookieBanner = new GOVUK.Modules.CookieBanner(element)
+    cookieBanner.init()
+    // disable the event listener otherwise something else hides the cookie banner first
+    window.removeEventListener('cookie-consent', cookieBanner.$module.hideCookieMessage)
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     var confirmationMessageAccepted = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
