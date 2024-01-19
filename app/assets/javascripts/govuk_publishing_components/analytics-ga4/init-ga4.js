@@ -2,6 +2,7 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
 
 var initFunction = function () {
+  window.removeEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
   var consentCookie = window.GOVUK.getConsentCookie()
 
   if (consentCookie && consentCookie.usage) {
