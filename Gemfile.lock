@@ -129,7 +129,7 @@ GEM
       ruby2_keywords
     erubi (1.12.0)
     execjs (2.8.1)
-    faker (3.2.2)
+    faker (3.2.3)
       i18n (>= 1.8.11, < 2)
     gds-api-adapters (92.0.0)
       addressable
