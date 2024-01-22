@@ -19,6 +19,7 @@
   })()
 
   var insertScript = function () {
+    window.removeEventListener('cookie-consent', insertScript)
     var marker = document.querySelector('script[data-lux-reporter-script]')
 
     if (!marker) {
@@ -37,8 +38,6 @@
   if (parsedCookie.usage === true) {
     insertScript()
   } else {
-    window.addEventListener('cookie-consent', function () {
-      insertScript()
-    })
+    window.addEventListener('cookie-consent', insertScript)
   }
 })()
