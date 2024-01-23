@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Improve reliability of grabbing GA4 search term value ([PR #3818](https://github.com/alphagov/govuk_publishing_components/pull/3818))
+
 ## 37.2.3
 
 * Add GOVUK logo to GovernmentOrganization schema.org schemas ([PR #3827](https://github.com/alphagov/govuk_publishing_components/pull/3827))

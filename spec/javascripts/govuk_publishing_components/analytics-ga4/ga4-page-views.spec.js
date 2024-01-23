@@ -547,47 +547,90 @@ describe('Google Tag Manager page view tracking', function () {
   })
 
   describe('search_term parameter', function () {
-    it('correctly sets the parameter using ?keywords= with PII values redacted', function () {
-      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
-      expected.page_view.query_string = 'keywords=hello+world+[email]+[postcode]+[date]&another=one'
-      expected.page_view.search_term = 'hello world [email] [postcode] [date]'
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
-      expect(window.dataLayer[0]).toEqual(expected)
+    describe('using the query parameter "keywords"', function () {
+      it('correctly sets the parameter using ?keywords= with PII values redacted', function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
+        expected.page_view.query_string = 'keywords=hello+world+[email]+[postcode]+[date]&another=one'
+        expected.page_view.search_term = 'hello world [email] [postcode] [date]'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+
+      it('correctly sets the parameter using &keywords= with PII values redacted', function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
+        expected.page_view.query_string = 'test=true&keywords=hello+world+[email]+[postcode]+[date]&another=one'
+        expected.page_view.search_term = 'hello world [email] [postcode] [date]'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+
+      it('replaces plusses with spaces, and removes extra lines and spaces', function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello++%2B+world+there+are+spaces++in+++a+lot++++of++\n++places')
+        expected.page_view.query_string = 'test=true&keywords=hello++%2B+world+there+are+spaces++in+++a+lot++++of++\n++places'
+        expected.page_view.search_term = 'hello world there are spaces in a lot of places'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+
+      it('sets the search term to lowercase', function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=I+AM+LOWERCASE')
+        expected.page_view.query_string = 'test=true&keywords=I+AM+LOWERCASE'
+        expected.page_view.search_term = 'i am lowercase'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+
+      it('correctly ignores other query string values', function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywordss=not+search&keyywords=not+search+either&hello=world')
+        expected.page_view.query_string = 'keywordss=not+search&keyywords=not+search+either&hello=world'
+        expected.page_view.search_term = undefined
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+
+      it('decodes URL encoded characters in the search term', function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywords=%5Btesting%5Dtesting!+"123"')
+        expected.page_view.query_string = 'keywords=%5Btesting%5Dtesting!+"123"'
+        expected.page_view.search_term = '[testing]testing! "123"'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
     })
 
-    it('correctly sets the parameter using &keywords= with PII values redacted', function () {
-      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
-      expected.page_view.query_string = 'test=true&keywords=hello+world+[email]+[postcode]+[date]&another=one'
-      expected.page_view.search_term = 'hello world [email] [postcode] [date]'
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
-      expect(window.dataLayer[0]).toEqual(expected)
+    describe('using the data-ga4-search-query attribute', function () {
+      var div
+      beforeEach(function () {
+        div = document.createElement('div')
+        document.body.appendChild(div)
+      })
+
+      afterEach(function () {
+        document.body.removeChild(div)
+      })
+
+      it('correctly sets the parameter with PII values redacted', function () {
+        div.setAttribute('data-ga4-search-query', 'hello world email@example.com SW12AA 1990-01-01')
+        expected.page_view.search_term = 'hello world [email] [postcode] [date]'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+
+      it('replaces plusses with spaces, and removes extra lines and spaces', function () {
+        div.setAttribute('data-ga4-search-query', 'hello++%2B+world+there+are+spaces++in+++a+lot++++of++\n++places')
+        expected.page_view.search_term = 'hello world there are spaces in a lot of places'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+
+      it('sets the search term to lowercase', function () {
+        div.setAttribute('data-ga4-search-query', 'I AM LOWERCASE')
+        expected.page_view.search_term = 'i am lowercase'
+        GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
     })
 
-    it('replaces plusses with spaces, and removes extra lines and spaces', function () {
-      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello++%2B+world+there+are+spaces++in+++a+lot++++of++\n++places')
-      expected.page_view.query_string = 'test=true&keywords=hello++%2B+world+there+are+spaces++in+++a+lot++++of++\n++places'
-      expected.page_view.search_term = 'hello world there are spaces in a lot of places'
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
-      expect(window.dataLayer[0]).toEqual(expected)
-    })
-
-    it('sets the search term to lowercase', function () {
-      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=I+AM+LOWERCASE')
-      expected.page_view.query_string = 'test=true&keywords=I+AM+LOWERCASE'
-      expected.page_view.search_term = 'i am lowercase'
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
-      expect(window.dataLayer[0]).toEqual(expected)
-    })
-
-    it('correctly ignores other query string values', function () {
-      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywordss=not+search&keyywords=not+search+either&hello=world')
-      expected.page_view.query_string = 'keywordss=not+search&keyywords=not+search+either&hello=world'
-      expected.page_view.search_term = undefined
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
-      expect(window.dataLayer[0]).toEqual(expected)
-    })
-
-    it('functions correctly when there is no query string', function () {
+    it('functions correctly when there is no query string or data-ga4-search-query attribute', function () {
       spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('')
       expected.page_view.search_term = undefined
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
