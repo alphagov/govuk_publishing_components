@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Improve reliability of grabbing GA4 search term value ([PR #3818](https://github.com/alphagov/govuk_publishing_components/pull/3818))
+* Update Cross Service Header component ([PR #3831](https://github.com/alphagov/govuk_publishing_components/pull/3831))
 
 ## 37.2.3
 

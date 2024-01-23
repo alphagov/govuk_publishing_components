@@ -11,9 +11,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$header = $module
     this.$navigation = $module && $module.querySelectorAll('[data-one-login-header-nav]')
     this.$numberOfNavs = this.$navigation && this.$navigation.length
-    if (this.$header) {
-      this.$header.classList.add('js-enabled')
-    }
   }
   /**
   * Initialise header
@@ -40,9 +37,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       $nav.$menu = $nav.$menuButton && $nav.querySelector(
         '#' + $nav.$menuButton.getAttribute('aria-controls')
       )
-      if (!$nav.$menuButton || !$nav.$menu) {
+      $nav.menuItems = $nav.$menu && $nav.$menu.querySelectorAll('li')
+      if (!$nav.$menuButton || !$nav.$menu || $nav.menuItems.length < 2) {
         return
       }
+
+      $nav.classList.add('toggle-enabled')
       $nav.$menuOpenClass = $nav.$menu && $nav.$menu.dataset.openClass
       $nav.$menuButtonOpenClass = $nav.$menuButton && $nav.$menuButton.dataset.openClass
       $nav.$menuButtonOpenLabel = $nav.$menuButton && $nav.$menuButton.dataset.labelForShow
