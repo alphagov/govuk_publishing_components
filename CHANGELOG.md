@@ -12,6 +12,7 @@
 * Fix analytics consent ([PR #3833](https://github.com/alphagov/govuk_publishing_components/pull/3833))
 * Improve reliability of grabbing GA4 search term value ([PR #3818](https://github.com/alphagov/govuk_publishing_components/pull/3818))
 * Update Cross Service Header component ([PR #3831](https://github.com/alphagov/govuk_publishing_components/pull/3831))
+* Add GA4 tracking to warning text component ([PR #3832](https://github.com/alphagov/govuk_publishing_components/pull/3832))
 
 ## 37.2.3
 
