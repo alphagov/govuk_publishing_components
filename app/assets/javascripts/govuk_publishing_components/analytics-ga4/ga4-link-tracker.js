@@ -19,14 +19,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (consentCookie && consentCookie.usage) {
       this.startModule()
     } else {
-      this.startModule = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.startModule)
+      this.start = this.startModule.bind(this)
+      window.addEventListener('cookie-consent', this.start)
     }
   }
 
   // triggered by cookie-consent event, which happens when users consent to cookies
   Ga4LinkTracker.prototype.startModule = function () {
     if (window.dataLayer) {
+      window.removeEventListener('cookie-consent', this.start)
       this.handleClick = this.handleClick.bind(this)
       this.handleMousedown = this.handleMousedown.bind(this)
 
