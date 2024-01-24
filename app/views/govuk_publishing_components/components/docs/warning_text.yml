@@ -33,3 +33,10 @@ examples:
     data:
       text: "This is a heading 3"
       heading_level: 3
+  without_ga4_tracking:
+    description: |
+      Disables GA4 tracking on warning text links. Tracking is enabled by default, which adds a data module and data attributes to the component. See the [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+    data:
+      disable_ga4: true
+      text: "This is a heading 3"
+      heading_level: 3
