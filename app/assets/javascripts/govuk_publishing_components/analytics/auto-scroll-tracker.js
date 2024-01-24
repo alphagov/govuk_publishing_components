@@ -19,7 +19,7 @@ window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {};
   AutoScrollTracker.prototype.init = function () {
     var consentCookie = window.GOVUK.getConsentCookie()
 
-    if (consentCookie && consentCookie.settings) {
+    if (consentCookie && consentCookie.usage) {
       this.startModule()
     } else {
       this.startModule = this.startModule.bind(this)
