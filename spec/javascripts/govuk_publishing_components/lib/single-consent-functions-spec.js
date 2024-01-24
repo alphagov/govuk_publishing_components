@@ -13,6 +13,12 @@ describe('The single consent cookie code', function () {
     usage: false,
     campaigns: false
   }
+  var mix = {
+    essential: true,
+    settings: true,
+    usage: false,
+    campaigns: true
+  }
 
   beforeEach(function () {
     spyOn(window.GOVUK, 'triggerEvent').and.callThrough()
@@ -30,6 +36,15 @@ describe('The single consent cookie code', function () {
     expect(jasmine.Ajax.requests.count()).toEqual(0)
     expect(window.GOVUK.singleConsent.apiCallBack).toHaveBeenCalledWith(null, false, null)
     expect(window.GOVUK.triggerEvent).not.toHaveBeenCalled()
+  })
+
+  it('accepts a function for the callback', function () {
+    var test = {
+      testFunction: function () {}
+    }
+    spyOn(test, 'testFunction')
+    window.GOVUK.singleConsent.init(test.testFunction)
+    expect(test.testFunction).toHaveBeenCalled()
   })
 
   describe('when there is a user id', function () {
@@ -62,6 +77,19 @@ describe('The single consent cookie code', function () {
       expect(window.GOVUK.singleConsent.apiCallBack).toHaveBeenCalledWith(rejectAll, true, null)
       expect(window.GOVUK.triggerEvent).not.toHaveBeenCalled()
       expect(window.GOVUK.cookie('cookies_policy')).toEqual('{"essential":true,"settings":false,"usage":false,"campaigns":false}')
+    })
+
+    it('allows individual cookies to be set', function () {
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'text/plain',
+        responseText: '{ "uuid": "1234", "status": ' + JSON.stringify(mix) + '}'
+      })
+
+      expect(window.GOVUK.singleConsent.consentApiObj).toBeDefined()
+      expect(window.GOVUK.singleConsent.apiCallBack).toHaveBeenCalledWith(mix, true, null)
+      expect(window.GOVUK.triggerEvent).not.toHaveBeenCalled()
+      expect(window.GOVUK.cookie('cookies_policy')).toEqual('{"essential":true,"settings":true,"usage":false,"campaigns":true}')
     })
   })
 })

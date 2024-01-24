@@ -8,14 +8,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   CookieSettings.prototype.init = function () {
     this.$module.submitSettingsForm = this.submitSettingsForm.bind(this)
-
-    document.querySelector('form[data-module=cookie-settings]')
-      .addEventListener('submit', this.$module.submitSettingsForm)
-
-    this.setInitialFormValues()
+    document.querySelector('form[data-module=cookie-settings]').addEventListener('submit', this.$module.submitSettingsForm)
+    window.GOVUK.singleConsent.init(this.setInitialFormValues)
   }
 
-  CookieSettings.prototype.setInitialFormValues = function () {
+  CookieSettings.prototype.setInitialFormValues = function (consents, consentsPreferencesSet, error) {
+    if (error) {
+      console.error('Single consent error: ' + error, window.location)
+    }
+
     if (!window.GOVUK.cookie('cookies_policy')) {
       window.GOVUK.setDefaultConsentCookie()
     }
@@ -59,7 +60,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     window.GOVUK.setConsentCookie(options)
     window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
-
+    window.GOVUK.singleConsent.setPreferences(options)
     this.fireAnalyticsEvent(options)
 
     this.showConfirmationMessage()

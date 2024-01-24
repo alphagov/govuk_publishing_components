@@ -6,10 +6,12 @@
   window.GOVUK = window.GOVUK || {}
 
   window.GOVUK.singleConsent = {
-    init: function () {
-      var url = 'https://gds-single-consent-staging.app/api/v1/consent/'
+    url: 'staging',
+
+    init: function (callback) {
+      callback = callback || this.apiCallBack
       // create the consent API object
-      window.GOVUK.singleConsent.consentApiObj = new GovSingleConsent(this.apiCallBack, url)
+      window.GOVUK.singleConsent.consentApiObj = new GovSingleConsent(callback, this.url)
     },
 
     apiCallBack: function (consents, consentsPreferencesSet, error) {
@@ -30,6 +32,10 @@
 
     acceptAll: function () {
       window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.ACCEPT_ALL)
+    },
+
+    setPreferences: function (options) {
+      window.GOVUK.singleConsent.consentApiObj.setConsents(options)
     }
   }
 }(window))
