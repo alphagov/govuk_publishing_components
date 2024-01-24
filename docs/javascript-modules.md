@@ -49,7 +49,7 @@ AnExampleModule.prototype.init = function ($module) {
   this.$module = $module
   var consentCookie = window.GOVUK.getConsentCookie()
 
-  if (consentCookie && consentCookie.settings) {
+  if (consentCookie && consentCookie.usage) {
     this.startModule()
   } else {
     this.startModule = this.startModule.bind(this)
