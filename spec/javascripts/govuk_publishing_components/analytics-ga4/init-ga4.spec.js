@@ -83,7 +83,7 @@ describe('Initialising GA4', function () {
       TestModule.prototype.init = function () {
         var consentCookie = window.GOVUK.getConsentCookie()
 
-        if (consentCookie && consentCookie.settings) {
+        if (consentCookie && consentCookie.usage) {
           this.startModule()
         } else {
           this.startModule = this.startModule.bind(this)
@@ -107,7 +107,7 @@ describe('Initialising GA4', function () {
     })
 
     it('run if consent is given', function () {
-      GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+      GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":true,"campaigns":false}')
       GOVUK.analyticsGa4.init()
 
       testModule.init()

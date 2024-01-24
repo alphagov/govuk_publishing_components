@@ -101,7 +101,7 @@ window.GOVUK.loadAnalytics = {
     currentDomain = currentDomain || window.location.hostname
     var environment = false
     // lots of dev domains, so simplify the matching process
-    if (currentDomain.match(/\/{2}[a-zA-Z0-9.]+dev\.gov\.uk/)) {
+    if (currentDomain.match(/[a-zA-Z0-9.-]+dev\.gov\.uk/)) {
       environment = this.domains[0]
     } else {
       for (var i = 0; i < this.domains.length; i++) {
