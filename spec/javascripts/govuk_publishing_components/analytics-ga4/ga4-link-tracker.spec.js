@@ -371,6 +371,57 @@ describe('GA4 link tracker', function () {
       element.querySelector('.nothing').click()
       expect(window.dataLayer[2]).toEqual(undefined)
     })
+
+    it('tracks only links from multiple different CSS classes', function () {
+      element = document.createElement('div')
+      element.innerHTML =
+        '<a class="first" href="#link1">Link 1</a>' +
+        '<div class="trackme">' +
+          '<a class="second" href="#link2">Link 2</a>' +
+          '<a href="#link3"><span class="third">Link 3</span></a>' +
+          '<span class="nothing"></span>' +
+        '</div>' +
+        '<div class="trackmetwo">' +
+          '<a class="second" href="#link2">Link 2</a>' +
+          '<a href="#link3"><span class="third">Link 3</span></a>' +
+          '<span class="nothing"></span>' +
+        '</div>' +
+        '<div class="trackmethree">' +
+          '<a class="second" href="#link2">Link 2</a>' +
+          '<a href="#link3"><span class="third">Link 3</span></a>' +
+          '<span class="nothing"></span>' +
+        '</div>'
+
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-limit-to-element-class', 'trackme, trackmetwo, trackmethree')
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
+      initModule(element, false)
+
+      var classes = ['.trackme', '.trackmetwo', '.trackmethree']
+
+      expected.event_data.text = 'Link 1'
+      expected.event_data.url = '#link1'
+      element.querySelector('.first').click()
+      expect(window.dataLayer[0]).toEqual(undefined)
+
+      for (var i = 0; i < classes.length; i++) {
+        window.dataLayer = []
+
+        var currentClass = classes[i]
+        expected.event_data.text = 'Link 2'
+        expected.event_data.url = '#link2'
+        element.querySelector(currentClass + ' .second').click()
+        expect(window.dataLayer[0]).toEqual(expected)
+
+        expected.event_data.text = 'Link 3'
+        expected.event_data.url = '#link3'
+        element.querySelector(currentClass + ' .third').click()
+        expect(window.dataLayer[1]).toEqual(expected)
+
+        element.querySelector(currentClass + ' .nothing').click()
+        expect(window.dataLayer[2]).toEqual(undefined)
+      }
+    })
   })
 
   describe('when the data-ga4-set-indexes property exists on the module', function () {
