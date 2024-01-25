@@ -47,8 +47,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     } else if (this.trackLinksOnly && target.closest('a')) {
       if (!this.limitToElementClass) {
         this.trackClick(event)
-      } else if (target.closest('.' + this.limitToElementClass)) {
-        this.trackClick(event)
+      } else {
+        var classes = this.limitToElementClass.split(',')
+
+        for (var i = 0; i < classes.length; i++) {
+          if (target.closest('.' + classes[i].trim())) {
+            this.trackClick(event)
+          }
+        }
       }
     }
   }
