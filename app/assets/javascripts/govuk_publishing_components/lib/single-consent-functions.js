@@ -6,10 +6,18 @@
   window.GOVUK = window.GOVUK || {}
 
   window.GOVUK.singleConsent = {
-    url: 'staging',
+    url: false,
 
     init: function (callback) {
       callback = callback || this.apiCallBack
+      // determine where we are and set the consent api URL accordingly
+      if (!this.url) {
+        this.url = 'staging'
+        var environment = window.GOVUK.loadAnalytics.getEnvironment(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
+        if (environment && environment.name === 'production') {
+          this.url = 'production'
+        }
+      }
       // create the consent API object
       window.GOVUK.singleConsent.consentApiObj = new GovSingleConsent(callback, this.url)
     },
@@ -27,15 +35,27 @@
     },
 
     rejectAll: function () {
-      window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.REJECT_ALL)
+      try {
+        window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.REJECT_ALL)
+      } catch (e) {
+        console.error('Single consent rejectAll error: ' + e.message, window.location)
+      }
     },
 
     acceptAll: function () {
-      window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.ACCEPT_ALL)
+      try {
+        window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.ACCEPT_ALL)
+      } catch (e) {
+        console.error('Single consent acceptAll error: ' + e.message, window.location)
+      }
     },
 
     setPreferences: function (options) {
-      window.GOVUK.singleConsent.consentApiObj.setConsents(options)
+      try {
+        window.GOVUK.singleConsent.consentApiObj.setConsents(options)
+      } catch (e) {
+        console.error('Single consent setPreferences error: ' + e.message, window.location)
+      }
     }
   }
 }(window))

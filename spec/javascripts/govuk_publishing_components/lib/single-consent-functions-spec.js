@@ -28,6 +28,7 @@ describe('The single consent cookie code', function () {
 
   afterEach(function () {
     jasmine.Ajax.uninstall()
+    window.GOVUK.singleConsent.url = false
   })
 
   it('does nothing if there is no unique user id', function () {
@@ -47,10 +48,32 @@ describe('The single consent cookie code', function () {
     expect(test.testFunction).toHaveBeenCalled()
   })
 
+  describe('when determining the environment', function () {
+    it('starts without a URL for the consent API', function () {
+      expect(window.GOVUK.singleConsent.url).toBeFalsy()
+    })
+
+    it('defaults to staging if the environment is not recognised', function () {
+      spyOn(window.GOVUK.analyticsGa4.core.trackFunctions, 'getHostname').and.returnValue('moo')
+      window.GOVUK.singleConsent.init()
+      expect(window.GOVUK.singleConsent.url).toEqual('staging')
+    })
+
+    it('switches to production when on production', function () {
+      spyOn(window.GOVUK.analyticsGa4.core.trackFunctions, 'getHostname').and.returnValue('www.gov.uk')
+      window.GOVUK.singleConsent.init()
+      expect(window.GOVUK.singleConsent.url).toEqual('production')
+    })
+  })
+
   describe('when there is a user id', function () {
     beforeEach(function () {
       window.GOVUK.cookie('gov_singleconsent_uid', '1234')
       window.GOVUK.singleConsent.init()
+    })
+
+    afterEach(function () {
+      window.GOVUK.cookie('gov_singleconsent_uid', null)
     })
 
     it('does everything expected when full consent is given', function () {
