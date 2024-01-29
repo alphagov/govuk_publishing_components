@@ -12,6 +12,7 @@
 * Add tracking to back link ([PR #3840](https://github.com/alphagov/govuk_publishing_components/pull/3840))
 * Allow attachment to pass tracking to details ([PR #3820](https://github.com/alphagov/govuk_publishing_components/pull/3820))
 * Allow GA4 link tracker to track to multiple child classes ([PR #3835](https://github.com/alphagov/govuk_publishing_components/pull/3835))
+* Add GA4 link tracking to govspeak callout links ([PR #3843](https://github.com/alphagov/govuk_publishing_components/pull/3843))
 
 ## 37.2.4
 
