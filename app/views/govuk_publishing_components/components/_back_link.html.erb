@@ -2,11 +2,10 @@
   add_gem_component_stylesheet("back-link")
 
   text ||= t('components.back_link.back')
-  data_attributes ||= nil
+  data_attributes ||= {}
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-back-link govuk-back-link govuk-!-display-none-print")
 %>
-<%= link_to(
-  text,
-  href,
-  class: %w(gem-c-back-link govuk-back-link govuk-!-display-none-print),
-  data: data_attributes
-) %>
+<%= tag.a(**component_helper.all_attributes.merge!({ href: href })) do %>
+  <%= text %>
+<% end %>
