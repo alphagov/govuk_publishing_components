@@ -5,13 +5,30 @@
   direction_class = "direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
 
-  classes = []
-  classes << direction_class if direction_class
-  classes << "disable-youtube" if disable_youtube_expansions
-  classes << "gem-c-govspeak--inverse" if inverse
+  data_attributes ||= {}
+  disable_ga4 ||= false
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-govspeak govuk-govspeak")
+  component_helper.add_class(direction_class) if direction_class
+  component_helper.add_class("disable_youtube") if disable_youtube_expansions
+  component_helper.add_class("gem-c-govspeak--inverse") if inverse
+  component_helper.add_data_attribute({ module: "govspeak" })
+
+  unless disable_ga4
+    ga4_link = {
+      event_name: "navigation",
+      type: "callout",
+    }
+
+    component_helper.add_data_attribute({ module: "ga4-link-tracker" })
+    component_helper.add_data_attribute({ ga4_track_links_only: "" })
+    component_helper.add_data_attribute({ ga4_limit_to_element_class: "call-to-action, info-notice, help-notice, advisory" })
+    component_helper.add_data_attribute({ ga4_link: ga4_link  })
+  end
 %>
 
-<div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if local_assigns.include?(:content) %>
     <% if content.html_safe? %>
       <%= content %>
@@ -32,4 +49,4 @@
   <% elsif block_given? %>
     <%= yield %>
   <% end %>
-</div>
+<% end %>
