@@ -6,6 +6,7 @@ shared_accessibility_criteria:
 - link
 govuk_frontend_components:
   - back-link
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -14,8 +15,9 @@ examples:
     data:
       text: 'Back to document list'
       href: '#'
-  with_data_attributes:
+  without_ga4_tracking:
+    description: |
+      Disables GA4 tracking on the component. Tracking is enabled by default. This adds a data module and data-attributes with JSON data. See the [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
     data:
       href: '#'
-      data_attributes:
-        an_attribute: the value
+      disable_ga4: true
