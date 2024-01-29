@@ -38,8 +38,10 @@ describe('GA4 finder change tracker', function () {
     expected.govuk_gem_version = 'aVersion'
     expected.event = 'event_data'
     expected.event_data.type = 'finder'
+    expected.timestamp = '123456'
 
     agreeToCookies()
+    spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
   afterEach(function () {
@@ -142,7 +144,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'All types of chocolate'
     expected.event_data.action = 'select'
-    expected.event_data.index = { index_section: 1, index_section_count: 1, index_link: undefined }
+    expected.event_data.index = { index_section: '1', index_section_count: '1', index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
@@ -194,7 +196,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'Belgian chocolate'
     expected.event_data.action = 'select'
-    expected.event_data.index = { index_section: 1, index_section_count: 1, index_link: undefined }
+    expected.event_data.index = { index_section: '1', index_section_count: '1', index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
@@ -243,7 +245,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'Belgian chocolate'
     expected.event_data.action = 'select'
-    expected.event_data.index = { index_section: 5, index_section_count: 15, index_link: undefined }
+    expected.event_data.index = { index_section: '5', index_section_count: '15', index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
@@ -295,7 +297,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'Here is an email that should not get redacted email@example.com'
     expected.event_data.action = 'search'
-    expected.event_data.index = { index_section: 2, index_section_count: 2, index_link: undefined }
+    expected.event_data.index = { index_section: '2', index_section_count: '2', index_link: undefined }
 
     expect(window.dataLayer[0]).toEqual(expected)
 
