@@ -422,6 +422,36 @@ describe('GA4 link tracker', function () {
         expect(window.dataLayer[2]).toEqual(undefined)
       }
     })
+
+    it('tracks a nested data-ga4-link with the correct JSON, rather than the JSON set on a parent that has data-ga4-limit-to-element-class', function () {
+      element = document.createElement('div')
+      element.innerHTML =
+        '<div class="trackme">' +
+          '<a href="#link1" class="link1">Link 1</a>' +
+          '<section class="attachment" data-module="ga4-link-tracker" data-ga4-link=\'{ "event_name": "navigation", "type": "attachment" }\' data-ga4-track-links-only="">' +
+            '<a href="#link2" class="link2">Attachment</a>' +
+          '</section>' +
+        '</div>'
+
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-limit-to-element-class', 'trackme')
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
+      initModule(element, false)
+      initModule(element.querySelector('.attachment'), false)
+
+      expected.event_data.text = 'Link 1'
+      expected.event_data.url = '#link1'
+      element.querySelector('.link1').click()
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      window.dataLayer = []
+      expected.event_data.type = 'attachment'
+      expected.event_data.text = 'Attachment'
+      expected.event_data.url = '#link2'
+      element.querySelector('.link2').click()
+      expect(window.dataLayer[0]).toEqual(expected)
+      expect(window.dataLayer[1]).toEqual(undefined) // Checks it doesn't get tracked by the 'trackme' class link tracker too.
+    })
   })
 
   describe('when the data-ga4-set-indexes property exists on the module', function () {

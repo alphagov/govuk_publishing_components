@@ -52,6 +52,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
         for (var i = 0; i < classes.length; i++) {
           if (target.closest('.' + classes[i].trim())) {
+            // Stops the link tracker firing twice if the link itself has data-ga4-link, and the parent element does as well.
+            if (target.closest('[data-ga4-link]') !== target.closest('[data-ga4-limit-to-element-class]')) {
+              return
+            }
             this.trackClick(event)
           }
         }
