@@ -51,7 +51,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
         // Set the default consent cookie if it isn't already present
         if (!window.GOVUK.cookie('cookies_policy')) {
-          window.GOVUK.setDefaultConsentCookie()
+          // window.GOVUK.setDefaultConsentCookie()
         }
 
         window.GOVUK.deleteUnconsentedCookies()
@@ -68,7 +68,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (this.$module) {
       this.$module.hidden = true
       this.$module.style.display = 'none'
-      window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+      // window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
     }
 
     if (event.target) {
@@ -80,11 +80,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (this.$acceptCookiesButton.getAttribute('data-cookie-types') === 'all') {
       this.$module.querySelector('.gem-c-cookie-banner__confirmation-message--accepted').hidden = false
     }
-    window.GOVUK.approveAllCookieTypes()
+    // window.GOVUK.approveAllCookieTypes()
     this.$module.showConfirmationMessage()
     this.$module.cookieBannerConfirmationMessage.focus()
-    window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
-    window.GOVUK.singleConsent.acceptAll()
+    // window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+    window.GOVUK.singleConsent.setPreferences('accept')
 
     if (window.GOVUK.analyticsInit) {
       window.GOVUK.analyticsInit()
@@ -92,16 +92,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (window.GOVUK.globalBarInit) {
       window.GOVUK.globalBarInit.init()
     }
-    window.GOVUK.triggerEvent(window, 'cookie-consent')
+    // window.GOVUK.triggerEvent(window, 'cookie-consent')
   }
 
   CookieBanner.prototype.rejectCookieConsent = function () {
     this.$module.querySelector('.gem-c-cookie-banner__confirmation-message--rejected').hidden = false
     this.$module.showConfirmationMessage()
     this.$module.cookieBannerConfirmationMessage.focus()
-    window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
-    window.GOVUK.setDefaultConsentCookie()
-    window.GOVUK.singleConsent.rejectAll()
+    // window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+    // window.GOVUK.setDefaultConsentCookie()
+    window.GOVUK.singleConsent.setPreferences('reject')
   }
 
   CookieBanner.prototype.showConfirmationMessage = function () {

@@ -34,27 +34,23 @@
       }
     },
 
-    rejectAll: function () {
+    setPreferences: function (type, options) {
       try {
-        window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.REJECT_ALL)
+        if (!window.GOVUK.singleConsent.consentApiObj) {
+          this.init()
+        }
+        switch (type) {
+          case 'accept':
+            window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.ACCEPT_ALL)
+            break
+          case 'reject':
+            window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.REJECT_ALL)
+            break
+          default:
+            window.GOVUK.singleConsent.consentApiObj.setConsents(options)
+        }
       } catch (e) {
-        console.error('Single consent rejectAll error: ' + e.message, window.location)
-      }
-    },
-
-    acceptAll: function () {
-      try {
-        window.GOVUK.singleConsent.consentApiObj.setConsents(GovSingleConsent.ACCEPT_ALL)
-      } catch (e) {
-        console.error('Single consent acceptAll error: ' + e.message, window.location)
-      }
-    },
-
-    setPreferences: function (options) {
-      try {
-        window.GOVUK.singleConsent.consentApiObj.setConsents(options)
-      } catch (e) {
-        console.error('Single consent setPreferences error: ' + e.message, window.location)
+        console.error('Single consent ' + type + ' error: ' + e.message, window.location)
       }
     }
   }

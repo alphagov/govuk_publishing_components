@@ -115,4 +115,56 @@ describe('The single consent cookie code', function () {
       expect(window.GOVUK.cookie('cookies_policy')).toEqual('{"essential":true,"settings":true,"usage":false,"campaigns":true}')
     })
   })
+
+  xdescribe('when there is a problem', function () {
+    beforeEach(function () {
+      jasmine.clock().install()
+      window.GOVUK.cookie('gov_singleconsent_uid', '1234')
+    })
+
+    afterEach(function () {
+      jasmine.clock().uninstall()
+      window.GOVUK.cookie('gov_singleconsent_uid', null)
+    })
+
+    it('handles a timeout gracefully', function () {
+      window.GOVUK.singleConsent.init()
+      jasmine.Ajax.requests.mostRecent().responseTimeout()
+      expect(window.GOVUK.singleConsent.consentApiObj).toBeDefined()
+      expect(window.GOVUK.singleConsent.apiCallBack).not.toHaveBeenCalled()
+    })
+
+    it('fails gracefully if pointed at an incorrect endpoint URL', function () {
+      window.GOVUK.singleConsent.init()
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 404,
+        contentType: 'text/plain',
+        responseText: 'error not found'
+      })
+      expect(window.GOVUK.singleConsent.consentApiObj).toBeDefined()
+      console.log(window.GOVUK.singleConsent.consentApiObj)
+    })
+
+    it('fails gracefully when the server errors', function () {
+      window.GOVUK.singleConsent.init()
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 500,
+        contentType: 'text/plain',
+        responseText: 'error not found'
+      })
+      expect(window.GOVUK.singleConsent.consentApiObj).toBeDefined()
+      console.log(window.GOVUK.singleConsent.consentApiObj)
+    })
+
+    it('fails gracefully when the response is not as expected', function () {
+      window.GOVUK.singleConsent.init()
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'text/plain',
+        responseText: 'surprise!'
+      })
+      expect(window.GOVUK.singleConsent.consentApiObj).toBeDefined()
+      console.log(window.GOVUK.singleConsent.consentApiObj)
+    })
+  })
 })

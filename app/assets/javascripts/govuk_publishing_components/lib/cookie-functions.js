@@ -124,7 +124,7 @@
       }
     }
 
-    window.GOVUK.setCookie('cookies_policy', JSON.stringify(cookieConsent), { days: 365 })
+    // window.GOVUK.setCookie('cookies_policy', JSON.stringify(cookieConsent), { days: 365 })
   }
 
   window.GOVUK.checkConsentCookieCategory = function (cookieName, cookieCategory) {
