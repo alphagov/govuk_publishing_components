@@ -11,25 +11,6 @@ var analyticsInit = function () {
     var crossDomainLinkedDomains = window.GOVUK.analyticsVars.linkedDomains || false
   }
 
-  window.GOVUK.Analytics.checkDigitalIdentityConsent = function (location) {
-    if (!location || !location.search) return
-    // this checks for the presence of the Digital Identity cookie consent query parameter and updates our consent cookie accordingly
-    // This is so that users don't see multiple cookie banners when they move between the different account management pages, as some will be on GOV.UK and others will be on the DI domain.
-    var digitalIdentityConsent = /([?&]cookie_consent=)(accept|reject)/.exec(location.search)
-    if (digitalIdentityConsent) {
-      if (digitalIdentityConsent[2] === 'accept') {
-        window.GOVUK.setConsentCookie({ usage: true })
-        // set cookies_preferences_set to true to prevent cookie banner showing
-        window.GOVUK.cookie('cookies_preferences_set', 'true')
-      } else if (digitalIdentityConsent[2] === 'reject') {
-        window.GOVUK.setConsentCookie({ usage: false })
-        window.GOVUK.cookie('cookies_preferences_set', 'true')
-      }
-    }
-  }
-
-  window.GOVUK.Analytics.checkDigitalIdentityConsent(window.location)
-
   var consentCookie = window.GOVUK.getConsentCookie()
   var dummyAnalytics = {
     addLinkedTrackerDomain: function () {},
