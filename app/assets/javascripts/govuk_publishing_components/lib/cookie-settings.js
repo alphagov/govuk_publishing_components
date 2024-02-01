@@ -7,35 +7,43 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   CookieSettings.prototype.init = function () {
+    console.log('CookieSettings.prototype.init')
     this.$module.submitSettingsForm = this.submitSettingsForm.bind(this)
     document.querySelector('form[data-module=cookie-settings]').addEventListener('submit', this.$module.submitSettingsForm)
     window.GOVUK.singleConsent.init(this.setInitialFormValues)
-    this.setInitialFormValues()
   }
 
   CookieSettings.prototype.setInitialFormValues = function (consents, consentsPreferencesSet, error) {
+    console.log('setInitialFormValues')
     if (error) {
       console.error('Single consent error: ' + error, window.location)
     }
 
     var currentConsentCookie = window.GOVUK.cookie('cookies_policy')
-    var currentConsentCookieJSON = JSON.parse(currentConsentCookie)
+    if (currentConsentCookie) {
+      console.log('currentConsentCookie is', currentConsentCookie)
+      var currentConsentCookieJSON = JSON.parse(currentConsentCookie)
 
-    // We don't need the essential value as this cannot be changed by the user
-    delete currentConsentCookieJSON.essential
+      // We don't need the essential value as this cannot be changed by the user
+      delete currentConsentCookieJSON.essential
 
-    for (var cookieType in currentConsentCookieJSON) {
-      var radioButton
+      for (var cookieType in currentConsentCookieJSON) {
+        var radioButton
 
-      if (currentConsentCookieJSON[cookieType]) {
-        radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
-      } else {
-        radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
+        if (currentConsentCookieJSON[cookieType]) {
+          radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
+        } else {
+          radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
+        }
+
+        if (radioButton) {
+          radioButton.checked = true
+        }
       }
-
-      if (radioButton) {
-        radioButton.checked = true
-      }
+    } else {
+      console.log('wat')
+      // window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
+      // window.GOVUK.setDefaultConsentCookie()
     }
   }
 
@@ -55,8 +63,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
     }
 
-    window.GOVUK.setConsentCookie(options)
-    window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
+    // window.GOVUK.setConsentCookie(options)
+    // window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
     window.GOVUK.singleConsent.setPreferences(false, options)
     this.fireAnalyticsEvent(options)
 

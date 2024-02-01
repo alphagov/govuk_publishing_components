@@ -69,6 +69,7 @@
   }
 
   window.GOVUK.setDefaultConsentCookie = function () {
+    console.log('setDefaultConsentCookie')
     window.GOVUK.setConsentCookie(DEFAULT_COOKIE_CONSENT)
   }
 
@@ -105,6 +106,7 @@
   }
 
   window.GOVUK.setConsentCookie = function (options) {
+    console.log('setConsentCookie', options)
     var cookieConsent = window.GOVUK.getConsentCookie()
 
     if (!cookieConsent) {
@@ -124,7 +126,7 @@
       }
     }
 
-    // window.GOVUK.setCookie('cookies_policy', JSON.stringify(cookieConsent), { days: 365 })
+    window.GOVUK.setCookie('cookies_policy', JSON.stringify(cookieConsent), { days: 365 })
   }
 
   window.GOVUK.checkConsentCookieCategory = function (cookieName, cookieCategory) {
