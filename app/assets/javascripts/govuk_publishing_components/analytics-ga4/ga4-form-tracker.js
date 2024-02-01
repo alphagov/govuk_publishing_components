@@ -88,7 +88,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex].value) {
         input.answer = elem.options[elem.selectedIndex].text
       } else if (inputTypes.indexOf(inputType) !== -1 && elem.value) {
-        if (this.includeTextInputValues) {
+        if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
           var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
           input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
         } else {
