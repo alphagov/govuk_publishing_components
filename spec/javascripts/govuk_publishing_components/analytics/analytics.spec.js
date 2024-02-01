@@ -45,32 +45,6 @@ describe('GOVUK.Analytics', function () {
       expect(universalSetupArguments[1]).toEqual(['set', 'anonymizeIp', true])
       expect(universalSetupArguments[2]).toEqual(['set', 'allowAdFeatures', false])
     })
-
-    it('sets usage consent cookie to false when cookie_consent query string parameter has a value of "reject"', function () {
-      var location = {
-        protocol: 'https:',
-        hostname: 'site.example.com',
-        href: 'https://site.example.com/a/path?cookie_consent=reject',
-        search: '?cookie_consent=reject',
-        origin: 'https://site.example.com'
-      }
-      GOVUK.Analytics.checkDigitalIdentityConsent(location)
-      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
-      expect(GOVUK.getConsentCookie().usage).toBe(false)
-    })
-
-    it('sets usage consent cookie to true when cookie_consent query string parameter has a value of "accept"', function () {
-      var location = {
-        protocol: 'https:',
-        hostname: 'site.example.com',
-        href: 'https://site.example.com/a/path?cookie_consent=accept',
-        search: '?cookie_consent=accept',
-        origin: 'https://site.example.com'
-      }
-      GOVUK.Analytics.checkDigitalIdentityConsent(location)
-      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
-      expect(GOVUK.getConsentCookie().usage).toBe(true)
-    })
   })
 
   describe('extracting the default path for a page view', function () {
