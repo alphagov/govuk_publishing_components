@@ -43,7 +43,7 @@
                 element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
               } catch (e) {
                 // if there's a problem with the module, catch the error to allow other modules to start
-                console.error('Error starting ' + moduleName + ' component JS: ' + e.message, window.location)
+                console.error('Error starting ' + moduleName + ' component JS: ', e, window.location)
               }
             }
           }
