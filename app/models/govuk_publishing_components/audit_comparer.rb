@@ -14,7 +14,6 @@ module GovukPublishingComponents
           info-frontend
           service-manual-frontend
           smart-answers
-          whitehall
         ]
 
         @static_data = find_static(results)
