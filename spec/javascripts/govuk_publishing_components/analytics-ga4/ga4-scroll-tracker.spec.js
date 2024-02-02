@@ -36,6 +36,7 @@ describe('GA4 scroll tracker', function () {
     window.removeEventListener('scroll', tracker.scrollEvent)
     window.removeEventListener('resize', tracker.resizeEvent)
     window.removeEventListener('dynamic-page-update', tracker.resetEvent)
+    window.removeEventListener('cookie-consent', tracker.startModule)
     clearInterval(tracker.interval)
   }
 
@@ -52,6 +53,24 @@ describe('GA4 scroll tracker', function () {
 
     expect(scrollTracker.getWindowDetails).toHaveBeenCalled()
     expect(scrollTracker2.getWindowDetails).not.toHaveBeenCalled()
+  })
+
+  it('starts the module when consent is given', function () {
+    window.GOVUK.deleteCookie('cookies_policy')
+    var el = document.createElement('div')
+    scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
+    spyOn(scrollTracker, 'startModule').and.callThrough()
+    scrollTracker.init()
+    expect(scrollTracker.startModule).not.toHaveBeenCalled()
+
+    // page has not been reloaded, user consents to cookies
+    window.GOVUK.triggerEvent(window, 'cookie-consent')
+    expect(scrollTracker.startModule).toHaveBeenCalled()
+
+    // consent listener should be removed after triggering
+    scrollTracker.startModule.calls.reset()
+    window.GOVUK.triggerEvent(window, 'cookie-consent')
+    expect(scrollTracker.startModule).not.toHaveBeenCalled()
   })
 
   describe('when tracking headings', function () {

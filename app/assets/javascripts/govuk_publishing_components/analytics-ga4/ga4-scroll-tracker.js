@@ -22,12 +22,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (consentCookie && consentCookie.usage) {
       this.startModule()
     } else {
-      this.startModule = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.startModule)
+      this.start = this.startModule.bind(this)
+      window.addEventListener('cookie-consent', this.start)
     }
   }
 
   Ga4ScrollTracker.prototype.startModule = function () {
+    window.removeEventListener('cookie-consent', this.start)
     if (window.GOVUK.analyticsGa4.vars.scrollTrackerStarted) {
       return
     }

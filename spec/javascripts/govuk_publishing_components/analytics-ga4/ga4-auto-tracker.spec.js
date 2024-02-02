@@ -48,13 +48,18 @@ describe('Google Analytics auto tracker', function () {
     it('starts the module on the same page as cookie consent is given', function () {
       denyCookies()
       var tracker = new GOVUK.Modules.Ga4AutoTracker(element)
-      spyOn(tracker, 'sendEvent')
+      spyOn(tracker, 'sendEvent').and.callThrough()
       tracker.init()
       expect(tracker.sendEvent).not.toHaveBeenCalled()
 
       // page has not been reloaded, user consents to cookies
       window.GOVUK.triggerEvent(window, 'cookie-consent')
       expect(tracker.sendEvent).toHaveBeenCalled()
+
+      // consent listener should be removed after triggering
+      tracker.sendEvent.calls.reset()
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      expect(tracker.sendEvent).not.toHaveBeenCalled()
     })
 
     it('does not do anything if consent is not given', function () {

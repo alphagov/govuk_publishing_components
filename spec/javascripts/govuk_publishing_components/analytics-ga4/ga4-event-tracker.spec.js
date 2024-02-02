@@ -59,6 +59,11 @@ describe('Google Analytics event tracker', function () {
 
       element.click()
       expect(tracker.trackClick).toHaveBeenCalled()
+
+      tracker.trackClick.calls.reset()
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      element.click()
+      expect(tracker.trackClick.calls.count()).toBe(1)
     })
 
     it('does not do anything if consent is not given', function () {

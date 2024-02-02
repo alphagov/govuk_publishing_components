@@ -91,6 +91,23 @@ describe('GA4 smart answer results tracking', function () {
     document.body.removeChild(smartAnswerResultsParentEl)
   })
 
+  it('starts the module when consent is given', function () {
+    window.GOVUK.deleteCookie('cookies_policy')
+    var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)
+    spyOn(smartAnswerTracker, 'startModule').and.callThrough()
+    smartAnswerTracker.init()
+    expect(smartAnswerTracker.startModule).not.toHaveBeenCalled()
+
+    // page has not been reloaded, user consents to cookies
+    window.GOVUK.triggerEvent(window, 'cookie-consent')
+    expect(smartAnswerTracker.startModule).toHaveBeenCalled()
+
+    // consent listener should be removed after triggering
+    smartAnswerTracker.startModule.calls.reset()
+    window.GOVUK.triggerEvent(window, 'cookie-consent')
+    expect(smartAnswerTracker.startModule).not.toHaveBeenCalled()
+  })
+
   describe('on page load', function () {
     it('should push a nullified ecommerce object to the dataLayer', function () {
       new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl).init()

@@ -15,8 +15,8 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
     if (consentCookie && consentCookie.usage) {
       this.startModule()
     } else {
-      this.startModule = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.startModule)
+      this.start = this.startModule.bind(this)
+      window.addEventListener('cookie-consent', this.start)
     }
   }
 
@@ -25,6 +25,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
     // only run this code if the dataLayer exists and an element with a data-ga4-ecommerce-path
     // attribute exists as this indicates that ecommerce tracking is required
     if (window.dataLayer && this.module.querySelector('[data-ga4-ecommerce-path]')) {
+      window.removeEventListener('cookie-consent', this.start)
       this.trackResults()
       this.module.addEventListener('click', this.handleClick.bind(this))
     }

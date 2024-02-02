@@ -57,9 +57,14 @@ describe('Google Analytics form tracking', function () {
 
       // page has not been reloaded, user consents to cookies
       window.GOVUK.triggerEvent(window, 'cookie-consent')
-
       window.GOVUK.triggerEvent(element, 'submit')
       expect(tracker.trackFormSubmit).toHaveBeenCalled()
+
+      // consent listener should be removed after triggering
+      tracker.trackFormSubmit.calls.reset()
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(tracker.trackFormSubmit.calls.count()).toBe(1)
     })
 
     it('does not do anything if consent is not given', function () {

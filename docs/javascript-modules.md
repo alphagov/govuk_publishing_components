@@ -52,13 +52,13 @@ AnExampleModule.prototype.init = function ($module) {
   if (consentCookie && consentCookie.usage) {
     this.startModule()
   } else {
-    this.startModule = this.startModule.bind(this)
-    window.addEventListener('cookie-consent', this.startModule)
+    this.start = this.startModule.bind(this)
+    window.addEventListener('cookie-consent', this.start)
   }
 }
 
 AnExampleModule.prototype.startModule = function () {
-  window.removeEventListener('cookie-consent', this.startModule)
+  window.removeEventListener('cookie-consent', this.start)
   // the rest of the module
 }
 ```

@@ -74,9 +74,14 @@ describe('GA4 link tracker', function () {
 
       // page has not been reloaded, user consents to cookies
       window.GOVUK.triggerEvent(window, 'cookie-consent')
-
       element.click()
       expect(tracker.trackClick).toHaveBeenCalled()
+
+      // consent listener should be removed after triggering
+      tracker.trackClick.calls.reset()
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      element.click()
+      expect(tracker.trackClick.calls.count()).toBe(1)
     })
 
     it('does not do anything if consent is not given', function () {
