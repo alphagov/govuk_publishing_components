@@ -654,12 +654,17 @@ describe('GA4 core', function () {
         expect(builtEcommerceObject.search_results.ecommerce.items.length).toEqual(200)
       })
     })
+  })
 
-    it('populates the timestamp value correctly', function () {
-      GOVUK.analyticsGa4.core.sendData({})
-      var timestamp = Date.now().toString()
+  it('populates the timestamp value correctly', function () {
+    jasmine.clock().install()
+    jasmine.clock().mockDate(new Date(2050, 1, 1))
 
-      expect(window.dataLayer[0].timestamp).toEqual(timestamp)
-    })
+    GOVUK.analyticsGa4.core.sendData({})
+    var timestamp = Date.now().toString()
+
+    jasmine.clock().uninstall()
+
+    expect(window.dataLayer[0].timestamp).toEqual(timestamp)
   })
 })
