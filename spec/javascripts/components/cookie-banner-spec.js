@@ -14,7 +14,7 @@ describe('Cookie banner', function () {
     container = document.createElement('div')
 
     container.innerHTML =
-      '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper" data-module="cookie-banner" data-nosnippet="" role="region" aria-label="Cookies on GOV.UK">' +
+      '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper" data-module="cookie-banner" data-nosnippet="" role="region" aria-label="Cookies on GOV.UK" hidden>' +
           '<div class="govuk-cookie-banner__message govuk-width-container">' +
               '<div class="govuk-grid-row">' +
                   '<div class="govuk-grid-column-two-thirds">' +
@@ -92,6 +92,25 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner(element).init()
 
     expect(element).toBeHidden()
+  })
+
+  it('should have the hidden attribute by default, and remove it once the JS loads when cookies are not set', function () {
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    expect(element.hasAttribute('hidden')).toEqual(true)
+    expect(element.offsetParent).toEqual(null)
+    new GOVUK.Modules.CookieBanner(element).init()
+    expect(element.hasAttribute('hidden')).toEqual(false)
+    expect(!!element.offsetParent).toEqual(true)
+  })
+
+  it('should have the hidden attribute by default, and leave it when cookies are set', function () {
+    GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    expect(element.offsetParent).toEqual(null)
+    expect(element.hasAttribute('hidden')).toEqual(true)
+    new GOVUK.Modules.CookieBanner(element).init()
+    expect(element.offsetParent).toEqual(null)
+    expect(element.hasAttribute('hidden')).toEqual(true)
   })
 
   it('sets a default consent cookie', function () {

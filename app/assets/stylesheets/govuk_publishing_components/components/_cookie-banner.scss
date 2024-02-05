@@ -1,23 +1,12 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/cookie-banner/cookie-banner";
 
-.gem-c-cookie-banner .govuk-button-group[hidden] {
-  display: none;
-}
-
-.govuk-cookie-banner .govuk-cookie-banner__heading[hidden] {
-  display: none;
-}
-
-.js-enabled {
-  .gem-c-cookie-banner {
-    display: none; // shown with JS, always on for non-JS
+.gem-c-cookie-banner {
+  [hidden],
+  .govuk-button-group[hidden],
+  .govuk-cookie-banner__heading[hidden] {
+    display: none;
   }
-}
-
-// can't be used without js so implement there
-.gem-c-cookie-banner .gem-c-button {
-  display: none;
 }
 
 .gem-c-cookie-banner__confirmation {
