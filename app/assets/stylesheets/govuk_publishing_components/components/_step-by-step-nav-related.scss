@@ -25,10 +25,6 @@
   .gem-c-step-nav-related__heading {
     @include govuk-font(19, $weight: bold, $line-height: 1.4);
     margin-top: govuk-spacing(4);
-
-    @include govuk-media-query($until: tablet) {
-      font-size: 19px;
-    }
   }
 
   .gem-c-step-nav-related__pretitle {
