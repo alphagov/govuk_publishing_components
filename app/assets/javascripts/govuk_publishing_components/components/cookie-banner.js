@@ -26,13 +26,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.$acceptCookiesButton = this.$module.querySelector('button[data-accept-cookies]')
     if (this.$acceptCookiesButton) {
-      this.$acceptCookiesButton.style.display = 'block'
       this.$acceptCookiesButton.addEventListener('click', this.$module.setCookieConsent)
     }
 
     this.$rejectCookiesButton = this.$module.querySelector('button[data-reject-cookies]')
     if (this.$rejectCookiesButton) {
-      this.$rejectCookiesButton.style.display = 'block'
       this.$rejectCookiesButton.addEventListener('click', this.$module.rejectCookieConsent)
     }
 
@@ -45,7 +43,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('cookies_preferences_set') !== 'true')
 
       if (shouldHaveCookieMessage) {
-        this.$module.style.display = 'block'
+        this.$module.removeAttribute('hidden')
 
         // Set the default consent cookie if it isn't already present
         if (!window.GOVUK.cookie('cookies_policy')) {
@@ -53,18 +51,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
 
         window.GOVUK.deleteUnconsentedCookies()
-      } else {
-        this.$module.style.display = 'none'
       }
-    } else {
-      this.$module.style.display = 'none'
     }
   }
 
   CookieBanner.prototype.hideCookieMessage = function (event) {
     if (this.$module) {
       this.$module.hidden = true
-      this.$module.style.display = 'none'
       window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
     }
 
