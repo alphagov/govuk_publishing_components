@@ -70,6 +70,12 @@ window.GOVUK.loadAnalytics = {
     }
   ],
 
+  loadExtraDomains: function () {
+    if (Array.isArray(window.GOVUK.analyticsGa4Domains)) {
+      this.domains = this.domains.concat(window.GOVUK.analyticsGa4Domains)
+    }
+  },
+
   // For Universal Analytics' cross domain tracking. linkedDomains is defined by the require statement at the top of the file.
   linkedDomains: window.GOVUK.analytics.linkedDomains,
 
