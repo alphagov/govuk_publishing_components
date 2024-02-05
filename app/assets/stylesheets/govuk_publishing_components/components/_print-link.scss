@@ -34,7 +34,7 @@ $gem-c-print-link-background-height: 18px;
 }
 
 .gem-c-print-link__link {
-  box-shadow: inset 0 0 0 1px $govuk-border-colour;
+  box-shadow: inset 0 0 0 1px govuk-colour("dark-grey");
 
   &:focus {
     border: 0;
@@ -43,7 +43,7 @@ $gem-c-print-link-background-height: 18px;
 }
 
 .gem-c-print-link__button {
-  border: 1px solid $govuk-border-colour;
+  border: 1px solid govuk-colour("dark-grey");
   color: $govuk-link-colour;
   cursor: pointer;
   margin: govuk-spacing(0);
