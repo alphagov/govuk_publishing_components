@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Allow other applications to use GA4 code ([PR #3851](https://github.com/alphagov/govuk_publishing_components/pull/3851))
 * Update cookie event listeners ([PR #3849](https://github.com/alphagov/govuk_publishing_components/pull/3849))
 * Remove DI cookie consent code ([PR #3846](https://github.com/alphagov/govuk_publishing_components/pull/3846))
 * Add tracking to back link ([PR #3840](https://github.com/alphagov/govuk_publishing_components/pull/3840))
