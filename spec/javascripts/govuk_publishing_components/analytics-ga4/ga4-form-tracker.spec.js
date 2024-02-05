@@ -132,6 +132,18 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('does not redact data from text inputs that have data-ga4-form-include-input on them', function () {
+      element.innerHTML =
+        '<label for="textid">Label</label>' +
+        '<input type="text" id="textid" name="test-text" value="i should not be redacted but PII still runs email@example.com" data-ga4-form-include-input />' +
+        '<label for="textid2">Label</label>' +
+        '<input type="text" id="textid2" name="test-text-2" value="i should be redacted" />'
+      expected.event_data.text = 'i should not be redacted but PII still runs [email],[REDACTED]'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('redacts data from multiple text inputs', function () {
       element.innerHTML =
         '<label for="textid1">Label</label>' +
