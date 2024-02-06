@@ -70,6 +70,12 @@ window.GOVUK.loadAnalytics = {
     }
   ],
 
+  loadExtraDomains: function () {
+    if (Array.isArray(window.GOVUK.analyticsGa4Domains)) {
+      this.domains = this.domains.concat(window.GOVUK.analyticsGa4Domains)
+    }
+  },
+
   // For Universal Analytics' cross domain tracking. linkedDomains is defined by the require statement at the top of the file.
   linkedDomains: window.GOVUK.analytics.linkedDomains,
 
@@ -99,18 +105,7 @@ window.GOVUK.loadAnalytics = {
 
   loadGa4: function (currentDomain) {
     currentDomain = currentDomain || window.location.hostname
-    var environment = false
-    // lots of dev domains, so simplify the matching process
-    if (currentDomain.match(/[a-zA-Z0-9.-]+dev\.gov\.uk/)) {
-      environment = this.domains[0]
-    } else {
-      for (var i = 0; i < this.domains.length; i++) {
-        if (this.arrayContains(currentDomain, this.domains[i].domains)) {
-          environment = this.domains[i]
-          break
-        }
-      }
-    }
+    var environment = this.getEnvironment(currentDomain)
 
     // If we recognise the environment (i.e. the string isn't empty), load in GA4
     if (environment) {
@@ -135,5 +130,18 @@ window.GOVUK.loadAnalytics = {
 
   arrayContains: function (valueToFind, array) {
     return array.indexOf(valueToFind) !== -1
+  },
+
+  getEnvironment: function (currentDomain) {
+    // lots of dev domains, so simplify the matching process
+    if (currentDomain.match(/[a-zA-Z0-9.-]+dev\.gov\.uk/)) {
+      return this.domains[0]
+    } else {
+      for (var i = 0; i < this.domains.length; i++) {
+        if (this.arrayContains(currentDomain, this.domains[i].domains)) {
+          return this.domains[i]
+        }
+      }
+    }
   }
 }

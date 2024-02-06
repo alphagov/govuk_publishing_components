@@ -138,6 +138,44 @@ describe('Analytics loading', function () {
       expect(window.GOVUK.analyticsGa4.vars).toEqual(null)
       window.GOVUK.loadAnalytics.domains[0].initialiseGA4 = true
     })
+
+    describe('when additional domain details are needed', function () {
+      afterEach(function () {
+        delete window.GOVUK.analyticsGa4Domains
+      })
+
+      it('defaults to the normal list when no extras are passed', function () {
+        var domains = window.GOVUK.loadAnalytics.domains
+        window.GOVUK.loadAnalytics.loadExtraDomains()
+        window.GOVUK.loadAnalytics.loadGa4()
+        expect(window.GOVUK.loadAnalytics.domains).toEqual(domains)
+      })
+
+      it('allows extra domains to be passed and appended to the existing list', function () {
+        var newDomain = {
+          name: 'test-domain',
+          domains: ['not-a-real-domain'],
+          initialiseGA4: true,
+          id: 'GTM-001'
+        }
+        window.GOVUK.analyticsGa4Domains = [newDomain]
+        window.GOVUK.loadAnalytics.loadExtraDomains()
+        expected = {
+          name: 'test-domain',
+          domains: ['not-a-real-domain'],
+          initialiseGA4: true,
+          id: 'GTM-001'
+        }
+        // the new domain gets appended to the end of the array
+        expect(window.GOVUK.loadAnalytics.domains[5]).toEqual(expected)
+
+        window.GOVUK.loadAnalytics.loadGa4('not-a-real-domain')
+        expect(window.GOVUK.analyticsGa4.vars.id).toEqual('GTM-001')
+        expect(window.GOVUK.analyticsGa4.vars.auth).toEqual(undefined)
+        expect(window.GOVUK.analyticsGa4.vars.preview).toEqual(undefined)
+        expect(window.GOVUK.analyticsGa4.vars.environment).toEqual('test-domain')
+      })
+    })
   })
 
   describe('for UA', function () {
