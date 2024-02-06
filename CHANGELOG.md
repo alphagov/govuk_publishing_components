@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.3.0
 
 * Allow other applications to use GA4 code ([PR #3851](https://github.com/alphagov/govuk_publishing_components/pull/3851))
 * Update cookie event listeners ([PR #3849](https://github.com/alphagov/govuk_publishing_components/pull/3849))
