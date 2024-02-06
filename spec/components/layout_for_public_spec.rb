@@ -295,4 +295,10 @@ describe "Layout for public", type: :view do
       expect(meta.first["content"]).to match(%r{^https?://})
     end
   end
+
+  it "has the skip link immediately after the cookie banner" do
+    render_component({})
+
+    assert_select ".gem-c-cookie-banner + .gem-c-skip-link"
+  end
 end
