@@ -99,12 +99,10 @@
     <%= javascript_tag nonce: true do -%>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     <% end -%>
+    <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
     <%= render "govuk_publishing_components/components/skip_link", {
       href: "#content"
     } %>
-
-    <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
-
     <% unless omit_header %>
       <% if show_explore_header %>
         <% if homepage %>
