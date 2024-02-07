@@ -3,7 +3,7 @@
 
   @include govuk-font($size: 16);
 
-  $gutter-two-thirds: $govuk-gutter - ($govuk-gutter / 3);
+  $gutter-two-thirds: $govuk-gutter - calc($govuk-gutter / 3);
 
   ol,
   ul,
