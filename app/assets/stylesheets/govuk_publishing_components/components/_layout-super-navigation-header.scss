@@ -934,6 +934,13 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// The large menu bar is used on the homepage with no GOV.UK text
+// Resetting top back to 0 ensure the crown logo is aligned with
+// the navigation items in the header
+.gem-c-layout-super-navigation-header__logotype-crown--large-navbar[width="32"] {
+  top: 0;
+}
+
 @include govuk-media-query($from: desktop) {
   // can't use govuk-spacing here because the navbar height
   // isn't a multiple of 5 :(
@@ -944,24 +951,25 @@ $after-button-padding-left: govuk-spacing(4);
   }
 
   .gem-c-layout-super-navigation-header__logotype-crown--large-navbar {
-    height: 32px;
-    width: 44px;
+    width: auto;
+    max-width: 41px; // Fix for IE11
+    height: 38px;
   }
 
   .gem-c-header__link--large-navbar:focus {
     box-shadow: 0 -6px 0 12px $govuk-focus-colour;
     border-bottom: $govuk-focus-width solid govuk-colour("black");
-    padding-bottom: 10px;
+    padding-bottom: 13px;
   }
 
   .gem-c-header__link--large-navbar:hover {
-    padding-bottom: 10px;
+    padding-bottom: 13px;
   }
 
   .gem-c-layout-super-navigation-header__header-logo--large-navbar {
-    height: 32px;
-    padding-bottom: govuk-spacing(4);
-    padding-top: govuk-spacing(4);
+    height: 38px;
+    padding-bottom: 17px;
+    padding-top: 17px;
   }
 
   .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
