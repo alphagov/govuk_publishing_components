@@ -3,7 +3,7 @@
 .gem-c-single-page-notification-button__submit {
   padding: govuk-spacing(2);
   margin: govuk-spacing(0);
-  border: 1px solid $govuk-border-colour;
+  border: 1px solid govuk-colour("dark-grey");
   color: $govuk-link-colour;
   cursor: pointer;
   background: none;
