@@ -108,7 +108,7 @@ $large-input-size: 50px;
 
 @mixin icon-positioning($container-size) {
   $icon-dimension: 20px;
-  $icon-position: ($container-size - $icon-dimension) / 2;
+  $icon-position: calc(($container-size - $icon-dimension) / 2);
 
   display: block;
   pointer-events: none;
