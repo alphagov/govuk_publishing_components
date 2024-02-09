@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = "A gem to document components in GOV.UK frontend applications"
   s.homepage    = "https://github.com/alphagov/govuk_publishing_components"
   s.license     = "MIT"
-  s.required_ruby_version = ">= 3.1" # rubocop:disable Gemspec/RequiredRubyVersion
+  s.required_ruby_version = ">= 3.3" # rubocop:disable Gemspec/RequiredRubyVersion
   s.post_install_message = "govuk_publishing_components has now migrated to dartsass-rails from sassc-rails for stylesheet compilation since LibSass is deprecated. While both implementations are supported, it is recommended to update your application to use the latest implementation of Sass (dartsass-rails). You can find further details in the docs - https://docs.publishing.service.gov.uk/manual/migrate-to-dart-sass-from-libsass.html."
 
   s.files = Dir["{node_modules/govuk-frontend,node_modules/axe-core,node_modules/sortablejs,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
