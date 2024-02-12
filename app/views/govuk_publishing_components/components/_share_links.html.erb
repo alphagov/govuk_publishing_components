@@ -5,6 +5,7 @@
   title ||= false
   track_as_sharing ||= false
   track_as_follow ||= false
+  ga4_data ||= {}
   stacked ||= false
   columns ||= false
 
@@ -57,15 +58,15 @@
                 'index_link': index + 1,
                 'index_total': links.length,
                 'text': link[:icon],
-              }
+              }.merge(ga4_data)
             end
             if track_as_follow
               ga4_link_data = {
                 'event_name': 'navigation',
                 'type': 'follow us',
                 'index_link': index + 1,
-                'index_total': links.length
-              }
+                'index_total': links.length,
+              }.merge(ga4_data)
             end
           %>
           <%
