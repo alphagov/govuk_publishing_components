@@ -12,6 +12,7 @@
 * Move the skip link after the cookie banner ([PR #3863](https://github.com/alphagov/govuk_publishing_components/pull/3863))
 * Update border colours on email/print buttons for greater contrast ([PR #3855](https://github.com/alphagov/govuk_publishing_components/pull/3855))
 * Fix some Sass deprecation warnings ([PR #3864](https://github.com/alphagov/govuk_publishing_components/pull/3864))
+* Expand GA4 share link tracking to allow for extra values ([PR #3872](https://github.com/alphagov/govuk_publishing_components/pull/3872))
 
 ## 37.3.0
 

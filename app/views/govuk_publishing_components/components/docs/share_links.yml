@@ -107,9 +107,16 @@ examples:
         }
       ]
   track_as_sharing_links:
-    description: Where the component is used to allow users to share content on social media, tracking can be added that uses [Social Interactions](https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions) in UA. If this option is not included, it is assumed the component is simply linking to social media pages and the extra options are omitted from the tracking call in UA. In GA4, when this is set to true, a JSON is added to a data-attribute called data-ga4-link, which is detected by ga4-link-tracker.js and pushed to the dataLayer.
+    description: |
+      Where the component is used to allow users to share content on social media, tracking can be added that uses [Social Interactions](https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions) in UA.
+      If this option is not included, it is assumed the component is simply linking to social media pages and the extra options are omitted from the tracking call in UA.
+      In GA4, when this is set to true, a JSON is added to a data-attribute called data-ga4-link, which is detected by ga4-link-tracker.js and pushed to the dataLayer.
+      Most of the tracking values are added by default, but if you need to add more GA4 values or override defaults, you can pass a ga4_data object.
     data:
       track_as_sharing: true
+      ga4_data: {
+        optional_extra_values: "go here"
+      }
       links: [
         {
           href: 'share',
@@ -123,9 +130,15 @@ examples:
         },
       ]
   track_as_follow_links:
-    description: Where the component is used to allow users to follow us on social media, tracking can be added. When this is set to true, a JSON is added to a data-attribute called data-ga4-link, which is detected by ga4-link-tracker.js and pushed to the dataLayer.
+    description: |
+      Where the component is used to allow users to follow us on social media, tracking can be added.
+      When this is set to true, a JSON is added to a data-attribute called data-ga4-link, which is detected by ga4-link-tracker.js and pushed to the dataLayer.
+      Most of the tracking values are added by default, but if you need to add more GA4 values or override defaults, you can pass a ga4_data object.
     data:
       track_as_follow: true
+      ga4_data: {
+        optional_extra_values: "go here"
+      }
       links: [
         {
           href: 'follow',
