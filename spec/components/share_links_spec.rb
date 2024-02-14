@@ -94,13 +94,13 @@ describe "ShareLinks", type: :view do
   end
 
   it "allows adding extra GA4 attributes for share links" do
-    render_component(links: [links[0]], track_as_sharing: true, ga4_data: { section: "This is a section", type: "overwritten type" })
+    render_component(links: [links[0]], track_as_sharing: true, ga4_extra_data: { section: "This is a section", type: "overwritten type" })
     assert_select '.gem-c-share-links[data-module="gem-track-click ga4-link-tracker"]'
     assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"overwritten type\",\"index_link\":1,\"index_total\":1,\"text\":\"facebook\",\"section\":\"This is a section\"}"]'
   end
 
   it "allows adding extra GA4 attributes for follow links" do
-    render_component(links: [links[0]], track_as_follow: true, ga4_data: { section: "This is another section", type: "overwritten type 2" })
+    render_component(links: [links[0]], track_as_follow: true, ga4_extra_data: { section: "This is another section", type: "overwritten type 2" })
     assert_select '.gem-c-share-links[data-module="gem-track-click ga4-link-tracker"]'
     assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"overwritten type 2\",\"index_link\":1,\"index_total\":1,\"section\":\"This is another section\"}"]'
   end
