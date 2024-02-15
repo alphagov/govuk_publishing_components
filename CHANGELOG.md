@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.3.1
 
 * Move the skip link after the cookie banner ([PR #3863](https://github.com/alphagov/govuk_publishing_components/pull/3863))
 * Update border colours on email/print buttons for greater contrast ([PR #3855](https://github.com/alphagov/govuk_publishing_components/pull/3855))
