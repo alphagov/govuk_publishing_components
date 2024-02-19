@@ -1338,10 +1338,10 @@ globjoin@^0.1.4:
   resolved "https://registry.yarnpkg.com/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
   integrity sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=
 
-govuk-frontend@4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-4.7.0.tgz#69950b6c2e69f435ffe9aa60d8dee232dac977de"
-  integrity sha512-0OsdCusF5qvLWwKziU8zqxiC0nq6WP0ZQuw51ymZ/1V0tO71oIKMlSLN2S9bm8RcEGSoidPt2A34gKxePrLjvg==
+govuk-frontend@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-4.8.0.tgz#df4e56c762e93aae74fed214bb6be08e13783772"
+  integrity sha512-NOmPJxL8IYq1HSNHYKx9XY2LLTxuwb+IFASiGQO4sgJ8K7AG66SlSeqARrcetevV8zOf+i1z+MbJJ2O7//OxAw==
 
 graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.2.6"
