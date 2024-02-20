@@ -11,20 +11,29 @@
   classes << "gem-c-document-list--no-top-border-first-child" if local_assigns[:remove_top_border_from_first_child]
   classes << shared_helper.get_margin_bottom
 
-  within_multitype_list ||= false
-  within_multitype_list_class = " gem-c-document-list__multi-list" if within_multitype_list
   title_with_context_class = " gem-c-document-list__item-title--context"
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+
+  disable_ga4 ||= false
+  unless disable_ga4
+    ga4_extra_data ||= {}
+    ga4_ul_attributes = {
+      module: "ga4-link-tracker",
+      ga4_track_links_only: "",
+      ga4_link: {
+        "event_name": "navigation",
+        "type": "document list",
+      }.merge(ga4_extra_data)
+    }
+  end
 %>
 <% if items.any? %>
-  <% unless within_multitype_list %>
-    <ul class="<%= classes.join(" ") %>">
-  <% end %>
+  <%= tag.ul(class: classes.join(" "), data: ga4_ul_attributes) do %>
     <% items.each do |item| %>
       <% highlight_class = " gem-c-document-list__item--highlight" if item[:highlight] %>
-      <li class="gem-c-document-list__item<%= within_multitype_list_class %> <%= brand_helper.brand_class %> <%= highlight_class %>">
+      <li class="gem-c-document-list__item <%= brand_helper.brand_class %> <%= highlight_class %>">
         <% if item[:highlight] && item[:highlight_text] %>
           <p class='gem-c-document-list__highlight-text'><%= item[:highlight_text] %></p>
         <% end %>
@@ -127,7 +136,5 @@
         <% end %>
       </li>
     <% end %>
-  <% unless within_multitype_list %>
-    </ul>
   <% end %>
 <% end %>

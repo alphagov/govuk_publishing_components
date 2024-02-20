@@ -73,7 +73,7 @@ examples:
           public_updated_at: 2016-09-05 16:48:27
           document_type: 'Statutory guidance'
   with_data_attributes_on_links:
-    description: Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
+    description: Note that the component does not include built in Universal Analytics tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       items:
       - link:
@@ -356,3 +356,26 @@ examples:
           path: 'https://www.actionfraud.police.uk/contact-us'
           rel: 'external'
           description: "Contact Action Fraud to report fraud and cyber crime, or to tell them you've been the victim of a scam."
+  with_extra_ga4_data:
+    description: |
+      Allows you to add extra GA4 link tracker attributes, or overwrite the existing ones on the links. See the
+      [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+    data:
+      ga4_extra_data:
+        hello: 'world'
+      items:
+      - link:
+          text: 'Test link'
+          path: 'https://www.gov.uk'
+          description: "GOV.UK link"
+  without_ga4_tracking:
+    description: |
+      Disables GA4 tracking. Tracking is enabled by default. See the
+      [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+    data:
+      disable_ga4: true
+      items:
+      - link:
+          text: 'Test link'
+          path: 'https://www.gov.uk'
+          description: "GOV.UK link"

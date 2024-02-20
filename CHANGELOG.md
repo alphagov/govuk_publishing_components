@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add GA4 tracking to the document list component ([PR #3874](https://github.com/alphagov/govuk_publishing_components/pull/3874))
+
 ## 37.4.0
 
 * Bump govuk-frontend to 4.8 and implement tudor crown ([PR #3852](https://github.com/alphagov/govuk_publishing_components/pull/3852))

@@ -209,7 +209,6 @@ describe "Document list", type: :view do
         },
       ],
     )
-
     assert_select ".gem-c-document-list__item.brand--attorney-generals-office"
     assert_select ".gem-c-document-list .gem-c-document-list__item-title .brand__color"
   end
@@ -532,5 +531,64 @@ describe "Document list", type: :view do
 
     assert_select "#{link}[href=\"https://www.actionfraud.police.uk/contact-us\"][rel=\"external\"]", text: "Report Fraud"
     assert_select "#{link}[href=\"/contact-child-benefit-office\"]:not([rel])", text: "Child Benefit"
+  end
+
+  it "has GA4 tracking enabled" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Report Fraud",
+            path: "https://www.actionfraud.police.uk/contact-us",
+            rel: "external",
+          },
+        },
+      ],
+    )
+
+    assert_select "ul[data-module=ga4-link-tracker]"
+    assert_select "ul[data-ga4-track-links-only]"
+    assert_select "ul[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"document list\"}']"
+  end
+
+  it "can merge extra GA4 values into the existing JSON" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Report Fraud",
+            path: "https://www.actionfraud.police.uk/contact-us",
+            rel: "external",
+          },
+        },
+      ],
+      ga4_extra_data: {
+        section: "This is the section",
+        type: "I have overwritten the default value",
+      },
+    )
+
+    assert_select "ul[data-module=ga4-link-tracker]"
+    assert_select "ul[data-ga4-track-links-only]"
+    assert_select "ul[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"I have overwritten the default value\",\"section\":\"This is the section\"}']"
+  end
+
+  it "can have GA4 tracking disabled" do
+    render_component(
+      disable_ga4: true,
+      items: [
+        {
+          link: {
+            text: "Report Fraud",
+            path: "https://www.actionfraud.police.uk/contact-us",
+            rel: "external",
+          },
+        },
+      ],
+    )
+
+    assert_select "ul[data-module=ga4-link-tracker]", false
+    assert_select "ul[data-ga4-track-links-only]", false
+    assert_select "ul[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"document list\"}']", false
   end
 end
