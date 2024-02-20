@@ -93,6 +93,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module
     this.$searchToggle = this.$module.querySelector('#super-search-menu-toggle')
     this.$searchMenu = this.$module.querySelector('#super-search-menu')
+    this.$navToggle = this.$module.querySelector('#super-navigation-menu-toggle')
+    this.$navMenu = this.$module.querySelector('#super-navigation-menu')
 
     // The menu toggler buttons need three attributes for this to work:
     //  - `aria-controls` contains the id of the menu to be toggled
@@ -126,7 +128,68 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     toggle($target, $targetMenu)
   }
 
+  SuperNavigationMegaMenu.prototype.handleKeyDown = function (event) {
+    var KEY_TAB = 9
+    var KEY_ESC = 27
+    var $navMenuLinks = this.$navMenu.querySelectorAll('li a')
+    var $firstNavLink = $navMenuLinks[0]
+    var $lastNavLink = $navMenuLinks[$navMenuLinks.length - 1]
+    var $searchMenuLinks = this.$searchMenu.querySelectorAll('li a')
+    var $lastSearchLink = $searchMenuLinks[$searchMenuLinks.length - 1]
+
+    if (event.keyCode === KEY_TAB) {
+      if (!this.$navMenu.hasAttribute('hidden')) {
+        switch (document.activeElement) {
+          case this.$navToggle:
+            if (!event.shiftKey) {
+              event.preventDefault()
+              $firstNavLink.focus()
+            }
+            break
+          case $lastNavLink:
+            if (!event.shiftKey) {
+              event.preventDefault()
+              this.$searchToggle.focus()
+              hide(this.$navToggle, this.$navMenu)
+            }
+            break
+          case $firstNavLink:
+            if (event.shiftKey) {
+              event.preventDefault()
+              this.$navToggle.focus()
+            }
+            break
+          case this.$searchToggle:
+            if (event.shiftKey) {
+              event.preventDefault()
+              $lastNavLink.focus()
+            }
+            break
+          default:
+            break
+        }
+      } else if (!this.$searchMenu.hasAttribute('hidden')) {
+        if (document.activeElement === $lastSearchLink) {
+          if (!event.shiftKey) {
+            hide(this.$searchToggle, this.$searchMenu)
+          }
+        }
+      }
+    } else if (event.keyCode === KEY_ESC) {
+      if (!this.$navMenu.hasAttribute('hidden')) {
+        hide(this.$navToggle, this.$navMenu)
+        this.$navToggle.focus()
+      } else if (!this.$searchMenu.hasAttribute('hidden')) {
+        hide(this.$searchToggle, this.$searchMenu)
+        this.$searchToggle.focus()
+      }
+    }
+  }
+
   SuperNavigationMegaMenu.prototype.init = function () {
+    // Handle key events for tab and escape keys
+    this.$module.addEventListener('keydown', this.handleKeyDown.bind(this))
+
     for (var j = 0; j < this.$buttons.length; j++) {
       var $button = this.$buttons[j]
       $button.addEventListener('click', this.buttonHandler.bind(this), true)

@@ -343,6 +343,118 @@ describe('The super header navigation', function () {
     })
   })
 
+  describe('tab key', function () {
+    var $navMenuButton
+    var $searchMenuButton
+    var $navMenu
+    var $navLinks
+    var $firstNavLink
+    var $lastNavLink
+    var $searchMenu
+    var $searchLinks
+    var $lastSearchLink
+
+    beforeEach(function () {
+      thisModule.init()
+      $navMenuButton = document.querySelector('#super-navigation-menu-toggle')
+      $searchMenuButton = document.querySelector('#super-search-menu-toggle')
+      $navMenu = document.querySelector('#super-navigation-menu')
+      $navLinks = $navMenu.querySelectorAll('li')
+      $firstNavLink = $navLinks[0].querySelector('a')
+      $lastNavLink = $navLinks[$navLinks.length - 1].querySelector('a')
+      $searchMenu = document.querySelector('#super-search-menu')
+      $searchLinks = $searchMenu.querySelectorAll('li a')
+      $lastSearchLink = $searchLinks[$searchLinks.length - 1]
+    })
+
+    it('when the Menu button is focussed, the nav menu is open and the tab key is pressed focus moves to the first nav menu link', function () {
+      $navMenu.removeAttribute('hidden')
+      $navMenuButton.focus()
+      window.GOVUK.triggerEvent($navMenuButton, 'keydown', { keyCode: 9, cancelable: true })
+
+      expect(document.activeElement).toEqual($navLinks[0].querySelector('a'))
+    })
+
+    it('when the last nav menu link is focussed and the tab key is pressed focus moves to the search button and the nav menu is closed', function () {
+      $navMenu.removeAttribute('hidden')
+      $lastNavLink.focus()
+      window.GOVUK.triggerEvent($lastNavLink, 'keydown', { keyCode: 9, cancelable: true })
+
+      expect(document.activeElement).toEqual($searchMenuButton)
+      expect($navMenu.hasAttribute('hidden')).toEqual(true)
+      expect($navMenuButton.getAttribute('aria-expanded')).toEqual('false')
+      expect($navMenuButton.getAttribute('aria-label')).toEqual('Show navigation menu')
+      expect($navMenuButton.classList).not.toContain('gem-c-layout-super-navigation-header__open-button')
+    })
+
+    it('when the first nav menu link is focussed, the nav menu is open and the shift and tab keys are pressed focus moves to the Menu button', function () {
+      $navMenu.removeAttribute('hidden')
+      $firstNavLink.focus()
+      window.GOVUK.triggerEvent($firstNavLink, 'keydown', { keyCode: 9, cancelable: true, shiftKey: true })
+
+      expect(document.activeElement).toEqual($navMenuButton)
+    })
+
+    it('when the search button is focussed, the nav menu is open and the shift and tab keys are pressed focus moves to the last nav menu link', function () {
+      $navMenu.removeAttribute('hidden')
+      $searchMenuButton.focus()
+      window.GOVUK.triggerEvent($searchMenuButton, 'keydown', { keyCode: 9, cancelable: true, shiftKey: true })
+
+      expect(document.activeElement).toEqual($lastNavLink)
+    })
+
+    it('when the last search menu link is focussed and the tab key is pressed the search menu is closed', function () {
+      $searchMenu.removeAttribute('hidden')
+      $lastSearchLink.focus()
+      window.GOVUK.triggerEvent($lastSearchLink, 'keydown', { keyCode: 9, cancelable: true })
+
+      expect($searchMenu.hasAttribute('hidden')).toEqual(true)
+      expect($searchMenuButton.getAttribute('aria-expanded')).toEqual('false')
+      expect($searchMenuButton.getAttribute('aria-label')).toEqual('Show search menu')
+      expect($searchMenuButton.classList).not.toContain('gem-c-layout-super-navigation-header__open-button')
+    })
+  })
+
+  describe('escape key', function () {
+    var $navMenu
+    var $navMenuButton
+    var $searchMenu
+    var $searchMenuButton
+
+    beforeEach(function () {
+      thisModule.init()
+      $navMenu = document.querySelector('#super-navigation-menu')
+      $navMenuButton = document.querySelector('#super-navigation-menu-toggle')
+      $searchMenu = document.querySelector('#super-search-menu')
+      $searchMenuButton = document.querySelector('#super-search-menu-toggle')
+    })
+
+    it('when the user presses the escape key and the nav menu is open the menu is closed and focus moves back to the Menu button', function () {
+      $navMenu.removeAttribute('hidden')
+      $navMenuButton.setAttribute('aria-expanded', 'true')
+      window.GOVUK.triggerEvent($navMenu, 'keydown', { keyCode: 27, cancelable: true })
+
+      expect($navMenu.hasAttribute('hidden')).toEqual(true)
+      expect(document.activeElement).toEqual($navMenuButton)
+      expect($navMenuButton.getAttribute('aria-expanded')).toEqual('false')
+      expect($navMenuButton.getAttribute('aria-label')).toEqual('Show navigation menu')
+      expect($navMenuButton.classList).not.toContain('gem-c-layout-super-navigation-header__open-button')
+    })
+
+    it('when the user presses the escape key and the search menu is open the menu is closed and focus moves back to the Search button', function () {
+      $searchMenu.removeAttribute('hidden')
+      $searchMenuButton.setAttribute('aria-expanded', 'true')
+      $searchMenuButton.classList.add('gem-c-layout-super-navigation-header__open-button')
+      window.GOVUK.triggerEvent($searchMenu, 'keydown', { keyCode: 27, cancelable: true })
+
+      expect($searchMenu.hasAttribute('hidden')).toEqual(true)
+      expect(document.activeElement).toEqual($searchMenuButton)
+      expect($searchMenuButton.getAttribute('aria-expanded')).toEqual('false')
+      expect($searchMenuButton.getAttribute('aria-label')).toEqual('Show search menu')
+      expect($searchMenuButton.classList).not.toContain('gem-c-layout-super-navigation-header__open-button')
+    })
+  })
+
   describe('search toggle button', function () {
     var $button
 
