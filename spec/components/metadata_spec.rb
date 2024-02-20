@@ -220,7 +220,6 @@ describe "Metadata", type: :view do
       "event_name": "navigation",
       "type": "content history",
       "section": "Top",
-      "action": "opened",
     }.to_json
 
     assert_select ".gem-c-metadata__definition:nth-of-type(2)" do |alternate_see_all_updates_container|
