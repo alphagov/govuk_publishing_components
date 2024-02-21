@@ -50,7 +50,7 @@
     <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="0" height="0" class="gem-c-option-select__icon gem-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"/></svg>
   </h3>
 
-  <%= content_tag(:div, role: "group", aria: { labelledby: title_id }, class: options_container_classes, id: options_container_id, tabindex: "-1") do %>
+  <%= content_tag(:div, class: options_container_classes, id: options_container_id, tabindex: "-1") do %>
     <div class="gem-c-option-select__container-inner js-auto-height-inner">
       <% if show_filter %>
         <span id="<%= checkboxes_count_id %>"
