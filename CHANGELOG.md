@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add GA4 tracking to the document list component ([PR #3874](https://github.com/alphagov/govuk_publishing_components/pull/3874))
+* Remove GA4 'action' from navigation content history events ([PR #3877](https://github.com/alphagov/govuk_publishing_components/pull/3877))
 
 ## 37.4.0
 
