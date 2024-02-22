@@ -7,4 +7,12 @@ $govuk-include-default-font-face: false;
 
 // Each component needs access to the variables, functions, and mixins from
 // GOVUK Frontend.
+
+$govuk-new-typography-scale: true;
+// Feature flag for new typography scale
+//
+// When set to true, $govuk-typography-scale will use the new font map instead
+// of the current/old one as well as apply changes in components to account
+// for the updated scale.
+
 @import "govuk_frontend_support";

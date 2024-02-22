@@ -2,7 +2,12 @@
 
 // feature flag for accessible link styles
 $govuk-new-link-styles: true;
-
+// feature flag for new typography scale
+//
+// When set to true, $govuk-typography-scale will use the new font map instead
+// of the current/old one as well as apply changes in components to account
+// for the updated scale.
+$govuk-new-typography-scale: true;
 @import "govuk_publishing_components/govuk_frontend_support";
 @import "govuk_publishing_components/component_support";
 
