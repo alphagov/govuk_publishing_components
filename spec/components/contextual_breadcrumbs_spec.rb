@@ -60,7 +60,7 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "Learn to drive a car: step by step"
   end
 
-  it "renders parent-based breadcrumbs if the content_item is tagged to mainstream browse" do
+  it "renders parent-based breadcrumbs if the content_item is tagged to mainstream browse and there is a parent" do
     render_component(content_item: example_document_for("place", "find-regional-passport-office"))
     assert_no_selector(".gem-c-step-nav-header")
     assert_select "a", text: "Home"
@@ -83,12 +83,10 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "Licences and licence applications"
   end
 
-  it "renders taxon breadcrumbs if there are some and no mainstream or curated_content" do
-    content_item = example_document_for("guide", "guide")
-    content_item = remove_mainstream_browse(content_item)
-    content_item = remove_curated_related_item(content_item)
+  it "renders taxon breadcrumbs if the content_item is tagged to mainstream browse but there is no mainstream browse parent" do
+    content_item = example_document_for("guide", "guide-with-no-parent")
     content_item = set_live_taxons(content_item)
-    content_item = remove_topics(content_item)
+    remove_topics(content_item)
     render_component(content_item:)
     assert_no_selector(".gem-c-step-nav-header")
     assert_select "a", text: "Home"

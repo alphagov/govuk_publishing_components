@@ -45,7 +45,7 @@ module GovukPublishingComponents
             step_by_step: false,
             breadcrumbs: navigation.taxon_breadcrumbs,
           }
-        elsif navigation.content_tagged_to_mainstream_browse_pages?
+        elsif navigation.content_parent_is_mainstream_browse?
           {
             step_by_step: false,
             breadcrumbs: navigation.breadcrumbs,

@@ -68,6 +68,10 @@ module GovukPublishingComponents
         content_item.dig("links", "mainstream_browse_pages").present?
       end
 
+      def content_parent_is_mainstream_browse?
+        content_item.dig("links", "parent").present? && content_item.dig("links", "parent", 0, "document_type") == "mainstream_browse_page"
+      end
+
       def content_has_curated_related_items?
         content_item.dig("links", "ordered_related_items").present? && content_item.dig("links", "parent").present?
       end

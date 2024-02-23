@@ -8,7 +8,7 @@
   of the commit log.
 
 ## Unreleased
-
+* Ensure whitehall content tagged to mainstream browse and the topic taxonomy has a topic taxonomy breadcrumb ([PR #3871](https://github.com/alphagov/govuk_publishing_components/pull/3871))
 * Add GA4 tracking to the document list component ([PR #3874](https://github.com/alphagov/govuk_publishing_components/pull/3874))
 * Remove GA4 'action' from navigation content history events ([PR #3877](https://github.com/alphagov/govuk_publishing_components/pull/3877))
 
