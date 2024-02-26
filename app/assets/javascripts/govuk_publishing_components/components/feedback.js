@@ -149,10 +149,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     referrer.setAttribute('name', 'referrer')
     referrer.setAttribute('value', document.referrer || 'unknown')
     this.somethingIsWrongForm.appendChild(referrer)
-    this.somethingIsWrongForm.invalidInfoError = [
-      '<h2>Sorry, we’re unable to send your message as you haven’t given us any information.</h2>',
-      ' <p>Please tell us what you were doing or what went wrong</p>'
-    ].join('')
 
     this.timer = 0
 
@@ -166,10 +162,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Feedback.prototype.setHiddenValuesNotUsefulForm = function (gaClientId) {
     var currentPathName = window.location.pathname.replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
     var finalPathName = encodeURI(currentPathName)
-    this.surveyForm.invalidInfoError = [
-      '<h2>Sorry, we’re unable to send your message as you haven’t given us a valid email address.</h2>',
-      ' <p>Enter an email address in the correct format, like name@example.com</p>'
-    ].join('')
     if (document.querySelectorAll('[name="email_survey_signup[ga_client_id]"]').length === 0) {
       var hiddenInput = document.createElement('input')
       hiddenInput.setAttribute('type', 'hidden')
@@ -231,10 +223,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // otherwise show the generic message
     if ('response' in error) {
       error = this.handleResponseMessage(error, genericError)
-    } else if (error.status === 422) {
-      // there's clobbering by nginx on all 422 requests, which is why the response returns a rendered html page instead of the expected JSON
-      // this is a temporary workaround to ensure that we are displaying relevant error messages to the users
-      error = this.activeForm.invalidInfoError || genericError
     } else {
       error = genericError
     }
@@ -246,13 +234,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Feedback.prototype.handleResponseMessage = function (error, genericError) {
     var responseMessage = this.hasResponseMessage(error.response)
-    switch (responseMessage) {
-      case 'email survey sign up failure':
-        return genericError
-      case false:
-        return genericError
-      default:
-        return responseMessage
+    if (responseMessage) {
+      return responseMessage
+    } else {
+      return genericError
     }
   }
 
