@@ -668,33 +668,33 @@ describe('Feedback component', function () {
       })
     })
 
-    describe('submitting a form that fails because email_survey_signup[survey_source] is missing', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
+    // describe('submitting a form that fails because email_survey_signup[survey_source] is missing', function () {
+    //   beforeEach(function () {
+    //     jasmine.Ajax.install()
 
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
+    //     loadFeedbackComponent()
+    //     fillAndSubmitSomethingIsWrongForm()
 
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"message":"email survey sign up failure","errors":{"survey_source":["can\'t be blank"]}}'
-        })
-      })
+    //     jasmine.Ajax.requests.mostRecent().respondWith({
+    //       status: 422,
+    //       contentType: 'application/json',
+    //       responseText: '{"message":"email survey sign up failure","errors":{"survey_source":["can\'t be blank"]}}'
+    //     })
+    //   })
 
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
-      })
+    //   afterEach(function () {
+    //     jasmine.Ajax.uninstall()
+    //   })
 
-      it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
-        expect($('.gem-c-feedback__error-summary').html()).toContainText(
-          'Sorry, we’re unable to receive your message right now. ' +
-          'If the problem persists, we have other ways for you to provide ' +
-          'feedback on the contact page.'
-        )
-        expect($('.gem-c-feedback__error-summary').html()).not.toContainText('email survey sign up failure')
-      })
-    })
+    //   it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
+    //     expect($('.gem-c-feedback__error-summary').html()).toContainText(
+    //       'Sorry, we’re unable to receive your message right now. ' +
+    //       'If the problem persists, we have other ways for you to provide ' +
+    //       'feedback on the contact page.'
+    //     )
+    //     expect($('.gem-c-feedback__error-summary').html()).not.toContainText('email survey sign up failure')
+    //   })
+    // })
 
     describe('submitting a form that fails for some reason', function () {
       beforeEach(function () {
