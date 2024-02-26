@@ -32,7 +32,8 @@
     var remainingUtValues = utValues.slice(config.maxBeaconUTEntries);
     // Trim UT entries until they fit within the maximum URL length, ensuring at least one UT entry
     // is included.
-    while ((url + "&UT=" + beaconUtValues.join(",")).length > config.maxBeaconUrlLength && beaconUtValues.length > 1) {
+    while ((url + "&UT=" + beaconUtValues.join(",")).length > config.maxBeaconUrlLength &&
+    beaconUtValues.length > 1) {
       remainingUtValues.unshift(beaconUtValues.pop());
     }
     return [beaconUtValues, remainingUtValues];
@@ -546,10 +547,10 @@
     // -------------------------------------------------------------------------
     /// End
     // -------------------------------------------------------------------------
-    var SCRIPT_VERSION = "312";
+    var SCRIPT_VERSION = "313";
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
-    logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
+    logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION, globalConfig]);
     // Variable aliases that allow the minifier to reduce file size.
     var document = window.document;
     var addEventListener = window.addEventListener;
@@ -650,7 +651,7 @@
     var gSessionTimeout = 30 * 60; // number of seconds after which we consider a session to have "timed out" (used for calculating bouncerate)
     var gSyncId = createSyncId(); // if we send multiple beacons, use this to sync them (eg, LUX & IX) (also called "luxid")
     var gUid = refreshUniqueId(gSyncId); // cookie for this session ("Unique ID")
-    var gCustomerDataTimeout; // setTimeout timer for sending a Customer Data beacon after onload
+    var gCustomDataTimeout; // setTimeout timer for sending a Custom data beacon after onload
     var gMaxMeasureTimeout; // setTimeout timer for sending the beacon after a maximum measurement time
     var pageRestoreTime; // ms since navigationStart representing when the page was restored from the bfcache
     /**
@@ -1186,16 +1187,16 @@
       }
       if (gbLuxSent) {
         // This is special: We want to allow customers to call LUX.addData()
-        // _after_ window.onload. So we have to send a Customer Data beacon that
-        // includes the new customer data.
+        // _after_ window.onload. So we have to send a Custom data beacon that
+        // includes the new custom data.
         // Do setTimeout so that if there are multiple back-to-back addData calls
         // we get them all in one beacon.
-        if (gCustomerDataTimeout) {
+        if (gCustomDataTimeout) {
           // Cancel the timer for any previous beacons so that if they have not
           // yet been sent we can combine all the data in a new beacon.
-          clearTimeout(gCustomerDataTimeout);
+          clearTimeout(gCustomDataTimeout);
         }
-        gCustomerDataTimeout = setTimeout(_sendCustomerData, 100);
+        gCustomDataTimeout = setTimeout(_sendCustomData, 100);
       }
     }
     // _sample()
@@ -1211,7 +1212,8 @@
     * Re-initialize lux.js to start a new "page". This is typically called within a SPA at the
     * beginning of a page transition, but is also called internally when the BF cache is restored.
     */
-    function _init(startTime) {
+    function _init(startTime, clearFlags) {
+      if (clearFlags === void 0) { clearFlags = true; }
       // Some customers (incorrectly) call LUX.init on the very first page load of a SPA. This would
       // cause some first-page-only data (like paint metrics) to be lost. To prevent this, we silently
       // bail from this function when we detect an unnecessary LUX.init call.
@@ -1245,8 +1247,10 @@
       nErrors = 0;
       gFirstInputDelay = undefined;
       // Clear flags then set the flag that init was called (ie, this is a SPA).
-      gFlags = 0;
-      gFlags = addFlag(gFlags, Flags.InitCalled);
+      if (clearFlags) {
+        gFlags = 0;
+        gFlags = addFlag(gFlags, Flags.InitCalled);
+      }
       // Reset the maximum measure timeout
       createMaxMeasureTimeout();
     }
@@ -1653,9 +1657,9 @@
       if (gFlags) {
         queryParams.push("fl=" + gFlags);
       }
-      var customerData = valuesToString(customData);
-      if (customerData) {
-        queryParams.push("CD=" + customerData);
+      var customDataValues = valuesToString(customData);
+      if (customDataValues) {
+        queryParams.push("CD=" + customDataValues);
         clearUpdateCustomData();
       }
       return globalConfig.beaconUrl + "?" + queryParams.join("&");
@@ -1720,7 +1724,7 @@
           LUX.addData(conversion, BOOLEAN_TRUE);
         });
       }
-      // We want ALL beacons to have ALL the data used for query filters (geo, pagelabel, browser, & customerdata).
+      // We want ALL beacons to have ALL the data used for query filters (geo, pagelabel, browser, & custom data).
       // So we create a base URL that has all the necessary information:
       var baseUrl = _getBeaconUrl(getAllCustomData());
       var is = inlineTagSize("script");
@@ -1819,9 +1823,9 @@
         gbIxSent = 1;
       }
     }
-    // Beacon back customer data that is recorded _after_ the main beacon was sent
-    // (i.e., customer data after window.onload).
-    function _sendCustomerData() {
+    // Beacon back custom data that is recorded _after_ the main beacon was sent
+    // (i.e., custom data after window.onload).
+    function _sendCustomData() {
       var customerid = getCustomerId();
       if (!customerid ||
         !gSyncId ||
@@ -1830,8 +1834,8 @@
       ) {
         return;
       }
-      var sCustomerData = valuesToString(getUpdatedCustomData());
-      if (sCustomerData) {
+      var customDataValues = valuesToString(getUpdatedCustomData());
+      if (customDataValues) {
         var beaconUrl = _getBeaconUrl(getUpdatedCustomData());
         logger.logEvent(LogEvent.CustomDataBeaconSent, [beaconUrl]);
         _sendBeacon(beaconUrl);
@@ -2122,7 +2126,7 @@
             if (gbLuxSent) {
               // If the beacon was already sent for this page, we start a new page view and mark the
               // load time as the time it took to restore the page.
-              _init(pageRestoreTime);
+              _init(pageRestoreTime, false);
               _markLoadTime();
             }
             // Flag the current page as a bfcache restore
