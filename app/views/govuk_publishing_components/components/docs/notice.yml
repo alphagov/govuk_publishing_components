@@ -65,3 +65,13 @@ examples:
       description_govspeak: <p>This document is no longer current. We published a new version on 30 September 2015.</p>
       show_banner_title: true
       banner_title: "Information"
+  with_ga4_tracking_disabled:
+    description: |
+      Disables GA4 tracking on the component. Tracking on the component is enabled by default. Tracking on the nested govspeak component is always disabled to prevent duplication. When tracking is enabled on this component, a data module and data attributes are added to the parent element. See the [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+    data:
+      disable_ga4: true
+      title: 'This publication was withdrawn on 30 September 2015'
+      description_govspeak: <p>This document is no longer current. We published a new version on 30 September 2015.</p>
+      show_banner_title: true
+      banner_title: "Information"
+
