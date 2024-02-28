@@ -10,19 +10,8 @@
   classes << "disable-youtube" if disable_youtube_expansions
   classes << "gem-c-govspeak--inverse" if inverse
 
-  disable_ga4 ||= false
-
   data_modules = "govspeak"
-  data_modules << " ga4-link-tracker" unless disable_ga4
   data_attributes = { module: data_modules }
-
-  unless disable_ga4
-    data_attributes.merge!({
-      ga4_track_links_only: "",
-      ga4_limit_to_element_class: "call-to-action, info-notice, help-notice, advisory",
-      ga4_link: { "event_name": "navigation", "type": "callout" }.to_json,
-    })
-  end
 
 %>
 

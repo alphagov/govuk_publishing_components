@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove GA4 callout tracking from govspeak component ([PR #3889](https://github.com/alphagov/govuk_publishing_components/pull/3889))
+
 ## 37.5.0
 
 * Update LUX to 313 ([PR #3884](https://github.com/alphagov/govuk_publishing_components/pull/3884))
