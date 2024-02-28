@@ -6,14 +6,16 @@ describe('Youtube link enhancement', function () {
     var container
 
     beforeEach(function () {
+      window.GOVUK.cookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
       container = document.createElement('div')
     })
 
     afterEach(function () {
+      window.GOVUK.cookie('cookies_policy', null)
       document.body.removeChild(container)
     })
 
-    it('replaces a link and it\'s container with a media-player embed', function () {
+    it('replaces a link and its container with a media-player embed', function () {
       container.innerHTML =
         '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
@@ -124,14 +126,16 @@ describe('Youtube link enhancement', function () {
     var container
 
     beforeEach(function () {
+      window.GOVUK.cookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
       container = document.createElement('div')
     })
 
     afterEach(function () {
+      window.GOVUK.cookie('cookies_policy', null)
       document.body.removeChild(container)
     })
 
-    it('replaces a livestream link and it\'s container with a media-player embed', function () {
+    it('replaces a livestream link and its container with a media-player embed', function () {
       container.innerHTML =
         '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream</a></p>' +
