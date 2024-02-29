@@ -54,6 +54,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var value = input.value === 'on'
 
         options[name] = value
+
+        if (name === 'usage' && !value) {
+          window.GOVUK.stopSendingAnalytics = true
+          window.GOVUK.LUX = {}
+        }
       }
     }
 

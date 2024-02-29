@@ -21,6 +21,11 @@
   Analytics.PIISafe = PIISafe
 
   Analytics.prototype.sendToTrackers = function (method, args) {
+    // Allows us to stop sending tracking at the moment a user sets their usage cookies to "false" on the cookie settings page.
+    if (window.GOVUK.stopSendingAnalytics) {
+      return false
+    }
+
     for (var i = 0, l = this.trackers.length; i < l; i++) {
       var tracker = this.trackers[i]
       var fn = tracker[method]
@@ -49,7 +54,7 @@
   Analytics.prototype.trackPageview = function (path, title, options) {
     arguments[0] = arguments[0] || this.defaultPathForTrackPageview(window.location)
     if (arguments.length === 0) { arguments.length = 1 }
-    this.sendToTrackers('trackPageview', this.pii.stripPII(arguments))
+    return this.sendToTrackers('trackPageview', this.pii.stripPII(arguments))
   }
 
   /*
@@ -59,11 +64,11 @@
     options.nonInteraction – Prevent event from impacting bounce rate
   */
   Analytics.prototype.trackEvent = function (category, action, options) {
-    this.sendToTrackers('trackEvent', this.pii.stripPII(arguments))
+    return this.sendToTrackers('trackEvent', this.pii.stripPII(arguments))
   }
 
   Analytics.prototype.trackShare = function (network, options) {
-    this.sendToTrackers('trackSocial', this.pii.stripPII([network, 'share', global.location.pathname, options]))
+    return this.sendToTrackers('trackSocial', this.pii.stripPII([network, 'share', global.location.pathname, options]))
   }
 
   /*
@@ -71,14 +76,14 @@
     Universal Analytics profile
    */
   Analytics.prototype.setDimension = function (index, value) {
-    this.sendToTrackers('setDimension', this.pii.stripPII(arguments))
+    return this.sendToTrackers('setDimension', this.pii.stripPII(arguments))
   }
 
   /*
    Add a beacon to track a page in another GA account on another domain.
    */
   Analytics.prototype.addLinkedTrackerDomain = function (trackerId, name, domain) {
-    this.sendToTrackers('addLinkedTrackerDomain', arguments)
+    return this.sendToTrackers('addLinkedTrackerDomain', arguments)
   }
 
   GOVUK.Analytics = Analytics

@@ -70,6 +70,13 @@ describe('GA4 core', function () {
     })
   })
 
+  it('does not push data to the dataLayer if window.GOVUK.stopSendingAnalytics is true', function () {
+    window.GOVUK.stopSendingAnalytics = true
+    GOVUK.analyticsGa4.core.sendData({})
+    expect(window.dataLayer[0]).toEqual(undefined)
+    expect(GOVUK.analyticsGa4.core.sendData()).toEqual(false)
+  })
+
   describe('query strings allow pushing to a fake dataLayer', function () {
     var data
 
