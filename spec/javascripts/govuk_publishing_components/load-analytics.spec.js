@@ -133,41 +133,46 @@ describe('Analytics loading', function () {
     })
 
     it('doesnt load GA4 variables if initialiseGA4 is set to false', function () {
-      window.GOVUK.loadAnalytics.domains[0].initialiseGA4 = false
+      window.GOVUK.vars.domains[0].initialiseGA4 = false
       window.GOVUK.loadAnalytics.loadGa4('localhost')
       expect(window.GOVUK.analyticsGa4.vars).toEqual(null)
-      window.GOVUK.loadAnalytics.domains[0].initialiseGA4 = true
+      window.GOVUK.vars.domains[0].initialiseGA4 = true
     })
 
     describe('when additional domain details are needed', function () {
+      var saveDomains
+
+      beforeEach(function () {
+        // use slice to clone the array, otherwise this 'saving' doesn't work
+        saveDomains = window.GOVUK.vars.domains.slice()
+      })
+
       afterEach(function () {
-        delete window.GOVUK.analyticsGa4Domains
+        delete window.GOVUK.vars.extraDomains
+        window.GOVUK.vars.domains = saveDomains.slice()
       })
 
       it('defaults to the normal list when no extras are passed', function () {
-        var domains = window.GOVUK.loadAnalytics.domains
+        var expected = window.GOVUK.vars.domains.slice()
         window.GOVUK.loadAnalytics.loadExtraDomains()
         window.GOVUK.loadAnalytics.loadGa4()
-        expect(window.GOVUK.loadAnalytics.domains).toEqual(domains)
+        expect(window.GOVUK.vars.domains).toEqual(expected)
       })
 
       it('allows extra domains to be passed and appended to the existing list', function () {
-        var newDomain = {
+        var extra = {
           name: 'test-domain',
           domains: ['not-a-real-domain'],
           initialiseGA4: true,
           id: 'GTM-001'
         }
-        window.GOVUK.analyticsGa4Domains = [newDomain]
+        window.GOVUK.vars.extraDomains = [extra]
+        expected = window.GOVUK.vars.domains.slice()
+        expected.push(extra)
+
         window.GOVUK.loadAnalytics.loadExtraDomains()
-        expected = {
-          name: 'test-domain',
-          domains: ['not-a-real-domain'],
-          initialiseGA4: true,
-          id: 'GTM-001'
-        }
-        // the new domain gets appended to the end of the array
-        expect(window.GOVUK.loadAnalytics.domains[5]).toEqual(expected)
+        // the new domain should be appended to the end of the array
+        expect(window.GOVUK.vars.domains).toEqual(expected)
 
         window.GOVUK.loadAnalytics.loadGa4('not-a-real-domain')
         expect(window.GOVUK.analyticsGa4.vars.id).toEqual('GTM-001')

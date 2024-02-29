@@ -18,11 +18,12 @@ The Google Analytics 4 environment variables are:
 
 ## Passing extra options
 
-If you wish to initialise the GA4 code on a new domain with different attributes, the code has been written to accept an array of additional values. Extra domains can be added before loading `dependencies.js` as below.
+If you wish to initialise the GA4 code on a new domain with different attributes, the code has been written to accept an array of additional values. Extra domains can be added at the end of your code as shown.
 
 ```JavaScript
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.analyticsGa4Domains = [
+window.GOVUK.vars = window.GOVUK.vars || {}
+window.GOVUK.vars.extraDomains = [
   {
     name: 'my-domain',
     domains: ['not-a-real-domain.co.org.uk'],
@@ -34,6 +35,5 @@ window.GOVUK.analyticsGa4Domains = [
     gaProperty: 'gaProperty', // for UA
     gaPropertyCrossDomain: 'gaPropertyCrossDomain' // for UA (optional)
   }
-  // add further into the array as required
 ]
 ```

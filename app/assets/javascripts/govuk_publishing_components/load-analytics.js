@@ -1,83 +1,12 @@
 //= require govuk_publishing_components/analytics
 //= require govuk_publishing_components/analytics-ga4
 //= require govuk_publishing_components/analytics/linked-domains
+//= require govuk_publishing_components/domain-config
 
 window.GOVUK.loadAnalytics = {
-  domains: [
-    {
-      // need to have this one at the start, see loadGa4 function
-      name: 'development',
-      domains: [
-        'localhost',
-        '127.0.0.1',
-        '0.0.0.0',
-        'dev.gov.uk'
-      ],
-      initialiseGA4: true,
-      id: 'GTM-MG7HG5W',
-      auth: 'bRiZ-jiEHtw6hHpGd6dF9w',
-      preview: 'env-3',
-      gaProperty: 'UA-UNSET',
-      gaPropertyCrossDomain: 'UA-UNSET',
-      consentApiUrl: 'staging'
-    },
-    {
-      name: 'production',
-      domains: [
-        'www.gov.uk',
-        'www-origin.publishing.service.gov.uk',
-        'assets.publishing.service.gov.uk'
-      ],
-      initialiseGA4: true,
-      id: 'GTM-MG7HG5W',
-      gaProperty: 'UA-26179049-1',
-      gaPropertyCrossDomain: 'UA-145652997-1',
-      consentApiUrl: 'production'
-    },
-    {
-      name: 'staging',
-      domains: [
-        'www.staging.publishing.service.gov.uk',
-        'www-origin.staging.publishing.service.gov.uk',
-        'assets.staging.publishing.service.gov.uk'
-      ],
-      initialiseGA4: true,
-      id: 'GTM-MG7HG5W',
-      auth: 'oJWs562CxSIjZKn_GlB5Bw',
-      preview: 'env-5',
-      gaProperty: 'UA-26179049-20',
-      gaPropertyCrossDomain: 'UA-145652997-1',
-      consentApiUrl: 'staging'
-    },
-    {
-      name: 'integration',
-      domains: [
-        'www.integration.publishing.service.gov.uk',
-        'www-origin.integration.publishing.service.gov.uk',
-        'assets.integration.publishing.service.gov.uk'
-      ],
-      initialiseGA4: true,
-      id: 'GTM-MG7HG5W',
-      auth: 'C7iYdcsOlYgGmiUJjZKrHQ',
-      preview: 'env-4',
-      gaProperty: 'UA-26179049-22',
-      gaPropertyCrossDomain: 'UA-145652997-1',
-      consentApiUrl: 'staging'
-    },
-    {
-      name: 'devdocs',
-      domains: [
-        'docs.publishing.service.gov.uk'
-      ],
-      initialiseGA4: true,
-      id: 'GTM-TNKCK97',
-      consentApiUrl: 'production'
-    }
-  ],
-
   loadExtraDomains: function () {
-    if (Array.isArray(window.GOVUK.analyticsGa4Domains)) {
-      this.domains = this.domains.concat(window.GOVUK.analyticsGa4Domains)
+    if (Array.isArray(window.GOVUK.vars.extraDomains)) {
+      window.GOVUK.vars.domains = window.GOVUK.vars.domains.concat(window.GOVUK.vars.extraDomains)
     }
   },
 
@@ -94,8 +23,8 @@ window.GOVUK.loadAnalytics = {
     window.GOVUK.analyticsVars.gaProperty = 'UA-UNSET'
     window.GOVUK.analyticsVars.gaPropertyCrossDomain = 'UA-UNSET'
 
-    for (var i = 0; i < this.domains.length; i++) {
-      var current = this.domains[i]
+    for (var i = 0; i < window.GOVUK.vars.domains.length; i++) {
+      var current = window.GOVUK.vars.domains[i]
       if (this.arrayContains(currentDomain, current.domains)) {
         window.GOVUK.analyticsVars.gaProperty = current.gaProperty
         window.GOVUK.analyticsVars.gaPropertyCrossDomain = current.gaPropertyCrossDomain
@@ -140,11 +69,11 @@ window.GOVUK.loadAnalytics = {
   getEnvironment: function (currentDomain) {
     // lots of dev domains, so simplify the matching process
     if (currentDomain.match(/[a-zA-Z0-9.-]+dev\.gov\.uk/)) {
-      return this.domains[0]
+      return window.GOVUK.vars.domains[0]
     } else {
-      for (var i = 0; i < this.domains.length; i++) {
-        if (this.arrayContains(currentDomain, this.domains[i].domains)) {
-          return this.domains[i]
+      for (var i = 0; i < window.GOVUK.vars.domains.length; i++) {
+        if (this.arrayContains(currentDomain, window.GOVUK.vars.domains[i].domains)) {
+          return window.GOVUK.vars.domains[i]
         }
       }
     }
