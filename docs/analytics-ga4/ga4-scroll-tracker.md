@@ -61,6 +61,14 @@ When tracking headings, the following data will be pushed to the dataLayer.
 }
 ```
 
+If you need custom text when tracking a specific heading, a data attribute can be added to the element for this purpose.
+
+```HTML
+<h2 data-ga4-text="this text will be recorded in the event">
+  This text will be ignored
+</h2>
+```
+
 ### Track markers
 
 Sometimes only certain elements on a page should be tracked. This can be done by adding a marker to the required elements and configuring as shown.
@@ -81,7 +89,7 @@ Sometimes only certain elements on a page should be tracked. This can be done by
 
 Any element that a marker is attached to should be short in both height and text content to be tracked well, because:
 
-- the `text` attribute collects the full text of the element with the marker
+- the `text` attribute collects the full text of the element with the marker (or the `data-ga4-text` attribute can be applied, as for heading tracking)
 - scroll tracking only happens when the marked element is fully visible to the user
 
 When tracking markers, the following data will be pushed to the dataLayer.
