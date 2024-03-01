@@ -19,11 +19,6 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item
   end
 
-  def remove_topics(content_item)
-    content_item["links"].delete("topics")
-    content_item
-  end
-
   def set_parent_titles_to_businesses(content_item)
     content_item["links"]["parent"][0]["title"] = "Business and self-employed"
     content_item["links"]["parent"][0]["links"]["parent"][0]["title"] = "Licences and licence applications"
@@ -86,7 +81,6 @@ describe "ContextualBreadcrumbs", type: :view do
   it "renders taxon breadcrumbs if the content_item is tagged to mainstream browse but there is no mainstream browse parent" do
     content_item = example_document_for("guide", "guide-with-no-parent")
     content_item = set_live_taxons(content_item)
-    remove_topics(content_item)
     render_component(content_item:)
     assert_no_selector(".gem-c-step-nav-header")
     assert_select "a", text: "Home"

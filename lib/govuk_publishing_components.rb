@@ -24,7 +24,6 @@ require "govuk_publishing_components/presenters/page_with_step_by_step_navigatio
 require "govuk_publishing_components/presenters/public_layout_helper"
 require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_ancestors"
 require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_taxons"
-require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_topic"
 require "govuk_publishing_components/presenters/checkboxes_helper"
 require "govuk_publishing_components/presenters/select_helper"
 require "govuk_publishing_components/presenters/meta_tags"
