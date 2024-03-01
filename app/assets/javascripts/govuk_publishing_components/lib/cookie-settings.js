@@ -107,7 +107,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   CookieSettings.prototype.getReferrerLink = function () {
-    return document.referrer ? new URL(document.referrer).pathname : false
+    var documentReferrer = false
+    try {
+      documentReferrer = document.referrer || new URL(document.referrer).pathname
+    } catch (e) {
+      console.error('Error grabbing referrer for cookie settings', window.location, e)
+    }
+    return documentReferrer
   }
 
   Modules.CookieSettings = CookieSettings
