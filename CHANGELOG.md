@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Allow custom text for GA4 scroll tracker ([PR #3896](https://github.com/alphagov/govuk_publishing_components/pull/3896))
 * Ensure analytics stops firing if a user disables usage cookies on our cookie settings page ([PR #3893](https://github.com/alphagov/govuk_publishing_components/pull/3893))
 
 ## 37.5.1

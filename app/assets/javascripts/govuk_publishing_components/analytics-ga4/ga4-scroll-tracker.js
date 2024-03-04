@@ -164,7 +164,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           bottom: pos.bottom + document.documentElement.scrollTop,
           eventData: {
             type: type,
-            text: heading.textContent.replace(/\s+/g, ' ').trim(),
+            text: heading.getAttribute('data-ga4-text') || heading.textContent.replace(/\s+/g, ' ').trim(),
             index_section: i + 1,
             index_section_count: totalHeadings
           }

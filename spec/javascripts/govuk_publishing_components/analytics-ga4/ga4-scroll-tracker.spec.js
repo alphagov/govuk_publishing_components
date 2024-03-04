@@ -80,7 +80,7 @@ describe('GA4 scroll tracker', function () {
       var extremeHeight = window.innerHeight + 1000
       var FIXTURE =
         '<main style="position: absolute; top: 0px;">' +
-          '<h1>Heading 1</h1>' +
+          '<h1 data-ga4-text="Alternative heading 1 text">Heading 1</h1>' +
           '<div style="height:' + extremeHeight + 'px">' +
             '<h2 style="display: none;">Heading 2</h2>' +
             '<h3 style="margin-top: ' + extremeHeight + 'px;">Heading 3</h3>' +
@@ -104,8 +104,8 @@ describe('GA4 scroll tracker', function () {
     })
 
     it('should send a tracking event on initialisation for headings that are already visible', function () {
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -118,8 +118,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should track headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -137,8 +137,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should track newly visible headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -156,8 +156,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should track when the body height changes', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -177,8 +177,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should not track headings wrapped in ignored elements', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -291,7 +291,7 @@ describe('GA4 scroll tracker', function () {
       var extremeHeight = window.innerHeight + 1000
       var FIXTURE =
         '<main style="position: absolute; top: 0px;">' +
-          '<h1 data-ga4-scroll-marker>Heading 1</h1>' +
+          '<h1 data-ga4-scroll-marker data-ga4-text="Alternative heading 1 text">Heading 1</h1>' +
           '<div style="height:' + extremeHeight + 'px">' +
             '<h2 data-ga4-scroll-marker style="display: none;">Heading 2</h2>' +
             '<h3 data-ga4-scroll-marker style="margin-top: ' + extremeHeight + 'px;">Heading 3</h3>' +
@@ -315,8 +315,8 @@ describe('GA4 scroll tracker', function () {
     })
 
     it('should send a tracking event on initialisation for headings that are already visible', function () {
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -329,8 +329,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should track headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -348,8 +348,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should track newly visible headings on scroll and ignore already tracked headings', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -367,8 +367,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should track when the body height changes', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -388,8 +388,8 @@ describe('GA4 scroll tracker', function () {
 
     it('should not track headings wrapped in ignored elements', function () {
       expect(window.dataLayer.length).toEqual(1)
-      expected.event_data.text = 'Heading 1'
-      expected.event_data.section = 'Heading 1'
+      expected.event_data.text = 'Alternative heading 1 text'
+      expected.event_data.section = 'Alternative heading 1 text'
       expected.event_data.index.index_section = '1'
       expect(window.dataLayer[0]).toEqual(expected)
 
