@@ -32,6 +32,7 @@ beforeEach(function () {
 
 // load-analytics.js modifies the universal analytics vars, so we need to ensure they are reset each time.
   savedUaVars = window.GOVUK.extendObject(window.GOVUK.analyticsVars)
+  window.GOVUK.stopSendingAnalytics = false
 })
 
 afterEach(function () {

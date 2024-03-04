@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Ensure analytics stops firing if a user disables usage cookies on our cookie settings page ([PR #3893](https://github.com/alphagov/govuk_publishing_components/pull/3893))
+
 ## 37.5.1
 
 * Remove GA4 callout tracking from govspeak component ([PR #3889](https://github.com/alphagov/govuk_publishing_components/pull/3889))

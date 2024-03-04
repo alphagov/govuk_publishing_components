@@ -322,4 +322,22 @@ describe('GOVUK.Analytics', function () {
       expect(allArgs).toContain(['test3.send', 'pageview'])
     })
   })
+
+  describe('when window.GOVUK.stopSendingAnalytics is true', function () {
+    beforeEach(function () {
+      window.GOVUK.stopSendingAnalytics = true
+    })
+
+    it('disables pageview tracking', function () {
+      expect(analytics.trackPageview()).toEqual(false)
+    })
+
+    it('disables share tracking', function () {
+      expect(analytics.trackShare()).toEqual(false)
+    })
+
+    it('disables event tracking', function () {
+      expect(analytics.trackShare()).toEqual(false)
+    })
+  })
 })

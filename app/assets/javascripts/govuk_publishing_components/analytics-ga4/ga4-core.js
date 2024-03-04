@@ -39,6 +39,11 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
     },
 
     sendData: function (data) {
+      // Allows us to stop sending tracking at the moment a user sets their usage cookies to "false" on the cookie settings page.
+      if (window.GOVUK.stopSendingAnalytics) {
+        return false
+      }
+
       data.govuk_gem_version = this.getGemVersion()
       data.timestamp = this.getTimestamp()
 
