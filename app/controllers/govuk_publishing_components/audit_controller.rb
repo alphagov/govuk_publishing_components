@@ -13,7 +13,6 @@ module GovukPublishingComponents
         frontend
         government-frontend
         govspeak-preview
-        info-frontend
         release
         search-admin
         signon
