@@ -68,8 +68,8 @@ $large-input-size: 50px;
   @include govuk-font($size: 19, $line-height: (28 / 19));
   margin: 0;
   width: 100%;
-  height: govuk-em(40, 16);
-  padding: govuk-em(6, 16);
+  height: govuk-em(40, 19);
+  padding: govuk-em(6, 19);
   border: $govuk-border-width-form-element solid $govuk-input-border-colour;
   background: govuk-colour("white");
   border-radius: 0; // otherwise iphones apply an automatic border radius
@@ -77,10 +77,6 @@ $large-input-size: 50px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  @include govuk-media-query($from: tablet) {
-    height: govuk-em(40, 19);
-    padding: govuk-em(6, 19);
-  }
 
   // the .focus class is added by JS and ensures that the input remains above the label once clicked/filled in
   &:focus,
