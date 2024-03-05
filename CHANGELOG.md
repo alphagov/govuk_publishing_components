@@ -8,6 +8,8 @@
   of the commit log.
 
 ## Unreleased
+
+* Add single cookie consent API ([PR #3854](https://github.com/alphagov/govuk_publishing_components/pull/3854))
 * Update popular links in super navigation header ([PR #3904](https://github.com/alphagov/govuk_publishing_components/pull/3904))
 * Allow custom text for GA4 scroll tracker ([PR #3896](https://github.com/alphagov/govuk_publishing_components/pull/3896))
 * Ensure analytics stops firing if a user disables usage cookies on our cookie settings page ([PR #3893](https://github.com/alphagov/govuk_publishing_components/pull/3893))
