@@ -11,7 +11,6 @@ module GovukPublishingComponents
           finder-frontend
           frontend
           government-frontend
-          info-frontend
           service-manual-frontend
           smart-answers
         ]
