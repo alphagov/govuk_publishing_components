@@ -721,8 +721,11 @@ describe('A specialist link tracker', function () {
       links.setAttribute('data-ga4-limit-to-element-class', 'hello')
       links.setAttribute('data-ga4-link', JSON.stringify({ event_name: 'navigation', type: 'callout' }))
 
-      links.innerHTML = '<div class="hello"><a class="otherLink" href="https://example.com">GA4 Link Tracker</a></div>' +
-      '<a class="specialistLink" href="https://example.co.uk">Specialist Link Tracker</a>'
+      links.innerHTML =
+        '<div class="hello">' +
+          '<a class="otherLink" href="https://example.com">GA4 Link Tracker</a>' +
+        '</div>' +
+        '<a class="specialistLink" href="https://example.co.uk">Specialist Link Tracker</a>'
 
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
@@ -737,6 +740,7 @@ describe('A specialist link tracker', function () {
     })
 
     afterEach(function () {
+      GOVUK.cookie('cookies_policy', null)
       body.removeEventListener('click', preventDefault)
       links.remove()
     })
