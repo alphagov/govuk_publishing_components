@@ -36,6 +36,7 @@ beforeEach(function () {
 })
 
 afterEach(function () {
+  GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.stopTracking()
   resetCookies()
   window.GOVUK.analyticsVars = savedUaVars
 })
