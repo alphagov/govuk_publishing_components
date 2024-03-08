@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Reintroduce GA4 callout tracking and fix link tracker compatibility ([PR #3905](https://github.com/alphagov/govuk_publishing_components/pull/3905))
+
 ## 37.6.1
 
 * Include single consent api package ([PR #3908](https://github.com/alphagov/govuk_publishing_components/pull/3908))
