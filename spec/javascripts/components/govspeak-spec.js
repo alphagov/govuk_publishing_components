@@ -9,6 +9,14 @@ describe('Govspeak', function () {
   })
 
   describe('youtube enhancement', function () {
+    beforeEach(function () {
+      window.GOVUK.cookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+    })
+
+    afterEach(function () {
+      window.GOVUK.cookie('cookies_policy', null)
+    })
+
     it('embeds youtube videos', function () {
       container = document.createElement('div')
       container.innerHTML =

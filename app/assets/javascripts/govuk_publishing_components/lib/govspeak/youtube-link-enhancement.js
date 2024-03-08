@@ -163,7 +163,7 @@
 
   YoutubeLinkEnhancement.prototype.campaignCookiesAllowed = function () {
     var cookiePolicy = window.GOVUK.getConsentCookie()
-    return cookiePolicy !== null ? cookiePolicy.campaigns : true
+    return cookiePolicy !== null ? cookiePolicy.campaigns : false
   }
 
   YoutubeLinkEnhancement.nextId = function () {

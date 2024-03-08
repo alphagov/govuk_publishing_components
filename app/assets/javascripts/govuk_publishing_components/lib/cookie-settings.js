@@ -12,31 +12,39 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     document.querySelector('form[data-module=cookie-settings]')
       .addEventListener('submit', this.$module.submitSettingsForm)
 
-    this.setInitialFormValues()
+    if (window.GOVUK.useSingleConsentApi) {
+      window.GOVUK.singleConsent.init(this.setInitialFormValues.bind(this))
+    } else {
+      this.setInitialFormValues()
+    }
   }
 
   CookieSettings.prototype.setInitialFormValues = function () {
     if (!window.GOVUK.cookie('cookies_policy')) {
-      window.GOVUK.setDefaultConsentCookie()
+      if (!window.GOVUK.useSingleConsentApi) {
+        window.GOVUK.setDefaultConsentCookie()
+      }
     }
 
     var currentConsentCookie = window.GOVUK.cookie('cookies_policy')
-    var currentConsentCookieJSON = JSON.parse(currentConsentCookie)
+    if (currentConsentCookie) {
+      var currentConsentCookieJSON = JSON.parse(currentConsentCookie)
 
-    // We don't need the essential value as this cannot be changed by the user
-    delete currentConsentCookieJSON.essential
+      // We don't need the essential value as this cannot be changed by the user
+      delete currentConsentCookieJSON.essential
 
-    for (var cookieType in currentConsentCookieJSON) {
-      var radioButton
+      for (var cookieType in currentConsentCookieJSON) {
+        var radioButton
 
-      if (currentConsentCookieJSON[cookieType]) {
-        radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
-      } else {
-        radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
-      }
+        if (currentConsentCookieJSON[cookieType]) {
+          radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
+        } else {
+          radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
+        }
 
-      if (radioButton) {
-        radioButton.checked = true
+        if (radioButton) {
+          radioButton.checked = true
+        }
       }
     }
   }
@@ -62,13 +70,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
     }
 
-    window.GOVUK.setConsentCookie(options)
-    window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
+    if (window.GOVUK.useSingleConsentApi) {
+      window.GOVUK.singleConsent.setPreferences(null, options)
+    } else {
+      window.GOVUK.setConsentCookie(options)
+      window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
+    }
 
     this.fireAnalyticsEvent(options)
-
     this.showConfirmationMessage()
-
     return false
   }
 

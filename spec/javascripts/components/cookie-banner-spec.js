@@ -40,230 +40,343 @@ describe('Cookie banner', function () {
               '</div>' +
           '</div>' +
       '</div>'
-
     document.body.appendChild(container)
-    // set and store consent for all as a basis of comparison
-    window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-    ALL_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
-
-    // set and store default cookie consent to use as basis of comparison
-    window.GOVUK.setDefaultConsentCookie()
-    DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
   })
 
   afterEach(function () {
+    delete window.GOVUK.useSingleConsentApi
     document.body.removeChild(container)
   })
 
-  it('should show the cookie banner', function () {
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
+  describe('when the single consent api is not enabled', function () {
+    beforeEach(function () {
+      // set and store consent for all as a basis of comparison
+      window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+      ALL_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
 
-    var cookieBannerMain = document.querySelector('.js-banner-wrapper')
-    var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
-    var cookieBannerConfirmationReject = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
+      // set and store default cookie consent to use as basis of comparison
+      window.GOVUK.setDefaultConsentCookie()
+      DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
+    })
 
-    expect(element).toBeVisible()
-    expect(cookieBannerMain).toBeVisible()
-    expect(cookieBannerConfirmationAccept).toBeHidden()
-    expect(cookieBannerConfirmationReject).toBeHidden()
-  })
+    it('should show the cookie banner', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
 
-  it('should show the cookie banner when preferences have not been actively set', function () {
-    GOVUK.setDefaultConsentCookie() // Set default cookies, which are set whether there is any interaction or not.
+      var cookieBannerMain = document.querySelector('.js-banner-wrapper')
+      var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
+      var cookieBannerConfirmationReject = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
 
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
+      expect(element).toBeVisible()
+      expect(cookieBannerMain).toBeVisible()
+      expect(cookieBannerConfirmationAccept).toBeHidden()
+      expect(cookieBannerConfirmationReject).toBeHidden()
+    })
 
-    var cookieBannerMain = document.querySelector('.js-banner-wrapper')
-    var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
-    var cookieBannerConfirmationReject = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
+    it('should show the cookie banner when preferences have not been actively set', function () {
+      GOVUK.setDefaultConsentCookie() // Set default cookies, which are set whether there is any interaction or not.
 
-    expect(element).toBeVisible()
-    expect(cookieBannerMain).toBeVisible()
-    expect(cookieBannerConfirmationAccept).toBeHidden()
-    expect(cookieBannerConfirmationReject).toBeHidden()
-  })
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
 
-  it('should hide the cookie banner when preferences have been actively set', function () {
-    GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+      var cookieBannerMain = document.querySelector('.js-banner-wrapper')
+      var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
+      var cookieBannerConfirmationReject = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
 
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
+      expect(element).toBeVisible()
+      expect(cookieBannerMain).toBeVisible()
+      expect(cookieBannerConfirmationAccept).toBeHidden()
+      expect(cookieBannerConfirmationReject).toBeHidden()
+    })
 
-    expect(element).toBeHidden()
-  })
+    it('should hide the cookie banner when preferences have been actively set', function () {
+      GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
 
-  it('should have the hidden attribute by default, and remove it once the JS loads when cookies are not set', function () {
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    expect(element.hasAttribute('hidden')).toEqual(true)
-    expect(element.offsetParent).toEqual(null)
-    new GOVUK.Modules.CookieBanner(element).init()
-    expect(element.hasAttribute('hidden')).toEqual(false)
-    expect(!!element.offsetParent).toEqual(true)
-  })
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
 
-  it('should have the hidden attribute by default, and leave it when cookies are set', function () {
-    GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    expect(element.offsetParent).toEqual(null)
-    expect(element.hasAttribute('hidden')).toEqual(true)
-    new GOVUK.Modules.CookieBanner(element).init()
-    expect(element.offsetParent).toEqual(null)
-    expect(element.hasAttribute('hidden')).toEqual(true)
-  })
+      expect(element).toBeHidden()
+    })
 
-  it('sets a default consent cookie', function () {
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
+    it('should have the hidden attribute by default, and remove it once the JS loads when cookies are not set', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      expect(element.hasAttribute('hidden')).toEqual(true)
+      expect(element.offsetParent).toEqual(null)
+      new GOVUK.Modules.CookieBanner(element).init()
+      expect(element.hasAttribute('hidden')).toEqual(false)
+      expect(!!element.offsetParent).toEqual(true)
+    })
 
-    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
-    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
-  })
+    it('should have the hidden attribute by default, and leave it when cookies are set', function () {
+      GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      expect(element.offsetParent).toEqual(null)
+      expect(element.hasAttribute('hidden')).toEqual(true)
+      new GOVUK.Modules.CookieBanner(element).init()
+      expect(element.offsetParent).toEqual(null)
+      expect(element.hasAttribute('hidden')).toEqual(true)
+    })
 
-  it('deletes unconsented cookies if cookie preferences not explicitly set', function () {
-    window.GOVUK.setCookie('_ga', 'this is not allowed!')
-    spyOn(GOVUK, 'deleteUnconsentedCookies').and.callThrough()
+    it('sets a default consent cookie', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
 
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
+      expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+    })
 
-    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
-    expect(GOVUK.deleteUnconsentedCookies).toHaveBeenCalled()
-    expect(GOVUK.getCookie('_ga', null))
-  })
+    it('deletes unconsented cookies if cookie preferences not explicitly set', function () {
+      window.GOVUK.setCookie('_ga', 'this is not allowed!')
+      spyOn(GOVUK, 'deleteUnconsentedCookies').and.callThrough()
 
-  it('sets consent cookie when accepting cookies', function () {
-    spyOn(GOVUK, 'analyticsInit')
-    spyOn(GOVUK, 'setCookie').and.callThrough()
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
 
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+      expect(GOVUK.deleteUnconsentedCookies).toHaveBeenCalled()
+      expect(GOVUK.getCookie('_ga', null))
+    })
 
-    // Manually reset the consent cookie so we can check the accept button works as intended
-    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
-    GOVUK.cookie('cookies_policy', null)
+    it('sets consent cookie when accepting cookies', function () {
+      spyOn(GOVUK, 'analyticsInit')
+      spyOn(GOVUK, 'setCookie').and.callThrough()
 
-    var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
-    acceptCookiesButton.click()
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
 
-    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
-    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
-    expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
-    expect(GOVUK.analyticsInit).toHaveBeenCalled()
-  })
+      // Manually reset the consent cookie so we can check the accept button works as intended
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+      GOVUK.cookie('cookies_policy', null)
 
-  it('sets global_bar_seen cookie when accepting cookies', function () {
-    if (typeof GOVUK.globalBarInit === 'undefined') {
-      GOVUK.globalBarInit = {
-        init: function () {}
+      var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
+      acceptCookiesButton.click()
+
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
+      expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
+      expect(GOVUK.analyticsInit).toHaveBeenCalled()
+    })
+
+    it('sets global_bar_seen cookie when accepting cookies', function () {
+      if (typeof GOVUK.globalBarInit === 'undefined') {
+        GOVUK.globalBarInit = {
+          init: function () {}
+        }
       }
+      spyOn(GOVUK.globalBarInit, 'init')
+      spyOn(GOVUK, 'setCookie').and.callThrough()
+
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
+
+      // Manually reset the consent cookie so we can check the accept button works as intended
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+      GOVUK.cookie('cookies_policy', null)
+
+      var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
+      acceptCookiesButton.click()
+
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
+      expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
+      expect(GOVUK.globalBarInit.init).toHaveBeenCalled()
+    })
+
+    it('shows a confirmation message when cookies have been accepted', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
+
+      var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
+      var confirmationMessageAccepted = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
+
+      expect(confirmationMessageAccepted).toBeHidden()
+
+      acceptCookiesButton.click()
+
+      expect(confirmationMessageAccepted).toBeVisible()
+      expect(confirmationMessageAccepted.innerText).toContain('You have accepted additional cookies. You can change your cookie settings at any time.')
+    })
+
+    it('shows a confirmation message when cookies have been rejected', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
+
+      var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
+      var confirmationMessageRejected = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
+
+      expect(confirmationMessageRejected).toBeHidden()
+
+      rejectCookiesButton.click()
+
+      expect(confirmationMessageRejected).toBeVisible()
+      expect(confirmationMessageRejected.innerText).toContain('You have rejected additional cookies. You can change your cookie settings at any time.')
+    })
+
+    it('set focus to the confirmation message after clicking button', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
+
+      var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
+      var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
+
+      rejectCookiesButton.click()
+
+      var focusedElement = document.activeElement
+
+      expect(focusedElement.className).toBe(confirmationMessage.className)
+    })
+
+    it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {
+      spyOn(GOVUK, 'setCookie').and.callThrough()
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
+
+      var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
+
+      rejectCookiesButton.click()
+
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', DEFAULT_COOKIE_CONSENT, { days: 365 })
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
+    })
+
+    it('should hide when pressing the "hide" link', function () {
+      spyOn(GOVUK, 'setCookie').and.callThrough()
+
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
+
+      var link = document.querySelector('button[data-hide-cookie-banner="true"]')
+      link.dispatchEvent(new window.Event('click'))
+
+      expect(element).toBeHidden()
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBeTruthy()
+    })
+
+    describe('when rendered inside an iframe', function () {
+      var windowParent = window.parent
+      var mockWindowParent = {} // window.parent would be different than window when used inside an iframe
+
+      beforeEach(function () {
+        window.parent = mockWindowParent
+      })
+
+      afterEach(function () {
+        window.parent = windowParent
+      })
+
+      it('should hide the cookie banner', function () {
+        var element = document.querySelector('[data-module="cookie-banner"]')
+        new GOVUK.Modules.CookieBanner(element).init()
+        expect(element).toBeHidden()
+      })
+    })
+  })
+
+  describe('when the single consent api is enabled', function () {
+    var acceptAll = {
+      essential: true,
+      usage: true,
+      campaigns: true,
+      settings: true
     }
-    spyOn(GOVUK.globalBarInit, 'init')
-    spyOn(GOVUK, 'setCookie').and.callThrough()
-
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
-
-    // Manually reset the consent cookie so we can check the accept button works as intended
-    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
-    GOVUK.cookie('cookies_policy', null)
-
-    var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
-    acceptCookiesButton.click()
-
-    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
-    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
-    expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
-    expect(GOVUK.globalBarInit.init).toHaveBeenCalled()
-  })
-
-  it('shows a confirmation message when cookies have been accepted', function () {
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
-
-    var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
-    var confirmationMessageAccepted = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
-
-    expect(confirmationMessageAccepted).toBeHidden()
-
-    acceptCookiesButton.click()
-
-    expect(confirmationMessageAccepted).toBeVisible()
-    expect(confirmationMessageAccepted.innerText).toContain('You have accepted additional cookies. You can change your cookie settings at any time.')
-  })
-
-  it('shows a confirmation message when cookies have been rejected', function () {
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
-
-    var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
-    var confirmationMessageRejected = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
-
-    expect(confirmationMessageRejected).toBeHidden()
-
-    rejectCookiesButton.click()
-
-    expect(confirmationMessageRejected).toBeVisible()
-    expect(confirmationMessageRejected.innerText).toContain('You have rejected additional cookies. You can change your cookie settings at any time.')
-  })
-
-  it('set focus to the confirmation message after clicking button', function () {
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
-
-    var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
-    var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
-
-    rejectCookiesButton.click()
-
-    var focusedElement = document.activeElement
-
-    expect(focusedElement.className).toBe(confirmationMessage.className)
-  })
-
-  it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {
-    spyOn(GOVUK, 'setCookie').and.callThrough()
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
-
-    var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
-
-    rejectCookiesButton.click()
-
-    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', DEFAULT_COOKIE_CONSENT, { days: 365 })
-    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
-  })
-
-  it('should hide when pressing the "hide" link', function () {
-    spyOn(GOVUK, 'setCookie').and.callThrough()
-
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner(element).init()
-
-    var link = document.querySelector('button[data-hide-cookie-banner="true"]')
-    link.dispatchEvent(new window.Event('click'))
-
-    expect(element).toBeHidden()
-    expect(GOVUK.getCookie('cookies_preferences_set')).toBeTruthy()
-  })
-
-  describe('when rendered inside an iframe', function () {
-    var windowParent = window.parent
-    var mockWindowParent = {} // window.parent would be different than window when used inside an iframe
+    var rejectAll = {
+      essential: true,
+      usage: false,
+      campaigns: false,
+      settings: false
+    }
+    var mix = {
+      essential: true,
+      usage: false,
+      campaigns: true,
+      settings: true
+    }
 
     beforeEach(function () {
-      window.parent = mockWindowParent
+      window.GOVUK.useSingleConsentApi = true
+      // delete consent cookies
+      window.GOVUK.cookie('cookies_policy')
+      window.GOVUK.cookie('cookies_preferences_set')
+      spyOn(window.GOVUK, 'setCookie')
+      spyOn(window.GOVUK.singleConsent, 'init').and.callThrough()
+      spyOn(window.GOVUK.singleConsent, 'apiCallback').and.callThrough()
     })
 
     afterEach(function () {
-      window.parent = windowParent
+      // delete consent cookies
+      window.GOVUK.cookie('cookies_policy')
+      window.GOVUK.cookie('cookies_preferences_set')
     })
 
-    it('should hide the cookie banner', function () {
+    it('initialises the single consent api on init', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
       new GOVUK.Modules.CookieBanner(element).init()
-      expect(element).toBeHidden()
+      expect(window.GOVUK.singleConsent.init).toHaveBeenCalled()
+      expect(window.GOVUK.singleConsent.apiCallback).toHaveBeenCalled()
+      expect(window.GOVUK.setCookie).not.toHaveBeenCalled()
+    })
+
+    it('should show the cookie banner', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner(element).init()
+      expect(element).toBeVisible()
+    })
+
+    describe('when a consent api UUID is passed in the URL', function () {
+      var existingUrl
+
+      beforeEach(function () {
+        jasmine.Ajax.install()
+        existingUrl = window.location.pathname + window.location.search
+        window.history.replaceState(null, null, '?gov_singleconsent_uid=1234')
+      })
+
+      afterEach(function () {
+        jasmine.Ajax.uninstall()
+        window.history.replaceState(null, null, existingUrl)
+      })
+
+      it('should hide the cookie banner and set cookies for consent', function () {
+        var element = document.querySelector('[data-module="cookie-banner"]')
+        new GOVUK.Modules.CookieBanner(element).init()
+        jasmine.Ajax.requests.mostRecent().respondWith({
+          status: 200,
+          contentType: 'text/plain',
+          responseText: '{ "uid": "1234", "status": ' + JSON.stringify(acceptAll) + '}'
+        })
+        expect(element).not.toBeVisible()
+        expect(window.GOVUK.cookie('cookies_preferences_set')).toEqual('true')
+        expect(window.GOVUK.cookie('cookies_policy')).toEqual(JSON.stringify(acceptAll))
+        expect(window.GOVUK.setCookie).not.toHaveBeenCalled()
+      })
+
+      it('should hide the cookie banner and set cookies for reject', function () {
+        var element = document.querySelector('[data-module="cookie-banner"]')
+        new GOVUK.Modules.CookieBanner(element).init()
+        jasmine.Ajax.requests.mostRecent().respondWith({
+          status: 200,
+          contentType: 'text/plain',
+          responseText: '{ "uid": "1234", "status": ' + JSON.stringify(rejectAll) + '}'
+        })
+        expect(element).not.toBeVisible()
+        expect(window.GOVUK.cookie('cookies_preferences_set')).toEqual('true')
+        expect(window.GOVUK.cookie('cookies_policy')).toEqual(JSON.stringify(rejectAll))
+        expect(window.GOVUK.setCookie).not.toHaveBeenCalled()
+      })
+
+      it('should hide the cookie banner and set cookies for a varied cookie consent', function () {
+        var element = document.querySelector('[data-module="cookie-banner"]')
+        new GOVUK.Modules.CookieBanner(element).init()
+        jasmine.Ajax.requests.mostRecent().respondWith({
+          status: 200,
+          contentType: 'text/plain',
+          responseText: '{ "uid": "1234", "status": ' + JSON.stringify(mix) + '}'
+        })
+        expect(element).not.toBeVisible()
+        expect(window.GOVUK.cookie('cookies_preferences_set')).toEqual('true')
+        expect(window.GOVUK.cookie('cookies_policy')).toEqual(JSON.stringify(mix))
+        expect(window.GOVUK.setCookie).not.toHaveBeenCalled()
+      })
     })
   })
 })
