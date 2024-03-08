@@ -18,6 +18,7 @@ accessibility_criteria: |
   - convey the content structure
   - indicate the current page when contents span different pages, and not link to itself
   - include an aria-label to contextualise the list
+  - ensure dashes before each list item are hidden from screen readers
 
   Links with formatted numbers must separate the number and text with a space for correct screen reader pronunciation. This changes pronunciation from "1 dot Item" to "1 Item".
 shared_accessibility_criteria:
