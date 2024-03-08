@@ -48,6 +48,11 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list__link.govuk-link--no-underline[href='#two']", text: "2. Two"
   end
 
+  it "renders with dashes hidden from screen readers" do
+    render_component(contents: contents_list)
+    assert_select ".gem-c-contents-list__list-item.gem-c-contents-list__list-item--dashed span[aria-hidden='true']"
+  end
+
   it "renders with the underline option" do
     render_component(contents: contents_list, underline_links: true)
     assert_select ".gem-c-contents-list"
