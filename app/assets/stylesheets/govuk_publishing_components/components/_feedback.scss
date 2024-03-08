@@ -225,13 +225,6 @@
   padding-bottom: govuk-spacing(3);
 }
 
-.gem-c-feedback__close {
-  margin: 0 govuk-spacing(2);
-  @include govuk-media-query($until: tablet) {
-    margin: govuk-spacing(4) 0 0;
-  }
-}
-
 .gem-c-feedback__email-link {
   display: inline-block;
   margin-top: govuk-spacing(4);

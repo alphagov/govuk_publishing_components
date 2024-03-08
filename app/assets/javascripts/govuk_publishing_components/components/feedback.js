@@ -10,7 +10,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.prompt = this.$module.querySelector('.js-prompt')
     this.forms = this.$module.querySelectorAll('.js-feedback-form')
     this.toggleForms = this.$module.querySelectorAll('.js-toggle-form')
-    this.closeForms = this.$module.querySelectorAll('.js-close-form')
     this.activeForm = false
     this.pageIsUsefulButton = this.$module.querySelector('.js-page-is-useful')
     this.pageIsNotUsefulButton = this.$module.querySelector('.js-page-is-not-useful')
@@ -40,21 +39,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         this.toggleForm(el.getAttribute('aria-controls'))
         this.trackEvent(this.getTrackEventParams(el))
         this.updateAriaAttributes(el)
-      }.bind(this))
-    }
-
-    for (var i = 0; i < this.closeForms.length; i++) {
-      this.closeForms[i].hidden = false
-      this.closeForms[i].addEventListener('click', function (e) {
-        e.preventDefault()
-        var el = e.target
-        var formToToggle = el.getAttribute('aria-controls')
-        this.toggleForm(formToToggle)
-        this.trackEvent(this.getTrackEventParams(el))
-        this.setInitialAriaAttributes()
-        this.revealInitialPrompt()
-        var refocusClass = '.js-' + formToToggle
-        this.$module.querySelector(refocusClass).focus()
       }.bind(this))
     }
 

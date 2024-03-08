@@ -68,10 +68,6 @@ describe('Feedback component', function () {
 
           '<button class="gem-c-button govuk-button" type="submit">Send</button>' +
 
-          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Close Form" aria-controls="something-is-wrong" aria-expanded="true">' +
-            'Cancel' +
-          '</button>' +
-
         '</div>' +
       '</div>' +
     '</form>' +
@@ -92,10 +88,6 @@ describe('Feedback component', function () {
           '</div>' +
 
           '<button class="gem-c-button govuk-button" type="submit">Send me the survey</button>' +
-
-          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose" aria-controls="page-is-not-useful" aria-expanded="true" hidden>' +
-            'Cancel' +
-          '</button>' +
 
         '</div>' +
       '</div>' +
@@ -274,7 +266,6 @@ describe('Feedback component', function () {
     beforeEach(function () {
       loadFeedbackComponent()
       $('.js-something-is-wrong')[0].click()
-      $('#something-is-wrong .js-close-form')[0].click()
     })
 
     it('hides the form', function () {
@@ -294,7 +285,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      $('#something-is-wrong .js-close-form')[0].click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Close Form')
     })
@@ -304,7 +294,6 @@ describe('Feedback component', function () {
     beforeEach(function () {
       loadFeedbackComponent()
       $('.js-page-is-not-useful')[0].click()
-      $('#page-is-not-useful .js-close-form')[0].click()
     })
 
     it('hides the form', function () {
@@ -324,7 +313,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      $('#page-is-not-useful .js-close-form')[0].click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffFormClose')
     })
