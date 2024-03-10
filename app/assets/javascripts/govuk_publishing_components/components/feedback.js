@@ -174,13 +174,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Feedback.prototype.updateAriaAttributes = function (linkClicked) {
-    linkClicked.setAttribute('aria-expanded', true)
+    this.ariaExpanded = linkClicked.getAttribute('aria-expanded')
+
+    if(this.ariaExpanded === 'false') {
+      linkClicked.setAttribute('aria-expanded', true)
+    }
+    else {
+      linkClicked.setAttribute('aria-expanded', false)
+    }
   }
 
   Feedback.prototype.toggleForm = function (formId) {
     this.activeForm = this.$module.querySelector('#' + formId)
     this.activeForm.hidden ? this.activeForm.hidden = false : this.activeForm.hidden = true
-    this.prompt.hidden ? this.prompt.hidden = false : this.prompt.hidden = true
 
     if (!this.activeForm.hidden) {
       this.activeForm.querySelectorAll('.gem-c-textarea .govuk-textarea, .gem-c-input.govuk-input')[0]
