@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Include single consent api package ([PR #3908](https://github.com/alphagov/govuk_publishing_components/pull/3908))
 * Fix accessibility issue in contents list component ([PR #3907](https://github.com/alphagov/govuk_publishing_components/pull/3907))
 
 ## 37.6.0
