@@ -3,6 +3,7 @@
 .gem-c-feedback {
   background: govuk-colour("white");
   margin-top: govuk-spacing(6);
+  position: relative;
 
   @include govuk-media-query($from: desktop) {
     margin-top: govuk-spacing(9);
@@ -137,6 +138,14 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  @include govuk-media-query($until: tablet) {
+    width: 100%;
+  }
+
+  @include govuk-media-query($until: 320px) {
+    justify-content: center;
+  }
 }
 
 .gem-c-feedback__option-list-item {
@@ -200,10 +209,13 @@
 
 .gem-c-feedback__form {
   padding: govuk-spacing(3);
-  border-top: 1px solid $govuk-border-colour;
 
   @include govuk-media-query($from: tablet) {
     padding: govuk-spacing(6);
+  }
+
+  @include govuk-media-query($from: mobile, $until: tablet) {
+    border-top: none;
   }
 }
 
@@ -231,6 +243,11 @@
 
   @include govuk-media-query($from: desktop) {
     margin-top: govuk-spacing(2);
+    margin-left: govuk-spacing(3);
+  }
+
+  @include govuk-media-query($until: desktop) {
+    display: block;
   }
 
   &:focus,
@@ -249,5 +266,23 @@
 
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
+  }
+}
+
+.js-prompt-content {
+  position: absolute;
+  right: 0;
+  @include govuk-media-query($until: tablet) {
+    position: static;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    background-color: govuk-colour("white");
+  }
+}
+
+.js-no-border-top {
+  @include govuk-media-query($until: tablet) {
+    border-top: none;
   }
 }
