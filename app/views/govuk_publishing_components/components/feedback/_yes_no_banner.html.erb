@@ -27,7 +27,7 @@
   <div class="gem-c-feedback__prompt-content">
     <div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>
       <div class="gem-c-feedback__prompt-question-answer">
-        <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful") %></h2>
+        <h2 class="gem-c-feedback__prompt-question js-prompt-question"><%= t("components.feedback.is_this_page_useful") %></h2>
         <ul class="gem-c-feedback__option-list">
           <li class="gem-c-feedback__option-list-item govuk-visually-hidden" hidden>
             <% # Maybe button exists only to try and capture clicks by bots %>
@@ -67,8 +67,10 @@
                 track_category: "yesNoFeedbackForm",
                 track_action: "ffNoClick",
                 ga4_event: ga4_no_button_event,
+                feedback_no_translation: t("components.feedback.no"),
+                feedback_close_translation: t("components.feedback.close"),
               }) do %>
-              <%= t("components.feedback.no") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful") %></span>
+                <span class="js-prompt-button-text" aria-hidden="true"><%= t("components.feedback.no") %></span><span class="govuk-visually-hidden"><%= t("components.feedback.no") %> <%= t("components.feedback.is_not_useful") %></span>
             <% end %>
           </li>
         </ul>
@@ -90,8 +92,10 @@
           track_category: "Onsite Feedback",
           track_action: "GOV-UK Open Form",
           ga4_event: ga4_problem_button_event,
+          feedback_something_wrong_translation: t("components.feedback.something_wrong"),
+          feedback_close_translation: t("components.feedback.close"),
         }) do %>
-        <%= t("components.feedback.something_wrong") %>
+        <span class="js-prompt-button-text" aria-hidden="true"><%= t("components.feedback.something_wrong") %></span><span class="govuk-visually-hidden"><%= t("components.feedback.something_wrong") %></span>
       <% end %>
     </div>
   </div>

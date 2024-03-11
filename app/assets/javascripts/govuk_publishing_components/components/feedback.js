@@ -20,6 +20,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.jshiddenClass = 'js-hidden'
     this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
     this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
+    this.pageIsUsefulHeading = this.$module.querySelector('.js-prompt-question')
+    this.pageIsUsefulYesButton = this.$module.querySelector('.js-page-is-useful')
+    this.pageIsUsefulNoButton = this.$module.querySelector('.js-page-is-not-useful')
+    this.feedbackPrompt = this.$module.querySelector('.gem-c-feedback__prompt-content')
   }
 
   Feedback.prototype.init = function () {
@@ -36,7 +40,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.toggleForms[j].addEventListener('click', function (e) {
         e.preventDefault()
         var el = e.target.closest('button')
-        this.toggleForm(el.getAttribute('aria-controls'))
+        this.toggleForm(el.getAttribute('aria-controls'), el)
         this.trackEvent(this.getTrackEventParams(el))
         this.updateAriaAttributes(el)
       }.bind(this))
@@ -184,17 +188,71 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Feedback.prototype.toggleForm = function (formId) {
+  Feedback.prototype.toggleForm = function (formId, el) {
     this.activeForm = this.$module.querySelector('#' + formId)
     this.activeForm.hidden ? this.activeForm.hidden = false : this.activeForm.hidden = true
 
     if (!this.activeForm.hidden) {
+      var elementsToHide = [this.promptQuestions[1], this.pageIsUsefulHeading, this.pageIsUsefulYesButton]
+
+      el.querySelector('.js-prompt-button-text').textContent = el.dataset.feedbackCloseTranslation
+      this.hidePrompts(el, elementsToHide)
       this.activeForm.querySelectorAll('.gem-c-textarea .govuk-textarea, .gem-c-input.govuk-input')[0]
         .focus()
     } else {
+      var buttonText = this.isSomethingIsWrongButton(el) ? el.dataset.feedbackSomethingWrongTranslation : el.dataset.feedbackNoTranslation
+      var elementsToShow = [this.promptQuestions[0], this.promptQuestions[1], this.pageIsUsefulHeading, this.pageIsUsefulYesButton]
+      
+      el.querySelector('.js-prompt-button-text').textContent = buttonText
+      this.showPrompts(elementsToShow)
       this.activeForm = false
       clearInterval(this.timerInterval)
     }
+  }
+
+  Feedback.prototype.hidePrompts = function(el, elementsToHide) {
+    this.feedbackPrompt.classList.add('js-prompt-content')
+
+    if(this.isSomethingIsWrongButton(el)) {
+      this.promptQuestions[0].setAttribute('hidden', true)
+      this.somethingIsWrongButton.parentElement.classList.add('js-no-border-top')
+    }
+    else if (this.isPageIsNotUsefulButton(el)) {
+      for(var i = 0; i < elementsToHide.length; i++) {
+        elementsToHide[i].setAttribute('hidden', true)
+      }
+      this.toggleStyling(true)
+    }
+  }
+
+  Feedback.prototype.showPrompts = function(elementsToShow) {
+    this.feedbackPrompt.classList.remove('js-prompt-content')
+
+    for(var i = 0; i < elementsToShow.length; i++) {
+      elementsToShow[i].removeAttribute('hidden')
+    }
+    
+    this.toggleStyling(false)
+  }
+
+  Feedback.prototype.toggleStyling = function(addStyling) {
+    if(addStyling) {
+      this.pageIsUsefulNoButton.parentElement.classList.add('govuk-!-margin-0')
+      this.pageIsUsefulNoButton.parentElement.classList.add('govuk-!-width-full')
+    }
+    else {
+      this.somethingIsWrongButton.parentElement.classList.remove('js-no-border-top')
+      this.pageIsUsefulNoButton.parentElement.classList.remove('govuk-!-margin-0')
+      this.pageIsUsefulNoButton.parentElement.classList.remove('govuk-!-width-full')
+    }
+  }
+
+  Feedback.prototype.isSomethingIsWrongButton = function(el) {
+    return el.classList.contains('js-something-is-wrong')
+  }
+
+  Feedback.prototype.isPageIsNotUsefulButton = function(el) {
+    return el.classList.contains('js-page-is-not-useful')
   }
 
   Feedback.prototype.getTrackEventParams = function ($node) {
