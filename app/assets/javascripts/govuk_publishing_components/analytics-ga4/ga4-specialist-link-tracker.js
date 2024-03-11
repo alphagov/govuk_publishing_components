@@ -40,9 +40,31 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
 
-      // don't track this link if it's already being tracked by the another tracker (e.g. the link tracker or ecommerce tracker)
-      if (element.closest('[data-ga4-link]') || element.closest('[data-ga4-ecommerce-path]')) {
+      // Don't track this link if it's already being tracked by the ecommerce tracker
+      if (element.closest('[data-ga4-ecommerce-path]')) {
         return
+      }
+
+      // Code below ensures the tracker plays nicely with the other link tracker
+      var otherLinkTracker = element.closest('[data-ga4-link]')
+      if (otherLinkTracker) {
+        var limitToElementClass = otherLinkTracker.getAttribute('data-ga4-limit-to-element-class')
+
+        if (!limitToElementClass) {
+          // If this link is inside the other link tracker, and the other link tracker IS NOT limiting itself to specific classes,
+          // then stop this tracker from firing, as the other tracker is responsible for this link.
+          return
+        } else {
+          // If this link is inside the other link tracker, but the other link tracker IS limiting itself to specific classes,
+          // then track the link here only if it is not within the specified classes that the other tracker is looking for.
+          var classes = limitToElementClass.split(',')
+
+          for (var i = 0; i < classes.length; i++) {
+            if (element.closest('.' + classes[i].trim())) {
+              return
+            }
+          }
+        }
       }
 
       var href = element.getAttribute('href')

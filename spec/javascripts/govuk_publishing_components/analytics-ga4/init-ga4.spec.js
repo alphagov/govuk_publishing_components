@@ -4,7 +4,6 @@ describe('Initialising GA4', function () {
   var GOVUK = window.GOVUK
 
   afterEach(function () {
-    GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.stopTracking()
     window.dataLayer = []
     window.removeEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
   })

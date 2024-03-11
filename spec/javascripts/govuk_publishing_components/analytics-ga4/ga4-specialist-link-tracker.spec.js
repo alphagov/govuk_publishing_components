@@ -91,7 +91,6 @@ describe('A specialist link tracker', function () {
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkTracker.stopTracking()
     })
 
     it('detects external click events on well structured external links', function () {
@@ -357,7 +356,6 @@ describe('A specialist link tracker', function () {
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkTracker.stopTracking()
     })
 
     it('detects download clicks on fully structured gov.uk download links', function () {
@@ -543,7 +541,6 @@ describe('A specialist link tracker', function () {
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkTracker.stopTracking()
     })
 
     it('detects email events on mailto links', function () {
@@ -584,7 +581,6 @@ describe('A specialist link tracker', function () {
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkTracker.stopTracking()
     })
 
     it('removes _ga and _gl from href query parameters', function () {
@@ -660,7 +656,6 @@ describe('A specialist link tracker', function () {
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkTracker.stopTracking()
     })
 
     it('redacts postcodes and dates from the URL', function () {
@@ -702,7 +697,6 @@ describe('A specialist link tracker', function () {
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkTracker.stopTracking()
     })
 
     it('sets the text property to image', function () {
@@ -713,6 +707,80 @@ describe('A specialist link tracker', function () {
         GOVUK.triggerEvent(links[i], 'click')
         expect(window.dataLayer[0].event_data.text).toEqual('image')
       }
+    })
+  })
+
+  describe('when data-ga4-link and data-ga4-limit-to-element-class are on the parent', function () {
+    var specialistLinkTracker
+
+    beforeEach(function () {
+      window.dataLayer = []
+      links = document.createElement('div')
+      links.setAttribute('data-module', 'ga4-link-tracker')
+      links.setAttribute('data-ga4-track-links-only', '')
+      links.setAttribute('data-ga4-limit-to-element-class', 'hello')
+      links.setAttribute('data-ga4-link', JSON.stringify({ event_name: 'navigation', type: 'callout' }))
+
+      links.innerHTML =
+        '<div class="hello">' +
+          '<a class="otherLink" href="https://example.com">GA4 Link Tracker</a>' +
+        '</div>' +
+        '<a class="specialistLink" href="https://example.co.uk">Specialist Link Tracker</a>'
+
+      body.appendChild(links)
+      body.addEventListener('click', preventDefault)
+
+      GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+
+      var otherLinkTracker = new GOVUK.Modules.Ga4LinkTracker(links)
+      otherLinkTracker.init()
+
+      specialistLinkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
+      specialistLinkTracker.init()
+    })
+
+    afterEach(function () {
+      GOVUK.cookie('cookies_policy', null)
+      body.removeEventListener('click', preventDefault)
+      links.remove()
+    })
+
+    it('does not fire the specialist tracker if the link should be tracked by the other link tracker', function () {
+      var otherLink = document.querySelector('.otherLink')
+      otherLink.click()
+
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'navigation'
+      expected.event_data.type = 'callout'
+      expected.event_data.method = 'primary click'
+      expected.event_data.external = 'true'
+      expected.govuk_gem_version = 'aVersion'
+      expected.event_data.url = 'https://example.com'
+      expected.event_data.text = 'GA4 Link Tracker'
+      expected.event_data.link_domain = 'https://example.com'
+      expected.timestamp = '123456'
+      expect(window.dataLayer[0]).toEqual(expected)
+      expect(window.dataLayer.length).toEqual(1)
+    })
+
+    it('still fires the specialist tracker if the link is within the other tracker, but outside the classes it is looking for', function () {
+      var specialistLink = document.querySelector('.specialistLink')
+      specialistLink.click()
+
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'navigation'
+      expected.event_data.type = 'generic link'
+      expected.event_data.method = 'primary click'
+      expected.event_data.external = 'true'
+      expected.govuk_gem_version = 'aVersion'
+      expected.event_data.url = 'https://example.co.uk'
+      expected.event_data.text = 'Specialist Link Tracker'
+      expected.event_data.link_domain = 'https://example.co.uk'
+      expected.timestamp = '123456'
+      expect(window.dataLayer[0]).toEqual(expected)
+      expect(window.dataLayer.length).toEqual(1)
     })
   })
 })
