@@ -9,7 +9,7 @@ describe('Feedback component', function () {
       '<div class="gem-c-feedback__prompt-content">' +
         '<div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>' +
           '<div class="gem-c-feedback__prompt-question-answer">' +
-            '<h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>' +
+            '<h2 class="gem-c-feedback__prompt-question js-prompt-question">Is this page useful?</h2>' +
             '<ul class="gem-c-feedback__option-list">' +
               '<li class="gem-c-feedback__option-list-item govuk-visually-hidden" style="display: none" hidden>' +
                 '<a class="gem-c-feedback__prompt-link" data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" role="button" style="display: none" hidden="hidden" aria-hidden="true" href="/contact/govuk">' +
@@ -22,8 +22,13 @@ describe('Feedback component', function () {
                 '</button>' +
               '</li>' +
               '<li class="gem-c-feedback__option-list-item">' +
-                '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">' +
-                  'No <span class="govuk-visually-hidden">this page is not useful</span>' +
+                '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" data-feedback-no-translation="No" data-feedback-close-translation="Cancel" aria-controls="page-is-not-useful" aria-expanded="false">' +
+                  '<span class="js-prompt-button-text" aria-hidden="true">' +
+                    'No' +
+                  '</span>' +
+                  '<span span class="govuk-visually-hidden">' +
+                    'No this page is not useful' +
+                  '</span>' +
                 '</button>' +
               '</li>' +
             '</ul>' +
@@ -33,8 +38,13 @@ describe('Feedback component', function () {
           'Thank you for your feedback' +
         '</div>' +
         '<div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" hidden>' +
-          '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">' +
-            'Report a problem with this page' +
+          '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" data-feedback-something-wrong-translation="Report a problem with this page" data-feedback-close-translation="Cancel" aria-expanded="false">' +
+            '<span class="js-prompt-button-text" aria-hidden="true">' +
+              'Report a problem with this page' +
+            '</span>' +
+            '<span span class="govuk-visually-hidden">' +
+              'Report a problem with this page' +
+            '</span>' +
           '</button>' +
         '</div>' +
       '</div>' +
@@ -183,6 +193,13 @@ describe('Feedback component', function () {
   })
 
   describe('clicking the "page was not useful" link', function () {
+    it('sets the text of the link to Cancel', function () {
+      loadFeedbackComponent()
+      $('.js-page-is-not-useful')[0].click()
+      
+      expect($('.js-page-is-not-useful .js-prompt-button-text')).toHaveText("Cancel")
+    })
+
     it('shows the feedback form', function () {
       loadFeedbackComponent()
       $('.js-page-is-not-useful')[0].click()
@@ -190,11 +207,13 @@ describe('Feedback component', function () {
       expect($('.gem-c-feedback .js-feedback-form#page-is-not-useful').prop('hidden')).toBe(false)
     })
 
-    it('hides the prompt', function () {
+    it('hides the prompts', function () {
       loadFeedbackComponent()
       $('.js-page-is-not-useful')[0].click()
 
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
+      expect($('.js-prompt-question').prop('hidden')).toBe(true)
+      expect($('.js-page-is-useful').prop('hidden')).toBe(true)
+      expect($('.gem-c-feedback__prompt-questions--something-is-wrong').prop('hidden')).toBe(true)
     })
 
     it('conveys that the form is now expanded', function () {
@@ -220,9 +239,25 @@ describe('Feedback component', function () {
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffNoClick')
     })
+
+    it('adds the appropriate CSS classes', function () {
+      loadFeedbackComponent()
+      $('.js-page-is-not-useful')[0].click()
+
+      expect($('.gem-c-feedback__prompt-content')[0]).toHaveClass('js-prompt-content')
+      expect($('.js-page-is-not-useful')[0].parentElement).toHaveClass('govuk-!-margin-0')
+      expect($('.js-page-is-not-useful')[0].parentElement).toHaveClass('govuk-!-width-full')
+    })
   })
 
   describe('Clicking the "is there anything wrong with this page" link', function () {
+    it('sets the text of the link to Cancel', function () {
+      loadFeedbackComponent()
+      $('.js-something-is-wrong')[0].click()
+
+      expect($('.js-something-is-wrong .js-prompt-button-text')).toHaveText("Cancel")
+    })
+
     it('shows the form', function () {
       loadFeedbackComponent()
       $('.js-something-is-wrong')[0].click()
@@ -230,11 +265,11 @@ describe('Feedback component', function () {
       expect($('.gem-c-feedback .js-feedback-form#something-is-wrong').prop('hidden')).toBe(false)
     })
 
-    it('hides the prompt', function () {
+    it('hides the prompts', function () {
       loadFeedbackComponent()
       $('.js-something-is-wrong')[0].click()
 
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
+      expect($('.js-prompt-questions')[0].hidden).toBe(true)
     })
 
     it('conveys that the form is now expanded', function () {
@@ -260,64 +295,90 @@ describe('Feedback component', function () {
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Open Form')
     })
+
+    it('adds the appropriate CSS classes', function () {
+      loadFeedbackComponent()
+      $('.js-something-is-wrong')[0].click()
+
+      expect($('.gem-c-feedback__prompt-content')[0]).toHaveClass('js-prompt-content')
+      expect($('.js-something-is-wrong')[0].parentElement).toHaveClass('js-no-border-top')
+    })
   })
 
   describe('Clicking the close link in the "something is wrong" form', function () {
     beforeEach(function () {
       loadFeedbackComponent()
       $('.js-something-is-wrong')[0].click()
+      $('.js-something-is-wrong')[0].click()
+    })
+
+    it('sets the text of the link to Report a problem with this page', function () {
+      expect($('.js-something-is-wrong .js-prompt-button-text')).toHaveText("Report a problem with this page")
     })
 
     it('hides the form', function () {
       expect($('.gem-c-feedback #something-is-wrong').prop('hidden')).toBe(true)
     })
 
-    it('shows the prompt', function () {
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
+    it('shows the prompts', function () {
+      expect($('.js-prompt-questions')[0].hidden).toBe(false)
+      expect($('.js-prompt-questions')[1].hidden).toBe(false)
       expect(document.activeElement).toBe($('.js-something-is-wrong').get(0))
     })
 
     it('conveys that the form is not expanded', function () {
-      loadFeedbackComponent()
-
       expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false')
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
     })
 
     it('triggers a Google Analytics event', function () {
-
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Close Form')
     })
-  })
 
+    it('remove the appropriate CSS classes', function () {
+      expect($('.gem-c-feedback__prompt-content')[0]).not.toHaveClass('js-prompt-content')
+      expect($('.js-something-is-wrong')[0].parentElement).not.toHaveClass('js-no-border-top')
+    })
+  })
+  
   describe('Clicking the close link in the "not useful" form', function () {
     beforeEach(function () {
       loadFeedbackComponent()
       $('.js-page-is-not-useful')[0].click()
+      $('.js-page-is-not-useful')[0].click()
+    })
+
+    it('sets the text of the link to No', function () {
+      expect($('.js-page-is-not-useful .js-prompt-button-text')).toHaveText("No")
     })
 
     it('hides the form', function () {
       expect($('.gem-c-feedback #page-is-not-useful').prop('hidden')).toBe(true)
     })
 
-    it('shows the prompt', function () {
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
+    it('shows the prompts', function () {
+      expect($('.js-prompt-question').prop('hidden')).toBe(false)
+      expect($('.js-page-is-useful').prop('hidden')).toBe(false)
+      expect($('.gem-c-feedback__prompt-questions--something-is-wrong').prop('hidden')).toBe(false)
       expect(document.activeElement).toBe($('.js-page-is-not-useful').get(0))
     })
 
     it('conveys that the form is not expanded', function () {
-      loadFeedbackComponent()
-
       expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false')
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
     })
 
     it('triggers a Google Analytics event', function () {
-
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffFormClose')
     })
-  })
 
+    it('removes the appropriate CSS classes', function () {
+      expect($('.gem-c-feedback__prompt-content')[0]).not.toHaveClass('js-prompt-content')
+      expect($('.js-page-is-not-useful')[0].parentElement).not.toHaveClass('govuk-!-margin-0')
+      expect($('.js-page-is-not-useful')[0].parentElement).not.toHaveClass('govuk-!-width-full')
+    })
+  })
+ 
   // this check prevents these tests being run if in IE11 or below
   // because the JS doesn't work for form submissions on IE
   if (typeof window.URLSearchParams === 'function') {
