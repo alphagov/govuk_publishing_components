@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.6.0
 
 * Add single cookie consent API ([PR #3854](https://github.com/alphagov/govuk_publishing_components/pull/3854))
 * Update popular links in super navigation header ([PR #3904](https://github.com/alphagov/govuk_publishing_components/pull/3904))
