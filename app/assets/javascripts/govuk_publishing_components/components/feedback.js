@@ -43,6 +43,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         this.toggleForm(el.getAttribute('aria-controls'), el)
         this.trackEvent(this.getTrackEventParams(el))
         this.updateAriaAttributes(el)
+
+        // if closing the form, shift focus back to the button that controls it
+        if(!this.activeForm) {
+          var formToToggle = el.getAttribute('aria-controls')
+          var refocusClass = '.js-' + formToToggle
+          this.$module.querySelector(refocusClass).focus()
+        }
       }.bind(this))
     }
 
