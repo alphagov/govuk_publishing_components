@@ -5,6 +5,22 @@ var GOVUK = window.GOVUK || {}
 describe('Cookie helper functions', function () {
   'use strict'
 
+  beforeEach(function () {
+    GOVUK.cookie('cookies_policy', null)
+    GOVUK.cookie('cookies_preferences_set', null)
+    GOVUK.cookie('_ga_VBLT2V3FZR', null)
+    GOVUK.cookie('_ga_P1DGM6TVYF', null)
+    GOVUK.cookie('_ga_S5RQ7FTGVR', null)
+  })
+
+  afterEach(function () {
+    GOVUK.cookie('cookies_policy', null)
+    GOVUK.cookie('cookies_preferences_set', null)
+    GOVUK.cookie('_ga_VBLT2V3FZR', null)
+    GOVUK.cookie('_ga_P1DGM6TVYF', null)
+    GOVUK.cookie('_ga_S5RQ7FTGVR', null)
+  })
+
   describe('GOVUK.cookie', function () {
     it('returns the cookie value if not provided with a value to set', function () {
       GOVUK.cookie('cookies_preferences_set', 'testing fetching cookie value')
