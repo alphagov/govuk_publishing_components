@@ -50,7 +50,7 @@
   padding-left: $contents-spacing;
   padding-right: $contents-spacing;
 
-  &::before {
+  & span::before {
     content: "—";
     position: absolute;
     left: 0;
