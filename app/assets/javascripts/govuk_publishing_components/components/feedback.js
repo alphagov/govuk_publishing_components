@@ -41,8 +41,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.toggleForms[j].addEventListener('click', function (e) {
         e.preventDefault()
         var el = e.target.closest('button')
-        this.toggleForm(el.getAttribute('aria-controls'), el)
         this.trackEvent(this.getTrackEventParams(el))
+        this.toggleForm(el.getAttribute('aria-controls'), el)
         this.updateAriaAttributes(el)
 
         // if closing the form, shift focus back to the button that controls it
