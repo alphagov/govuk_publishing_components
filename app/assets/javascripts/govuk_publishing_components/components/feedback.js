@@ -24,6 +24,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.pageIsUsefulYesButton = this.$module.querySelector('.js-page-is-useful')
     this.pageIsUsefulNoButton = this.$module.querySelector('.js-page-is-not-useful')
     this.feedbackPrompt = this.$module.querySelector('.gem-c-feedback__prompt-content')
+    this.feedbackTrackingData = this.initialiseFeedbackTrackingData()
   }
 
   Feedback.prototype.init = function () {
@@ -204,6 +205,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       el.querySelector('.js-prompt-button-text').textContent = el.dataset.feedbackCloseTranslation
       this.hidePrompts(el, elementsToHide)
+      this.toggleFeedbackTrackingDataAttributes(el)
       this.activeForm.querySelectorAll('.gem-c-textarea .govuk-textarea, .gem-c-input.govuk-input')[0]
         .focus()
     } else {
@@ -212,6 +214,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       
       el.querySelector('.js-prompt-button-text').textContent = buttonText
       this.showPrompts(elementsToShow)
+      this.toggleFeedbackTrackingDataAttributes(el)
       this.activeForm = false
       clearInterval(this.timerInterval)
     }
@@ -260,6 +263,65 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Feedback.prototype.isPageIsNotUsefulButton = function(el) {
     return el.classList.contains('js-page-is-not-useful')
+  }
+
+  Feedback.prototype.toggleFeedbackTrackingDataAttributes = function(el) {
+    this.clearFeedbackTrackingDataAttributes(el)
+    var data;
+
+    if(this.isSomethingIsWrongButton(el)) {
+      data = this.feedbackTrackingData.somethingWrongTrackingData
+    }
+    else if(this.isPageIsNotUsefulButton(el)) {
+      data = this.feedbackTrackingData.pageIsNotUsefulTrackingData
+    }
+
+    this.setFeedbackTrackingDataAttributes(el, data)
+  }
+
+  Feedback.prototype.clearFeedbackTrackingDataAttributes = function(el) {
+    if(el) {
+      for(var prop in el.dataset){
+        delete el.dataset[prop]
+      }
+    }
+  }
+
+  Feedback.prototype.setFeedbackTrackingDataAttributes = function(el, data){
+    if(el && data) {
+      var data = !this.activeForm.hidden ? data.collapsedDataAttributes : data.expandedDataAttributes
+      for(var prop in data) {
+        el.dataset[prop] = data[prop]
+      }
+    }
+  }
+
+  Feedback.prototype.initialiseFeedbackTrackingData = function() {
+    var initialSomethingWrongTrackingData = this.somethingIsWrongButton.dataset
+    var initialPageIsNotUsefulTrackingData = this.pageIsNotUsefulButton.dataset
+
+    return {
+      somethingWrongTrackingData: {
+        // Convert expandedDataAttributes from a DOMStringMap to an object. This makes it easier to toggle the data attributes.
+        expandedDataAttributes: window.GOVUK.extendObject({}, initialSomethingWrongTrackingData),
+        collapsedDataAttributes: {
+          trackCategory: "Onsite Feedback",
+          trackAction: "GOV.UK Close Form",
+          feedbackSomethingWrongTranslation: initialSomethingWrongTrackingData.feedbackSomethingWrongTranslation,
+          feedbackCloseTranslation: initialSomethingWrongTrackingData.feedbackCloseTranslation
+        }
+      },
+      pageIsNotUsefulTrackingData: {
+        // Convert expandedDataAttributes from a DOMStringMap to an object. This makes it easier to toggle the data attributes.
+        expandedDataAttributes: window.GOVUK.extendObject({}, initialPageIsNotUsefulTrackingData),
+        collapsedDataAttributes: {
+          trackCategory: "yesNoFeedbackForm",
+          trackAction: "ffFormClose",
+          feedbackNoTranslation: initialPageIsNotUsefulTrackingData.feedbackNoTranslation,
+          feedbackCloseTranslation: initialPageIsNotUsefulTrackingData.feedbackCloseTranslation
+        }
+      }
+    }
   }
 
   Feedback.prototype.getTrackEventParams = function ($node) {
