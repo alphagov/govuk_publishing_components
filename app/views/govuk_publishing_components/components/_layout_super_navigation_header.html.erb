@@ -162,7 +162,6 @@
 
       <%
         link = t("components.layout_super_navigation_header.navigation_link")
-        unique_id = SecureRandom.hex(4)
         show_menu_text = show_navigation_menu_text
         hide_menu_text = hide_navigation_menu_text
         tracking_label = link[:label].downcase.gsub(/\s+/, "")
@@ -192,7 +191,7 @@
 
             <%= content_tag(:button, {
               aria: {
-                controls: "super-navigation-menu-#{unique_id}",
+                controls: "super-navigation-menu",
                 expanded: false,
                 label: show_menu_text,
               },
@@ -213,7 +212,7 @@
                 }
               },
               hidden: true,
-              id: "super-navigation-menu-#{unique_id}-toggle",
+              id: "super-navigation-menu-toggle",
               type: "button",
             }) do %>
               <%= tag.span link[:label], class: top_toggle_button_inner_classes %>
@@ -282,7 +281,7 @@
       </div>
 
       <%= content_tag(:div, {
-        id: "super-navigation-menu-#{unique_id}",
+        id: "super-navigation-menu",
         hidden: "",
         class: dropdown_menu_classes,
       }) do %>

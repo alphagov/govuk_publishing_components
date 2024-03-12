@@ -7,6 +7,8 @@ accessibility_criteria: |
   The component must:
 
   * have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+  * follow the expected tabbing border
+  * allow menus to be closed when the escape key is pressed
 
   Images in the super navigation header must:
 

@@ -27,6 +27,10 @@
       event.keyCode = keyCode
     }
 
+    if (params.shiftKey) {
+      event.shiftKey = true
+    }
+
     element.dispatchEvent(event)
   }
 }(window))
