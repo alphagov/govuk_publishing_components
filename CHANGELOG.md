@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.7.0
 
 * Reintroduce GA4 callout tracking and fix link tracker compatibility ([PR #3905](https://github.com/alphagov/govuk_publishing_components/pull/3905))
 * Adjust keyboard functionality of dropdown menu ([PR #3888](https://github.com/alphagov/govuk_publishing_components/pull/3888))

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (37.6.1)
+    govuk_publishing_components (37.7.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -205,7 +205,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.0.2)
+    marcel (1.0.4)
     matrix (0.4.2)
     method_source (1.0.0)
     mime-types (3.5.2)
@@ -215,7 +215,7 @@ GEM
     mini_portile2 (2.8.5)
     minitest (5.22.2)
     mutex_m (0.2.0)
-    net-imap (0.4.9.1)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
