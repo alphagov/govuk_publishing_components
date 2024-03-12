@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move the single consent code ([PR #3913](https://github.com/alphagov/govuk_publishing_components/pull/3913))
+
 ## 37.7.0
 
 * Reintroduce GA4 callout tracking and fix link tracker compatibility ([PR #3905](https://github.com/alphagov/govuk_publishing_components/pull/3905))
