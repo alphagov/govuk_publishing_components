@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-describe('The single consent cookie code', function () {
+xdescribe('The single consent cookie code', function () {
   var acceptAll = {
     essential: true,
     usage: true,

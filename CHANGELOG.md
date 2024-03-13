@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Disable the single consent cookie API code ([PR #3916](https://github.com/alphagov/govuk_publishing_components/pull/3916))
+
 ## 37.7.1
 
 * Move the single consent code ([PR #3913](https://github.com/alphagov/govuk_publishing_components/pull/3913))
