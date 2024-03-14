@@ -884,7 +884,11 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__search-form {
-  padding: 0 0 govuk-spacing(8) 0;
+  padding: 0;
+
+  @include govuk-media-query($from: "desktop") {
+    padding-bottom: govuk-spacing(2);
+  }
 }
 
 // Popular links.
