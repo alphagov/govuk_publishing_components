@@ -89,6 +89,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function GemToggle ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   GemToggle.prototype.init = function () {
