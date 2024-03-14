@@ -4,6 +4,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function CookieSettings ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   CookieSettings.prototype.init = function () {
