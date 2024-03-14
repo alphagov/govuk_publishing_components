@@ -3,7 +3,6 @@
 // This adds in javascript that initialises components and dependencies
 // that are provided by Slimmer in public frontend applications.
 // = require ./modules.js
-// = require ./single-consent-functions.js
 
 document.addEventListener('DOMContentLoaded', function () {
   window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}

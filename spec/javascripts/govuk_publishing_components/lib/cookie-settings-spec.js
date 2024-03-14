@@ -199,7 +199,7 @@ describe('cookieSettings', function () {
     })
   })
 
-  describe('when the single consent api is enabled', function () {
+  xdescribe('when the single consent api is enabled', function () {
     beforeEach(function () {
       window.GOVUK.useSingleConsentApi = true
     })

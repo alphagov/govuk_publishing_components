@@ -272,7 +272,7 @@ describe('Cookie banner', function () {
     })
   })
 
-  describe('when the single consent api is enabled', function () {
+  xdescribe('when the single consent api is enabled', function () {
     var acceptAll = {
       essential: true,
       usage: true,
