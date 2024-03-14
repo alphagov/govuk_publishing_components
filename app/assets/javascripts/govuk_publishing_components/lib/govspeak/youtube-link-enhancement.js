@@ -6,6 +6,8 @@
   var YoutubeLinkEnhancement = function ($element, $classOverride) {
     this.$element = $element
     this.$classOverride = typeof $classOverride !== 'undefined' ? $classOverride : 'gem-c-govspeak__youtube-video'
+
+    this.init()
   }
 
   YoutubeLinkEnhancement.prototype.init = function () {
