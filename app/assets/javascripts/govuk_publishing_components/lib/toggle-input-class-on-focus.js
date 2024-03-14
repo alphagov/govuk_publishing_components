@@ -8,6 +8,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function GemToggleInputClassOnFocus ($module) {
     this.$module = $module
+
+    this.init()
   }
 
   GemToggleInputClassOnFocus.prototype.init = function () {
