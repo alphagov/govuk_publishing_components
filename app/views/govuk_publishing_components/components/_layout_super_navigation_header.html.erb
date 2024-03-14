@@ -15,8 +15,6 @@
   navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
   navigation_search_heading = t("components.layout_super_navigation_header.navigation_search_heading")
   navigation_search_subheading = t("components.layout_super_navigation_header.navigation_search_subheading")
-  popular_links = t("components.layout_super_navigation_header.popular_links")
-  popular_links_heading = t("components.layout_super_navigation_header.popular_links_heading")
   search_text = t("components.layout_super_navigation_header.search_text")
 
   hide_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "search")
@@ -67,9 +65,6 @@
 
   dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
   dropdown_menu_classes << "gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar" if large_navbar
-
-  popular_links_heading_classes = %w(govuk-heading-m)
-  popular_links_heading_classes << "gem-c-layout-super-navigation-header__popular-links-heading--large-navbar" if large_navbar
 
   absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
 %>
@@ -383,45 +378,6 @@
                   },
                 } %>
               </form>
-            </div>
-          </div>
-          <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-              <%= content_tag(:h3, {
-                class: popular_links_heading_classes
-              }) do %>
-                <%= popular_links_heading %>
-              <% end %>
-              <ul class="govuk-list">
-                <% index_total = popular_links.length %>
-                <% popular_links.each_with_index do | popular_link, index | %>
-                  <li class="gem-c-layout-super-navigation-header__popular-item">
-                    <% link_href = absolute_links_helper.make_url_absolute(popular_link[:href]) %>
-                    <%= link_to popular_link[:label], link_href, {
-                      class: [
-                        "govuk-link",
-                        "gem-c-layout-super-navigation-header__popular-link",
-                      ],
-                      data: {
-                        track_action: "popularLink",
-                        track_category: "headerClicked",
-                        track_label: popular_link[:href],
-                        track_dimension: popular_link[:label],
-                        track_dimension_index: "29",
-                        ga4_link: {
-                          "event_name": "navigation",
-                          "type": "header menu bar",
-                          "index_section": 4,
-                          "index_link": index + 1,
-                          "index_section_count": 4,
-                          "index_total": index_total,
-                          "section": popular_links_heading,
-                        }
-                      }
-                    } %>
-                  </li>
-                <% end %>
-              </ul>
             </div>
           </div>
         </div>

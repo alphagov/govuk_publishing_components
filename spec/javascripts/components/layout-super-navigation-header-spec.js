@@ -171,28 +171,6 @@ describe('The super header navigation', function () {
                           '</form>' +
                       '</div>' +
                   '</div>' +
-                  '<div class="govuk-grid-row">' +
-                      '<div class="govuk-grid-column-full">' +
-                          '<h3 class="govuk-heading-m">Popular on GOV.UK</h3>' +
-                          '<ul class="govuk-list">' +
-                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
-                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/check-benefits-financial-support" data-track-dimension="Check benefits and financial support you can get" data-track-dimension-index="29" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;index&quot;:&quot;2.2.1&quot;,&quot;index_total&quot;:29,&quot;section&quot;:&quot;Popular on GOV.UK&quot;}" href="/check-benefits-financial-support">Check benefits and financial support you can get</a>' +
-                              '</li>' +
-                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
-                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/guidance/getting-the-energy-bills-support-scheme-discount" data-track-dimension="Find out about the Energy Bills Support Scheme" data-track-dimension-index="29" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;index&quot;:&quot;2.2.2&quot;,&quot;index_total&quot;:29,&quot;section&quot;:&quot;Popular on GOV.UK&quot;}" href="/guidance/getting-the-energy-bills-support-scheme-discount">Find out about the Energy Bills Support Scheme</a>' +
-                              '</li>' +
-                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
-                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/find-a-job" data-track-dimension="Find a job" data-track-dimension-index="29" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;index&quot;:&quot;2.2.3&quot;,&quot;index_total&quot;:29,&quot;section&quot;:&quot;Popular on GOV.UK&quot;}" href="/find-a-job">Find a job</a>' +
-                              '</li>' +
-                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
-                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/coronavirus" data-track-dimension="Coronavirus (COVID-19)" data-track-dimension-index="29" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;index&quot;:&quot;2.2.4&quot;,&quot;index_total&quot;:29,&quot;section&quot;:&quot;Popular on GOV.UK&quot;}" href="/coronavirus">Coronavirus (COVID-19)</a>' +
-                              '</li>' +
-                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
-                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/sign-in-universal-credit" data-track-dimension="Universal Credit account: sign in" data-track-dimension-index="29" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;index&quot;:&quot;2.2.5&quot;,&quot;index_total&quot;:29,&quot;section&quot;:&quot;Popular on GOV.UK&quot;}" href="/sign-in-universal-credit">Universal Credit account: sign in</a>' +
-                              '</li>' +
-                          '</ul>' +
-                      '</div>' +
-                  '</div>' +
               '</div>' +
           '</div>' +
       '</nav>'
@@ -350,9 +328,6 @@ describe('The super header navigation', function () {
     var $navLinks
     var $firstNavLink
     var $lastNavLink
-    var $searchMenu
-    var $searchLinks
-    var $lastSearchLink
 
     beforeEach(function () {
       thisModule.init()
@@ -362,9 +337,6 @@ describe('The super header navigation', function () {
       $navLinks = $navMenu.querySelectorAll('li')
       $firstNavLink = $navLinks[0].querySelector('a')
       $lastNavLink = $navLinks[$navLinks.length - 1].querySelector('a')
-      $searchMenu = document.querySelector('#super-search-menu')
-      $searchLinks = $searchMenu.querySelectorAll('li a')
-      $lastSearchLink = $searchLinks[$searchLinks.length - 1]
     })
 
     it('when the Menu button is focussed, the nav menu is open and the tab key is pressed focus moves to the first nav menu link', function () {
@@ -401,17 +373,6 @@ describe('The super header navigation', function () {
       window.GOVUK.triggerEvent($searchMenuButton, 'keydown', { keyCode: 9, cancelable: true, shiftKey: true })
 
       expect(document.activeElement).toEqual($lastNavLink)
-    })
-
-    it('when the last search menu link is focussed and the tab key is pressed the search menu is closed', function () {
-      $searchMenu.removeAttribute('hidden')
-      $lastSearchLink.focus()
-      window.GOVUK.triggerEvent($lastSearchLink, 'keydown', { keyCode: 9, cancelable: true })
-
-      expect($searchMenu.hasAttribute('hidden')).toEqual(true)
-      expect($searchMenuButton.getAttribute('aria-expanded')).toEqual('false')
-      expect($searchMenuButton.getAttribute('aria-label')).toEqual('Show search menu')
-      expect($searchMenuButton.classList).not.toContain('gem-c-layout-super-navigation-header__open-button')
     })
   })
 
