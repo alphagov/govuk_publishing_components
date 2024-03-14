@@ -8,6 +8,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.module = module
     this.trackingTrigger = 'data-ga4-auto'
     this.PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+
+    this.init()
   }
 
   Ga4AutoTracker.prototype.init = function () {

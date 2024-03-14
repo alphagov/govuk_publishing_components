@@ -7,7 +7,8 @@ describe('GA4 link tracker', function () {
   var attributes
 
   function initModule (element, click) {
-    new GOVUK.Modules.Ga4LinkTracker(element).init()
+    /* eslint-disable no-new */
+    new GOVUK.Modules.Ga4LinkTracker(element)
     if (click) {
       GOVUK.triggerEvent(element, 'click')
     }
@@ -56,7 +57,6 @@ describe('GA4 link tracker', function () {
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(tracker, 'trackClick')
-      tracker.init()
 
       element.click()
       expect(tracker.trackClick).toHaveBeenCalled()
@@ -67,7 +67,6 @@ describe('GA4 link tracker', function () {
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(tracker, 'trackClick')
-      tracker.init()
 
       element.click()
       expect(tracker.trackClick).not.toHaveBeenCalled()
@@ -89,7 +88,6 @@ describe('GA4 link tracker', function () {
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(tracker, 'trackClick')
-      tracker.init()
 
       element.click()
       expect(tracker.trackClick).not.toHaveBeenCalled()
@@ -469,9 +467,8 @@ describe('GA4 link tracker', function () {
 
       element.setAttribute('data-ga4-set-indexes', '')
 
-      var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'setIndexes')
-      tracker.init()
+      new GOVUK.Modules.Ga4LinkTracker(element)
 
       expect(GOVUK.analyticsGa4.core.trackFunctions.setIndexes).toHaveBeenCalled()
     })
@@ -485,9 +482,8 @@ describe('GA4 link tracker', function () {
         '<a href="#link2">Link 2</a>' +
         '<a href="#link3">Link 3</a>'
 
-      var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'setIndexes')
-      tracker.init()
+      new GOVUK.Modules.Ga4LinkTracker(element)
 
       expect(GOVUK.analyticsGa4.core.trackFunctions.setIndexes).not.toHaveBeenCalled()
     })

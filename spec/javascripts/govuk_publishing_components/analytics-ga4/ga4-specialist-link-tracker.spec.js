@@ -763,8 +763,8 @@ describe('A specialist link tracker', function () {
 
       GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
 
-      var otherLinkTracker = new GOVUK.Modules.Ga4LinkTracker(links)
-      otherLinkTracker.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.Ga4LinkTracker(links)
 
       specialistLinkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       specialistLinkTracker.init()
