@@ -231,20 +231,6 @@ en:
       navigation_menu_heading: Navigation menu
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
-      popular_links:
-      - label: Get support with the cost of living
-        href: "/cost-of-living"
-      - label: Find out about help you can get with your energy bills
-        href: "/get-help-energy-bills"
-      - label: Find a job
-        href: "/find-a-job"
-      - label: 'Universal Credit account: sign in'
-        href: "/sign-in-universal-credit"
-      - label: Check your National Insurance record
-        href: "/check-national-insurance-record"
-      - label: 'Check MOT history of a vehicle'
-        href: /check-mot-history
-      popular_links_heading: Popular on GOV.UK
       search_text: Search GOV.UK
     metadata:
       from: From
