@@ -8,6 +8,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function Ga4EventTracker (module) {
     this.module = module
     this.trackingTrigger = 'data-ga4-event' // elements with this attribute get tracked
+
+    this.init()
   }
 
   Ga4EventTracker.prototype.init = function () {
