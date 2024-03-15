@@ -7,10 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 37.8.1
+
+* Remove "Popular" links from super navigation header ([PR #3918](https://github.com/alphagov/govuk_publishing_components/pull/3918))
+
 ## 37.8.0
 
 * Disable the single consent cookie API code ([PR #3916](https://github.com/alphagov/govuk_publishing_components/pull/3916))
-* Remove "Popular" links from super navigation header ([PR #3918](https://github.com/alphagov/govuk_publishing_components/pull/3918))
 
 ## 37.7.1
 
