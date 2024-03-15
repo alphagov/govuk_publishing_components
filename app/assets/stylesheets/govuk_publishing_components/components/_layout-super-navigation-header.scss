@@ -884,24 +884,17 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__search-form {
-  padding: 0 0 govuk-spacing(8) 0;
+  padding: 0;
+
+  @include govuk-media-query($from: "desktop") {
+    padding-bottom: govuk-spacing(2);
+  }
 }
 
 // Popular links.
 .gem-c-layout-super-navigation-header__popular-item {
   position: relative;
   padding: govuk-spacing(1) 0;
-}
-
-.gem-c-layout-super-navigation-header__popular-link {
-  display: inline-block;
-  font-size: 16px;
-  font-size: govuk-px-to-rem(16px);
-  padding: 0;
-
-  &::after {
-    @include make-selectable-area-bigger;
-  }
 }
 
 .gem-c-layout-super-navigation-header__width-container {
@@ -988,11 +981,6 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 @include govuk-media-query($until: tablet) {
-  .gem-c-layout-super-navigation-header__popular-links-heading--large-navbar {
-    font-size: 24px;
-    font-size: govuk-px-to-rem(24px);
-  }
-
   // can't disable responsive styling because using override classes
   // from govuk-frontend which are all responsive so have to supply
   // custom class to the label of the search component to turn off
