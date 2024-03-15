@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add a new GA4 'focus loss' tracker ([PR #3920](https://github.com/alphagov/govuk_publishing_components/pull/3920))
+
 ## 37.8.1
 
 * Remove "Popular" links from super navigation header ([PR #3918](https://github.com/alphagov/govuk_publishing_components/pull/3918))
