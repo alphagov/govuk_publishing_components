@@ -20,6 +20,10 @@ The [ecommerce tracker](https://github.com/alphagov/govuk_publishing_components/
 
 The [event tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) handles tracking on buttons or other interactive elements, such as tabs and details elements.
 
+## Focus loss tracker
+
+The [focus loss tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-focus-loss-tracker.md) is designed to capture data about an element when it loses focus.
+
 ## Form tracker
 
 The [form tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-form-tracker.md) is designed to capture data about a form when it has been submitted.

@@ -14,4 +14,5 @@
 //= require ./analytics-ga4/ga4-smart-answer-results-tracker
 //= require ./analytics-ga4/ga4-scroll-tracker
 //= require ./analytics-ga4/ga4-video-tracker
+//= require ./analytics-ga4/ga4-focus-loss-tracker
 //= require ./analytics-ga4/init-ga4
