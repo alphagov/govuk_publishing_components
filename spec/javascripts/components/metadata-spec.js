@@ -60,7 +60,7 @@ describe('The metadata component', function () {
 
   function init (element, target) {
     new GOVUK.Modules.Metadata(element).init()
-    var toggle = new GOVUK.Modules.GemToggle($(target)[0])
-    target && toggle.init()
+    /* eslint-disable no-new */
+    target && new GOVUK.Modules.GemToggle($(target)[0])
   }
 })
