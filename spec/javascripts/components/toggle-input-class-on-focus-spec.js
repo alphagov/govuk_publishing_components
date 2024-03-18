@@ -4,7 +4,7 @@
 describe('A toggle class module', function () {
   'use strict'
 
-  var element, toggle
+  var element
 
   afterEach(function () {
     element.remove()
@@ -17,8 +17,8 @@ describe('A toggle class module', function () {
           '<input type="search" class="js-class-toggle"/>' +
         '</div>')
       $('body').append(element)
-      toggle = new GOVUK.Modules.GemToggleInputClassOnFocus(element[0])
-      toggle.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.GemToggleInputClassOnFocus(element[0])
     })
 
     it('applies the focus style on focus and removes it on blur', function () {
@@ -38,8 +38,8 @@ describe('A toggle class module', function () {
           '<input type="search" value="My search query" class="js-class-toggle">' +
         '</div>')
       $('body').append(element)
-      toggle = new GOVUK.Modules.GemToggleInputClassOnFocus(element[0])
-      toggle.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.GemToggleInputClassOnFocus(element[0])
     })
 
     it('applies the focus style on load if the search box already has a value', function () {
