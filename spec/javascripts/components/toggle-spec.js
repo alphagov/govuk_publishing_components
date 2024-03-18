@@ -20,8 +20,8 @@ describe('A toggle module', function () {
           '<div id="target">Target</div>' +
         '</div>'
       element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.GemToggle(element[0])
     })
 
     it('adds aria attributes to toggles', function () {
@@ -42,8 +42,8 @@ describe('A toggle module', function () {
           '<div id="target" class="js-hidden">Target</div>' +
         '</div>'
       element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.GemToggle(element[0])
       element.find('.my-toggle')[0].click()
     })
 
@@ -83,8 +83,8 @@ describe('A toggle module', function () {
           '<div id="target" class="js-hidden">Target</div>' +
         '</div>'
       element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.GemToggle(element[0])
       element.find('.my-toggle')[0].click()
     })
 
@@ -131,8 +131,8 @@ describe('A toggle module', function () {
           '<div id="another-target" class="js-hidden">Another target</div>' +
         '</div>'
       element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.GemToggle(element[0])
 
       expect(element.find('#target').is('.js-hidden')).toBe(true)
       expect(element.find('#another-target').is('.js-hidden')).toBe(true)
@@ -155,8 +155,8 @@ describe('A toggle module', function () {
           '<div id="target">Target</div>' +
         '</div>'
       element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.GemToggle(element[0])
 
       expect(element.find('#target').is('.myclass')).toBe(false)
       element.find('.my-toggle')[0].click()
