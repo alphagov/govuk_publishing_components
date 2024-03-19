@@ -19,20 +19,6 @@ examples:
               base_path: /training-study-work-your-rights
             - title: Careers helpline for teenagers
               base_path: /careers-helpline-for-teenagers
-  with_curated_topics:
-    data:
-      content_item:
-        links:
-          topics:
-            - title: Apprenticeships, 14 to 19 education and training for work
-              base_path: /browse/education/find-course
-              document_type: topic
-            - title: Finding a job
-              base_path: /browse/working/finding-job
-              document_type: topic
-            - title: Apprenticeships
-              base_path: /topic/further-education-skills/apprenticeships
-              document_type: topic
   with_mainstream_browse_pages:
     data:
       content_item:
@@ -53,43 +39,6 @@ examples:
             base_path: /transport/driving-instruction-and-driving-lessons
             phase: live
             document_type: taxon
-  with_curated_topics_and_mainstream_browse_pages:
-    description: Currated topics and mainstream browse pages are combined.
-    data:
-      content_item:
-        links:
-          mainstream_browse_pages:
-          - title: Driving licences
-            base_path: /browse/driving/driving-licences
-            document_type: mainstream_browse_page
-          - title: Driving tests and learning to drive or ride
-            base_path: /browse/driving/learning-to-drive
-            document_type: mainstream_browse_page
-          topics:
-          - title: Cars
-            base_path: /topic/driving-tests-and-learning-to-drive/car
-            document_type: topic
-  with_curated_topics_and_mainstream_browse_pages_and_taxons:
-    description: Currated topics and mainstream browse pages take precedence over the sidewide topic taxonomy.
-    data:
-      content_item:
-        links:
-          mainstream_browse_pages:
-          - title: Driving licences
-            base_path: /browse/driving/driving-licences
-            document_type: mainstream_browse_page
-          - title: Driving tests and learning to drive or ride
-            base_path: /browse/driving/learning-to-drive
-            document_type: mainstream_browse_page
-          taxons:
-          - title: Driving instruction and driving lessons
-            base_path: /transport/driving-instruction-and-driving-lessons
-            phase: live
-            document_type: taxon
-          topics:
-          - title: Cars
-            base_path: /topic/driving-tests-and-learning-to-drive/car
-            document_type: topic
   with_collections:
     data:
       content_item:
@@ -218,11 +167,6 @@ examples:
             - title: Find an apprenticeship (French)
               base_path: /apply-apprenticeship.fr
               locale: fr
-          topics:
-            - title: Apprenticeships, 14 to 19 education and training for work (Korean)
-              base_path: /browse/education/find-course.ko
-              document_type: topic
-              locale: ko
           topical_events:
             - title: UK-China High-Level People to People Dialogue 2017 (Spanish)
               base_path: /government/topical-events/uk-china-high-level-people-to-people-dialogue-2017.es
@@ -263,16 +207,6 @@ examples:
               base_path: /training-study-work-your-rights
             - title: Careers helpline for teenagers
               base_path: /careers-helpline-for-teenagers
-          topics:
-            - title: Apprenticeships, 14 to 19 education and training for work
-              base_path: /browse/education/find-course
-              document_type: topic
-            - title: Finding a job
-              base_path: /browse/working/finding-job
-              document_type: topic
-            - title: Apprenticeships
-              base_path: /topic/further-education-skills/apprenticeships
-              document_type: topic
           topical_events:
             - title: UK-China High-Level People to People Dialogue 2017
               base_path: /government/topical-events/uk-china-high-level-people-to-people-dialogue-2017
@@ -319,16 +253,6 @@ examples:
               base_path: /training-study-work-your-rights
             - title: Careers helpline for teenagers
               base_path: /careers-helpline-for-teenagers
-          topics:
-            - title: Apprenticeships, 14 to 19 education and training for work
-              base_path: /browse/education/find-course
-              document_type: topic
-            - title: Finding a job
-              base_path: /browse/working/finding-job
-              document_type: topic
-            - title: Apprenticeships
-              base_path: /topic/further-education-skills/apprenticeships
-              document_type: topic
           topical_events:
             - title: UK-China High-Level People to People Dialogue 2017
               base_path: /government/topical-events/uk-china-high-level-people-to-people-dialogue-2017

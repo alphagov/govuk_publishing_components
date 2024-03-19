@@ -21,8 +21,6 @@
         return document.querySelectorAll('[data-track-count="cardList"]').length
       case isMainstreamBrowsePage():
         return countVisible(document.querySelectorAll('#subsection ul')) || document.querySelectorAll('#section ul').length || document.querySelectorAll('#root ul').length
-      case isTopicPage():
-        return document.querySelectorAll('.topics-page nav.index-list').length
       case isPolicyAreaPage():
         return document.querySelectorAll('.topic section h1.label').length
       case isFinderPage():
@@ -56,9 +54,6 @@
         return document.querySelectorAll('[data-track-count="cardLink"]').length
       case isMainstreamBrowsePage():
         return countVisible(document.querySelectorAll('#subsection ul a')) || document.querySelectorAll('#section ul a').length || document.querySelectorAll('#root ul a').length
-      case isTopicPage():
-        return document.querySelectorAll('.topics-page .index-list ul a').length ||
-          document.querySelectorAll('.topics-page .topics ul a').length
       case isPolicyAreaPage():
         return document.querySelectorAll('section.document-block a').length +
           document.querySelectorAll('section .collection-list h2 a').length
@@ -118,11 +113,6 @@
   function isMainstreamBrowsePage () {
     return getMetaAttribute(metaApplicationSelector) === 'collections' &&
       getMetaAttribute(metaFormatSelector) === 'mainstream_browse_page'
-  }
-
-  function isTopicPage () {
-    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
-      getMetaAttribute(metaFormatSelector) === 'topic'
   }
 
   function isPolicyAreaPage () {

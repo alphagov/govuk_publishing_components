@@ -31,16 +31,16 @@ RSpec.describe "Contextual footer", type: :view do
   it "sets the GA4 type to \"contextual footer\"" do
     content_item = {}
     content_item["links"] = {
-      "topics" => [
+      "taxons" => [
         {
           "base_path" => "/skating",
           "title" => "Skating",
-          "document_type" => "topic",
+          "document_type" => "taxon",
         },
         {
           "base_path" => "/paragliding",
           "title" => "Paragliding",
-          "document_type" => "topic",
+          "document_type" => "taxon",
         },
       ],
     }
@@ -55,16 +55,16 @@ RSpec.describe "Contextual footer", type: :view do
   it "allows GA4 to be disabled" do
     content_item = {}
     content_item["links"] = {
-      "topics" => [
+      "taxons" => [
         {
           "base_path" => "/skating",
           "title" => "Skating",
-          "document_type" => "topic",
+          "document_type" => "taxon",
         },
         {
           "base_path" => "/paragliding",
           "title" => "Paragliding",
-          "document_type" => "topic",
+          "document_type" => "taxon",
         },
       ],
     }

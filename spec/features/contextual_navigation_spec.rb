@@ -22,10 +22,10 @@ describe "Contextual navigation" do
     and_i_see_the_other_step_by_step_as_an_also_part_of_list
   end
 
-  scenario "There's a mainstream browse page tagged" do
-    given_theres_a_browse_page
+  scenario "There's a mainstream browse page with a browse parent" do
+    given_theres_a_browse_page_with_a_browse_parent
     and_i_visit_that_page
-    then_i_see_the_browse_page_in_the_footer
+    then_i_see_both_browse_pages_in_the_footer
     and_the_default_breadcrumbs
   end
 
@@ -40,19 +40,6 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_the_related_links_sidebar
     and_the_default_breadcrumbs
-  end
-
-  scenario "The page has a topic" do
-    given_theres_a_page_with_a_topic
-    and_i_visit_that_page
-    then_i_see_the_topic_breadcrumb
-  end
-
-  scenario "The page has many topics" do
-    given_theres_a_page_with_more_than_one_topic
-    and_i_visit_that_page
-    then_i_see_the_topic_breadcrumb
-    and_i_see_the_both_topics_in_the_related_navigation_footer
   end
 
   scenario "It's a HTML Publication document" do
@@ -84,11 +71,11 @@ describe "Contextual navigation" do
     and_the_taxonomy_breadcrumbs
   end
 
-  scenario "A browse page has a topic" do
-    given_theres_a_browse_page_with_a_topic
+  scenario "A page tagged to browse, without a browse parent" do
+    given_theres_a_page_tagged_to_browse_with_no_browse_parent
     and_i_visit_that_page
-    then_i_see_the_topic_in_the_related_navigation_footer
-    and_the_default_breadcrumbs
+    then_i_see_the_browse_page_in_the_footer
+    and_the_taxonomy_breadcrumbs
   end
 
   scenario "There's a secondary step by step list and no primary step by step list" do
@@ -254,7 +241,7 @@ describe "Contextual navigation" do
     })
   end
 
-  def given_theres_a_browse_page
+  def given_theres_a_browse_page_with_a_browse_parent
     content_store_has_random_item(
       links: {
         "parent" => [top_level_mainstream_browse_page],
@@ -267,7 +254,6 @@ describe "Contextual navigation" do
     content_store_has_random_item(
       schema: "travel_advice",
       links: {
-        "topics" => [topic_item],
         "parent" => [example_parent_page],
       },
     )
@@ -294,22 +280,12 @@ describe "Contextual navigation" do
     )
   end
 
-  def given_theres_a_browse_page_with_a_topic
+  def given_theres_a_page_tagged_to_browse_with_no_browse_parent
+    live_taxon = taxon_item
     content_store_has_random_item(links: {
-      "topics" => [topic_item],
       "mainstream_browse_pages" => [top_level_mainstream_browse_page],
-      "parent" => [top_level_mainstream_browse_page],
+      "taxons" => [live_taxon],
     })
-  end
-
-  def given_theres_a_page_with_a_topic
-    content_store_has_random_item(links: { "topics" => [topic_item] })
-  end
-
-  def given_theres_a_page_with_more_than_one_topic
-    content_store_has_random_item(
-      links: { "topics" => [topic_item, second_topic_item] },
-    )
   end
 
   def tag_page_to_a_taxon(*taxons)
@@ -423,10 +399,18 @@ describe "Contextual navigation" do
     end
   end
 
-  def then_i_see_the_browse_page_in_the_footer
+  def then_i_see_both_browse_pages_in_the_footer
     within ".gem-c-contextual-footer" do
       expect(page).to have_selector(".gem-c-related-navigation")
       expect(page).to have_content("Browse")
+      expect(page).to have_content("Benefits")
+    end
+  end
+
+  def then_i_see_the_browse_page_in_the_footer
+    within ".gem-c-contextual-footer" do
+      expect(page).to have_selector(".gem-c-related-navigation")
+      expect(page).to have_content("Benefits")
     end
   end
 
@@ -440,13 +424,6 @@ describe "Contextual navigation" do
   def then_i_see_the_primary_step_by_step
     within ".gem-c-step-nav-header" do
       expect(page).to have_content("PRIMARY STEP BY STEP")
-    end
-  end
-
-  def then_i_see_the_topic_breadcrumb
-    within ".gem-c-breadcrumbs" do
-      expect(page).to have_link("Home")
-      expect(page).to have_link(topic_item["title"])
     end
   end
 
@@ -480,19 +457,6 @@ describe "Contextual navigation" do
   def then_i_see_the_taxon_in_the_related_navigation_footer
     within ".gem-c-contextual-footer" do
       expect(page).to have_css(".gem-c-related-navigation__link", text: taxon_item["title"])
-    end
-  end
-
-  def then_i_see_the_topic_in_the_related_navigation_footer
-    within ".gem-c-contextual-footer" do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: topic_item["title"])
-    end
-  end
-
-  def and_i_see_the_both_topics_in_the_related_navigation_footer
-    within ".gem-c-contextual-footer" do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: topic_item["title"])
-      expect(page).to have_css(".gem-c-related-navigation__link", text: second_topic_item["title"])
     end
   end
 
@@ -555,13 +519,5 @@ describe "Contextual navigation" do
 
   def taxon_item
     @taxon_item ||= example_item("taxon", "taxon")
-  end
-
-  def topic_item
-    @topic_item ||= example_item("topic", "topic")
-  end
-
-  def second_topic_item
-    @second_topic_item ||= example_item("topic", "curated_subtopic")
   end
 end

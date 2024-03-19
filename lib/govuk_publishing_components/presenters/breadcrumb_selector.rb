@@ -55,11 +55,6 @@ module GovukPublishingComponents
             step_by_step: false,
             breadcrumbs: navigation.breadcrumbs,
           }
-        elsif navigation.content_has_a_topic?
-          {
-            step_by_step: false,
-            breadcrumbs: navigation.topic_breadcrumbs,
-          }
         elsif navigation.use_taxon_breadcrumbs?
           {
             step_by_step: false,

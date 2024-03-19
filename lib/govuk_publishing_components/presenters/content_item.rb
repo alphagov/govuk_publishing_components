@@ -97,10 +97,6 @@ module GovukPublishingComponents
         filter_link_type(content_store_response.dig("links", "related_statistical_data_sets").to_a, "statistical_data_set")
       end
 
-      def related_topics
-        filter_link_type(content_store_response.dig("links", "topics").to_a, "topic")
-      end
-
       def related_topical_events
         filter_link_type(content_store_response.dig("links", "topical_events").to_a, "topical_event")
       end
