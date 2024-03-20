@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use component wrapper in document list component ([PR #3933](https://github.com/alphagov/govuk_publishing_components/pull/3933))
+
 ## 37.9.0
 
 * Add a new GA4 'focus loss' tracker ([PR #3920](https://github.com/alphagov/govuk_publishing_components/pull/3920))
