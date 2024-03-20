@@ -44,6 +44,14 @@ examples:
       href: '#'
       start: true
       rel: external
+  start_now_button_without_ga4_attributes:
+    description: By default the start now button version of this component includes a `data-ga4-attributes` attribute that is used by the specialist (external) link tracker to uniquely identify start now buttons. This attribute can be removed using the `disable_ga4` option.
+    data:
+      text: Start now
+      disable_ga4: true
+      href: '#'
+      start: true
+      rel: external
   secondary_button:
     data:
       text: Secondary button

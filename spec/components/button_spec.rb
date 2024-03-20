@@ -15,6 +15,7 @@ describe "Button", type: :view do
     assert_select ".govuk-button[type=submit]", text: "Submit"
     assert_select ".govuk-button--start", false
     assert_select ".gem-c-button__info-text", false
+    assert_select "[data-ga4-attributes]", false
   end
 
   it "renders text correctly" do
@@ -46,6 +47,14 @@ describe "Button", type: :view do
     render_component(text: "Start now", href: "#", start: true)
     assert_select ".govuk-button[href='#'] span", text: /Start now/
     assert_select ".govuk-button--start"
+    assert_select ".govuk-button--start[data-ga4-attributes='{\"type\":\"start button\"}']"
+  end
+
+  it "renders start now button with GA4 attributes disabled" do
+    render_component(text: "Start now", href: "#", start: true, disable_ga4: true)
+    assert_select ".govuk-button[href='#'] span", text: /Start now/
+    assert_select ".govuk-button--start"
+    assert_select ".govuk-button--start[data-ga4-attributes='{\"type\":\"start button\"}']", false
   end
 
   it "renders secondary button" do
