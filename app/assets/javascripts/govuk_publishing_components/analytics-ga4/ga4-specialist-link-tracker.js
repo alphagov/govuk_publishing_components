@@ -72,7 +72,22 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       if (!href) {
         return
       }
+
       var data = {}
+      var extraAttributes = element.getAttribute('data-ga4-attributes')
+      if (extraAttributes) {
+        try {
+          extraAttributes = JSON.parse(extraAttributes)
+          // make sure the data object remains an object - JSON.parse can return a string
+          for (var attrname in extraAttributes) {
+            data[attrname] = extraAttributes[attrname]
+          }
+        } catch (e) {
+          // fall back to the empty data object if something goes wrong
+          console.error('GA4 configuration error: ' + e.message, window.location)
+        }
+      }
+
       var mailToLink = false
       if (window.GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)) {
         data.event_name = 'navigation'
@@ -85,7 +100,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href) ? 'true' : 'false'
       } else if (window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href)) {
         data.event_name = 'navigation'
-        data.type = 'generic link'
+        data.type = data.type || 'generic link'
         data.external = 'true'
       }
 

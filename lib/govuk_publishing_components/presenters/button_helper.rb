@@ -28,6 +28,7 @@ module GovukPublishingComponents
                   :aria_describedby
 
       def initialize(local_assigns)
+        @disable_ga4 = local_assigns[:disable_ga4]
         @href = local_assigns[:href]
         @text = local_assigns[:text]
         @title = local_assigns[:title]
@@ -45,6 +46,7 @@ module GovukPublishingComponents
         @target = local_assigns[:target]
         @type = local_assigns[:type]
         @start = local_assigns[:start]
+        @data_attributes[:ga4_attributes] = ga4_attribute if start
         @secondary = local_assigns[:secondary]
         @secondary_quiet = local_assigns[:secondary_quiet]
         @secondary_solid = local_assigns[:secondary_solid]
@@ -128,6 +130,10 @@ module GovukPublishingComponents
         legacy_class = "gem-c-button__info-text--bottom-margin" if info_text
 
         [*0..9].include?(margin) ? "govuk-!-margin-bottom-#{margin}" : legacy_class
+      end
+
+      def ga4_attribute
+        { type: "start button" }.to_json unless @disable_ga4
       end
     end
   end

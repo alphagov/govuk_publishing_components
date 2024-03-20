@@ -1,5 +1,6 @@
 <%
   add_gem_component_stylesheet("button")
+  disable_ga4 ||= false
 
   # button_helper.css_classes generates "gem-c-button"
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)

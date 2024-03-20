@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Track 'Start now' buttons with a specific GA4 type ([PR #3935](https://github.com/alphagov/govuk_publishing_components/pull/3935))
 * Use component wrapper in document list component ([PR #3933](https://github.com/alphagov/govuk_publishing_components/pull/3933))
 
 ## 37.9.0
