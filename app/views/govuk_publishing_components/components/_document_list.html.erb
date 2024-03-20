@@ -5,11 +5,13 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   items ||= []
 
-  classes = %w[gem-c-document-list]
-  classes << "gem-c-document-list--no-underline" if local_assigns[:remove_underline]
-  classes << "gem-c-document-list--no-top-border" if local_assigns[:remove_top_border]
-  classes << "gem-c-document-list--no-top-border-first-child" if local_assigns[:remove_top_border_from_first_child]
-  classes << shared_helper.get_margin_bottom
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-document-list")
+  component_helper.add_class("gem-c-document-list--no-underline") if local_assigns[:remove_underline]
+  component_helper.add_class("gem-c-document-list--no-top-border") if local_assigns[:remove_top_border]
+  component_helper.add_class("gem-c-document-list--no-top-border-first-child") if local_assigns[:remove_top_border_from_first_child]
+  component_helper.add_class(shared_helper.get_margin_bottom)
+
 
   title_with_context_class = " gem-c-document-list__item-title--context"
 
@@ -19,18 +21,18 @@
   disable_ga4 ||= false
   unless disable_ga4
     ga4_extra_data ||= {}
-    ga4_ul_attributes = {
+    component_helper.add_data_attribute({
       module: "ga4-link-tracker",
       ga4_track_links_only: "",
       ga4_link: {
         "event_name": "navigation",
         "type": "document list",
       }.merge(ga4_extra_data)
-    }
+    })
   end
 %>
 <% if items.any? %>
-  <%= tag.ul(class: classes.join(" "), data: ga4_ul_attributes) do %>
+  <%= tag.ul(**component_helper.all_attributes) do %>
     <% items.each do |item| %>
       <% highlight_class = " gem-c-document-list__item--highlight" if item[:highlight] %>
       <li class="gem-c-document-list__item <%= brand_helper.brand_class %> <%= highlight_class %>">
