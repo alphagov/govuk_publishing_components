@@ -33,7 +33,7 @@ The [form tracker](https://github.com/alphagov/govuk_publishing_components/blob/
 There are several types of link tracking. To distinguish them and simplify the code, we define them as follows.
 
 - the [link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) handles link clicks with data attributes added to specific links, or to parent elements of groups of links
-- the [specialist link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-specialist-link-tracker.md)automatically tracks clicks on 'special' links, such as external links, download links and mailto links
+- the [specialist link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-specialist-link-tracker.md) automatically tracks clicks on 'special' links, such as external links, download links and mailto links
 
 ## Print intent tracker
 
