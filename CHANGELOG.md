@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add a new GA4 'focus loss' tracker ([PR #3920](https://github.com/alphagov/govuk_publishing_components/pull/3920))
+* Fix accessibility issue in option select component ([PR #3926](https://github.com/alphagov/govuk_publishing_components/pull/3926))
 
 ## 37.8.1
 
