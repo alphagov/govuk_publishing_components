@@ -328,15 +328,21 @@ describe('The super header navigation', function () {
     var $navLinks
     var $firstNavLink
     var $lastNavLink
+    var $searchMenu
+    var $searchMenuTabbable
+    var $lastSearchMenuTabbable
 
     beforeEach(function () {
       thisModule.init()
       $navMenuButton = document.querySelector('#super-navigation-menu-toggle')
       $searchMenuButton = document.querySelector('#super-search-menu-toggle')
       $navMenu = document.querySelector('#super-navigation-menu')
-      $navLinks = $navMenu.querySelectorAll('li')
-      $firstNavLink = $navLinks[0].querySelector('a')
-      $lastNavLink = $navLinks[$navLinks.length - 1].querySelector('a')
+      $navLinks = $navMenu.querySelectorAll('li a')
+      $firstNavLink = $navLinks[0]
+      $lastNavLink = $navLinks[$navLinks.length - 1]
+      $searchMenu = document.querySelector('#super-search-menu')
+      $searchMenuTabbable = $searchMenu.querySelectorAll('li a, input, button')
+      $lastSearchMenuTabbable = $searchMenuTabbable[$searchMenuTabbable.length - 1]
     })
 
     it('when the Menu button is focussed, the nav menu is open and the tab key is pressed focus moves to the first nav menu link', function () {
@@ -344,7 +350,7 @@ describe('The super header navigation', function () {
       $navMenuButton.focus()
       window.GOVUK.triggerEvent($navMenuButton, 'keydown', { keyCode: 9, cancelable: true })
 
-      expect(document.activeElement).toEqual($navLinks[0].querySelector('a'))
+      expect(document.activeElement).toEqual($navLinks[0])
     })
 
     it('when the last nav menu link is focussed and the tab key is pressed focus moves to the search button and the nav menu is closed', function () {
@@ -373,6 +379,17 @@ describe('The super header navigation', function () {
       window.GOVUK.triggerEvent($searchMenuButton, 'keydown', { keyCode: 9, cancelable: true, shiftKey: true })
 
       expect(document.activeElement).toEqual($lastNavLink)
+    })
+
+    it('when the last tabbable element in the search menu is focussed and the tab key is pressed the search menu is closed', function () {
+      $searchMenu.removeAttribute('hidden')
+      $lastSearchMenuTabbable.focus()
+      window.GOVUK.triggerEvent($lastSearchMenuTabbable, 'keydown', { keyCode: 9, cancelable: true })
+
+      expect($searchMenu.hasAttribute('hidden')).toEqual(true)
+      expect($searchMenuButton.getAttribute('aria-expanded')).toEqual('false')
+      expect($searchMenuButton.getAttribute('aria-label')).toEqual('Show search menu')
+      expect($searchMenuButton.classList).not.toContain('gem-c-layout-super-navigation-header__open-button')
     })
   })
 
