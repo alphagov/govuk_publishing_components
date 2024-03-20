@@ -49,6 +49,10 @@ describe('A specialist link tracker', function () {
               '<a href="https://www.nationalarchives.gov.uk/2" link_domain="https://www.nationalarchives.gov.uk" path="/2"></a>' +
               '<a href="https://www.nationalarchives.gov.uk/3.pdf" link_domain="https://www.nationalarchives.gov.uk" path="/3.pdf">National Archives PDF</a>' +
             '</div>' +
+            '<div class="external-links-with-data-attributes">' +
+              '<a href="http://www.nationalarchives.gov.uk/1" link_domain="http://www.nationalarchives.gov.uk" path="/1"> National Archives </a>' +
+              '<a href="http://www.nationalarchives.gov.uk/2" link_domain="http://www.nationalarchives.gov.uk" path="/2"> National Archives </a>' +
+            '</div>' +
             '<div class="www-less-external-links">' +
               '<a href="http://nationalarchives.gov.uk/1" path="/1" link_domain="http://nationalarchives.gov.uk"> National Archives </a>' +
               '<a href="https://nationalarchives.gov.uk/2" path="/2" link_domain="https://nationalarchives.gov.uk"></a>' +
@@ -103,6 +107,33 @@ describe('A specialist link tracker', function () {
         expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
+
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
+    it('reads type from data-ga4-link attributes on external links', function () {
+      var linksToTest = document.querySelectorAll('.external-links-with-data-attributes a')
+      var attributes = [
+        {
+          type: 'specific type'
+        },
+        'invalid JSON'
+      ]
+      var types = [
+        'specific type',
+        'generic link'
+      ]
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        var link = linksToTest[i]
+        link.setAttribute('data-ga4-attributes', JSON.stringify(attributes[i]))
+        window.dataLayer = []
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
+        expected.event_data.type = types[i]
 
         expect(window.dataLayer[0]).toEqual(expected)
       }

@@ -72,7 +72,7 @@ In the example above, on a left click of the link, the following would be pushed
 
 Preview links would turn `type` to `preview`.
 
-External links would turn `event_name` to `navigation` and `type` to `generic link`.
+External links would turn `event_name` to `navigation` and `type` to `generic link`. `type` can be overridden by putting a `data-ga4-attributes` attribute on a link, containing a JSON snippet with an alternative `type`. This is done on 'Start now' buttons to uniquely identify them.
 
 Mailto links would turn turn `event_name` to `navigation` and `type` to `email`.
 
