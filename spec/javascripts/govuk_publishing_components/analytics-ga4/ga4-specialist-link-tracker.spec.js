@@ -44,46 +44,46 @@ describe('A specialist link tracker', function () {
       /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
       The value differs for each link, so we can't hardcode the expected value inside the test itself. */
       links.innerHTML =
-          '<div class="fully-structured-external-links">' +
-              '<a href="http://www.nationalarchives.gov.uk/1" link_domain="http://www.nationalarchives.gov.uk" path="/1"> National Archives </a>' +
-              '<a href="https://www.nationalarchives.gov.uk/2" link_domain="https://www.nationalarchives.gov.uk" path="/2"></a>' +
-              '<a href="https://www.nationalarchives.gov.uk/3.pdf" link_domain="https://www.nationalarchives.gov.uk" path="/3.pdf">National Archives PDF</a>' +
-            '</div>' +
-            '<div class="external-links-with-data-attributes">' +
-              '<a href="http://www.nationalarchives.gov.uk/1" link_domain="http://www.nationalarchives.gov.uk" path="/1"> National Archives </a>' +
-              '<a href="http://www.nationalarchives.gov.uk/2" link_domain="http://www.nationalarchives.gov.uk" path="/2"> National Archives </a>' +
-            '</div>' +
-            '<div class="www-less-external-links">' +
-              '<a href="http://nationalarchives.gov.uk/1" path="/1" link_domain="http://nationalarchives.gov.uk"> National Archives </a>' +
-              '<a href="https://nationalarchives.gov.uk/2" path="/2" link_domain="https://nationalarchives.gov.uk"></a>' +
-              '<a href="https://nationalarchives.gov.uk/one.pdf" link_domain="https://nationalarchives.gov.uk" path="/one.pdf">National Archives PDF</a>' +
-            '</div>' +
-            '<div class="protocol-relative-external-links">' +
-              '<a href="//nationalarchives.gov.uk"> National Archives </a>' +
-              '<a href="//nationalarchives.gov.uk"></a>' +
-              '<a href="//nationalarchives.gov.uk/one.pdf" path="/one.pdf">National Archives PDF</a>' +
-            '</div>' +
-            '<div class="nested-link">' +
-            '<a href="http://www.nationalarchives.gov.uk"> <img /> </a>' +
-            '</div>' +
-            '<div class="internal-links">' +
-              '<a href="/some-path">Local link</a>' +
-              '<a href="http://www.gov.uk/some-path">Another local link</a>' +
-              '<a href="https://www.gov.uk/some-path">Another local link</a>' +
-              '<a href="https://gov.uk/some-path">Another local link</a>' +
-              '<a href="//gov.uk/some-path">Another local link</a>' +
-            '</div>' +
-            '<div class="anchor-links">' +
-              '<a href="#some-id">Anchor link</a>' +
-              '<a href="#https://www.gov.uk">Another anchor link</a>' +
-              '<a href="#https://www.example.com">Another anchor link</a>' +
-            '</div>' +
-            '<div data-ga4-link="something">' +
-              '<a href="//nationalarchives.gov.uk" class="alreadytracked"> National Archives </a>' +
-            '</div>' +
-            '<div data-ga4-ecommerce-path="something">' +
-              '<a href="#https://www.example.com" class="resultLink">A search result link</a>' +
-            '</div>'
+        '<div class="fully-structured-external-links">' +
+          '<a href="http://www.nationalarchives.gov.uk/1" link_domain="http://www.nationalarchives.gov.uk" path="/1"> National Archives </a>' +
+          '<a href="https://www.nationalarchives.gov.uk/2" link_domain="https://www.nationalarchives.gov.uk" path="/2"></a>' +
+          '<a href="https://www.nationalarchives.gov.uk/3.pdf" link_domain="https://www.nationalarchives.gov.uk" path="/3.pdf">National Archives PDF</a>' +
+        '</div>' +
+        '<div class="external-links-with-data-attributes">' +
+          '<a href="http://www.nationalarchives.gov.uk/1" link_domain="http://www.nationalarchives.gov.uk" path="/1"> National Archives </a>' +
+          '<a href="http://www.nationalarchives.gov.uk/2" link_domain="http://www.nationalarchives.gov.uk" path="/2"> National Archives </a>' +
+        '</div>' +
+        '<div class="www-less-external-links">' +
+          '<a href="http://nationalarchives.gov.uk/1" path="/1" link_domain="http://nationalarchives.gov.uk"> National Archives </a>' +
+          '<a href="https://nationalarchives.gov.uk/2" path="/2" link_domain="https://nationalarchives.gov.uk"></a>' +
+          '<a href="https://nationalarchives.gov.uk/one.pdf" link_domain="https://nationalarchives.gov.uk" path="/one.pdf">National Archives PDF</a>' +
+        '</div>' +
+        '<div class="protocol-relative-external-links">' +
+          '<a href="//nationalarchives.gov.uk"> National Archives </a>' +
+          '<a href="//nationalarchives.gov.uk"></a>' +
+          '<a href="//nationalarchives.gov.uk/one.pdf" path="/one.pdf">National Archives PDF</a>' +
+        '</div>' +
+        '<div class="nested-link">' +
+        '<a href="http://www.nationalarchives.gov.uk"> <img /> </a>' +
+        '</div>' +
+        '<div class="internal-links">' +
+          '<a href="/some-path">Local link</a>' +
+          '<a href="http://www.gov.uk/some-path">Another local link</a>' +
+          '<a href="https://www.gov.uk/some-path">Another local link</a>' +
+          '<a href="https://gov.uk/some-path">Another local link</a>' +
+          '<a href="//gov.uk/some-path">Another local link</a>' +
+        '</div>' +
+        '<div class="anchor-links">' +
+          '<a href="#some-id">Anchor link</a>' +
+          '<a href="#https://www.gov.uk">Another anchor link</a>' +
+          '<a href="#https://www.example.com">Another anchor link</a>' +
+        '</div>' +
+        '<div data-ga4-link="something">' +
+          '<a href="//nationalarchives.gov.uk" class="alreadytracked"> National Archives </a>' +
+        '</div>' +
+        '<div data-ga4-ecommerce-path="something">' +
+          '<a href="#https://www.example.com" class="resultLink">A search result link</a>' +
+        '</div>'
 
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
