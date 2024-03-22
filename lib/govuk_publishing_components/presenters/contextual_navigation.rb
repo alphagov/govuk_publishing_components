@@ -33,10 +33,6 @@ module GovukPublishingComponents
         @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.call(content_item)
       end
 
-      def topic_breadcrumbs
-        @topic_breadcrumbs ||= ContentBreadcrumbsBasedOnTopic.call(content_item)
-      end
-
       def breadcrumbs
         breadcrumbs_based_on_ancestors
       end
@@ -86,10 +82,6 @@ module GovukPublishingComponents
 
       def content_is_a_html_publication?
         content_item["document_type"] == "html_publication"
-      end
-
-      def content_has_a_topic?
-        content_item.dig("links", "topics").present?
       end
 
       def content_tagged_to_current_step_by_step?
