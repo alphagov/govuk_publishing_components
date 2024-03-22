@@ -49,19 +49,6 @@ describe "Contextual navigation" do
     and_the_default_breadcrumbs
   end
 
-  scenario "The page has a topic" do
-    given_theres_a_page_with_a_topic
-    and_i_visit_that_page
-    then_i_see_the_topic_breadcrumb
-  end
-
-  scenario "The page has many topics" do
-    given_theres_a_page_with_more_than_one_topic
-    and_i_visit_that_page
-    then_i_see_the_topic_breadcrumb
-    and_i_see_the_both_topics_in_the_related_navigation_footer
-  end
-
   scenario "It's a HTML Publication document" do
     given_there_is_a_non_step_by_step_parent_page
     and_the_page_is_an_html_publication_with_that_parent
@@ -89,13 +76,6 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_the_taxon_in_the_related_navigation_footer
     and_the_taxonomy_breadcrumbs
-  end
-
-  scenario "A browse page has a topic" do
-    given_theres_a_browse_page_with_a_topic
-    and_i_visit_that_page
-    then_i_see_the_topic_in_the_related_navigation_footer
-    and_the_default_breadcrumbs
   end
 
   scenario "There's a secondary step by step list and no primary step by step list" do
@@ -283,7 +263,6 @@ describe "Contextual navigation" do
     content_store_has_random_item(
       schema: "travel_advice",
       links: {
-        "topics" => [topic_item],
         "parent" => [example_parent_page],
       },
     )
@@ -307,24 +286,6 @@ describe "Contextual navigation" do
       links: {
         "taxons" => [live_taxon, alpha_taxon],
       },
-    )
-  end
-
-  def given_theres_a_browse_page_with_a_topic
-    content_store_has_random_item(links: {
-      "topics" => [topic_item],
-      "mainstream_browse_pages" => [top_level_mainstream_browse_page],
-      "parent" => [top_level_mainstream_browse_page],
-    })
-  end
-
-  def given_theres_a_page_with_a_topic
-    content_store_has_random_item(links: { "topics" => [topic_item] })
-  end
-
-  def given_theres_a_page_with_more_than_one_topic
-    content_store_has_random_item(
-      links: { "topics" => [topic_item, second_topic_item] },
     )
   end
 
@@ -499,19 +460,6 @@ describe "Contextual navigation" do
     end
   end
 
-  def then_i_see_the_topic_in_the_related_navigation_footer
-    within ".gem-c-contextual-footer" do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: topic_item["title"])
-    end
-  end
-
-  def and_i_see_the_both_topics_in_the_related_navigation_footer
-    within ".gem-c-contextual-footer" do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: topic_item["title"])
-      expect(page).to have_css(".gem-c-related-navigation__link", text: second_topic_item["title"])
-    end
-  end
-
   # Use links version if output could be either step by step or breadcrumbs
   def then_i_see_home_and_parent_links
     within ".gem-c-contextual-breadcrumbs" do
@@ -571,13 +519,5 @@ describe "Contextual navigation" do
 
   def taxon_item
     @taxon_item ||= example_item("taxon", "taxon")
-  end
-
-  def topic_item
-    @topic_item ||= example_item("topic", "topic")
-  end
-
-  def second_topic_item
-    @second_topic_item ||= example_item("topic", "curated_subtopic")
   end
 end

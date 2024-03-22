@@ -148,12 +148,12 @@ describe "Breadcrumbs", type: :view do
   it "renders breadcrumb items without link as text" do
     render_component(
       breadcrumbs: [
-        { title: "Topic", url: "/topic" },
+        { title: "Education", url: "/education" },
         { title: "Current Page" },
       ],
     )
 
-    assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/topic", "Topic")
+    assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/education", "Education")
     assert_select(".govuk-breadcrumbs__list-item:last-child", "Current Page")
     assert_select(".govuk-breadcrumbs__list-item:last-child a", false)
   end
