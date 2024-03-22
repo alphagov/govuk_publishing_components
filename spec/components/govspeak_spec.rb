@@ -46,27 +46,4 @@ describe "Govspeak", type: :view do
 
     expect(rendered).to include("content-via-block")
   end
-
-  it "adds GA4 tracking" do
-    render_component(
-      content: "<h1>content</h1>".html_safe,
-    )
-
-    assert_select ".gem-c-govspeak[data-module='govspeak ga4-link-tracker']"
-    assert_select ".gem-c-govspeak[data-ga4-track-links-only]"
-    assert_select ".gem-c-govspeak[data-ga4-limit-to-element-class='call-to-action, info-notice, help-notice, advisory']"
-    assert_select '.gem-c-govspeak[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"callout\"}"]'
-  end
-
-  it "can disable GA4 tracking" do
-    render_component(
-      content: "<h1>content</h1>".html_safe,
-      disable_ga4: true,
-    )
-
-    assert_no_selector ".gem-c-govspeak[data-module='govspeak ga4-link-tracker']"
-    assert_no_selector ".gem-c-govspeak[data-ga4-track-links-only]"
-    assert_no_selector ".gem-c-govspeak[data-ga4-limit-to-element-class]"
-    assert_no_selector ".gem-c-govspeak[data-ga4-link]"
-  end
 end
