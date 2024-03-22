@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Improve test coverage of contextual breadcrumb logic ([PR #3944](https://github.com/alphagov/govuk_publishing_components/pull/3944))
+
 ## 37.9.1
 
 * Track 'Start now' buttons with a specific GA4 type ([PR #3935](https://github.com/alphagov/govuk_publishing_components/pull/3935))

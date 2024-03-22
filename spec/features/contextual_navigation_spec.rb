@@ -22,11 +22,18 @@ describe "Contextual navigation" do
     and_i_see_the_other_step_by_step_as_an_also_part_of_list
   end
 
-  scenario "There's a mainstream browse page tagged" do
-    given_theres_a_browse_page
+  scenario "The page is tagged to browse and has a browse parent" do
+    given_theres_a_page_tagged_to_browse_with_a_browse_parent
     and_i_visit_that_page
     then_i_see_the_browse_page_in_the_footer
     and_the_default_breadcrumbs
+  end
+
+  scenario "The page is tagged to browse and does not have a browse parent" do
+    given_theres_a_page_tagged_to_browse_without_a_browse_parent
+    and_i_visit_that_page
+    then_i_see_the_browse_page_in_the_footer
+    then_i_see_the_topic_breadcrumb
   end
 
   scenario "Foreign travel advice content" do
@@ -254,10 +261,19 @@ describe "Contextual navigation" do
     })
   end
 
-  def given_theres_a_browse_page
+  def given_theres_a_page_tagged_to_browse_with_a_browse_parent
     content_store_has_random_item(
       links: {
         "parent" => [top_level_mainstream_browse_page],
+        "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
+      },
+    )
+  end
+
+  def given_theres_a_page_tagged_to_browse_without_a_browse_parent
+    content_store_has_random_item(
+      links: {
+        "topics" => [topic_item],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
       },
     )
