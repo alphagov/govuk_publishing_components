@@ -29,6 +29,13 @@ describe "Contextual navigation" do
     and_the_default_breadcrumbs
   end
 
+  scenario "The page is tagged to browse and does not have a browse parent" do
+    given_theres_a_page_tagged_to_browse_without_a_browse_parent
+    and_i_visit_that_page
+    then_i_see_the_browse_page_in_the_footer
+    then_i_see_the_topic_breadcrumb
+  end
+
   scenario "Foreign travel advice content" do
     given_theres_a_travel_advice_page
     and_i_visit_that_page
@@ -258,6 +265,15 @@ describe "Contextual navigation" do
     content_store_has_random_item(
       links: {
         "parent" => [top_level_mainstream_browse_page],
+        "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
+      },
+    )
+  end
+
+  def given_theres_a_page_tagged_to_browse_without_a_browse_parent
+    content_store_has_random_item(
+      links: {
+        "topics" => [topic_item],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
       },
     )
