@@ -33,7 +33,7 @@ describe "Contextual navigation" do
     given_theres_a_page_tagged_to_browse_without_a_browse_parent
     and_i_visit_that_page
     then_i_see_the_browse_page_in_the_footer
-    then_i_see_the_topic_breadcrumb
+    and_the_taxonomy_breadcrumbs
   end
 
   scenario "Foreign travel advice content" do
@@ -273,7 +273,7 @@ describe "Contextual navigation" do
   def given_theres_a_page_tagged_to_browse_without_a_browse_parent
     content_store_has_random_item(
       links: {
-        "topics" => [topic_item],
+        "taxons" => [taxon_item],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
       },
     )
