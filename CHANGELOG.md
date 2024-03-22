@@ -9,7 +9,7 @@
 
 ## Unreleased
 
-* Improve test coverage of contextual breadcrumb logic ([PR #3944](https://github.com/alphagov/govuk_publishing_components/pull/3944))
+* Improve test coverage of contextual breadcrumb logic ([PR #3944](https://github.com/alphagov/govuk_publishing_components/pull/3944) and [PR #3945](https://github.com/alphagov/govuk_publishing_components/pull/3945))
 
 ## 37.9.1
 
