@@ -10,7 +10,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.prompt = this.$module.querySelector('.js-prompt')
     this.forms = this.$module.querySelectorAll('.js-feedback-form')
     this.toggleForms = this.$module.querySelectorAll('.js-toggle-form')
-    this.closeForms = this.$module.querySelectorAll('.js-close-form')
     this.activeForm = false
     this.pageIsUsefulButton = this.$module.querySelector('.js-page-is-useful')
     this.pageIsNotUsefulButton = this.$module.querySelector('.js-page-is-not-useful')
@@ -21,6 +20,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.jshiddenClass = 'js-hidden'
     this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
     this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
+    this.pageIsUsefulHeading = this.$module.querySelector('.js-prompt-question')
+    this.pageIsUsefulYesButton = this.$module.querySelector('.js-page-is-useful')
+    this.pageIsUsefulNoButton = this.$module.querySelector('.js-page-is-not-useful')
+    this.feedbackPrompt = this.$module.querySelector('.gem-c-feedback__prompt-content')
+    this.feedbackTrackingData = this.initialiseFeedbackTrackingData()
   }
 
   Feedback.prototype.init = function () {
@@ -37,24 +41,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.toggleForms[j].addEventListener('click', function (e) {
         e.preventDefault()
         var el = e.target.closest('button')
-        this.toggleForm(el.getAttribute('aria-controls'))
         this.trackEvent(this.getTrackEventParams(el))
+        this.toggleForm(el.getAttribute('aria-controls'), el)
         this.updateAriaAttributes(el)
-      }.bind(this))
-    }
 
-    for (var i = 0; i < this.closeForms.length; i++) {
-      this.closeForms[i].hidden = false
-      this.closeForms[i].addEventListener('click', function (e) {
-        e.preventDefault()
-        var el = e.target
-        var formToToggle = el.getAttribute('aria-controls')
-        this.toggleForm(formToToggle)
-        this.trackEvent(this.getTrackEventParams(el))
-        this.setInitialAriaAttributes()
-        this.revealInitialPrompt()
-        var refocusClass = '.js-' + formToToggle
-        this.$module.querySelector(refocusClass).focus()
+        // if closing the form, shift focus back to the button that controls it
+        if(!this.activeForm) {
+          var formToToggle = el.getAttribute('aria-controls')
+          var refocusClass = '.js-' + formToToggle
+          this.$module.querySelector(refocusClass).focus()
+        }
       }.bind(this))
     }
 
@@ -190,20 +186,141 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Feedback.prototype.updateAriaAttributes = function (linkClicked) {
-    linkClicked.setAttribute('aria-expanded', true)
+    this.ariaExpanded = linkClicked.getAttribute('aria-expanded')
+
+    if(this.ariaExpanded === 'false') {
+      linkClicked.setAttribute('aria-expanded', true)
+    }
+    else {
+      linkClicked.setAttribute('aria-expanded', false)
+    }
   }
 
-  Feedback.prototype.toggleForm = function (formId) {
+  Feedback.prototype.toggleForm = function (formId, el) {
     this.activeForm = this.$module.querySelector('#' + formId)
     this.activeForm.hidden ? this.activeForm.hidden = false : this.activeForm.hidden = true
-    this.prompt.hidden ? this.prompt.hidden = false : this.prompt.hidden = true
 
     if (!this.activeForm.hidden) {
+      var elementsToHide = [this.promptQuestions[1], this.pageIsUsefulHeading, this.pageIsUsefulYesButton]
+
+      el.querySelector('.js-prompt-button-text').textContent = el.dataset.feedbackCloseTranslation
+      this.hidePrompts(el, elementsToHide)
+      this.toggleFeedbackTrackingDataAttributes(el)
       this.activeForm.querySelectorAll('.gem-c-textarea .govuk-textarea, .gem-c-input.govuk-input')[0]
         .focus()
     } else {
+      var buttonText = this.isSomethingIsWrongButton(el) ? el.dataset.feedbackSomethingWrongTranslation : el.dataset.feedbackNoTranslation
+      var elementsToShow = [this.promptQuestions[0], this.promptQuestions[1], this.pageIsUsefulHeading, this.pageIsUsefulYesButton]
+      
+      el.querySelector('.js-prompt-button-text').textContent = buttonText
+      this.showPrompts(elementsToShow)
+      this.toggleFeedbackTrackingDataAttributes(el)
       this.activeForm = false
       clearInterval(this.timerInterval)
+    }
+  }
+
+  Feedback.prototype.hidePrompts = function(el, elementsToHide) {
+    this.feedbackPrompt.classList.add('js-prompt-content')
+
+    if(this.isSomethingIsWrongButton(el)) {
+      this.promptQuestions[0].setAttribute('hidden', true)
+      this.somethingIsWrongButton.parentElement.classList.add('js-no-border-top')
+    }
+    else if (this.isPageIsNotUsefulButton(el)) {
+      for(var i = 0; i < elementsToHide.length; i++) {
+        elementsToHide[i].setAttribute('hidden', true)
+      }
+      this.toggleStyling(true)
+    }
+  }
+
+  Feedback.prototype.showPrompts = function(elementsToShow) {
+    this.feedbackPrompt.classList.remove('js-prompt-content')
+
+    for(var i = 0; i < elementsToShow.length; i++) {
+      elementsToShow[i].removeAttribute('hidden')
+    }
+    
+    this.toggleStyling(false)
+  }
+
+  Feedback.prototype.toggleStyling = function(addStyling) {
+    if(addStyling) {
+      this.pageIsUsefulNoButton.parentElement.classList.add('govuk-!-margin-0')
+      this.pageIsUsefulNoButton.parentElement.classList.add('govuk-!-width-full')
+    }
+    else {
+      this.somethingIsWrongButton.parentElement.classList.remove('js-no-border-top')
+      this.pageIsUsefulNoButton.parentElement.classList.remove('govuk-!-margin-0')
+      this.pageIsUsefulNoButton.parentElement.classList.remove('govuk-!-width-full')
+    }
+  }
+
+  Feedback.prototype.isSomethingIsWrongButton = function(el) {
+    return el.classList.contains('js-something-is-wrong')
+  }
+
+  Feedback.prototype.isPageIsNotUsefulButton = function(el) {
+    return el.classList.contains('js-page-is-not-useful')
+  }
+
+  Feedback.prototype.toggleFeedbackTrackingDataAttributes = function(el) {
+    this.clearFeedbackTrackingDataAttributes(el)
+    var data;
+
+    if(this.isSomethingIsWrongButton(el)) {
+      data = this.feedbackTrackingData.somethingWrongTrackingData
+    }
+    else if(this.isPageIsNotUsefulButton(el)) {
+      data = this.feedbackTrackingData.pageIsNotUsefulTrackingData
+    }
+
+    this.setFeedbackTrackingDataAttributes(el, data)
+  }
+
+  Feedback.prototype.clearFeedbackTrackingDataAttributes = function(el) {
+    if(el) {
+      for(var prop in el.dataset){
+        delete el.dataset[prop]
+      }
+    }
+  }
+
+  Feedback.prototype.setFeedbackTrackingDataAttributes = function(el, data){
+    if(el && data) {
+      var data = !this.activeForm.hidden ? data.collapsedDataAttributes : data.expandedDataAttributes
+      for(var prop in data) {
+        el.dataset[prop] = data[prop]
+      }
+    }
+  }
+
+  Feedback.prototype.initialiseFeedbackTrackingData = function() {
+    var initialSomethingWrongTrackingData = this.somethingIsWrongButton.dataset
+    var initialPageIsNotUsefulTrackingData = this.pageIsNotUsefulButton.dataset
+
+    return {
+      somethingWrongTrackingData: {
+        // Convert expandedDataAttributes from a DOMStringMap to an object. This makes it easier to toggle the data attributes.
+        expandedDataAttributes: window.GOVUK.extendObject({}, initialSomethingWrongTrackingData),
+        collapsedDataAttributes: {
+          trackCategory: "Onsite Feedback",
+          trackAction: "GOV.UK Close Form",
+          feedbackSomethingWrongTranslation: initialSomethingWrongTrackingData.feedbackSomethingWrongTranslation,
+          feedbackCloseTranslation: initialSomethingWrongTrackingData.feedbackCloseTranslation
+        }
+      },
+      pageIsNotUsefulTrackingData: {
+        // Convert expandedDataAttributes from a DOMStringMap to an object. This makes it easier to toggle the data attributes.
+        expandedDataAttributes: window.GOVUK.extendObject({}, initialPageIsNotUsefulTrackingData),
+        collapsedDataAttributes: {
+          trackCategory: "yesNoFeedbackForm",
+          trackAction: "ffFormClose",
+          feedbackNoTranslation: initialPageIsNotUsefulTrackingData.feedbackNoTranslation,
+          feedbackCloseTranslation: initialPageIsNotUsefulTrackingData.feedbackCloseTranslation
+        }
+      }
     }
   }
 
