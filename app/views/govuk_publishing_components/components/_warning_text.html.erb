@@ -14,18 +14,9 @@
   text_classes << "gem-c-warning-text__text--no-indent" if text_icon.empty?
   text_classes << "gem-c-warning-text__text--large" if large_font
   text_classes << "gem-c-warning-text__text--highlight" if highlight_text
-
-  disable_ga4 ||= false
-
-  ga4_data_attributes = {
-    "module": "ga4-link-tracker",
-    "ga4-track-links-only": "",
-    "ga4-link": { "event_name": "navigation", "type": "callout" }.to_json
-  } unless disable_ga4
-
 %>
 
-<%= tag.div id: id, class: "gem-c-warning-text govuk-warning-text", data: ga4_data_attributes do %>
+<%= tag.div id: id, class: "gem-c-warning-text govuk-warning-text" do %>
   <% unless text_icon.empty? %>
     <%= tag.span text_icon, class: "govuk-warning-text__icon", "aria-hidden": "true" %>
   <% end %>

@@ -103,30 +103,4 @@ describe "Notice", type: :view do
     assert_select ".gem-c-notice h2.govuk-notification-banner__title", text: "Notice"
     assert_select "h3.gem-c-notice__title", text: "Your settings have been saved"
   end
-
-  it "has GA4 tracking enabled on the component, and disabled on the nested govspeak render" do
-    render_component(title: "Title", description_govspeak: "<marquee>It's 1998</marquee>".html_safe)
-
-    assert_select ".gem-c-notice[data-module='ga4-link-tracker']"
-    assert_select ".gem-c-notice[data-ga4-track-links-only]"
-    assert_select '.gem-c-notice[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"callout\"}"]'
-
-    assert_no_selector ".gem-c-govspeak[data-module='govspeak ga4-link-tracker']"
-    assert_no_selector ".gem-c-govspeak[data-ga4-track-links-only]"
-    assert_no_selector ".gem-c-govspeak[data-ga4-limit-to-element-class='call-to-action, info-notice, help-notice, advisory']"
-    assert_no_selector '.gem-c-govspeak[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"callout\"}"]'
-  end
-
-  it "can have GA4 tracking disabled" do
-    render_component(title: "Title", description_govspeak: "<marquee>It's 1998</marquee>".html_safe)
-
-    assert_no_selector ".gem-c-notice[data-module='ga4-link-tracker']"
-    assert_no_selector ".gem-c-notice[data-ga4-track-links-only]"
-    assert_no_selector '.gem-c-notice[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"callout\"}"]'
-
-    assert_no_selector ".gem-c-govspeak[data-module='govspeak ga4-link-tracker']"
-    assert_no_selector ".gem-c-govspeak[data-ga4-track-links-only]"
-    assert_no_selector ".gem-c-govspeak[data-ga4-limit-to-element-class='call-to-action, info-notice, help-notice, advisory']"
-    assert_no_selector '.gem-c-govspeak[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"callout\"}"]'
-  end
 end

@@ -750,7 +750,7 @@ describe('A specialist link tracker', function () {
       links.setAttribute('data-module', 'ga4-link-tracker')
       links.setAttribute('data-ga4-track-links-only', '')
       links.setAttribute('data-ga4-limit-to-element-class', 'hello')
-      links.setAttribute('data-ga4-link', JSON.stringify({ event_name: 'navigation', type: 'callout' }))
+      links.setAttribute('data-ga4-link', JSON.stringify({ event_name: 'navigation', type: 'something' }))
 
       links.innerHTML =
         '<div class="hello">' +
@@ -783,7 +783,7 @@ describe('A specialist link tracker', function () {
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
-      expected.event_data.type = 'callout'
+      expected.event_data.type = 'something'
       expected.event_data.method = 'primary click'
       expected.event_data.external = 'true'
       expected.govuk_gem_version = 'aVersion'

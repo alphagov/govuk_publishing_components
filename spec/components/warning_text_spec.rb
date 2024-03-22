@@ -48,18 +48,4 @@ describe "warning text", type: :view do
     assert_select("h1.govuk-warning-text__text", text: /Because/i)
     assert_select("h1.govuk-warning-text__text .govuk-warning-text__assistive", text: /Warning/i)
   end
-
-  it "has GA4 link tracking" do
-    render_component(text: "Because", heading_level: 1)
-    assert_select("[data-module='ga4-link-tracker']")
-    assert_select('[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"callout\"}"]')
-    assert_select("[data-ga4-track-links-only]")
-  end
-
-  it "can disable GA4 link tracking" do
-    render_component(disable_ga4: true, text: "Because", heading_level: 1)
-    assert_select("[data-module='ga4-link-tracker']", false)
-    assert_select('[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"callout\"}"]', false)
-    assert_select("[data-ga4-track-links-only]", false)
-  end
 end

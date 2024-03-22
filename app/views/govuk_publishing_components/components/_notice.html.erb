@@ -25,27 +25,15 @@
   aria_attributes[:labelledby] = banner_title_id if show_banner_title
 
   description_present = description.present? || description_text.present? || description_govspeak.present?
-  disable_ga4 ||= false
 
   if description_govspeak
     govspeak_data_attributes = {
       content: description_govspeak,
     }
   end
-
-  unless disable_ga4
-    section_data_attributes = {
-      module: "ga4-link-tracker",
-      ga4_track_links_only: "",
-      ga4_link: {
-        event_name: "navigation",
-        type: "callout"
-      }.to_json
-    }
-  end
 %>
 <% if title || description_present %>
-  <%= tag.section class: css_classes, aria: aria_attributes, lang: lang, role: "region", data: section_data_attributes do %>
+  <%= tag.section class: css_classes, aria: aria_attributes, lang: lang, role: "region" do %>
     <%= tag.div class: "govuk-notification-banner__header" do %>
       <%= tag.h2 banner_title, class: "govuk-notification-banner__title", id: banner_title_id %>
     <% end if show_banner_title %>
