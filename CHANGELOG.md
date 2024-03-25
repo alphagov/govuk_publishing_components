@@ -14,6 +14,7 @@
 * Improve test coverage of contextual breadcrumb logic ([PR #3944](https://github.com/alphagov/govuk_publishing_components/pull/3944) and [PR #3945](https://github.com/alphagov/govuk_publishing_components/pull/3945))
 * Remove GA4 callout tracking from the govspeak component ([PR #3946](https://github.com/alphagov/govuk_publishing_components/pull/3946))
 * Remove GA4 callout tracking from notice & warning text components ([PR #3947](https://github.com/alphagov/govuk_publishing_components/pull/3947))
+* Restores test and refactors component and test for layout-super-navigation-header ([PR #3939](https://github.com/alphagov/govuk_publishing_components/pull/3939))
 
 ## 37.9.1
 

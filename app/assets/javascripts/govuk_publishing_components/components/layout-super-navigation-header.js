@@ -134,8 +134,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var $navMenuLinks = this.$navMenu.querySelectorAll('li a')
     var $firstNavLink = $navMenuLinks[0]
     var $lastNavLink = $navMenuLinks[$navMenuLinks.length - 1]
-    var $searchMenuLinks = this.$searchMenu.querySelectorAll('li a')
-    var $lastSearchLink = $searchMenuLinks[$searchMenuLinks.length - 1]
+    var $searchMenuTabbable = this.$searchMenu.querySelectorAll('li a, input, button')
+    var $lastSearchMenuTabbable = $searchMenuTabbable[$searchMenuTabbable.length - 1]
 
     if (event.keyCode === KEY_TAB) {
       if (!this.$navMenu.hasAttribute('hidden')) {
@@ -169,7 +169,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
             break
         }
       } else if (!this.$searchMenu.hasAttribute('hidden')) {
-        if (document.activeElement === $lastSearchLink) {
+        if (document.activeElement === $lastSearchMenuTabbable) {
           if (!event.shiftKey) {
             hide(this.$searchToggle, this.$searchMenu)
           }
