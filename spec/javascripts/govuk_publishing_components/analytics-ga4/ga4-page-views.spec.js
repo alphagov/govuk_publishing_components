@@ -60,7 +60,8 @@ describe('Google Tag Manager page view tracking', function () {
         intervention: undefined,
         query_string: undefined,
         search_term: undefined,
-        spelling_suggestion: undefined
+        spelling_suggestion: undefined,
+        discovery_engine_attribution_token: undefined
       }
     }
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
@@ -641,6 +642,13 @@ describe('Google Tag Manager page view tracking', function () {
   it('correctly sets the spelling_suggestion parameter', function () {
     createMetaTags('spelling-suggestion', 'tax')
     expected.page_view.spelling_suggestion = 'tax'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('correctly sets the discovery_engine_attribution_token parameter', function () {
+    createMetaTags('discovery-engine-attribution-token', 'searchyMcSearch')
+    expected.page_view.discovery_engine_attribution_token = 'searchyMcSearch'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })

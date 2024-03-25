@@ -8,6 +8,8 @@
   of the commit log.
 
 ## Unreleased
+
+* Add discovery_engine_attribution_token to GA4 pageview ([PR #3951](https://github.com/alphagov/govuk_publishing_components/pull/3951))
 * Remove support for specialist topics from contextual navigation ie breadcrumbs ([#3927](https://github.com/alphagov/govuk_publishing_components/pull/3927))
 * Improve test coverage of contextual breadcrumb logic ([PR #3944](https://github.com/alphagov/govuk_publishing_components/pull/3944) and [PR #3945](https://github.com/alphagov/govuk_publishing_components/pull/3945))
 * Remove GA4 callout tracking from the govspeak component ([PR #3946](https://github.com/alphagov/govuk_publishing_components/pull/3946))

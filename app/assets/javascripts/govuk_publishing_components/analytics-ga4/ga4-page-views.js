@@ -62,7 +62,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             intervention: this.getBannerPresence('[data-ga4-intervention-banner]'),
             query_string: this.getQueryString(),
             search_term: this.getSearchTerm(),
-            spelling_suggestion: this.getMetaContent('spelling-suggestion')
+            spelling_suggestion: this.getMetaContent('spelling-suggestion'),
+            discovery_engine_attribution_token: this.getMetaContent('discovery-engine-attribution-token')
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
