@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 37.10.0
 
 * Add discovery_engine_attribution_token to GA4 pageview ([PR #3951](https://github.com/alphagov/govuk_publishing_components/pull/3951))
 * Remove support for specialist topics from contextual navigation ie breadcrumbs ([#3927](https://github.com/alphagov/govuk_publishing_components/pull/3927))
