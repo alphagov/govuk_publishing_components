@@ -1,5 +1,6 @@
 /*
-Copyright (c) 2008-2023 Pivotal Labs
+Copyright (c) 2008-2019 Pivotal Labs
+Copyright (c) 2008-2024 The Jasmine developers
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -8308,7 +8309,7 @@ getJasmineRequireObj().interface = function(jasmine, env) {
      * @return {matchers}
      */
     throwUnlessAsync: function(actual) {
-      return env.throwUnless(actual);
+      return env.throwUnlessAsync(actual);
     },
 
     /**
@@ -10812,5 +10813,5 @@ getJasmineRequireObj().UserContext = function(j$) {
 };
 
 getJasmineRequireObj().version = function() {
-  return '5.1.1';
+  return '5.1.2';
 };

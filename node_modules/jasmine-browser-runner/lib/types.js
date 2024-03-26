@@ -40,6 +40,26 @@
  * @type number | undefined
  */
 /**
+ * The path to a TLS key. Activates HTTPS mode. If specified, tlsCert must also
+ * be specified.
+ * @name ServerCtorOptions#tlsKey
+ * @type string
+ */
+/**
+ * The path to a TLS cert. Activates HTTPS mode. If specified, tlsKey must also
+ * be specified.
+ * @name ServerCtorOptions#tlsCert
+ * @type string
+ */
+/**
+ * The hostname to use.  This influences both the URL given to browsers and the
+ * addresses on which the socket listens.  If blank, for backward
+ * compatibility, the browsers will be pointed to localhost, but the listening
+ * socket will listen on all IPs.
+ * @name ServerCtorOptions#hostname
+ * @type string
+ */
+/**
  * The root directory of the project.
  * @name ServerCtorOptions#projectBaseDir
  * @type string | undefined
@@ -270,6 +290,26 @@
  * The port number to listen on.
  * @name ServerStartOptions#port
  * @type number | undefined
+ */
+/**
+ * The path to a TLS key. Activates HTTPS mode. If specified, tlsCert must also
+ * be specified.
+ * @name ServerStartOptions#tlsKey
+ * @type string
+ */
+/**
+ * The path to a TLS cert. Activates HTTPS mode. If specified, tlsKey must also
+ * be specified.
+ * @name ServerStartOptions#tlsCert
+ * @type string
+ */
+/**
+ * The hostname to use.  This influences both the URL given to browsers and the
+ * addresses on which the socket listens.  If blank, for backward
+ * compatibility, the browsers will be pointed to localhost, but the listening
+ * socket will listen on all IPs.
+ * @name ServerStartOptions#hostname
+ * @type string
  */
 
 /**

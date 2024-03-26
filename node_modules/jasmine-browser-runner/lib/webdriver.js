@@ -60,6 +60,12 @@ function buildWebdriver(browserInfo, webdriverBuilder) {
     }
   } else if (useSauce) {
     // handle legacy `sauce` object
+    console.warn(
+      'Deprecation warning: Direct support for Saucelabs is deprecated and ' +
+        'will be removed in a future release. Please use Saucelabs via the ' +
+        'remote Selenium grid feature. See the jasmine-browser-runner README ' +
+        'for details.'
+    );
     const sauce = browserInfo.sauce;
     if (sauce) {
       url = `http://${sauce.username}:${sauce.accessKey}@ondemand.saucelabs.com/wd/hub`;
