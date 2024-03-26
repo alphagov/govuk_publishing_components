@@ -256,55 +256,6 @@ describe('Page content', function () {
     })
   })
 
-  describe('in a topic page', function () {
-    beforeEach(function () {
-      createMetaTags('rendering-application', 'collections')
-      createMetaTags('format', 'topic')
-    })
-
-    it('gets the number of sections', function () {
-      for (var i = 1; i <= 3; i++) {
-        createDummyElement('div', 'topics-page')
-      }
-      var parents = document.querySelectorAll('.' + globalClassName + ' .topics-page')
-      for (var x = 0; x < parents.length; x++) {
-        for (var y = 1; y <= 2; y++) {
-          createDummyElement('nav', 'index-list', false, false, false, parents[x])
-        }
-      }
-
-      var result = window.GOVUK.PageContent.getNumberOfSections()
-      expect(result).toEqual(6)
-    })
-
-    function createTopicPageContent (className) {
-      var parent = createDummyElement('div', 'topics-page')
-
-      for (var i = 1; i <= 3; i++) {
-        createDummyElement('div', className, false, false, false, parent)
-      }
-
-      var children = document.querySelectorAll('.' + globalClassName + ' .' + className)
-      for (var x = 0; x < children.length; x++) {
-        var grandChild = createDummyElement('ul', false, false, false, false, children[x])
-        createDummyElement('a', false, false, false, false, grandChild)
-      }
-    }
-
-    it('gets the number of links', function () {
-      createTopicPageContent('index-list')
-
-      var result = window.GOVUK.PageContent.getNumberOfLinks()
-      expect(result).toEqual(3)
-    })
-
-    it('gets the number of alternate links', function () {
-      createTopicPageContent('topics')
-      var result = window.GOVUK.PageContent.getNumberOfLinks()
-      expect(result).toEqual(3)
-    })
-  })
-
   describe('in a policy area page', function () {
     beforeEach(function () {
       createMetaTags('rendering-application', 'whitehall')
