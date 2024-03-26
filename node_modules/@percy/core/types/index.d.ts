@@ -19,6 +19,7 @@ interface DiscoveryOptions {
   allowedHostnames?: string[];
   disableCache?: boolean;
   captureMockedServiceWorker?: boolean;
+  captureSrcset?: boolean;
 }
 
 interface ScopeOptions {
