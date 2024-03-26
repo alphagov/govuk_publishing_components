@@ -44,17 +44,6 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[href=\"/something-a-bit-like-this\"]", text: "Some other guidance"
   end
 
-  it "renders topics section when passed topic items" do
-    content_item = {}
-    content_item["links"] = construct_links(
-      "topics", "/finding-a-job", "Finding a job", "topic"
-    )
-    render_component(content_item:)
-
-    assert_select ".gem-c-related-navigation__sub-heading", text: "Explore the topic"
-    assert_select ".gem-c-related-navigation__section-link[href=\"/finding-a-job\"]", text: "Finding a job"
-  end
-
   it "renders statistical data set section when passed statistical data set items" do
     content_item = {}
     content_item["links"] = construct_links(
@@ -148,10 +137,10 @@ describe "Related navigation", type: :view do
   it "adds aria labelledby to navigation sections" do
     content_item = {}
     content_item["links"] = construct_links(
-      "topics",
-      "/apprenticeships",
-      "Apprenticeships",
-      "topic",
+      "topical_events",
+      "/government/topical-events/uk-china-high-level-people-to-people-dialogue-2017",
+      "UK-China High-Level People to People Dialogue 2017",
+      "topical_event",
     )
     render_component(content_item:)
 
@@ -197,15 +186,22 @@ describe "Related navigation", type: :view do
 
   it "link tracking is enabled" do
     content_item = {}
-    content_item["links"] = construct_links(
-      "topics", "/apprenticeships", "Apprenticeships", "topic"
-    )
+    content_item["links"] = {
+      "taxons" => [
+        {
+          "base_path" => "/skating",
+          "title" => "Skating",
+          "document_type" => "taxon",
+          "phase" => "live",
+        },
+      ],
+    }
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
     assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
     assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Explore the topic']"
-    assert_select ".gem-c-related-navigation__section-link[data-track-label='/apprenticeships']"
+    assert_select ".gem-c-related-navigation__section-link[data-track-label='/skating']"
   end
 
   it "tracks links with GA4" do
@@ -221,21 +217,24 @@ describe "Related navigation", type: :view do
           "title" => "Surfing",
         },
       ],
-      "topics" => [
+      "taxons" => [
         {
           "base_path" => "/skating",
           "title" => "Skating",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
         {
           "base_path" => "/paragliding",
           "title" => "Paragliding",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
         {
           "base_path" => "/knitting",
           "title" => "Knitting",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
       ],
       "world_locations" => [],
@@ -243,7 +242,6 @@ describe "Related navigation", type: :view do
     %w[USA Wales Fiji Iceland Sweden Mauritius Brazil].each do |country|
       content_item["links"]["world_locations"] << { "title" => country }
     end
-
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
@@ -271,21 +269,18 @@ describe "Related navigation", type: :view do
           "title" => "Surfing",
         },
       ],
-      "topics" => [
+      "taxons" => [
         {
           "base_path" => "/skating",
           "title" => "Skating",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
         {
           "base_path" => "/paragliding",
           "title" => "Paragliding",
-          "document_type" => "topic",
-        },
-        {
-          "base_path" => "/knitting",
-          "title" => "Knitting",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
       ],
       "world_locations" => [],
@@ -305,9 +300,17 @@ describe "Related navigation", type: :view do
 
   it "uses lang when locale is set" do
     content_item = {}
-    content_item["links"] = construct_links(
-      "topics", "/apprenticeships", "Apprenticeships", "topic", "ko"
-    )
+    content_item["links"] = {
+      "taxons" => [
+        {
+          "base_path" => "/apprenticeships",
+          "title" => "Apprenticeships",
+          "document_type" => "taxon",
+          "phase" => "live",
+          "locale" => "ko",
+        },
+      ],
+    }
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[lang='ko']"
@@ -315,9 +318,18 @@ describe "Related navigation", type: :view do
 
   it "lang is not used when the same as the app's locale" do
     content_item = {}
-    content_item["links"] = construct_links(
-      "topics", "/apprenticeships", "Apprenticeships", "topic", I18n.locale
-    )
+    content_item["links"] = {
+      "taxons" => [
+        {
+          "base_path" => "/apprenticeships",
+          "title" => "Apprenticeships",
+          "document_type" => "taxon",
+          "phase" => "live",
+          "locale" => I18n.locale,
+        },
+      ],
+
+    }
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[lang='#{I18n.locale}']", false
@@ -325,9 +337,16 @@ describe "Related navigation", type: :view do
 
   it "lang is not used when no locale is set" do
     content_item = {}
-    content_item["links"] = construct_links(
-      "topics", "/apprenticeships", "Apprenticeships", "topic"
-    )
+    content_item["links"] = {
+      "taxons" => [
+        {
+          "base_path" => "/apprenticeships",
+          "title" => "Apprenticeships",
+          "document_type" => "taxon",
+          "phase" => "live",
+        },
+      ],
+    }
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[lang]", false

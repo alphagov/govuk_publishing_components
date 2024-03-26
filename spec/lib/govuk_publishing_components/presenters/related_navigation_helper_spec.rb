@@ -68,15 +68,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
               "document_type" => "document_collection",
             },
           ],
-          "topics" => [
-            {
-              "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
-              "locale" => "en",
-              "base_path" => "/related-topic",
-              "title" => "related topic",
-              "document_type" => "topic",
-            },
-          ],
           "topical_events" => [
             {
               "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
@@ -120,7 +111,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "collections" => [{ locale: "en", path: "/related-collection", text: "related collection" }],
         "topics" => [
           { locale: "en", path: "/browse/something", text: "A mainstream browse page" },
-          { locale: "en", path: "/related-topic", text: "related topic" },
         ],
         "related_contacts" => [],
         "related_external_links" => [],
@@ -164,7 +154,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       )
     end
 
-    it "deduplicates topics for mainstream content" do
+    it "returns mainstream content over taxonomy pages, if both are present" do
       payload = payload_for(
         "answer",
         "details" => {
@@ -189,13 +179,14 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
               "document_type" => "guide",
             },
           ],
-          "topics" => [
+          "taxons" => [
             {
-              "content_id" => "7beb97b6-75c9-4aa7-86be-a733ab3a21aa",
+              "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
               "locale" => "en",
-              "base_path" => "/topic/personal-tax/self-assessment",
-              "title" => "Self Assessment",
-              "document_type" => "topic",
+              "base_path" => "/related-taxonomy-topic",
+              "title" => "related taxonomy topic",
+              "document_type" => "taxon",
+              "phase" => "live",
             },
           ],
         },
@@ -212,7 +203,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       expected = [
         { locale: "en", text: "Travel abroad", path: "/browse/abroad/travel-abroad" },
         { locale: "en", text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
-        { locale: "en", text: "Pets", path: "/topic/animal-welfare/pets" },
       ]
       expect(payload["topics"]).to eql(expected)
     end

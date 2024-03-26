@@ -31,20 +31,21 @@ RSpec.describe "Contextual footer", type: :view do
   it "sets the GA4 type to \"contextual footer\"" do
     content_item = {}
     content_item["links"] = {
-      "topics" => [
+      "taxons" => [
         {
           "base_path" => "/skating",
           "title" => "Skating",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
         {
           "base_path" => "/paragliding",
           "title" => "Paragliding",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
       ],
     }
-
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
@@ -55,22 +56,23 @@ RSpec.describe "Contextual footer", type: :view do
   it "allows GA4 to be disabled" do
     content_item = {}
     content_item["links"] = {
-      "topics" => [
+      "taxons" => [
         {
           "base_path" => "/skating",
           "title" => "Skating",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
         {
           "base_path" => "/paragliding",
           "title" => "Paragliding",
-          "document_type" => "topic",
+          "document_type" => "taxon",
+          "phase" => "live",
         },
       ],
     }
 
     render_component(content_item:, disable_ga4: true)
-
     assert_select ".gem-c-related-navigation[data-module='gem-track-click']"
     assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']", false
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link]", false
