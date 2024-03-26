@@ -27,10 +27,12 @@ module GovukPublishingComponents
       end
 
       def security_attr
-        rel = "noopener noreferrer"
-        rel << " external" unless @suggestion_link_url.start_with?("/", "https://gov.uk", "https://www.gov.uk")
-
-        rel
+        # Link is external unless it begins with "/" (but not "//") or it's on gov.uk.
+        if %r{\A(/[^/]|https://(www\.)?gov\.uk(/|\z))}.match?(@suggestion_link_url)
+          "noopener noreferrer"
+        else
+          "noopener noreferrer external"
+        end
       end
 
       def show?

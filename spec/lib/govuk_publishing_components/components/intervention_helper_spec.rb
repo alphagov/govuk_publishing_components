@@ -66,10 +66,14 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
       end
 
       it "returns appends external attribute for new tab external links" do
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "https://www.nationalarchives.gov.uk", params: {} })
-        security_attrs = intervention_helper.security_attr
+        external_urls = %w[https://www.nationalarchives.gov.uk //external.com https://www.gov.uk.example.com].freeze
 
-        expect(security_attrs).to eql("noopener noreferrer external")
+        external_urls.each do |url|
+          intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: url, params: {} })
+          security_attrs = intervention_helper.security_attr
+
+          expect(security_attrs).to eql("noopener noreferrer external")
+        end
       end
     end
 
