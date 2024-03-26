@@ -35,17 +35,19 @@ bundle exec rake
 
 ### Run the JavaScript tests alone
 
-In browser:
+With text-only output to the terminal:
+
+```sh
+yarn run jasmine:ci
+```
+
+With output viewable in a browser at <http://localhost:8888/>:
 
 ```sh
 yarn run jasmine:browser
 ```
 
-On command line:
-
-```sh
-yarn run jasmine:ci
-```
+You need to restart the `jasmine:browser` test server for it to pick up any changes to JavaScript code.
 
 ### Use the gem
 
