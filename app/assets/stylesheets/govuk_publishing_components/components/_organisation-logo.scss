@@ -2,16 +2,12 @@
 
 // Default logo corresponds with the "medium stacked" Whitehall equivalent
 .gem-c-organisation-logo {
-  font-size: 13px;
+  @include govuk-font($size: 19);
   font-weight: 400;
   line-height: 1.35;
   // When this is a heading the margin needs to be set to stop it from
   // inheriting the browser's default margin:
   margin: 0;
-
-  @include govuk-media-query($from: tablet) {
-    font-size: 18px;
-  }
 }
 
 .gem-c-organisation-logo__container {
@@ -39,13 +35,8 @@
 .gem-c-organisation-logo__crest {
   // Default brand colour
   border-left: 2px solid govuk-colour("black");
-  padding-top: 23px;
+  padding-top: 29px;
   padding-left: 6px;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 28px;
-    padding-left: 7px;
-  }
 
   .brand--executive-office & {
     border-left-width: 0;
@@ -82,29 +73,20 @@
 }
 
 @mixin crest($crest) {
-  background: url("govuk_publishing_components/crests/#{$crest}_13px.png") no-repeat 5px 0;
-  background-size: auto 20px;
+  background: url("govuk_publishing_components/crests/#{$crest}_18px.png") no-repeat 6px 0;
+  background-size: auto 26px;
 
   @include govuk-device-pixel-ratio {
-    background-image: url("govuk_publishing_components/crests/#{$crest}_13px_x2.png");
-  }
-
-  @include govuk-media-query($from: tablet) {
-    background: url("govuk_publishing_components/crests/#{$crest}_18px.png") no-repeat 6px 0;
-    background-size: auto 26px;
-
-    @include govuk-device-pixel-ratio {
-      background-image: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png");
-    }
+    background-image: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png");
   }
 }
 
 @mixin tall-crest {
-  padding-top: 25px;
+  padding-top: 31px;
   background-size: auto 25px;
 
   @include govuk-media-query($from: tablet) {
-    padding-top: 35px;
+    padding-top: 41px;
     background-size: auto 34px;
   }
 }
