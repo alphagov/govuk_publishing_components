@@ -60,7 +60,7 @@ module GovukPublishingComponents
       def check_id_is_valid(id)
         return if id.blank?
 
-        raise(ArgumentError, "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`") unless /^[a-zA-Z][\w:-]*$/.match?(id)
+        raise(ArgumentError, "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`") unless /\A[a-zA-Z][\w:-]*\z/.match?(id)
       end
 
       def check_data_attributes_are_valid(attributes)

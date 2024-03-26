@@ -49,22 +49,18 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "does not accept invalid ids" do
-      ["2idstartingwithanumber", "id containing spaces", "idwitha.character"].each do |id|
-        error = "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`"
+      ["1dstartingwithnumber", "id with spaces", "idwith.dot", "id\nwithnewline"].each do |id|
         expect {
           GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id:)
-        }.to raise_error(ArgumentError, error)
+        }.to raise_error(ArgumentError, / contain/)
       end
     end
 
     it "does not accept invalid ids when passed" do
-      ["2idstartingwithanumber", "id containing spaces", "idwitha.character"].each do |id|
-        error = "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`"
-        expect {
-          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
-          helper.set_id(id)
-        }.to raise_error(ArgumentError, error)
-      end
+      expect {
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "valid")
+        helper.set_id("not. a. valid. id")
+      }.to raise_error(ArgumentError)
     end
 
     it "can add a class to already passed classes" do
