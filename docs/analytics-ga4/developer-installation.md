@@ -2,7 +2,7 @@
 
 If you are a developer on GOV.UK looking to integrate the tracking code into one of our Rails applications there are several steps needed.
 
-The code in this gem is set up to track and structure data in a very specific way. If you wish to use a different [data schema](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/schemas.md) or track different things it may be easier to implement GA4 in a different way. Ask in the `#govuk-ga4` slack channel for advice.
+The code in this gem is set up to track and structure data in a very specific way. If you wish to use a different [data schema](schemas.md) or track different things it may be easier to implement GA4 in a different way. Ask in the `#govuk-ga4` slack channel for advice.
 
 ## Installation
 
@@ -25,7 +25,7 @@ If your application already has a cookie banner and it is not the one from this 
 
 ## Testing
 
-Once the code is configured correctly, data will start to be pushed to the dataLayer. Read the 'Testing and debugging' section of the [developer guide](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/developer-guide.md) to see how to check it is working correctly.
+Once the code is configured correctly, data will start to be pushed to the dataLayer. Read the 'Testing and debugging' section of the [developer guide](developer-guide.md) to see how to check it is working correctly.
 
 Page views and some link tracking should happen automatically. Some components also track automatically. If you wish to add new tracking, start with the 'Creating tracking' section of the developer guide.
 
