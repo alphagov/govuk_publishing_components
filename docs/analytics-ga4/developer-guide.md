@@ -1,12 +1,6 @@
 # GA4 developer guide
 
-The following is intended for developers working on a part of GOV.UK that includes analytics.
-
-## Identifying tracking
-
-Anything relating to GA4 will be prefixed with `ga4-`. This includes `data-ga4` attributes and module names. If you are modifying code that contains or is inside anything with a `ga4-` prefix you should check that the tracking still works after your change.
-
-Tracking is normally initialised on an element with a `data-module` for a [tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-all-trackers.md) accompanied by a `data-ga4-(something)` attribute either on the same element or child elements. This attribute will usually contain a JSON snippet of data that will be picked up by the tracker and passed to GA4. See individual tracker documentation for more details.
+The following is intended for developers working on a part of GOV.UK that includes analytics. If you are a GOV.UK developer looking to use our analytics code in your Rails application, read our [installation guide](developer-installation.md).
 
 ## Testing and debugging
 
@@ -19,6 +13,20 @@ window.GOVUK.analyticsGa4.showDebug = true
 ```
 
 This is useful for seeing what is being pushed to the dataLayer for in-page events such as tabs or accordions. Enabling 'Preserve log' in Chrome will allow link click and other page reload events to be seen, but the command will need to be run again after a page reload to see subsequent event data.
+
+## Identifying tracking
+
+Anything relating to GA4 will be prefixed with `ga4-`. This includes `data-ga4` attributes and module names. If you are modifying code that contains or is inside anything with a `ga4-` prefix you should check that the tracking still works after your change.
+
+Tracking is normally initialised on an element with a `data-module` for a [tracker](trackers.md) accompanied by a `data-ga4-(something)` attribute either on the same element or child elements. This attribute will usually contain a JSON snippet of data that will be picked up by the tracker and passed to GA4. See individual tracker documentation for more details.
+
+## Creating tracking
+
+A number of trackers already exist for a variety of situations. See the [list of GA4 trackers](trackers.md) to see what might be useful.
+
+Many components already include built in tracking. See the section `Components and tracking` in this document for more details.
+
+All of our tracking is based on [existing schemas](schemas.md). If you are creating new tracking you may need to extend the schemas to include new attributes. Check with a performance analyst for guidance on naming and other conventions. The data included in our events is documented in our [implementation record](https://docs.publishing.service.gov.uk/analytics/), which must be updated to reflect any changes.
 
 ## Components and tracking
 
