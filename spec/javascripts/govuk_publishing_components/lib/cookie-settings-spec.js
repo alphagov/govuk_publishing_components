@@ -72,6 +72,7 @@ describe('cookieSettings', function () {
       })
 
       it('does not error if not all options are present', function () {
+        window.GOVUK.setDefaultConsentCookie()
         element.innerHTML =
         '<form data-module="cookie-settings">' +
           '<input type="radio" id="settings-on" name="cookies-settings" value="on">' +
