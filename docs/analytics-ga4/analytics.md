@@ -20,7 +20,7 @@ Events happen when a user interacts with certain things, for example clicking on
 
 Search data is gathered when users perform a search.
 
-For more information about different kinds of tracking, read our [overview of trackers](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-all-trackers.md).
+For more information about different kinds of tracking, read our [overview of trackers](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers.md).
 
 ## Code structure
 
@@ -64,7 +64,7 @@ While our aim is to keep the majority of the analytics code in `govuk_publishing
 
 ### Code in components
 
-Often tracking will need to be built into components, either using an [existing tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-all-trackers.md) or some custom code, or a combination of both.
+Often tracking will need to be built into components, either using an [existing tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers.md) or some custom code, or a combination of both.
 
 Where component tracking needs additional data to be passed (for example `index` or `section` values to show where the component is on a page) this should be built into the component and the data required documented in the component guide.
 
@@ -91,7 +91,7 @@ All of the data sent to GTM is based on a common schema.
 
 `search_results` is defined in the [ga4-ecommerce-tracker script](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/ga4-ecommerce-tracker.js).
 
-For more details of how our data schemas work, read our [data schemas documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-schemas.md) or for the structure read our [Implementation record](https://docs.publishing.service.gov.uk/analytics/).
+For more details of how our data schemas work, read our [data schemas documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/schemas.md) or for the structure read our [Implementation record](https://docs.publishing.service.gov.uk/analytics/).
 
 ## How the dataLayer works
 

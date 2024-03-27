@@ -2,7 +2,7 @@
 
 If you are a developer on GOV.UK looking to integrate the tracking code into one of our Rails applications there are several steps needed.
 
-The code in this gem is set up to track and structure data in a very specific way. If you wish to use a different [data schema](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-schemas.md) or track different things it may be easier to implement GA4 in a different way. Ask in the `#govuk-ga4` slack channel for advice.
+The code in this gem is set up to track and structure data in a very specific way. If you wish to use a different [data schema](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/schemas.md) or track different things it may be easier to implement GA4 in a different way. Ask in the `#govuk-ga4` slack channel for advice.
 
 ## Installation
 
