@@ -5,6 +5,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function ImageCard ($module) {
     this.$module = $module
     this.$module.youtubeLink = this.$module.querySelector('.gem-c-image-card__image-wrapper div')
+
+    this.init()
   }
 
   ImageCard.prototype.init = function () {

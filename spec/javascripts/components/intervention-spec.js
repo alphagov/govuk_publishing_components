@@ -61,6 +61,7 @@ describe('Intervention banner component', function () {
     it('does not display the banner', function () {
       GOVUK.setCookie('intervention_campaign', 'test-intervention-name', { days: 1 })
       var element = document.querySelector('[data-module="intervention"]')
+      /* eslint-disable no-new */
       new GOVUK.Modules.Intervention(element).init()
 
       var banner = document.querySelector('.gem-c-intervention')

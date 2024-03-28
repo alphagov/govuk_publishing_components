@@ -61,7 +61,8 @@ describe('Cookie banner', function () {
 
     it('should show the cookie banner', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       var cookieBannerMain = document.querySelector('.js-banner-wrapper')
       var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
@@ -77,7 +78,8 @@ describe('Cookie banner', function () {
       GOVUK.setDefaultConsentCookie() // Set default cookies, which are set whether there is any interaction or not.
 
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       var cookieBannerMain = document.querySelector('.js-banner-wrapper')
       var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
@@ -93,7 +95,8 @@ describe('Cookie banner', function () {
       GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
 
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       expect(element).toBeHidden()
     })
@@ -102,7 +105,8 @@ describe('Cookie banner', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
       expect(element.hasAttribute('hidden')).toEqual(true)
       expect(element.offsetParent).toEqual(null)
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
       expect(element.hasAttribute('hidden')).toEqual(false)
       expect(!!element.offsetParent).toEqual(true)
     })
@@ -112,14 +116,16 @@ describe('Cookie banner', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
       expect(element.offsetParent).toEqual(null)
       expect(element.hasAttribute('hidden')).toEqual(true)
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
       expect(element.offsetParent).toEqual(null)
       expect(element.hasAttribute('hidden')).toEqual(true)
     })
 
     it('sets a default consent cookie', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
       expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
@@ -130,7 +136,8 @@ describe('Cookie banner', function () {
       spyOn(GOVUK, 'deleteUnconsentedCookies').and.callThrough()
 
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
       expect(GOVUK.deleteUnconsentedCookies).toHaveBeenCalled()
@@ -142,7 +149,8 @@ describe('Cookie banner', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       // Manually reset the consent cookie so we can check the accept button works as intended
       expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
@@ -167,7 +175,8 @@ describe('Cookie banner', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       // Manually reset the consent cookie so we can check the accept button works as intended
       expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
@@ -184,7 +193,8 @@ describe('Cookie banner', function () {
 
     it('shows a confirmation message when cookies have been accepted', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
       var confirmationMessageAccepted = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
@@ -199,7 +209,8 @@ describe('Cookie banner', function () {
 
     it('shows a confirmation message when cookies have been rejected', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
       var confirmationMessageRejected = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
@@ -214,7 +225,8 @@ describe('Cookie banner', function () {
 
     it('set focus to the confirmation message after clicking button', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
       var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
@@ -229,7 +241,8 @@ describe('Cookie banner', function () {
     it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
 
@@ -243,7 +256,8 @@ describe('Cookie banner', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
 
       var link = document.querySelector('button[data-hide-cookie-banner="true"]')
       link.dispatchEvent(new window.Event('click'))
@@ -266,7 +280,8 @@ describe('Cookie banner', function () {
 
       it('should hide the cookie banner', function () {
         var element = document.querySelector('[data-module="cookie-banner"]')
-        new GOVUK.Modules.CookieBanner(element).init()
+        /* eslint-disable no-new */
+        new GOVUK.Modules.CookieBanner(element)
         expect(element).toBeHidden()
       })
     })
@@ -310,7 +325,8 @@ describe('Cookie banner', function () {
 
     it('initialises the single consent api on init', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
       expect(window.GOVUK.singleConsent.init).toHaveBeenCalled()
       expect(window.GOVUK.singleConsent.apiCallback).toHaveBeenCalled()
       expect(window.GOVUK.setCookie).not.toHaveBeenCalled()
@@ -318,7 +334,8 @@ describe('Cookie banner', function () {
 
     it('should show the cookie banner', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
-      new GOVUK.Modules.CookieBanner(element).init()
+      /* eslint-disable no-new */
+      new GOVUK.Modules.CookieBanner(element)
       expect(element).toBeVisible()
     })
 
@@ -338,7 +355,8 @@ describe('Cookie banner', function () {
 
       it('should hide the cookie banner and set cookies for consent', function () {
         var element = document.querySelector('[data-module="cookie-banner"]')
-        new GOVUK.Modules.CookieBanner(element).init()
+        /* eslint-disable no-new */
+        new GOVUK.Modules.CookieBanner(element)
         jasmine.Ajax.requests.mostRecent().respondWith({
           status: 200,
           contentType: 'text/plain',
@@ -352,7 +370,8 @@ describe('Cookie banner', function () {
 
       it('should hide the cookie banner and set cookies for reject', function () {
         var element = document.querySelector('[data-module="cookie-banner"]')
-        new GOVUK.Modules.CookieBanner(element).init()
+        /* eslint-disable no-new */
+        new GOVUK.Modules.CookieBanner(element)
         jasmine.Ajax.requests.mostRecent().respondWith({
           status: 200,
           contentType: 'text/plain',
@@ -366,7 +385,8 @@ describe('Cookie banner', function () {
 
       it('should hide the cookie banner and set cookies for a varied cookie consent', function () {
         var element = document.querySelector('[data-module="cookie-banner"]')
-        new GOVUK.Modules.CookieBanner(element).init()
+        /* eslint-disable no-new */
+        new GOVUK.Modules.CookieBanner(element)
         jasmine.Ajax.requests.mostRecent().respondWith({
           status: 200,
           contentType: 'text/plain',

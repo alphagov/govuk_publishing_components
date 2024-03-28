@@ -83,6 +83,7 @@ describe('GOVUK Modules', function () {
       // GOV.UK Frontend Modules
       function TestAlertFrontendModule (element) {
         this.element = element
+        this.init()
       }
       TestAlertFrontendModule.prototype.init = function () {
         callbackFrontendModule(this.element)
@@ -92,6 +93,7 @@ describe('GOVUK Modules', function () {
       // GOV.UK Gem Frontend Modules
       function GemTestAlertFrontendModule (element) {
         this.element = element
+        this.init()
       }
       GemTestAlertFrontendModule.prototype.init = function () {
         callbackGemFrontendModule(this.element)
@@ -101,6 +103,7 @@ describe('GOVUK Modules', function () {
       // GOV.UK Frontend Module with a GOVUK Publishing Module counterpart
       function TestAlertPublishingAndFrontendModule (element) {
         this.element = element
+        this.init()
       }
       TestAlertPublishingAndFrontendModule.prototype.init = function () {
         callbackFrontendModule(this.element)
@@ -110,6 +113,7 @@ describe('GOVUK Modules', function () {
       // GOV.UK Frontend Module that depends on cookies to start and delays
       function TestCookieDependencyModule (element) {
         this.element = element
+        this.init()
       }
       TestCookieDependencyModule.prototype.init = function () {
         this.startModule = this.startModule.bind(this)
@@ -124,6 +128,7 @@ describe('GOVUK Modules', function () {
       // module with a deliberate error in it
       function TestErrorModule (element) {
         this.element = element
+        this.init()
       }
       TestErrorModule.prototype.init = function () {
         throw new Error('This is a deliberate error')

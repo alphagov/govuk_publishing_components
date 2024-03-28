@@ -11,6 +11,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.trackLinksOnly = this.module.hasAttribute('data-ga4-track-links-only')
     this.limitToElementClass = this.module.getAttribute('data-ga4-limit-to-element-class')
     this.PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+
+    this.init()
   }
 
   Ga4LinkTracker.prototype.init = function () {

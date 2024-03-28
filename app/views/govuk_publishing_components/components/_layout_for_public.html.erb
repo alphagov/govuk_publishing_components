@@ -79,11 +79,9 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <!--[if lt IE 9]><%= javascript_include_tag "govuk_publishing_components/ie", integrity: true, crossorigin: "anonymous" %><![endif]-->
     <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon" />
-    <link rel="mask-icon" href="<%= asset_path 'govuk-mask-icon.svg' %>" color="#0b0c0c">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_path "govuk-apple-touch-icon-180x180.png" %>">
-    <link rel="apple-touch-icon" sizes="167x167" href="<%= asset_path "govuk-apple-touch-icon-167x167.png" %>">
-    <link rel="apple-touch-icon" sizes="152x152" href="<%= asset_path "govuk-apple-touch-icon-152x152.png" %>">
-    <link rel="apple-touch-icon" href="<%= asset_path "govuk-apple-touch-icon.png" %>">
+    <link rel="mask-icon" href="<%= asset_path 'govuk-icon-mask.svg' %>" color="#0b0c0c">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_path "govuk-icon-180.png" %>">
+    <link rel="manifest" href="<%= asset_path "manifest.json" %>">
 
     <meta name="theme-color" content="#0b0c0c" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,7 +95,7 @@
   </head>
   <%= tag.body class: body_css_classes do %>
     <%= javascript_tag nonce: true do -%>
-      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+      document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     <% end -%>
     <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
     <%= render "govuk_publishing_components/components/skip_link", {
@@ -180,6 +178,9 @@
         navigation: omit_footer_navigation ? nil : layout_helper.footer_navigation,
         meta: layout_helper.footer_meta,
       } %>
+    <% end %>
+    <% if GovukPublishingComponents::Config.use_es6_components %>
+      <%= javascript_include_tag 'es6-components', type: "module" %>
     <% end %>
     <%= javascript_include_tag 'application' %>
   <% end %>

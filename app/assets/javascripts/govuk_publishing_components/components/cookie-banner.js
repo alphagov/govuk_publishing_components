@@ -6,6 +6,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module
     this.$module.cookieBannerConfirmationMessage = this.$module.querySelector('.gem-c-cookie-banner__confirmation')
     this.$module.cookieBannerConfirmationMessageText = this.$module.querySelector('.gem-c-cookie-banner__confirmation-message')
+
+    this.init()
   }
 
   CookieBanner.prototype.init = function () {

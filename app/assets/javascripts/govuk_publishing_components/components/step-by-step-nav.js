@@ -1,7 +1,3 @@
-//= require govuk/vendor/polyfills/Element/prototype/classList.js
-//= require ../vendor/polyfills/closest.js
-//= require ../vendor/polyfills/indexOf.js
-
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
@@ -16,6 +12,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.activeStepClass = 'gem-c-step-nav__step--active'
     this.$module.activeLinkHref = '#content'
     this.$module.uniqueId = false
+
+    this.init()
   }
 
   Gemstepnav.prototype.init = function () {

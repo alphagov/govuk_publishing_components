@@ -1,7 +1,7 @@
 /* global nodeListForEach */
 //  = require ../vendor/polyfills/common.js
 // This component relies on JavaScript from GOV.UK Frontend
-// = require govuk/components/accordion/accordion.js
+// = require govuk/components/accordion/accordion.bundle.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
 window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
@@ -21,6 +21,8 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     // language attribute pulled from data attributes
     this.$module.actions = {}
     this.$module.actions.locale = this.$module.getAttribute('data-locale')
+
+    this.init()
   }
 
   GemAccordion.prototype.init = function () {

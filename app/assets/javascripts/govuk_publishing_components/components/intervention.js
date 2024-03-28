@@ -7,6 +7,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$closeLink = this.$module.querySelector('.js-dismiss-link')
     this.$campaignName = this.$module.getAttribute('data-intervention-name')
     this.$campaignCookie = window.GOVUK.cookie('intervention_campaign') || ''
+
+    this.init()
   }
 
   Intervention.prototype.init = function () {

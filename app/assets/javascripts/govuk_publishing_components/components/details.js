@@ -1,7 +1,5 @@
-// = require govuk/components/details/details.js
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.GovukDetails = window.GOVUKFrontend.Details;
+window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   function GemDetails ($module) {
@@ -10,6 +8,8 @@ window.GOVUK.Modules.GovukDetails = window.GOVUKFrontend.Details;
 
     this.customTrackLabel = this.$summary.getAttribute('data-track-label')
     this.detailsClick = this.$module.querySelector('[data-details-track-click]')
+
+    this.init()
   }
 
   GemDetails.prototype.init = function () {

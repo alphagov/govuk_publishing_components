@@ -16,6 +16,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     for (var i = 0; i < this.tableRows.length; i++) {
       this.tableRowsContent.push(this.tableRows[i].textContent.toUpperCase())
     }
+
+    this.init()
   }
 
   Table.prototype.init = function () {

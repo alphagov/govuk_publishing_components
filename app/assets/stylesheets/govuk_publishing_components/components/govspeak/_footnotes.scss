@@ -14,7 +14,7 @@
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .footnotes {
-    border-top: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
+    border-top: 1px solid govuk-colour("mid-grey");
     margin-top: govuk-spacing(6);
     padding-top: govuk-spacing(2);
 
