@@ -11,6 +11,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$header = $module
     this.$navigation = $module && $module.querySelectorAll('[data-one-login-header-nav]')
     this.$numberOfNavs = this.$navigation && this.$navigation.length
+
+    this.init()
   }
   /**
   * Initialise header
