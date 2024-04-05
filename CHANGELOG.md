@@ -11,6 +11,7 @@
 
 * Complete the removal of specialist topic code from the gem [PR #3955](https://github.com/alphagov/govuk_publishing_components/pull/3955)
 * Remove support for specialist topics from contextual footer ([#3950](https://github.com/alphagov/govuk_publishing_components/pull/3950))
+* Update HMRC organisation logos ([PR #3962](https://github.com/alphagov/govuk_publishing_components/pull/3962))
 
 ## 37.10.0
 
