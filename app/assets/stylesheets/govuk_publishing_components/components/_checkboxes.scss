@@ -1,6 +1,12 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/checkboxes/checkboxes";
 
+.govuk-checkboxes__item {
+  // Ensure the requied font-size and line-height are always set, see
+  // https://github.com/alphagov/govuk-frontend/pull/4267
+  @include govuk-font($size: 19);
+}
+
 .govuk-checkboxes--nested {
   margin-left: -(govuk-spacing(4) + 2px); // 22px
   box-sizing: border-box;
