@@ -5,7 +5,6 @@ describe('The _layout_header_one_login', function () {
   'use strict'
 
   var container
-  var thisModule
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -134,7 +133,8 @@ describe('The _layout_header_one_login', function () {
     document.body.appendChild(container)
 
     var $element = document.querySelector('[data-module="cross-service-header"]')
-    thisModule = new GOVUK.Modules.CrossServiceHeader($element)
+    /* eslint-disable no-new */
+    new GOVUK.Modules.CrossServiceHeader($element)
 
     spyOn(GOVUK.analytics, 'trackEvent')
   })
@@ -151,7 +151,6 @@ describe('The _layout_header_one_login', function () {
     var $button
 
     beforeEach(function () {
-      thisModule.init()
       $button = document.querySelector('.gem-c-cross-service-header__button--one-login.js-x-header-toggle')
     })
 
@@ -227,7 +226,6 @@ describe('The _layout_header_one_login', function () {
     var $button
 
     beforeEach(function () {
-      thisModule.init()
       $button = document.querySelector('.gem-c-cross-service-header__button--service-header.js-x-header-toggle')
     })
 
