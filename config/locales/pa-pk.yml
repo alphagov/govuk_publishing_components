@@ -174,13 +174,6 @@ pa-pk:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: تہاڈا پاس ورڈ لُکیا ہویا اے
-      announce_show: تہاڈا پاس ورڈ دکھائی دِتا اے
-      hide: لُکاؤ
-      hide_password: پاس ورڈ لُکاؤ
-      show: دکھاؤ
-      show_password: پاس ورڈ وکھاؤ
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

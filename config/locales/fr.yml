@@ -178,13 +178,6 @@ fr:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Votre mot de passe est masqué
-      announce_show: Votre mot de passe est affiché
-      hide: Masquer
-      hide_password: Masquer le mot de passe
-      show: Afficher
-      show_password: Afficher le mot de passe
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

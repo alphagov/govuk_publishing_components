@@ -178,13 +178,6 @@ nl:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Uw wachtwoord is verborgen
-      announce_show: Uw wachtwoord wordt getoond
-      hide: Verberg
-      hide_password: Verberg wachtwoord
-      show: Toon
-      show_password: Wachtwoord tonen
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

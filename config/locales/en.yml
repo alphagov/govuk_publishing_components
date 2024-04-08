@@ -293,13 +293,6 @@ en:
     share_links:
       all_opens_in_new_tab: The following links open in a new tab
       opens_in_new_tab: "(opens in new tab)"
-    show_password:
-      announce_hide: Your password is hidden
-      announce_show: Your password is shown
-      hide: Hide
-      hide_password: Hide password
-      show: Show
-      show_password: Show password
     single_page_notification_button:
       subscribe_text: Get emails about this page
       unsubscribe_text: Stop getting emails about this page

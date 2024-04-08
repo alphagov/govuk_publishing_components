@@ -185,13 +185,6 @@ uk:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Ваш пароль приховано
-      announce_show: Ваш пароль показано
-      hide: Приховати
-      hide_password: Приховати пароль
-      show: Показати
-      show_password: Показати пароль
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

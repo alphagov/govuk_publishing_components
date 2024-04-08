@@ -180,13 +180,6 @@ dr:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: رمز عبور شما مخفی شده است
-      announce_show: رمز عبور شما نشان داده شده است
-      hide: مخفی کردن
-      hide_password: رمز عبور را مخفی نمایید
-      show: نمایش دهید
-      show_password: رمز عبور را نمایش دهید
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

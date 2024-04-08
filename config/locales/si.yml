@@ -178,13 +178,6 @@ si:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: ඔබගේ මුරපදය සඟවා ඇත
-      announce_show: ඔබගේ මුරපදය පෙන්වා ඇත
-      hide: සඟවන්න
-      hide_password: රහස්වචනය සඟවන්න
-      show: පෙන්වන්න
-      show_password: මුරපදය පෙන්වන්න
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

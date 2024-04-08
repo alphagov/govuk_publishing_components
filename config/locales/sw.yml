@@ -178,13 +178,6 @@ sw:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Nenosiri lako limefichwa
-      announce_show: Nenosiri lako limeonyeshwa
-      hide: Ficha
-      hide_password: Ficha nenosiri
-      show: Onyesha
-      show_password: Onyesha nenosiri
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

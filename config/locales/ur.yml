@@ -175,13 +175,6 @@ ur:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: آپ کا پاس ورڈ پوشیدہ ہے
-      announce_show: آپ کا پاس ورڈ دکھائی دے رہا ہے
-      hide: پوشیدہ کریں
-      hide_password: پاس ورڈ کو پوشیدہ کریں
-      show: دکھائیں
-      show_password: پاس ورڈ دکھائیں
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

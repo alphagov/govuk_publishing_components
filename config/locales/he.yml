@@ -178,13 +178,6 @@ he:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: הסיסמה שלך מוסתרת
-      announce_show: הסיסמה שלך מוצגת
-      hide: הסתר
-      hide_password: הסתר סיסמה
-      show: הצג
-      show_password: הצג סיסמה
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

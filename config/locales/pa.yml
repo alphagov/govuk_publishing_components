@@ -178,13 +178,6 @@ pa:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਲੁਕਿਆ ਹੋਇਆ ਹੈ
-      announce_show: ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਦਿਖਾਇਆ ਗਿਆ ਹੈ
-      hide: ਓਹਲੇ
-      hide_password: ਪਾਸਵਰਡ ਲੁਕਾਓ
-      show: ਦਿਖਾਉ
-      show_password: ਪਾਸਵਰਡ ਦਿਖਾਓ
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

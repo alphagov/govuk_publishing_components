@@ -176,13 +176,6 @@ th:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: รหัสผ่านของคุณถูกซ่อน
-      announce_show: รหัสผ่านของคุณถูกแสดง
-      hide: ซ่อน
-      hide_password: ซ่อนรหัสผ่าน
-      show: แสดง
-      show_password: แสดงรหัสผ่าน
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

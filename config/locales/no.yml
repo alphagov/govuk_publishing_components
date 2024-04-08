@@ -178,13 +178,6 @@
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Passordet ditt er skjult
-      announce_show: Passordet ditt vises
-      hide: Skjul
-      hide_password: Skjul passord
-      show: Vis
-      show_password: Vis passord
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -181,13 +181,6 @@ et:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Teie parool on peidetud
-      announce_show: Teie parooli kuvatakse
-      hide: Peida
-      hide_password: Peida parool
-      show: Kuva
-      show_password: Kuva parool
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

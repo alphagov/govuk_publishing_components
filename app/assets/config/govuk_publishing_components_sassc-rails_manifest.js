@@ -73,7 +73,6 @@
 //= link govuk_publishing_components/components/_search.css
 //= link govuk_publishing_components/components/_select.css
 //= link govuk_publishing_components/components/_share-links.css
-//= link govuk_publishing_components/components/_show-password.css
 //= link govuk_publishing_components/components/_signup-link.css
 //= link govuk_publishing_components/components/_single-page-notification-button.css
 //= link govuk_publishing_components/components/_skip-link.css

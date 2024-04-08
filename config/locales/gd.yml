@@ -180,13 +180,6 @@ gd:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Tá do chuid focal i bhfolach
-      announce_show: Taispeántar do chuid focal
-      hide: Cheilt
-      hide_password: Folaigh pasfhocal
-      show: Taispeántas
-      show_password: Taispeáin pasfhocal
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

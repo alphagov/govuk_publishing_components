@@ -179,13 +179,6 @@ da:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Din adgangskode er skjult
-      announce_show: Din adgangskode vises
-      hide: Skjul
-      hide_password: skjul adgangskode
-      show: Vise
-      show_password: Skjul adgangskode
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -178,13 +178,6 @@ el:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Ο κωδικός πρόσβασής σας είναι κρυμμένος
-      announce_show: Ο κωδικός πρόσβασής σας εμφανίζεται
-      hide: Απόκρυψη
-      hide_password: Απόκρυψη κωδικού πρόσβασης
-      show: Εμφάνιση
-      show_password: Εμφάνιση κωδικού πρόσβασης
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

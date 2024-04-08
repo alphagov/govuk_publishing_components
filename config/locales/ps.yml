@@ -175,13 +175,6 @@ ps:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: ستاسو رمز پټ دی
-      announce_show: ستاسو رمز ښودل شوی
-      hide: پټول
-      hide_password: پټنوم پټ کړئ
-      show: ښودل
-      show_password: پاسورډ ښکاره کړئ
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

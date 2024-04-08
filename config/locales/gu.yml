@@ -178,13 +178,6 @@ gu:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: તમારો પાસવર્ડ હાઈડ કરેલ છે
-      announce_show: તમારો પાસવર્ડ દર્શાવ્યો છે
-      hide: હાઈડ
-      hide_password: પાસવર્ડ હાઈડ કરો
-      show: દર્શાવો
-      show_password: પાસવર્ડ દર્શાવો
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

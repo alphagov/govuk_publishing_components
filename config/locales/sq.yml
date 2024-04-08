@@ -178,13 +178,6 @@ sq:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Fjalëkalimi juaj është fshehur
-      announce_show: Fjalëkalimi juaj është treguar
-      hide: Fshih
-      hide_password: Fshih fjalëkalimin
-      show: Shfaq
-      show_password: Shfaq fjalëkalimin
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -178,13 +178,6 @@ kk:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Құпиясөзіңіз жасырылған
-      announce_show: Құпиясөзіңіз көрсетілген
-      hide: Жасыру
-      hide_password: Құпиясөзді жасыру
-      show: Көрсету
-      show_password: Құпиясөзді көрсету
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

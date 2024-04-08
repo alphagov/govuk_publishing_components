@@ -178,13 +178,6 @@ hi:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: आपका पासवर्ड छिपा है
-      announce_show: आपका पासवर्ड प्रदर्शित है
-      hide: छिपाएं
-      hide_password: पासवर्ड छिपाएं
-      show: दिखाएं
-      show_password: पासवर्ड दिखाएं
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

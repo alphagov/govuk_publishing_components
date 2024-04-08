@@ -178,13 +178,6 @@ sv:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Ditt lösenord är dolt
-      announce_show: Ditt lösenord visas
-      hide: Dölj
-      hide_password: Dölj lösenordet
-      show: Visa
-      show_password: Visa lösenordet
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:
