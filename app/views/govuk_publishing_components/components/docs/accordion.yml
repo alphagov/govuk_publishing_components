@@ -23,7 +23,6 @@ accessibility_criteria: |
     * pass [colour contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
     * be readable should a [user change colours](https://support.mozilla.org/en-US/kb/change-fonts-and-colors-websites-use)
     * associate panel content with the control that opens it using the `aria-controls` attribute
-    * have `aria-label` / `aria-labelledby` on section content with a value that refers to the button that controls display of the content
 
   Section headings must use a button element so that users:
 
@@ -63,7 +62,7 @@ examples:
 
       The `id` must be unique across the domain of your service. This is because the open or closed state of individual instances of the accordion uses `localStorage` to persist across page loads.
 
-      Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
+      Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-control` attributes.
     data:
       id: with-supplied-id-thats-unique-across-the-domain
       items:
