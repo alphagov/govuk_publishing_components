@@ -178,13 +178,6 @@ id:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Kata sandi Anda tersembunyi
-      announce_show: Kata sandi Anda tampak
-      hide: Sembunyikan
-      hide_password: Sembunyikan kata sandi
-      show: Tampilkan
-      show_password: Tampilkan kata sandi
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

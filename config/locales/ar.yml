@@ -181,13 +181,6 @@ ar:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: كلمة مرورك مخفيَّة
-      announce_show: كلمة مرورك معروضة
-      hide: إخفاء
-      hide_password: إخفاء كلمة المرور
-      show: إظهار
-      show_password: إظهار كلمة المرور
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

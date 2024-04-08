@@ -179,13 +179,6 @@ ro:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Parola dvs. este ascunsă
-      announce_show: Parola dvs. este afișată
-      hide: Ascundeți
-      hide_password: Ascundeți parola
-      show: Afișați
-      show_password: Afișați parola
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

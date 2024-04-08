@@ -182,13 +182,6 @@ lv:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Jūsu parole ir paslēpta
-      announce_show: Jūsu parole ir redzama
-      hide: Paslēpt
-      hide_password: Paslēpt paroli
-      show: Rādīt
-      show_password: Rādīt paroli
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

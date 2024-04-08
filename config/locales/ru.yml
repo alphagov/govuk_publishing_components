@@ -182,13 +182,6 @@ ru:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Ваш пароль скрыт
-      announce_show: Ваш пароль показан
-      hide: Скрыть
-      hide_password: Скрыть пароль
-      show: Показать
-      show_password: Показать пароль
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

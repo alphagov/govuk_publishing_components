@@ -183,13 +183,6 @@ sk:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Vaše heslo je skryté
-      announce_show: Vaše heslo sa zobrazuje.
-      hide: Skryť
-      hide_password: Skryť heslo
-      show: Zobraziť
-      show_password: Zobraziť heslo
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

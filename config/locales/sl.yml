@@ -185,13 +185,6 @@ sl:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Vaše geslo je skrito
-      announce_show: Vaše geslo je prikazano
-      hide: Skrij
-      hide_password: Skrij geslo
-      show: Prikaži
-      show_password: Prikaži geslo
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

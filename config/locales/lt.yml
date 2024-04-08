@@ -183,13 +183,6 @@ lt:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Jūsų slaptažodis paslėptas
-      announce_show: Jūsų slaptažodis rodomas
-      hide: Slėpti
-      hide_password: Slėpti slaptažodį
-      show: Rodyti
-      show_password: Rodyti slaptažodį
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

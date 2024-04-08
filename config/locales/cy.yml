@@ -182,13 +182,6 @@ cy:
     share_links:
       all_opens_in_new_tab: Bydd rhannu yn agor y dudalen hon mewn tab newydd
       opens_in_new_tab:
-    show_password:
-      announce_hide: Mae eich cyfrinair wedi'i guddio
-      announce_show: Mae eich cyfrinair yn cael ei ddangos
-      hide: Cuddio
-      hide_password: Cuddio'r cyfrinair
-      show: Dangos
-      show_password: Dangos y cyfrinair
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

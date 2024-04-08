@@ -178,13 +178,6 @@ pt:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: A sua palavra-passe é ocultada
-      announce_show: A sua palavra-passe é mostrada
-      hide: Ocultar
-      hide_password: Ocultar palavra-passe
-      show: Mostrar
-      show_password: Mostrar palavra-passe
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

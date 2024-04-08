@@ -182,13 +182,6 @@ hy:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Ձեր գաղտնաբառը թաքցրած է
-      announce_show: Ձեր գաղտնաբառը ցուցադրված է
-      hide: Թաքցնել
-      hide_password: Թաքցնել գաղտնաբառը
-      show: Ցուցադրել
-      show_password: Ցույց տալ գաղտնաբառը
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

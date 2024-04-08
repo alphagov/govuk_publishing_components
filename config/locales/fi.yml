@@ -180,13 +180,6 @@ fi:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Salasanasi on piilotettu
-      announce_show: Salasanasi näytetään
-      hide: Piilottaa
-      hide_password: Piilota salasana
-      show: Näytä
-      show_password: Näytä salasana
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

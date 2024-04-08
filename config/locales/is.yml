@@ -178,13 +178,6 @@ is:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Lykilorðið þitt er falið
-      announce_show: Lykilorðið þitt er sýnt
-      hide: Fela
-      hide_password: Fela lykilorð
-      show: Sýna
-      show_password: Sýna lykilorð
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -179,13 +179,6 @@ ta:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: உங்கள் கடவுச்சொல் மறைக்கப்பட்டுள்ளது
-      announce_show: உங்கள் கடவுச்சொல் காட்டப்படுகிறது
-      hide: மறை
-      hide_password: கடவுச்சொல்லை மறை
-      show: காட்டு
-      show_password: கடவுச்சொல்லைக் காட்டு
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

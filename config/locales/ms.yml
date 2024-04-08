@@ -177,13 +177,6 @@ ms:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Kata laluan anda disorokkan
-      announce_show: Kata laluan anda ditunjukkan
-      hide: Sorok
-      hide_password: Sorok kata laluan
-      show: Tunjuk
-      show_password: Tunjuk kata laluan
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -178,13 +178,6 @@ so:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Fure sireedkaagu wuu qarsoonayhay
-      announce_show: Fure sireedkaagu wuu muuqdaa
-      hide: Qari
-      hide_password: Qari fure sireedka
-      show: Muuji
-      show_password: Muuji furesireedka
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

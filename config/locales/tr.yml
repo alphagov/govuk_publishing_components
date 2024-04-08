@@ -179,13 +179,6 @@ tr:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Şifreniz gizli
-      announce_show: Şifreniz gösteriliyor
-      hide: Gizle
-      hide_password: Şifreyi gizle
-      show: Göster
-      show_password: Şifreyi göster
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

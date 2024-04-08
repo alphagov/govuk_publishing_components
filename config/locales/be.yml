@@ -184,13 +184,6 @@ be:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Ваш пароль схаваны
-      announce_show: Ваш пароль адлюстроўваецца
-      hide: Схаваць
-      hide_password: Схаваць пароль
-      show: Паказаць
-      show_password: Адлюстраваць пароль
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -179,13 +179,6 @@ bn:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: আপনার পাসওয়ার্ড লুকানো
-      announce_show: আপনার পাসওয়ার্ড দেখানো হয়েছে
-      hide: লুকিয়ে রাখুন
-      hide_password: পাসওয়ার্ড লুকিয়ে রাখুন
-      show: দেখান
-      show_password: পাসওয়ার্ড প্রদর্শন করুন
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

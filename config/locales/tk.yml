@@ -179,13 +179,6 @@ tk:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Açar sözüňiz gizlenen
-      announce_show: Açar sözüňiz görkezilen
-      hide: Gizle
-      hide_password: Açar sözi gizle
-      show: Görkez
-      show_password: Açar sözi görkez
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

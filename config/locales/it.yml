@@ -178,13 +178,6 @@ it:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: La tua password è nascosta
-      announce_show: La tua password è mostrata
-      hide: Nascondi
-      hide_password: Nascondi password
-      show: Mostra
-      show_password: Mostra password
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -177,13 +177,6 @@ vi:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Mật khẩu của bạn bị ẩn
-      announce_show: Mật khẩu của bạn được hiển thị
-      hide: Ẩn
-      hide_password: Ẩn mật khẩu
-      show: Hiển thị
-      show_password: Hiển thị mật khẩu
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

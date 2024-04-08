@@ -177,13 +177,6 @@ fa:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: رمز عبور شما مخفی شده است
-      announce_show: رمز عبور شما نمایش داده شده است
-      hide: مخفی کردن
-      hide_password: مخفی کردن رمز عبور
-      show: نمایش
-      show_password: نمایش رمز عبور
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

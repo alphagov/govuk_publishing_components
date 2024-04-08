@@ -181,13 +181,6 @@ hu:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: A jelszava rejtett
-      announce_show: A jelszava látható
-      hide: Elrejtés
-      hide_password: Jelszó elrejtése
-      show: Megmutatás
-      show_password: Jelszó megmutatása
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

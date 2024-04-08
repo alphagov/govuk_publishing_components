@@ -178,13 +178,6 @@ az:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Şifrəniz gizlədilib
-      announce_show: Şifrəniz göstərilir
-      hide: Gizlət
-      hide_password: Şifrəni gizlət
-      show: Göstər
-      show_password: Şifrəni göstər
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

@@ -182,13 +182,6 @@ bg:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Вашата парола е скрита
-      announce_show: Вашата парола е видима
-      hide: Скриване
-      hide_password: Скриване на паролата
-      show: Показване
-      show_password: Показване на паролата
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

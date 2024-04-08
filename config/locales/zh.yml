@@ -176,13 +176,6 @@ zh:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: 您的密码已隐藏
-      announce_show: 您的密码已显示
-      hide: 隐藏
-      hide_password: 隐藏密码
-      show: 显示
-      show_password: 显示密码
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

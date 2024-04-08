@@ -180,13 +180,6 @@ mt:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Il-password tiegħek hija moħbija
-      announce_show: Il-password tiegħek qed tidher
-      hide: Aħbi
-      hide_password: Aħbi l-password
-      show: Uri
-      show_password: Uri l-password
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

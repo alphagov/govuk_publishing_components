@@ -174,13 +174,6 @@ ja:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: パスワードは非表示です
-      announce_show: パスワードが表示されています
-      hide: 非表示
-      hide_password: パスワードを非表示にする
-      show: 表示
-      show_password: パスワードを表示する
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:

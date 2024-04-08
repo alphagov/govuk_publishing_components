@@ -179,13 +179,6 @@ hr:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
-    show_password:
-      announce_hide: Vaša lozinka je skrivena
-      announce_show: Vaša se lozinka prikazuje
-      hide: Sakrij
-      hide_password: Sakrij lozinku
-      show: Prikaži
-      show_password: Prikaži lozinku
     single_page_notification_button:
       subscribe_text:
       unsubscribe_text:
