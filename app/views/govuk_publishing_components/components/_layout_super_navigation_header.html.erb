@@ -350,11 +350,22 @@
           </h3>
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
+              <%
+                form_attributes = {
+                  event_name: "search",
+                  type: "header menu bar",
+                  section: "Search GOV.UK",
+                  action: "search",
+                  url: "/search/all",
+                  index_section: 3,
+                  index_section_count: 3,
+                }.to_json
+              %>
               <form
                 class="gem-c-layout-super-navigation-header__search-form"
                 id="search"
                 data-module="ga4-form-tracker"
-                data-ga4-form='{ "event_name": "search", "type": "header menu bar", "section": "Search GOV.UK", "action": "search", "url": "/search/all" }'
+                data-ga4-form="<%= form_attributes %>"
                 data-ga4-form-include-text
                 data-ga4-form-no-answer-undefined
                 action="<%= absolute_links_helper.make_url_absolute('/search') %>"
