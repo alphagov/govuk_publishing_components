@@ -7,11 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 38.0.0
 
-* Remove show password component ([PR #3973](https://github.com/alphagov/govuk_publishing_components/pull/3973))
-* Complete the removal of specialist topic code from the gem [PR #3955](https://github.com/alphagov/govuk_publishing_components/pull/3955)
-* Remove support for specialist topics from contextual footer ([#3950](https://github.com/alphagov/govuk_publishing_components/pull/3950))
+* **BREAKING:** Remove show password component ([PR #3973](https://github.com/alphagov/govuk_publishing_components/pull/3973))
+* Complete the removal of specialist topic code from the gem ([PR #3955](https://github.com/alphagov/govuk_publishing_components/pull/3955))
+* Remove support for specialist topics from contextual footer ([PR #3950](https://github.com/alphagov/govuk_publishing_components/pull/3950))
 * Update HMRC organisation logos ([PR #3962](https://github.com/alphagov/govuk_publishing_components/pull/3962))
 
 ## 37.10.0
