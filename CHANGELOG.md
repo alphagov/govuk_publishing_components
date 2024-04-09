@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Explicitly require ostruct ([PR #3976](https://github.com/alphagov/govuk_publishing_components/pull/3976))
+
 ## 38.0.0
 
 * **BREAKING:** Remove show password component ([PR #3973](https://github.com/alphagov/govuk_publishing_components/pull/3973))
