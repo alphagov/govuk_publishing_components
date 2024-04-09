@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add the hidden attribute to mobile menu button ([PR #3975](https://github.com/alphagov/govuk_publishing_components/pull/3975))
+
 ## 38.0.1
 
 * Explicitly require ostruct ([PR #3976](https://github.com/alphagov/govuk_publishing_components/pull/3976))
