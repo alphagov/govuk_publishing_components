@@ -63,6 +63,7 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__navigation-item", text: "Bar"
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--collapsed-menu-only", text: "Hello"
     assert_select ".gem-c-header__nav[aria-label='Top level']"
+    assert_select ".govuk-header__menu-button[hidden]"
   end
 
   it "renders the header navigation items with custom aria-label when navigation_aria_label is specified" do
