@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update module.js ready for v5 of govuk-frontend ([PR #3992](https://github.com/alphagov/govuk_publishing_components/pull/3992))
+
 ## 38.3.2
 
 * Reintroduce feedback survey path and new tab functionality ([PR #4024](https://github.com/alphagov/govuk_publishing_components/pull/4024))
