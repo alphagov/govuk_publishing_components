@@ -1,24 +1,28 @@
 <%
   unless disable_ga4
+    heading_text = t("components.feedback.is_this_page_useful", locale: :en)
     ga4_yes_button_event = {
       "event_name": "form_submit",
       "type": "feedback",
-      "text": t("components.feedback.yes", locale: :en), 
-      "section": t("components.feedback.is_this_page_useful", locale: :en),
+      "text": t("components.feedback.yes", locale: :en),
+      "section": heading_text,
+      "tool_name": heading_text,
       }.to_json
 
     ga4_no_button_event = {
       "event_name": "form_submit",
       "type": "feedback",
       "text": t("components.feedback.no", locale: :en),
-      "section": t("components.feedback.is_this_page_useful", locale: :en)
+      "section": heading_text,
+      "tool_name": heading_text,
       }.to_json
 
     ga4_problem_button_event = {
       "event_name": "form_submit",
       "type": "feedback",
       "text": t("components.feedback.something_wrong", locale: :en),
-      "section": t("components.feedback.is_this_page_useful", locale: :en)
+      "section": heading_text,
+      "tool_name": heading_text,
     }.to_json
   end
 %>
