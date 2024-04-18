@@ -100,9 +100,11 @@
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     <% end -%>
     <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
-    <%= render "govuk_publishing_components/components/skip_link", {
-      href: "#content"
-    } %>
+    <% if skip_link %>
+      <%= render "govuk_publishing_components/components/skip_link", {
+        href: "#content"
+      } %>
+    <% end %>
     <% unless omit_header %>
       <% if show_explore_header %>
         <% if homepage %>
@@ -120,6 +122,8 @@
           service_navigation_items: service_navigation_items,
           product_name: product_name,
         } %>
+      <% elsif custom_header %>
+         <%= custom_header %>
       <% else %>
         <%= render "govuk_publishing_components/components/layout_header", {
           search: show_search,
@@ -159,6 +163,8 @@
         <%= yield :before_content %>
         <%= yield %>
       <% end %>
+    <% elsif omit_wrapper %>
+      <%= yield %>
     <% else %>
       <div id="wrapper" class="<%= "govuk-width-container" unless full_width %>">
         <%= yield :before_content %>
