@@ -40,4 +40,43 @@ describe "Feedback", type: :view do
       expect(response.body).to include(utf8_url)
     end
   end
+
+  it "has GA4 tracking" do
+    render_component({})
+
+    assert_select ".gem-c-feedback[data-module='feedback ga4-event-tracker']"
+
+    # Yes button
+    assert_select ".js-page-is-useful[data-ga4-event='{\"event_name\":\"form_submit\",\"type\":\"feedback\",\"text\":\"Yes\",\"section\":\"Is this page useful?\",\"tool_name\":\"Is this page useful?\"}']"
+
+    # No button
+    assert_select ".js-page-is-not-useful[data-ga4-event='{\"event_name\":\"form_submit\",\"type\":\"feedback\",\"text\":\"No\",\"section\":\"Is this page useful?\",\"tool_name\":\"Is this page useful?\"}']"
+
+    # Report a problem button
+    assert_select ".js-something-is-wrong[data-ga4-event='{\"event_name\":\"form_submit\",\"type\":\"feedback\",\"text\":\"Report a problem with this page\",\"section\":\"Is this page useful?\",\"tool_name\":\"Is this page useful?\"}']"
+
+    # Report a problem submit
+    assert_select ".govuk-button[data-ga4-event='{\"event_name\":\"form_submit\",\"type\":\"feedback\",\"text\":\"Send\",\"section\":\"Help us improve GOV.UK\",\"tool_name\":\"Help us improve GOV.UK\"}']"
+
+    # Send me the survey submit
+    assert_select ".govuk-button[data-ga4-event='{\"event_name\":\"form_submit\",\"type\":\"feedback\",\"text\":\"Send me the survey\",\"section\":\"Help us improve GOV.UK\",\"tool_name\":\"Help us improve GOV.UK\"}']"
+  end
+
+  it "can have its GA4 tracking disabled" do
+    render_component({ disable_ga4: true })
+
+    assert_select ".gem-c-feedback[data-module='feedback ga4-event-tracker']", false
+
+    # Yes button
+    assert_select ".js-page-is-useful[data-ga4-event]", false
+
+    # No button
+    assert_select ".js-page-is-not-useful[data-ga4-event]", false
+
+    # Report a problem button
+    assert_select ".js-something-is-wrong[data-ga4-event]", false
+
+    # Report a problem submit / Send me the survey submit
+    assert_select ".govuk-button[data-ga4-event]", false
+  end
 end
