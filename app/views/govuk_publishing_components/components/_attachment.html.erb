@@ -73,6 +73,8 @@
         <%= render "govuk_publishing_components/components/attachment/thumbnail_document" %>
       <% elsif attachment.spreadsheet? %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_spreadsheet" %>
+      <% elsif attachment.pdf? %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_pdf" %>
       <% else %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_generic" %>
       <% end %>
