@@ -175,6 +175,7 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
         title: "test",
         url: "test",
         content_type: "text/csv",
+        command_paper_number: "",
         unnumbered_command_paper: true,
       )
       expect(attachment.unnumbered_reference).to eq("Unnumbered command paper")
@@ -185,6 +186,7 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
         title: "test",
         url: "test",
         content_type: "text/csv",
+        hoc_paper_number: "",
         unnumbered_hoc_paper: true,
       )
       expect(attachment.unnumbered_reference).to eq("Unnumbered act paper")
