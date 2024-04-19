@@ -39,7 +39,7 @@ describe "Attachment", type: :view do
     assert_select "abbr.gem-c-attachment__abbr[title='Portable Document Format']", text: "PDF"
     expect(rendered).to match(/2 KB/)
     expect(rendered).to match(/2 pages/)
-    assert_thumbnail "document"
+    assert_thumbnail "pdf"
   end
 
   it "can show file type that doesn't have an abbreviation" do

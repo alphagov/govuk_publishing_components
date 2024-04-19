@@ -200,6 +200,14 @@ examples:
         content_type: application/pdf
         file_size: 20000
         thumbnail_url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/thumbnail_the_government_financial_reporting_review_web.pdf.png"
+  pdf_attachment:
+    data:
+      attachment:
+        title: "Department for Transport, temporary snow ploughs: guidance note"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+        filename: temporary-snow-ploughs.pdf
+        content_type: application/pdf
+        file_size: 20000
   with_preview_link:
     data:
       attachment:
