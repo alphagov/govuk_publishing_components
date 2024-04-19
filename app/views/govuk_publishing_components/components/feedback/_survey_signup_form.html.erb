@@ -31,11 +31,13 @@
 
       <%
         unless disable_ga4
+          heading_text = t("components.feedback.help_us_improve_govuk", locale: :en)
           ga4_send_button_event = {
             event_name: "form_submit",
             type: "feedback",
             text: t("components.feedback.send_me_survey", locale: :en),
-            section: t("components.feedback.help_us_improve_govuk", locale: :en),
+            section: heading_text,
+            tool_name: heading_text
           }.to_json
         end
       %>

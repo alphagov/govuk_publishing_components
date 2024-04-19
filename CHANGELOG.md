@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add the hidden attribute to mobile menu button ([PR #3975](https://github.com/alphagov/govuk_publishing_components/pull/3975))
+* Add tool_name to GA4 feedback component tracking ([PR #3984](https://github.com/alphagov/govuk_publishing_components/pull/3984))
 
 ## 38.0.1
 
