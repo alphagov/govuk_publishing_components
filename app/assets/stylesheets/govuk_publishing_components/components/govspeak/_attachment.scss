@@ -65,7 +65,7 @@
       }
 
       .metadata {
-        @include govuk-font($size: 14);
+        @include govuk-font($size: 16);
       }
 
       .url {
@@ -93,12 +93,12 @@
       }
 
       .opendocument-help {
-        @include govuk-font($size: 14);
+        @include govuk-font($size: 16);
       }
 
       .accessibility-warning {
         h2 {
-          @include govuk-font($size: 14);
+          @include govuk-font($size: 16);
           margin: 0;
         }
         word-break: break-word;

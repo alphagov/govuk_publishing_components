@@ -2,16 +2,12 @@
 
 // Default logo corresponds with the "medium stacked" Whitehall equivalent
 .gem-c-organisation-logo {
-  font-size: 13px;
+  @include govuk-font($size: 19);
   font-weight: 400;
   line-height: 1.35;
   // When this is a heading the margin needs to be set to stop it from
   // inheriting the browser's default margin:
   margin: 0;
-
-  @include govuk-media-query($from: tablet) {
-    font-size: 18px;
-  }
 }
 
 .gem-c-organisation-logo__container {
@@ -39,13 +35,8 @@
 .gem-c-organisation-logo__crest {
   // Default brand colour
   border-left: 2px solid govuk-colour("black");
-  padding-top: 23px;
-  padding-left: 6px;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 28px;
-    padding-left: 7px;
-  }
+  padding-top: 35px;
+  padding-left: 8px;
 
   .brand--executive-office & {
     border-left-width: 0;
@@ -81,80 +72,62 @@
   }
 }
 
-@mixin crest($crest) {
-  background: url("govuk_publishing_components/crests/#{$crest}_13px.png") no-repeat 5px 0;
-  background-size: auto 20px;
-
-  @include govuk-device-pixel-ratio {
-    background-image: url("govuk_publishing_components/crests/#{$crest}_13px_x2.png");
-  }
-
-  @include govuk-media-query($from: tablet) {
-    background: url("govuk_publishing_components/crests/#{$crest}_18px.png") no-repeat 6px 0;
-    background-size: auto 26px;
-
-    @include govuk-device-pixel-ratio {
-      background-image: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png");
-    }
-  }
+@mixin crest($crest, $xpos:0, $ypos:0) {
+  background: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png") no-repeat $xpos $ypos;
+  background-size: auto 32px;
 }
 
 @mixin tall-crest {
-  padding-top: 25px;
-  background-size: auto 25px;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 35px;
-    background-size: auto 34px;
-  }
+  padding-top: 39px;
+  background-size: auto 34px;
 }
 
 .gem-c-organisation-logo__crest--dbt {
-  @include crest("dbt_crest");
+  @include crest($crest: "dbt_crest", $xpos: 9px);
 }
 
 .gem-c-organisation-logo__crest--bis {
-  @include crest("bis_crest");
+  @include crest($crest: "bis_crest", $xpos: 9px);
 }
 
 .gem-c-organisation-logo__crest--hmrc {
-  @include crest("hmrc_crest");
+  @include crest($crest: "hmrc_crest", $xpos: 8px);
 }
 
 .gem-c-organisation-logo__crest--ho {
-  @include crest("ho_crest");
+  @include crest($crest: "ho_crest", $xpos: 9px);
   @include tall-crest;
 }
 
 .gem-c-organisation-logo__crest--mod {
-  @include crest("mod_crest");
+  @include crest($crest: "mod_crest", $xpos: 9px);
   @include tall-crest;
 }
 
 .gem-c-organisation-logo__crest--single-identity,
 .gem-c-organisation-logo__crest--eo,
 .gem-c-organisation-logo__crest--org {
-  @include crest("org_crest");
+  @include crest($crest: "org_crest", $xpos: 8px);
 }
 
 .gem-c-organisation-logo__crest--portcullis {
-  @include crest("portcullis");
+  @include crest($crest: "portcullis", $xpos: 9px);
 }
 
 .gem-c-organisation-logo__crest--so {
-  @include crest("so_crest");
+  @include crest($crest: "so_crest", $xpos: 9px);
 }
 
 .gem-c-organisation-logo__crest--ukaea {
-  @include crest("ukaea_crest");
+  @include crest($crest: "ukaea_crest", $xpos: 9px);
 }
 
 .gem-c-organisation-logo__crest--ukho {
-  @include crest("ukho");
+  @include crest($crest: "ukho", $xpos: 8px);
   @include tall-crest;
 }
 
 .gem-c-organisation-logo__crest--wales {
-  @include crest("wales_crest");
+  @include crest($crest: "wales_crest", $xpos: 9px);
   @include tall-crest;
 }
