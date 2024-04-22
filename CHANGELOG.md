@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 38.1.0
 
 * Fix rendering of unnumbered papers ([PR #3988](https://github.com/alphagov/govuk_publishing_components/pull/3988))
 * Add PDF specific icon to attachment component ([PR #3985](https://github.com/alphagov/govuk_publishing_components/pull/3985))
