@@ -18,7 +18,7 @@
   header_classes << "gem-c-layout-header--search-left" if search_left
 %>
 
-<header class="<%= header_classes.join(' ') %>"  role="banner" data-module="govuk-header">
+<header class="<%= header_classes.join(' ') %>"  role="banner" <%= product_name != "Chat" ? "data-module=\"govuk-header\"" : ""  %>>
   <div class="govuk-header__container <%= width_class %>">
     <% if search_left %>
       <div class="govuk-grid-row">
