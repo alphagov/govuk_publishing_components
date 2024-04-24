@@ -23,3 +23,21 @@ examples:
       browser_title: 'A page title'
       block: |
         <!-- You probably want to use the header, main & footer components here -->
+  with_custom_js_filename:
+    description: An alternative JS filename can be used in place of the default `application.js` if required (note that this cannot easily be demonstrated here).
+    data:
+      environment: production
+      product_name: Publishing
+      browser_title: 'A page title'
+      js_filename: "application"
+      block: |
+        <!-- You probably want to use the header, main & footer components here -->
+  with_custom_css_filename:
+    description: An alternative JS filename can be used in place of the default `application.scss` if required (note that this cannot easily be demonstrated here).
+    data:
+      environment: production
+      product_name: Publishing
+      browser_title: 'A page title'
+      css_filename: "application"
+      block: |
+        <!-- You probably want to use the header, main & footer components here -->

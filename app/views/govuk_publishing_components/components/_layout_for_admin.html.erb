@@ -1,5 +1,7 @@
 <%
   add_gem_component_stylesheet("layout-for-admin")
+  js_filename ||= "application"
+  css_filename ||= "application"
 
   product_name ||= "Publishing"
 %>
@@ -13,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "govuk_publishing_components/favicon-#{environment}.png" %>
-    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag css_filename, media: "all" %>
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
     <%= yield :head %>
   </head>
@@ -22,6 +24,6 @@
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     <% end -%>
     <%= yield %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag js_filename %>
   </body>
 </html>
