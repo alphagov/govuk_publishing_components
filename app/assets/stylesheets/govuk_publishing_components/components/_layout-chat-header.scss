@@ -1,14 +1,46 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk_publishing_components/components/layout-header";
 
+.govuk-header__link.govuk-header__link--homepage {
+  align-items: center;
+  display: flex;
+  margin-right: 0;
+}
+
+.gem-c-layout-for-public__blue-bar.chat {
+  background: govuk-colour("yellow");
+}
+
+.gem-c-header__logo {
+  padding-right: 0;
+}
+
 .gem-c-layout-header--experimental {
   .gem-c-environment-tag--experimental {
     background-color: rgba(255, 247, 191, 1);
     color: govuk-colour("black");
+    // See https://design-system.service.gov.uk/styles/type-scale/
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 0;
+    padding: 5px;
+    text-transform: capitalize;
+
+    @include govuk-media-query($until: tablet) {
+      margin-left: auto;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      font-size: 19px;
+      line-height: 25px;
+      margin-left: 15px;
+    }
   }
 
   .gem-c-header__product-name {
     display: inline-block;
+    // See https://design-system.service.gov.uk/styles/type-scale/
+    font-size: 30px;
   }
 
   .govuk-header__navigation-item:nth-child(1) {

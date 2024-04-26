@@ -153,7 +153,7 @@
 
     <% if (blue_bar && !global_bar.present? && !homepage) || (blue_bar_dedupe) %>
       <%= content_tag(:div, class: blue_bar_wrapper_classes) do %>
-        <div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
+        <div class="gem-c-layout-for-public__blue-bar govuk-width-container <%= 'chat' if show_chat_header %>"></div>
       <% end %>
     <% end %>
 
