@@ -1,4 +1,3 @@
-//= require govuk/vendor/polyfills/Element/prototype/closest.js
 ;(function (global) {
   'use strict'
 

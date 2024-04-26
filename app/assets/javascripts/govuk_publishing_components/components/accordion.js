@@ -1,8 +1,7 @@
 /* global nodeListForEach */
-//  = require ../vendor/polyfills/common.js
 // This component relies on JavaScript from GOV.UK Frontend
 // = require govuk/components/accordion/accordion.js
-window.GOVUK = window.GOVUK || {}
+;window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
 window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
