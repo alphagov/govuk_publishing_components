@@ -10,6 +10,7 @@
 ## Unreleased
 
 - Update layout_for_admin component to take custom asset filenames ([PR #3993](https://github.com/alphagov/govuk_publishing_components/pull/3993))
+- Add favicon for test environment ([PR #3995](https://github.com/alphagov/govuk_publishing_components/pull/3995))
 
 ## 38.1.0
 
