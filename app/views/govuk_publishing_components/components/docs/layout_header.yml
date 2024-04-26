@@ -29,17 +29,6 @@ examples:
     data:
       environment: production
       product_name: Product
-  with_product_name_and_nav:
-    data:
-      environment: experimental
-      product_name: Chat
-      navigation_items:
-      - text: About
-        href: "/"
-      - text: Privacy
-        href: "/"
-      - text: Support
-        href: "/"
   with_navigation:
     data:
       environment: production

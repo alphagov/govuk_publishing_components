@@ -20,6 +20,7 @@
   product_name ||= nil
   show_explore_header ||= false
   show_cross_service_header ||= false
+  show_chat_header ||= false
   draft_watermark ||= false
   show_search = local_assigns.include?(:show_search) ? local_assigns[:show_search] : true
   title ||= "GOV.UK - The best place to find government services and information"
@@ -28,6 +29,8 @@
   account_nav_location ||= nil
   omit_account_navigation ||= false
   omit_account_phase_banner ||= false
+
+  environment ||= false
 
 # This is a hack - but it's the only way I can find to not have two blue bars on
 # constrained width layouts.
@@ -114,6 +117,18 @@
             logo_link: logo_link,
           } %>
         <% end %>
+      <% elsif show_chat_header %>
+          <%= render "govuk_publishing_components/components/layout_chat_header", {
+          search: show_search,
+          logo_link: logo_link,
+          navigation_items: navigation_items,
+          product_name: product_name,
+          environment: environment,
+
+          # The (blue) bottom border needs to be underneath the emergency banner -
+          # so it has been turned off and added in manually.
+          remove_bottom_border: true,
+          } %>
       <% elsif show_cross_service_header %>
         <%= render "govuk_publishing_components/components/cross_service_header", {
           one_login_navigation_items: one_login_navigation_items,

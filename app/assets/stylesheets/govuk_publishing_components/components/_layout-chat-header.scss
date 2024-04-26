@@ -1,0 +1,36 @@
+@import "govuk_publishing_components/individual_component_support";
+@import "govuk_publishing_components/components/layout-header";
+
+.gem-c-layout-header--experimental {
+  .gem-c-environment-tag--experimental {
+    background-color: rgba(255, 247, 191, 1);
+    color: govuk-colour("black");
+  }
+
+  .gem-c-header__product-name {
+    display: inline-block;
+  }
+
+  .govuk-header__navigation-item:nth-child(1) {
+    margin: 10px 0;
+  }
+
+  .govuk-header__navigation-item:nth-child(3) {
+    margin: 10px 0;
+  }
+
+  .govuk-header__navigation-item {
+    margin: 10px 25px;
+    display: inline-block;
+    border: none;
+    padding: 0;
+    a {
+      font-size: 16px;
+      font-size: govuk-px-to-rem(16px);
+    }
+  }
+
+  .govuk-header__container {
+    border-bottom: 10px solid govuk-colour("yellow");
+  }
+}

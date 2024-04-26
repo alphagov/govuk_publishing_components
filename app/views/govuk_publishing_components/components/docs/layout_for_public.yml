@@ -123,3 +123,18 @@ examples:
           cookie_preferences:
             text: How GOV.UK accounts use cookies
             href: https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement
+  with_chat_header:
+    description: header for GOV.UK Chat
+    data:
+      show_chat_header: true
+      product_name: Chat
+      environment: experimental
+      show_search: false
+      navigation_items:
+      - text: About
+        href: "#"
+        active: true
+      - text: Privacy
+        href: "#"
+      - text: Support
+        href: "#"

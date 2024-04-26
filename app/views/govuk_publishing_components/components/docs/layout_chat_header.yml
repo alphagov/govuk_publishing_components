@@ -1,0 +1,30 @@
+name: Layout chat header
+description: TBC
+body: |
+  TBC
+govuk_frontend_components:
+  - header
+accessibility_criteria: |
+  TBC  
+accessibility_excluded_rules:
+  - landmark-banner-is-top-level # The header element can not be top level in the examples
+  - duplicate-id # IDs will be duplicated in component examples list
+  - duplicate-id-aria # IDs will be duplicated in component examples list
+  - form-field-multiple-labels # Form labels will be ambiguous in component examples list
+  - landmark-no-duplicate-banner # banners will be duplicated in component examples list
+  - landmark-unique # aria-label attributes will be duplicated in component examples list
+examples:
+  default:
+    data:
+      environment: experimental
+  with_product_name_and_nav:
+    data:
+      environment: experimental
+      product_name: Chat
+      navigation_items:
+      - text: About
+        href: "/"
+      - text: Privacy
+        href: "/"
+      - text: Support
+        href: "/"
