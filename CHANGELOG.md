@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Update layout_for_admin component to take custom asset filenames ([PR #3993](https://github.com/alphagov/govuk_publishing_components/pull/3993))
+
 ## 38.1.0
 
 * Fix rendering of unnumbered papers ([PR #3988](https://github.com/alphagov/govuk_publishing_components/pull/3988))
