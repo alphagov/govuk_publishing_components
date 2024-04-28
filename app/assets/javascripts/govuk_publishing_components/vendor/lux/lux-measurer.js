@@ -192,5 +192,5 @@ try {
     }
   }
 } catch (e) {
-  console.error('Error in LUX reporting the HTTP protocol (' + window.location + '):', e)
+  console.error('Error in LUX reporting the HTTP protocol (%s):', window.location, e)
 }
