@@ -1,5 +1,3 @@
-/* global nodeListForEach */
-//  = require ../vendor/polyfills/common.js
 // This component relies on JavaScript from GOV.UK Frontend
 // = require govuk/components/accordion/accordion.bundle.js
 window.GOVUK = window.GOVUK || {}
@@ -82,11 +80,11 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   GemAccordion.prototype.addEventListenersForAnchors = function () {
     var links = this.$module.querySelectorAll(this.sectionInnerContentClass + ' a[href*="#"]')
 
-    nodeListForEach(links, function (link) {
+    for (var link of links) {
       if (link.pathname === window.location.pathname) {
         link.addEventListener('click', this.openForAnchor.bind(this, link.hash.split('#')[1]))
       }
-    }.bind(this))
+    }
   }
 
   // Find the parent accordion section for the given id and open it
@@ -150,9 +148,9 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
   GemAccordion.prototype.addEventListenerSections = function () {
     var sections = this.$module.querySelectorAll(this.sectionButton)
-    nodeListForEach(sections, function (section) {
+    for (var section of sections) {
       section.addEventListener('click', this.addAccordionSectionTracking.bind(this, section))
-    }.bind(this))
+    }
   }
 
   // If the Accordion's sections are opened on click, then pass them to the GA event tracking
