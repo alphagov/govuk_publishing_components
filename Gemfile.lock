@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (38.1.0)
+    govuk_publishing_components (38.1.1)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -143,7 +143,7 @@ GEM
     google-protobuf (3.25.3)
     googleapis-common-protos-types (1.14.0)
       google-protobuf (~> 3.18)
-    govuk_app_config (9.10.0)
+    govuk_app_config (9.11.0)
       logstasher (~> 2.1)
       opentelemetry-exporter-otlp (>= 0.25, < 0.27)
       opentelemetry-instrumentation-all (>= 0.39.1, < 0.61.0)
@@ -223,7 +223,7 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0.1)
+    net-smtp (0.5.0)
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.1)
