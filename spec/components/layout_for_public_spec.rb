@@ -310,4 +310,12 @@ describe "Layout for public", type: :view do
 
     assert_select "main#custom-layout"
   end
+
+  it "can render a custom header instead of the default one" do
+    view.content_for(:custom_header) { content_tag(:header, "GOV.UK with a custom header", id: "custom-header") }
+    render_component({})
+
+    assert_select "header#custom-header"
+    assert page.has_no_selector?(".gem-c-layout-header")
+  end
 end

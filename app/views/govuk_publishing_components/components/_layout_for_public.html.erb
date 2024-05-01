@@ -18,7 +18,6 @@
   omit_footer_border ||= false
   omit_header ||= false
   custom_layout ||= false
-  custom_header ||= false
   product_name ||= nil
   show_explore_header ||= false
   show_cross_service_header ||= false
@@ -122,8 +121,8 @@
           service_navigation_items: service_navigation_items,
           product_name: product_name,
         } %>
-      <% elsif custom_header %>
-        <%= yield :before_content %>
+      <% elsif content_for?(:custom_header) %>
+        <%= yield :custom_header %>
       <% else %>
         <%= render "govuk_publishing_components/components/layout_header", {
           search: show_search,
