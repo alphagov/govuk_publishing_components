@@ -123,3 +123,19 @@ examples:
           cookie_preferences:
             text: How GOV.UK accounts use cookies
             href: https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement
+  with_custom_header:
+    description: Yields a custom header that has been passed to the template via `content_for :before_content`.
+    data:
+      custom_header: true
+      block: |
+        <header>
+          <span>This is a custom header</span>
+        </header>
+  with_custom_layout:
+    description: Yields a custom layout.
+    data:
+      custom_layout: true
+      block: |
+        <main>
+          <h1>This is a custom layout</h1>
+        </main>

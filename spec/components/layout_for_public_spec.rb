@@ -1,4 +1,5 @@
 require "rails_helper"
+require "pry-byebug"
 
 describe "Layout for public", type: :view do
   def component_name
@@ -300,5 +301,13 @@ describe "Layout for public", type: :view do
     render_component({})
 
     assert_select ".gem-c-cookie-banner + .gem-c-skip-link"
+  end
+
+  it "custom layout" do
+    render_component({ custom_layout: true }) do
+      '<main id="custom-layout">I am a custom layout</main>'.html_safe
+    end
+
+    assert_select "main#custom-layout"
   end
 end
