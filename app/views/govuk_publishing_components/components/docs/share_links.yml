@@ -258,3 +258,107 @@ examples:
           icon: 'youtube'
         }
       ]
+  without_icons:
+    data:
+      disable_icons: true
+      stacked: false
+      brand: 'hm-treasury'
+      links: [
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/email-share-link',
+          text: 'Email',
+          icon: 'email'
+        },
+        {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+        {
+          href: '/linkedin-share-link',
+          text: 'Linkedin',
+          icon: 'linkedin'
+        },
+        {
+          href: '/whatsapp-share-link',
+          text: 'WhatsApp',
+          icon: 'whatsapp'
+        },
+        {
+          href: '/other-share-link',
+          text: 'Anything else that might be included that could have quite a long name',
+          icon: 'other'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]
+  without_icons_(stacked):
+    data:
+      disable_icons: true
+      stacked: true
+      brand: 'hm-treasury'
+      links: [
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/email-share-link',
+          text: 'Email',
+          icon: 'email'
+        },
+        {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+        {
+          href: '/linkedin-share-link',
+          text: 'Linkedin',
+          icon: 'linkedin'
+        },
+        {
+          href: '/whatsapp-share-link',
+          text: 'WhatsApp',
+          icon: 'whatsapp'
+        },
+        {
+          href: '/other-share-link',
+          text: 'Anything else that might be included that could have quite a long name',
+          icon: 'other'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]

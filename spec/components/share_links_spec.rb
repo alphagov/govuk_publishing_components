@@ -129,4 +129,37 @@ describe "ShareLinks", type: :view do
     render_component(links:)
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: "Tweet to"
   end
+
+  it "allows icons to be disabled" do
+    render_component(
+      disable_icons: true,
+      links: [
+        {
+          href: "/facebook",
+          text: "Facebook",
+          icon: "facebook",
+        },
+        {
+          href: "/twitter",
+          text: "Twitter",
+          icon: "twitter",
+        }
+      ])
+    assert_select "svg", false
+
+    render_component(
+    links: [
+      {
+        href: "/facebook",
+        text: "Facebook",
+        icon: "facebook",
+      },
+      {
+        href: "/twitter",
+        text: "Twitter",
+        icon: "twitter",
+      }
+    ])
+    assert_select "svg", true
+  end
 end
