@@ -46,6 +46,7 @@
       auto: autoMode,
       beaconUrl: getProperty(obj, "beaconUrl", luxOrigin + "/lux/"),
       conversions: getProperty(obj, "conversions"),
+      cookieDomain: getProperty(obj, "cookieDomain"),
       customerid: getProperty(obj, "customerid"),
       errorBeaconUrl: getProperty(obj, "errorBeaconUrl", luxOrigin + "/error/"),
       jspagelabel: getProperty(obj, "jspagelabel"),
@@ -120,6 +121,7 @@
     return Math.floor(x);
   }
   var max = Math.max;
+  var round = Math.round;
   /**
   * Clamp a number so that it is never less than 0
   */
@@ -178,7 +180,7 @@
       startTime: 0,
       type: navType == 2 ? "back_forward" : navType === 1 ? "reload" : "navigate",
     };
-    {
+    if (true) {
       for (var key in timing) {
         if (typeof timing[key] === "number" && key !== "navigationStart") {
           entry[key] = floor(timing[key] - timing.navigationStart);
@@ -240,6 +242,66 @@
     return getNavigationEntry().redirectCount > 0 || timing.redirectEnd > 0;
   }
 
+  function getClosestScTrackAttribute(el) {
+    var _a;
+    if (el.hasAttribute("data-sctrack")) {
+      var trackId = (_a = el.getAttribute("data-sctrack")) === null || _a === void 0 ? void 0 : _a.trim();
+      if (trackId) {
+        return trackId;
+      }
+    }
+    if (hasParentNode(el)) {
+      return getClosestScTrackAttribute(el.parentNode);
+    }
+    return null;
+  }
+
+  function hasParentNode(el) {
+    if (el.parentNode && el.parentNode.tagName) {
+      return true;
+    }
+    return false;
+  }
+  var MAX_SELECTOR_LENGTH = 100;
+  function getNodeSelector(node, selector) {
+    if (selector === void 0) {
+      selector = "";
+    }
+    try {
+      if (selector && (node.nodeType === 9 || selector.length > MAX_SELECTOR_LENGTH || !node.parentNode)) {
+        // Final selector.
+        return selector;
+      }
+      var el = node;
+      // Our first preference is to use the data-sctrack attribute from anywhere in the tree
+      var trackId = getClosestScTrackAttribute(el);
+      if (trackId) {
+        return trackId;
+      }
+      if (el.id) {
+        // Once we've found an element with ID we return the selector.
+        return "#" + el.id + (selector ? ">" + selector : "");
+      }
+      else {
+        // Otherwise attempt to get parent elements recursively
+        var name_1 = el.nodeType === 1 ? el.nodeName.toLowerCase() : el.nodeName.toUpperCase();
+        var classes = el.className ? "." + el.className.replace(/\s+/g, ".") : "";
+        var currentSelector = name_1 + classes + (selector ? ">" + selector : "");
+        if (el.parentNode) {
+          var selectorWithParent = getNodeSelector(el.parentNode, currentSelector);
+          if (selectorWithParent.length < MAX_SELECTOR_LENGTH) {
+            return selectorWithParent;
+          }
+        }
+        return currentSelector;
+      }
+    }
+    catch (error) {
+      // Do nothing.
+    }
+    return selector;
+  }
+
   var Flags = {
     InitCalled: 1 << 0,
     NavTimingNotSupported: 1 << 1,
@@ -256,56 +318,6 @@
   };
   function addFlag(flags, flag) {
     return flags | flag;
-  }
-
-  function hasParentNode(el) {
-    if (el.parentNode && el.parentNode.tagName) {
-      return true;
-    }
-    return false;
-  }
-
-  /**
-  * Get the interaction attribution name for an element
-  */
-  function interactionAttributionForElement(el) {
-    // Our first preference is to use the data-sctrack attribute from anywhere in the tree
-    var trackId = getClosestScTrackAttribute(el);
-    if (trackId) {
-      return trackId;
-    }
-    // The second preference is to use the element's ID
-    if (el.id) {
-      return el.id;
-    }
-    // The third preference is to use the text content of a button or link
-    var isSubmitInput = el.tagName === "INPUT" && el.type === "submit";
-    var isButton = el.tagName === "BUTTON";
-    var isLink = el.tagName === "A";
-    if (isSubmitInput && el.value) {
-      return el.value;
-    }
-    if ((isButton || isLink) && el.innerText) {
-      return el.innerText;
-    }
-    if (hasParentNode(el)) {
-      return interactionAttributionForElement(el.parentNode);
-    }
-    // No suitable attribute was found
-    return "";
-  }
-  function getClosestScTrackAttribute(el) {
-    var _a;
-    if (el.hasAttribute("data-sctrack")) {
-      var trackId = (_a = el.getAttribute("data-sctrack")) === null || _a === void 0 ? void 0 : _a.trim();
-      if (trackId) {
-        return trackId;
-      }
-    }
-    if (hasParentNode(el)) {
-      return getClosestScTrackAttribute(el.parentNode);
-    }
-    return null;
   }
 
   var LogEvent = {
@@ -358,7 +370,7 @@
       return this.events;
     };
     return Logger;
-  }());
+  })();
 
   var sessionValue = 0;
   var sessionEntries = [];
@@ -406,14 +418,33 @@
   }
   function addEntry$1(entry) {
     if (entry.interactionId || (entry.entryType === "first-input" && !entryExists(entry))) {
-      var duration = entry.duration, startTime = entry.startTime, interactionId = entry.interactionId;
+      var duration = entry.duration,
+        startTime = entry.startTime,
+        interactionId = entry.interactionId,
+        processingStart = entry.processingStart,
+        processingEnd = entry.processingEnd,
+        target = entry.target;
       var existingEntry = slowestEntriesMap[interactionId];
+      var selector = target ? getNodeSelector(target) : null;
       if (existingEntry) {
-        existingEntry.duration = max(duration, existingEntry.duration);
+        if (existingEntry.duration < duration) {
+          existingEntry.duration = duration;
+          existingEntry.startTime = startTime;
+          existingEntry.processingStart = processingStart;
+          existingEntry.processingEnd = processingEnd;
+          existingEntry.selector = selector;
+        }
       }
       else {
         interactionCountEstimate++;
-        slowestEntriesMap[interactionId] = { duration: duration, interactionId: interactionId, startTime: startTime };
+        slowestEntriesMap[interactionId] = {
+          duration: duration,
+          interactionId: interactionId,
+          startTime: startTime,
+          processingStart: processingStart,
+          processingEnd: processingEnd,
+          selector: selector,
+        };
         slowestEntries.push(slowestEntriesMap[interactionId]);
       }
       // Only store the longest <MAX_INTERACTIONS> interactions
@@ -430,10 +461,9 @@
   * Returns an estimated high percentile INP value based on the total number of interactions on the
   * current page.
   */
-  function getHighPercentileINP() {
-    var _a;
+  function getHighPercentileInteraction() {
     var index = Math.min(slowestEntries.length - 1, Math.floor(getInteractionCount() / 50));
-    return (_a = slowestEntries[index]) === null || _a === void 0 ? void 0 : _a.duration;
+    return slowestEntries[index];
   }
   function getInteractionCount() {
     if ("interactionCount" in performance) {
@@ -547,7 +577,7 @@
     // -------------------------------------------------------------------------
     /// End
     // -------------------------------------------------------------------------
-    var SCRIPT_VERSION = "313";
+    var SCRIPT_VERSION = "314";
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
     logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION, globalConfig]);
@@ -661,7 +691,7 @@
     */
     var getZeroTime = function () {
       var _a;
-      return Math.max(pageRestoreTime || 0, getNavigationEntry().activationStart, ((_a = _getMark(START_MARK)) === null || _a === void 0 ? void 0 : _a.startTime) || 0);
+      return max(pageRestoreTime || 0, getNavigationEntry().activationStart, ((_a = _getMark(START_MARK)) === null || _a === void 0 ? void 0 : _a.startTime) || 0);
     };
     /**
     * Most time-based metrics that LUX reports should be relative to the "zero" marker, rounded down
@@ -792,7 +822,7 @@
         return performance.mark.apply(performance, args);
       }
       // ...Otherwise provide a polyfill
-      {
+      if (true) {
         var name_1 = args[0];
         var detail = ((_a = args[1]) === null || _a === void 0 ? void 0 : _a.detail) || null;
         var startTime = ((_b = args[1]) === null || _b === void 0 ? void 0 : _b.startTime) || _now();
@@ -855,7 +885,7 @@
         return performance.measure.apply(performance, args);
       }
       // ...Otherwise provide a polyfill
-      {
+      if (true) {
         var navEntry = getNavigationEntry();
         var startTime = typeof startMarkName === "number" ? startMarkName : 0;
         var endTime = typeof endMarkName === "number" ? endMarkName : _now();
@@ -1123,7 +1153,7 @@
       }
       else {
         // Return the average of the two middle values.
-        return Math.round((aValues[half - 1] + aValues[half]) / 2.0);
+        return round((aValues[half - 1] + aValues[half]) / 2.0);
       }
     }
     // Track how long it took lux.js to load via Resource Timing.
@@ -1176,7 +1206,7 @@
     function ixValues() {
       var aIx = [];
       for (var key in ghIx) {
-        aIx.push(key + "|" + ghIx[key]);
+        aIx.push(key + "|" + encodeURIComponent(ghIx[key]));
       }
       return aIx.join(",");
     }
@@ -1288,7 +1318,7 @@
             e.onloadcssdefined ||
             "print" === e.media ||
             "style" === e.as ||
-            (typeof e.onload === "function" && e.media === "all")) ;
+            (typeof e.onload === "function" && e.media === "all"));
           else {
             nBlocking++;
           }
@@ -1492,11 +1522,31 @@
       logger.logEvent(LogEvent.PaintTimingNotSupported);
       return undefined;
     }
-    function getINP() {
+    function getINPDetails() {
       if (!("PerformanceEventTiming" in self)) {
         return undefined;
       }
-      return getHighPercentileINP();
+      return getHighPercentileInteraction();
+    }
+    /**
+    * Build the query string for the INP parameters:
+    *
+    * - INP: The duration of the P98 interaction
+    * - INPs: The selector of the P98 interaction element
+    * - INPt: The timestamp of the P98 interaction start time
+    * - INPi: The input delay subpart of the P98 interaction
+    * - INPp: The processing time subpart of the P98 interaction
+    * - INPd: The presentation delay subpart of the P98 interaction
+    */
+    function getINPString(details) {
+      return [
+        "&INP=" + details.duration,
+        details.selector ? "&INPs=" + encodeURIComponent(details.selector) : "",
+        "&INPt=" + clamp(floor(details.startTime)),
+        "&INPi=" + clamp(floor(details.processingStart - details.startTime)),
+        "&INPp=" + clamp(floor(details.processingEnd - details.processingStart)),
+        "&INPd=" + clamp(floor(details.startTime + details.duration - details.processingEnd)),
+      ].join("");
     }
     function getCustomerId() {
       return LUX.customerid || "";
@@ -1508,7 +1558,7 @@
       while (i--) {
         totalParents += numParents(aElems[i]);
       }
-      var average = Math.round(totalParents / aElems.length);
+      var average = round(totalParents / aElems.length);
       return average;
     }
     function numParents(elem) {
@@ -1607,7 +1657,7 @@
       var vw = document.documentElement.clientWidth;
       // Return true if the top-left corner is in the viewport and it has width & height.
       var lt = findPos(e);
-      return (lt[0] >= 0 && lt[1] >= 0 && lt[0] < vw && lt[1] < vh && e.offsetWidth > 0 && e.offsetHeight > 0);
+      return lt[0] >= 0 && lt[1] >= 0 && lt[0] < vw && lt[1] < vh && e.offsetWidth > 0 && e.offsetHeight > 0;
     }
     // Return an array containing the top & left coordinates of the element.
     // from http://www.quirksmode.org/js/findpos.html
@@ -1689,14 +1739,14 @@
         _markLoadTime();
       }
       var sIx = "";
-      var INP = getINP();
-      // It's possible that the interaction beacon has been sent before the main beacon. We don't want
-      // to send the interaction metrics twice, so we only include them here if the interaction beacon
-      // has not been sent.
+      var INP = getINPDetails();
+      // If we haven't already sent an interaction beacon, check for interaction metrics and include
+      // them in the main beacon.
       if (!gbIxSent) {
         sIx = ixValues();
         if (sIx === "") {
-          // If there are no interaction metrics, we
+          // If there are no interaction metrics, we wait to send INP with the IX beacon to increase
+          // the chance that we capture a valid INP.
           INP = undefined;
         }
       }
@@ -1766,13 +1816,14 @@
       nErrors +
       "nt" +
       navigationType() +
-      (navigator.deviceMemory ? "dm" + Math.round(navigator.deviceMemory) : "") + // device memory (GB)
+      (navigator.deviceMemory ? "dm" + round(navigator.deviceMemory) : "") + // device memory (GB)
       (sIx ? "&IX=" + sIx : "") +
       (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
       (sCPU ? "&CPU=" + sCPU : "") +
       (sET ? "&ET=" + sET : "") + // element timing
       (typeof CLS !== "undefined" ? "&CLS=" + CLS : "") +
-      (typeof INP !== "undefined" ? "&INP=" + INP : "");
+      // INP and sub-parts
+      (typeof INP !== "undefined" ? getINPString(INP) : "");
       // We add the user timing entries last so that we can split them to reduce the URL size if necessary.
       var utValues = userTimingValues();
       var _b = fitUserTimingEntries(utValues, globalConfig, baseUrl + metricsQueryString), beaconUtValues = _b[0], remainingUtValues = _b[1];
@@ -1788,7 +1839,7 @@
       gbIxSent = sIx ? 1 : 0;
       // Send other beacons for JUST User Timing.
       while (remainingUtValues.length) {
-        _a = fitUserTimingEntries(remainingUtValues, globalConfig, baseUrl), beaconUtValues = _a[0], remainingUtValues = _a[1];
+        (_a = fitUserTimingEntries(remainingUtValues, globalConfig, baseUrl)), (beaconUtValues = _a[0]), (remainingUtValues = _a[1]);
         var utBeaconUrl = baseUrl + "&UT=" + beaconUtValues.join(",");
         logger.logEvent(LogEvent.UserTimingBeaconSent, [utBeaconUrl]);
         _sendBeacon(utBeaconUrl);
@@ -1811,13 +1862,13 @@
         return;
       }
       var sIx = ixValues(); // Interaction Metrics
-      var INP = getINP();
+      var INP = getINPDetails();
       if (sIx) {
         var beaconUrl = _getBeaconUrl(getUpdatedCustomData()) +
         "&IX=" +
         sIx +
         (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
-        (typeof INP !== "undefined" ? "&INP=" + INP : "");
+        (typeof INP !== "undefined" ? getINPString(INP) : "");
         logger.logEvent(LogEvent.InteractionBeaconSent, [beaconUrl]);
         _sendBeacon(beaconUrl);
         gbIxSent = 1;
@@ -1872,22 +1923,27 @@
       if (keyCode === 16 || keyCode === 17 || keyCode === 18 || keyCode === 20 || keyCode === 224) {
         return;
       }
-      _removeIxHandlers();
       if (typeof ghIx["k"] === "undefined") {
         ghIx["k"] = _now();
         if (e && e.target instanceof Element) {
-          var trackId = interactionAttributionForElement(e.target);
+          var trackId = getNodeSelector(e.target);
           if (trackId) {
             ghIx["ki"] = trackId;
           }
         }
+        // Only one interaction type is recorded. Scrolls are considered less important, so delete
+        // any scroll times if they exist.
+        delete ghIx["s"];
         _sendIxAfterDelay();
       }
+      _removeIxHandlers();
     }
     function _clickHandler(e) {
-      _removeIxHandlers();
       if (typeof ghIx["c"] === "undefined") {
         ghIx["c"] = _now();
+        // Only one interaction type is recorded. Scrolls are considered less important, so delete
+        // any scroll times if they exist.
+        delete ghIx["s"];
         var target = void 0;
         try {
           // Seeing "Permission denied" errors, so do a simple try-catch.
@@ -1904,13 +1960,14 @@
             ghIx["cx"] = e.clientX;
             ghIx["cy"] = e.clientY;
           }
-          var trackId = interactionAttributionForElement(target);
+          var trackId = getNodeSelector(target);
           if (trackId) {
             ghIx["ci"] = trackId;
           }
         }
         _sendIxAfterDelay();
       }
+      _removeIxHandlers();
     }
     // Wrapper to support older browsers (<= IE8)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1976,7 +2033,7 @@
         // "00" matches all sample rates
         return Number(new Date()) + "00000";
       }
-      return Number(new Date()) + _padLeft(String(Math.round(100000 * Math.random())), "00000");
+      return Number(new Date()) + _padLeft(String(round(100000 * Math.random())), "00000");
     }
     // Unique ID (also known as Session ID)
     // We use this to track all the page views in a single user session.
@@ -2063,6 +2120,8 @@
         "=" +
         escape(value) +
         (seconds ? "; max-age=" + seconds : "") +
+        (globalConfig.cookieDomain ? "; domain=" +
+        globalConfig.cookieDomain : "") +
         "; path=/; SameSite=Lax";
       }
       catch (e) {
