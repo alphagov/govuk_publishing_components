@@ -371,11 +371,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           }
         } else {
           for (var i = 0; i < items.length; i++) {
-            // GA4 limits us to 200 items, so we should limit the array to this size.
-            if (i === 200) {
-              break
-            }
-
             var item = items[i]
             var path = item.getAttribute('data-ga4-ecommerce-path')
 
@@ -385,16 +380,28 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
               item.setAttribute('data-ga4-ecommerce-index', i + 1)
             }
 
-            ecommerceSchema.search_results.ecommerce.items.push({
+            var nextItem = {
               item_id: path,
               item_content_id: item.getAttribute('data-ga4-ecommerce-content-id') || undefined,
               item_list_name: listTitle,
               index: window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(item, startPosition)
-            })
+            }
+
+            // GA4 has a max payload, so ensure this array doesn't exceed 15,000 UTF-16 code units.
+            if ((this.getArraySize(ecommerceSchema.search_results.ecommerce.items) + this.getArraySize(nextItem)) >= 15000) {
+              break
+            }
+
+            ecommerceSchema.search_results.ecommerce.items.push(nextItem)
           }
         }
 
         return ecommerceSchema
+      },
+
+      getArraySize: function (array) {
+        // .length represents the number of UTF-16 code units in a string, so we can stringify the array then grab the length of the string to get an 'accurate enough' number representing the size.
+        return JSON.stringify(array).length
       }
     }
   }

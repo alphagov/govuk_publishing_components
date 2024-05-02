@@ -629,36 +629,31 @@ describe('GA4 core', function () {
         expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
       })
 
-      it('the ecommerce items array is limited to 200 items', function () {
+      it('the ecommerce items array is limited to a maximum of 15,000 UTF-16 code units', function () {
         var innerHTML = ''
         var ecommerceItems = []
 
-        // Adds 500 search results to the DOM, but only adds 200 to our expected ecommerce object array
-        for (var i = 0; i < 500; i++) {
+        for (var i = 0; i < 4000; i++) {
           innerHTML = innerHTML + '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ga4-ecommerce-index="' + (i + 1) + '">Check if you’re eligible for the Warm Home Discount scheme</a>'
 
-          if (i < 200) {
-            ecommerceItems.push({
-              item_id: 'https://www.gov.uk/the-warm-home-discount-scheme',
-              item_content_id: undefined,
-              item_list_name: 'Smart answer results',
-              index: i + 1
-            })
-          }
+          ecommerceItems.push({
+            a: 'b'
+          })
         }
 
-        resultsCount.innerHTML = '500 results'
         results.innerHTML = innerHTML
-        expectedEcommerceObject.search_results.results = 500
-        expectedEcommerceObject.search_results.ecommerce.items = ecommerceItems
 
         var builtEcommerceObject = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
           element: resultsParentEl,
           resultsId: 'result-count'
         })
 
-        expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
-        expect(builtEcommerceObject.search_results.ecommerce.items.length).toEqual(200)
+        // Check our test data is above 15,000 UTF-16 code units
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getArraySize(ecommerceItems) === 40001).toEqual(true)
+        // Check that the array GA4 is given is less than/equal to 15,000 UTF-16 code units
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getArraySize(builtEcommerceObject.search_results.ecommerce.items) <= 15000).toEqual(true)
+        // Ensure it's going as close to 15,000 as possible (as the above assertion would still pass if someone reduced the limit)
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getArraySize(builtEcommerceObject.search_results.ecommerce.items) === 14958).toEqual(true)
       })
     })
   })
