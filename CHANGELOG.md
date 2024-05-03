@@ -12,6 +12,7 @@
 * Limit GA4 view_item_list arrays to 15,000 UTF-16 code units ([PR #3994](https://github.com/alphagov/govuk_publishing_components/pull/3994))
 * Add custom_header and a custom_layout options ([PR #4004](https://github.com/alphagov/govuk_publishing_components/pull/4004))
 * Update LUX to 314 ([PR #4007](https://github.com/alphagov/govuk_publishing_components/pull/4007))
+* Add No. 10 logo to organisation logo component ([PR #4008](https://github.com/alphagov/govuk_publishing_components/pull/4008))
 
 ## 38.1.1
 
