@@ -69,6 +69,13 @@ examples:
         url: '/government/organisations/ministry-of-defence'
         brand: 'ministry-of-defence'
         crest: 'mod'
+  prime_ministers_office_10_downing_street:
+    data:
+      organisation:
+        name: "Prime Minister's Office,<br>10 Downing Street"
+        url: '/government/organisations/prime-ministers-office-10-downing-street'
+        brand: 'prime-ministers-office-10-downing-street'
+        crest: 'no10'
   office_of_the_advocate_general_for_scotland:
     data:
       organisation:

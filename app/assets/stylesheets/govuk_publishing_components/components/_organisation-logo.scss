@@ -104,6 +104,10 @@
   @include tall-crest;
 }
 
+.gem-c-organisation-logo__crest--no10 {
+  @include crest("no10_crest", $xpos: 8px);
+}
+
 .gem-c-organisation-logo__crest--single-identity,
 .gem-c-organisation-logo__crest--eo,
 .gem-c-organisation-logo__crest--org {
