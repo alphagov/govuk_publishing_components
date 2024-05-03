@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Limit GA4 view_item_list arrays to 15,000 UTF-16 code units ([PR #3994](https://github.com/alphagov/govuk_publishing_components/pull/3994))
+* Add custom_header and a custom_layout options ([PR #4004](https://github.com/alphagov/govuk_publishing_components/pull/4004))
 
 ## 38.1.1
 
