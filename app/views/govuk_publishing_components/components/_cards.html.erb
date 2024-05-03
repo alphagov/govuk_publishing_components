@@ -4,9 +4,11 @@
   heading ||= nil
   items ||= nil
   sub_heading_level ||= 3
+  one_column_layout ||= false
   two_column_layout ||= false
 
   ul_classes = %w[gem-c-cards__list]
+  ul_classes << 'gem-c-cards__list--one-column' if one_column_layout
   ul_classes << 'gem-c-cards__list--two-column-desktop' if two_column_layout
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)

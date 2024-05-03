@@ -37,6 +37,12 @@
   }
 }
 
+.gem-c-cards__list--one-column {
+  @include govuk-media-query($from: "tablet") {
+    grid-template-columns: fractions(1);
+  }
+}
+
 .gem-c-cards__list--two-column-desktop {
   @include govuk-media-query($from: "desktop") {
     grid-template-columns: fractions(2);
