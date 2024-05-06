@@ -8,6 +8,14 @@
   margin-bottom: 0;
 }
 
+.gem-c-button--blue {
+  background-color: govuk-colour("blue");
+
+  &:hover {
+    background-color: govuk-shade(govuk-colour("blue"), 20%);
+  }
+}
+
 // this will be moved and extended into a model for general component spacing
 // once this has been decided upon and other work completed, see:
 // https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components

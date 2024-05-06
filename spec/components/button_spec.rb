@@ -57,6 +57,11 @@ describe "Button", type: :view do
     assert_select ".govuk-button--start[data-ga4-attributes='{\"type\":\"start button\"}']", false
   end
 
+  it "renders blue button" do
+    render_component(text: "I am a blue button", blue: true)
+    assert_select ".gem-c-button--blue", text: "I am a blue button"
+  end
+
   it "renders secondary button" do
     render_component(text: "Secondary", href: "#", secondary: true)
     assert_select ".gem-c-button--secondary[href='#']", text: "Secondary"

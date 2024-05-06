@@ -16,6 +16,7 @@ module GovukPublishingComponents
                   :target,
                   :type,
                   :start,
+                  :blue,
                   :secondary,
                   :secondary_quiet,
                   :secondary_solid,
@@ -47,6 +48,7 @@ module GovukPublishingComponents
         @type = local_assigns[:type]
         @start = local_assigns[:start]
         @data_attributes[:ga4_attributes] = ga4_attribute if start
+        @blue = local_assigns[:blue]
         @secondary = local_assigns[:secondary]
         @secondary_quiet = local_assigns[:secondary_quiet]
         @secondary_solid = local_assigns[:secondary_solid]
@@ -112,6 +114,7 @@ module GovukPublishingComponents
       def css_classes
         css_classes = %w[gem-c-button govuk-button]
         css_classes << "govuk-button--start" if start
+        css_classes << "gem-c-button--blue" if blue
         css_classes << "gem-c-button--secondary" if secondary
         css_classes << "gem-c-button--secondary-quiet" if secondary_quiet
         css_classes << "govuk-button--secondary" if secondary_solid

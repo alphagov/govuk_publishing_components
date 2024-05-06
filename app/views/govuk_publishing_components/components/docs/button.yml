@@ -52,6 +52,10 @@ examples:
       href: '#'
       start: true
       rel: external
+  blue_button:
+    data:
+      text: Blue button
+      blue: true
   secondary_button:
     data:
       text: Secondary button
