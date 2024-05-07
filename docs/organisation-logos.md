@@ -6,29 +6,15 @@ The [Organisation logo component](https://components.publishing.service.gov.uk/c
 
 This documentation provides details on how to update and add new logos that are part of the Government Identity System.
 
-## Images required
+## Image requirements
 
-The four images below are required for the organisation logo component. The images should be added to `app/assets/images/govuk_publishing_components/crests`. The image format required is a transparent PNG with the whitespace trimmed.
+The image should be added to `app/assets/images/govuk_publishing_components/crests`. The image format required is a transparent PNG, with the whitespace trimmed, unless whitespace has been agreed with a designer.
 
 ### Naming convention
 
 - `$crest` this is usually in the format `"[department_abbreviation]_crest"` all lowercase with underscores, for example `hmrc_crest`
-- `_13px/_18px` refers to the font-size used
-- `_x2` used to provide an @2x image for screens that support it
-
-### Mobile
-
-By default, the logo image used on mobile screen sizes, will have a height of `20px`.
-
-- `#{$crest}_13px.png`
-- `#{$crest}_13px_x2.png`
-
-### Tablet and Desktop
-
-By default, the logo image used from tablet screen sizes, will have a height of `26px`.
-
-- `#{$crest}_18px.png`
-- `#{$crest}_18px_x2.png`
+- `_18px` (deprecated) referred to the font-size used
+- `_x2` (deprecated) was used to provide an @2x image for screens that supported it
 
 ## Add the CSS required for new organisation logos
 
@@ -50,7 +36,7 @@ The value passed to the `crest` mixin here follows the naming convention mention
 
 ### Adjusting the logo height
 
-You can also use the `tall-crest` mixin to set the height of the logo to `25px` on mobile, and `34px` for tablet and desktop screen sizes, this can be used to help avoid the organisation logo appearing too narrow.
+You can also use the `tall-crest` mixin to increase the height of the logo. This can be used to help avoid the organisation logo appearing too narrow.
 
 Example used on the MOD organisation logo:
 
