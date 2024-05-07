@@ -51,8 +51,8 @@ examples:
   executive_office:
     data:
       organisation:
-        name: Prime Minister's Office, 10 Downing Street
-        url: '/government/organisations/prime-ministers-office-10-downing-street'
+        name: Example
+        url: '/government/organisations/'
         brand: 'executive-office'
         crest: 'eo'
   home_office:
