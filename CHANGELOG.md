@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update Twitter logo ([PR #4011](https://github.com/alphagov/govuk_publishing_components/pull/4011))
+
 ## 38.2.0
 
 * Limit GA4 view_item_list arrays to 15,000 UTF-16 code units ([PR #3994](https://github.com/alphagov/govuk_publishing_components/pull/3994))
