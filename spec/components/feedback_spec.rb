@@ -18,12 +18,10 @@ describe "Feedback", type: :view do
     assert_select ".gem-c-feedback .gem-c-feedback__prompt-link.js-something-is-wrong", text: "Report a problem with this page"
   end
 
-  it "has required email survey signup form fields" do
+  it "has required email survey signup link" do
     render_component({})
 
-    assert_select ".gem-c-feedback #survey-wrapper [name='email_survey_signup[email_address]']"
-    assert_select ".gem-c-feedback #survey-wrapper [name='email_survey_signup[survey_source]']"
-    assert_select ".gem-c-feedback #survey-wrapper [name='email_survey_signup[survey_id]']"
+    assert_select ".gem-c-feedback #survey-wrapper a.govuk-link"
   end
 
   describe "ASCII characters" do
@@ -57,9 +55,6 @@ describe "Feedback", type: :view do
 
     # Report a problem submit
     assert_select ".govuk-button[data-ga4-event='{\"event_name\":\"form_submit\",\"type\":\"feedback\",\"text\":\"Send\",\"section\":\"Help us improve GOV.UK\",\"tool_name\":\"Help us improve GOV.UK\"}']"
-
-    # Send me the survey submit
-    assert_select ".govuk-button[data-ga4-event='{\"event_name\":\"form_submit\",\"type\":\"feedback\",\"text\":\"Send me the survey\",\"section\":\"Help us improve GOV.UK\",\"tool_name\":\"Help us improve GOV.UK\"}']"
   end
 
   it "can have its GA4 tracking disabled" do
