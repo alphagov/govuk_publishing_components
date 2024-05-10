@@ -4,6 +4,7 @@ require "action_controller/railtie"
 require "action_view/railtie"
 require "action_mailer/railtie"
 require "sprockets/railtie"
+require "terser"
 require "dartsass-rails"
 
 # In a heroku environment we don't have chrome and chromedriver available
