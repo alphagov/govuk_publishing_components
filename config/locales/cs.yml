@@ -83,7 +83,7 @@ cs:
       is_this_page_useful: Je tato stránka užitečná?
       is_useful: tato stránka je užitečná
       maybe: Možná
-      more_about_visit: Pomozte nám zlepšit GOV.UK, rádi bychom se dozvěděli více o vaší dnešní návštěvě. Pošleme vám odkaz na formulář pro zpětnou vazbu. Vyplnění zabere pouhé 2 minuty. Nebojte se, že vám nebudeme posílat spam ani nikomu sdělovat vaši e-mailovou adresu.
+      more_about_visit:
       'no': Ne
       send: Odeslat
       send_me_survey: Pošlete mi průzkum

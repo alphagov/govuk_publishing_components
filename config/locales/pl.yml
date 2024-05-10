@@ -82,7 +82,7 @@ pl:
       is_this_page_useful: Czy ta strona jest pomocna?
       is_useful: ta strona jest pomocna
       maybe: Może
-      more_about_visit: Aby pomóc nam w ulepszaniu GOV.UK, chcielibyśmy dowiedzieć się więcej o Twojej dzisiejszej wizycie. Wyślemy Ci link do formularza zwrotnego. Wypełnienie go zajmie Ci tylko 2 minuty. Nie martw się, nie wyślemy Ci spamu, ani nie udostępnimy nikomu Twojego adresu e-mail.
+      more_about_visit:
       'no': Nie
       send: Wyślij
       send_me_survey: Wyślij ankietę
