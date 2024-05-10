@@ -76,7 +76,7 @@ zh:
       is_this_page_useful: 这个页面有用吗？
       is_useful: 这个页面很有用
       maybe: 可能
-      more_about_visit: 为了帮助我们改进GOV.UK，我们想了解更多关于您今天访问的信息。我们会给您发一个反馈表格的链接。只需2分钟即可填完。别担心，我们不会给您发垃圾邮件或将您的电子邮件地址分享给任何人。
+      more_about_visit:
       'no': 否
       send: 发送
       send_me_survey: 将调查表发给我

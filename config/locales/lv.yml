@@ -82,7 +82,7 @@ lv:
       is_this_page_useful: Vai šī lapa ir noderīga?
       is_useful: šī lapa ir noderīga
       maybe: Varbūt
-      more_about_visit: Lai palīdzētu mums uzlabot GOV.UK, mēs vēlētos uzzināt vairāk par jūsu šodienas apmeklējumu. Mēs nosūtīsim jums saiti uz atsauksmju veidlap. Tās aizpildīšana aizņems tikai 2 minūtes. Mēs nesūtīsim jums surogātpastu un neizpaudīsim jūsu e-pasta adresi citiem.
+      more_about_visit:
       'no': Nē
       send: Nosūtīt
       send_me_survey: Nostīt man aptauju

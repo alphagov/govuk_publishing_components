@@ -79,7 +79,7 @@ sr:
       is_this_page_useful: Da li je ova stranica bila korisna?
       is_useful: ova stranica je korisna
       maybe: Možda
-      more_about_visit: Hteli bismo da čujemo više o vašoj današnjoj poseti kako bismo poboljšali GOV.UK. Poslaćemo vam vezu do obrasca za povratne informacije. Trebaće vam samo 2 minuta da ga popunite. Ne brinite, nećemo vam slati neželjenu poštu i nećemo nikome otkriti vašu e-adresu.
+      more_about_visit:
       'no': Ne
       send: Pošalji
       send_me_survey: Pošalji mi anketu
