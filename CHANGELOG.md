@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Remove Oxford comma from metadata component ([PR #4012](https://github.com/alphagov/govuk_publishing_components/pull/4012))
+
 ## 38.3.0
 
 * Remove email from survey ([PR #4017](https://github.com/alphagov/govuk_publishing_components/pull/4017))

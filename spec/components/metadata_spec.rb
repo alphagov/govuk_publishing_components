@@ -59,7 +59,7 @@ describe "Metadata", type: :view do
 
     assert_definition("From:", "one and another")
     assert_definition("Part of:", "this and that")
-    assert_definition("Related topics:", "a, b, and c")
+    assert_definition("Related topics:", "a, b and c")
   end
 
   it "long lists of metadata are truncated and the remainder hidden behind a toggle for from" do

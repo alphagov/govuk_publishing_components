@@ -7,7 +7,7 @@
   end
 %>
 <% if remaining.any? %>
-  <%= items.to_sentence(last_word_connector: ', ').html_safe %>
+  <%= items.to_sentence(last_word_connector: ' and ').html_safe %>
   <div class="gem-c-metadata__toggle-wrap govuk-!-display-none-print">
     <a href="#"
        class="gem-c-metadata__definition-link govuk-!-display-none-print"
@@ -21,5 +21,5 @@
   </div>
   <span id="toggle-<%= toggle_id %>" class="gem-c-metadata__toggle-items js-hidden"><%= remaining.to_sentence.html_safe %></span>
 <% else %>
-  <%= items.to_sentence.html_safe %>
+  <%= items.to_sentence(last_word_connector: ' and ').html_safe %>
 <% end %>
