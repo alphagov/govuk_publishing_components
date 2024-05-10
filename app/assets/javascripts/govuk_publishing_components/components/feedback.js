@@ -65,17 +65,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.revealInitialPrompt()
     }.bind(this))
 
-    this.pageIsNotUsefulButton.addEventListener('click', function (e) {
-      var gaClientId
-      var dummyGaClientId = '111111111.1111111111'
-      if (window.GOVUK.cookie('_ga') === null || window.GOVUK.cookie('_ga') === '') {
-        gaClientId = dummyGaClientId
-      } else {
-        gaClientId = window.GOVUK.cookie('_ga').split('.').slice(-2).join('.')
-      }
-      this.setHiddenValuesNotUsefulForm(gaClientId)
-    }.bind(this))
-
     this.somethingIsWrongButton.addEventListener('click', function (e) {
       this.timerInterval = setInterval(function () {
         this.timer = this.timer + 1
@@ -160,15 +149,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.timerHoneyPot.setAttribute('name', 'timer')
     this.timerHoneyPot.setAttribute('value', this.timer)
     this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
-  }
-
-  Feedback.prototype.setHiddenValuesNotUsefulForm = function (gaClientId) {
-    var currentPathName = window.location.pathname.replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
-    var finalPathName = encodeURI(currentPathName)
-    this.surveyForm.invalidInfoError = [
-      '<h2>Sorry, we’re unable to send your message as you haven’t given us a valid email address.</h2>',
-      ' <p>Enter an email address in the correct format, like name@example.com</p>'
-    ].join('')
   }
 
   Feedback.prototype.updateAriaAttributes = function (linkClicked) {
