@@ -35,7 +35,7 @@
     }
   },
   "dependencies": {
-    "axe-core": "^4.9.0",
+    "axe-core": "^4.9.1",
     "govuk-frontend": "^4.8.0",
     "govuk-single-consent": "^3.0.9",
     "sortablejs": "^1.15.2"
