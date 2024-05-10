@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove email from survey ([PR #4017](https://github.com/alphagov/govuk_publishing_components/pull/4017))
 * Update Twitter logo ([PR #4011](https://github.com/alphagov/govuk_publishing_components/pull/4011))
 * Use Terser instead of Uglifier ([PR #3990](https://github.com/alphagov/govuk_publishing_components/pull/3990))
 

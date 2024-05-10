@@ -65,17 +65,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.revealInitialPrompt()
     }.bind(this))
 
-    this.pageIsNotUsefulButton.addEventListener('click', function (e) {
-      var gaClientId
-      var dummyGaClientId = '111111111.1111111111'
-      if (window.GOVUK.cookie('_ga') === null || window.GOVUK.cookie('_ga') === '') {
-        gaClientId = dummyGaClientId
-      } else {
-        gaClientId = window.GOVUK.cookie('_ga').split('.').slice(-2).join('.')
-      }
-      this.setHiddenValuesNotUsefulForm(gaClientId)
-    }.bind(this))
-
     this.somethingIsWrongButton.addEventListener('click', function (e) {
       this.timerInterval = setInterval(function () {
         this.timer = this.timer + 1
@@ -160,33 +149,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.timerHoneyPot.setAttribute('name', 'timer')
     this.timerHoneyPot.setAttribute('value', this.timer)
     this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
-  }
-
-  Feedback.prototype.setHiddenValuesNotUsefulForm = function (gaClientId) {
-    var currentPathName = window.location.pathname.replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
-    var finalPathName = encodeURI(currentPathName)
-    this.surveyForm.invalidInfoError = [
-      '<h2>Sorry, we’re unable to send your message as you haven’t given us a valid email address.</h2>',
-      ' <p>Enter an email address in the correct format, like name@example.com</p>'
-    ].join('')
-    if (document.querySelectorAll('[name="email_survey_signup[ga_client_id]"]').length === 0) {
-      var hiddenInput = document.createElement('input')
-      hiddenInput.setAttribute('type', 'hidden')
-      hiddenInput.setAttribute('name', 'email_survey_signup[ga_client_id]')
-      hiddenInput.setAttribute('value', gaClientId || '0')
-      this.surveyForm.appendChild(hiddenInput)
-    }
-
-    if (document.querySelectorAll('.gem-c-feedback__email-link#take-survey').length === 0) {
-      var takeSurvey = document.createElement('a')
-      takeSurvey.setAttribute('href', 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + finalPathName + '&amp;gcl=' + gaClientId)
-      takeSurvey.setAttribute('class', 'gem-c-feedback__email-link govuk-link')
-      takeSurvey.setAttribute('id', 'take-survey')
-      takeSurvey.setAttribute('target', '_blank')
-      takeSurvey.setAttribute('rel', 'noopener noreferrer')
-      takeSurvey.innerHTML = 'Don’t have an email address?'
-      this.surveyWrapper.appendChild(takeSurvey)
-    }
   }
 
   Feedback.prototype.updateAriaAttributes = function (linkClicked) {

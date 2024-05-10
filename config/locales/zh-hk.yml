@@ -76,7 +76,7 @@ zh-hk:
       is_this_page_useful: 這一頁面是否有用？
       is_useful: 這一頁面有用處
       maybe: 有可能
-      more_about_visit: 為協助我們改善 GOV.UK，我們想要了解您今日訪問網站的情況。我們將向您寄出轉往回饋意見表格的連結。這將僅耗時 2 分鐘時間填寫。請不用擔心，我們不會向您寄出垃圾郵件或向任何其他人透露您的電子郵件地址。
+      more_about_visit:
       'no': 否
       send: 寄出
       send_me_survey: 請給我寄出調查問卷

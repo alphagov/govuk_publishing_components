@@ -79,7 +79,7 @@ tr:
       is_this_page_useful: bu sayfa yararlı mı?
       is_useful: bu sayfa yararlı
       maybe: Belki
-      more_about_visit: GOV.UK’yi geliştirmemize yardımcı olması için, bugünkü ziyaretiniz hakkında daha fazla bilgi almak isteriz. Size bir geri bildirim formu göndereceğiz. Doldurması yalnızca 2 dakika alacaktır. Merak etmeyin, size istenmeyen e-posta göndermeyeceğiz veya e-posta adresinizi kimseyle paylaşmayacağız.
+      more_about_visit:
       'no': Hayır
       send: Gönder
       send_me_survey: Anketi bana gönder

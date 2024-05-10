@@ -78,7 +78,7 @@ pt:
       is_this_page_useful: Esta página é útil?
       is_useful: Esta página é útil
       maybe: Talvez
-      more_about_visit: Para nos ajudar a melhorar GOV.UK, gostaríamos de saber mais sobre a sua visita hoje. Vamos enviar-lhe um link para um formulário de feedback. Demora apenas 2 minutos a preencher. Não se preocupe, não lhe enviaremos spam nem partilharemos o seu endereço de e-mail com ninguém.
+      more_about_visit:
       'no': Não
       send: Enviar
       send_me_survey: Enviem-me o inquérito

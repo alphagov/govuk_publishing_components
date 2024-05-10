@@ -81,7 +81,7 @@ et:
       is_this_page_useful: Kas sellest lehest on kasu?
       is_useful: sellest lehest on kasu
       maybe: Võib-olla
-      more_about_visit: Saidi GOV.UK täiustamiseks sooviksime teie tänasest külastusest rohkem teada saada. Saadame teile tagasiside vormi lingi. Täitmiseks kulub vaid 2 minutit. Ärge muretsege, me ei saada teile rämpsposti ega jaga teie e-posti aadressi kellegagi.
+      more_about_visit:
       'no': Ei
       send: Saada
       send_me_survey: Saada mulle küsitlus
