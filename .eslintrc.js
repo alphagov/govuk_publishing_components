@@ -2,7 +2,8 @@ module.exports = {
   extends: 'standard',
   rules: {
     'no-var': 0,
-    'object-shorthand': 0
+    'object-shorthand': 0,
+    strict: ['error', 'function']
   },
   ignorePatterns: [
     'app/assets/javascripts/component_guide/vendor/**/*.js',
