@@ -3,7 +3,7 @@
   "name": "govuk_publishing_components",
   "license": "MIT",
   "scripts": {
-    "lint:js": "eslint --cache --cache-location .cache/eslint .",
+    "lint:js": "eslint --cache --cache-location .cache/eslint 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
     "lint:scss": "stylelint app/assets/stylesheets/",
     "lint": "yarn run lint:js && yarn run lint:scss",
     "jasmine:prepare": "bundle exec rake app:assets:clobber app:assets:precompile",
