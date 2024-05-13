@@ -2,13 +2,15 @@ module.exports = {
   extends: 'standard',
   rules: {
     'no-var': 0,
-    'object-shorthand': 0
+    'object-shorthand': 0,
+    strict: ['error', 'function']
   },
   ignorePatterns: [
     'app/assets/javascripts/component_guide/vendor/**/*.js',
     'app/assets/javascripts/govuk_publishing_components/vendor/**/*.js',
     'spec/javascripts/helpers/*.js',
-    'spec/javascripts/vendor/*.js'
+    'spec/javascripts/vendor/*.js',
+    'vendor/*'
   ],
   env: {
     browser: true
