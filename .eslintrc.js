@@ -8,7 +8,8 @@ module.exports = {
     'app/assets/javascripts/component_guide/vendor/**/*.js',
     'app/assets/javascripts/govuk_publishing_components/vendor/**/*.js',
     'spec/javascripts/helpers/*.js',
-    'spec/javascripts/vendor/*.js'
+    'spec/javascripts/vendor/*.js',
+    'vendor/*'
   ],
   env: {
     browser: true
