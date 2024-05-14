@@ -161,8 +161,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.prompt.hidden ? this.prompt.hidden = false : this.prompt.hidden = true
 
     if (!this.activeForm.hidden) {
-      this.activeForm.querySelectorAll('.gem-c-textarea .govuk-textarea, .gem-c-input.govuk-input')[0]
-        .focus()
+      var input = this.activeForm.querySelectorAll('.gem-c-textarea .govuk-textarea, .gem-c-input.govuk-input')
+      if (input.length > 0) {
+        input[0].focus()
+      }
     } else {
       this.activeForm = false
       clearInterval(this.timerInterval)
