@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Reintroduce feedback survey path and new tab functionality ([PR #4024](https://github.com/alphagov/govuk_publishing_components/pull/4024))
+
 ## 38.3.1
 
 * Remove Oxford comma from metadata component ([PR #4012](https://github.com/alphagov/govuk_publishing_components/pull/4012))
