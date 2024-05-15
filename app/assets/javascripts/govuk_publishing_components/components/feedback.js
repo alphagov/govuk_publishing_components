@@ -26,7 +26,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Feedback.prototype.init = function () {
     this.setInitialAriaAttributes()
     this.setHiddenValues()
-
+    this.setSurveyPath()
     this.prompt.hidden = false
     for (var k = 0; k < this.promptQuestions.length; k++) {
       this.promptQuestions[k].hidden = false
@@ -149,6 +149,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.timerHoneyPot.setAttribute('name', 'timer')
     this.timerHoneyPot.setAttribute('value', this.timer)
     this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
+  }
+
+  // This getter is needed for spyOn in tests
+  Feedback.prototype.getPagePath = function () {
+    return window.location.pathname
+  }
+
+  Feedback.prototype.setSurveyPath = function () {
+    var surveyLink = this.$module.querySelector('#survey_explanation a')
+
+    if (surveyLink) {
+      var pathWithoutEmailPII = this.getPagePath().replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
+      var encodedPath = encodeURI(pathWithoutEmailPII)
+      surveyLink.setAttribute('href', 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + encodedPath)
+    }
   }
 
   Feedback.prototype.updateAriaAttributes = function (linkClicked) {
