@@ -2,6 +2,7 @@
 /* global GOVUK */
 
 describe('Feedback component', function () {
+  var feedbackComponent
   var FIXTURE =
   '<div class="gem-c-feedback govuk-!-display-none-print" data-module="feedback">' +
 
@@ -84,7 +85,7 @@ describe('Feedback component', function () {
           '<input name="email_survey_signup[survey_source]" type="hidden" value="a_source">' +
 
           '<h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>' +
-          '<p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we\'d like to know more about your visit today. We\'ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don\'t worry we won\'t send you spam or share your email address with anyone.</p>' +
+          '<p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we\'d like to know more about your visit today. We\'ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don\'t worry we won\'t send you spam or share your email address with anyone. <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js" class="govuk-link">Please fill in this survey</a>.</p>' +
 
           '<div class="govuk-form-group">' +
             '<label for="input-11111111" class="gem-c-label govuk-label">Email address</label>' +
@@ -206,6 +207,30 @@ describe('Feedback component', function () {
       $('.js-page-is-not-useful')[0].click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffNoClick')
+    })
+
+    it('has the page path in the survey', function () {
+      var testPath = '/government/organisations/government-digital-service'
+      var expectedUrl = 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + testPath
+
+      loadFeedbackComponent(function () {
+        spyOn(feedbackComponent, 'getPagePath').and.returnValue(testPath)
+      })
+
+      document.querySelector('.js-page-is-not-useful').click()
+      expect(document.querySelector('#survey_explanation a').getAttribute('href')).toBe(expectedUrl)
+    })
+
+    it('hides the path in the survey link if it contains an @ symbol', function () {
+      var testPath = '/contact/email@example.com'
+      var expectedUrl = 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + '%5Bemail%5D'
+
+      loadFeedbackComponent(function () {
+        spyOn(feedbackComponent, 'getPagePath').and.returnValue(testPath)
+      })
+
+      document.querySelector('.js-page-is-not-useful').click()
+      expect(document.querySelector('#survey_explanation a').getAttribute('href')).toBe(expectedUrl)
     })
   })
 
@@ -742,8 +767,13 @@ describe('Feedback component', function () {
     })
   })
 
-  function loadFeedbackComponent () {
-    new GOVUK.Modules.Feedback($('.gem-c-feedback')[0]).init()
+  function loadFeedbackComponent (feedbackSpies) {
+    feedbackComponent = new GOVUK.Modules.Feedback($('.gem-c-feedback')[0])
+    // Allows spies to be added before .init() is run
+    if (feedbackSpies) {
+      feedbackSpies()
+    }
+    feedbackComponent.init()
   }
 
   function fillAndSubmitSomethingIsWrongForm () {

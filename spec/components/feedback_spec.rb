@@ -74,4 +74,16 @@ describe "Feedback", type: :view do
     # Report a problem submit / Send me the survey submit
     assert_select ".govuk-button[data-ga4-event]", false
   end
+
+  it "The survey link exists, with c=no-js on the link by default" do
+    render_component({})
+
+    assert_select "#survey_explanation a[href='https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js']"
+  end
+
+  it "The survey link opens in a new tab, with rel='noopener noreferrer external' and the new tab guidance text" do
+    render_component({})
+
+    assert_select "#survey_explanation a[target='_blank'][rel='noopener noreferrer external']", text: "Please fill in this survey (opens in a new tab)"
+  end
 end
