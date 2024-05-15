@@ -80,4 +80,10 @@ describe "Feedback", type: :view do
 
     assert_select "#survey_explanation a[href='https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js']"
   end
+
+  it "The survey link opens in a new tab, with rel='noopener noreferrer external' and the new tab guidance text" do
+    render_component({})
+
+    assert_select "#survey_explanation a[target='_blank'][rel='noopener noreferrer external']", text: "Please fill in this survey (opens in a new tab)"
+  end
 end
