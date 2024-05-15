@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove Oxford comma from metadata component ([PR #4012](https://github.com/alphagov/govuk_publishing_components/pull/4012))
+* Add null check for input element ([PR #4022](https://github.com/alphagov/govuk_publishing_components/pull/4022))
 
 ## 38.3.0
 
