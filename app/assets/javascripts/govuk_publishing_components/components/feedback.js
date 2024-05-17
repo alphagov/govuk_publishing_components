@@ -22,7 +22,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
     this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
 
-    this.init()
+    // this.init()
   }
 
   Feedback.prototype.init = function () {
