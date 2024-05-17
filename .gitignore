@@ -1,4 +1,5 @@
 .bundle/
+.cache/
 log/*.log
 pkg/
 spec/dummy/log/*.log
