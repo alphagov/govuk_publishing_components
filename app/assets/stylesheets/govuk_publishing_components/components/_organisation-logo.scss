@@ -73,7 +73,8 @@
 }
 
 @mixin crest($crest, $xpos:0, $ypos:0) {
-  background: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png") no-repeat $xpos $ypos;
+  //background: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png") no-repeat $xpos $ypos;
+  background: url("govuk_publishing_components/crests/crest-test-#{random(10)}.svg") no-repeat $xpos $ypos;
   background-size: auto 32px;
 }
 
