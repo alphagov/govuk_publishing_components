@@ -74,10 +74,12 @@ describe('GOVUK Modules', function () {
   describe('when modules exist', function () {
     var container
     var callbackFrontendModule
+    var callbackFrontendModuleVersionFive
     var callbackGemFrontendModule
 
     beforeEach(function () {
       callbackFrontendModule = jasmine.createSpy()
+      callbackFrontendModuleVersionFive = jasmine.createSpy()
       callbackGemFrontendModule = jasmine.createSpy()
 
       // GOV.UK Frontend Modules
@@ -88,6 +90,16 @@ describe('GOVUK Modules', function () {
         callbackFrontendModule(this.element)
       }
       GOVUK.Modules.TestAlertFrontendModule = TestAlertFrontendModule
+
+      // GOV.UK Frontend Modules - V5
+      function TestAlertFrontendModuleVersionFive (element) {
+        this.element = element
+        this.initControls()
+      }
+      TestAlertFrontendModuleVersionFive.prototype.initControls = function () {
+        callbackFrontendModuleVersionFive(this.element)
+      }
+      GOVUK.Modules.TestAlertFrontendModuleVersionFive = TestAlertFrontendModuleVersionFive
 
       // GOV.UK Gem Frontend Modules
       function GemTestAlertFrontendModule (element) {
@@ -136,6 +148,7 @@ describe('GOVUK Modules', function () {
 
     afterEach(function () {
       delete GOVUK.Modules.TestAlertFrontendModule
+      delete GOVUK.Modules.TestAlertFrontendModuleVersionFive
       delete GOVUK.Modules.GemTestAlertFrontendModule
       delete GOVUK.Modules.TestAlertPublishingAndFrontendModule
       delete GOVUK.Modules.TestCookieDependencyModule
@@ -154,12 +167,19 @@ describe('GOVUK Modules', function () {
     })
 
     it('does not start modules that are already started', function () {
-      var module = $('<div data-module="test-alert-frontend-module"></div>')
-      container.append(module)
+      var modules = $(
+        '<div data-module="test-alert-frontend-module"></div>' +
+        '<div data-module="test-alert-frontend-module-version-five"></div>' +
+        '<div data-module="gem-test-alert-frontend-module"></div>'
+      )
 
-      GOVUK.modules.start(module[0])
-      GOVUK.modules.start(module[0])
+      $('body').append(modules)
+      GOVUK.modules.start()
+      GOVUK.modules.start()
       expect(callbackFrontendModule.calls.count()).toBe(1)
+      expect(callbackFrontendModuleVersionFive.calls.count()).toBe(1)
+      expect(callbackGemFrontendModule.calls.count()).toBe(1)
+      modules.remove()
     })
 
     it('passes the HTML element to the module’s start method', function () {
@@ -176,12 +196,17 @@ describe('GOVUK Modules', function () {
       var modules = $(
         '<div data-module="test-alert-frontend-module"></div>' +
         '<strong data-module="test-alert-frontend-module"></strong>' +
-        '<span data-module="test-alert-frontend-module"></span>'
+        '<span data-module="test-alert-frontend-module"></span>' +
+        '<div data-module="test-alert-frontend-module-version-five"></div>' +
+        '<strong data-module="test-alert-frontend-module-version-five"></strong>' +
+        '<div data-module="gem-test-alert-frontend-module"></div>'
       )
 
       $('body').append(modules)
       GOVUK.modules.start()
       expect(callbackFrontendModule.calls.count()).toBe(3)
+      expect(callbackFrontendModuleVersionFive.calls.count()).toBe(2)
+      expect(callbackGemFrontendModule.calls.count()).toBe(1)
       modules.remove()
     })
 
@@ -194,6 +219,18 @@ describe('GOVUK Modules', function () {
       GOVUK.modules.start()
       expect(callbackGemFrontendModule.calls.count()).toBe(1)
       expect(callbackFrontendModule.calls.count()).toBe(1)
+      modules.remove()
+    })
+
+    it('starts govuk-frontend v5 and gem modules on a single element', function () {
+      var modules = $(
+        '<div data-module="test-alert-frontend-module-version-five gem-test-alert-frontend-module"></div>'
+      )
+
+      $('body').append(modules)
+      GOVUK.modules.start()
+      expect(callbackGemFrontendModule.calls.count()).toBe(1)
+      expect(callbackFrontendModuleVersionFive.calls.count()).toBe(1)
       modules.remove()
     })
 

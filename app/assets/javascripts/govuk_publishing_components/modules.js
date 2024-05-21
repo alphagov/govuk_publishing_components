@@ -36,15 +36,20 @@
           var moduleName = camelCaseAndCapitalise(moduleNames[j])
           var started = element.getAttribute('data-' + moduleNames[j] + '-module-started')
           if (typeof GOVUK.Modules[moduleName] === 'function' && !started) {
-            // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend Modules
-            if (GOVUK.Modules[moduleName].prototype.init) {
-              try {
+            try {
+              if (GOVUK.Modules[moduleName].prototype.init) {
+                // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend V4 Modules
                 new GOVUK.Modules[moduleName](element).init()
-                element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
-              } catch (e) {
-                // if there's a problem with the module, catch the error to allow other modules to start
-                console.error('Error starting ' + moduleName + ' component JS: ', e, window.location)
+              } else {
+                // GOV.UK Frontend V5 Modules - removed component init() methods and initialise in constructor
+                // https://github.com/alphagov/govuk-design-system-architecture/blob/main/decision-records/010-remove-init-method.md
+                /* eslint-disable no-new */
+                new GOVUK.Modules[moduleName](element)
               }
+              element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
+            } catch (e) {
+              // if there's a problem with the module, catch the error to allow other modules to start
+              console.error('Error starting ' + moduleName + ' component JS: ', e, window.location)
             }
           }
         }
