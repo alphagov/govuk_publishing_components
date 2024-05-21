@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 38.4.0
 
 * Update module.js ready for v5 of govuk-frontend ([PR #3992](https://github.com/alphagov/govuk_publishing_components/pull/3992))
 
