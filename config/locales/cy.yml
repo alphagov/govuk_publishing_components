@@ -60,7 +60,7 @@ cy:
       - Rydyn ni hefyd yn defnyddio cwcis sy'n cael eu gosod gan wefannau eraill i'n helpu i gyflwyno cynnwys o'u gwasanaethau nhw.
       title: Cwcis ar GOV.UK
     devolved_nations:
-      applies_to:
+      applies_to: Yn berthnasol i
       connectors:
         last_word:
         two_words:
@@ -72,7 +72,7 @@ cy:
         detailed_guide:
         guidance:
         publication:
-      wales:
+      wales: Gymru
     feedback:
       close: Cau
       dont_include_personal_info: Peidiwch â chynnwys gwybodaeth bersonol neu ariannol fel eich rhif Yswiriant Gwladol neu rif cerdyn credyd.
