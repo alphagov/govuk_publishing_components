@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 38.4.1
 
 * Add missing Welsh translation to the devolved nations component ([PR #4036](https://github.com/alphagov/govuk_publishing_components/pull/4036))
 
