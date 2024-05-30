@@ -1,4 +1,5 @@
 (function () {
+  'use strict'
   var parsedCookie = (function () {
     try {
       var cookies = document.cookie.split(';')

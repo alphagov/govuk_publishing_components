@@ -1,3 +1,5 @@
+'use strict'
+
 // This component relies on JavaScript from GOV.UK Frontend
 // = require govuk/components/tabs/tabs.bundle.js
 window.GOVUK = window.GOVUK || {}

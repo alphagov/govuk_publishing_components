@@ -1,3 +1,4 @@
+'use strict'
 //= require axe-core/axe.js
 
 (function (window, document, axe) {

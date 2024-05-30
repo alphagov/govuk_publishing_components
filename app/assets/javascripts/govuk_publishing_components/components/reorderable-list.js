@@ -1,3 +1,5 @@
+'use strict'
+
 //= require sortablejs/Sortable.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};

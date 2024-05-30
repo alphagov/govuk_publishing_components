@@ -1,3 +1,4 @@
+'use strict'
 // This component relies on JavaScript from GOV.UK Frontend
 // = require govuk/components/header/header.bundle.js
 window.GOVUK = window.GOVUK || {}

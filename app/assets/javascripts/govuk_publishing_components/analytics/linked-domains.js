@@ -1,3 +1,4 @@
+'use strict'
 // For Universal Analytics' cross domain tracking.
 window.GOVUK.analytics = window.GOVUK.analytics || {}
 window.GOVUK.analytics.linkedDomains = [

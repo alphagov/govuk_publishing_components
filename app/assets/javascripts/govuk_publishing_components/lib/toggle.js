@@ -1,3 +1,5 @@
+'use strict'
+
 /*
   Toggle the display of elements
 

@@ -18,7 +18,7 @@ window.GOVUK.loadAnalytics = {
 
     // Universal Analytics variables
     window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}
-    window.GOVUK.analyticsVars.primaryLinkedDomains = ['account.gov.uk']
+  window.GOVUK.analyticsVars.primaryLinkedDomains = ['account.gov.uk']
     window.GOVUK.analyticsVars.linkedDomains = this.linkedDomains
     window.GOVUK.analyticsVars.gaProperty = 'UA-UNSET'
     window.GOVUK.analyticsVars.gaPropertyCrossDomain = 'UA-UNSET'

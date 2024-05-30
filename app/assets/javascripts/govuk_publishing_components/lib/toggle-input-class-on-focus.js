@@ -1,3 +1,5 @@
+'use strict'
+
 /*
   Toggle the class 'focus' on input boxes on element focus/blur
   Used by the search component but generic enough for reuse

@@ -8,6 +8,7 @@
  */
 
 LUX = (function () {
+  'use strict'
   var a =
     "undefined" !== typeof LUX && "undefined" !== typeof LUX.gaMarks
       ? LUX.gaMarks
