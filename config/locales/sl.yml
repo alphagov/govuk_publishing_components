@@ -85,7 +85,7 @@ sl:
       is_this_page_useful: Je ta stran uporabna?
       is_useful: Ta stran je uporabna
       maybe: Morda
-      more_about_visit: Radi bi izboljšali GOV.UK, zato bi radi izvedeli več o vašem današnjem obisku. Poslali vam bomo povezavo do obrazca za povratne informacije. Za izpolnitev potrebujete le 2 minuti. Ne skrbite, ne bomo vam pošiljali neželene pošte, niti vašega e-poštnega naslova delili z nikomer.
+      more_about_visit:
       'no': Ne
       send: Pošlji
       send_me_survey: Pošlji mi raziskavo

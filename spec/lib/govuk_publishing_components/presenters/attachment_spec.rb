@@ -122,6 +122,26 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
     end
   end
 
+  describe "#pdf?" do
+    it "returns true for content types specified as a pdf" do
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "application/pdf",
+      )
+      expect(attachment.pdf?).to be true
+    end
+
+    it "returns false for a content type not specified as a spreadsheet" do
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/plain",
+      )
+      expect(attachment.pdf?).to be false
+    end
+  end
+
   describe "#reference" do
     context "when reference details are provided" do
       it "returns a well formatted reference string" do
@@ -155,6 +175,7 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
         title: "test",
         url: "test",
         content_type: "text/csv",
+        command_paper_number: "",
         unnumbered_command_paper: true,
       )
       expect(attachment.unnumbered_reference).to eq("Unnumbered command paper")
@@ -165,6 +186,7 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
         title: "test",
         url: "test",
         content_type: "text/csv",
+        hoc_paper_number: "",
         unnumbered_hoc_paper: true,
       )
       expect(attachment.unnumbered_reference).to eq("Unnumbered act paper")

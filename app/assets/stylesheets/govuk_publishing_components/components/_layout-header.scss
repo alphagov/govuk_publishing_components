@@ -118,6 +118,8 @@
   margin-left: 3px;
   margin-top: govuk-spacing(-2);
   vertical-align: middle;
+  @include govuk-font($size: 16, $weight: "bold");
+
 }
 
 .gem-c-environment-tag--production {

@@ -185,7 +185,7 @@ $gem-guide-border-width: 1px;
   }
 
   &::before {
-    @include govuk-font($size: 14);
+    @include govuk-font($size: 16);
     content: attr(data-content);
     position: absolute;
     top: 0;

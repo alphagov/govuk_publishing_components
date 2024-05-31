@@ -78,7 +78,7 @@ is:
       is_this_page_useful: Ef þessi síða gagnleg?
       is_useful: þess síða er gagnleg
       maybe: Kannski
-      more_about_visit: Við viljum vita meira um heimsókn þína hingað í dag til að hjálpa okkur að bæta GOV.UK. Við munum senda þér hlekk á skjal fyrir endurgjöf. Það mun bara taka 2 mínútur að fylla það út. Hafðu engar áhyggjur við munum ekki senda þér ruslpóst eða deila tölvupóstfanginu þínu með neinum.
+      more_about_visit:
       'no': Nei
       send: Senda
       send_me_survey: Sendið mér könnunina

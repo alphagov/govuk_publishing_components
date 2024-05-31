@@ -39,7 +39,8 @@
     }
 
     td small {
-      font-size: 1em;
+      font-size: 19px;
+      font-size: govuk-px-to-rem(19);
     }
 
     .cell-text-left {

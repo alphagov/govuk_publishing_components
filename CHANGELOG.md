@@ -9,7 +9,38 @@
 
 ## Unreleased
 
+* Reintroduce feedback survey path and new tab functionality ([PR #4024](https://github.com/alphagov/govuk_publishing_components/pull/4024))
+
+## 38.3.1
+
+* Remove Oxford comma from metadata component ([PR #4012](https://github.com/alphagov/govuk_publishing_components/pull/4012))
+* Add null check for input element ([PR #4022](https://github.com/alphagov/govuk_publishing_components/pull/4022))
+
+## 38.3.0
+
+* Remove email from survey ([PR #4017](https://github.com/alphagov/govuk_publishing_components/pull/4017))
+* Update Twitter logo ([PR #4011](https://github.com/alphagov/govuk_publishing_components/pull/4011))
+* Use Terser instead of Uglifier ([PR #3990](https://github.com/alphagov/govuk_publishing_components/pull/3990))
+
+## 38.2.0
+
+* Limit GA4 view_item_list arrays to 15,000 UTF-16 code units ([PR #3994](https://github.com/alphagov/govuk_publishing_components/pull/3994))
+* Add custom_header and a custom_layout options ([PR #4004](https://github.com/alphagov/govuk_publishing_components/pull/4004))
+* Update LUX to 314 ([PR #4007](https://github.com/alphagov/govuk_publishing_components/pull/4007))
+* Add No. 10 logo to organisation logo component ([PR #4008](https://github.com/alphagov/govuk_publishing_components/pull/4008))
+
+## 38.1.1
+
+* Update layout_for_admin component to take custom asset filenames ([PR #3993](https://github.com/alphagov/govuk_publishing_components/pull/3993))
+
+## 38.1.0
+
+* Fix rendering of unnumbered papers ([PR #3988](https://github.com/alphagov/govuk_publishing_components/pull/3988))
+* Add PDF specific icon to attachment component ([PR #3985](https://github.com/alphagov/govuk_publishing_components/pull/3985))
 * Add the hidden attribute to mobile menu button ([PR #3975](https://github.com/alphagov/govuk_publishing_components/pull/3975))
+* Add tool_name to GA4 feedback component tracking ([PR #3984](https://github.com/alphagov/govuk_publishing_components/pull/3984))
+* Update script snippet in view templates ([PR #3986](https://github.com/alphagov/govuk_publishing_components/pull/3986))
+* Font changes ahead of apps being made compatible with govuk-frontend v5 ([PR #3981](https://github.com/alphagov/govuk_publishing_components/pull/3981))
 
 ## 38.0.1
 

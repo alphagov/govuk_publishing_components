@@ -35,13 +35,13 @@
     }
   },
   "dependencies": {
-    "axe-core": "^4.8.4",
+    "axe-core": "^4.9.0",
     "govuk-frontend": "5.1.0",
     "govuk-single-consent": "^3.0.9",
     "sortablejs": "^1.15.2"
   },
   "devDependencies": {
-    "@percy/cli": "^1.28.2",
+    "@percy/cli": "^1.28.5",
     "jasmine-browser-runner": "^2.4.0",
     "jasmine-core": "^5.1.2",
     "postcss": "^8.4.38",

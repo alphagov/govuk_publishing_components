@@ -2,53 +2,18 @@
  absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
 %>
 
-<form action="<%= absolute_links_helper.make_url_absolute('/contact/govuk/email-survey-signup') %>"
-  id="page-is-not-useful"
-  class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form"
-  data-track-category="yesNoFeedbackForm"
-  data-track-action="Send Form"
-  method="post">
-
+<div id="page-is-not-useful" class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
       <div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden></div>
 
-      <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
-      <input name="email_survey_signup[survey_source]" type="hidden" value="<%= path_without_pii %>">
-
       <h3 class="gem-c-feedback__form-heading"><%= t("components.feedback.help_us_improve_govuk") %></h3>
-      <p id="survey_explanation" class="gem-c-feedback__form-paragraph"><%= t("components.feedback.more_about_visit") %></p>
-
-      <%= render "govuk_publishing_components/components/input", {
-        label: {
-          text: t("components.feedback.email_address")
-        },
-        name: "email_survey_signup[email_address]",
-        type: "email",
-        autocomplete: "email",
-        describedby: "survey_explanation"
-      } %>
-
-      <%
-        unless disable_ga4
-          ga4_send_button_event = {
-            event_name: "form_submit",
-            type: "feedback",
-            text: t("components.feedback.send_me_survey", locale: :en),
-            section: t("components.feedback.help_us_improve_govuk", locale: :en),
-          }.to_json
-        end
-      %>
-
-      <%= render "govuk_publishing_components/components/button", {
-        text: t("components.feedback.send_me_survey"),
-        data_attributes: {
-          ga4_event: ga4_send_button_event
-        }
-      } %>
-
+      <p id="survey_explanation" class="gem-c-feedback__form-paragraph">
+        <%= t("components.feedback.more_about_visit") %>
+        <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js" class="govuk-link" target="_blank" rel="noopener noreferrer external">Please fill in this survey (opens in a new tab)</a>.
+      </p>
       <button
-        class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form"
+        class="govuk-button govuk-button--secondary js-close-form"
         data-track-category="yesNoFeedbackForm"
         data-track-action="ffFormClose"
         aria-controls="page-is-not-useful"
@@ -56,7 +21,6 @@
         hidden>
         <%= t("components.feedback.close") %>
       </button>
-
     </div>
   </div>
-</form>
+</div>

@@ -82,7 +82,7 @@ cy:
       is_this_page_useful: A yw'r dudalen hon yn ddefnyddiol?
       is_useful: mae'r dudalen hon yn ddefnyddiol
       maybe: Efallai
-      more_about_visit: I'n helpu i wella GOV.UK, fe hoffen ni wybod mwy am eich ymweliad heddiw. Byddwn ni'n anfon dolen atoch chi i ffurflen adborth. Dim ond 2 funud fydd ei angen i'w llenwi. Peidiwch â phoeni, fyddwn ni ddim yn anfon sbam atoch chi nac yn rhannu eich cyfeiriad e-bost gydag unrhyw un.
+      more_about_visit:
       'no': Na
       send: Anfon
       send_me_survey: Anfon yr arolwg ataf i

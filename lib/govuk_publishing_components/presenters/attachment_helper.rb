@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   module Presenters
     class AttachmentHelper
-      delegate :opendocument?, :document?, :spreadsheet?, to: :content_type
+      delegate :opendocument?, :document?, :spreadsheet?, :pdf?, to: :content_type
 
       attr_reader :attachment_data
 
@@ -78,8 +78,8 @@ module GovukPublishingComponents
       end
 
       def unnumbered_reference
-        unnumbered_reference = "Unnumbered command paper" if attachment_data[:unnumbered_command_paper].eql?(true) && !attachment_data[:command_paper_number]
-        unnumbered_reference = "Unnumbered act paper" if attachment_data[:unnumbered_hoc_paper].eql?(true) && !attachment_data[:hoc_paper_number]
+        unnumbered_reference = "Unnumbered command paper" if attachment_data[:unnumbered_command_paper].eql?(true) && attachment_data[:command_paper_number].blank?
+        unnumbered_reference = "Unnumbered act paper" if attachment_data[:unnumbered_hoc_paper].eql?(true) && attachment_data[:hoc_paper_number].blank?
         unnumbered_reference
       end
 
@@ -92,7 +92,7 @@ module GovukPublishingComponents
 
         TYPES = [
           { content_type: "application/msword", name: "MS Word Document", document: true }.freeze, # doc
-          { content_type: "application/pdf", abbr: "PDF", name: "Portable Document Format", document: true }.freeze,
+          { content_type: "application/pdf", abbr: "PDF", name: "Portable Document Format", pdf: true }.freeze,
           { content_type: "application/postscript", extension: ".ps", abbr: "PS", name: "PostScript" }.freeze,
           { content_type: "application/postscript", extension: ".eps", abbr: "EPS", name: "Encapsulated PostScript" }.freeze,
           { content_type: "application/rtf", abbr: "RTF", name: "Rich Text Format" }.freeze,
@@ -158,6 +158,10 @@ module GovukPublishingComponents
         def spreadsheet?
           content_type_data[:spreadsheet].present?
         end
+
+        def pdf?
+          content_type_data[:pdf].present?
+        end
       end
 
       class UnsupportedContentType
@@ -180,6 +184,10 @@ module GovukPublishingComponents
         end
 
         def spreadsheet?
+          false
+        end
+
+        def pdf?
           false
         end
       end

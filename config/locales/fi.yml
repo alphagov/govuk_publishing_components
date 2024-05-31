@@ -80,7 +80,7 @@ fi:
       is_this_page_useful: Onko tämä sivu hyödyllinen?
       is_useful: tämä sivu on hyödyllinen
       maybe: Ehkä
-      more_about_visit: Auttaaksemme meitä parantamaan GOV.UK:ta haluaisimme tietää lisää tämänpäiväisestä vierailustasi. Lähetämme sinulle linkin palautelomakkeeseen. Sen täyttäminen vie vain 2 minuuttia. Älä huoli, emme lähetä sinulle roskapostia tai jaa sähköpostiosoitettasi kenenkään kanssa.
+      more_about_visit:
       'no': Ei
       send: Lähettää
       send_me_survey: Lähetä kysely minulle
