@@ -6,8 +6,8 @@
  *
  * See docs/real-user-metrics.md for more information.
  */
-
-LUX = (function () {
+'use strict'
+var LUX = (function () {
   'use strict'
   var a =
     "undefined" !== typeof LUX && "undefined" !== typeof LUX.gaMarks
@@ -138,11 +138,11 @@ LUX.send = function () {
 LUX.addData = function (a, b) {
   LUX.cmd(["addData", a, b]);
 };
-LUX_ae = [];
+var LUX_ae = [];
 window.addEventListener("error", function (a) {
   LUX_ae.push(a);
 });
-LUX_al = [];
+var LUX_al = [];
 if (
   "function" === typeof PerformanceObserver &&
   "function" === typeof PerformanceLongTaskTiming
