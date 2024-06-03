@@ -1,7 +1,12 @@
+'use strict'
 //= require govuk_publishing_components/analytics
 //= require govuk_publishing_components/analytics-ga4
 //= require govuk_publishing_components/analytics/linked-domains
 //= require govuk_publishing_components/domain-config
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.analytics = window.GOVUK.analytics || {},
+window.GOVUK.vars = window.GOVUK.vars || {},
+window.GOVUK.vars.domains = window.GOVUK.vars.domains || [],
 
 window.GOVUK.loadAnalytics = {
   loadExtraDomains: function () {
