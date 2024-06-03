@@ -3,6 +3,7 @@
 // = require govuk/components/accordion/accordion.bundle.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
+window.GOVUKFrontend = window.GOVUKFrontend || {}
 window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
 (function (Modules) {

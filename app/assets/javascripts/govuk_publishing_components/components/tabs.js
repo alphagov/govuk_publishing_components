@@ -4,4 +4,5 @@
 // = require govuk/components/tabs/tabs.bundle.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
+window.GOVUKFrontend = window.GOVUKFrontend || {}
 window.GOVUK.Modules.GovukTabs = window.GOVUKFrontend.Tabs
