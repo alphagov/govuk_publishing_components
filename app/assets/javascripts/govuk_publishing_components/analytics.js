@@ -1,4 +1,4 @@
-
+'use strict'
 // these scripts are specifically ordered
 
 //= require govuk_publishing_components/lib/cookie-functions
