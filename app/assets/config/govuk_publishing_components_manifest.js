@@ -2,7 +2,6 @@
 //= link_tree ../images
 //= link_tree ../../../node_modules/govuk-frontend/dist/govuk/assets/images
 //= link_tree ../../../node_modules/govuk-frontend/dist/govuk/assets/fonts
-//= link_tree ../../../node_modules/govuk-frontend/dist/govuk/assets
 
 // Create asset files of each of the files in these directory
 //= link_directory ../javascripts/component_guide
