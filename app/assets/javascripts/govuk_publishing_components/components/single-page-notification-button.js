@@ -1,3 +1,5 @@
+'use strict'
+
 /* global XMLHttpRequest */
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};

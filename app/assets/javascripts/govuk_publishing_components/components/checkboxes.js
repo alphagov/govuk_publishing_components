@@ -1,6 +1,8 @@
+'use strict'
 // = require govuk/components/checkboxes/checkboxes.bundle.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
+window.GOVUKFrontend = window.GOVUKFrontend || {}
 window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
 
 (function (Modules) {

@@ -1,4 +1,5 @@
 (function () {
+  'use strict'
   window.GOVUK = window.GOVUK || {}
 
   window.GOVUK.FilterComponents = function filterList (searchTerm) {

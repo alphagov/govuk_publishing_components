@@ -1,2 +1,2 @@
-// = require_tree ./vendor/polyfills/
+'use strict'
 // = require_tree ./lib

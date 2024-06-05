@@ -1,6 +1,6 @@
 //= require axe-core/axe.js
-
 (function (window, document, axe) {
+  'use strict'
   window.GOVUK = window.GOVUK || {}
 
   function AccessibilityTest (selector, callback) {

@@ -1,3 +1,5 @@
+'use strict'
+
 // The following modules are imported in a specific order
 //= require ./analytics-ga4/ga4-core
 //= require ./analytics-ga4/ga4-schemas
