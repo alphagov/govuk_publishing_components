@@ -45,7 +45,7 @@ module GovukPublishingComponents
     end
 
     def parse_documentation(file)
-      yaml = YAML.load_file(file, aliases: true, permitted_classes: [Symbol, Time])
+      yaml = YAML.load_file(file, aliases: true, permitted_classes: [Symbol, Time, Date])
       { id: File.basename(file, ".yml") }.merge(yaml).with_indifferent_access
     end
 
