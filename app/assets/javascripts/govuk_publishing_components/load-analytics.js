@@ -4,9 +4,9 @@
 //= require govuk_publishing_components/analytics/linked-domains
 //= require govuk_publishing_components/domain-config
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.analytics = window.GOVUK.analytics || {},
-window.GOVUK.vars = window.GOVUK.vars || {},
-window.GOVUK.vars.domains = window.GOVUK.vars.domains || [],
+window.GOVUK.analytics = window.GOVUK.analytics || {}
+window.GOVUK.vars = window.GOVUK.vars || {}
+window.GOVUK.vars.domains = window.GOVUK.vars.domains || []
 
 window.GOVUK.loadAnalytics = {
   loadExtraDomains: function () {
@@ -23,7 +23,7 @@ window.GOVUK.loadAnalytics = {
 
     // Universal Analytics variables
     window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}
-  window.GOVUK.analyticsVars.primaryLinkedDomains = ['account.gov.uk']
+    window.GOVUK.analyticsVars.primaryLinkedDomains = ['account.gov.uk']
     window.GOVUK.analyticsVars.linkedDomains = this.linkedDomains
     window.GOVUK.analyticsVars.gaProperty = 'UA-UNSET'
     window.GOVUK.analyticsVars.gaPropertyCrossDomain = 'UA-UNSET'
