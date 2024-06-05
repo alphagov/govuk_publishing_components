@@ -11,6 +11,7 @@
 
 * Allow Date in YAML.load_file ([PR #4050](https://github.com/alphagov/govuk_publishing_components/pull/4050))
 * Add global bar to GA4 page view tracking ([PR #4051](https://github.com/alphagov/govuk_publishing_components/pull/4051))
+* Add a class to the page body when our global bar is present ([PR #4047](https://github.com/alphagov/govuk_publishing_components/pull/4047))
 
 ## 38.4.1
 
