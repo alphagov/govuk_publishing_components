@@ -60,6 +60,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined,
             cookie_banner: this.getBannerPresence('[data-ga4-cookie-banner]'),
             intervention: this.getBannerPresence('[data-ga4-intervention-banner]'),
+            global_bar: this.getBannerPresence('[data-ga4-global-bar]'),
             query_string: this.getQueryString(),
             search_term: this.getSearchTerm(),
             spelling_suggestion: this.getMetaContent('spelling-suggestion'),
