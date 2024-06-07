@@ -58,6 +58,7 @@ describe('Google Tag Manager page view tracking', function () {
         devolved_nations_banner: undefined,
         cookie_banner: undefined,
         intervention: undefined,
+        global_bar: undefined,
         query_string: undefined,
         search_term: undefined,
         spelling_suggestion: undefined,
@@ -538,6 +539,16 @@ describe('Google Tag Manager page view tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
       window.GOVUK.setCookie('intervention_campaign', '')
     })
+  })
+
+  it('correctly sets the global_bar parameter', function () {
+    var div = document.createElement('div')
+    div.setAttribute('data-ga4-global-bar', '')
+    document.body.appendChild(div)
+    expected.page_view.global_bar = 'true'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    document.body.removeChild(div)
   })
 
   it('correctly sets the query_string parameter with PII and _ga/_gl values redacted', function () {
