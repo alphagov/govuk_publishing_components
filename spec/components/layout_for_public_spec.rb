@@ -288,6 +288,18 @@ describe "Layout for public", type: :view do
     assert_select ".gem-c-layout-for-public.govuk-template__body.draft"
   end
 
+  it "contains a global-bar-present class when the global bar is present" do
+    render_component({ global_bar: { present: true } })
+
+    assert_select ".gem-c-layout-for-public.govuk-template__body.global-bar-present"
+  end
+
+  it "does not contains a global-bar-present class when the global bar is not present" do
+    render_component({ global_bar: {} })
+
+    assert_select ".gem-c-layout-for-public.govuk-template__body.global-bar-present", false
+  end
+
   it "has an Open Graph image with an absolute URL" do
     render_component({})
 

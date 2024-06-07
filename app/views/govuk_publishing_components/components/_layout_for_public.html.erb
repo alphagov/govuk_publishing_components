@@ -51,6 +51,7 @@
   blue_bar_dedupe = !full_width && global_bar.present?
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
+  body_css_classes << "global-bar-present" if global_bar.present?
 
   blue_bar_wrapper_classes = %w()
   blue_bar_wrapper_classes << "gem-c-layout-for-public__blue-bar-wrapper--#{blue_bar_background_colour}" if blue_bar_background_colour
