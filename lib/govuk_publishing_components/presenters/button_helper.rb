@@ -133,7 +133,7 @@ module GovukPublishingComponents
       end
 
       def ga4_attribute
-        { type: "start button" }.to_json unless @disable_ga4
+        { event_name: "navigation", type: "start button" }.to_json unless @disable_ga4
       end
     end
   end

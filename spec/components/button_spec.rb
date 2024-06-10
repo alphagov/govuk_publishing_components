@@ -47,14 +47,14 @@ describe "Button", type: :view do
     render_component(text: "Start now", href: "#", start: true)
     assert_select ".govuk-button[href='#'] span", text: /Start now/
     assert_select ".govuk-button--start"
-    assert_select ".govuk-button--start[data-ga4-attributes='{\"type\":\"start button\"}']"
+    assert_select ".govuk-button--start[data-ga4-attributes='{\"event_name\":\"navigation\",\"type\":\"start button\"}']"
   end
 
   it "renders start now button with GA4 attributes disabled" do
     render_component(text: "Start now", href: "#", start: true, disable_ga4: true)
     assert_select ".govuk-button[href='#'] span", text: /Start now/
     assert_select ".govuk-button--start"
-    assert_select ".govuk-button--start[data-ga4-attributes='{\"type\":\"start button\"}']", false
+    assert_select ".govuk-button--start[data-ga4-attributes='{\"event_name\":\"navigation\",\"type\":\"start button\"}']", false
   end
 
   it "renders secondary button" do
