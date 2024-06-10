@@ -433,7 +433,7 @@ GEM
       racc
     percy-capybara (5.0.0)
       capybara (>= 3)
-    plek (5.1.0)
+    plek (5.2.0)
     prometheus_exporter (2.1.0)
       webrick
     pry (0.14.1)
