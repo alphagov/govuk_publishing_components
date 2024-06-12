@@ -9,7 +9,7 @@
         <% end %>
       </th>
       <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="stylesheet">
-        CSS 
+        CSS
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:stylesheet] %></span>
         <% end %>
@@ -21,13 +21,25 @@
         <% end %>
       </th>
       <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="javascript">
-        JS 
+        JS
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:javascript] %></span>
         <% end %>
       </th>
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="uses-govuk-frontend-css">
+        GF CSS
+        <% unless show_application_name %>
+          <span class="component__count"><%= passed_components[:component_numbers][:uses_govuk_frontend_css] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="uses-govuk-frontend-js">
+        GF JS
+        <% unless show_application_name %>
+          <span class="component__count"><%= passed_components[:component_numbers][:uses_govuk_frontend_js] %></span>
+        <% end %>
+      </th>
       <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="test">
-        Test 
+        Test
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:test] %></span>
         <% end %>
@@ -90,6 +102,16 @@
               <%= component[:javascript_lines] %>
               <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> javascript</span>
             </a>
+          <% end %>
+        </td>
+        <td class="govuk-table__cell" data-component-type="uses-govuk-frontend-css">
+          <% if component[:uses_govuk_frontend_css] %>
+            Yes
+          <% end %>
+        </td>
+        <td class="govuk-table__cell" data-component-type="uses-govuk-frontend-js">
+          <% if component[:uses_govuk_frontend_js] %>
+            Yes
           <% end %>
         </td>
         <td class="govuk-table__cell" data-component-type="test">

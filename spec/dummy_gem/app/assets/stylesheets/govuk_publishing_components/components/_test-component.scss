@@ -1,4 +1,6 @@
 // this file is needed to test the component auditing
+@import "govuk/components/accordion/accordion";
+
 @include govuk-media-query($media-type: print) {
   .test {}
 }
