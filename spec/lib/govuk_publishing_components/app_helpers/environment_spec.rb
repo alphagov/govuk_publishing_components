@@ -16,7 +16,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::Environment do
     end
   end
 
-  def environment_name_for(actual_environment_name, environment_variable_name: "GOVUK_ENVIRONMENT_NAME")
+  def environment_name_for(actual_environment_name, environment_variable_name: "GOVUK_ENVIRONMENT")
     previous = ENV[environment_variable_name]
     ENV[environment_variable_name] = actual_environment_name
     name = GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment
