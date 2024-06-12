@@ -8,7 +8,7 @@ module GovukPublishingComponents
       def self.current_acceptance_environment
         return "example" if ENV["HEROKU"]
 
-        GOVUK_ENVIRONMENTS.include?(ENV["GOVUK_ENVIRONMENT_NAME"]) ? ENV["GOVUK_ENVIRONMENT_NAME"] : "development"
+        GOVUK_ENVIRONMENTS.include?(ENV["GOVUK_ENVIRONMENT"]) ? ENV["GOVUK_ENVIRONMENT"] : "development"
       end
     end
   end

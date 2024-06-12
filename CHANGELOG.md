@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use `GOVUK_ENVIRONMENT` instead of `GOVUK_ENVIRONMENT_NAME` for current environment ([PR #4060](https://github.com/alphagov/govuk_publishing_components/pull/4060))
+
 ## 38.4.2
 
 * Allow Date in YAML.load_file ([PR #4050](https://github.com/alphagov/govuk_publishing_components/pull/4050))
