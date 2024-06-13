@@ -7,7 +7,6 @@ module GovukPublishingComponents
       attr_reader :items,
                   :name,
                   :css_classes,
-                  :list_classes,
                   :error,
                   :has_conditional,
                   :has_nested,
@@ -23,8 +22,6 @@ module GovukPublishingComponents
         @css_classes << "govuk-form-group--error" if options[:error]
         @css_classes << "govuk-checkboxes--small" if options[:small]
         @error = true if options[:error]
-
-        @list_classes = %w[govuk-checkboxes gem-c-checkboxes__list]
 
         # check if any item is set as being conditional
         @has_conditional = options[:items].any? { |item| item.is_a?(Hash) && item[:conditional] }
@@ -100,7 +97,7 @@ module GovukPublishingComponents
         capture do
           concat check_box_tag(checkbox_name, checkbox[:value], checked, class: "govuk-checkboxes__input", id: checkbox_id, data:)
           concat content_tag(:label, checkbox[:label], for: checkbox_id, class: "govuk-label govuk-checkboxes__label")
-          concat content_tag(:span, checkbox[:hint], id: "#{checkbox_id}-item-hint", class: "govuk-hint govuk-checkboxes__hint") if checkbox[:hint]
+          concat content_tag(:div, checkbox[:hint], id: "#{checkbox_id}-item-hint", class: "govuk-hint govuk-checkboxes__hint") if checkbox[:hint]
         end
       end
     end

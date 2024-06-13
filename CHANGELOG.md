@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Align checkboxes component more toward Design System ([PR #4061](https://github.com/alphagov/govuk_publishing_components/pull/4061))
 * Add govuk-frontend checking to the component auditing ([PR #4058](https://github.com/alphagov/govuk_publishing_components/pull/4058))
 
 ## 39.0.0

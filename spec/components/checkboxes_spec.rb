@@ -327,7 +327,7 @@ describe "Checkboxes", type: :view do
       ],
     )
     assert_select ".govuk-checkboxes__input[value=other][data-behaviour=exclusive]"
-    assert_select ".gem-c-checkboxes__divider", text: "or"
+    assert_select ".govuk-checkboxes__divider", text: "or"
   end
 
   it "renders checkboxes with conditional reveal" do
@@ -382,8 +382,8 @@ describe "Checkboxes", type: :view do
       ],
     )
     assert_select ".govuk-checkboxes"
-    assert_select ".govuk-checkboxes.govuk-checkboxes--nested"
-    assert_select ".govuk-checkboxes.govuk-checkboxes--nested input[value=light_red]"
+    assert_select ".govuk-checkboxes--nested"
+    assert_select ".govuk-checkboxes--nested input[value=light_red]"
   end
 
   it "renders checkboxes with a description text" do
