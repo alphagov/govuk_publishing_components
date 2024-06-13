@@ -1,0 +1,7 @@
+name: Status page alert (experimental)
+description: Displays an alert in a publishing app to inform users of incidents or ongoing and imminent maintenance that may effect them. 
+accessibility_criteria: |
+  - stuff
+examples:
+  default:
+    data:
