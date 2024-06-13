@@ -22,6 +22,8 @@ module GovukPublishingComponents
         stylesheet: 0,
         print_stylesheet: 0,
         javascript: 0,
+        uses_govuk_frontend_js: 0,
+        uses_govuk_frontend_css: 0,
         test: 0,
         javascript_test: 0,
         helper: 0,
@@ -120,6 +122,16 @@ module GovukPublishingComponents
           details["#{type}_exists".to_sym] = true
           details["#{type}_lines".to_sym] = count_lines_in(file)
           details["#{type}_link".to_sym] = get_asset_link(type, component)
+
+          if type == "javascript" && uses_govuk_frontend_js?(file)
+            details[:uses_govuk_frontend_js] = true
+            @component_numbers[:uses_govuk_frontend_js] += 1
+          end
+
+          if type == "stylesheet" && uses_govuk_frontend_css?(file)
+            details[:uses_govuk_frontend_css] = true
+            @component_numbers[:uses_govuk_frontend_css] += 1
+          end
         end
       end
 
@@ -128,6 +140,14 @@ module GovukPublishingComponents
 
     def count_lines_in(file)
       File.read(file).each_line.count
+    end
+
+    def uses_govuk_frontend_js?(file)
+      File.read(file).match(/require govuk\/components/)
+    end
+
+    def uses_govuk_frontend_css?(file)
+      File.read(file).match(/@import "govuk\/components/)
     end
 
     def clean_files(files, replace)

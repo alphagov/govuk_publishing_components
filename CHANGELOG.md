@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add govuk-frontend checking to the component auditing ([PR #4058](https://github.com/alphagov/govuk_publishing_components/pull/4058))
+
 ## 39.0.0
 
 * Use `GOVUK_ENVIRONMENT` instead of `GOVUK_ENVIRONMENT_NAME` for current environment ([PR #4060](https://github.com/alphagov/govuk_publishing_components/pull/4060))

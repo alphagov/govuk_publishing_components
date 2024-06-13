@@ -198,6 +198,8 @@ describe "Auditing the components in applications" do
           stylesheet: 1,
           template: 15,
           test: 0,
+          uses_govuk_frontend_css: 0,
+          uses_govuk_frontend_js: 0,
         },
       },
     }
