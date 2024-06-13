@@ -1,56 +1,59 @@
+<p class="govuk-body">
+  Numbers in table headers show column totals. Numbers in table cells show number of lines in files. Note that component test files cannot currently be detected in applications that use minitest instead of Rspec.</p>
+</p>
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row" <% if show_application_name %>data-audit-headings<% end %>>
       <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="total">Component</th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="template">
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="template" title="Component has a template">
         Template
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:template] %></span>
         <% end %>
       </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="stylesheet">
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="stylesheet" title="Component has a stylesheet">
         CSS
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:stylesheet] %></span>
         <% end %>
       </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="print_stylesheet">
-        Print styles
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="print_stylesheet" title="Component has print styles">
+        Print CSS
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:print_stylesheet] %></span>
         <% end %>
       </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="javascript">
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="javascript" title="Component has JavaScript">
         JS
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:javascript] %></span>
         <% end %>
       </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="uses-govuk-frontend-css">
-        GF CSS
-        <% unless show_application_name %>
-          <span class="component__count"><%= passed_components[:component_numbers][:uses_govuk_frontend_css] %></span>
-        <% end %>
-      </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="uses-govuk-frontend-js">
-        GF JS
-        <% unless show_application_name %>
-          <span class="component__count"><%= passed_components[:component_numbers][:uses_govuk_frontend_js] %></span>
-        <% end %>
-      </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="test">
-        Test
-        <% unless show_application_name %>
-          <span class="component__count"><%= passed_components[:component_numbers][:test] %></span>
-        <% end %>
-      </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="javascript_test">
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="javascript_test" title="Component has a JavaScript test file">
         JS test
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:javascript_test] %></span>
         <% end %>
       </th>
-      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="helper">
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="uses-govuk-frontend-css" title="Component includes styles imported from govuk-frontend">
+        GF CSS
+        <% unless show_application_name %>
+          <span class="component__count"><%= passed_components[:component_numbers][:uses_govuk_frontend_css] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="uses-govuk-frontend-js" title="Component includes JavaScript imported from govuk-frontend">
+        GF JS
+        <% unless show_application_name %>
+          <span class="component__count"><%= passed_components[:component_numbers][:uses_govuk_frontend_js] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="test" title="Component has a test file">
+        Test
+        <% unless show_application_name %>
+          <span class="component__count"><%= passed_components[:component_numbers][:test] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="helper" title="Component has a helper file">
         Helper
         <% unless show_application_name %>
           <span class="component__count"><%= passed_components[:component_numbers][:helper] %></span>
@@ -77,7 +80,7 @@
         </th>
         <td class="govuk-table__cell" data-component-type="template">
           <% if component[:template_exists] %>
-            <a href="<%= component[:template_link] %>" class="govuk-link">
+            <a href="<%= component[:template_link] %>" class="govuk-link" title="This file has <%= component[:template_lines] %> lines">
               <%= component[:template_lines] %>
               <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> template</span>
             </a>
@@ -85,7 +88,7 @@
         </td>
         <td class="govuk-table__cell" data-component-type="stylesheet">
           <% if component[:stylesheet_exists] %>
-            <a href="<%= component[:stylesheet_link] %>" class="govuk-link">
+            <a href="<%= component[:stylesheet_link] %>" class="govuk-link" title="This file has <%= component[:stylesheet_lines] %> lines">
               <%= component[:stylesheet_lines] %>
               <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> stylesheet</span>
             </a>
@@ -93,46 +96,52 @@
         </td>
         <td class="govuk-table__cell" data-component-type="print_stylesheet">
           <% if component[:print_stylesheet_exists] %>
-            Yes
+            <span title="This component has a print stylesheet">
+              Yes
+            </span>
           <% end %>
         </td>
         <td class="govuk-table__cell" data-component-type="javascript">
           <% if component[:javascript_exists] %>
-            <a href="<%= component[:javascript_link] %>" class="govuk-link">
+            <a href="<%= component[:javascript_link] %>" class="govuk-link" title="This file has <%= component[:javascript_lines] %> lines">
               <%= component[:javascript_lines] %>
               <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> javascript</span>
             </a>
           <% end %>
         </td>
-        <td class="govuk-table__cell" data-component-type="uses-govuk-frontend-css">
-          <% if component[:uses_govuk_frontend_css] %>
-            Yes
-          <% end %>
-        </td>
-        <td class="govuk-table__cell" data-component-type="uses-govuk-frontend-js">
-          <% if component[:uses_govuk_frontend_js] %>
-            Yes
-          <% end %>
-        </td>
-        <td class="govuk-table__cell" data-component-type="test">
-          <% if component[:test_exists] %>
-            <a href="<%= component[:test_link] %>" class="govuk-link">
-              <%= component[:test_lines] %>
-              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> test</span>
-            </a>
-          <% end %>
-        </td>
         <td class="govuk-table__cell" data-component-type="javascript_test">
           <% if component[:javascript_test_exists] %>
-            <a href="<%= component[:javascript_test_link] %>" class="govuk-link">
+            <a href="<%= component[:javascript_test_link] %>" class="govuk-link" title="This file has <%= component[:javascript_test_lines] %> lines">
               <%= component[:javascript_test_lines] %>
               <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> javascript test</span>
             </a>
           <% end %>
         </td>
+        <td class="govuk-table__cell" data-component-type="uses-govuk-frontend-css">
+          <% if component[:uses_govuk_frontend_css] %>
+            <span title="Component includes styles imported from govuk-frontend">
+              Yes
+            </span>
+          <% end %>
+        </td>
+        <td class="govuk-table__cell" data-component-type="uses-govuk-frontend-js">
+          <% if component[:uses_govuk_frontend_js] %>
+            <span title="Component includes JavaScript imported from govuk-frontend">
+              Yes
+            </span>
+          <% end %>
+        </td>
+        <td class="govuk-table__cell" data-component-type="test">
+          <% if component[:test_exists] %>
+            <a href="<%= component[:test_link] %>" class="govuk-link" title="This file has <%= component[:test_lines] %> lines">
+              <%= component[:test_lines] %>
+              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> test</span>
+            </a>
+          <% end %>
+        </td>
         <td class="govuk-table__cell" data-component-type="helper">
           <% if component[:helper_exists] %>
-            <a href="<%= component[:helper_link] %>" class="govuk-link">
+            <a href="<%= component[:helper_link] %>" class="govuk-link" title="This file has <%= component[:helper_lines] %> lines">
               <%= component[:helper_lines] %>
               <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> helper</span>
             </a>
