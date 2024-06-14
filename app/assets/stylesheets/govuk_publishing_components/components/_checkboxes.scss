@@ -2,7 +2,8 @@
 @import "govuk/components/checkboxes/checkboxes";
 
 .govuk-checkboxes--nested {
-  margin-left: -(govuk-spacing(4) + 2px); // 22px
+  width: 100%;
+  margin-left: govuk-spacing(4);
   box-sizing: border-box;
   border-left-style: solid;
   border-left-width: 4px;
