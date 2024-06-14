@@ -49,7 +49,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     // Attach listener to update checked count
-    this.$optionsContainer.querySelector('.gem-c-checkboxes__list').addEventListener('change', this.updateCheckedCount.bind(this))
+    this.$optionsContainer.querySelector('.govuk-checkboxes').addEventListener('change', this.updateCheckedCount.bind(this))
 
     // Replace div.container-head with a button
     this.replaceHeadingSpanWithButton()

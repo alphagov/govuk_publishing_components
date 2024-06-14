@@ -26,31 +26,32 @@
           <%= tag.p error, id: "#{id}-error", class: "govuk-error-message" %>
         <% end %>
 
-        <%= tag.ul class: cb_helper.list_classes, data: {
+        <%= tag.div class: "govuk-checkboxes", data: {
           module: ('govuk-checkboxes' if cb_helper.has_conditional),
           nested: ('true' if cb_helper.has_nested)
         } do %>
           <% cb_helper.items.each_with_index do |item, index| %>
             <% if item === :or %>
-              <%= tag.li t('components.checkboxes.or'), class: "gem-c-checkboxes__divider" %>
+              <%= tag.div t('components.checkboxes.or'), class: "govuk-checkboxes__divider" %>
             <% else %>
-              <%= tag.li class: "govuk-checkboxes__item" do %>
+              <%= tag.div class: "govuk-checkboxes__item" do %>
                 <%= cb_helper.checkbox_markup(item, index) %>
 
-                <% if item[:conditional] %>
-                  <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
-                <% end %>
-
                 <% if item[:items].present? %>
-                  <%= tag.ul id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
+                  <%= tag.div id: "#{id}-nested-#{index}", class: "govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
                     <% item[:items].each_with_index do |nested_item, nested_index| %>
-                      <%= tag.li class: "govuk-checkboxes__item" do %>
+                      <%= tag.div class: "govuk-checkboxes__item" do %>
                         <%= cb_helper.checkbox_markup(nested_item, "#{index}-#{nested_index}") %>
                       <% end %>
                     <% end %>
                   <% end %>
                 <% end %>
               <% end %>
+
+              <% if item[:conditional] %>
+                <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
+              <% end %>
+
             <% end %>
           <% end %>
         <% end %>
