@@ -15,7 +15,7 @@ describe('Checkboxes component', function () {
         '<span id="checkboxes-1ac8e5cf-hint" class="govuk-hint">Select all that apply.</span>' +
         '<div class="govuk-checkboxes" data-nested="true">' +
            '<div class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-track-action="favourite-color" data-track-label="red" data-track-value="1" data-track-options=\'{"dimension28": "wubbalubbadubdub","dimension29": "Pickle Rick"}\' data-test-exclusive>' +
+              '<input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-test-exclusive>' +
               '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0">Red</label>' +
               '<div id="checkboxes-1ac8e5cf-nested-0" class="govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-0">' +
                 '<div class="govuk-checkboxes__item">' +
@@ -29,7 +29,7 @@ describe('Checkboxes component', function () {
               '</div>' +
            '</div>' +
            '<div class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-uncheck-track-category="unselectedFavouriteColour" data-track-action="favourite-color" data-track-label="blue" data-track-value="2" data-track-options=\'{"dimension28":"Get schwifty","dimension29":"Squanch"}\' data-test-exclusive>' +
+              '<input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-test-exclusive>' +
               '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1">Blue</label>' +
               '<div id="checkboxes-1ac8e5cf-nested-1" class="govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-1">' +
                 '<div class="govuk-checkboxes__item">' +
@@ -71,14 +71,6 @@ describe('Checkboxes component', function () {
     $nonExclusiveOptions = $checkboxesWrapper.find('input[type=checkbox][data-behaviour="exclusive"]')
     expectedRedOptions = { label: 'red', value: '1', dimension28: 'wubbalubbadubdub', dimension29: 'Pickle Rick' }
     expectedBlueOptions = { label: 'blue', value: '2', dimension28: 'Get schwifty', dimension29: 'Squanch' }
-
-    spyOn(GOVUK.analytics, 'trackEvent')
-  })
-
-  afterEach(function () {
-    if (GOVUK.analytics.trackEvent.calls) {
-      GOVUK.analytics.trackEvent.calls.reset()
-    }
   })
 
   it('checking a parent checkbox checks all its children', function () {
@@ -108,60 +100,6 @@ describe('Checkboxes component', function () {
     expect($('#checkboxes-1ac8e5cf-0-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing')
     expect($('#checkboxes-1ac8e5cf-1-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing2')
     expect($('#checkboxes-1ac8e5cf-0.govuk-checkboxes__input').attr('aria-controls')).toBe(undefined)
-  })
-
-  it('fires a Google analytics event when it is checked', function () {
-    var $checkbox = $checkboxesWrapper.find(":input[value='red']")
-    $checkbox.trigger('click')
-    expect($checkbox.is(':checked')).toBe(true)
-
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('choseFavouriteColour', 'favourite-color', expectedRedOptions)
-  })
-
-  it('fires a Google analytics event when it is unchecked and there is no uncheck track category', function () {
-    var $checkbox = $checkboxesWrapper.find(":input[value='red']")
-    $checkbox.trigger('click')
-    expect($checkbox.is(':checked')).toBe(true)
-
-    if (GOVUK.analytics.trackEvent.calls) {
-      GOVUK.analytics.trackEvent.calls.reset()
-    }
-
-    $checkbox.trigger('click')
-    expect($checkbox.is(':checked')).toBe(false)
-
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('choseFavouriteColour', 'favourite-color', expectedRedOptions)
-  })
-
-  it('fires a Google analytics event when it is unchecked and there is an uncheck track category', function () {
-    var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-    $checkbox.trigger('click')
-    expect($checkbox.is(':checked')).toBe(true)
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('choseFavouriteColour', 'favourite-color', expectedBlueOptions)
-
-    $checkbox.trigger('click')
-    expect($checkbox.is(':checked')).toBe(false)
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('choseFavouriteColour', 'favourite-color', expectedBlueOptions)
-  })
-
-  describe('controlling Google analytics track event when a checkbox is changed', function () {
-    it('fires a Google analytics event if suppressAnalytics not passed to the change event', function () {
-      var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      window.GOVUK.triggerEvent($checkbox[0], 'change')
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
-    })
-
-    it('fires a Google analytics event if suppressAnalytics is set to false and passed to the change event', function () {
-      var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      window.GOVUK.triggerEvent($checkbox[0], 'change', { detail: { suppressAnalytics: false } })
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
-    })
-
-    it('does not fire a Google analytics event if suppressAnalytics is passed to the change event', function () {
-      var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      window.GOVUK.triggerEvent($checkbox[0], 'change', { detail: { suppressAnalytics: true } })
-      expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
-    })
   })
 
   describe('with exclusive option', function () {
