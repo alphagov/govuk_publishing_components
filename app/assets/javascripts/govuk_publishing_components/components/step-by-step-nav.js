@@ -43,8 +43,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$module.sessionStoreLink = this.$module.sessionStoreLink + '_' + this.$module.uniqueId
     }
 
-    var stepNavTracker = new this.StepNavTracker(this.$module.uniqueId, this.$module.totalSteps, this.$module.totalLinks)
-
     this.getTextForInsertedElements()
     this.addButtonstoSteps()
     this.addShowHideAllButton()
@@ -54,9 +52,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.ensureOnlyOneActiveLink()
     this.showPreviouslyOpenedSteps()
 
-    this.bindToggleForSteps(stepNavTracker)
-    this.bindToggleShowHideAllButton(stepNavTracker)
-    this.bindComponentLinkClicks(stepNavTracker)
+    this.bindToggleForSteps()
+    this.bindToggleShowHideAllButton()
+    this.bindComponentLinkClicks()
   }
 
   Gemstepnav.prototype.getTextForInsertedElements = function () {
@@ -207,7 +205,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.bindToggleForSteps = function (stepNavTracker) {
+  Gemstepnav.prototype.bindToggleForSteps = function () {
     var that = this
     var togglePanels = this.$module.querySelectorAll('.js-toggle-panel')
 
@@ -215,11 +213,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       togglePanels[i].addEventListener('click', function (event) {
         var stepView = new that.StepView(this.parentNode, that.$module)
         stepView.toggle()
-
-        var stepIsOptional = this.parentNode.hasAttribute('data-optional')
-        var toggleClick = new that.StepToggleClick(event, stepView, stepNavTracker, stepIsOptional, that.$module.stepNavSize)
-        toggleClick.trackClick()
-
         that.setShowHideAllText()
         that.rememberStepState(this.parentNode)
       })
@@ -246,16 +239,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  // tracking click events on links in step content
-  Gemstepnav.prototype.bindComponentLinkClicks = function (stepNavTracker) {
+  Gemstepnav.prototype.bindComponentLinkClicks = function () {
     var jsLinks = this.$module.querySelectorAll('.js-link')
     var that = this
 
     for (var i = 0; i < jsLinks.length; i++) {
       jsLinks[i].addEventListener('click', function (event) {
         var dataPosition = this.getAttribute('data-position')
-        var linkClick = new that.ComponentLinkClick(event, stepNavTracker, dataPosition, that.$module.stepNavSize)
-        linkClick.trackClick()
 
         if (this.getAttribute('rel') !== 'external') {
           that.saveToSessionStorage(that.$module.sessionStoreLink, dataPosition)
@@ -353,17 +343,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.bindToggleShowHideAllButton = function (stepNavTracker) {
+  Gemstepnav.prototype.bindToggleShowHideAllButton = function () {
     var that = this
 
     this.$module.showOrHideAllButton.addEventListener('click', function (event) {
       var textContent = this.textContent || this.innerText
       var shouldShowAll = textContent === that.$module.actions.showAllText
-
-      // Fire GA click tracking
-      stepNavTracker.trackClick('pageElementInteraction', (shouldShowAll ? 'stepNavAllShown' : 'stepNavAllHidden'), {
-        label: (shouldShowAll ? that.$module.actions.showAllText : that.$module.actions.hideAllText) + ': ' + that.$module.stepNavSize
-      })
 
       that.setAllStepsShownState(shouldShowAll)
       that.$module.showOrHideAllButton.setAttribute('aria-expanded', shouldShowAll)
@@ -445,28 +430,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.StepToggleClick = function (event, stepView, stepNavTracker, stepIsOptional, stepNavSize) {
+  Gemstepnav.prototype.StepToggleClick = function (event, stepView, stepIsOptional, stepNavSize) {
     this.target = event.target
     this.stepIsOptional = stepIsOptional
     this.stepNavSize = stepNavSize
 
-    this.trackClick = function () {
-      var trackingOptions = { label: this.trackingLabel(), dimension28: stepView.numberOfContentItems().toString() }
-      stepNavTracker.trackClick('pageElementInteraction', this.trackingAction(), trackingOptions)
-    }
-
-    this.trackingLabel = function () {
-      var clickedNearbyToggle = this.target.closest('.js-step').querySelectorAll('.js-toggle-panel')[0]
-      return clickedNearbyToggle.getAttribute('data-position') + ' - ' + stepView.title + ' - ' + this.locateClickElement() + ': ' + this.stepNavSize + this.isOptional()
-    }
-
     // returns index of the clicked step in the overall number of steps
     this.stepIndex = function () { // eslint-disable-line no-unused-vars
       return this.$module.steps.index(stepView.element) + 1
-    }
-
-    this.trackingAction = function () {
-      return (stepView.isHidden() ? 'stepNavHidden' : 'stepNavShown')
     }
 
     this.locateClickElement = function () {
@@ -493,43 +464,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.isOptional = function () {
       return (this.stepIsOptional ? ' ; optional' : '')
-    }
-  }
-
-  Gemstepnav.prototype.ComponentLinkClick = function (event, stepNavTracker, linkPosition, size) {
-    this.size = size
-    this.target = event.target
-
-    this.trackClick = function () {
-      var trackingOptions = { label: this.target.getAttribute('href') + ' : ' + this.size }
-      var dimension28 = this.target.closest('.gem-c-step-nav__list').getAttribute('data-length')
-
-      if (dimension28) {
-        trackingOptions.dimension28 = dimension28
-      }
-
-      stepNavTracker.trackClick('stepNavLinkClicked', linkPosition, trackingOptions)
-    }
-  }
-
-  // A helper that sends a custom event request to Google Analytics if
-  // the GOVUK module is setup
-  Gemstepnav.prototype.StepNavTracker = function (uniqueId, totalSteps, totalLinks) {
-    this.totalSteps = totalSteps
-    this.totalLinks = totalLinks
-    this.uniqueId = uniqueId
-
-    this.trackClick = function (category, action, options) {
-      // dimension26 records the total number of expand/collapse steps in this step nav
-      // dimension27 records the total number of links in this step nav
-      // dimension28 records the number of links in the step that was shown/hidden (handled in click event)
-      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-        options = options || {}
-        options.dimension26 = options.dimension26 || this.totalSteps.toString()
-        options.dimension27 = options.dimension27 || this.totalLinks.toString()
-        options.dimension96 = options.dimension96 || this.uniqueId
-        window.GOVUK.analytics.trackEvent(category, action, options)
-      }
     }
   }
 

@@ -122,29 +122,6 @@ examples:
           ]
         },
       ]
-  with_unique_tracking:
-    description: |
-      In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Universal Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav page.
-
-      This includes show/hide all, show/hide step and any link clicks.
-    data:
-      tracking_id: 'this-is-the-tracking-id'
-      steps: [
-        {
-          title: 'Unique tracking id',
-          contents: [
-            {
-              type: 'list',
-              contents: [
-                {
-                  href: '#',
-                  text: 'This is a link'
-                }
-              ]
-            }
-          ]
-        }
-      ]
   with_a_different_heading_level:
     description: Steps have a `h2` by default, but this can be changed. The heading level does not change any styling.
     data:
