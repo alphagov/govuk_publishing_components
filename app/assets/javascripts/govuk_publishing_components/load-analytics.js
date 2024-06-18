@@ -1,39 +1,11 @@
 //= require govuk_publishing_components/analytics
 //= require govuk_publishing_components/analytics-ga4
-//= require govuk_publishing_components/analytics/linked-domains
 //= require govuk_publishing_components/domain-config
 
 window.GOVUK.loadAnalytics = {
   loadExtraDomains: function () {
     if (Array.isArray(window.GOVUK.vars.extraDomains)) {
       window.GOVUK.vars.domains = window.GOVUK.vars.domains.concat(window.GOVUK.vars.extraDomains)
-    }
-  },
-
-  // For Universal Analytics' cross domain tracking. linkedDomains is defined by the require statement at the top of the file.
-  linkedDomains: window.GOVUK.analytics.linkedDomains,
-
-  loadUa: function (currentDomain) {
-    currentDomain = currentDomain || window.location.hostname
-
-    // Universal Analytics variables
-    window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}
-    window.GOVUK.analyticsVars.primaryLinkedDomains = ['account.gov.uk']
-    window.GOVUK.analyticsVars.linkedDomains = this.linkedDomains
-    window.GOVUK.analyticsVars.gaProperty = 'UA-UNSET'
-    window.GOVUK.analyticsVars.gaPropertyCrossDomain = 'UA-UNSET'
-
-    for (var i = 0; i < window.GOVUK.vars.domains.length; i++) {
-      var current = window.GOVUK.vars.domains[i]
-      if (this.arrayContains(currentDomain, current.domains)) {
-        window.GOVUK.analyticsVars.gaProperty = current.gaProperty
-        window.GOVUK.analyticsVars.gaPropertyCrossDomain = current.gaPropertyCrossDomain
-        break
-      }
-    }
-    // Load universal analytics
-    if (typeof window.GOVUK.analyticsInit !== 'undefined') {
-      window.GOVUK.analyticsInit()
     }
   },
 
