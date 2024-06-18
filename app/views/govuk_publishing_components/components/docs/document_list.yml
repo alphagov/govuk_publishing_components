@@ -13,6 +13,7 @@ accessibility_criteria: |
   The component must:
 
   * inform the user how many items are in the list
+  * ensure dashes before each list item are hidden from screen readers
 shared_accessibility_criteria:
   - link
 uses_component_wrapper_helper: true

@@ -131,10 +131,13 @@
   padding-top: govuk-spacing(2);
 
   &::before {
-    content: "—";
+    content: "";
     position: absolute;
     left: 0;
+    width: govuk-spacing(3);
     overflow: hidden;
+    border-top: solid 1px $govuk-text-colour;
+    transform: translate(0, 0.5em);
   }
 
   @include govuk-media-query($from: desktop) {
