@@ -6,12 +6,6 @@ describe('A toggle module', function () {
 
   var element
 
-  afterEach(function () {
-    if (GOVUK.analytics.trackEvent.calls) {
-      GOVUK.analytics.trackEvent.calls.reset()
-    }
-  })
-
   describe('when starting', function () {
     beforeEach(function () {
       var html =
@@ -34,8 +28,6 @@ describe('A toggle module', function () {
 
   describe('when clicking a toggle', function () {
     beforeEach(function () {
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var html =
         '<div>' +
           '<a href="#" class="my-toggle" data-expanded="false" data-controls="target" data-toggled-text="Show fewer">Toggle</a>' +
@@ -66,59 +58,6 @@ describe('A toggle module', function () {
       element.find('.my-toggle')[0].click()
       expect(element.find('.my-toggle').attr('data-toggled-text')).toBe('Show fewer')
       expect(element.find('.my-toggle').text()).toBe('Toggle')
-    })
-
-    it('does not track when element is not trackable', function () {
-      expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
-    })
-  })
-
-  describe('when clicking a toggle that is tracked', function () {
-    beforeEach(function () {
-      spyOn(GOVUK.analytics, 'trackEvent')
-
-      var html =
-        '<div>' +
-          '<a href="#" class="my-toggle" data-expanded="false" data-controls="target" data-track-category="category" data-track-action="action" data-toggled-text="Show fewer">Toggle</a>' +
-          '<div id="target" class="js-hidden">Target</div>' +
-        '</div>'
-      element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
-      element.find('.my-toggle')[0].click()
-    })
-
-    it('tracks the toggle click correctly when data-toggle-text is present', function () {
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', Object({ label: 'Toggle' }))
-    })
-
-    it('tracks the toggle click correctly when collapsing and expanding and data-toggle-text is present', function () {
-      element.find('.my-toggle')[0].click()
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', Object({ label: 'Show fewer' }))
-      element.find('.my-toggle')[0].click()
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', Object({ label: 'Toggle' }))
-    })
-  })
-
-  describe('when clicking a toggle that is tracked', function () {
-    beforeEach(function () {
-      spyOn(GOVUK.analytics, 'trackEvent')
-
-      var html =
-        '<div>' +
-          '<a href="#" class="my-toggle" data-expanded="false" data-controls="target" data-track-category="category" data-track-action="action">Original Link Text</a>' +
-          '<div id="target" class="js-hidden">Target</div>' +
-        '</div>'
-      element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
-      element.find('.my-toggle')[0].click()
-    })
-
-    it('tracks the toggle click correctly when expanding and data-toggle-text is not present ', function () {
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', Object({ label: 'Original Link Text' }))
-      element.find('.my-toggle')[0].click()
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', Object({ label: 'Original Link Text' }))
     })
   })
 
