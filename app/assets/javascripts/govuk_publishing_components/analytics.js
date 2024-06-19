@@ -19,5 +19,4 @@
 //= require ./analytics/auto-scroll-tracker
 //= require ./analytics/explicit-cross-domain-links
 //= require ./analytics/track-click
-//= require ./analytics/track-select-change
 //= require ./analytics/cross-domain-tracking
