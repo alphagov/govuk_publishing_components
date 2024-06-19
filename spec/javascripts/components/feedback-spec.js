@@ -13,17 +13,17 @@ describe('Feedback component', function () {
             '<h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>' +
             '<ul class="gem-c-feedback__option-list">' +
               '<li class="gem-c-feedback__option-list-item govuk-visually-hidden" style="display: none" hidden>' +
-                '<a class="gem-c-feedback__prompt-link" data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" role="button" style="display: none" hidden="hidden" aria-hidden="true" href="/contact/govuk">' +
+                '<a class="gem-c-feedback__prompt-link" role="button" style="display: none" hidden="hidden" aria-hidden="true" href="/contact/govuk">' +
                   'Maybe' +
                 '</a>' +
               '</li>' +
               '<li class="gem-c-feedback__option-list-item">' +
-                '<button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">' +
+                '<button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful">' +
                   'Yes <span class="govuk-visually-hidden">this page is useful</span>' +
                 '</button>' +
               '</li>' +
               '<li class="gem-c-feedback__option-list-item">' +
-                '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">' +
+                '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" aria-controls="page-is-not-useful" aria-expanded="false">' +
                   'No <span class="govuk-visually-hidden">this page is not useful</span>' +
                 '</button>' +
               '</li>' +
@@ -34,14 +34,14 @@ describe('Feedback component', function () {
           'Thank you for your feedback' +
         '</div>' +
         '<div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" hidden>' +
-          '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">' +
+          '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" aria-controls="something-is-wrong" aria-expanded="false">' +
             'Report a problem with this page' +
           '</button>' +
         '</div>' +
       '</div>' +
     '</div>' +
 
-    '<form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form" method="post" hidden>' +
+    '<form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form" method="post" hidden>' +
       '<div class="govuk-grid-row">' +
         '<div class="govuk-grid-column-two-thirds">' +
           '<div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-errors" tabindex="-1" hidden></div>' +
@@ -69,7 +69,7 @@ describe('Feedback component', function () {
 
           '<button class="gem-c-button govuk-button" type="submit">Send</button>' +
 
-          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Close Form" aria-controls="something-is-wrong" aria-expanded="true">' +
+          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form" aria-controls="something-is-wrong" aria-expanded="true">' +
             'Cancel' +
           '</button>' +
 
@@ -77,7 +77,7 @@ describe('Feedback component', function () {
       '</div>' +
     '</form>' +
 
-    '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form" data-track-category="yesNoFeedbackForm" data-track-action="Send Form" method="post">' +
+    '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form" method="post">' +
       '<div class="govuk-grid-row">' +
         '<div class="govuk-grid-column-two-thirds" id="survey-wrapper">' +
           '<div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden></div>' +
@@ -94,7 +94,7 @@ describe('Feedback component', function () {
 
           '<button class="gem-c-button govuk-button" type="submit">Send me the survey</button>' +
 
-          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose" aria-controls="page-is-not-useful" aria-expanded="true" hidden>' +
+          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form" aria-controls="page-is-not-useful" aria-expanded="true" hidden>' +
             'Cancel' +
           '</button>' +
 
@@ -106,13 +106,6 @@ describe('Feedback component', function () {
 
   beforeEach(function () {
     window.setFixtures(FIXTURE)
-    spyOn(GOVUK.analytics, 'trackEvent')
-  })
-
-  afterEach(function () {
-    if (GOVUK.analytics.trackEvent.calls) {
-      GOVUK.analytics.trackEvent.calls.reset()
-    }
   })
 
   it('hides the forms', function () {
@@ -161,13 +154,6 @@ describe('Feedback component', function () {
 
       expect($('.js-prompt-questions').prop('hidden')).toBe(true)
     })
-
-    it('triggers a Google Analytics event', function () {
-      loadFeedbackComponent()
-      $('.js-page-is-useful')[0].click()
-
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffYesClick')
-    })
   })
 
   describe('clicking the "page was not useful" link', function () {
@@ -200,13 +186,6 @@ describe('Feedback component', function () {
       $('.js-page-is-not-useful')[0].click()
 
       expect($input.focus).toHaveBeenCalled()
-    })
-
-    it('triggers a Google Analytics event', function () {
-      loadFeedbackComponent()
-      $('.js-page-is-not-useful')[0].click()
-
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffNoClick')
     })
 
     it('has the page path in the survey', function () {
@@ -265,13 +244,6 @@ describe('Feedback component', function () {
 
       expect($input.focus).toHaveBeenCalled()
     })
-
-    it('triggers a Google Analytics event', function () {
-      loadFeedbackComponent()
-      $('.js-something-is-wrong')[0].click()
-
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Open Form')
-    })
   })
 
   describe('Clicking the close link in the "something is wrong" form', function () {
@@ -295,12 +267,6 @@ describe('Feedback component', function () {
 
       expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false')
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
-    })
-
-    it('triggers a Google Analytics event', function () {
-      $('#something-is-wrong .js-close-form')[0].click()
-
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Close Form')
     })
   })
 
@@ -326,12 +292,6 @@ describe('Feedback component', function () {
       expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false')
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
     })
-
-    it('triggers a Google Analytics event', function () {
-      $('#page-is-not-useful .js-close-form')[0].click()
-
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffFormClose')
-    })
   })
 
   // this check prevents these tests being run if in IE11 or below
@@ -344,19 +304,6 @@ describe('Feedback component', function () {
 
       afterEach(function () {
         jasmine.Ajax.uninstall()
-      })
-
-      it('triggers a Google Analytics event', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'text/plain',
-          responseText: '{ "message": "ok" }'
-        })
-
-        expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Send Form')
       })
 
       // note that this test will fail if the jasmine:browser
@@ -444,19 +391,6 @@ describe('Feedback component', function () {
 
       afterEach(function () {
         jasmine.Ajax.uninstall()
-      })
-
-      it('triggers a Google Analytics event', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'text/plain',
-          responseText: '{ "message": "ok" }'
-        })
-
-        expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'Send Form')
       })
 
       it('displays a success message', function () {
