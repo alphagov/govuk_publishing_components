@@ -135,15 +135,9 @@ describe('The _layout_header_one_login', function () {
 
     var $element = document.querySelector('[data-module="cross-service-header"]')
     thisModule = new GOVUK.Modules.CrossServiceHeader($element)
-
-    spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
-    if (GOVUK.analytics.trackEvent.calls) {
-      GOVUK.analytics.trackEvent.calls.reset()
-    }
-
     document.body.removeChild(container)
   })
 
