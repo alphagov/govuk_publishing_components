@@ -16,7 +16,7 @@ describe('Accordion component', function () {
       '</div>' +
       '<div class="govuk-accordion__section">' +
         '<div class="govuk-accordion__section-header">' +
-          '<h2 class="govuk-accordion__section-heading" data-track-count="accordionSection" data-track-options="{&quot;dimension114&quot;:1}">' +
+          '<h2 class="govuk-accordion__section-heading">' +
             '<button type="button" class="govuk-accordion__section-button" aria-expanded="false">' +
               '<span class="govuk-accordion__section-heading-text">' +
                 'Accordion Section Heading Text' +
@@ -52,8 +52,6 @@ describe('Accordion component', function () {
   }
 
   beforeEach(function () {
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     container = document.createElement('div')
     container.innerHTML = html
     document.body.appendChild(container)
@@ -62,9 +60,6 @@ describe('Accordion component', function () {
 
   afterEach(function () {
     document.body.removeChild(container)
-    if (GOVUK.analytics.trackEvent.calls) {
-      GOVUK.analytics.trackEvent.calls.reset()
-    }
   })
 
   it('does not initialise if the accordion from govuk-frontend has not initialised', function () {
@@ -75,56 +70,16 @@ describe('Accordion component', function () {
     expect(accordion.querySelector('.govuk-accordion__controls button')).not.toHaveClass('gem-c-accordion__show-all')
   })
 
-  it('applies custom attributes to click event if specified in section', function () {
-    accordion.setAttribute('data-track-sections', 'true')
-
-    startAccordion()
-    document.querySelector('.govuk-accordion__section-header button').click()
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'accordionOpened', { transport: 'beacon', label: 'Accordion Section Heading Text', dimension114: 1 })
-  })
-
-  it('applies custom attributes to click event if specified in show/hide section', function () {
-    var object = {
-      'track-options': JSON.stringify({
-        dimensionExample: 'Example value'
-      })
-    }
-
-    accordion.setAttribute('data-track-show-all-clicks', 'true')
-    accordion.setAttribute('data-show-all-attributes', JSON.stringify(object))
-
-    startAccordion()
-    document.querySelector('.gem-c-accordion__show-all').click()
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'accordionClosed', Object({ transport: 'beacon', label: 'Hide all sections', dimensionExample: 'Example value' }))
-  })
-
-  it('applies given data attributes to the show/hide all link', function () {
-    var object = {
-      ui: {
-        type: 'type value',
-        section: 'section value'
-      }
-    }
-    var wrappingObject = {
-      'custom-data-attr-event-name': 'example',
-      'show-all-attributes': JSON.stringify(object),
-      'track-options': JSON.stringify({
-        dimensionExample: 'Example value'
-      })
-    }
+  it('applies GA4 data attributes to the show/hide all link', function () {
     var ga4Object = {
       event_name: 'select_content',
       type: 'accordion',
       index_section: 0,
       index_section_count: 3
     }
-    accordion.setAttribute('data-show-all-attributes', JSON.stringify(wrappingObject))
     accordion.setAttribute('data-module', accordion.getAttribute('data-module') + ' ga4-event-tracker')
     startAccordion()
 
-    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-custom-data-attr-event-name')).toEqual('example')
-    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-show-all-attributes')).toEqual(JSON.stringify(object))
     expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-ga4-event')).toEqual(JSON.stringify(ga4Object))
-    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-track-options')).toEqual(JSON.stringify({ dimensionExample: 'Example value' }))
   })
 })
