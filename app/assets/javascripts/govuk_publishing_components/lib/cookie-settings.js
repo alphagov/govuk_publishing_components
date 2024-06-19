@@ -77,22 +77,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
     }
 
-    this.fireAnalyticsEvent(options)
     this.showConfirmationMessage()
     return false
-  }
-
-  CookieSettings.prototype.fireAnalyticsEvent = function (consent) {
-    var eventLabel = ''
-
-    for (var option in consent) {
-      var optionValue = consent[option] ? 'yes' : 'no'
-      eventLabel += option + '-' + optionValue + ' '
-    }
-
-    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-      window.GOVUK.analytics.trackEvent('cookieSettings', 'Save changes', { label: eventLabel })
-    }
   }
 
   CookieSettings.prototype.showConfirmationMessage = function () {
