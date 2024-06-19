@@ -19,12 +19,7 @@ module GovukPublishingComponents
       end
 
       def data
-        @data_attributes[:track_label] = base_path
-        # data-action for tracking should have the format of e.g. "Unsubscribe-button-top", or "Subscribe-button-bottom"
-        # when button_location is not present data-action will fall back to "Unsubscribe-button"/"Subscribe-button"
-        @data_attributes[:track_action] = [button_type, "button", button_location].compact.join("-")
         @data_attributes[:module] = "single-page-notification-button" if js_enhancement
-        @data_attributes[:track_category] = "Single-page-notification-button"
         # This attribute is passed through to the personalisation API to ensure when a new button is returned from the API, it has the same button_location
         @data_attributes[:button_location] = button_location
         @data_attributes[:button_text_subscribe] = @button_text_subscribe

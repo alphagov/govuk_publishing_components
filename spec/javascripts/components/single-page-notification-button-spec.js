@@ -52,52 +52,6 @@ describe('Single page notification component', function () {
     expect(button).toHaveClass('gem-c-single-page-notification-button--visible')
   })
 
-  it('renders "Subscribe-button" tracking attribute value if "active" in the API response is false', function () {
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: '{\n    "base_path": "/current-page-path",\n    "active": false\n }'
-    })
-
-    var buttonTrackingAttribute = document.querySelector('form.gem-c-single-page-notification-button').getAttribute('data-track-action')
-    expect(buttonTrackingAttribute).toBe('Subscribe-button')
-  })
-
-  it('renders "Unsubscribe-button" tracking attribute value if "active" in the API response is true', function () {
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: '{\n    "base_path": "/current-page-path",\n    "active": true\n }'
-    })
-
-    var buttonTrackingAttribute = document.querySelector('form.gem-c-single-page-notification-button').getAttribute('data-track-action')
-    expect(buttonTrackingAttribute).toBe('Unsubscribe-button')
-  })
-
-  it('renders button location as part of the tracking attribute value when API response is received if "data-button-location" is set', function () {
-    FIXTURE =
-    '<form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/  single-page/new" method="POST" data-module="single-page-notification-button" data-button-location="top">' +
-        '<input type="hidden" name="base_path" value="/current-page-path">' +
-        '<button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>' +
-    '</form>'
-    window.setFixtures(FIXTURE)
-
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: '{\n    "base_path": "/current-page-path",\n    "active": false\n }'
-    })
-
-    var buttonTrackingAttribute = document.querySelector('form.gem-c-single-page-notification-button').getAttribute('data-track-action')
-    expect(buttonTrackingAttribute).toBe('Subscribe-button-top')
-  })
-
   it('renders custom subscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', function () {
     FIXTURE =
     '<form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/  single-page/new" method="POST" data-module="single-page-notification-button" data-button-text-subscribe="Start getting emails about this stuff" data-button-text-unsubscribe="Stop getting emails about this stuff">' +
