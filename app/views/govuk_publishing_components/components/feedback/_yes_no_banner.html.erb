@@ -37,10 +37,6 @@
             <% # Maybe button exists only to try and capture clicks by bots %>
             <%= link_to "/contact/govuk", {
               class: 'gem-c-feedback__prompt-link',
-              data: {
-                'track-category' => 'yesNoFeedbackForm',
-                'track-action' => 'ffMaybeClick'
-              },
               role: 'button',
               hidden: 'hidden',
               'aria-hidden': 'true',
@@ -52,8 +48,6 @@
             <%= tag.button(
               class: "govuk-button gem-c-feedback__prompt-link js-page-is-useful",
               data: {
-                track_category: "yesNoFeedbackForm",
-                track_action: "ffYesClick",
                 ga4_event: ga4_yes_button_event,
               }) do %>
               <%= t("components.feedback.yes") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_useful") %></span>
@@ -68,8 +62,6 @@
                 expanded: "false",
               },
               data: {
-                track_category: "yesNoFeedbackForm",
-                track_action: "ffNoClick",
                 ga4_event: ga4_no_button_event,
               }) do %>
               <%= t("components.feedback.no") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful") %></span>
@@ -91,8 +83,6 @@
           controls: "something-is-wrong"
         },
         data: {
-          track_category: "Onsite Feedback",
-          track_action: "GOV-UK Open Form",
           ga4_event: ga4_problem_button_event,
         }) do %>
         <%= t("components.feedback.something_wrong") %>
