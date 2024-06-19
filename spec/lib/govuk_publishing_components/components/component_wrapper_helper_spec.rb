@@ -11,6 +11,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         },
         role: "navigation",
         lang: "en",
+        open: true,
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -23,6 +24,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         },
         role: "navigation",
         lang: "en",
+        open: true,
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -165,6 +167,32 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       error = "lang attribute (klingon) is not recognised"
       expect {
         GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(lang: "klingon")
+      }.to raise_error(ArgumentError, error)
+    end
+
+    it "accepts valid open attribute value" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: true)
+      expected = {
+        open: true,
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+    end
+
+    it "can set an open attribute, overriding a passed value" do
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: true)
+      helper.set_open(false)
+      expect(helper.all_attributes[:open]).to eql(nil)
+    end
+
+    it "does not include an open attribute if the option is false" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: false)
+      expect(component_helper.all_attributes).to eql({})
+    end
+
+    it "does not accept an invalid open value" do
+      error = "open attribute (false) is not recognised"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: "false")
       }.to raise_error(ArgumentError, error)
     end
   end
