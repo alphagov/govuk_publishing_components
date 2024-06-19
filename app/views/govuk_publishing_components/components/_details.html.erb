@@ -9,15 +9,7 @@
   ga4_attributes ||= {}
 
   margin_bottom ||= 3
-  css_classes = %w(gem-c-details govuk-details)
-  css_classes << shared_helper.get_margin_bottom
 
-  details_data_attributes = {}
-  details_data_attributes[:module] = 'gem-details'
-  details_data_attributes[:module] = 'gem-details ga4-event-tracker' unless disable_ga4
-
-  data_attributes ||= {}
-  data_attributes[:details_track_click] = ''
   unless disable_ga4
     ga4_event = {
       event_name: "select_content",
@@ -27,13 +19,19 @@
       index_section: @ga4[:index_section],
     }
     ga4_event.merge!(ga4_attributes)
-    data_attributes[:ga4_event] = ga4_event
   end
 
   summary_aria_attributes ||= {}
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-details govuk-details")
+  component_helper.add_class(shared_helper.get_margin_bottom)
+  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
+  component_helper.add_data_attribute({ ga4_event: ga4_event }) unless disable_ga4
+  component_helper.set_open(open)
 %>
-<%= tag.details class: css_classes, data: details_data_attributes, open: open do %>
-  <%= tag.summary class: "govuk-details__summary", data: data_attributes, aria: summary_aria_attributes do %>
+<%= tag.details(**component_helper.all_attributes) do %>
+  <%= tag.summary class: "govuk-details__summary", aria: summary_aria_attributes do %>
     <span class="govuk-details__summary-text" <% unless disable_ga4 %>data-ga4-expandable<% end %>>
       <%= title %>
     </span>
