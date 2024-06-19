@@ -8,10 +8,7 @@
   id ||= "default-id-#{SecureRandom.hex(4)}"
   items ||= []
   anchor_navigation ||= false
-  track_show_all_clicks ||= false
-  track_sections ||= false
   disable_ga4 ||= false
-  data_attributes_show_all ||= nil
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.set_id(id)
@@ -22,9 +19,6 @@
   component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
   component_helper.add_data_attribute({ ga4_expandable: "" }) unless disable_ga4
   component_helper.add_data_attribute({ anchor_navigation: anchor_navigation }) if anchor_navigation
-  component_helper.add_data_attribute({ track_show_all_clicks: track_show_all_clicks }) if track_show_all_clicks
-  component_helper.add_data_attribute({ track_sections: track_sections }) if track_sections
-  component_helper.add_data_attribute({ show_all_attributes: data_attributes_show_all }) if data_attributes_show_all
   component_helper.add_data_attribute(accordion_helper.apply_translations)
 %>
 <% if items.any? %>
@@ -51,8 +45,7 @@
           }.to_json
 
           # These attributes have been created separately from the item[:data_attributes]
-          # object in order to keep them from colliding with GA4 event tracking and UA
-          # tracking attributes
+          # object in order to keep them from colliding with GA4 event tracking attributes
           ga4_link_data_attributes = {}
           ga4_link_data_attributes[:module] = "ga4-link-tracker"
           ga4_link_data_attributes[:ga4_track_links_only] = ""

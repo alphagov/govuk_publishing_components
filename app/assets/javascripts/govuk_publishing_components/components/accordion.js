@@ -35,30 +35,6 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
       this.openByAnchorOnLoad()
       this.addEventListenersForAnchors()
     }
-    // Feature flag for "Show all sections" GA click event tracking
-    if (this.$module.getAttribute('data-track-show-all-clicks') === 'true') {
-      this.addAccordionOpenAllTracking()
-    }
-    // Feature flag for each section GA click event tracking
-    if (this.$module.getAttribute('data-track-sections') === 'true') {
-      this.addEventListenerSections()
-    }
-
-    // look for data attributes to put onto the 'show/hide all' link
-    var showAllAttributes = this.$module.getAttribute('data-show-all-attributes')
-    var showAll
-    if (showAllAttributes) {
-      try {
-        showAll = this.$module.querySelector(this.showAllControls)
-        var values = JSON.parse(showAllAttributes)
-        var keys = Object.keys(values)
-        for (var i = 0; i < keys.length; i++) {
-          showAll.setAttribute('data-' + keys[i], values[keys[i]])
-        }
-      } catch (e) {
-        console.error('Could not read accordion data attributes error: ' + e.message, window.location)
-      }
-    }
 
     // if GA4 is enabled, set attributes on 'show all sections' for tracking using ga4-event-tracker
     var dataModule = this.$module.getAttribute('data-module')
@@ -66,7 +42,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     if (isGa4Enabled) {
       var indexTotal = this.$module.querySelectorAll('.govuk-accordion__section').length
       var showAllAttributesGa4 = { event_name: 'select_content', type: 'accordion', index_section: 0, index_section_count: indexTotal }
-      showAll = this.$module.querySelector(this.showAllControls)
+      var showAll = this.$module.querySelector(this.showAllControls)
       showAll.setAttribute('data-ga4-event', JSON.stringify(showAllAttributesGa4))
     }
   }
@@ -123,60 +99,6 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
       return locales[key]
     } else if (this.$module.actions.locale) {
       return this.$module.actions.locale
-    }
-  }
-
-  // To track the Accordion's "Show all sections" / "Hide all sections" button click events and pass them to the GA event tracking
-  GemAccordion.prototype.addAccordionOpenAllTracking = function () {
-    this.$module.querySelector(this.showAllControls).addEventListener('click', function (event) {
-      var expanded = event.target.getAttribute('aria-expanded') === 'true'
-      var label = expanded ? 'Show all sections' : 'Hide all sections'
-      var action = expanded ? 'accordionOpened' : 'accordionClosed'
-      var options = { transport: 'beacon', label: label }
-
-      var extraOptions = event.target && event.target.getAttribute('data-track-options')
-
-      // this uses the same logic as track-click.js handleClick
-      // means we can add a custom dimensions on click
-      if (extraOptions) {
-        extraOptions = JSON.parse(extraOptions)
-        for (var k in extraOptions) options[k] = extraOptions[k]
-      }
-
-      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-        window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
-      }
-    })
-  }
-
-  GemAccordion.prototype.addEventListenerSections = function () {
-    var sections = this.$module.querySelectorAll(this.sectionButton)
-    for (var section of sections) {
-      section.addEventListener('click', this.addAccordionSectionTracking.bind(this, section))
-    }
-  }
-
-  // If the Accordion's sections are opened on click, then pass them to the GA event tracking
-  GemAccordion.prototype.addAccordionSectionTracking = function (section) {
-    var expanded = section.getAttribute('aria-expanded') === 'false'
-    var label = section.querySelector(this.headingText).textContent
-    var action = expanded ? 'accordionOpened' : 'accordionClosed'
-    var options = { transport: 'beacon', label: label }
-
-    // optional parameters are added to the parent
-    // heading not the button that is clicked
-    var extraOptions = section.parentElement && section.parentElement.getAttribute('data-track-options')
-
-    // this uses the same logic as track-click.js handleClick
-    // means we can add a custom dimensions on click
-    // (such as the index of the accordion on the page)
-    if (extraOptions) {
-      extraOptions = JSON.parse(extraOptions)
-      for (var k in extraOptions) options[k] = extraOptions[k]
-    }
-
-    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-      window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
     }
   }
 
