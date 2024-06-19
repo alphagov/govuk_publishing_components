@@ -12,7 +12,6 @@
   select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
 
   aria_describedby = { describedby: select_helper.describedby }
-  data_module = { module: "track-select-change" } unless select_helper.data_tracking?.eql?(false)
 %>
 <% if select_helper.options.any? && id && label %>
   <%= content_tag :div, class: select_helper.css_classes do %>
@@ -37,6 +36,6 @@
       } %>
     <% end %>
 
-    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_helper.select_classes, data: data_module, aria: aria_describedby %>
+    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_helper.select_classes, aria: aria_describedby %>
   <% end %>
 <% end %>
