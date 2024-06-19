@@ -234,19 +234,12 @@ describe "Checkboxes", type: :view do
           label: "Tracked",
           value: "tracked",
           data_attributes: {
-            track_category: "checkboxClicked",
-            track_label: "/news-and-communications",
-            track_options: {
-              dimension28: 2,
-              dimension29: "Tracked",
-            },
+            an_attribute: "some_value",
           },
         },
       ],
     )
-    assert_select ".govuk-checkboxes__input[data-track-category='checkboxClicked']"
-    assert_select ".govuk-checkboxes__input[data-track-label='/news-and-communications']"
-    assert_select ".govuk-checkboxes__input[data-track-options='{\"dimension28\":2,\"dimension29\":\"Tracked\"}']"
+    assert_select ".govuk-checkboxes__input[data-an-attribute='some_value']"
   end
 
   it "renders checkboxes with both aria-controls and other data attributes" do
@@ -258,20 +251,13 @@ describe "Checkboxes", type: :view do
           label: "Tracked",
           value: "tracked",
           data_attributes: {
-            track_category: "checkboxClicked",
-            track_label: "/news-and-communications",
-            track_options: {
-              dimension28: 2,
-              dimension29: "Tracked",
-            },
+            an_attribute: "some_value",
           },
           controls: "js-live-results",
         },
       ],
     )
-    assert_select ".govuk-checkboxes__input[data-track-category='checkboxClicked']"
-    assert_select ".govuk-checkboxes__input[data-track-label='/news-and-communications']"
-    assert_select ".govuk-checkboxes__input[data-track-options='{\"dimension28\":2,\"dimension29\":\"Tracked\"}']"
+    assert_select ".govuk-checkboxes__input[data-an-attribute='some_value']"
     assert_select ".govuk-checkboxes__input[data-controls='js-live-results']"
   end
 

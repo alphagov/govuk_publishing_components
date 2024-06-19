@@ -14,41 +14,8 @@ window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
   GemCheckboxes.prototype.init = function () {
     this.applyAriaControlsAttributes(this.$module)
 
-    for (var i = 0; i < this.$checkboxes.length; i++) {
-      this.$checkboxes[i].addEventListener('change', this.handleCheckboxChange)
-    }
-
-    for (i = 0; i < this.$nestedCheckboxes.length; i++) {
+    for (var i = 0; i < this.$nestedCheckboxes.length; i++) {
       this.$nestedCheckboxes[i].addEventListener('change', this.handleNestedCheckboxChange.bind(this))
-    }
-  }
-
-  GemCheckboxes.prototype.handleCheckboxChange = function (event) {
-    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-      // Where checkboxes are manipulated externally in finders, `suppressAnalytics`
-      // is passed to prevent duplicate GA events.
-      // use Oliver Steele's Nested Object Access Pattern https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
-      var allowAnalytics = ((event || {}).detail || {}).suppressAnalytics !== true
-      if (allowAnalytics) {
-        var $checkbox = event.target
-        var category = $checkbox.getAttribute('data-track-category')
-        if (category) {
-          var uncheckTrackCategory = $checkbox.getAttribute('data-uncheck-track-category')
-          if (!$checkbox.checked && uncheckTrackCategory) {
-            category = uncheckTrackCategory
-          }
-          var action = $checkbox.getAttribute('data-track-action')
-          var options = $checkbox.getAttribute('data-track-options')
-          if (options) {
-            options = JSON.parse(options)
-          } else {
-            options = {}
-          }
-          options.value = $checkbox.getAttribute('data-track-value')
-          options.label = $checkbox.getAttribute('data-track-label')
-          window.GOVUK.analytics.trackEvent(category, action, options)
-        }
-      }
     }
   }
 
