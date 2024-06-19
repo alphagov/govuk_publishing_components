@@ -66,22 +66,6 @@
 
   `data-controls` can contain more than one element, space
   separated.
-
-  With tracking:
-
-  <div data-module="gem-toggle">
-    <a href="#" data-controls="target6" data-expanded="true" data-track-category="category" data-track-action="action" data-toggled-text="Show more">
-      Show less
-    </a>
-    <div id="target6">
-      Content shown on page load, tracked when expanded and collapsed
-    </div>
-  </div>
-
-  Use `data-track-category` and `data-track-action` together
-  to enable analytics on the element. The track label will be
-  determined based on the text present within the element
-  at the time it was clicked.
 */
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
@@ -96,14 +80,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     if (this.$module.toggleTrigger) {
       this.$module.toggleClass = this.$module.getAttribute('data-toggle-class') || 'js-hidden'
-
-      this.$module.isTrackable = this.$module.toggleTrigger.hasAttribute('data-track-category') && this.$module.toggleTrigger.hasAttribute('data-track-action')
-
-      if (this.$module.isTrackable) {
-        this.$module.trackCategory = this.$module.toggleTrigger.getAttribute('data-track-category')
-        this.$module.trackAction = this.$module.toggleTrigger.getAttribute('data-track-action')
-      }
-
       this.addAriaAttrs()
       this.toggleOnClick()
     }
@@ -156,16 +132,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         this.setAttribute('data-toggled-text', this.innerText)
         this.innerText = toggledText
       }
-
-      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && that.$module.isTrackable) {
-        that.track()
-      }
     })
-  }
-
-  GemToggle.prototype.track = function () {
-    var options = { label: this.$module.toggleTrigger.getAttribute('data-toggled-text') || this.$module.toggleTrigger.innerText }
-    window.GOVUK.analytics.trackEvent(this.$module.trackCategory, this.$module.trackAction, options)
   }
 
   Modules.GemToggle = GemToggle
