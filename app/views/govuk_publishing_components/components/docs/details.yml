@@ -21,21 +21,6 @@ examples:
       title: Help with nationality
       block: |
         We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
-  with_data_attributes:
-    description: |
-      Data attributes can be applied to the summary element of the component.
-
-      This can be used for tracking as shown. Custom JavaScript in the component fires tracking events when the details element is opened and closed. By default, `track-label` is set to the status (`open` or `closed`) unless a `track_label` is passed into the component.
-    data:
-      title: Help with nationality
-      data_attributes:
-        track_category: "checker-qa"
-        track_action: "business-question"
-        track_label: "custom label here"
-        track_options:
-          dimension20: "custom dimension"
-      block: |
-        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
   with_aria_attributes:
     description: |
       Aria attributes can be applied to the summary element of the component.
