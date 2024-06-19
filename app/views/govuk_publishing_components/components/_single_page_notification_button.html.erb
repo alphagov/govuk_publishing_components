@@ -13,7 +13,6 @@
   ga4_link_data_attributes[:url] = spnb_helper.form_action if ga4_link_data_attributes
 
   component_helper.add_class(wrapper_classes.join(" "))
-  component_helper.add_data_attribute({ module: "gem-track-click" })
   component_helper.add_data_attribute({ module: ga4_data_attributes[:module] }) if ga4_data_attributes
 %>
 <% button_text = capture do %>
