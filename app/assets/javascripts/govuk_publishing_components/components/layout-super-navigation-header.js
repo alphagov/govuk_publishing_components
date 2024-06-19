@@ -38,16 +38,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   var toggle = function ($button, $menu) {
     var isOpen = $button.getAttribute('aria-expanded') === 'true'
-    var trackingLabel = $button.getAttribute('data-tracking-key')
     if (isOpen) {
       hide($button, $menu)
     } else {
       show($button, $menu)
-    }
-
-    // Fire analytics if analytics are available
-    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && trackingLabel) {
-      window.GOVUK.analytics.trackEvent('headerClicked', trackingLabel + (isOpen ? 'Closed' : 'Opened'), { label: 'none' })
     }
   }
 

@@ -73,7 +73,7 @@
     role: "banner",
     class: layout_super_navigation_header_classes,
     data: {
-      module: "gem-track-click ga4-event-tracker ga4-link-tracker",
+      module: "ga4-event-tracker ga4-link-tracker",
       "track-links-only": '',
       "ga4-expandable": '',
     }
@@ -86,11 +86,6 @@
         <%= link_to logo_link, {
           class: header_link_classes,
           data: {
-            "track-action": "logoLink",
-            "track-category": "headerClicked",
-            "track-label": logo_link,
-            "track-dimension": logo_text,
-            "track-dimension-index": "29",
             "ga4-link": {
               "event_name": "navigation",
               "type": "header menu bar",
@@ -169,13 +164,6 @@
           <div class="gem-c-layout-super-navigation-header__navigation-item">
             <%= link_to link[:href], {
               class: item_link_classes,
-              data: {
-                track_action: "#{tracking_label}Link",
-                track_category: "headerClicked",
-                track_label: link[:href],
-                track_dimension: link[:label],
-                track_dimension_index: "29",
-              }
             } do %>
               <% content_tag(:span, {
                 class: item_link_inner_classes
@@ -313,11 +301,6 @@
                         <%= link_to item[:label], link_href, {
                           class: link_classes,
                           data: {
-                            track_action: "#{tracking_label}Link",
-                            track_category: "headerClicked",
-                            track_label: item[:href],
-                            track_dimension: item[:label],
-                            track_dimension_index: "29",
                             ga4_link: {
                               "event_name": "navigation",
                               "type": "header menu bar",
@@ -380,13 +363,6 @@
                   label_custom_class: "gem-c-layout-super-navigation-header__search-label--large-navbar",
                   size: "large",
                   margin_bottom: 0,
-                  data_attributes: {
-                    track_category: "headerClicked",
-                    track_action: "searchSubmitted",
-                    track_label: "/search/all",
-                    track_dimension: t("components.search_box.label"),
-                    track_dimension_index: 29,
-                  },
                 } %>
               </form>
             </div>
