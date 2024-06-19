@@ -122,29 +122,6 @@ examples:
           ]
         },
       ]
-  with_unique_tracking:
-    description: |
-      In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Universal Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav page.
-
-      This includes show/hide all, show/hide step and any link clicks.
-    data:
-      tracking_id: 'this-is-the-tracking-id'
-      steps: [
-        {
-          title: 'Unique tracking id',
-          contents: [
-            {
-              type: 'list',
-              contents: [
-                {
-                  href: '#',
-                  text: 'This is a link'
-                }
-              ]
-            }
-          ]
-        }
-      ]
   with_a_different_heading_level:
     description: Steps have a `h2` by default, but this can be changed. The heading level does not change any styling.
     data:
@@ -573,8 +550,8 @@ examples:
     description: |
       Steps can be optional. This is controlled by two parameters, 'optional' and 'logic'.
 
-      - Optional steps used to have a dotted line down the side but this was removed as it confused users. In some cases we may still need to record if a step is optional, so if this parameter is applied, Google Analytics tracking events will have 'optional' appended to the end of the eventLabel.
-      - Logic will change the number next to a step to the word 'and' or the word 'or'.
+      - Optional steps used to have a dotted line down the side but this was removed as it confused users
+      - Logic will change the number next to a step to the word 'and' or the word 'or'
 
       If a step is optional this should be conveyed by the text within that step.
     data:
