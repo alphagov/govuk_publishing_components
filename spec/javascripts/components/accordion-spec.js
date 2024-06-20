@@ -10,7 +10,7 @@ describe('Accordion component', function () {
   var html =
     '<div class="gem-c-accordion" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all sections" data-hide-all-text="Hide all sections" data-this-section-visually-hidden=" this section">' +
       '<div class="govuk-accordion__controls">' +
-        '<button type="button" class="govuk-accordion__show-all gem-c-accordion__show-all" aria-expanded="false">' +
+        '<button type="button" class="govuk-accordion__show-all" aria-expanded="false">' +
           '<span class="govuk-accordion__show-all-text">Show all sections</span>' +
         '</button>' +
       '</div>' +
@@ -65,6 +65,14 @@ describe('Accordion component', function () {
     if (GOVUK.analytics.trackEvent.calls) {
       GOVUK.analytics.trackEvent.calls.reset()
     }
+  })
+
+  it('does not initialise if the accordion from govuk-frontend has not initialised', function () {
+    var accordionShowAllButton = accordion.querySelector('.govuk-accordion__show-all')
+    accordionShowAllButton.classList.remove('govuk-accordion__show-all')
+    startAccordion()
+
+    expect(accordion.querySelector('.govuk-accordion__controls button')).not.toHaveClass('gem-c-accordion__show-all')
   })
 
   it('applies custom attributes to click event if specified in section', function () {

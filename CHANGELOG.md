@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add guard to accordion component init method ([PR #4069](https://github.com/alphagov/govuk_publishing_components/pull/4069))
 * Prevent screen readers from announcing document list child/parts items dashes ([PR #4066](https://github.com/alphagov/govuk_publishing_components/pull/4066))
 * Align checkboxes component more toward Design System ([PR #4061](https://github.com/alphagov/govuk_publishing_components/pull/4061))
 * Add govuk-frontend checking to the component auditing ([PR #4058](https://github.com/alphagov/govuk_publishing_components/pull/4058))
