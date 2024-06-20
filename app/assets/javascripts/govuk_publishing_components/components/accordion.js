@@ -24,6 +24,11 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   }
 
   GemAccordion.prototype.init = function () {
+    // Do not initialise if the accordion component from govuk-frontend has not initialised
+    if (this.$module.querySelector(this.showAllControls) === null) {
+      return
+    }
+
     // Indicate that JavaScript has worked
     this.$module.querySelector(this.showAllControls).classList.add('gem-c-accordion__show-all')
 
