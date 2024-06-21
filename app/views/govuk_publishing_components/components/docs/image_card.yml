@@ -246,37 +246,6 @@ examples:
       <div class="govuk-!-width-full">
         <%= component %>
       </div>
-  with_data_attributes:
-    description: Data attributes can be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
-    data:
-      href: "/i-am-not-a-valid-link"
-      href_data_attributes: {
-        track_category: 'href_category',
-        track_action: 1.1,
-        track_label: 'href_label',
-        track_options: {
-          dimension28: 1,
-          dimension29: 'dimension29Href'
-        }
-      }
-      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
-      image_alt: "some meaningful alt text please"
-      heading_text: "A link with tracking"
-      extra_details: [
-        {
-          text: "Another link with tracking",
-          href: "/1",
-          data_attributes: {
-            track_category: 'extra_category',
-            track_action: 2.1,
-            track_label: 'extra_label',
-            track_options: {
-              dimension28: 1,
-              dimension29: 'dimension29Extra'
-            }
-          }
-        }
-      ]
   with_ga4_tracking:
     description: The component does not include an option for GA4 tracking, but data attributes to enable the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) can be passed as shown.
     data:

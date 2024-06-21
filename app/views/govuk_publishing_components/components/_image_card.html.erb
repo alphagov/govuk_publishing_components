@@ -34,7 +34,6 @@
   ]
   extra_link_classes << brand_helper.color_class
 
-  component_helper.add_data_attribute({ module: "gem-track-click" }) if card_helper.is_tracking?
   component_helper.add_data_attribute({ module: "image-card" }) if card_helper.youtube_video_id
   component_helper.set_lang(card_helper.lang)
 %>
@@ -45,10 +44,7 @@
         <% if card_helper.heading_text %>
           <%= content_tag(shared_helper.get_heading_level, class: heading_class) do %>
             <% if card_helper.href %>
-              <%= link_to card_helper.heading_text, card_helper.href,
-                class: heading_link_classes,
-                data: card_helper.href_data_attributes
-              %>
+              <%= link_to card_helper.heading_text, card_helper.href, class: heading_link_classes %>
             <% else %>
               <%= card_helper.heading_text %>
             <% end %>
