@@ -22,7 +22,6 @@
   local_assigns[:aria] ||= {}
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-contents-list #{brand_helper.brand_class}")
-  component_helper.add_data_attribute({ module: "gem-track-click" })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
   component_helper.add_aria_attribute({ label: t("components.contents_list.contents") }) unless local_assigns[:aria][:label]
   component_helper.add_role("navigation")
@@ -39,7 +38,7 @@
 
     <ol class="gem-c-contents-list__list">
       <% index_link = 1 unless disable_ga4 %>
-      <% contents.each.with_index(1) do |contents_item, position| %>
+      <% contents.each do |contents_item| %>
         <li class="<%= cl_helper.list_item_classes(contents_item, false) %>" <%= "aria-current=true" if contents_item[:active] %>>
           <span aria-hidden="true"></span>
           <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : cl_helper.clean_string(contents_item[:text])
@@ -51,19 +50,13 @@
           <%= link_to_if !contents_item[:active], link_text, contents_item[:href],
             class:  link_classes,
             data: {
-              track_category: 'contentsClicked',
-              track_action: "content_item #{position}",
-              track_label: contents_item[:href],
-              track_options: {
-                dimension29: contents_item[:text]
-              },
               ga4_link: (!disable_ga4 ? ga4_data.to_json : nil)
             }
           %>
           <% index_link += 1 unless disable_ga4 %>
           <% if contents_item[:items] && contents_item[:items].any? %>
             <ol class="gem-c-contents-list__nested-list">
-              <% contents_item[:items].each.with_index(1) do |nested_contents_item, nested_position| %>
+              <% contents_item[:items].each do |nested_contents_item| %>
                 <li class="<%= cl_helper.list_item_classes(nested_contents_item, true) %>" <%= "aria-current=true" if nested_contents_item[:active] %>>
                   <span aria-hidden="true"></span>
                   <%
@@ -75,12 +68,6 @@
                   <%= link_to_if !nested_contents_item[:active], nested_contents_item[:text], nested_contents_item[:href],
                     class: link_classes,
                     data: {
-                      track_category: 'contentsClicked',
-                      track_action: "nested_content_item #{position}:#{nested_position}",
-                      track_label: nested_contents_item[:href],
-                      track_options: {
-                        dimension29: nested_contents_item[:text]
-                      },
                       ga4_link: (!disable_ga4 ? ga4_data.to_json : nil)
                     }
                   %>
