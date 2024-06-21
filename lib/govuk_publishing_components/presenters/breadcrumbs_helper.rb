@@ -51,13 +51,6 @@ module GovukPublishingComponents
 
       def tracking_data(breadcrumbs_length)
         data = {
-          track_category: "breadcrumbClicked",
-          track_action: index,
-          track_label: path,
-          track_options: {
-            dimension28: breadcrumbs_length.to_s,
-            dimension29: crumb[:title],
-          },
           ga4_link: {
             event_name: "navigation",
             type: "breadcrumb",
