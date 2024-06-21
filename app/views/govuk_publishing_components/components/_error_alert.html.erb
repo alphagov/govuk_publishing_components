@@ -6,7 +6,7 @@
   data_attributes ||= {}
 %>
 
-<%= tag.div id: id, class: "gem-c-error-alert", data: { module: "initial-focus" }.merge(data_attributes), role: "alert", tabindex: "-1" do %>
+<%= tag.div id: id, class: "gem-c-error-alert govuk-!-display-none-print", data: { module: "initial-focus" }.merge(data_attributes), role: "alert", tabindex: "-1" do %>
   <% if description.present? %>
     <%= tag.h2 message, class: "gem-c-error-summary__title" %>
     <%= tag.div description, class: "gem-c-error-summary__body" %>

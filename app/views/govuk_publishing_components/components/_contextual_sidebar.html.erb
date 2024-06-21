@@ -10,7 +10,7 @@
   ga4_tracking_counts.index_section_count = 1 if show_ukraine_cta
 %>
 
-<div class="gem-c-contextual-sidebar">
+<div class="gem-c-contextual-sidebar govuk-!-display-none-print">
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
     <%# Rendering step by step related items because there are a few but not too many of them %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links, disable_ga4: disable_ga4 %>
