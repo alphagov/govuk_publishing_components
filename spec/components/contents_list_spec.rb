@@ -33,10 +33,6 @@ describe "Contents list", type: :view do
     }
   end
 
-  def assert_tracking_link(name, value, total = 1)
-    assert_select "a[data-track-#{name}='#{value}']", total
-  end
-
   it "renders nothing without provided contents" do
     assert_empty render_component({})
   end
@@ -86,21 +82,6 @@ describe "Contents list", type: :view do
     assert_select "#{nested_link_selector}[href='/nested-two']", text: "Nested two"
   end
 
-  it "renders data attributes for tracking" do
-    render_component(contents: nested_contents_list)
-
-    assert_select ".gem-c-contents-list[data-module='gem-track-click ga4-link-tracker']"
-
-    assert_tracking_link("category", "contentsClicked", 6)
-    assert_tracking_link("action", "content_item 1")
-    assert_tracking_link("label", "/one")
-    assert_tracking_link("options", { dimension29: "1. One" }.to_json)
-
-    assert_tracking_link("action", "nested_content_item 3:1")
-    assert_tracking_link("label", "/nested-one")
-    assert_tracking_link("options", { dimension29: "Nested one" }.to_json)
-  end
-
   it "formats numbers in contents links" do
     render_component(contents: contents_list, format_numbers: true)
     link_selector = ".gem-c-contents-list__list-item--numbered a[href='/one']"
@@ -142,7 +123,7 @@ describe "Contents list", type: :view do
 
     # Parent element attributes
     assert_select ".gem-c-contents-list" do |contents_list|
-      expect(contents_list.attr("data-module").to_s).to eq "gem-track-click ga4-link-tracker"
+      expect(contents_list.attr("data-module").to_s).to eq "ga4-link-tracker"
     end
 
     # Child link attributes
@@ -167,11 +148,6 @@ describe "Contents list", type: :view do
 
   it "GA4 tracking can be disabled" do
     render_component(contents: nested_contents_list, disable_ga4: true)
-
-    assert_select ".gem-c-contents-list" do |contents_list|
-      expect(contents_list.attr("data-module").to_s).to eq "gem-track-click"
-    end
-
     assert_select ".gem-c-contents-list__list-item a[data-ga4-link]", false
   end
 
