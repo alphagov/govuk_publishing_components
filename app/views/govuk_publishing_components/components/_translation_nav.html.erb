@@ -9,7 +9,6 @@
   <nav role="navigation"
     class="gem-c-translation-nav govuk-!-display-none-print <%= translation_helper.classes %> <%= brand_helper.brand_class %>"
     aria-label="<%= t("common.translations") %>"
-    <%= "data-module=\"gem-track-click\"" if translation_helper.tracking_is_present? %>
   >
     <ul class="gem-c-translation-nav__list">
       <% translation_helper.translations.each.with_index do |translation, i| %>
