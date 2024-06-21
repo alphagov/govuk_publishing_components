@@ -84,7 +84,7 @@ examples:
       - locale: 'cy'
         base_path: '/cy'
         text: 'Cymraeg'
-  with_tracking:
+  with_data_attributes_on_links:
     description: Data attributes can be passed for each link as shown.
     data:
       translations:
@@ -93,22 +93,12 @@ examples:
         text: 'English'
         active: true
         data_attributes:
-          track_category: 'categoryEnglish'
-          track_action: 1.1
-          track_label: 'labelEnglish'
-          track_options:
-            dimension28: 1
-            dimension29: 'dimension29English'
+          an_attribute: some_value1
       - locale: 'cy'
         base_path: '/cy'
         text: 'Cymraeg'
         data_attributes:
-          track_category: 'categoryWelsh'
-          track_action: 1.2
-          track_label: 'labelWelsh'
-          track_options:
-            dimension28: 1
-            dimension29: 'dimension29Welsh'
+          an_attribute: some_value2
   inverse:
     data:
       inverse: true
@@ -117,22 +107,8 @@ examples:
         base_path: '/en'
         text: 'English'
         active: true
-        data_attributes:
-          track_category: 'categoryEnglish'
-          track_action: 1.1
-          track_label: 'labelEnglish'
-          track_options:
-            dimension28: 1
-            dimension29: 'dimension29English'
       - locale: 'cy'
         base_path: '/cy'
         text: 'Cymraeg'
-        data_attributes:
-          track_category: 'categoryWelsh'
-          track_action: 1.2
-          track_label: 'labelWelsh'
-          track_options:
-            dimension28: 1
-            dimension29: 'dimension29Welsh'
     context:
       dark_background: true
