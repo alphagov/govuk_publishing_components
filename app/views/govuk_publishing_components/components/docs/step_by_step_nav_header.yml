@@ -28,29 +28,6 @@ examples:
     data:
       title: 'Learn to practice flexible spacing: step by step'
       margin_bottom: 9
-  with_unique_tracking:
-    description: In order to identify the step by step navigation the component is part of, we need to track a unique `ID` of the navigation in Google Analytics. This `ID` should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the `ID` of the step nav that the component links to.
-    data:
-      title: 'With a tracking id'
-      path: '#'
-      tracking_id: 'this-is-the-tracking-id'
-  with_custom_tracking:
-    data:
-      title: 'With a custom tracking'
-      path: '#'
-      tracking_category: "customTrackingCategoryClicked"
-      tracking_action: "customTrackingAction"
-      tracking_label: "customTrackingLabel"
-      tracking_dimension: "customTrackingDimension"
-      tracking_dimension_index: "23"
-  without_custom_dimension:
-    data:
-      title: 'Without custom dimensions'
-      path: '#'
-      tracking_category: "customTrackingCategoryClicked"
-      tracking_action: "customTrackingAction"
-      tracking_label: "customTrackingLabel"
-      tracking_dimension_enabled: false
   without_ga4_tracking:
     description: Disables GA4 tracking on the header. Tracking is enabled by default. This includes the `ga4-link-tracker` module and `data-ga4-link` attributes. See the [ga4-link-tracker docs](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
     data:
