@@ -120,13 +120,7 @@ describe "Document list", type: :view do
             text: "Link 1",
             path: "/link1",
             data_attributes: {
-              track_category: "navDocumentCollectionLinkClicked",
-              track_action: "1.1",
-              track_label: "/link1",
-              track_options: {
-                dimension28: "2",
-                dimension29: "Link 1",
-              },
+              an_attribute: "some_value1",
             },
           },
           metadata: {
@@ -139,13 +133,7 @@ describe "Document list", type: :view do
             text: "Link 2",
             path: "/link2",
             data_attributes: {
-              track_category: "navDocumentCollectionLinkClicked",
-              track_action: "1.2",
-              track_label: "/link2",
-              track_options: {
-                dimension28: "2",
-                dimension29: "Link 2",
-              },
+              an_attribute: "some_value2",
             },
           },
           metadata: {
@@ -159,16 +147,10 @@ describe "Document list", type: :view do
     a = ".gem-c-document-list__item-title a"
 
     assert_select "#{a}[href='/link1']", text: "Link 1"
-    assert_select "#{a}[data-track-category='navDocumentCollectionLinkClicked']", text: "Link 1"
-    assert_select "#{a}[data-track-action='1.1']", text: "Link 1"
-    assert_select "#{a}[data-track-label='/link1']", text: "Link 1"
-    assert_select "#{a}[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 1\"}']", text: "Link 1"
+    assert_select "#{a}[data-an-attribute='some_value1']", text: "Link 1"
 
     assert_select "#{a}[href='/link2']", text: "Link 2"
-    assert_select "#{a}[data-track-category='navDocumentCollectionLinkClicked']", text: "Link 2"
-    assert_select "#{a}[data-track-action='1.2']", text: "Link 2"
-    assert_select "#{a}[data-track-label='/link2']", text: "Link 2"
-    assert_select "#{a}[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 2\"}']", text: "Link 2"
+    assert_select "#{a}[data-an-attribute='some_value2']", text: "Link 2"
   end
 
   it "renders a document list without links" do
@@ -441,45 +423,6 @@ describe "Document list", type: :view do
     )
 
     assert_select ".gem-c-document-list__item .gem-c-document-list-child__description", text: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland."
-  end
-
-  it "renders document part with link tracking" do
-    render_component(
-      items: [
-        {
-          link: {
-            text: "Universal credit",
-            path: "/universal-credit",
-            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
-          },
-          parts: [
-            {
-              link: {
-                text: "Elegibility",
-                path: "/universal-credit/eligibility",
-                description: "You may be able to get Universal Credit if: you’re on a low income or out...",
-                data_attributes: {
-                  track_category: "part",
-                  track_action: 1,
-                  track_label: "part 1",
-                  track_options: {
-                    dimension82: 1,
-                  },
-                },
-              },
-            },
-          ],
-        },
-      ],
-    )
-
-    link = ".gem-c-document-list-child__link"
-
-    assert_select "#{link}[href='/universal-credit/eligibility']", text: "Elegibility"
-    assert_select "#{link}[data-track-category='part']", text: "Elegibility"
-    assert_select "#{link}[data-track-action='1']", text: "Elegibility"
-    assert_select "#{link}[data-track-label='part 1']", text: "Elegibility"
-    assert_select "#{link}[data-track-options='{\"dimension82\":1}']", text: "Elegibility"
   end
 
   it "adds lang attributes to elements only when locale is passed" do

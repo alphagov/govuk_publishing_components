@@ -39,27 +39,11 @@ describe "option select", type: :view do
           value: "aerospace",
           label: "Aerospace",
           id: "aerospace",
-          data_attributes: {
-            track_category: "filterClicked",
-            track_action: "Market Sector",
-            track_label: "aerospace",
-            track_options: {
-              dimension28: 1,
-            },
-          },
         },
         {
           value: "value",
           label: "Label",
           id: "ID",
-          data_attributes: {
-            track_category: "filterClicked",
-            track_action: "Market Sector",
-            track_label: "value",
-            track_options: {
-              dimension28: 2,
-            },
-          },
         },
       ],
     }

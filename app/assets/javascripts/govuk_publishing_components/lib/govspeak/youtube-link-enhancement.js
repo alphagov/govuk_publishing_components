@@ -28,16 +28,8 @@
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
       var href = $link.getAttribute('href')
-      var hasTracking = $link.hasAttribute('data-youtube-player-analytics')
       var options = {
         link: $link
-      }
-
-      if (hasTracking) {
-        options.tracking = {
-          hasTracking: hasTracking,
-          category: $link.getAttribute('data-youtube-player-analytics-category')
-        }
       }
 
       if (href.indexOf('/live_stream') >= 0) {
@@ -122,7 +114,6 @@
           },
           onStateChange: function (event) {
             var eventData = event.data
-            var eventTarget = event.target
             var states = {
               /* eslint-disable quote-props */
               '-1': 'VideoUnstarted',
@@ -133,17 +124,6 @@
               '5': 'VideoCued'
               /* eslint-enable */
             }
-            if (states[eventData] && options.tracking && options.tracking.hasTracking &&
-                window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-              var tracking = {
-                category: options.tracking.category,
-                action: states[eventData],
-                label: { transport: 'beacon', label: eventTarget.getVideoData && eventTarget.getVideoData().title }
-              }
-
-              window.GOVUK.analytics.trackEvent(tracking.category, tracking.action, tracking.label)
-            }
-
             if (window.GOVUK.analyticsGa4.analyticsModules.VideoTracker) {
               window.GOVUK.analyticsGa4.analyticsModules.VideoTracker.trackVideo(event, states[eventData])
             }

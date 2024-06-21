@@ -12,7 +12,7 @@
 <%= tag.footer class: classes, role: "contentinfo", 'data-module': "ga4-link-tracker" do %>
   <div class="govuk-width-container">
     <% if navigation.any? %>
-      <div class="govuk-footer__navigation" data-module="gem-track-click" data-track-links-only>
+      <div class="govuk-footer__navigation">
         <% navigation.each_with_index do |section, ga4_section_index| %>
           <% if section[:items] %>
             <%
@@ -69,7 +69,7 @@
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         <% if meta.any? %>
           <h2 class="govuk-visually-hidden"><%= t("components.layout_footer.support_links") %></h2>
-          <ul class="govuk-footer__inline-list govuk-!-display-none-print" data-module="gem-track-click" data-track-links-only>
+          <ul class="govuk-footer__inline-list govuk-!-display-none-print">
             <% index_total = meta[:items].length %>
             <% meta[:items].each_with_index do |item, index| %>
               <li class="govuk-footer__inline-list-item">
@@ -100,12 +100,6 @@
         <% # this is to avoid having hardcoded data attributes in locale files %>
         <span
           class="govuk-footer__licence-description"
-          data-module="gem-track-click"
-          data-track-action="copyrightLink"
-          data-track-category="footerClicked"
-          data-track-label="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-          data-track-options='{"dimension29": "Open Government Licence v3.0"}'
-          data-track-links-only
           data-ga4-track-links-only
           data-ga4-link="<%= {
             "event_name": "navigation",
@@ -124,12 +118,6 @@
       <% # this is to avoid having hardcoded data attributes in locale files %>
       <div
         class="govuk-footer__meta-item"
-        data-module="gem-track-click"
-        data-track-action="copyrightLink"
-        data-track-category="footerClicked"
-        data-track-label="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-        data-track-options='{"dimension29": "© Crown copyright"}'
-        data-track-links-only
         data-ga4-link="<%= {
           "event_name": "navigation",
           "section": "Copyright",
