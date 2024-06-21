@@ -104,19 +104,13 @@ describe "List", type: :view do
       items: [
         "<a
           href='https://example.com/'
-          data-module='gem-track-click'
-          data-track-category='category'
-          data-track-action='action'
-          data-track-label='Test item'
+          data-module='ga4-link-tracker'
         >Test item</a>",
         "<a href='https://example.com/'>Another test item</a>",
       ],
     )
 
-    assert_select "ul.govuk-list li a[data-module='gem-track-click']"
-    assert_select "ul.govuk-list li a[data-track-category='category']"
-    assert_select "ul.govuk-list li a[data-track-action='action']"
-    assert_select "ul.govuk-list li a[data-track-label='Test item']"
+    assert_select "ul.govuk-list li a[data-module='ga4-link-tracker']"
   end
 
   it "adds margin" do

@@ -504,17 +504,6 @@ examples:
       block: |
         <p>This content has a YouTube livestream link, converted to an accessible embedded player by component JavaScript.</p>
         <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream video</a></p>
-  with_youtube_analytics:
-    data:
-      block: |
-        <p>This content has a YouTube link with analytics, converted to an accessible embedded player by component JavaScript.</p>
-        <p>
-          <a href="https://www.youtube.com/watch?v=ucjmWjJ25Ho"
-            data-youtube-player-analytics="true"
-            data-youtube-player-analytics-category="demo-for-components">
-            Youtube video with tracking
-          </a>
-        </p>
   with_youtube_embed_disabled:
     data:
       disable_youtube_expansions: true

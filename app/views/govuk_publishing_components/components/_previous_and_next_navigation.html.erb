@@ -22,11 +22,6 @@
         <a class="govuk-link govuk-pagination__link"
           href="<%= previous_page[:url] %>"
           rel="prev"
-          data-track-category="contentsClicked"
-          data-track-action="previous"
-          data-track-label="<%= previous_page[:url] %>"
-          data-track-dimension="previous"
-          data-track-dimension-index="29"
           <% unless disable_ga4 %>
             data-ga4-link = "<%= {
               event_name: "navigation",
@@ -58,11 +53,6 @@
         <a class="govuk-link govuk-pagination__link"
           href="<%= next_page[:url] %>"
           rel="next"
-          data-track-category="contentsClicked"
-          data-track-action="next"
-          data-track-label="<%= next_page[:url] %>"
-          data-track-dimension="next"
-          data-track-dimension-index="29"
           <% unless disable_ga4 %>
             data-ga4-link = "<%= {
               event_name: "navigation",

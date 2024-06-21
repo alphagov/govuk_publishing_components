@@ -34,7 +34,7 @@
   }.to_json unless disable_ga4
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle metadata" } do %>
-  <dl class="gem-c-metadata__list" data-module="gem-track-click">
+  <dl class="gem-c-metadata__list">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
       <dd class="gem-c-metadata__definition">
@@ -61,10 +61,7 @@
         <%= last_updated %>
         <% if local_assigns.include?(:see_updates_link) %>
           &#8212; <a href="#full-publication-update-history"
-                    class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link"
-                    data-track-category="content-history"
-                    data-track-action="see-all-updates-link-clicked"
-                    data-track-label="history">
+                    class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link">
             <%= t("components.metadata.see_all_updates") %>
           </a>
         <% end %>
