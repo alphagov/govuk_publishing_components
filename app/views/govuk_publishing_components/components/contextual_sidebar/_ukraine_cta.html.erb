@@ -2,8 +2,7 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   title = t("components.related_navigation.ukraine.title")
   lang = shared_helper.t_locale("components.related_navigation.ukraine.title")
-  data_module = "gem-track-click"
-  data_module << " ga4-link-tracker" unless disable_ga4
+  data_module = "ga4-link-tracker" unless disable_ga4
 %>
 <%= tag.div class: "gem-c-contextual-sidebar__cta gem-c-contextual-sidebar__cta--ukraine", data: { module: data_module } do %>
   <%= tag.h2 title, class: "gem-c-contextual-sidebar__heading govuk-heading-s" %>
@@ -26,11 +25,6 @@
           link[:href],
           class: "govuk-link",
           data: {
-            "track-category": "relatedLinkClicked",
-            "track-action": "1.0 Invasion of Ukraine",
-            "track-label": link[:href],
-            "track-dimension": link[:label],
-            "track-dimension-index": "29",
             ga4_link: ga4_attributes,
           },
           lang: lang %>
