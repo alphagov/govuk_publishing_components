@@ -15,7 +15,7 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class(classes.join(" "))
-  component_helper.add_data_attribute({ module: "gem-track-click ga4-link-tracker" })
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" })
 %>
 
 <script type="application/ld+json">
