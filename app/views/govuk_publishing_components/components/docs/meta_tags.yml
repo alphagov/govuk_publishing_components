@@ -5,8 +5,6 @@ body: |
   the correct analytics identifier metadata tags.
 
   These are additionally used by the <a href="https://github.com/alphagov/govuk-browser-extension">GOV.UK browser extension</a> to provide details about a given page.
-
-  The code which reads the meta tags can be found <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics/custom-dimensions.js">in custom-dimensions.js</a>.
 accessibility_criteria: |
   The analytics meta tags component should not be visible to any users.
 display_html: true

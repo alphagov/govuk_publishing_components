@@ -123,7 +123,7 @@ examples:
       - value: sombrero
         label: Sombrero
         id: sombrero
-  with_tracking:
+  with_data_attributes_on_checkboxes:
     data:
       key: list_of_shoes
       title: List of shoes
@@ -133,29 +133,17 @@ examples:
         label: Trainers
         id: trainers
         data_attributes:
-          track_category: "filterClicked"
-          track_action: "List of shoes"
-          track_label: "trainers"
-          track_options:
-            dimension28: 1
+          an_attribute: some_value1
       - value: plimsolls
         label: Plimsolls
         id: plimsolls
         data_attributes:
-          track_category: "filterClicked"
-          track_action: "List of shoes"
-          track_label: "plimsolls"
-          track_options:
-            dimension28: 1
+          an_attribute: some_value2
       - value: high_heels
         label: High heels
         id: high_heels
         data_attributes:
-          track_category: "filterClicked"
-          track_action: "List of shoes"
-          track_label: "high_heels"
-          track_options:
-            dimension28: 1
+          an_attribute: some_value3
   with_button_data_attributes:
     description: Allows data attributes to be passed to the component to be added to the expand/collapse button. The attributes are written to the parent element then read by the JavaScript and applied to the button. This is used for tracking purposes.
     data:

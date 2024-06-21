@@ -68,7 +68,7 @@ The component wrapper includes several methods to make managing options easier, 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-example govuk-example") # combines the given class with any passed classes
   component_helper.set_id("my-id") # overrides any passed 'id' with this one (can only have one id)
-  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) # combines any passed 'data_attributes' with those given, merging duplicate keys, e.g. if `{ module: "gem-track-click", a: "1" }` had been passed, would result in `{ module: "ga4-event-tracker gem-track-click", a: "1" }`
+  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) # combines any passed 'data_attributes' with those given, merging duplicate keys, e.g. if `{ module: "ga4-link-tracker", a: "1" }` had been passed, would result in `{ module: "ga4-event-tracker ga4-link-tracker", a: "1" }`
   component_helper.add_aria_attribute({ label: "my-label" }) # works like 'add_data_attribute'
   component_helper.add_role("button") # works like 'add_class'
   component_helper.set_lang("en") # works like 'set_id' (can only have one lang)
