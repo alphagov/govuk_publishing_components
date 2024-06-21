@@ -14,8 +14,6 @@ window.GOVUK.vars.domains = [
     id: 'GTM-MG7HG5W',
     auth: 'bRiZ-jiEHtw6hHpGd6dF9w',
     preview: 'env-3',
-    gaProperty: 'UA-UNSET',
-    gaPropertyCrossDomain: 'UA-UNSET',
     consentApiUrl: 'staging'
   },
   {
@@ -27,8 +25,6 @@ window.GOVUK.vars.domains = [
     ],
     initialiseGA4: true,
     id: 'GTM-MG7HG5W',
-    gaProperty: 'UA-26179049-1',
-    gaPropertyCrossDomain: 'UA-145652997-1',
     consentApiUrl: 'production'
   },
   {
@@ -42,8 +38,6 @@ window.GOVUK.vars.domains = [
     id: 'GTM-MG7HG5W',
     auth: 'oJWs562CxSIjZKn_GlB5Bw',
     preview: 'env-5',
-    gaProperty: 'UA-26179049-20',
-    gaPropertyCrossDomain: 'UA-145652997-1',
     consentApiUrl: 'staging'
   },
   {
@@ -57,8 +51,6 @@ window.GOVUK.vars.domains = [
     id: 'GTM-MG7HG5W',
     auth: 'C7iYdcsOlYgGmiUJjZKrHQ',
     preview: 'env-4',
-    gaProperty: 'UA-26179049-22',
-    gaPropertyCrossDomain: 'UA-145652997-1',
     consentApiUrl: 'staging'
   },
   {

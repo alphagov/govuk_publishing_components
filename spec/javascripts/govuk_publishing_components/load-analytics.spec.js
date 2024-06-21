@@ -1,19 +1,16 @@
 /* eslint-env jasmine */
 
 var expected
-var savedUaVars
 var savedGa4Vars
 
 describe('Analytics loading', function () {
   beforeAll(function () {
-    savedUaVars = window.GOVUK.extendObject(window.GOVUK.analyticsVars)
     window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
     savedGa4Vars = window.GOVUK.extendObject(window.GOVUK.analyticsGa4.vars)
   })
 
   afterAll(function () {
     window.GOVUK.analyticsGa4.vars = savedGa4Vars
-    window.GOVUK.analyticsVars = savedUaVars
   })
 
   describe('for GA4', function () {
@@ -180,50 +177,6 @@ describe('Analytics loading', function () {
         expect(window.GOVUK.analyticsGa4.vars.preview).toEqual(undefined)
         expect(window.GOVUK.analyticsGa4.vars.environment).toEqual('test-domain')
       })
-    })
-  })
-
-  describe('for UA', function () {
-    beforeEach(function () {
-      window.GOVUK.analyticsVars = null
-      expected = {
-        gaPropertyCrossDomain: 'UA-145652997-1',
-        primaryLinkedDomains: ['account.gov.uk'],
-        linkedDomains: ['hello', 'world']
-      }
-      window.GOVUK.loadAnalytics.linkedDomains = ['hello', 'world']
-    })
-
-    it('loads the correct UA values on production', function () {
-      expected.gaProperty = 'UA-26179049-1'
-      window.GOVUK.loadAnalytics.loadUa('www.gov.uk')
-      expect(window.GOVUK.analyticsVars).toEqual(expected)
-    })
-
-    it('loads the correct UA values on staging', function () {
-      expected.gaProperty = 'UA-26179049-20'
-      window.GOVUK.loadAnalytics.loadUa('www.staging.publishing.service.gov.uk')
-      expect(window.GOVUK.analyticsVars).toEqual(expected)
-    })
-
-    it('loads the correct UA values on integration', function () {
-      expected.gaProperty = 'UA-26179049-22'
-      window.GOVUK.loadAnalytics.loadUa('www.integration.publishing.service.gov.uk')
-      expect(window.GOVUK.analyticsVars).toEqual(expected)
-    })
-
-    it('loads the correct UA values on development', function () {
-      expected.gaProperty = 'UA-UNSET'
-      expected.gaPropertyCrossDomain = 'UA-UNSET'
-      window.GOVUK.loadAnalytics.loadUa('localhost')
-      expect(window.GOVUK.analyticsVars).toEqual(expected)
-    })
-
-    it('loads the correct UA values on unrecognised domains', function () {
-      expected.gaProperty = 'UA-UNSET'
-      expected.gaPropertyCrossDomain = 'UA-UNSET'
-      window.GOVUK.loadAnalytics.loadUa('www.nationalarchives.gov.uk')
-      expect(window.GOVUK.analyticsVars).toEqual(expected)
     })
   })
 
