@@ -12,7 +12,7 @@
 %>
 <% if related_nav_helper.related_navigation? %>
   <% random = SecureRandom.hex(4) %>
-  <%= tag.div(class: "gem-c-related-navigation", data: data) do %>
+  <%= tag.div(class: "gem-c-related-navigation govuk-!-display-none-print", data: data) do %>
     <% if local_assigns[:context] != :footer %>
       <h2 id="related-nav-related_items-<%= random %>"
           class="gem-c-related-navigation__main-heading"

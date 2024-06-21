@@ -10,9 +10,11 @@
   <% if breadcrumb_selector.step_by_step %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav_header', breadcrumb_selector.breadcrumbs %>
   <% elsif breadcrumb_selector.breadcrumbs %>
-    <%= render 'govuk_publishing_components/components/breadcrumbs',
-               breadcrumbs: breadcrumb_selector.breadcrumbs,
-               inverse: inverse,
-               collapse_on_mobile: collapse_on_mobile %>
+    <div class="govuk-!-display-none-print">
+      <%= render 'govuk_publishing_components/components/breadcrumbs',
+                 breadcrumbs: breadcrumb_selector.breadcrumbs,
+                 inverse: inverse,
+                 collapse_on_mobile: collapse_on_mobile %>
+    </div>
   <% end %>
 </div>
