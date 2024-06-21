@@ -18,8 +18,7 @@
   classes << brand_helper.brand_class
 
   data_attributes ||= {}
-  ((data_attributes[:module] ||= "") << " " << "gem-track-click").strip!
-  data_attributes[:module] << " ga4-link-tracker" if track_as_sharing || track_as_follow
+  ((data_attributes[:module] ||= "") << " " << "ga4-link-tracker").strip! if track_as_sharing || track_as_follow
 %>
 <% if links.any? %>
   <%= tag.div(class: classes, data: data_attributes) do %>
@@ -47,11 +46,6 @@
         <li class="gem-c-share-links__list-item">
           <%
             if track_as_sharing
-              track_options = {
-                'socialAction': 'share',
-                'socialNetwork': link[:icon],
-                'socialTarget': link[:href]
-              }
               ga4_link_data = {
                 'event_name': 'navigation',
                 'type': 'share page',
@@ -71,9 +65,6 @@
           %>
           <%
             data_attributes = link[:data_attributes] ||= {}
-            data_attributes[:track_category] = 'social media'
-            data_attributes[:track_action] = link[:icon]
-            data_attributes[:track_options] = track_options
             data_attributes[:ga4_link] = ga4_link_data
           %>
           <%= link_to link[:href],
