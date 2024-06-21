@@ -47,7 +47,7 @@ examples:
     context:
       right_to_left: true
   with_data_attributes:
-    description: Data attributes can be added to both the parent element and the individual share links, as shown. Note that the component defaults to having a `data-module` of `gem-track-click`, but this is preserved even if another value for module is passed.
+    description: Data attributes can be added to both the parent element and the individual share links, as shown. Note that the component defaults to having a `data-module` of `ga4-link-tracker` if tracking is enabled, but this is preserved even if another value for module is passed.
     data:
       data_attributes:
         module: 'example-passed-module'
@@ -91,7 +91,7 @@ examples:
           hidden_text: '',
           icon: 'twitter'
         }
-      ]      
+      ]
   with_custom_visually_hidden_text:
     description: |
       Use this option to specify a visually hidden text for screenreaders to prepend to the link text.
@@ -108,8 +108,6 @@ examples:
       ]
   track_as_sharing_links:
     description: |
-      Where the component is used to allow users to share content on social media, tracking can be added that uses [Social Interactions](https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions) in UA.
-      If this option is not included, it is assumed the component is simply linking to social media pages and the extra options are omitted from the tracking call in UA.
       In GA4, when this is set to true, a JSON is added to a data-attribute called data-ga4-link, which is detected by ga4-link-tracker.js and pushed to the dataLayer.
       Most of the tracking values are added by default, but if you need to add more GA4 values or override defaults, you can pass a ga4_extra_data object.
     data:
