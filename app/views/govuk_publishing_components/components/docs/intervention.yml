@@ -63,32 +63,6 @@ examples:
       suggestion_link_url: www.google.com/permit
       new_tab: true
 
-  with_data_attributes:
-    description: |
-      This example shows the use of `suggestion_data_attributes`,
-      `dismiss_data_attributes` for click tracking on the dismiss section <p> tag, and `dismiss_link_data_attributes` for adding attributes to the dismiss link <a> tag.
-
-      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
-    data:
-      suggestion_text: Based on your browsing you might be interested in
-      suggestion_link_text: "Travel abroad: step by step"
-      suggestion_link_url: /travel-abroad
-      suggestion_data_attributes:
-        track-category: interventionBanner
-        track-action: interventionClicked
-        track-dimension: "Travel abroad: step by step"
-        track-dimension-index: 29
-        track-label: clicked suggestion
-      dismiss_text: Hide this suggestion
-      name: another-campaign-name
-      dismiss_data_attributes:
-        track-category: interventionBanner
-        track-action: interventionDismissed
-        track-dimension: Hide this suggestion
-        track-dimension-index: 29
-        track-label: hide the intervention
-      dismiss_link_data_attributes:
-        track-category: example
   without_ga4_tracking:
     description: |
       Disables GA4 tracking on the banner. Tracking is enabled by default. This includes link tracking on the component itself, event tracking on the 'Hide' link, and allows pageviews to record the presence of the banner on page load.
