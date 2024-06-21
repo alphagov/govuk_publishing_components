@@ -44,46 +44,12 @@ describe "Step by step navigation header", type: :view do
     link = ".gem-c-step-nav-header a.gem-c-step-nav-header__title"
 
     assert_select "#{link}[href='/notalink']", text: "This is my title"
-    assert_select "#{link}[data-track-category='stepNavHeaderClicked']"
-    assert_select "#{link}[data-track-action='top']"
-    assert_select "#{link}[data-track-label='/notalink']"
-    assert_select "#{link}[data-track-dimension='This is my title']"
-    assert_select "#{link}[data-track-dimension-index='29']"
   end
 
   it "adds a margin bottom" do
     render_component(title: "This is my title", margin_bottom: 9)
 
     assert_select '.gem-c-step-nav-header.govuk-\!-margin-bottom-9'
-  end
-
-  it "adds a tracking id" do
-    render_component(title: "This is my title", path: "/notalink", tracking_id: "brian")
-
-    assert_select ".gem-c-step-nav-header .gem-c-step-nav-header__title[data-track-options='{\"dimension96\":\"brian\"}']"
-  end
-
-  it "adds a custom tracking" do
-    render_component(
-      title: "This is my title",
-      path: "/notalink",
-      tracking_id: "tracking-id",
-      tracking_category: "customTrackingCategoryClicked",
-      tracking_action: "customTrackingAction",
-      tracking_label: "customTrackingLabel",
-      tracking_dimension: "customTrackingDimension",
-      tracking_dimension_index: "23",
-    )
-
-    link = ".gem-c-step-nav-header a.gem-c-step-nav-header__title"
-
-    assert_select "#{link}[href='/notalink']", text: "This is my title"
-    assert_select "#{link}[data-track-category='customTrackingCategoryClicked']"
-    assert_select "#{link}[data-track-action='customTrackingAction']"
-    assert_select "#{link}[data-track-label='customTrackingLabel']"
-    assert_select "#{link}[data-track-dimension='customTrackingDimension']"
-    assert_select "#{link}[data-track-dimension-index='23']"
-    assert_select "#{link}[data-track-options='{\"dimension96\":\"tracking-id\"}']"
   end
 
   it "includes GA4 tracking" do
@@ -97,7 +63,7 @@ describe "Step by step navigation header", type: :view do
       index_link: "1",
       index_total: "1",
     }.to_json
-    assert_select(".gem-c-step-nav-header[data-module='gem-track-click ga4-link-tracker']")
+    assert_select(".gem-c-step-nav-header[data-module='ga4-link-tracker']")
     assert_select(".gem-c-step-nav-header__title[data-ga4-link='#{expected}']")
   end
 
@@ -107,29 +73,7 @@ describe "Step by step navigation header", type: :view do
       path: "/notalink",
       disable_ga4: true,
     )
-    assert_select(".gem-c-step-nav-header[data-module='gem-track-click']")
-    assert_select(".gem-c-step-nav-header[data-module='gem-track-click ga4-link-tracker']", false)
+    assert_select(".gem-c-step-nav-header[data-module='ga4-link-tracker']", false)
     assert_select(".gem-c-step-nav-header__title[data-ga4-link]", false)
-  end
-
-  it "adds a custom tracking without tracking id or custom dimensions" do
-    render_component(
-      title: "This is my title",
-      path: "/notalink",
-      tracking_category: "customTrackingCategoryClicked",
-      tracking_action: "customTrackingAction",
-      tracking_label: "customTrackingLabel",
-      tracking_dimension_enabled: false,
-    )
-
-    link = ".gem-c-step-nav-header a.gem-c-step-nav-header__title"
-
-    assert_select "#{link}[href='/notalink']", text: "This is my title"
-    assert_select "#{link}[data-track-category='customTrackingCategoryClicked']"
-    assert_select "#{link}[data-track-action='customTrackingAction']"
-    assert_select "#{link}[data-track-label='customTrackingLabel']"
-    assert_select "#{link}[data-track-dimension]", false
-    assert_select "#{link}[data-track-dimension-index]", false
-    assert_select "#{link}[data-track-options]", false
   end
 end
