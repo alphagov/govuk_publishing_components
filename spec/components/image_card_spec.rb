@@ -12,7 +12,7 @@ describe "ImageCard", type: :view do
   it "shows an image" do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text")
     assert_select ".gem-c-image-card .gem-c-image-card__image[src='/moo.jpg'][alt='some meaningful alt text']"
-    assert_select ".gem-c-image-card[data-module='gem-track-click ga4-link-tracker']", false
+    assert_select ".gem-c-image-card[data-module='ga4-link-tracker']", false
   end
 
   it "shows heading text" do
@@ -121,18 +121,6 @@ describe "ImageCard", type: :view do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text", heading_text: "heading", description: "description", two_thirds: true, large_font_size_mobile: true)
     assert_select ".gem-c-image-card--two-thirds .gem-c-image-card__title-link--large-font-size-mobile", text: "heading"
     assert_select ".gem-c-image-card--two-thirds .gem-c-image-card__description--large-font-size-mobile", text: "description"
-  end
-
-  it "applies tracking attributes" do
-    render_component(href: "#", href_data_attributes: { track_category: "cat" }, heading_text: "test")
-    assert_select ".gem-c-image-card[data-module='gem-track-click']"
-    assert_select ".gem-c-image-card__title-link[data-track-category='cat']"
-  end
-
-  it "applies tracking attributes for extra details" do
-    render_component(href: "#", extra_details: [{ href: "/", text: "1", data_attributes: { track_category: "cat" } }])
-    assert_select ".gem-c-image-card[data-module='gem-track-click']"
-    assert_select ".gem-c-image-card__list-item a[data-track-category='cat']"
   end
 
   it "shows metadata" do
