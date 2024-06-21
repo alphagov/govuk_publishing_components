@@ -76,13 +76,6 @@ describe "Translation nav", type: :view do
     assert_select ".gem-c-translation-nav .brand__color"
   end
 
-  it "adds data tracking" do
-    translations_with_tracking = multiple_translations
-    translations_with_tracking[1][:data_attributes] = { track_category: "category", track_label: "label" }
-    render_component(translations: translations_with_tracking)
-    assert_select ".gem-c-translation-nav a[data-track-category='category'][data-track-label='label']", text: "हिंदी"
-  end
-
   it "has no margin top when option passed" do
     render_component(translations: multiple_translations, no_margin_top: true)
     assert_select ".gem-c-translation-nav--no-margin-top"

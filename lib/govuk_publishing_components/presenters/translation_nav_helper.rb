@@ -14,13 +14,6 @@ module GovukPublishingComponents
         true if @translations.length > 1
       end
 
-      def tracking_is_present?
-        @translations.each do |translation|
-          return true if translation[:data_attributes]
-        end
-        false
-      end
-
       def classes
         classes = %w[gem-c-translation-nav]
         classes << inverse_class if @inverse
