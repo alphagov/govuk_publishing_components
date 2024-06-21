@@ -151,21 +151,6 @@ examples:
         image:
           url: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/organisation/logo/321/HMPS.jpg'
           alt_text: 'HM Prison Service'
-  with_data_attributes:
-    description: Data attributes can be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
-    data:
-      organisation:
-        name: Cabinet Office
-        url: '/government/organisations/cabinet-office'
-        brand: cabinet-office
-        crest: 'single-identity'
-        data_attributes:
-          track_category: "navOrganisationLinkClicked"
-          track_action: 1
-          track_label: '/government/organisations/cabinet-office'
-          track_options:
-            dimension28: 2
-            dimension29: Cabinet Office
   without_a_link:
     data:
       organisation:
