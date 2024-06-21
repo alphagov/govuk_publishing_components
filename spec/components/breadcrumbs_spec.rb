@@ -52,21 +52,6 @@ describe "Breadcrumbs", type: :view do
     expect(structured_data["itemListElement"].first["item"]["name"]).to eq("Section 1")
   end
 
-  it "renders all data attributes for universal analytics tracking" do
-    render_component(breadcrumbs: [{ title: "Section", url: "/section" }])
-
-    expected_tracking_options = {
-      dimension28: "1",
-      dimension29: "Section",
-    }
-
-    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click ga4-link-tracker"]', 1
-    assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-action="1"]', 1
-    assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-label="/section"]', 1
-    assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-category="breadcrumbClicked"]', 1
-    assert_select ".govuk-breadcrumbs__list-item:first-child a[data-track-options='#{expected_tracking_options.to_json}']", 1
-  end
-
   it "renders all data attributes for google analytics 4 tracking" do
     render_component(breadcrumbs: [{ title: "Section", url: "/section" }])
 
@@ -77,48 +62,8 @@ describe "Breadcrumbs", type: :view do
       index_total: "1",
     }
 
-    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click ga4-link-tracker"]', 1
+    assert_select '.gem-c-breadcrumbs[data-module="ga4-link-tracker"]', 1
     assert_select ".govuk-breadcrumbs__list-item:first-child a[data-ga4-link='#{expected_tracking_options.to_json}']", 1
-  end
-
-  it "a link to the homepage has separate tracking data" do
-    render_component(breadcrumbs: [{ title: "Section", url: "/section" }, { title: "Home", url: "/" }])
-
-    expected_tracking_options = {
-      dimension28: "2",
-      dimension29: "Section",
-    }
-
-    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click ga4-link-tracker"]', 1
-
-    assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-action="1"]', 1
-    assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-label="/section"]', 1
-    assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-category="breadcrumbClicked"]', 1
-    assert_select ".govuk-breadcrumbs__list-item:nth-child(1) a[data-track-options='#{expected_tracking_options.to_json}']", 1
-
-    assert_select '.govuk-breadcrumbs__list-item:nth-child(2) a[data-track-action="homeBreadcrumb"]', 1
-    assert_select '.govuk-breadcrumbs__list-item:nth-child(2) a[data-track-label=""]', 1
-    assert_select '.govuk-breadcrumbs__list-item:nth-child(2) a[data-track-category="homeLinkClicked"]', 1
-    assert_select ".govuk-breadcrumbs__list-item:nth-child(2) a[data-track-options='{}']", 1
-  end
-
-  it "tracks the total breadcrumb count on each breadcrumb" do
-    breadcrumbs = [
-      { title: "Section 1", url: "/section-1" },
-      { title: "Section 2", url: "/section-2" },
-      { title: "Section 3", url: "/section-3" },
-    ]
-    render_component(breadcrumbs:)
-
-    expected_tracking_options = [
-      { dimension28: "3", dimension29: "Section 1" },
-      { dimension28: "3", dimension29: "Section 2" },
-      { dimension28: "3", dimension29: "Section 3" },
-    ]
-
-    assert_select ".govuk-breadcrumbs__list-item:nth-child(1) a[data-track-options='#{expected_tracking_options[0].to_json}']", 1
-    assert_select ".govuk-breadcrumbs__list-item:nth-child(2) a[data-track-options='#{expected_tracking_options[1].to_json}']", 1
-    assert_select ".govuk-breadcrumbs__list-item:nth-child(3) a[data-track-options='#{expected_tracking_options[2].to_json}']", 1
   end
 
   it "renders a list of breadcrumbs" do
