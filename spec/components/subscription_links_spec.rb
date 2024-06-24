@@ -23,7 +23,6 @@ describe "subscription links", type: :view do
   it "renders both email signup and feed links" do
     render_component(email_signup_link: "email-signup", feed_link: "singapore.atom")
     assert_select ".gem-c-subscription-links[data-module='gem-toggle']", false
-    assert_select ".gem-c-subscription-links__list[data-module='gem-track-click']", false
     assert_select ".gem-c-subscription-links__item[href=\"email-signup\"]", text: "Get emails"
     assert_select ".gem-c-subscription-links__item[href=\"singapore.atom\"]", text: "Subscribe to feed"
   end
@@ -61,22 +60,6 @@ describe "subscription links", type: :view do
     assert_select ".gem-c-subscription-links.brand--attorney-generals-office"
     assert_select ".gem-c-subscription-links__item.brand__color"
     assert_select ".gem-c-subscription-links__item.brand__color"
-  end
-
-  it "adds tracking for email signup link" do
-    render_component(email_signup_link: "email-signup", email_signup_link_data_attributes: { 'track_category': "test" })
-    assert_select ".gem-c-subscription-links__list[data-module=\"gem-track-click\"] .gem-c-subscription-links__item[data-track-category=\"test\"]"
-  end
-
-  it "adds tracking for feed link" do
-    render_component(feed_link: "feed", feed_link_data_attributes: { 'track_category': "test" })
-    assert_select ".gem-c-subscription-links__list[data-module=\"gem-track-click\"] .gem-c-subscription-links__item[data-track-category=\"test\"]"
-  end
-
-  it "adds tracking for feed link when it is a toggle" do
-    render_component(feed_link_box_value: "feed", feed_link_data_attributes: { 'track_category': "test" })
-    assert_select ".gem-c-subscription-links[data-module=\"gem-toggle\"]"
-    assert_select ".gem-c-subscription-links__list[data-module=\"gem-track-click\"] .gem-c-subscription-links__item[data-track-category=\"test\"]"
   end
 
   it "adds small form modifier to the list of links" do
