@@ -7,8 +7,7 @@
   classes = %w(gem-c-step-nav-related)
   classes << "gem-c-step-nav-related--singular" if links.length == 1
   data = {}
-  data[:module] = "gem-track-click"
-  data[:module] << " ga4-link-tracker" unless disable_ga4
+  data[:module] = "ga4-link-tracker" unless disable_ga4
 %>
 <% if links.any? %>
   <%= tag.div(class: classes, data: data) do %>
@@ -17,12 +16,6 @@
       <% if links.length == 1 && !always_display_as_list %>
           <a href="<%= links[0][:href] %>"
             class="govuk-link"
-            data-track-category="stepNavPartOfClicked"
-            data-track-action="<%= pretitle %>"
-            data-track-label="<%= links[0][:href] %>"
-            data-track-dimension="<%= links[0][:text] %>"
-            data-track-dimension-index="29"
-            data-track-options='{"dimension96" : "<%= links[0][:tracking_id] %>" }'
             <% unless disable_ga4
               ga4_attributes = {
                 event_name: "navigation",
@@ -45,12 +38,6 @@
             <li class="gem-c-step-nav-related__link-item">
               <a href="<%= link[:href] %>"
                 class="govuk-link"
-                data-track-category="stepNavPartOfClicked"
-                data-track-action="<%= pretitle %>"
-                data-track-label="<%= link[:href] %>"
-                data-track-dimension="<%= link[:text] %>"
-                data-track-dimension-index="29"
-                data-track-options='{"dimension96" : "<%= link[:tracking_id] %>" }'
                 <% unless disable_ga4
                   ga4_attributes = {
                     event_name: "navigation",
