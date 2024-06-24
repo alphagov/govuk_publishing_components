@@ -10,6 +10,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
 - `role` - accepts a space separated string of roles
 - `lang` - accepts a language attribute value
+- `open` - accepts an open attribute value (true or false)
       "
     end
   end

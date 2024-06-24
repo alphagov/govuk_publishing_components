@@ -10,6 +10,7 @@ module GovukPublishingComponents
         check_aria_is_valid(@options[:aria]) if @options.include?(:aria)
         check_role_is_valid(@options[:role]) if @options.include?(:role)
         check_lang_is_valid(@options[:lang]) if @options.include?(:lang)
+        check_open_is_valid(@options[:open]) if @options.include?(:open)
       end
 
       def all_attributes
@@ -21,6 +22,7 @@ module GovukPublishingComponents
         attributes[:class] = @options[:classes] unless @options[:classes].blank?
         attributes[:role] = @options[:role] unless @options[:role].blank?
         attributes[:lang] = @options[:lang] unless @options[:lang].blank?
+        attributes[:open] = @options[:open] unless @options[:open].blank?
 
         attributes
       end
@@ -53,6 +55,11 @@ module GovukPublishingComponents
       def set_lang(lang)
         check_lang_is_valid(lang)
         @options[:lang] = lang
+      end
+
+      def set_open(open_attribute)
+        check_open_is_valid(open_attribute)
+        @options[:open] = open_attribute
       end
 
     private
@@ -111,6 +118,15 @@ module GovukPublishingComponents
         langs = %w[ab aa af ak sq am ar an hy as av ae ay az bm ba eu be bn bh bi bs br bg my ca ch ce ny zh zh-Hans zh-Hant cv kw co cr hr cs da dv nl dz en eo et ee fo fj fi fr ff gl gd gv ka de el kl gn gu ht ha he hz hi ho hu is io ig id in ia ie iu ik ga it ja jv kl kn kr ks kk km ki rw rn ky kv kg ko ku kj lo la lv li ln lt lu lg lb gv mk mg ms ml mt mi mr mh mo mn na nv ng nd ne no nb nn ii oc oj cu or om os pi ps fa pl pt pa qu rm ro ru se sm sg sa sr sh st tn sn ii sd si ss sk sl so nr es su sw ss sv tl ty tg ta tt te th bo ti to ts tr tk tw ug uk ur uz ve vi vo wa cy wo fy xh yi ji yo za zu]
         unless langs.include? lang
           raise(ArgumentError, "lang attribute (#{lang}) is not recognised")
+        end
+      end
+
+      def check_open_is_valid(open_attribute)
+        return if open_attribute.blank?
+
+        options = [true, false]
+        unless options.include? open_attribute
+          raise(ArgumentError, "open attribute (#{open_attribute}) is not recognised")
         end
       end
 

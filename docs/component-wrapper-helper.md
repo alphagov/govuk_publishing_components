@@ -31,6 +31,7 @@ These options can be passed to any component that uses the component wrapper.
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
 - `role` - accepts a space separated string of roles
 - `lang` - accepts a language attribute value
+- `open` - accepts an open attribute value (true or false)
 
 To prevent breaking [component isolation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_principles.md#a-component-is-isolated-when), passed classes should only be used for JavaScript hooks and not styling. All component styling should be included only in the component itself. Any passed classes should be prefixed with `js-`. To allow for extending this option, classes prefixed with `gem-c-`, `app-c-` or `govuk-` are also permitted, but should only be used within the component and not passed to it.
 
@@ -71,6 +72,7 @@ The component wrapper includes several methods to make managing options easier, 
   component_helper.add_aria_attribute({ label: "my-label" }) # works like 'add_data_attribute'
   component_helper.add_role("button") # works like 'add_class'
   component_helper.set_lang("en") # works like 'set_id' (can only have one lang)
+  component_helper.set_open(true) # can pass true or false
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
   component content
