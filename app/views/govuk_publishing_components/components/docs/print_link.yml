@@ -20,17 +20,10 @@ examples:
     description: |
       Data attributes can be passed to the component as shown.
 
-      Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
+      Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
       data_attributes:
-        track-category: "printButton"
-        track-action: "clicked"
-        track-label: "Print this page"
-  with_custom_data_module:
-    description: The component includes its own `data-module` but others can be passed in addition if required, for example to apply tracking to an element. This will be included along with the components own `data-module`.
-    data:
-      data_attributes:
-        module: "gem-track-click"
+        an_attribute: some_value
   with_custom_margins:
     description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having margin level `3` on top and bottom.
     data:
