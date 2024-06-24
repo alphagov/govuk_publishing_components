@@ -48,13 +48,6 @@
           rel: link[:rel],
           lang: shared_helper.t_locale_check(link[:locale]),
           data: {
-            track_category: 'relatedLinkClicked',
-            track_action: "#{section_index}.#{index} #{related_nav_helper.construct_section_text(section_title, true) || t('components.related_navigation.related_content')}",
-            track_label: link[:path],
-            track_options: {
-              dimension28: links.length.to_s,
-              dimension29: link[:text]
-            },
             ga4_link: ga4_attributes,
           }
         )

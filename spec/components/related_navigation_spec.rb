@@ -198,10 +198,7 @@ describe "Related navigation", type: :view do
     }
     render_component(content_item:)
 
-    assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
-    assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
-    assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Explore the topic']"
-    assert_select ".gem-c-related-navigation__section-link[data-track-label='/skating']"
+    assert_select ".gem-c-related-navigation[data-module='ga4-link-tracker']"
   end
 
   it "tracks links with GA4" do
@@ -244,7 +241,7 @@ describe "Related navigation", type: :view do
     end
     render_component(content_item:)
 
-    assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
+    assert_select ".gem-c-related-navigation[data-module='ga4-link-tracker']"
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"3\",\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Fishing"
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index_section\":\"1\",\"index_link\":\"2\",\"index_section_count\":\"3\",\"index_total\":\"2\",\"section\":\"Related content\"}']", text: "Surfing"
 
@@ -291,9 +288,7 @@ describe "Related navigation", type: :view do
 
     render_component(content_item:, disable_ga4: true)
 
-    assert_select ".gem-c-related-navigation[data-module='gem-track-click']"
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link]", false
-
     assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']", false
     assert_select ".gem-c-related-navigation__toggle[data-ga4-event]", false
   end
