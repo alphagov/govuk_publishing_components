@@ -1,14 +1,11 @@
 <%
   add_gem_component_stylesheet("cards")
-
   heading ||= nil
   items ||= nil
   sub_heading_level ||= 3
   two_column_layout ||= false
-
   ul_classes = %w[gem-c-cards__list]
   ul_classes << 'gem-c-cards__list--two-column-desktop' if two_column_layout
-
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-cards")
@@ -19,15 +16,11 @@
       <%= content_tag(shared_helper.get_heading_level, class: "gem-c-cards__heading govuk-heading-m") do %>
         <%= heading %>
       <% end %>
-    <% end %>    
-    <%# data-track-count is used for analytics purposes in 
-    https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics/page-content.js 
-    %>
-    <%= content_tag('ul', class: ul_classes, "data-track-count": "cardList" ) do %>
+    <% end %>
+    <%= content_tag('ul', class: ul_classes ) do %>
       <%
         items.each do |item|
         link = item[:link]
-
         if !link[:path].present?
           raise ArgumentError, "The cards component requires a href for all the links"
         end
@@ -38,8 +31,7 @@
               <%=
                 link_to link[:text], link[:path],
                 class: "govuk-link gem-c-cards__link",
-                data: link[:data_attributes],
-                "data-track-count": "cardLink"
+                data: link[:data_attributes]
               %>
             <% end %>
             <% if item[:description] %>
