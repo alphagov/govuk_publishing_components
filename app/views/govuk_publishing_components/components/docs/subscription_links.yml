@@ -51,28 +51,16 @@ examples:
       brand: 'attorney-generals-office'
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
-  with_tracking:
+  with_data_attributes_on_links:
     description: Data attributes can be passed for each link as shown.
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       email_signup_link_data_attributes: {
-        track_category: 'email_link_category',
-        track_action: 1.1,
-        track_label: 'email_link_label',
-        track_options: {
-          dimension28: 1,
-          dimension29: 'dimension29EmailLink'
-        }
+        an_attribute: some_value
       }
       feed_link_box_value: 'https://www.gov.uk/government/organisations/attorney-generals-office.atom'
       feed_link_data_attributes: {
-        track_category: 'feed_link_category',
-        track_action: 1.2,
-        track_label: 'feed_link_label',
-        track_options: {
-          dimension28: 7,
-          dimension29: 'dimension29feedLink'
-        }
+        an_attribute: some_value
       }
   as_small_form:
     data:
