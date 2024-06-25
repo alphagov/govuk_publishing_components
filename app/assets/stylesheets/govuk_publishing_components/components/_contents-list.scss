@@ -84,14 +84,14 @@
     margin-left: 0;
   }
 
-  // Put indentation back where we use list style types
-  .gem-c-contents-list__list-item--dashed {
-    margin-left: govuk-spacing(3);
-    list-style-type: disc;
-  }
-
   .gem-c-contents-list__list-item--numbered,
   .gem-c-contents-list__list-item--parent {
     list-style-type: none;
+  }
+
+  .gem-c-contents-list__link {
+    &.govuk-link {
+      color: $govuk-print-text-colour;
+    }
   }
 }
