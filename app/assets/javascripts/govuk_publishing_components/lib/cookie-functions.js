@@ -25,11 +25,7 @@
     global_bar_seen: 'settings',
     govuk_browser_upgrade_dismisssed: 'settings',
     govuk_not_first_visit: 'settings',
-    analytics_next_page_call: 'usage',
     user_nation: 'settings',
-    _ga: 'usage',
-    _gid: 'usage',
-    _gat: 'usage',
     'JS-Detection': 'usage',
     TLSversion: 'usage',
     _ga_VBLT2V3FZR: 'usage', // gtag cookie used to persist the session state, integration
