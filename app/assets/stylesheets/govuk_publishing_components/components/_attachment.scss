@@ -84,3 +84,27 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   text-decoration: none;
   cursor: help;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-attachment__thumbnail {
+    display: none;
+  }
+
+  .gem-c-attachment__details {
+    padding: 0;
+  }
+
+  .gem-c-attachment__metadata,
+  .gem-c-attachment__metadata .govuk-link::after {
+    font-size: 12pt;
+  }
+
+  .gem-c-attachment__link.govuk-link {
+    word-break: break-word;
+
+    &::after {
+      font-size: 12pt;
+      line-height: 1 !important; // stylelint-disable-line declaration-no-important
+    }
+  }
+}
