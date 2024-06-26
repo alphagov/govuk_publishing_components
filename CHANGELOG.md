@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 39.1.0
 
 * Add open attribute to component wrapper ([PR #4074](https://github.com/alphagov/govuk_publishing_components/pull/4074))
 * Add guard to accordion component init method ([PR #4069](https://github.com/alphagov/govuk_publishing_components/pull/4069))
