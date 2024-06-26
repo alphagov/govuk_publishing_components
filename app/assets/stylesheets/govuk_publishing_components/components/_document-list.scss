@@ -183,3 +183,22 @@
     display: none;
   }
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-document-list__item {
+    break-inside: avoid;
+  }
+
+  .gem-c-document-list__item-title {
+    .govuk-link {
+      color: $govuk-print-text-colour !important;
+    }
+
+    .govuk-link::after {
+      display: block;
+      margin: 1mm auto;
+    }
+  }
+}
+// stylelint-enable declaration-no-important
