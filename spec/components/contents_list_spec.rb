@@ -7,7 +7,7 @@ describe "Contents list", type: :view do
 
   def contents_list
     [
-      { href: "/one", text: "1. One" },
+      { href: "/one", text: "1.&nbsp;One" },
       { href: "#two", text: "2. Two" },
     ]
   end
