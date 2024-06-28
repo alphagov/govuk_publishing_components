@@ -347,3 +347,22 @@
     }
   }
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-image-card__title[class*="govuk-heading-"] {
+    font-size: 16pt;
+  }
+
+  .gem-c-image-card__title-link {
+    color: $govuk-print-text-colour !important;
+
+    &::after {
+      display: block;
+      position: static;
+      margin-top: 2mm;
+      font-size: 12pt !important;
+    }
+  }
+}
+// stylelint-enable declaration-no-important
