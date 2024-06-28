@@ -44,3 +44,27 @@
 .gem-c-step-nav-related__link-item {
   margin-top: govuk-spacing(3);
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-step-nav-related {
+    background: unset;
+    border-color: $govuk-print-text-colour;
+  }
+
+  .gem-c-step-nav-related__heading,
+  .gem-c-step-nav-related__link-item {
+    .govuk-link,
+    .govuk-link:link,
+    .govuk-link:link:visited {
+      color: $govuk-print-text-colour !important;
+
+      &::after {
+        display: block;
+        margin: 1mm auto;
+        font-size: 12pt !important;
+      }
+    }
+  }
+}
+// stylelint-enable declaration-no-important
