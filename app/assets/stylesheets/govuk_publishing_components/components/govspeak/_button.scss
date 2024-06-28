@@ -24,4 +24,25 @@
   .govuk-button--start {
     @extend .govuk-button--start;
   }
+
+  // stylelint-disable declaration-no-important
+  @include govuk-media-query($media-type: print) {
+    .gem-c-button {
+      display: inline-flex;
+      box-shadow: none;
+      border: 2pt solid $govuk-print-text-colour;
+
+      &,
+      & * {
+        background-color: unset;
+        color: $govuk-print-text-colour !important;
+      }
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+  // stylelint-enable declaration-no-important
 }
