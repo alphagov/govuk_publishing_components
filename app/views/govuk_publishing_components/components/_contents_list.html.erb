@@ -42,7 +42,7 @@
       <% contents.each.with_index(1) do |contents_item, position| %>
         <li class="<%= cl_helper.list_item_classes(contents_item, false) %>" <%= "aria-current=true" if contents_item[:active] %>>
           <span aria-hidden="true"></span>
-          <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : contents_item[:text]
+          <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : cl_helper.clean_string(contents_item[:text])
             unless disable_ga4
               ga4_data[:event_name] = cl_helper.get_ga4_event_name(contents_item[:href]) if contents_item[:href]
               ga4_data[:index_link] = index_link

@@ -88,7 +88,7 @@ examples:
       format_numbers: true
       contents:
         - href: "#first-thing"
-          text: 1. First thing
+          text: 1.&nbsp;First thing
         - href: "#two"
           active: true
           text: 2. Second thing

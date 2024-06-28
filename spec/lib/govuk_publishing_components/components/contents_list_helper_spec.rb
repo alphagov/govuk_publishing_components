@@ -36,49 +36,41 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
 
     it "does nothing if no number is found" do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
-      input = '<a href="#vision">Vision</a>'
-      expected = '<a href="#vision">Vision</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "Vision"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "does nothing if it's just a number" do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
-      input = '<a href="#first">1</a>'
-      expected = '<a href="#first">1</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "1"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "does nothing if the number is part of the word" do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
-      input = '<a href="#vision">1Vision</a>'
-      expected = '<a href="#vision">1Vision</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "1Vision"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
 
-      input = '<a href="#vision">1.Vision</a>'
-      expected = '<a href="#vision">1.Vision</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "1.Vision"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "does nothing if it starts with a number longer than 3 digits" do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
-      input = '<a href="#vision">2014 Vision</a>'
-      expected = '<a href="#vision">2014 Vision</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "2014 Vision"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
 
-      input = '<a href="#vision">2014. Vision</a>'
-      expected = '<a href="#vision">2014. Vision</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "2014. Vision"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
 
-      input = '<a href="#vision">10001. Vision</a>'
-      expected = '<a href="#vision">10001. Vision</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "10001. Vision"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "does nothing if a number is present but not at the start" do
       cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
-      input = '<a href="#run-an-effective-welfare-system">Run an effective welfare system part 1. Social Care</a>'
-      expected = '<a href="#run-an-effective-welfare-system">Run an effective welfare system part 1. Social Care</a>'
-      expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+      input = "Run an effective welfare system part 1. Social Care"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "counts the number of links in the component" do
@@ -115,8 +107,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
     number_class = "gem-c-contents-list__number"
     numbered_text_class = "gem-c-contents-list__numbered-text"
 
-    input = "<a href=\"#link\">#{number_and_text}</a>"
-    expected = "<a href=\"#link\"><span class=\"#{number_class}\">#{number} </span><span class=\"#{numbered_text_class}\">#{text}</span></a>"
-    expect(cl.wrap_numbers_with_spans(input)).to eql(expected)
+    expected = "<span class=\"#{number_class}\">#{number} </span><span class=\"#{numbered_text_class}\">#{text}</span>"
+    expect(cl.wrap_numbers_with_spans(number_and_text)).to eql(expected)
   end
 end
