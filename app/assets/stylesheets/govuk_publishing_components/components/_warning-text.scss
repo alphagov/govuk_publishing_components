@@ -21,3 +21,14 @@
 .gem-c-warning-text__text--highlight {
   color: $govuk-error-colour;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-warning-text * {
+    color: $govuk-print-text-colour;
+  }
+
+  .govuk-warning-text__icon {
+    background-color: transparent;
+    color: $govuk-print-text-colour;
+  }
+}
