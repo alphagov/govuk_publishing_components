@@ -45,3 +45,25 @@
 .gem-c-heading--inverse {
   color: govuk-colour("white");
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+
+  // Override margins and colors
+  .gem-c-heading {
+    margin: 0 !important;
+    color: $govuk-print-text-colour !important;
+    border-color: $govuk-print-text-colour !important;
+  }
+
+  // Remove extra padding to reduce whitespace, except for headings with borders
+  .gem-c-heading--padding:not([class*="--border-top"]) {
+    padding: 0 !important;
+  }
+
+  // Remove lower padding for headings with borders
+  .gem-c-heading--padding[class*="--border-top"] {
+    padding-bottom: 0 !important;
+  }
+}
+// stylelint-enable declaration-no-important
