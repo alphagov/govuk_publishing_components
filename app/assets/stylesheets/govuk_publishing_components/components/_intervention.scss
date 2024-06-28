@@ -21,3 +21,24 @@
   height: 1em;
   margin-bottom: -2px;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-intervention {
+    break-inside: avoid;
+  }
+
+  .gem-c-intervention .govuk-link {
+    &,
+    &:link,
+    &:link:visited {
+      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    }
+
+    &::after {
+      display: block;
+      margin: 1mm auto;
+      font-size: 12pt !important; // stylelint-disable-line declaration-no-important
+      color: $govuk-print-text-colour;
+    }
+  }
+}
