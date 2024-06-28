@@ -20,10 +20,12 @@
   display: block;
 }
 
+// stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-step-nav-header {
     padding: 0 0 govuk-spacing(4) 0;
-    background: none;
+    background: unset;
+    border-color: $govuk-print-text-colour !important;
   }
 
   .gem-c-step-nav-header__part-of {
@@ -32,5 +34,18 @@
 
   .gem-c-step-nav-header__title {
     @include govuk-font(24, $weight: bold);
+
+    &,
+    &:link,
+    &:link:visited {
+      color: $govuk-print-text-colour !important;
+    }
+
+    &::after {
+      display: block;
+      margin: 1mm auto;
+      font-size: 12pt !important;
+    }
   }
 }
+// stylelint-enable declaration-no-important
