@@ -31,10 +31,6 @@ window.GOVUK.loadAnalytics = {
         break
       }
     }
-    // Load universal analytics
-    if (typeof window.GOVUK.analyticsInit !== 'undefined') {
-      window.GOVUK.analyticsInit()
-    }
   },
 
   loadGa4: function (currentDomain) {

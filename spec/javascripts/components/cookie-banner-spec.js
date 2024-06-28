@@ -138,7 +138,6 @@ describe('Cookie banner', function () {
     })
 
     it('sets consent cookie when accepting cookies', function () {
-      spyOn(GOVUK, 'analyticsInit')
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
       var element = document.querySelector('[data-module="cookie-banner"]')
@@ -154,7 +153,6 @@ describe('Cookie banner', function () {
       expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
       expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
       expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
-      expect(GOVUK.analyticsInit).toHaveBeenCalled()
     })
 
     it('sets global_bar_seen cookie when accepting cookies', function () {
