@@ -94,3 +94,17 @@
 .js-enabled .gem-c-metadata__toggle-items.js-hidden {
   display: none;
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-metadata--inverse {
+    color: $govuk-print-text-colour !important;
+    background-color: unset;
+
+    a,
+    a:visited {
+      color: $govuk-print-text-colour !important;
+    }
+  }
+}
+// stylelint-enable declaration-no-important
