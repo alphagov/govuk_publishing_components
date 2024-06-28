@@ -12,3 +12,10 @@
 .gem-c-lead-paragraph--inverse {
   color: govuk-colour("white");
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-lead-paragraph {
+    color: $govuk-print-text-colour;
+    background-color: unset;
+  }
+}
