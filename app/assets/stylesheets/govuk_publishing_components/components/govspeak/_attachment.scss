@@ -108,6 +108,21 @@
       .js-hidden {
         display: none;
       }
+
+      @include govuk-media-query($media-type: print) {
+        a,
+        a:link,
+        a:link:visited {
+          color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+
+          &::after {
+            display: block;
+            margin: 1mm auto;
+            font-weight: normal;
+            font-size: 12pt !important; // stylelint-disable-line declaration-no-important
+          }
+        }
+      }
     }
   }
 
