@@ -32,11 +32,20 @@
 }
 
 @include govuk-media-query($media-type: print) {
+  .gem-c-title {
+    margin: 5mm 0 10mm !important; // stylelint-disable-line declaration-no-important
+  }
+
   .gem-c-title__context {
     margin: 0;
   }
 
   .gem-c-title__text {
     margin-top: 0;
+  }
+
+  .gem-c-title--inverse {
+    color: $govuk-print-text-colour;
+    background-color: unset;
   }
 }
