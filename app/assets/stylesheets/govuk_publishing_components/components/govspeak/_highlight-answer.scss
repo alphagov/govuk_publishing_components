@@ -43,5 +43,14 @@ $highlight-answer-color: govuk-colour("white");
         }
       }
     }
+
+    @include govuk-media-query($media-type: print) {
+      background-color: unset;
+
+      &,
+      & * {
+        color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+      }
+    }
   }
 }
