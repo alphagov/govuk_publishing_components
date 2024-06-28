@@ -12,3 +12,13 @@
 .gem-c-lead-paragraph--inverse {
   color: govuk-colour("white");
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-lead-paragraph {
+    break-inside: avoid;
+    color: $govuk-print-text-colour !important;
+    background-color: unset;
+  }
+}
+// stylelint-enable declaration-no-important
