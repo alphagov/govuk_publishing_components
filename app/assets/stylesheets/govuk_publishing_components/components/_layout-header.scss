@@ -167,3 +167,25 @@
 .gem-c-header__nav {
   clear: both;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-layout-header .govuk-header__container {
+    border-color: $govuk-print-text-colour;
+
+    .govuk-grid-column-two-thirds {
+      width: auto;
+      float: none;
+    }
+
+    .govuk-header__logo {
+      margin: 0;
+      padding: 0 2mm 2mm 0;
+    }
+
+    .gem-c-header__product-name,
+    .gem-c-environment-tag {
+      color: $govuk-print-text-colour;
+      background-color: unset;
+    }
+  }
+}

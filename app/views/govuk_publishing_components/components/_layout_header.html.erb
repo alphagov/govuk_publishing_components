@@ -31,11 +31,11 @@
         </div>
       </div>
       <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop gem-c-layout-header__search">
+        <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop gem-c-layout-header__search govuk-!-display-none-print">
           <%= render "govuk_publishing_components/components/layout_header/search" %>
         </div>
         <% if navigation_items.any? %>
-          <div class="govuk-header__content gem-c-header__content govuk-grid-column-full">
+          <div class="govuk-header__content gem-c-header__content govuk-grid-column-full govuk-!-display-none-print">
             <%= render "govuk_publishing_components/components/layout_header/navigation_items", navigation_items: navigation_items, navigation_aria_label: navigation_aria_label  %>
           </div>
         <% end %>
@@ -50,12 +50,12 @@
           } %>
         </div>
         <% if navigation_items.any? %>
-          <div class="govuk-header__content gem-c-header__content govuk-grid-column-full">
+          <div class="govuk-header__content gem-c-header__content govuk-grid-column-full govuk-!-display-none-print">
             <%= render "govuk_publishing_components/components/layout_header/navigation_items", navigation_items: navigation_items, navigation_aria_label: navigation_aria_label %>
           </div>
         <% end %>
         <% if search %>
-          <div class="govuk-grid-column-one-third gem-c-layout-header__search">
+          <div class="govuk-grid-column-one-third gem-c-layout-header__search govuk-!-display-none-print">
             <%= render "govuk_publishing_components/components/layout_header/search" %>
           </div>
         <% end %>
