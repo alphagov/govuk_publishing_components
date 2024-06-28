@@ -20,3 +20,11 @@
   // the right column.
   margin-bottom: 20px;
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-layout-footer {
+    font-size: 12pt !important;
+  }
+}
+// stylelint-enable declaration-no-important
