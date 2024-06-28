@@ -26,3 +26,24 @@
     }
   }
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-phase-banner {
+    &,
+    & * {
+      background-color: unset !important;
+      color: $govuk-print-text-colour !important;
+    }
+
+    .govuk-tag {
+      border: 1pt solid $govuk-print-text-colour;
+    }
+  }
+
+  .govuk-phase-banner__content__app-name {
+    margin-bottom: 1mm;
+    font-size: 12pt;
+  }
+}
+// stylelint-enable declaration-no-important
