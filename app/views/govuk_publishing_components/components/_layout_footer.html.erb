@@ -43,19 +43,17 @@
                         <%
                           attributes = {
                             class: "govuk-footer__link",
-                            data: {
-                              "track-category": "footerClicked",
-                            }
                           }.merge(item.fetch(:attributes, {}))
+                          attributes[:data] ||= {}
                           attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
 
                           unless attributes[:data][:ga4_link]
                             attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, ga4_section_index, section[:title], index_total)
                           end
 
-                          item[:href] = absolute_links_helper.make_url_absolute(item[:href])
+                          href = absolute_links_helper.make_url_absolute(item[:href])
                         %>
-                        <%= link_to item[:text], item[:href], attributes %>
+                        <%= link_to item[:text], href, attributes %>
                       </li>
                     <% end %>
                   <% end %>
@@ -86,9 +84,9 @@
                     attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, navigation.length, "Support links", index_total)
                   end
 
-                  item[:href] = absolute_links_helper.make_url_absolute(item[:href])
+                  href = absolute_links_helper.make_url_absolute(item[:href])
                 %>
-                <%= link_to item[:text], item[:href], attributes %>
+                <%= link_to item[:text], href, attributes %>
               </li>
             <% end %>
           </ul>
