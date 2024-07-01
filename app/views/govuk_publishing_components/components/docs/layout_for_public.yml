@@ -115,11 +115,11 @@ examples:
           yes:
             text: Yes
             data_attributes:
-              track_category: cookieBanner
+              an_attribute: some_value1
           no:
             text: No
             data_attributes:
-              track-category: cookieBanner
+              an_attribute: some_value2
           cookie_preferences:
             text: How GOV.UK accounts use cookies
             href: https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement
