@@ -95,9 +95,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.showConfirmationMessage()
     this.$module.cookieBannerConfirmationMessage.focus()
 
-    if (window.GOVUK.analyticsInit) {
-      window.GOVUK.analyticsInit()
-    }
     if (window.GOVUK.globalBarInit) {
       window.GOVUK.globalBarInit.init()
     }

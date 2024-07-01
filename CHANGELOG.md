@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Disable Universal Analytics ([PR #4083](https://github.com/alphagov/govuk_publishing_components/pull/4083))
+
 ## 39.1.0
 
 * Add open attribute to component wrapper ([PR #4074](https://github.com/alphagov/govuk_publishing_components/pull/4074))
