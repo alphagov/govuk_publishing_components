@@ -179,3 +179,20 @@
     display: none;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-document-list__item {
+    break-inside: avoid;
+  }
+
+  .gem-c-document-list__item-title {
+    .govuk-link {
+      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    }
+
+    .govuk-link::after {
+      display: block;
+      margin: 1mm auto;
+    }
+  }
+}

@@ -10,3 +10,23 @@
     padding: govuk-spacing(4) govuk-spacing(6);
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-devolved-nations {
+    border: 2pt solid $govuk-print-text-colour;
+    margin: 0 0 5mm;
+
+    * {
+      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    }
+
+    .govuk-list li {
+      margin-bottom: 2mm;
+    }
+
+    .govuk-link::after {
+      display: block;
+      margin: 1mm auto;
+    }
+  }
+}

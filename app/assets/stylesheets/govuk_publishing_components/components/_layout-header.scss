@@ -167,3 +167,50 @@
 .gem-c-header__nav {
   clear: both;
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-layout-header .govuk-header__container {
+    .govuk-grid-row:nth-child(even) {
+      display: none !important;
+    }
+
+    .govuk-header__content {
+      display: none;
+    }
+
+    .gem-c-layout-header__logo {
+      float: none;
+      width: auto;
+    }
+
+    .gem-c-header__logo {
+      width: 100%;
+      margin: 0;
+      padding: 0 2mm 2mm 0;
+    }
+
+    .govuk-header__link {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+
+    .govuk-header__logotype {
+      display: flex;
+      align-items: center;
+    }
+
+    .govuk-header__logotype-crown {
+      margin-right: 2mm !important;
+    }
+
+    .gem-c-header__product-name,
+    .gem-c-environment-tag {
+      margin: 0 0 0 4mm;
+      color: $govuk-print-text-colour !important;
+      background-color: initial;
+    }
+  }
+}
+// stylelint-enable declaration-no-important

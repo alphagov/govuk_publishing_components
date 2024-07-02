@@ -1,4 +1,12 @@
+@import "govuk_publishing_components/individual_component_support";
+
 .gem-c-attachment-link__abbr {
   text-decoration: none;
   cursor: help;
+}
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-attachment-link .govuk-link::after {
+    font-size: inherit;
+  }
 }

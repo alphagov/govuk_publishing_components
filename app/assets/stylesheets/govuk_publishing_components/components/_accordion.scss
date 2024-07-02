@@ -15,6 +15,9 @@
   // Open all of the accordion sections.
   .govuk-accordion__section-content {
     display: block !important; // stylelint-disable-line declaration-no-important
+    > :last-child {
+      margin-bottom: 20px;
+    }
   }
 
   .js-enabled .govuk-accordion__section-content[hidden] {
@@ -26,6 +29,8 @@
   // Change the colour from the blue link colour to black.
   .govuk-accordion__section-button {
     color: govuk-colour("black") !important; // stylelint-disable-line declaration-no-important
+    padding: 20px 0 0 !important; // stylelint-disable-line declaration-no-important
+    border-bottom: 0 !important; // stylelint-disable-line declaration-no-important
   }
 
   // Change the summary subheading size.
@@ -38,5 +43,12 @@
   .govuk-accordion__show-all,
   .govuk-accordion__section-toggle {
     display: none !important; // stylelint-disable-line declaration-no-important
+  }
+
+  // Remove extra space for expanded accordions, not needed on a printout
+  .govuk-accordion__section--expanded {
+    .govuk-accordion__section-content {
+      padding: 0 !important; // stylelint-disable-line declaration-no-important
+    }
   }
 }
