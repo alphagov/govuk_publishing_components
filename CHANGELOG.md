@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update to LUX 4.0.20 ([PR #4089](https://github.com/alphagov/govuk_publishing_components/pull/4089))
 * Fix missing number formatting in contents list component ([PR #4084](https://github.com/alphagov/govuk_publishing_components/pull/4084))
 
 ## 39.2.0
