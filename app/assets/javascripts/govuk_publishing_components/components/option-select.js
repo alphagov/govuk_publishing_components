@@ -140,7 +140,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     for (i = 0; i < showCheckboxes.length; i++) {
-      obj.$allCheckboxes[showCheckboxes[i]].style.display = 'block'
+      obj.$allCheckboxes[showCheckboxes[i]].style.display = 'flex'
     }
 
     var lenChecked = obj.$optionsContainer.querySelectorAll('.govuk-checkboxes__input:checked').length

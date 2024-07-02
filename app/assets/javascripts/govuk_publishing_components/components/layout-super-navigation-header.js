@@ -1,4 +1,4 @@
-//= require govuk/vendor/polyfills/Element/prototype/classList.js
+//= require ../vendor/polyfills-govuk-frontend-v4/Element/prototype/classList.js
 
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};

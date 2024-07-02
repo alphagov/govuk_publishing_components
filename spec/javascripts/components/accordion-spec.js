@@ -31,7 +31,7 @@ describe('Accordion component', function () {
             '<span class="govuk-accordion__section-button" id="default-id-078ef791-heading-1">Writing well for the web</span>' +
           '</h2>' +
         '</div>' +
-        '<div id="default-id-078ef791-content-1" class="govuk-accordion__section-content" aria-labelledby="default-id-078ef791-heading-1">' +
+        '<div id="default-id-078ef791-content-1" class="govuk-accordion__section-content">' +
           '<p class="govuk-body">This is the content for Writing well for the web.</p>' +
         '</div>' +
       '</div>' +
@@ -41,7 +41,7 @@ describe('Accordion component', function () {
             '<span class="govuk-accordion__section-button" id="default-id-078ef791-heading-2">Writing well for specialists</span>' +
           '</h2>' +
         '</div>' +
-        '<div id="default-id-078ef791-content-2" class="govuk-accordion__section-content" aria-labelledby="default-id-078ef791-heading-2">' +
+        '<div id="default-id-078ef791-content-2" class="govuk-accordion__section-content">' +
           '<p class="govuk-body">This is the content for Writing well for specialists.</p>' +
         '</div>' +
       '</div>' +
