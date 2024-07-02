@@ -52,16 +52,6 @@ examples:
           text: 'Learn to drive a motorbike: step by step'
         }
       ]
-  with_unique_tracking:
-    description: In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Google Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav that the component links to. Where there are multiple links, they will have different tracking IDs.
-    data:
-      links: [
-        {
-          href: '#',
-          text: 'With a tracking id',
-          tracking_id: 'this-is-the-tracking-id'
-        }
-      ]
   always_display_as_a_list:
     description: |
       when this component is rendered alongside an expanded step by step, we want it to render as a heading.

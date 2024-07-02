@@ -37,19 +37,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
             // Only set custom button text if both text items are provided
             var customText = customSubscribeText && customUnsubscribeText
 
-            // Append '-[button-location]' to the tracking data attribute value if data-button-location is set
-            var optionalButtonLocation = this.$module.getAttribute('data-button-location') ? '-' + this.$module.getAttribute('data-button-location') : ''
-
             // If response returns active, user has subscribed to notifications
             if (active === true) {
-              this.$module.setAttribute('data-track-action', 'Unsubscribe-button' + optionalButtonLocation)
-
               if (customText) {
                 this.$module.querySelector('.gem-c-single-page-notication-button__text').textContent = customUnsubscribeText
               }
             } else {
-              this.$module.setAttribute('data-track-action', 'Subscribe-button' + optionalButtonLocation)
-
               if (customText) {
                 this.$module.querySelector('.gem-c-single-page-notication-button__text').textContent = customSubscribeText
               }

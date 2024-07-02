@@ -112,7 +112,7 @@ describe "Attachment", type: :view do
       index_section_count: 4,
       another_attribute: "here",
     }.to_json
-    assert_select ".govuk-details__summary[data-ga4-event='#{attributes}']"
+    assert_select ".govuk-details[data-ga4-event='#{attributes}']"
   end
 
   it "does not show opendocument metadata if disabled" do

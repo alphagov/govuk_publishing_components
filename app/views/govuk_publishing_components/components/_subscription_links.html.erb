@@ -27,10 +27,7 @@
     <% unless hide_heading %>
       <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("components.subscription_links.subscriptions") %></h2>
     <% end %>
-    <ul
-      class="gem-c-subscription-links__list<%= ' gem-c-subscription-links__list--small' if local_assigns[:small_form] == true %>"
-      <%= "data-module=gem-track-click" if sl_helper.tracking_is_present? %>
-    >
+    <ul class="gem-c-subscription-links__list<%= ' gem-c-subscription-links__list--small' if local_assigns[:small_form] == true %>">
       <% if sl_helper.email_signup_link.present? %>
         <li class="gem-c-subscription-links__list-item<%= ' gem-c-subscription-links__list-item--small' if local_assigns[:small_form] == true %>" >
           <% email_link_text = capture do %>

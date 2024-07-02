@@ -50,14 +50,7 @@ module GovukPublishingComponents
       end
 
       def tracking_data(breadcrumbs_length)
-        data = {
-          track_category: "breadcrumbClicked",
-          track_action: index,
-          track_label: path,
-          track_options: {
-            dimension28: breadcrumbs_length.to_s,
-            dimension29: crumb[:title],
-          },
+        {
           ga4_link: {
             event_name: "navigation",
             type: "breadcrumb",
@@ -65,17 +58,6 @@ module GovukPublishingComponents
             index_total: breadcrumbs_length.to_s,
           },
         }
-
-        is_homepage = crumb[:url] == "/"
-
-        if is_homepage
-          data[:track_category] = "homeLinkClicked"
-          data[:track_action] = "homeBreadcrumb"
-          data[:track_label] = ""
-          data[:track_options] = "{}"
-        end
-
-        data
       end
 
     private

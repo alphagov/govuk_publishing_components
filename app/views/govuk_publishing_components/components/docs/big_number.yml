@@ -37,17 +37,13 @@ examples:
     description: |
       If a `href` attribute is present, `data_attributes` will apply to the `span` containing the number value (see below).
 
-      Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
+      Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
       number: 23
       label: Ministerial departments
       href: "/government/organisations#ministerial_departments"
       data_attributes:
-        track-category: homepageClicked
-        track-action: departmentsLink
-        track-label: "/government/organisations#ministerial_departments"
-        track-dimension: 23 Ministerial departments
-        track-dimension-index: 29
+        department-count: true
   with_data_attributes_but_no_link:
     data:
       number: 23

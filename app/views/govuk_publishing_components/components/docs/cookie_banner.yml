@@ -41,11 +41,11 @@ examples:
         "yes":
           text: "Yes"
           data_attributes:
-            track-category: cookieBanner
+            an_attribute: some_value1
         "no":
           text: "No"
           data_attributes:
-            "track-category": "cookieBanner"
+            an_attribute: some_value2
         cookie_preferences:
           text: How we use cookies
           href: "/cookies"

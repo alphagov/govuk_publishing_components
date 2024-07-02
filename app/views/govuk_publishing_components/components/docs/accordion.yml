@@ -200,16 +200,10 @@ examples:
     description: |
       Adds custom data attributes to each section of the accordion. Accepts a hash, so multiple attributes can be added.
 
-      The `data_attributes` option applies attributes to the outermost element in the accordion. Each item can also have a `data_attributes` hash, which are placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
-
-      Data attributes can be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created). Currently, this is only used for tracking with Universal Analytics.
-
-      If `track_options` within `data_attributes_show_all` is set, then it is possible to pass a custom dimension when 'Show/Hide all' is clicked.
+      The `data_attributes` option applies attributes to the outermost element in the accordion. Individual items can also have their own `data_attributes` hash, which are placed on the `button` that triggers the opening and closing of that section - useful for differentiating between each section of the accordion.
     data:
       data_attributes:
         custom_data_attr: custom-data-attr-accordion
-      data_attributes_show_all:
-        tracking-options: "{ 'dimension114': 1 }"
       items:
         - heading:
             text: Writing well for the web
@@ -235,20 +229,6 @@ examples:
             html: <p class="govuk-body">This is the content for How people read.</p>
           data_attributes:
             custom_data_attr: custom-data-attr-accordion-item-4
-  with_custom_data_module:
-    description: The component includes its own `data-module` but others can be passed in addition if required, for example to apply tracking to an element. This will be included along with the components own `data-module`.
-    data:
-      data_attributes:
-        module: gem-track-click
-      items:
-        - heading:
-            text: Writing well for the web
-          content:
-            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
-        - heading:
-            text: Writing well for specialists
-          content:
-            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
   different_heading_level:
     description: This will alter the level of the heading, not the appearance of the heading.
     data:
@@ -340,42 +320,3 @@ examples:
             text: How people read
           content:
             html: <p class="govuk-body">This is the content for How people read.</p>
-  with_track_show_all_clicks:
-    description: |
-      To switch on Google Analytics for the "Show all sections" button on click, pass `track_show_all_clicks: true` the values passed on open will be
-      `Event Action: accordionOpened` `Event Category: pageElementInteraction` `Event Label: Show all sections`
-    data:
-      track_show_all_clicks: true
-      items:
-        - heading:
-            text: Writing well for the web
-            id: writing-well-for-the-web-2
-          content:
-            html: <p class="govuk-body">This is content for accordion 1 of 2</p>
-        - heading:
-            text: Writing well for specialists
-          content:
-            html: <p class="govuk-body">This is content for accordion 2 of 2</p>
-  with_track_sections:
-    description: |
-      To switch on Google Analytics for each section, on click, pass `track_sections: true` the values passed on open will be
-      `Event Action: accordionOpened` / `accordionClosed` `Event Category: pageElementInteraction` and the `Event Label` being the heading text.
-
-      If `track_options` in an item is set, then it is possible to pass a custom dimension when the section is clicked.
-
-      (`track_show_all_clicks: true` can be added to track the "Show all sections" button as well, if required)
-    data:
-      track_sections: true
-      items:
-        - heading:
-            text: Writing well for the web
-            id: writing-well-for-the-web-3
-          content:
-            html: <p class="govuk-body">This is content for accordion 1 of 2</p><p class="govuk-body">This content contains a <a href="#anchor-nav-test" class="govuk-link">link</a></p>
-          data_attributes:
-            track_options:
-              dimension114: 1
-        - heading:
-            text: Writing well for specialists
-          content:
-            html: <p class="govuk-body" id="anchor-nav-test">This is content for accordion 2 of 2</p>

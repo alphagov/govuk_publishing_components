@@ -200,39 +200,6 @@ examples:
           value: green
         - label: Blue
           value: blue
-  checkboxes_with_data_attributes:
-    description: Data attributes for tracking can be applied as shown. Custom JavaScript in the component will fire identical tracking events on check and uncheck. See below to send different events on uncheck.
-    data:
-      name: With tracking
-      items:
-        - label: Tracked
-          value: tracked
-          data_attributes: {
-            track_category: checkboxClicked,
-            track_label: /news-and-communications,
-            track_action: news,
-            track_options: {
-              dimension28: 2,
-              dimension29: Tracked
-            }
-          }
-  checkboxes_with_data_attributes_and_custom_uncheck_event_category:
-    description: Data attributes for tracking can be applied as shown. Custom JavaScript in the component will fire different tracking events on check and uncheck.
-    data:
-      name: With tracking and a custom uncheck category
-      items:
-        - label: Tracked
-          value: tracked
-          data_attributes: {
-            track_category: checkboxClicked,
-            untrack_category: checkboxUnchecked,
-            track_label: /news-and-communications,
-            track_action: news,
-            track_options: {
-              dimension28: 2,
-              dimension29: Tracked
-            }
-          }
   with_aria_controls_attributes:
     description: Aria controls attributes are applied to the checkboxes only if JavaScript is enabled.
     data:

@@ -5,8 +5,6 @@
 <form action="<%= absolute_links_helper.make_url_absolute('/contact/govuk/problem_reports') %>"
   id="something-is-wrong"
   class="gem-c-feedback__form js-feedback-form"
-  data-track-category="Onsite Feedback"
-  data-track-action="GOV.UK Send Form"
   method="post"
   hidden>
 
@@ -43,7 +41,7 @@
       } %>
 
       <%
-        unless disable_ga4 
+        unless disable_ga4
           heading_text = t("components.feedback.help_us_improve_govuk", locale: :en)
           ga4_submit_button_event = {
             event_name: "form_submit",
@@ -64,8 +62,6 @@
 
       <button
         class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
-        data-track-category="Onsite Feedback"
-        data-track-action="GOV.UK Close Form"
         aria-controls="something-is-wrong"
         aria-expanded="true">
         <%= t("components.feedback.close") %>

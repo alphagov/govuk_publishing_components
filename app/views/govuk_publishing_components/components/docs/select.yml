@@ -54,42 +54,6 @@ examples:
         value: option1
       - text: Something else
         value: option2
-  with_tracking:
-    description: |
-      Tracking can be enabled on the select component by passing a minimum of `data_track_category` and `data_track_action`. Other tracking attributes are optional. Tracking is provided by the [track-select-change](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics/track-select-change.js) module.
-
-      Note: tracking events do not fire within the component guide.
-    data:
-      id: dropdown3
-      label: With tracking enabled
-      options:
-      - text: Option one
-        value: option1
-        data_attributes:
-          track_category: relatedLinkClicked
-          track_action: 1.1
-          track_label: /link-1
-          track_options:
-            dimension28: 1
-            dimension29: Link 1
-      - text: Option two
-        value: option2
-        data_attributes:
-          track_category: relatedLinkClicked
-          track_action: 1.2
-          track_label: /link-2
-          track_options:
-            dimension28: 2
-            dimension29: Link 2
-      - text: Option three
-        value: option3
-        data_attributes:
-          track_category: relatedLinkClicked
-          track_action: 1.3
-          track_label: /link-3
-          track_options:
-            dimension28: 3
-            dimension29: Link 3
   with_data_attributes:
     description: Other data attributes can be passed to the component if needed.
     data:

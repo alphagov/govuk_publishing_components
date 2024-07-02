@@ -119,29 +119,6 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=medium][selected]"
   end
 
-  it "enables tracking if track_category and track_action passed" do
-    render_component(
-      id: "mydropdown",
-      label: "attributes",
-      options: [
-        {
-          value: 1,
-          text: "One",
-          data_attributes: {
-            track_category: "category",
-            track_action: "action",
-            track_options: {
-              dimension28: 28,
-              dimension29: "twentynine",
-            },
-          },
-        },
-      ],
-    )
-
-    assert_select ".gem-c-select [data-module=track-select-change]"
-  end
-
   it "renders a select with data attributes" do
     render_component(
       id: "mydropdown",
@@ -151,39 +128,13 @@ describe "Select", type: :view do
           value: 1,
           text: "One",
           data_attributes: {
-            track_category: "category",
-            track_action: "action",
-            track_options: {
-              dimension28: 28,
-              dimension29: "twentynine",
-            },
+            an_attribute: "some_value",
           },
         },
       ],
     )
 
-    assert_select ".govuk-select option[value=1][data-track-category='category'][data-track-action='action'][data-track-options='{\"dimension28\":28,\"dimension29\":\"twentynine\"}']"
-  end
-
-  it "does not enable tracking for other data attributes" do
-    render_component(
-      id: "mydropdown",
-      label: "attributes",
-      options: [
-        {
-          value: 1,
-          text: "One",
-          data_attributes: {
-            another_attribute: "test1",
-            second_item: "item1",
-            option: "option1",
-          },
-        },
-      ],
-    )
-
-    assert_select ".gem-c-select [data-module=track-select-change]", false
-    assert_select ".gem-c-select [data-another-attribute=test1][data-second-item=item1][data-option=option1]"
+    assert_select ".govuk-select option[value=1][data-an-attribute='some_value']"
   end
 
   it "renders a select box with a hint" do

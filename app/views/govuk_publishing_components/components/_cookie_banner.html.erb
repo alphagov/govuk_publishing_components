@@ -21,11 +21,6 @@
                                   t("components.cookie_banner.confirmation_message.link"),
                                   cookie_preferences_href,
                                   class: "govuk-link",
-                                  data: {
-                                    module: "gem-track-click",
-                                    'track-category': "cookieBanner",
-                                    'track-action': "Cookie banner settings clicked from confirmation",
-                                  },
                                 )))
   services_cookies ||= nil
   css_classes = %w(gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper)
@@ -58,12 +53,12 @@
         <%= render "govuk_publishing_components/components/button", {
           name: "cookies",
           text: services_cookies.dig(:yes, :text) || "Yes",
-          data_attributes: { module: "gem-track-click", "accept-cookies": "true", }.merge(services_cookies.dig(:yes, :data_attributes) || {})
+          data_attributes: { "accept-cookies": "true", }.merge(services_cookies.dig(:yes, :data_attributes) || {})
         } %>
         <%= render "govuk_publishing_components/components/button", {
           name: "cookies",
           text: services_cookies.dig(:no, :text) || "No",
-          data_attributes: { module: "gem-track-click", "reject-cookies": "true", }.merge(services_cookies.dig(:no, :data_attributes) || {})
+          data_attributes: { "reject-cookies": "true", }.merge(services_cookies.dig(:no, :data_attributes) || {})
         } %>
         <% if services_cookies[:cookie_preferences] %>
           <%= link_to services_cookies.dig(:cookie_preferences, :text), services_cookies.dig(:cookie_preferences, :href), class: "govuk-link" %>
@@ -73,10 +68,7 @@
             name: "cookies",
             text: t("components.cookie_banner.buttons.accept_cookies"),
             data_attributes: {
-              module: "gem-track-click",
               "accept-cookies": "true",
-              "track-category": "cookieBanner",
-              "track-action": "Cookie banner accepted",
               "cookie-types": "all",
             }
         } %>
@@ -84,10 +76,7 @@
             name: "cookies",
             text: t("components.cookie_banner.buttons.reject_cookies"),
             data_attributes: {
-              module: "gem-track-click",
               "reject-cookies": "true",
-              "track-category": "cookieBanner",
-              "track-action": "Cookie banner rejected",
             }
         } %>
         <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
@@ -95,9 +84,6 @@
     </div>
     <div hidden class="js-hide-button govuk-button-group">
       <%
-        button_data_module = "gem-track-click"
-        button_data_module << " ga4-event-tracker" unless disable_ga4
-
         ga4_event = {
           event_name: "select_content",
           type: "cookie banner",
@@ -108,9 +94,7 @@
       <button
         class="gem-c-cookie-banner__hide-button govuk-button"
         data-hide-cookie-banner="true"
-        data-module="<%= button_data_module %>"
-        data-track-category="cookieBanner"
-        data-track-action="Hide cookie banner"
+        data-module="<%= "ga4-event-tracker" unless disable_ga4 %>"
         <% unless disable_ga4 %> data-ga4-event="<%= ga4_event %>" <% end %>>
           <%= t("components.cookie_banner.hide") %>
         </button>

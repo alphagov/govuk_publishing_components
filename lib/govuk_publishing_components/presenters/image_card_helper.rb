@@ -4,11 +4,10 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :href_data_attributes, :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :youtube_video_id, :image_src, :two_thirds, :large_font_size_mobile
+      attr_reader :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :youtube_video_id, :image_src, :two_thirds, :large_font_size_mobile
 
       def initialize(local_assigns, brand_helper)
         @href = local_assigns[:href]
-        @href_data_attributes = local_assigns[:href_data_attributes]
         @extra_details = local_assigns[:extra_details] || []
         @image_src = local_assigns[:image_src]
         @image_alt = local_assigns[:image_alt] || ""
@@ -49,17 +48,6 @@ module GovukPublishingComponents
         # for the two-thirds varation of the
         # image card component
         @two_thirds && @large_font_size_mobile
-      end
-
-      def is_tracking?
-        return true if @href_data_attributes
-
-        if @extra_details
-          @extra_details.each do |link|
-            return true if link[:data_attributes]
-          end
-        end
-        false
       end
 
       def media
@@ -147,8 +135,6 @@ module GovukPublishingComponents
               href,
               {
                 class: "govuk-body govuk-link gem-c-image-card__youtube-thumbnail-container js-youtube-card-embed",
-                "data-youtube-player-analytics": true,
-                "data-youtube-player-analytics-category": "EmbeddedYoutube",
               },
             ) do
               youtube_thumbnail

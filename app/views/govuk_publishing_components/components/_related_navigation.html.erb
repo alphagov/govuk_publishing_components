@@ -4,8 +4,7 @@
   disable_ga4 ||= false
   ga4_type = local_assigns[:context] == :footer ? "contextual footer" : "related content"
   data = {}
-  data[:module] = "gem-track-click"
-  data[:module] << " ga4-link-tracker" unless disable_ga4
+  data[:module] = "ga4-link-tracker" unless disable_ga4
   ga4_tracking_counts ||= OpenStruct.new(index_section_count: 0)
   ga4_tracking_counts.index_section_count += related_nav_helper.index_section_count
 
@@ -17,7 +16,6 @@
     <% if local_assigns[:context] != :footer %>
       <h2 id="related-nav-related_items-<%= random %>"
           class="gem-c-related-navigation__main-heading"
-          data-track-count="sidebarRelatedItemSection"
           <%= shared_helper.t_lang(
               "components.related_#{local_assigns[:context]}_navigation.related_content",
               default: 'components.related_navigation.related_content'

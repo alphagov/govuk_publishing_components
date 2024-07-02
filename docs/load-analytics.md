@@ -6,9 +6,9 @@ Therefore, `load-analytics.js` has been written to do the following:
 
 1. Grab the current domain that the code is running on using `window.location.hostname`.
 2. Determine the environment you are on by comparing your domain against hardcoded categorised domains.
-3. Set the correct environment variables for both Universal Analytics, and Google Analytics 4, depending on the environment you are on. These are also hardcoded now.
-4. Kick off the initialisation of analytics by running their respective `init()` functions, which will then run the `ga4-core.js` code and the UA tracking initialisation code.
-5. The `ga4-core.js` / UA code then makes use of these environment variables. It can access them as they are set on the JavaScript `window` object.
+3. Set the correct environment variables for Google Analytics 4, depending on the environment you are on. These are also hardcoded now.
+4. Kick off the initialisation of analytics by running the `init()` function, which will then run the `ga4-core.js` code.
+5. The `ga4-core.js` then makes use of these environment variables. It can access them as they are set on the JavaScript `window` object.
 
 The Google Analytics 4 environment variables are:
 
@@ -31,9 +31,7 @@ window.GOVUK.vars.extraDomains = [
     // add your own details as required
     id: 'id', // for GA4
     auth: 'auth', // for GA4 (optional)
-    preview: 'preview', // for GA4 (optional)
-    gaProperty: 'gaProperty', // for UA
-    gaPropertyCrossDomain: 'gaPropertyCrossDomain' // for UA (optional)
+    preview: 'preview' // for GA4 (optional)
   }
 ]
 ```
