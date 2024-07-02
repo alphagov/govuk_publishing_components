@@ -22,22 +22,29 @@ module GovukPublishingComponents
         list_item_classes
       end
 
-      def wrap_numbers_with_spans(content_item_link)
-        content_item_text = strip_tags(content_item_link) # just the text of the link
-        content_item_text_stripped = content_item_text.strip # strip trailing spaces for the regex. Keep original content_item_text for the string replacement.
+      def wrap_numbers_with_spans(link_text)
+        output = clean_string(link_text)
         # Must start with a number
         # Number must be between 1 and 999 (ie not 2014)
         # Must be followed by a space
         # May contain a period `1.`
         # May be a decimal `1.2`
-        number = /^\d{1,3}(\.?|\.\d{1,2})(?=\s)/.match(content_item_text_stripped)
+        number = /^\d{1,3}(\.?|\.\d{1,2})(?=\s)/.match(output)
 
         if number
-          words = content_item_text.sub(number.to_s, "").strip # remove the number from the text
-          content_item_link.sub(content_item_text, "<span class=\"gem-c-contents-list__number\">#{number} </span><span class=\"gem-c-contents-list__numbered-text\">#{words}</span>").squish.html_safe
+          words = output.sub(number.to_s, "").strip # remove the number from the text
+          # the space in the first span is needed for screen readers
+          "<span class=\"gem-c-contents-list__number\">#{number} </span><span class=\"gem-c-contents-list__numbered-text\">#{words}</span>".squish.html_safe
         else
-          content_item_link
+          output
         end
+      end
+
+      def clean_string(text)
+        text = text.gsub(/&nbsp;/, " ")
+        text = text.gsub("/\u00a0/", " ")
+        text = text.gsub(160.chr("UTF-8"), " ")
+        strip_tags(text.tr("\n", "")).strip
       end
 
       def get_index_total

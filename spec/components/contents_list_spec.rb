@@ -12,6 +12,13 @@ describe "Contents list", type: :view do
     ]
   end
 
+  def contents_list_with_special_chars
+    [
+      { href: "/one", text: "\n1.&nbsp;First item   in the menu" },
+      { href: "/two", text: "\n2.\u00a0Second item     in the menu" },
+    ]
+  end
+
   def contents_list_with_active_item
     [
       { href: "/one", text: "1. One" },
@@ -31,6 +38,23 @@ describe "Contents list", type: :view do
         { href: "#nested-four", text: "4. Four" },
       ],
     }
+  end
+
+  def contents_list_with_markup
+    [
+      {
+        href: "#introduction",
+        text: "1. What’s new",
+      },
+      {
+        href: "#government-offices-great-george-street",
+        text: "2. Government Offices Great George Street (GOGGS): a history",
+      },
+      {
+        href: "#the-building-of-goggs",
+        text: "3. The building of <abbr title=\"Government Offices Great George Street\">GOGGS<abbr>".html_safe,
+      },
+    ]
   end
 
   def assert_tracking_link(name, value, total = 1)
@@ -71,11 +95,29 @@ describe "Contents list", type: :view do
   it "renders text only when link is active for numbered lists" do
     render_component(contents: contents_list_with_active_item, format_numbers: true)
     assert_select ".gem-c-contents-list"
-    assert_select ".gem-c-contents-list__link[href='/one']", text: "1. One"
+    assert_select ".gem-c-contents-list__link[href='/one'] .gem-c-contents-list__number", text: "1."
+    assert_select ".gem-c-contents-list__link[href='/one'] .gem-c-contents-list__numbered-text", text: "One"
     assert_select ".gem-c-contents-list__link[href='/two']", count: 0
-    assert_select ".gem-c-contents-list__list-item[2]", text: "2. Two"
     assert_select ".gem-c-contents-list__list-item[2] .gem-c-contents-list__number", text: "2."
+    assert_select ".gem-c-contents-list__list-item[2] .gem-c-contents-list__numbered-text", text: "Two"
     assert_select ".gem-c-contents-list__list-item--active[aria-current='true']"
+  end
+
+  it "renders a list containing markup by removing the tags" do
+    render_component(contents: contents_list_with_markup)
+    assert_select ".gem-c-contents-list__link[href='#introduction']", text: "1. What’s new"
+    assert_select ".gem-c-contents-list__link[href='#government-offices-great-george-street']", text: "2. Government Offices Great George Street (GOGGS): a history"
+    assert_select ".gem-c-contents-list__link[href='#the-building-of-goggs']", text: "3. The building of GOGGS"
+  end
+
+  it "renders a numbered list containing markup by removing the tags" do
+    render_component(contents: contents_list_with_markup, format_numbers: true)
+    assert_select ".gem-c-contents-list__link[href='#introduction'] .gem-c-contents-list__number", text: "1."
+    assert_select ".gem-c-contents-list__link[href='#introduction'] .gem-c-contents-list__numbered-text", text: "What’s new"
+    assert_select ".gem-c-contents-list__link[href='#government-offices-great-george-street'] .gem-c-contents-list__number", text: "2."
+    assert_select ".gem-c-contents-list__link[href='#government-offices-great-george-street'] .gem-c-contents-list__numbered-text", text: "Government Offices Great George Street (GOGGS): a history"
+    assert_select ".gem-c-contents-list__link[href='#the-building-of-goggs'] .gem-c-contents-list__number", text: "3."
+    assert_select ".gem-c-contents-list__link[href='#the-building-of-goggs'] .gem-c-contents-list__numbered-text", text: "The building of GOGGS"
   end
 
   it "renders a nested list of contents links" do
@@ -107,6 +149,18 @@ describe "Contents list", type: :view do
 
     assert_select "#{link_selector} .gem-c-contents-list__number", text: "1."
     assert_select "#{link_selector} .gem-c-contents-list__numbered-text", text: "One"
+  end
+
+  it "formats numbers in contents links containing special characters" do
+    render_component(contents: contents_list_with_special_chars, format_numbers: true)
+    link_selector1 = ".gem-c-contents-list__list-item--numbered a[href='/one']"
+    link_selector2 = ".gem-c-contents-list__list-item--numbered a[href='/two']"
+
+    assert_select "#{link_selector1} .gem-c-contents-list__number", text: "1."
+    assert_select "#{link_selector1} .gem-c-contents-list__numbered-text", text: "First item in the menu"
+
+    assert_select "#{link_selector2} .gem-c-contents-list__number", text: "2."
+    assert_select "#{link_selector2} .gem-c-contents-list__numbered-text", text: "Second item in the menu"
   end
 
   it "does not format numbers in a nested list" do
