@@ -2,22 +2,38 @@ module GovukPublishingComponents
   class AuditController < GovukPublishingComponents::ApplicationController
     def show
       application_dirs = %w[
+        account-api
         collections
         collections-publisher
+        contacts-admin
         content-data-admin
         content-publisher
+        content-tagger
         datagovuk_find
         email-alert-frontend
         feedback
         finder-frontend
         frontend
         government-frontend
+        govspeak
         govspeak-preview
+        govuk-developer-docs
+        local-links-manager
+        manuals-publisher
+        maslow
+        places-manager
+        publisher
         release
         search-admin
+        search-v2-evaluator
+        service-manual-publisher
+        short-url-manager
         signon
         smart-answers
+        specialist-publisher
         static
+        support
+        transition
         travel-advice-publisher
         whitehall
       ]
