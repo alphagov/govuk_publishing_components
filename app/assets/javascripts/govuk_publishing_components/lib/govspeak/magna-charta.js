@@ -447,7 +447,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var $cell = cells[i]
       var cellVal = parseFloat(this.utils.stripValue($cell.innerText), 10)
       var $cellSpan = $cell.querySelector('span')
-      var spanWidth = $cell.querySelector('span').offsetWidth + 5 // +5 just for extra padding
+      var spanWidth = $cell.querySelector('span').offsetWidth + 10 // +10 just for extra padding
       var cellWidth = $cell.offsetWidth
 
       if (!this.options.stacked) {
