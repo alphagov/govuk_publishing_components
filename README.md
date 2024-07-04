@@ -1,6 +1,5 @@
 # GOV.UK Publishing Components
-
-[![status](https://badgen.net/github/status/alphagov/govuk_publishing_components/main)](https://github.com/alphagov/govuk_publishing_components/actions?query=branch%3Amain)
+[![status](https://github.com/alphagov/govuk_publishing_components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alphagov/govuk_publishing_components/actions/workflows/ci.yml?query=branch%3Amain)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Stylelint Style Guide](https://img.shields.io/badge/code_style-stylelint-brightgreen.svg)](https://github.com/alphagov/stylelint-config-gds/)
 
