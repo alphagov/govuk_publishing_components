@@ -1,5 +1,5 @@
 <%
-  title = "Applications"
+  title = "Applications (" + @applications.length.to_s + ")"
   title = "This application" unless ENV["MAIN_COMPONENT_GUIDE"]
 %>
 <%= render "govuk_publishing_components/components/heading", {
@@ -77,7 +77,7 @@
               None
             <% end %>
           <% end %>
-          <% 
+          <%
             items << {
               field: "#{item[:name]} (#{item[:value].length})",
               value: content
@@ -134,7 +134,7 @@
           } %>
           <p class="govuk-body">This is a list of components found in this application. Note that some components may appear to be missing files due to inconsistencies in directory structure and naming conventions.</p>
           <%= render "component_contents", passed_components: application_components, show_application_name: false %>
-        <% end %>        
+        <% end %>
       <% else %>
         <p class="govuk-body">This application was not found. This could be because you do not have this repository checked out locally.</p>
       <% end %>
