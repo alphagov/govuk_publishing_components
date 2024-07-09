@@ -1,6 +1,7 @@
 <%
   add_gem_component_stylesheet("layout-for-admin")
   js_filename ||= "application"
+  js_module_filename ||= "es6-components"
   css_filename ||= "application"
 
   product_name ||= "Publishing"
@@ -17,6 +18,9 @@
     <%= favicon_link_tag "govuk_publishing_components/favicon-#{environment}.png" %>
     <%= stylesheet_link_tag css_filename, media: "all" %>
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
+    <% if GovukPublishingComponents::Config.use_es6_components %>
+      <%= javascript_include_tag js_module_filename, type: "module" %>
+    <% end %>
     <%= yield :head %>
   </head>
   <body class="gem-c-layout-for-admin govuk-template__body">
@@ -25,8 +29,5 @@
     <% end -%>
     <%= yield %>
     <%= javascript_include_tag js_filename %>
-    <% if GovukPublishingComponents::Config.use_es6_components %>
-      <%= javascript_include_tag 'es6-components', type: "module" %>
-    <% end %>
   </body>
 </html>
