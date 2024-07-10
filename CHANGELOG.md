@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 39.2.3
 
 * Only set `gtm_cookies_win=x` for preview in Google Tag Manager script ([PR #4097](https://github.com/alphagov/govuk_publishing_components/pull/4097))
 
