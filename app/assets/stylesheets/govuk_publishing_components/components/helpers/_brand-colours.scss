@@ -96,3 +96,27 @@
     border-color: #045f71;
   }
 }
+
+// This change should be removed after relevant govuk-frontend release
+
+.brand--ministry-of-housing-communities-and-local-government {
+  .brand__color {
+    color: #00625e;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: #00625e;
+    }
+
+    &:hover,
+    &:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #00625e;
+  }
+}
