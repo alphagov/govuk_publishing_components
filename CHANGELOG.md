@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add brand colour for MHCLG [(PR #4100)](https://github.com/alphagov/govuk_publishing_components/pull/4100)
+
 ## 39.2.3
 
 * Only set `gtm_cookies_win=x` for preview in Google Tag Manager script ([PR #4097](https://github.com/alphagov/govuk_publishing_components/pull/4097))
