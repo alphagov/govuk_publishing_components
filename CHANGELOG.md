@@ -7,9 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* LUX version 4.0.23 ([PR #4102](https://github.com/alphagov/govuk_publishing_components/pull/4102))
+
 ## 39.2.4
 
-* Add brand colour for MHCLG [(PR #4100)](https://github.com/alphagov/govuk_publishing_components/pull/4100)
+* Add brand colour for MHCLG ([PR #4100](https://github.com/alphagov/govuk_publishing_components/pull/4100))
 
 ## 39.2.3
 
