@@ -1,4 +1,3 @@
-//= require ../vendor/polyfills/closest.js
 ;(function (global) {
   'use strict'
 
