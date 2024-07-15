@@ -144,6 +144,7 @@ describe "Super navigation header", type: :view do
   it "renders large navbar variant" do
     render_component({
       large_navbar: true,
+      hide_logo_text: true,
     })
 
     assert_select ".gem-c-layout-super-navigation-header__button-container--large-navbar"

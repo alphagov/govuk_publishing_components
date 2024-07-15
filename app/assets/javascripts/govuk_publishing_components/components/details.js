@@ -1,7 +1,5 @@
-// = require govuk/components/details/details.js
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.GovukDetails = window.GOVUKFrontend.Details;
+window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   function GemDetails ($module) {

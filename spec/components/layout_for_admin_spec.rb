@@ -28,6 +28,43 @@ describe "Layout for admin", type: :view do
     )
   end
 
+  context "loads a separate bundle for es6 components" do
+    before "enable loading of separate es6 components bundle" do
+      GovukPublishingComponents.configure do |config|
+        config.use_es6_components = true
+      end
+    end
+
+    it "can receive a custom js filename for es6 " do
+      allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("govuk_publishing_components/vendor/modernizr")
+      allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("application")
+      expect_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("es6-bundle", { type: "module" }).once
+
+      render_component(
+        browser_title: "Hello, admin page",
+        environment: "production",
+        js_module_filename: "es6-bundle",
+      )
+    end
+
+    it "can use the default filename for es6 components" do
+      allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("govuk_publishing_components/vendor/modernizr")
+      allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("application")
+      expect_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("es6-components", { type: "module" }).once
+
+      render_component(
+        browser_title: "Hello, admin page",
+        environment: "production",
+      )
+    end
+
+    after "disable loading of separate es6 components bundle" do
+      GovukPublishingComponents.configure do |config|
+        config.use_es6_components = false
+      end
+    end
+  end
+
   it "can receive a custom css filename" do
     expect_any_instance_of(ActionView::Base).to receive(:stylesheet_link_tag).with("admin", media: "all")
 

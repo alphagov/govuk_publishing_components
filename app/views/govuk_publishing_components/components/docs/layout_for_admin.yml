@@ -32,6 +32,15 @@ examples:
       js_filename: "application"
       block: |
         <!-- You probably want to use the header, main & footer components here -->
+  with_custom_js_filename_for_es6_components:
+    description: An alternative JS filename can be used in place of the default `es6-components.js` if required (note that this cannot easily be demonstrated here).
+    data:
+      environment: production
+      product_name: Publishing
+      browser_title: 'A page title'
+      js_module_filename: "es6-bundle"
+      block: |
+        <!-- You probably want to use the header, main & footer components here -->
   with_custom_css_filename:
     description: An alternative JS filename can be used in place of the default `application.scss` if required (note that this cannot easily be demonstrated here).
     data:

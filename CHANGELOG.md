@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Upgrade to govuk frontend 5.1 ([PR #4041](https://github.com/alphagov/govuk_publishing_components/pull/4041))
+
 ## 39.2.5
 
 * LUX version 4.0.23 ([PR #4102](https://github.com/alphagov/govuk_publishing_components/pull/4102))
