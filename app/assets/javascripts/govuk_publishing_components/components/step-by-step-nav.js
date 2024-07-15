@@ -1,7 +1,3 @@
-//= require ../vendor/polyfills-govuk-frontend-v4/Element/prototype/classList.js
-//= require ../vendor/polyfills/closest.js
-//= require ../vendor/polyfills/indexOf.js
-
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
