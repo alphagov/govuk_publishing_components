@@ -74,7 +74,7 @@
 
     <% # Used for Google Analytics 4 debugging. Must be placed before load-analytics script. %>
     <meta name="govuk:components_gem_version" content="<%= GovukPublishingComponents::VERSION %>" />
-    <%= javascript_include_tag "govuk_publishing_components/load-analytics" %>
+    <%= javascript_include_tag "govuk_publishing_components/load-analytics", type: "module" %>
 
     <%= csrf_meta_tags %>
 
@@ -185,7 +185,7 @@
         meta: layout_helper.footer_meta,
       } %>
     <% end %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application', type: "module" %>
     <% if GovukPublishingComponents::Config.use_es6_components %>
       <%= javascript_include_tag 'es6-components', type: "module" %>
     <% end %>
