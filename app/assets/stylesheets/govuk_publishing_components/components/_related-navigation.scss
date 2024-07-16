@@ -63,7 +63,7 @@
   @include govuk-link-common;
   @include govuk-link-style-no-visited-state;
 
-  .js-enabled & {
+  .govuk-frontend-supported & {
     display: inline-block;
   }
 }
@@ -105,7 +105,7 @@
   }
 
   &.js-hidden {
-    .js-enabled & {
+    .govuk-frontend-supported & {
       display: none;
     }
   }

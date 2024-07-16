@@ -37,7 +37,7 @@ $large-input-size: 50px;
     @include govuk-font($size: 19, $line-height: $input-size);
   }
 
-  .js-enabled & {
+  .govuk-frontend-supported & {
     position: absolute;
     left: 2px;
     top: 2px;
@@ -50,7 +50,7 @@ $large-input-size: 50px;
 
   // match label colour with the label component colour
   // when javascript is enabled and inline_label option  is set to false
-  .js-enabled .gem-c-search--separate-label & {
+  .govuk-frontend-supported .gem-c-search--separate-label & {
     color: $govuk-text-colour;
   }
 }
@@ -190,7 +190,7 @@ $large-input-size: 50px;
     }
   }
 
-  .js-enabled & {
+  .govuk-frontend-supported & {
     .gem-c-search__label {
       color: $govuk-secondary-text-colour;
     }
@@ -246,7 +246,7 @@ $large-input-size: 50px;
     }
   }
 
-  .js-enabled & {
+  .govuk-frontend-supported & {
     .gem-c-search__label {
       color: $govuk-secondary-text-colour;
     }
@@ -313,7 +313,7 @@ $large-input-size: 50px;
   }
 
   @include govuk-media-query($until: tablet) {
-    .js-enabled & {
+    .govuk-frontend-supported & {
       display: block;
     }
   }
