@@ -76,7 +76,7 @@ $large-input-size: 50px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  @include govuk-font($size: 19, $line-height: (28 / 19));
+  @include govuk-font($size: 19, $line-height: calc(28 / 19));
 
   @include govuk-media-query($from: tablet) {
     height: govuk-em(40, 19);
