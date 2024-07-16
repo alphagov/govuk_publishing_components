@@ -31,7 +31,7 @@
   // Change the summary subheading size.
   .govuk-accordion__section-summary {
     @include govuk-typography-common;
-    @include govuk-typography-responsive($size: 16, $important: true);
+    @include govuk-font-size($size: 16, $important: true);
   }
 
   // Hide the unusable "Show all" and "Show" sections.
