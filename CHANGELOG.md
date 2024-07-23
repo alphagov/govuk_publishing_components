@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* New print styles for the table component ([PR #4139](https://github.com/alphagov/govuk_publishing_components/pull/4139))
+
 ## 41.1.1
 
 * Update card component styles ([PR #4141](https://github.com/alphagov/govuk_publishing_components/pull/4141))
