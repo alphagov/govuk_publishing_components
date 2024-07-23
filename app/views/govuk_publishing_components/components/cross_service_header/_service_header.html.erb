@@ -17,12 +17,12 @@
             data-text-for-show="Menu" 
             data-text-for-hide="Close" 
             aria-expanded="false" 
-            class="gem-c-cross-service-header__button gem-c-cross-service-header__button--gem-c-service-header js-x-header-toggle">
+            class="gem-c-cross-service-header__button gem-c-cross-service-header__button--gem-c-service-header js-x-header-toggle govuk-!-display-none-print">
             <span class="gem-c-service-header__button-content">Menu</span>
           </button>
           <!-- Important! Label your navigation appropriately! When there are multiple navigation landmarks on a page, additional labelling is required to provide support for screen reader users -->
           <nav aria-label="<%= service_navigation_aria_label %>">
-            <ul class="gem-c-service-header__nav-list gem-c-service-header__nav" id="service-header__nav" data-open-class="gem-c-service-header__nav--open">
+            <ul class="gem-c-service-header__nav-list gem-c-service-header__nav govuk-!-display-none-print" id="service-header__nav" data-open-class="gem-c-service-header__nav--open">
               <% service_navigation_items.each_with_index do |item, index| %>
                 <%
                   li_classes = %w(gem-c-service-header__nav-list-item)

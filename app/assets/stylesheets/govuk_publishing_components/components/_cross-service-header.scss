@@ -436,3 +436,32 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 // end service navigation styles
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-cross-service-header {
+    margin-bottom: 5mm;
+  }
+
+  .gem-c-one-login-header {
+    background-color: initial;
+    border-bottom: 2pt solid $govuk-print-text-colour;
+
+    * {
+      color: $govuk-print-text-colour;
+    }
+
+    .govuk-width-container {
+      margin: 0;
+    }
+  }
+
+  .gem-c-service-header {
+    .govuk-width-container {
+      margin: 0;
+    }
+
+    .gem-c-service-header__container {
+      padding: 0;
+    }
+  }
+}
