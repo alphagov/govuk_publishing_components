@@ -7,8 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow disabling `search` component input spelling correction ([PR #4112](https://github.com/alphagov/govuk_publishing_components/pull/4112))
+
 ## 40.0.1
-* Add Brakeman to CI jobs ([PR #4108](https://github.com/alphagov/govuk_publishing_components/pull/4108)) 
+* Add Brakeman to CI jobs ([PR #4108](https://github.com/alphagov/govuk_publishing_components/pull/4108))
 
 ## 40.0.0
 

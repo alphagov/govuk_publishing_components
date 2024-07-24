@@ -113,3 +113,15 @@ examples:
       Allows adding a custom class to the label of the component.
     data:
       label_custom_class: "govuk-heading-xl"
+  with_corrections_disabled:
+    description: |
+      Allows disabling mobile browser autocorrect features (`autocorrect` and `autocapitalize`
+      attributes) on the input field.
+
+      Mobile browser autocorrect and text substitution features can conflict with the built in
+      autocorrect features of some search engines, and will frequently correct domain-specific
+      search terms to something that is not what the user intended (for example, correcting "SORN"
+      to "sworn" or "HMRC" to "Hercules"). Capitalisation can also be significant for some search
+      engines such as that currently used by Search API v2.
+    data:
+      disable_corrections: true
