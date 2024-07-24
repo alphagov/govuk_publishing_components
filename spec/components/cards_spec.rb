@@ -58,6 +58,22 @@ describe "Cards", type: :view do
     assert_select "ul.gem-c-cards__list.gem-c-cards__list--two-column-desktop", count: 1
   end
 
+  it "renders three column list variant" do
+    test_data = {
+      three_column_layout: true,
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "http://www.gov.uk",
+          },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select "ul.gem-c-cards__list.gem-c-cards__list--three-column-desktop", count: 1
+  end
+
   it "renders sub-heading using default heading level" do
     test_data = {
       items: [
