@@ -80,10 +80,12 @@
     border-right: $width solid $govuk-brand-colour;
     border-top: $width solid $govuk-brand-colour;
     content: "";
+    display: block;
     height: $dimension;
     position: absolute;
     right: govuk-spacing(1);
-    top: govuk-spacing(3);
+    top: 50%;
+    margin-top: 5px;
     @include prefixed-transform($rotate: 45deg);
     width: $dimension;
   }
