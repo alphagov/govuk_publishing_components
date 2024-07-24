@@ -9,23 +9,12 @@
 .gem-c-cards__list {
   list-style: none;
   padding: 0;
-  // Remove the outermost left and right margin from the internal margin of the list items.
-  margin: 0 govuk-spacing(-3);
-
+  margin: 0;
   display: grid;
-  grid-auto-flow: row;   // Use CSS grid to calculate the number of rows
-  grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
-  grid-template-columns: fractions(1);
-
-  @include govuk-media-query($from: "tablet") {
-    grid-template-columns: fractions(2);
-  }
+  grid-column-gap: govuk-spacing(6); // Use deprecated grid-column-gap for Grade C browser support
+  column-gap: govuk-spacing(6);
 
   @include govuk-media-query($from: "desktop") {
-    // Note that browsers that don't support CSS grid display the component as one column on all
-    // breakpoints
-    grid-template-columns: fractions(3);
-
     // For browsers that don't support CSS grid, constrain the width to 50% to improve usability
     // especially for screen magnifier users
     width: 50%;
@@ -38,16 +27,21 @@
 }
 
 .gem-c-cards__list--two-column-desktop {
+  @include govuk-media-query($from: "tablet") {
+    grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
+    grid-template-columns: fractions(2); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
+  }
+}
+
+.gem-c-cards__list--three-column-desktop {
   @include govuk-media-query($from: "desktop") {
-    grid-template-columns: fractions(2);
+    grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
+    grid-template-columns: fractions(3); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
   }
 }
 
 .gem-c-cards__list-item {
   border-top: 1px solid $govuk-border-colour;
-  // We use grid to split the container into column widths, so manage the horizontal spacing with
-  // internal margins.
-  margin: 0 govuk-spacing(3);
   padding: govuk-spacing(1) 0 govuk-spacing(4) 0;
 }
 
