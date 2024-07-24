@@ -188,4 +188,22 @@ describe "Search", type: :view do
     })
     assert_select ".custom-class-label"
   end
+
+  it "does not set autocorrect or autocapitalize attributes by default" do
+    render_component({})
+    assert_select "input[autocorrect='off']", count: 0
+    assert_select "input[autocapitalize='off']", count: 0
+  end
+
+  it "does not set autocorrect or autocapitalize attributes if disable_corrections is false" do
+    render_component(disable_corrections: false)
+    assert_select "input[autocorrect='off']", count: 0
+    assert_select "input[autocapitalize='off']", count: 0
+  end
+
+  it "sets autocorrect and autocapitalize attributes if disable_corrections is true" do
+    render_component(disable_corrections: true)
+    assert_select "input[autocorrect='off']", count: 1
+    assert_select "input[autocapitalize='off']", count: 1
+  end
 end
