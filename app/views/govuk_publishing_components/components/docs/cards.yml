@@ -71,9 +71,42 @@ examples:
             path: http://www.gov.uk
           description: Owning or renting and council services
   two_column_layout:
-    description:  Override default three column layout on desktop by passing through `two_column_layout` parameter (defaults to `false`).
+    description:  Override default single column layout on desktop by passing through `two_column_layout` parameter (defaults to `false`).
     data:
       two_column_layout: true
+      items:
+        - link:
+            text: Benefits
+            path: http://www.gov.uk
+          description: Includes eligibility, appeals, tax credits and Universal Credit
+        - link:
+            text: Births, deaths, marriages and&nbsp;care
+            path: http://www.gov.uk
+          description: Parenting, civil partnerships, divorce and Lasting Power of Attorney
+        - link:
+            text: Business and self-employed
+            path: http://www.gov.uk
+          description: Tools and guidance for businesses
+        - link:
+            text: Childcare and parenting
+            path: http://www.gov.uk
+          description: Includes giving birth, fostering, adopting, benefits for children, childcare and schools
+        - link:
+            text: Citizenship and living in the&nbsp;UK
+            path: http://www.gov.uk
+          description: Voting, community participation, life in the UK, international projects
+        - link:
+            text: Crime, justice and the&nbsp;law
+            path: http://www.gov.uk
+          description: Legal processes, courts and the police
+        - link:
+            text: Disabled people
+            path: http://www.gov.uk
+          description: Includes carers, your rights, benefits and the Equality Act
+  three_column_layout:
+    description:  Override default single column layout on desktop by passing through `three_column_layout` parameter (defaults to `false`).
+    data:
+      three_column_layout: true
       items:
         - link:
             text: Benefits
