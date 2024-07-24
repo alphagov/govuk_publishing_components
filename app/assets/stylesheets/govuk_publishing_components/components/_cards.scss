@@ -49,12 +49,17 @@
   // this wrapper ensures that the clickable area of the card only
   // covers the area of the card containing text so in a grid of cards
   // there is space above and below each link
-  padding: govuk-spacing(2) govuk-spacing(6) govuk-spacing(2) 0;
+  padding: 19px 0 4px;
   position: relative;
 }
 
 .gem-c-cards__sub-heading {
-  margin-bottom: govuk-spacing(2);
+  margin: 0 govuk-spacing(6) govuk-spacing(2) 0;
+
+  // Ensure card content width is constrained to two thirds on desktop
+  @include govuk-media-query($from: "desktop") {
+    max-width: 66.6667%;
+  }
 }
 
 .gem-c-cards__link {
@@ -97,7 +102,20 @@
 }
 
 .gem-c-cards__description {
-  margin: 0 govuk-spacing(-6) 0 0;
+  margin: 0 govuk-spacing(6) 0 0;
+
+  // Ensure card content width is constrained to two thirds on desktop
+  @include govuk-media-query($from: "desktop") {
+    max-width: 66.6667%;
+  }
+}
+
+.gem-c-cards__list--two-column-desktop,
+.gem-c-cards__list--three-column-desktop {
+  .gem-c-cards__sub-heading,
+  .gem-c-cards__description {
+    max-width: 100%;
+  }
 }
 
 @include govuk-media-query($media-type: print) {
