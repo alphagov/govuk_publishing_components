@@ -1,13 +1,11 @@
-name: Cards (experimental)
+name: Cards
 description: A grid of cards that have a link and a description
 body: |
-  The component renders the cards as an unordered list element and visually presents it as a grid. It doesn't use the [GOV.UK Design System grid](https://design-system.service.gov.uk/styles/layout/#grid-system) but sets its own so that it can separately target desktop, tablet and mobile columns.
+  The component renders the cards as an unordered list element and visually presents it using CSS grid to display the cards in either a one (default), two or three column layout. It doesn't use the [GOV.UK Design System grid](https://design-system.service.gov.uk/styles/layout/#grid-system) but sets its own so that it can separately target desktop, tablet and mobile columns.
 
-  You can display the grid in three or two columns on desktop. Browsers that don't support CSS grid always display one column.
+  Browsers that don't support CSS grid always display one column.
 
   You must set a `href` for all the links.
-
-  This component is currently experimental. If you are using it, please feed back any research findings to the GOV.UK Explore team.
 accessibility_criteria: |
   The component must:
 
@@ -71,9 +69,42 @@ examples:
             path: http://www.gov.uk
           description: Owning or renting and council services
   two_column_layout:
-    description:  Override default three column layout on desktop by passing through `two_column_layout` parameter (defaults to `false`).
+    description:  Override default single column layout on desktop by setting the `columns` parameter to `2`.
     data:
-      two_column_layout: true
+      columns: 2
+      items:
+        - link:
+            text: Benefits
+            path: http://www.gov.uk
+          description: Includes eligibility, appeals, tax credits and Universal Credit
+        - link:
+            text: Births, deaths, marriages and&nbsp;care
+            path: http://www.gov.uk
+          description: Parenting, civil partnerships, divorce and Lasting Power of Attorney
+        - link:
+            text: Business and self-employed
+            path: http://www.gov.uk
+          description: Tools and guidance for businesses
+        - link:
+            text: Childcare and parenting
+            path: http://www.gov.uk
+          description: Includes giving birth, fostering, adopting, benefits for children, childcare and schools
+        - link:
+            text: Citizenship and living in the&nbsp;UK
+            path: http://www.gov.uk
+          description: Voting, community participation, life in the UK, international projects
+        - link:
+            text: Crime, justice and the&nbsp;law
+            path: http://www.gov.uk
+          description: Legal processes, courts and the police
+        - link:
+            text: Disabled people
+            path: http://www.gov.uk
+          description: Includes carers, your rights, benefits and the Equality Act
+  three_column_layout:
+    description: Override default single column layout on desktop by setting the `columns` parameter to `3`.
+    data:
+      columns: 3
       items:
         - link:
             text: Benefits
