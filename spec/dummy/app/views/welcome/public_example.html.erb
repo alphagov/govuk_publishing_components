@@ -1,20 +1,293 @@
-<h1 class="govuk-heading-xl">Hello! I am an example public GOV.UK page</h1>
+ <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-<p class="govuk-body">
-  Pages with the public layout can use some GOV.UK styles. For example, the grid:
-</p>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-m">Two-thirds column</h1>
-      <p class="govuk-body">This is a paragraph inside a two-thirds wide column</p>
-    </div>
-
-    <div class="govuk-grid-column-one-third">
-      <h3 class="govuk-heading-m">One-third column</h3>
-      <p class="govuk-body">This is a paragraph inside a one-third wide column</p>
-    </div>
+    <%= render "govuk_publishing_components/components/cards", {
+    heading: "One column of cards, inside two thirds layout",
+    items: [
+      {
+        link: {
+          text: "Benefits",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes eligibility, appeals, tax credits and Universal Credit"
+      },
+      {
+        link: {
+          text: "Births, deaths, marriages and care",
+          path: "http://www.gov.uk"
+        },
+        description: "Parenting, civil partnerships, divorce and Lasting Power of Attorney"
+      },
+      {
+        link: {
+          text: "Business and self-employed",
+          path: "http://www.gov.uk"
+        },
+        description: "Tools and guidance for businesses"
+      },
+      {
+        link: {
+          text: "Childcare and parenting",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes giving birth, fostering, adopting, benefits for children, childcare and schools"
+      },
+      {
+        link: {
+          text: "Citizenship and living in the UK",
+          path: "http://www.gov.uk"
+        },
+        description: "Voting, community participation, life in the UK, international projects"
+      },
+      {
+        link: {
+          text: "Crime, justice and the law",
+          path: "http://www.gov.uk"
+        },
+        description: "Legal processes, courts and the police"
+      },
+      {
+        link: {
+          text: "Disabled people",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes carers, your rights, benefits and the Equality Act"
+      },
+      {
+        link: {
+          text: "Driving and transport",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes vehicle tax, MOT and driving licences"
+      },
+      {
+        link: {
+          text: "Education and learning",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes student loans, admissions and apprenticeships"
+      },
+      {
+        link: {
+          text: "Employing people",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes pay, contracts, hiring and redundancies"
+      },
+      {
+        link: {
+          text: "Environment and countryside",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes flooding, recycling and wildlife"
+      },
+      {
+        link: {
+          text: "Housing and local services",
+          path: "http://www.gov.uk"
+        },
+        description: "Owning or renting and council services"
+      }
+    ]
+    } %>
   </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <%= render "govuk_publishing_components/components/cards", {
+    heading: "Two columns of cards, inside a full-width layout",
+    two_column_layout: true,
+    items: [
+      {
+        link: {
+          text: "Benefits",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes eligibility, appeals, tax credits and Universal Credit"
+      },
+      {
+        link: {
+          text: "Births, deaths, marriages and care",
+          path: "http://www.gov.uk"
+        },
+        description: "Parenting, civil partnerships, divorce and Lasting Power of Attorney"
+      },
+      {
+        link: {
+          text: "Business and self-employed",
+          path: "http://www.gov.uk"
+        },
+        description: "Tools and guidance for businesses"
+      },
+      {
+        link: {
+          text: "Childcare and parenting",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes giving birth, fostering, adopting, benefits for children, childcare and schools"
+      },
+      {
+        link: {
+          text: "Citizenship and living in the UK",
+          path: "http://www.gov.uk"
+        },
+        description: "Voting, community participation, life in the UK, international projects"
+      },
+      {
+        link: {
+          text: "Crime, justice and the law",
+          path: "http://www.gov.uk"
+        },
+        description: "Legal processes, courts and the police"
+      },
+      {
+        link: {
+          text: "Disabled people",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes carers, your rights, benefits and the Equality Act"
+      },
+      {
+        link: {
+          text: "Driving and transport",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes vehicle tax, MOT and driving licences"
+      },
+      {
+        link: {
+          text: "Education and learning",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes student loans, admissions and apprenticeships"
+      },
+      {
+        link: {
+          text: "Employing people",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes pay, contracts, hiring and redundancies"
+      },
+      {
+        link: {
+          text: "Environment and countryside",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes flooding, recycling and wildlife"
+      },
+      {
+        link: {
+          text: "Housing and local services",
+          path: "http://www.gov.uk"
+        },
+        description: "Owning or renting and council services"
+      }
+    ]
+    } %>
+  </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <%= render "govuk_publishing_components/components/cards", {
+    heading: "Three columns of cards, inside a full-width layout",
+    three_column_layout: true,
+    items: [
+      {
+        link: {
+          text: "Benefits",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes eligibility, appeals, tax credits and Universal Credit"
+      },
+      {
+        link: {
+          text: "Births, deaths, marriages and care",
+          path: "http://www.gov.uk"
+        },
+        description: "Parenting, civil partnerships, divorce and Lasting Power of Attorney"
+      },
+      {
+        link: {
+          text: "Business and self-employed",
+          path: "http://www.gov.uk"
+        },
+        description: "Tools and guidance for businesses"
+      },
+      {
+        link: {
+          text: "Childcare and parenting",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes giving birth, fostering, adopting, benefits for children, childcare and schools"
+      },
+      {
+        link: {
+          text: "Citizenship and living in the UK",
+          path: "http://www.gov.uk"
+        },
+        description: "Voting, community participation, life in the UK, international projects"
+      },
+      {
+        link: {
+          text: "Crime, justice and the law",
+          path: "http://www.gov.uk"
+        },
+        description: "Legal processes, courts and the police"
+      },
+      {
+        link: {
+          text: "Disabled people",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes carers, your rights, benefits and the Equality Act"
+      },
+      {
+        link: {
+          text: "Driving and transport",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes vehicle tax, MOT and driving licences"
+      },
+      {
+        link: {
+          text: "Education and learning",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes student loans, admissions and apprenticeships"
+      },
+      {
+        link: {
+          text: "Employing people",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes pay, contracts, hiring and redundancies"
+      },
+      {
+        link: {
+          text: "Environment and countryside",
+          path: "http://www.gov.uk"
+        },
+        description: "Includes flooding, recycling and wildlife"
+      },
+      {
+        link: {
+          text: "Housing and local services",
+          path: "http://www.gov.uk"
+        },
+        description: "Owning or renting and council services"
+      }
+    ]
+    } %>
+  </div>
+</div>
+ 
 <% content_for :before_content do %>
   <% render "govuk_publishing_components/components/back_link", href:'/' %>
 <% end %>
