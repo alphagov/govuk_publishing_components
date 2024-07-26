@@ -114,9 +114,20 @@
 
 .gem-c-cards__list--two-column-desktop,
 .gem-c-cards__list--three-column-desktop {
-  .gem-c-cards__sub-heading,
-  .gem-c-cards__description {
+  .gem-c-cards__sub-heading {
     max-width: 100%;
+  }
+
+  .gem-c-cards__description {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .gem-c-cards__link {
+    &::before {
+      top: 27px;
+      margin: 0;
+    }
   }
 }
 
