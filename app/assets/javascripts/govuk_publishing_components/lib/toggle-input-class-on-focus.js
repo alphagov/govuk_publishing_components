@@ -1,4 +1,3 @@
-//= require ../vendor/polyfills-govuk-frontend-v4/Element/prototype/classList.js
 /*
   Toggle the class 'focus' on input boxes on element focus/blur
   Used by the search component but generic enough for reuse

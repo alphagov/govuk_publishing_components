@@ -17,7 +17,7 @@
     display: block !important; // stylelint-disable-line declaration-no-important
   }
 
-  .js-enabled .govuk-accordion__section-content[hidden] {
+  .govuk-frontend-supported .govuk-accordion__section-content[hidden] {
     @supports (content-visibility: hidden) {
       content-visibility: auto;
     }

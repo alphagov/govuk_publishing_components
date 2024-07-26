@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Allow disabling `search` component input spelling correction ([PR #4112](https://github.com/alphagov/govuk_publishing_components/pull/4112))
+* **BREAKING:** Drop support for legacy browsers ([PR #4111](https://github.com/alphagov/govuk_publishing_components/pull/4111))
 
 ## 40.0.1
 * Add Brakeman to CI jobs ([PR #4108](https://github.com/alphagov/govuk_publishing_components/pull/4108))

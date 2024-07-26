@@ -37,7 +37,7 @@ describe('Reorderable list component', function () {
       '</li>' +
     '</ol>'
 
-    document.body.classList.add('js-enabled')
+    document.body.classList.add('govuk-frontend-supported')
     document.body.appendChild(container)
     element = document.querySelector('[data-module="reorderable-list"]')
   })
