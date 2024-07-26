@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Drop support for Ruby 3.1 ([PR #4124](https://github.com/alphagov/govuk_publishing_components/pull/4124))
+* **BREAKING:** Update cards component design and use one column by default ([PR #4118](https://github.com/alphagov/govuk_publishing_components/pull/4118))
 
 ## 41.0.0
 
