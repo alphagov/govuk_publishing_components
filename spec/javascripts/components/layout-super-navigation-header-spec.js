@@ -9,7 +9,7 @@ describe('The super header navigation', function () {
 
   beforeEach(function () {
     container = document.createElement('div')
-    container.className = 'js-enabled'
+    container.className = 'govuk-frontend-supported'
     container.innerHTML =
       '<nav aria-labelledby="super-navigation-menu-heading" class="gem-c-layout-super-navigation-header__content js-module-initialised" data-module="super-navigation-mega-menu" data-super-navigation-mega-menu-module-started="true">' +
           '<h2 id="super-navigation-menu-heading" class="govuk-visually-hidden">' +
