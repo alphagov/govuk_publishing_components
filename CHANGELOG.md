@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Remove Universal Analytics ([PR #4068](https://github.com/alphagov/govuk_publishing_components/pull/4068))
+
 ## 40.1.0
 
 * Allow disabling `search` component input spelling correction ([PR #4112](https://github.com/alphagov/govuk_publishing_components/pull/4112))

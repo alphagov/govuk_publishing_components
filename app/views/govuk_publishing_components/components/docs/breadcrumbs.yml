@@ -2,7 +2,6 @@ name: "Breadcrumbs"
 description: "Navigational breadcrumbs, showing page hierarchy"
 body: |
   Accepts an array of breadcrumb objects. Each crumb must have a title and a URL.
-  Links are tracked, but in Universal Analytics, links to the homepage (any link with a url of `/`) will be tracked separately as `homeLinkClicked`.
 
   We recommend that if using the breadcrumbs for navigation purposes, you set `collapse_on_mobile` to `true` to make things more readable for mobile users. However, you can specify `collapse_on_mobile:``false` or remove the flag completely to stop this behaviour.
 shared_accessibility_criteria:

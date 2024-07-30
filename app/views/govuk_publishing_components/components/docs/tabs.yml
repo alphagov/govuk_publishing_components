@@ -78,7 +78,7 @@ examples:
     description: |
       The example shown applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
 
-      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
+      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
       tabs:
         - id: "tab-with-data-attributes-1"

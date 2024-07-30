@@ -7,8 +7,6 @@ describe('Cookie banner', function () {
   var container
   var DEFAULT_COOKIE_CONSENT
   var ALL_COOKIE_CONSENT
-  window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}
-  window.GOVUK.analyticsVars.gaProperty = 'UA-123456-7'
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -25,18 +23,18 @@ describe('Cookie banner', function () {
                               '<p class="govuk-body">We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.</p>' +
                               '<p class="govuk-body">We also use cookies set by other sites to help us deliver content from their services.</p>' +
                           '</span>' +
-                          '<p class="gem-c-cookie-banner__confirmation-message--accepted govuk-body" hidden="">You have accepted additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
-                          '<p class="gem-c-cookie-banner__confirmation-message--rejected govuk-body" hidden="">You have rejected additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
+                          '<p class="gem-c-cookie-banner__confirmation-message--accepted govuk-body" hidden="">You have accepted additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
+                          '<p class="gem-c-cookie-banner__confirmation-message--rejected govuk-body" hidden="">You have rejected additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
                       '</div>' +
                   '</div>' +
               '</div>' +
               '<div class="js-confirmation-buttons govuk-button-group">' +
-                  '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
-                  '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected" style="display: block;">Reject additional cookies</button>' +
+                  '<button class="gem-c-button govuk-button" type="submit" data-accept-cookies="true" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
+                  '<button class="gem-c-button govuk-button" type="submit" data-reject-cookies="true" style="display: block;">Reject additional cookies</button>' +
                   '<a class="govuk-link" href="/help/cookies">View cookies</a>' +
               '</div>' +
               '<div hidden="" class="js-hide-button govuk-button-group">' +
-                  '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>' +
+                  '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" >Hide this message</button>' +
               '</div>' +
           '</div>' +
       '</div>'

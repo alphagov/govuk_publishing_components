@@ -121,28 +121,18 @@ examples:
     description: |
       Data attributes can be passed to individual links within the component as shown.
 
-      Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
+      Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
       items:
         - link:
             text: Benefits
             path: http://www.gov.uk
             data_attributes:
-              track_category: homepageClicked
-              track_action: track-action
-              track_label: track-label
-              track_dimension: track-dimension
-              track_dimension_index: 29
-              track_value: 9
+              an_attribute: some_value
           description: Includes eligibility, appeals, tax credits and Universal Credit
         - link:
             text: Births, deaths, marriages and&nbsp;care
             path: http://www.gov.uk
             data_attributes:
-              track_category: homepageClicked
-              track_action: track-action
-              track_label: track-label
-              track_dimension: track-dimension
-              track_dimension_index: 29
-              track_value: 9
+              an_attribute: some_value
           description: Parenting, civil partnerships, divorce and Lasting Power of Attorney

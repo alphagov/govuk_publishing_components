@@ -15,10 +15,6 @@ module GovukPublishingComponents
         @describedby = get_describedby
       end
 
-      def data_tracking?
-        @options.any? { |item| item[:data_attributes] && item[:data_attributes][:track_category] && item[:data_attributes][:track_action] }
-      end
-
       def css_classes
         classes = %w[govuk-form-group gem-c-select]
         classes << "govuk-form-group--error" if @error_message

@@ -75,19 +75,17 @@ examples:
           public_updated_at: 2016-09-05 16:48:27
           document_type: 'Statutory guidance'
   with_data_attributes_on_links:
-    description: Note that the component does not include built in Universal Analytics tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       items:
       - link:
           text: 'School behaviour and attendance: parental responsibility measures'
           path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
           data_attributes:
-            track_category: 'navDocumentCollectionLinkClicked'
-            track_action: 1.1
-            track_label: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
-            track_options:
-              dimension28: 2
-              dimension29: 'School behaviour and attendance: parental responsibility measures'
+            a_thing: 'hello'
+            another_thing: 'there'
+            more_things:
+              look: 'over'
+              there: 'now'
         metadata:
           public_updated_at: 2017-01-05 14:50:33
           document_type: 'Statutory guidance'
@@ -95,12 +93,11 @@ examples:
           text: 'School exclusion'
           path: '/government/publications/school-exclusion'
           data_attributes:
-            track_category: 'navDocumentCollectionLinkClicked'
-            track_action: 1.2
-            track_label: '/government/publications/school-exclusion'
-            track_options:
-              dimension28: 2
-              dimension29: 'School exclusion'
+            a_thing: 'hello'
+            another_thing: 'there'
+            more_things:
+              look: 'over'
+              there: 'now'
         metadata:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statutory guidance'
@@ -306,11 +303,7 @@ examples:
             path: '/universal-credit/eligibility'
             description: 'You may be able to get Universal Credit if: you’re on a low income or out...'
             data_attributes:
-              track_category: 'resultPart'
-              track_action: 2
-              track_label: 'Result part 2'
-              track_options:
-                dimension82: 2
+              an_attribute: some_value
         - link:
             text: 'Criteria'
             description: 'no url provided, just text'

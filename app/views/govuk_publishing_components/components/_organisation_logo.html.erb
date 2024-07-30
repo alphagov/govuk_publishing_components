@@ -25,15 +25,10 @@
 %>
 
 <%= content_tag(wrapping_element, {
-    class: wrapper_classes,
-    data: {
-      module: ("gem-track-click" if organisation[:data_attributes])
-    }
+    class: wrapper_classes
   }) do %>
   <% if organisation[:url] %>
-    <%= link_to organisation[:url],
-      class: container_classes.join(" "),
-      data: organisation[:data_attributes] do %>
+    <%= link_to organisation[:url], class: container_classes.join(" ") do %>
       <%= logo_helper.logo_content %>
     <% end %>
   <% else %>

@@ -174,26 +174,6 @@ describe "Accordion", type: :view do
     assert_select "[data-gtm='google-tag-manager']", count: 2
   end
 
-  it "universal analytics data attributes for show all link are present when required" do
-    test_data = {
-      id: "test-for-data-attributes",
-      data_attributes_show_all: {
-        module: "example",
-        track_action: "click",
-      },
-      items: [
-        {
-          heading: { text: "Heading 1" },
-          content: { html: "<p>Content 1.</p>" },
-        },
-      ],
-    }
-
-    render_component(test_data)
-
-    assert_select ".govuk-accordion[data-show-all-attributes='{\"module\":\"example\",\"track_action\":\"click\"}']"
-  end
-
   it "ga4 data attributes are present by default" do
     test_data = {
       id: "test-for-data-attributes",
@@ -294,7 +274,7 @@ describe "Accordion", type: :view do
     test_data = {
       id: "test-for-module-data-attributes",
       data_attributes: {
-        module: "gem-track-click",
+        module: "ga4-link-tracker",
       },
       items: [
         {
@@ -304,7 +284,7 @@ describe "Accordion", type: :view do
       ],
     }
     render_component(test_data)
-    assert_select "[data-module='gem-track-click govuk-accordion gem-accordion ga4-event-tracker']", count: 1
+    assert_select "[data-module='ga4-link-tracker govuk-accordion gem-accordion ga4-event-tracker']", count: 1
   end
 
   it "section has class added when expanded flag is present" do

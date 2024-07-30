@@ -42,35 +42,6 @@ describe "Organisation logo", type: :view do
     assert_select ".gem-c-organisation-logo__container img[src='/url'][alt='alt']"
   end
 
-  it "adds data tracking attributes when specified" do
-    data_attributes = {
-      track_category: "someLinkClicked",
-      track_action: 1,
-      track_label: "/some-link",
-      track_options: {
-        dimension28: 2,
-        dimension29: "Organisation link",
-      },
-    }
-
-    render_component(organisation: { url: "/some-link", data_attributes: })
-
-    assert_select ".gem-c-organisation-logo[data-module='gem-track-click']"
-    assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-category='someLinkClicked']"
-    assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-action='1']"
-    assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-label='/some-link']"
-    assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-options='{\"dimension28\":2,\"dimension29\":\"Organisation link\"}']"
-  end
-
-  it "doesn't add data tracking attributes when no link is specified" do
-    data_attributes = {
-      track_category: "someLinkClicked",
-    }
-
-    render_component(organisation: { data_attributes: })
-    assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-category='someLinkClicked']", false
-  end
-
   it "uses a div by default" do
     render_component(organisation: { name: "Name" })
     assert_select "div.gem-c-organisation-logo"

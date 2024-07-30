@@ -38,7 +38,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         e.preventDefault()
         var el = e.target.closest('button')
         this.toggleForm(el.getAttribute('aria-controls'))
-        this.trackEvent(this.getTrackEventParams(el))
         this.updateAriaAttributes(el)
       }.bind(this))
     }
@@ -50,7 +49,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var el = e.target
         var formToToggle = el.getAttribute('aria-controls')
         this.toggleForm(formToToggle)
-        this.trackEvent(this.getTrackEventParams(el))
         this.setInitialAriaAttributes()
         this.revealInitialPrompt()
         var refocusClass = '.js-' + formToToggle
@@ -60,7 +58,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.pageIsUsefulButton.addEventListener('click', function (e) {
       e.preventDefault()
-      this.trackEvent(this.getTrackEventParams(this.pageIsUsefulButton))
       this.showFormSuccess()
       this.revealInitialPrompt()
     }.bind(this))
@@ -87,7 +84,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
           this.done = function () {
             if (xhr.status === 200) {
-              this.trackEvent(this.getTrackEventParams($form))
               this.showFormSuccess(xhr.message)
               this.revealInitialPrompt()
               this.setInitialAriaAttributes()
@@ -183,19 +179,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     } else {
       this.activeForm = false
       clearInterval(this.timerInterval)
-    }
-  }
-
-  Feedback.prototype.getTrackEventParams = function ($node) {
-    return {
-      category: $node.getAttribute('data-track-category'),
-      action: $node.getAttribute('data-track-action')
-    }
-  }
-
-  Feedback.prototype.trackEvent = function (trackEventParams) {
-    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-      window.GOVUK.analytics.trackEvent(trackEventParams.category, trackEventParams.action)
     }
   }
 

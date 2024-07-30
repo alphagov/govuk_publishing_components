@@ -265,13 +265,13 @@ describe "Layout for public", type: :view do
           yes: {
             text: "Yes",
             data_attributes: {
-              "track-category": "cookieBanner",
+              "an_attribute": "some_value1",
             },
           },
           no: {
             text: "No",
             data_attributes: {
-              "track-category": "cookieBanner",
+              "an_attribute": "some_value2",
             },
           },
           cookie_preferences: {
@@ -283,6 +283,8 @@ describe "Layout for public", type: :view do
     })
 
     assert_select ".govuk-cookie-banner__heading.govuk-heading-m", text: "Can we use cookies to collect information about how you use GOV.UK?"
+    assert_select ".govuk-cookie-banner .gem-c-button[data-an-attribute='some_value1']", text: "Yes"
+    assert_select ".govuk-cookie-banner .gem-c-button[data-an-attribute='some_value2']", text: "No"
   end
 
   it "displays as draft watermark" do
