@@ -7,13 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 40.1.0
 
 * Allow disabling `search` component input spelling correction ([PR #4112](https://github.com/alphagov/govuk_publishing_components/pull/4112))
 * Disable `search` component input spelling correction in `layout_super_navigation_header` and
   `layout_header` components ([PR #4115](https://github.com/alphagov/govuk_publishing_components/pull/4115))
-
-## 40.0.1
 * Add Brakeman to CI jobs ([PR #4108](https://github.com/alphagov/govuk_publishing_components/pull/4108))
 
 ## 40.0.0
