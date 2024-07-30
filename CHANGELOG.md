@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 41.0.0
 
 * **BREAKING:** Remove Universal Analytics ([PR #4068](https://github.com/alphagov/govuk_publishing_components/pull/4068))
 
