@@ -7,7 +7,13 @@
   // inheriting the browser's default margin:
   margin: 0;
   @include govuk-typography-common;
-  @include govuk-font-size($size: 19, $line-height: 1.35);
+  @include govuk-font-size(19);
+
+  @include govuk-media-query($until: tablet) {
+    // only override line-height on small screens otherwise use govuk-font-size
+    // line-height
+    line-height: 1.35;
+  }
 }
 
 .gem-c-organisation-logo__container {
