@@ -107,13 +107,13 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__button-container {
-  @include govuk-media-query($until: "tablet") {
-    margin-right: govuk-spacing(-3);
-  }
-
   top: -$black-bar-height;
   position: absolute;
   right: 0;
+
+  @include govuk-media-query($until: "tablet") {
+    margin-right: govuk-spacing(-3);
+  }
 
   @include govuk-media-query($until: 300px) {
     position: static;
@@ -147,15 +147,15 @@ $after-button-padding-left: govuk-spacing(4);
 // Top level navigation links and search link.
 .gem-c-layout-super-navigation-header__navigation-item-link,
 .gem-c-layout-super-navigation-header__search-item-link {
-  @include govuk-link-common;
-  @include govuk-link-style-no-visited-state;
-
   display: inline-block;
   font-size: 19px;
   font-size: govuk-px-to-rem(19px);
   font-weight: bold;
   padding: govuk-spacing(3) 0;
   position: relative;
+
+  @include govuk-link-common;
+  @include govuk-link-style-no-visited-state;
 
   @include govuk-media-query($from: "desktop") {
     display: block;
@@ -169,6 +169,12 @@ $after-button-padding-left: govuk-spacing(4);
   &,
   &:link,
   &:visited {
+    // stylelint-disable max-nesting-depth
+    float: left;
+    font-size: 16px;
+    font-size: govuk-px-to-rem(16px);
+    height: govuk-spacing(4);
+
     @include focus-and-focus-visible {
       @include govuk-focused-text;
     }
@@ -196,11 +202,6 @@ $after-button-padding-left: govuk-spacing(4);
       @include pseudo-underline($left: $after-link-padding, $right: $after-link-padding);
     }
 
-    // stylelint-disable max-nesting-depth
-    float: left;
-    font-size: 16px;
-    font-size: govuk-px-to-rem(16px);
-    height: govuk-spacing(4);
 
     &::before {
       @include chevron(govuk-colour("white"), true);
@@ -393,6 +394,20 @@ $after-button-padding-left: govuk-spacing(4);
 
 // Styles for top level navigation toggle button.
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
+  font-size: 16px;
+  font-size: govuk-px-to-rem(16px);
+  font-weight: 700;
+  background: govuk-colour("black");
+  border: 0;
+  box-sizing: border-box;
+  color: govuk-colour("white");
+  cursor: pointer;
+  height: $black-bar-height;
+  padding: 0;
+  position: relative;
+  margin: 0;
+  vertical-align: top;
+
   @include govuk-link-common;
   @include govuk-link-style-no-visited-state;
   @include govuk-link-style-no-underline;
@@ -415,19 +430,6 @@ $after-button-padding-left: govuk-spacing(4);
     }
   }
 
-  font-size: 16px;
-  font-size: govuk-px-to-rem(16px);
-  font-weight: 700;
-  background: govuk-colour("black");
-  border: 0;
-  box-sizing: border-box;
-  color: govuk-colour("white");
-  cursor: pointer;
-  height: $black-bar-height;
-  padding: 0;
-  position: relative;
-  margin: 0;
-  vertical-align: top;
 
   @include govuk-media-query($from: "desktop") {
     background: govuk-colour("black");
@@ -490,11 +492,11 @@ $after-button-padding-left: govuk-spacing(4);
     // stylelint-disable max-nesting-depth
     &:hover {
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+        color: govuk-colour("mid-grey");
+
         &::before {
           @include chevron(govuk-colour("mid-grey"), true);
         }
-
-        color: govuk-colour("mid-grey");
       }
 
       &::after {
@@ -607,7 +609,6 @@ $after-button-padding-left: govuk-spacing(4);
 
 // Styles for search toggle button.
 .gem-c-layout-super-navigation-header__search-toggle-button {
-  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
   background: none;
   border: 0;
   color: govuk-colour("white");
@@ -616,6 +617,7 @@ $after-button-padding-left: govuk-spacing(4);
   padding: govuk-spacing(3);
   position: relative;
   width: $search-width-or-height;
+  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
   @include focus-and-focus-visible {
     @include govuk-focused-text;
@@ -753,13 +755,13 @@ $after-button-padding-left: govuk-spacing(4);
 
 // Dropdown menu.
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
-  @include govuk-media-query($until: 300px) {
-    padding-top: 80px;
-  }
-
   background: govuk-colour("light-grey");
   border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
+
+  @include govuk-media-query($until: 300px) {
+    padding-top: 80px;
+  }
 
   @include govuk-media-query($from: "desktop") {
     padding-top: govuk-spacing(8);
@@ -877,11 +879,11 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
-  @include govuk-typography-common;
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   font-weight: normal;
   margin: govuk-spacing(1) 0 0 0;
+  @include govuk-typography-common;
 }
 
 .gem-c-layout-super-navigation-header__search-form {

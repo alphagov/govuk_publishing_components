@@ -2,6 +2,6 @@
 @import "govuk/components/error-summary/error-summary";
 
 .gem-c-error-summary__list-item {
-  @include govuk-font($size: 19, $weight: bold);
   color: $govuk-error-colour;
+  @include govuk-font($size: 19, $weight: bold);
 }

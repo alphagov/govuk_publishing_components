@@ -30,8 +30,8 @@
     }
 
     p {
-      @include govuk-font($size: 19, $weight: bold);
       margin-left: 1em;
+      @include govuk-font($size: 19, $weight: bold);
     }
   }
 

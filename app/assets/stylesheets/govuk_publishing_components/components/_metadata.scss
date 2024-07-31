@@ -2,14 +2,14 @@
 
 .gem-c-metadata {
   @include govuk-text-colour;
-  @include govuk-font(16);
   @include responsive-bottom-margin;
   @include govuk-clearfix;
+  @include govuk-font(16);
 
   a {
+    font-weight: bold;
     @include govuk-link-common;
     @include govuk-link-style-default;
-    font-weight: bold;
   }
 
   .gem-c-metadata__definition-link {

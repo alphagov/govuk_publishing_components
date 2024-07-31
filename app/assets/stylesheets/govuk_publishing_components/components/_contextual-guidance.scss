@@ -16,14 +16,14 @@
 .gem-c-contextual-guidance__wrapper {
   position: relative;
 
-  @include govuk-font(19);
-
   margin-bottom: govuk-spacing(7);
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: govuk-spacing(7);
     padding-top: govuk-spacing(6);
   }
+
+  @include govuk-font(19);
 }
 
 .js-enabled {

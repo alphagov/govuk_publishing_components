@@ -29,10 +29,10 @@ $top-border: solid 1px govuk-colour("mid-grey");
 // we want to ensure that both large and small step navs have the same size font on mobile
 // this will stop text resizing if compatibility mode is turned off
 @mixin step-nav-font($size, $tablet-size: $size, $weight: normal, $line-height: 1.3, $tablet-line-height: $line-height) {
-  @include govuk-typography-common;
   font-size: $size + px;
   font-weight: $weight;
   line-height: $line-height;
+  @include govuk-typography-common;
 
   @include govuk-media-query($from: tablet) {
     font-size: $tablet-size + px;
@@ -167,12 +167,12 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__button--title {
-  @include step-nav-font(19, $weight: bold, $line-height: 1.2);
   display: inline-block;
   padding: govuk-spacing(1) 0 0;
   text-align: left;
   color: govuk-colour("black");
   width: 100%;
+  @include step-nav-font(19, $weight: bold, $line-height: 1.2);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold);
@@ -184,11 +184,11 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__button--controls {
-  @include step-nav-font(15);
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
   margin: .5em 0 14px;
   padding: govuk-spacing(1) 0 govuk-spacing(1);
+  @include step-nav-font(15);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(15, $tablet-size: 19);
@@ -321,8 +321,8 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__circle--number {
-  @include step-nav-font(16, $weight: bold, $line-height: 29px);
   border: solid $stroke-width govuk-colour("mid-grey");
+  @include step-nav-font(16, $weight: bold, $line-height: 29px);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(16, $tablet-size: 19, $weight: bold, $line-height: 29px, $tablet-line-height: 34px);
@@ -339,10 +339,10 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__circle--logic {
-  @include step-nav-font(19, $weight: bold, $line-height: 28px);
   left: 3px;
   width: govuk-em($number-circle-size, 19);
   height: govuk-em($number-circle-size, 19);
+  @include step-nav-font(19, $weight: bold, $line-height: 28px);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold, $line-height: 28px, $tablet-line-height: 34px);
@@ -395,9 +395,9 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__title {
-  @include govuk-text-colour;
-  @include step-nav-font(19, $weight: bold, $line-height: 1.4);
   margin: 0;
+  @include step-nav-font(19, $weight: bold, $line-height: 1.4);
+  @include govuk-text-colour;
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold, $line-height: 1.4);
@@ -405,11 +405,11 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__toggle-link {
-  @include step-nav-font(15, $line-height: 1.2);
   display: block;
   color: $govuk-link-colour;
   text-transform: capitalize;
   padding-bottom: govuk-spacing(6);
+  @include step-nav-font(15, $line-height: 1.2);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(15, $tablet-size: 19, $line-height: 1.2);
@@ -417,9 +417,9 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__panel {
-  @include govuk-text-colour;
-  @include step-nav-font(16);
   padding-bottom: govuk-spacing(5);
+  @include step-nav-font(16);
+  @include govuk-text-colour;
 
   .gem-c-step-nav--large & {
     @include step-nav-font(16, $tablet-size: 19);

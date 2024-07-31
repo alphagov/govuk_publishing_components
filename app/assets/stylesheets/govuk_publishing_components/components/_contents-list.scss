@@ -12,18 +12,18 @@
 }
 
 .gem-c-contents-list__title {
+  margin: 0;
   @include govuk-text-colour;
   @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
-  margin: 0;
 }
 
 .gem-c-contents-list__list,
 .gem-c-contents-list__nested-list {
-  @include govuk-text-colour;
-  @include govuk-font($size: 16);
   margin: 0;
   padding: 0;
   list-style-type: none;
+  @include govuk-text-colour;
+  @include govuk-font($size: 16);
 }
 
 .gem-c-contents-list__link {

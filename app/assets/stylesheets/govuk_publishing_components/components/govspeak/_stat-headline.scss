@@ -17,14 +17,14 @@
     }
 
     p {
-      @include govuk-font($size: 19, $weight: bold);
       margin: 0;
+      @include govuk-font($size: 19, $weight: bold);
     }
 
     em {
-      @include govuk-font($size: 80, $weight: bold);
       display: block;
       margin: 3px 0 -5px;
+      @include govuk-font($size: 80, $weight: bold);
     }
   }
 }

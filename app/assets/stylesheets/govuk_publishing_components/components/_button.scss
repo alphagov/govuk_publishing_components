@@ -31,11 +31,11 @@
 }
 
 .gem-c-button__info-text {
-  @include govuk-text-colour;
-  @include govuk-font($size: 16);
   display: block;
   max-width: 14em;
   margin-top: .5em;
+  @include govuk-text-colour;
+  @include govuk-font($size: 16);
 }
 
 .gem-c-button--secondary {
