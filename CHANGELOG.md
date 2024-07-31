@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Drop support for Ruby 3.1 ([PR #4124](https://github.com/alphagov/govuk_publishing_components/pull/4124))
+
 ## 41.0.0
 
 * **BREAKING:** Remove Universal Analytics ([PR #4068](https://github.com/alphagov/govuk_publishing_components/pull/4068))
