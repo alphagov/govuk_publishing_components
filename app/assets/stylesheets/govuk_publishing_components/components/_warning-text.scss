@@ -2,11 +2,11 @@
 @import "govuk/components/warning-text/warning-text";
 
 .gem-c-warning-text .govuk-warning-text__text {
+  margin: 0;
   // Ensure the font-size is always set to 19px
   // This prevents the default user agent styles being applied to heading elements used in the warning-text component following a change in v5.0.0, see:
   // https://github.com/alphagov/govuk-frontend/pull/4267
   @include govuk-font($size: 19, $weight: bold);
-  margin: 0;
 }
 
 .gem-c-warning-text__text--no-indent {

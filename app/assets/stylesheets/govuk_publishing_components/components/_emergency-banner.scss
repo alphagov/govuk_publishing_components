@@ -1,11 +1,11 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-emergency-banner {
-  @include govuk-font(19);
   background-color: govuk-colour("mid-grey");
   color: govuk-colour("white");
   margin-top: 2px;
   padding: govuk-spacing(3) 0;
+  @include govuk-font(19);
 
   @include govuk-media-query($from: tablet) {
     padding: govuk-spacing(6) 0;
@@ -22,8 +22,8 @@
 }
 
 .gem-c-emergency-banner__heading {
-  @include govuk-font(24, $weight: bold);
   margin: 0;
+  @include govuk-font(24, $weight: bold);
 }
 
 .gem-c-emergency-banner__heading--homepage {
@@ -35,10 +35,10 @@
 }
 
 .gem-c-emergency-banner__description {
-  @include govuk-font(19);
   color: govuk-colour("white");
   margin-top: 0;
   margin-bottom: govuk-spacing(4);
+  @include govuk-font(19);
 
   &:last-child {
     margin-bottom: 0;

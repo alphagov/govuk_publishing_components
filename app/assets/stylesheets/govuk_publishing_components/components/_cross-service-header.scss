@@ -47,17 +47,6 @@ $govuk-header-link-underline-thickness: 3px;
 
 .gem-c-cross-service-header__button {
   display: none;
-
-  .toggle-enabled & {
-    display: inline;
-    display: flex;
-
-    @include govuk-media-query($from: tablet) {
-      display: none;
-    }
-  }
-
-  @include govuk-font($size: 19, $weight: bold);
   position: relative;
   align-items: center;
   cursor: pointer;
@@ -67,6 +56,17 @@ $govuk-header-link-underline-thickness: 3px;
   margin: 0;
   padding: govuk-spacing(2) 0 govuk-spacing(1) govuk-spacing(4);
   background: none;
+
+  @include govuk-font($size: 19, $weight: bold);
+
+  .toggle-enabled & {
+    display: inline;
+    display: flex;
+
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+  }
 
   &::before {
     content: "";
@@ -141,11 +141,11 @@ $govuk-header-link-underline-thickness: 3px;
 
 // start One Login header styles
 .gem-c-one-login-header {
-  @include govuk-font($size: 19);
   color: govuk-colour("white");
   background: govuk-colour("black");
   border-bottom: govuk-spacing(2) solid $govuk-link-colour;
   position: relative;
+  @include govuk-font($size: 19);
 }
 
 .gem-c-one-login-header__container {
@@ -171,9 +171,9 @@ $govuk-header-link-underline-thickness: 3px;
 .gem-c-one-login-header__nav__link {
   &:link,
   &:visited {
+    text-decoration: none;
     @include govuk-typography-common;
     @include govuk-link-style-inverse;
-    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
@@ -235,14 +235,14 @@ $govuk-header-link-underline-thickness: 3px;
 }
 
 .gem-c-one-login-header__link--homepage {
-  // Font size needs to be set on the link so that the box sizing is correct
-  // in Firefox
-  @include govuk-font($size: false, $weight: bold);
-
   display: inline-block;
   margin-right: govuk-spacing(2);
   font-size: 30px; // We don't have a mixin that produces 30px font size
   line-height: 1;
+
+  // Font size needs to be set on the link so that the box sizing is correct
+  // in Firefox
+  @include govuk-font($size: false, $weight: bold);
 
   @include govuk-media-query($from: tablet) {
     display: inline;
@@ -366,11 +366,11 @@ $govuk-header-link-underline-thickness: 3px;
 }
 
 .gem-c-service-header__heading {
-  @include govuk-font($size: 24, $weight: bold);
   color: $govuk-text-colour;
   padding: govuk-spacing(3) 0;
   margin: 0;
   flex-grow: 1;
+  @include govuk-font($size: 24, $weight: bold);
 
   @include govuk-media-query($until: tablet) {
     padding: govuk-spacing(1) 0;
@@ -382,10 +382,10 @@ $govuk-header-link-underline-thickness: 3px;
 }
 
 .gem-c-service-header__nav-list {
-  @include govuk-font($size: 19, $weight: bold);
   list-style: none;
   margin: 0;
   padding: 0;
+  @include govuk-font($size: 19, $weight: bold);
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font($size: 19, $weight: bold);

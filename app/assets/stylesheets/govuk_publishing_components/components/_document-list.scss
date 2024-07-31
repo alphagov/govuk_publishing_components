@@ -1,10 +1,10 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-document-list {
-  @include govuk-text-colour;
-  @include govuk-font(19);
   margin: 0;
   padding: 0;
+  @include govuk-text-colour;
+  @include govuk-font(19);
 }
 
 .gem-c-document-list__item {
@@ -19,8 +19,8 @@
 }
 
 .gem-c-document-list__item-title {
-  @include govuk-font($size: 19, $weight: bold);
   display: inline-block;
+  @include govuk-font($size: 19, $weight: bold);
 }
 
 .gem-c-document-list--no-underline {
@@ -57,8 +57,8 @@
 }
 
 .gem-c-document-list__item-description {
-  @include govuk-text-colour;
   margin: govuk-spacing(1) 0;
+  @include govuk-text-colour;
 }
 
 .gem-c-document-list__subtext {
@@ -79,12 +79,16 @@
 }
 
 .gem-c-document-list__attribute {
-  @include govuk-text-colour;
-  @include govuk-font(16);
-  color: $govuk-secondary-text-colour;
   display: inline-block;
   list-style: none;
   padding-right: govuk-spacing(4);
+  @include govuk-text-colour;
+  @include govuk-font(16);
+
+  & { // stylelint-disable-line no-duplicate-selectors
+    // overriding govuk-text-colour mixin
+    color: $govuk-secondary-text-colour;
+  }
 
   .direction-rtl & {
     padding-right: 0;
@@ -103,8 +107,8 @@
 }
 
 .gem-c-document-list__highlight-text {
-  @include govuk-font(16, bold);
   margin: 0 0 govuk-spacing(3) 0;
+  @include govuk-font(16, bold);
 }
 
 .gem-c-document-list__children {
@@ -125,10 +129,10 @@
 }
 
 .gem-c-document-list-child {
-  @include govuk-font($size: 16);
   position: relative;
   padding-left: govuk-spacing(5);
   padding-top: govuk-spacing(2);
+  @include govuk-font($size: 16);
 
   &::before {
     content: "";
@@ -171,9 +175,9 @@
 }
 
 .gem-c-document-list-child__description {
-  @include govuk-text-colour;
   margin-top: govuk-spacing(1);
   margin-bottom: govuk-spacing(1);
+  @include govuk-text-colour;
 
   @include govuk-media-query($until: tablet) {
     display: none;

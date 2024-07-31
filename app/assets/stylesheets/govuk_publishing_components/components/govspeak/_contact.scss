@@ -19,8 +19,8 @@
   }
 
   .contact {
-    @include govuk-clearfix;
     position: relative;
+    @include govuk-clearfix;
 
     .content {
       float: none;

@@ -7,9 +7,9 @@
   @include govuk-clearfix;
 
   a {
+    font-weight: bold;
     @include govuk-link-common;
     @include govuk-link-style-default;
-    font-weight: bold;
   }
 
   .gem-c-metadata__definition-link {

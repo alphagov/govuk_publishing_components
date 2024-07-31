@@ -13,8 +13,8 @@
 }
 
 .gem-c-error-alert__message {
-  @include govuk-font(19, $weight: bold);
   margin: 0;
+  @include govuk-font(19, $weight: bold);
 }
 
 .gem-c-error-summary__title {
@@ -29,8 +29,8 @@
 }
 
 .gem-c-error-summary__body {
-  @include govuk-font(19);
   margin: 0;
+  @include govuk-font(19);
 }
 
 .gem-c-error-alert:focus {

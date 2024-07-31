@@ -2,8 +2,8 @@
 @import "govuk/components/panel/panel";
 
 .gem-c-panel__prepend {
-  @include govuk-font($size: 24, $weight: bold);
   margin-bottom: govuk-spacing(3);
+  @include govuk-font($size: 24, $weight: bold);
 }
 
 .gem-c-panel__append {

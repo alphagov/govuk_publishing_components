@@ -17,8 +17,9 @@
 }
 
 .gem-c-contextual-sidebar__text {
-  @include govuk-font(16);
   margin-bottom: govuk-spacing(1);
+  @include govuk-font(16);
+
   @include govuk-media-query($from: tablet) {
     margin-bottom: govuk-spacing(2);
   }

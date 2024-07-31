@@ -58,10 +58,10 @@
 .gem-c-subscription-links__item--button {
   cursor: pointer;
   display: none;
-  @include govuk-font(19, $weight: bold);
   padding: govuk-spacing(2);
   border: 1px solid $gem-quiet-button-colour;
   background-color: $gem-secondary-button-background-colour;
+  @include govuk-font(19, $weight: bold);
 
   .js-enabled & {
     display: inline-block;

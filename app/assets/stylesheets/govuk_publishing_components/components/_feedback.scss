@@ -93,13 +93,13 @@
 }
 
 .gem-c-feedback__prompt-link {
-  @include govuk-font(19);
   background: transparent;
   color: govuk-colour("black");
   box-shadow: 0 3px 0 govuk-colour("black");
   border: 1px govuk-colour("black") solid;
   margin-bottom: 0;
   width: 100%;
+  @include govuk-font(19);
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
@@ -173,15 +173,15 @@
 
   // this comes from the backend so we can't put a class on it
   h2 {
+    margin: 0 0 govuk-spacing(3) 0;
     @include govuk-text-colour;
     @include govuk-font($size: 24, $weight: bold);
-    margin: 0 0 govuk-spacing(3) 0;
   }
 
   p {
+    margin: 0 0 govuk-spacing(3) 0;
     @include govuk-text-colour;
     @include govuk-font($size: 19);
-    margin: 0 0 govuk-spacing(3) 0;
   }
 
   a {
@@ -192,10 +192,10 @@
 }
 
 .gem-c-feedback__error-message {
-  @include govuk-font(19, $weight: bold);
   display: block;
   padding: 4px 0 0;
   color: $govuk-error-colour;
+  @include govuk-font(19, $weight: bold);
 }
 
 .gem-c-feedback__form {
@@ -208,21 +208,21 @@
 }
 
 .gem-c-feedback__form-heading {
+  margin: 0 0 govuk-spacing(3) 0;
   @include govuk-text-colour;
   @include govuk-font(24, $weight: bold);
-  margin: 0 0 govuk-spacing(3) 0;
 }
 
 .gem-c-feedback__form-paragraph {
+  margin: 0 0 govuk-spacing(6) 0;
   @include govuk-text-colour;
   @include govuk-font(19);
-  margin: 0 0 govuk-spacing(6) 0;
 }
 
 .gem-c-feedback__form-label {
-  @include govuk-font(16);
   display: block;
   padding-bottom: govuk-spacing(3);
+  @include govuk-font(16);
 }
 
 .gem-c-feedback__close {
@@ -249,10 +249,10 @@
 // static.css on GOV.UK overwrites the component styles using input[type="text"]
 // so we need to apply  govuk-input styles using a stronger selector
 .gem-c-feedback .gem-c-input[type="text"] {
-  @include govuk-font($size: 19);
   margin: 0;
   padding: govuk-spacing(1);
   border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+  @include govuk-font($size: 19);
 
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;

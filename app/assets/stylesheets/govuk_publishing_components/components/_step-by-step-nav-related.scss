@@ -1,9 +1,9 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-step-nav-related {
-  @include govuk-text-colour;
   border-top: 2px solid govuk-colour("blue");
   margin-bottom: govuk-spacing(6);
+  @include govuk-text-colour;
 }
 
 .gem-c-step-nav-related__heading {
@@ -13,18 +13,18 @@
 }
 
 .gem-c-step-nav-related__links {
-  @include govuk-font(16);
   list-style: none;
   margin: 0;
   padding: 0;
+  @include govuk-font(16);
 }
 
 .gem-c-step-nav-related--singular {
   margin-bottom: govuk-spacing(2) + 3;
 
   .gem-c-step-nav-related__heading {
-    @include govuk-font(19, $weight: bold, $line-height: 1.4);
     margin-top: govuk-spacing(4);
+    @include govuk-font(19, $weight: bold, $line-height: 1.4);
   }
 
   .gem-c-step-nav-related__pretitle {

@@ -33,9 +33,9 @@
     }
 
     th {
-      @include govuk-font($size: 19, $weight: bold);
       text-align: left;
       color: $govuk-text-colour;
+      @include govuk-font($size: 19, $weight: bold);
     }
 
     td small {

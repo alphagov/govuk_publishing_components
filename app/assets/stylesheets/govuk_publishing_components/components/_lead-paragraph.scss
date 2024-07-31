@@ -1,12 +1,12 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-lead-paragraph {
-  @include govuk-text-colour;
-  @include govuk-font(24);
   margin-top: 0;
-  @include responsive-bottom-margin;
   // Ensure the text has a line-length of around 60 characters
   max-width: 30em;
+  @include govuk-text-colour;
+  @include responsive-bottom-margin;
+  @include govuk-font(24);
 }
 
 .gem-c-lead-paragraph--inverse {

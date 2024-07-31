@@ -10,9 +10,9 @@ $thumbnail-shadow-width: 0 2px 2px;
 $thumbnail-icon-border-colour: govuk-colour("mid-grey");
 
 .gem-c-attachment {
+  position: relative;
   @include govuk-font(19);
   @include govuk-clearfix;
-  position: relative;
 
   .govuk-details {
     margin: govuk-spacing(3) 0;
@@ -51,8 +51,8 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
 }
 
 .gem-c-attachment__title {
-  @include govuk-font($size: 27);
   margin: 0 0 govuk-spacing(3);
+  @include govuk-font($size: 27);
 }
 
 .gem-c-attachment__link {
@@ -60,9 +60,9 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
 }
 
 .gem-c-attachment__metadata {
-  @include govuk-font($size: 19);
   margin: 0 0 govuk-spacing(3);
   color: $govuk-secondary-text-colour;
+  @include govuk-font($size: 19);
 
   &:last-of-type {
     margin-bottom: 0;

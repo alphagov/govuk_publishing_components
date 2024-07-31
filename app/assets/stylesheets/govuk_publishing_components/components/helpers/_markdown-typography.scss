@@ -8,9 +8,9 @@
   ol,
   ul,
   p {
-    @include govuk-font($size: 19);
     margin-top: $govuk-gutter-half;
     margin-bottom: $govuk-gutter-half;
+    @include govuk-font($size: 19);
 
     @include govuk-media-query($from: tablet) {
       margin-top: $gutter-two-thirds;
@@ -24,15 +24,15 @@
   // thus H1's are not expected and are discouraged by bare styling
 
   h1 {
-    @include govuk-font($size: 19);
     margin: 0;
     padding: 0;
+    @include govuk-font($size: 19);
   }
 
   h2 {
-    @include govuk-font($size: 27, $weight: bold);
     margin-top: $govuk-gutter;
     margin-bottom: 0;
+    @include govuk-font($size: 27, $weight: bold);
 
     @include govuk-media-query($from: desktop) {
       margin-top: $govuk-gutter * 1.5;
@@ -41,9 +41,9 @@
   }
 
   h3 {
-    @include govuk-font($size: 19, $weight: bold);
     margin-top: $govuk-gutter + 5px;
     margin-bottom: 0;
+    @include govuk-font($size: 19, $weight: bold);
   }
 
   // H4, H5 and H6 are discouraged and thus styled the same
@@ -51,9 +51,9 @@
   h4,
   h5,
   h6 {
-    @include govuk-font($size: 19, $weight: bold);
     margin-top: $govuk-gutter + 5px;
     margin-bottom: 0;
+    @include govuk-font($size: 19, $weight: bold);
 
     + p {
       margin-top: 5px;

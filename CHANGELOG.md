@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Resolve DartSass mixed declaration deprecations ([PR #4125](https://github.com/alphagov/govuk_publishing_components/pull/4125))
 * Drop support for Ruby 3.1 ([PR #4124](https://github.com/alphagov/govuk_publishing_components/pull/4124))
 
 ## 41.0.0
