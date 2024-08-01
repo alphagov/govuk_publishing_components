@@ -13,14 +13,14 @@ $highlight-answer-color: govuk-colour("white");
     margin: 0 -1em 1em;
 
     p {
-      @include govuk-font($size: 24, $weight: bold);
       color: $highlight-answer-color;
+      @include govuk-font($size: 24, $weight: bold);
 
       em {
-        @include govuk-font($size: 80, $weight: bold);
         display: block;
         padding-top: .1em;
         color: $highlight-answer-color;
+        @include govuk-font($size: 80, $weight: bold);
       }
     }
 

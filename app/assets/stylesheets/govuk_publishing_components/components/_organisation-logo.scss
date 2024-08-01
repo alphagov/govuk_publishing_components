@@ -2,12 +2,18 @@
 
 // Default logo corresponds with the "medium stacked" Whitehall equivalent
 .gem-c-organisation-logo {
-  @include govuk-font($size: 19);
   font-weight: 400;
-  line-height: 1.35;
   // When this is a heading the margin needs to be set to stop it from
   // inheriting the browser's default margin:
   margin: 0;
+  @include govuk-typography-common;
+  @include govuk-font-size(19);
+
+  @include govuk-media-query($until: tablet) {
+    // only override line-height on small screens otherwise use govuk-font-size
+    // line-height
+    line-height: 1.35;
+  }
 }
 
 .gem-c-organisation-logo__container {
@@ -52,7 +58,11 @@
 .gem-c-organisation-logo__link {
   @include govuk-link-common;
   @include govuk-link-style-text;
-  font-family: HelveticaNeue, "Helvetica Neue", Arial, Helvetica, sans-serif;
+
+  & { // stylelint-disable-line no-duplicate-selectors
+    // overriding the govuk-link font
+    font-family: HelveticaNeue, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  }
 
   &:hover {
     color: $govuk-link-hover-colour;

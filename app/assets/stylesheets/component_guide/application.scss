@@ -13,8 +13,8 @@ $gem-guide-border-width: 1px;
   @extend %govuk-list--bullet;
 
   li {
-    @include govuk-font($size: 19);
     margin-bottom: $govuk-gutter-half;
+    @include govuk-font($size: 19);
   }
 
   p {
@@ -44,28 +44,28 @@ $gem-guide-border-width: 1px;
 }
 
 .component-violation {
-  @include govuk-text-colour;
   border: 3px solid $govuk-error-colour;
   margin: 0 0 $govuk-gutter;
   padding: $govuk-gutter $govuk-gutter;
+  @include govuk-text-colour;
 
   .component-violation__title {
-    @include govuk-font($size: 24, $weight: bold);
     margin: 0;
+    @include govuk-font($size: 24, $weight: bold);
   }
 
   .component-violation__link {
     display: block;
-    @include govuk-font($size: 19, $weight: bold);
     color: $govuk-error-colour;
     margin: $govuk-gutter-half 0;
+    @include govuk-font($size: 19, $weight: bold);
   }
 }
 
 .component-doc-h2 {
+  margin: ($govuk-gutter * 1.5) 0 $govuk-gutter;
   @include govuk-text-colour;
   @include govuk-font($size: 27, $weight: bold);
-  margin: ($govuk-gutter * 1.5) 0 $govuk-gutter;
 
   small {
     @include govuk-font($size: 16, $weight: bold);
@@ -73,8 +73,8 @@ $gem-guide-border-width: 1px;
 }
 
 .component-doc-h3 {
-  @include govuk-text-colour;
   margin: $govuk-gutter 0 $govuk-gutter-half;
+  @include govuk-text-colour;
   @include govuk-font($size: 19, $weight: bold);
 }
 
@@ -149,9 +149,9 @@ $gem-guide-border-width: 1px;
 
 .component-guide-preview--violation,
 .component-guide-preview--warning {
-  @include govuk-text-colour;
   margin-top: -$gem-guide-border-width;
 
+  @include govuk-text-colour;
   @include govuk-font($size: 19);
 
   &:empty {
@@ -185,13 +185,12 @@ $gem-guide-border-width: 1px;
   }
 
   &::before {
-    @include govuk-font($size: 16);
     content: attr(data-content);
     position: absolute;
     top: 0;
     left: 0;
     padding: .2105em .7894em;
-    font-weight: bold;
+    @include govuk-font($size: 16, $weight: bold);
   }
 }
 
@@ -217,9 +216,9 @@ $gem-guide-border-width: 1px;
     margin: 0 0 $govuk-gutter * 1.5;
 
     .example-title {
+      margin: $govuk-gutter-half 0;
       @include govuk-text-colour;
       @include govuk-font($size: 24, $weight: bold);
-      margin: $govuk-gutter-half 0;
     }
 
     .example-title small {
@@ -508,8 +507,8 @@ $code-delete-bg: #fadddd;
 
 .component__application-name {
   display: block;
-  @include govuk-font($size: 16);
   font-weight: normal;
+  @include govuk-font($size: 16);
 }
 
 .component__count {

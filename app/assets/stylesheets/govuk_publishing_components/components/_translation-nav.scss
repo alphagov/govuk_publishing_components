@@ -1,18 +1,18 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-translation-nav {
+  margin-bottom: govuk-spacing(6);
+  border-bottom: 1px solid $govuk-border-colour;
   @include responsive-top-margin;
   @include govuk-text-colour;
   @include govuk-font(16);
-  margin-bottom: govuk-spacing(6);
-  border-bottom: 1px solid $govuk-border-colour;
 }
 
 .gem-c-translation-nav__list {
-  @include govuk-clearfix;
   list-style: none;
   margin: 0 (- govuk-spacing(2));
   padding: 0;
+  @include govuk-clearfix;
 }
 
 .gem-c-translation-nav__list-item {

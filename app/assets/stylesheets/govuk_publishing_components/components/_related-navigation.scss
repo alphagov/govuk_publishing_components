@@ -1,30 +1,30 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-related-navigation {
-  @include govuk-text-colour;
   border-top: 2px solid govuk-colour("blue");
   margin-bottom: govuk-spacing(9);
+  @include govuk-text-colour;
 }
 
 .gem-c-related-navigation__main-heading {
-  @include govuk-font(19, $weight: bold);
   margin-top: govuk-spacing(3);
   margin-bottom: govuk-spacing(2);
+  @include govuk-font(19, $weight: bold);
 }
 
 .gem-c-related-navigation__sub-heading {
-  @include govuk-font(16);
   border-top: 1px solid govuk-colour("mid-grey");
   margin: 0;
   padding-top: govuk-spacing(3);
+  @include govuk-font(16);
 }
 
 .gem-c-related-navigation__sub-heading--footer {
-  @include govuk-font(19, $weight: bold);
   border-top: 0;
   padding-top: 0;
   margin-top: govuk-spacing(3);
   margin-bottom: govuk-spacing(2);
+  @include govuk-font(19, $weight: bold);
 }
 
 .gem-c-related-navigation__main-heading + .gem-c-related-navigation__sub-heading {
@@ -33,9 +33,9 @@
 }
 
 .gem-c-related-navigation__sub-heading--other {
-  @include govuk-font(19, $weight: bold);
   border-top: 0;
   padding-top: 0;
+  @include govuk-font(19, $weight: bold);
 }
 
 .gem-c-related-navigation__nav-section {
@@ -59,9 +59,9 @@
 }
 
 .gem-c-related-navigation__toggle {
+  display: none;
   @include govuk-link-common;
   @include govuk-link-style-no-visited-state;
-  display: none;
 
   .js-enabled & {
     display: inline-block;

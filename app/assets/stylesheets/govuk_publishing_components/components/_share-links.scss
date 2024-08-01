@@ -22,9 +22,8 @@ $share-button-height: 30px;
 }
 
 .gem-c-share-links__link {
-  @include govuk-font(16, $weight: bold);
   margin-right: govuk-spacing(6);
-
+  @include govuk-font(16, $weight: bold);
   @include govuk-template-link-focus-override;
 }
 
@@ -64,9 +63,9 @@ $column-width: 9.5em;
 
 .gem-c-share-links--columns {
   .gem-c-share-links__list {
-    @include govuk-clearfix;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($column-width, 1fr));
+    @include govuk-clearfix;
   }
 
   .gem-c-share-links__list-item {

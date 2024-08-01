@@ -1,13 +1,12 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-reorderable-list {
-  @include govuk-font(19, bold);
-
   list-style-type: none;
   margin-bottom: govuk-spacing(6);
   margin-top: 0;
   padding-left: 0;
   position: relative;
+  @include govuk-font(19, bold);
 
   .govuk-form-group {
     margin-bottom: 0;
@@ -57,8 +56,8 @@
 }
 
 .gem-c-reorderable-list__description {
-  @include govuk-font(16, regular);
   margin: 0;
+  @include govuk-font(16, regular);
 }
 
 .gem-c-reorderable-list__actions {

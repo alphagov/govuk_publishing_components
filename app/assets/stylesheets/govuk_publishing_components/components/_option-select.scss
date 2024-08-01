@@ -28,8 +28,8 @@
 }
 
 .gem-c-option-select__title {
-  @include govuk-font(19);
   margin: 0;
+  @include govuk-font(19);
 }
 
 .gem-c-option-select__button {
@@ -111,8 +111,8 @@
 }
 
 .gem-c-option-select__filter-input {
-  @include govuk-font(19);
   background: url("option-select/input-icon.svg") govuk-colour("white") no-repeat -5px -3px;
+  @include govuk-font(19);
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
@@ -152,9 +152,9 @@
 }
 
 .gem-c-option-select__selected-counter {
-  @include govuk-font($size: 16);
   color: $govuk-text-colour;
   margin-top: 3px;
+  @include govuk-font($size: 16);
 }
 
 .gem-c-option-select.js-closed {

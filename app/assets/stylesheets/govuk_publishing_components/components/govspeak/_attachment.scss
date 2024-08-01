@@ -56,8 +56,8 @@
 
     .attachment-details {
       h2 {
-        @include govuk-font($size: 27);
         margin: 0;
+        @include govuk-font($size: 27);
       }
 
       p {
@@ -97,12 +97,13 @@
       }
 
       .accessibility-warning {
-        h2 {
-          @include govuk-font($size: 16);
-          margin: 0;
-        }
         word-break: break-word;
         word-wrap: break-word;
+
+        h2 {
+          margin: 0;
+          @include govuk-font($size: 16);
+        }
       }
 
       .js-hidden {

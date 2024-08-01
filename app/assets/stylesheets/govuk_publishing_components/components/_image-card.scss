@@ -1,14 +1,14 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-image-card {
-  @include govuk-clearfix;
-  @include govuk-text-colour;
   position: relative;
   margin-bottom: govuk-spacing(6);
   display: flex;
   display: -ms-flexbox;
   flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
+  @include govuk-text-colour;
+  @include govuk-clearfix;
 
   @include govuk-media-query($from: mobile, $until: tablet) {
     display: block;
@@ -183,11 +183,11 @@
 
 .gem-c-image-card__context,
 .gem-c-image-card__metadata {
-  @include govuk-font($size: false);
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   margin: 0 0 calc(govuk-spacing(3) / 2);
   color: govuk-colour("dark-grey");
+  @include govuk-font($size: false);
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
@@ -195,18 +195,18 @@
 }
 
 .gem-c-image-card__description {
-  @include govuk-font($size: 19);
   padding-top: calc(govuk-spacing(3) / 2);
   word-wrap: break-word;
+  @include govuk-font($size: 19);
 }
 
 .gem-c-image-card__list {
-  @include govuk-font($size: 19);
   position: relative;
   z-index: 2;
   padding: calc(govuk-spacing(3) / 2) 0 0 0;
   margin: 0;
   list-style: none;
+  @include govuk-font($size: 19);
 
   .gem-c-image-card__list-item {
     margin-bottom: govuk-spacing(2);
@@ -245,13 +245,16 @@
 
 .gem-c-image-card--large {
   .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column($width: one-half, $at: tablet);
-
     margin-bottom: govuk-spacing(2);
     float: none;
     width: auto;
     max-width: 100%;
-    padding: 0;
+    @include govuk-grid-column($width: one-half, $at: tablet);
+
+    & { // stylelint-disable-line no-duplicate-selectors
+      // overriding the padding from govuk-grid-column mixin
+      padding: 0;
+    }
 
     @include govuk-media-query($from: tablet) {
       padding: 0 govuk-spacing(2) 0 0;
@@ -260,10 +263,13 @@
   }
 
   .gem-c-image-card__text-wrapper {
+    overflow: hidden;
     @include govuk-grid-column($width: one-half, $at: tablet);
 
-    padding: 0;
-    overflow: hidden;
+    & { // stylelint-disable-line no-duplicate-selectors
+      // overriding the padding from govuk-grid-column mixin
+      padding: 0;
+    }
 
     @include govuk-media-query($from: tablet) {
       float: right;
