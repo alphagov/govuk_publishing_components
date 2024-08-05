@@ -24,6 +24,7 @@
 //= link govuk_publishing_components/components/_button.css
 //= link govuk_publishing_components/components/_cards.css
 //= link govuk_publishing_components/components/_character-count.css
+//= link govuk_publishing_components/components/_chat-entry.css
 //= link govuk_publishing_components/components/_checkboxes.css
 //= link govuk_publishing_components/components/_contents-list.css
 //= link govuk_publishing_components/components/_contextual-guidance.css

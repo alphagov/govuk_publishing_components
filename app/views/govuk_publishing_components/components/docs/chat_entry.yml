@@ -1,0 +1,8 @@
+name: Chat entry
+description: Entry point for GOV.UK Chat
+accessibility_criteria:
+examples:
+  default:
+    data:
+      href: /get-started
+      heading_text: Try GOV.UK Chat
