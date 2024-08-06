@@ -76,6 +76,7 @@
 //= link govuk_publishing_components/components/_signup-link.css
 //= link govuk_publishing_components/components/_single-page-notification-button.css
 //= link govuk_publishing_components/components/_skip-link.css
+//= link govuk_publishing_components/components/_status-page-alert.css
 //= link govuk_publishing_components/components/_step-by-step-nav-header.css
 //= link govuk_publishing_components/components/_step-by-step-nav-related.css
 //= link govuk_publishing_components/components/_step-by-step-nav.css
