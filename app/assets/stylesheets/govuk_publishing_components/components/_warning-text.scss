@@ -21,3 +21,18 @@
 .gem-c-warning-text__text--highlight {
   color: $govuk-error-colour;
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-warning-text,
+  .gem-c-warning-text__text,
+  .gem-c-warning-text__text--highlight {
+    color: $govuk-print-text-colour !important;
+  }
+
+  .govuk-warning-text__icon {
+    background-color: unset;
+    color: $govuk-print-text-colour !important;
+  }
+}
+// stylelint-enable declaration-no-important

@@ -58,3 +58,27 @@
 .gem-c-big-number__suffix {
   vertical-align: middle;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-big-number__value {
+    font-size: 56pt;
+  }
+
+  .gem-c-big-number__suffix {
+    vertical-align: unset;
+  }
+
+  .gem-c-big-number__label {
+    display: block;
+  }
+
+  .gem-c-big-number__link.govuk-link {
+    word-break: break-word;
+
+    &::after {
+      display: inline-block;
+      font-size: 12pt;
+      margin-top: 2mm;
+    }
+  }
+}

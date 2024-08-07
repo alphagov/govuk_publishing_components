@@ -436,3 +436,40 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 // end service navigation styles
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-cross-service-header {
+    margin-bottom: 5mm;
+  }
+
+  .gem-c-one-login-header {
+    background-color: initial;
+    border-bottom: 2pt solid $govuk-print-text-colour;
+
+    * {
+      color: $govuk-print-text-colour;
+    }
+
+    .govuk-width-container {
+      margin: 0 !important;
+    }
+  }
+
+  .gem-c-service-header {
+    .govuk-width-container {
+      margin: 0 !important;
+    }
+
+    .gem-c-service-header__container {
+      padding: 0;
+    }
+  }
+
+  .gem-c-one-login-header__nav,
+  .gem-c-service-header nav,
+  .gem-c-service-header button {
+    display: none !important;
+  }
+}
+// stylelint-enable declaration-no-important
