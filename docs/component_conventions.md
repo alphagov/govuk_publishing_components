@@ -24,7 +24,7 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 | Print styles | Include in screen styles |  | [Print styles](#print-styles) |
 | Images | `app/assets/images/govuk_publishing_components` | `my-comp.png` | [Images](#images) |
 | Scripts | `app/assets/javascripts/components` | `my-comp.js` | [JavaScript enhancements](#javascript) |
-| Tests | `test/components` | `my_comp_test.rb` | [Unit tests](#tests) |
+| Tests | `spec/components` | `my_comp_spec.rb` | [Unit tests](#tests) |
 | JavaScript tests | `spec/javascripts/components` | `my-comp-spec.js` | [Unit tests](#tests) |
 | Helpers | `lib/govuk_publishing_components/presenters` | `my_comp_helper.rb` | [Helpers](#helpers) |
 
@@ -248,7 +248,7 @@ Print styles should be included in the main stylesheet for a component, using th
   @include govuk-media-query($media-type: print) {
     background: none;
   }
-}  
+}
 ```
 
 ### Linting
