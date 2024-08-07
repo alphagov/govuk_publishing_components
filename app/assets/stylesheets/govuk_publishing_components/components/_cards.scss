@@ -3,7 +3,11 @@
 @import "mixins/prefixed-transform";
 
 .gem-c-cards__heading {
-  margin: 0 0 govuk-spacing(6) 0;
+  @include govuk-responsive-margin(6, "bottom");
+}
+
+.gem-c-cards__heading--underline + .gem-c-cards__list {
+  border-top: 1px solid $govuk-border-colour;
 }
 
 .gem-c-cards__list {
@@ -22,6 +26,14 @@
     // Reset the width for browsers that support CSS grid
     @supports (display: grid) {
       width: initial;
+    }
+  }
+}
+
+.gem-c-cards__list--one-column {
+  .gem-c-cards__list-item {
+    &:first-child {
+      border-top: 0;
     }
   }
 }
