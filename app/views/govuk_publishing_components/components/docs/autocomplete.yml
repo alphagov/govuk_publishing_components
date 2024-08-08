@@ -1,0 +1,73 @@
+
+name: Autocomplete (experimental)
+description: The autocomplete component lets users select from a dynamic list of suggestions to populate the value of a text input element.
+govuk_frontend_components:
+  - autocomplete
+body: |
+  This component is currently experimental because more research is needed to validate it pending autocomplete implementation documented in the [GDS roadmap](https://design-system.service.gov.uk/community/upcoming-components-patterns/).  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/get-in-touch/).
+accessibility_criteria: |
+  * Be focusable with a keyboard
+  * Indicate when it has keyboard focus
+  * Inform the user that it is an editable field
+  * Inform the user if there is a pre-filled value
+  * Inform the user that autocomplete is available
+  * Explain how to use autocomplete
+  * Inform the user that content has been expanded
+  * Inform the user when there are matches, or if there are no matches
+  * (Optional) Inform the user how many matches are currently available
+  * Inform the user as the number of matches changes
+  * Enable the user to navigate the available matches using touch or keyboard
+  * Inform the user when a match is selected
+  * (Optional) Inform the user which number the currently selected match is (1 of 3 for example)
+  * Inform the user if a match is pre-selected
+  * Enable the user to confirm the selected match
+  * Inform the user when a match is confirmed
+  * Return focus to the editable field when a selected match is confirmed
+uses_component_wrapper_helper: true
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    description: url to get suggestion data from (required)
+    data:
+      source: /url
+  custom_input_element:
+    description: Pass a block if you need to apply autocomplete to a custom input element
+    data:
+      source: /url
+      block: |
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/search", {
+            inline_label: false,
+            label_text: "Search"
+          } %>
+  number_of_suggestions_to_display:
+    description: The number of suggestions to be displayed to the user. If not specified the default is 5 suggestions
+    data:
+      source: /url
+      display_number_suggestions: 3
+  position_results:
+    description: Wether results are positioned relative or absolute to surrounding content. Defaults to relative
+    data:
+      source: /url
+      position_results: absolute
+  suggestion_icon:
+    description: Display each suggestion with left aligned search icon
+    data:
+      source: /url
+      suggestion_icon: true
+  request_debounce_time:
+    description: Time (milliseconds) to debounce/cancel suggestion request if no response.
+    data:
+      source: /url
+      request_debounce_time: 100
+  other_configuration_options:
+    description: |
+      Options that cannot be demoed in the context of the example below.
+
+      * **submit_form_on_select** Submits the surrounding form when a suggestion is selected. Defaults to false. Note that this isnt neccessarily the best behaviour in accessibilty terms.
+    data:
+      source: /url
+      submit_form_on_select: true
+
+
