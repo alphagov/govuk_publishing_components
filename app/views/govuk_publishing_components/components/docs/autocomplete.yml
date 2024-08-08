@@ -1,0 +1,70 @@
+
+name: Autocomplete (experimental)
+description: The autocomplete component lets users select from a dynamic list of suggestions to populate the value of a text input element.
+govuk_frontend_components:
+  - autocomplete
+body: |
+  If suggestions come from a static source then enchancing a server rendered HTML select element is a better option.
+
+  This component is currently experimental because more research is needed to validate it pending autocomplete implementation documented in the [GDS roadmap](https://design-system.service.gov.uk/community/upcoming-components-patterns/).  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/get-in-touch/).
+accessibility_criteria: |
+  * Be focusable with a keyboard
+  * Indicate when it has keyboard focus
+  * Inform the user that it is an editable field
+  * Inform the user if there is a pre-filled value
+  * Inform the user that autocomplete is available
+  * Explain how to use autocomplete
+  * Inform the user that content has been expanded
+  * Inform the user when there are matches, or if there are no matches
+  * Inform the user as the number of matches changes
+  * Enable the user to navigate the available matches using touch or keyboard
+  * Inform the user when a match is selected
+  * Inform the user if a match is pre-selected
+  * Enable the user to confirm the selected match
+  * Inform the user when a match is confirmed
+  * Return focus to the editable field when a selected match is confirmed
+uses_component_wrapper_helper: true
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    description: url to get suggestion data from or an array of suggestions (required). Query parameter of ?q={inputValue} will be appended The array option exists mainly for the purposes of demonstration and testing where an HTTP endpoint is not ideal. If you have a static array of suggestions consider another approach that enhances an HTML select element.
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+  custom_input_element:
+    description: Pass a block if you need to apply autocomplete to a custom input element
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+      block: |
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/search", {
+            inline_label: false,
+            label_text: "Search"
+          } %>
+  number_of_suggestions_to_display:
+    description: The number of suggestions to be displayed to the user. If not specified the default is 5 suggestions. Number of results if they are truly dynamic should ideally limited at the backend with a limit url param.
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+      display_number_suggestions: 3
+  position_results:
+    description: Wether results are positioned relative or absolute to surrounding content. Defaults to relative
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+      position_results: absolute
+  suggestion_icon:
+    description: Display each suggestion with left aligned search icon
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+      suggestion_icon: true
+  other_configuration_options:
+    description: |
+      Options that cannot be demoed in the context of the example below.
+
+      * **submit_form_on_select** Submits the surrounding form when a suggestion is selected. Defaults to false. Note that this isnt neccessarily the best behaviour in accessibilty terms.
+      * **request_debounce_time** Interval time (milliseconds) to debounce request for data.
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+      submit_form_on_select: true
+      request_debounce_time: 100
+
+
