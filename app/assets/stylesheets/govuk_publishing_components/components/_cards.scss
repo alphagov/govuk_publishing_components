@@ -6,6 +6,10 @@
   margin: 0 0 govuk-spacing(6) 0;
 }
 
+.gem-c-cards__heading-underline + .gem-c-cards__list {
+  border-top: 1px solid $govuk-border-colour;
+}
+
 .gem-c-cards__list {
   list-style: none;
   padding: 0;
@@ -22,6 +26,14 @@
     // Reset the width for browsers that support CSS grid
     @supports (display: grid) {
       width: initial;
+    }
+  }
+}
+
+.gem-c-cards__list--no-columns {
+  .gem-c-cards__list-item {
+    &:first-child {
+      border-top: 0;
     }
   }
 }

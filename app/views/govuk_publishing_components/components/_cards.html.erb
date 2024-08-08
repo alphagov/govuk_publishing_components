@@ -6,6 +6,7 @@
   columns ||= false
 
   ul_classes = %w[gem-c-cards__list]
+  ul_classes << 'gem-c-cards__list--no-columns' unless columns
   ul_classes << 'gem-c-cards__list--two-column-desktop' if columns == 2
   ul_classes << 'gem-c-cards__list--three-column-desktop' if columns == 3
 
@@ -16,7 +17,11 @@
 <% if items.present? %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if heading %>
-      <%= content_tag(shared_helper.get_heading_level, class: "gem-c-cards__heading govuk-heading-m") do %>
+      <%
+        heading_classes = %w[gem-c-cards__heading govuk-heading-m]
+        heading_classes << "gem-c-cards__heading-underline" unless columns
+      %>
+      <%= content_tag(shared_helper.get_heading_level, class: heading_classes) do %>
         <%= heading %>
       <% end %>
     <% end %>

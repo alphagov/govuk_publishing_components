@@ -71,6 +71,7 @@ examples:
   two_column_layout:
     description:  Override default single column layout on desktop by setting the `columns` parameter to `2`.
     data:
+      heading: test heading
       columns: 2
       items:
         - link:
