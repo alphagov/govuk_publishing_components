@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update card component styles ([PR #4141](https://github.com/alphagov/govuk_publishing_components/pull/4141))
+
 ## 41.1.0
 
 * Upgrade to LUX v4.0.25 ([PR #4129](https://github.com/alphagov/govuk_publishing_components/pull/4129))
