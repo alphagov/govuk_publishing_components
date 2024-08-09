@@ -4,6 +4,7 @@ PATH
     govuk_publishing_components (41.1.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
+      inline_svg
       kramdown
       plek
       rails (>= 6)
@@ -180,6 +181,9 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
+    inline_svg (1.9.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.7.2)
     irb (1.14.0)
       rdoc (>= 4.0.0)
