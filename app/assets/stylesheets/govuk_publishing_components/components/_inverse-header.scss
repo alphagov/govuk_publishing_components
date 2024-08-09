@@ -27,3 +27,15 @@
 .gem-c-inverse-header--padding-top {
   padding-top: govuk-spacing(3);
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-inverse-header {
+    background-color: unset;
+    border-bottom: 2pt solid $govuk-print-text-colour;
+
+    &,
+    & * {
+      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    }
+  }
+}
