@@ -25,6 +25,22 @@ describe "Cards", type: :view do
     assert_select "h2.gem-c-cards__heading.govuk-heading-m", count: 1
   end
 
+  it "renders list heading with a bottom border when using the default number of columns" do
+    test_data = {
+      heading: "Topics",
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "http://www.gov.uk",
+          },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select "h2.gem-c-cards__heading.govuk-heading-m.gem-c-cards__heading--underline", count: 1
+  end
+
   it "renders list heading using custom heading level" do
     test_data = {
       heading: "Topics",

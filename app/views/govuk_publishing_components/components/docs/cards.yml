@@ -40,34 +40,30 @@ examples:
             text: Citizenship and living in the&nbsp;UK
             path: http://www.gov.uk
           description: Voting, community participation, life in the UK, international projects
+  one_column_layout_without_heading:
+    description: No border at the top of the list of cards is present when using a one column layout without a heading. The first card item will still include a top border when using a 2 or 3 column layout as shown in the examples below.
+    data:
+      items:
         - link:
-            text: Crime, justice and the&nbsp;law
+            text: Benefits
             path: http://www.gov.uk
-          description: Legal processes, courts and the police
+          description: Includes eligibility, appeals, tax credits and Universal Credit
         - link:
-            text: Disabled people
+            text: Births, deaths, marriages and&nbsp;care
             path: http://www.gov.uk
-          description: Includes carers, your rights, benefits and the Equality Act
+          description: Parenting, civil partnerships, divorce and Lasting Power of Attorney
         - link:
-            text: Driving and transport
+            text: Business and self-employed
             path: http://www.gov.uk
-          description: Includes vehicle tax, MOT and driving licences
+          description: Tools and guidance for businesses
         - link:
-            text: Education and learning
+            text: Childcare and parenting
             path: http://www.gov.uk
-          description: Includes student loans, admissions and apprenticeships
+          description: Includes giving birth, fostering, adopting, benefits for children, childcare and schools
         - link:
-            text: Employing people
+            text: Citizenship and living in the&nbsp;UK
             path: http://www.gov.uk
-          description: Includes pay, contracts, hiring and redundancies
-        - link:
-            text: Environment and countryside
-            path: http://www.gov.uk
-          description: Includes flooding, recycling and wildlife
-        - link:
-            text: Housing and local services
-            path: http://www.gov.uk
-          description: Owning or renting and council services
+          description: Voting, community participation, life in the UK, international projects
   two_column_layout:
     description:  Override default single column layout on desktop by setting the `columns` parameter to `2`.
     data:
@@ -93,14 +89,6 @@ examples:
             text: Citizenship and living in the&nbsp;UK
             path: http://www.gov.uk
           description: Voting, community participation, life in the UK, international projects
-        - link:
-            text: Crime, justice and the&nbsp;law
-            path: http://www.gov.uk
-          description: Legal processes, courts and the police
-        - link:
-            text: Disabled people
-            path: http://www.gov.uk
-          description: Includes carers, your rights, benefits and the Equality Act
   three_column_layout:
     description: Override default single column layout on desktop by setting the `columns` parameter to `3`.
     data:
@@ -126,14 +114,6 @@ examples:
             text: Citizenship and living in the&nbsp;UK
             path: http://www.gov.uk
           description: Voting, community participation, life in the UK, international projects
-        - link:
-            text: Crime, justice and the&nbsp;law
-            path: http://www.gov.uk
-          description: Legal processes, courts and the police
-        - link:
-            text: Disabled people
-            path: http://www.gov.uk
-          description: Includes carers, your rights, benefits and the Equality Act
   custom_heading_levels:
     description: |
       Override default heading level by passing through `heading_level` parameter (defaults to `<h2>`).
