@@ -913,12 +913,6 @@ $after-button-padding-left: govuk-spacing(4);
   font-size: 24px;
 }
 
-@include govuk-media-query($media-type: print) {
-  .gem-c-layout-super-navigation-header__content {
-    display: none;
-  }
-}
-
 // Ensure the total space to the left of the logo for mobile screen sizes is 24px (margin is 15px)
 @include govuk-media-query($until: tablet) {
   .gem-c-layout-super-navigation-header__header-logo--large-navbar {
@@ -987,5 +981,17 @@ $after-button-padding-left: govuk-spacing(4);
   .gem-c-layout-super-navigation-header__search-label--large-navbar {
     font-size: 24px;
     font-size: govuk-px-to-rem(24px);
+  }
+}
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-layout-super-navigation-header {
+    border-top: 1pt solid $govuk-print-text-colour;
+    margin: 0;
+    background-color: none;
+  }
+
+  .gem-c-layout-super-navigation-header__header-logo {
+    padding: 10px 0 !important; // stylelint-disable-line declaration-no-important
   }
 }
