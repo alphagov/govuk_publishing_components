@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 41.1.1
 
 * Update card component styles ([PR #4141](https://github.com/alphagov/govuk_publishing_components/pull/4141))
 
