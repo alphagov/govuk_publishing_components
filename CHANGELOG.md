@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Drop libsass support ([PR #4106](https://github.com/alphagov/govuk_publishing_components/pull/4106))
+
 ## 41.1.2
 
 * Add icon for external in attachment component ([PR #4150](https://github.com/alphagov/govuk_publishing_components/pull/4150))
