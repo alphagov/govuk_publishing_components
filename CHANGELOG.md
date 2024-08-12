@@ -13,6 +13,7 @@
 * New print styles for the tabs component ([PR #4140](https://github.com/alphagov/govuk_publishing_components/pull/4140))
 * New print styles for layout components ([PR #4137](https://github.com/alphagov/govuk_publishing_components/pull/4137))
 * New print styles for step-by-step components ([PR #4138](https://github.com/alphagov/govuk_publishing_components/pull/4138))
+* New print styles for govspeak components ([PR #4136](https://github.com/alphagov/govuk_publishing_components/pull/4136))
 
 ## 41.1.1
 
