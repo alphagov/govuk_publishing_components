@@ -86,8 +86,6 @@
 
     <meta name="theme-color" content="#0b0c0c" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <% #  Ensure that older IE versions always render with the correct rendering engine %>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <% # The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
     <meta property="og:image" content="<%= asset_url("govuk-opengraph-image.png", host: Plek.website_root) %>">
