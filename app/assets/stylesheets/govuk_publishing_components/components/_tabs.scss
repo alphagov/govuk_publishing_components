@@ -31,3 +31,35 @@ li.govuk-tabs__list-item { // stylelint-disable-line selector-no-qualifying-type
     }
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govuk-tabs__title {
+    display: block !important; // stylelint-disable-line declaration-no-important
+  }
+
+  .govuk-tabs__tab.govuk-tabs__tab {
+    text-decoration: none;
+  }
+
+  .govuk-tabs__list.govuk-tabs__list {
+    border: 0;
+  }
+
+  .govuk-tabs__list-item.govuk-tabs__list-item {
+    all: unset;
+    display: block;
+
+    &::before {
+      content: "—";
+      padding-right: 2mm;
+      margin: 0;
+    }
+  }
+
+  .govuk-tabs__panel.govuk-tabs__panel {
+    border: 0;
+    padding: 0;
+    margin: 0.75cm 0;
+    display: block;
+  }
+}
