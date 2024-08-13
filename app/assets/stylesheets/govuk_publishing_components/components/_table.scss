@@ -125,3 +125,35 @@ $table-row-even-background-colour: govuk-colour("light-grey");
     border: 0;
   }
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .govuk-table--sortable {
+    outline: none;
+
+    * {
+      color: $govuk-print-text-colour !important;
+      background-color: initial !important;
+    }
+
+    .govuk-table__header,
+    .govuk-table__cell {
+      border-bottom: 1px solid $govuk-print-text-colour !important;
+    }
+
+    .govuk-table__header {
+      font-weight: 700;
+      border-right: 0;
+    }
+
+    .app-table__sort-link {
+      padding: 0 !important;
+
+      &::before,
+      &::after {
+        display: none !important;
+      }
+    }
+  }
+}
+// stylelint-enable declaration-no-important
