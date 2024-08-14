@@ -273,7 +273,7 @@ describe "Attachment", type: :view do
   it "renders External attachments" do
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment", type: "external" })
     assert_select ".gem-c-attachment__metadata", text: "https://gov.uk/attachment"
-    assert_thumbnail "generic"
+    assert_thumbnail "external"
   end
 
   def assert_thumbnail(type, src: nil)
