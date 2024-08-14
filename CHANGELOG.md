@@ -11,6 +11,7 @@
 
 * New print styles for the table component ([PR #4139](https://github.com/alphagov/govuk_publishing_components/pull/4139))
 * New print styles for the tabs component ([PR #4140](https://github.com/alphagov/govuk_publishing_components/pull/4140))
+* New print styles for layout components ([PR #4137](https://github.com/alphagov/govuk_publishing_components/pull/4137))
 
 ## 41.1.1
 

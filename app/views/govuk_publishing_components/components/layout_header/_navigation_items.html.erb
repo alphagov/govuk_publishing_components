@@ -12,7 +12,7 @@
     >
       <%= t("components.layout_header.menu") %>
     </button>
-    <ul id="navigation" class="govuk-header__navigation-list">
+    <ul id="navigation" class="govuk-header__navigation-list govuk-!-display-none-print">
       <% navigation_items.each_with_index do |item, index| %>
         <%
           li_classes = %w(govuk-header__navigation-item)
