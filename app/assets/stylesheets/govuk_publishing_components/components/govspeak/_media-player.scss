@@ -25,3 +25,9 @@
   height: 100%;
   border: 0;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-govspeak__youtube-video {
+    break-inside: avoid;
+  }
+}
