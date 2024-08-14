@@ -75,6 +75,8 @@
         <%= render "govuk_publishing_components/components/attachment/thumbnail_spreadsheet" %>
       <% elsif attachment.pdf? %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_pdf" %>
+      <% elsif attachment.external? %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_external" %>
       <% else %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_generic" %>
       <% end %>

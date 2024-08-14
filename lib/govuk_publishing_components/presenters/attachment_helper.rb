@@ -36,6 +36,10 @@ module GovukPublishingComponents
         type == "html"
       end
 
+      def external?
+        type == "external"
+      end
+
       def content_type
         @content_type ||= SupportedContentType.find(
           attachment_data[:content_type],
