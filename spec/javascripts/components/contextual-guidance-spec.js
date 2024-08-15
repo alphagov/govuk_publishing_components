@@ -31,7 +31,7 @@ describe('Contextual guidance component', function () {
         '</div>' +
       '</div>'
 
-    document.body.classList.add('js-enabled')
+    document.body.classList.add('govuk-frontend-supported')
     document.body.appendChild(container)
     var titleContextualGuidance = document.getElementById('document-title-guidance')
     var summaryContextualGuidance = document.getElementById('document-summary-guidance')

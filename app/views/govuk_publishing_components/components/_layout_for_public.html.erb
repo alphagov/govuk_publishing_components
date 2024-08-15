@@ -74,12 +74,11 @@
 
     <% # Used for Google Analytics 4 debugging. Must be placed before load-analytics script. %>
     <meta name="govuk:components_gem_version" content="<%= GovukPublishingComponents::VERSION %>" />
-    <%= javascript_include_tag "govuk_publishing_components/load-analytics" %>
+    <%= javascript_include_tag "govuk_publishing_components/load-analytics", type: "module" %>
 
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", media: "all" %>
-    <!--[if lt IE 9]><%= javascript_include_tag "govuk_publishing_components/ie", integrity: true, crossorigin: "anonymous" %><![endif]-->
     <link rel="icon" sizes="48x48" href="<%= asset_path 'favicon.ico' %>">
     <link rel="icon" sizes="any" href="<%= asset_path 'favicon.svg' %>" type="image/svg+xml">
     <link rel="mask-icon" href="<%= asset_path 'govuk-icon-mask.svg' %>" color="#0b0c0c">
@@ -87,8 +86,6 @@
 
     <meta name="theme-color" content="#0b0c0c" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <% #  Ensure that older IE versions always render with the correct rendering engine %>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <% # The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
     <meta property="og:image" content="<%= asset_url("govuk-opengraph-image.png", host: Plek.website_root) %>">
@@ -185,7 +182,7 @@
         meta: layout_helper.footer_meta,
       } %>
     <% end %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application', type: "module" %>
     <% if GovukPublishingComponents::Config.use_es6_components %>
       <%= javascript_include_tag 'es6-components', type: "module" %>
     <% end %>

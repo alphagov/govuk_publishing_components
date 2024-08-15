@@ -73,7 +73,7 @@
   }
 }
 
-.js-enabled {
+.govuk-frontend-supported {
   .gem-c-reorderable-list__item {
     @include govuk-media-query($from: desktop) {
       cursor: move;

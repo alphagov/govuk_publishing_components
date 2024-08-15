@@ -5,6 +5,7 @@
   css_filename ||= "application"
 
   product_name ||= "Publishing"
+  use_type_module ||= false
 %>
 
 <!DOCTYPE html>
@@ -28,6 +29,10 @@
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     <% end -%>
     <%= yield %>
-    <%= javascript_include_tag js_filename %>
+    <% if use_type_module %>
+      <%= javascript_include_tag js_filename, type: "module" %>
+    <% else %>
+      <%= javascript_include_tag js_filename %>
+    <% end %>
   </body>
 </html>

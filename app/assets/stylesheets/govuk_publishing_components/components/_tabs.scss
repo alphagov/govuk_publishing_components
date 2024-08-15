@@ -1,7 +1,7 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/tabs/tabs";
 
-.js-enabled {
+.govuk-frontend-supported {
   .gem-c-tabs__panel--no-border {
     padding-right: 0;
     padding-left: 0;
@@ -24,7 +24,7 @@ li.govuk-tabs__list-item { // stylelint-disable-line selector-no-qualifying-type
   margin-left: govuk-spacing(5);
 }
 
-.js-enabled { // stylelint-disable-line no-duplicate-selectors
+.govuk-frontend-supported { // stylelint-disable-line no-duplicate-selectors
   @include govuk-media-query($from: tablet) {
     ul.govuk-tabs__list { // stylelint-disable-line selector-no-qualifying-type
       margin-bottom: 0;

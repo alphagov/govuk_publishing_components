@@ -56,7 +56,7 @@ $top-border: solid 1px govuk-colour("mid-grey");
     }
   }
 
-  .js-enabled &.js-hidden {
+  .govuk-frontend-supported &.js-hidden {
     display: none;
   }
 }
@@ -385,7 +385,7 @@ $top-border: solid 1px govuk-colour("mid-grey");
     padding-top: govuk-spacing(2);
   }
 
-  .js-enabled & {
+  .govuk-frontend-supported & {
     padding: 0;
   }
 
@@ -425,7 +425,7 @@ $top-border: solid 1px govuk-colour("mid-grey");
     @include step-nav-font(16, $tablet-size: 19);
   }
 
-  .js-enabled &.js-hidden {
+  .govuk-frontend-supported &.js-hidden {
     display: none;
   }
 }

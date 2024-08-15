@@ -63,7 +63,7 @@
   background-color: $gem-secondary-button-background-colour;
   @include govuk-font(19, $weight: bold);
 
-  .js-enabled & {
+  .govuk-frontend-supported & {
     display: inline-block;
   }
 
@@ -98,13 +98,13 @@
   margin-bottom: govuk-spacing(3);
   background: govuk-colour("light-grey");
 
-  .js-enabled &.js-hidden {
+  .govuk-frontend-supported &.js-hidden {
     display: none;
   }
 }
 
 .gem-c-subscription-links__feed-hidden-description {
-  .js-enabled & {
+  .govuk-frontend-supported & {
     @include govuk-visually-hidden;
   }
 }

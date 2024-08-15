@@ -50,3 +50,12 @@ examples:
       css_filename: "application"
       block: |
         <!-- You probably want to use the header, main & footer components here -->
+  with_type_module:
+    description: Adds 'type=module' to the javascript_include_tag. By default, use_type_module is false.
+    data:
+      environment: production
+      product_name: Publishing
+      browser_title: 'A page title'
+      use_type_module: true
+      block: |
+        <!-- You probably want to use the header, main & footer components here -->
