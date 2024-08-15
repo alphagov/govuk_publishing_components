@@ -136,6 +136,12 @@ $gem-guide-border-width: 1px;
   &.component-output {
     padding: 0;
   }
+
+  @include govuk-media-query($media-type: print) {
+    &[class*="-background"] {
+      background-color: unset;
+    }
+  }
 }
 
 .component-guide-preview--simple {
