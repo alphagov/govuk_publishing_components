@@ -32,6 +32,9 @@ en:
       type:
         characters: characters
         words: words
+    chat_entry:
+      heading: Try GOV.UK Chat
+      description: Sign up to GOV.UK’s experimental new AI tool and find answers to your business questions
     checkboxes:
       or: or
     contents_list:
