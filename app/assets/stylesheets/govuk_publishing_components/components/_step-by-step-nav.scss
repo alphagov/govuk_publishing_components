@@ -17,12 +17,12 @@ $top-border: solid 1px govuk-colour("mid-grey");
 
 @mixin step-nav-line-position {
   left: 0;
-  margin-left: govuk-em(($number-circle-size / 2) - ($stroke-width / 2), 16);
+  margin-left: govuk-em(calc($number-circle-size / 2) - calc($stroke-width / 2), 16);
 }
 
 @mixin step-nav-line-position-large {
   left: 0;
-  margin-left: govuk-em(($number-circle-size-large / 2) - ($stroke-width / 2), 16);
+  margin-left: govuk-em(calc($number-circle-size-large / 2) - calc($stroke-width / 2), 16);
 }
 
 // custom mixin as govuk-font does undesirable things at different breakpoints

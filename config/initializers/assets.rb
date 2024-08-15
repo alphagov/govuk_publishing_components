@@ -6,14 +6,7 @@ return unless Rails.application.config.respond_to?(:assets)
 #
 # In future we may want applications to link directly to this from their
 # manifest file as the use of `config.assets.precompile` is discouraged
-# from version 4: https://github.com/rails/sprockets/blob/58cca17aa447fcee17703e4ab4dbfaab630e7ed4/UPGRADING.md
-# Rails.application.config.assets.precompile += %w[govuk_publishing_components_manifest.js]
-
-if Gem.loaded_specs.key?("dartsass-rails")
-  Rails.application.config.assets.precompile += %w[govuk_publishing_components_manifest.js]
-elsif Gem.loaded_specs.key?("sassc-rails")
-  Rails.application.config.assets.precompile += %w[govuk_publishing_components_sassc-rails_manifest.js]
-end
+Rails.application.config.assets.precompile += %w[govuk_publishing_components_manifest.js]
 
 Rails.application.config.assets.paths += %W[
   #{__dir__}/../../node_modules/govuk-frontend/dist/govuk/assets/images
