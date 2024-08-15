@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 42.0.0
 
 * **BREAKING:** Drop libsass support ([PR #4106](https://github.com/alphagov/govuk_publishing_components/pull/4106))
 * **BREAKING:** Drop support for legacy browsers ([PR #4111](https://github.com/alphagov/govuk_publishing_components/pull/4111))
