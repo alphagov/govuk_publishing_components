@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 41.1.2
 
 * Add icon for external in attachment component ([PR #4150](https://github.com/alphagov/govuk_publishing_components/pull/4150))
 * New print styles for the table component ([PR #4139](https://github.com/alphagov/govuk_publishing_components/pull/4139))
