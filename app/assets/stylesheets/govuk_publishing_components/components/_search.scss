@@ -30,6 +30,7 @@ $large-input-size: 50px;
 .gem-c-search__label {
   display: block;
   color: $govuk-text-colour;
+  cursor: text;
   @include govuk-font($size: 19, $line-height: $input-size);
 
   h1 {
