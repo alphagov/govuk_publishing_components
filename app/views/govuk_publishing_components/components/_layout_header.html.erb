@@ -42,7 +42,7 @@
       </div>
     <% else %>
       <div class="govuk-grid-row">
-        <div class="gem-c-layout-header__logo govuk-grid-column-two-thirds">
+        <div class="gem-c-layout-header__logo govuk-grid-column-one-half">
           <%= render "govuk_publishing_components/components/layout_header/header_logo", {
             environment: environment,
             logo_link: logo_link,
@@ -55,7 +55,7 @@
           </div>
         <% end %>
         <% if search %>
-          <div class="govuk-grid-column-one-third gem-c-layout-header__search govuk-!-display-none-print">
+          <div class="govuk-grid-column-one-half gem-c-layout-header__search govuk-!-display-none-print">
             <%= render "govuk_publishing_components/components/layout_header/search" %>
           </div>
         <% end %>
