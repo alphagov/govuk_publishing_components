@@ -31,6 +31,11 @@ $large-input-size: 50px;
   display: block;
   color: $govuk-text-colour;
   cursor: text;
+  max-width: 68%;
+  text-overflow: ellipsis;
+  height: 90%;
+  overflow: hidden;
+  white-space: nowrap;
   @include govuk-font($size: 19, $line-height: $input-size);
 
   h1 {
