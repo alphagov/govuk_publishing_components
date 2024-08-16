@@ -14,8 +14,17 @@ describe "Contents list", type: :view do
 
   def contents_list_with_special_chars
     [
+      { href: "/one", text: "First item&nbsp;in the menu" },
+      { href: "/two", text: "Second item &mdash; in the menu" },
+      { href: "/three", text: "Third item &amp; in the menu" },
+    ]
+  end
+
+  def numbered_contents_list_with_special_chars
+    [
       { href: "/one", text: "\n1.&nbsp;First item   in the menu" },
       { href: "/two", text: "\n2.\u00a0Second item     in the menu" },
+      { href: "/three", text: "\n3. Third item &amp; in the menu" },
     ]
   end
 
@@ -66,6 +75,14 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list"
     assert_select ".gem-c-contents-list__link.govuk-link--no-underline[href='/one']", text: "1. One"
     assert_select ".gem-c-contents-list__link.govuk-link--no-underline[href='#two']", text: "2. Two"
+  end
+
+  it "renders a list of contents links containing special characters" do
+    render_component(contents: contents_list_with_special_chars)
+
+    assert_select ".gem-c-contents-list__link.govuk-link--no-underline[href='/one']", text: "First item in the menu"
+    assert_select ".gem-c-contents-list__link.govuk-link--no-underline[href='/two']", text: "Second item — in the menu"
+    assert_select ".gem-c-contents-list__link.govuk-link--no-underline[href='/three']", text: "Third item & in the menu"
   end
 
   it "renders with dashes hidden from screen readers" do
@@ -133,15 +150,19 @@ describe "Contents list", type: :view do
   end
 
   it "formats numbers in contents links containing special characters" do
-    render_component(contents: contents_list_with_special_chars, format_numbers: true)
+    render_component(contents: numbered_contents_list_with_special_chars, format_numbers: true)
     link_selector1 = ".gem-c-contents-list__list-item--numbered a[href='/one']"
     link_selector2 = ".gem-c-contents-list__list-item--numbered a[href='/two']"
+    link_selector3 = ".gem-c-contents-list__list-item--numbered a[href='/three']"
 
     assert_select "#{link_selector1} .gem-c-contents-list__number", text: "1."
     assert_select "#{link_selector1} .gem-c-contents-list__numbered-text", text: "First item in the menu"
 
     assert_select "#{link_selector2} .gem-c-contents-list__number", text: "2."
     assert_select "#{link_selector2} .gem-c-contents-list__numbered-text", text: "Second item in the menu"
+
+    assert_select "#{link_selector3} .gem-c-contents-list__number", text: "3."
+    assert_select "#{link_selector3} .gem-c-contents-list__numbered-text", text: "Third item & in the menu"
   end
 
   it "does not format numbers in a nested list" do
