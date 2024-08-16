@@ -32,6 +32,9 @@ bn:
       type:
         characters: ক্যারেক্টার
         words: শব্দসমষ্টি
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: অথবা
     contents_list:
@@ -138,8 +141,8 @@ bn:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-এর সকল বিষয়বস্তু খুঁজে বের করুন"

@@ -32,6 +32,9 @@ ta:
       type:
         characters: எழுத்துருக்கள்
         words: சொற்கள்
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: அல்லது
     contents_list:
@@ -138,8 +141,8 @@ ta:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-லிருந்து அனைத்து உள்ளடக்கத்தையும் கண்டறி"

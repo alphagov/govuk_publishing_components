@@ -32,6 +32,9 @@ si:
       type:
         characters: අක්ෂර
         words: වචන
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: හෝ
     contents_list:
@@ -137,8 +140,8 @@ si:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} වෙතින් සියලුම අන්තර්ගතය සෝයන්න"

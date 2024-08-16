@@ -31,6 +31,9 @@ ja:
       type:
         characters: 文字
         words: 単語
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: または
     contents_list:
@@ -133,8 +136,8 @@ ja:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: "％{organisation} からすべてのコンテンツを検索"

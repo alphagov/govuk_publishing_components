@@ -36,6 +36,9 @@ cy:
       type:
         characters: nodau
         words: geiriau
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: neu
     contents_list:
@@ -141,8 +144,8 @@ cy:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Dod o hyd i'r holl gynnwys gan %{organisation}

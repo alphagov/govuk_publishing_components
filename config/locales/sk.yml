@@ -33,6 +33,9 @@ sk:
       type:
         characters: znakov
         words: slov
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: alebo
     contents_list:
@@ -142,8 +145,8 @@ sk:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Nájsť všetok obsah z %{organisation}

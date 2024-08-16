@@ -32,6 +32,9 @@ nl:
       type:
         characters: karakters
         words: woorden
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: of
     contents_list:
@@ -137,8 +140,8 @@ nl:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Zoek alle inhoud van %{organisation}

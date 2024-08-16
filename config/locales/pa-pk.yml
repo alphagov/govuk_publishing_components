@@ -32,6 +32,9 @@ pa-pk:
       type:
         characters: کردار
         words: الفاظ
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: یا
     contents_list:
@@ -133,8 +136,8 @@ pa-pk:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} توں سارا مواد تلاش کرو"

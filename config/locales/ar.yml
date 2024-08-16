@@ -36,6 +36,9 @@ ar:
       type:
         characters: أحرف
         words: كلمات
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: أو
     contents_list:
@@ -140,8 +143,8 @@ ar:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: العثور عن كل المحتوى من %{organisation}

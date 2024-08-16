@@ -35,6 +35,9 @@ dr:
       type:
         characters: ارقام
         words: کلمات
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: یا
     contents_list:
@@ -139,8 +142,8 @@ dr:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: تمام محتویات را از اینجا بدست بیاورید %{organisation}

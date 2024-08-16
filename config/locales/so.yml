@@ -32,6 +32,9 @@ so:
       type:
         characters: dabeecadaha
         words: kalmadaha
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: ama
     contents_list:
@@ -137,8 +140,8 @@ so:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Raadi dhamaan waxyaabaha uu ka koobanyahay %{organisation}

@@ -32,6 +32,9 @@ ka:
       type:
         characters: სიმბოლოები
         words: სიტყვები
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: ან
     contents_list:
@@ -140,8 +143,8 @@ ka:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: ყველა მასალის ნახვა %{organisation}-დან

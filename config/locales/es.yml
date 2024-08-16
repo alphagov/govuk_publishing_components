@@ -32,6 +32,9 @@ es:
       type:
         characters: caracteres
         words: palabras
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: o bien
     contents_list:
@@ -137,8 +140,8 @@ es:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Buscar todo el contenido de %{organization}
