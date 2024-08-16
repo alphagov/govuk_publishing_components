@@ -6,10 +6,6 @@
   @include govuk-responsive-margin(6, "bottom");
 }
 
-.gem-c-cards__heading--underline + .gem-c-cards__list {
-  border-top: 1px solid $govuk-border-colour;
-}
-
 .gem-c-cards__list {
   list-style: none;
   padding: 0;
@@ -34,6 +30,22 @@
   .gem-c-cards__list-item {
     &:first-child {
       border-top: 0;
+
+      .gem-c-cards__list-item-wrapper {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+.gem-c-cards__heading--underline + .gem-c-cards__list {
+  border-top: 1px solid $govuk-border-colour;
+
+  .gem-c-cards__list-item {
+    &:first-child {
+      .gem-c-cards__list-item-wrapper {
+        padding-top: 19px;
+      }
     }
   }
 }
