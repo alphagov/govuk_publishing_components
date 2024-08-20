@@ -14,6 +14,7 @@
 * Fix issue with using special characters in content-list ([PR #4157](https://github.com/alphagov/govuk_publishing_components/pull/4157))
 * Add 'Chat entry' component ([PR #4151](https://github.com/alphagov/govuk_publishing_components/pull/4151))
 * Update and/or add component print styles ([PR #4073](https://github.com/alphagov/govuk_publishing_components/pull/4073))
+* Move crown logo svgs into partials ([PR #4164](https://github.com/alphagov/govuk_publishing_components/pull/4164))
 
 ## 42.0.0
 
