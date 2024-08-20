@@ -3,7 +3,8 @@
 .gem-c-autocomplete {
   position: relative;
 
-  > .govuk-form-group {
+  > .govuk-form-group,
+  > .gem-c-search {
     margin-bottom: 0;
   }
 }

@@ -552,8 +552,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     var renderResultHtml = function (result, props, inputVal) {
       var index = result.toLowerCase().indexOf(inputVal.toLowerCase())
-
-      console.log('props', props)
       return `<li ${props}>${suggestionIcon ? searchIcon : ''}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='gem-c-autocomplete__result--border'></div></li>`
     }
 

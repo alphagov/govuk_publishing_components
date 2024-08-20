@@ -32,11 +32,9 @@ end
     raise ArgumentError, "The autocomplete requires a source url or array to retrieve suggestions"
   end %>
   <% if (block = yield).empty? %>
-    <%= render "govuk_publishing_components/components/input", {
-      label: {
-        text: "Search"
-      },
-      name: "search"
+    <%= render "govuk_publishing_components/components/search", {
+      inline_label: false,
+      label_text: "Search"
     } %>
   <% else %>
     <%= block %>
