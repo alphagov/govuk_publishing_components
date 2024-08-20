@@ -1,13 +1,13 @@
 
 name: Autocomplete (experimental)
 description: The autocomplete component lets users select from a dynamic list of suggestions to populate the value of a text input element.
-govuk_frontend_components:
-  - autocomplete
 body: |
-  If suggestions come from a static source then enchancing a server rendered HTML select element is a better option.
+  If suggestions come from a static source then enhancing a server rendered HTML select element is a better option.
 
   This component is currently experimental because more research is needed to validate it pending autocomplete implementation documented in the [GDS roadmap](https://design-system.service.gov.uk/community/upcoming-components-patterns/).  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/get-in-touch/).
 accessibility_criteria: |
+  The autocomplete must:
+
   * Be focusable with a keyboard
   * Indicate when it has keyboard focus
   * Inform the user that it is an editable field
@@ -28,6 +28,10 @@ shared_accessibility_criteria:
   - link
 examples:
   default:
+    description: The url to get suggestion data from or an array of suggestions (required). Query parameter of ?q={inputValue} will be appended to request url. The array option exists mainly for the purposes of demonstration and testing where an HTTP endpoint is not ideal. If you have a static array of suggestions consider another approach that enhances an HTML select element.
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+  source:
     description: url to get suggestion data from or an array of suggestions (required). Query parameter of ?q={inputValue} will be appended The array option exists mainly for the purposes of demonstration and testing where an HTTP endpoint is not ideal. If you have a static array of suggestions consider another approach that enhances an HTML select element.
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
@@ -47,7 +51,7 @@ examples:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
       display_number_suggestions: 3
   position_results:
-    description: Wether results are positioned relative or absolute to surrounding content. Defaults to relative
+    description: Controls whether autocomplete suggestions are positioned relative to the input (so that content below is pushed down when they appear) or absolute (content below is overlapped when they appear). Defaults to relative.
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
       position_results: absolute
