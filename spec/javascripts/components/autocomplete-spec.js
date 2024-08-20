@@ -38,7 +38,7 @@ describe('Autocomplete component', function () {
     jasmine.clock().install()
 
     $input = autocomplete.querySelector('input')
-    $resultList = autocomplete.querySelector('.gem-c-autocomplete-result-list')
+    $resultList = autocomplete.querySelector('.gem-c-autocomplete__result-list')
   })
 
   afterEach(function () {
@@ -112,13 +112,13 @@ describe('Autocomplete component', function () {
       describe('keyboard behaviour', function () {
         it('user can navigate the available matches using keyboard', function () {
           $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete-result-0')
+          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete__result-0')
 
           $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', keyCode: 38 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete-result-4')
+          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete__result-4')
 
           $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete-result-0')
+          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete__result-0')
         })
 
         it('space key closes the menu, sets the query, focuses the input', () => {

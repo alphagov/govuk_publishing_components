@@ -3,47 +3,47 @@
 .gem-c-autocomplete {
   position: relative;
 
-  > div {
+  > .govuk-form-group {
     margin-bottom: 0;
   }
-  
-  .gem-c-autocomplete-result-list {
-    border: 1px solid $govuk-border-colour;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    background: govuk-colour("white");
-    list-style: none;
-    position: relative;
-  }
-  
-  .gem-c-autocomplete-result {
-    cursor: default;
-    padding: govuk-spacing(2) govuk-spacing(2) 0 govuk-spacing(2);
-    position: relative;
+}
 
-    .search-icon {
-      padding-right: govuk-spacing(2);
-      vertical-align: middle;
-    }
-  
-    .border {
-      height: govuk-spacing(2);
-      display: block;
-      width: 100%;
-      border-bottom: 1px solid $govuk-border-colour;
-    }
-  
-    &:last-child .border {
-      border-bottom: 0;
-    }
-  
-    &:hover,
-    &[aria-selected="true"] {
-      background-color: govuk-colour("light-grey");
-      cursor: pointer;
-    }
+.gem-c-autocomplete__result-list {
+  border: 1px solid $govuk-border-colour;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: govuk-colour("white");
+  list-style: none;
+  position: relative;
+}
+
+.gem-c-autocomplete__result { 
+  cursor: default;
+  padding: govuk-spacing(2) govuk-spacing(2) 0 govuk-spacing(2);
+  position: relative;
+
+  &:last-child .gem-c-autocomplete__result--border {
+    border-bottom: 0;
+  }
+
+  &:hover,
+  &[aria-selected="true"] {
+    background-color: govuk-colour("light-grey");
+    cursor: pointer;
+  }
+
+  &--search-icon {
+    padding-right: govuk-spacing(2);
+    vertical-align: middle;
+  }
+
+  &--border {
+    height: govuk-spacing(2);
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid $govuk-border-colour;
   }
 }

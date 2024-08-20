@@ -68,7 +68,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
   // string in the format: `key1='value1' key2='value2'` for easy use in an HTML string.
   function Props (index, selectedIndex, baseClass) {
     this.id = `${baseClass}-result-${index}`
-    this.class = `${baseClass}-result`
+    this.class = `${baseClass}__result`
     this['data-result-index'] = index
     this.role = 'option'
     if (index === selectedIndex) {
@@ -330,7 +330,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     this.resetPosition = true
     this.positionResults = positionResults
     this.root = typeof root === 'string' ? document.querySelector(root) : root
-    this.root.insertAdjacentHTML('beforeend', '<ul class="gem-c-autocomplete-result-list govuk-body" role="listbox"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>')
+    this.root.insertAdjacentHTML('beforeend', '<ul class="gem-c-autocomplete__result-list govuk-body" role="listbox"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>')
     this.input = this.root.querySelector('input')
     this.assistiveHint = this.root.querySelector('.assistive-hint')
     this.resultList = this.root.querySelector('ul')
@@ -472,7 +472,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     this.input.setAttribute(
       'aria-activedescendant',
-      selectedIndex > -1 ? `${this.baseClass}-result-${selectedIndex}` : ''
+      selectedIndex > -1 ? `${this.baseClass}__result-${selectedIndex}` : ''
     )
 
     if (this.resetPosition) {
@@ -548,11 +548,13 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     var positionResults = this.positionResults
     var submitOnSelect = this.submitOnSelect
 
-    var searchIcon = '<span class="search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>'
+    var searchIcon = '<span class="gem-c-autocomplete__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>'
 
     var renderResultHtml = function (result, props, inputVal) {
       var index = result.toLowerCase().indexOf(inputVal.toLowerCase())
-      return `<li ${props}>${suggestionIcon ? searchIcon : ''}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='border'></div></li>`
+
+      console.log('props', props)
+      return `<li ${props}>${suggestionIcon ? searchIcon : ''}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='gem-c-autocomplete__result--border'></div></li>`
     }
 
     new Autocomplete(this.$module, // eslint-disable-line no-new
