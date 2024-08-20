@@ -1347,10 +1347,10 @@ globjoin@^0.1.4:
   resolved "https://registry.yarnpkg.com/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
   integrity sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=
 
-govuk-frontend@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.4.0.tgz#8f2e0b55ef7c7552a1efe68c7b40ff1b4a393e72"
-  integrity sha512-F3YwQYrYQqIPfNxsoph6O78Ey1unCB6cy6omx8KeWY9G504lWZFBSIaiUCma1jNLw9bOUU7Ui+tXG09jjqy0Mw==
+govuk-frontend@5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.5.0.tgz#dfb2426788dbf570ef7d2742983bc54e68f17f34"
+  integrity sha512-lNSHCOzgk6LfgelcdtJxTLK1BX/cpjCUyEB3LnzliD9o9YQckNMsbj5+jSOs2RFy6XBJ/DJqxj2TKfjBCuzpyA==
 
 govuk-single-consent@^3.0.9:
   version "3.0.9"
