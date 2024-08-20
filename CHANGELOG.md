@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Ensure that organisation logos always print ([PR #4162](https://github.com/alphagov/govuk_publishing_components/pull/4162))
+
 ## 42.0.0
 
 * **BREAKING:** Drop libsass support ([PR #4106](https://github.com/alphagov/govuk_publishing_components/pull/4106))
