@@ -44,7 +44,7 @@ describe "Autocomplete", type: :view do
   it "add position results data attribute" do
     render_component({ source: "/url", position_results: "absolute" })
 
-    assert_select "[data-position-results='absolute']", count: 1
+    assert_select ".gem-c-autocomplete--absolute", count: 1
   end
 
   it "add submit on select data attribute" do

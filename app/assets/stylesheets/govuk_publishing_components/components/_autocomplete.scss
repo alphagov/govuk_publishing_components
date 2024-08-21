@@ -4,6 +4,12 @@
   position: relative;
 }
 
+.gem-c-autocomplete--absolute {
+  .gem-c-autocomplete__result-list {
+    position: absolute;
+  }
+}
+
 .gem-c-autocomplete__result-list {
   border: 1px solid $govuk-border-colour;
   margin: 0;

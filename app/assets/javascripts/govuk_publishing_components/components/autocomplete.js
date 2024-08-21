@@ -314,7 +314,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     renderResult,
     debounceTime = 0,
     numberSuggestions,
-    positionResults,
     submitOnSelect = false,
     onUpdate = () => { },
     onSubmit = () => { },
@@ -328,7 +327,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     this.loading = false
     this.position = {}
     this.resetPosition = true
-    this.positionResults = positionResults
     this.root = typeof root === 'string' ? document.querySelector(root) : root
     this.root.insertAdjacentHTML('beforeend', '<ul class="gem-c-autocomplete__result-list govuk-body" role="listbox"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>')
     this.input = this.root.querySelector('input')
@@ -386,9 +384,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         resultListAriaLabel.content
       )
 
-    if (this.positionResults === 'absolute') {
-      this.resultList.style.position = 'absolute'
-    }
     this.resultList.style.zIndex = '1'
     this.resultList.style.width = '100%'
     this.resultList.style.boxSizing = 'border-box'
@@ -535,7 +530,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     this.numberSuggestions = $module.getAttribute('data-display-number-suggestions')
     this.suggestionIcon = $module.getAttribute('data-suggestion-icon')
     this.debounceTime = $module.getAttribute('data-request-debounce-time')
-    this.positionResults = $module.getAttribute('data-position-results')
     this.submitOnSelect = $module.getAttribute('data-submit-on-select')
     this.staticOptions = $module.getAttribute('data-source')
   }
@@ -545,7 +539,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     var numberSuggestions = this.numberSuggestions
     var suggestionIcon = this.suggestionIcon
     var debounceTime = this.debounceTime
-    var positionResults = this.positionResults
     var submitOnSelect = this.submitOnSelect
 
     var searchIcon = '<span class="gem-c-autocomplete__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>'
@@ -560,7 +553,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       renderResultHtml,
       debounceTime,
       numberSuggestions,
-      positionResults,
       submitOnSelect
     )
   }

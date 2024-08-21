@@ -18,7 +18,8 @@
   component_helper.add_data_attribute({ suggestion_icon: suggestion_icon })
   component_helper.add_data_attribute({ submit_on_select: submit_form_on_select })
 
-  component_helper.add_data_attribute({ position_results: 'absolute' }) if position_results.present?
+  ; component_helper.add_data_attribute({ position_results: 'absolute' }) if position_results.present?
+  component_helper.add_class("gem-c-autocomplete--absolute") if position_results.present?
   component_helper.add_data_attribute({ request_debounce_time: request_debounce_time }) if request_debounce_time.present?
 %>
 
