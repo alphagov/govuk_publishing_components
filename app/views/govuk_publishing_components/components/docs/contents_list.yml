@@ -42,9 +42,9 @@ examples:
       underline_links: true
       contents:
         - href: "#first-thing"
-          text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          text: Lorem &amp; ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         - href: "#second-thing"
-          text: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          text: Ut enim &mdash; ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         - href: "#third-thing"
           text: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
   long_text:
@@ -93,7 +93,7 @@ examples:
           active: true
           text: 2. Second thing
         - href: "#third-thing"
-          text: 3. Third thing
+          text: 3. Third &amp;thing
   formats_complex_numbers:
     data:
       format_numbers: true

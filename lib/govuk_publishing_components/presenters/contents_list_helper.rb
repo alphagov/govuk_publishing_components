@@ -44,7 +44,8 @@ module GovukPublishingComponents
         text = text.gsub(/&nbsp;/, " ")
         text = text.gsub("/\u00a0/", " ")
         text = text.gsub(160.chr("UTF-8"), " ")
-        strip_tags(text.tr("\n", "")).strip
+        text = text.strip
+        strip_tags(text.tr("\n", ""))
       end
 
       def get_index_total
