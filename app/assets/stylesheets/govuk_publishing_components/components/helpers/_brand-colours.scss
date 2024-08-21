@@ -120,3 +120,25 @@
     border-color: #00625e;
   }
 }
+
+.brand--department-for-business-and-trade {
+  .brand__color {
+    color: #cf102d;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: #cf102d;
+    }
+
+    &:hover,
+    &:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #cf102d;
+  }
+}
