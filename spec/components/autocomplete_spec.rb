@@ -23,17 +23,6 @@ describe "Autocomplete", type: :view do
     end
   end
 
-  def block
-    "<input class=\"gem-c-search__item gem-c-search__input\" name=\"q\" title=\"Search\" type=\"search\" value=\"\" role=\"combobox\" autocomplete=\"off\" autocapitalize=\"off\" spellcheck=\"false\" >".html_safe
-  end
-
-  it "renders one custom input element" do
-    render_component(test_data) { block }
-
-    assert_select "input", count: 1
-    assert_select ".gem-c-search__input", count: 1
-  end
-
   it "add suggestion icon data attribute" do
     render_component({ source: "/url", suggestion_icon: true })
 

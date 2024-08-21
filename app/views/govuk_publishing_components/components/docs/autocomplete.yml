@@ -2,11 +2,15 @@
 name: Autocomplete (experimental)
 description: The autocomplete component lets users select from a dynamic list of suggestions to populate the value of a search input element.
 body: |
-  This component does not perform any matching of user input to refine suggestions. The assumption is that the backend that the query string is supplied to does the matching and returns only results that are appropriate.
+  This component does not perform any matching of user input to refine suggestions. The assumption is that the backend returns only results that match the query string.
 
-  A static list of suggestions are used for these examples (see source option below) but if suggestions come from a static source then enhancing a server rendered HTML select element is a better option.
+  This component is currently experimental because more research is needed to validate it pending autocomplete implementation documented in the [GDS roadmap](https://design-system.service.gov.uk/community/upcoming-components-patterns/).
 
-  This component is currently experimental because more research is needed to validate it pending autocomplete implementation documented in the [GDS roadmap](https://design-system.service.gov.uk/community/upcoming-components-patterns/).  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/get-in-touch/).
+  ### source (required configuration option)
+
+  Url to request suggestion data from. A query parameter of q={inputValue} will be appended to this url.
+
+  Supplying source as a hardcoded array exists for the purposes of demonstration and testing where an actual HTTP endpoint is not ideal.
 accessibility_criteria: |
   The autocomplete must:
 
@@ -30,27 +34,14 @@ shared_accessibility_criteria:
   - link
 examples:
   default:
-    description: (Required) Url to get suggestion data from or an array of suggestions. Query parameter of ?q={inputValue} will be appended The array option exists mainly for the purposes of demonstration and testing where an HTTP endpoint is not ideal. If you have a static array of suggestions consider another approach that enhances an HTML select element.
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
   source:
     description: (Required) Url to get suggestion data from or an array of suggestions. Query parameter of ?q={inputValue} will be appended The array option exists mainly for the purposes of demonstration and testing where an HTTP endpoint is not ideal. If you have a static array of suggestions consider another approach that enhances an HTML select element.
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
-  custom_input_element:
-    description: Pass a block if you need to apply autocomplete to a custom input element
-    data:
-      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
-      block: |
-        <!-- example content -->
-        <%= render "govuk_publishing_components/components/input", {
-          label: {
-            text: "Enter some text"
-          },
-          name: "query"
-        } %>
   number_of_suggestions_to_display:
-    description: The number of suggestions to be displayed to the user. If not specified the default is 5 suggestions. Number of results if they are truly dynamic should ideally limited at the backend with a limit url param.
+    description: The number of suggestions to be displayed to the user. If not specified the default is 5 suggestions.
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
       display_number_suggestions: 3
