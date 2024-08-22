@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 42.1.0
 
 * Ensure that organisation logos always print ([PR #4162](https://github.com/alphagov/govuk_publishing_components/pull/4162))
 * Fix some layout_header search visual bugs ([PR #4156](https://github.com/alphagov/govuk_publishing_components/pull/4156))
