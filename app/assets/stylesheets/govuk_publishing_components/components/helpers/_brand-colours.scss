@@ -20,7 +20,7 @@
       // element as required by the heading component, adds 2KB to the CSS
       &.brand__border-color,
       .brand__border-color {
-        border-color: govuk-organisation-colour($organisation, $websafe: false);
+        border-color: govuk-organisation-colour($organisation, $contrast-safe: false);
       }
     }
   }
@@ -49,7 +49,7 @@
 
   &.brand__border-color,
   .brand__border-color {
-    border-color: govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons", $websafe: false);
+    border-color: govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons", $contrast-safe: false);
   }
 }
 // colours for the prime ministers office are not included in the toolkit
@@ -118,5 +118,27 @@
   &.brand__border-color,
   .brand__border-color {
     border-color: #00625e;
+  }
+}
+
+.brand--department-for-business-and-trade {
+  .brand__color {
+    color: #cf102d;
+
+    &:link,
+    &:visited,
+    &:active {
+      color: #cf102d;
+    }
+
+    &:hover,
+    &:focus {
+      color: $govuk-focus-text-colour;
+    }
+  }
+
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #cf102d;
   }
 }

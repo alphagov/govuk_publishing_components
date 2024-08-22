@@ -15,6 +15,7 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class(classes.join(" "))
+  component_helper.add_aria_attribute({ label: "Breadcrumb" })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" })
 %>
 
@@ -22,7 +23,7 @@
   <%= raw JSON.pretty_generate(breadcrumb_presenter.structured_data) %>
 </script>
 
-<%= tag.div(**component_helper.all_attributes) do %>
+<%= tag.nav(**component_helper.all_attributes) do %>
   <ol class="govuk-breadcrumbs__list">
     <% breadcrumbs.each_with_index do |crumb, index| %>
       <% breadcrumb = GovukPublishingComponents::Presenters::Breadcrumb.new(crumb, index) %>

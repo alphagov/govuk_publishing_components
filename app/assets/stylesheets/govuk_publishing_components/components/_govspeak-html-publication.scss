@@ -69,7 +69,8 @@
     table.financial-data {
       .numeric {
         text-align: right;
-        @include govuk-font(16, $weight: regular, $tabular: true);
+        @include govuk-font-tabular-numbers;
+        @include govuk-font(16, $weight: regular);
       }
 
       // make all elements inside thead look the same
@@ -82,10 +83,11 @@
 
       thead th,
       thead td {
-        @include govuk-font(16, $weight: bold, $tabular: true);
+        @include govuk-font-tabular-numbers;
+        @include govuk-font(16, $weight: bold);
 
         &.numeric {
-          @include govuk-font(16, $weight: bold, $tabular: true);
+          @include govuk-font(16, $weight: bold);
         }
       }
 

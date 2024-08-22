@@ -46,7 +46,7 @@ examples:
       organisation:
         name: 'Department for<br>Business &amp; Trade'
         url: '/government/organisations/department-for-business-and-trade'
-        brand: 'department-for-business-and-trade'
+        brand: 'department-for-business-trade'
         crest: 'dbt'
   executive_office:
     data:
