@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.0.0
 
-* **BREAKING:** Upgrade to govuk-frontend v5.5.0 ([PR #4115](https://github.com/alphagov/govuk_publishing_components/pull/4160))
+* **BREAKING:** Upgrade to govuk-frontend v5.5.0 ([PR #4160](https://github.com/alphagov/govuk_publishing_components/pull/4160))
 
 ## 42.1.0
 
