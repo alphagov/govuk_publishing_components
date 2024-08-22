@@ -32,6 +32,9 @@ hu:
       type:
         characters: karakterek
         words: szavak
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: vagy
     contents_list:
@@ -140,8 +143,8 @@ hu:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Keresse meg a(z) %{organisation} szervezet minden tartalmát

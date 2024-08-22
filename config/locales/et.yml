@@ -32,6 +32,9 @@ et:
       type:
         characters: tähemärki
         words: sõnu
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: või
     contents_list:
@@ -140,8 +143,8 @@ et:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Leidke kogu ettevõtte %{organization} sisu

@@ -32,6 +32,9 @@ he:
       type:
         characters: תווים
         words: מילים
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: או
     contents_list:
@@ -137,8 +140,8 @@ he:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: מצא את כל התוכן של %{organization}

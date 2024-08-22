@@ -36,6 +36,9 @@ sl:
       type:
         characters: znaki
         words: besede
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: ali
     contents_list:
@@ -144,8 +147,8 @@ sl:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Oglejte si vse gradivo %{organisation}

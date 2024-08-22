@@ -32,6 +32,9 @@ sv:
       type:
         characters: tecken
         words: ord
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: eller
     contents_list:
@@ -137,8 +140,8 @@ sv:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Hitta allt innehåll från %{organisation}

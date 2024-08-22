@@ -32,6 +32,9 @@ tr:
       type:
         characters: karakter
         words: kelime
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: veya
     contents_list:
@@ -138,8 +141,8 @@ tr:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} kaynaklı tüm içeriği bul"

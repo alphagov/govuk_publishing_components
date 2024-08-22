@@ -12,6 +12,7 @@
 * Ensure that organisation logos always print ([PR #4162](https://github.com/alphagov/govuk_publishing_components/pull/4162))
 * Fix some layout_header search visual bugs ([PR #4156](https://github.com/alphagov/govuk_publishing_components/pull/4156))
 * Fix issue with using special characters in content-list ([PR #4157](https://github.com/alphagov/govuk_publishing_components/pull/4157))
+* Add 'Chat entry' component ([PR #4151](https://github.com/alphagov/govuk_publishing_components/pull/4151))
 
 ## 42.0.0
 

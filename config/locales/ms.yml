@@ -31,6 +31,9 @@ ms:
       type:
         characters: aksara
         words: perkataan
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: atau
     contents_list:
@@ -136,8 +139,8 @@ ms:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Cari semua kandungan dari %{organisation}

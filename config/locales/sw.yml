@@ -32,6 +32,9 @@ sw:
       type:
         characters: herufi
         words: maneno
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: au
     contents_list:
@@ -137,8 +140,8 @@ sw:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Tafuta maudhui yote kutoka %{organisation}

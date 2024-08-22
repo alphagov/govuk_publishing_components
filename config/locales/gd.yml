@@ -34,6 +34,9 @@ gd:
       type:
         characters: Figiúr
         words: Carachtar
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: Cá háit
     contents_list:
@@ -139,8 +142,8 @@ gd:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Faigh gach rud ó %{organisation}

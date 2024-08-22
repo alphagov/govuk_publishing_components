@@ -32,6 +32,9 @@ gu:
       type:
         characters: અક્ષરો
         words: શબ્દો
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: અથવા
     contents_list:
@@ -137,8 +140,8 @@ gu:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} થી તમામ સામગ્રી શોધો"

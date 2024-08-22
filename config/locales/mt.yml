@@ -34,6 +34,9 @@ mt:
       type:
         characters: karattri
         words: kliem
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: jew
     contents_list:
@@ -139,8 +142,8 @@ mt:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Sib il-kontenut kollu mingħand %{organisation}

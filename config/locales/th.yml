@@ -31,6 +31,9 @@ th:
       type:
         characters: ตัวอักษร
         words: คำ
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: หรือ
     contents_list:
@@ -135,8 +138,8 @@ th:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: ค้นหาเนื้อหาทั้งหมดจาก %{organisation}

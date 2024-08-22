@@ -31,6 +31,9 @@ zh-hk:
       type:
         characters: 字元
         words: 字彙
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: 或
     contents_list:
@@ -135,8 +138,8 @@ zh-hk:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: 從 %{organisation} 獲得更多內容

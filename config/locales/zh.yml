@@ -31,6 +31,9 @@ zh:
       type:
         characters: 字符
         words: 单词
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: 或
     contents_list:
@@ -135,8 +138,8 @@ zh:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: 查找 %{organisation} 的全部内容

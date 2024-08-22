@@ -31,6 +31,9 @@ vi:
       type:
         characters: ký tự
         words: từ
+    chat_entry:
+      description:
+      heading:
     checkboxes:
       or: hoặc
     contents_list:
@@ -136,8 +139,8 @@ vi:
     notice:
       banner_title:
     option_select:
-      found_single:
       found_multiple:
+      found_single:
       selected:
     organisation_schema:
       all_content_search_description: Tìm tất cả nội dung từ %{organisation}
