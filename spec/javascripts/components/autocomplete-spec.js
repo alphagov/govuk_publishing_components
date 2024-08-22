@@ -2,13 +2,9 @@
 /* global GOVUK, KeyboardEvent */
 
 describe('Autocomplete component', function () {
-  var autocomplete
+  var $autocomplete
+  var instance
   var container
-  var html =
-    `<div class="gem-c-autocomplete" data-expanded="false" data-loading="false" data-source="/url" data-display-number-suggestions="5">
-        <label for="input-1" class="gem-c-label govuk-label">Country</label>
-        <input class="gem-c-input govuk-input" id="input-1" name="country" type="text" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false">
-    </div>`
   var $input
   var $resultList
   var $status
@@ -20,25 +16,28 @@ describe('Autocomplete component', function () {
     'last prime minister'
   ]
 
-  function sourceMock () {
-    return data
-  }
+  var html =
+  `<div class="gem-c-autocomplete" data-expanded="false" data-loading="false" data-source="[&quot;prime minister&quot;,&quot;deputy prime minister&quot;,&quot;contact prime minister&quot;,&quot;email prime minister&quot;,&quot;last prime minister&quot;]" data-display-number-suggestions="5">
+      <label for="input-1" class="gem-c-label govuk-label">Country</label>
+      <input class="gem-c-input govuk-input" id="input-1" name="country" type="text" role="combobox" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false">
+  </div>`
 
   function startAutocomplete () {
-    new GOVUK.Modules.GemAutocomplete(autocomplete).init(sourceMock)
+    instance = new GOVUK.Modules.GemAutocomplete($autocomplete).init()
   }
 
   beforeEach(function () {
     container = document.createElement('div')
     container.innerHTML = html
     document.body.appendChild(container)
-    autocomplete = document.querySelector('.gem-c-autocomplete')
+    $autocomplete = document.querySelector('.gem-c-autocomplete')
+
     startAutocomplete()
 
     jasmine.clock().install()
 
-    $input = autocomplete.querySelector('input')
-    $resultList = autocomplete.querySelector('.gem-c-autocomplete__result-list')
+    $input = $autocomplete.querySelector('input')
+    $resultList = $autocomplete.querySelector('.gem-c-autocomplete__result-list')
   })
 
   afterEach(function () {
@@ -67,15 +66,25 @@ describe('Autocomplete component', function () {
       expect(document.querySelectorAll(`#gem-c-autocomplete-assistive-hint-${idPostfix}`).length).toBe(1)
     })
 
-    it('base class', async function () {
+    it('throttle delay time', async function () {
+      instance.core.throttleDelayTime = 2000
+
+      spyOn(instance.core, 'updateResults')
+
+      $input.value = 'r'
+      await $input.focus()
+
+      $input.value += 'r'
+      await $input.focus()
+
+      expect(instance.core.updateResults.calls.count()).toBe(1)
+    })
+
+    it('base class', function () {
       // to be implemented
     })
 
-    it('debounce', async function () {
-      // to be implemented
-    })
-
-    it('form behaviour', async function () {
+    it('form behaviour', function () {
       // to be implemented
     })
 
@@ -88,7 +97,7 @@ describe('Autocomplete component', function () {
 
       describe('general behaviour', function () {
         it('inform the user that content has been expanded', function () {
-          expect(autocomplete.getAttribute('data-expanded')).toBe('true')
+          expect($autocomplete.getAttribute('data-expanded')).toBe('true')
           expect($input.getAttribute('aria-expanded')).toBe('true')
           expect($resultList.getAttribute('role')).toBe('listbox')
           expect($status.getAttribute('aria-atomic')).toBe('true')
@@ -112,13 +121,13 @@ describe('Autocomplete component', function () {
       describe('keyboard behaviour', function () {
         it('user can navigate the available matches using keyboard', function () {
           $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete__result-0')
+          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete-result-0')
 
           $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', keyCode: 38 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete__result-4')
+          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete-result-4')
 
           $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete__result-0')
+          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-autocomplete-result-0')
         })
 
         it('space key closes the menu, sets the query, focuses the input', () => {

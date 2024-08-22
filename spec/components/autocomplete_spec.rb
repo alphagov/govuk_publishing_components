@@ -35,10 +35,10 @@ describe "Autocomplete", type: :view do
     assert_select "[data-display-number-suggestions='3']", count: 1
   end
 
-  it "add debounce time data attribute" do
-    render_component({ source: "/url", request_debounce_time: 100 })
+  it "add throttle delay time data attribute" do
+    render_component({ source: "/url", throttle_delay_time: 100 })
 
-    assert_select "[data-request-debounce-time='100']", count: 1
+    assert_select "[data-throttle-delay-time='100']", count: 1
   end
 
   it "add position results data attribute" do

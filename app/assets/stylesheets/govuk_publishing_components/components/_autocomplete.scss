@@ -20,6 +20,9 @@
   background: govuk-colour("white");
   list-style: none;
   position: relative;
+  z-index: 1;
+  width: 100%;
+  top: 100%;
 }
 
 .gem-c-autocomplete__result { 
@@ -40,6 +43,7 @@
   &--search-icon {
     padding-right: govuk-spacing(2);
     vertical-align: middle;
+    color: $govuk-secondary-text-colour;
   }
 
   &--border {

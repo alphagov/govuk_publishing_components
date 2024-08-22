@@ -8,37 +8,38 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 (function (Modules) {
   'use strict'
 
+  function GemAutocomplete ($module) {
+    this.$module = $module
+
+    this.numberSuggestions = $module.getAttribute('data-display-number-suggestions')
+    this.suggestionIcon = $module.getAttribute('data-suggestion-icon')
+    this.throttleDelayTime = $module.getAttribute('data-throttle-delay-time')
+    this.submitOnSelect = $module.getAttribute('data-submit-on-select')
+    this.staticOptions = $module.getAttribute('data-source')
+  }
+
+  GemAutocomplete.prototype.init = function () {
+    this.source = this.staticOptions
+
+    var suggestionIcon = this.suggestionIcon
+
+    var searchIcon = '<span class="gem-c-autocomplete__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>'
+
+    var renderResultHtml = function (result, props, inputVal) {
+      var index = result.toLowerCase().indexOf(inputVal.toLowerCase())
+      return `<li ${props.toString()}>${suggestionIcon ? searchIcon : ''}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='gem-c-autocomplete__result--border'></div></li>`
+    }
+
+    return new Autocomplete(this.$module, // eslint-disable-line no-new
+      this.source,
+      renderResultHtml,
+      this.throttleDelayTime,
+      this.numberSuggestions,
+      this.submitOnSelect
+    )
+  }
+
   var util = {
-    getRelativePosition: function (element1, element2) {
-      var position1 = element1.getBoundingClientRect()
-      var position2 = element2.getBoundingClientRect()
-
-      var positionAbove =
-        /* 1 */ position1.bottom + position2.height > window.innerHeight &&
-        /* 2 */ window.innerHeight - position1.bottom < position1.top &&
-        /* 3 */ window.pageYOffset + position1.top - position2.height > 0
-
-      return positionAbove ? 'above' : 'below'
-    },
-    debounce: function (func, wait, immediate) {
-      let timeout
-
-      return function executedFunction () {
-        var context = this
-        var args = arguments
-
-        var later = function () {
-          timeout = null
-          if (!immediate) func.apply(context, args)
-        }
-
-        var callNow = immediate && !timeout
-        clearTimeout(timeout)
-        timeout = setTimeout(later, wait)
-
-        if (callNow) func.apply(context, args)
-      }
-    },
     getAriaLabel: function (labelStr) {
       if (labelStr?.length) {
         var isLabelId = labelStr.startsWith('#')
@@ -49,9 +50,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         }
       }
     },
-    isPromise: function (value) {
-      return Boolean(value && typeof value.then === 'function')
-    },
     isFunction: function (value) {
       return Boolean(typeof value === 'function')
     },
@@ -61,26 +59,24 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       } catch (e) {
         return false
       }
-    }
-  }
+    },
+    props: function (index, selectedIndex, baseClass) {
+      var attributes = {}
+      attributes.id = `${baseClass}-result-${index}`
+      attributes.class = `${baseClass}__result`
+      attributes['data-result-index'] = index
+      attributes.role = 'option'
+      if (index === selectedIndex) {
+        attributes['aria-selected'] = 'true'
+      }
 
-  // Creates a props object with overridden toString function. toString returns an attributes
-  // string in the format: `key1='value1' key2='value2'` for easy use in an HTML string.
-  function Props (index, selectedIndex, baseClass) {
-    this.id = `${baseClass}-result-${index}`
-    this.class = `${baseClass}__result`
-    this['data-result-index'] = index
-    this.role = 'option'
-    if (index === selectedIndex) {
-      this['aria-selected'] = 'true'
+      return Object.keys(attributes).reduce(
+        function (str, key) {
+          return `${str} ${key}='${attributes[key]}'`
+        },
+        ''
+      )
     }
-  }
-
-  Props.prototype.toString = function () {
-    return Object.keys(this).reduce(
-      (str, key) => `${str} ${key}='${this[key]}'`,
-      ''
-    )
   }
 
   function AutocompleteCore (
@@ -94,61 +90,57 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     onHide,
     onLoading,
     onLoaded,
-    submitOnSelect
+    submitOnSelect,
+    throttleDelayTime
   ) {
     this.value = ''
     this.searchCounter = 0
     this.results = []
     this.selectedIndex = -1
     this.selectedResult = null
-
-    switch (true) {
-      case util.isFunction(search):
-        this.search = (value) => Promise.resolve(search(value))
-        break
-      case util.isArray(search):
-        this.search = () => Promise.resolve(JSON.parse(search))
-        break
-      default:
-        this.search = async (value) => {
-          var url = new URL(search)
-          url.searchParams.append('q', value)
-
-          var response = await fetch(url)
-          var completes = await response.json()
-          return completes
-        }
-        break
-    }
-
+    this.throttleDelayTime = throttleDelayTime
+    this.throttled = false
     this.autoSelect = autoSelect || false
     this.setValue = setValue || function () { }
     this.setAttribute = setAttribute || function () { }
     this.onUpdate = onUpdate || function () { }
     this.onSubmit = onSubmit || function () { }
-    this.onShow = onShow
+    this.onShow = onShow || function () { }
     this.onHide = onHide || function () { }
     this.onLoading = onLoading || function () { }
     this.onLoaded = onLoaded || function () { }
     this.submitOnSelect = submitOnSelect || false
-  }
 
-  AutocompleteCore.prototype.destroy = function () {
-    this.search = null
-    this.setValue = null
-    this.setAttribute = null
-    this.onUpdate = null
-    this.onSubmit = null
-    this.onShow = null
-    this.onHide = null
-    this.onLoading = null
-    this.onLoaded = null
+    if (util.isArray(search.split(','))) {
+      this.search = () => {
+        return Promise.resolve(JSON.parse(search))
+      }
+    } else {
+      this.search = async (value) => {
+        var url = new URL(search)
+        url.searchParams.append('q', value)
+        var response = await fetch(url)
+        var results = await response.json()
+        return results
+      }
+    }
   }
 
   AutocompleteCore.prototype.handleInput = function (event) {
-    var value = event.target.value
+    if (this.throttled) {
+      return
+    }
+
+    const value = event.target.value
     this.updateResults(value)
     this.value = value
+
+    if (this.throttleDelayTime) {
+      this.throttled = true
+      this.keypressTimeout = setTimeout(() => {
+        this.throttled = false
+      }, parseInt(this.throttleDelayTime))
+    }
   }
 
   AutocompleteCore.prototype.handleKeyUp = function (event) {
@@ -233,12 +225,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
   }
 
   AutocompleteCore.prototype.handleArrows = function (selectedIndex) {
-    // Loop selectedIndex back to first or last result if out of bounds
     var resultsCount = this.results.length
     this.selectedIndex =
       ((selectedIndex % resultsCount) + resultsCount) % resultsCount
 
-    // Update results and aria attributes
     this.onUpdate(this.results, this.selectedIndex)
   }
 
@@ -287,32 +277,11 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     this.onHide()
   }
 
-  AutocompleteCore.prototype.checkSelectedResultVisible = function (resultsElement) {
-    var selectedResultElement = resultsElement.querySelector(
-      `[data-result-index='${this.selectedIndex}']`
-    )
-    if (!selectedResultElement) {
-      return
-    }
-
-    var resultsPosition = resultsElement.getBoundingClientRect()
-    var selectedPosition = selectedResultElement.getBoundingClientRect()
-
-    if (selectedPosition.top < resultsPosition.top) {
-      // Element is above viewable area
-      resultsElement.scrollTop -= resultsPosition.top - selectedPosition.top
-    } else if (selectedPosition.bottom > resultsPosition.bottom) {
-      // Element is below viewable area
-      resultsElement.scrollTop +=
-        selectedPosition.bottom - resultsPosition.bottom
-    }
-  }
-
   function Autocomplete (
     root,
     search,
     renderResult,
-    debounceTime = 0,
+    throttleDelayTime = 0,
     numberSuggestions,
     submitOnSelect = false,
     onUpdate = () => { },
@@ -325,8 +294,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     this.numberSuggestions = numberSuggestions
     this.expanded = false
     this.loading = false
-    this.position = {}
-    this.resetPosition = true
     this.root = typeof root === 'string' ? document.querySelector(root) : root
     this.root.insertAdjacentHTML('beforeend', '<ul class="gem-c-autocomplete__result-list govuk-body" role="listbox"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>')
     this.input = this.root.querySelector('input')
@@ -353,12 +320,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.handleHide.bind(this),
       this.handleLoading.bind(this),
       this.handleLoaded.bind(this),
-      this.submitOnSelect
+      this.submitOnSelect,
+      throttleDelayTime
     )
 
-    if (debounceTime > 0) {
-      core.handleInput = util.debounce(core.handleInput, debounceTime)
-    }
     this.core = core
 
     this.initialize()
@@ -383,10 +348,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         resultListAriaLabel.attribute,
         resultListAriaLabel.content
       )
-
-    this.resultList.style.zIndex = '1'
-    this.resultList.style.width = '100%'
-    this.resultList.style.boxSizing = 'border-box'
 
     this.resultList.id = `${this.baseClass}-result-list-${this.root.getAttribute('data-id-postfix')}`
 
@@ -414,29 +375,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     this.input.setAttribute('aria-describedby', `${hintId}`)
   }
 
-  Autocomplete.prototype.destroy = function () {
-    document.body.removeEventListener('click', this.handleDocumentClick)
-    this.input.removeEventListener('input', this.core.handleInput.bind(this.core))
-    this.input.removeEventListener('keydown', this.core.handleKeyDown.bind(this.core))
-    this.input.removeEventListener('keyup', this.core.handleKeyUp.bind(this.core))
-    this.input.removeEventListener('focus', this.core.handleFocus.bind(this.core))
-    this.input.removeEventListener('blur', this.core.handleBlur.bind(this.core))
-    this.resultList.removeEventListener(
-      'mousedown',
-      this.core.handleResultMouseDown
-    )
-    this.resultList.removeEventListener('click', this.core.handleResultClick.bind(this.core))
-
-    this.root = null
-    this.input = null
-    this.resultList = null
-    this.getResultValue = null
-    this.onUpdate = null
-    this.renderResult = null
-    this.core.destroy()
-    this.core = null
-  }
-
   Autocomplete.prototype.setAttribute = function (attribute, value) {
     this.input.setAttribute(attribute, value)
   }
@@ -446,7 +384,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
   }
 
   Autocomplete.prototype.renderResult = function (result, props) {
-    return `<li ${props}>${this.getResultValue(result)}</li>`
+    return `<li ${props.toString()}>${this.getResultValue(result)}</li>`
   }
 
   Autocomplete.prototype.handleUpdate = function (results, selectedIndex) {
@@ -456,7 +394,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     this.resultList.innerHTML = ''
     results.forEach((result, index) => {
-      const props = new Props(index, selectedIndex, this.baseClass)
+      const props = util.props(index, selectedIndex, this.baseClass)
       const resultHTML = this.renderResult(result, props, this.input.value)
       if (typeof resultHTML === 'string') {
         this.resultList.insertAdjacentHTML('beforeend', resultHTML)
@@ -467,15 +405,9 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     this.input.setAttribute(
       'aria-activedescendant',
-      selectedIndex > -1 ? `${this.baseClass}__result-${selectedIndex}` : ''
+      selectedIndex > -1 ? `${this.baseClass}-result-${selectedIndex}` : ''
     )
 
-    if (this.resetPosition) {
-      this.resetPosition = false
-      this.position = util.getRelativePosition(this.input, this.resultList)
-      this.updateStyle()
-    }
-    this.core.checkSelectedResultVisible(this.resultList)
     this.onUpdate(results, selectedIndex)
     this.updateStatus(results.length)
   }
@@ -491,7 +423,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
   Autocomplete.prototype.handleHide = function () {
     this.expanded = false
-    this.resetPosition = true
     this.updateStyle()
   }
 
@@ -515,46 +446,9 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
   Autocomplete.prototype.updateStyle = function () {
     this.root.dataset.expanded = this.expanded
     this.root.dataset.loading = this.loading
-    this.root.dataset.position = this.position
 
     this.resultList.style.visibility = this.expanded ? 'visible' : 'hidden'
     this.resultList.style.pointerEvents = this.expanded ? 'auto' : 'none'
-
-    this.resultList.style.bottom = null
-    this.resultList.style.top = '100%'
-  }
-
-  function GemAutocomplete ($module) {
-    this.$module = $module
-
-    this.numberSuggestions = $module.getAttribute('data-display-number-suggestions')
-    this.suggestionIcon = $module.getAttribute('data-suggestion-icon')
-    this.debounceTime = $module.getAttribute('data-request-debounce-time')
-    this.submitOnSelect = $module.getAttribute('data-submit-on-select')
-    this.staticOptions = $module.getAttribute('data-source')
-  }
-
-  GemAutocomplete.prototype.init = function (source) {
-    this.source = source || this.staticOptions
-    var numberSuggestions = this.numberSuggestions
-    var suggestionIcon = this.suggestionIcon
-    var debounceTime = this.debounceTime
-    var submitOnSelect = this.submitOnSelect
-
-    var searchIcon = '<span class="gem-c-autocomplete__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>'
-
-    var renderResultHtml = function (result, props, inputVal) {
-      var index = result.toLowerCase().indexOf(inputVal.toLowerCase())
-      return `<li ${props}>${suggestionIcon ? searchIcon : ''}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='gem-c-autocomplete__result--border'></div></li>`
-    }
-
-    new Autocomplete(this.$module, // eslint-disable-line no-new
-      this.source,
-      renderResultHtml,
-      debounceTime,
-      numberSuggestions,
-      submitOnSelect
-    )
   }
 
   Modules.GemAutocomplete = GemAutocomplete

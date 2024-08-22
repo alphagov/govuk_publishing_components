@@ -36,10 +36,6 @@ examples:
   default:
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
-  source:
-    description: (Required) Url to get suggestion data from or an array of suggestions. Query parameter of ?q={inputValue} will be appended The array option exists mainly for the purposes of demonstration and testing where an HTTP endpoint is not ideal. If you have a static array of suggestions consider another approach that enhances an HTML select element.
-    data:
-      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
   number_of_suggestions_to_display:
     description: The number of suggestions to be displayed to the user. If not specified the default is 5 suggestions.
     data:
@@ -60,10 +56,10 @@ examples:
       Options that cannot be demoed in the context of the example below.
 
       * **submit_form_on_select** Submits the surrounding form when a suggestion is selected. Defaults to false. Note that this isnt neccessarily the best behaviour in accessibilty terms.
-      * **request_debounce_time** Interval time (milliseconds) to debounce request for data.
+      * **throttle_delay_time** Interval time (milliseconds) to delay requests for data (sometimes refered to as debounce).
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
       submit_form_on_select: true
-      request_debounce_time: 100
+      throttle_delay_time: 100
 
 
