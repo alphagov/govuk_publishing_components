@@ -11,10 +11,15 @@
 //
 // TODO: Replace with the print styles that will come from GOV.UK Frontend.
 
+// stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   // Open all of the accordion sections.
   .govuk-accordion__section-content {
-    display: block !important; // stylelint-disable-line declaration-no-important
+    display: block !important;
+
+    > :last-child {
+      margin-bottom: 20px;
+    }
   }
 
   .govuk-frontend-supported .govuk-accordion__section-content[hidden] {
@@ -25,7 +30,9 @@
 
   // Change the colour from the blue link colour to black.
   .govuk-accordion__section-button {
-    color: govuk-colour("black") !important; // stylelint-disable-line declaration-no-important
+    color: govuk-colour("black") !important;
+    padding: 20px 0 0 !important;
+    border-bottom: 0 !important;
   }
 
   // Change the summary subheading size.
@@ -37,6 +44,14 @@
   // Hide the unusable "Show all" and "Show" sections.
   .govuk-accordion__show-all,
   .govuk-accordion__section-toggle {
-    display: none !important; // stylelint-disable-line declaration-no-important
+    display: none !important;
+  }
+
+  // Remove extra space for expanded accordions, not needed on a printout
+  .govuk-accordion__section--expanded {
+    .govuk-accordion__section-content {
+      padding: 0 !important;
+    }
   }
 }
+// stylelint-enable declaration-no-important

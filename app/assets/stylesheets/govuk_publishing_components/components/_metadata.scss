@@ -94,3 +94,19 @@
 .govuk-frontend-supported .gem-c-metadata__toggle-items.js-hidden {
   display: none;
 }
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-c-metadata {
+    break-inside: avoid;
+    color: $govuk-print-text-colour !important;
+    background-color: unset;
+    margin-bottom: 5mm;
+
+    a,
+    a:visited {
+      color: $govuk-print-text-colour !important;
+    }
+  }
+}
+// stylelint-enable declaration-no-important

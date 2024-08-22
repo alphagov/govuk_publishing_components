@@ -2,7 +2,7 @@
 <% disable_ga4 ||= false %>
 
 <% unless navigation.content_tagged_to_current_step_by_step? %>
-  <div class="gem-c-contextual-footer">
+  <div class="gem-c-contextual-footer govuk-!-display-none-print">
     <%# Rendering related navigation because no step by step list %>
     <%= render 'govuk_publishing_components/components/related_navigation',
                content_item: content_item,

@@ -10,7 +10,7 @@
   details_ga4_attributes ||= {}
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  container_class_names = %w[gem-c-attachment govuk-!-display-none-print]
+  container_class_names = %w[gem-c-attachment]
   container_class_names << shared_helper.get_margin_bottom if local_assigns.key?(:margin_bottom)
   ga4_link = { 'event_name': 'navigation', 'type': 'attachment' }
 
@@ -58,7 +58,7 @@
   data_attributes[:ga4_link] = ga4_link
 %>
 <%= tag.section class: class_names(container_class_names), data: { module: "ga4-link-tracker" } do %>
-  <%= tag.div class: "gem-c-attachment__thumbnail" do %>
+  <%= tag.div class: "gem-c-attachment__thumbnail govuk-!-display-none-print" do %>
     <%= link_to attachment.url,
                 class: "govuk-link",
                 target: target,

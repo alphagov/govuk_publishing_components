@@ -1,2 +1,10 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/pagination/pagination";
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .govuk-pagination * {
+    color: $govuk-print-text-colour !important;
+  }
+}
+// stylelint-enable declaration-no-important
