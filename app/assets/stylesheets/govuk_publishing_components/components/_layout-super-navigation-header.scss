@@ -986,9 +986,23 @@ $after-button-padding-left: govuk-spacing(4);
 
 @include govuk-media-query($media-type: print) {
   .gem-c-layout-super-navigation-header {
-    border-top: 1pt solid $govuk-print-text-colour;
-    margin: 0;
-    background-color: none;
+    border-top: 0;
+    border-bottom: 2pt solid $govuk-print-text-colour;
+    margin: 0 0 5mm;
+    background-color: transparent;
+
+    &:has(.gem-c-layout-super-navigation-header__header-logo .govuk-visually-hidden) {
+      border: 0;
+      margin-left: 24px;
+    }
+
+    * {
+      color: $govuk-print-text-colour;
+    }
+
+    .govuk-width-container {
+      margin: 0;
+    }
   }
 
   .gem-c-layout-super-navigation-header__header-logo {
