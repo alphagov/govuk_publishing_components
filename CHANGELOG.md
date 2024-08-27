@@ -7,10 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-Unreleased
+## Unreleased
 
 * Fix card component padding based on heading ([PR #4169](https://github.com/alphagov/govuk_publishing_components/pull/4169))
 * Fix print issues on layout-super-navigation-header ([PR #4165](https://github.com/alphagov/govuk_publishing_components/pull/4165))
+* Remove unused org colour classes ([PR #4173](https://github.com/alphagov/govuk_publishing_components/pull/4173))
 
 ## 43.0.0
 
