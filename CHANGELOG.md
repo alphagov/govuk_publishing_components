@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.0.1
 
 * Fix card component padding based on heading ([PR #4169](https://github.com/alphagov/govuk_publishing_components/pull/4169))
 * Fix print issues on layout-super-navigation-header ([PR #4165](https://github.com/alphagov/govuk_publishing_components/pull/4165))
