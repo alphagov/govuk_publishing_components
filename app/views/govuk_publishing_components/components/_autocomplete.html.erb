@@ -1,24 +1,20 @@
 <%
   add_gem_component_stylesheet("autocomplete")
+
   display_number_suggestions ||= 5
-  suggestion_icon ||= ''
   throttle_delay_time ||= ''
   source ||= nil
-  position_results ||= nil
   submit_form_on_select ||= false
   idPostfix = "#{SecureRandom.hex(4)}"
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-autocomplete")
   component_helper.add_data_attribute({ module: "gem-autocomplete" })
-  component_helper.add_data_attribute({ source: source })
   component_helper.add_data_attribute({ id_postfix: idPostfix })
 
+  component_helper.add_data_attribute({ source: source })
   component_helper.add_data_attribute({ display_number_suggestions: display_number_suggestions })
-  component_helper.add_data_attribute({ suggestion_icon: suggestion_icon })
   component_helper.add_data_attribute({ submit_on_select: submit_form_on_select })
-
-  component_helper.add_class("gem-c-autocomplete--absolute") if position_results.present?
   component_helper.add_data_attribute({ throttle_delay_time: throttle_delay_time }) if throttle_delay_time.present?
 %>
 
