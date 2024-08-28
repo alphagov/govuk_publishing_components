@@ -24,3 +24,32 @@
   width: 100%;
   top: 100%;
 }
+
+.gem-c-search-autocomplete__result { 
+  cursor: default;
+  padding: govuk-spacing(2) govuk-spacing(2) 0 govuk-spacing(2);
+  position: relative;
+
+  &:last-child .gem-c-search-autocomplete__result--border {
+    border-bottom: 0;
+  }
+
+  &:hover,
+  &[aria-selected="true"] {
+    background-color: govuk-colour("light-grey");
+    cursor: pointer;
+  }
+
+  &--search-icon {
+    padding-right: govuk-spacing(2);
+    vertical-align: middle;
+    color: $govuk-secondary-text-colour;
+  }
+
+  &--border {
+    height: govuk-spacing(2);
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+}
