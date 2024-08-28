@@ -1,0 +1,26 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-search-autocomplete {
+  position: relative;
+}
+
+.gem-c-search-autocomplete--absolute {
+  .gem-c-search-autocomplete__result-list {
+    position: absolute;
+  }
+}
+
+.gem-c-search-autocomplete__result-list {
+  border: 1px solid $govuk-border-colour;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: govuk-colour("white");
+  list-style: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  top: 100%;
+}
