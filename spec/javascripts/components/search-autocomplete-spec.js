@@ -18,7 +18,7 @@ describe('Search autocomplete component', function () {
   ]
 
   var html =
-  `<div class="gem-c-search-autocomplete" data-throttle-delay-time="500" data-id-postfix="test" data-source="[&quot;prime minister&quot;,&quot;deputy prime minister&quot;,&quot;contact prime minister&quot;,&quot;email prime minister&quot;,&quot;last prime minister&quot;]">
+  `<div class="gem-c-search-autocomplete" data-id-postfix="test" data-source="[&quot;prime minister&quot;,&quot;deputy prime minister&quot;,&quot;contact prime minister&quot;,&quot;email prime minister&quot;,&quot;last prime minister&quot;]">
       <label for="input-1" class="gem-c-label govuk-label">Country</label>
       <input class="gem-c-input govuk-input" name="country" type="text">
   </div>`
