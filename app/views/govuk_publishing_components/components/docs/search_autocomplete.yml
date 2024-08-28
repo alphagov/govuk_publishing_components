@@ -1,0 +1,47 @@
+name: Search Autocomplete (experimental)
+description: The autocomplete component lets users select from a dynamic list of suggestions to populate the value of a search input element.
+body: |
+  This component does not perform any matching of user input to refine suggestions. The assumption is that the backend returns only results that match the query string.
+  This component is currently experimental because more research is needed to validate it pending autocomplete implementation documented in the [GDS roadmap](https://design-system.service.gov.uk/community/upcoming-components-patterns/).
+
+  ### source (required configuration option)
+  Url to request suggestion data from. A query parameter of q={inputValue} will be appended to this url.
+  Supplying source as a hardcoded array exists for the purposes of demonstration and testing where an actual HTTP endpoint is not ideal.
+accessibility_criteria: |
+  The autocomplete must:
+  * Be focusable with a keyboard
+  * Indicate when it has keyboard focus
+  * Inform the user that it is an editable field
+  * Inform the user if there is a pre-filled value
+  * Inform the user that autocomplete is available
+  * Explain how to use autocomplete
+  * Inform the user that content has been expanded
+  * Inform the user when there are matches, or if there are no matches
+  * Inform the user as the number of matches changes
+  * Enable the user to navigate the available matches using touch or keyboard
+  * Inform the user when a match is selected
+  * Inform the user if a match is pre-selected
+  * Enable the user to confirm the selected match
+  * Inform the user when a match is confirmed
+  * Return focus to the editable field when a selected match is confirmed
+uses_component_wrapper_helper: true
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+  number_of_suggestions_to_display:
+    description: The number of suggestions to be displayed to the user. If not specified the default is 5 suggestions.
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+      display_number_suggestions: 3
+  other_configuration_options:
+    description: |
+      Options that cannot be demoed in the context of the example below.
+      * **submit_form_on_select** (default false) Submits the surrounding form when a suggestion is selected. Note that this isnt neccessarily the best behaviour in accessibilty terms.
+      * **throttle_delay_time** (default 0) Interval time (milliseconds) to delay requests for data (sometimes refered to as debounce).
+    data:
+      source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
+      submit_form_on_select: true
+      throttle_delay_time: 500

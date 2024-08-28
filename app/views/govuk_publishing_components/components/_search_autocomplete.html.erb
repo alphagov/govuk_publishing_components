@@ -1,0 +1,29 @@
+<%
+  add_gem_component_stylesheet("search-autocomplete")
+
+  display_number_suggestions ||= 5
+  throttle_delay_time ||= ''
+  source ||= nil
+  submit_form_on_select ||= false
+  idPostfix = "#{SecureRandom.hex(4)}"
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-search-autocomplete")
+  component_helper.add_data_attribute({ module: "gem-search-autocomplete" })
+  component_helper.add_data_attribute({ id_postfix: idPostfix })
+
+  component_helper.add_data_attribute({ source: source })
+  component_helper.add_data_attribute({ display_number_suggestions: display_number_suggestions })
+  component_helper.add_data_attribute({ submit_on_select: submit_form_on_select })
+  component_helper.add_data_attribute({ throttle_delay_time: throttle_delay_time }) if throttle_delay_time.present?
+%>
+<%= tag.div(**component_helper.all_attributes) do %>
+  <% if source.nil?
+    raise ArgumentError, "The autocomplete requires a source url or array to retrieve suggestions"
+  end %>
+  <%= render "govuk_publishing_components/components/search", {
+    inline_label: false,
+    label_text: "Search",
+    margin_bottom: 0
+  } %>
+<% end %>

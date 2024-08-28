@@ -1,0 +1,55 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-search-autocomplete {
+  position: relative;
+}
+
+.gem-c-search-autocomplete--absolute {
+  .gem-c-search-autocomplete__result-list {
+    position: absolute;
+  }
+}
+
+.gem-c-search-autocomplete__result-list {
+  border: 1px solid $govuk-border-colour;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: govuk-colour("white");
+  list-style: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  top: 100%;
+}
+
+.gem-c-search-autocomplete__result { 
+  cursor: default;
+  padding: govuk-spacing(2) govuk-spacing(2) 0 govuk-spacing(2);
+  position: relative;
+
+  &:last-child .gem-c-search-autocomplete__result--border {
+    border-bottom: 0;
+  }
+
+  &:hover,
+  &[aria-selected="true"] {
+    background-color: govuk-colour("light-grey");
+    cursor: pointer;
+  }
+
+  &--search-icon {
+    padding-right: govuk-spacing(2);
+    vertical-align: middle;
+    color: $govuk-secondary-text-colour;
+  }
+
+  &--border {
+    height: govuk-spacing(2);
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid $govuk-border-colour;
+  }
+}
