@@ -21,10 +21,39 @@
   margin-bottom: 20px;
 }
 
-// stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
+  .govuk-footer {
+    background: none;
+    margin: 25mm 0 0;
+    padding: 5mm 0 0;
+    border-top: 2pt solid $govuk-print-text-colour;
+
+    .govuk-width-container {
+      margin: 0;
+    }
+  }
+
+  .govuk-footer__meta,
+  .govuk-footer__meta-item {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .govuk-footer__licence-description {
+    padding-right: 10mm;
+  }
+
+  .govuk-footer__copyright-logo {
+    min-width: auto;
+    padding-top: 13mm;
+    background-size: 15mm;
+    background-position: center top;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
   .gem-c-layout-footer {
-    font-size: 12pt !important;
+    font-size: 10pt !important; // stylelint-disable-line declaration-no-important
   }
 }
-// stylelint-enable declaration-no-important
