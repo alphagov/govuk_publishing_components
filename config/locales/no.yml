@@ -145,6 +145,11 @@
       selected:
     organisation_schema:
       all_content_search_description: Finn alt innhold fra %{organization}
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: Paginering

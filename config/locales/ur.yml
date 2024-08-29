@@ -142,6 +142,11 @@ ur:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} کا تمام مواد تلاش کریں"
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: صفحہ بندی

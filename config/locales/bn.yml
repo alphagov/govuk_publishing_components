@@ -146,6 +146,11 @@ bn:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-এর সকল বিষয়বস্তু খুঁজে বের করুন"
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: পেজিনেশন

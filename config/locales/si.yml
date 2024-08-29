@@ -145,6 +145,11 @@ si:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} වෙතින් සියලුම අන්තර්ගතය සෝයන්න"
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: පිටු අංකය

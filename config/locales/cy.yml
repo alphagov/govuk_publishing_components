@@ -149,6 +149,11 @@ cy:
       selected:
     organisation_schema:
       all_content_search_description: Dod o hyd i'r holl gynnwys gan %{organisation}
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: Tudalennu
