@@ -1,9 +1,12 @@
-<% navigation_aria_label ||= "Top level" %>
+<%
+  navigation_aria_label ||= "Top level"
+  navigation_id = "navigation-#{SecureRandom.hex(4)}"
+%>
 
 <% if navigation_items.any? %>
   <%= tag.nav class: "gem-c-header__nav govuk-header__navigation govuk-header__navigation--end", aria: { label: navigation_aria_label } do %>
     <button
-      aria-controls="navigation"
+      aria-controls="<%= navigation_id %>"
       aria-label="Show or hide Top Level Navigation"
       class="govuk-header__menu-button govuk-js-header-toggle gem-c-header__menu-button govuk-!-display-none-print"
       type="button"
@@ -12,7 +15,7 @@
     >
       <%= t("components.layout_header.menu") %>
     </button>
-    <ul id="navigation" class="govuk-header__navigation-list govuk-!-display-none-print">
+    <ul id="<%= navigation_id %>" class="govuk-header__navigation-list govuk-!-display-none-print">
       <% navigation_items.each_with_index do |item, index| %>
         <%
           li_classes = %w(govuk-header__navigation-item)
