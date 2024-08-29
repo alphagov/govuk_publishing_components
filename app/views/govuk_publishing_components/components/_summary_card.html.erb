@@ -1,0 +1,62 @@
+<%
+  add_gem_component_stylesheet("summary-card")
+
+  id ||= nil
+  title ||= nil
+  data_attributes ||= {}
+  summary_card_actions ||= []
+  rows ||=[]
+%>
+<% if title || rows.any? %>
+  <%= tag.div class: "gem-c-summary-card", id: id, data: data_attributes do %>
+    <%= tag.div class: "govuk-summary-card" do %>
+      <%= tag.div class: "govuk-summary-card__title-wrapper" do %>
+        <%= tag.h2 class: "govuk-summary-card__title" do %>
+          <%= title %>
+        <% end %>
+
+        <%= tag.ul class: "govuk-summary-card__actions" do %>
+          <% summary_card_actions.each do |action| %>
+            <%= tag.li class: "govuk-summary-card__action" do %>
+              <%= link_to sanitize(action[:label] + tag.span(" #{title}", class: "govuk-visually-hidden")), action[:href], class: "govuk-link govuk-link--no-visited-state #{"gem-link--destructive govuk-!-font-weight-bold" if action[:destructive]}".strip %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <% if rows.present? %>
+        <%= tag.div class: "govuk-summary-card__content" do %>
+          <%= tag.dl class: "govuk-summary-list" do %>
+            <% rows.each do |row| %>
+              <%= tag.div class: "govuk-summary-list__row" do %>
+                <%= tag.dt class: "govuk-summary-list__key" do %>
+                  <%= row[:key] %>
+                <% end %>
+
+                <%= tag.dt class: "govuk-summary-list__value" do %>
+                  <%= row[:value] %>
+                <% end %>
+
+                <% if row[:actions].present? %>
+                  <%= tag.dd class: "govuk-summary-list__actions" do %>
+                    <%= tag.ul class: "govuk-summary-list__actions-list" do %>
+                      <% row[:actions].each do |action| %>
+                        <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
+                          <% if action[:opens_in_new_tab] %>
+                            <%= link_to sanitize(action[:label] + tag.span(" #{row[:key]} (opens in new tab)", class: "govuk-visually-hidden")), action[:href], class: "govuk-link govuk-link--no-visited-state", rel: "noreferrer noopener", target: "_blank" %>
+                          <% else %>
+                            <%= link_to sanitize(action[:label] + tag.span(" #{row[:key]}", class: "govuk-visually-hidden")), action[:href], class: "govuk-link govuk-link--no-visited-state #{"gem-link--destructive" if action[:destructive]}".strip %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

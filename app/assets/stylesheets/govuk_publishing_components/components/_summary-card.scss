@@ -1,0 +1,16 @@
+@import "govuk_publishing_components/individual_component_support";
+@import "govuk/components/summary-list/summary-list";
+
+.gem-c-summary-card {
+  .govuk-summary-list__key {
+    vertical-align: top;
+  }
+
+  .govuk-summary-list__actions {
+    width: auto;
+  }
+
+  img {
+    display: block;
+  }
+}
