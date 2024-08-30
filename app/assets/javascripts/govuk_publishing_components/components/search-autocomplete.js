@@ -22,16 +22,16 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.expanded = false
       this.loading = false
 
-      this.$module.insertAdjacentHTML('beforeend', `<ul class="${this.baseClass}__result-list govuk-body"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>`)
+      this.$module.insertAdjacentHTML('beforeend', `<ul class="${this.baseClass}__result-list js-result-list govuk-body"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>`)
 
-      this.$resultList = this.$module.querySelector('ul')
+      this.$resultList = this.$module.querySelector('.js-result-list')
       this.$resultList.setAttribute('role', 'listbox')
       this.$resultList.id = `${this.baseClass}-result-list-${this.$module.getAttribute('data-id-postfix')}`
 
       this.$resultList.addEventListener('mousedown', this.handleResultMouseDown)
       this.$resultList.addEventListener('click', this.handleResultClick.bind(this))
 
-      this.$input = this.$module.querySelector('input')
+      this.$input = this.$module.querySelector('.gem-c-search__input')
       this.$input.setAttribute('role', 'combobox')
       this.$input.setAttribute('autocomplete', 'off')
       this.$input.setAttribute('aria-autocomplete', 'list')
@@ -51,7 +51,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
       this.createAssistiveHint()
 
-      this.$liveRegion = this.$module.querySelector('[role="status"]')
+      this.$liveRegion = this.$module.querySelector('.js-assistive-hint')
 
       this.value = ''
       this.searchCounter = 0
@@ -165,7 +165,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     handleResultClick (event) {
       const target = event.target
-      const result = target.closest('[data-result-index]')
+      const result = target.closest('.js-result')
       if (result) {
         this.selectedIndex = parseInt(result.dataset.resultIndex, 10)
         this.selectedResult = this.results[this.selectedIndex]
@@ -243,7 +243,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     createAssistiveHint () {
       const hintId = `${this.baseClass}-assistive-hint-${this.$module.getAttribute('data-id-postfix')}`
-      this.$module.insertAdjacentHTML('beforeend', `<span id="${hintId}" class="govuk-visually-hidden">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>`)
+      this.$module.insertAdjacentHTML('beforeend', `<span id="${hintId}" class="govuk-visually-hidden js-assistive-hint" aria-live="polite" aria-atomic="true">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>`)
       this.$input.setAttribute('aria-describedby', hintId)
     }
 
@@ -255,6 +255,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       const resultElement = document.createElement('li')
       resultElement.id = `${this.baseClass}-result-${index}`
       resultElement.classList.add(`${this.baseClass}__result`)
+      resultElement.classList.add('js-result')
       resultElement.setAttribute('data-result-index', index)
       resultElement.setAttribute('role', 'option')
       if (index === selectedIndex) {

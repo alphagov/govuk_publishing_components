@@ -20,7 +20,7 @@ describe('Search autocomplete component', function () {
   var html =
   `<div class="gem-c-search-autocomplete" data-base-class="gem-c-search-autocomplete" data-submit-form-on-select="false" data-display-number-suggestions="5" data-id-postfix="test" data-source="[&quot;prime minister&quot;,&quot;deputy prime minister&quot;,&quot;contact prime minister&quot;,&quot;email prime minister&quot;,&quot;last prime minister&quot;]">
       <label for="input-1" class="gem-c-label govuk-label">Country</label>
-      <input class="gem-c-input govuk-input" name="country" type="text">
+      <input class="gem-c-search__input" name="country" type="text">
   </div>`
 
   function startAutocomplete () {
@@ -38,7 +38,7 @@ describe('Search autocomplete component', function () {
     jasmine.clock().install()
 
     idPostfix = $autocomplete.getAttribute('data-id-postfix')
-    $input = $autocomplete.querySelector('input')
+    $input = $autocomplete.querySelector('.gem-c-search__input')
     $resultsList = $autocomplete.querySelector('.gem-c-search-autocomplete__result-list')
   })
 
@@ -104,7 +104,7 @@ describe('Search autocomplete component', function () {
   describe('user interaction', function () {
     beforeEach(async function () {
       $input.value = 'p'
-      $status = document.querySelector('[role="status"]')
+      $status = document.querySelector('.js-assistive-hint')
       await $input.focus()
     })
 
