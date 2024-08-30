@@ -68,7 +68,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     normaliseSource () {
-      if (Array.isArray(this.source.split(',').map(item => item.trim()))) {
+      if (Array.isArray(this.source.split(','))) {
         this.search = () => {
           return Promise.resolve(JSON.parse(this.source))
         }

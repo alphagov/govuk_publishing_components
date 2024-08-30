@@ -19,7 +19,7 @@ describe('Search autocomplete component', () => {
   ]
 
   const html =
-  `<div class="gem-c-search-autocomplete" data-base-class="gem-c-search-autocomplete" data-display-number-suggestions="5" data-id-postfix="test" data-source="[&quot;prime minister&quot;,&quot;deputy prime minister&quot;,&quot;contact prime minister&quot;,&quot;email prime minister&quot;,&quot;last prime minister&quot;]">
+  `<div class="gem-c-search-autocomplete" data-base-class="gem-c-search-autocomplete" data-display-number-suggestions="5" data-id-postfix="test">
       <label for="input-1" class="gem-c-label govuk-label">Country</label>
       <input class="gem-c-search__input" name="country" type="text">
   </div>`
@@ -36,6 +36,7 @@ describe('Search autocomplete component', () => {
 
     document.body.appendChild($container)
     $autocomplete = document.querySelector('.gem-c-search-autocomplete')
+    $autocomplete.dataset.source = JSON.stringify(data)
 
     instance = startAutocomplete()
     instance.init()
