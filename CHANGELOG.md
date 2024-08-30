@@ -12,6 +12,7 @@
 * Fix the search toggle in layout header ([PR #4163](https://github.com/alphagov/govuk_publishing_components/pull/4163))
 * Replace 'unset' property in printed background colours ([PR #4184](https://github.com/alphagov/govuk_publishing_components/pull/4184))
 * Improve print styles for layout-footer component ([PR #4178](https://github.com/alphagov/govuk_publishing_components/pull/4178))
+* Improve print styles for inverse-header component ([PR #4179](https://github.com/alphagov/govuk_publishing_components/pull/4179))
 
 ## 43.0.1
 
