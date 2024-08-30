@@ -195,7 +195,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       const resultsCount = this.results.length
       this.selectedIndex = (selectedIndex + resultsCount) % resultsCount
 
-      this.handleUpdate(this.results, this.selectedIndex)
+      this.handlePositionChange(this.selectedIndex)
     }
 
     submitForm () {
@@ -229,7 +229,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
             return
           }
 
-          this.handleUpdate(this.results, this.selectedIndex)
+          this.handleResultsUpdate(this.results, this.selectedIndex)
           this.showResults()
         })
       }
@@ -246,7 +246,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.results = []
       this.$input.setAttribute('aria-expanded', false)
       this.$input.setAttribute('aria-activedescendant', '')
-      this.handleUpdate(this.results, this.selectedIndex)
+      this.handleResultsUpdate(this.results, this.selectedIndex)
       this.handleHide()
     }
 
@@ -287,7 +287,18 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.updateStyle()
     }
 
-    handleUpdate (results, selectedIndex) {
+    handlePositionChange (selectedIndex) {
+      this.$input.setAttribute(
+        'aria-activedescendant',
+        selectedIndex > -1 ? `${this.baseClass}-result-${selectedIndex}` : ''
+      )
+
+      Array.from(this.$module.querySelectorAll(`.${this.baseClass}__result`)).forEach(r => r.setAttribute('aria-selected', 'false'))
+
+      this.$module.querySelector(`#${this.baseClass}-result-${selectedIndex}`).setAttribute('aria-selected', 'true')
+    }
+
+    handleResultsUpdate (results, selectedIndex) {
       if (results.length > this.numberSuggestions) {
         results = results.slice(0, this.numberSuggestions)
       }
@@ -298,11 +309,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         resultListElement.insertAdjacentHTML('beforeend', this.createResultHtml(result, this.$input.value))
         this.$resultList.insertAdjacentElement('beforeend', resultListElement)
       })
-
-      this.$input.setAttribute(
-        'aria-activedescendant',
-        selectedIndex > -1 ? `${this.baseClass}-result-${selectedIndex}` : ''
-      )
 
       this.updateStatus(results.length)
     }
