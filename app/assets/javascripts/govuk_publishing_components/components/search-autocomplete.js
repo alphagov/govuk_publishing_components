@@ -77,7 +77,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
           const results = await response.json()
           return results
         }
-      } catch(e) {
+      } catch (e) {
         this.search = () => {
           return Promise.resolve(JSON.parse(this.source))
         }
@@ -226,7 +226,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     showResults () {
       this.$input.setAttribute('aria-expanded', true)
-      this.handleShow()
+      this.expanded = true
+      this.updateStyle()
     }
 
     hideResults () {
@@ -274,11 +275,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       const searchIcon = `<span class="${this.baseClass}__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>`
       const index = result.toLowerCase().indexOf(inputVal.toLowerCase())
       return `${searchIcon}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='gem-c-search-autocomplete__result--border'></div>`
-    }
-
-    handleShow () {
-      this.expanded = true
-      this.updateStyle()
     }
 
     handleHide () {
