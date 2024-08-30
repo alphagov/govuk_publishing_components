@@ -14,6 +14,8 @@ describe "Search Autocomplete", type: :view do
 
     assert_select "input", count: 1
     assert_select "[data-display-number-suggestions='5']", count: 1
+    assert_select ".gem-c-search-autocomplete", count: 1
+    assert_select ".gem-c-search", count: 1
   end
 
   it "throws error if no suggestion source_url provided" do
