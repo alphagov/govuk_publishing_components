@@ -28,8 +28,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$resultList.setAttribute('role', 'listbox')
       this.$resultList.id = `${this.baseClass}-result-list-${this.$module.getAttribute('data-id-postfix')}`
 
-      this.$resultList.addEventListener('mousedown', this.handleResultMouseDown)
-      this.$resultList.addEventListener('click', this.handleResultClick.bind(this))
+      this.$resultList.addEventListener('mousedown', e => this.handleResultMouseDown(e))
+      this.$resultList.addEventListener('click', e => this.handleResultClick(e))
 
       this.$input = this.$module.querySelector('.gem-c-search__input')
       this.$input.setAttribute('role', 'combobox')
@@ -41,13 +41,13 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$input.setAttribute('autocapitalize', 'off')
       this.$input.setAttribute('spellcheck', 'false')
 
-      this.$input.addEventListener('input', this.handleInput.bind(this))
-      this.$input.addEventListener('keydown', this.handleInputKeyDown.bind(this))
-      this.$input.addEventListener('keyup', this.handleInputKeyUp.bind(this))
-      this.$input.addEventListener('focus', this.handleInputFocus.bind(this))
-      this.$input.addEventListener('blur', this.handleInputBlur.bind(this))
+      this.$input.addEventListener('input', e => this.handleInput(e))
+      this.$input.addEventListener('keydown', e => this.handleInputKeyDown(e))
+      this.$input.addEventListener('keyup', e => this.handleInputKeyUp(e))
+      this.$input.addEventListener('focus', e => this.handleInputFocus(e))
+      this.$input.addEventListener('blur', e => this.handleInputBlur(e))
 
-      document.body.addEventListener('click', this.handleDocumentClick.bind(this))
+      document.body.addEventListener('click', e => this.handleDocumentClick(e))
 
       this.createAssistiveHint()
 
@@ -92,6 +92,20 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     handleResultMouseDown (event) {
       event.preventDefault()
+    }
+
+    handleResultClick (event) {
+      const target = event.target
+      const result = target.closest('.js-result')
+      if (result) {
+        this.selectedIndex = parseInt(result.dataset.resultIndex, 10)
+        this.selectedResult = this.results[this.selectedIndex]
+        this.selectResult()
+      }
+
+      if (this.submitOnSelect && event.target.closest('form')) {
+        event.target.closest('form').submit()
+      }
     }
 
     handleInput (event) {
@@ -160,20 +174,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       const activeEl = event.target.getAttribute('aria-activedescendant')
       if (activeEl) {
         this.setInputValue(this.$module.getElementById(activeEl).innerText)
-      }
-    }
-
-    handleResultClick (event) {
-      const target = event.target
-      const result = target.closest('.js-result')
-      if (result) {
-        this.selectedIndex = parseInt(result.dataset.resultIndex, 10)
-        this.selectedResult = this.results[this.selectedIndex]
-        this.selectResult()
-      }
-
-      if (this.submitOnSelect && event.target.closest('form')) {
-        event.target.closest('form').submit()
       }
     }
 
