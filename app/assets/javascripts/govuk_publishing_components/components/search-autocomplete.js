@@ -24,36 +24,15 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
       this.$module.insertAdjacentHTML('beforeend', `<ul class="${this.baseClass}__result-list js-result-list govuk-body"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>`)
 
-      this.$resultList = this.$module.querySelector('.js-result-list')
-      this.$resultList.setAttribute('role', 'listbox')
-      this.$resultList.id = `${this.baseClass}-result-list-${this.$module.getAttribute('data-id-postfix')}`
-
-      this.$resultList.addEventListener('mousedown', e => this.handleResultMouseDown(e))
-      this.$resultList.addEventListener('click', e => this.handleResultClick(e))
-
-      this.$input = this.$module.querySelector('.gem-c-search__input')
-      this.$input.setAttribute('role', 'combobox')
-      this.$input.setAttribute('autocomplete', 'off')
-      this.$input.setAttribute('aria-autocomplete', 'list')
-      this.$input.setAttribute('aria-haspopup', 'listbox')
-      this.$input.setAttribute('aria-expanded', 'false')
-      this.$input.setAttribute('aria-owns', this.$resultList.id)
-      this.$input.setAttribute('autocapitalize', 'off')
-      this.$input.setAttribute('spellcheck', 'false')
-
-      this.$input.addEventListener('input', e => this.handleInput(e))
-      this.$input.addEventListener('keydown', e => this.handleInputKeyDown(e))
-      this.$input.addEventListener('keyup', e => this.handleInputKeyUp(e))
-      this.$input.addEventListener('focus', e => this.handleInputFocus(e))
-      this.$input.addEventListener('blur', e => this.handleInputBlur(e))
+      this.configureResultList()
+      this.configureInput(this.$resultList.id)
+      this.createAssistiveHint()
 
       if (this.$module.querySelector('form')) {
         this.$form = this.$module.querySelector('form')
       }
 
       document.body.addEventListener('click', e => this.handleDocumentClick(e))
-
-      this.createAssistiveHint()
 
       this.$liveRegion = this.$module.querySelector('.js-assistive-hint')
 
@@ -65,6 +44,39 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.throttled = false
 
       this.normaliseSource()
+    }
+
+    configureResultList () {
+      this.$resultList = this.$module.querySelector('.js-result-list')
+      this.$resultList.setAttribute('role', 'listbox')
+      this.$resultList.id = `${this.baseClass}-result-list-${this.$module.getAttribute('data-id-postfix')}`
+
+      this.$resultList.addEventListener('mousedown', e => this.handleResultMouseDown(e))
+      this.$resultList.addEventListener('click', e => this.handleResultClick(e))
+    }
+
+    configureInput (listElementId) {
+      this.$input = this.$module.querySelector('.gem-c-search__input')
+      this.$input.setAttribute('role', 'combobox')
+      this.$input.setAttribute('autocomplete', 'off')
+      this.$input.setAttribute('aria-autocomplete', 'list')
+      this.$input.setAttribute('aria-haspopup', 'listbox')
+      this.$input.setAttribute('aria-expanded', 'false')
+      this.$input.setAttribute('aria-owns', listElementId)
+      this.$input.setAttribute('autocapitalize', 'off')
+      this.$input.setAttribute('spellcheck', 'false')
+
+      this.$input.addEventListener('input', e => this.handleInput(e))
+      this.$input.addEventListener('keydown', e => this.handleInputKeyDown(e))
+      this.$input.addEventListener('keyup', e => this.handleInputKeyUp(e))
+      this.$input.addEventListener('focus', e => this.handleInputFocus(e))
+      this.$input.addEventListener('blur', e => this.handleInputBlur(e))
+    }
+
+    createAssistiveHint () {
+      const hintId = `${this.baseClass}-assistive-hint-${this.$module.getAttribute('data-id-postfix')}`
+      this.$module.insertAdjacentHTML('beforeend', `<span id="${hintId}" class="govuk-visually-hidden js-assistive-hint" aria-live="polite" aria-atomic="true">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>`)
+      this.$input.setAttribute('aria-describedby', hintId)
     }
 
     normaliseSource () {
@@ -93,10 +105,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.hideResults()
     }
 
-    handleInputBlur () {
-      this.hideResults()
-    }
-
     handleResultMouseDown (event) {
       event.preventDefault()
     }
@@ -111,10 +119,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       }
     }
 
-    submitForm () {
-      if (this.$form) {
-        this.$form.submit()
-      }
+    handleInputBlur () {
+      this.hideResults()
     }
 
     handleInput (event) {
@@ -193,6 +199,12 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.handleUpdate(this.results, this.selectedIndex)
     }
 
+    submitForm () {
+      if (this.$form) {
+        this.$form.submit()
+      }
+    }
+
     selectResult () {
       const selectedResult = this.results[this.selectedIndex]
       if (selectedResult) {
@@ -245,12 +257,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
       this.$resultList.style.visibility = this.expanded ? 'visible' : 'hidden'
       this.$resultList.style.pointerEvents = this.expanded ? 'auto' : 'none'
-    }
-
-    createAssistiveHint () {
-      const hintId = `${this.baseClass}-assistive-hint-${this.$module.getAttribute('data-id-postfix')}`
-      this.$module.insertAdjacentHTML('beforeend', `<span id="${hintId}" class="govuk-visually-hidden js-assistive-hint" aria-live="polite" aria-atomic="true">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>`)
-      this.$input.setAttribute('aria-describedby', hintId)
     }
 
     setInputValue (result) {
