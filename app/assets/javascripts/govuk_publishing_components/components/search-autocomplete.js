@@ -68,18 +68,21 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     normaliseSource () {
-      if (Array.isArray(this.source.split(','))) {
-        this.search = () => {
-          return Promise.resolve(JSON.parse(this.source))
-        }
-      } else {
+      try {
+        const url = new URL(this.source)
+
         this.search = async (value) => {
-          const url = new URL(this.source)
-          url.searchParams.append('q', value)
+          url.searchParams.set('q', value)
           const response = await fetch(url)
           const results = await response.json()
           return results
         }
+      } catch(e) {
+        this.search = () => {
+          return Promise.resolve(JSON.parse(this.source))
+        }
+      } finally {
+        // handle error
       }
     }
 
