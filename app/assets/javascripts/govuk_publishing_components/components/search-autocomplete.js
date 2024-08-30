@@ -193,8 +193,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     handleArrows (selectedIndex) {
       const resultsCount = this.results.length
-      this.selectedIndex =
-        ((selectedIndex % resultsCount) + resultsCount) % resultsCount
+      this.selectedIndex = (selectedIndex + resultsCount) % resultsCount
 
       this.handleUpdate(this.results, this.selectedIndex)
     }
