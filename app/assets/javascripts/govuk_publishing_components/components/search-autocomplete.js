@@ -108,7 +108,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       }
     }
 
-    submitForm() {
+    submitForm () {
       if (this.$form) {
         this.$form.submit()
       }
