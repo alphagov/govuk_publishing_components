@@ -14,6 +14,7 @@
 * Replace 'unset' property in printed background colours ([PR #4184](https://github.com/alphagov/govuk_publishing_components/pull/4184))
 * Improve print styles for layout-footer component ([PR #4178](https://github.com/alphagov/govuk_publishing_components/pull/4178))
 * Improve print styles for inverse-header component ([PR #4179](https://github.com/alphagov/govuk_publishing_components/pull/4179))
+* Add Summary Card component to Gem ([PR #4182](https://github.com/alphagov/govuk_publishing_components/pull/4182))
 
 ## 43.0.1
 
