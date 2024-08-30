@@ -11,10 +11,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     constructor ($module) {
       this.$module = $module
 
-      this.numberSuggestions = $module.getAttribute('data-display-number-suggestions') || 5
-      this.throttleDelayTime = $module.getAttribute('data-throttle-delay-time') || 0
-      this.submitOnSelect = $module.getAttribute('data-submit-on-select') || false
-      this.baseClass = 'gem-c-search-autocomplete'
+      this.numberSuggestions = $module.getAttribute('data-display-number-suggestions')
+      this.throttleDelayTime = $module.getAttribute('data-throttle-delay-time')
+      this.submitOnSelect = $module.getAttribute('data-submit-on-select')
+      this.baseClass = $module.getAttribute('data-base-class')
       this.source = $module.getAttribute('data-source')
     }
 
