@@ -47,6 +47,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$input.addEventListener('focus', e => this.handleInputFocus(e))
       this.$input.addEventListener('blur', e => this.handleInputBlur(e))
 
+      if (this.$module.querySelector('form')) {
+        this.$form = this.$module.querySelector('form')
+      }
+
       document.body.addEventListener('click', e => this.handleDocumentClick(e))
 
       this.createAssistiveHint()
@@ -102,9 +106,11 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         this.selectedResult = this.results[this.selectedIndex]
         this.selectResult()
       }
+    }
 
-      if (this.submitOnSelect && event.target.closest('form')) {
-        event.target.closest('form').submit()
+    submitForm() {
+      if (this.$form) {
+        this.$form.submit()
       }
     }
 
@@ -150,16 +156,9 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         }
         case 'enter':
         case 'space': {
-          if (keyCodes[event.keyCode] === 'space') {
-            event.preventDefault()
-          }
           this.selectedResult =
             this.results[this.selectedIndex] || this.selectedResult
           this.selectResult()
-
-          if (this.submitOnSelect && event.target.closest('form')) {
-            event.target.closest('form').submit()
-          }
           break
         }
         case 'escape': {
@@ -170,10 +169,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       }
     }
 
-    handleInputKeyUp (event) {
-      const activeEl = event.target.getAttribute('aria-activedescendant')
+    handleInputKeyUp () {
+      const activeEl = this.$input.getAttribute('aria-activedescendant')
       if (activeEl) {
-        this.setInputValue(this.$module.getElementById(activeEl).innerText)
+        this.setInputValue(this.$module.querySelector(`#${activeEl}`).innerText)
       }
     }
 
@@ -197,6 +196,9 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         this.setInputValue(selectedResult)
       }
       this.hideResults()
+      if (this.submitOnSelect) {
+        this.submitForm()
+      }
     }
 
     updateResults (value) {

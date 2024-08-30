@@ -7,7 +7,7 @@ describe('Search autocomplete component', function () {
   var $input
   var $resultsList
   var $status
-
+  var instance
   var idPostfix
   var data = [
     'prime minister',
@@ -18,22 +18,26 @@ describe('Search autocomplete component', function () {
   ]
 
   var html =
-  `<div class="gem-c-search-autocomplete" data-base-class="gem-c-search-autocomplete" data-submit-form-on-select="false" data-display-number-suggestions="5" data-id-postfix="test" data-source="[&quot;prime minister&quot;,&quot;deputy prime minister&quot;,&quot;contact prime minister&quot;,&quot;email prime minister&quot;,&quot;last prime minister&quot;]">
+  `<div class="gem-c-search-autocomplete" data-base-class="gem-c-search-autocomplete" data-display-number-suggestions="5" data-id-postfix="test" data-source="[&quot;prime minister&quot;,&quot;deputy prime minister&quot;,&quot;contact prime minister&quot;,&quot;email prime minister&quot;,&quot;last prime minister&quot;]">
       <label for="input-1" class="gem-c-label govuk-label">Country</label>
       <input class="gem-c-search__input" name="country" type="text">
   </div>`
 
   function startAutocomplete () {
-    new GOVUK.Modules.GemSearchAutocomplete($autocomplete).init()
+    return new GOVUK.Modules.GemSearchAutocomplete($autocomplete)
   }
 
   beforeEach(function () {
     $container = document.createElement('div')
-    $container.innerHTML = html
+    $form = document.createElement('form')
+    $form.innerHTML = html
+    $container.appendChild($form)
+
     document.body.appendChild($container)
     $autocomplete = document.querySelector('.gem-c-search-autocomplete')
 
-    startAutocomplete()
+    instance = startAutocomplete()
+    instance.init()
 
     jasmine.clock().install()
 
@@ -48,7 +52,7 @@ describe('Search autocomplete component', function () {
   })
 
   describe('initial component state', function () {
-    it('is an editable field that is focusable', async function () {
+    it('sets the correct aria attributes on a focusable input', async function () {
       await $input.focus()
 
       expect($input.getAttribute('role')).toBe('combobox')
@@ -66,14 +70,14 @@ describe('Search autocomplete component', function () {
       expect($input.getAttribute('spellcheck')).toBe('false')
     })
 
-    it('input element is signposted that it owns result list', async function () {
+    it('sets a signpost on input that it owns result list', async function () {
       await $input.focus()
       var testId = $resultsList.id
 
       expect($input.getAttribute('aria-owns')).toBe(testId)
     })
 
-    it('user is informed of status and instructions', async function () {
+    it('sets the status and instructions for users of assistive technology', async function () {
       await $input.focus()
       $status = document.querySelector('[role="status"]')
 
@@ -94,10 +98,6 @@ describe('Search autocomplete component', function () {
 
       // broken this should be one when throttle time is set
       expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.updateResults.calls.count()).toBe(2)
-    })
-
-    it('form behaviour', function () {
-      // to be implemented
     })
   })
 
@@ -132,6 +132,9 @@ describe('Search autocomplete component', function () {
     })
 
     describe('keyboard behaviour', function () {
+      beforeEach(function () {
+        spyOn(window.GOVUK.Modules.GemSearchAutocomplete.prototype, 'submitForm')
+      })
       it('user can navigate the available matches using keyboard', function () {
         $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
         expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-search-autocomplete-result-0')
@@ -150,6 +153,21 @@ describe('Search autocomplete component', function () {
         expect($input.value).toBe(data[0])
         expect(document.activeElement).toEqual($input)
         expect($input.getAttribute('aria-expanded')).toBe('false')
+
+        expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.submitForm.calls.count()).toBe(0)
+      })
+
+      it('enter key closes the menu, sets the query, focuses the input and submits form', () => {
+        instance.submitOnSelect = true
+
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13 }))
+
+        expect($input.value).toBe(data[0])
+        expect(document.activeElement).toEqual($input)
+        expect($input.getAttribute('aria-expanded')).toBe('false')
+
+        expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.submitForm.calls.count()).toBe(1)
       })
 
       it('esc key closes the menu, focuses the input', () => {
@@ -158,6 +176,8 @@ describe('Search autocomplete component', function () {
 
         expect(document.activeElement).toEqual($input)
         expect($input.getAttribute('aria-expanded')).toBe('false')
+
+        expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.submitForm.calls.count()).toBe(0)
       })
     })
 
