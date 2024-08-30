@@ -59,7 +59,7 @@ describe('Search autocomplete component', function () {
       expect($input.getAttribute('aria-expanded')).toBe('false')
     })
 
-    it('correct input attributes are set', async function () {
+    it('sets the correct input attributes', async function () {
       await $input.focus()
 
       expect($input.getAttribute('autocapitalize')).toBe('off')
@@ -99,76 +99,76 @@ describe('Search autocomplete component', function () {
     it('form behaviour', function () {
       // to be implemented
     })
+  })
 
-    describe('user interaction', function () {
-      beforeEach(async function () {
-        $input.value = 'p'
-        $status = document.querySelector('[role="status"]')
-        await $input.focus()
+  describe('user interaction', function () {
+    beforeEach(async function () {
+      $input.value = 'p'
+      $status = document.querySelector('[role="status"]')
+      await $input.focus()
+    })
+
+    describe('general behaviour', function () {
+      it('inform the user that content has been expanded', function () {
+        expect($autocomplete.getAttribute('data-expanded')).toBe('true')
+        expect($input.getAttribute('aria-expanded')).toBe('true')
+        expect($resultsList.getAttribute('role')).toBe('listbox')
+        expect($status.getAttribute('aria-atomic')).toBe('true')
+        expect($status.getAttribute('aria-live')).toBe('polite')
       })
 
-      describe('general behaviour', function () {
-        it('inform the user that content has been expanded', function () {
-          expect($autocomplete.getAttribute('data-expanded')).toBe('true')
-          expect($input.getAttribute('aria-expanded')).toBe('true')
-          expect($resultsList.getAttribute('role')).toBe('listbox')
-          expect($status.getAttribute('aria-atomic')).toBe('true')
-          expect($status.getAttribute('aria-live')).toBe('polite')
-        })
-
-        it('inform the user when there are matches', function () {
-          expect($resultsList.querySelectorAll('li').length).toBe(5)
-          expect($status.innerHTML).toBe('5 results available.')
-        })
-
-        it('allows user to select a suggestion and returns focus to input', function () {
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13 }))
-
-          expect($input.value).toBe(data[0])
-          expect(document.activeElement).toEqual($input)
-        })
+      it('inform the user when there are matches', function () {
+        expect($resultsList.querySelectorAll('li').length).toBe(5)
+        expect($status.innerHTML).toBe('5 results available.')
       })
 
-      describe('keyboard behaviour', function () {
-        it('user can navigate the available matches using keyboard', function () {
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-search-autocomplete-result-0')
+      it('allows user to select a suggestion and returns focus to input', function () {
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', keyCode: 13 }))
 
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', keyCode: 38 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-search-autocomplete-result-4')
+        expect($input.value).toBe(data[0])
+        expect(document.activeElement).toEqual($input)
+      })
+    })
 
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-search-autocomplete-result-0')
-        })
+    describe('keyboard behaviour', function () {
+      it('user can navigate the available matches using keyboard', function () {
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
+        expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-search-autocomplete-result-0')
 
-        it('space key closes the menu, sets the query, focuses the input', () => {
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Space', keyCode: 32 }))
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', keyCode: 38 }))
+        expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-search-autocomplete-result-4')
 
-          expect($input.value).toBe(data[0])
-          expect(document.activeElement).toEqual($input)
-          expect($input.getAttribute('aria-expanded')).toBe('false')
-        })
-
-        it('esc key closes the menu, focuses the input', () => {
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
-          $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc', keyCode: 27 }))
-
-          expect(document.activeElement).toEqual($input)
-          expect($input.getAttribute('aria-expanded')).toBe('false')
-        })
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
+        expect($input.getAttribute('aria-activedescendant')).toBe('gem-c-search-autocomplete-result-0')
       })
 
-      describe('mouse behaviour', function () {
-        it('user can select suggestion with mouse', async function () {
-          var $option1 = document.querySelector('.gem-c-search-autocomplete ul li:nth-child(1)')
-          $option1.click()
+      it('space key closes the menu, sets the query, focuses the input', () => {
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Space', keyCode: 32 }))
 
-          expect($input.value).toBe(data[0])
-          expect(document.activeElement).toEqual($input)
-          expect($input.getAttribute('aria-expanded')).toBe('false')
-        })
+        expect($input.value).toBe(data[0])
+        expect(document.activeElement).toEqual($input)
+        expect($input.getAttribute('aria-expanded')).toBe('false')
+      })
+
+      it('esc key closes the menu, focuses the input', () => {
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
+        $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Esc', keyCode: 27 }))
+
+        expect(document.activeElement).toEqual($input)
+        expect($input.getAttribute('aria-expanded')).toBe('false')
+      })
+    })
+
+    describe('mouse behaviour', function () {
+      it('user can select suggestion with mouse', async function () {
+        var $option1 = document.querySelector('.gem-c-search-autocomplete ul li:nth-child(1)')
+        $option1.click()
+
+        expect($input.value).toBe(data[0])
+        expect(document.activeElement).toEqual($input)
+        expect($input.getAttribute('aria-expanded')).toBe('false')
       })
     })
   })

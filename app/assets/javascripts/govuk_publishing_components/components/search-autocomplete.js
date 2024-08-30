@@ -14,18 +14,15 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.numberSuggestions = $module.getAttribute('data-display-number-suggestions') || 5
       this.throttleDelayTime = $module.getAttribute('data-throttle-delay-time') || 0
       this.submitOnSelect = $module.getAttribute('data-submit-on-select') || false
-      this.baseClass = $module.getAttribute('data-base-class') || 'gem-c-search-autocomplete'
+      this.baseClass = 'gem-c-search-autocomplete'
       this.source = $module.getAttribute('data-source')
     }
 
     init () {
-      this.onUpdate = this.handleUpdate
-      this.onSubmit = () => { }
-
       this.expanded = false
       this.loading = false
 
-      this.$module.insertAdjacentHTML('beforeend', '<ul class="gem-c-search-autocomplete__result-list govuk-body" role="listbox"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>')
+      this.$module.insertAdjacentHTML('beforeend', `<ul class="${this.baseClass}__result-list govuk-body"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>`)
 
       this.$resultList = this.$module.querySelector('ul')
       this.$resultList.setAttribute('role', 'listbox')
@@ -45,10 +42,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$input.setAttribute('spellcheck', 'false')
 
       this.$input.addEventListener('input', this.handleInput.bind(this))
-      this.$input.addEventListener('keydown', this.handleKeyDown.bind(this))
-      this.$input.addEventListener('keyup', this.handleKeyUp.bind(this))
-      this.$input.addEventListener('focus', this.handleFocus.bind(this))
-      this.$input.addEventListener('blur', this.handleBlur.bind(this))
+      this.$input.addEventListener('keydown', this.handleInputKeyDown.bind(this))
+      this.$input.addEventListener('keyup', this.handleInputKeyUp.bind(this))
+      this.$input.addEventListener('focus', this.handleInputFocus.bind(this))
+      this.$input.addEventListener('blur', this.handleInputBlur.bind(this))
 
       document.body.addEventListener('click', this.handleDocumentClick.bind(this))
 
@@ -89,7 +86,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.hideResults()
     }
 
-    handleBlur () {
+    handleInputBlur () {
       this.hideResults()
     }
 
@@ -114,7 +111,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       }
     }
 
-    handleKeyDown (event) {
+    handleInputKeyDown (event) {
       const keyCodes = {
         9: 'tab',
         13: 'enter',
@@ -128,7 +125,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         case 'up':
         case 'down': {
           const selectedIndex =
-            event.keyCode === 38 ? this.selectedIndex - 1 : this.selectedIndex + 1
+            keyCodes[event.keyCode] === 'up' ? this.selectedIndex - 1 : this.selectedIndex + 1
           event.preventDefault()
           this.handleArrows(selectedIndex)
           break
@@ -139,7 +136,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         }
         case 'enter':
         case 'space': {
-          if (event.keyCode === 32) {
+          if (keyCodes[event.keyCode] === 'space') {
             event.preventDefault()
           }
           this.selectedResult =
@@ -153,16 +150,16 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         }
         case 'escape': {
           this.hideResults()
-          this.setInputValue()
+          this.setInputValue('')
           break
         }
       }
     }
 
-    handleKeyUp (event) {
+    handleInputKeyUp (event) {
       const activeEl = event.target.getAttribute('aria-activedescendant')
       if (activeEl) {
-        event.target.value = document.getElementById(activeEl).innerText
+        this.setInputValue(this.$module.getElementById(activeEl).innerText)
       }
     }
 
@@ -171,9 +168,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       const result = target.closest('[data-result-index]')
       if (result) {
         this.selectedIndex = parseInt(result.dataset.resultIndex, 10)
-        const selectedResult = this.results[this.selectedIndex]
+        this.selectedResult = this.results[this.selectedIndex]
         this.selectResult()
-        this.onSubmit(selectedResult)
       }
 
       if (this.submitOnSelect && event.target.closest('form')) {
@@ -181,7 +177,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       }
     }
 
-    handleFocus (event) {
+    handleInputFocus (event) {
       const value = event.target.value
       this.updateResults(value)
       this.value = value
@@ -217,7 +213,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
             return
           }
 
-          this.selectedIndex = this.autoSelect ? 0 : -1
           this.handleUpdate(this.results, this.selectedIndex)
           this.showResults()
         })
@@ -225,15 +220,15 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     showResults () {
-      this.setInputAttribute('aria-expanded', true)
+      this.$input.setAttribute('aria-expanded', true)
       this.handleShow()
     }
 
     hideResults () {
       this.selectedIndex = -1
       this.results = []
-      this.setInputAttribute('aria-expanded', false)
-      this.setInputAttribute('aria-activedescendant', '')
+      this.$input.setAttribute('aria-expanded', false)
+      this.$input.setAttribute('aria-activedescendant', '')
       this.handleUpdate(this.results, this.selectedIndex)
       this.handleHide()
     }
@@ -249,11 +244,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     createAssistiveHint () {
       const hintId = `${this.baseClass}-assistive-hint-${this.$module.getAttribute('data-id-postfix')}`
       this.$module.insertAdjacentHTML('beforeend', `<span id="${hintId}" class="govuk-visually-hidden">When autocomplete results are available use up and down arrows to review and enter to select. Touch device users, explore by touch or with swipe gestures.</span>`)
-      this.$input.setAttribute('aria-describedby', `${hintId}`)
-    }
-
-    setInputAttribute (attribute, value) {
-      this.$input.setAttribute(attribute, value)
+      this.$input.setAttribute('aria-describedby', hintId)
     }
 
     setInputValue (result) {
@@ -274,7 +265,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     createResultHtml (result, inputVal) {
-      const searchIcon = '<span class="gem-c-search-autocomplete__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>'
+      const searchIcon = `<span class="${this.baseClass}__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>`
       const index = result.toLowerCase().indexOf(inputVal.toLowerCase())
       return `${searchIcon}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='gem-c-search-autocomplete__result--border'></div>`
     }
@@ -310,7 +301,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     updateStatus (resultCount) {
-      this.$liveRegion.innerHTML = resultCount === 0 ? 'No results.' : `${resultCount} results available.`
+      this.$liveRegion.textContent = resultCount === 0 ? 'No results.' : `${resultCount} results available.`
     }
   }
 
