@@ -12,7 +12,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$module = $module
 
       this.numberSuggestions = $module.getAttribute('data-display-number-suggestions')
-      this.throttleDelayTime = $module.getAttribute('data-throttle-delay-time')
       this.submitOnSelect = $module.getAttribute('data-submit-on-select')
       this.baseClass = $module.getAttribute('data-base-class')
       this.source = $module.getAttribute('data-source')
@@ -150,11 +149,11 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
       this.updateResults()
 
-      if (this.throttleDelayTime) {
+      if (this.$module.getAttribute('data-throttle-delay-time')) {
         this.throttled = true
         this.keypressTimeout = setTimeout(() => {
           this.throttled = false
-        }, parseInt(this.throttleDelayTime))
+        }, parseInt(this.$module.getAttribute('data-throttle-delay-time')))
       }
     }
 

@@ -41,8 +41,9 @@ examples:
   other_configuration_options:
     description: |
       Options that cannot be demoed in the context of the example below.
-        * **submit_form_on_select** (default false) Submits the surrounding form when a suggestion is selected.
-        * **throttle_delay_time** (default 0) Interval time (milliseconds) to delay requests for data (sometimes refered to as debounce).
+
+        * ** submit_form_on_select** (default false) Submits the surrounding form when a suggestion is selected.
+        * ** throttle_delay_time** (default 0) Interval time (milliseconds) to delay requests for data (sometimes refered to as debounce).
     data:
       source: ['prime minister','deputy prime minister','contact prime minister','email prime minister','last prime minister']
       submit_form_on_select: true

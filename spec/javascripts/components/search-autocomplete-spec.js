@@ -44,6 +44,7 @@ describe('Search autocomplete component', () => {
     instance.init()
 
     jasmine.Ajax.install()
+    jasmine.clock().install()
 
     idPostfix = $autocomplete.getAttribute('data-id-postfix')
     $input = $autocomplete.querySelector('.gem-c-search__input')
@@ -52,6 +53,7 @@ describe('Search autocomplete component', () => {
 
   afterEach(() => {
     jasmine.Ajax.uninstall()
+    jasmine.clock().uninstall()
     document.body.removeChild($container)
   })
 
@@ -92,17 +94,29 @@ describe('Search autocomplete component', () => {
       expect(document.querySelectorAll(`#gem-c-search-autocomplete-assistive-hint-${idPostfix}`).length).toBe(1)
     })
 
-    // ignore this test ftm
-    it('throttle delay time', async () => {
-      // spyOn(window.GOVUK.Modules.GemSearchAutocomplete.prototype, 'updateResults').and.callThrough()
+    it('set throttle delay time should delay new data updates but not disable user input', async () => {
+      $autocomplete.setAttribute('data-throttle-delay-time', 1000)
+      spyOn(instance, 'updateResults').and.callThrough()
 
-      // $input.value = 'r'
-      // await $input.focus()
-      // await $input.blur()
-      // await $input.focus()
+      $input.focus()
+      $input.value = 'p'
+      await $input.dispatchEvent(new Event('change'))
 
-      // // broken this should be one when throttle time is set
-      // expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.updateResults.calls.count()).toBe(2)
+      $input.value = 'pr'
+      await $input.dispatchEvent(new Event('change'))
+      expect($input.value).toBe('pr')
+
+      jasmine.clock().tick(1000)
+
+      $input.value = 'pri'
+      await $input.dispatchEvent(new Event('change'))
+
+      await jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        responseText: JSON.stringify(data)
+      })
+
+      expect(instance.updateResults.calls.count()).toBe(2)
     })
 
     it('sets the result text with match highlighted', async () => {
@@ -189,7 +203,7 @@ describe('Search autocomplete component', () => {
 
     describe('keyboard behaviour', () => {
       beforeEach(() => {
-        spyOn(window.GOVUK.Modules.GemSearchAutocomplete.prototype, 'submitForm')
+        spyOn(instance, 'submitForm')
       })
       it('user can navigate the available matches using keyboard', () => {
         $input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', keyCode: 40 }))
@@ -210,7 +224,7 @@ describe('Search autocomplete component', () => {
         expect(document.activeElement).toEqual($input)
         expect($input.getAttribute('aria-expanded')).toBe('false')
 
-        expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.submitForm.calls.count()).toBe(0)
+        expect(instance.submitForm.calls.count()).toBe(0)
       })
 
       it('enter key closes the menu, sets the query, focuses the input and submits form', () => {
@@ -223,7 +237,7 @@ describe('Search autocomplete component', () => {
         expect(document.activeElement).toEqual($input)
         expect($input.getAttribute('aria-expanded')).toBe('false')
 
-        expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.submitForm.calls.count()).toBe(1)
+        expect(instance.submitForm.calls.count()).toBe(1)
       })
 
       it('esc key closes the menu, focuses the input', () => {
@@ -233,7 +247,7 @@ describe('Search autocomplete component', () => {
         expect(document.activeElement).toEqual($input)
         expect($input.getAttribute('aria-expanded')).toBe('false')
 
-        expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.submitForm.calls.count()).toBe(0)
+        expect(instance.submitForm.calls.count()).toBe(0)
       })
     })
 
