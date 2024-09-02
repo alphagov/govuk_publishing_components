@@ -31,6 +31,8 @@
 @include govuk-media-query($media-type: print) {
   .gem-c-inverse-header {
     background: none;
+    padding-left: 0;
+    padding-right: 0;
     border-bottom: 2pt solid $govuk-print-text-colour;
 
     &,
