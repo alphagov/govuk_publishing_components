@@ -48,7 +48,7 @@
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-step-nav-related {
-    background: unset;
+    background: none;
     border-color: $govuk-print-text-colour;
   }
 
