@@ -32,7 +32,7 @@
   .gem-c-phase-banner {
     &,
     & * {
-      background-color: unset !important;
+      background: none !important;
       color: $govuk-print-text-colour !important;
     }
 

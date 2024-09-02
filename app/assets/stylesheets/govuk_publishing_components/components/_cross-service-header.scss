@@ -443,7 +443,7 @@ $govuk-header-link-underline-thickness: 3px;
   }
 
   .gem-c-one-login-header {
-    background-color: initial;
+    background: none;
     border-bottom: 2pt solid $govuk-print-text-colour;
 
     * {
@@ -456,6 +456,8 @@ $govuk-header-link-underline-thickness: 3px;
   }
 
   .gem-c-service-header {
+    background: none;
+
     .govuk-width-container {
       margin: 0;
     }

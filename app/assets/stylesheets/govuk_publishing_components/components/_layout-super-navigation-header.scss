@@ -989,7 +989,7 @@ $after-button-padding-left: govuk-spacing(4);
     border-top: 0;
     border-bottom: 2pt solid $govuk-print-text-colour;
     margin: 0 0 5mm;
-    background-color: transparent;
+    background: none;
 
     &:has(.gem-c-layout-super-navigation-header__header-logo .govuk-visually-hidden) {
       border: 0;

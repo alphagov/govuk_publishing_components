@@ -32,7 +32,7 @@
 
       &,
       & * {
-        background-color: unset;
+        background: none;
         color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
       }
 

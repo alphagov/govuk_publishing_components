@@ -9,7 +9,7 @@
 @include govuk-media-query($media-type: print) {
   .gem-c-success-alert {
     break-inside: avoid;
-    background-color: initial;
+    background: none;
     border-color: $govuk-print-text-colour;
 
     * {

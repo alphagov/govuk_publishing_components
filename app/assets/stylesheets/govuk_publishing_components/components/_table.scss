@@ -133,7 +133,7 @@ $table-row-even-background-colour: govuk-colour("light-grey");
 
     * {
       color: $govuk-print-text-colour !important;
-      background-color: initial !important;
+      background: none !important;
     }
 
     .govuk-table__header,

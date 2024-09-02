@@ -44,15 +44,13 @@ $highlight-answer-color: govuk-colour("white");
       }
     }
 
-    // stylelint-disable declaration-no-important
     @include govuk-media-query($media-type: print) {
-      background-color: unset;
+      background: none;
 
       &,
       & * {
-        color: $govuk-print-text-colour !important;
+        color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
       }
     }
-    // stylelint-enable declaration-no-important
   }
 }

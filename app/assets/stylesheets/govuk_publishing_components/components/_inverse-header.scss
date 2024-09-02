@@ -30,7 +30,7 @@
 
 @include govuk-media-query($media-type: print) {
   .gem-c-inverse-header {
-    background-color: unset;
+    background: none;
     border-bottom: 2pt solid $govuk-print-text-colour;
 
     &,

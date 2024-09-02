@@ -183,7 +183,7 @@
     .gem-c-header__product-name,
     .gem-c-environment-tag {
       color: $govuk-print-text-colour;
-      background-color: unset;
+      background: none;
     }
   }
 }
