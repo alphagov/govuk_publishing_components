@@ -1,4 +1,4 @@
-/* global fetch */
+/* global XMLHttpRequest */
 
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
@@ -84,11 +84,28 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       try {
         const url = new URL(this.source)
 
-        this.search = async (value) => {
-          url.searchParams.set('q', value)
-          const response = await fetch(url)
-          const results = await response.json()
-          return results
+        this.search = (value) => {
+          return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest()
+            url.searchParams.set('q', value)
+
+            const done = function () {
+              if (xhr.status === 200) {
+                try {
+                  const results = JSON.parse(xhr.responseText)
+                  resolve(results)
+                } catch (error) {
+                  reject(new Error('Failed to parse JSON response x'))
+                }
+              } else {
+                // handle error
+              }
+            }
+
+            xhr.addEventListener('loadend', done)
+            xhr.open('GET', url, true)
+            xhr.send()
+          })
         }
       } catch (e) {
         this.search = () => {
@@ -187,8 +204,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     handleInputFocus (event) {
-      this.value = event.target.value
-      this.updateResults()
+      if (event.target.value.length) {
+        this.value = event.target.value
+        this.updateResults()
+      }
     }
 
     handleArrows (selectedIndex) {
