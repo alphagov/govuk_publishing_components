@@ -1,5 +1,5 @@
 /* eslint-env jasmine */
-/* global GOVUK, KeyboardEvent */
+/* global GOVUK, KeyboardEvent, Event */
 
 describe('Search autocomplete component', () => {
   let $autocomplete
@@ -22,6 +22,9 @@ describe('Search autocomplete component', () => {
   `<div class="gem-c-search-autocomplete" data-base-class="gem-c-search-autocomplete" data-display-number-suggestions="5" data-id-postfix="test">
       <label for="input-1" class="gem-c-label govuk-label">Country</label>
       <input class="gem-c-search__input" name="country" type="text">
+      <div class="gem-c-search__item gem-c-search__submit-wrapper">
+        <button class="gem-c-search__submit" type="submit" enterkeyhint="search">Search</button>
+      </div>
   </div>`
 
   const startAutocomplete = () => {
@@ -100,6 +103,26 @@ describe('Search autocomplete component', () => {
 
       // broken this should be one when throttle time is set
       expect(window.GOVUK.Modules.GemSearchAutocomplete.prototype.updateResults.calls.count()).toBe(2)
+    })
+
+    it('sets the result text with match highlighted', async () => {
+      $input.focus()
+      $input.value = 'prime m'
+
+      await $input.dispatchEvent(new Event('change'))
+      expect(document.querySelector('.gem-c-search-autocomplete ul li:nth-child(1) .js-result-match').innerText).toBe('prime m')
+      expect(document.querySelector('.gem-c-search-autocomplete ul li:nth-child(2) .js-result-match').innerText).toBe('prime m')
+      expect(document.querySelector('.gem-c-search-autocomplete ul li:nth-child(3) .js-result-match').innerText).toBe('prime m')
+      expect(document.querySelector('.gem-c-search-autocomplete ul li:nth-child(4) .js-result-match').innerText).toBe('prime m')
+      expect(document.querySelector('.gem-c-search-autocomplete ul li:nth-child(5) .js-result-match').innerText).toBe('prime m')
+    })
+
+    it('sets the result text with no highlight when no match', async () => {
+      $input.focus()
+      $input.value = 'prit'
+
+      await $input.dispatchEvent(new Event('change'))
+      expect(document.querySelector('.gem-c-search-autocomplete ul li:nth-child(1) .js-result-match')).toBeFalsy()
     })
   })
 

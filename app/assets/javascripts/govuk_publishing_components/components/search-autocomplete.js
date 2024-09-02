@@ -67,6 +67,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$input.setAttribute('spellcheck', 'false')
 
       this.$input.addEventListener('input', e => this.handleInput(e))
+      this.$input.addEventListener('change', e => this.handleInput(e))
       this.$input.addEventListener('keydown', e => this.handleInputKeyDown(e))
       this.$input.addEventListener('keyup', e => this.handleInputKeyUp(e))
       this.$input.addEventListener('focus', e => this.handleInputFocus(e))
@@ -124,13 +125,13 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     handleInput (event) {
+      this.value = event.target.value
+
       if (this.throttled) {
         return
       }
 
-      const value = event.target.value
-      this.updateResults(value)
-      this.value = value
+      this.updateResults()
 
       if (this.throttleDelayTime) {
         this.throttled = true
@@ -186,9 +187,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     handleInputFocus (event) {
-      const value = event.target.value
-      this.updateResults(value)
-      this.value = value
+      this.value = event.target.value
+      this.updateResults()
     }
 
     handleArrows (selectedIndex) {
@@ -215,10 +215,10 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       }
     }
 
-    updateResults (value) {
-      if (value && value.length) {
+    updateResults () {
+      if (this.value && this.value.length) {
         const currentSearch = ++this.searchCounter
-        this.search(value).then((results) => {
+        this.search(this.value).then((results) => {
           if (currentSearch !== this.searchCounter) {
             return
           }
@@ -232,6 +232,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
           this.handleResultsUpdate(this.results, this.selectedIndex)
           this.showResults()
         })
+      } else {
+        this.hideResults()
       }
     }
 
@@ -247,7 +249,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$input.setAttribute('aria-expanded', false)
       this.$input.setAttribute('aria-activedescendant', '')
       this.handleResultsUpdate(this.results, this.selectedIndex)
-      this.handleHide()
+      this.expanded = false
+      this.updateStyle()
     }
 
     updateStyle () {
@@ -276,15 +279,21 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       return resultElement
     }
 
-    createResultHtml (result, inputVal) {
+    createResultElementContent (resultListElement, result, inputVal) {
       const searchIcon = `<span class="${this.baseClass}__result--search-icon"><svg width="20" height="20" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3" /><line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3" /></svg></span>`
-      const index = result.toLowerCase().indexOf(inputVal.toLowerCase())
-      return `${searchIcon}<span class='govuk-!-font-weight-bold'>${result.substring(0, index)}</span>${result.substring(index, index + inputVal.length)}<span class='govuk-!-font-weight-bold'>${result.substring(index + inputVal.length, result.length)}<span><div class='gem-c-search-autocomplete__result--border'></div>`
-    }
+      resultListElement.insertAdjacentHTML('afterbegin', searchIcon)
 
-    handleHide () {
-      this.expanded = false
-      this.updateStyle()
+      const regex = new RegExp(`(${inputVal})`, 'gi')
+      const matchHTML = result.replace(regex, '<span class="govuk-!-font-weight-regular js-result-match">$1</span>')
+
+      const section = document.createElement('span')
+      section.classList.add('govuk-!-font-weight-bold')
+      section.innerHTML = matchHTML
+
+      resultListElement.insertAdjacentElement('beforeend', section)
+      resultListElement.insertAdjacentHTML('beforeend', '<div class="gem-c-search-autocomplete__result--border"></div>')
+
+      return resultListElement
     }
 
     handlePositionChange (selectedIndex) {
@@ -306,8 +315,8 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$resultList.innerHTML = ''
       results.forEach((result, index) => {
         const resultListElement = this.createResultElement(index, selectedIndex)
-        resultListElement.insertAdjacentHTML('beforeend', this.createResultHtml(result, this.$input.value))
-        this.$resultList.insertAdjacentElement('beforeend', resultListElement)
+
+        this.$resultList.insertAdjacentElement('beforeend', this.createResultElementContent(resultListElement, result, this.$input.value))
       })
 
       this.updateStatus(results.length)
