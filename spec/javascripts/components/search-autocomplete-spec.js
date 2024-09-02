@@ -57,8 +57,8 @@ describe('Search autocomplete component', () => {
   })
 
   describe('initial component state', () => {
-    it('sets the correct aria attributes on a focusable input', async () => {
-      await $input.focus()
+    it('sets the correct aria attributes on a focusable input', () => {
+      $input.focus()
 
       expect($input.getAttribute('role')).toBe('combobox')
       expect(document.activeElement).toEqual($input)
@@ -68,22 +68,22 @@ describe('Search autocomplete component', () => {
       expect($input.getAttribute('aria-expanded')).toBe('false')
     })
 
-    it('sets the correct input attributes', async () => {
-      await $input.focus()
+    it('sets the correct input attributes', () => {
+      $input.focus()
 
       expect($input.getAttribute('autocapitalize')).toBe('off')
       expect($input.getAttribute('spellcheck')).toBe('false')
     })
 
-    it('sets a signpost on input that it owns result list', async () => {
-      await $input.focus()
+    it('sets a signpost on input that it owns result list', () => {
+      $input.focus()
       const testId = $resultsList.id
 
       expect($input.getAttribute('aria-owns')).toBe(testId)
     })
 
-    it('sets the status and instructions for users of assistive technology', async () => {
-      await $input.focus()
+    it('sets the status and instructions for users of assistive technology', () => {
+      $input.focus()
       $status = document.querySelector('[role="status"]')
 
       expect($input.getAttribute('aria-expanded')).toBe('false')
@@ -93,6 +93,7 @@ describe('Search autocomplete component', () => {
       expect(document.querySelectorAll(`#gem-c-search-autocomplete-assistive-hint-${idPostfix}`).length).toBe(1)
     })
 
+    // ignore this test ftm
     it('throttle delay time', async () => {
       spyOn(window.GOVUK.Modules.GemSearchAutocomplete.prototype, 'updateResults').and.callThrough()
 
@@ -128,9 +129,10 @@ describe('Search autocomplete component', () => {
 
   describe('user interaction', () => {
     beforeEach(async () => {
+      $input.focus()
       $input.value = 'p'
+      await $input.dispatchEvent(new Event('change'))
       $status = document.querySelector('.js-assistive-hint')
-      await $input.focus()
     })
 
     describe('general behaviour', () => {
@@ -207,7 +209,7 @@ describe('Search autocomplete component', () => {
     })
 
     describe('mouse behaviour', () => {
-      it('user can select suggestion with mouse', async () => {
+      it('user can select suggestion with mouse', () => {
         const $option1 = document.querySelector('.gem-c-search-autocomplete ul li:nth-child(1)')
         $option1.click()
 
