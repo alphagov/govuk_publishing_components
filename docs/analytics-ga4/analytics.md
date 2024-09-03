@@ -24,7 +24,16 @@ For more information about different kinds of tracking, read our [overview of tr
 
 ## Code structure
 
-It is important that no analytics code runs until cookie consent is given. Code to be initialised as part of cookie consent should be attached to the `window.GOVUK.analyticsGa4.analyticsModules` object and include an `init` function, using the structure shown below.
+We have two ways of running analytics code:
+
+- as modules attached to elements on the page e.g. the [GA4 auto tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/ga4-auto-tracker.js) `<div data-module="ga4-auto-tracker">`
+- as code that runs on page load regardless of page content e.g. the [GA4 copy tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/ga4-copy-tracker.js)
+
+For modules, our existing guidance on writing [GOV.UK JavaScript modules](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md) should be followed.
+
+For analytics code that runs on page load, the following approach should be used. Code should be attached to the `window.GOVUK.analyticsGa4.analyticsModules` object and include an `init` function, using the structure shown below.
+
+When cookie consent is given, `init-ga4.js` looks through the `analyticsModules` object for anything with an `init` function, and executes them if found. This means that analytics code will not be executed unless consent is given, and gives a standard way to add more analytics code without additional initialisation.
 
 ```JavaScript
 window.GOVUK = window.GOVUK || {}
@@ -43,12 +52,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
   analyticsModules.ExampleCode = ExampleCode
 })(window.GOVUK.analyticsGa4.analyticsModules)
 ```
-
-When cookie consent is given, `init-ga4.js` looks through the `analyticsModules` object for anything with an `init` function, and executes them if found. This means that analytics code will not be executed unless consent is given, and gives a standard way to add more analytics code without additional initialisation.
-
-### Code structure for Modules
-
-Where analytics code is required as a [GOV.UK JavaScript Module](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md), the code structure for the [existing model for deferred loading](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md#modules-and-cookie-consent) should be used.
 
 ### Core code
 
