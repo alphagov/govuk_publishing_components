@@ -110,8 +110,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
         this.search = () => {
           return Promise.resolve(JSON.parse(this.source))
         }
-      } finally {
-        // handle error
       }
     }
 
@@ -213,7 +211,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       const resultsCount = this.results.length
       this.selectedIndex = (selectedIndex + resultsCount) % resultsCount
 
-      this.handlePositionChange(this.selectedIndex)
+      this.handlePositionChange()
     }
 
     submitForm () {
@@ -247,7 +245,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
             return
           }
 
-          this.handleResultsUpdate(this.results, this.selectedIndex)
+          this.handleResultsUpdate()
           this.showResults()
         })
       } else {
@@ -266,7 +264,7 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.results = []
       this.$input.setAttribute('aria-expanded', false)
       this.$input.setAttribute('aria-activedescendant', '')
-      this.handleResultsUpdate(this.results, this.selectedIndex)
+      this.handleResultsUpdate()
       this.expanded = false
       this.updateStyle()
     }
@@ -283,14 +281,14 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       this.$input.value = result
     }
 
-    createResultElement (index, selectedIndex) {
+    createResultElement (index) {
       const resultElement = document.createElement('li')
       resultElement.id = `${this.baseClass}-result-${index}`
       resultElement.classList.add(`${this.baseClass}__result`)
       resultElement.classList.add('js-result')
       resultElement.setAttribute('data-result-index', index)
       resultElement.setAttribute('role', 'option')
-      if (index === selectedIndex) {
+      if (index === this.selectedIndex) {
         resultElement.setAttribute('aria-selected', 'true')
       }
 
@@ -314,30 +312,30 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
       return resultListElement
     }
 
-    handlePositionChange (selectedIndex) {
+    handlePositionChange () {
       this.$input.setAttribute(
         'aria-activedescendant',
-        selectedIndex > -1 ? `${this.baseClass}-result-${selectedIndex}` : ''
+        this.selectedIndex > -1 ? `${this.baseClass}-result-${this.selectedIndex}` : ''
       )
 
       Array.from(this.$module.querySelectorAll(`.${this.baseClass}__result`)).forEach(r => r.setAttribute('aria-selected', 'false'))
 
-      this.$module.querySelector(`#${this.baseClass}-result-${selectedIndex}`).setAttribute('aria-selected', 'true')
+      this.$module.querySelector(`#${this.baseClass}-result-${this.selectedIndex}`).setAttribute('aria-selected', 'true')
     }
 
-    handleResultsUpdate (results, selectedIndex) {
-      if (results.length > this.numberSuggestions) {
-        results = results.slice(0, this.numberSuggestions)
+    handleResultsUpdate () {
+      if (this.results.length > this.numberSuggestions) {
+        this.results = this.results.slice(0, this.numberSuggestions)
       }
 
       this.$resultList.innerHTML = ''
-      results.forEach((result, index) => {
-        const resultListElement = this.createResultElement(index, selectedIndex)
+      this.results.forEach((result, index) => {
+        const resultListElement = this.createResultElement(index)
 
         this.$resultList.insertAdjacentElement('beforeend', this.createResultElementContent(resultListElement, result, this.$input.value))
       })
 
-      this.updateStatus(results.length)
+      this.updateStatus(this.results.length)
     }
 
     updateStatus (resultCount) {
