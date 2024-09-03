@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.0.2
 
 * Fix the search toggle in layout header ([PR #4163](https://github.com/alphagov/govuk_publishing_components/pull/4163))
 * Replace 'unset' property in printed background colours ([PR #4184](https://github.com/alphagov/govuk_publishing_components/pull/4184))
