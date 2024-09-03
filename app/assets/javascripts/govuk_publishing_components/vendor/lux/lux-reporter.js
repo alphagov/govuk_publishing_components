@@ -60,6 +60,21 @@
     }
     return "";
   }
+  /**
+  * Returns the delivery type for the current document. To differentiate between the valid empty
+  * string value and browsers that don't support PerformanceResourceTiming.deliveryType, we convert
+  * the empty string value to "(empty string)". Browsers that don't support deliveryType will return
+  * null. Despite straying from the spec, this allows us to differentiate between the two cases.
+  *
+  * @see https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-deliverytype
+  */
+  function deliveryType() {
+    var navEntry = getNavigationEntry();
+    if ("deliveryType" in navEntry) {
+      return navEntry.deliveryType || "(empty string)";
+    }
+    return undefined;
+  }
   function getNavigationEntry() {
     var navEntries = getEntriesByType("navigation");
     if (navEntries.length) {
@@ -321,7 +336,7 @@
     return str;
   }
 
-  var VERSION = "4.0.25";
+  var VERSION = "4.0.26";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -666,25 +681,25 @@
         startTime: processTimeMetric(entry.startTime),
         elementSelector: getNodeSelector(source.node),
         elementType: source.node.nodeName,
-      }); })
+    }); })
     : [];
     if (sessionEntries.length &&
       (entry.startTime - latestEntry.startTime >= 1000 ||
         entry.startTime - firstEntry.startTime >= 5000)) {
-        sessionValue = entry.value;
-        sessionEntries = [entry];
-        sessionAttributions = sources;
+      sessionValue = entry.value;
+      sessionEntries = [entry];
+      sessionAttributions = sources;
+      largestEntry = entry;
+    }
+    else {
+      sessionValue += entry.value;
+      sessionEntries.push(entry);
+      sessionAttributions = sessionAttributions.concat(sources);
+      if (!largestEntry || entry.value > largestEntry.value) {
         largestEntry = entry;
       }
-      else {
-        sessionValue += entry.value;
-        sessionEntries.push(entry);
-        sessionAttributions = sessionAttributions.concat(sources);
-        if (!largestEntry || entry.value > largestEntry.value) {
-          largestEntry = entry;
-        }
-      }
-      maximumSessionValue = max(maximumSessionValue, sessionValue);
+    }
+    maximumSessionValue = max(maximumSessionValue, sessionValue);
     }
   }
   function reset$2() {
@@ -1946,7 +1961,7 @@
       ].join("");
     }
     function getCustomerId() {
-      return LUX.customerid || "";
+      return String(_thisCustomerId) || "";
     }
     function avgDomDepth() {
       var aElems = document.getElementsByTagName("*");
@@ -2184,6 +2199,12 @@
       var baseUrl = _getBeaconUrl(getAllCustomData());
       var is = inlineTagSize("script");
       var ic = inlineTagSize("style");
+      var ds = docSize();
+      var ct = connectionType();
+      var dt = deliveryType();
+      // Note some page stat values (the `PS` query string) are non-numeric. To make extracting these
+      // values easier, we append an underscore "_" to the value. Values this is used for include
+      // connection type (ct) and delivery type (dt).
       var metricsQueryString =
       // only send Nav Timing and lux.js metrics on initial pageload (not for SPA page views)
       (gbNavSent ? "" : "&NT=" + getNavTiming()) +
@@ -2216,8 +2237,9 @@
       docHeight(document) +
       "dw" +
       docWidth(document) +
-      (docSize() ? "ds" + docSize() : "") + // document HTTP transfer size (bytes)
-      (connectionType() ? "ct" + connectionType() + "_" : "") + // delimit with "_" since values can be non-numeric so need a way to extract with regex in VCL
+      (ds ? "ds" + ds : "") + // document HTTP transfer size (bytes)
+      (ct ? "ct" + ct + "_" : "") + // connection type
+      (typeof dt !== "undefined" ? "dt" + dt + "_" : "") + // delivery type
       "er" +
       nErrors +
       "nt" +
