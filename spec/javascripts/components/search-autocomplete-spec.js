@@ -159,7 +159,6 @@ describe('Search autocomplete component', () => {
 
     describe('general behaviour', () => {
       it('inform the user that content has been expanded', () => {
-        expect($autocomplete.getAttribute('data-expanded')).toBe('true')
         expect($input.getAttribute('aria-expanded')).toBe('true')
         expect($resultsList.getAttribute('role')).toBe('listbox')
         expect($status.getAttribute('aria-atomic')).toBe('true')

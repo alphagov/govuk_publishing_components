@@ -19,7 +19,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
 
     init () {
       this.expanded = false
-      this.loading = false
 
       this.$module.insertAdjacentHTML('beforeend', `<ul class="${this.baseClass}__result-list js-result-list govuk-body"></ul><div aria-atomic="true" aria-live="polite" role="status" class="govuk-visually-hidden">No results.</div>`)
 
@@ -270,9 +269,6 @@ window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
     }
 
     updateStyle () {
-      this.$module.dataset.expanded = this.expanded
-      this.$module.dataset.loading = this.loading
-
       this.$resultList.style.visibility = this.expanded ? 'visible' : 'hidden'
       this.$resultList.style.pointerEvents = this.expanded ? 'auto' : 'none'
     }
