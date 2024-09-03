@@ -8,6 +8,10 @@
 @import "components/mixins/govuk-template-link-focus-override";
 @import "components/mixins/css3";
 
+$govuk-suppressed-warnings: (
+  organisation-colours
+);
+
 $gem-secondary-button-colour: #00823b;
 $gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
 $gem-secondary-button-background-colour: govuk-colour("white");
