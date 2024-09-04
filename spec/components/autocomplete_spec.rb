@@ -17,7 +17,7 @@ describe "Attachment", type: :view do
     end
   end
 
-  it "does not render when no options are specified" do
+  it "does not render when no options or source are specified" do
     assert_raises do
       render_component({ label: "Countries" })
     end

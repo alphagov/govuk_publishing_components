@@ -11,6 +11,11 @@ examples:
     data:
       label: 'Countries'
       options: ['France', 'Germany', 'Sweden', 'Switzerland', 'United Kingdom', 'United States', 'The Separate Customs Territory of Taiwan, Penghu, Kinmen, and Matsu (Chinese Taipei)']
+  with_external_source:
+    description: Given a URL, the autocomplete will request results from that URL. It is assumed that the URL will only return what matches the user query.
+    data:
+      label: 'Countries'
+      source: "http://localhost:8000"
   with_value:
     data:
       value: 'France'

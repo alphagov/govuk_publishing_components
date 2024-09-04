@@ -18,11 +18,13 @@
   input_class = %w(govuk-input)
   input_class << "govuk-input--error" if error_items.any?
 
-  if !options.any? || !label
-    raise ArgumentError, "The autocomplete component needs at least one option and a label in order to render."
+  source ||= false
+
+  if !label || (!options.any? && !source)
+    raise ArgumentError, "The autocomplete component needs at least one option or a source, and a label in order to render."
   end
 %>
-<%= tag.div class: classes, data: { module: "autocomplete" } do %>
+<%= tag.div class: classes, data: { module: "autocomplete", source: source } do %>
   <%= render "govuk_publishing_components/components/label", {
     text: label,
     html_for: id,

@@ -1,4 +1,4 @@
-/* global accessibleAutocomplete */
+/* global accessibleAutocomplete, fetch */
 //= require accessible-autocomplete/dist/accessible-autocomplete.min.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
@@ -8,10 +8,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module
     this.$input = this.$module.querySelector('input')
     this.$datalist = this.$module.querySelector('datalist')
+    this.$source = this.$module.getAttribute('data-source')
   }
 
   Autocomplete.prototype.init = function () {
-    if (!this.$datalist) {
+    if (!this.$datalist && !this.$source) {
       return
     }
 
@@ -27,12 +28,33 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Autocomplete.prototype.getDataListContents = function () {
-    var options = this.$datalist.querySelectorAll('option')
-    var sources = []
-    for (var i = 0; i < options.length; i++) {
-      sources.push(options[i].getAttribute('value'))
+    if (this.$datalist.firstChild) {
+      var options = this.$datalist.querySelectorAll('option')
+      var sources = []
+      for (var i = 0; i < options.length; i++) {
+        sources.push(options[i].getAttribute('value'))
+      }
+      return sources
+    } else {
+      var source = this.$source
+      return function suggest (query, populateResults) {
+        async function getData (populateResults, source) {
+          const url = source + '/?q=' + query
+          try {
+            const response = await fetch(url)
+            if (!response.ok) {
+              throw new Error(`Response status: ${response.status}`)
+            }
+
+            const json = await response.json()
+            populateResults(json)
+          } catch (error) {
+            console.error(error.message)
+          }
+        }
+        getData(populateResults, source)
+      }
     }
-    return sources
   }
 
   // the name attribute isn't copied by the accessible autocomplete code
