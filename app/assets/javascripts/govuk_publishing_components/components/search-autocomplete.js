@@ -1,8 +1,7 @@
 /* global XMLHttpRequest */
 
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.GovukAutocomplete = window.GOVUKFrontend.Autocomplete;
+window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   'use strict'
