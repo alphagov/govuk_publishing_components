@@ -252,6 +252,11 @@ en:
       selected: selected
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
+    password_input:
+      label: "Password"
+      button: "Show"
+      button_aria_label: "Show password"
+      error_text_prefix: "Error"
     previous_and_next_navigation:
       next: Next
       pagination: Pagination

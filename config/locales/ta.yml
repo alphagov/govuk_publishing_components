@@ -146,6 +146,11 @@ ta:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-லிருந்து அனைத்து உள்ளடக்கத்தையும் கண்டறி"
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: பக்கமிடுதல்

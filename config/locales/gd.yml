@@ -147,6 +147,11 @@ gd:
       selected:
     organisation_schema:
       all_content_search_description: Faigh gach rud ó %{organisation}
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: Leathanach

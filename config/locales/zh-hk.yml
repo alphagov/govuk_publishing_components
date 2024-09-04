@@ -143,6 +143,11 @@ zh-hk:
       selected:
     organisation_schema:
       all_content_search_description: 從 %{organisation} 獲得更多內容
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: 分頁

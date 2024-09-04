@@ -150,6 +150,11 @@ lt:
       selected:
     organisation_schema:
       all_content_search_description: Rasti visą turinį iš %{organisation}
+    password_input:
+      button:
+      button_aria_label:
+      error_text_prefix:
+      label:
     previous_and_next_navigation:
       next:
       pagination: Suskirstymas puslapiais
