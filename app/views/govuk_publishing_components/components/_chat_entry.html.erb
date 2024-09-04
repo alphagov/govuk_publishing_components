@@ -7,12 +7,24 @@
   description_text ||= t("components.chat_entry.description")
   border_top ||= false
   border_bottom ||= false
+  disable_ga4 ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-chat-entry")
   component_helper.add_class("gem-c-chat-entry--border-top") if border_top
   component_helper.add_class("gem-c-chat-entry--border-bottom") if border_bottom
   component_helper.add_class(shared_helper.get_margin_bottom)
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
+
+  unless disable_ga4
+    ga4_link_data = {
+      ga4_link: {
+        event_name: "navigation",
+        type: "callout",
+        section: "GOV.UK Chat entry",
+      }.to_json
+    }
+  end
 %>
 
 <%= tag.div(**component_helper.all_attributes) do %>
@@ -36,7 +48,7 @@
 
   <div class="gem-c-chat-entry__description">
     <%= content_tag(shared_helper.get_heading_level, class: "gem-c-chat-entry__heading") do %>
-      <%= link_to heading_text, href, class: "govuk-link" %>
+      <%= link_to heading_text, href, class: "govuk-link", data: ga4_link_data %>
     <% end %>
 
     <% if description_text %>

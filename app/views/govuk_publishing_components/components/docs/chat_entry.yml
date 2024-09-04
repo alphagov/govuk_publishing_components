@@ -34,3 +34,8 @@ examples:
   with_margin_bottom:
     data:
       margin_bottom: 3
+  without_ga4_tracking:
+    description: |
+      Disables GA4 tracking on the component. Tracking is enabled by default. This adds a data module and data-attributes with JSON data. See the [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+    data:
+      disable_ga4: true
