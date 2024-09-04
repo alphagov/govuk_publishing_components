@@ -7,10 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.1.0
 
 * Add the password input component ([PR #4176](https://github.com/alphagov/govuk_publishing_components/pull/4176))
 * Add ga4 tracking to chat entry component ([PR #4196](https://github.com/alphagov/govuk_publishing_components/pull/4196))
+* Add Summary Card component to Gem ([PR #4182](https://github.com/alphagov/govuk_publishing_components/pull/4182))
 
 ## 43.0.2
 
@@ -19,7 +20,6 @@
 * Replace 'unset' property in printed background colours ([PR #4184](https://github.com/alphagov/govuk_publishing_components/pull/4184))
 * Improve print styles for layout-footer component ([PR #4178](https://github.com/alphagov/govuk_publishing_components/pull/4178))
 * Improve print styles for inverse-header component ([PR #4179](https://github.com/alphagov/govuk_publishing_components/pull/4179))
-* Add Summary Card component to Gem ([PR #4182](https://github.com/alphagov/govuk_publishing_components/pull/4182))
 
 ## 43.0.1
 
