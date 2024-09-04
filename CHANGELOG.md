@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add the password input component ([PR #4176](https://github.com/alphagov/govuk_publishing_components/pull/4176))
+* Add ga4 tracking to chat entry component ([PR #4196](https://github.com/alphagov/govuk_publishing_components/pull/4196))
 
 ## 43.0.2
 

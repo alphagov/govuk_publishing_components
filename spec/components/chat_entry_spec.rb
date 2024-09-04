@@ -57,4 +57,20 @@ describe "Chat entry", type: :view do
 
     assert_select ".gem-c-chat-entry.gem-c-chat-entry--border-top.gem-c-chat-entry--border-bottom"
   end
+
+  it "renders the chat entry component with ga4 data attributes by default" do
+    render_component({})
+
+    assert_select '.gem-c-chat-entry[data-module="ga4-link-tracker"]'
+    assert_select '.gem-c-chat-entry .govuk-link[data-ga4-link=\'{"event_name":"navigation","type":"callout","section":"GOV.UK Chat entry"}\']'
+  end
+
+  it "renders the chat entry component without ga4 data attributes when passed disable_ga4: true" do
+    render_component({
+      disable_ga4: true,
+    })
+
+    assert_select '.gem-c-chat-entry[data-module="ga4-link-tracker"]', false
+    assert_select ".gem-c-chat-entry[data-ga4-link]", false
+  end
 end
