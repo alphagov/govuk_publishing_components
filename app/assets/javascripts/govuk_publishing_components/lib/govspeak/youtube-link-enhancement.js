@@ -32,7 +32,7 @@
         link: $link
       }
 
-      if (href.indexOf('/live_stream') >= 0) {
+      if (href.includes('/live_stream')) {
         var channelId = YoutubeLinkEnhancement.parseLivestream(href)
 
         if (!this.hasDisabledEmbed($link) && channelId) {
@@ -175,23 +175,16 @@
   // This is a public class method so it can be used outside of this embed to
   // check that user input for videos will be supported in govspeak
   YoutubeLinkEnhancement.parseVideoId = function (url) {
-    var parts
+    var u
 
-    if (url.indexOf('youtube.com') > -1) {
-      var params = {}
-      parts = url.split('?')
-      if (parts.length === 1) {
-        return
-      }
-      parts = parts[1].split('&')
-      for (var i = 0; i < parts.length; i++) {
-        var part = parts[i].split('=')
-        params[part[0]] = part[1]
-      }
-      return params.v
-    } else if (url.indexOf('youtu.be') > -1) {
-      parts = url.split('/')
-      return parts.pop()
+    try {
+      u = new URL(url)
+    } catch (e) { return undefined }
+
+    if (u.host === 'www.youtube.com' || u.host === 'youtube.com') {
+      return u.searchParams.get('v') || undefined
+    } else if (u.host === 'youtu.be') {
+      return u.pathname.slice(1) // Trim the leading /
     }
   }
 
