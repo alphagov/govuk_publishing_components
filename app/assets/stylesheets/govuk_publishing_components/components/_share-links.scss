@@ -150,3 +150,15 @@ $column-width: 9.5em;
     @include govuk-font(19, $weight: bold);
   }
 }
+
+.gem-c-share-links--black-icons {
+  .gem-c-share-links__link-icon {
+    color: govuk-colour("black");
+  }
+}
+
+.gem-c-share-links--black-links {
+  .gem-c-share-links__label {
+    color: govuk-colour("black");
+  }
+}
