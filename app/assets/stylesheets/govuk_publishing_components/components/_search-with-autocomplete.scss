@@ -1,0 +1,200 @@
+@import "govuk_publishing_components/individual_component_support";
+
+// These styles are adapted from the original Accessible Autocomplete component stylesheet, mostly
+// to remove superfluous styles that are already provided by the GOV.UK Design System, and to adapt
+// the styling to match the new GOV.UK search box designs (e.g. to remove the zebra striping on
+// rows, adjust whitespace, and manage the tweaked markup we use in the suggestion template).
+//
+// Note that most selectors targetted within this file are those constructed by the Accessible
+// Autocomplete component, so they may not 100% match our own component conventions.
+//
+// see https://github.com/alphagov/accessible-autocomplete/blob/main/src/autocomplete.css
+
+// Helps to make the autocomplete menu as wide as the entire search box _including_ the submit
+// button, not just the width of the input field.
+@mixin enhance-autocomplete-menu-width($button-size) {
+  margin-right: -$button-size;
+}
+
+$input-size: 40px;
+$large-input-size: 50px;
+
+.gem-c-search-with-autocomplete__wrapper {
+  position: relative;
+}
+
+.gem-c-search-with-autocomplete__menu {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: govuk-colour("white");
+  border: 1px solid $govuk-border-colour;
+  border-top: 0;
+
+  @include enhance-autocomplete-menu-width($input-size);
+}
+
+.gem-c-search-with-autocomplete__menu--visible {
+  display: block;
+}
+
+.gem-c-search-with-autocomplete__menu--hidden {
+  display: none;
+}
+
+.gem-c-search-with-autocomplete__menu--inline {
+  position: relative;
+}
+
+.gem-c-search-with-autocomplete__option {
+  display: block;
+  cursor: pointer;
+
+  @include govuk-font(19);
+
+  // Ensure only the option itself receives pointer events
+  & > * {
+    pointer-events: none;
+  }
+
+  // Accessible Autocomplete's iOS screenreader inset has broken CSS which hasn't been fixed
+  // upstream, and means that its text is not just visible to screenreader users, but displayed
+  // for everyone. This span is added dynamically only on iOS and not given a class, so we need to
+  // target it in a roundabout way and make it invisible to non-screenreader users.
+  & > span {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
+
+// Common styling for _all_ focus states, including keyboard focus, mouse hover, and keyboard focus
+// but mouse on another option.
+.gem-c-search-with-autocomplete__option--focused,
+.gem-c-search-with-autocomplete__option:hover,
+.gem-c-search-with-autocomplete__option:focus-visible {
+  background-color: govuk-colour("light-grey");
+  outline: none;
+
+  @include govuk-link-decoration;
+  @include govuk-link-hover-decoration;
+
+  .gem-c-search-with-autocomplete__suggestion-icon {
+    background-color: $govuk-text-colour;
+  }
+}
+
+// Styling specifically _only_ for keyboard focus
+.gem-c-search-with-autocomplete__option:focus-visible {
+  .gem-c-search-with-autocomplete__suggestion-text {
+    background-color: $govuk-focus-colour;
+  }
+}
+
+.gem-c-search-with-autocomplete__option-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 govuk-spacing(3);
+  padding: govuk-spacing(1) 0;
+  border-bottom: 1px solid govuk-colour("mid-grey");
+}
+
+.gem-c-search-with-autocomplete__option:last-child .gem-c-search-with-autocomplete__option-wrapper {
+  border-bottom: 0;
+}
+
+.gem-c-search-with-autocomplete__suggestion-icon {
+  width: calc($input-size / 2);
+  height: $input-size;
+  margin-right: govuk-spacing(2);
+  flex: none;
+  mask-image: url("govuk_publishing_components/icon-autocomplete-search-suggestion.svg");
+  -webkit-mask-image: url("govuk_publishing_components/icon-autocomplete-search-suggestion.svg");
+  background-color: $govuk-secondary-text-colour;
+}
+
+.gem-c-search-with-autocomplete__suggestion-text {
+  font-weight: bold;
+}
+
+.gem-c-search-with-autocomplete__suggestion-highlight {
+  font-weight: normal;
+  background: none;
+}
+
+// Tweak the look and feel for the autocomplete in large mode
+.gem-c-search-with-autocomplete.gem-c-search-with-autocomplete--large {
+  .gem-c-search-with-autocomplete__menu {
+    @include enhance-autocomplete-menu-width($large-input-size);
+  }
+
+  .gem-c-search-with-autocomplete__option {
+    min-height: $large-input-size;
+  }
+}
+
+// Fix top border styling on "borderless" search input when rendered on a GOV.UK blue background
+.gem-c-search-with-autocomplete.gem-c-search-with-autocomplete--on-govuk-blue {
+  .gem-c-search-with-autocomplete__menu {
+    border-top: 1px solid $govuk-border-colour;
+  }
+}
+
+// High contrast mode adjustments
+@media (forced-colors: active) {
+  .gem-c-search-with-autocomplete__menu {
+    border-color: FieldText;
+  }
+
+  .gem-c-search-with-autocomplete__option {
+    forced-color-adjust: none; // opt out of all default forced-colors adjustments
+    background-color: Field;
+    color: FieldText;
+  }
+
+  .gem-c-search-with-autocomplete__option--focused,
+  .gem-c-search-with-autocomplete__option:hover,
+  .gem-c-search-with-autocomplete__option:focus-visible {
+    background-color: Highlight;
+    color: HighlightText;
+    border-color: FieldText;
+
+    .gem-c-search-with-autocomplete__suggestion-text {
+      background: none;
+    }
+
+    .gem-c-search-with-autocomplete__suggestion-highlight {
+      color: HighlightText;
+    }
+
+    .gem-c-search-with-autocomplete__suggestion-icon {
+      background-color: HighlightText;
+    }
+  }
+
+  // Allow mouse hover styling to take precedence over keyboard focus styling
+  .gem-c-search-with-autocomplete__option:focus-visible:not(:hover) {
+    background-color: SelectedItem;
+    color: SelectedItemText;
+
+    .gem-c-search-with-autocomplete__suggestion-highlight {
+      color: SelectedItemText;
+    }
+
+    .gem-c-search-with-autocomplete__suggestion-icon {
+      background-color: SelectedItemText;
+    }
+  }
+
+  .gem-c-search-with-autocomplete__suggestion-highlight {
+    color: FieldText;
+  }
+
+  .gem-c-search-with-autocomplete__suggestion-icon {
+    background-color: FieldText;
+  }
+}

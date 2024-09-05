@@ -30,6 +30,7 @@
 * Add files for secondary navigation: ([PR #4229](https://github.com/alphagov/govuk_publishing_components/pull/4229))
 * New class to collapse columns for print ([PR #4224](https://github.com/alphagov/govuk_publishing_components/pull/4224))
 * Fix homepage super navigation buttons when text scale is increased ([PR #4232](https://github.com/alphagov/govuk_publishing_components/pull/4232))
+* Add experimental `search_with_autocomplete` component ([PR #4218](https://github.com/alphagov/govuk_publishing_components/pull/4218))
 
 ## 43.1.1
 
