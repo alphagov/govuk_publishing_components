@@ -12,10 +12,11 @@ examples:
       label: 'Countries'
       options: ['France', 'Germany', 'Sweden', 'Switzerland', 'United Kingdom', 'United States', 'The Separate Customs Territory of Taiwan, Penghu, Kinmen, and Matsu (Chinese Taipei)']
   with_external_source:
-    description: Given a URL, the autocomplete will request results from that URL. It is assumed that the URL will only return what matches the user query.
+    description: Given a source URL, the autocomplete will append the value of the input to the source URL and request it, using the contents of the `source_key` key in the response to build up suggestions. It is assumed that the URL will only return what matches the user query, and that the value of `source_key` on the top level of the returned JSON object is an array of strings.
     data:
       label: 'Countries'
-      source: "http://localhost:8000"
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: 'suggested_autocomplete'
   with_value:
     data:
       value: 'France'
