@@ -8,12 +8,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     constructor ($module) {
       this.$module = $module
       this.$input = this.$module.querySelector('input')
-      this.$source = this.$module.getAttribute('data-source')
-      this.$sourceKey = this.$module.getAttribute('data-source-key')
+      this.source = this.$module.getAttribute('data-source')
+      this.sourceKey = this.$module.getAttribute('data-source-key')
     }
 
     init () {
-      if (!this.$source || !this.$sourceKey) {
+      if (!this.source || !this.sourceKey) {
         console.warn('search-with-autocomplete: No source or source-key provided; skipping init')
         return
       }
@@ -23,10 +23,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         id: this.$input.id,
         name: this.$input.name,
         defaultValue: this.$input.value,
-        source: ['one', 'two', 'three'],
+        source: this.getResults,
       }
 
       accessibleAutocomplete(configOptions)
+    }
+
+    getResults = (query, populateResults) => {
+      fetch(`${this.source}${query}`)
+        .then(response => response.json())
+        .then(data => data[this.sourceKey])
+        .then(results => {
+          populateResults(results)
+        })
     }
   }
 
