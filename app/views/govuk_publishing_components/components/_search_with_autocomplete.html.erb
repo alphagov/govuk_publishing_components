@@ -4,7 +4,19 @@
   # it should be (e.g. `inline_label: false`).
   add_gem_component_stylesheet("label")
 
+  source = local_assigns[:source]
+  source_key = local_assigns[:source_key]
+
+  if source.nil? || source_key.nil?
+    raise ArgumentError, "The search_with_autocomplete component requires source and source_key"
+  end
+
   search_component_options = local_assigns.except(:autocomplete, :source, :source_key)
 %>
 
-<%= render "govuk_publishing_components/components/search", search_component_options %>
+<%= tag.div(
+  class: "gem-c-search-with-autocomplete",
+  data: { module: "search_with_autocomplete", source:, source_key: }
+) do %>
+  <%= render "govuk_publishing_components/components/search", search_component_options %>
+<% end %>
