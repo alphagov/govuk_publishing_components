@@ -62,20 +62,22 @@
     <%= tag_label %>
   <% end %>
   <div class="gem-c-search__item-wrapper">
-    <%= tag.input(
-      aria: {
-        controls: aria_controls,
-      },
-      enterkeyhint: "search",
-      class: "gem-c-search__item gem-c-search__input js-class-toggle",
-      id: id,
-      name: name,
-      title: t("components.search_box.input_title"),
-      type: "search",
-      value: value,
-      autocorrect: correction_value,
-      autocapitalize: correction_value,
-    ) %>
+    <div class="gem-c-search__input-wrapper">
+      <%= tag.input(
+        aria: {
+          controls: aria_controls,
+        },
+        enterkeyhint: "search",
+        class: "gem-c-search__item gem-c-search__input js-class-toggle",
+        id: id,
+        name: name,
+        title: t("components.search_box.input_title"),
+        type: "search",
+        value: value,
+        autocorrect: correction_value,
+        autocapitalize: correction_value,
+      ) %>
+    </div>
     <div class="gem-c-search__item gem-c-search__submit-wrapper">
       <%= tag.button class: "gem-c-search__submit", type: "submit", data: data_attributes, enterkeyhint: "search" do %>
         <%= button_text %>

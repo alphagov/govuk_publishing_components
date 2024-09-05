@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add experimental `search_with_autocomplete` component ([PR #4218](https://github.com/alphagov/govuk_publishing_components/pull/4218))
+
 ## 43.1.1
 
 * Use component wrapper in hint component ([PR #4214](https://github.com/alphagov/govuk_publishing_components/pull/4214))
