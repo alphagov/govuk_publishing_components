@@ -21,6 +21,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       const configOptions = {
         element: this.$module,
         id: this.$input.id,
+        name: this.$input.name,
         defaultValue: this.$input.value,
         source: ['one', 'two', 'three'],
       }
