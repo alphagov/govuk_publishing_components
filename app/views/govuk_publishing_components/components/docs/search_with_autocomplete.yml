@@ -1,0 +1,31 @@
+name: Search with autocomplete (experimental)
+description: |
+  A version of the search component enhanced with the ability to fetch search suggestions from a
+  remote source as a user types.
+body: |
+  This component uses [Accessible Autocomplete](https://github.com/alphagov/accessible-autocomplete)
+  to enhance the [search component's](/component-guide/search) input element.
+  If the user does not have JavaScript enabled, the search component will function as normal.
+accessibility_criteria: |
+  [Accessibility acceptance criteria](https://github.com/alphagov/accessible-autocomplete/blob/master/accessibility-criteria.md)
+examples:
+  default:
+    description: |
+      The default search component with autocomplete enabled.
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+  with_search_component_options:
+    description: |
+      Allows passing in any options supported by the regular search component.
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      label_text: "Auf GOV.UK suchen"
+      inline_label: false
+      on_govuk_blue: true
+      label_size: "s"
+      homepage: true
+      size: "large"
+    context:
+      dark_background: true
