@@ -17,3 +17,15 @@ examples:
       autocomplete: true
       source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
       source_key: suggested_autocomplete
+  with_search_component_options:
+    description: |
+      Allows passing in any options supported by the regular search component.
+    data:
+      label_text: "Auf GOV.UK suchen"
+      inline_label: false
+      on_govuk_blue: true
+      label_size: "s"
+      homepage: true
+      size: "large"
+    context:
+      dark_background: true
