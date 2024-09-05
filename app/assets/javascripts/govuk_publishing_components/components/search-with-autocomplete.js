@@ -8,6 +8,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     constructor ($module) {
       this.$module = $module
       this.$input = this.$module.querySelector('input')
+      this.$element = this.$module.querySelector('.gem-c-search__input-wrapper')
+
       this.source = this.$module.getAttribute('data-source')
       this.sourceKey = this.$module.getAttribute('data-source-key')
     }
@@ -19,7 +21,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       const configOptions = {
-        element: this.$module,
+        element: this.$element,
         id: this.$input.id,
         name: this.$input.name,
         defaultValue: this.$input.value,
@@ -27,6 +29,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       accessibleAutocomplete(configOptions)
+      this.$input.parentNode.removeChild(this.$input)
     }
 
     getResults = (query, populateResults) => {
