@@ -35,6 +35,7 @@
     }
   },
   "dependencies": {
+    "accessible-autocomplete": "^3.0.0",
     "axe-core": "^4.10.0",
     "govuk-frontend": "5.5.0",
     "govuk-single-consent": "^3.0.9",
