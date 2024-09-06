@@ -1,8 +1,57 @@
 @import "govuk_publishing_components/individual_component_support";
-@import "accessible-autocomplete/dist/accessible-autocomplete.min"; // stylelint-disable scss/at-import-partial-extension
+// @import "accessible-autocomplete/dist/accessible-autocomplete.min"; // stylelint-disable scss/at-import-partial-extension
 
-.gem-c-search-with-autocomplete {
-  .autocomplete__option {
-    @include govuk-font(19);
+.gem-c-autocomplete {
+  position: relative;
+}
+
+.autocomplete__menu {
+  border: 1px solid $govuk-border-colour;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: govuk-colour("white");
+  list-style: none;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  top: 100%;
+
+  &:empty {
+    border: none;
+  }
+}
+
+.autocomplete__option {
+  cursor: default;
+  position: relative;
+  @include govuk-font(19);
+
+  &:last-child .autocomplete__option--border {
+    border-bottom: 0;
+  }
+
+  &:hover,
+  &[aria-selected="true"] {
+    background-color: govuk-colour("light-grey");
+    cursor: pointer;
+  }
+
+  &--search-icon {
+    background-image: url("govuk_publishing_components/icon-search.svg");
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  &--border {
+    height: 1px;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid $govuk-border-colour;
   }
 }
