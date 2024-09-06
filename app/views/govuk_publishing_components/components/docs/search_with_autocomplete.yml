@@ -15,13 +15,39 @@ examples:
     data:
       source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
       source_key: suggested_autocomplete
-  with_search_component_options:
-    description: |
-      Allows passing in any options supported by the regular search component.
+  apply_custom_styling_to_the_label_and_set_search_value:
     data:
       source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
       source_key: suggested_autocomplete
-      label_text: "Auf GOV.UK suchen"
+      inline_label: false
+      label_text: "<h1>Search GOV.UK</h1>"
+      value: "driving licence"
+  stop_the_label_appearing_inline:
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      inline_label: false
+  no_border:
+    description: Sometimes we don't need the grey border surrounding the input field, such as when the component is used on a black background
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      no_border: true
+    context:
+      black_background: true
+  for_use_on_govuk_blue_background:
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      on_govuk_blue: true
+    context:
+      dark_background: true
+  homepage:
+    description: For use on the homepage.
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      label_text: "Search"
       inline_label: false
       on_govuk_blue: true
       label_size: "s"
@@ -29,3 +55,18 @@ examples:
       size: "large"
     context:
       dark_background: true
+  change_label_text:
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      label_text: "Auf GOV.UK suchen"
+  large_version:
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      size: "large"
+  large_version_on_mobile_only:
+    data:
+      source: 'https://www.gov.uk/api/search.json?suggest=autocomplete&q='
+      source_key: suggested_autocomplete
+      size: "large-mobile"
