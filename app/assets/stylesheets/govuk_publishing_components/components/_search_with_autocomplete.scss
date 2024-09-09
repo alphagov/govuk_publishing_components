@@ -8,25 +8,33 @@
 .autocomplete__menu {
   border: 1px solid $govuk-border-colour;
   margin: 0;
+
+  // negative margin needed to align autocomplete results with input + submit width
+  // otherwise some dom manipulation needed which is more brittle approach
+  margin-right: -40px;
   padding: 0;
   box-sizing: border-box;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   background: govuk-colour("white");
   list-style: none;
   position: relative;
   z-index: 1;
-  width: 100%;
-  top: 100%;
 
   &:empty {
     border: none;
   }
 }
 
+.autocomplete__option-wrapper {
+  margin: 0 govuk-spacing(2);
+  display: block;
+}
+
 .autocomplete__option {
   cursor: default;
   position: relative;
+  outline: none;
+  vertical-align: middle;
   @include govuk-font(19);
 
   &:last-child .autocomplete__option--border {
@@ -42,8 +50,8 @@
   &--search-icon {
     background-image: url("govuk_publishing_components/icon-search.svg");
     background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
+    width: govuk-spacing(7);
+    height: govuk-spacing(7);
     vertical-align: middle;
     display: inline-block;
   }
@@ -53,5 +61,20 @@
     display: block;
     width: 100%;
     border-bottom: 1px solid $govuk-border-colour;
+  }
+}
+
+.autocomplete__suggestion-text {
+  vertical-align: middle;
+}
+
+.gem-c-search--large {
+  .autocomplete__option--search-icon {
+    width: govuk-spacing(8);
+    height: govuk-spacing(8);
+  }
+
+  .autocomplete__menu {
+    margin-right: -50px;
   }
 }
