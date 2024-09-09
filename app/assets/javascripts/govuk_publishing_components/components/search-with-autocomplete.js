@@ -49,10 +49,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       const regex = new RegExp(`(${inputValue})`, 'gi')
       const matchHTML = result.replace(regex, '<span class="govuk-!-font-weight-regular js-result-match">$1</span>')
 
-      const html = `<span class="autocomplete__option--search-icon">
+      const html = `<span class="autocomplete__option-wrapper"><span class="autocomplete__option--search-icon">
       </span>
-      <span class="govuk-!-font-weight-bold">${matchHTML}</span>
-      <div class="autocomplete__option--border"></div>`
+      <span class="govuk-!-font-weight-bold autocomplete__suggestion-text">${matchHTML}</span>
+      <div class="autocomplete__option--border"></div></span>`
 
       return html
     }
