@@ -307,6 +307,29 @@ examples:
         - link:
             text: 'Criteria'
             description: 'no url provided, just text'
+  with_parts_and_no_underline:
+    description: The legacy finders design does not include underlines on links, neither on the main item nor the children.
+    data:
+      remove_underline: true
+      items:
+      - link:
+          text: 'Universal credit'
+          path: '/universal-credit'
+          description: 'Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare'
+        parts:
+        - link:
+            text: 'What universal credit is'
+            path: '/universal-credit/what-it-is'
+            description: 'Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.'
+        - link:
+            text: 'Elegibility'
+            path: '/universal-credit/eligibility'
+            description: 'You may be able to get Universal Credit if: you’re on a low income or out...'
+            data_attributes:
+              an_attribute: some_value
+        - link:
+            text: 'Criteria'
+            description: 'no url provided, just text'
   with_locale_specified:
     description: |
       The component is used on translated pages that don’t have a translation for the document link text or the metadata. This means that it could display the fallback English string if the translate method can’t find an appropriate translation. This makes sure that the lang can be set to ensure that browsers understand which parts of the page are in each language.

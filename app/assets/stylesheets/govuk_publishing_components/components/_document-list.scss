@@ -23,14 +23,6 @@
   @include govuk-font($size: 19, $weight: bold);
 }
 
-.gem-c-document-list--no-underline {
-  .gem-c-document-list__item-title {
-    .govuk-link {
-      text-decoration: none;
-    }
-  }
-}
-
 .gem-c-document-list--no-top-border {
   .gem-c-document-list__item {
     border-top: none;
@@ -157,20 +149,6 @@
 .gem-c-document-list-child__heading {
   @include govuk-media-query($from: tablet) {
     @include govuk-typography-weight-bold;
-  }
-}
-
-.gem-c-document-list-child__link {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    text-underline-offset: .1em;
-    @include govuk-link-hover-decoration;
-  }
-
-  &:focus {
-    text-decoration: none;
   }
 }
 

@@ -257,7 +257,31 @@ describe "Document list", type: :view do
       ],
     )
 
-    assert_select ".gem-c-document-list.gem-c-document-list--no-underline"
+    assert_select ".gem-c-document-list a.govuk-link--no-underline", text: "Link Title"
+  end
+
+  it "removes underline from links on parts" do
+    render_component(
+      remove_underline: true,
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          },
+          parts: [
+            {
+              link: {
+                text: "Part Title",
+                path: "/part/path",
+              },
+            },
+          ],
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list a.gem-c-document-list-child__link.govuk-link--no-underline", text: "Part Title"
   end
 
   it "removes the top border from list items" do
