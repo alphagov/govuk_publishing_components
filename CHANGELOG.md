@@ -11,6 +11,7 @@
 
 * Use component wrapper in hint component ([PR #4214](https://github.com/alphagov/govuk_publishing_components/pull/4214))
 * Hide printed URLs when printing tables ([PR #4209](https://github.com/alphagov/govuk_publishing_components/pull/4209))
+* Fix action link component print styles ([PR #4213](https://github.com/alphagov/govuk_publishing_components/pull/4213))
 
 ## 43.1.0
 
