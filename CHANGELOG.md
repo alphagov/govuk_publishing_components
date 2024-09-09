@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Hide printed URLs when printing tables ([PR #4209](https://github.com/alphagov/govuk_publishing_components/pull/4209))
+
 ## 43.1.0
 
 * Add the password input component ([PR #4176](https://github.com/alphagov/govuk_publishing_components/pull/4176))
