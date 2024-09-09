@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Use component wrapper in hint component ([PR #4214](https://github.com/alphagov/govuk_publishing_components/pull/4214))
 * Hide printed URLs when printing tables ([PR #4209](https://github.com/alphagov/govuk_publishing_components/pull/4209))
 
 ## 43.1.0

@@ -1,18 +1,17 @@
 <%
   add_gem_component_stylesheet("hint")
 
-  id ||= "hint-#{SecureRandom.hex(4)}"
+  local_assigns[:id] ||= "hint-#{SecureRandom.hex(4)}"
   is_radio_label_hint ||= false
   right_to_left ||= false
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  css_classes = %w( gem-c-hint govuk-hint )
-  css_classes << "govuk-radios__hint" if is_radio_label_hint
-
-  custom_margin_bottom_class = shared_helper.get_margin_bottom if [*0..9].include?(local_assigns[:margin_bottom])
-  css_classes << custom_margin_bottom_class if local_assigns[:margin_bottom]
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-hint govuk-hint")
+  component_helper.add_class("govuk-radios__hint") if is_radio_label_hint
+  component_helper.add_class(shared_helper.get_margin_bottom) if [*0..9].include?(local_assigns[:margin_bottom])
 %>
 
-<%= tag.div id: id, class: css_classes, dir: right_to_left ? "rtl" : nil do %>
+<%= tag.div(**component_helper.all_attributes, dir: right_to_left ? "rtl" : nil) do %>
   <%= text %>
 <% end %>
