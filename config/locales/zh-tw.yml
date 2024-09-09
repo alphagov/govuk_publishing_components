@@ -145,9 +145,13 @@ zh-tw:
       all_content_search_description: 從 %{organisation} 找到所有內容
     password_input:
       button:
+      button_aria_hide_label:
       button_aria_label:
+      button_hide:
       error_text_prefix:
       label:
+      password_hidden_announcement:
+      password_shown_announcement:
     previous_and_next_navigation:
       next:
       pagination: 分頁

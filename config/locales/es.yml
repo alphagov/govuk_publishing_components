@@ -147,9 +147,13 @@ es:
       all_content_search_description: Buscar todo el contenido de %{organization}
     password_input:
       button:
+      button_aria_hide_label:
       button_aria_label:
+      button_hide:
       error_text_prefix:
       label:
+      password_hidden_announcement:
+      password_shown_announcement:
     previous_and_next_navigation:
       next:
       pagination: Paginación
