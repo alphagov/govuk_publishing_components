@@ -66,9 +66,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       fetch(url)
         .then(response => response.json())
         .then(data => data[this.sourceKey])
-        .then(results => {
-          populateResults(results)
-      })
+        .then(populateResults)
     }
 
     submitForm () {
