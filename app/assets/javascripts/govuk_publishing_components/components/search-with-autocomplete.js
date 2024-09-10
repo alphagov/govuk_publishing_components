@@ -48,19 +48,30 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$originalInput.parentNode.removeChild(this.$originalInput)
     }
 
+    // Callback used by accessible-autocomplete to generate the HTML for each suggestion
     constructSuggestionHTMLString (result) {
-      const inputValue = this.$inputWrapper.querySelector('input').value
-      const regex = new RegExp(`(${inputValue})`, 'gi')
-      const matchHTML = result.replace(regex, '<mark>$1</mark>')
+      // We should be able to assume that data coming back from the Autocomplete API is safe to
+      // render as HTML. However, this is a final line of defence to prevent XSS.
+      const sanitizedResult = result.replace(/[&<>"']/g, '')
+      const inputValue = this.$inputWrapper.querySelector('input').value.toLowerCase()
 
-      const html = `
+      const index = sanitizedResult.toLowerCase().indexOf(inputValue)
+
+      let html = sanitizedResult
+      if (index !== -1) {
+        const before = sanitizedResult.slice(0, index)
+        const match = sanitizedResult.slice(index, index + inputValue.length)
+        const after = sanitizedResult.slice(index + inputValue.length)
+
+        html = `${before}<mark>${match}</mark>${after}`
+      }
+
+      return `
         <span class="autocomplete__option-wrapper">
           <span class="autocomplete__option--search-icon"></span>
-          <span class="autocomplete__suggestion-text">${matchHTML}</span>
+          <span class="autocomplete__suggestion-text">${html}</span>
         </span>
       `
-
-      return html
     }
 
     getResults (query, populateResults) {
