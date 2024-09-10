@@ -27,6 +27,26 @@ $large-input-size: 50px;
     // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
     // not just the width of the input field.
     margin-right: -$input-size;
+
+    &--visible {
+      display: block;
+    }
+
+    &--hidden {
+      display: none;
+    }
+
+    &--overlay {
+      box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
+      left: 0;
+      position: absolute;
+      top: 100%;
+      z-index: 100;
+    }
+
+    &--inline {
+      position: relative;
+    }
   }
 
   .gem-c-search--large {
@@ -37,51 +57,32 @@ $large-input-size: 50px;
     }
   }
 
-  .autocomplete__menu--visible {
-    display: block;
-  }
-
-  .autocomplete__menu--hidden {
-    display: none;
-  }
-
-  .autocomplete__menu--overlay {
-    box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
-    left: 0;
-    position: absolute;
-    top: 100%;
-    z-index: 100;
-  }
-
-  .autocomplete__menu--inline {
-    position: relative;
-  }
-
   .autocomplete__option {
     @include govuk-font(19);
+
     padding: 5px;
     border-bottom: solid $govuk-border-colour;
     border-width: 1px 0;
     cursor: pointer;
     display: block;
-  }
 
-  .autocomplete__option > * {
-    pointer-events: none;
-  }
+    & > * {
+      pointer-events: none;
+    }
 
-  .autocomplete__option:first-of-type {
-    border-top-width: 0;
-  }
+    &:first-of-type {
+      border-top-width: 0;
+    }
 
-  .autocomplete__option:last-of-type {
-    border-bottom-width: 0;
-  }
+    &:last-of-type {
+      border-bottom-width: 0;
+    }
 
-  .autocomplete__option--focused,
-  .autocomplete__option:hover {
-    background-color: govuk-colour("light-grey");
-    outline: none;
+    &--focused,
+    &:hover {
+      background-color: govuk-colour("light-grey");
+      outline: none;
+    }
   }
 
   @media (forced-colors: active) {
