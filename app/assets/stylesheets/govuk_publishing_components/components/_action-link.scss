@@ -178,3 +178,22 @@
     }
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-action-link {
+    * {
+      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    }
+
+    &::before {
+      display: none;
+    }
+
+    .gem-c-action-link__link {
+      &::after {
+        display: block;
+        font-size: 12pt;
+      }
+    }
+  }
+}
