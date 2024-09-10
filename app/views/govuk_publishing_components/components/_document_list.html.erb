@@ -7,12 +7,11 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-document-list")
-  component_helper.add_class("gem-c-document-list--no-underline") if local_assigns[:remove_underline]
   component_helper.add_class("gem-c-document-list--no-top-border") if local_assigns[:remove_top_border]
   component_helper.add_class("gem-c-document-list--no-top-border-first-child") if local_assigns[:remove_top_border_from_first_child]
   component_helper.add_class(shared_helper.get_margin_bottom)
 
-
+  extra_link_classes = "govuk-link--no-underline" if local_assigns[:remove_underline]
   title_with_context_class = " gem-c-document-list__item-title--context"
 
   brand ||= false
@@ -57,7 +56,7 @@
                 item[:link][:text],
                 item[:link][:path],
                 data: item[:link][:data_attributes],
-                class: "#{item_classes} govuk-link",
+                class: "#{item_classes} govuk-link #{extra_link_classes}",
                 lang: item[:link][:locale].presence,
                 rel: rel,
               )
@@ -118,7 +117,7 @@
                       part[:link][:text],
                       part[:link][:path],
                       data: part[:link][:data_attributes],
-                      class: "gem-c-document-list-child__heading #{brand_helper.color_class} govuk-link gem-c-document-list-child__link",
+                      class: "gem-c-document-list-child__heading gem-c-document-list-child__link #{brand_helper.color_class} govuk-link #{extra_link_classes}",
                     )
                   else
                     content_tag(

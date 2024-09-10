@@ -13,6 +13,7 @@
 * Hide printed URLs when printing tables ([PR #4209](https://github.com/alphagov/govuk_publishing_components/pull/4209))
 * Fix action link component print styles ([PR #4213](https://github.com/alphagov/govuk_publishing_components/pull/4213))
 * Improve the password input component custom text feature ([PR #4211](https://github.com/alphagov/govuk_publishing_components/pull/4211))
+* Make links to parts in `document_list` component respect `remove_underline` setting ([PR #4210](https://github.com/alphagov/govuk_publishing_components/pull/4176))
 
 ## 43.1.0
 
