@@ -58,7 +58,6 @@ $large-input-size: 50px;
 
   .autocomplete__option {
     display: block;
-    padding: 5px;
     cursor: pointer;
 
     @include govuk-font(19);
@@ -76,17 +75,22 @@ $large-input-size: 50px;
     &--search-icon {
       background-image: url("govuk_publishing_components/icon-search.svg");
       background-repeat: no-repeat;
-      width: govuk-spacing(7);
-      height: govuk-spacing(7);
+      width: $input-size;
+      height: $input-size;
       vertical-align: middle;
       display: inline-block;
     }
 
-    &--border {
-      height: 1px;
+    .autocomplete__option-wrapper {
       display: block;
-      width: 100%;
-      border-bottom: 1px solid $govuk-border-colour;
+      margin: 0 govuk-spacing(1);
+      padding: govuk-spacing(1) 0;
+
+      border-bottom: 1px solid govuk-colour("mid-grey");
+    }
+
+    &:last-child .autocomplete__option-wrapper {
+      border-bottom: 0;
     }
   }
 
