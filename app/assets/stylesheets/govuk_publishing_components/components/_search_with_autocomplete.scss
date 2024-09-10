@@ -73,19 +73,18 @@ $large-input-size: 50px;
     }
 
     &--search-icon {
-      background-image: url("govuk_publishing_components/icon-search.svg");
-      background-repeat: no-repeat;
       width: $input-size;
       height: $input-size;
-      vertical-align: middle;
-      display: inline-block;
+
+      background-image: url("govuk_publishing_components/icon-search.svg");
+      background-repeat: no-repeat;
     }
 
     .autocomplete__option-wrapper {
       display: flex;
       align-items: center;
 
-      margin: 0 govuk-spacing(1);
+      margin: 0 govuk-spacing(2);
       padding: govuk-spacing(1) 0;
 
       border-bottom: 1px solid govuk-colour("mid-grey");
