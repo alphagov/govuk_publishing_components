@@ -50,7 +50,7 @@ $large-input-size: 50px;
       top: 100%;
       z-index: 100;
 
-      box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
+      box-shadow: rgba(0, 0, 0, 0.2569) 0 2px 6px;
     }
 
     &--inline {
@@ -85,6 +85,7 @@ $large-input-size: 50px;
       background-color: govuk-colour("light-grey");
       outline: none;
     }
+
     &:focus-visible {
       .autocomplete__suggestion-text {
         background-color: $govuk-focus-colour;
@@ -134,16 +135,18 @@ $large-input-size: 50px;
 
     .autocomplete__option--focused,
     .autocomplete__option:hover {
-      forced-color-adjust: none; /* prevent backplate from obscuring text */
+      forced-color-adjust: none; // prevent backplate from obscuring text
       background-color: Highlight;
       border-color: Highlight;
       color: HighlightText;
+      outline-color: SelectedItemText;
 
-      /* Prefer SelectedItem / SelectedItemText in browsers that support it */
+      // Prefer SelectedItem / SelectedItemText in browsers that support it
+      // stylelint-disable declaration-block-no-duplicate-properties
       background-color: SelectedItem;
       border-color: SelectedItem;
       color: SelectedItemText;
-      outline-color: SelectedItemText;
+      // stylelint-enable declaration-block-no-duplicate-properties
     }
   }
 }
