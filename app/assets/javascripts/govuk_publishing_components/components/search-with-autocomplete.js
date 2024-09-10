@@ -16,9 +16,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.sourceKey = this.$module.getAttribute('data-source-key')
     }
 
-    init (source) {
-      if (!this.source || !source) {
-        console.warn('search-with-autocomplete: No source provided')
+    init () {
+      if (!this.source || !this.sourceKey) {
+        console.warn('search-with-autocomplete: No source/sourceKey provided')
+        return
       }
 
       const configOptions = {
@@ -28,7 +29,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         inputClasses: this.$originalInput.classList,
         defaultValue: this.$originalInput.value,
         showNoOptionsFound: false,
-        source: source || this.getResults,
+        source: this.getResults,
         templates: {
           suggestion: this.constructSuggestionHTMLString
         },
