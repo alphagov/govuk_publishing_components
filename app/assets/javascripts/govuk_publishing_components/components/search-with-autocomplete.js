@@ -31,10 +31,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         defaultValue: this.$originalInput.value,
         confirmOnBlur: false,
         showNoOptionsFound: false,
-        source: this.getResults,
-        onConfirm: this.submitContainingForm,
+        source: this.getResults.bind(this),
+        onConfirm: this.submitContainingForm.bind(this),
         templates: {
-          suggestion: this.constructSuggestionHTMLString
+          suggestion: this.constructSuggestionHTMLString.bind(this)
         }
       }
 
@@ -48,7 +48,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$originalInput.parentNode.removeChild(this.$originalInput)
     }
 
-    constructSuggestionHTMLString = (result) => {
+    constructSuggestionHTMLString (result) {
       const inputValue = this.$inputWrapper.querySelector('input').value
       const regex = new RegExp(`(${inputValue})`, 'gi')
       const matchHTML = result.replace(regex, '<span class="govuk-!-font-weight-regular js-result-match">$1</span>')
@@ -63,7 +63,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       return html
     }
 
-    getResults = (query, populateResults) => {
+    getResults (query, populateResults) {
       const url = new URL(this.source)
       url.searchParams.set('q', query)
       fetch(url)
