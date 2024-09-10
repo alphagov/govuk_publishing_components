@@ -20,7 +20,6 @@ $large-input-size: 50px;
     border: 1px solid $govuk-border-colour;
     border-top: 0;
     margin: 0;
-    max-height: 342px;
     overflow-x: hidden;
     padding: 0;
 
@@ -60,8 +59,6 @@ $large-input-size: 50px;
   .autocomplete__option {
     display: block;
     padding: 5px;
-    border-bottom: solid $govuk-border-colour;
-    border-width: 1px 0;
     cursor: pointer;
 
     @include govuk-font(19);
@@ -70,18 +67,26 @@ $large-input-size: 50px;
       pointer-events: none;
     }
 
-    &:first-of-type {
-      border-top-width: 0;
-    }
-
-    &:last-of-type {
-      border-bottom-width: 0;
-    }
-
     &--focused,
     &:hover {
       background-color: govuk-colour("light-grey");
       outline: none;
+    }
+
+    &--search-icon {
+      background-image: url("govuk_publishing_components/icon-search.svg");
+      background-repeat: no-repeat;
+      width: govuk-spacing(7);
+      height: govuk-spacing(7);
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    &--border {
+      height: 1px;
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid $govuk-border-colour;
     }
   }
 
