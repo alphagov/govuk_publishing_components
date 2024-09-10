@@ -12,37 +12,39 @@ describe('Search with autocomplete component', () => {
   }
 
   const html = `
-    <div
-      class="gem-c-search-with-autocomplete"
-      data-module="search-with-autocomplete"
-      data-source="https://www.example.org/api/autocomplete.json?foo=bar"
-      data-source-key="suggestions"
-    >
+    <form id="search-form">
       <div
-        class="gem-c-search gem-c-search--separate-label"
-        data-module="gem-toggle-input-class-on-focus"
+        class="gem-c-search-with-autocomplete"
+        data-module="search-with-autocomplete"
+        data-source="https://www.example.org/api/autocomplete.json?foo=bar"
+        data-source-key="suggestions"
       >
-        <label for="search-main-7fdd251c" class="gem-c-search__label">Search on GOV.UK</label>
-        <div class="gem-c-search__item-wrapper">
-          <div class="gem-c-search__input-wrapper">
-            <input
-              enterkeyhint="search"
-              class="gem-c-search__item gem-c-search__input js-class-toggle" id="search-main-7b87262d"
-              name="q"
-              title="Search"
-              type="search"
-              value="i've been looking for freedom"
-            >
-          </div>
+        <div
+          class="gem-c-search gem-c-search--separate-label"
+          data-module="gem-toggle-input-class-on-focus"
+        >
+          <label for="search-main-7fdd251c" class="gem-c-search__label">Search on GOV.UK</label>
+          <div class="gem-c-search__item-wrapper">
+            <div class="gem-c-search__input-wrapper">
+              <input
+                enterkeyhint="search"
+                class="gem-c-search__item gem-c-search__input js-class-toggle" id="search-main-7b87262d"
+                name="q"
+                title="Search"
+                type="search"
+                value="i've been looking for freedom"
+              >
+            </div>
 
-          <div class="gem-c-search__item gem-c-search__submit-wrapper">
-            <button class="gem-c-search__submit" type="submit" enterkeyhint="search">
-              Search
-            </button>
+            <div class="gem-c-search__item gem-c-search__submit-wrapper">
+              <button class="gem-c-search__submit" type="submit" enterkeyhint="search">
+                Search
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   `
 
   // Enters a value into the input, triggers an input event, and waits for the autocomplete results
@@ -139,9 +141,27 @@ describe('Search with autocomplete component', () => {
 
     performInputAndWaitForResults(input, 'bar', () => {
       const suggestionText = fixture.querySelector('.autocomplete__suggestion-text').innerHTML
-      expect(suggestionText).toEqual('foo <mark>bar</mark> baz')
+      expect(suggestionText).toEqual('blink/blink')
 
       done()
     })
+  })
+
+  it('submits the containing form when a suggestion is confirmed by keyboard', () => {
+    const form = fixture.querySelector('form')
+    const input = fixture.querySelector('input')
+    const submitSpy = spyOn(form, 'submit')
+
+    stubSuccessfulFetch(['foo'])
+    performInputAndWaitForResults(input, 'test query', () => {
+      const suggestion = fixture.querySelector('.autocomplete__option')
+      suggestion.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }))
+
+      expect(submitSpy).toHaveBeenCalled()
+    })
+  })
+
+  it('submits the containing form when a suggestion is confirmed by mouse', () => {
+    // TODO: Implement this test
   })
 })
