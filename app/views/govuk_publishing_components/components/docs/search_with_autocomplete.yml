@@ -4,8 +4,13 @@ description: |
   remote source as a user types.
 body: |
   This component uses [Accessible Autocomplete](https://github.com/alphagov/accessible-autocomplete)
-  to enhance the [search component's](/component-guide/search) input element.
+  to enhance the [`search` component's](/component-guide/search) input element.
   If the user does not have JavaScript enabled, the search component will function as normal.
+
+  Note that the inline label on the `search` component conflicts with the markup and styling
+  generated internally by Accessible Autocomplete. Our current designs do not foresee us using
+  autocomplete on a search box with an inline label, and this component will always force the
+  `inline_label` option on its nested `search` component to be `false`.
 accessibility_criteria: |
   [Accessibility acceptance criteria](https://github.com/alphagov/accessible-autocomplete/blob/master/accessibility-criteria.md)
 examples:
@@ -15,7 +20,7 @@ examples:
     data:
       source: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
       source_key: suggested_autocomplete
-  set_search_value:
+  set_input_value:
     data:
       source: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
       source_key: suggested_autocomplete
@@ -32,8 +37,8 @@ examples:
       size: "large"
     context:
       dark_background: true
-  change_label_text:
+  complex_custom_label:
     data:
       source: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
       source_key: suggested_autocomplete
-      label_text: "Auf GOV.UK suchen"
+      label_text: <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Search GOV.UK</h2>
