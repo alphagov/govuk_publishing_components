@@ -2,7 +2,11 @@
 
 // These styles are adapted from the original Accessibile Autocomplete component stylesheet, mostly
 // to remove superfluous styles that are already provided by the GOV.UK Design System, and to adapt
-// the styling to match the designs (e.g. to remove the zebra striping on rows).
+// the styling to match the new GOV.UK search box designs (e.g. to remove the zebra striping on
+// rows, adjust whitespace, and manage the tweaked markup we use in the suggestion template).
+//
+// Note that most selectors targetted within this file are those constructed by the Accessible
+// Autocomplete component, so they may not 100% match our own component conventions.
 //
 // see https://github.com/alphagov/accessible-autocomplete/blob/main/src/autocomplete.css
 
@@ -10,9 +14,9 @@
 $input-size: 40px;
 $large-input-size: 50px;
 
+// Helps to make the autocomplete menu as wide as the entire search box _including_ the submit
+// button, not just the width of the input field.
 @mixin enhance-autocomplete-menu-width($button-size) {
-  // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
-  // not just the width of the input field.
   margin-right: -$button-size;
 }
 
@@ -22,12 +26,13 @@ $large-input-size: 50px;
   }
 
   .autocomplete__menu {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
     background-color: govuk-colour("white");
     border: 1px solid $govuk-border-colour;
     border-top: 0;
-    margin: 0;
-    overflow-x: hidden;
-    padding: 0;
 
     @include enhance-autocomplete-menu-width($input-size);
 
@@ -40,11 +45,12 @@ $large-input-size: 50px;
     }
 
     &--overlay {
-      box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
-      left: 0;
       position: absolute;
+      left: 0;
       top: 100%;
       z-index: 100;
+
+      box-shadow: rgba(0, 0, 0, 0.256863) 0px 2px 6px;
     }
 
     &--inline {
@@ -52,31 +58,33 @@ $large-input-size: 50px;
     }
   }
 
-  .gem-c-search--large {
-    // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
-    // not just the width of the input field.
-    .autocomplete__menu {
-      @include enhance-autocomplete-menu-width($large-input-size);
-    }
+  // Override menu margin in large mode
+  // Cannot use parent selector here as gem-c-search--large is between parent selectors
+  .gem-c-search--large .autocomplete__menu {
+    @include enhance-autocomplete-menu-width($large-input-size);
   }
 
   .autocomplete__option {
     display: block;
+
     cursor: pointer;
 
     @include govuk-font(19);
 
+    // Ensure only the parent option receives pointer events
     & > * {
       pointer-events: none;
     }
 
+    // Hover styling applies to both the currently keyboard-selected option and possibly
+    // additionally another option that is hovered over by mouse. Only the keyboard-selected option
+    // gets focus color applied to its text.
     &--focused,
     &:hover,
     &:focus-visible {
       background-color: govuk-colour("light-grey");
       outline: none;
     }
-
     &:focus-visible {
       .autocomplete__suggestion-text {
         background-color: $govuk-focus-colour;
@@ -94,7 +102,6 @@ $large-input-size: 50px;
     .autocomplete__option-wrapper {
       display: flex;
       align-items: center;
-
       margin: 0 govuk-spacing(2);
       padding: govuk-spacing(1) 0;
 
