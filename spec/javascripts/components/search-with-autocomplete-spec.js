@@ -46,6 +46,9 @@ describe('Search with autocomplete component', () => {
   `
 
   beforeEach(() => {
+    loadAutocompleteComponent(html)
+    autocomplete.init()
+
     window.fetch = jasmine.createSpy().and.returnValue(Promise.resolve({
       json: () => Promise.resolve({ suggestions: ['foo', 'bar', 'baz'] })
     }))
@@ -56,17 +59,11 @@ describe('Search with autocomplete component', () => {
   })
 
   it('deletes the original input', () => {
-    loadAutocompleteComponent(html)
-    autocomplete.init()
-
     const inputs = fixture.querySelectorAll('input')
     expect(inputs.length).toEqual(1)
   })
 
   it('recreates the input exactly', () => {
-    loadAutocompleteComponent(html)
-    autocomplete.init()
-
     const input = fixture.querySelector('input')
     expect(input.getAttribute('name')).toEqual('q')
     expect(input.getAttribute('id')).toEqual('search-main-7b87262d')
@@ -74,17 +71,11 @@ describe('Search with autocomplete component', () => {
   })
 
   it('recreates the input with the same value', () => {
-    loadAutocompleteComponent(html)
-    autocomplete.init()
-
     const input = fixture.querySelector('input')
     expect(input.value).toEqual("i've been looking for freedom")
   })
 
   it('fetches data from the source and populates the options', (done) => {
-    loadAutocompleteComponent(html)
-    autocomplete.init()
-
     const input = fixture.querySelector('input')
     input.value = 'test query'
     input.dispatchEvent(new Event('input'))
