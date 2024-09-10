@@ -113,6 +113,15 @@ $large-input-size: 50px;
     }
   }
 
+  .autocomplete__suggestion-text {
+    font-weight: bold;
+
+    mark {
+      font-weight: normal;
+      background: none;
+    }
+  }
+
   @media (forced-colors: active) {
     .autocomplete__menu {
       border-color: FieldText;

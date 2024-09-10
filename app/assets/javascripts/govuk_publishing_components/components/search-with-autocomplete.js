@@ -51,12 +51,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     constructSuggestionHTMLString (result) {
       const inputValue = this.$inputWrapper.querySelector('input').value
       const regex = new RegExp(`(${inputValue})`, 'gi')
-      const matchHTML = result.replace(regex, '<span class="govuk-!-font-weight-regular js-result-match">$1</span>')
+      const matchHTML = result.replace(regex, '<mark>$1</mark>')
 
       const html = `
         <span class="autocomplete__option-wrapper">
           <span class="autocomplete__option--search-icon"></span>
-          <span class="govuk-!-font-weight-bold autocomplete__suggestion-text">${matchHTML}</span>
+          <span class="autocomplete__suggestion-text">${matchHTML}</span>
         </span>
       `
 
