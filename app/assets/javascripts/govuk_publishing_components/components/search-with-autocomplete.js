@@ -60,16 +60,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     getResults = (query, populateResults) => {
-      try {
-        fetch(`${this.source}${query}`)
-          .then(response => response.json())
-          .then(data => data[this.sourceKey])
-          .then(results => {
-            populateResults(results)
-        })
-      } catch(e) {
-
-      }
+      const url = new URL(this.source)
+      url.searchParams.set('q', query)
+      fetch(url)
+        .then(response => response.json())
+        .then(data => data[this.sourceKey])
+        .then(results => {
+          populateResults(results)
+      })
     }
 
     submitForm () {
