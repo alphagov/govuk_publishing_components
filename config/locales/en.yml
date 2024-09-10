@@ -253,10 +253,14 @@ en:
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     password_input:
-      label: "Password"
-      button: "Show"
-      button_aria_label: "Show password"
-      error_text_prefix: "Error"
+      label: Password
+      button: Show
+      button_hide: Hide
+      button_aria_label: Show password
+      button_aria_hide_label: Hide password
+      password_shown_announcement: Your password is visible
+      password_hidden_announcement: Your password is hidden
+      error_text_prefix: Error
     previous_and_next_navigation:
       next: Next
       pagination: Pagination
