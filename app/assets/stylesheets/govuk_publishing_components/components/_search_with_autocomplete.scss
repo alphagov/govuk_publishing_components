@@ -27,7 +27,12 @@ $large-input-size: 50px;
     // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
     // not just the width of the input field.
     margin-right: -$input-size;
-    .gem-c-search-large & {
+  }
+
+  .gem-c-search--large {
+    // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
+    // not just the width of the input field.
+    .autocomplete__menu {
       margin-right: -$large-input-size;
     }
   }
