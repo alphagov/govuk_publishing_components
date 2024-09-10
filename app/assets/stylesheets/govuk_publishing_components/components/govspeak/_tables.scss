@@ -97,3 +97,12 @@
     }
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .govspeak,
+  .gem-c-govspeak {
+    table a::after {
+      display: none !important; // stylelint-disable-line declaration-no-important
+    }
+  }
+}

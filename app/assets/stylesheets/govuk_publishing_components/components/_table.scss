@@ -128,6 +128,13 @@ $table-row-even-background-colour: govuk-colour("light-grey");
 
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
+  .govuk-table,
+  .gem-c-table {
+    a::after {
+      display: none !important;
+    }
+  }
+
   .govuk-table--sortable {
     outline: none;
 
