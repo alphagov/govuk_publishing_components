@@ -67,10 +67,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       return `
-        <span class="autocomplete__option-wrapper">
+        <div class="autocomplete__option-wrapper">
           <span class="autocomplete__option--search-icon"></span>
           <span class="autocomplete__suggestion-text">${html}</span>
-        </span>
+        </div>
       `
     }
 

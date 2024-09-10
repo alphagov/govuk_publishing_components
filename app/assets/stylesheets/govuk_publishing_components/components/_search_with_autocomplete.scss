@@ -112,6 +112,20 @@ $large-input-size: 50px;
     &:last-child .autocomplete__option-wrapper {
       border-bottom: 0;
     }
+
+    // Accessible Autocomplete's iOS screenreader inset has broken CSS which hasn't been fixed
+    // upstream, and means that its text is not just visible to screenreader users, but displayed
+    // for everyone. This span is added dynamically only on iOS and not given a class, so we need to
+    // target it in a roundabout way and make it invisible to non-screenreader users.
+    & > span {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
   }
 
   .autocomplete__suggestion-text {
