@@ -49,7 +49,7 @@ describe('Search with autocomplete component', () => {
     loadAutocompleteComponent(html)
     autocomplete.init()
 
-    window.fetch = jasmine.createSpy().and.returnValue(Promise.resolve({
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
       json: () => Promise.resolve({ suggestions: ['foo', 'bar', 'baz'] })
     }))
   })
