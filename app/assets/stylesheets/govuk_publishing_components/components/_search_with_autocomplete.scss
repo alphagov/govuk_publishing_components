@@ -82,7 +82,9 @@ $large-input-size: 50px;
     }
 
     .autocomplete__option-wrapper {
-      display: block;
+      display: flex;
+      align-items: center;
+
       margin: 0 govuk-spacing(1);
       padding: govuk-spacing(1) 0;
 
