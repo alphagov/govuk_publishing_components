@@ -16,10 +16,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.sourceKey = this.$module.getAttribute('data-source-key')
     }
 
-    init () {
-      if (!this.source || !this.sourceKey) {
-        console.warn('search-with-autocomplete: No source or source-key provided; skipping init')
-        return
+    init (source) {
+      if (!this.source || !source) {
+        console.warn('search-with-autocomplete: No source provided')
       }
 
       const configOptions = {
@@ -28,9 +27,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         name: this.$originalInput.name,
         inputClasses: this.$originalInput.classList,
         defaultValue: this.$originalInput.value,
-        source: this.getResults,
+        source: source || this.getResults,
         templates: {
           suggestion: this.constructSuggestionHTMLString
+        },
+        onConfirm: () => {
+          this.submitForm()
         }
       }
 
@@ -58,12 +60,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     getResults = (query, populateResults) => {
-      fetch(`${this.source}${query}`)
-        .then(response => response.json())
-        .then(data => data[this.sourceKey])
-        .then(results => {
-          populateResults(results)
+      try {
+        fetch(`${this.source}${query}`)
+          .then(response => response.json())
+          .then(data => data[this.sourceKey])
+          .then(results => {
+            populateResults(results)
         })
+      } catch(e) {
+
+      }
+    }
+
+    submitForm () {
+      const form = this.$module.closest('form')
+      if (form) {
+        form.submit()
+      }
     }
   }
 
