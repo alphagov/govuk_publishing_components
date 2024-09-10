@@ -80,9 +80,7 @@ $large-input-size: 50px;
 
   .autocomplete__option--focused,
   .autocomplete__option:hover {
-    background-color: $govuk-link-colour;
-    border-color: $govuk-link-colour;
-    color: govuk-colour("white");
+    background-color: govuk-colour("light-grey");
     outline: none;
   }
 
