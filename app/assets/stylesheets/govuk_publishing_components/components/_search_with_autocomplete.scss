@@ -10,6 +10,12 @@
 $input-size: 40px;
 $large-input-size: 50px;
 
+@mixin enhance-autocomplete-menu-width($button-size) {
+  // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
+  // not just the width of the input field.
+  margin-right: -$button-size;
+}
+
 .gem-c-search-with-autocomplete {
   .autocomplete__wrapper {
     position: relative;
@@ -23,9 +29,7 @@ $large-input-size: 50px;
     overflow-x: hidden;
     padding: 0;
 
-    // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
-    // not just the width of the input field.
-    margin-right: -$input-size;
+    @include enhance-autocomplete-menu-width($input-size);
 
     &--visible {
       display: block;
@@ -52,7 +56,7 @@ $large-input-size: 50px;
     // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
     // not just the width of the input field.
     .autocomplete__menu {
-      margin-right: -$large-input-size;
+      @include enhance-autocomplete-menu-width($large-input-size);
     }
   }
 
