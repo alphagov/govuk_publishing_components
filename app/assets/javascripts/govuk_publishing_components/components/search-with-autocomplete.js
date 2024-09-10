@@ -11,6 +11,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       this.$originalInput = this.$module.querySelector('input')
       this.$inputWrapper = this.$module.querySelector('.gem-c-search__input-wrapper')
+      this.$form = this.$module.closest('form')
 
       this.source = this.$module.getAttribute('data-source')
       this.sourceKey = this.$module.getAttribute('data-source-key')
@@ -30,11 +31,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         defaultValue: this.$originalInput.value,
         showNoOptionsFound: false,
         source: this.getResults,
+        onConfirm: this.submitContainingForm,
         templates: {
           suggestion: this.constructSuggestionHTMLString
-        },
-        onConfirm: () => {
-          this.submitForm()
         }
       }
 
@@ -70,10 +69,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         .then(populateResults)
     }
 
-    submitForm () {
-      const form = this.$module.closest('form')
-      if (form) {
-        form.submit()
+    submitContainingForm () {
+      if (this.$form) {
+        this.$form.submit()
       }
     }
   }
