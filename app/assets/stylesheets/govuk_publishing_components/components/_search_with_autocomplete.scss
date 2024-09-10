@@ -67,9 +67,16 @@ $large-input-size: 50px;
     }
 
     &--focused,
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background-color: govuk-colour("light-grey");
       outline: none;
+    }
+
+    &:focus-visible {
+      .autocomplete__suggestion-text {
+        background-color: $govuk-focus-colour;
+      }
     }
 
     &--search-icon {
