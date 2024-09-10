@@ -1,7 +1,5 @@
 <%
   add_gem_component_stylesheet("search_with_autocomplete")
-  # TODO: This doesn't get consistently added by the `search` component in all circumstances where
-  # it should be (e.g. `inline_label: false`).
   add_gem_component_stylesheet("label")
 
   source = local_assigns[:source]
@@ -11,7 +9,12 @@
     raise ArgumentError, "The search_with_autocomplete component requires source and source_key"
   end
 
-  search_component_options = local_assigns.except(:autocomplete, :source, :source_key)
+  search_component_options = local_assigns.except(:autocomplete, :source, :source_key).merge(
+    # The `search` component has an inline label by default, but this conflicts with the accessible-
+    # autocomplete component's markup and styling. Every potential use of this component is in
+    # situations where we want the label not to be inline anyway, so we override the default here.
+    inline_label: false
+  )
 %>
 <%= tag.div(
   class: "gem-c-search-with-autocomplete",
