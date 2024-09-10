@@ -92,14 +92,6 @@ $large-input-size: 50px;
       }
     }
 
-    &--search-icon {
-      width: $input-size;
-      height: $input-size;
-
-      background-image: url("govuk_publishing_components/icon-search.svg");
-      background-repeat: no-repeat;
-    }
-
     .autocomplete__option-wrapper {
       display: flex;
       align-items: center;
@@ -126,6 +118,16 @@ $large-input-size: 50px;
       white-space: nowrap;
       width: 1px;
     }
+  }
+
+  .autocomplete__suggestion-icon {
+    width: $input-size;
+    height: $input-size;
+
+    flex: none;
+
+    background-image: url("govuk_publishing_components/icon-search.svg");
+    background-repeat: no-repeat;
   }
 
   .autocomplete__suggestion-text {
