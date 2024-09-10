@@ -120,4 +120,28 @@ describe('Search with autocomplete component', () => {
       done()
     })
   })
+
+  it('highlights the matched part of the suggestion text', (done) => {
+    const input = fixture.querySelector('input')
+    stubSuccessfulFetch(['foo bar baz'])
+
+    performInputAndWaitForResults(input, 'bar', () => {
+      const suggestionText = fixture.querySelector('.autocomplete__suggestion-text').innerHTML
+      expect(suggestionText).toEqual('foo <mark>bar</mark> baz')
+
+      done()
+    })
+  })
+
+  it('sanitizes potential garbled results from the source', (done) => {
+    const input = fixture.querySelector('input')
+    stubSuccessfulFetch(['<blink>&</blink>'])
+
+    performInputAndWaitForResults(input, 'bar', () => {
+      const suggestionText = fixture.querySelector('.autocomplete__suggestion-text').innerHTML
+      expect(suggestionText).toEqual('foo <mark>bar</mark> baz')
+
+      done()
+    })
+  })
 })
