@@ -45,47 +45,12 @@ describe('Search with autocomplete component', () => {
     </div>
   `
 
-  beforeEach(() => {
-    loadAutocompleteComponent(html)
-    autocomplete.init()
-
-    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
-      json: () => Promise.resolve({ suggestions: ['foo', 'bar', 'baz'] })
-    }))
-  })
-
-  afterEach(() => {
-    fixture.remove()
-  })
-
-  it('deletes the original input', () => {
-    const inputs = fixture.querySelectorAll('input')
-    expect(inputs.length).toEqual(1)
-  })
-
-  it('recreates the input exactly', () => {
-    const input = fixture.querySelector('input')
-    expect(input.getAttribute('name')).toEqual('q')
-    expect(input.getAttribute('id')).toEqual('search-main-7b87262d')
-    expect(input.getAttribute('type')).toEqual('search')
-  })
-
-  it('recreates the input with the same value', () => {
-    const input = fixture.querySelector('input')
-    expect(input.value).toEqual("i've been looking for freedom")
-  })
-
-  it('fetches data from the source and populates the options', (done) => {
-    const input = fixture.querySelector('input')
-    input.value = 'test query'
+  // Enters a value into the input, triggers an input event, and waits for the autocomplete results
+  // to be populated before calling the onUpdated callback with the results.
+  const performInputAndWaitForResults = (input, value, onUpdated) => {
+    input.value = value
     input.dispatchEvent(new Event('input'))
 
-    const expectedUrl = new URL(
-      'https://www.example.org/api/autocomplete.json?foo=bar&q=test+query'
-    )
-    expect(window.fetch).toHaveBeenCalledWith(expectedUrl)
-
-    // Wait for the component to catch up with itself
     const observer = new MutationObserver(() => {
       const results = [...fixture.querySelectorAll('.autocomplete__option')].map(
         (r) => r.textContent.trim()
@@ -94,11 +59,65 @@ describe('Search with autocomplete component', () => {
       const menu = fixture.querySelector('.autocomplete__menu')
       if (menu && menu.classList.contains('autocomplete__menu--visible')) {
         observer.disconnect()
-        expect(results).toEqual(['foo', 'bar', 'baz'])
-        done()
+        onUpdated(results)
       }
     })
 
     observer.observe(fixture, { childList: true, subtree: true, attributeFilter: ['class'] })
+  }
+
+  const stubSuccessfulFetch = (suggestions) => {
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
+      json: () => Promise.resolve({ suggestions })
+    }))
+  }
+
+  beforeEach(() => {
+    loadAutocompleteComponent(html)
+    autocomplete.init()
+  })
+
+  afterEach(() => {
+    fixture.remove()
+  })
+
+  it('deletes the original input', () => {
+    const inputs = fixture.querySelectorAll('input')
+
+    expect(inputs.length).toEqual(1)
+  })
+
+  it('recreates the input exactly', () => {
+    const input = fixture.querySelector('input')
+
+    expect(input.getAttribute('name')).toEqual('q')
+    expect(input.getAttribute('id')).toEqual('search-main-7b87262d')
+    expect(input.getAttribute('type')).toEqual('search')
+    expect(input.value).toEqual("i've been looking for freedom")
+  })
+
+  it('fetches data from the correct source', (done) => {
+    const input = fixture.querySelector('input')
+    stubSuccessfulFetch(['foo'])
+
+    performInputAndWaitForResults(input, 'test query', (results) => {
+      const expectedUrl = new URL(
+        'https://www.example.org/api/autocomplete.json?foo=bar&q=test+query'
+      )
+      expect(window.fetch).toHaveBeenCalledWith(expectedUrl)
+
+      done()
+    })
+  })
+
+  it('populates the autocomplete with the expected options given the source response', (done) => {
+    const input = fixture.querySelector('input')
+    stubSuccessfulFetch(['foo', 'bar', 'baz'])
+
+    performInputAndWaitForResults(input, 'test query', (results) => {
+      expect(results).toEqual(['foo', 'bar', 'baz'])
+
+      done()
+    })
   })
 })
