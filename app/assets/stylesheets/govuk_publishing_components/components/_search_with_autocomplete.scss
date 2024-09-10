@@ -58,13 +58,13 @@ $large-input-size: 50px;
   }
 
   .autocomplete__option {
-    @include govuk-font(19);
-
+    display: block;
     padding: 5px;
     border-bottom: solid $govuk-border-colour;
     border-width: 1px 0;
     cursor: pointer;
-    display: block;
+
+    @include govuk-font(19);
 
     & > * {
       pointer-events: none;
