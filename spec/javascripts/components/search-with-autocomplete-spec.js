@@ -94,14 +94,20 @@ describe('Search with autocomplete component', () => {
     )
     expect(window.fetch).toHaveBeenCalledWith(expectedUrl)
 
-    // The DOM manipulation needs a moment to catch up with itself
-    setTimeout(() => {
+    // Wait for the component to catch up with itself
+    const observer = new MutationObserver(() => {
       const results = [...fixture.querySelectorAll('.autocomplete__option')].map(
         (r) => r.textContent.trim()
       )
 
-      expect(results).toEqual(['foo', 'bar', 'baz'])
-      done()
-    }, 10)
+      const menu = fixture.querySelector('.autocomplete__menu')
+      if (menu && menu.classList.contains('autocomplete__menu--visible')) {
+        observer.disconnect()
+        expect(results).toEqual(['foo', 'bar', 'baz'])
+        done()
+      }
+    })
+
+    observer.observe(fixture, { childList: true, subtree: true, attributeFilter: ['class'] })
   })
 })
