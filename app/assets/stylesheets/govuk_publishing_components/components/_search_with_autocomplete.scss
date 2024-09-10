@@ -5,6 +5,11 @@
 // the styling to match the designs (e.g. to remove the zebra striping on rows).
 //
 // see https://github.com/alphagov/accessible-autocomplete/blob/main/src/autocomplete.css
+
+// TODO: These are duplicated from _search.scss. Should we move them to a shared place?
+$input-size: 40px;
+$large-input-size: 50px;
+
 .gem-c-search-with-autocomplete {
   .autocomplete__wrapper {
     position: relative;
@@ -18,6 +23,13 @@
     max-height: 342px;
     overflow-x: hidden;
     padding: 0;
+
+    // Make the autocomplete menu as wide as the entire search box _including_ the submit button,
+    // not just the width of the input field.
+    margin-right: -$input-size;
+    .gem-c-search-large & {
+      margin-right: -$large-input-size;
+    }
   }
 
   .autocomplete__menu--visible {
