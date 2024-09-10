@@ -27,6 +27,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         name: this.$originalInput.name,
         inputClasses: this.$originalInput.classList,
         defaultValue: this.$originalInput.value,
+        showNoOptionsFound: false,
         source: source || this.getResults,
         templates: {
           suggestion: this.constructSuggestionHTMLString
