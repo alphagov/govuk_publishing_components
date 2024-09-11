@@ -116,6 +116,7 @@ sr:
       show_button: Prikaži pretragu
       top_level: Najviši nivo
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -128,7 +129,7 @@ sr:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: Od
       history: Istorija

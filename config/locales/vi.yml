@@ -114,6 +114,7 @@ vi:
       show_button: Hiển thị tìm kiếm
       top_level: Mức cao nhất
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -126,7 +127,7 @@ vi:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: Từ
       history: Lịch sử

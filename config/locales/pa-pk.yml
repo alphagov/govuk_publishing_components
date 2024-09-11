@@ -111,6 +111,7 @@ pa-pk:
       show_button: اپنی تلاش دکھاؤ
       top_level: اوچی تھاں دی
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -123,7 +124,7 @@ pa-pk:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: ایتھوں
       history: پچھلا کم

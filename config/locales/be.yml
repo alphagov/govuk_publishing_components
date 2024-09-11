@@ -121,6 +121,7 @@ be:
       show_button: Паказаць вынікі пошуку
       top_level: Верхні ўзровень
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -133,7 +134,7 @@ be:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: З
       history: Гiсторыя

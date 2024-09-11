@@ -167,6 +167,7 @@ en:
       top_level: Top level
     layout_super_navigation_header:
       close_text: Close
+      close_text: Close
       logo_link_title: Go to the GOV.UK homepage
       logo_text: GOV.UK
       menu_toggle_label:

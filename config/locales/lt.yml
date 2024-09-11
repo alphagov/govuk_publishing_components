@@ -120,6 +120,7 @@ lt:
       show_button: Rodyti paiešką
       top_level: Aukščiausias lygis
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -132,7 +133,7 @@ lt:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: Nuo
       history: Istorija

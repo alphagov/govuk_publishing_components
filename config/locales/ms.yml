@@ -114,6 +114,7 @@ ms:
       show_button: Tunjuk carian
       top_level: Aras teratas
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -126,7 +127,7 @@ ms:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: Daripada
       history: Sejarah
