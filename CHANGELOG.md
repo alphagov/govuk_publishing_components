@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Change to add text 'Search' to search dropdown button. this is postfixed with visually hidden 'GOV.UK'. Open state has text 'Close' added. Mobile view should have text for both states completely visually hidden with just icons visible. ([PR #4216](https://github.com/alphagov/govuk_publishing_components/pull/4216))
 * Use component wrapper in hint component ([PR #4214](https://github.com/alphagov/govuk_publishing_components/pull/4214))
 * Hide printed URLs when printing tables ([PR #4209](https://github.com/alphagov/govuk_publishing_components/pull/4209))
 * Fix action link component print styles ([PR #4213](https://github.com/alphagov/govuk_publishing_components/pull/4213))
