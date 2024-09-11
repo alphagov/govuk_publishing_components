@@ -20,6 +20,12 @@ $large-input-size: 50px;
   margin-right: -$button-size;
 }
 
+.gem-c-search-with-autocomplete .gem-c-search--on-govuk-blue {
+  .autocomplete__menu {
+    border-top: 1px solid $govuk-border-colour;
+  }
+}
+
 .gem-c-search-with-autocomplete {
   .autocomplete__wrapper {
     position: relative;
@@ -29,7 +35,6 @@ $large-input-size: 50px;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-
     background-color: govuk-colour("white");
     border: 1px solid $govuk-border-colour;
     border-top: 0;
@@ -42,6 +47,7 @@ $large-input-size: 50px;
 
     &--hidden {
       display: none;
+      border: 0;
     }
 
     &--overlay {
@@ -60,15 +66,23 @@ $large-input-size: 50px;
 
   // Override menu margin in large mode
   // Cannot use parent selector here as gem-c-search--large is between parent selectors
-  .gem-c-search--large .autocomplete__menu {
-    @include enhance-autocomplete-menu-width($large-input-size);
+  .gem-c-search--large {
+    .autocomplete__menu {
+      @include enhance-autocomplete-menu-width($large-input-size);
+    }
+
+    .autocomplete__option-wrapper {
+      padding: govuk-spacing(1) 0;
+    }
+
+    .autocomplete__option {
+      height: $large-input-size;
+    }
   }
 
   .autocomplete__option {
     display: block;
-
     cursor: pointer;
-
     @include govuk-font(19);
 
     // Ensure only the parent option receives pointer events
@@ -96,13 +110,11 @@ $large-input-size: 50px;
       display: flex;
       align-items: center;
       margin: 0 govuk-spacing(2);
-      padding: govuk-spacing(1) 0;
-
-      border-bottom: 1px solid govuk-colour("mid-grey");
+      border-top: 1px solid govuk-colour("mid-grey");
     }
 
-    &:last-child .autocomplete__option-wrapper {
-      border-bottom: 0;
+    &:first-child .autocomplete__option-wrapper {
+      border-top: 0;
     }
 
     // Accessible Autocomplete's iOS screenreader inset has broken CSS which hasn't been fixed
@@ -123,9 +135,7 @@ $large-input-size: 50px;
   .autocomplete__suggestion-icon {
     width: $input-size;
     height: $input-size;
-
     flex: none;
-
     background-image: url("govuk_publishing_components/icon-search.svg");
     background-repeat: no-repeat;
   }
