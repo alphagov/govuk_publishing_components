@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Set aria-label text in govuk_logo.html to "GOV.UK" ([PR #4217](https://github.com/alphagov/govuk_publishing_components/pull/4217))
+
 ## 43.1.1
 
 * Use component wrapper in hint component ([PR #4214](https://github.com/alphagov/govuk_publishing_components/pull/4214))
