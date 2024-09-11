@@ -7,9 +7,7 @@
 %>
 
 <% unless hide_logo_text %>
-  <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo", {
-    aria_label_text: logo_text,
-  } %>
+  <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
 <% else %>
   <span class="govuk-visually-hidden">
     <%= logo_text %>
