@@ -17,11 +17,25 @@ describe "Search with autocomplete", type: :view do
     )
   end
 
-  it "renders a search box with default options" do
+  it "renders the search component within itself" do
     render_component({
       source: "http://example.org/api/autocomplete",
       source_key: "suggestions",
     })
-    assert_select ".gem-c-search-with-autocomplete"
+    assert_select ".gem-c-search-with-autocomplete .gem-c-search"
+  end
+
+  it "passes on options to the search component" do
+    render_component({
+      source: "http://example.org/api/autocomplete",
+      source_key: "suggestions",
+      on_govuk_blue: true,
+      name: "custom_field_name",
+      button_text: "Some test text",
+    })
+
+    assert_select ".gem-c-search.gem-c-search--on-govuk-blue"
+    assert_select ".gem-c-search input[name='custom_field_name']"
+    assert_select ".gem-c-search button", text: "Some test text"
   end
 end
