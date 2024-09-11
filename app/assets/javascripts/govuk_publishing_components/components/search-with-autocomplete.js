@@ -81,6 +81,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         .then(response => response.json())
         .then(data => data[this.sourceKey])
         .then(populateResults)
+        .catch(() => { populateResults([]) })
     }
 
     submitContainingForm () {

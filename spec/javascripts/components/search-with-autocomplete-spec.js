@@ -76,6 +76,18 @@ describe('Search with autocomplete component', () => {
     }))
   }
 
+  const stubLocalErrorFetch = () => {
+    spyOn(window, 'fetch').and.returnValue(Promise.reject(new Error('Network error')))
+  }
+
+  const stubServerErrorFetch = () => {
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
+      ok: false,
+      status: 500,
+      json: () => Promise.resolve({ error: 'Internal server error' })
+    }))
+  }
+
   beforeEach(() => {
     loadAutocompleteComponent(html)
     autocomplete.init()
@@ -117,6 +129,28 @@ describe('Search with autocomplete component', () => {
   it('handles empty results coming back from source', (done) => {
     const input = fixture.querySelector('input')
     stubSuccessfulFetch([])
+
+    performInput(input, 'test query', () => {
+      expectMenuNotToBeShown()
+
+      done()
+    })
+  })
+
+  it('handles a local error during fetch', (done) => {
+    const input = fixture.querySelector('input')
+    stubLocalErrorFetch()
+
+    performInput(input, 'test query', () => {
+      expectMenuNotToBeShown()
+
+      done()
+    })
+  })
+
+  it('handles a server error during fetch', (done) => {
+    const input = fixture.querySelector('input')
+    stubServerErrorFetch()
 
     performInput(input, 'test query', () => {
       expectMenuNotToBeShown()
