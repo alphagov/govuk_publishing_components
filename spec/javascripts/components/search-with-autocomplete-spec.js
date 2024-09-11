@@ -1,5 +1,5 @@
 /* eslint-env jasmine */
-/* global GOVUK, KeyboardEvent, Event */
+/* global GOVUK, Event */
 
 describe('Search with autocomplete component', () => {
   let autocomplete, fixture
