@@ -46,26 +46,28 @@ describe('Search with autocomplete component', () => {
       </div>
     </form>
   `
-
-  // Enters a value into the input, triggers an input event, and waits for the autocomplete results
-  // to be populated before calling the onUpdated callback with the results.
-  const performInputAndWaitForResults = (input, value, onUpdated) => {
+  const performInput = (input, value, onDone) => {
     input.value = value
     input.dispatchEvent(new Event('input'))
 
-    const observer = new MutationObserver(() => {
-      const results = [...fixture.querySelectorAll('.autocomplete__option')].map(
-        (r) => r.textContent.trim()
-      )
+    // Gives the autocomplete component a chance to do its work and potentially update the DOM. We
+    // could use a mutation observer for this, but that would only work if there are any results (as
+    // there would be no updates if there are no results).
+    setTimeout(onDone, 5)
+  }
 
-      const menu = fixture.querySelector('.autocomplete__menu')
-      if (menu && menu.classList.contains('autocomplete__menu--visible')) {
-        observer.disconnect()
-        onUpdated(results)
-      }
-    })
+  const expectMenuToBeShownWithOptions = (options) => {
+    const menu = fixture.querySelector('.autocomplete__menu')
+    const results = [...menu.querySelectorAll('.autocomplete__option')].map(
+      (r) => r.textContent.trim()
+    )
+    expect(menu.classList).toContain('autocomplete__menu--visible')
+    expect(results).toEqual(options)
+  }
 
-    observer.observe(fixture, { childList: true, subtree: true, attributeFilter: ['class'] })
+  const expectMenuNotToBeShown = () => {
+    const menu = fixture.querySelector('.autocomplete__menu')
+    expect(menu.classList).not.toContain('autocomplete__menu--visible')
   }
 
   const stubSuccessfulFetch = (suggestions) => {
@@ -102,7 +104,7 @@ describe('Search with autocomplete component', () => {
     const input = fixture.querySelector('input')
     stubSuccessfulFetch(['foo'])
 
-    performInputAndWaitForResults(input, 'test query', (results) => {
+    performInput(input, 'test query', (results) => {
       const expectedUrl = new URL(
         'https://www.example.org/api/autocomplete.json?foo=bar&q=test+query'
       )
@@ -112,12 +114,23 @@ describe('Search with autocomplete component', () => {
     })
   })
 
+  it('handles empty results coming back from source', (done) => {
+    const input = fixture.querySelector('input')
+    stubSuccessfulFetch([])
+
+    performInput(input, 'test query', () => {
+      expectMenuNotToBeShown()
+
+      done()
+    })
+  })
+
   it('populates the autocomplete with the expected options given the source response', (done) => {
     const input = fixture.querySelector('input')
     stubSuccessfulFetch(['foo', 'bar', 'baz'])
 
-    performInputAndWaitForResults(input, 'test query', (results) => {
-      expect(results).toEqual(['foo', 'bar', 'baz'])
+    performInput(input, 'test query', () => {
+      expectMenuToBeShownWithOptions(['foo', 'bar', 'baz'])
 
       done()
     })
@@ -127,7 +140,7 @@ describe('Search with autocomplete component', () => {
     const input = fixture.querySelector('input')
     stubSuccessfulFetch(['foo bar baz'])
 
-    performInputAndWaitForResults(input, 'bar', () => {
+    performInput(input, 'bar', () => {
       const suggestionText = fixture.querySelector('.autocomplete__suggestion-text').innerHTML
       expect(suggestionText).toEqual('foo <mark>bar</mark> baz')
 
@@ -139,9 +152,9 @@ describe('Search with autocomplete component', () => {
     const input = fixture.querySelector('input')
     stubSuccessfulFetch(['<blink>&</blink>'])
 
-    performInputAndWaitForResults(input, 'bar', () => {
+    performInput(input, 'blink', () => {
       const suggestionText = fixture.querySelector('.autocomplete__suggestion-text').innerHTML
-      expect(suggestionText).toEqual('blink/blink')
+      expect(suggestionText).toEqual('<mark>blink</mark>/blink')
 
       done()
     })
@@ -153,7 +166,7 @@ describe('Search with autocomplete component', () => {
     const submitSpy = spyOn(form, 'submit')
 
     stubSuccessfulFetch(['foo'])
-    performInputAndWaitForResults(input, 'test query', () => {
+    performInput(input, 'test query', () => {
       const firstOption = fixture.querySelector('.autocomplete__option')
       firstOption.click()
 
