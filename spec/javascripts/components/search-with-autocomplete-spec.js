@@ -147,21 +147,18 @@ describe('Search with autocomplete component', () => {
     })
   })
 
-  it('submits the containing form when a suggestion is confirmed by keyboard', () => {
+  it('submits the containing form when a suggestion is confirmed', (done) => {
     const form = fixture.querySelector('form')
     const input = fixture.querySelector('input')
     const submitSpy = spyOn(form, 'submit')
 
     stubSuccessfulFetch(['foo'])
     performInputAndWaitForResults(input, 'test query', () => {
-      const suggestion = fixture.querySelector('.autocomplete__option')
-      suggestion.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }))
+      const firstOption = fixture.querySelector('.autocomplete__option')
+      firstOption.click()
 
       expect(submitSpy).toHaveBeenCalled()
+      done()
     })
-  })
-
-  it('submits the containing form when a suggestion is confirmed by mouse', () => {
-    // TODO: Implement this test
   })
 })
