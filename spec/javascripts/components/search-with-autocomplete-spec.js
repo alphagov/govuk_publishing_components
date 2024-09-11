@@ -102,7 +102,7 @@ describe('Search with autocomplete component', () => {
     const input = fixture.querySelector('input')
     stubSuccessfulFetch(['foo'])
 
-    performInputAndWaitForResults(input, 'test query', (results) => {
+    performInputAndWaitForResults(input, 'test query', () => {
       const expectedUrl = new URL(
         'https://www.example.org/api/autocomplete.json?foo=bar&q=test+query'
       )
@@ -147,7 +147,22 @@ describe('Search with autocomplete component', () => {
     })
   })
 
-  it('submits the containing form when a suggestion is confirmed by keyboard', () => {
+  it('submits the containing form when a suggestion is confirmed by keyboard', (done) => {
+    const form = fixture.querySelector('form')
+    const input = fixture.querySelector('input')
+    const submitSpy = spyOn(form, 'submit')
+
+    stubSuccessfulFetch(['foo'])
+    performInputAndWaitForResults(input, 'test query', () => {
+      window.GOVUK.triggerEvent(input, 'keydown', { keyCode: 40 })
+      window.GOVUK.triggerEvent(input, 'keydown', { keyCode: 13 })
+      expect(submitSpy).toHaveBeenCalled()
+
+      done()
+    })
+  })
+
+  it('submits the containing form when a suggestion is confirmed by mouse', (done) => {
     const form = fixture.querySelector('form')
     const input = fixture.querySelector('input')
     const submitSpy = spyOn(form, 'submit')
@@ -155,13 +170,10 @@ describe('Search with autocomplete component', () => {
     stubSuccessfulFetch(['foo'])
     performInputAndWaitForResults(input, 'test query', () => {
       const suggestion = fixture.querySelector('.autocomplete__option')
-      suggestion.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter' }))
-
+      suggestion.click()
       expect(submitSpy).toHaveBeenCalled()
-    })
-  })
 
-  it('submits the containing form when a suggestion is confirmed by mouse', () => {
-    // TODO: Implement this test
+      done()
+    })
   })
 })
