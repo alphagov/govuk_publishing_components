@@ -611,7 +611,7 @@ $after-button-padding-left: govuk-spacing(4);
   height: $black-bar-height;
   padding: govuk-spacing(3);
   position: relative;
-  width: 130px;
+  width: 57px;
   @include govuk-font($size: 16, $weight: "bold", $line-height: 20px);
 
   @include focus-and-focus-visible {
@@ -638,6 +638,7 @@ $after-button-padding-left: govuk-spacing(4);
     border: 0;
     margin: 0;
     right: 0;
+    width: 130px;
 
     @include focus-not-focus-visible {
       border-bottom: 1px solid govuk-colour("dark-blue");
@@ -877,6 +878,9 @@ $after-button-padding-left: govuk-spacing(4);
 .gem-c-layout-super-navigation-header__search-item {
   .gem-c-layout-super-navigation-header__search-toggle-button-link-text-open {
     display: inline;
+    @include govuk-media-query($until: "desktop") {
+      @include govuk-visually-hidden;
+    }
   }
 
   .gem-c-layout-super-navigation-header__search-toggle-button-link-text-close {
@@ -890,6 +894,9 @@ $after-button-padding-left: govuk-spacing(4);
 
     .gem-c-layout-super-navigation-header__search-toggle-button-link-text-close {
       display: inline;
+      @include govuk-media-query($until: "desktop") {
+        @include govuk-visually-hidden;
+      }
     }
   }
 }
@@ -992,6 +999,10 @@ $after-button-padding-left: govuk-spacing(4);
     height: $large-navbar-height;
     // to stop the search icon moving on hover
     padding-bottom: 6px;
+  }
+
+  .gem-c-layout-super-navigation-header__open-button {
+    padding-bottom: 3px;
   }
 
   .gem-c-layout-super-navigation-header__button-container--large-navbar {

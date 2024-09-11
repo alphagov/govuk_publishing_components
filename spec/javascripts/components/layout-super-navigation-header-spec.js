@@ -28,8 +28,8 @@ describe('The super header navigation', function () {
                       '</button> </div>' +
                   '<div class="gem-c-layout-super-navigation-header__search-item">' +
                       '<button aria-controls="super-search-menu" aria-expanded="false" aria-label="Show search menu" class="gem-c-layout-super-navigation-header__search-toggle-button" data-text-for-hide="Hide search menu" data-text-for-show="Show search menu" data-toggle-mobile-group="top" data-toggle-desktop-group="top" data-tracking-key="search" id="super-search-menu-toggle" type="button" data-ga4-event="{&quot;event_name&quot;:&quot;select_content&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;text&quot;:&quot;Search&quot;,&quot;index&quot;:2,&quot;index_total&quot;:2,&quot;section&quot;:&quot;Search&quot;}">' +
-                          '<span class="govuk-visually-hidden">' +
-                              'Search GOV.UK' +
+                          '<span class="gem-c-layout-super-navigation-header__search-toggle-button-link-text-open">' +
+                            'Search <span class="govuk-visually-hidden">GOV.UK</span>' +
                           '</span>' +
                           '<svg class="gem-c-layout-super-navigation-header__search-toggle-button-link-icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
                               '<circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>' +
@@ -37,6 +37,9 @@ describe('The super header navigation', function () {
                           '</svg>' +
                           '<span aria-hidden="true" class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon" focusable="false">' +
                               '×' +
+                          '</span>' +
+                          '<span class="gem-c-layout-super-navigation-header__search-toggle-button-link-text-close">' +
+                            'Close' +
                           '</span>' +
                       '</button>' +
                       '<a class="gem-c-layout-super-navigation-header__search-item-link" href="/search" hidden="hidden">' +
