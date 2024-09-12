@@ -208,4 +208,15 @@ describe('Search with autocomplete component', () => {
       done()
     })
   })
+
+  it('ensures that the form is submitted with the right value in the onConfirm callback', () => {
+    const form = fixture.querySelector('form')
+    const submitSpy = spyOn(form, 'submit')
+
+    autocomplete.submitContainingForm('updated value')
+
+    const formData = new FormData(form)
+    expect(formData.get('q')).toEqual('updated value')
+    expect(submitSpy).toHaveBeenCalled()
+  })
 })
