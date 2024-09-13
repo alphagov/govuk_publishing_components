@@ -93,6 +93,22 @@ describe('Cookie helper functions', function () {
       expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: false, usage: false, campaigns: false })
     })
 
+    it('deletes cookies by setting the expiration date to 1st January 1970', function () {
+      GOVUK.setCookie('JS-Detection', 'test', { days: 99999, domain: '.gov.uk', path: '/' })
+      expect(GOVUK.getCookie('JS-Detection')).toEqual('test')
+      window.GOVUK.expireCookie('JS-Detection', 1234568) // Should set the expiration date to 1970-01-01
+      expect(GOVUK.getCookie('JS-Detection')).toEqual(null)
+    })
+
+    it('calls expireCookie in the deleteCookie function', function () {
+      spyOn(window.GOVUK, 'expireCookie')
+      GOVUK.setCookie('JS-Detection', 'test', { days: 99999, domain: '.gov.uk', path: '/' })
+      expect(GOVUK.getCookie('JS-Detection')).toEqual('test')
+      window.GOVUK.deleteCookie('JS-Detection')
+      expect(GOVUK.getCookie('JS-Detection')).toEqual(null)
+      expect(window.GOVUK.expireCookie.calls.count()).toBe(1)
+    })
+
     it('deletes cookies after default consent cookie set', function () {
       var date = new Date()
       date.setTime(date.valueOf() + (365 * 24 * 60 * 60 * 1000))

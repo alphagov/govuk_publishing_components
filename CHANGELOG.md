@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Set aria-label text in govuk_logo.html to "GOV.UK" ([PR #4217](https://github.com/alphagov/govuk_publishing_components/pull/4217))
+* Fix cookie expiration date potentially relying on user's timezone ([PR #4219](https://github.com/alphagov/govuk_publishing_components/pull/4219))
 
 ## 43.1.1
 

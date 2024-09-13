@@ -202,12 +202,14 @@
 
   window.GOVUK.deleteCookie = function (cookie) {
     window.GOVUK.cookie(cookie, null)
+    window.GOVUK.expireCookie(cookie)
+  }
 
-    if (window.GOVUK.cookie(cookie)) {
-      // We need to handle deleting cookies on the domain and the .domain
-      document.cookie = cookie + '=;expires=' + new Date() + ';'
-      document.cookie = cookie + '=;expires=' + new Date() + ';domain=' + window.location.hostname + ';path=/'
-    }
+  window.GOVUK.expireCookie = function (cookie, value = '') {
+    // We need to handle deleting cookies on the domain and the .domain
+    var thePast = new Date(0) // 0 = 0 seconds since UTC started (1970/01/01)
+    document.cookie = cookie + '=' + value + ';expires=' + thePast + ';'
+    document.cookie = cookie + '=' + value + ';expires=' + thePast + ';domain=' + window.location.hostname + ';path=/'
   }
 
   window.GOVUK.deleteUnconsentedCookies = function () {
