@@ -106,7 +106,7 @@ module GovukPublishingComponents
 
       def add_taxonomy_tags(meta_tags)
         themes = root_taxon_slugs(content_item)
-        meta_tags["govuk:themes"] = themes.to_a.sort.join(", ") unless themes.empty?
+        meta_tags["govuk:taxonomy_level1"] = themes.to_a.sort.join(", ") unless themes.empty?
 
         taxons = if content_item[:document_type] == "taxon"
                    [content_item]

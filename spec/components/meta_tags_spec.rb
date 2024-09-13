@@ -105,7 +105,7 @@ describe "Meta tags", type: :view do
     assert_political_status_for(political, current, "non-political")
   end
 
-  it "renders themes metatag for root taxon" do
+  it "renders taxonomy_level1 metatag for root taxon" do
     taxon = {
       title: "Root taxon",
       base_path: "/root-taxon",
@@ -114,10 +114,10 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("taxon", "taxon").merge(taxon))
-    assert_meta_tag("govuk:themes", "root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "root-taxon")
   end
 
-  it "renders themes metatag for child taxon" do
+  it "renders taxonomy_level1 metatag for child taxon" do
     taxon = {
       title: "Child taxon",
       links: {
@@ -131,10 +131,10 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("taxon", "taxon").merge(taxon))
-    assert_meta_tag("govuk:themes", "root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "root-taxon")
   end
 
-  it "renders themes metatag for content item" do
+  it "renders taxonomy_level1 metatag for content item" do
     content_item = {
       links: {
         taxons: [
@@ -155,10 +155,10 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
-    assert_meta_tag("govuk:themes", "root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "root-taxon")
   end
 
-  it "renders themes metatag for content item with multiple roots" do
+  it "renders taxonomy_level1 metatag for content item with multiple roots" do
     content_item = {
       links: {
         taxons: [
@@ -198,15 +198,15 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
-    assert_meta_tag("govuk:themes", "education-root-taxon, parenting-root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "education-root-taxon, parenting-root-taxon")
   end
 
-  it "does not render themes metatag for content item with no taxon" do
+  it "does not render taxonomy_level1 metatag for content item with no taxon" do
     content_item = {
       links: {},
     }
     render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
-    assert_select "meta[name='govuk:themes']", 0
+    assert_select "meta[name='govuk:taxonomy_level1']", 0
   end
 
   it "renders taxon metatags for root taxon" do

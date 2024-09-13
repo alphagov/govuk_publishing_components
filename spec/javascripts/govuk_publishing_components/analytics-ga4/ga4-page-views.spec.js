@@ -162,7 +162,7 @@ describe('Google Tag Manager page view tracking', function () {
       },
       {
         gtmName: 'taxonomy_level1',
-        tagName: 'themes',
+        tagName: 'taxonomy_level1',
         value: 'this theme'
       },
       {
