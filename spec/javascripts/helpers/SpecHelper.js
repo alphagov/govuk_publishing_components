@@ -16,12 +16,7 @@ var resetCookies = function () {
   document.cookie.split(';').forEach(function (c) { document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/') })
 }
 
-// external-link-tracker.js adds a click event to the body for matching links
-// gets called once in production but multiple times in testing e.g. in static-analytics-spec
-// every time it does `new GOVUK.StaticAnalytics()` so need to remove this using .off()
 beforeEach(function () {
-  $('body').off()
-
   window.GOVUK.stopSendingAnalytics = false
 })
 
