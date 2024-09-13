@@ -23,7 +23,7 @@ var PIIRemover = new GOVUK.PIIRemover()
 var myInfo = 'this is an@email.com address, this is a 2019-01-21 date, this is a sw1a 1aa postcode,'
 
 var example1 = PIIRemover.stripPII(myInfo)
-// this is [email] address, this is a 2019-01-21 date, this is a sw1a 1aa postcode 
+// this is [email] address, this is a 2019-01-21 date, this is a sw1a 1aa postcode
 
 var example2 = PIIRemover.stripPIIWithOverride(myInfo, true, false)
 // this is [email] address, this is a [date] date, this is a sw1a 1aa postcode
@@ -40,7 +40,7 @@ var myArray = ['email@gov.uk', 'hello world']
 var example5 = PIIRemover.stripPII(myArray)
 // ['[email]', 'hello world']
 
-// Meta tag of <meta name="govuk:static-analytics:strip-query-string-parameters" content="strip-parameter-1,strip-parameter-2" />
+// Meta tag of <meta name="govuk:ga4-strip-query-string-parameters" content="strip-parameter-1,strip-parameter-2" />
 var myQueryString = '/test?strip-parameter-1=secret&strip-parameter-2=more-secret'
 var example6 = PIIRemover.stripPII(myQueryString)
 // /test?strip-parameter-1=[strip-parameter-1]&strip-parameter-2=[strip-parameter-2]
@@ -68,10 +68,10 @@ However, this will redact dates and postcodes from every call of the PIIRemover.
 
 ### For query string parameters:
 
-Query string parameters are redacted if there is presence of a `meta[name="govuk:static-analytics:strip-query-string-parameters"]` meta tag, with comma separated query string parameters keys in its `content` attribute. The usage of this query string PII removal in production is unknown at this time.
+Query string parameters are redacted if there is presence of a `meta[name="govuk:ga4-strip-query-string-parameters"]` meta tag, with comma separated query string parameters keys in its `content` attribute. The usage of this query string PII removal in production is unknown at this time.
 
 Add this meta tag with your query string parameter keys in the `content` section:
-`<meta name="govuk:static-analytics:strip-query-string-parameters" content="query-string-key-1,query-string-key-2"`
+`<meta name="govuk:ga4-strip-query-string-parameters" content="query-string-key-1,query-string-key-2"`
 
 
 ## Using the stripPIIWithOverride() function

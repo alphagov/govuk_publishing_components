@@ -351,37 +351,37 @@ describe "Meta tags", type: :view do
     assert_meta_tag("govuk:content-has-history", "true")
   end
 
-  it "renders the static-analytics:strip-dates tag if the content item is a 'smart-answer'" do
+  it "renders the ga4-strip-dates tag if the content item is a 'smart-answer'" do
     render_component(content_item: { document_type: "smart_answer" })
-    assert_meta_tag("govuk:static-analytics:strip-dates", "true")
+    assert_meta_tag("govuk:ga4-strip-dates", "true")
   end
 
-  it "doesn't render the static-analytics:strip-dates tag if the document_type isn't relevant" do
+  it "doesn't render the ga4-strip-dates tag if the document_type isn't relevant" do
     render_component(content_item: { document_type: "guidance" })
-    assert_no_meta_tag("govuk:static-analytics:strip-dates")
+    assert_no_meta_tag("govuk:ga4-strip-dates")
   end
 
-  it "renders the static-analytics:strip-dates tag if explicitly told to even if it wouldn't otherwise" do
+  it "renders the ga4-strip-dates tag if explicitly told to even if it wouldn't otherwise" do
     render_component(content_item: { document_type: "guidance" }, strip_dates_pii: true)
-    assert_meta_tag("govuk:static-analytics:strip-dates", "true")
+    assert_meta_tag("govuk:ga4-strip-dates", "true")
   end
 
-  it "doesn't render the static-analytics:strip-dates tag if explicitly told not to even if it would otherwise" do
+  it "doesn't render the ga4-strip-dates tag if explicitly told not to even if it would otherwise" do
     render_component(content_item: { document_type: "smart_answer" }, strip_dates_pii: false)
-    assert_no_meta_tag("govuk:static-analytics:strip-dates")
+    assert_no_meta_tag("govuk:ga4-strip-dates")
   end
 
-  it "renders the static-analytics:strip-postcodes tag if the document_type is relevant" do
+  it "renders the ga4-strip-postcodes tag if the document_type is relevant" do
     formats_that_might_include_postcodes = GovukPublishingComponents::Presenters::MetaTags::FORMATS_THAT_MIGHT_INCLUDE_POSTCODES
     formats_that_might_include_postcodes.each do |format|
       render_component(content_item: { document_type: format })
-      assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
+      assert_meta_tag("govuk:ga4-strip-postcodes", "true")
     end
   end
 
-  it "doesn't render the static-analytics:strip-postcodes tag if the document_type isn't relevant" do
+  it "doesn't render the ga4-strip-postcodes tag if the document_type isn't relevant" do
     render_component(content_item: { document_type: "guidance" })
-    assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
+    assert_no_meta_tag("govuk:ga4-strip-postcodes")
   end
 
   it "renders govuk:primary-publishing-organisation if primary_publishing_organisation" do
@@ -421,16 +421,16 @@ describe "Meta tags", type: :view do
     assert_no_meta_tag("govuk:primary-publishing-organisation")
   end
 
-  it "renders the static-analytics:strip-postcodes tag if explicitly told to even if it wouldn't otherwise" do
+  it "renders the ga4-strip-postcodes tag if explicitly told to even if it wouldn't otherwise" do
     render_component(content_item: { document_type: "guidance" }, strip_postcode_pii: true)
-    assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
+    assert_meta_tag("govuk:ga4-strip-postcodes", "true")
   end
 
-  it "doesn't render the static-analytics:strip-postcodes tag if explicitly told not to even if it would otherwise" do
+  it "doesn't render the ga4-strip-postcodes tag if explicitly told not to even if it would otherwise" do
     formats_that_might_include_postcodes = GovukPublishingComponents::Presenters::MetaTags::FORMATS_THAT_MIGHT_INCLUDE_POSTCODES
     formats_that_might_include_postcodes.each do |format|
       render_component(content_item: { document_type: format }, strip_postcode_pii: false)
-      assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
+      assert_no_meta_tag("govuk:ga4-strip-postcodes")
     end
   end
 
