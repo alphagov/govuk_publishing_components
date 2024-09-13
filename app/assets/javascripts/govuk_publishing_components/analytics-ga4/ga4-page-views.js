@@ -48,8 +48,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             publishing_government: this.removeHyphensAndDowncase(this.getMetaContent('publishing-government') || this.getMetaContent('ga4-publishing-government')),
             political_status: this.getMetaContent('political-status') || this.getMetaContent('ga4-political-status'),
             primary_publishing_organisation: this.getMetaContent('primary-publishing-organisation'),
-            organisations: this.getMetaContent('analytics:organisations'),
-            world_locations: this.getMetaContent('analytics:world-locations'),
+            organisations: this.getMetaContent('organisations'),
+            world_locations: this.getMetaContent('world-locations'),
 
             /* The existence of a referrer parameter indicates that the page has been dynamically updated via an AJAX request
             and therefore we can use it to set the dynamic property appropriately. This value is used by PA's to differentiate

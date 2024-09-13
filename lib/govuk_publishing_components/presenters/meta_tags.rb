@@ -64,11 +64,11 @@ module GovukPublishingComponents
         organisations += links[:organisations] || []
         organisations += links[:worldwide_organisations] || []
         organisations_content = organisations.map { |link| "<#{link[:analytics_identifier]}>" }.uniq.join
-        meta_tags["govuk:analytics:organisations"] = organisations_content if organisations.any?
+        meta_tags["govuk:organisations"] = organisations_content if organisations.any?
 
         world_locations = links[:world_locations] || []
         world_locations_content = world_locations.map { |link| "<#{link[:analytics_identifier]}>" }.join
-        meta_tags["govuk:analytics:world-locations"] = world_locations_content if world_locations.any?
+        meta_tags["govuk:world-locations"] = world_locations_content if world_locations.any?
 
         meta_tags
       end
