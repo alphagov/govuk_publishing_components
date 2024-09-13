@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update metatags for GA4 ([PR #4222](https://github.com/alphagov/govuk_publishing_components/pull/4222))
 * Set aria-label text in govuk_logo.html to "GOV.UK" ([PR #4217](https://github.com/alphagov/govuk_publishing_components/pull/4217))
 
 ## 43.1.1
