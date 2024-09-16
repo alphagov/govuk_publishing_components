@@ -168,10 +168,20 @@
             <% end %>
           </div>
 
-          <div class="gem-c-layout-super-navigation-header__search-item">
+          <div class="gem-c-layout-super-navigation-header__navigation-item">
+            <%= link_to "/search", {
+              class: item_link_classes,
+            } do %>
+              <% content_tag(:span, {
+                class: item_link_inner_classes
+              }) do %>
+                <%= search_text %>
+              <% end %>
+            <% end %>
+
             <%= content_tag(:button, {
               id: "super-search-menu-toggle",
-              class: search_toggle_button_classes,
+              class: top_toggle_button_classes,
               aria: {
                 controls: "super-search-menu",
                 expanded: "true",
@@ -196,34 +206,7 @@
               hidden: true,
               type: "button",
             }) do %>
-              <span class="govuk-visually-hidden">
-                <%= search_text %>
-              </span>
-              <%=
-                render "govuk_publishing_components/components/search/search_icon", {
-                  classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
-                }
-              %>
-              <span
-                aria-hidden="true"
-                class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
-                focusable="false"
-              >
-                &times;
-              </span>
-            <% end %>
-
-            <%= link_to "/search", {
-              class: search_item_link_classes
-            } do %>
-              <span class="govuk-visually-hidden">
-                <%= search_text %>
-              </span>
-              <%=
-                render "govuk_publishing_components/components/search/search_icon", {
-                  classes: %w[gem-c-layout-super-navigation-header__search-item-link-icon],
-                }
-              %>
+              <%= tag.span search_text, class: top_toggle_button_inner_classes %>
             <% end %>
           </div>
         <% end %>
