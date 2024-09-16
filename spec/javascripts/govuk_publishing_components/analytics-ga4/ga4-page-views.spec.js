@@ -162,7 +162,7 @@ describe('Google Tag Manager page view tracking', function () {
       },
       {
         gtmName: 'taxonomy_level1',
-        tagName: 'themes',
+        tagName: 'taxonomy_level1',
         value: 'this theme'
       },
       {
@@ -325,14 +325,14 @@ describe('Google Tag Manager page view tracking', function () {
   })
 
   it('returns a pageview on a page marked with ids for contributing organisations', function () {
-    createMetaTags('analytics:organisations', 'some organisations')
+    createMetaTags('organisations', 'some organisations')
     expected.page_view.organisations = 'some organisations'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with world locations', function () {
-    createMetaTags('analytics:world-locations', 'some world locations')
+    createMetaTags('world-locations', 'some world locations')
     expected.page_view.world_locations = 'some world locations'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)

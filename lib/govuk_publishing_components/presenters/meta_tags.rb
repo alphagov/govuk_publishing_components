@@ -41,8 +41,8 @@ module GovukPublishingComponents
         meta_tags["govuk:section"] = content_item[:section] if content_item[:section]
         meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?
-        meta_tags["govuk:static-analytics:strip-dates"] = "true" if should_strip_dates_pii?(content_item, local_assigns)
-        meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
+        meta_tags["govuk:ga4-strip-dates"] = "true" if should_strip_dates_pii?(content_item, local_assigns)
+        meta_tags["govuk:ga4-strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
         meta_tags["govuk:first-published-at"] = content_item[:first_published_at] if content_item[:first_published_at]
         meta_tags["govuk:updated-at"] = content_item[:updated_at] if content_item[:updated_at]
         meta_tags["govuk:public-updated-at"] = content_item[:public_updated_at] if content_item[:public_updated_at]
@@ -64,11 +64,11 @@ module GovukPublishingComponents
         organisations += links[:organisations] || []
         organisations += links[:worldwide_organisations] || []
         organisations_content = organisations.map { |link| "<#{link[:analytics_identifier]}>" }.uniq.join
-        meta_tags["govuk:analytics:organisations"] = organisations_content if organisations.any?
+        meta_tags["govuk:organisations"] = organisations_content if organisations.any?
 
         world_locations = links[:world_locations] || []
         world_locations_content = world_locations.map { |link| "<#{link[:analytics_identifier]}>" }.join
-        meta_tags["govuk:analytics:world-locations"] = world_locations_content if world_locations.any?
+        meta_tags["govuk:world-locations"] = world_locations_content if world_locations.any?
 
         meta_tags
       end
@@ -106,7 +106,7 @@ module GovukPublishingComponents
 
       def add_taxonomy_tags(meta_tags)
         themes = root_taxon_slugs(content_item)
-        meta_tags["govuk:themes"] = themes.to_a.sort.join(", ") unless themes.empty?
+        meta_tags["govuk:taxonomy_level1"] = themes.to_a.sort.join(", ") unless themes.empty?
 
         taxons = if content_item[:document_type] == "taxon"
                    [content_item]

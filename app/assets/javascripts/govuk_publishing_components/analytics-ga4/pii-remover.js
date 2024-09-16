@@ -28,17 +28,17 @@
   var STATE_PATTERN = /state=.[^&]+/g
 
   function shouldStripDates () {
-    var metas = document.querySelectorAll('meta[name="govuk:static-analytics:strip-dates"]')
+    var metas = document.querySelectorAll('meta[name="govuk:ga4-strip-dates"]')
     return metas.length > 0
   }
 
   function shouldStripPostcodes () {
-    var metas = document.querySelectorAll('meta[name="govuk:static-analytics:strip-postcodes"]')
+    var metas = document.querySelectorAll('meta[name="govuk:ga4-strip-postcodes"]')
     return metas.length > 0
   }
 
   function queryStringParametersToStrip () {
-    var meta = document.querySelector('meta[name="govuk:static-analytics:strip-query-string-parameters"]')
+    var meta = document.querySelector('meta[name="govuk:ga4-strip-query-string-parameters"]')
     var value = false
     if (meta) {
       value = meta.getAttribute('content')

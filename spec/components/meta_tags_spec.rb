@@ -14,8 +14,8 @@ describe "Meta tags", type: :view do
     assert_meta_tag("govuk:format", "case_study")
     assert_meta_tag("govuk:publishing-app", "whitehall")
     assert_meta_tag("govuk:rendering-app", "government-frontend")
-    assert_meta_tag("govuk:analytics:organisations", "<L2><W4>")
-    assert_meta_tag("govuk:analytics:world-locations", "<WL3>")
+    assert_meta_tag("govuk:organisations", "<L2><W4>")
+    assert_meta_tag("govuk:world-locations", "<WL3>")
     assert_meta_tag("govuk:first-published-at", "2012-12-17T15:45:44.000+00:00")
     assert_meta_tag("govuk:updated-at", "2018-08-04T10:18:42.566Z")
     assert_meta_tag("govuk:public-updated-at", "2012-12-17T15:45:44.000+00:00")
@@ -37,7 +37,7 @@ describe "Meta tags", type: :view do
 
   it "renders organisation meta tag if current page is organisation" do
     render_component(content_item: example_document_for("organisation", "organisation"))
-    assert_meta_tag("govuk:analytics:organisations", "<D1197>")
+    assert_meta_tag("govuk:organisations", "<D1197>")
     assert_meta_tag("govuk:primary-publishing-organisation", "Department for Exiting the European Union")
   end
 
@@ -50,7 +50,7 @@ describe "Meta tags", type: :view do
     }
 
     render_component(content_item:)
-    assert_meta_tag("govuk:analytics:organisations", "<O1><W4>")
+    assert_meta_tag("govuk:organisations", "<O1><W4>")
   end
 
   it "renders world locations in a meta tag with angle brackets" do
@@ -68,7 +68,7 @@ describe "Meta tags", type: :view do
     }
 
     render_component(content_item:)
-    assert_meta_tag("govuk:analytics:world-locations", "<WL3><WL123>")
+    assert_meta_tag("govuk:world-locations", "<WL3><WL123>")
   end
 
   it "renders publishing government slug when government and political keys included" do
@@ -105,7 +105,7 @@ describe "Meta tags", type: :view do
     assert_political_status_for(political, current, "non-political")
   end
 
-  it "renders themes metatag for root taxon" do
+  it "renders taxonomy_level1 metatag for root taxon" do
     taxon = {
       title: "Root taxon",
       base_path: "/root-taxon",
@@ -114,10 +114,10 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("taxon", "taxon").merge(taxon))
-    assert_meta_tag("govuk:themes", "root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "root-taxon")
   end
 
-  it "renders themes metatag for child taxon" do
+  it "renders taxonomy_level1 metatag for child taxon" do
     taxon = {
       title: "Child taxon",
       links: {
@@ -131,10 +131,10 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("taxon", "taxon").merge(taxon))
-    assert_meta_tag("govuk:themes", "root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "root-taxon")
   end
 
-  it "renders themes metatag for content item" do
+  it "renders taxonomy_level1 metatag for content item" do
     content_item = {
       links: {
         taxons: [
@@ -155,10 +155,10 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
-    assert_meta_tag("govuk:themes", "root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "root-taxon")
   end
 
-  it "renders themes metatag for content item with multiple roots" do
+  it "renders taxonomy_level1 metatag for content item with multiple roots" do
     content_item = {
       links: {
         taxons: [
@@ -198,15 +198,15 @@ describe "Meta tags", type: :view do
       },
     }
     render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
-    assert_meta_tag("govuk:themes", "education-root-taxon, parenting-root-taxon")
+    assert_meta_tag("govuk:taxonomy_level1", "education-root-taxon, parenting-root-taxon")
   end
 
-  it "does not render themes metatag for content item with no taxon" do
+  it "does not render taxonomy_level1 metatag for content item with no taxon" do
     content_item = {
       links: {},
     }
     render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
-    assert_select "meta[name='govuk:themes']", 0
+    assert_select "meta[name='govuk:taxonomy_level1']", 0
   end
 
   it "renders taxon metatags for root taxon" do
@@ -351,37 +351,37 @@ describe "Meta tags", type: :view do
     assert_meta_tag("govuk:content-has-history", "true")
   end
 
-  it "renders the static-analytics:strip-dates tag if the content item is a 'smart-answer'" do
+  it "renders the ga4-strip-dates tag if the content item is a 'smart-answer'" do
     render_component(content_item: { document_type: "smart_answer" })
-    assert_meta_tag("govuk:static-analytics:strip-dates", "true")
+    assert_meta_tag("govuk:ga4-strip-dates", "true")
   end
 
-  it "doesn't render the static-analytics:strip-dates tag if the document_type isn't relevant" do
+  it "doesn't render the ga4-strip-dates tag if the document_type isn't relevant" do
     render_component(content_item: { document_type: "guidance" })
-    assert_no_meta_tag("govuk:static-analytics:strip-dates")
+    assert_no_meta_tag("govuk:ga4-strip-dates")
   end
 
-  it "renders the static-analytics:strip-dates tag if explicitly told to even if it wouldn't otherwise" do
+  it "renders the ga4-strip-dates tag if explicitly told to even if it wouldn't otherwise" do
     render_component(content_item: { document_type: "guidance" }, strip_dates_pii: true)
-    assert_meta_tag("govuk:static-analytics:strip-dates", "true")
+    assert_meta_tag("govuk:ga4-strip-dates", "true")
   end
 
-  it "doesn't render the static-analytics:strip-dates tag if explicitly told not to even if it would otherwise" do
+  it "doesn't render the ga4-strip-dates tag if explicitly told not to even if it would otherwise" do
     render_component(content_item: { document_type: "smart_answer" }, strip_dates_pii: false)
-    assert_no_meta_tag("govuk:static-analytics:strip-dates")
+    assert_no_meta_tag("govuk:ga4-strip-dates")
   end
 
-  it "renders the static-analytics:strip-postcodes tag if the document_type is relevant" do
+  it "renders the ga4-strip-postcodes tag if the document_type is relevant" do
     formats_that_might_include_postcodes = GovukPublishingComponents::Presenters::MetaTags::FORMATS_THAT_MIGHT_INCLUDE_POSTCODES
     formats_that_might_include_postcodes.each do |format|
       render_component(content_item: { document_type: format })
-      assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
+      assert_meta_tag("govuk:ga4-strip-postcodes", "true")
     end
   end
 
-  it "doesn't render the static-analytics:strip-postcodes tag if the document_type isn't relevant" do
+  it "doesn't render the ga4-strip-postcodes tag if the document_type isn't relevant" do
     render_component(content_item: { document_type: "guidance" })
-    assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
+    assert_no_meta_tag("govuk:ga4-strip-postcodes")
   end
 
   it "renders govuk:primary-publishing-organisation if primary_publishing_organisation" do
@@ -421,16 +421,16 @@ describe "Meta tags", type: :view do
     assert_no_meta_tag("govuk:primary-publishing-organisation")
   end
 
-  it "renders the static-analytics:strip-postcodes tag if explicitly told to even if it wouldn't otherwise" do
+  it "renders the ga4-strip-postcodes tag if explicitly told to even if it wouldn't otherwise" do
     render_component(content_item: { document_type: "guidance" }, strip_postcode_pii: true)
-    assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
+    assert_meta_tag("govuk:ga4-strip-postcodes", "true")
   end
 
-  it "doesn't render the static-analytics:strip-postcodes tag if explicitly told not to even if it would otherwise" do
+  it "doesn't render the ga4-strip-postcodes tag if explicitly told not to even if it would otherwise" do
     formats_that_might_include_postcodes = GovukPublishingComponents::Presenters::MetaTags::FORMATS_THAT_MIGHT_INCLUDE_POSTCODES
     formats_that_might_include_postcodes.each do |format|
       render_component(content_item: { document_type: format }, strip_postcode_pii: false)
-      assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
+      assert_no_meta_tag("govuk:ga4-strip-postcodes")
     end
   end
 

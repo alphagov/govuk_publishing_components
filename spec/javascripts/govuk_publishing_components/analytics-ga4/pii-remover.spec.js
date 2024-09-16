@@ -123,7 +123,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     })
   })
 
-  describe('when there is a govuk:static-analytics:strip-postcodes meta tag present', function () {
+  describe('when there is a govuk:ga4-strip-postcodes meta tag present', function () {
     beforeEach(function () {
       pageWantsPostcodesStripped()
       pii = new GOVUK.analyticsGa4.PIIRemover()
@@ -142,7 +142,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     })
   })
 
-  describe('when there is a govuk:static-analytics:strip-query-string-parameters meta tag present', function () {
+  describe('when there is a govuk:ga4-strip-query-string-parameters meta tag present', function () {
     it('strips specified query strings that are identified in a string', function () {
       pageWantsQueryStringParametersStripped(['strip-parameter-1', 'strip-parameter-2'])
       pii = new GOVUK.analyticsGa4.PIIRemover()
@@ -172,7 +172,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     })
   })
 
-  describe('when there is a govuk:static-analytics:strip-dates meta tag present', function () {
+  describe('when there is a govuk:ga4-strip-dates meta tag present', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
       pii = new GOVUK.analyticsGa4.PIIRemover()
@@ -271,20 +271,20 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
   })
 
   function resetHead () {
-    $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
-    $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()
-    $('head').find('meta[name="govuk:static-analytics:strip-query-string-parameters"]').remove()
+    $('head').find('meta[name="govuk:ga4-strip-postcodes"]').remove()
+    $('head').find('meta[name="govuk:ga4-strip-dates"]').remove()
+    $('head').find('meta[name="govuk:ga4-strip-query-string-parameters"]').remove()
   }
 
   function pageWantsDatesStripped () {
-    $('head').append('<meta name="govuk:static-analytics:strip-dates" value="does not matter" />')
+    $('head').append('<meta name="govuk:ga4-strip-dates" value="does not matter" />')
   }
 
   function pageWantsPostcodesStripped () {
-    $('head').append('<meta name="govuk:static-analytics:strip-postcodes" value="does not matter" />')
+    $('head').append('<meta name="govuk:ga4-strip-postcodes" value="does not matter" />')
   }
 
   function pageWantsQueryStringParametersStripped (parameters) {
-    $('head').append('<meta name="govuk:static-analytics:strip-query-string-parameters" content="' + parameters.join(', ') + '" />')
+    $('head').append('<meta name="govuk:ga4-strip-query-string-parameters" content="' + parameters.join(', ') + '" />')
   }
 })
