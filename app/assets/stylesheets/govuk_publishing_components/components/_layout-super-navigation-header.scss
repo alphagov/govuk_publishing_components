@@ -560,6 +560,12 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+.gem-c-layout-super-navigation-header__navigation-top-toggle-desktop-text {
+  @include govuk-media-query($until: "desktop") {
+    @include govuk-visually-hidden;
+  }
+}
+
 .gem-c-layout-super-navigation-header__search-container {
   padding-bottom: govuk-spacing(7);
 }
