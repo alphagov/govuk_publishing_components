@@ -438,6 +438,12 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
 
+    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--without-chevron {
+      &::before {
+        content: none;
+      }
+    }
+
     // Open button modifier
     &.gem-c-layout-super-navigation-header__open-button {
       @include focus-and-focus-visible {
@@ -477,6 +483,12 @@ $after-button-padding-left: govuk-spacing(4);
               @include chevron($govuk-link-colour);
               @include prefixed-transform($rotate: 225deg, $translateY: 1px);
             }
+          }
+        }
+
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--without-chevron {
+          &::before {
+            content: none;
           }
         }
       }
