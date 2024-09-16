@@ -560,9 +560,23 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-.gem-c-layout-super-navigation-header__navigation-top-toggle-desktop-text {
+.gem-c-layout-super-navigation-header__navigation-top-toggle-description {
   @include govuk-media-query($until: "desktop") {
     @include govuk-visually-hidden;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-top-toggle-description--closed {
+  .gem-c-layout-super-navigation-header__open-button & {
+    display: none;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-top-toggle-description--opened {
+  display: none;
+
+  .gem-c-layout-super-navigation-header__open-button & {
+    display: inline;
   }
 }
 
