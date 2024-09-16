@@ -379,17 +379,6 @@ $after-button-padding-left: govuk-spacing(4);
   display: none;
 }
 
-// Search and popular content dropdown.
-.gem-c-layout-super-navigation-header__search-and-popular {
-  display: none;
-  padding-bottom: govuk-spacing(4);
-  padding-top: govuk-spacing(4);
-
-  .js-module-initialised & {
-    display: block;
-  }
-}
-
 // Styles for top level navigation toggle button.
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   font-size: 16px;
@@ -514,51 +503,45 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
 
-    // stylelint-enable max-nesting-depth
-  }
-}
+    // Open button modifier
+    &.gem-c-layout-super-navigation-header__open-button {
+      @include focus-and-focus-visible {
+        @include govuk-focused-text;
+        box-shadow: none;
 
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background,
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button {
-  // Open button modifier
-  &.gem-c-layout-super-navigation-header__open-button {
-    // stylelint-disable max-nesting-depth
-    @include focus-and-focus-visible {
-      @include govuk-focused-text;
-      box-shadow: none;
+        &::after {
+          background-color: govuk-colour("black");
+        }
 
-      &::after {
-        background-color: govuk-colour("black");
-      }
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("black");
+          border-color: $govuk-focus-colour;
 
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("black");
-        border-color: $govuk-focus-colour;
-
-        @include govuk-media-query($from: 360px) {
-          &::before {
-            @include chevron(govuk-colour("black"), true);
-            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          @include govuk-media-query($from: 360px) {
+            &::before {
+              @include chevron(govuk-colour("black"), true);
+              @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+            }
           }
         }
       }
-    }
 
-    @include focus-not-focus-visible {
-      background: govuk-colour("light-grey");
+      @include focus-not-focus-visible {
+        background: govuk-colour("light-grey");
 
-      &::after {
-        background-color: $govuk-link-colour;
-      }
+        &::after {
+          background-color: $govuk-link-colour;
+        }
 
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: $govuk-link-colour;
-        border-color: govuk-colour("light-grey");
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: $govuk-link-colour;
+          border-color: govuk-colour("light-grey");
 
-        @include govuk-media-query($from: 360px) {
-          &::before {
-            @include chevron($govuk-link-colour);
-            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          @include govuk-media-query($from: 360px) {
+            &::before {
+              @include chevron($govuk-link-colour);
+              @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+            }
           }
         }
       }
@@ -780,16 +763,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// Dropdown menu description.
-.gem-c-layout-super-navigation-header__menu-description {
-  display: none;
-
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    padding: govuk-spacing(7) 0 govuk-spacing(7) 0;
-  }
-}
-
 // Dropdown menu items.
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
@@ -887,25 +860,6 @@ $after-button-padding-left: govuk-spacing(4);
 
   @include govuk-media-query($from: "desktop") {
     padding-bottom: govuk-spacing(2);
-  }
-}
-
-// Popular links.
-.gem-c-layout-super-navigation-header__popular-item {
-  position: relative;
-  padding: govuk-spacing(1) 0;
-}
-
-.gem-c-layout-super-navigation-header__width-container {
-  @include govuk-media-query($until: "desktop") {
-    margin: 0;
-    margin-top: govuk-spacing(6);
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    margin: 0 auto;
-    max-width: 960px;
-    padding: govuk-spacing(5);
   }
 }
 
