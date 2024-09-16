@@ -165,13 +165,13 @@
           </div>
 
           <div class="gem-c-layout-super-navigation-header__navigation-item">
-            <%= link_to link[:href], {
+            <%= link_to "/search", {
               class: item_link_classes,
             } do %>
               <% content_tag(:span, {
                 class: item_link_inner_classes
               }) do %>
-                <%= link[:label] %>
+                <%= search_text %>
               <% end %>
             <% end %>
 
