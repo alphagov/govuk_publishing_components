@@ -503,51 +503,45 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
 
-    // stylelint-enable max-nesting-depth
-  }
-}
+    // Open button modifier
+    &.gem-c-layout-super-navigation-header__open-button {
+      @include focus-and-focus-visible {
+        @include govuk-focused-text;
+        box-shadow: none;
 
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background,
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button {
-  // Open button modifier
-  &.gem-c-layout-super-navigation-header__open-button {
-    // stylelint-disable max-nesting-depth
-    @include focus-and-focus-visible {
-      @include govuk-focused-text;
-      box-shadow: none;
+        &::after {
+          background-color: govuk-colour("black");
+        }
 
-      &::after {
-        background-color: govuk-colour("black");
-      }
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("black");
+          border-color: $govuk-focus-colour;
 
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("black");
-        border-color: $govuk-focus-colour;
-
-        @include govuk-media-query($from: 360px) {
-          &::before {
-            @include chevron(govuk-colour("black"), true);
-            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          @include govuk-media-query($from: 360px) {
+            &::before {
+              @include chevron(govuk-colour("black"), true);
+              @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+            }
           }
         }
       }
-    }
 
-    @include focus-not-focus-visible {
-      background: govuk-colour("light-grey");
+      @include focus-not-focus-visible {
+        background: govuk-colour("light-grey");
 
-      &::after {
-        background-color: $govuk-link-colour;
-      }
+        &::after {
+          background-color: $govuk-link-colour;
+        }
 
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: $govuk-link-colour;
-        border-color: govuk-colour("light-grey");
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: $govuk-link-colour;
+          border-color: govuk-colour("light-grey");
 
-        @include govuk-media-query($from: 360px) {
-          &::before {
-            @include chevron($govuk-link-colour);
-            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          @include govuk-media-query($from: 360px) {
+            &::before {
+              @include chevron($govuk-link-colour);
+              @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+            }
           }
         }
       }
