@@ -205,8 +205,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
     }
 
-    this.$module.querySelector('.gem-c-layout-super-navigation-header__search-item-link')
-      .setAttribute('hidden', 'hidden')
+    // this.$module.querySelector('.gem-c-layout-super-navigation-header__search-item-link')
+    //   .setAttribute('hidden', 'hidden')
 
     // Navigation menu and search menu are hardcoded to be open in the markup -
     // this means that the menu still makes sense with CSS and JavaScript turned
