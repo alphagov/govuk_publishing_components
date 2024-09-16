@@ -311,8 +311,7 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background {
-  border-left: 0;
-  border-right: 1px solid $pale-blue-colour;
+  border-left: 1px solid govuk-colour("white");
 }
 
 // Search link and dropdown.
@@ -568,7 +567,6 @@ $after-button-padding-left: govuk-spacing(4);
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
   display: inline-block;
   border-left: 1px solid govuk-colour("white");
-  border-right: 1px solid govuk-colour("white");
   margin: 0;
   padding: govuk-spacing(1) govuk-spacing(4);
 
