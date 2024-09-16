@@ -27,6 +27,11 @@
   var UNLOCK_TOKEN_PATTERN = /unlock_token=[a-zA-Z0-9-]+/g
   var STATE_PATTERN = /state=.[^&]+/g
 
+  // some users mistakenly use GOV.UK to search for the status of their applications.
+  // e.g. GWF123456789 and GB123456789000
+  var VISA_PATTERN_GWF = /GWF\d{9}/g
+  var VISA_PATTERN_GB = /GB\d{12}/g
+
   function shouldStripDates () {
     var metas = document.querySelectorAll('meta[name="govuk:ga4-strip-dates"]')
     return metas.length > 0
@@ -97,6 +102,8 @@
     stripped = stripped.replace(RESET_PASSWORD_TOKEN_PATTERN, 'reset_password_token=[reset_password_token]')
     stripped = stripped.replace(UNLOCK_TOKEN_PATTERN, 'unlock_token=[unlock_token]')
     stripped = stripped.replace(STATE_PATTERN, 'state=[state]')
+    stripped = stripped.replace(VISA_PATTERN_GWF, '[gwf number]')
+    stripped = stripped.replace(VISA_PATTERN_GB, '[gb eori number]')
     stripped = this.stripQueryStringParameters(stripped)
 
     if (this.stripDatePII === true) {

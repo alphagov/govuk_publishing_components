@@ -55,6 +55,11 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
       arr = pii.stripPII(arr)
       expect(arr).toEqual(strippedArr)
     })
+
+    it('strips visa application numbers', function () {
+      var string = pii.stripPII('my visa application numbers are GWF123456789 and GB123456789000')
+      expect(string).toEqual('my visa application numbers are [gwf number] and [gb eori number]')
+    })
   })
 
   describe('by default for account specific PII', function () {
