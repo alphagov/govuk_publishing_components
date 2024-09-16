@@ -205,7 +205,23 @@
               hidden: true,
               type: "button",
             }) do %>
-              <%= tag.span search_text, class: top_toggle_button_inner_classes_search %>
+              <%= tag.span class: top_toggle_button_inner_classes_search do %>
+                <span   class="gem-c-layout-super-navigation-header__navigation-top-toggle-icon-wrapper">
+                  <%=
+                    render "govuk_publishing_components/components/search/search_icon", {
+                      classes: %w[gem-c-layout-super-navigation-header__navigation-top-toggle-icon-open],
+                    }
+                  %>
+                  <span
+                    aria-hidden="true"
+                    class="gem-c-layout-super-navigation-header__navigation-top-toggle-icon-close"
+                    focusable="false"
+                  >
+                    &times;
+                  </span>
+                </span>
+                <%= search_text %>
+              <% end %>
             <% end %>
           </div>
         <% end %>
