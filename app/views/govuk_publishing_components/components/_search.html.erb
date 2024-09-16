@@ -1,5 +1,6 @@
 <%
   add_gem_component_stylesheet("search")
+  add_gem_component_stylesheet("label")
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
@@ -51,10 +52,8 @@
     end
   end
 %>
-
 <div class="<%= classes.join(" ") %>" data-module="gem-toggle-input-class-on-focus">
   <% if wrap_label_in_a_heading %>
-    <% add_gem_component_stylesheet("label") %>
     <%= content_tag(shared_helper.get_heading_level, class: "govuk-!-margin-0") do %>
       <%= tag_label %>
     <% end %>
