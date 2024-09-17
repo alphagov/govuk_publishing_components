@@ -17,6 +17,7 @@
 * Add GA4 redaction to GWF and GB EORI numbers ([PR #4227](https://github.com/alphagov/govuk_publishing_components/pull/4227))
 * Add files for secondary navigation: ([PR #4229](https://github.com/alphagov/govuk_publishing_components/pull/4229))
 * New class to collapse columns for print ([PR #4224](https://github.com/alphagov/govuk_publishing_components/pull/4224))
+* Fix homepage super navigation buttons when text scale is increased ([PR #4232](https://github.com/alphagov/govuk_publishing_components/pull/4232))
 
 ## 43.1.1
 

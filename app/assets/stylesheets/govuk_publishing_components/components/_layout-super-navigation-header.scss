@@ -290,6 +290,8 @@ $after-button-padding-left: govuk-spacing(4);
 // after it has been toggled closed if the blue background has
 // been enabled
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
+  background-color: $govuk-brand-colour;
+
   &:focus:not(:focus-visible) {
     &::after {
       background: none;
@@ -606,6 +608,10 @@ $after-button-padding-left: govuk-spacing(4);
 // Styles for search toggle button.
 .gem-c-layout-super-navigation-header__search-toggle-button {
   background: none;
+
+  &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+    background: $govuk-brand-colour;
+  }
   border: 0;
   color: govuk-colour("white");
   cursor: pointer;
