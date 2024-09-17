@@ -339,8 +339,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         var DEFAULT_LIST_TITLE = 'Smart answer results'
 
         if (isSearchResult) {
-          // Limiting to 100 characters to avoid noise from extra long search queries and to stop the size of the payload going over 8k limit.
-          var searchQuery = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(element.getAttribute('data-ga4-search-query')).substring(0, 100)
+          var searchQuery = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(element.getAttribute('data-ga4-search-query'))
           var variant = element.getAttribute('data-ga4-ecommerce-variant')
           DEFAULT_LIST_TITLE = 'Site search results'
         }
