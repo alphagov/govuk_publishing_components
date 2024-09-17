@@ -11,6 +11,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
     init: function (referrer) {
       if (window.dataLayer) {
+        this.stripDates = !this.getSearchTerm()
         var data = {
           event: 'page_view',
           page_view: {
@@ -78,7 +79,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getLocation: function () {
-      return this.PIIRemover.stripPIIWithOverride(this.stripGaParam(document.location.href), true, true)
+      // We don't want to remove dates on search pages.
+      return this.PIIRemover.stripPIIWithOverride(this.stripGaParam(document.location.href), this.stripDates, true)
     },
 
     getSearchTerm: function () {
@@ -110,8 +112,9 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     getQueryString: function () {
       var queryString = window.GOVUK.analyticsGa4.core.trackFunctions.getSearch()
       if (queryString) {
+        // We don't want to remove dates on search pages.
         queryString = this.stripGaParam(queryString)
-        queryString = this.PIIRemover.stripPIIWithOverride(queryString, true, true)
+        queryString = this.PIIRemover.stripPIIWithOverride(queryString, this.stripDates, true)
         queryString = queryString.substring(1) // removes the '?' character from the start.
         return queryString
       }

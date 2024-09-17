@@ -295,7 +295,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
         searchTerm = searchTerm.replace(/\++|(%2B)+/gm, ' ') // Turn + characters or unicode + characters (%2B) into a space.
         searchTerm = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(searchTerm)
-        searchTerm = PIIRemover.stripPIIWithOverride(searchTerm, true, true)
+        searchTerm = PIIRemover.stripPIIWithOverride(searchTerm, false, true)
         searchTerm = searchTerm.toLowerCase()
         return searchTerm
       }

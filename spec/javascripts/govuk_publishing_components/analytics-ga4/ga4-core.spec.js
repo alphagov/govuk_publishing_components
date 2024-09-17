@@ -297,7 +297,7 @@ describe('GA4 core', function () {
 
     it('standardises search terms for consistency across trackers', function () {
       var searchTerm = 'NO UPPERCASE, NO %2B plus + signs, NO PII email@example.com SW1A 2AA 1st Jan 1990 and    NO    extra    spaces \n \r      '
-      var expected = 'no uppercase, no plus signs, no pii [email] [postcode] [date] and no extra spaces'
+      var expected = 'no uppercase, no plus signs, no pii [email] [postcode] 1st jan 1990 and no extra spaces'
 
       searchTerm = GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(searchTerm)
       expect(searchTerm).toEqual(expected)

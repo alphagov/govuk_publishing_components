@@ -375,6 +375,33 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
+  it('doesn\'t remove date pii from the location when on a search page', function () {
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywords=2020-01-01')
+
+    // We can't spy on location, so instead we use an anchor link to change the URL temporarily.
+    // Reset the URL so we can build the expected link string.
+    var linkForURLMock = document.createElement('a')
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+    var location = document.location.href
+
+    expected.page_view.location = location + '[email]/[postcode]?keywords=2020-01-01'
+    expected.page_view.search_term = '2020-01-01'
+    expected.page_view.query_string = 'keywords=2020-01-01'
+
+    // Add personally identifiable information to the current page location
+    linkForURLMock.href = '#example@gov.uk/SW12AA?keywords=2020-01-01'
+    linkForURLMock.click()
+
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+
+    // Reset the page location for other tests
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
   it('can redact ga parameters as expected', function () {
     var url = 'https://www.gov.uk/welfare?'
     var param1 = '_ga=2.237932419.220854294.1692605006-1618308030.1687790776'
@@ -558,20 +585,28 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
+  it('correctly sets the query_string parameter without PII date redaction when a search term exists', function () {
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywords=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=19900101.567&_gl=19900101.567')
+    expected.page_view.search_term = 'hello'
+    expected.page_view.query_string = 'keywords=hello&query2=world&email=[email]&postcode=[postcode]&birthday=1990-01-01&_ga=[id]&_gl=[id]'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
   describe('search_term parameter', function () {
     describe('using the query parameter "keywords"', function () {
       it('correctly sets the parameter using ?keywords= with PII values redacted', function () {
         spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
-        expected.page_view.query_string = 'keywords=hello+world+[email]+[postcode]+[date]&another=one'
-        expected.page_view.search_term = 'hello world [email] [postcode] [date]'
+        expected.page_view.query_string = 'keywords=hello+world+[email]+[postcode]+1990-01-01&another=one'
+        expected.page_view.search_term = 'hello world [email] [postcode] 1990-01-01'
         GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
         expect(window.dataLayer[0]).toEqual(expected)
       })
 
-      it('correctly sets the parameter using &keywords= with PII values redacted', function () {
+      it('correctly sets the parameter using &keywords= with PII values redacted (except for dates)', function () {
         spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?test=true&keywords=hello+world+email@example.com+SW12AA+1990-01-01&another=one')
-        expected.page_view.query_string = 'test=true&keywords=hello+world+[email]+[postcode]+[date]&another=one'
-        expected.page_view.search_term = 'hello world [email] [postcode] [date]'
+        expected.page_view.query_string = 'test=true&keywords=hello+world+[email]+[postcode]+1990-01-01&another=one'
+        expected.page_view.search_term = 'hello world [email] [postcode] 1990-01-01'
         GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
         expect(window.dataLayer[0]).toEqual(expected)
       })
@@ -620,9 +655,9 @@ describe('Google Tag Manager page view tracking', function () {
         document.body.removeChild(div)
       })
 
-      it('correctly sets the parameter with PII values redacted', function () {
+      it('correctly sets the parameter with PII values redacted (except for dates)', function () {
         div.setAttribute('data-ga4-search-query', 'hello world email@example.com SW12AA 1990-01-01')
-        expected.page_view.search_term = 'hello world [email] [postcode] [date]'
+        expected.page_view.search_term = 'hello world [email] [postcode] 1990-01-01'
         GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
         expect(window.dataLayer[0]).toEqual(expected)
       })
