@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.2.0
 
 * Make deploying meta tags changes easier ([PR #4236](https://github.com/alphagov/govuk_publishing_components/pull/4236))
 * Update metatags for GA4 ([PR #4222](https://github.com/alphagov/govuk_publishing_components/pull/4222))
