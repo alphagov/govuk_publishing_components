@@ -3,9 +3,16 @@
 
   id ||= nil
   items ||= []
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_aria_attribute({label: aria_label})
+  component_helper.add_class('gem-c-secondary-navigation')
+  component_helper.set_id(id)
+  component_helper.add_role("navigation")
 %>
+
 <% if items.any? %>
-  <%= tag.nav class: "gem-c-secondary-navigation", id: id, role: "navigation", aria: { label: aria_label } do %>
+  <%= tag.nav(**component_helper.all_attributes) do %>
     <%= tag.ul class: "gem-c-secondary-navigation__list" do %>
       <% items.each do |item| %>
         <%
