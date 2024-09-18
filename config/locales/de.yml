@@ -119,6 +119,7 @@ de:
       show_button: Suche anzeigen
       top_level: Oberste Ebene
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -131,7 +132,7 @@ de:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: Von
       history: Geschichte

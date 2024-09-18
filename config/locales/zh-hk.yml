@@ -113,6 +113,7 @@ zh-hk:
       show_button: 顯示搜尋項
       top_level: 最高級別
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -125,7 +126,7 @@ zh-hk:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: 來自
       history: 過往記錄

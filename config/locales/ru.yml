@@ -119,6 +119,7 @@ ru:
       show_button: Показать поиск
       top_level: Высший уровень
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -131,7 +132,7 @@ ru:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: Из
       history: История

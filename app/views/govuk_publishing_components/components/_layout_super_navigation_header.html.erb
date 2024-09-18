@@ -15,7 +15,8 @@
   navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
   navigation_search_heading = t("components.layout_super_navigation_header.navigation_search_heading")
   navigation_search_subheading = t("components.layout_super_navigation_header.navigation_search_subheading")
-  search_text = t("components.layout_super_navigation_header.search_text")
+  search_text = t("components.layout_super_navigation_header.search_text_html")
+  close_text = t("components.layout_super_navigation_header.close_text")
 
   hide_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "search")
   show_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "search")
@@ -196,20 +197,24 @@
               hidden: true,
               type: "button",
             }) do %>
-              <span class="govuk-visually-hidden">
-                <%= search_text %>
-              </span>
+
               <%=
                 render "govuk_publishing_components/components/search/search_icon", {
                   classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
                 }
               %>
+              <span class="gem-c-layout-super-navigation-header__search-toggle-button-link-text-open">
+                <%= search_text %>
+              </span>
               <span
                 aria-hidden="true"
                 class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
                 focusable="false"
               >
                 &times;
+              </span>
+              <span class="gem-c-layout-super-navigation-header__search-toggle-button-link-text-close">
+                <%= close_text %>
               </span>
             <% end %>
 

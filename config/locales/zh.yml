@@ -113,6 +113,7 @@ zh:
       show_button: 显示搜索
       top_level: 最高级
     layout_super_navigation_header:
+      close_text: Close
       logo_link_title:
       logo_text:
       menu_toggle_label:
@@ -125,7 +126,7 @@ zh:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
-      search_text:
+      search_text_html:
     metadata:
       from: 从
       history: 历史
