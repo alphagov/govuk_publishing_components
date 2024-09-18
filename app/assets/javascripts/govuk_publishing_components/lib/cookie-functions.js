@@ -23,8 +23,6 @@
     multivariatetest_cohort_coronavirus_extremely_vulnerable_rate_limit: 'essential',
     dgu_beta_banner_dismissed: 'settings',
     global_bar_seen: 'settings',
-    govuk_browser_upgrade_dismisssed: 'settings',
-    govuk_not_first_visit: 'settings',
     user_nation: 'settings',
     'JS-Detection': 'usage',
     TLSversion: 'usage',
