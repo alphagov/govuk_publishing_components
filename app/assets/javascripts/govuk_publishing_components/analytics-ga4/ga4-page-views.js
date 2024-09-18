@@ -34,7 +34,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             navigation_page_type: this.getMetaContent('navigation-page-type'),
             navigation_list_type: this.getMetaContent('navigation-list-type'),
             step_navs: this.getMetaContent('stepnavs'),
-            taxonomy_level1: this.getMetaContent('taxonomy_level1'),
+            taxonomy_level1: this.getMetaContent('taxonomy_level1') || this.getMetaContent('themes'),
             taxonomy_main: this.getMetaContent('taxon-slug'),
             taxonomy_main_id: this.getMetaContent('taxon-id'),
             taxonomy_all: this.getMetaContent('taxon-slugs'),
@@ -49,8 +49,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             publishing_government: this.removeHyphensAndDowncase(this.getMetaContent('publishing-government') || this.getMetaContent('ga4-publishing-government')),
             political_status: this.getMetaContent('political-status') || this.getMetaContent('ga4-political-status'),
             primary_publishing_organisation: this.getMetaContent('primary-publishing-organisation'),
-            organisations: this.getMetaContent('organisations'),
-            world_locations: this.getMetaContent('world-locations'),
+            organisations: this.getMetaContent('organisations') || this.getMetaContent('analytics:organisations'),
+            world_locations: this.getMetaContent('world-locations') || this.getMetaContent('analytics:world-locations'),
 
             /* The existence of a referrer parameter indicates that the page has been dynamically updated via an AJAX request
             and therefore we can use it to set the dynamic property appropriately. This value is used by PA's to differentiate
