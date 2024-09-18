@@ -1,0 +1,27 @@
+// A helper class for removing column layouts when printing.
+// This should be applied to row/column layouts, by adding the
+// class to elements with a `govuk-grid-row` class. The columns
+// will then print at the full width of the page.
+// Note that only the immediate child columns will be affected.
+// If a child column also contains a row/column layout of
+// further elements, these will be unaffected and will retain
+// their existing column layout. Use the class again on these
+// nested grids to apply fullwidth column printing if required.
+
+@include govuk-media-query($media-type: print) {
+  .gem-print-columns-none {
+    width: 100%;
+
+    > .govuk-width-container {
+      margin: 0;
+      max-width: none;
+    }
+
+    > [class*="govuk-grid-column"] {
+      position: static !important; // stylelint-disable-line declaration-no-important
+      float: none;
+      clear: both;
+      width: 100%;
+    }
+  }
+}

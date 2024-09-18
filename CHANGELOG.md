@@ -16,6 +16,7 @@
 * Remove 100 character limit on search results ([PR #4230](https://github.com/alphagov/govuk_publishing_components/pull/4230))
 * Add GA4 redaction to GWF and GB EORI numbers ([PR #4227](https://github.com/alphagov/govuk_publishing_components/pull/4227))
 * Add files for secondary navigation: ([PR #4229](https://github.com/alphagov/govuk_publishing_components/pull/4229))
+* New class to collapse columns for print ([PR #4224](https://github.com/alphagov/govuk_publishing_components/pull/4224))
 
 ## 43.1.1
 
