@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove unused cookies from cookie category ([PR #4234](https://github.com/alphagov/govuk_publishing_components/pull/4234))
+
 ## 43.2.0
 
 * Make deploying meta tags changes easier ([PR #4236](https://github.com/alphagov/govuk_publishing_components/pull/4236))
