@@ -30,6 +30,11 @@ describe "Password Input", type: :view do
     expect(password_input_component.attr("data-i18n.password-hidden-announcement")).to eql("Your password is hidden")
   end
 
+  it "renders a password input with custom name" do
+    render_component({ name: "user[password]" })
+    assert_select "div.govuk-password-input input[name='user\[password\]']"
+  end
+
   it "renders a password input with extra classes and a paragraph when error_text is passed" do
     render_component({ error_text: "Password must contain at least 8 characters" })
     assert_select "div.govuk-form-group--error"
