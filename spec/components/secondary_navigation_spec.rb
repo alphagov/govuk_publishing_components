@@ -37,5 +37,6 @@ describe "Secondary navigation", type: :view do
     assert_select ".gem-c-secondary-navigation__list-item", count: 3
     assert_select ".gem-c-secondary-navigation__list-item--current", count: 1
     assert_select ".gem-c-secondary-navigation__list-item--current", text: "Nav item 1"
+    assert_select ".gem-c-secondary-navigation__list-item--current a[aria-current='page']"
   end
 end
