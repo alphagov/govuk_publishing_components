@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (43.1.1)
+    govuk_publishing_components (43.2.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -133,7 +133,7 @@ GEM
     google-protobuf (4.27.3)
       bigdecimal
       rake (>= 13)
-    googleapis-common-protos-types (1.15.0)
+    googleapis-common-protos-types (1.16.0)
       google-protobuf (>= 3.18, < 5.a)
     govuk_app_config (9.14.0)
       logstasher (~> 2.1)
@@ -208,7 +208,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitest (5.25.1)
-    net-imap (0.4.15)
+    net-imap (0.4.16)
       date
       net-protocol
     net-pop (0.1.2)
@@ -236,7 +236,7 @@ GEM
     opentelemetry-helpers-mysql (0.1.1)
       opentelemetry-api (~> 1.0)
       opentelemetry-common (~> 0.21)
-    opentelemetry-helpers-sql-obfuscation (0.1.1)
+    opentelemetry-helpers-sql-obfuscation (0.2.0)
       opentelemetry-common (~> 0.21)
     opentelemetry-instrumentation-action_mailer (0.1.0)
       opentelemetry-api (~> 1.0)
@@ -507,7 +507,7 @@ GEM
       netrc (~> 0.8)
     rexml (3.3.6)
       strscan
-    rouge (4.3.0)
+    rouge (4.4.0)
     rspec-core (3.13.1)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.2)
