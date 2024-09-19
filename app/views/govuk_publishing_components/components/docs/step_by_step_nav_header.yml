@@ -8,6 +8,8 @@ accessibility_criteria: |
   An earlier version of the component did not use a heading element &ndash; this failed WCAG 2.1 Success Criterion 1.3.1 ("Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.")
 
   An early version of the component contained a hidden skip link for keyboard and screen reader users, that jumped to the step by step navigation component in the sidebar (similar to the 'skip to content' link at the top of all GOV.UK pages). User testing suggested that rather than helping users it confused them, so this has been removed.
+
+  Always place the step by step navigation header at the top of a page, before the `<main>` element. Placing the component here means that the "Skip to main content" link allows the user to skip all navigation links, including the step by step navigation header.
 shared_accessibility_criteria:
   - link
 examples:
