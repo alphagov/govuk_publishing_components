@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove unused cookies from cookie category ([PR #4234](https://github.com/alphagov/govuk_publishing_components/pull/4234))
+* Allow custom name attribute on password input ([PR #4238](https://github.com/alphagov/govuk_publishing_components/pull/4238))
 
 ## 43.2.0
 
