@@ -608,10 +608,6 @@ $after-button-padding-left: govuk-spacing(4);
 // Styles for search toggle button.
 .gem-c-layout-super-navigation-header__search-toggle-button {
   background: none;
-
-  &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-    background: $govuk-brand-colour;
-  }
   border: 0;
   color: govuk-colour("white");
   cursor: pointer;
@@ -619,6 +615,11 @@ $after-button-padding-left: govuk-spacing(4);
   padding: govuk-spacing(3);
   position: relative;
   width: $search-width-or-height;
+
+  &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+    background: $govuk-brand-colour;
+  }
+
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
   @include focus-and-focus-visible {
