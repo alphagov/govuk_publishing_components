@@ -27,11 +27,15 @@ examples:
     data:
       phase: beta
       inverse: true
+    context:
+      dark_background: true
   inverse_for_blue_background_with_app_name:
     data:
       app_name: Skittles Maker
       phase: beta
       inverse: true
+    context:
+      dark_background: true
   without_ga4_tracking:
     description: |
       Disables GA4 tracking on the banner. Tracking is enabled by default. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
