@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove left search variant of layout header ([PR #4239](https://github.com/alphagov/govuk_publishing_components/pull/4239))
+* Remove 'inverse' background style from phase banner ([PR #4241](https://github.com/alphagov/govuk_publishing_components/pull/4241))
 
 ## 43.3.0
 
