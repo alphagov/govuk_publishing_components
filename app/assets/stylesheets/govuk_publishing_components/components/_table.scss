@@ -33,6 +33,7 @@ $table-row-even-background-colour: govuk-colour("light-grey");
     }
 
     .app-table__sort-link {
+      display: inline-block;
       position: relative;
       padding-right: $sort-link-arrow-size;
       color: $govuk-link-colour;
