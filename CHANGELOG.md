@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.3.0
 
 * Remove unused cookies from cookie category ([PR #4234](https://github.com/alphagov/govuk_publishing_components/pull/4234))
 * Allow custom name attribute on password input ([PR #4238](https://github.com/alphagov/govuk_publishing_components/pull/4238))
