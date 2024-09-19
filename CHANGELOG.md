@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove left search variant of layout header ([PR #4239](https://github.com/alphagov/govuk_publishing_components/pull/4239))
+
 ## 43.3.0
 
 * Remove unused cookies from cookie category ([PR #4234](https://github.com/alphagov/govuk_publishing_components/pull/4234))
