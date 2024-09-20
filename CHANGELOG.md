@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.4.1
 
 * Add accessible-autocomplete node_modules to gemspec ([PR #4246](https://github.com/alphagov/govuk_publishing_components/pull/4246))
 
