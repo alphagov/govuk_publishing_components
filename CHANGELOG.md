@@ -7,10 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 43.4.0
 
 * Remove left search variant of layout header ([PR #4239](https://github.com/alphagov/govuk_publishing_components/pull/4239))
 * Remove 'inverse' background style from phase banner ([PR #4241](https://github.com/alphagov/govuk_publishing_components/pull/4241))
+* Add experimental `search_with_autocomplete` component ([PR #4218](https://github.com/alphagov/govuk_publishing_components/pull/4218))
 
 ## 43.3.0
 
@@ -30,7 +31,6 @@
 * Add files for secondary navigation: ([PR #4229](https://github.com/alphagov/govuk_publishing_components/pull/4229))
 * New class to collapse columns for print ([PR #4224](https://github.com/alphagov/govuk_publishing_components/pull/4224))
 * Fix homepage super navigation buttons when text scale is increased ([PR #4232](https://github.com/alphagov/govuk_publishing_components/pull/4232))
-* Add experimental `search_with_autocomplete` component ([PR #4218](https://github.com/alphagov/govuk_publishing_components/pull/4218))
 
 ## 43.1.1
 
