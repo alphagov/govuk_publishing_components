@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "govuk_app_config"
   s.add_dependency "govuk_personalisation", ">= 0.7.0"
   s.add_dependency "kramdown"
+  s.add_dependency "ostruct"
   s.add_dependency "plek"
   s.add_dependency "rails", ">= 6"
   s.add_dependency "rouge"
