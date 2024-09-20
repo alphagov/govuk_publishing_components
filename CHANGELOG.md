@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add accessible-autocomplete node_modules to gemspec ([PR #4246](https://github.com/alphagov/govuk_publishing_components/pull/4246))
+
 ## 43.4.0
 
 * Remove left search variant of layout header ([PR #4239](https://github.com/alphagov/govuk_publishing_components/pull/4239))
