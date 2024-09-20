@@ -1,0 +1,27 @@
+<%
+  add_gem_component_stylesheet("search-with-autocomplete")
+
+  source_url = local_assigns[:source_url]
+  source_key = local_assigns[:source_key]
+
+  if source_url.nil? || source_key.nil?
+    raise ArgumentError, "The search_with_autocomplete component requires source_url and source_key"
+  end
+
+  search_component_options = local_assigns.except(:autocomplete, :source_url, :source_key).merge(
+    # The `search` component has an inline label by default, but this conflicts with the accessible-
+    # autocomplete component's markup and styling. Every potential use of this component is in
+    # situations where we want the label not to be inline anyway, so we override the default here.
+    inline_label: false
+  )
+
+  classes = %w[gem-c-search-with-autocomplete]
+  classes << "gem-c-search-with-autocomplete--large" if local_assigns[:size] == "large"
+  classes << "gem-c-search-with-autocomplete--on-govuk-blue" if local_assigns[:on_govuk_blue]
+%>
+<%= tag.div(
+  class: classes.join(" "),
+  data: { module: "gem-search-with-autocomplete", source_url:, source_key: }
+) do %>
+  <%= render "govuk_publishing_components/components/search", search_component_options %>
+<% end %>

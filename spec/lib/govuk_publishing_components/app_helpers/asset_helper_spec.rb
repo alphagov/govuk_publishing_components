@@ -19,7 +19,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
     end
 
     it "detect the total number of stylesheet paths" do
-      expect(get_component_css_paths.count).to eql(78)
+      expect(get_component_css_paths.count).to eql(79)
     end
 
     it "initialize empty asset helper" do

@@ -1,0 +1,61 @@
+name: Search with autocomplete (experimental)
+description: |
+  A version of the search component enhanced with the ability to fetch and display search
+  suggestions from a remote source as a user types.
+body: |
+  This component uses [Accessible Autocomplete](https://github.com/alphagov/accessible-autocomplete)
+  to enhance the [`search` component's](/component-guide/search) input element.
+  If the user does not have JavaScript enabled, the search component will function as normal.
+
+  The Accessible Autocomplete component generates its own input field (rather than working on the
+  existing one). We then remove the old input field from the DOM, and enhance the component to:
+
+    * give it the correct attributes and classes from the original input field
+    * fetch suggestions from a remote URL as the user types
+    * highlight parts of suggestions where they match the user's input
+    * submit the form the component is contained in when a suggestion is selected
+
+  The component will fetch results from the provided `source_url`, which should always return a JSON
+  response with a single object at the root, which has a property `source_key` containing an array
+  of strings. The component will then display these strings as suggestions to the user.
+
+  Note that the inline label on the `search` component conflicts with the markup and styling
+  generated internally by Accessible Autocomplete. Our current designs do not foresee us using
+  autocomplete on a search box with an inline label, and this component will always force the
+  `inline_label` option on its nested `search` component to be `false`.
+
+  Note that this component has undergone a DAC audit in September 2024, but should be considered
+  experimental until it has been AB tested on GOV.UK.
+accessibility_criteria: |
+  This component should meet the accessibility acceptance criteria outlined in the [nested search
+  component](/component-guide/search#accessibility-acceptance-criteria), as well as those of the
+  external [Accessible Autocomplete
+  Component](https://github.com/alphagov/accessible-autocomplete/blob/master/accessibility-criteria.md)
+  project.
+examples:
+  default:
+    data:
+      source_url: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
+      source_key: suggested_autocomplete
+  set_input_value:
+    data:
+      source_url: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
+      source_key: suggested_autocomplete
+      value: "driving licence"
+  homepage:
+    description: For use on the homepage.
+    data:
+      source_url: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
+      source_key: suggested_autocomplete
+      label_text: "Search"
+      on_govuk_blue: true
+      label_size: "s"
+      homepage: true
+      size: "large"
+    context:
+      dark_background: true
+  complex_custom_label:
+    data:
+      source_url: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
+      source_key: suggested_autocomplete
+      label_text: <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Search GOV.UK</h2>
