@@ -16,6 +16,7 @@
 * Remove left search variant of layout header ([PR #4239](https://github.com/alphagov/govuk_publishing_components/pull/4239))
 * Remove 'inverse' background style from phase banner ([PR #4241](https://github.com/alphagov/govuk_publishing_components/pull/4241))
 * Add experimental `search_with_autocomplete` component ([PR #4218](https://github.com/alphagov/govuk_publishing_components/pull/4218))
+* Remove breadcrumbs example from inverse_header docs ([PR #4244](https://github.com/alphagov/govuk_publishing_components/pull/4244))
 
 ## 43.3.0
 
