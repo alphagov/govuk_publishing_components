@@ -1,17 +1,13 @@
 name: Inverse header
 description: A wrapper to contain header content in white text
 body: |
-  This component can be passed a block of template code and will wrap it in a blue header. This is as light-touch as possible and doesn't attempt to deal with the margins and paddings of its content. White text is enforced on content and would need to be overridden where unwanted. Implemented to accommodate topic and list page headings and breadcrumbs but unopinionated about its contents.
+  This component can be passed a block of template code and will wrap it in a blue header. This is as light-touch as possible and doesn't attempt to deal with the margins and paddings of its content. White text is enforced on content and would need to be overridden where unwanted. Implemented to accommodate topic and list page headings but unopinionated about its contents.
 
   If passing links to the block make sure to add [the inverse modifier](https://design-system.service.gov.uk/styles/typography/#links-on-dark-backgrounds).
-
 accessibility_criteria: |
   The component must:
 
   * be used in conjunction with content that renders a text contrast ratio higher than 4.5:1 against the header colour to meet WCAG AA.
-
-accessibility_excluded_rules:
-  - skip-link # Examples of this component contain breadcrumbs, creating a reference to #content which is part of the layout
 examples:
   default:
     data:
@@ -45,31 +41,7 @@ examples:
           } %>
           <p class="publication-header__last-changed">Published 22 April 2016</p>
           <!-- end of example content -->
-  with_breadcrumbs_and_paragraph:
-    data:
-      padding_top: false
-      block: |
-        <!-- example content -->
-          <%= render "govuk_publishing_components/components/breadcrumbs", {
-            collapse_on_mobile: true,
-            breadcrumbs: [
-              {
-                title: "Section",
-                url: "/section"
-              },
-              {
-                title: "Education of disadvantaged children",
-                url: "/section/sub-section"
-              }
-            ],
-            inverse: true
-          } %>
-          <%= render "govuk_publishing_components/components/lead_paragraph", {
-            text: "Schools and academies, further and higher education, apprenticeships and other skills training, student funding, early years.",
-            inverse: true
-          } %>
-          <!-- end of example content -->
-  with_link:
+  with_paragraph_and_link:
     data:
       block: |
         <p class="gem-c-lead-paragraph gem-c-lead-paragraph--inverse">
