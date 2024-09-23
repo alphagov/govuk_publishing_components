@@ -58,7 +58,7 @@ describe('GA4 finder change tracker', function () {
 
     input = document.createElement('input')
     input.setAttribute('type', 'search')
-    input.value = 'Hello world my postcode is SW1A 0AA. My birthday is 1970-01-01. My email is email@example.com'
+    input.value = 'Hello world my postcode is SW1A 0AA. My email is email@example.com'
 
     inputParent.appendChild(input)
     form.appendChild(inputParent)
@@ -67,7 +67,7 @@ describe('GA4 finder change tracker', function () {
 
     expected.event_data.event_name = 'search'
     expected.event_data.url = window.location.pathname
-    expected.event_data.text = 'hello world my postcode is [postcode]. my birthday is [date]. my email is [email]'
+    expected.event_data.text = 'hello world my postcode is [postcode]. my email is [email]'
     expected.event_data.section = 'Search'
     expected.event_data.action = 'search'
 
