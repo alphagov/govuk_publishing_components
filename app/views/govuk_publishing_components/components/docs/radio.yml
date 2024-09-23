@@ -160,6 +160,21 @@ examples:
         text: "Yes"
       - value: "no"
         text: "No"
+  with_visually_hidden_heading:
+    description: |
+      If the heading/legend on the radios is not required, it can be visually hidden using this
+      option. It will still be visible to screen readers.
+    data:
+      name: "radio-group-visually-hidden-heading"
+      heading: "What is your favourite colour?"
+      visually_hidden_heading: true
+      items:
+      - value: "red"
+        text: "Red"
+      - value: "green"
+        text: "Green"
+      - value: "blue"
+        text: "Blue"
   with_description:
     data:
       name: "radio-group-description"

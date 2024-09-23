@@ -12,6 +12,7 @@
   heading ||= nil
   heading_caption ||= nil
   heading_size ||= nil
+  visually_hidden_heading ||= false
   small ||= false
   inline ||= false
   heading_level = shared_helper.get_heading_level
@@ -46,6 +47,7 @@
 
   legend_classes = %w(govuk-fieldset__legend)
   legend_classes << "govuk-fieldset__legend--#{size}"
+  legend_classes << "govuk-visually-hidden" if visually_hidden_heading
 
   aria = "#{hint_id} #{"#{error_id}" if has_error}".strip if hint or has_error
 

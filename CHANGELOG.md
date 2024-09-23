@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add `ostruct` as an explicit dependency ([PR #4251](https://github.com/alphagov/govuk_publishing_components/pull/4251))
+* Allow visually hiding legend on `radio` component ([PR #4252](https://github.com/alphagov/govuk_publishing_components/pull/4252))
 
 ## 43.4.1
 

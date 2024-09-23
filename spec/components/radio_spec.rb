@@ -296,6 +296,17 @@ describe "Radio", type: :view do
     assert_select "h4.govuk-fieldset__heading", text: "What is your favourite skittle?"
   end
 
+  it "renders radio-group with a visually hidden heading if visually_hidden_heading is passed" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      heading_level: 4,
+      visually_hidden_heading: true,
+    )
+
+    assert_select "legend.govuk-visually-hidden", "What is your favourite skittle?"
+  end
+
   it "renders radio-group with bold labels" do
     render_component(
       name: "radio-group-bold-labels",
