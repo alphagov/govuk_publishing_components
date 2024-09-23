@@ -5,6 +5,7 @@ PATH
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
+      ostruct
       plek
       rails (>= 6)
       rouge
@@ -423,6 +424,7 @@ GEM
       opentelemetry-semantic_conventions
     opentelemetry-semantic_conventions (1.10.1)
       opentelemetry-api (~> 1.0)
+    ostruct (0.6.0)
     parallel (1.25.1)
     parser (3.3.3.0)
       ast (~> 2.4.1)
