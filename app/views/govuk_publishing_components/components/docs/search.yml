@@ -16,10 +16,8 @@ accessibility_criteria: |
 examples:
   default:
     data: {}
-  apply_custom_styling_to_the_label_and_set_search_value:
+  set_search_value:
     data:
-      inline_label: false
-      label_text: "<h1>Search GOV.UK</h1>"
       value: "driving licence"
   stop_the_label_appearing_inline:
     data:
