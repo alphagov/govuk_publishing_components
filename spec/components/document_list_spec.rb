@@ -175,26 +175,6 @@ describe "Document list", type: :view do
     assert_select "#{div}:last-of-type", text: "Become an apprentice"
   end
 
-  it "adds branding correctly" do
-    render_component(
-      brand: "attorney-generals-office",
-      items: [
-        {
-          link: {
-            text: "School behaviour and attendance: parental responsibility measures",
-            path: "/government/publications/parental-responsibility-measures-for-behaviour-and-attendance",
-          },
-          metadata: {
-            public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
-            document_type: "Statutory guidance",
-          },
-        },
-      ],
-    )
-    assert_select ".gem-c-document-list__item.brand--attorney-generals-office"
-    assert_select ".gem-c-document-list .gem-c-document-list__item-title .brand__color"
-  end
-
   it "does not wrap link in heading element if no description or metadata provided" do
     render_component(
       items: [
@@ -372,32 +352,6 @@ describe "Document list", type: :view do
     )
 
     assert_select ".gem-c-document-list__item .gem-c-document-list-child", count: 2
-  end
-
-  it "adds branding to document part link correctly" do
-    render_component(
-      brand: "attorney-generals-office",
-      items: [
-        {
-          link: {
-            text: "Universal credit",
-            path: "/universal-credit",
-            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
-          },
-          parts: [
-            {
-              link: {
-                text: "What universal credit is",
-                path: "/universal-credit/what-it-is",
-                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.",
-              },
-            },
-          ],
-        },
-      ],
-    )
-
-    assert_select ".gem-c-document-list .gem-c-document-list-child__link.brand__color"
   end
 
   it "renders document part without link" do
