@@ -61,18 +61,6 @@ examples:
           active: true
     context:
       right_to_left: true
-  with_branding:
-    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown.
-    data:
-      brand: 'wales-office'
-      translations:
-      - locale: 'en'
-        base_path: '/en'
-        text: 'English'
-        active: true
-      - locale: 'cy'
-        base_path: '/cy'
-        text: 'Cymraeg'
   with_no_top_margin:
     data:
       no_margin_top: true
