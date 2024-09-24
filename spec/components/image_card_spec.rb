@@ -91,15 +91,8 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card__title a", false
   end
 
-  it "applies branding" do
-    render_component(href: "#", heading_text: "test", extra_details: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
-    assert_select ".gem-c-image-card.brand--attorney-generals-office"
-    assert_select ".gem-c-image-card__title-link.brand__color"
-    assert_select ".gem-c-image-card__list-item .brand__color"
-  end
-
   it "labels a no-image version" do
-    render_component(href: "#", heading_text: "test", extra_details: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
+    render_component(href: "#", heading_text: "test", extra_details: [{ href: "/1", text: "link1" }])
     assert_select ".gem-c-image-card--no-image"
   end
 
@@ -170,10 +163,5 @@ describe "ImageCard", type: :view do
     render_component(youtube_video_id: "EXAMPLE", image_alt: "some meaningful alt text")
     assert_select ".gem-c-image-card__youtube-thumbnail-container[href='https://www.youtube.com/watch?v=EXAMPLE']"
     assert_select ".gem-c-image-card__youtube-thumbnail-image[src='https://img.youtube.com/vi/EXAMPLE/maxresdefault.jpg']"
-  end
-
-  it "adds brand__color to figcaption of youtube fallback link if brand" do
-    render_component(youtube_video_id: "EXAMPLE", image_alt: "some meaningful alt text", brand: "brand")
-    assert_select ".gem-c-image-card__youtube-thumbnail-container-text.brand__color"
   end
 end
