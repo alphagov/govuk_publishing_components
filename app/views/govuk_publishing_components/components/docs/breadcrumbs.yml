@@ -6,9 +6,11 @@ body: |
   We recommend that if using the breadcrumbs for navigation purposes, you set `collapse_on_mobile` to `true` to make things more readable for mobile users. However, you can specify `collapse_on_mobile:``false` or remove the flag completely to stop this behaviour.
 shared_accessibility_criteria:
   - link
-accessibility_criteria:
+accessibility_criteria: |
   The breadcrumb links must have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
   (this especially applies when [using the inverse flag](/component-guide/breadcrumbs/inverse)).
+
+  Always place breadcrumbs at the top of a page, before the `<main>` element. Placing them here means that the "Skip to main content" link allows the user to skip all navigation links, including breadcrumbs.
 accessibility_excluded_rules:
   - skip-link # This component is creating a reference to #content which is part of the layout
 display_html: true

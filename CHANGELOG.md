@@ -7,10 +7,15 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update accessibility criteria in component docs ([PR #4242](https://github.com/alphagov/govuk_publishing_components/pull/4242))
+
 ## 43.5.0
 
 * Add `ostruct` as an explicit dependency ([PR #4251](https://github.com/alphagov/govuk_publishing_components/pull/4251))
 * Allow visually hiding legend on `radio` component ([PR #4252](https://github.com/alphagov/govuk_publishing_components/pull/4252))
+* Remove breadcrumbs example from inverse_header docs ([PR #4244](https://github.com/alphagov/govuk_publishing_components/pull/4244))
 
 ## 43.4.1
 
@@ -21,7 +26,6 @@
 * Remove left search variant of layout header ([PR #4239](https://github.com/alphagov/govuk_publishing_components/pull/4239))
 * Remove 'inverse' background style from phase banner ([PR #4241](https://github.com/alphagov/govuk_publishing_components/pull/4241))
 * Add experimental `search_with_autocomplete` component ([PR #4218](https://github.com/alphagov/govuk_publishing_components/pull/4218))
-* Remove breadcrumbs example from inverse_header docs ([PR #4244](https://github.com/alphagov/govuk_publishing_components/pull/4244))
 
 ## 43.3.0
 
