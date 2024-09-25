@@ -8,6 +8,5 @@
 //= link_directory ../javascripts/govuk_publishing_components
 
 // Pre-compile these specific files
-//= link govuk_publishing_components/vendor/modernizr.js
 //= link govuk_publishing_components/vendor/lux/lux-reporter.js
 //= link govuk_publishing_components/vendor/lux/lux-measurer.js

@@ -18,7 +18,6 @@ describe "Layout for admin", type: :view do
   end
 
   it "can receive a custom js filename" do
-    allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("govuk_publishing_components/vendor/modernizr")
     expect_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("admin").once
 
     render_component(
@@ -36,7 +35,6 @@ describe "Layout for admin", type: :view do
     end
 
     it "can receive a custom js filename for es6 " do
-      allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("govuk_publishing_components/vendor/modernizr")
       allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("application")
       expect_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("es6-bundle", { type: "module" }).once
 
@@ -48,7 +46,6 @@ describe "Layout for admin", type: :view do
     end
 
     it "can use the default filename for es6 components" do
-      allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("govuk_publishing_components/vendor/modernizr")
       allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("application")
       expect_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("es6-components", { type: "module" }).once
 
