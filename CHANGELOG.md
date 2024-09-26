@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use the first organisation to generate breadcrumbs, if no parent linked ([PR #4270](https://github.com/alphagov/govuk_publishing_components/pull/4270))
+
 ## 44.3.0
 
 * Add variants required for square blue icon share links ([PR #4292](https://github.com/alphagov/govuk_publishing_components/pull/4292))
