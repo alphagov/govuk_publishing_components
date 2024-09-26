@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update accessibility criteria in component docs ([PR #4242](https://github.com/alphagov/govuk_publishing_components/pull/4242))
+* Use the first organisation to generate breadcrumbs, if no parent linked ([PR #4270](https://github.com/alphagov/govuk_publishing_components/pull/4270))
 
 ## 43.5.0
 
