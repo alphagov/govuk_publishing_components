@@ -33,6 +33,10 @@ module GovukPublishingComponents
         @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.call(content_item)
       end
 
+      def organisation_breadcrumbs
+        @organisation_breadcrumbs ||= ContentBreadcrumbsBasedOnOrganisations.call(content_item)
+      end
+
       def breadcrumbs
         breadcrumbs_based_on_ancestors
       end
@@ -72,12 +76,20 @@ module GovukPublishingComponents
         content_item.dig("links", "ordered_related_items").present? && content_item.dig("links", "parent").present?
       end
 
+      def content_has_related_organisations?
+        ContentItem.new(content_item).related_organisations.present?
+      end
+
       def content_is_tagged_to_a_live_taxon?
         content_item.dig("links", "taxons").to_a.any? { |taxon| taxon["phase"] == "live" }
       end
 
       def content_is_a_specialist_document?
         content_item["schema_name"] == "specialist_document"
+      end
+
+      def content_is_a_corporate_information_page?
+        content_item["schema_name"] == "corporate_information_page"
       end
 
       def content_is_a_html_publication?
