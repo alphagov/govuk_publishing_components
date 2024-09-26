@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use the first organisation to generate breadcrumbs, if no parent linked ([PR #4270](https://github.com/alphagov/govuk_publishing_components/pull/4270))
+
 ## 44.7.0
 
 * Contents list add margin_bottom option ([PR #4333](https://github.com/alphagov/govuk_publishing_components/pull/4333))
