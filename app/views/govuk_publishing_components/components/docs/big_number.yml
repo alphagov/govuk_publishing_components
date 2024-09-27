@@ -18,11 +18,26 @@ examples:
     data:
       number: 119
       label: Open consultations
-  passing_extra_symbols:
-    description: "In some cases, we want to communicate more than just the flat numeric value eg: `400+`, `90%`, `-20`, `1M` etc. This is why we allow values to be passed as flat strings."
+  with_plus_symbol:
+    description: "In some cases, we want to communicate more than just the flat numeric value eg: `400+`. This is why we allow values to be passed as flat strings."
     data:
       number: "400+"
       label: Other agencies and public bodies
+  with_percentage_symbol:
+    description: "In some cases, we want to communicate more than just the flat numeric value eg: `90%`. This is why we allow values to be passed as flat strings."
+    data:
+      number: "90%"
+      label: is a large percentage of something
+  with_negative_symbol:
+    description: "In some cases, we want to communicate more than just the flat numeric value eg: `-20`. This is why we allow values to be passed as flat strings."
+    data:
+      number: "-20"
+      label: is a negative number
+  with_unit_symbol:
+    description: "In some cases, we want to communicate more than just the flat numeric value eg: `1M`. This is why we allow values to be passed as flat strings."
+    data:
+      number: "1M"
+      label: is a shorter way of saying one million
   with_link:
     data:
       number: 23
