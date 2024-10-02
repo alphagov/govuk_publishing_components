@@ -55,6 +55,11 @@ module GovukPublishingComponents
             step_by_step: false,
             breadcrumbs: navigation.breadcrumbs,
           }
+        elsif navigation.content_is_a_corporate_information_page? && navigation.content_has_related_organisations?
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.organisation_breadcrumbs,
+          }
         elsif navigation.use_taxon_breadcrumbs?
           {
             step_by_step: false,
