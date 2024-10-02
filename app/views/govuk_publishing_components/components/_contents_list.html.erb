@@ -8,7 +8,7 @@
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
   classes = %w[gem-c-contents-list]
-  link_classes = %w[gem-c-contents-list__link govuk-link]
+  link_classes = %w[gem-c-contents-list__link govuk-link gem-print-link]
   link_classes << brand_helper.color_class
   link_classes << "govuk-link--no-underline" unless underline_links
 

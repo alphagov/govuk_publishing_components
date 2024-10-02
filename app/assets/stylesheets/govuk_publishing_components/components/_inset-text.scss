@@ -1,25 +1,8 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/inset-text/inset-text";
 
-// stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-inset-text {
     break-inside: avoid;
   }
-
-  .gem-c-inset-text .govuk-link {
-    &,
-    &:link,
-    &:link:visited {
-      color: $govuk-print-text-colour !important;
-    }
-
-    &::after {
-      display: block;
-      margin: 1mm auto;
-      font-size: 12pt !important;
-      color: $govuk-print-text-colour;
-    }
-  }
 }
-// stylelint-enable declaration-no-important

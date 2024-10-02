@@ -22,7 +22,6 @@
   margin-bottom: -2px;
 }
 
-// stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-intervention {
     break-inside: avoid;
@@ -33,20 +32,4 @@
       margin: 0;
     }
   }
-
-  .gem-c-intervention .govuk-link {
-    &,
-    &:link,
-    &:link:visited {
-      color: $govuk-print-text-colour !important;
-    }
-
-    &::after {
-      display: block;
-      margin: 1mm auto;
-      font-size: 12pt !important;
-      color: $govuk-print-text-colour;
-    }
-  }
 }
-// stylelint-enable declaration-no-important

@@ -38,7 +38,7 @@
             <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
               <%=
                 link_to link[:text], link[:path],
-                class: "govuk-link gem-c-cards__link",
+                class: "govuk-link gem-c-cards__link gem-print-link",
                 data: link[:data_attributes]
               %>
             <% end %>
