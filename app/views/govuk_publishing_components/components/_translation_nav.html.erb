@@ -1,13 +1,11 @@
 <%
   add_gem_component_stylesheet("translation-nav")
 
-  brand ||= false
-  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   translation_helper = GovukPublishingComponents::Presenters::TranslationNavHelper.new(local_assigns)
 %>
 <% if translation_helper.has_translations? %>
   <nav role="navigation"
-    class="gem-c-translation-nav govuk-!-display-none-print <%= translation_helper.classes %> <%= brand_helper.brand_class %>"
+    class="gem-c-translation-nav govuk-!-display-none-print <%= translation_helper.classes %>"
     aria-label="<%= t("common.translations") %>"
   >
     <ul class="gem-c-translation-nav__list">
@@ -20,7 +18,7 @@
               hreflang: translation[:locale],
               lang: translation[:locale],
               rel: "alternate",
-              class: "govuk-link gem-c-translation-nav__link #{brand_helper.color_class}",
+              class: "govuk-link gem-c-translation-nav__link",
               data: translation[:data_attributes]
             %>
           <% end %>

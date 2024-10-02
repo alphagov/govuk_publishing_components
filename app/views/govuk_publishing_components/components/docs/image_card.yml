@@ -172,25 +172,6 @@ examples:
       href: '/no-valid-links-here'
       heading_text: 'John McJohnson'
       description: 'Deputy director for Parks and Small Trees'
-  with_branding:
-    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown.
-    data:
-      brand: "department-for-work-pensions"
-      href: "/again-not-a-page"
-      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
-      image_alt: "some meaningful alt text please"
-      heading_text: "Something relating to this"
-      description: "Public reform committee consultation vote department interior minister referendum."
-      extra_details: [
-        {
-          text: "Something",
-          href: "/1"
-        },
-        {
-          text: "Something else",
-          href: "/2"
-        }
-      ]
   large_version:
     data:
       large: true

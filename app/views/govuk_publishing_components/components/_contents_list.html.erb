@@ -4,12 +4,9 @@
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   underline_links ||= false
   format_numbers ||= false
-  brand ||= false
-  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
   classes = %w[gem-c-contents-list]
   link_classes = %w[gem-c-contents-list__link govuk-link]
-  link_classes << brand_helper.color_class
   link_classes << "govuk-link--no-underline" unless underline_links
 
   disable_ga4 ||= false
@@ -21,7 +18,7 @@
   } unless disable_ga4
   local_assigns[:aria] ||= {}
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.add_class("gem-c-contents-list #{brand_helper.brand_class}")
+  component_helper.add_class("gem-c-contents-list")
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
   component_helper.add_aria_attribute({ label: t("components.contents_list.contents") }) unless local_assigns[:aria][:label]
   component_helper.add_role("navigation")

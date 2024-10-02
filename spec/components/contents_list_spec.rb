@@ -226,13 +226,6 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list__list-item a[data-ga4-link]", false
   end
 
-  it "applies branding correctly" do
-    render_component(contents: nested_contents_list, format_numbers: true, brand: "attorney-generals-office")
-    assert_select ".gem-c-contents-list.brand--attorney-generals-office"
-    assert_select ".gem-c-contents-list__link", count: 6
-    assert_select ".gem-c-contents-list__link.brand__color", count: 6
-  end
-
   it "renders the heading in welsh" do
     I18n.with_locale(:cy) { render_component(contents: contents_list) }
     assert_select ".gem-c-contents-list__title", text: "Cynnwys"

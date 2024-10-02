@@ -6,7 +6,7 @@ module GovukPublishingComponents
 
       attr_reader :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :youtube_video_id, :image_src, :two_thirds, :large_font_size_mobile
 
-      def initialize(local_assigns, brand_helper)
+      def initialize(local_assigns)
         @href = local_assigns[:href]
         @extra_details = local_assigns[:extra_details] || []
         @image_src = local_assigns[:image_src]
@@ -26,8 +26,6 @@ module GovukPublishingComponents
         @metadata = local_assigns[:metadata]
         @lang = local_assigns[:lang]
         @youtube_video_id = local_assigns[:youtube_video_id] || nil
-
-        @brand_helper = brand_helper
       end
 
       def href
@@ -122,7 +120,7 @@ module GovukPublishingComponents
             loading: @image_loading,
           )
         end
-        thumbnail + content_tag(:figcaption, @youtube_video_alt, class: "gem-c-image-card__youtube-thumbnail-container-text govuk-link #{@brand_helper.color_class}")
+        thumbnail + content_tag(:figcaption, @youtube_video_alt, class: "gem-c-image-card__youtube-thumbnail-container-text govuk-link")
       end
 
       def youtube_link

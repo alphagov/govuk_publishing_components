@@ -130,23 +130,6 @@ examples:
         metadata:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statutory guidance'
-  with_branding:
-    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) for more details.
-    data:
-      brand: 'attorney-generals-office'
-      items:
-      - link:
-          text: 'School behaviour and attendance: parental responsibility measures'
-          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
-        metadata:
-          public_updated_at: 2017-01-05 14:50:33
-          document_type: 'Statutory guidance'
-      - link:
-          text: 'School exclusion'
-          path: '/government/publications/school-exclusion'
-        metadata:
-          public_updated_at: 2017-07-19 15:01:48
-          document_type: 'Statutory guidance'
   with_only_link:
     data:
       items:

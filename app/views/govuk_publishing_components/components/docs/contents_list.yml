@@ -180,19 +180,6 @@ examples:
               text: "تقديم الطلب"
     context:
       right_to_left: true
-  with_branding:
-    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) for more details.
-    data:
-      brand: 'department-for-environment-food-rural-affairs'
-      format_numbers: true
-      contents:
-        - href: "#first-thing"
-          text: 1. First thing
-          items:
-          - href: "#second-thing"
-            text: 2. Numbers not parsed
-          - href: "#third-thing"
-            text: 3. Numbers are just text
   without_ga4_tracking:
     description: Disables GA4 link tracking on the list. Tracking is enabled by default.
     data:

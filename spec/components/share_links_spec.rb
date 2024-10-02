@@ -101,8 +101,13 @@ describe "ShareLinks", type: :view do
   end
 
   it "adds branding correctly" do
-    render_component(links: [links[0]], brand: "attorney-generals-office")
-    assert_select ".gem-c-share-links.brand--attorney-generals-office .gem-c-share-links__link.brand__color"
+    render_component(links: [links[0]], brand: true)
+    assert_select ".gem-c-share-links span.gem-c-share-links__link-icon.gem-c-share-links--black"
+  end
+
+  it "has no branding by default" do
+    render_component(links: [links[0]])
+    assert_select ".gem-c-share-links span.gem-c-share-links__link-icon.gem-c-share-links--black", false
   end
 
   it "arranges in columns" do

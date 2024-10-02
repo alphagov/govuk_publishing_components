@@ -1,9 +1,6 @@
 <%
   add_gem_component_stylesheet("subscription-links")
 
-  brand ||= false
-  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-
   sl_helper = GovukPublishingComponents::Presenters::SubscriptionLinksHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
@@ -12,7 +9,6 @@
 
   css_classes = %w( gem-c-subscription-links govuk-!-display-none-print )
   css_classes << shared_helper.get_margin_bottom unless local_assigns[:margin_bottom] == 0
-  css_classes << brand_helper.brand_class
   css_classes << "gem-c-subscription-links--with-feed-box" if sl_helper.feed_link_box_value
 
   data = {"module": "gem-toggle"} if sl_helper.feed_link_box_value
@@ -35,7 +31,7 @@
             </svg><%= sl_helper.email_signup_link_text %>
           <% end %>
           <%= link_to email_link_text, sl_helper.email_signup_link, {
-            class: "govuk-link gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--link",
+            class: "govuk-link gem-c-subscription-links__item gem-c-subscription-links__item--link",
             data: sl_helper.email_signup_link_data_attributes,
             lang: email_signup_link_text_locale
           } %>
@@ -49,12 +45,12 @@
             </svg><%= sl_helper.feed_link_text %>
           <% end %>
           <%= tag.button(feed_link_text,
-            class: "govuk-link govuk-link--no-underline gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--button",
+            class: "govuk-link govuk-link--no-underline gem-c-subscription-links__item gem-c-subscription-links__item--button",
             data: sl_helper.feed_link_data_attributes,
             lang: feed_link_text_locale
           ) if sl_helper.feed_link_box_value %>
           <%= link_to(feed_link_text, sl_helper.feed_link,
-            class: "govuk-link govuk-link--no-underline gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--link",
+            class: "govuk-link govuk-link--no-underline gem-c-subscription-links__item gem-c-subscription-links__item--link",
             data: sl_helper.feed_link_data_attributes,
             lang: feed_link_text_locale
           ) unless sl_helper.feed_link_box_value %>

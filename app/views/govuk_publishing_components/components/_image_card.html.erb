@@ -2,10 +2,8 @@
   add_gem_component_stylesheet("image-card")
 
   sizes ||= false
-  brand ||= false
 
-  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-  card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns, brand_helper)
+  card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-image-card")
@@ -13,7 +11,6 @@
   component_helper.add_class("gem-c-image-card--large") if card_helper.large
   component_helper.add_class("gem-c-image-card--two-thirds") if card_helper.two_thirds
   component_helper.add_class("gem-c-image-card--no-image") unless (card_helper.image_src || card_helper.youtube_video_id)
-  component_helper.add_class(brand_helper.brand_class) if brand_helper.brand_class
 
   text_wrapper_classes = %w[gem-c-image-card__text-wrapper]
   text_wrapper_classes << "gem-c-image-card__text-wrapper--two-thirds" if card_helper.two_thirds
@@ -26,13 +23,11 @@
     gem-c-image-card__title-link
     govuk-link
   ]
-  heading_link_classes << brand_helper.color_class
   heading_link_classes << "gem-c-image-card__title-link--large-font-size-mobile" if card_helper.large_mobile_font_size?
   extra_link_classes = %w[
     gem-c-image-card__list-item-link
     govuk-link
   ]
-  extra_link_classes << brand_helper.color_class
 
   component_helper.add_data_attribute({ module: "image-card" }) if card_helper.youtube_video_id
   component_helper.set_lang(card_helper.lang)
