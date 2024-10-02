@@ -25,3 +25,48 @@
     }
   }
 }
+
+// Two helper classes to ensure that all printed links
+// receive consistent formatting. Most links inherit
+// styles from govuk-frontend, including the printing
+// of the href that a link contains. This makes printed
+// links more useful, but they can take up a lot of space
+// on the page in the default font size and will print
+// in blue by default. These helpers set the printed colour
+// to black, reduce the font size, and improve the layout
+// of the printed href.
+//
+// .gem-print-link
+// ----------------------------------------------------------
+// Typically this class will be applied to existing
+// elements that have the `govuk-link` class but it can
+// also be used on other link elements.
+//
+// .gem-print-links-within
+// ----------------------------------------------------------
+// A variation of the previous print style, to be used on
+// parent elements that contain links with the `govuk-link`
+// class. This is typically only required for views where
+// the `govuk-link` element is not exposed in the markup
+// of the view as it's coming from a self-contained helper.
+
+// stylelint-disable declaration-no-important
+@include govuk-media-query($media-type: print) {
+  .gem-print-link,
+  .gem-print-links-within .govuk-link {
+    &,
+    &:link,
+    &:visited {
+      color: $govuk-print-text-colour !important;
+    }
+
+    &::after {
+      display: block;
+      margin: 1mm auto;
+      font-size: 12pt;
+      font-weight: normal;
+      color: $govuk-print-text-colour !important;
+    }
+  }
+}
+// stylelint-enable declaration-no-important
