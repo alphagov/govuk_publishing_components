@@ -11,6 +11,7 @@ module GovukPublishingComponents
         check_role_is_valid(@options[:role]) if @options.include?(:role)
         check_lang_is_valid(@options[:lang]) if @options.include?(:lang)
         check_open_is_valid(@options[:open]) if @options.include?(:open)
+        check_hidden_is_valid(@options[:hidden]) if @options.include?(:hidden)
       end
 
       def all_attributes
@@ -23,6 +24,7 @@ module GovukPublishingComponents
         attributes[:role] = @options[:role] unless @options[:role].blank?
         attributes[:lang] = @options[:lang] unless @options[:lang].blank?
         attributes[:open] = @options[:open] unless @options[:open].blank?
+        attributes[:hidden] = @options[:hidden] unless @options[:hidden].nil?
 
         attributes
       end
@@ -60,6 +62,11 @@ module GovukPublishingComponents
       def set_open(open_attribute)
         check_open_is_valid(open_attribute)
         @options[:open] = open_attribute
+      end
+
+      def set_hidden(hidden_attribute)
+        check_hidden_is_valid(hidden_attribute)
+        @options[:hidden] = hidden_attribute
       end
 
     private
@@ -127,6 +134,15 @@ module GovukPublishingComponents
         options = [true, false]
         unless options.include? open_attribute
           raise(ArgumentError, "open attribute (#{open_attribute}) is not recognised")
+        end
+      end
+
+      def check_hidden_is_valid(hidden_attribute)
+        return if hidden_attribute.nil?
+
+        options = ["", "hidden", "until-found"]
+        unless options.include? hidden_attribute
+          raise(ArgumentError, "hidden attribute (#{hidden_attribute}) is not recognised")
         end
       end
 

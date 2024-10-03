@@ -23,13 +23,21 @@
                                   class: "govuk-link",
                                 )))
   services_cookies ||= nil
-  css_classes = %w(gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper)
-  css_classes << "gem-c-cookie-banner--services" if services_cookies
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_id(id)
+  component_helper.add_class("gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper")
+  component_helper.add_class("gem-c-cookie-banner--services") if services_cookies
+
+  component_helper.add_data_attribute({ module: "cookie-banner", nosnippet: "" })
+  component_helper.add_role("region")
+  component_helper.add_aria_attribute(label: title)
+  component_helper.set_hidden("hidden")
 
   disable_ga4 ||= false
 %>
 
-<div id="<%= id %>" class="<%= css_classes.join(' ') %>" data-module="cookie-banner" data-nosnippet role="region" aria-label="<%= title %>" hidden>
+<%= tag.div(**component_helper.all_attributes) do %>
   <div class="govuk-cookie-banner__message govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
@@ -100,4 +108,4 @@
         </button>
     </div>
   </div>
-</div>
+<% end %>

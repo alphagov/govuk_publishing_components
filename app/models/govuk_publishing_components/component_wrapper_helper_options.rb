@@ -11,6 +11,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `role` - accepts a space separated string of roles
 - `lang` - accepts a language attribute value
 - `open` - accepts an open attribute value (true or false)
+- `hidden` - accepts an empty string, 'hidden', or 'until-found'
       "
     end
   end

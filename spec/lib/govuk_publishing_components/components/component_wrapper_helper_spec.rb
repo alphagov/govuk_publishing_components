@@ -12,6 +12,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         role: "navigation",
         lang: "en",
         open: true,
+        hidden: "",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -25,6 +26,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         role: "navigation",
         lang: "en",
         open: true,
+        hidden: "",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -194,6 +196,27 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       expect {
         GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: "false")
       }.to raise_error(ArgumentError, error)
+    end
+
+    it "does not accept an invalid hidden value" do
+      error = "hidden attribute (false) is not recognised"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(hidden: "false")
+      }.to raise_error(ArgumentError, error)
+    end
+
+    it "accepts valid hidden attribute value" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(hidden: "until-found")
+      expected = {
+        hidden: "until-found",
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+    end
+
+    it "can set an hidden attribute, overriding a passed value" do
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(hidden: "until-found")
+      helper.set_hidden("hidden")
+      expect(helper.all_attributes[:hidden]).to eql("hidden")
     end
   end
 end
