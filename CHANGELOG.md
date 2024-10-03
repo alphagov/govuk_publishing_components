@@ -17,6 +17,7 @@
 * Center text and icons vertically in the option select component ([PR #4256](https://github.com/alphagov/govuk_publishing_components/pull/4256))
 * Remove instances of ga4_tracking ([PR #4282](https://github.com/alphagov/govuk_publishing_components/pull/4282))
 * Add component wrapper to cookie banner ([PR #4279](https://github.com/alphagov/govuk_publishing_components/pull/4279))
+* Update attachment link accessibility guidance ([PR #4278](https://github.com/alphagov/govuk_publishing_components/pull/4278))
 
 ## 43.5.0
 
