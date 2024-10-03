@@ -4,12 +4,16 @@
   id ||= nil
   title ||= nil
   content ||= nil
-  data_attributes ||= {}
-  data_attributes[:module] = "contextual-guidance"
   guidance_id ||= nil
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_id(id)
+  component_helper.add_class("gem-c-contextual-guidance")
+  component_helper.add_data_attribute({ module: "contextual-guidance" })
+
 %>
 
-<%= tag.div class: "gem-c-contextual-guidance", id: id, data: data_attributes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= tag.div class: "govuk-grid-row" do %>
     <%= tag.div class: "govuk-grid-column-two-thirds" do %>
       <%= tag.div class: "gem-c-contextual-guidance__input-field" do %>

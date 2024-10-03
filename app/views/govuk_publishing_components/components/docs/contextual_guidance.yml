@@ -11,6 +11,7 @@ accessibility_criteria: |
   * be hidden by default
   * be visible when the associated input field if focused
   * stay visible until another input field with guidance is being focused
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 examples:
