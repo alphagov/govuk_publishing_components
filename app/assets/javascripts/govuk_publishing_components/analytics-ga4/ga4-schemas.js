@@ -31,7 +31,9 @@
         percent_scrolled: this.undefined,
         video_current_time: this.undefined,
         length: this.undefined,
-        video_percent: this.undefined
+        video_percent: this.undefined,
+        autocomplete_input: this.undefined,
+        autocomplete_suggestions: this.undefined
       }
     }
   }
