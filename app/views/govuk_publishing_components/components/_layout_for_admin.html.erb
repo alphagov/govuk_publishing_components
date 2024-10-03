@@ -18,7 +18,6 @@
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "govuk_publishing_components/favicon-#{environment}.png" %>
     <%= stylesheet_link_tag css_filename, media: "all" %>
-    <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
     <% if GovukPublishingComponents::Config.use_es6_components %>
       <%= javascript_include_tag js_module_filename, type: "module" %>
     <% end %>
