@@ -11,6 +11,7 @@
 
 * Update accessibility criteria in component docs ([PR #4242](https://github.com/alphagov/govuk_publishing_components/pull/4242))
 * Show all big_number symbol types in our docs ([PR #4271](https://github.com/alphagov/govuk_publishing_components/pull/4271))
+* Remove incorrect search component example ([PR #4253](https://github.com/alphagov/govuk_publishing_components/pull/4253))
 
 ## 43.5.0
 
