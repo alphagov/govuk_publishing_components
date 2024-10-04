@@ -104,4 +104,4 @@ examples:
           applicable: false
           alternative_url: /
       type: detailed_guide
-      ga4_tracking: true
+      disable_ga4: true

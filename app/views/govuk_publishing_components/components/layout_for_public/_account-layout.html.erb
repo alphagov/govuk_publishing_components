@@ -1,7 +1,6 @@
 <div class="govuk-width-container">
   <%= render "govuk_publishing_components/components/phase_banner", {
     phase: "beta",
-    ga4_tracking: true,
     message: sanitize(t("components.layout_for_public.account_layout.feedback.banners.phase_banner_html"))
   } unless omit_account_phase_banner %>
 

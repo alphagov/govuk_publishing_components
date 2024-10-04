@@ -164,7 +164,7 @@ describe "Super navigation header", type: :view do
   end
 
   it "adds GA4 tracking" do
-    render_component({ ga4_tracking: true })
+    render_component({})
 
     assert_select "header[data-module='ga4-event-tracker ga4-link-tracker']"
     assert_select "a[data-ga4-link]", count: 23

@@ -114,7 +114,7 @@ examples:
     description: Disables GA4 tracking on tabs as links. Tracking is enabled by default.
     data:
       as_links: true
-      ga4_tracking: true
+      disable_ga4: true
       tabs:
         - href: "/page1"
           label: "Link 1"

@@ -110,8 +110,8 @@ describe "Step by step navigation related", type: :view do
     assert_select "#{this_link}[data-ga4-link='#{expected.to_json}']", false
   end
 
-  it "adds GA4 data attributes on multiple links when ga4_tracking is true" do
-    render_component(pretitle: "Some more text", links: two_links, ga4_tracking: true)
+  it "adds GA4 data attributes on multiple links" do
+    render_component(pretitle: "Some more text", links: two_links)
 
     link_one = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']"
     link_two = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
@@ -136,15 +136,15 @@ describe "Step by step navigation related", type: :view do
     assert_select "#{link_two}[data-ga4-link='#{expected_two.to_json}']"
   end
 
-  it "does not add GA4 data attributes on multiple links when ga4_tracking is false" do
-    render_component(links: two_links, ga4_tracking: false)
+  it "does not add GA4 data attributes on multiple links when GA4 is disabled" do
+    render_component(links: two_links, disable_ga4: true)
 
     link_one = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']"
     link_two = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
 
     expected_one = {
       "event_name": "navigation",
-      "type": "related content",
+      "type": "part of",
       "index_link": "1",
       "index_total": "2",
       "section": "Part of",
@@ -152,7 +152,7 @@ describe "Step by step navigation related", type: :view do
 
     expected_two = {
       "event_name": "navigation",
-      "type": "related content",
+      "type": "part of",
       "index_link": "2",
       "index_total": "2",
       "section": "Part of",
