@@ -7,23 +7,27 @@
   applies_to ||= t("components.devolved_nations.applies_to")
   heading_level ||= 2
   disable_ga4 ||= false
-  data_attributes = {}
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-devolved-nations")
 
   unless disable_ga4
-    data_attributes[:ga4_devolved_nations_banner] = devolved_nations_helper.ga4_applicable_nations_title_text(true)
-    data_attributes[:module] = "ga4-link-tracker"
-    data_attributes[:ga4_track_links_only] = ""
-    data_attributes[:ga4_set_indexes] = ""
-    data_attributes[:ga4_link] = {
-      event_name: "navigation",
-      type: "devolved nations banner",
-      section: t("components.devolved_nations.applies_to", locale: :en) + " " + devolved_nations_helper.ga4_applicable_nations_title_text,
-    }.to_json
+    component_helper.add_data_attribute({
+      ga4_devolved_nations_banner: devolved_nations_helper.ga4_applicable_nations_title_text(true),
+      module: "ga4-link-tracker",
+      ga4_track_links_only: "",
+      ga4_set_indexes: "",
+      ga4_link: {
+        event_name: "navigation",
+        type: "devolved nations banner",
+        section: t("components.devolved_nations.applies_to", locale: :en) + " " + devolved_nations_helper.ga4_applicable_nations_title_text,
+      }.to_json
+    })
   end
 %>
 
 <% if national_applicability.any? { |k,v| v[:applicable] == true } %>
-  <%= tag.section class: "gem-c-devolved-nations", data: data_attributes do %>
+  <%= tag.section(**component_helper.all_attributes) do %>
     <%= content_tag(shared_helper.get_heading_level, class: "govuk-heading-s govuk-!-margin-bottom-0") do %>
       <%= applies_to %> <%= devolved_nations_helper.applicable_nations_title_text %>
     <% end %>

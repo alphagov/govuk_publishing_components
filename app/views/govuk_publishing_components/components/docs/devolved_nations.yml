@@ -7,6 +7,7 @@ body: |
 
   * nations that the alternative content relates to
   * a list of alternative URLs where applicable
+uses_component_wrapper: true
 shared_accessibility_criteria:
   - link
 accessibility_criteria: |
