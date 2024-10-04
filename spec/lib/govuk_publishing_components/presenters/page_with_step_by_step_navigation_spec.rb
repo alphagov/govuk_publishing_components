@@ -144,12 +144,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
       it "handled gracefully" do
         step_nav_links = described_class.new(content_store_response, "/giant-pool/planning")
-        ga4_tracking = true
+        disable_ga4 = true
 
         expect(step_nav_links.step_navs.count).to eq(0)
 
         expect(step_nav_links.show_header?).to be false
-        expect(step_nav_links.header(ga4_tracking)).to eq({})
+        expect(step_nav_links.header(disable_ga4)).to eq({})
 
         expect(step_nav_links.show_related_links?).to be false
         expect(step_nav_links.related_links).to eq([])
@@ -172,16 +172,16 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
       it "parses the content item" do
         step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
-        ga4_tracking = true
+        disable_ga4 = true
 
         expect(step_nav_links.step_navs.count).to eq(1)
 
         expect(step_nav_links.show_header?).to be true
-        expect(step_nav_links.header(ga4_tracking)).to eq(
+        expect(step_nav_links.header(disable_ga4)).to eq(
           path: "/learn-to-spacewalk",
           title: "Learn to spacewalk: small step by giant leap",
           tracking_id: "cccc-dddd",
-          ga4_tracking:,
+          disable_ga4:,
         )
 
         expect(step_nav_links.show_related_links?).to be true
@@ -506,7 +506,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
         it "parses the content item" do
           step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
-          ga4_tracking = true
+          disable_ga4 = true
 
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
@@ -514,11 +514,11 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.show_secondary_step_by_step?).to be true
           expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be true
           expect(step_nav_links.show_header?).to be true
-          expect(step_nav_links.header(ga4_tracking)).to eq(
+          expect(step_nav_links.header(disable_ga4)).to eq(
             path: "/lose-your-lunch",
             title: "Lose your lunch: lurch by lurch",
             tracking_id: "aaaa-bbbb",
-            ga4_tracking:,
+            disable_ga4:,
           )
 
           expect(step_nav_links.show_related_links?).to be true
@@ -611,7 +611,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
         it "parses the content item" do
           step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
-          ga4_tracking = true
+          disable_ga4 = true
 
           expect(step_nav_links.step_navs.count).to eq(1)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
@@ -619,11 +619,11 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.show_secondary_step_by_step?).to be false
           expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
           expect(step_nav_links.show_header?).to be true
-          expect(step_nav_links.header(ga4_tracking)).to eq(
+          expect(step_nav_links.header(disable_ga4)).to eq(
             path: "/PRIMARY-lose-your-lunch",
             title: "PRIMARY Lose your lunch: lurch by lurch",
             tracking_id: "PRIMARY-aaaa-bbbb",
-            ga4_tracking:,
+            disable_ga4:,
           )
 
           expect(step_nav_links.show_related_links?).to be true
@@ -661,7 +661,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
         it "parses the content item" do
           step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
-          ga4_tracking = true
+          disable_ga4 = true
 
           expect(step_nav_links.step_navs.count).to eq(1)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
@@ -669,11 +669,11 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.show_secondary_step_by_step?).to be false
           expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
           expect(step_nav_links.show_header?).to be true
-          expect(step_nav_links.header(ga4_tracking)).to eq(
+          expect(step_nav_links.header(disable_ga4)).to eq(
             path: "/PRIMARY-lose-your-lunch",
             title: "PRIMARY Lose your lunch: lurch by lurch",
             tracking_id: "PRIMARY-aaaa-bbbb",
-            ga4_tracking:,
+            disable_ga4:,
           )
 
           expect(step_nav_links.show_related_links?).to be true

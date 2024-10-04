@@ -77,18 +77,18 @@ module GovukPublishingComponents
         if show_sidebar?
           @sidebar ||= current_step_nav.content.tap do |sb|
             configure_for_sidebar(sb)
-            sb.merge!(small: true, heading_level: 3, tracking_id: current_step_nav.content_id, ga4_tracking: @query_parameters[:ga4_tracking])
+            sb.merge!(small: true, heading_level: 3, tracking_id: current_step_nav.content_id, disable_ga4: @query_parameters[:disable_ga4])
           end
         end
       end
 
-      def header(ga4_tracking)
+      def header(disable_ga4)
         if show_header?
           {
             title: current_step_nav.title,
             path: current_step_nav.base_path,
             tracking_id: current_step_nav.content_id,
-            ga4_tracking:,
+            disable_ga4:,
           }
         else
           {}

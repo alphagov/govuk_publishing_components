@@ -19,14 +19,13 @@ describe "Intervention", type: :view do
     assert_select ".gem-c-intervention .govuk-link", text: /Hide this suggestion/
   end
 
-  it "renders the component with GA4 tracking when ga4_tracking is true" do
+  it "renders the component with GA4 tracking " do
     render_component(
       name: "test-campaign",
       suggestion_text: "You might be interested in",
       suggestion_link_text: "Travel abroad",
       suggestion_link_url: "/travel-abroad",
       dismiss_text: "Hide this suggestion",
-      ga4_tracking: true,
     )
 
     assert_select ".gem-c-intervention[data-ga4-intervention-banner]"
