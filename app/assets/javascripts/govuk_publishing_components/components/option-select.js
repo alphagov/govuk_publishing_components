@@ -190,7 +190,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var element = document.createElement('div')
     element.setAttribute('class', 'gem-c-option-select__selected-counter js-selected-counter')
     element.innerHTML = checkedString
-    this.$optionSelect.querySelector('.js-container-button').insertAdjacentElement('afterend', element)
+    this.$optionSelect.querySelector('.js-container-toggle').insertAdjacentElement('afterend', element)
   }
 
   OptionSelect.prototype.updateCheckedCount = function updateCheckedCount () {

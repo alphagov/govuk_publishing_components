@@ -76,11 +76,10 @@
 
 .gem-c-option-select__icon {
   display: none;
-  position: absolute;
-  top: 0;
-  left: 9px;
+  flex-shrink: 0;
   width: 30px;
   height: 40px;
+  margin-inline: 10px 4px;
   fill: govuk-colour("black");
 }
 
@@ -126,8 +125,14 @@
 .govuk-frontend-supported {
   .gem-c-option-select__heading {
     position: relative;
-    padding: 10px 8px 5px 43px;
-    margin: 0;
+    margin: 0 0 govuk-spacing(1);
+  }
+
+  .gem-c-option-select__toggle {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
   }
 
   [aria-expanded="true"] ~ .gem-c-option-select__icon--up {
@@ -152,9 +157,9 @@
 }
 
 .gem-c-option-select__selected-counter {
+  margin-left: 44px;
   color: $govuk-text-colour;
-  margin-top: 3px;
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 16, $line-height: 1);
 }
 
 .gem-c-option-select.js-closed {
