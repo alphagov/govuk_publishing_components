@@ -11,6 +11,7 @@
 
 * Add new chart component options ([PR #4318](https://github.com/alphagov/govuk_publishing_components/pull/4318))
 * Add shared helper and component wrapper helper to govspeak component ([PR #4325](https://github.com/alphagov/govuk_publishing_components/pull/4325))
+* Add component wrapper to emergency banner component ([PR #4283](https://github.com/alphagov/govuk_publishing_components/pull/4283))
 
 ## 44.4.2
 
