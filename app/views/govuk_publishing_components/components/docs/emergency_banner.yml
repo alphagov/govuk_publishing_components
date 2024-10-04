@@ -5,6 +5,7 @@ body: |
 
   See the [opsmanual](https://docs.publishing.service.gov.uk/manual/emergency-publishing.html#adding-emergency-publishing-banners) for information about what the Emergency Banner is and when it should be deployed.
 
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
