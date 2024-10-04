@@ -19,33 +19,33 @@
     raise ArgumentError, "Emergency type #{campaign_class} is not in list of valid emergency types (#{emergency_banner_helper.emergency_types.join(', ')})"
   end
 
-  banner_classes = %w[gem-c-emergency-banner]
-  banner_classes << "gem-c-emergency-banner--#{campaign_class}"
-  banner_classes << "gem-c-emergency-banner--homepage" if homepage
-
   heading_classes = %w[gem-c-emergency-banner__heading]
   heading_classes << "gem-c-emergency-banner__heading--homepage" if homepage
 
   description_classes = %w[gem-c-emergency-banner__description]
   description_classes << "gem-c-emergency-banner__description--homepage" if homepage
 
-  data_attributes = {
-    "nosnippet": true,
-  }
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-emergency-banner gem-c-emergency-banner--#{campaign_class}")
+  component_helper.add_class("gem-c-emergency-banner--homepage") if homepage
+  component_helper.add_data_attribute({nosnippet: true})
+  component_helper.add_aria_attribute({labelledby: "emergency-banner-heading"})
 
   unless disable_ga4
-    data_attributes[:ga4_emergency_banner] = ""
-    data_attributes[:module] = "ga4-link-tracker"
-    data_attributes[:ga4_track_links_only] = ""
-    data_attributes[:ga4_set_indexes] = ""
-    data_attributes[:ga4_link] = {
-      event_name: "navigation",
-      type: "emergency banner",
-      section: heading,
-    }.to_json
+    component_helper.add_data_attribute({
+      ga4_emergency_banner: "",
+      module: "ga4-link-tracker",
+      ga4_track_links_only: "",
+      ga4_set_indexes: "",
+      ga4_link: {
+        event_name: "navigation",
+        type: "emergency banner",
+        section: heading,
+      }.to_json
+    })
   end
 %>
-<%= content_tag('section', class: banner_classes, "aria-labelledby": "emergency-banner-heading", data: data_attributes) do %>
+<%= tag.section(**component_helper.all_attributes) do %>
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
