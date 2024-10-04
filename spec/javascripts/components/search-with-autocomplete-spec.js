@@ -15,7 +15,7 @@ describe('Search with autocomplete component', () => {
     <form id="search-form">
       <div
         class="gem-c-search-with-autocomplete"
-        data-module="gem-search-with-autocomplete"
+        data-module="gem-search-with-autocomplete ga4-event-tracker"
         data-source-url="https://www.example.org/api/autocomplete.json?foo=bar"
         data-source-key="suggestions"
       >
@@ -214,5 +214,34 @@ describe('Search with autocomplete component', () => {
     const formData = new FormData(form)
     expect(formData.get('q')).toEqual('updated value')
     expect(submitSpy).toHaveBeenCalled()
+  })
+
+  it('submits correct Ga4 event data when a suggestion is confirmed', (done) => {
+    const $menu = fixture.querySelector('.gem-c-search-with-autocomplete__menu')
+    const $input = fixture.querySelector('input')
+    const $form = fixture.querySelector('form')
+
+    const suggestions = ['foo', 'bar', 'baz']
+    stubSuccessfulFetch(suggestions)
+
+    $form.addEventListener('submit', (e) => {
+      e.preventDefault()
+    })
+
+    performInput($input, 'test query', () => {
+      $menu.querySelector('.gem-c-search-with-autocomplete__option').click()
+
+      const ga4EventData = window.dataLayer[window.dataLayer.length - 1]
+
+      expect(ga4EventData.event_data).toBeDefined()
+      expect(ga4EventData.event_data.type).toBe('finder')
+      expect(ga4EventData.event_data.event_name).toBe('select_content')
+      expect(ga4EventData.event_data.tool_name).toBe('autocomplete')
+      expect(ga4EventData.event_data.autocomplete_input).toBe($input.value)
+      expect(ga4EventData.event_data.autocomplete_suggestions).toBe(suggestions.join('|'))
+      expect(parseInt(ga4EventData.event_data.length, 10)).toBe(suggestions.length)
+
+      done()
+    })
   })
 })

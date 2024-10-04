@@ -15,6 +15,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       this.sourceUrl = this.$module.getAttribute('data-source-url')
       this.sourceKey = this.$module.getAttribute('data-source-key')
+
+      this.suggestions = []
     }
 
     init () {
@@ -87,26 +89,48 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       url.searchParams.set('q', query)
       fetch(url, { headers: { Accept: 'application/json' } })
         .then(response => response.json())
-        .then((data) => { populateResults(data[this.sourceKey]) })
+        .then((data) => {
+          this.suggestions = data[this.sourceKey]
+          populateResults(data[this.sourceKey])
+        })
         .catch(() => { populateResults([]) })
     }
 
     // Callback used by accessible-autocomplete to submit the containing form when a suggestion is
     // confirmed by the user (e.g. by pressing Enter or clicking on it)
     submitContainingForm (value) {
-      if (this.$form) {
-        // The accessible-autocomplete component calls this callback _before_ it updates its
-        // internal state, so the value of the input field is not yet updated when this callback is
-        // called. We need to force the value to be updated before submitting the form, but the rest
-        // of the state can catch up later.
-        this.$autocompleteInput.value = value
+      // The accessible-autocomplete component calls this callback _before_ it updates its
+      // internal state, so the value of the input field is not yet updated when this callback is
+      // called. We need to force the value to be updated before submitting the form, but the rest
+      // of the state can catch up later.
+      this.$autocompleteInput.value = value
 
+      this.submitGa4TrackingData()
+
+      if (this.$form) {
         if (this.$form.requestSubmit) {
           this.$form.requestSubmit()
         } else {
           // Fallback for certain Grade C browsers that don't support `requestSubmit`
           this.$form.submit()
         }
+      }
+    }
+
+    submitGa4TrackingData () {
+      if (this.suggestions.length) {
+        const data = {
+          type: 'finder',
+          event_name: 'select_content',
+          tool_name: 'autocomplete',
+          autocomplete_input: this.$autocompleteInput.value,
+          autocomplete_suggestions: this.suggestions.join('|'),
+          length: this.suggestions.length
+        }
+
+        const schemas = new window.GOVUK.analyticsGa4.Schemas()
+        const schema = schemas.mergeProperties(data, 'event_data')
+        window.GOVUK.analyticsGa4.core.sendData(schema)
       }
     }
 
