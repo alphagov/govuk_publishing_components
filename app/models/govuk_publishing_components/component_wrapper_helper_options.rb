@@ -12,6 +12,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `lang` - accepts a language attribute value
 - `open` - accepts an open attribute value (true or false)
 - `hidden` - accepts an empty string, 'hidden', or 'until-found'
+- `tabindex` - accepts an integer. The integer can also be passed as a string.
       "
     end
   end

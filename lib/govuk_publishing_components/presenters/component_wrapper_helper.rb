@@ -12,6 +12,7 @@ module GovukPublishingComponents
         check_lang_is_valid(@options[:lang]) if @options.include?(:lang)
         check_open_is_valid(@options[:open]) if @options.include?(:open)
         check_hidden_is_valid(@options[:hidden]) if @options.include?(:hidden)
+        check_tabindex_is_valid(@options[:tabindex]) if @options.include?(:tabindex)
       end
 
       def all_attributes
@@ -25,6 +26,7 @@ module GovukPublishingComponents
         attributes[:lang] = @options[:lang] unless @options[:lang].blank?
         attributes[:open] = @options[:open] unless @options[:open].blank?
         attributes[:hidden] = @options[:hidden] unless @options[:hidden].nil?
+        attributes[:tabindex] = @options[:tabindex] unless @options[:tabindex].blank?
 
         attributes
       end
@@ -67,6 +69,11 @@ module GovukPublishingComponents
       def set_hidden(hidden_attribute)
         check_hidden_is_valid(hidden_attribute)
         @options[:hidden] = hidden_attribute
+      end
+
+      def set_tabindex(tabindex_attribute)
+        check_tabindex_is_valid(tabindex_attribute)
+        @options[:tabindex] = tabindex_attribute
       end
 
     private
@@ -143,6 +150,16 @@ module GovukPublishingComponents
         options = ["", "hidden", "until-found"]
         unless options.include? hidden_attribute
           raise(ArgumentError, "hidden attribute (#{hidden_attribute}) is not recognised")
+        end
+      end
+
+      def check_tabindex_is_valid(tabindex_attribute)
+        return if tabindex_attribute.blank?
+
+        tabindex_attribute = tabindex_attribute.to_s
+
+        unless /^-?[0-9]+$/.match?(tabindex_attribute)
+          raise(ArgumentError, "tabindex_attribute attribute (#{tabindex_attribute}) is not recognised")
         end
       end
 

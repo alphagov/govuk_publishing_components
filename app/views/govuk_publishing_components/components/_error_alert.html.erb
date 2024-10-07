@@ -4,9 +4,16 @@
   id ||= nil
   description ||= nil
   data_attributes ||= {}
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_id(id)
+  component_helper.add_class("gem-c-error-alert govuk-!-display-none-print")
+  component_helper.add_data_attribute({ module: "initial-focus" })
+  component_helper.add_role("alert")
+  component_helper.set_tabindex("-1")
 %>
 
-<%= tag.div id: id, class: "gem-c-error-alert govuk-!-display-none-print", data: { module: "initial-focus" }.merge(data_attributes), role: "alert", tabindex: "-1" do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if description.present? %>
     <%= tag.h2 message, class: "gem-c-error-summary__title" %>
     <%= tag.div description, class: "gem-c-error-summary__body" %>
