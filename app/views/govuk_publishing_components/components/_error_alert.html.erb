@@ -10,9 +10,10 @@
   component_helper.add_class("gem-c-error-alert govuk-!-display-none-print")
   component_helper.add_data_attribute({ module: "initial-focus" })
   component_helper.add_role("alert")
+  component_helper.set_tabindex("-1")
 %>
 
-<%= tag.div(**component_helper.all_attributes, tabindex: "-1") do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if description.present? %>
     <%= tag.h2 message, class: "gem-c-error-summary__title" %>
     <%= tag.div description, class: "gem-c-error-summary__body" %>

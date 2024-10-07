@@ -13,6 +13,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         lang: "en",
         open: true,
         hidden: "",
+        tabindex: "0",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -27,6 +28,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         lang: "en",
         open: true,
         hidden: "",
+        tabindex: "0",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -217,6 +219,66 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(hidden: "until-found")
       helper.set_hidden("hidden")
       expect(helper.all_attributes[:hidden]).to eql("hidden")
+    end
+
+    it "can set an tabindex attribute, overriding a passed value" do
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: -1)
+      helper.set_tabindex("1")
+      expect(helper.all_attributes[:tabindex]).to eql("1")
+    end
+
+    describe "tabindex value regex" do
+      it "accepts string numbers" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: "-984347284732")
+        expected = {
+          tabindex: "-984347284732",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+
+      it "accepts integer numbers" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: -984_347_284_732)
+        expected = {
+          tabindex: -984_347_284_732,
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+
+      it "accepts 0" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: "0")
+        expected = {
+          tabindex: "0",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+
+      it "does not accept text before a number" do
+        error = "tabindex_attribute attribute (abc1) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: "abc1")
+        }.to raise_error(ArgumentError, error)
+      end
+
+      it "does not accept text after a number" do
+        error = "tabindex_attribute attribute (123abc) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: "123abc")
+        }.to raise_error(ArgumentError, error)
+      end
+
+      it "does not accept extra negative symbols" do
+        error = "tabindex_attribute attribute (--1) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: "--1")
+        }.to raise_error(ArgumentError, error)
+      end
+
+      it "does not accept extra symbols" do
+        error = "tabindex_attribute attribute (-1!???) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: "-1!???")
+        }.to raise_error(ArgumentError, error)
+      end
     end
   end
 end
