@@ -100,12 +100,12 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link--dark-large-icon"
   end
 
-  it "renders light text version" do
+  it "renders inverse version" do
     render_component(
       text: "Get more info",
       href: "/coronavirus",
-      light_text: true,
+      inverse: true,
     )
-    assert_select ".gem-c-action-link--light-text"
+    assert_select ".gem-c-action-link--inverse"
   end
 end
