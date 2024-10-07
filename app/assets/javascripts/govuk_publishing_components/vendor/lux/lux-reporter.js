@@ -336,7 +336,7 @@
     return str;
   }
 
-  var VERSION = "4.0.26";
+  var VERSION = "4.0.27";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -564,7 +564,8 @@
   var updatedCustomData = {};
   function addCustomDataValue(name, value) {
     var typeV = typeof value;
-    if (customDataValues[name] !== value) {
+    var valueIsEmpty = typeV === "undefined" || value === null;
+    if (!valueIsEmpty && customDataValues[name] !== value) {
       // If the value is new or different to the previous value, record it so that later we can send
       // only the values that have changed.
       updatedCustomData[name] = value;
@@ -572,7 +573,7 @@
     if (typeV === "string" || typeV === "number" || typeV === "boolean") {
       customDataValues[name] = value;
     }
-    if (typeV === "undefined" || value === null) {
+    if (valueIsEmpty) {
       delete customDataValues[name];
     }
   }
@@ -681,25 +682,25 @@
         startTime: processTimeMetric(entry.startTime),
         elementSelector: getNodeSelector(source.node),
         elementType: source.node.nodeName,
-    }); })
-    : [];
-    if (sessionEntries.length &&
-      (entry.startTime - latestEntry.startTime >= 1000 ||
+      }); })
+      : [];
+      if (sessionEntries.length &&
+        (entry.startTime - latestEntry.startTime >= 1000 ||
         entry.startTime - firstEntry.startTime >= 5000)) {
-      sessionValue = entry.value;
-      sessionEntries = [entry];
-      sessionAttributions = sources;
-      largestEntry = entry;
-    }
-    else {
-      sessionValue += entry.value;
-      sessionEntries.push(entry);
-      sessionAttributions = sessionAttributions.concat(sources);
-      if (!largestEntry || entry.value > largestEntry.value) {
+        sessionValue = entry.value;
+        sessionEntries = [entry];
+        sessionAttributions = sources;
         largestEntry = entry;
       }
-    }
-    maximumSessionValue = max(maximumSessionValue, sessionValue);
+      else {
+        sessionValue += entry.value;
+        sessionEntries.push(entry);
+        sessionAttributions = sessionAttributions.concat(sources);
+        if (!largestEntry || entry.value > largestEntry.value) {
+          largestEntry = entry;
+        }
+      }
+      maximumSessionValue = max(maximumSessionValue, sessionValue);
     }
   }
   function reset$2() {
