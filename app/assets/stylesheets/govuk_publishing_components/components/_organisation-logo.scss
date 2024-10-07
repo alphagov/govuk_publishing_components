@@ -82,6 +82,21 @@
   }
 }
 
+.gem-c-organisation-logo--inverse {
+  .gem-c-organisation-logo__container {
+    border-color: govuk-colour("white");
+    @include govuk-link-style-inverse;
+  }
+
+  .gem-c-organisation-logo__crest--eo {
+    filter: brightness(0) invert(1);
+
+    &:focus {
+      filter: none;
+    }
+  }
+}
+
 @mixin crest($crest, $xpos:0, $ypos:0) {
   background: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png") no-repeat $xpos $ypos;
   background-size: auto 32px;
