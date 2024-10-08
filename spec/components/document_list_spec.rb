@@ -316,6 +316,22 @@ describe "Document list", type: :view do
     assert_select ".gem-c-document-list.gem-c-document-list--no-top-border-first-child"
   end
 
+  it "renders items with equal spacing" do
+    render_component(
+      equal_item_spacing: true,
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          },
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list.gem-c-document-list--equal-item-spacing"
+  end
+
   it "highlights items" do
     render_component(
       items: [

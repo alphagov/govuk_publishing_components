@@ -9,6 +9,7 @@
   component_helper.add_class("gem-c-document-list")
   component_helper.add_class("gem-c-document-list--no-top-border") if local_assigns[:remove_top_border]
   component_helper.add_class("gem-c-document-list--no-top-border-first-child") if local_assigns[:remove_top_border_from_first_child]
+  component_helper.add_class("gem-c-document-list--equal-item-spacing") if local_assigns[:equal_item_spacing]
   component_helper.add_class(shared_helper.get_margin_bottom)
 
   extra_link_classes = "govuk-link--no-underline" if local_assigns[:remove_underline]
