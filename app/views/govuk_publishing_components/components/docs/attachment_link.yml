@@ -6,6 +6,12 @@ body: |
 
   It is expected to be embedded inside an element that provides text styles
   (such as `.govuk-body`) so does not provide its own text styling.
+accessibility_criteria: |
+    All touch targets (e.g the attachment link) must be 24px large, or leave sufficient space (target-size). See [Understanding Success Criterion 2.5.8: Target Size (Minimum))](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html).
+
+    To achieve this, you can embed the attachment link within another element that maintains sufficient space above and below the target. For instance, you can place individual links inside a paragraph element styled with a `.govuk-body` class, or as list items in the [list component](https://components.publishing.service.gov.uk/component-guide/list).
+
+    Attachment links within paragraphs of text do not need to meet the 24 by 24 CSS pixels requirements.    
 shared_accessibility_criteria:
 - link
 examples:
