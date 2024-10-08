@@ -7,18 +7,18 @@ describe "Search", type: :view do
 
   it "renders a search box with default options" do
     render_component({})
-    assert_select ".gem-c-search.gem-c-search--on-white"
+    assert_select ".gem-c-search"
     assert_select "label[class^='govuk-\!-margin-bottom-']", count: 0
   end
 
   it "renders a search box for a dark background" do
-    render_component(on_govuk_blue: true)
-    assert_select ".gem-c-search.gem-c-search--on-govuk-blue"
+    render_component(inverse: true)
+    assert_select ".gem-c-search.gem-c-search--inverse"
   end
 
   it "doesn't render a search box for a dark background if the parameter is invalid" do
-    render_component(on_govuk_blue: "dummy")
-    assert_select ".gem-c-search.gem-c-search--on-govuk-blue", false
+    render_component(inverse: "dummy")
+    assert_select ".gem-c-search.gem-c-search--inverse", false
   end
 
   it "renders a search box with a custom label text" do

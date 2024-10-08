@@ -82,6 +82,7 @@ $large-input-size: 50px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  border-right-width: 0;
   @include govuk-font($size: 19, $line-height: calc(28 / 19));
 
   // the .focus class is added by JS and ensures that the input remains above the label once clicked/filled in
@@ -91,6 +92,7 @@ $large-input-size: 50px;
   }
 
   &:focus {
+    border-right-width: 2px; // add the border once focused
     @include gem-c-search-input-focus;
   }
 
@@ -122,6 +124,12 @@ $large-input-size: 50px;
   height: $input-size;
   text-indent: -5000px;
   overflow: hidden;
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+
+  &:hover {
+    background-color: lighten(govuk-colour("blue"), 5%);
+  }
 
   .gem-c-search__icon {
     pointer-events: none;
@@ -164,7 +172,7 @@ $large-input-size: 50px;
   width: 1%;
 }
 
-.gem-c-search--on-govuk-blue {
+.gem-c-search--inverse {
   .gem-c-search__label {
     color: govuk-colour("white");
   }
@@ -205,26 +213,6 @@ $large-input-size: 50px;
 
     &:hover {
       background-color: lighten(#d2e2f1, 5%);
-    }
-  }
-}
-
-.gem-c-search--on-white {
-  .gem-c-search__submit {
-    background-color: govuk-colour("blue");
-    color: govuk-colour("white");
-
-    &:hover {
-      background-color: lighten(govuk-colour("blue"), 5%);
-    }
-  }
-
-  .gem-c-search__input[type="search"] {
-    border-right-width: 0;
-
-    // add the border once focused
-    &:focus {
-      border-right-width: 2px;
     }
   }
 }

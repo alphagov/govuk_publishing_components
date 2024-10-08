@@ -29,11 +29,7 @@
   classes << "gem-c-search--large-on-mobile" if size == "large-mobile"
   classes << "gem-c-search--homepage" if homepage
   classes << "gem-c-search--no-border" if no_border
-  if local_assigns[:on_govuk_blue].eql?(true)
-    classes << "gem-c-search--on-govuk-blue"
-  else
-    classes << "gem-c-search--on-white"
-  end
+  classes << "gem-c-search--inverse" if local_assigns[:inverse].eql?(true)
   classes << "gem-c-search--separate-label" if local_assigns.include?(:inline_label) or local_assigns.include?(:label_size)
 
   label_classes = []
