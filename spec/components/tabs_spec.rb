@@ -146,4 +146,23 @@ describe "Tabs", type: :view do
     assert_select ".govuk-tabs[data-module='ga4-link-tracker']", false
     assert_select ".govuk-tabs__tab[data-ga4-link]", false
   end
+
+  it "renders tabs for the landing page" do
+    render_component(
+      landing_page: true,
+      tabs: [
+        {
+          id: "tab1",
+          label: "First section",
+          content: "<p>Fusce at dictum tellus.</p>",
+        },
+        {
+          id: "tab2",
+          label: "Second section",
+          content: "<p>Lorem ipsum.</p>",
+        },
+      ],
+    )
+    assert_select ".govuk-tabs.gem-c-tabs.gem-c-tabs--landing-page"
+  end
 end

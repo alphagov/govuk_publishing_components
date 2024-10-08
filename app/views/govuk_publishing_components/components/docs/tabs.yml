@@ -122,3 +122,15 @@ examples:
         - href: "/page2"
           label: "Link 2"
           active: false
+  on_landing_page:
+    data:
+      landing_page: true
+      tabs:
+        - id: "landing-page1"
+          label: "Red Dwarf"
+          content: |
+            <p class="govuk-body-m">BBC</p>
+        - id: "landing-page2"
+          label: "Star Trek: The Next Generation"
+          content: |
+            <p class="govuk-body-m">NBC</p>

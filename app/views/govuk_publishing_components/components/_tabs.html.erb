@@ -9,9 +9,11 @@
 
   as_links ||= false
   disable_ga4 ||= false
+  landing_page ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-tabs gem-c-tabs")
+  component_helper.add_class("gem-c-tabs--landing-page") if landing_page
   component_helper.add_data_attribute({ module: "govuk-tabs" }) unless as_links
 
   unless disable_ga4

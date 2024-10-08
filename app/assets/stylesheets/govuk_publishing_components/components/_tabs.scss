@@ -32,6 +32,54 @@ li.govuk-tabs__list-item { // stylelint-disable-line selector-no-qualifying-type
   }
 }
 
+.gem-c-tabs--landing-page {
+  .govuk-tabs__list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border: 0;
+    margin: 0 -2px;
+  }
+
+  .govuk-tabs__list-item {
+    float: none;
+    flex: 1 1 0px;
+    background: govuk-colour("light-grey");
+    margin: 0 2px;
+    padding: govuk-spacing(4) govuk-spacing(2);
+    border: 0;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    .govuk-tabs__title,
+    .govuk-tabs__list,
+    .govuk-tabs__list-item::before {
+      display: none;
+    }
+  }
+
+  .govuk-tabs__list-item--selected {
+    padding: govuk-spacing(4) govuk-spacing(2);
+    background: govuk-colour("blue");
+    border: 0;
+
+    .govuk-tabs__tab {
+      color: govuk-colour("white");
+
+      &:focus {
+        color: $govuk-focus-text-colour;
+      }
+    }
+  }
+
+  .govuk-tabs__panel {
+    border: 0;
+    padding: 0;
+  }
+}
+
 @include govuk-media-query($media-type: print) {
   .govuk-tabs__title {
     display: block !important; // stylelint-disable-line declaration-no-important
