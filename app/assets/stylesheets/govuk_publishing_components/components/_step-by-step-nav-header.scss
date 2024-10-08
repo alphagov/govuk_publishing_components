@@ -32,17 +32,5 @@
 
   .gem-c-step-nav-header__title {
     @include govuk-font(24, $weight: bold);
-
-    &,
-    &:link,
-    &:link:visited {
-      color: $govuk-print-text-colour;
-    }
-
-    &::after {
-      display: block;
-      margin: 1mm auto;
-      font-size: 12pt !important; // stylelint-disable-line declaration-no-important
-    }
   }
 }

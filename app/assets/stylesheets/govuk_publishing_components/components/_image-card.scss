@@ -355,13 +355,8 @@
   }
 
   .gem-c-image-card__title-link {
-    color: $govuk-print-text-colour !important;
-
     &::after {
-      display: block;
       position: static;
-      margin-top: 2mm;
-      font-size: 12pt !important;
     }
   }
 }

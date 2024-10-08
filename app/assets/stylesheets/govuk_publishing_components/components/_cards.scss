@@ -155,7 +155,6 @@
   }
 }
 
-// stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-cards__list {
     display: block;
@@ -174,23 +173,12 @@
   }
 
   .gem-c-cards__link {
-    &,
-    &:link,
-    &:link:visited {
-      color: $govuk-print-text-colour !important;
-    }
-
     &::before {
       display: none;
     }
 
     &::after {
       position: static;
-      display: block;
-      margin: 1mm auto;
-      font-size: 12pt !important;
-      color: $govuk-print-text-colour;
     }
   }
 }
-// stylelint-enable declaration-no-important
