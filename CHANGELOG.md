@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Standardise inverse option for action link component ([PR #4288](https://github.com/alphagov/govuk_publishing_components/pull/4288))
 * **BREAKING:** Remove Modernizr ([PR #4273](https://github.com/alphagov/govuk_publishing_components/pull/4273))
 * Update accessibility criteria in component docs ([PR #4242](https://github.com/alphagov/govuk_publishing_components/pull/4242))
 * Show all big_number symbol types in our docs ([PR #4271](https://github.com/alphagov/govuk_publishing_components/pull/4271))
