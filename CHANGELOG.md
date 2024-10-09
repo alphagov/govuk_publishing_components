@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 44.0.0
 
 * Standardise inverse option for action link component ([PR #4288](https://github.com/alphagov/govuk_publishing_components/pull/4288))
 * **BREAKING:** Remove Modernizr ([PR #4273](https://github.com/alphagov/govuk_publishing_components/pull/4273))
