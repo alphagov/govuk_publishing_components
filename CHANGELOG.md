@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update organisation logos ([PR #4295](https://github.com/alphagov/govuk_publishing_components/pull/4295))
+
 ## 44.0.0
 
 * Standardise inverse option for action link component ([PR #4288](https://github.com/alphagov/govuk_publishing_components/pull/4288))
