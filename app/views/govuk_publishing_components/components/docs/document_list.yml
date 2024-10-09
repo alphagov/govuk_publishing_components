@@ -244,6 +244,28 @@ examples:
         metadata:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statistical data set'
+  with_equal_item_spacing:
+    description: |
+      The new search UI has consistently equal spacing between items in the document list, instead
+      of the original larger bottom padding.
+    data:
+      equal_item_spacing: true
+      items:
+      - link:
+          text: 'Become an apprentice'
+          path: '/become-an-apprentice'
+          description: 'Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship.'
+          full_size_description: true
+      - link:
+          text: 'Become a journeyman'
+          path: '/become-a-journeyman'
+          description: 'Becoming a journeyman - what to expect, what to take, pay and training, making an application, complaining about being a journeyman.'
+          full_size_description: true
+      - link:
+          text: 'Become enlightened'
+          path: '/become-enlightened'
+          description: 'Becoming enlightened - what to expect, what to take, pay and training, making an application, complaining about being enlightened.'
+          full_size_description: true
   highlighted_result:
     description: Highlight one or more of the items in the list. This is used on finders to provide a 'top result' for a search. The `highlight_text` parameter is optional.
     data:

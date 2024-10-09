@@ -35,6 +35,13 @@
   }
 }
 
+.gem-c-document-list--equal-item-spacing {
+  .gem-c-document-list__item {
+    margin-top: govuk-spacing(3);
+    padding-top: govuk-spacing(3);
+  }
+}
+
 .gem-c-document-list__item-title--context {
   margin-right: govuk-spacing(2);
 
