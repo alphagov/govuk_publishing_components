@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add variants required for square blue icon share links ([PR #4292](https://github.com/alphagov/govuk_publishing_components/pull/4292))
+
 ## 44.0.0
 
 * Standardise inverse option for action link component ([PR #4288](https://github.com/alphagov/govuk_publishing_components/pull/4288))
