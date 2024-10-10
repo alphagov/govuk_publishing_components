@@ -168,5 +168,14 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links--icon-colour-white", false
     assert_select ".gem-c-share-links--text-colour-black", false
   end
-end
 
+  it "adds the correct classes when icon_spacing is true" do
+    render_component(links:, icon_spacing: true)
+    assert_select ".gem-c-share-links--icon-spacing"
+  end
+
+  it "does not add extra classes when icon_spacing is false" do
+    render_component(links:, icon_spacing: false)
+    assert_select ".gem-c-share-links--icon-spacing", false
+  end
+end

@@ -15,6 +15,7 @@
   icon_background ||= false
   icon_colour ||= false
   text_colour ||= false
+  icon_spacing ||= false
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
@@ -28,6 +29,7 @@
   classes << "gem-c-share-links--icon-background-#{icon_background}" if icon_background
   classes << "gem-c-share-links--icon-colour-#{icon_colour}" if icon_colour
   classes << "gem-c-share-links--text-colour-#{text_colour}" if text_colour
+  classes << "gem-c-share-links--icon-spacing" if icon_spacing
   classes << brand_helper.brand_class
 
   data_attributes ||= {}

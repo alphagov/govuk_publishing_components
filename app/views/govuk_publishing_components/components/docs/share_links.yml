@@ -389,3 +389,40 @@ examples:
           icon: 'youtube'
         }
       ]
+  with_extra_icon_spacing:
+    description: "Adds extra padding and margin-right to icons. Useful in combination with `centred_icons_and_text: true` and an `icon_background`."
+    data:
+      larger_text: true
+      centred_icons_and_text: true
+      flexbox: true
+      icon_background: "dark-blue"
+      icon_colour: "white"
+      text_colour: "black"
+      icon_spacing: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        },
+      ]
