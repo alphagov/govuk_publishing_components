@@ -83,3 +83,35 @@ $column-width: 9.5em;
     display: block;
   }
 }
+
+.gem-c-share-links--square-icons {
+  .gem-c-share-links__list-item {
+    padding-left: 60px;
+    padding-top: 12px;
+    margin-bottom: 30px;
+  }
+
+  .gem-c-share-links__link-icon {
+    background-color: govuk-colour("dark-blue");
+    color: govuk-colour("white");
+    padding: govuk-spacing(2);
+    margin-right: govuk-spacing(2);
+  }
+
+  .gem-c-share-links__link:hover {
+    .gem-c-share-links__link-icon {
+      background-color: govuk-colour("black");
+    }
+  }
+
+  .gem-c-share-links__link:focus {
+    .gem-c-share-links__link-icon {
+      background-color: govuk-colour("black");
+    }
+  }
+
+  .gem-c-share-links__label {
+    color: govuk-colour("black");
+    @include govuk-font(19, $weight: bold);
+  }
+}

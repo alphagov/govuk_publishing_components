@@ -8,6 +8,7 @@
   ga4_extra_data ||= {}
   stacked ||= false
   columns ||= false
+  square_icons ||= false
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
@@ -15,6 +16,8 @@
   classes = %w(gem-c-share-links govuk-!-display-none-print)
   classes << "gem-c-share-links--stacked" if stacked
   classes << "gem-c-share-links--columns" if columns
+  classes << "gem-c-share-links--square-icons" if square_icons
+
   classes << brand_helper.brand_class
 
   data_attributes ||= {}
@@ -110,7 +113,7 @@
                   <path fill="currentColor" d="M36.92,0A36.92,36.92,0,1,0,73.84,36.92,36.92,36.92,0,0,0,36.92,0ZM56.3,48.27a1.42,1.42,0,0,1-1.42,1.42h-19v9.18l-9.18-9.18H19a1.43,1.43,0,0,1-1.43-1.43V20.52A1.43,1.43,0,0,1,19,19.09H54.88a1.43,1.43,0,0,1,1.42,1.42Z"/>
                 </svg>
               <% end %>
-            </span><%= link_text %><% end %>
+            </span><%= tag.span(class: "gem-c-share-links__label") do %><%= link_text %><% end %><% end %>
         </li>
       <% end %>
     </ul>
