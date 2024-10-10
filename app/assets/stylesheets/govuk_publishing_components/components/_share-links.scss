@@ -83,3 +83,84 @@ $column-width: 9.5em;
     display: block;
   }
 }
+
+.gem-c-share-links--larger-text {
+  .gem-c-share-links__label {
+    @include govuk-font(19, $weight: bold);
+  }
+}
+
+.gem-c-share-links--centred-icons-and-text {
+  .gem-c-share-links__list-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .gem-c-share-links__link-icon {
+    display: inline-flex;
+    position: relative;
+    vertical-align: middle;
+  }
+
+  .gem-c-share-links__label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .gem-c-share-links__link {
+    display: inline-block;
+  }
+}
+
+.gem-c-share-links--flexbox {
+  .gem-c-share-links__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .gem-c-share-links__list-item {
+    @include govuk-media-query($until: desktop) {
+      flex-basis: 200px;
+    }
+    @include govuk-media-query($until: tablet) {
+      flex-basis: 100%;
+    }
+  }
+}
+
+.gem-c-share-links--icon-background-dark-blue {
+  .gem-c-share-links__link-icon {
+    background-color: govuk-colour("dark-blue");
+  }
+
+  .gem-c-share-links__link:hover {
+    .gem-c-share-links__link-icon {
+      background-color: govuk-colour("black");
+    }
+  }
+
+  .gem-c-share-links__link:focus {
+    .gem-c-share-links__link-icon {
+      background-color: govuk-colour("black");
+    }
+  }
+}
+
+.gem-c-share-links--icon-colour-white {
+  .gem-c-share-links__link-icon {
+    color: govuk-colour("white");
+  }
+}
+
+.gem-c-share-links--text-colour-black {
+  .gem-c-share-links__label {
+    color: govuk-colour("black");
+  }
+}
+
+.gem-c-share-links--icon-spacing {
+  .gem-c-share-links__link-icon {
+    padding: govuk-spacing(2);
+    margin-right: govuk-spacing(2);
+  }
+}

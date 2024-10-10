@@ -256,3 +256,173 @@ examples:
           icon: 'youtube'
         }
       ]
+  with_larger_text:
+    description: Increases text size to 19px.
+    data:
+      larger_text: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]
+  with_centred_icons_and_text:
+    description: "Aligns icons in the centre of their label. Useful for scenarios when extra icon styles are needed, as it makes them relatively positioned instead of absolutely positioned."
+    data:
+      centred_icons_and_text: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]
+  with_flexbox:
+    data:
+      flexbox: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        },
+        {
+          href: '/other-share-link',
+          text: 'Anything else that might be included that could have quite a long name',
+          icon: 'other'
+        },
+      ]
+  with_custom_colours:
+    description: |
+      Allows custom colours to be passed to the icon and text. Currently only supports one custom colour scheme. Developers can add extra colours in `_share-links.scss`.
+    data:
+      larger_text: false
+      centred_icons_and_text: false
+      icon_background: "dark-blue"
+      icon_colour: "white"
+      text_colour: "black"
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]
+  with_extra_icon_spacing:
+    description: "Adds extra padding and margin-right to icons. Useful in combination with `centred_icons_and_text: true` and an `icon_background`."
+    data:
+      larger_text: true
+      centred_icons_and_text: true
+      flexbox: true
+      icon_background: "dark-blue"
+      icon_colour: "white"
+      text_colour: "black"
+      icon_spacing: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        },
+      ]
