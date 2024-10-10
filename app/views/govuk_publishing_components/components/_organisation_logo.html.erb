@@ -7,6 +7,7 @@
   organisation ||= {}
   heading_level ||= false
   inline ||= false
+  inverse ||= false
 
   # Check if `heading_level` is an appropriate number:
   use_heading = [*1..6].include?(heading_level)
@@ -16,6 +17,7 @@
 
   wrapper_classes = %w[gem-c-organisation-logo]
   wrapper_classes << brand_helper.brand_class
+  wrapper_classes << "gem-c-organisation-logo--inverse" if inverse
 
   container_classes = [
     logo_helper.logo_container_class,
