@@ -154,5 +154,19 @@ describe "ShareLinks", type: :view do
     render_component(links:, flexbox: false)
     assert_select ".gem-c-share-links--flexbox", false
   end
+
+  it "adds the correct classes when custom colours are passed" do
+    render_component(links:, icon_background: "dark-blue", icon_colour: "white", text_colour: "black")
+    assert_select ".gem-c-share-links--icon-background-dark-blue"
+    assert_select ".gem-c-share-links--icon-colour-white"
+    assert_select ".gem-c-share-links--text-colour-black"
+  end
+
+  it "does not add extra classes when not colours are passed" do
+    render_component(links:)
+    assert_select ".gem-c-share-links--icon-background-dark-blue", false
+    assert_select ".gem-c-share-links--icon-colour-white", false
+    assert_select ".gem-c-share-links--text-colour-black", false
+  end
 end
 

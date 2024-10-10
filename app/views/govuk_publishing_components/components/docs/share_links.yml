@@ -353,3 +353,39 @@ examples:
           icon: 'other'
         },
       ]
+  with_custom_colours:
+    description: |
+      Allows custom colours to be passed to the icon and text. Currently only supports one custom colour scheme. Developers can add extra colours in `_share-links.scss`.
+    data:
+      larger_text: false
+      centred_icons_and_text: false
+      icon_background: "dark-blue"
+      icon_colour: "white"
+      text_colour: "black"
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]

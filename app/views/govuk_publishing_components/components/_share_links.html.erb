@@ -12,6 +12,10 @@
   centred_icons_and_text ||= false
   flexbox ||= false
 
+  icon_background ||= false
+  icon_colour ||= false
+  text_colour ||= false
+
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 
@@ -21,6 +25,9 @@
   classes << "gem-c-share-links--larger-text" if larger_text
   classes << "gem-c-share-links--centred-icons-and-text" if centred_icons_and_text
   classes << "gem-c-share-links--flexbox" if flexbox
+  classes << "gem-c-share-links--icon-background-#{icon_background}" if icon_background
+  classes << "gem-c-share-links--icon-colour-#{icon_colour}" if icon_colour
+  classes << "gem-c-share-links--text-colour-#{text_colour}" if text_colour
   classes << brand_helper.brand_class
 
   data_attributes ||= {}
