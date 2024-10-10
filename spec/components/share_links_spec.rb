@@ -124,4 +124,24 @@ describe "ShareLinks", type: :view do
     render_component(links:)
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: "Tweet to"
   end
+
+  it "adds the correct classes when extra_spacing is true" do
+    render_component(links:, extra_spacing: true)
+    assert_select ".gem-c-share-links--extra-spacing"
+  end
+
+  it "does not add extra classes when extra_spacing is false" do
+    render_component(links:, extra_spacing: false)
+    assert_select ".gem-c-share-links--extra-spacing", false
+  end
+
+  it "adds the correct classes when square_icons is true" do
+    render_component(links:, square_icons: true)
+    assert_select ".gem-c-share-links--square-icons"
+  end
+
+  it "does not add extra classes when square_icons is false" do
+    render_component(links:, square_icons: false)
+    assert_select ".gem-c-share-links--square-icons", false
+  end
 end
