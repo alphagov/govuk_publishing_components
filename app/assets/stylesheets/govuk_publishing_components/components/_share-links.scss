@@ -111,3 +111,19 @@ $column-width: 9.5em;
     display: inline-block;
   }
 }
+
+.gem-c-share-links--flexbox {
+  .gem-c-share-links__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .gem-c-share-links__list-item {
+    @include govuk-media-query($until: desktop) {
+      flex-basis: 200px;
+    }
+    @include govuk-media-query($until: tablet) {
+      flex-basis: 100%;
+    }
+  }
+}

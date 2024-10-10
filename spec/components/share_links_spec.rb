@@ -144,5 +144,15 @@ describe "ShareLinks", type: :view do
     render_component(links:, centred_icons_and_text: false)
     assert_select ".gem-c-share-links--centred-icons-and-text", false
   end
+
+  it "adds the correct classes when flexbox is true" do
+    render_component(links:, flexbox: true)
+    assert_select ".gem-c-share-links--flexbox"
+  end
+
+  it "does not add extra classes when flexbox is false" do
+    render_component(links:, flexbox: false)
+    assert_select ".gem-c-share-links--flexbox", false
+  end
 end
 
