@@ -124,4 +124,15 @@ describe "ShareLinks", type: :view do
     render_component(links:)
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: "Tweet to"
   end
+
+  it "adds the correct classes when larger_text is true" do
+    render_component(links:, larger_text: true)
+    assert_select ".gem-c-share-links--larger-text"
+  end
+
+  it "does not add extra classes when larger_text is false" do
+    render_component(links:, larger_text: false)
+    assert_select ".gem-c-share-links--larger-text", false
+  end
 end
+

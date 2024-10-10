@@ -256,3 +256,34 @@ examples:
           icon: 'youtube'
         }
       ]
+  with_larger_text:
+    description: Increases text size to 19px.
+    data:
+      larger_text: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]

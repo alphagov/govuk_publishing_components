@@ -83,3 +83,9 @@ $column-width: 9.5em;
     display: block;
   }
 }
+
+.gem-c-share-links--larger-text {
+  .gem-c-share-links__label {
+    @include govuk-font(19, $weight: bold);
+  }
+}
