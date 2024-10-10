@@ -134,5 +134,15 @@ describe "ShareLinks", type: :view do
     render_component(links:, larger_text: false)
     assert_select ".gem-c-share-links--larger-text", false
   end
+
+  it "adds the correct classes when centred_icons_and_text is true" do
+    render_component(links:, centred_icons_and_text: true)
+    assert_select ".gem-c-share-links--centred-icons-and-text"
+  end
+
+  it "does not add extra classes when centred_icons_and_text is false" do
+    render_component(links:, centred_icons_and_text: false)
+    assert_select ".gem-c-share-links--centred-icons-and-text", false
+  end
 end
 

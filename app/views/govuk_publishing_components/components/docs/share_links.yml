@@ -287,3 +287,34 @@ examples:
           icon: 'youtube'
         }
       ]
+  with_centred_icons_and_text:
+    description: "Aligns icons in the centre of their label. Useful for scenarios when extra icon styles are needed, as it makes them relatively positioned instead of absolutely positioned."
+    data:
+      centred_icons_and_text: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        }
+      ]

@@ -9,6 +9,7 @@
   stacked ||= false
   columns ||= false
   larger_text ||= false
+  centred_icons_and_text ||= false
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
@@ -17,6 +18,7 @@
   classes << "gem-c-share-links--stacked" if stacked
   classes << "gem-c-share-links--columns" if columns
   classes << "gem-c-share-links--larger-text" if larger_text
+  classes << "gem-c-share-links--centred-icons-and-text" if centred_icons_and_text
   classes << brand_helper.brand_class
 
   data_attributes ||= {}
