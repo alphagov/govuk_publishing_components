@@ -34,15 +34,45 @@ examples:
         - "2nd"
         - "3rd"
         - "4th"
+        - "5th"
+        - "6th"
+        - "7th"
+        - "8th"
+        - "9th"
+        - "10th"
+        - "11th"
+        - "12th"
+        - "13th"
+        - "14th"
+        - "15th"
+        - "16th"
+        - "17th"
+        - "18th"
+        - "19th"
       rows:
         - label: "January 2015"
           values:
             - 5
             - 119
             - 74
-            - 117
+            - 82
+            - 27
+            - 45
+            - 11
+            - 21
+            - 67
+            - 43
+            - 74
+            - 92
+            - 91
+            - 67
+            - 55
+            - 81
+            - 103
+            - 62
+            - 40
 
-  two rows of data:
+  multiple rows of data:
     data:
       caption: 'Unique page views in February'
       h_axis_title: "Day"
@@ -56,19 +86,49 @@ examples:
         - "2nd"
         - "3rd"
         - "4th"
+        - "5th"
+        - "6th"
+        - "7th"
+        - "8th"
+        - "9th"
+        - "10th"
       rows:
         - label: "January 2015"
           values:
             - 5
             - 119
             - 74
-            - 117
+            - 82
+            - 27
+            - 45
+            - 11
+            - 21
+            - 67
+            - 43
         - label: "January 2016"
           values:
-            - 3
+            - 5
             - 8
             - 37
-            - 82
+            - 50
+            - 43
+            - 29
+            - 67
+            - 61
+            - 14
+            - 91
+        - label: "January 2017"
+          values:
+            - 31
+            - 81
+            - 12
+            - 15
+            - 52
+            - 61
+            - 32
+            - 27
+            - 18
+            - 34
 
   horizontal table:
     data:
