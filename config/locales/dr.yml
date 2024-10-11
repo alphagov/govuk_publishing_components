@@ -35,6 +35,8 @@ dr:
       type:
         characters: ارقام
         words: کلمات
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

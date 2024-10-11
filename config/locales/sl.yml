@@ -36,6 +36,8 @@ sl:
       type:
         characters: znaki
         words: besede
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

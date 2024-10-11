@@ -32,6 +32,8 @@ sq:
       type:
         characters: karaktere
         words: fjalë
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

@@ -32,6 +32,8 @@ el:
       type:
         characters: χαρακτήρες
         words: λέξεις
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

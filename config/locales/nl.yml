@@ -32,6 +32,8 @@ nl:
       type:
         characters: karakters
         words: woorden
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

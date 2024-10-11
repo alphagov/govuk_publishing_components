@@ -36,6 +36,8 @@ ar:
       type:
         characters: أحرف
         words: كلمات
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

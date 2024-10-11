@@ -32,6 +32,8 @@ pa:
       type:
         characters: ਅੱਖਰ
         words: ਸ਼ਬਦ
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

@@ -32,6 +32,8 @@ it:
       type:
         characters: caratteri
         words: parole
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

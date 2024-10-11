@@ -32,6 +32,8 @@ ka:
       type:
         characters: სიმბოლოები
         words: სიტყვები
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

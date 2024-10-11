@@ -32,6 +32,8 @@ az:
       type:
         characters: simvol
         words: söz
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

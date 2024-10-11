@@ -32,6 +32,8 @@ tk:
       type:
         characters: şekiller
         words: sözler
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

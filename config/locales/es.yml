@@ -32,6 +32,8 @@ es:
       type:
         characters: caracteres
         words: palabras
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

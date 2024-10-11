@@ -32,6 +32,8 @@ pt:
       type:
         characters: carateres
         words: palavras
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

@@ -32,6 +32,8 @@ pa-pk:
       type:
         characters: کردار
         words: الفاظ
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

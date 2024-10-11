@@ -32,6 +32,8 @@
       type:
         characters: tegn
         words: ord
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

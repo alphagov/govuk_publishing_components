@@ -32,6 +32,8 @@ ps:
       type:
         characters: کرکټرونه
         words: ټکي
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

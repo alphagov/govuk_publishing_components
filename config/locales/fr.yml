@@ -32,6 +32,8 @@ fr:
       type:
         characters: caractères
         words: mots
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

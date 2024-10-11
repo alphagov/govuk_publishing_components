@@ -32,6 +32,8 @@ gu:
       type:
         characters: અક્ષરો
         words: શબ્દો
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

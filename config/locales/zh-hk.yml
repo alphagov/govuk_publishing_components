@@ -31,6 +31,8 @@ zh-hk:
       type:
         characters: 字元
         words: 字彙
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

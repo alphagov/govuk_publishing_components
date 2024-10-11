@@ -31,6 +31,8 @@ ms:
       type:
         characters: aksara
         words: perkataan
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

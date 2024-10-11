@@ -32,6 +32,8 @@ fi:
       type:
         characters: merkkejä
         words: sanoja
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:

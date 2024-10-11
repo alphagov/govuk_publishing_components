@@ -33,6 +33,8 @@ cs:
       type:
         characters: znaky
         words: slova
+    chart:
+      table_dropdown:
     chat_entry:
       description:
       heading:
