@@ -9,6 +9,9 @@
   chart_width ||= "90%"
   table_id ||= false
   table_direction ||= "horizontal"
+  chart_title ||= nil
+  h_axis_title ||= nil
+  v_axis_title ||= nil
   from ||= false
   to ||= false
   percent_metric ||= false
@@ -46,26 +49,29 @@
   Chartkick.options[:html] = '<div id="%{id}"><noscript><p>Our charts are built using javascript but all the data is also available in the table.</p></noscript></div>'
   # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
   chart_library_options = {
-    legend: 'none',
-    chartArea: { width: chart_width, height: '85%' },
+    title: chart_title,
+    legend: {
+      position: 'bottom',
+      textStyle: { color: '#000', fontName: 'GDS Transport', fontSize: '16' },
+    },
+    chartArea: { width: chart_width, height: '70%' },
     curveType: 'none',
     tooltip: { showColorCode: true, isHtml: true, trigger: 'both'},
     crosshair: { orientation: 'vertical', trigger: 'both', color: '#ccc' },
+    loading: "Loading...",
     hAxis: {
       viewWindow: { min: from, max: to },
-      textStyle: { color: '#000', fontName: 'nta', fontSize: '12' },
-      format: chart_date_format
+      textStyle: { color: '#000', fontName: 'GDS Transport', fontSize: '16' },
+      format: chart_date_format,
+      title: h_axis_title
     },
     vAxis: {
       viewWindow: { min: 0, max: maximum_y },
       format: '#,###,###',
-      textStyle: { color: '#000', fontName: 'nta', fontSize: '12' }
+      textStyle: { color: '#000', fontName: 'GDS Transport', fontSize: '16' },
+      title: v_axis_title
     },
-    pointSize: 0,
-    series: {
-      0 => { lineWidth: 2, color: '#2b8cc4' },
-      1 => { lineWidth: 2, lineDashStyle: [10, 2], color: '#454a4c' }
-    }
+    pointSize: 10,
   }
   if rows.length > 0 && keys.length > 0
     chart_format_data = rows.map do |row|
@@ -89,7 +95,7 @@
       <% end %>
       <%= line_chart(chart_format_data, library: chart_library_options) %>
     </div>
-    <div class="gem-c-chart__table" id="<%= table_id %>" data-gtm-id="view-table-reveal">
+    <div class="gem-c-chart__table" id="<%= table_id %>">
       <%= render(
         "govuk_publishing_components/components/details",
         title: t("components.chart.table_dropdown", metric_name: chart_label)

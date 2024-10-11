@@ -5,46 +5,18 @@
 }
 
 .gem-c-chart__table {
-  max-height: 300px;
   margin-top: govuk-spacing(3);
 
-  @include govuk-media-query($from: mobile) {
-    max-height: 250px;
-  }
-
-  .govuk-details__summary-text {
-    @include govuk-font(16);
-  }
-
   .govuk-table {
-    width: auto;
+    margin: 0;
   }
 
   .govuk-table .govuk-table__header {
-    border: none;
-    background-color: govuk-colour("white");
     text-align: center;
-    min-width: 4em;
-    @include govuk-font($size: 16, $weight: bold);
-  }
-
-  .govuk-table .govuk-table__body .govuk-table__cell {
-    border-top: 1px solid #000000;
-    @include govuk-font(16);
   }
 
   .govuk-table .govuk-table__cell {
-    border: 0;
     text-align: center;
-    @include govuk-font(16);
-  }
-
-  .govuk-table__header--stacked {
-    max-width: 15%;
-  }
-
-  .govuk-table__header--stacked[scope="row"] {
-    max-width: 20%;
   }
 }
 
@@ -55,16 +27,6 @@
 // This breaks our BEM markup but is injected by the charting library and can't be avoided
 // stylelint-disable selector-max-id
 .gem-c-chart {
-  #chart-1,
-  #chart-2,
-  #chart-3,
-  #chart-4,
-  #chart-5,
-  #chart-6,
-  #chart-7 {
-    height: 250px;
-  }
-
   @include govuk-media-query($from: mobile) {
     #chart-1,
     #chart-2,
@@ -73,7 +35,7 @@
     #chart-5,
     #chart-6,
     #chart-7 {
-      height: 250px;
+      height: 400px;
     }
   }
 }
