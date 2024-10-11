@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add variants required for square blue icon share links ([PR #4292](https://github.com/alphagov/govuk_publishing_components/pull/4292))
+
 ## 44.2.0
 
 * Upgrade to version 5.7.0 of govuk-frontend ([PR #4298](https://github.com/alphagov/govuk_publishing_components/pull/4298))
