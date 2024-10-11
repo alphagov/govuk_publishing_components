@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{node_modules/accessible-autocomplete,node_modules/govuk-frontend,node_modules/axe-core,node_modules/sortablejs,node_modules/govuk-single-consent,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
 
+  s.add_dependency "chartkick"
   s.add_dependency "govuk_app_config"
   s.add_dependency "govuk_personalisation", ">= 0.7.0"
   s.add_dependency "kramdown"

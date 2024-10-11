@@ -1,0 +1,109 @@
+name: "Chart"
+description: "The chart component presents a data chart and a tabular version of the same data"
+part_of_admin_layout: true
+body: |
+  This component takes a single set of data and presents it in a line graph and a table with one or more rows and lines.
+  At mobile width the two are presented sequentially, and on wider screens they are presented in tabs the user can switch
+  between. The chart relies chartkick and renders using javascript, so the table is provided as a fallback for a lack of javascript,
+  an accessible view on the data for screenreaders, and a simple view of the raw data for all users.
+
+accessibility_criteria: |
+  - Tabs must:
+    - have meaningful titles
+    - follow the link accessibility criteria
+  - Tab contents must
+    - have meaningful captions
+  - Charts must:
+    - use line colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+
+shared_accessibility_criteria:
+  - link
+
+examples:
+  default:
+    data:
+      caption: 'Unique page views in February'
+      h_axis_title: "Day"
+      v_axis_title: "Views"
+      chart_id: 'pviews_chart'
+      table_id: 'pviews_table'
+      chart_title: 'Page views chart'
+      table_title: 'Page views table'
+      keys:
+        - "1st"
+        - "2nd"
+        - "3rd"
+        - "4th"
+      rows:
+        - label: "January 2015"
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+
+  two rows of data:
+    data:
+      caption: 'Unique page views in February'
+      h_axis_title: "Day"
+      v_axis_title: "Views"
+      chart_id: 'second_pviews_chart'
+      table_id: 'second_pviews_table'
+      chart_title: 'Page views chart'
+      table_title: 'Page views table'
+      keys:
+        - "1st"
+        - "2nd"
+        - "3rd"
+        - "4th"
+      rows:
+        - label: "January 2015"
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+        - label: "January 2016"
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+
+  horizontal table:
+    data:
+      caption: 'Unique page views in February'
+      table_direction: "horizontal"
+      h_axis_title: "Day"
+      v_axis_title: "Views"
+      chart_id: 'third_pviews_chart'
+      table_id: 'third_pviews_table'
+      chart_title: 'Page views chart'
+      table_title: 'Page views table'
+      keys:
+        - "1st"
+        - "2nd"
+        - "3rd"
+        - "4th"
+        - "5th"
+        - "6th"
+        - "7th"
+      rows:
+        - label: "January 2015"
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+            - 33
+            - 89
+            - 79
+        - label: "January 2016"
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+            - 118
+            - 85
+            - 80

@@ -1,0 +1,153 @@
+<%
+  add_gem_component_stylesheet("chart")
+  add_gem_component_stylesheet("table")
+  add_gem_component_stylesheet("details")
+  require "chartkick"
+
+  chart_id ||= false
+  chart_label ||= "data"
+  chart_width ||= "90%"
+  table_id ||= false
+  table_direction ||= "horizontal"
+  from ||= false
+  to ||= false
+  percent_metric ||= false
+  rows ||= []
+  keys ||= []
+
+  # http://strftime.org/
+  Date::DATE_FORMATS[:table_format] = '%-d %b %Y'
+
+  # https://developers.google.com/chart/interactive/docs/reference#dateformatter
+  chart_date_format = 'd MMM Y'
+
+  if percent_metric
+    maximum_y = 100
+  elsif rows.any?
+    row_maximums = rows.map { |row| row[:values].compact.max }
+    overall_maximum = row_maximums.max
+
+    if overall_maximum == 0
+      # set max value to 3 if data is all 0 avoid negative numbers on Y axis
+      maximum_y = 3
+    elsif overall_maximum < 10
+      # for low numbers let line hit top to avoid a fractional max value
+      maximum_y = overall_maximum
+    else
+      # for higher numbers give breathing space to line
+      maximum_y = overall_maximum * 1.3
+
+      if overall_maximum > 99999
+        chart_width = "80%"
+      end
+    end
+  end
+
+  Chartkick.options[:html] = '<div id="%{id}"><noscript><p>Our charts are built using javascript but all the data is also available in the table.</p></noscript></div>'
+  # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
+  chart_library_options = {
+    legend: 'none',
+    chartArea: { width: chart_width, height: '85%' },
+    curveType: 'none',
+    tooltip: { showColorCode: true, isHtml: true, trigger: 'both'},
+    crosshair: { orientation: 'vertical', trigger: 'both', color: '#ccc' },
+    hAxis: {
+      viewWindow: { min: from, max: to },
+      textStyle: { color: '#000', fontName: 'nta', fontSize: '12' },
+      format: chart_date_format
+    },
+    vAxis: {
+      viewWindow: { min: 0, max: maximum_y },
+      format: '#,###,###',
+      textStyle: { color: '#000', fontName: 'nta', fontSize: '12' }
+    },
+    pointSize: 0,
+    series: {
+      0 => { lineWidth: 2, color: '#2b8cc4' },
+      1 => { lineWidth: 2, lineDashStyle: [10, 2], color: '#454a4c' }
+    }
+  }
+  if rows.length > 0 && keys.length > 0
+    chart_format_data = rows.map do |row|
+      {
+        name: row[:label],
+        linewidth: 10,
+        data: keys.zip(row[:values])
+      }
+    end
+  end
+%>
+<% if rows.length > 0 && keys.length > 0 && chart_id && table_id %>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  <div class="gem-c-chart">
+    <div class="gem-c-chart__chart" id="<%= chart_id %>">
+      <%= render "govuk_publishing_components/components/govspeak" do %>
+        <div class="gem-c-chart__accessibility-message">
+          The chart is a visual representation of the data available
+          in the <a href="#<%= table_id %>">table</a>.
+        </div>
+      <% end %>
+      <%= line_chart(chart_format_data, library: chart_library_options) %>
+    </div>
+    <div class="gem-c-chart__table" id="<%= table_id %>" data-gtm-id="view-table-reveal">
+      <%= render(
+        "govuk_publishing_components/components/details",
+        title: t("components.chart.table_dropdown", metric_name: chart_label)
+      ) do %>
+        <div tabindex="0" class="gem-c-chart__table-wrapper">
+          <table class="govuk-table">
+            <% if table_direction == "horizontal" %>
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell"></td>
+                  <% keys.each do |key| %>
+                    <th class="govuk-table__header scope="col">
+                      <%= key %>
+                    </th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <% rows.each do |row| %>
+                  <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="row"><%= row[:label]  %></th>
+                    <% row[:values].each do |value| %>
+                      <td class="govuk-table__cell govuk-table__cell--numeric">
+                        <%= number_with_delimiter value %>
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            <% else %>
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell"></td>
+                  <% rows.each do |row| %>
+                    <th class="govuk-table__header govuk-table__header--stacked" scope="row">
+                      <%= row[:label] %>
+                    </th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <% keys.each_with_index do |key, index| %>
+                  <tr>
+                    <th class="govuk-table__header scope="row">
+                      <%= key %>
+                    </th>
+                    <% rows.each do |row| %>
+                      <td class="govuk-table__cell govuk-table__cell--numeric">
+                        <%= number_with_delimiter row[:values][index] %>
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </tbody>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
