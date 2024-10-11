@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 44.2.0
+
+* Upgrade to version 5.7.0 of govuk-frontend ([PR #4298](https://github.com/alphagov/govuk_publishing_components/pull/4298))
+
 ## 44.1.0
 
 * Update organisation logos ([PR #4295](https://github.com/alphagov/govuk_publishing_components/pull/4295))
