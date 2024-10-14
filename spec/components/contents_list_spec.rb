@@ -243,4 +243,9 @@ describe "Contents list", type: :view do
     I18n.with_locale(:ru) { render_component(contents: contents_list) }
     assert_select ".gem-c-contents-list__title[lang=\"en\"]"
   end
+
+  it "applies alternative line styles correctly" do
+    render_component(contents: contents_list, alternative_line_style: true)
+    assert_select ".gem-c-contents-list--alternative-line-style"
+  end
 end
