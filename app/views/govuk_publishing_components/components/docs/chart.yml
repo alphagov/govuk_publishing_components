@@ -2,18 +2,15 @@ name: "Chart"
 description: "The chart component presents a data chart and a tabular version of the same data"
 part_of_admin_layout: true
 body: |
-  This component takes a single set of data and presents it in a line graph and a table with one or more rows and lines.
-  At mobile width the two are presented sequentially, and on wider screens they are presented in tabs the user can switch
-  between. The chart relies chartkick and renders using javascript, so the table is provided as a fallback for a lack of javascript,
+  This component takes a set of data and presents it as a line graph and a table with one or more rows and lines.
+  The chart relies upon chartkick and renders using JavaScript, so the table is provided as a fallback for a lack of JavaScript,
   an accessible view on the data for screenreaders, and a simple view of the raw data for all users.
 
+  The `overview` option can be used to provide a explanation for screen reader users of what the graph shows.
+
 accessibility_criteria: |
-  - Tabs must:
-    - have meaningful titles
-    - follow the link accessibility criteria
-  - Tab contents must
-    - have meaningful captions
-  - Charts must:
+  Charts must:
+
     - use line colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
 
 shared_accessibility_criteria:
@@ -22,78 +19,55 @@ shared_accessibility_criteria:
 examples:
   default:
     data:
-      caption: 'Unique page views in February'
-      h_axis_title: "Day"
-      v_axis_title: "Views"
-      chart_id: 'pviews_chart'
-      table_id: 'pviews_table'
-      chart_title: 'Page views chart'
-      table_title: 'Page views table'
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      overview: This chart shows page views for January 2015.
+      hide_legend: true
       keys:
-        - "1st"
-        - "2nd"
-        - "3rd"
-        - "4th"
-        - "5th"
-        - "6th"
-        - "7th"
-        - "8th"
-        - "9th"
-        - "10th"
-        - "11th"
-        - "12th"
-        - "13th"
-        - "14th"
-        - "15th"
-        - "16th"
-        - "17th"
-        - "18th"
-        - "19th"
+        - "2015-01-01"
+        - "2015-01-02"
+        - "2015-01-03"
+        - "2015-01-04"
+        - "2015-01-05"
+        - "2015-01-06"
+        - "2015-01-07"
+        - "2015-01-08"
+        - "2015-01-09"
+        - "2015-01-10"
       rows:
-        - label: "January 2015"
+        - label: January 2015
           values:
-            - 5
-            - 119
-            - 74
-            - 82
-            - 27
-            - 45
-            - 11
-            - 21
-            - 67
-            - 43
-            - 74
-            - 92
-            - 91
-            - 67
-            - 55
-            - 81
-            - 103
-            - 62
-            - 40
+            - 500
+            - 1190
+            - 740
+            - 820
+            - 270
+            - 450
+            - 110
+            - 210
+            - 670
+            - 430
 
   multiple rows of data:
+    description: Where more than one series is shown on a chart, do not hide the legend.
     data:
-      caption: 'Unique page views in February'
-      h_axis_title: "Day"
-      v_axis_title: "Views"
-      chart_id: 'second_pviews_chart'
-      table_id: 'second_pviews_table'
-      chart_title: 'Page views chart'
-      table_title: 'Page views table'
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
       keys:
-        - "1st"
-        - "2nd"
-        - "3rd"
-        - "4th"
-        - "5th"
-        - "6th"
-        - "7th"
-        - "8th"
-        - "9th"
-        - "10th"
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
+        - 8th
+        - 9th
+        - 10th
       rows:
-        - label: "January 2015"
+        - label: January 2015
           values:
             - 5
             - 119
@@ -105,7 +79,7 @@ examples:
             - 21
             - 67
             - 43
-        - label: "January 2016"
+        - label: January 2016
           values:
             - 5
             - 8
@@ -117,7 +91,7 @@ examples:
             - 61
             - 14
             - 91
-        - label: "January 2017"
+        - label: January 2017
           values:
             - 31
             - 81
@@ -125,31 +99,28 @@ examples:
             - 15
             - 52
             - 61
-            - 32
+            - 143
             - 27
             - 18
             - 34
 
-  horizontal table:
+  vertical table:
+    description: Reorient the table to better suit the output of some data sets.
     data:
-      caption: 'Unique page views in February'
-      table_direction: "horizontal"
-      h_axis_title: "Day"
-      v_axis_title: "Views"
-      chart_id: 'third_pviews_chart'
-      table_id: 'third_pviews_table'
-      chart_title: 'Page views chart'
-      table_title: 'Page views table'
+      chart_heading: Page views chart
+      table_direction: vertical
+      h_axis_title: Day
+      v_axis_title: Views
       keys:
-        - "1st"
-        - "2nd"
-        - "3rd"
-        - "4th"
-        - "5th"
-        - "6th"
-        - "7th"
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
       rows:
-        - label: "January 2015"
+        - label: January 2015
           values:
             - 5
             - 119
@@ -158,7 +129,41 @@ examples:
             - 33
             - 89
             - 79
-        - label: "January 2016"
+        - label: January 2016
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+            - 118
+            - 85
+            - 80
+  with_a_different_heading_level:
+    description: Use a different heading level for the chart heading. It defaults to a H2.
+    data:
+      chart_heading: Page views chart
+      chart_heading_level: 4
+      h_axis_title: Day
+      v_axis_title: Views
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
+      rows:
+        - label: January 2015
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+            - 33
+            - 89
+            - 79
+        - label: January 2016
           values:
             - 3
             - 8

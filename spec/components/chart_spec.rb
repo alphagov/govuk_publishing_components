@@ -7,11 +7,8 @@ describe "Chart", type: :view do
 
   let(:data) do
     {
-      caption: "Unique page views",
       chart_label: "Page views chart",
       table_label: "Page views table",
-      chart_id: "pviews_jan_chart",
-      table_id: "pviews_jan_table",
       keys: (Date.new(2017, 12, 1)..Date.new(2017, 12, 12)).to_a,
       rows: [
         {
@@ -40,13 +37,6 @@ describe "Chart", type: :view do
     assert_empty render_component(data)
   end
 
-  it "does not render if tab data is missing" do
-    data[:chart_id] = false
-    assert_empty render_component(data)
-    data[:table_id] = false
-    assert_empty render_component(data)
-  end
-
   it "renders when given valid data" do
     render_component(data)
     assert_select ".gem-c-chart", 1
@@ -68,12 +58,36 @@ describe "Chart", type: :view do
     assert_select ".govuk-table__body .govuk-table__header:nth-child(1)", text: "2017-12-01"
     assert_select ".govuk-table__cell--numeric", 24
     assert_select ".govuk-table__header", 14
+
     assert_select "td:first", text: "5"
+    assert_select ".govuk-table__body tr:nth-of-type(4) td:first", text: "119"
     assert_select "td:last", text: "121"
   end
 
   it "calls the chart library" do
     render_component(data)
     assert_select "script", text: /new Chartkick.["LineChart"]/
+  end
+
+  it "displays a heading" do
+    data[:chart_heading] = "hello"
+    render_component(data)
+
+    assert_select "h2.gem-c-heading", text: "hello"
+  end
+
+  it "displays a heading with a custom heading level" do
+    data[:chart_heading] = "hello"
+    data[:chart_heading_level] = 4
+    render_component(data)
+
+    assert_select "h4.gem-c-heading", text: "hello"
+  end
+
+  it "can include an overview" do
+    text = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
+    data[:chart_overview] = text
+    render_component(data)
+    assert_select ".gem-c-chart__overview", text:
   end
 end

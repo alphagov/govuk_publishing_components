@@ -24,23 +24,6 @@
   @include govuk-visually-hidden;
 }
 
-// This breaks our BEM markup but is injected by the charting library and can't be avoided
-// stylelint-disable selector-max-id
-.gem-c-chart {
-  @include govuk-media-query($from: mobile) {
-    #chart-1,
-    #chart-2,
-    #chart-3,
-    #chart-4,
-    #chart-5,
-    #chart-6,
-    #chart-7 {
-      height: 400px;
-    }
-  }
-}
-// stylelint-enable selector-max-id
-
 // stylelint-disable declaration-no-important
 .google-visualization-tooltip {
   background-color: #000000 !important;
