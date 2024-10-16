@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add inverse option for organisation logo ([PR #4284](https://github.com/alphagov/govuk_publishing_components/pull/4284))
+* New options for contents-list component ([PR #4305](https://github.com/alphagov/govuk_publishing_components/pull/4305))
 
 ## 44.3.0
 
