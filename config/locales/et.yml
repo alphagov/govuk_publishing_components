@@ -33,6 +33,7 @@ et:
         characters: tähemärki
         words: sõnu
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

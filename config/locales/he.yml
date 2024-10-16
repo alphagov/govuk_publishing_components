@@ -33,6 +33,7 @@ he:
         characters: תווים
         words: מילים
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

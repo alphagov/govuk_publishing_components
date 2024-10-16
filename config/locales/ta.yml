@@ -33,6 +33,7 @@ ta:
         characters: எழுத்துருக்கள்
         words: சொற்கள்
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

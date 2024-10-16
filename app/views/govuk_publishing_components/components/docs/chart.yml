@@ -1,21 +1,18 @@
-name: "Chart"
-description: "The chart component presents a data chart and a tabular version of the same data"
+name: Chart (experimental)
+description: The chart component presents a data chart and a tabular version of the same data
 part_of_admin_layout: true
 body: |
   This component takes a set of data and presents it as a line graph and a table with one or more rows and lines.
   The chart relies upon chartkick and renders using JavaScript, so the table is provided as a fallback for a lack of JavaScript,
   an accessible view on the data for screenreaders, and a simple view of the raw data for all users.
 
-  The `overview` option can be used to provide a explanation for screen reader users of what the graph shows.
-
+  The `overview` option can be used to provide an explanation for screen reader users of what the graph shows.
 accessibility_criteria: |
   Charts must:
 
     - use line colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
-
 shared_accessibility_criteria:
   - link
-
 examples:
   default:
     data:
@@ -48,7 +45,6 @@ examples:
             - 210
             - 670
             - 430
-
   multiple rows of data:
     description: Where more than one series is shown on a chart, do not hide the legend.
     data:
@@ -103,7 +99,6 @@ examples:
             - 27
             - 18
             - 34
-
   vertical table:
     description: Reorient the table to better suit the output of some data sets.
     data:

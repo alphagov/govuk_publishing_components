@@ -33,6 +33,7 @@ sq:
         characters: karaktere
         words: fjalë
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

@@ -32,6 +32,7 @@ th:
         characters: ตัวอักษร
         words: คำ
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

@@ -33,6 +33,7 @@ hu:
         characters: karakterek
         words: szavak
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

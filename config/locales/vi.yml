@@ -32,6 +32,7 @@ vi:
         characters: ký tự
         words: từ
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

@@ -32,6 +32,7 @@ zh-hk:
         characters: 字元
         words: 字彙
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

@@ -33,6 +33,7 @@ fr:
         characters: caractères
         words: mots
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

@@ -34,6 +34,7 @@ cs:
         characters: znaky
         words: slova
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:

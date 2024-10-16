@@ -69,7 +69,7 @@
 
     <div class="gem-c-chart__chart" id="<%= chart_id %>">
       <div class="gem-c-chart__accessibility-message">
-        This chart is a visual representation of the data available in the <a href="#<%= table_id %>">table</a>.
+        <%= t("components.chart.accessibility_html", table_id: table_id) %>
         <%= content_tag :span, chart_overview, class: "gem-c-chart__overview" if chart_overview %>
       </div>
       <%= line_chart(chart_format_data, library: chart_library_options) %>

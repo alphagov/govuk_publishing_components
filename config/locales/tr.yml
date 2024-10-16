@@ -33,6 +33,7 @@ tr:
         characters: karakter
         words: kelime
     chart:
+      accessibility_html:
       table_dropdown:
     chat_entry:
       description:
