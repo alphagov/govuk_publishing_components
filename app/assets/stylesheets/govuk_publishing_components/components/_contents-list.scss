@@ -95,6 +95,12 @@
   }
 }
 
+.gem-c-contents-list--custom-title {
+  .gem-c-contents-list__title {
+    margin-bottom: govuk-spacing(3);
+  }
+}
+
 @include govuk-media-query($media-type: print) {
   // Override default browser indentation
   .gem-c-contents-list__list,
