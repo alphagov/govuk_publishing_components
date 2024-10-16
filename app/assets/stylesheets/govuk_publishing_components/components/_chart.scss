@@ -24,19 +24,15 @@
   @include govuk-visually-hidden;
 }
 
-// stylelint-disable declaration-no-important
-.google-visualization-tooltip {
-  background-color: #000000 !important;
-  opacity: .95;
+.gem-c-chart {
+  .google-visualization-tooltip {
+    background-color: govuk-colour("black");
+    box-shadow: none;
+    border: 0;
 
-  span {
-    color: govuk-colour("white") !important;
-    font-family: nta, Arial, sans-serif !important;
-    font-size: 14px !important;
-  }
-
-  .google-visualization-tooltip-square {
-    border-bottom: none !important;
+    span {
+      color: govuk-colour("white");
+      @include govuk-font($size: 16, $weight: bold);
+    }
   }
 }
-// stylelint-enable declaration-no-important
