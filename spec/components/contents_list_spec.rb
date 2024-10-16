@@ -248,4 +248,10 @@ describe "Contents list", type: :view do
     render_component(contents: contents_list, alternative_line_style: true)
     assert_select ".gem-c-contents-list--alternative-line-style"
   end
+
+  it "renders an alternate title" do
+    render_component(contents: contents_list, title: "Alternate title")
+    assert_select ".gem-c-contents-list--custom-title"
+    assert_select ".gem-c-contents-list__title", text: "Alternate title"
+  end
 end

@@ -209,6 +209,22 @@ examples:
           text: Fourth page title link
         - href: "#fifth-thing"
           text: Fifth page title link
+  with_custom_title:
+    description: With this option, the 'Contents' title is replaced with the supplied alternate title. This should only be used when using this component as a navigation element on landing pages. Typically used with `alternative_line_style`.
+    data:
+      title: "An alternate title"
+      contents:
+        - href: "#first-thing"
+          text: First page title link
+        - href: "#second-thing"
+          text: Second page title link
+        - href: "#third-thing"
+          text: Third page title link
+          active: true
+        - href: "#fourth-thing"
+          text: Fourth page title link
+        - href: "#fifth-thing"
+          text: Fifth page title link
   without_ga4_tracking:
     description: Disables GA4 link tracking on the list. Tracking is enabled by default.
     data:
