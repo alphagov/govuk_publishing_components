@@ -13,9 +13,15 @@
   keys ||= []
   chart_overview ||= nil
   hide_legend ||= false
+  link ||= false
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-chart")
+  component_helper.add_class(shared_helper.get_margin_bottom)
 
   require "chartkick"
   Chartkick.options[:html] = '<div id="%{id}"><noscript><p class="govuk-body">Our charts are built using JavaScript but all the data is also available in the table below.</p></noscript></div>'
@@ -58,7 +64,7 @@
 %>
 <% if rows.length > 0 && keys.length > 0 %>
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-  <div class="gem-c-chart">
+  <%= tag.div(**component_helper.all_attributes) do %>
     <% if chart_heading %>
       <%= render "govuk_publishing_components/components/heading", {
         text: chart_heading,
@@ -134,5 +140,11 @@
         </div>
       <% end %>
     </div>
-  </div>
+
+    <% if link %>
+      <p class="govuk-body">
+        <%= link_to "Download chart data", link,  class: "govuk-link" %>
+      </p>
+    <% end %>
+  <% end %>
 <% end %>

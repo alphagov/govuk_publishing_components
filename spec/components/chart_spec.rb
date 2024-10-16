@@ -39,7 +39,7 @@ describe "Chart", type: :view do
 
   it "renders when given valid data" do
     render_component(data)
-    assert_select ".gem-c-chart", 1
+    assert_select '.gem-c-chart.govuk-\!-margin-bottom-3', 1
   end
 
   it "renders the correct table data horizontally" do
@@ -89,5 +89,19 @@ describe "Chart", type: :view do
     data[:chart_overview] = text
     render_component(data)
     assert_select ".gem-c-chart__overview", text:
+  end
+
+  it "can include a download link" do
+    data[:link] = "https://www.gov.uk"
+    render_component(data)
+
+    assert_select '.govuk-link[href="https://www.gov.uk"]', text: "Download chart data"
+  end
+
+  it "can have a different bottom margin" do
+    data[:margin_bottom] = 0
+    render_component(data)
+
+    assert_select '.gem-c-chart.govuk-\!-margin-bottom-0'
   end
 end

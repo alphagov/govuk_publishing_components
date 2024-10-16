@@ -13,6 +13,7 @@ accessibility_criteria: |
     - use line colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
 shared_accessibility_criteria:
   - link
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -140,6 +141,74 @@ examples:
       chart_heading_level: 4
       h_axis_title: Day
       v_axis_title: Views
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
+      rows:
+        - label: January 2015
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+            - 33
+            - 89
+            - 79
+        - label: January 2016
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+            - 118
+            - 85
+            - 80
+  with_a_download_link:
+    description: Add a download link to the original data. Doesn't do anything clever, just creates a link to the URL passed.
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      link: 'https://www.gov.uk'
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
+      rows:
+        - label: January 2015
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+            - 33
+            - 89
+            - 79
+        - label: January 2016
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+            - 118
+            - 85
+            - 80
+  with_margin_bottom:
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a bottom margin of 15px.
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      margin_bottom: 9
       keys:
         - 1st
         - 2nd
