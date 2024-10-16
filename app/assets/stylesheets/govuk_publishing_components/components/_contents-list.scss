@@ -50,7 +50,7 @@
   padding-left: $contents-spacing;
   padding-right: $contents-spacing;
 
-  & span::before {
+  & .gem-c-contents-list__list-item-dash::before {
     content: "—";
     position: absolute;
     left: 0;
@@ -81,7 +81,7 @@
     padding: govuk-spacing(2) 0;
     margin: 0;
 
-    & span::before {
+    & .gem-c-contents-list__list-item-dash::before {
       display: none;
     }
   }
