@@ -75,7 +75,7 @@ examples:
         name: "Prime Minister's Office,<br>10 Downing Street"
         url: '/government/organisations/prime-ministers-office-10-downing-street'
         brand: 'prime-ministers-office-10-downing-street'
-        crest: 'no10'
+        crest: 'eo'
   office_of_the_advocate_general_for_scotland:
     data:
       organisation:
@@ -182,3 +182,13 @@ examples:
         brand: cabinet-office
         crest: 'single-identity'
       inline: true
+  on_a_dark_background:
+    data:
+      organisation:
+        name: "Prime Minister's Office,<br>10 Downing Street"
+        url: '/government/organisations/prime-ministers-office-10-downing-street'
+        brand: 'prime-ministers-office-10-downing-street'
+        crest: 'eo'
+      inverse: true
+    context:
+      dark_background: true
