@@ -97,6 +97,22 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
   end
 
+  it "renders parent-based breadcrumbs if the content item is a corporate information page with a parent" do
+    content_item = example_document_for("corporate_information_page", "corporate_information_page_complaints")
+    render_component(content_item:)
+    assert_select "a", text: "Home"
+    assert_select "a", text: "Department of Health"
+    assert_select "a", text: "About us"
+  end
+
+  it "renders organisation breadcrumbs if the content item is a corporate information page with no parent but with a linked organisation" do
+    content_item = example_document_for("corporate_information_page", "best-practice-about-page")
+    render_component(content_item:)
+    assert_select "a", text: "Home"
+    assert_select "a", text: "Organisations"
+    assert_select "a", text: "Intellectual Property Office"
+  end
+
   it "renders no taxon breadcrumbs if they are not live" do
     content_item = example_document_for("guide", "guide")
     content_item = remove_mainstream_browse(content_item)
