@@ -1,5 +1,24 @@
 @import "govuk_publishing_components/individual_component_support";
 
+.gem-c-chart {
+  // slight hack to hide the table automatically added by the charts JS
+  // not needed as we already output the table manually in the component
+  svg + div:has(table) {
+    display: none;
+  }
+
+  .google-visualization-tooltip {
+    background-color: govuk-colour("black");
+    box-shadow: none;
+    border: 0;
+
+    span {
+      color: govuk-colour("white");
+      @include govuk-font($size: 16, $weight: bold);
+    }
+  }
+}
+
 .gem-c-chart__table-wrapper {
   overflow: auto;
 }
@@ -22,17 +41,4 @@
 
 .gem-c-chart__accessibility-message {
   @include govuk-visually-hidden;
-}
-
-.gem-c-chart {
-  .google-visualization-tooltip {
-    background-color: govuk-colour("black");
-    box-shadow: none;
-    border: 0;
-
-    span {
-      color: govuk-colour("white");
-      @include govuk-font($size: 16, $weight: bold);
-    }
-  }
 }
