@@ -36,6 +36,9 @@ cy:
       type:
         characters: nodau
         words: geiriau
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

@@ -31,6 +31,9 @@ ko:
       type:
         characters:
         words:
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

@@ -33,6 +33,9 @@ hr:
       type:
         characters: znakova
         words: riječi
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

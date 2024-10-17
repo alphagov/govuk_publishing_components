@@ -34,6 +34,9 @@ ru:
       type:
         characters: символов
         words: слов
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

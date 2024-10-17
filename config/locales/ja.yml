@@ -31,6 +31,9 @@ ja:
       type:
         characters: 文字
         words: 単語
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

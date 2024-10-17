@@ -34,6 +34,9 @@ mt:
       type:
         characters: karattri
         words: kliem
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

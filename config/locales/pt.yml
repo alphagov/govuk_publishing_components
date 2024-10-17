@@ -32,6 +32,9 @@ pt:
       type:
         characters: carateres
         words: palavras
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

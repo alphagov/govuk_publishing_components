@@ -32,6 +32,9 @@ sw:
       type:
         characters: herufi
         words: maneno
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

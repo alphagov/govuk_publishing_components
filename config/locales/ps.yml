@@ -32,6 +32,9 @@ ps:
       type:
         characters: کرکټرونه
         words: ټکي
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:

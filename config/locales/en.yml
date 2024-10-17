@@ -32,6 +32,9 @@ en:
       type:
         characters: characters
         words: words
+    chart:
+      table_dropdown: Data table
+      accessibility_html: This chart is a visual representation of the data available in the <a href='#%{table_id}'>table</a>.
     chat_entry:
       heading: Try GOV.UK Chat
       description: Sign up to GOV.UK’s experimental new AI tool and find answers to your business questions

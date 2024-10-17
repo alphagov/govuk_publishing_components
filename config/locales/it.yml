@@ -32,6 +32,9 @@ it:
       type:
         characters: caratteri
         words: parole
+    chart:
+      accessibility_html:
+      table_dropdown:
     chat_entry:
       description:
       heading:
