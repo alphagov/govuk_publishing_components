@@ -4,6 +4,8 @@
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   underline_links ||= false
   format_numbers ||= false
+  alternative_line_style ||= false
+  title ||= nil
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
@@ -22,6 +24,8 @@
   local_assigns[:aria] ||= {}
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-contents-list #{brand_helper.brand_class}")
+  component_helper.add_class("gem-c-contents-list--alternative-line-style") if alternative_line_style
+  component_helper.add_class("gem-c-contents-list--custom-title") if title
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
   component_helper.add_aria_attribute({ label: t("components.contents_list.contents") }) unless local_assigns[:aria][:label]
   component_helper.add_role("navigation")
@@ -33,14 +37,14 @@
         title_fallback == "en" ? {:lang => "en",} : {}
       )
     ) do %>
-      <%= t("components.contents_list.contents") %>
+      <%= title || t("components.contents_list.contents") %>
     <% end %>
 
     <ol class="gem-c-contents-list__list">
       <% index_link = 1 unless disable_ga4 %>
       <% contents.each do |contents_item| %>
         <li class="<%= cl_helper.list_item_classes(contents_item, false) %>" <%= "aria-current=true" if contents_item[:active] %>>
-          <span aria-hidden="true"></span>
+          <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
           <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : cl_helper.clean_string(contents_item[:text])
             unless disable_ga4
               ga4_data[:event_name] = cl_helper.get_ga4_event_name(contents_item[:href]) if contents_item[:href]
@@ -58,7 +62,7 @@
             <ol class="gem-c-contents-list__nested-list">
               <% contents_item[:items].each do |nested_contents_item| %>
                 <li class="<%= cl_helper.list_item_classes(nested_contents_item, true) %>" <%= "aria-current=true" if nested_contents_item[:active] %>>
-                  <span aria-hidden="true"></span>
+                  <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
                   <%
                     unless disable_ga4
                       ga4_data[:event_name] = cl_helper.get_ga4_event_name(nested_contents_item[:href]) if nested_contents_item[:href]

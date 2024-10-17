@@ -193,6 +193,38 @@ examples:
             text: 2. Numbers not parsed
           - href: "#third-thing"
             text: 3. Numbers are just text
+  with_alternative_line_style:
+    description: With this option, the individual lines get different styling. The left hand indent and dashes are removed, there's more vertical space between each list item and the active links are styled with a vertical left hand border.
+    data:
+      alternative_line_style: true
+      contents:
+        - href: "#first-thing"
+          text: First page title link
+        - href: "#second-thing"
+          text: Second page title link
+        - href: "#third-thing"
+          text: Third page title link
+          active: true
+        - href: "#fourth-thing"
+          text: Fourth page title link
+        - href: "#fifth-thing"
+          text: Fifth page title link
+  with_custom_title:
+    description: With this option, the 'Contents' title is replaced with the supplied alternate title. This should only be used when using this component as a navigation element on landing pages. Typically used with `alternative_line_style`.
+    data:
+      title: "An alternate title"
+      contents:
+        - href: "#first-thing"
+          text: First page title link
+        - href: "#second-thing"
+          text: Second page title link
+        - href: "#third-thing"
+          text: Third page title link
+          active: true
+        - href: "#fourth-thing"
+          text: Fourth page title link
+        - href: "#fifth-thing"
+          text: Fifth page title link
   without_ga4_tracking:
     description: Disables GA4 link tracking on the list. Tracking is enabled by default.
     data:
