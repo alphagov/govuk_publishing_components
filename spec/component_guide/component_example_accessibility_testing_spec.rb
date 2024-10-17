@@ -21,7 +21,7 @@ describe "Component example with automated testing", js: true do
     expect(page).to have_selector(selector_with_error, visible: false)
 
     within ".component-guide-preview--violation" do
-      expect(page).to have_selector("h3", text: "Images must have alternate text")
+      expect(page).to have_selector("h3", text: "Images must have alternative text")
       expect(page).to have_selector('h3 a[href*="https://dequeuniversity.com"]', text: "(see guidance)")
       expect(page).to have_text("Element does not have an alt attribute")
     end
