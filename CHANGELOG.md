@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add chart component ([PR #4301](https://github.com/alphagov/govuk_publishing_components/pull/4301))
 * Add inverse option for organisation logo ([PR #4284](https://github.com/alphagov/govuk_publishing_components/pull/4284))
 * New options for contents-list component ([PR #4305](https://github.com/alphagov/govuk_publishing_components/pull/4305))
 
