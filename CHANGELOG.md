@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 44.4.1
 
 * Add chartkick path to gemspec ([PR #4312](https://github.com/alphagov/govuk_publishing_components/pull/4312))
 
