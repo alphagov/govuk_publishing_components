@@ -117,7 +117,7 @@ describe('AccessibilityTest', function () {
 
       var errorMessage = renderErrorMessage({
         id: 'image-alt',
-        problem: 'Images must have alternate text',
+        problem: 'Images must have alternative text',
         html: '<img src="">',
         selector: 'img',
         helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI'
@@ -173,7 +173,7 @@ describe('AccessibilityTest', function () {
         renderErrorMessage({
           id: 'image-alt',
           skipHeader: true,
-          problem: 'Images must have alternate text',
+          problem: 'Images must have alternative text',
           html: '<img src="">',
           selector: 'img',
           helpUrl: 'https://dequeuniversity.com/rules/axe/4.10/image-alt?application=axeAPI'
