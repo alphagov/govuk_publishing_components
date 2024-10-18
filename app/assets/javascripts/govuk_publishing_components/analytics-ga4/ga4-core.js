@@ -333,7 +333,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         var element = data.element
         var resultsId = data.resultsId
         var isClickEvent = data.event !== undefined
-        var isSearchResult = element.getAttribute('data-ga4-search-query')
+        var isSearchResult = element.getAttribute('data-ga4-search-query') !== null
 
         var ecommerceSchema = new window.GOVUK.analyticsGa4.Schemas().ecommerceSchema()
         var DEFAULT_LIST_TITLE = 'Smart answer results'
