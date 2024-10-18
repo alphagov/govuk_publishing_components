@@ -152,7 +152,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(input, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = { index_section: undefined, index_section_count: undefined, index_link: undefined }
+    expected.event_data.index = { index_section: '1', index_section_count: '1', index_link: undefined }
 
     expect(window.dataLayer[1]).toEqual(expected)
   })
@@ -205,7 +205,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(option1, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = { index_section: undefined, index_section_count: undefined, index_link: undefined }
+    expected.event_data.index = { index_section: '1', index_section_count: '1', index_link: undefined }
     expected.event_data.text = 'All types of chocolate (default)'
 
     expect(window.dataLayer[1]).toEqual(expected)
@@ -253,7 +253,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(input, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = { index_link: undefined, index_section: undefined, index_section_count: undefined }
+    expected.event_data.index = { index_link: undefined, index_section: '5', index_section_count: '15' }
     expected.event_data.text = 'All types of chocolate (default)'
 
     expect(window.dataLayer[1]).toEqual(expected)
@@ -305,7 +305,7 @@ describe('GA4 finder change tracker', function () {
     window.GOVUK.triggerEvent(input, 'change')
 
     expected.event_data.action = 'remove'
-    expected.event_data.index = { index_section: undefined, index_section_count: undefined, index_link: undefined }
+    expected.event_data.index = { index_section: '2', index_section_count: '2', index_link: undefined }
     expected.event_data.text = undefined
 
     expect(window.dataLayer[1]).toEqual(expected)
