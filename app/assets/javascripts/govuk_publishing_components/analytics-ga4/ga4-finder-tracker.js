@@ -24,6 +24,9 @@
       data.event_name = 'select_content'
 
       var elementInfo = this.getElementInfo(eventTarget, elementType, section)
+      if (!elementInfo) {
+        return
+      }
       var elementValue = elementInfo.elementValue
       data.text = elementValue
       var wasFilterRemoved = elementInfo.wasFilterRemoved
@@ -83,6 +86,25 @@
             wasFilterRemoved = true
           }
           break
+
+        case 'date': {
+          // The GOV.UK Design System date input consists of three grouped but separate fields (day,
+          // month, year). We want to fire a single event when all three fields are filled in to
+          // avoid firing excessive events.
+          const inputs = [...eventTarget.closest('.govuk-date-input').querySelectorAll('input')]
+          const allInputsSet = inputs.every(input => input.value)
+          const noInputsSet = inputs.every(input => !input.value)
+
+          if (allInputsSet) {
+            elementValue = inputs.map(input => input.value).join('/')
+          } else if (noInputsSet) {
+            wasFilterRemoved = true
+          } else {
+            // Do not track partially filled in fields
+            return null
+          }
+          break
+        }
       }
 
       return { elementValue: elementValue, wasFilterRemoved: wasFilterRemoved }
