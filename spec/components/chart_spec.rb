@@ -85,10 +85,11 @@ describe "Chart", type: :view do
   end
 
   it "can include an overview" do
-    text = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
-    data[:chart_overview] = text
+    overview = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
+    data[:chart_overview] = overview
     render_component(data)
-    assert_select ".gem-c-chart__overview", text:
+    assert_select ".gem-c-chart__a11y-note-1", text: overview
+    assert_select ".gem-c-chart__a11y-note-2", text: "This chart is a visual representation of the data available in the table."
   end
 
   it "can include a download link" do
@@ -103,5 +104,24 @@ describe "Chart", type: :view do
     render_component(data)
 
     assert_select '.gem-c-chart.govuk-\!-margin-bottom-0'
+  end
+
+  it "renders a minimal version" do
+    data[:minimal] = true
+    data[:link] = "https://should.not.be.shown"
+    data[:minimal_link] = "https://www.gov.uk"
+    data[:chart_overview] = "This is a chart showing a rise in sea levels in the last ten years"
+    render_component(data)
+
+    assert_select ".gem-c-chart.gem-c-chart--minimal"
+    assert_select '.gem-c-chart .govuk-link[href="https://should.not.be.shown"]', false
+    assert_select '.gem-c-chart .gem-c-chart__minimal-link[href="https://www.gov.uk"]'
+    assert_select ".gem-c-chart__a11y-note-1", text: "This is a chart showing a rise in sea levels in the last ten years"
+    assert_select ".gem-c-chart__a11y-note-2", false
+  end
+
+  it "does not render a minimal version if a link is not supplied" do
+    data[:minimal] = true
+    assert_empty render_component(data)
   end
 end
