@@ -71,9 +71,12 @@ If the filter `<select>` element changes and is set to their _first option_, we 
 
 Radio buttons have `data-ga4-change-category="update-filter radio"` on them. If the changed radio button is not the _first radio button_ (i.e. the default selection), then, the `update-filter` event will build an "Filter added" GTM Object. If the changed radio button is the _first radio button_, it will build a "Filter removed" GTM Object. This is because the first radio button in a list is typically the default "All XYZ" filter state. The value we grab for a radio button is the user friendly label associated with the `<input>`.
 
-### Date filters (`<input type="text">`)
+### Date filters with single input field (`<input type="text">`)
 
 Our date filters have `data-ga4-change-category="update-filter text"` on them. The value we grab is the text that is input into its text field. If the text is an empty string, we treat this as a "Filter removed" event, as this means the date was removed. If text is available in the text box, we treat this as a "Filter added" event.
+
+### Date filters with three input fields (day/month/year)
+These use the GOV.UK Design System date input pattern/component and have `data-ga4-change-category="update-filter date"` on them. To avoid excessive events and cardinality, despite technically allowing partial values, we expect users to mostly fill in complete dates and only track them as an entire value triggered by all fields being present, and combine the three into a single D/M/Y string. Conversely, it only counts as removed if all fields have been cleared.
 
 ### Search keyword changes (`<input type="text">`)
 
