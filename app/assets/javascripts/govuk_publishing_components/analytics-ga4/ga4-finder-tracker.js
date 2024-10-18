@@ -96,16 +96,16 @@
             schema.section = section.getAttribute('data-ga4-section')
           }
 
+          var index = this.getSectionIndex(filterParent)
           if (wasFilterRemoved) {
             schema.action = 'remove'
             schema.text = elementType === 'text' ? undefined : elementValue
           } else {
             schema.action = elementType === 'text' ? 'search' : 'select'
-            var index = this.getSectionIndex(filterParent)
-            schema.index_link = index.index_link || undefined
-            schema.index_section = index.index_section || undefined
-            schema.index_section_count = index.index_section_count || undefined
           }
+          schema.index_link = index.index_link || undefined
+          schema.index_section = index.index_section || undefined
+          schema.index_section_count = index.index_section_count || undefined
           break
 
         case 'update-keyword':
