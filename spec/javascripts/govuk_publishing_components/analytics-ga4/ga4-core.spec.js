@@ -629,6 +629,36 @@ describe('GA4 core', function () {
         expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
       })
 
+      it('tracks variant and term for search results', function () {
+        resultsParentEl.setAttribute('data-ga4-search-query', 'search term')
+        resultsParentEl.setAttribute('data-ga4-ecommerce-variant', 'upside-down')
+
+        expectedEcommerceObject.search_results.term = 'search term'
+        expectedEcommerceObject.search_results.sort = 'upside-down'
+
+        var builtEcommerceObject = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
+          element: resultsParentEl,
+          resultsId: 'result-count'
+        })
+
+        expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
+      })
+
+      it('tracks variant and term for search results even when query is blank', function () {
+        resultsParentEl.setAttribute('data-ga4-search-query', '')
+        resultsParentEl.setAttribute('data-ga4-ecommerce-variant', 'upside-down')
+
+        expectedEcommerceObject.search_results.term = undefined
+        expectedEcommerceObject.search_results.sort = 'upside-down'
+
+        var builtEcommerceObject = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
+          element: resultsParentEl,
+          resultsId: 'result-count'
+        })
+
+        expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
+      })
+
       it('the ecommerce items array is limited to a maximum of 15,000 UTF-16 code units', function () {
         var innerHTML = ''
         var ecommerceItems = []
