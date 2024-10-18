@@ -1,0 +1,24 @@
+<%= render "components/filter_section", {
+  **date_facet.section_attributes,
+  change_category: "update-filter date",
+  # Note date is the only validated facet, so if there is an error, it'll be here
+  open: @search_query.invalid?,
+} do %>
+  <%= date_input(
+    "#{date_facet.key}[from]",
+    date_facet.name,
+    date_facet.parsed_from_date&.to_hash,
+    hint: "For example, 28 2 #{Date.current.year - 2}",
+    error_message: date_facet.error_message_from(@search_query),
+    legend_suffix: "after",
+  ) %>
+
+  <%= date_input(
+    "#{date_facet.key}[to]",
+    date_facet.name,
+    date_facet.parsed_to_date&.to_hash,
+    hint: "For example, 13 12 #{Date.current.year - 1}",
+    error_message: date_facet.error_message_to(@search_query),
+    legend_suffix: "before",
+  ) %>
+<% end %>
