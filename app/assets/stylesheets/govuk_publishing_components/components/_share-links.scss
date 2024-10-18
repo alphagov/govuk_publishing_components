@@ -84,18 +84,39 @@ $column-width: 9.5em;
   }
 }
 
-.gem-c-share-links--square-icons {
-  .gem-c-share-links__list-item {
-    padding-left: 60px;
-    padding-top: 12px;
-    margin-bottom: 30px;
+.gem-c-share-links--flexbox {
+  .gem-c-share-links__list {
+    display: flex;
+    flex-wrap: wrap;
   }
 
+  .gem-c-share-links__list-item {
+    padding-left: 0;
+    padding-right: 0;
+    min-width: 180px;
+  }
+
+  .gem-c-share-links__link-icon {
+    display: inline-flex;
+    position: relative;
+    vertical-align: middle;
+    margin-right: govuk-spacing(2);
+  }
+
+  .gem-c-share-links__label {
+    vertical-align: middle;
+  }
+
+  .gem-c-share-links__link {
+    display: inline-block;
+  }
+}
+
+.gem-c-share-links--square-icons {
   .gem-c-share-links__link-icon {
     background-color: govuk-colour("dark-blue");
     color: govuk-colour("white");
     padding: govuk-spacing(2);
-    margin-right: govuk-spacing(2);
   }
 
   .gem-c-share-links__link:hover {

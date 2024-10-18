@@ -125,6 +125,16 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: "Tweet to"
   end
 
+  it "adds the correct classes when flexbox is true" do
+    render_component(links:, flexbox: true)
+    assert_select ".gem-c-share-links--flexbox"
+  end
+
+  it "does not add extra classes when flexbox is false" do
+    render_component(links:, flexbox: false)
+    assert_select ".gem-c-share-links--flexbox", false
+  end
+
   it "adds the correct classes when square_icons is true" do
     render_component(links:, square_icons: true)
     assert_select ".gem-c-share-links--square-icons"
