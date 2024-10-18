@@ -286,3 +286,43 @@ examples:
             - 118
             - 85
             - 80
+  with_a_different_height:
+    description: |
+      Sets a height in pixels for the chart, defaulting to `400`. This is useful where the chart might appear in a narrow column and the default height would be too tall.
+
+      The component is not currently responsive.
+    data:
+      chart_heading: Page views
+      h_axis_title: Day
+      v_axis_title: Views
+      minimal: true
+      minimal_link: "https://www.gov.uk"
+      chart_overview: This is a graph of views per day
+      height: 200
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
+      rows:
+        - label: January 2015
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+            - 33
+            - 89
+            - 79
+        - label: January 2016
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+            - 118
+            - 85
+            - 80
