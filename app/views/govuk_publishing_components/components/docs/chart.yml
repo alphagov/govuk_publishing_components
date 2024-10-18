@@ -6,7 +6,7 @@ body: |
   The chart relies upon chartkick and renders using JavaScript, so the table is provided as a fallback for a lack of JavaScript,
   an accessible view on the data for screenreaders, and a simple view of the raw data for all users.
 
-  The `overview` option can be used to provide an explanation for screen reader users of what the graph shows.
+  The `chart_overview` option can be used to provide an explanation for screen reader users of what the graph shows.
 accessibility_criteria: |
   Charts must:
 
@@ -20,7 +20,7 @@ examples:
       chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      overview: This chart shows page views for January 2015.
+      chart_overview: This chart shows page views for January 2015.
       hide_legend: true
       keys:
         - "2015-01-01"
@@ -52,6 +52,7 @@ examples:
       chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
+      chart_overview: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -107,6 +108,7 @@ examples:
       table_direction: vertical
       h_axis_title: Day
       v_axis_title: Views
+      chart_overview: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -141,6 +143,7 @@ examples:
       chart_heading_level: 4
       h_axis_title: Day
       v_axis_title: Views
+      chart_overview: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -175,6 +178,7 @@ examples:
       h_axis_title: Day
       v_axis_title: Views
       link: 'https://www.gov.uk'
+      chart_overview: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -209,6 +213,52 @@ examples:
       h_axis_title: Day
       v_axis_title: Views
       margin_bottom: 9
+      chart_overview: This chart shows page views for January in different years.
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
+      rows:
+        - label: January 2015
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+            - 33
+            - 89
+            - 79
+        - label: January 2016
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+            - 118
+            - 85
+            - 80
+  minimal_version:
+    description: |
+      The minimal version presents a simplified version of the chart and should only be used where the user is then directed to a more detailed view of the data. Specifically, minimal mode:
+
+      - turns the chart into a link that should point to a page with a full version of the chart with all data
+      - hides the chart heading, but uses the text as the text for the link
+      - removes the legend and X and Y axis values
+      - removes the data table and link to the data (if supplied) beneath the chart
+      - removes the part of the visually hidden accessibility message that links to the table
+      - removes the ability to interact with the chart (no hover popups or clicks)
+      - sets the size of the points on the chart to zero
+    data:
+      chart_heading: Page views
+      h_axis_title: Day
+      v_axis_title: Views
+      minimal: true
+      minimal_link: "https://www.gov.uk"
+      chart_overview: This is a graph of views per day
       keys:
         - 1st
         - 2nd
