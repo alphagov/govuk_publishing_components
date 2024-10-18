@@ -16,6 +16,7 @@
   minimal_link ||= nil
   hide_legend ||= minimal
   link ||= false
+  height ||= 400
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
@@ -49,7 +50,7 @@
     enableInteractivity: enableInteractivity,
     legend: legend,
     pointSize: pointSize,
-    height: 400,
+    height: height,
     tooltip: { isHtml: true },
     hAxis: {
       textStyle: font_16,
