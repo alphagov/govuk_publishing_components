@@ -18,7 +18,7 @@ describe "Govspeak for HTML publications", type: :view do
       content: "<h2>right to left</h2>".html_safe,
     )
 
-    assert_select ".direction-rtl h2", text: "right to left"
+    assert_select ".gem-c-govspeak--direction-rtl h2", text: "right to left"
   end
 
   it "can disable youtube expansion" do
@@ -27,7 +27,7 @@ describe "Govspeak for HTML publications", type: :view do
       content: "<h2>youtube</h2>".html_safe,
     )
 
-    assert_select ".disable-youtube h2", text: "youtube"
+    assert_select ".js-disable-youtube h2", text: "youtube"
   end
 
   it "accepts a block" do

@@ -34,7 +34,7 @@ describe('Govspeak', function () {
     it('allows disabling embeds of youtube videos', function () {
       container = document.createElement('div')
       container.innerHTML =
-        '<div class="gem-c-govspeak govuk-govspeak disable-youtube" data-module="govspeak">' +
+        '<div class="gem-c-govspeak govuk-govspeak js-disable-youtube" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
         '<div>'
       document.body.appendChild(container)

@@ -58,8 +58,8 @@
 }
 
 // Add rtl table styling when `direction: "rtl"` is set
-.govuk-govspeak.direction-rtl,
-.gem-c-govspeak.direction-rtl {
+.govuk-govspeak.gem-c-govspeak--direction-rtl,
+.gem-c-govspeak.gem-c-govspeak--direction-rtl {
   table {
     caption {
       text-align: right;
@@ -78,7 +78,7 @@
 
 // Add rtl table styling when `.direction-rtl` is set on a parent element
 // stylelint-disable max-nesting-depth
-.direction-rtl {
+.gem-c-govspeak--direction-rtl {
   .govspeak,
   .gem-c-govspeak {
     table {

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add shared helper and component wrapper helper to govspeak component ([PR #4325](https://github.com/alphagov/govuk_publishing_components/pull/4325))
+
 ## 44.4.2
 
 * Fix ecommerce tracking of searches without query ([PR #4317](https://github.com/alphagov/govuk_publishing_components/pull/4317))

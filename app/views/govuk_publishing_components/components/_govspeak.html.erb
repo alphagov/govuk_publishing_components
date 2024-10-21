@@ -2,20 +2,20 @@
   add_gem_component_stylesheet("govspeak")
 
   inverse ||= false
-  direction_class = "direction-#{direction}" if local_assigns.include?(:direction)
+  local_assigns[:margin_bottom] ||= 0
+  direction_class = "gem-c-govspeak--direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
 
-  classes = []
-  classes << direction_class if direction_class
-  classes << "disable-youtube" if disable_youtube_expansions
-  classes << "gem-c-govspeak--inverse" if inverse
-
-  data_modules = "govspeak"
-  data_attributes = { module: data_modules }
-
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-govspeak govuk-govspeak")
+  component_helper.add_class(direction_class) if direction_class
+  component_helper.add_class("js-disable-youtube") if disable_youtube_expansions
+  component_helper.add_class("gem-c-govspeak--inverse") if inverse
+  component_helper.add_class(shared_helper.get_margin_bottom)
+  component_helper.add_data_attribute({ module: "govspeak" })
 %>
-
-<%= tag.div(class: "gem-c-govspeak govuk-govspeak " + classes.join(" "), data: data_attributes) do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if local_assigns.include?(:content) %>
     <% if content.html_safe? %>
       <%= content %>
