@@ -7,7 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Govspeak.prototype.init = function () {
-    if (this.$module.className.indexOf('disable-youtube') === -1) {
+    if (this.$module.className.indexOf('js-disable-youtube') === -1) {
       this.embedYoutube()
     }
 

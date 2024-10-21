@@ -11,7 +11,7 @@
   // is because directly messing with the positioning of the sticky element produces undesirable results.
   // The nested govspeak component handles its own text direction independently, but will
   // coincide with the direction of its parent anyway in all usecases.
-  &.direction-rtl {
+  &.gem-c-govspeak--direction-rtl {
     direction: rtl;
     text-align: start;
   }
@@ -57,7 +57,7 @@
     h6 .number {
       margin-right: .1em;
 
-      .direction-rtl & {
+      .gem-c-govspeak--direction-rtl & {
         margin-right: 0;
         margin-left: .1em;
       }

@@ -15,8 +15,8 @@
 .gem-c-govspeak {
   @include markdown-typography;
 
-  &.direction-rtl ol,
-  &.direction-rtl ul {
+  &.gem-c-govspeak--direction-rtl ol,
+  &.gem-c-govspeak--direction-rtl ul {
     margin-left: 0;
     margin-right: govuk-spacing(4);
 
@@ -62,7 +62,7 @@
     }
   }
 
-  &.direction-rtl blockquote {
+  &.gem-c-govspeak--direction-rtl blockquote {
     padding: 0 govuk-spacing(4) 0 0;
 
     @include govuk-media-query($from: desktop) {

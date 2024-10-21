@@ -24,7 +24,7 @@
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
-  &.direction-rtl {
+  &.gem-c-govspeak--direction-rtl {
     direction: rtl;
     text-align: start;
   }

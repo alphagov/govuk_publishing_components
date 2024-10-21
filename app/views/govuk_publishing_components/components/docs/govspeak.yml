@@ -19,6 +19,7 @@ shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
   - landmark-complementary-is-top-level # Statistic headlines are generating an aside element which can not be a top level in the examples
+uses_component_wrapper_helper: true
 examples:
   basic_content:
     data:
