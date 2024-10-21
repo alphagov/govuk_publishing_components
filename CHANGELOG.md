@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 44.4.2
 
 * Fix ecommerce tracking of searches without query ([PR #4317](https://github.com/alphagov/govuk_publishing_components/pull/4317))
 
