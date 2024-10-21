@@ -20,6 +20,8 @@
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
+  @external_script ||= OpenStruct.new(loaded: 0)
+  @external_script[:loaded] += 1
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
@@ -79,7 +81,7 @@
   end
 %>
 <% if rows.length > 0 && keys.length > 0 && valid_minimal %>
-  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" if @external_script[:loaded] == 1 %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if chart_heading && !minimal %>
       <%= render "govuk_publishing_components/components/heading", {

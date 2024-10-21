@@ -124,4 +124,12 @@ describe "Chart", type: :view do
     data[:minimal] = true
     assert_empty render_component(data)
   end
+
+  it "only calls an external script once" do
+    render_component(data)
+    data[:classes] = "" # need to 'reset' this otherwise it carries from the first component and breaks shared_helper
+    render_component(data)
+
+    assert_select 'script[src="https://www.gstatic.com/charts/loader.js"]', count: 1
+  end
 end
