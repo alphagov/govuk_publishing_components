@@ -190,10 +190,10 @@ examples:
               text: "تقديم الطلب"
     context:
       right_to_left: true
-  with_branding:
-    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) for more details.
+  with_number_10_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown.
     data:
-      brand: 'department-for-environment-food-rural-affairs'
+      brand: 'prime-ministers-office-10-downing-street'
       format_numbers: true
       contents:
         - href: "#first-thing"

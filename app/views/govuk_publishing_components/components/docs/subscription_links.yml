@@ -45,10 +45,10 @@ examples:
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link_box_value: 'https://www.gov.uk/government/organisations/attorney-generals-office.atom'
-  with_branding:
+  with_number_10_branding:
     description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown.
     data:
-      brand: 'attorney-generals-office'
+      brand: 'prime-ministers-office-10-downing-street'
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
   with_data_attributes_on_links:
