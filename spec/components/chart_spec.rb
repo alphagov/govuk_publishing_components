@@ -114,10 +114,10 @@ describe "Chart", type: :view do
     render_component(data)
 
     assert_select ".gem-c-chart.gem-c-chart--minimal"
+    assert_select ".gem-c-chart__chart[aria-hidden='true']"
     assert_select '.gem-c-chart .govuk-link[href="https://should.not.be.shown"]', false
     assert_select '.gem-c-chart .gem-c-chart__minimal-link[href="https://www.gov.uk"]'
-    assert_select ".gem-c-chart__a11y-note-1", text: "This is a chart showing a rise in sea levels in the last ten years"
-    assert_select ".gem-c-chart__a11y-note-2", false
+    assert_select ".gem-c-chart__chart .govuk-visually-hidden", false
   end
 
   it "does not render a minimal version if a link is not supplied" do

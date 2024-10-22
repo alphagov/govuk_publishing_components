@@ -92,14 +92,17 @@
       } %>
     <% end %>
 
-    <div class="gem-c-chart__chart" id="<%= chart_id %>">
-      <div class="govuk-visually-hidden">
-        <%= content_tag :div, chart_overview, class: "gem-c-chart__a11y-note-1" if chart_overview %>
-        <%= content_tag :div, t("components.chart.accessibility_html", table_id: table_id), class: "gem-c-chart__a11y-note-2" unless minimal %>
-      </div>
+    <% aria_attributes = { hidden: true } if minimal %>
+    <%= content_tag :div, id: chart_id, class: "gem-c-chart__chart", aria: aria_attributes do %>
+      <% unless minimal %>
+        <div class="govuk-visually-hidden">
+          <%= content_tag :div, chart_overview, class: "gem-c-chart__a11y-note-1" if chart_overview %>
+          <%= content_tag :div, t("components.chart.accessibility_html", table_id: table_id), class: "gem-c-chart__a11y-note-2" %>
+        </div>
+      <% end %>
 
       <%= line_chart(chart_format_data, library: chart_library_options) %>
-    </div>
+    <% end %>
 
     <% unless minimal %>
       <div class="gem-c-chart__table" id="<%= table_id %>">
