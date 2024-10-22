@@ -42,8 +42,9 @@
   enableInteractivity = false if minimal
   textPosition = nil
   textPosition = 'none' if minimal
-  valid_minimal = true
-  valid_minimal = false if minimal && !minimal_link # minimal version must include a link
+  if minimal && !minimal_link
+    raise ArgumentError, "Minimal version must include a link"
+  end
 
   chart_library_options = {
     chartArea: { width: '80%', height: '60%' },
@@ -80,7 +81,7 @@
     end
   end
 %>
-<% if rows.length > 0 && keys.length > 0 && valid_minimal %>
+<% if rows.length > 0 && keys.length > 0 %>
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" if @external_script[:loaded] == 1 %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if chart_heading && !minimal %>

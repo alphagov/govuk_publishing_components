@@ -122,7 +122,9 @@ describe "Chart", type: :view do
 
   it "does not render a minimal version if a link is not supplied" do
     data[:minimal] = true
-    assert_empty render_component(data)
+    expect {
+      render_component(data)
+    }.to raise_error("Minimal version must include a link")
   end
 
   it "only calls an external script once" do
