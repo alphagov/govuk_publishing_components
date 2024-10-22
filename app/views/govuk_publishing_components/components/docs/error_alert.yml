@@ -1,5 +1,6 @@
 name: Error alert
 description: Used at the top of the page, to summarise a unsuccessful user action.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   - should be focused on page load, to ensure the message is noticed by
     assistive tech
