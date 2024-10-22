@@ -26,7 +26,7 @@ To add colours to a component, modify the component to follow the example below.
   </div>
 
   <a href="#" class="<%= brand_helper.color_class %>">
-    Obscure use case where a link requires coloured text
+    Rare use case where a link requires coloured text
   </a>
 </div>
 ```
