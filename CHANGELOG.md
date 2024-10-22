@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 44.5.0
 
 * Add component wrapper to error alert component ([PR #4287](https://github.com/alphagov/govuk_publishing_components/pull/4287))
 * Add new chart component options ([PR #4318](https://github.com/alphagov/govuk_publishing_components/pull/4318))
