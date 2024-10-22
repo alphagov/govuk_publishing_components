@@ -1,7 +1,7 @@
 ;(function (global) {
   'use strict'
 
-  var GOVUK = global.GOVUK || {}
+  const GOVUK = global.GOVUK || {}
   GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
 
   GOVUK.analyticsGa4.Ga4FinderTracker = {
@@ -9,44 +9,44 @@
     // changeEventMetadata is a string referring to the type of form change and the element type that triggered it. For example 'update-filter checkbox'.
     trackChangeEvent: function (eventTarget, changeEventMetadata) {
       changeEventMetadata = changeEventMetadata.split(' ')
-      var filterParent = eventTarget.closest('[data-ga4-filter-parent]')
-      var section = eventTarget.closest('[data-ga4-section]')
-      var changeType = changeEventMetadata[0]
-      var elementType = changeEventMetadata[1]
+      const filterParent = eventTarget.closest('[data-ga4-filter-parent]')
+      const section = eventTarget.closest('[data-ga4-section]')
+      const changeType = changeEventMetadata[0]
+      const elementType = changeEventMetadata[1]
 
       if ((!changeType || !elementType) && changeType !== 'clear-all-filters') {
         console.warn('GA4 Finder tracker incorrectly configured for element: ' + eventTarget)
         return
       }
 
-      var data = {}
+      let data = {}
       data.type = 'finder'
       data.event_name = 'select_content'
 
-      var elementInfo = this.getElementInfo(eventTarget, elementType, section)
+      const elementInfo = this.getElementInfo(eventTarget, elementType, section)
       if (!elementInfo) {
         return
       }
-      var elementValue = elementInfo.elementValue
+      const elementValue = elementInfo.elementValue
       data.text = elementValue
-      var wasFilterRemoved = elementInfo.wasFilterRemoved
+      const wasFilterRemoved = elementInfo.wasFilterRemoved
       data = this.setSchemaBasedOnChangeType(data, elementValue, elementType, wasFilterRemoved, changeType, section, filterParent)
 
-      var schemas = new window.GOVUK.analyticsGa4.Schemas()
-      var schema = schemas.mergeProperties(data, 'event_data')
+      const schemas = new window.GOVUK.analyticsGa4.Schemas()
+      const schema = schemas.mergeProperties(data, 'event_data')
 
       window.GOVUK.analyticsGa4.core.sendData(schema)
     },
 
     // Grabs the value from the eventTarget. Checks if the filter was removed if the eventTarget is unchecked, set back to default, or has its user input removed. Returns the results as an object.
     getElementInfo: function (eventTarget, elementType, section) {
-      var elementValue = ''
-      var defaultValue
-      var wasFilterRemoved = false
+      let elementValue = ''
+      let defaultValue
+      let wasFilterRemoved = false
 
       switch (elementType) {
-        case 'checkbox':
-          var checkboxId = eventTarget.id
+        case 'checkbox': {
+          const checkboxId = eventTarget.id
 
           // The "value" we need for a checkbox is the label text that the user sees beside the checkbox.
           elementValue = document.querySelector("label[for='" + checkboxId + "']").textContent
@@ -54,9 +54,9 @@
           // If the checkbox is unchecked, the filter was removed.
           wasFilterRemoved = !eventTarget.checked
           break
-
-        case 'radio':
-          var radioId = eventTarget.id
+        }
+        case 'radio': {
+          const radioId = eventTarget.id
 
           // The "value" we need for a radio is the label text that the user sees beside the checkbox.
           elementValue = document.querySelector("label[for='" + radioId + "']").textContent
@@ -67,7 +67,7 @@
             wasFilterRemoved = true
           }
           break
-
+        }
         case 'select':
           // The value of a <select> is the value attribute of the selected <option>, which is a hyphenated key. We need to grab the human readable label instead for tracking.
           elementValue = eventTarget.querySelector("option[value='" + eventTarget.value + "']").textContent
@@ -113,12 +113,12 @@
     // Takes the GTM schema, the event target value, the event target HTML type, whether the filter was removed, the type of filter change it was, and the parent section heading. Populates the GTM object based on these values.
     setSchemaBasedOnChangeType: function (schema, elementValue, elementType, wasFilterRemoved, changeType, section, filterParent) {
       switch (changeType) {
-        case 'update-filter':
+        case 'update-filter': {
           if (section) {
             schema.section = section.getAttribute('data-ga4-section')
           }
 
-          var index = this.getSectionIndex(filterParent)
+          const index = this.getSectionIndex(filterParent)
           if (wasFilterRemoved) {
             schema.action = 'remove'
             schema.text = elementType === 'text' ? undefined : elementValue
@@ -129,7 +129,7 @@
           schema.index_section = index.index_section || undefined
           schema.index_section_count = index.index_section_count || undefined
           break
-
+        }
         case 'update-keyword':
           schema.event_name = 'search'
           schema.url = window.location.pathname
@@ -154,7 +154,7 @@
     // Takes a filter section's div, and grabs the index value from it.
     getSectionIndex: function (sectionElement) {
       try {
-        var index = sectionElement.getAttribute('data-ga4-index')
+        let index = sectionElement.getAttribute('data-ga4-index')
         index = JSON.parse(index)
         return index
       } catch (e) {
