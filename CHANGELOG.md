@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 44.6.1
+
+* Add support for data attributes in Summary List and Summary Card rows ([PR #4331](https://github.com/alphagov/govuk_publishing_components/pull/4331))
+
 ## 44.6.0
 
 * Use flexbox for share links with square icons ([PR #4316](https://github.com/alphagov/govuk_publishing_components/pull/4316))
