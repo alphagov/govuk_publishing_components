@@ -91,3 +91,13 @@ examples:
             - label: View
               href: "#1"
               opens_in_new_tab: true
+  with_row_data_attributes:
+    description: |
+      Data attributes can be passed to individual rows within the component as shown.
+    data:
+      title: Title
+      rows:
+        - key: key one
+          value: value1
+          data:
+            module: "something"

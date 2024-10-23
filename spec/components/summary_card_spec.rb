@@ -154,4 +154,19 @@ describe "Summary card", type: :view do
     assert_select '.govuk-summary-list__row .govuk-link[href="#1"]', text: "View One (opens in new tab)"
     assert_select '.govuk-summary-list__row .govuk-link[target="_blank"]', text: "View One (opens in new tab)"
   end
+
+  it "renders component with row data attributes" do
+    render_component(
+      title: "Title",
+      rows: [
+        {
+          key: "One",
+          value: "Value 1",
+          data: { module: "something" },
+        },
+      ],
+    )
+
+    assert_select ".govuk-summary-list__row[data-module='something']", text: /One/
+  end
 end
