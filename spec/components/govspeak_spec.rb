@@ -21,6 +21,21 @@ describe "Govspeak", type: :view do
     assert_select ".gem-c-govspeak.gem-c-govspeak--inverse h2", text: "inverse"
   end
 
+  it "applies default margin to the component" do
+    render_component(
+      content: "<h2>content</h2>".html_safe,
+    )
+    assert_select '.gem-c-govspeak.govuk-\!-margin-bottom-0'
+  end
+
+  it "applies margin to the component" do
+    render_component(
+      content: "<h2>content</h2>".html_safe,
+      margin_bottom: 6,
+    )
+    assert_select '.gem-c-govspeak.govuk-\!-margin-bottom-6'
+  end
+
   it "renders right to left content correctly" do
     render_component(
       direction: "rtl",

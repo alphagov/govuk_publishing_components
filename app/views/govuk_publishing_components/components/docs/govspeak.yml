@@ -32,9 +32,16 @@ examples:
       inverse: true
       block: |
         <h2>This is a title</h2>
-        <p>This is some body text with <a href="https://example.com">a link</a>.</p>
+          <p>This is some body text with <a href="https://example.com">a link</a>.</p>
     context:
       dark_background: true
+  with_margin_bottom:
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to no margin bottom, as spacing below is normally provided by elements within the component.
+    data:
+      margin_bottom: 9
+      block: |
+        <h2>This is a title</h2>
+          <p>This is some body text with <a href="https://example.com">a link</a>.</p>
   heading_levels:
     data:
       block: |
