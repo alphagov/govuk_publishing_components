@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use flexbox for share links with square icons ([PR #4316](https://github.com/alphagov/govuk_publishing_components/pull/4316))
+
 ## 44.5.0
 
 * Add component wrapper to error alert component ([PR #4287](https://github.com/alphagov/govuk_publishing_components/pull/4287))

@@ -8,6 +8,7 @@
   ga4_extra_data ||= {}
   stacked ||= false
   columns ||= false
+  flexbox ||= false
   square_icons ||= false
 
   brand ||= false
@@ -16,6 +17,7 @@
   classes = %w(gem-c-share-links govuk-!-display-none-print)
   classes << "gem-c-share-links--stacked" if stacked
   classes << "gem-c-share-links--columns" if columns
+  classes << "gem-c-share-links--flexbox" if flexbox
   classes << "gem-c-share-links--square-icons" if square_icons
 
   classes << brand_helper.brand_class

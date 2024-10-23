@@ -256,10 +256,45 @@ examples:
           icon: 'youtube'
         }
       ]
-  with_square_icons:
+  with_flexbox:
+    data:
+      flexbox: true
+      links: [
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+                {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        },
+        {
+          href: '/other-share-link',
+          text: 'Anything else that might be included that could have quite a long name',
+          icon: 'other'
+        },
+      ]
+  with_square_icons_and_flexbox:
     data:
       square_icons: true
-      columns: true
+      flexbox: true
       links: [
         {
           href: '/twitter-share-link',
