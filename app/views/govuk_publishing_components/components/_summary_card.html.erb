@@ -28,7 +28,7 @@
         <%= tag.div class: "govuk-summary-card__content" do %>
           <%= tag.dl class: "govuk-summary-list" do %>
             <% rows.each do |row| %>
-              <%= tag.div class: "govuk-summary-list__row" do %>
+              <%= tag.div class: "govuk-summary-list__row", data: row[:data] do %>
                 <%= tag.dt class: "govuk-summary-list__key" do %>
                   <%= row[:key] %>
                 <% end %>
