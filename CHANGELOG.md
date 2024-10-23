@@ -9,6 +9,7 @@
 
 ## 44.6.0
 
+* Refactor organisation styles and upgrade to govuk-frontend v5.7.1 ([PR #4321](https://github.com/alphagov/govuk_publishing_components/pull/4321))
 * Use flexbox for share links with square icons ([PR #4316](https://github.com/alphagov/govuk_publishing_components/pull/4316))
 
 ## 44.5.0

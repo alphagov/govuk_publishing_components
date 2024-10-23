@@ -130,10 +130,10 @@ examples:
         metadata:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statutory guidance'
-  with_branding:
-    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) for more details.
+  with_number_10_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown.
     data:
-      brand: 'attorney-generals-office'
+      brand: 'prime-ministers-office-10-downing-street'
       items:
       - link:
           text: 'School behaviour and attendance: parental responsibility measures'

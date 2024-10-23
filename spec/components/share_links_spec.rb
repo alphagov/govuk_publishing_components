@@ -100,9 +100,24 @@ describe "ShareLinks", type: :view do
     assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"overwritten type 2\",\"index_link\":1,\"index_total\":1,\"section\":\"This is another section\"}"]'
   end
 
-  it "adds branding correctly" do
-    render_component(links: [links[0]], brand: "attorney-generals-office")
-    assert_select ".gem-c-share-links.brand--attorney-generals-office .gem-c-share-links__link.brand__color"
+  it "adds black links correctly" do
+    render_component(links: [links[0]], black_links: true)
+    assert_select ".gem-c-share-links.gem-c-share-links--black-links"
+  end
+
+  it "has no black links by default" do
+    render_component(links: [links[0]])
+    assert_select ".gem-c-share-links.gem-c-share-links--black-links", false
+  end
+
+  it "adds black icons correctly" do
+    render_component(links: [links[0]], black_icons: true)
+    assert_select ".gem-c-share-links.gem-c-share-links--black-icons"
+  end
+
+  it "has no black icons by default" do
+    render_component(links: [links[0]])
+    assert_select ".gem-c-share-links.gem-c-share-links--black-icons", false
   end
 
   it "arranges in columns" do
