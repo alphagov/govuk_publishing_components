@@ -4,11 +4,12 @@ body: |
   This is a complex component that calls other components. For more accurate
   preview with real data, see the [contextual navigation preview][preview].
 
-  There are 3 main variants of the component:
+  There are 4 main variants of the component:
 
   - Step by step, which uses the [step by step header][header]
   - Parent breadcrumb, which uses the `parent` link of the page with the [breadcrumbs component][breadcrumbs]
   - Taxon breadcrumb, which uses the `taxons` link of the page with the [breadcrumbs component][breadcrumbs]
+  - Organisation breadcrumb, which uses the `organisations` link of the page with the [breadcrumbs component][breadcrumbs]
 
   It must always used [together with the contextual sidebar][sidebar] and [footer].
 
