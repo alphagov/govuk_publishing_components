@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix incorrect underline styles on share links ([PR #4337](https://github.com/alphagov/govuk_publishing_components/pull/4337))
+* Set default font for component guide ([PR #4330](https://github.com/alphagov/govuk_publishing_components/pull/4330))
 
 ## 44.7.0
 
