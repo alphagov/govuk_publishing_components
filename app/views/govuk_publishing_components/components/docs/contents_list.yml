@@ -35,6 +35,17 @@ examples:
           text: Second thing
         - href: "#third-thing"
           text: Third thing
+  with_bottom_margin:
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). The default margin bottom is `20px` (`govuk-spacing(4)`).
+    data:
+      margin_bottom: 9
+      contents:
+        - href: "#first-thing"
+          text: First thing
+        - href: "#second-thing"
+          text: Second thing
+        - href: "#third-thing"
+          text: Third thing
   underline_links:
     description: By default we do not underline links in this component even though this is the general approach on GOV.UK. This is because some of the examples below (particularly those with numbers) do not work well with underlined links. Instead, this option allows the links to be underlined where appropriate.
     data:

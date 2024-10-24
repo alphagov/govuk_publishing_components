@@ -77,6 +77,19 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list__link.govuk-link--no-underline[href='#two']", text: "2. Two"
   end
 
+  it "applies default margin to the component" do
+    render_component(contents: contents_list)
+    assert_select '.gem-c-contents-list.govuk-\!-margin-bottom-4'
+  end
+
+  it "applies requested margin to the component" do
+    render_component(
+      contents: contents_list,
+      margin_bottom: 0,
+    )
+    assert_select '.gem-c-contents-list.govuk-\!-margin-bottom-0'
+  end
+
   it "renders a list of contents links containing special characters" do
     render_component(contents: contents_list_with_special_chars)
 
