@@ -1,12 +1,11 @@
 name: Contents list
 description: Provides a list of links with options for dashes or numbering.
 body: |
-  Commonly used to lists a page’s contents with links pointing to headings within the document, but can also be used for a list of links to other pages.
+  Commonly used to list the contents of a page with links pointing to headings within the document, but can also be used for a list of links to other pages.
 
   Pass a list of contents each with an `href` and `text`. The `href` can point at the ID of a heading within the page.
 
-  Supports nesting contents one level deep, currently only used by specialist documents. When nesting the top level list items
-  display in bold.
+  Supports nesting contents one level deep, currently only used by specialist documents. When nesting the top level list items display in bold.
 
   `format_numbers` option will pull out numbers in the link text to render them as though they were the list style type. Applies to numbers at the start of text, with or without a decimal. See the [format complex numbers fixture](/component-guide/contents-list/formats_complex_numbers) for details.
 accessibility_criteria: |
@@ -29,6 +28,17 @@ uses_component_wrapper_helper: true
 examples:
   default:
     data:
+      contents:
+        - href: "#first-thing"
+          text: First thing
+        - href: "#second-thing"
+          text: Second thing
+        - href: "#third-thing"
+          text: Third thing
+  with_bottom_margin:
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). The default margin bottom is `20px` (`govuk-spacing(4)`).
+    data:
+      margin_bottom: 9
       contents:
         - href: "#first-thing"
           text: First thing

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Contents list add margin_bottom option ([PR #4333](https://github.com/alphagov/govuk_publishing_components/pull/4333))
+
 ## 44.6.0
 
 * Use flexbox for share links with square icons ([PR #4316](https://github.com/alphagov/govuk_publishing_components/pull/4316))

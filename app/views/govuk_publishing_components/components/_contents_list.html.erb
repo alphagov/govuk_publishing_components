@@ -1,15 +1,18 @@
-<%-
+<%
   add_gem_component_stylesheet("contents-list")
 
-  cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   underline_links ||= false
   format_numbers ||= false
   alternative_line_style ||= false
   title ||= nil
   brand ||= false
+  local_assigns[:aria] ||= {}
+  local_assigns[:margin_bottom] ||= 4
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-  title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
-  classes = %w[gem-c-contents-list]
+
   link_classes = %w[gem-c-contents-list__link govuk-link gem-print-link]
   link_classes << brand_helper.color_class
   link_classes << "govuk-link--no-underline" unless underline_links
@@ -21,15 +24,18 @@
     type: "contents list",
     index_total: cl_helper.get_index_total,
   } unless disable_ga4
-  local_assigns[:aria] ||= {}
+
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-contents-list #{brand_helper.brand_class}")
   component_helper.add_class("gem-c-contents-list--alternative-line-style") if alternative_line_style
   component_helper.add_class("gem-c-contents-list--custom-title") if title
+  component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
   component_helper.add_aria_attribute({ label: t("components.contents_list.contents") }) unless local_assigns[:aria][:label]
   component_helper.add_role("navigation")
--%>
+
+  title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
+%>
 <% if cl_helper.contents.any? %>
   <%= tag.nav(**component_helper.all_attributes) do %>
     <%= content_tag(
