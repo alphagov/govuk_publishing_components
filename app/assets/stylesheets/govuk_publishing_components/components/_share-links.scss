@@ -104,11 +104,25 @@ $column-width: 9.5em;
   }
 
   .gem-c-share-links__label {
+    display: inline-block;
     vertical-align: middle;
   }
 
   .gem-c-share-links__link {
     display: inline-block;
+  }
+
+  .gem-c-share-links__link:hover {
+    .gem-c-share-links__label {
+      text-decoration: underline;
+      text-decoration-thickness: 3px;
+    }
+  }
+
+  .gem-c-share-links__link:focus:hover {
+    .gem-c-share-links__label {
+      text-decoration: none;
+    }
   }
 }
 
