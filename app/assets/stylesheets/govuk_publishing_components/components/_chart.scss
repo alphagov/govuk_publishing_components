@@ -40,28 +40,3 @@
     text-align: center;
   }
 }
-
-.gem-c-chart__minimal-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  &:focus {
-    background: transparent; // overrides govuk-link background, which obscures the graph
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-top: solid 1px $govuk-focus-colour;
-      border-left: solid 3px $govuk-focus-colour;
-      border-right: solid 3px $govuk-focus-colour;
-      box-sizing: border-box;
-    }
-  }
-}

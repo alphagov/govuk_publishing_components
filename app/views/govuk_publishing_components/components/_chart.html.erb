@@ -13,7 +13,6 @@
   keys ||= []
   chart_overview ||= nil
   minimal ||= false
-  minimal_link ||= nil
   hide_legend ||= minimal
   link ||= false
   height ||= 400
@@ -42,9 +41,6 @@
   enableInteractivity = false if minimal
   textPosition = nil
   textPosition = 'none' if minimal
-  if minimal && !minimal_link
-    raise ArgumentError, "Minimal version must include a link"
-  end
 
   chart_library_options = {
     chartArea: { width: '80%', height: '60%' },
@@ -169,11 +165,6 @@
         <p class="govuk-body">
           <%= link_to "Download chart data", link,  class: "govuk-link" %>
         </p>
-      <% end %>
-    <% end %>
-    <% if minimal %>
-      <%= link_to(minimal_link, class: "govuk-link gem-c-chart__minimal-link") do %>
-        <span class="govuk-visually-hidden"><%= chart_heading %></span>
       <% end %>
     <% end %>
   <% end %>

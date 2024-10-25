@@ -243,10 +243,11 @@ examples:
             - 80
   minimal_version:
     description: |
-      The minimal version presents a simplified version of the chart and should only be used where the user is then directed to a more detailed view of the data. Specifically, minimal mode:
+      The minimal version presents a simplified version of the chart. This should only be used where there is not enough space to display a full chart, and the user is then given an option to see more information about the chart, for example by including a link next to the chart component. This must be part of the page, as this is not provided by the component itself.
 
-      - turns the chart into a link that should point to a page with a full version of the chart with all data
-      - hides the chart heading, but uses the text as the text for the link
+      Specifically, minimal mode:
+
+      - hides the chart heading
       - removes the legend and X and Y axis values
       - removes the data table and link to the data (if supplied) beneath the chart
       - removes the part of the visually hidden accessibility message that links to the table
@@ -257,7 +258,6 @@ examples:
       h_axis_title: Day
       v_axis_title: Views
       minimal: true
-      minimal_link: "https://www.gov.uk"
       chart_overview: This is a graph of views per day
       keys:
         - 1st
@@ -296,7 +296,6 @@ examples:
       h_axis_title: Day
       v_axis_title: Views
       minimal: true
-      minimal_link: "https://www.gov.uk"
       chart_overview: This is a graph of views per day
       height: 200
       keys:
