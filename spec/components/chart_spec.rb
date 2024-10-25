@@ -125,4 +125,11 @@ describe "Chart", type: :view do
 
     assert_select 'script[src="https://www.gstatic.com/charts/loader.js"]', count: 1
   end
+
+  it "renders a padded version" do
+    data[:padding] = true
+    render_component(data)
+
+    assert_select ".gem-c-chart.gem-c-chart--padding"
+  end
 end
