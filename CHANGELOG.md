@@ -9,6 +9,7 @@
 
 ## 44.7.1
 
+* Adjust chart component options ([PR #4342](https://github.com/alphagov/govuk_publishing_components/pull/4342))
 * Fix incorrect underline styles on share links ([PR #4337](https://github.com/alphagov/govuk_publishing_components/pull/4337))
 * Set default font for component guide ([PR #4330](https://github.com/alphagov/govuk_publishing_components/pull/4330))
 

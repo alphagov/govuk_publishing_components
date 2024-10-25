@@ -109,22 +109,13 @@ describe "Chart", type: :view do
   it "renders a minimal version" do
     data[:minimal] = true
     data[:link] = "https://should.not.be.shown"
-    data[:minimal_link] = "https://www.gov.uk"
     data[:chart_overview] = "This is a chart showing a rise in sea levels in the last ten years"
     render_component(data)
 
     assert_select ".gem-c-chart.gem-c-chart--minimal"
     assert_select ".gem-c-chart__chart[aria-hidden='true']"
     assert_select '.gem-c-chart .govuk-link[href="https://should.not.be.shown"]', false
-    assert_select '.gem-c-chart .gem-c-chart__minimal-link[href="https://www.gov.uk"]'
     assert_select ".gem-c-chart__chart .govuk-visually-hidden", false
-  end
-
-  it "does not render a minimal version if a link is not supplied" do
-    data[:minimal] = true
-    expect {
-      render_component(data)
-    }.to raise_error("Minimal version must include a link")
   end
 
   it "only calls an external script once" do
@@ -133,5 +124,12 @@ describe "Chart", type: :view do
     render_component(data)
 
     assert_select 'script[src="https://www.gstatic.com/charts/loader.js"]', count: 1
+  end
+
+  it "renders a padded version" do
+    data[:padding] = true
+    render_component(data)
+
+    assert_select ".gem-c-chart.gem-c-chart--padding"
   end
 end
