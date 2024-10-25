@@ -240,6 +240,7 @@ $gem-guide-border-width: 1px;
 // Preview Page Styling
 html {
   background: govuk-colour("white");
+  font-family: $govuk-font-family;
 }
 
 .hide-header-and-footer {
