@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 44.7.1
 
 * Fix incorrect underline styles on share links ([PR #4337](https://github.com/alphagov/govuk_publishing_components/pull/4337))
 * Set default font for component guide ([PR #4330](https://github.com/alphagov/govuk_publishing_components/pull/4330))
