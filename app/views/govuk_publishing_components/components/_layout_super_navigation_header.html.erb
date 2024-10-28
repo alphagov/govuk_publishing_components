@@ -299,29 +299,30 @@
           </h3>
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-              <%
-                form_attributes = {
-                  event_name: "search",
-                  type: "header menu bar",
-                  section: "Search GOV.UK",
-                  action: "search",
-                  url: "/search/all",
-                  index_section: 3,
-                  index_section_count: 3,
-                }.to_json
-              %>
-              <form
-                class="gem-c-layout-super-navigation-header__search-form"
-                id="search"
-                data-module="ga4-form-tracker"
-                data-ga4-form="<%= form_attributes %>"
-                data-ga4-form-include-text
-                data-ga4-form-no-answer-undefined
-                action="<%= absolute_links_helper.make_url_absolute('/search') %>"
-                method="get"
-                role="search"
-                aria-label="Site-wide"
-              >
+              <%= tag.form(
+                class: "gem-c-layout-super-navigation-header__search-form",
+                id: "search",
+                data: {
+                  module: "ga4-form-tracker",
+                  ga4_form: {
+                    event_name: "search",
+                    type: "header menu bar",
+                    section: "Search GOV.UK",
+                    action: "search",
+                    url: "/search/all",
+                    index_section: 3,
+                    index_section_count: 3,
+                  },
+                  ga4_form_include_text: "",
+                  ga4_form_no_answer_undefined: "",
+                },
+                action: absolute_links_helper.make_url_absolute("/search/all"),
+                method: "get",
+                role: "search",
+                aria: {
+                  label: "Site-wide",
+                }
+              ) do %>
                 <%= render "govuk_publishing_components/components/search", {
                   inline_label: false,
                   label_size: "m",
@@ -331,7 +332,7 @@
                   margin_bottom: 0,
                   disable_corrections: true,
                 } %>
-              </form>
+              <% end %>
             </div>
           </div>
         </div>
