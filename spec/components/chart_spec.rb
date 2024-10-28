@@ -5,6 +5,8 @@ describe "Chart", type: :view do
     "chart"
   end
 
+  before { allow(SecureRandom).to receive(:hex).and_return("1234") }
+
   let(:data) do
     {
       chart_label: "Page views chart",
@@ -87,9 +89,11 @@ describe "Chart", type: :view do
   it "can include an overview" do
     overview = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
     data[:chart_overview] = overview
+    data[:chart_heading] = "Page views chart"
     render_component(data)
     assert_select ".gem-c-chart__a11y-note-1", text: overview
     assert_select ".gem-c-chart__a11y-note-2", text: "This chart is a visual representation of the data available in the table."
+    assert_select ".gem-c-chart__a11y-note-link a[href='#table-id-1234']", text: "Skip to \"Page views chart\" data table"
   end
 
   it "can include a download link" do
