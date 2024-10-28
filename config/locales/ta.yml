@@ -33,7 +33,9 @@ ta:
         characters: எழுத்துருக்கள்
         words: சொற்கள்
     chart:
+      accessibility_heading:
       accessibility_html:
+      accessibility_link:
       table_dropdown:
     chat_entry:
       description:

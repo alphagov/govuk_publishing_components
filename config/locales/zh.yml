@@ -32,7 +32,9 @@ zh:
         characters: 字符
         words: 单词
     chart:
+      accessibility_heading:
       accessibility_html:
+      accessibility_link:
       table_dropdown:
     chat_entry:
       description:
