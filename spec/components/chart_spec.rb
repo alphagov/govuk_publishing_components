@@ -96,6 +96,11 @@ describe "Chart", type: :view do
     assert_select ".gem-c-chart__a11y-note-link a[href='#table-id-1234']", text: "Skip to \"Page views chart\" data table"
   end
 
+  it "includes an accessible caption for data tables" do
+    render_component(data)
+    assert_select "#data-table-caption-1234", text: "Data table for \"Page views chart\""
+  end
+
   it "can include a download link" do
     data[:link] = "https://www.gov.uk"
     render_component(data)

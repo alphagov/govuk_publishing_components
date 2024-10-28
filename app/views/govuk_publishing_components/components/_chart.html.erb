@@ -119,6 +119,9 @@
           ) do %>
             <div tabindex="0" class="gem-c-chart__table-wrapper">
               <table class="govuk-table">
+                <caption class="govuk-visually-hidden" id="<%= "data-table-caption-#{SecureRandom.hex(4)}" %>">
+                  <%= t("components.chart.accessibility_heading", chart_heading: chart_heading) %>
+                </caption>
                 <% if table_direction == "horizontal" %>
                   <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
