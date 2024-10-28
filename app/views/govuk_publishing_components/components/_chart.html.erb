@@ -45,6 +45,10 @@
   textPosition = nil
   textPosition = 'none' if minimal
 
+  if !minimal && !chart_heading
+    raise ArgumentError, "A chart heading must be provided for accessibility purposes."
+  end
+
   chart_library_options = {
     chartArea: { width: '80%', height: '60%' },
     crosshair: { orientation: 'vertical', trigger: 'both', color: '#ccc' },

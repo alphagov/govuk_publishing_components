@@ -9,8 +9,7 @@ describe "Chart", type: :view do
 
   let(:data) do
     {
-      chart_label: "Page views chart",
-      table_label: "Page views table",
+      chart_heading: "Page views chart",
       keys: (Date.new(2017, 12, 1)..Date.new(2017, 12, 12)).to_a,
       rows: [
         {
@@ -26,7 +25,7 @@ describe "Chart", type: :view do
   end
 
   it "does not render when no data is given" do
-    assert_empty render_component({})
+    assert_empty render_component({ chart_heading: "" })
   end
 
   it "does not render if keys are missing" do
@@ -89,7 +88,6 @@ describe "Chart", type: :view do
   it "can include an overview" do
     overview = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
     data[:chart_overview] = overview
-    data[:chart_heading] = "Page views chart"
     render_component(data)
     assert_select ".gem-c-chart__a11y-note-1", text: overview
     assert_select ".gem-c-chart__a11y-note-2", text: "This chart is a visual representation of the data available in the table."
@@ -140,5 +138,20 @@ describe "Chart", type: :view do
     render_component(data)
 
     assert_select ".gem-c-chart.gem-c-chart--padding"
+  end
+
+  it "throws an error if a heading is not supplied" do
+    data[:chart_heading] = nil
+    expect {
+      render_component(data)
+    }.to raise_error("A chart heading must be provided for accessibility purposes.")
+  end
+
+  it "does not throw an error if a heading is not supplied in minimal mode" do
+    data[:chart_heading] = nil
+    data[:minimal] = true
+    expect {
+      render_component(data)
+    }.not_to raise_error("A chart heading must be provided for accessibility purposes.")
   end
 end
