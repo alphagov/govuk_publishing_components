@@ -77,7 +77,7 @@
               classes = "govuk-summary-list__row"
             end
           %>
-          <%= tag.div class: classes do %>
+          <%= tag.div class: classes, data: item[:data] do %>
 
             <%= tag.dt item[:field], class: "govuk-summary-list__key" %>
             <%= tag.dd item[:value], class: "govuk-summary-list__value" %>

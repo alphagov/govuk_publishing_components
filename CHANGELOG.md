@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Layout super nav header: Correct URL for search form ([PR #4341](https://github.com/alphagov/govuk_publishing_components/pull/4341))
+* Add support for data attributes in Summary List and Summary Card rows ([PR #4331](https://github.com/alphagov/govuk_publishing_components/pull/4331))
 
 ## 44.8.0
 

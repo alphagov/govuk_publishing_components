@@ -306,4 +306,19 @@ describe "Summary list", type: :view do
     )
     assert_select(".gem-c-summary-list.gem-c-summary-list--wide-title")
   end
+
+  it "renders component with row data attributes" do
+    render_component(
+      title: "Title",
+      items: [
+        {
+          field: "One",
+          value: "Value 1",
+          data: { module: "something" },
+        },
+      ],
+    )
+
+    assert_select ".govuk-summary-list__row[data-module='something']", text: /One/
+  end
 end
