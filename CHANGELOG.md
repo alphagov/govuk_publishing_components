@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 44.9.0
 
 * Layout super nav header: Correct URL for search form ([PR #4341](https://github.com/alphagov/govuk_publishing_components/pull/4341))
 * Add support for data attributes in Summary List and Summary Card rows ([PR #4331](https://github.com/alphagov/govuk_publishing_components/pull/4331))
