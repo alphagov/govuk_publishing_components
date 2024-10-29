@@ -19,6 +19,10 @@ module GovukPublishingComponents
       fetch_component_docs.map { |component| build(component) if component_in_use(component[:id]) }.compact.sort_by(&:name)
     end
 
+    def not_used_in_this_app
+      fetch_component_docs.map { |component| build(component) if component_not_in_use(component[:id]) }.compact.sort_by(&:name)
+    end
+
   private
 
     def build(component)
@@ -32,6 +36,10 @@ module GovukPublishingComponents
 
     def component_in_use(component)
       true if @limit_to.include?(component)
+    end
+
+    def component_not_in_use(component)
+      true if @limit_to.exclude?(component)
     end
 
     def fetch_component_doc(id)

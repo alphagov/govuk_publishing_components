@@ -12,6 +12,7 @@ module GovukPublishingComponents
       @components_in_use_docs = components_in_use_docs.used_in_this_app
       @components_in_use_sass = components_in_use_sass
       @components_in_use_js = components_in_use_js
+      @components_not_in_use_docs = components_not_in_use_docs.not_used_in_this_app
     end
 
     def show
@@ -76,6 +77,10 @@ module GovukPublishingComponents
 
     def components_in_use_docs
       @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
+    end
+
+    def components_not_in_use_docs
+      @components_not_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
     end
 
     def components_in_use
