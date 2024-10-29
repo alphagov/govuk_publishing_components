@@ -12,11 +12,11 @@ module GovukPublishingComponents
     end
 
     def all
-      fetch_component_docs.map { |component| build(component) }.sort_by(&:name)
+      fetch_component_doc_files.map { |component| build(component) }.sort_by(&:name)
     end
 
-    def used_in_this_app
-      fetch_component_docs.map { |component| build(component) if component_in_use(component[:id]) }.compact.sort_by(&:name)
+    def get_component_docs
+      fetch_component_doc_files.map { |component| build(component) if component_in_use?(component[:id]) }.compact.sort_by(&:name)
     end
 
   private
@@ -25,13 +25,13 @@ module GovukPublishingComponents
       ComponentDoc.new(component)
     end
 
-    def fetch_component_docs
+    def fetch_component_doc_files
       doc_files = Rails.root.join(@documentation_directory, "*.yml")
       Dir[doc_files].sort.map { |file| parse_documentation(file) }
     end
 
-    def component_in_use(component)
-      true if @limit_to.include?(component)
+    def component_in_use?(component)
+      @limit_to.include?(component)
     end
 
     def fetch_component_doc(id)
