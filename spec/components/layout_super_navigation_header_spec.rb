@@ -173,15 +173,6 @@ describe "Super navigation header", type: :view do
     assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index_section":1,"index_link":16,"index_section_count":3,"index_total":16,"section":"Services and information"}\']'
     assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index_section":2,"index_link":1,"index_section_count":3,"index_total":6,"section":"Government activity"}\']'
     assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index_section":2,"index_link":6,"index_section_count":3,"index_total":6,"section":"Government activity"}\']'
-    form_attributes = {
-      event_name: "search",
-      type: "header menu bar",
-      section: "Search GOV.UK",
-      action: "search",
-      url: "/search/all",
-      index_section: 3,
-      index_section_count: 3,
-    }.to_json
-    assert_select "form[data-ga4-form=\'#{form_attributes}\']"
+    assert_select "form[data-module='ga4-search-tracker']"
   end
 end
