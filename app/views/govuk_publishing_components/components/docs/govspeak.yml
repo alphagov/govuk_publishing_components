@@ -842,12 +842,6 @@ examples:
             The water in the mouth of a blue whale weighs more than its body.
           </p>
         </div>
-  advisory:
-    data:
-      block: |
-        <h3 role="note" aria-label="Important" class="advisory">
-          <span>This is a very important message or warning</span>
-        </h3>
   form_download:
     data:
       block: |
