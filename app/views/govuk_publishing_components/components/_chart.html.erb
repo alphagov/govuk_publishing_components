@@ -3,6 +3,7 @@
   add_gem_component_stylesheet("table")
   add_gem_component_stylesheet("details")
   add_gem_component_stylesheet("heading")
+  add_gem_component_stylesheet("skip-link")
 
   chart_heading ||= nil
   chart_heading_level ||= 2
@@ -43,6 +44,10 @@
   enableInteractivity = false if minimal
   textPosition = nil
   textPosition = 'none' if minimal
+
+  if !minimal && !chart_heading
+    raise ArgumentError, "A chart heading must be provided for accessibility purposes."
+  end
 
   chart_library_options = {
     chartArea: { width: '80%', height: '60%' },
@@ -97,8 +102,14 @@
       <% unless minimal %>
         <div class="govuk-visually-hidden">
           <%= content_tag :div, chart_overview, class: "gem-c-chart__a11y-note-1" if chart_overview %>
-          <%= content_tag :div, t("components.chart.accessibility_html", table_id: table_id), class: "gem-c-chart__a11y-note-2" %>
+          <%= content_tag :div, t("components.chart.accessibility_html"), class: "gem-c-chart__a11y-note-2" %>
         </div>
+        <span class="gem-c-chart__a11y-note-link">
+          <%= render "govuk_publishing_components/components/skip_link", {
+            text: t("components.chart.accessibility_link", chart_heading: chart_heading),
+            href: "##{table_id}"
+          } %>
+        </span>
       <% end %>
 
       <%= line_chart(chart_format_data, library: chart_library_options) %>
@@ -112,6 +123,9 @@
           ) do %>
             <div tabindex="0" class="gem-c-chart__table-wrapper">
               <table class="govuk-table">
+                <caption class="govuk-visually-hidden" id="<%= "data-table-caption-#{SecureRandom.hex(4)}" %>">
+                  <%= t("components.chart.accessibility_heading", chart_heading: chart_heading) %>
+                </caption>
                 <% if table_direction == "horizontal" %>
                   <thead class="govuk-table__head">
                     <tr class="govuk-table__row">

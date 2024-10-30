@@ -47,3 +47,18 @@
     padding: 0 govuk-spacing(4);
   }
 }
+
+.gem-c-chart .gem-c-chart__a11y-note-link {
+  display: none;
+  margin-bottom: govuk-spacing(2);
+}
+
+.js-enabled {
+  .gem-c-chart .gem-c-chart__a11y-note-link {
+    display: inline;
+  }
+
+  .gem-c-chart .gem-c-chart__a11y-note-link:focus-within {
+    display: inline-block;
+  }
+}
