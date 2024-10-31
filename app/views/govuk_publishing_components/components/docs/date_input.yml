@@ -1,5 +1,6 @@
 name: Form date input
 description: Use the date input component to help users enter a memorable date or one they can easily look up.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   Inputs in the component must:
 
