@@ -13,6 +13,7 @@ module GovukPublishingComponents
         check_open_is_valid(@options[:open]) if @options.include?(:open)
         check_hidden_is_valid(@options[:hidden]) if @options.include?(:hidden)
         check_tabindex_is_valid(@options[:tabindex]) if @options.include?(:tabindex)
+        check_dir_is_valid(@options[:dir]) if @options.include?(:dir)
       end
 
       def all_attributes
@@ -27,6 +28,7 @@ module GovukPublishingComponents
         attributes[:open] = @options[:open] unless @options[:open].blank?
         attributes[:hidden] = @options[:hidden] unless @options[:hidden].nil?
         attributes[:tabindex] = @options[:tabindex] unless @options[:tabindex].blank?
+        attributes[:dir] = @options[:dir] unless @options[:dir].blank?
 
         attributes
       end
@@ -74,6 +76,11 @@ module GovukPublishingComponents
       def set_tabindex(tabindex_attribute)
         check_tabindex_is_valid(tabindex_attribute)
         @options[:tabindex] = tabindex_attribute
+      end
+
+      def set_dir(dir_attribute)
+        check_dir_is_valid(dir_attribute)
+        @options[:dir] = dir_attribute
       end
 
     private
@@ -160,6 +167,15 @@ module GovukPublishingComponents
 
         unless /^-?[0-9]+$/.match?(tabindex_attribute)
           raise(ArgumentError, "tabindex_attribute attribute (#{tabindex_attribute}) is not recognised")
+        end
+      end
+
+      def check_dir_is_valid(dir_attribute)
+        return if dir_attribute.nil?
+
+        options = %w[ltr rtl auto]
+        unless options.include? dir_attribute
+          raise(ArgumentError, "dir attribute (#{dir_attribute}) is not recognised")
         end
       end
 
