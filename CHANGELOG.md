@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Chart component accessibility improvements ([PR #4344](https://github.com/alphagov/govuk_publishing_components/pull/4344))
+* Add new custom analytics tracker for search and use in layout super nav header ([PR #4354](https://github.com/alphagov/govuk_publishing_components/pull/4354))
 
 ## 44.9.1
 

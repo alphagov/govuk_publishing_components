@@ -43,6 +43,10 @@ The [print intent tracker](trackers/ga4-print-intent-tracker.md) tracks if the p
 
 The [scroll tracker](trackers/ga4-scroll-tracker.md) tracks how much of a page has been viewed.
 
+## Search tracker
+
+The [search tracker](trackers/ga4-search-tracker.md) tracks user interaction with site search boxes in the header, on the homepage, and on the "all content" finder.
+
 ## Smart answer results tracker
 
 The [smart answer results tracker](trackers/ga4-smart-answer-results-tracker.md) has been built specifically to track the Cost of Living smart answer.
