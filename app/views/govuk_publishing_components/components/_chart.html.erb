@@ -14,6 +14,7 @@
   keys ||= []
   chart_overview ||= nil
   minimal ||= false
+  hide_heading ||= minimal
   hide_legend ||= minimal
   link ||= false
   height ||= 400
@@ -87,7 +88,7 @@
 <% if rows.length > 0 && keys.length > 0 %>
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" if @external_script[:loaded] == 1 %>
   <%= tag.div(**component_helper.all_attributes) do %>
-    <% if chart_heading && !minimal %>
+    <% if chart_heading && !hide_heading %>
       <div class="gem-c-chart__header">
         <%= render "govuk_publishing_components/components/heading", {
           text: chart_heading,

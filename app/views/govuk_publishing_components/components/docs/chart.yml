@@ -362,4 +362,40 @@ examples:
             - 118
             - 85
             - 80
+  with_hidden_heading:
+    description: |
+      The heading element is optional, allowing a heading to be set outside the component. Hiding the heading doesn't remove the need to populate `chart_heading` with text, as `chart_heading` is needed for accessibility.
+    data:
+      chart_heading: Page views
+      hide_heading: true
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This is a graph of views per day
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+        - 4th
+        - 5th
+        - 6th
+        - 7th
+      rows:
+        - label: January 2015
+          values:
+            - 5
+            - 119
+            - 74
+            - 117
+            - 33
+            - 89
+            - 79
+        - label: January 2016
+          values:
+            - 3
+            - 8
+            - 37
+            - 82
+            - 118
+            - 85
+            - 80
 

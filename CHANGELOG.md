@@ -7,7 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-# 44.10.0
+## Unreleased
+
+* Extend chart component to allow headings to be removed from the DOM ([PR #4362](https://github.com/alphagov/govuk_publishing_components/pull/4362))
+
+## 44.10.0
 
 * Chart component accessibility improvements ([PR #4344](https://github.com/alphagov/govuk_publishing_components/pull/4344))
 * Add new custom analytics tracker for search and use in layout super nav header ([PR #4354](https://github.com/alphagov/govuk_publishing_components/pull/4354))

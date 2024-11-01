@@ -85,6 +85,14 @@ describe "Chart", type: :view do
     assert_select "h4.gem-c-heading", text: "hello"
   end
 
+  it "can be rendered without a visible heading" do
+    data[:hide_heading] = true
+    render_component(data)
+
+    assert_select ".gem-c-chart__header", false
+    assert_select "h2.gem-c-heading", false
+  end
+
   it "can include an overview" do
     overview = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
     data[:chart_overview] = overview
