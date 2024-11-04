@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add the component wrapper to the lead paragraph component ([PR #4434](https://github.com/alphagov/govuk_publishing_components/pull/4434))
+* Add component wrapper helper to label component ([PR #4364](https://github.com/alphagov/govuk_publishing_components/pull/4364))
 
 ## 45.7.0
 
