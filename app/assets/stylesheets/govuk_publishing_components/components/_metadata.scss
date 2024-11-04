@@ -17,6 +17,7 @@
   }
 }
 
+.direction-rtl .gem-c-metadata,
 .gem-c-metadata.direction-rtl {
   direction: rtl;
   text-align: start;
@@ -59,9 +60,10 @@
   }
 }
 
+.direction-rtl .gem-c-metadata .gem-c-metadata__term,
 .gem-c-metadata.direction-rtl .gem-c-metadata__term {
-  float: right;
-  clear: right;
+  float: inline-start;
+  clear: inline-start;
 
   @include govuk-media-query($from: tablet) {
     padding-left: govuk-spacing(1);
@@ -79,8 +81,9 @@
   }
 }
 
+.direction-rtl .gem-c-metadata .gem-c-metadata__definition,
 .gem-c-metadata.direction-rtl .gem-c-metadata__definition {
-  float: right;
+  float: inline-start;
 }
 
 .gem-c-metadata__toggle-wrap {
