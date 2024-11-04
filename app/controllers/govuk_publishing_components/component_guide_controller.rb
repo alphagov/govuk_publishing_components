@@ -9,10 +9,10 @@ module GovukPublishingComponents
       @component_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
       @component_docs = component_docs.all
       @gem_component_docs = gem_component_docs.all
-      @components_in_use_docs = components_in_use_docs.used_in_this_app
+      @used_components = used_components_names.get_component_docs
+      @unused_components = unused_components_names.get_component_docs
       @components_in_use_sass = components_in_use_sass
       @components_in_use_js = components_in_use_js
-      @components_not_in_use_docs = components_not_in_use_docs.not_used_in_this_app
     end
 
     def show
@@ -48,7 +48,7 @@ module GovukPublishingComponents
       additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
       additional_files << "@import 'govuk_publishing_components/component_support';\n"
 
-      components = find_all_partials_in(components_in_use)
+      components = find_all_partials_in(get_used_component_names)
 
       components.map { |component|
         "@import 'govuk_publishing_components/components/#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"))
@@ -58,7 +58,7 @@ module GovukPublishingComponents
     def components_in_use_js
       additional_files = "//= require govuk_publishing_components/lib\n"
 
-      components = find_all_partials_in(components_in_use)
+      components = find_all_partials_in(get_used_component_names)
 
       components.map { |component|
         "//= require govuk_publishing_components/components/#{component.gsub('_', '-')}" if component_has_js_file(component.gsub("_", "-"))
@@ -75,15 +75,15 @@ module GovukPublishingComponents
       @gem_component_docs ||= ComponentDocs.new(gem_components: true)
     end
 
-    def components_in_use_docs
-      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
+    def used_components_names
+      @used_components_names ||= ComponentDocs.new(gem_components: true, limit_to: get_used_component_names)
     end
 
-    def components_not_in_use_docs
-      @components_not_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
+    def unused_components_names
+      @unused_components_names ||= ComponentDocs.new(gem_components: true, limit_to: get_unused_component_names)
     end
 
-    def components_in_use
+    def get_used_component_names
       matches = []
 
       files = Dir["#{@application_path}/app/views/**/*.erb"]
@@ -96,6 +96,11 @@ module GovukPublishingComponents
       end
 
       matches.flatten.uniq.map(&:to_s).sort
+    end
+
+    def get_unused_component_names
+      all_components = ComponentDocs.new(gem_components: true).all.map(&:id)
+      all_components - get_used_component_names
     end
 
     def find_all_partials_in(templates)

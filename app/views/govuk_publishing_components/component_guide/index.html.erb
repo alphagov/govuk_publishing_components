@@ -28,7 +28,7 @@
     <% end %>
   </ul>
 
-  <h2 class="component-doc-h2">Gem components used by this app (<%= @components_in_use_docs.length %>)</h2>
+  <h2 class="component-doc-h2">Gem components used by this app (<%= @used_components.length %>)</h2>
 
   <%= render "govuk_publishing_components/components/details", {
     title: "Suggested imports for this application"
@@ -53,7 +53,7 @@
 </pre>
 
   <ul class="component-list">
-    <% @components_in_use_docs.each do |component_doc| %>
+    <% @used_components.each do |component_doc| %>
       <li>
         <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
         <p>
@@ -63,9 +63,9 @@
     <% end %>
   </ul>
 
-  <h2 class="component-doc-h2">Gem components not used by this app (<%= @components_not_in_use_docs.length %>)</h2>
+  <h2 class="component-doc-h2">Gem components not used by this app (<%= @unused_components.length %>)</h2>
   <ul class="component-list">
-    <% @components_not_in_use_docs.each do |component_doc| %>
+    <% @unused_components.each do |component_doc| %>
       <li>
         <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
         <p>
