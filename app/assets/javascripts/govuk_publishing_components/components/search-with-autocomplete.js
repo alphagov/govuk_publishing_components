@@ -87,13 +87,31 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       url.searchParams.set('q', query)
       fetch(url, { headers: { Accept: 'application/json' } })
         .then(response => response.json())
-        .then((data) => { populateResults(data[this.sourceKey]) })
+        .then((data) => {
+          const results = data[this.sourceKey]
+
+          this.setTrackingAttributes(query, results)
+          populateResults(results)
+        })
         .catch(() => { populateResults([]) })
+    }
+
+    // Set tracking attributes on the input field. These can be used by the containing form's
+    // analytics module to track the user's interaction with the autocomplete component.
+    setTrackingAttributes (query, results) {
+      const formattedResults = results.slice(0, 5).join('|')
+
+      this.$autocompleteInput.dataset.autocompleteTriggerInput = query
+      this.$autocompleteInput.dataset.autocompleteSuggestions = formattedResults
+      this.$autocompleteInput.dataset.autocompleteSuggestionsCount = results.length
+      this.$autocompleteInput.dataset.autocompleteAccepted = false
     }
 
     // Callback used by accessible-autocomplete to submit the containing form when a suggestion is
     // confirmed by the user (e.g. by pressing Enter or clicking on it)
     submitContainingForm (value) {
+      this.$autocompleteInput.dataset.autocompleteAccepted = true
+
       if (this.$form) {
         // The accessible-autocomplete component calls this callback _before_ it updates its
         // internal state, so the value of the input field is not yet updated when this callback is
