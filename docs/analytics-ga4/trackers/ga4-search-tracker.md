@@ -29,3 +29,5 @@ When the form is submitted, a `search` event with the will be tracked containing
 - the type, URL, section, index section, and index section count fields based on the data attributes
   outlined above
 - the state (text) of the search field contained within
+- information about the user's interaction with autocomplete (if present), based on attributes set
+  by the `search_with_autocomplete` component

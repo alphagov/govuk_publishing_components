@@ -106,6 +106,45 @@ describe('Google Analytics search tracking', () => {
 
       expect(sendSpy).not.toHaveBeenCalled()
     })
+
+    it('includes autocomplete information if present', () => {
+      input.dataset.autocompleteTriggerInput = 'i want to'
+      input.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
+      input.dataset.autocompleteSuggestionsCount = '3'
+      input.dataset.autocompleteAccepted = 'true'
+
+      input.value = 'i want to fish'
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'search',
+          type: 'site search',
+          section: 'section',
+          url: '/search',
+          index_section: '19',
+          index_section_count: '89',
+          text: 'i want to fish',
+          tool_name: 'autocomplete',
+          length: 3,
+          autocomplete_input: 'i want to',
+          autocomplete_suggestions: 'i want to fish|i want to dance|i want to sleep'
+        },
+        'event_data'
+      )
+    })
+
+    it('does not set tool_name if the user has not accepted a suggestion', () => {
+      input.dataset.autocompleteTriggerInput = 'i want to'
+      input.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
+      input.dataset.autocompleteSuggestionsCount = '3'
+
+      input.value = 'i want to fish'
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy.calls.mostRecent().args[0].tool_name).toBeUndefined()
+    })
   })
 
   describe('when the input is originally empty', () => {
