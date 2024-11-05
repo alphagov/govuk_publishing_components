@@ -37,9 +37,11 @@
   hint_id = "hint-#{SecureRandom.hex(4)}" if hint
   error_id = "error-#{SecureRandom.hex(4)}"
 
-  form_group_css_classes = %w(govuk-form-group)
-  form_group_css_classes << "govuk-form-group--error" if has_error
-  form_group_css_classes << shared_helper.get_margin_bottom
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("govuk-form-group")
+  component_helper.add_class("govuk-form-group--error") if has_error
+  component_helper.add_class(shared_helper.get_margin_bottom)
+  component_helper.set_id(id)
 
   radio_classes = %w(govuk-radios)
   radio_classes << "govuk-radios--small" if small
@@ -54,7 +56,7 @@
   # check if any item is set as being conditional
   has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
 %>
-<%= tag.div id: id, class: form_group_css_classes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": aria do %>
     <% if heading.present? %>
       <%= tag.legend class: legend_classes do %>

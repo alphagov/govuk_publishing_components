@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add component wrapper helper to radio component ([PR #4366](https://github.com/alphagov/govuk_publishing_components/pull/4366))
+
 ## 45.1.0
 
 * Add GA4 tracking for search autocomplete ([PR #4371](https://github.com/alphagov/govuk_publishing_components/pull/4371))

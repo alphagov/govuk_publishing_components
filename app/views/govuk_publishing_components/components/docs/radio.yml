@@ -4,6 +4,7 @@ body: |
   You can also use 'or' as an item to break up radios.
 
   If JavaScript is disabled a conditionally revealed content expands fully. All of the functionality (including aria attributes) are added using JavaScript.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   Radio buttons should
 
