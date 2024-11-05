@@ -251,6 +251,49 @@ Print styles should be included in the main stylesheet for a component, using th
 }
 ```
 
+### Print style conventions
+
+Ensure that colours are reset to black using the print specific variable `$govuk-print-text-colour`, for example:
+
+- Text: `color: $govuk-print-text-colour;`
+- Borders: `border-color: $govuk-print-text-colour;`
+
+Some elements such as background images do not print by default in most browsers. To force these to print as intended, use the CSS property `print-color-adjust`, for example:
+```
+  .gem-c-organisation-logo__container {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+```
+
+### Print styles helpers
+
+There are currently three helper classes available for controlling print output in [`_print_support.scss`](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/lib/_print_support.scss). These helper classes should be added to a component's view template in the appropriate places.
+
+#### Full page width columns
+
+**`.gem-print-columns-none`**
+
+A helper class for removing column layouts when printing. This should be applied to row/column layouts, by adding the class to elements with a `govuk-grid-row` class. The columns will then print at the full width of the page.
+
+Note that only the immediate child columns will be affected. If a child column also contains a row/column layout of further elements, these will be unaffected and will retain their existing column layout. Use the class again on these nested grids to apply fullwidth column printing if required.
+
+#### Consistent link formatting
+
+**`.gem-c-force-print-link-styles`**
+
+This class ensures that printed links receive consistent formatting. It should be added to any link element that will be printed. Typically this  means applying it to links with the `govuk-link` class.
+
+Links with a `govuk-link` class will display their href when printed. This makes printed links more useful, but uses more space. When adding the `gem-c-force-print-link-styles` class to these links, the following changes are made to the printed output:
+- the link colour is set to black
+- the font size is reduced slighlty
+- the layout of the href is improved by making it a block element and forcing it to display on a new line
+
+**`.gem-c-force-print-link-styles-within`**
+
+This is a variation of the previous class, to be used on parent elements that contain links with the `govuk-link` class. This can be used when the `gem-c-force-print-link-styles` class cannot be applied directly to a link, such as with the [inset_text component](https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_inset_text.html.erb).
+
+
 ### Linting
 
 All stylesheets must be linted according to [the style rules](https://github.com/alphagov/govuk-lint/blob/master/configs/scss_lint/gds-sass-styleguide.yml) in [govuk-lint](https://github.com/alphagov/govuk-lint).
