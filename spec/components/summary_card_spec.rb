@@ -169,4 +169,44 @@ describe "Summary card", type: :view do
 
     assert_select ".govuk-summary-list__row[data-module='something']", text: /One/
   end
+
+  it "appends a no-actions class to rows without actions" do
+    render_component(
+      title: "Title",
+      rows: [
+        {
+          key: "One",
+          value: "Value 1",
+          actions: [
+            {
+              label: "View",
+              href: "#1",
+            },
+          ],
+        },
+        {
+          key: "Two",
+          value: "Value 2",
+        },
+        {
+          key: "Three",
+          value: "Value 3",
+        },
+      ],
+    )
+
+    assert_select ".govuk-summary-list__row", 3
+    assert_select ".govuk-summary-list__row:not(.govuk-summary-list__row--no-actions)", 1
+    assert_select ".govuk-summary-list__row.govuk-summary-list__row--no-actions", 2
+
+    assert_select ".govuk-summary-list__row:not(.govuk-summary-list__row--no-actions) .govuk-summary-list__key", text: "One"
+    assert_select ".govuk-summary-list__row:not(.govuk-summary-list__row--no-actions) .govuk-summary-list__value", text: "Value 1"
+    assert_select '.govuk-summary-list__row:not(.govuk-summary-list__row--no-actions) .govuk-link[href="#1"]', text: "View One"
+
+    assert_select ".govuk-summary-list__row.govuk-summary-list__row--no-actions .govuk-summary-list__key", text: "Two"
+    assert_select ".govuk-summary-list__row.govuk-summary-list__row--no-actions .govuk-summary-list__value", text: "Value 2"
+
+    assert_select ".govuk-summary-list__row.govuk-summary-list__row--no-actions .govuk-summary-list__key", text: "Three"
+    assert_select ".govuk-summary-list__row.govuk-summary-list__row--no-actions .govuk-summary-list__value", text: "Value 3"
+  end
 end

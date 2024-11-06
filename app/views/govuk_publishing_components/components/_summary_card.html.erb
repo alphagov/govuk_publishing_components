@@ -28,7 +28,11 @@
         <%= tag.div class: "govuk-summary-card__content" do %>
           <%= tag.dl class: "govuk-summary-list" do %>
             <% rows.each do |row| %>
-              <%= tag.div class: "govuk-summary-list__row", data: row[:data] do %>
+              <%
+                row_classes = "govuk-summary-list__row"
+                row_classes << " govuk-summary-list__row--no-actions" if row[:actions].blank?
+              %>
+              <%= tag.div class: row_classes, data: row[:data] do %>
                 <%= tag.dt class: "govuk-summary-list__key" do %>
                   <%= row[:key] %>
                 <% end %>
