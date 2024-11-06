@@ -15,6 +15,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       this.sourceUrl = this.$module.getAttribute('data-source-url')
       this.sourceKey = this.$module.getAttribute('data-source-key')
+
+      this.isSubmitting = false
     }
 
     init () {
@@ -28,7 +30,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         confirmOnBlur: false,
         showNoOptionsFound: false,
         source: this.getResults.bind(this),
-        onConfirm: this.submitContainingForm.bind(this),
+        onConfirm: this.onConfirm.bind(this),
         templates: {
           suggestion: this.constructSuggestionHTMLString.bind(this)
         },
@@ -54,6 +56,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$autocompleteInput.setAttribute('type', 'search')
       // Remove the original input from the DOM
       this.$originalInput.parentNode.removeChild(this.$originalInput)
+
+      // The accessible-autocomplete component has an edge case where when the menu is visible, it
+      // prevents default on the Enter key event, even if the user hasn't put keyboard focus on a
+      // suggestion. This results in a scenario where the user types something, does _not_ interact
+      // with the autocomplete menu at all, and then hits Enter to try to submit the form - but it
+      // isn't submitted.
+      //
+      // This manually triggers our form submission logic when the Enter key is pressed as a
+      // workaround (which will do nothing if the form is already in the process of submitting
+      // through `onConfirm` because the user has accepted a suggestion).
+      this.$autocompleteInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') this.submitContainingForm()
+      })
     }
 
     // Callback used by accessible-autocomplete to generate the HTML for each suggestion based on
@@ -109,16 +124,24 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // Callback used by accessible-autocomplete to submit the containing form when a suggestion is
     // confirmed by the user (e.g. by pressing Enter or clicking on it)
-    submitContainingForm (value) {
+    onConfirm (value) {
+      // The accessible-autocomplete component calls this callback _before_ it updates its
+      // internal state, so the value of the input field is not yet updated when this callback is
+      // called. We need to force the value to be updated before submitting the form, but the rest
+      // of the state can catch up later.
+      this.$autocompleteInput.value = value
+
       this.$autocompleteInput.dataset.autocompleteAccepted = true
+      this.submitContainingForm()
+    }
+
+    // Submit the containing form, if one exists and the component is not already in the process of
+    // submitting
+    submitContainingForm () {
+      if (this.isSubmitting) return
+      this.isSubmitting = true
 
       if (this.$form) {
-        // The accessible-autocomplete component calls this callback _before_ it updates its
-        // internal state, so the value of the input field is not yet updated when this callback is
-        // called. We need to force the value to be updated before submitting the form, but the rest
-        // of the state can catch up later.
-        this.$autocompleteInput.value = value
-
         if (this.$form.requestSubmit) {
           this.$form.requestSubmit()
         } else {

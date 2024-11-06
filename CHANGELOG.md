@@ -11,6 +11,7 @@
 
 * Add GA4 tracking for search autocomplete ([PR #4371](https://github.com/alphagov/govuk_publishing_components/pull/4371))
 * Append no-actions class to rows without actions in Summary Cards ([PR #4368](https://github.com/alphagov/govuk_publishing_components/pull/4368))
+* Search with autocomplete: Work around Enter edge case ([PR #4372](https://github.com/alphagov/govuk_publishing_components/pull/4372))
 
 ## 45.0.0
 

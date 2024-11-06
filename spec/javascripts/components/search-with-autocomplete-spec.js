@@ -1,5 +1,5 @@
 /* eslint-env jasmine */
-/* global GOVUK, Event, FormData */
+/* global GOVUK, Event, FormData, KeyboardEvent */
 
 describe('Search with autocomplete component', () => {
   let autocomplete, fixture
@@ -209,11 +209,30 @@ describe('Search with autocomplete component', () => {
     const form = fixture.querySelector('form')
     const submitSpy = spyOn(form, 'requestSubmit')
 
-    autocomplete.submitContainingForm('updated value')
+    autocomplete.onConfirm('updated value')
 
     const formData = new FormData(form)
     expect(formData.get('q')).toEqual('updated value')
     expect(submitSpy).toHaveBeenCalled()
+  })
+
+  it('triggers a requestSubmit if Enter is pressed in the search field to work around library bug', (done) => {
+    const form = fixture.querySelector('form')
+    const input = fixture.querySelector('input')
+    const submitSpy = spyOn(form, 'requestSubmit')
+
+    stubSuccessfulFetch(['i am an undesirable result'])
+    performInput(input, 'i just want to search the old-fashioned way', () => {
+      const enterEvent = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        cancelable: true
+      })
+      input.dispatchEvent(enterEvent)
+
+      expect(submitSpy).toHaveBeenCalled()
+      done()
+    })
   })
 
   describe('analytics data attributes', () => {
