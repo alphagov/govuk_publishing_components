@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Add GA4 tracking for search autocomplete ([PR #4371](https://github.com/alphagov/govuk_publishing_components/pull/4371))
+
 ## 45.0.0
 
 * **BREAKING** Refactor organisation styles and upgrade to govuk-frontend v5.7.1 ([PR #4321](https://github.com/alphagov/govuk_publishing_components/pull/4321))

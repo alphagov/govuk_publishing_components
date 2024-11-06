@@ -36,6 +36,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     trackSearch () {
+      // The original search input may have been removed from the DOM by the autocomplete component
+      // if it is used, so make sure we are tracking the correct input
+      this.$searchInput = this.$module.querySelector('input[type="search"]')
+
       if (this.skipTracking()) return
 
       const data = {
@@ -48,6 +52,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         index_section: this.indexSection,
         index_section_count: this.indexSectionCount,
         text: this.searchTerm()
+      }
+
+      if (this.$searchInput.dataset.autocompleteTriggerInput) {
+        // Only set the tool_name if the autocomplete was accepted, but the other autocomplete
+        // attributes should be included regardless (that way we can differentiate between users
+        // having seen the autocomplete and not used it, and not having seen it at all)
+        if (this.$searchInput.dataset.autocompleteAccepted === 'true') {
+          data.tool_name = 'autocomplete'
+        }
+
+        data.length = Number(this.$searchInput.dataset.autocompleteSuggestionsCount)
+        data.autocomplete_input = this.$searchInput.dataset.autocompleteTriggerInput
+        data.autocomplete_suggestions = this.$searchInput.dataset.autocompleteSuggestions
       }
 
       window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')

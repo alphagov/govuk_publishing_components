@@ -215,4 +215,69 @@ describe('Search with autocomplete component', () => {
     expect(formData.get('q')).toEqual('updated value')
     expect(submitSpy).toHaveBeenCalled()
   })
+
+  describe('analytics data attributes', () => {
+    it('sets data attributes on the input when suggestions are returned', (done) => {
+      const input = fixture.querySelector('input')
+
+      stubSuccessfulFetch([
+        'my favourite song is red',
+        'my favourite song is karma',
+        'my favourite song is death by a thousand cuts'
+      ])
+      performInput(input, 'my favourite song is', () => {
+        expect(input.dataset.autocompleteTriggerInput).toEqual('my favourite song is')
+        expect(input.dataset.autocompleteSuggestions).toEqual(
+          'my favourite song is red|' +
+          'my favourite song is karma|' +
+          'my favourite song is death by a thousand cuts'
+        )
+        expect(input.dataset.autocompleteSuggestionsCount).toEqual('3')
+        expect(input.dataset.autocompleteAccepted).toEqual('false')
+        done()
+      })
+    })
+  })
+
+  it('limits the number of suggestions included in the data to 5', (done) => {
+    const input = fixture.querySelector('input')
+
+    stubSuccessfulFetch([
+      'my favourite album is red',
+      'my favourite album is midnights',
+      'my favourite album is lover',
+      'my favourite album is folklore',
+      'my favourite album is reputation',
+      'my favourite album is 1989'
+    ])
+    performInput(input, 'my favourite album is', () => {
+      expect(input.dataset.autocompleteSuggestions).toEqual(
+        'my favourite album is red|' +
+        'my favourite album is midnights|' +
+        'my favourite album is lover|' +
+        'my favourite album is folklore|' +
+        'my favourite album is reputation'
+      )
+      expect(input.dataset.autocompleteSuggestionsCount).toEqual('6')
+      done()
+    })
+  })
+
+  it('sets autocompleteAccepted when a suggestion is accepted', (done) => {
+    const form = fixture.querySelector('form')
+    const input = fixture.querySelector('input')
+    spyOn(form, 'requestSubmit')
+
+    stubSuccessfulFetch([
+      'my favourite bonus track is message in a bottle',
+      'my favourite bonus track is is it over now'
+    ])
+    performInput(input, 'my favourite bonus track is', () => {
+      const secondOption = fixture.querySelectorAll('.gem-c-search-with-autocomplete__option')[1]
+      secondOption.click()
+
+      expect(input.dataset.autocompleteAccepted).toEqual('true')
+      done()
+    })
+  })
 })
