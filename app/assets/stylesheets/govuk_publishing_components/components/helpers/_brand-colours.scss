@@ -1,21 +1,6 @@
 @mixin organisation-brand-colour {
   @each $organisation in map-keys($govuk-colours-organisations) {
     .brand--#{$organisation} {
-      .brand__color {
-        color: govuk-organisation-colour($organisation);
-
-        &:link,
-        &:visited,
-        &:active {
-          color: govuk-organisation-colour($organisation);
-        }
-
-        &:hover,
-        &:focus {
-          color: $govuk-focus-text-colour;
-        }
-      }
-
       // the & declaration allows border-color to also be applied to the parent
       // element as required by the heading component, adds 2KB to the CSS
       &.brand__border-color,
@@ -32,21 +17,6 @@
 // the "the" prefix was dropped, this is maintained here for backwards
 // compatibility
 .brand--the-office-of-the-leader-of-the-house-of-commons {
-  .brand__color {
-    color: govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons");
-
-    &:link,
-    &:visited,
-    &:active {
-      color: govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons");
-    }
-
-    &:hover,
-    &:focus {
-      color: $govuk-focus-text-colour;
-    }
-  }
-
   &.brand__border-color,
   .brand__border-color {
     border-color: govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons", $contrast-safe: false);
@@ -88,11 +58,9 @@
   }
 }
 
-// new colour for DSIT for use until govuk-frontend#3523 has been released
-
 .brand--department-for-science-innovation-and-technology {
   &.brand__border-color,
   .brand__border-color {
-    border-color: #045f71;
+    border-color: govuk-organisation-colour("department-for-science-innovation-technology", $contrast-safe: false);
   }
 }

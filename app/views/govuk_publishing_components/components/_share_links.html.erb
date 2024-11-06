@@ -11,16 +11,16 @@
   flexbox ||= false
   square_icons ||= false
 
-  brand ||= false
-  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+  black_icons ||= false
+  black_links ||= false
 
   classes = %w(gem-c-share-links govuk-!-display-none-print)
   classes << "gem-c-share-links--stacked" if stacked
   classes << "gem-c-share-links--columns" if columns
   classes << "gem-c-share-links--flexbox" if flexbox
   classes << "gem-c-share-links--square-icons" if square_icons
-
-  classes << brand_helper.brand_class
+  classes << "gem-c-share-links--black-icons" if black_icons
+  classes << "gem-c-share-links--black-links" if black_links
 
   data_attributes ||= {}
   ((data_attributes[:module] ||= "") << " " << "ga4-link-tracker").strip! if track_as_sharing || track_as_follow
@@ -76,7 +76,7 @@
             target: "_blank",
             rel: "noopener noreferrer external",
             data: data_attributes,
-            class: "govuk-link govuk-link--no-underline gem-c-share-links__link #{brand_helper.color_class}" do %>
+            class: "govuk-link govuk-link--no-underline gem-c-share-links__link" do %>
             <span class="gem-c-share-links__link-icon">
               <% if link[:icon] == 'facebook' %>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="0" height="0" class="gem-c-share-links__svg">
