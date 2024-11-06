@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.0.0
 
-* Refactor organisation styles and upgrade to govuk-frontend v5.7.1 ([PR #4321](https://github.com/alphagov/govuk_publishing_components/pull/4321))
+* **BREAKING** Refactor organisation styles and upgrade to govuk-frontend v5.7.1 ([PR #4321](https://github.com/alphagov/govuk_publishing_components/pull/4321))
 
 ## 44.11.0
 
