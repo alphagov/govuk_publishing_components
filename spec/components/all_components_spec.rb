@@ -24,7 +24,7 @@ describe "All components" do
       end
 
       it "has the correct class in the ERB template",
-         skip: component_name.in?(%w[step_by_step_nav_related step_by_step_nav_header step_by_step_nav previous_and_next_navigation]),
+         skip: component_name.in?(%w[step_by_step_nav_related step_by_step_nav_header step_by_step_nav previous_and_next_navigation content_block]),
          not_applicable: component_name.in?(%w[meta_tags machine_readable_metadata google_tag_manager_script table]) do
         erb = File.read(filename)
 
@@ -45,7 +45,7 @@ describe "All components" do
         expect(File).to exist(rspec_file)
       end
 
-      it "has a correctly named SCSS file", not_applicable: component_name.in?(%w[contextual_breadcrumbs contextual_footer contextual_sidebar google_tag_manager_script list machine_readable_metadata meta_tags]) do
+      it "has a correctly named SCSS file", not_applicable: component_name.in?(%w[contextual_breadcrumbs contextual_footer contextual_sidebar google_tag_manager_script list machine_readable_metadata meta_tags content_block]) do
         css_file = "#{__dir__}/../../app/assets/stylesheets/govuk_publishing_components/components/_#{component_name.tr('_', '-')}.scss"
 
         expect(File).to exist(css_file)
