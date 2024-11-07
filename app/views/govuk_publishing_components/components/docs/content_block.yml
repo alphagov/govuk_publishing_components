@@ -1,0 +1,28 @@
+name: Content block
+description: Renders a GOV.UK Content Block
+body: |
+  This allows the rendering of a Content Block generated using the GOV.UK Content Block Manager
+accessibility_criteria: |
+  - text should have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+examples:
+  default:
+    data:
+      document_type: "content_block_email_address"
+      content_id: "47b62ede-c89c-42c5-8c05-9727e7bd16e5"
+      title: "GDS Email Address"
+      details: { email_address: "foo@example.com" }
+    description: "Display an email address content block"
+  email_address:
+    data:
+      document_type: "content_block_email_address"
+      content_id: "47b62ede-c89c-42c5-8c05-9727e7bd16e5"
+      title: "GDS Email Address"
+      details: { email_address: "foo@example.com" }
+    description: "Display an email address content block"
+  contact_block:
+    data:
+      document_type: "contact"
+      content_id: "47b62ede-c89c-42c5-8c05-9727e7bd16e5"
+      title: "Contact us"
+      details: { some: "details" }
+    description: "Display an contact content block"

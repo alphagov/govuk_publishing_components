@@ -1,0 +1,8 @@
+<%=
+  render(
+      "govuk_publishing_components/components/content_blocks/#{document_type}",
+      wrapper_args: { class: "gem-c-content-block", data: { "content-id": content_id, "document-type": document_type } },
+      title:,
+      details:,
+    )
+%>
