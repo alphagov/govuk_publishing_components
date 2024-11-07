@@ -11,6 +11,7 @@
 
 * Add GA4 tracking for search autocomplete ([PR #4371](https://github.com/alphagov/govuk_publishing_components/pull/4371))
 * Append no-actions class to rows without actions in Summary Cards ([PR #4368](https://github.com/alphagov/govuk_publishing_components/pull/4368))
+* Require layout_for_public will not render wrapper unless `for_static: true` is set. ([PR #4255](https://github.com/alphagov/govuk_publishing_components/pull/4255))
 
 ## 45.0.0
 
