@@ -2,9 +2,6 @@
   add_gem_component_stylesheet("error-message")
 
   id ||= "error-message-#{SecureRandom.hex(4)}"
-  classes ||= ''
-  css_classes = %w( gem-c-error-message govuk-error-message )
-  css_classes << classes if classes
   items ||= []
   right_to_left ||= false
 
@@ -12,7 +9,12 @@
     errors = items.map { |item| capture { item[:text] } }
     text = raw(errors.join("<br />"))
   end
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_id(id)
+  component_helper.add_class("gem-c-error-message govuk-error-message")
+  component_helper.set_dir("rtl") if right_to_left
 %>
-<%= tag.p id: id, class: css_classes, dir: right_to_left ? "rtl" : nil do %>
+<%= tag.p(**component_helper.all_attributes) do %>
   <span class="govuk-visually-hidden">Error:</span> <%= text %>
 <% end %>

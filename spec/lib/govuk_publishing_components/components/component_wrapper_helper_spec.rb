@@ -215,6 +215,27 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       expect(component_helper.all_attributes).to eql(expected)
     end
 
+    it "does not accept an invalid dir value" do
+      error = "dir attribute (false) is not recognised"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(dir: "false")
+      }.to raise_error(ArgumentError, error)
+    end
+
+    it "accepts valid dir attribute value" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(dir: "rtl")
+      expected = {
+        dir: "rtl",
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+    end
+
+    it "can set an dir attribute, overriding a passed value" do
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(dir: "rtl")
+      helper.set_dir("ltr")
+      expect(helper.all_attributes[:dir]).to eql("ltr")
+    end
+
     it "can set an hidden attribute, overriding a passed value" do
       helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(hidden: "until-found")
       helper.set_hidden("hidden")

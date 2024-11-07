@@ -10,6 +10,7 @@ accessibility_criteria: |
   - be associated with an input. The `error_message_id` must match the `aria-describedby` property on the input your label is associated with. Note that if `id` is not passed to the component an id will be generated automatically.
 
   If error message is within a label it will be announced in its entirety by screen readers. By associating error messages with inputs using `aria-describedby`, then screen readers will read the label, describe the type of input (eg radio) and then read additional text. It means users of screen readers can scan and skip options as easy as people making choices with sight.
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
