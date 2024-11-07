@@ -28,7 +28,7 @@
   css_classes << "gem-c-action-link--mobile-subtext" if mobile_subtext
   css_classes << shared_helper.get_margin_bottom
 
-  link_classes = %w(govuk-link gem-c-action-link__link gem-print-link)
+  link_classes = %w(govuk-link gem-c-action-link__link gem-c-print-link)
   link_classes << "govuk-link--inverse" if inverse
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
