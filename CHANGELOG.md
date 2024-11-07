@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.1.0
 
 * Add GA4 tracking for search autocomplete ([PR #4371](https://github.com/alphagov/govuk_publishing_components/pull/4371))
 * Append no-actions class to rows without actions in Summary Cards ([PR #4368](https://github.com/alphagov/govuk_publishing_components/pull/4368))
