@@ -22,7 +22,7 @@ module.exports = {
       }
     ],
     // Disallow @debug
-    // https://stylelint.io/user-guide/rules/list/at-rule-disallowed-list/
+    // https://stylelint.io/user-guide/rules/at-rule-disallowed-list/
     // Originates from: https://github.com/alphagov/govuk-frontend/blob/e248b4027102b2684f592a0501630075bdfa1fab/config/.sass-lint.yml#L166
     'at-rule-disallowed-list': ['debug'],
     // https://github.com/stylelint-scss/stylelint-scss/tree/master/src/rules/at-function-pattern
@@ -87,7 +87,7 @@ module.exports = {
     ],
     // Disable @import needing to be first declarations
     // @import has a different usage in SCSS to CSS and may be scoped or follow SCSS conditionals
-    // https://stylelint.io/user-guide/rules/list/no-invalid-position-at-import-rule/
+    // https://stylelint.io/user-guide/rules/no-invalid-position-at-import-rule/
     'no-invalid-position-at-import-rule': null
   }
 }

@@ -6,10 +6,14 @@ List of standard and
 [browser specific](<(https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix)>)
 CSS functions.
 
-Source of data is MDN reference on
-[CSS functions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions)
-and
-[general CSS features](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference).
+Data sources are:
+
+-   MDN reference on
+    [CSS functions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions)
+-   MDN reference on
+    [general CSS features](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference).
+-   MDN
+    [browser compatibility data for CSS functions](https://github.com/mdn/browser-compat-data/tree/main/css/types)
 
 ## Install
 

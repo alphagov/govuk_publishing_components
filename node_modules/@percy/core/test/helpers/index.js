@@ -10,6 +10,7 @@ export function mockfs(initial) {
 
     $bypass: [
       path.resolve(url.fileURLToPath(import.meta.url), '/../../../dom/dist/bundle.js'),
+      path.resolve(url.fileURLToPath(import.meta.url), '../secretPatterns.yml'),
       p => p.includes?.('.local-chromium'),
       ...(initial?.$bypass ?? [])
     ]

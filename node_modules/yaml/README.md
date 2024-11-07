@@ -1,6 +1,6 @@
 # YAML <a href="https://www.npmjs.com/package/yaml"><img align="right" src="https://badge.fury.io/js/yaml.svg" title="npm package" /></a>
 
-`yaml` is a definitive library for [YAML](http://yaml.org/), the human friendly data serialization standard.
+`yaml` is a definitive library for [YAML](https://yaml.org/), the human friendly data serialization standard.
 This library:
 
 - Supports both YAML 1.1 and YAML 1.2 and all common data schemas,
@@ -13,6 +13,10 @@ It has no external dependencies and runs on Node.js as well as modern browsers.
 
 For the purposes of versioning, any changes that break any of the documented endpoints or APIs will be considered semver-major breaking changes.
 Undocumented library internals may change between minor versions, and previous APIs may be deprecated (but not removed).
+
+The minimum supported TypeScript version of the included typings is 3.9;
+for use in earlier versions you may need to set `skipLibCheck: true` in your config.
+This requirement may be updated between minor versions of the library.
 
 For more information, see the project's documentation site: [**eemeli.org/yaml**](https://eemeli.org/yaml/)
 

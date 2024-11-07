@@ -128,7 +128,25 @@ export const api = {
         attributes: body.attributes,
         relationships: body.relationships
       }
-    }]
+    }],
+    '/job_status?sync=true&type=snapshot&id=4567': () => [201, {
+      4567: {
+        status: true,
+        nextPoll: 8,
+        error: null
+      }
+    }],
+    '/snapshots/4567?sync=true&response_format=sync-cli': () => [201, {
+      name: 'test snapshot',
+      diff_ratio: 0
+    }],
+    '/discovery/device-details?build_id=123': () => [201, {
+      data: []
+    }],
+    '/discovery/device-details': () => [201, {
+      data: []
+    }],
+    '/logs': () => [200, 'random_sha']
   },
 
   async mock({ delay = 10 } = {}) {

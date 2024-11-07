@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
- const path = require('path'),
-  jasmineCore = require('../lib/jasmineCore'),
-  Command = require('../lib/command'),
-  jasmineBrowser = require('../index.js');
+const path = require('path');
+const jasmineCore = require('../lib/jasmineCore');
+const Command = require('../lib/command');
+const jasmineBrowser = require('../index.js');
 const UsageError = require('../lib/usage_error');
 
- const command = new Command({
+const command = new Command({
   baseDir: path.resolve(),
   jasmineCore,
   jasmineBrowser,

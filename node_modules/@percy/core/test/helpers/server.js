@@ -22,7 +22,7 @@ export function createTestServer({ default: defaultReply, ...replies }, port = 8
     let pathname = req.url.pathname;
     if (req.url.search) pathname += req.url.search;
     server.requests.push(req.body ? [pathname, req.body] : [pathname]);
-    let reply = replies[req.url.pathname] || defaultReply;
+    let reply = replies[pathname] || defaultReply;
     return reply ? await reply(req, res) : next();
   });
 

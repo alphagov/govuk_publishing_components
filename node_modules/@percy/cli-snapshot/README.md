@@ -208,7 +208,7 @@ static:
   include: **/*.html
   exclude: []
   rewrites: {}
-  overrides: []
+  options: []
 ```
 
 - **base-url** - The base URL path the static site should be served under.
@@ -256,18 +256,18 @@ static:
       /:year: /posts/index-:year.html
   ```
 
-- **overrides** - An array of per-snapshot option overrides.
+- **options** - An array of per-snapshot options.
 
   Just like [page listing options](#page-options), static snapshots may also contain
   per-snapshot configuration options. However, since pages are matched against the `files`
-  option, so are per-snapshot configuration options via an array of `overrides`. If multiple
-  overrides match a snapshot, they will be merged with previously matched overrides.
+  option, so are per-snapshot configuration options via an array of `options`. If multiple
+  options match a snapshot, they will be merged with previously matched options.
 
   ``` yaml
   # .percy.yml
   version: 2
   static:
-    overrides:
+    options:
     - files: /foo-bar.html
       waitForSelector: .is-ready
       execute: |
@@ -277,7 +277,7 @@ static:
 ### Sitemap URL
 
 When providing a sitemap URL, the document must be an XML document. For sitemap URLs the `--include` and
-`--exclude` flags can be used to filter snapshots. With a Percy config file, the `overrides` option
+`--exclude` flags can be used to filter snapshots. With a Percy config file, the `options` option
 is also accepted.
 
 > Tip: Sitemaps can contain **a lot** of URLs, so its best to always start with the `--dry-run` flag
@@ -308,8 +308,8 @@ version: 2
 static:
   include: **/*.html
   exclude: []
-  overrides: []
+  options: []
 ```
 
 See [the corresponding static options](#static-options) for details on `includes`, `excludes`, and
-`overrides` options.
+`options` options.

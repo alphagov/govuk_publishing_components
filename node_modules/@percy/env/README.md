@@ -5,22 +5,22 @@ into a common interface for consumption by `@percy/client`.
 
 ## Supported Environments
 
-- [AppVeyor](https://docs.percy.io/docs/appveyor)
-- [Azure Pipelines](https://docs.percy.io/docs/azure-pipelines)
-- [Bitbucket Pipelines](https://docs.percy.io/docs/bitbucket-pipelines)
-- [Buildkite](https://docs.percy.io/docs/buildkite)
-- [CircleCI](https://docs.percy.io/docs/circleci)
-- [Codeship](https://docs.percy.io/docs/codeship)
+- [AppVeyor](https://www.browserstack.com/docs/percy/ci-cd/appveyor)
+- [Azure Pipelines](https://www.browserstack.com/docs/percy/ci-cd/azure-pipelines)
+- [Bitbucket Pipelines](https://www.browserstack.com/docs/percy/ci-cd/bitbucket-pipeline)
+- [Buildkite](https://www.browserstack.com/docs/percy/ci-cd/buildkite)
+- [CircleCI](https://www.browserstack.com/docs/percy/ci-cd/circleci)
+- [Codeship](https://www.browserstack.com/docs/percy/ci-cd/codeship)
 - [Drone CI](https://docs.percy.io/docs/drone)
-- [GitHub Actions](https://docs.percy.io/docs/github-actions)
-- [GitLab CI](https://docs.percy.io/docs/gitlab-ci)
+- [GitHub Actions](https://www.browserstack.com/docs/percy/ci-cd/github-actions)
+- [GitLab CI](https://www.browserstack.com/docs/percy/ci-cd/gitlab)
 - [Heroku CI](#supported-environments) (needs doc)
-- [Jenkins](https://docs.percy.io/docs/jenkins)
-- [Jenkins PRB](https://docs.percy.io/docs/jenkins)
-- [Netlify](https://docs.percy.io/docs/netlify)
+- [Jenkins](https://www.browserstack.com/docs/percy/ci-cd/jenkins)
+- [Jenkins PRB](https://www.browserstack.com/docs/percy/ci-cd/jenkins)
+- [Netlify](https://www.browserstack.com/docs/percy/ci-cd/netlify)
 - [Probo.CI](#supported-environments) (needs doc)
-- [Semaphore](https://docs.percy.io/docs/semaphore)
-- [Travis CI](https://docs.percy.io/docs/travis-ci)
+- [Semaphore](https://www.browserstack.com/docs/percy/ci-cd/semaphore)
+- [Travis CI](https://www.browserstack.com/docs/percy/ci-cd/travis-ci)
 
 ## Percy Environment Variables
 

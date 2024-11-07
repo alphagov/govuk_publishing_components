@@ -10,6 +10,8 @@ export function mockgit(branch = '') {
       if (!cmd.includes('rev-parse')) return result;
       if (cmd.includes('--abbrev-ref')) return branch;
       return result.match(/^COMMIT_SHA:(.*)$/m)?.[1];
+    } else if (cmd.match(/^pwd\b/) || cmd.match(/^cd\b/)) {
+      return '';
     } else {
       return cp.execSync.and.originalFn.call(this, cmd, options);
     }

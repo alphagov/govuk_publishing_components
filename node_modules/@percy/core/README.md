@@ -280,19 +280,9 @@ environment variable.
 
 ### How to update Chromium revision?
 
-`src/install.js` 
-
-```js
-chromium.revisions = {
-  linux: '.*',
-  win64: '.*',
-  win32: '.*',
-  darwin: '.*',
-  darwinArm: '.*'
-};
-```
-
-Nicely summarised in this [stackoverflow](https://stackoverflow.com/a/56366776) answer.
+- Vist https://chromiumdash.appspot.com/releases?platform=Mac and check for current version in use.
+- Get Branch Base Position for that release.
+- Visit https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Mac/ and search for exact/neareast Branch Base Position.
 
 ### Excerpt
 

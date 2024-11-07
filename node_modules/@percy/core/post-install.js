@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 try {
-  if (process.env.PERCY_POSTINSTALL_BROWSER) {
+  if (!['false', '0', undefined].includes(process.env.PERCY_POSTINSTALL_BROWSER)) {
     // Automatically download and install Chromium if PERCY_POSTINSTALL_BROWSER is set
     await import('./dist/install.js').then(install => install.chromium());
   } else if (!process.send && fs.existsSync('./src')) {
