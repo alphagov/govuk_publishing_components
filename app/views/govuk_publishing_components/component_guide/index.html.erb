@@ -15,8 +15,20 @@
   } %>
 </form>
 
-<% unless ENV["MAIN_COMPONENT_GUIDE"] %>
-  <h2 class="component-doc-h2">Gem components used by this app (<%= @components_in_use_docs.length %>)</h2>
+<% if !ENV["MAIN_COMPONENT_GUIDE"] %>
+  <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
+  <ul class="component-list" id="list-components-in-this-application">
+    <% @component_docs.each do |component_doc| %>
+      <li>
+        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+        <p>
+          <%= component_doc.description %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+
+  <h2 class="component-doc-h2">Gem components used by this app (<%= @used_components.length %>)</h2>
 
   <%= render "govuk_publishing_components/components/details", {
     title: "Suggested imports for this application"
@@ -41,21 +53,7 @@
 </pre>
 
   <ul class="component-list">
-    <% @components_in_use_docs.each do |component_doc| %>
-      <li>
-        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-        <p>
-          <%= component_doc.description %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<% unless ENV["MAIN_COMPONENT_GUIDE"] %>
-  <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
-  <ul class="component-list" id="list-components-in-this-application">
-    <% @component_docs.each do |component_doc| %>
+    <% @used_components.each do |component_doc| %>
       <li>
         <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
         <p>
@@ -65,19 +63,30 @@
     <% end %>
   </ul>
 
-  <h2 class="component-doc-h2">All gem components (<%= @gem_component_docs.length %>)</h2>
-<% end %>
+  <h2 class="component-doc-h2">Gem components not used by this app (<%= @unused_components.length %>)</h2>
+  <ul class="component-list">
+    <% @unused_components.each do |component_doc| %>
+      <li>
+        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+        <p>
+          <%= component_doc.description %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
 
-<ul class="component-list" id="list-all-components-in-the-gem">
-  <% @gem_component_docs.each do |component_doc| %>
-    <li>
-      <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-      <p>
-        <%= component_doc.description %>
-      </p>
-    </li>
-  <% end %>
-</ul>
+<% else %>
+  <ul class="component-list" id="list-all-components-in-the-gem">
+    <% @gem_component_docs.each do |component_doc| %>
+      <li>
+        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+        <p>
+          <%= component_doc.description %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 <div class="component-markdown">
   <p class="govuk-body">If you cannot find a suitable component consider extending an existing component or <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/generate-a-new-component.md">creating a new one</a>.</p>

@@ -53,3 +53,4 @@ jobs:
       - run: yarn run percy exec -- bundle exec rspec --tag visual_regression
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          MAIN_COMPONENT_GUIDE: true
