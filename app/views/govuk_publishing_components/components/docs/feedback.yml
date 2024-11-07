@@ -4,6 +4,7 @@ body: |
   This component is designed to sit at the bottom of pages on GOV.UK to allow users to submit feedback on that page.
 
   This component uses JavaScript for expanding and collapsing and also for submitting form responses. This code is not compatible with Internet Explorer, so IE11 and down do not use JavaScript to submit the forms, instead falling back to a normal form submission.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   The form must:
 
