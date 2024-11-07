@@ -1,6 +1,7 @@
 <%
   add_gem_component_stylesheet("layout-for-public")
 
+  for_static ||= false
   emergency_banner ||= nil
   full_width ||= false
   blue_bar ||= local_assigns.include?(:blue_bar) ? local_assigns[:blue_bar] : !full_width
@@ -160,13 +161,15 @@
       <% end %>
     <% elsif custom_layout %>
       <%= yield %>
-    <% else %>
+    <% elsif for_static %>
       <div id="wrapper" class="<%= "govuk-width-container" unless full_width %>">
         <%= yield :before_content %>
         <main class="govuk-main-wrapper" id="content">
           <%= yield %>
         </main>
       </div>
+    <% else %>
+      <%= yield %>
     <% end %>
 
     <% unless omit_feedback_form %>

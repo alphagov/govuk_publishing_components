@@ -17,9 +17,19 @@ examples:
       title: 'Example layout'
       block: |
         <h1>Page content goes here</h1>
-  full_width:
-    description: By default, the layout applies the `govuk-width-container` class to the main element. We can remove this class by setting `full_width` to `true`
+  with_static_wrapper:
+    description: |
+      By default, the layout does not include the `div#wrapper` element, nor the `main` element within that.
+      This behaviour is peculiar to the one app that currently uses this layout - static. Static now sets the `for_static: true` flag,
+      which causes the wrapper to be included. Other apps in the future will not set that flag, but provide their own wrapper and main elements.
     data:
+      for_static: true
+      block: |
+        <h1>Page content goes here</h1>
+  full_width:
+    description: By default, the layout applies the `govuk-width-container` class to the main element. We can remove this class by setting `full_width` to `true`. Note this also requires the for_static flag, since that is needed for the main element.
+    data:
+      for_static: true
       full_width: true
       block: |
         <h1>Page content goes here</h1>
@@ -30,6 +40,7 @@ examples:
   blue_bar_background:
     description: For use when a page has a heading component with a background colour.
     data:
+      for_static: true
       full_width: true
       blue_bar: true
       blue_bar_background_colour: "no"
