@@ -64,6 +64,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             global_bar: this.getBannerPresence('[data-ga4-global-bar]'),
             query_string: this.getQueryString(),
             search_term: this.getSearchTerm(),
+            tool_name: this.getToolName(),
             spelling_suggestion: this.getMetaContent('spelling-suggestion'),
             discovery_engine_attribution_token: this.getMetaContent('discovery-engine-attribution-token')
           }
@@ -107,6 +108,17 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       searchTerm = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(searchTerm)
 
       return searchTerm
+    },
+
+    getToolName: function () {
+      // This is set by the Ga4SearchTracker module if the user has accepted an autocomplete
+      // suggestion on the search field.
+      if (window.sessionStorage.getItem('searchAutocompleteAccepted')) {
+        // Make sure we clear it again for subsequent page views
+        window.sessionStorage.removeItem('searchAutocompleteAccepted')
+
+        return 'autocomplete'
+      }
     },
 
     getQueryString: function () {

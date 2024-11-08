@@ -61,6 +61,7 @@ describe('Google Tag Manager page view tracking', function () {
         global_bar: undefined,
         query_string: undefined,
         search_term: undefined,
+        tool_name: undefined,
         spelling_suggestion: undefined,
         discovery_engine_attribution_token: undefined
       }
@@ -697,5 +698,23 @@ describe('Google Tag Manager page view tracking', function () {
     expected.page_view.discovery_engine_attribution_token = 'searchyMcSearch'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  describe('tool_name parameter', function () {
+    it('is unset by default', function () {
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+
+      expect(window.dataLayer[0].page_view.tool_name).toBeUndefined()
+    })
+
+    it('is set to "autocomplete" if the user used search autocomplete on the previous page', function () {
+      spyOn(window.sessionStorage, 'getItem').and.callFake(function (key) {
+        return key === 'searchAutocompleteAccepted' ? 'true' : undefined
+      })
+
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+
+      expect(window.dataLayer[0].page_view.tool_name).toEqual('autocomplete')
+    })
   })
 })
