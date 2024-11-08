@@ -2,6 +2,7 @@ name: Layout footer
 description: The footer provides copyright, licensing and other information
 govuk_frontend_components:
   - footer
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   Text and links in the Footer must:
 
