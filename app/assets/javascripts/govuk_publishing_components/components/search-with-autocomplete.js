@@ -28,6 +28,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         defaultValue: this.$originalInput.value,
         cssNamespace: 'gem-c-search-with-autocomplete',
         confirmOnBlur: false,
+        minLength: 3,
         showNoOptionsFound: false,
         source: this.getResults.bind(this),
         onConfirm: this.onConfirm.bind(this),
