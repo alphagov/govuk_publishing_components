@@ -2,7 +2,7 @@
 
 This script is intended for adding GA4 tracking to interactive elements such as buttons or details elements. It depends upon the main GA4 analytics code to function.
 
-## Basic use
+## Basic use (single interactive element)
 
 ```html
 <div data-module="ga4-event-tracker">
@@ -37,6 +37,27 @@ In the example above, the following would be pushed to the dataLayer. Note that 
 ```
 
 The value for `text` will be determined based on the text of the element, or a value can be passed to override this in the `data-ga4-event` attribute.
+
+## Basic use (multiple interactive elements)
+
+To track a group of interactive elements together on the page - such as a button group - the data module can be applied once to the parent element.  
+This approach should only be used in the case that the parent element only contains buttons or similar features as it can lead to double tracking issues if used too broadly, see the next section for how to approach tracking all buttons on a page.
+
+```
+<div class="govuk-button-group" data-module="ga4-event-tracker">
+  <button ...></button>
+  <button ...></button>
+</div>
+```
+
+### Tracking all buttons on a page
+
+[Unlike the link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md#basic-use-multiple-links), it's not advisable to place the event tracker at the top of the page. This is due to the built in tracking for components such as tabs or details. Clicks on the tabs or details components will be tracked both by the `ga4-event-tracker` on the component `div` and the `ga4-event-tracker` at the top of the page. Instead the `ga4-event-tracker` should be limited in scope to the element that needs to be tracked. This can be performed programatically, [as in Whitehall](https://github.com/alphagov/whitehall/blob/main/app/assets/javascripts/admin/analytics-modules/ga4-button-setup.js#L29-L30).
+
+```
+button.dataset.module = 'ga4-event-tracker'
+GOVUK.modules.start(button)
+```
 
 ## Advanced use
 
