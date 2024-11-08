@@ -1,13 +1,14 @@
 <%
   add_gem_component_stylesheet("inverse-header")
 
-  css_classes = []
-  css_classes << " gem-c-inverse-header--full-width" if local_assigns[:full_width]
-  css_classes << " gem-c-inverse-header--padding-top" unless local_assigns[:padding_top].eql?(false)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-inverse-header")
+  component_helper.add_class("gem-c-inverse-header--full-width") if local_assigns[:full_width]
+  component_helper.add_class("gem-c-inverse-header--padding-top") unless local_assigns[:padding_top].eql?(false)
 %>
 <% block = yield %>
 <% unless block.empty? %>
-  <header class="gem-c-inverse-header <%= css_classes.join(' ') %> ">
+  <%= tag.header(**component_helper.all_attributes) do %>
     <%= block %>
-  </header>
+  <% end %>
 <% end %>

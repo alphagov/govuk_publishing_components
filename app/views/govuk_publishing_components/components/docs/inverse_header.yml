@@ -4,6 +4,7 @@ body: |
   This component can be passed a block of template code and will wrap it in a blue header. This is as light-touch as possible and doesn't attempt to deal with the margins and paddings of its content. White text is enforced on content and would need to be overridden where unwanted. Implemented to accommodate topic and list page headings but unopinionated about its contents.
 
   If passing links to the block make sure to add [the inverse modifier](https://design-system.service.gov.uk/styles/typography/#links-on-dark-backgrounds).
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   The component must:
 
