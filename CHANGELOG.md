@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.2.0
 
 * Add component wrapper helper to radio component ([PR #4366](https://github.com/alphagov/govuk_publishing_components/pull/4366))
 * Add component wrapper to feedback component ([PR #4351](https://github.com/alphagov/govuk_publishing_components/pull/4351))
