@@ -29,14 +29,14 @@ describe "Layout for public", type: :view do
     assert_select "title", visible: false, text: "Custom GOV.UK Title"
   end
 
-  it "displays as a restricted width layout by default" do
-    render_component({})
+  it "displays as a restricted width layout when called with the for_static parameter" do
+    render_component(for_static: true)
 
     assert_select "#wrapper.govuk-width-container"
   end
 
-  it "can support full width layouts" do
-    render_component(full_width: true)
+  it "can support full width layouts when called with the for_static parameter" do
+    render_component(for_static: true, full_width: true)
 
     assert_select "#wrapper.govuk-width-container", false, "Should not apply govuk-width-container class when full width"
   end
@@ -327,12 +327,19 @@ describe "Layout for public", type: :view do
     assert page.has_no_selector?(".gem-c-layout-header")
   end
 
-  it "it can render a custom layout instead of the default one" do
+  it "can render a custom layout instead of the default one" do
     render_component({ custom_layout: true }) do
       content_tag(:main, "GOV.UK with a custom layout", id: "custom-layout")
     end
 
     assert_select "main#custom-layout"
+    assert page.has_no_selector?("div#wrapper")
+    assert page.has_no_selector?("main.govuk-main-wrapper")
+  end
+
+  it "renders without the wrapper if for_static is not explictly set to true" do
+    render_component({})
+
     assert page.has_no_selector?("div#wrapper")
     assert page.has_no_selector?("main.govuk-main-wrapper")
   end

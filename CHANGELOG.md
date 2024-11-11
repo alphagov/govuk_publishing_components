@@ -12,6 +12,7 @@
 * Add component wrapper helper to radio component ([PR #4366](https://github.com/alphagov/govuk_publishing_components/pull/4366))
 * Add component wrapper to feedback component ([PR #4351](https://github.com/alphagov/govuk_publishing_components/pull/4351))
 * Add component wrapper helper to error message component ([PR #4359](https://github.com/alphagov/govuk_publishing_components/pull/4359))
+* Require layout_for_public will not render wrapper unless `for_static: true` is set. ([PR #4255](https://github.com/alphagov/govuk_publishing_components/pull/4255))
 
 ## 45.1.0
 
