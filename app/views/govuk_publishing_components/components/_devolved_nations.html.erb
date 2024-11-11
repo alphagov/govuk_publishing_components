@@ -35,7 +35,7 @@
     <% if devolved_nations_helper.nations_with_urls.any? %>
       <%= content_tag :ul, class: "govuk-list govuk-!-margin-top-1 govuk-!-margin-bottom-0" do -%>
         <% devolved_nations_helper.nations_with_urls.each do |k, v| %>
-          <%= content_tag(:li, link_to(devolved_nations_helper.alternative_content_text(k), v[:alternative_url], class: "govuk-link gem-print-link")) %>
+          <%= content_tag(:li, link_to(devolved_nations_helper.alternative_content_text(k), v[:alternative_url], class: "govuk-link gem-c-print-link")) %>
         <% end %>
       <% end %>
     <% end %>

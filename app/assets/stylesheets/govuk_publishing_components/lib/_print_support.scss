@@ -36,13 +36,13 @@
 // to black, reduce the font size, and improve the layout
 // of the printed href.
 //
-// .gem-print-link
+// .gem-c-print-link
 // ----------------------------------------------------------
 // Typically this class will be applied to existing
 // elements that have the `govuk-link` class but it can
 // also be used on other link elements.
 //
-// .gem-print-links-within
+// .gem-c-print-links-within
 // ----------------------------------------------------------
 // A variation of the previous print style, to be used on
 // parent elements that contain links with the `govuk-link`
@@ -52,8 +52,8 @@
 
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
-  .gem-print-link,
-  .gem-print-links-within .govuk-link {
+  .gem-c-print-link,
+  .gem-c-print-links-within .govuk-link {
     &,
     &:link,
     &:visited {

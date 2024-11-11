@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Rename gem-print-link and gem-print-links-within ([PR #4375](https://github.com/alphagov/govuk_publishing_components/pull/4375))
+
 ## 45.2.0
 
 * Add component wrapper helper to radio component ([PR #4366](https://github.com/alphagov/govuk_publishing_components/pull/4366))
