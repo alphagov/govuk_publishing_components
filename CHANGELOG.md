@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add component wrapper to the inset text component ([PR #4387](https://github.com/alphagov/govuk_publishing_components/pull/4387))
 * Rename gem-print-link and gem-print-links-within ([PR #4375](https://github.com/alphagov/govuk_publishing_components/pull/4375))
 
 ## 45.2.0

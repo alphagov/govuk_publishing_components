@@ -2,6 +2,7 @@ name: Inset text
 description: Use the inset text component to differentiate a block of text from the content that surrounds it.
 govuk_frontend_components:
   - inset-text
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   All text must have a contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
 examples:
