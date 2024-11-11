@@ -33,6 +33,10 @@
 .gem-c-metadata--inverse-padded {
   padding: govuk-spacing(2);
 
+  .gem-c-metadata__title {
+    padding: 0 govuk-spacing(3);
+  }
+
   .gem-c-metadata__list {
     margin: govuk-spacing(2);
 

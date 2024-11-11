@@ -1,6 +1,8 @@
 <%
   add_gem_component_stylesheet("metadata")
 
+  title ||= ""
+
   from ||= []
   from = Array(from)
 
@@ -34,6 +36,16 @@
   }.to_json unless disable_ga4
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle metadata" } do %>
+  <% if title.present? %>
+    <%= content_tag :div, class: "gem-c-metadata__title" do %>
+      <%= render "govuk_publishing_components/components/heading", {
+        text: sanitize(title),
+        font_size: "m",
+        inverse:,
+        margin_bottom: 0,
+      } %>
+    <% end %>
+  <% end %>
   <dl class="gem-c-metadata__list">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
