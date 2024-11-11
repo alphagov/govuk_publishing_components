@@ -31,3 +31,20 @@
     break-inside: avoid;
   }
 }
+
+.gem-c-govspeak__youtube-placeholder {
+  position: relative;
+  padding: govuk-spacing(6);
+  padding-bottom: govuk-spacing(8);
+  background: govuk-colour("light-grey");
+  border: solid 2px $govuk-border-colour;
+}
+
+.gem-c-govspeak__youtube-placeholder-text {
+  display: block;
+  margin-bottom: govuk-spacing(2);
+}
+
+.gem-c-govspeak__youtube-placeholder-link {
+  display: none;
+}
