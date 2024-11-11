@@ -5,6 +5,7 @@ body: |
   staging or production).
 govuk_frontend_components:
   - header
+uses_component_wrapper_helper: true
 accessibility_excluded_rules:
   - landmark-banner-is-top-level # The header element can not be top level in the examples
   - duplicate-id # IDs will be duplicated in component examples list
