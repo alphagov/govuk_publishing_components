@@ -1,0 +1,48 @@
+name: Add another (experimental)
+description: |
+  The "add another" component lets users input multiple values for a set of form
+  fields.
+body: |
+  This component is currently experimental because more research is needed to
+  validate it.
+  
+  Applications using this component must include a deletion checkbox in addtion
+  to the rendered repeating items as well as an empty field. The checkboxes and
+  empty field are required to allow users without javascript to add new items
+  and remove existing items from the list. See the examples below for how to do
+  this.
+
+  The example here passes HTML in to the component due to limitations in the
+  format of this documentation. In applications it is expected that the caller
+  will render other components instead. See Whitehall for
+  [examples of this approach](https://github.com/alphagov/whitehall/pull/9644).
+
+accessibility_criteria: |
+  The form controls within the fieldsets must be fully accessible as per the
+  design system guidance for each of the form control components.
+uses_component_wrapper_helper: false
+govuk_frontend_components:
+  - button
+examples:
+  default:
+    data:
+      fieldset_legend: "Person"
+      add_button_text: "Add another person"
+      items:
+        - fields: >
+            <div class="govuk-form-group">
+              <label for="person_0_name" class="gem-c-label govuk-label">Full name</label>
+              <input class="gem-c-input govuk-input" id="person_0_name" name="person[0]name">
+            </div>
+          destroy_checkbox: >
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes" data-govuk-checkboxes-init="">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="person[0][_destroy]" id="person_0__destroy" class="govuk-checkboxes__input">
+                <label for="person_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+              </div>
+            </div>
+      empty:
+        <div class="govuk-form-group">
+          <label for="person_1_name" class="gem-c-label govuk-label">Full name</label>
+          <input class="gem-c-input govuk-input" id="person_1_name" name="person[1]name">
+        </div>
