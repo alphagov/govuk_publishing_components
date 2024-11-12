@@ -1,0 +1,74 @@
+name: Add another (experimental)
+description: The "add another" component lets users input multiple values for a set of form fields.
+body: |
+  This component is currently experimental because more research is needed to validate it.
+  
+  The component provides a fragment-based approach to enable the user to control the rendering of the fieldset removal button.
+  Applications using this component must render a removal button for each repeating fieldset inside the main component block.
+  The button should submit the form, which should result in the page reloading without the removed fieldset.
+
+accessibility_criteria: |
+  The form controls within the fieldsets must be fully accessible as per the design system guidance for each of the form
+  control components.
+
+  When JavaScript is unavailable, the consuming application must:
+
+    * reload the page with an additional fieldset available on the form after the add another button is clicked
+    * reload the page with the specified fieldset removed from the form after a remove button is clicked
+uses_component_wrapper_helper: false
+govuk_frontend_components:
+  - button
+examples:
+  default:
+    data:
+      block: |
+        <%= render "govuk_publishing_components/components/fieldset", {
+            legend_text: "Contact"
+        } do %>
+          <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Name"
+            },
+            name: "contact[0][name]"
+          } %>
+            <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Phone"
+            },
+            name: "contact[0][phone]"
+          } %>
+            <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Email"
+            },
+            name: "contact[0][email]"
+          } %>
+        <% end %>
+        <%= render "govuk_publishing_components/components/add_another/remove_button", { margin_bottom: 6 } %>
+  with_custom_button_text:
+    data:
+      add_button_text: "Add another contact"
+      block: |
+        <%= render "govuk_publishing_components/components/fieldset", {
+            legend_text: "Contact"
+        } do %>
+          <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Name"
+            },
+            name: "contact[0][name]"
+          } %>
+            <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Phone"
+            },
+            name: "contact[0][phone]"
+          } %>
+            <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Email"
+            },
+            name: "contact[0][email]"
+          } %>
+        <% end %>
+        <%= render "govuk_publishing_components/components/add_another/remove_button", { margin_bottom: 6 } %>

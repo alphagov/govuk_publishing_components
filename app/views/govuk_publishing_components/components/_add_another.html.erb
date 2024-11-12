@@ -1,0 +1,10 @@
+<%
+  add_button_text ||= "Add another"
+%>
+
+<div data-module="add-another" class="gem-c-add-another">
+  <div class="gem-c-add-another__repeated-fields js-add-another__repeated-fields">
+    <%= yield %>
+  </div>
+  <%= render 'govuk_publishing_components/components/add_another/add_button', add_button_text: add_button_text %>
+</div>

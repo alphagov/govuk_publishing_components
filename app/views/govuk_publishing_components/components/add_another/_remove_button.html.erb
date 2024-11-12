@@ -1,0 +1,11 @@
+<%
+  margin_bottom ||= 0
+%>
+
+<%= render "govuk_publishing_components/components/button", {
+  text: "Delete",
+  classes: 'js-add-another__remove-button',
+  type: 'submit',
+  margin_bottom: margin_bottom,
+  destructive: true,
+} %>
