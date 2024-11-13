@@ -29,7 +29,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4EventTracker.prototype.trackClick = function (event) {
-    if (event.tracked) return
     var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
     if (target) {
       try {
@@ -77,7 +76,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
       window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
-      event.tracked = true
     }
   }
 
