@@ -135,6 +135,36 @@ describe('Google Analytics event tracker', function () {
     })
   })
 
+  describe('doing simple tracking on a nested tracked elements', function () {
+    var child
+
+    beforeEach(function () {
+      element.setAttribute('data-ga4-event', JSON.stringify({}))
+      child = document.createElement('div')
+      child.setAttribute('data-ga4-event', JSON.stringify({}))
+      element.appendChild(child)
+      document.body.appendChild(element)
+      new GOVUK.Modules.Ga4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(child).init()
+    })
+
+    it('pushes a single event when the parent is clicked', function () {
+      element.click()
+      expect(window.dataLayer.length).toEqual(1)
+    })
+
+    it('pushes a single event when the child is clicked', function () {
+      child.click()
+      expect(window.dataLayer.length).toEqual(1)
+    })
+
+    it('pushes two events when the child is clicked twice', function () {
+      child.click()
+      child.click()
+      expect(window.dataLayer.length).toEqual(2)
+    })
+  })
+
   describe('doing tracking on the text of the element', function () {
     var attributes
 
