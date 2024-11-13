@@ -46,8 +46,15 @@ examples:
       - <a href='/government/topics/environment'>Environment</a>
       other:
         Related topics:
-        - <a href='/government/topics/arts-and-culture'>Arts and culture</a>
-        - <a href='/government/topics/sports-and-leisure'>Sports and leisure</a>
+        - <a href='/government/topics/topic-1'>Topic 1</a>
+        - <a href='/government/topics/topic-2'>Topic 2</a>
+        - <a href='/government/topics/topic-3'>Topic 3</a>
+        - <a href='/government/topics/topic-4'>Topic 4</a>
+        - <a href='/government/topics/topic-5'>Topic 5</a>
+        - <a href='/government/topics/topic-6'>Topic 6</a>
+        - <a href='/government/topics/topic-7'>Topic 7</a>
+        - <a href='/government/topics/topic-8'>Topic 8</a>
+        - <a href='/government/topics/topic-9'>Topic 9</a>
         Applies to: England
   extensive_specialist_document:
     data:
