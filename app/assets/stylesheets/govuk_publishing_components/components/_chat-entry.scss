@@ -3,6 +3,8 @@
 .gem-c-chat-entry {
   display: flex;
   align-items: flex-start;
+  background-color: govuk-tint(govuk-colour("blue"), 90%);
+  padding: govuk-spacing(4);
 }
 
 .gem-c-chat-entry--border-top {
@@ -17,14 +19,9 @@
 
 .gem-c-chat-entry__image {
   flex-shrink: 0;
-  height: 104px;
+  height: 40px;
   margin-right: govuk-spacing(3);
-  width: 104px;
-
-  @include govuk-media-query($from: tablet) {
-    height: 80px;
-    width: 80px;
-  }
+  width: 40px;
 }
 
 .gem-c-chat-entry__heading {

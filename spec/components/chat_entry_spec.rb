@@ -9,8 +9,8 @@ describe "Chat entry", type: :view do
     render_component({})
 
     assert_select ".gem-c-chat-entry"
-    assert_select "h2.gem-c-chat-entry__heading [href]", href: "/chat", text: "Try GOV.UK Chat"
-    assert_select ".gem-c-chat-entry__description .govuk-body", text: "Sign up to GOV.UK’s experimental new AI tool and find answers to your business questions"
+    assert_select "h2.gem-c-chat-entry__heading [href]", href: "/chat", text: "Ask GOV.UK Chat"
+    assert_select ".gem-c-chat-entry__description .govuk-body", text: "Get quick, tailored answers to your business questions with GOV.UK’s new AI tool"
   end
 
   it "renders the chat entry component with a custom href, heading and description" do
@@ -30,7 +30,7 @@ describe "Chat entry", type: :view do
       heading_level: 3,
     })
 
-    assert_select "h3.gem-c-chat-entry__heading [href]", href: "/chat", text: "Try GOV.UK Chat"
+    assert_select "h3.gem-c-chat-entry__heading [href]", href: "/chat", text: "Ask GOV.UK Chat"
   end
 
   it "renders the chat entry component with a border top" do
