@@ -14,9 +14,9 @@
   component_helper.add_class("govuk-tabs gem-c-tabs")
   component_helper.add_data_attribute({ module: "govuk-tabs" }) unless as_links
 
+  tracking_module = ""
   unless disable_ga4
-    component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless as_links
-    component_helper.add_data_attribute({ module: "ga4-link-tracker" }) if as_links
+    tracking_module = as_links ? "ga4-link-tracker" : "ga4-event-tracker"
   end
 %>
 <% if tabs.count > 1 %>
@@ -24,7 +24,7 @@
     <h2 class="govuk-tabs__title">
       <%= t("components.tabs.contents") %>
     </h2>
-    <ul class="govuk-tabs__list">
+    <ul class="govuk-tabs__list" data-module="<%= tracking_module %>">
       <% tabs.each_with_index do |tab, index| %>
       <li class="govuk-tabs__list-item <%= "govuk-tabs__list-item--selected" if tab[:active] %>">
         <%
