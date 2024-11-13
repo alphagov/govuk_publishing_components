@@ -114,10 +114,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // Set tracking attributes on the input field. These can be used by the containing form's
     // analytics module to track the user's interaction with the autocomplete component.
     setTrackingAttributes (query, results) {
-      const formattedResults = results.slice(0, 5).join('|')
+      // Only set the suggestions attribute when results actually come back (so this attribute
+      // tracks the last seen non-empty suggestions, even if the user then amends their query to one
+      // that doesn't generate any)
+      if (results.length > 0) {
+        const formattedResults = results.slice(0, 5).join('|')
+        this.$autocompleteInput.dataset.autocompleteSuggestions = formattedResults
+      }
 
       this.$autocompleteInput.dataset.autocompleteTriggerInput = query
-      this.$autocompleteInput.dataset.autocompleteSuggestions = formattedResults
       this.$autocompleteInput.dataset.autocompleteSuggestionsCount = results.length
       this.$autocompleteInput.dataset.autocompleteAccepted = false
     }
