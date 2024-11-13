@@ -30,7 +30,7 @@
         name: "what_doing",
         rows: 3,
         describedby: "feedback_explanation"
-      } %>
+      } do %> <% end %>
 
       <%= render "govuk_publishing_components/components/textarea", {
         label: {
@@ -38,7 +38,7 @@
         },
         name: "what_wrong",
         rows: 3
-      } %>
+      } do %> <% end %>
 
       <%
         unless disable_ga4
