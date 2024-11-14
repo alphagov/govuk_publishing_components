@@ -4,6 +4,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function AddAnother (module) {
     this.module = module
+    this.emptyFieldset = undefined
   }
 
   AddAnother.prototype.init = function () {
@@ -26,6 +27,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       fieldset.appendChild(removeButton)
       fieldset.querySelector(".js-add-another__destroy-checkbox").hidden = true
     }.bind(this))
+
+    this.emptyFieldset = this.module.querySelector('.js-add-another__empty')
+    this.emptyFieldset.remove()
   }
 
   AddAnother.prototype.addFields = function (event) {
@@ -42,17 +46,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     // Clone the markup of the previous set of fields
-    var newFields = fields.cloneNode(true)
-
-    // Reset values of cloned fields
-    newFields
-      .querySelectorAll('input, textarea, select')
-      .forEach(function (element) {
-        element.value = ''
-      })
+    var newFields = this.emptyFieldset.cloneNode(true)
+    newFields.classList.remove('js-add-another__empty')
+    newFields.classList.add('js-add-another__repeated-fields')
 
     // Increment values for id, for and name of cloned fields
-    this.setValues(newFields, null)
+    this.setValues(this.emptyFieldset, null)
 
     // Add cloned fields to the DOM
     button.before(newFields)

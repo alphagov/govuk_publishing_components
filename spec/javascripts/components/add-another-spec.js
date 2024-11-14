@@ -36,7 +36,7 @@ describe('GOVUK.Modules.AddAnother', function () {
             <label for="test_2_foo">Foo</label>
             <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
             <label for="test_2_bar"></label>
-            <textarea id="test_2_bar" name="test[2][bar]">test bar</textarea>
+            <textarea id="test_2_bar" name="test[2][bar]"></textarea>
           </fieldset>
         </div>
       </div>
@@ -73,8 +73,8 @@ describe('GOVUK.Modules.AddAnother', function () {
     }.bind(this))
   })
 
-  it('should hide the empty fieldset when the component is initialised', function () {
-    expect(empty).toBeHidden()
+  it('should remove the empty fieldset when the component is initialised', function () {
+    expect(document.querySelectorAll('.js-add-another__empty')).toHaveSize(0)
   })
 
   it('should add new fields with the correct values when the "Add" button is clicked', function () {
@@ -85,14 +85,13 @@ describe('GOVUK.Modules.AddAnother', function () {
 
     expect(document.querySelectorAll('.js-add-another__repeated-fields').length).toBe(3)
     expect(fieldset0.querySelector('input[type="hidden"]').value).toBe('test_id')
-    expect(fieldset2.querySelector('input[type="hidden"]').value).toBe('')
     expect(fieldset0.querySelector('input[type="text"]').value).toBe('test foo')
     expect(fieldset2.querySelector('input[type="text"]').value).toBe('')
     expect(fieldset0.querySelector('textarea').value).toBe('test bar')
     expect(fieldset2.querySelector('textarea').value).toBe('')
   })
 
-  xit('should move focus to the first relevant field in the new set when the "Add" button is clicked', function () {
+  it('should move focus to the first relevant field in the new set when the "Add" button is clicked', function () {
     window.GOVUK.triggerEvent(addButton, 'click')
 
     expect(document.activeElement).toBe(
