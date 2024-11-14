@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Chat entry component design changes ([PR #4399](https://github.com/alphagov/govuk_publishing_components/pull/4399))
+
 ## 45.3.0
 
 * Enhance Youtube without cookies ([PR #4388](https://github.com/alphagov/govuk_publishing_components/pull/4388))
