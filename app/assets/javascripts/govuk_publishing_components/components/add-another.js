@@ -8,32 +8,27 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   AddAnother.prototype.init = function () {
     this.createButtons()
-    this.initialiseClickEvent()
   }
 
   AddAnother.prototype.createButtons = function () {
     function createButton(textContent, additionalClass = "") {
       var button = document.createElement('button')
-      button.className = "js-add-another__add-button gem-c-button govuk-button " + additionalClass
+      button.className = "gem-c-button govuk-button " + additionalClass
       button.type = "button"
       button.textContent = textContent
       return button
     }
 
-    addButton = createButton(this.module.dataset.addButtonText)
+    addButton = createButton(this.module.dataset.addButtonText, "js-add-another__add-button")
     addButton.addEventListener('click', this.addFields.bind(this))
     this.module.appendChild(addButton)
-  }
 
-  AddAnother.prototype.initialiseClickEvent = function () {
-    this.module.addEventListener(
-      'click',
-      function (e) {
-        if (e.target.classList.contains('js-add-another__remove-button')) {
-          this.removeFields(e.target)
-        }
-      }.bind(this)
-    )
+    var repeatedFieldsets = document.querySelectorAll('.js-add-another__repeated-fields')
+    repeatedFieldsets.forEach(function (fieldset) {
+      var removeButton = createButton("Delete", "js-add-another__remove-button")
+      removeButton.addEventListener('click', this.removeFields.bind(this))
+      fieldset.appendChild(removeButton)
+    }.bind(this))
   }
 
   AddAnother.prototype.addFields = function (event) {
@@ -71,7 +66,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       .focus()
   }
 
-  AddAnother.prototype.removeFields = function (button) {
+  AddAnother.prototype.removeFields = function (event) {
+    var button = event.target
     var set = button.parentNode
     var input = set.querySelectorAll(
       'input:not([type="hidden"]), select, textarea'

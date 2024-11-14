@@ -15,9 +15,8 @@ describe('GOVUK.Modules.AddAnother', function () {
           <input type="text" id="test_0_foo" name="test[0][foo]" value="test foo" />
           <label for="test_0_bar"></label>
           <textarea id="test_0_bar" name="test[0][bar]">test bar</textarea>
-          <!-- <label for="test_0__destroy">Delete</label> -->
-          <!-- <input type="checkbox" id="test_0__destroy" name="test[0]_destroy" value="1" /> -->
-          <button class="js-add-another__remove-button" type="submit">Delete</button>
+          <label for="test_0__destroy">Delete</label> 
+          <input type="checkbox" id="test_0__destroy" name="test[0]_destroy" value="1" /> 
         </fieldset> 
         <!-- <fieldset class="js-add-another__repeated-fields">
           <label for="test_1_foo">Foo</label>
@@ -34,6 +33,7 @@ describe('GOVUK.Modules.AddAnother', function () {
     addAnother.init()
 
     addButton = document.querySelector('.js-add-another__add-button')
+    removeButtons = document.querySelectorAll('.js-add-another__remove-button')
   })
 
   afterEach(function () {
@@ -43,6 +43,11 @@ describe('GOVUK.Modules.AddAnother', function () {
   it('should add an "Add" button to the container when the component is initialised', function () {
     expect(addButton).toBeTruthy()
     expect(addButton.textContent).toBe('Add another thing')
+  })
+
+  it('should add a "Remove" button to each repeated fieldset when the component is initialised', function () {
+    expect(removeButtons).toHaveSize(1)
+    expect(removeButtons[0].textContent).toBe('Delete')
   })
 
   it('should add new fields with the correct values when the "Add" button is clicked', function () {

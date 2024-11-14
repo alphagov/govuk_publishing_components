@@ -5,27 +5,43 @@ describe "Add another", type: :view do
     "add_another"
   end
 
+  def default_items
+    [
+      {
+        fields: sanitize("<div class=\"item1\">item1</div>"),
+        destroy_checkbox: sanitize("<input type=\"checkbox\" />"),
+      },
+      {
+        fields: sanitize("<div class=\"item2\">item2</div>"),
+        destroy_checkbox: sanitize("<input type=\"checkbox\" />"),
+      },
+    ]
+  end
+
   it "renders a wrapper element" do
-    render_component({}) do
-      "<div class=\"item1\">item1</div>\n<div class=\"item2\">item2</div>".html_safe
-    end
+    render_component(items: default_items)
 
     assert_select "div.gem-c-add-another[data-module='add-another']"
   end
 
   it "renders the items provided" do
-    items = [sanitize("<div class=\"item1\">item1</div>"), sanitize("<div class=\"item2\">item2</div>")]
     empty = ""
-    render_component({ items:, empty: })
+    render_component({ items: default_items, empty: })
 
     assert_select "div.gem-c-add-another__repeated-fields .item1"
     assert_select "div.gem-c-add-another__repeated-fields .item2"
   end
 
+  it "renders a destroy checkbox for each item" do
+    empty = ""
+    render_component({ items: default_items, empty: })
+
+    assert_select "div.gem-c-add-another__repeated-fields .js-add-another_destroy-checkbox", count: 2
+  end
+
   it "renders the empty item" do
-    items = [sanitize("<div class=\"item1\">item1</div>"), sanitize("<div class=\"item2\">item2</div>")]
     empty = sanitize("<div class=\"empty\">empty</div>")
-    render_component({ items:, empty: })
+    render_component({ items: default_items, empty: })
 
     assert_select "div.empty"
   end
