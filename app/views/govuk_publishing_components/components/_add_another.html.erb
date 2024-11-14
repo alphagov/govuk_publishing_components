@@ -4,7 +4,7 @@
   add_button_text ||= "Add another"
 %>
 
-<div data-module="add-another" class="gem-c-add-another">
+<div data-module="add-another" class="gem-c-add-another" data-add-button-text="<%= add_button_text %>">
   <% items.each do |item| %>
     <div class="gem-c-add-another__repeated-fields js-add-another__repeated-fields">
       <%= item %>
