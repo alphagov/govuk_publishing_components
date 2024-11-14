@@ -19,6 +19,8 @@
   link ||= false
   height ||= 400
   padding ||= false
+  point_size ||= 10
+  y_axis_auto_adjust ||= false
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
@@ -39,12 +41,13 @@
   font_19 = { color: '#000', fontName: 'GDS Transport', fontSize: '19', italic: false }
   legend = 'none'
   legend = { position: 'top', textStyle: font_16 } unless hide_legend
-  pointSize = 10
-  pointSize = 0 if minimal
+  point_size = 0 if minimal
   enableInteractivity = true
   enableInteractivity = false if minimal
   textPosition = nil
   textPosition = 'none' if minimal
+  y_axis_view_window_min = 0
+  y_axis_view_window_min = "auto" if y_axis_auto_adjust
 
   if !minimal && !chart_heading
     raise ArgumentError, "A chart heading must be provided for accessibility purposes."
@@ -56,22 +59,23 @@
     curveType: 'none',
     enableInteractivity: enableInteractivity,
     legend: legend,
-    pointSize: pointSize,
+    pointSize: point_size,
     height: height,
     tooltip: { isHtml: true },
     hAxis: {
       textStyle: font_16,
-      format: 'd MMM Y', # https://developers.google.com/chart/interactive/docs/reference#dateformatter
       title: h_axis_title,
       titleTextStyle: font_19,
       textPosition: textPosition,
     },
     vAxis: {
-      format: '#,###,###',
       textStyle: font_16,
       title: v_axis_title,
       titleTextStyle: font_19,
       textPosition: textPosition,
+      viewWindow: {
+        min: y_axis_view_window_min
+      }
     },
   }
 
