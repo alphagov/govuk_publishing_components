@@ -6,7 +6,7 @@ describe('GOVUK.Modules.AddAnother', function () {
   beforeEach(function () {
     fixture = document.createElement('form')
     fixture.setAttribute('data-module', 'AddAnother')
-    fixture.setAttribute('data-add-text', 'Add another thing')
+    fixture.setAttribute('data-add-button-text', 'Add another thing')
     fixture.innerHTML = `
       <div>
         <fieldset class="js-add-another__repeated-fields">
@@ -25,7 +25,6 @@ describe('GOVUK.Modules.AddAnother', function () {
           <label for="test_1_bar"></label>
           <textarea id="test_1_bar" name="test[1][bar]">test bar</textarea>
         </fieldset> -->
-        <button class="js-add-another__add-button" type="submit">Add another thing</button>
       </div>
       
     `
@@ -44,12 +43,6 @@ describe('GOVUK.Modules.AddAnother', function () {
   it('should add an "Add" button to the container when the component is initialised', function () {
     expect(addButton).toBeTruthy()
     expect(addButton.textContent).toBe('Add another thing')
-  })
-
-  it('should set the button types of the "Add" and the "Remove" buttons to "button" when the component is initialised', function () {
-    expect(addButton.getAttribute('type')).toEqual('button')
-    removeButton = document.querySelectorAll('.js-add-another__remove-button')[0]
-    expect(removeButton.getAttribute('type')).toEqual('button')
   })
 
   it('should add new fields with the correct values when the "Add" button is clicked', function () {
