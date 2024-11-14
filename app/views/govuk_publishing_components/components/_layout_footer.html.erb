@@ -4,12 +4,16 @@
   meta ||= []
   navigation ||= []
   with_border ||= false
-  classes = %w(gem-c-layout-footer govuk-footer)
-  classes << "gem-c-layout-footer--border" if with_border
   layout_footer_helper = GovukPublishingComponents::Presenters::LayoutFooterHelper.new(navigation, meta)
   absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-layout-footer govuk-footer")
+  component_helper.add_class("gem-c-layout-footer--border") if with_border
+  component_helper.add_role("contentinfo")
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" })
 %>
-<%= tag.footer class: classes, role: "contentinfo", 'data-module': "ga4-link-tracker" do %>
+<%= tag.footer(**component_helper.all_attributes) do %>
   <div class="govuk-width-container">
     <% if navigation.any? %>
       <div class="govuk-footer__navigation">
