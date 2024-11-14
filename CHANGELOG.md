@@ -13,6 +13,7 @@
 * Fix unwanted additional yield in textareas inside the problem form partial of the feedback component ([PR #4394](https://github.com/alphagov/govuk_publishing_components/pull/4394))
 * Add component wrapper helper to the inverse header ([PR #4379](https://github.com/alphagov/govuk_publishing_components/pull/4379))
 * Mark events as "tracked" to prevent double tracking ([PR #4395](https://github.com/alphagov/govuk_publishing_components/pull/4395))
+* Search with autocomplete: track non-empty suggestions ([PR #4400](https://github.com/alphagov/govuk_publishing_components/pull/4400))
 
 ## 45.2.0
 

@@ -258,6 +258,31 @@ describe('Search with autocomplete component', () => {
     })
   })
 
+  it('keeps the suggestions (but not the count) in the data attribute when subsequent requests return empty results', (done) => {
+    // Allows us to override the spy on fetch to be able to stub out a subsequent request
+    jasmine.getEnv().allowRespy(true)
+
+    const input = fixture.querySelector('input')
+
+    stubSuccessfulFetch([
+      'my favourite song is red',
+      'my favourite song is karma',
+      'my favourite song is death by a thousand cuts'
+    ])
+    performInput(input, 'my favourite song is', () => {
+      stubSuccessfulFetch([])
+      performInput(input, 'my favourite song is espresso', () => {
+        expect(input.dataset.autocompleteSuggestions).toEqual(
+          'my favourite song is red|' +
+          'my favourite song is karma|' +
+          'my favourite song is death by a thousand cuts'
+        )
+        expect(input.dataset.autocompleteSuggestionsCount).toEqual('0')
+        done()
+      })
+    })
+  })
+
   it('limits the number of suggestions included in the data to 5', (done) => {
     const input = fixture.querySelector('input')
 
