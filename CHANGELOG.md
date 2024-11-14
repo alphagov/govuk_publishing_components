@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Enhance Youtube without cookies ([PR #4388](https://github.com/alphagov/govuk_publishing_components/pull/4388))
+* Add component wrapper helper to the header ([PR #4385](https://github.com/alphagov/govuk_publishing_components/pull/4385))
 * Add component wrapper helper to the footer ([PR #4380](https://github.com/alphagov/govuk_publishing_components/pull/4380))
 * Add component wrapper to the inset text component ([PR #4387](https://github.com/alphagov/govuk_publishing_components/pull/4387))
 * Rename gem-print-link and gem-print-links-within ([PR #4375](https://github.com/alphagov/govuk_publishing_components/pull/4375))
