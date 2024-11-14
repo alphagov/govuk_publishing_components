@@ -77,10 +77,12 @@ describe('Youtube link enhancement', function () {
     it('doesn\'t replace links when a user has revoked campaign cookie consent', function () {
       window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
 
-      container.innerHTML =
-        '<div class="gem-c-govspeak">' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>
+          <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
+        </div>
+      `
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -88,7 +90,12 @@ describe('Youtube link enhancement', function () {
       enhancement.init()
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
-      expect(document.querySelectorAll('.gem-c-govspeak p, .gem-c-govspeak a').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak .gem-c-govspeak__youtube-placeholder-link').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').textContent).toBe('Agile at GDS')
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').textContent).toBe('What are the Discovery, Alpha, Beta and Live stages in developing a service?')
     })
   })
 
@@ -168,10 +175,12 @@ describe('Youtube link enhancement', function () {
     it('doesn\'t replace livestream links when a user has revoked campaign cookie consent', function () {
       window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
 
-      container.innerHTML =
-        '<div class="gem-c-govspeak">' +
-          '<p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Agile at GDS</a></p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak">
+          <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Agile at GDS</a></p>
+          <p><a href="https://www.youtube.com/embed/live_stream?channel=notarealchannel">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
+        </div>
+      `
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -179,7 +188,12 @@ describe('Youtube link enhancement', function () {
       enhancement.init()
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
-      expect(document.querySelectorAll('.gem-c-govspeak p, .gem-c-govspeak a').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak .gem-c-govspeak__youtube-placeholder-link').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ"]').textContent).toBe('Agile at GDS')
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/embed/live_stream?channel=notarealchannel"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/embed/live_stream?channel=notarealchannel"]').textContent).toBe('What are the Discovery, Alpha, Beta and Live stages in developing a service?')
     })
   })
 

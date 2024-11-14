@@ -12,13 +12,40 @@
     if (!this.campaignCookiesAllowed()) {
       this.start = this.startModule.bind(this)
       window.addEventListener('cookie-consent', this.start)
+      this.decorateLink()
       return
     }
     this.startModule()
   }
 
+  YoutubeLinkEnhancement.prototype.decorateLink = function () {
+    var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
+    for (var i = 0; i < $youtubeLinks.length; ++i) {
+      var $link = $youtubeLinks[i]
+      var $linkParent = $link.closest('p')
+      var href = $link.getAttribute('href')
+      var text = $link.textContent
+      var placeholder = document.createElement('p')
+      placeholder.setAttribute('class', 'gem-c-govspeak__youtube-placeholder govuk-body')
+      var markup = `
+        <span class="govuk-heading-s">How to watch this YouTube video</span>
+        <span class="gem-c-govspeak__youtube-placeholder-text">There's a YouTube video on this page. You can't access it because of your cookie settings.</span>
+        <span class="gem-c-govspeak__youtube-placeholder-text">You can <a href="/help/cookies" class="govuk-link">change your cookie settings</a> or watch the video on YouTube instead:</span>
+        <a href="${href}" class="govuk-link">${text}</a>
+      `
+      placeholder.innerHTML = markup
+      $linkParent.after(placeholder)
+      $linkParent.classList.add('gem-c-govspeak__youtube-placeholder-link')
+    }
+  }
+
   YoutubeLinkEnhancement.prototype.startModule = function () {
     window.removeEventListener('cookie-consent', this.start)
+    var $placeholders = this.$element.querySelectorAll('.gem-c-govspeak__youtube-placeholder')
+    for (var p = 0; p < $placeholders.length; ++p) {
+      $placeholders[p].remove()
+    }
+
     var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
 
     if ($youtubeLinks.length > 0) {
