@@ -36,13 +36,13 @@ describe "Add another", type: :view do
     empty = ""
     render_component({ items: default_items, empty: })
 
-    assert_select "div.gem-c-add-another__repeated-fields .js-add-another_destroy-checkbox", count: 2
+    assert_select "div.gem-c-add-another__repeated-fields .js-add-another__destroy-checkbox", count: 2
   end
 
   it "renders the empty item" do
     empty = sanitize("<div class=\"empty\">empty</div>")
     render_component({ items: default_items, empty: })
 
-    assert_select "div.empty"
+    assert_select ".js-add-another__empty div.empty"
   end
 end

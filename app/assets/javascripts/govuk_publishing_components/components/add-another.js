@@ -7,10 +7,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.init = function () {
-    this.createButtons()
-  }
-
-  AddAnother.prototype.createButtons = function () {
     function createButton(textContent, additionalClass = "") {
       var button = document.createElement('button')
       button.className = "gem-c-button govuk-button " + additionalClass
@@ -28,6 +24,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var removeButton = createButton("Delete", "js-add-another__remove-button")
       removeButton.addEventListener('click', this.removeFields.bind(this))
       fieldset.appendChild(removeButton)
+      fieldset.querySelector(".js-add-another__destroy-checkbox").hidden = true
     }.bind(this))
   }
 

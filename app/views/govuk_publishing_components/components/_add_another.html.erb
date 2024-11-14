@@ -8,10 +8,12 @@
   <% items.each do |item| %>
     <div class="gem-c-add-another__repeated-fields js-add-another__repeated-fields">
       <%= item[:fields] %>
-      <div class="js-add-another_destroy-checkbox">
+      <div class="js-add-another__destroy-checkbox">
         <%= item[:destroy_checkbox] %>
       </div>
     </div>
   <% end %>
-  <%= empty %>
+  <div class="js-add-another__empty">
+    <%= empty %>
+  </div>
 </div>
