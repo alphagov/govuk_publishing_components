@@ -3,9 +3,8 @@ description: The "add another" component lets users input multiple values for a 
 body: |
   This component is currently experimental because more research is needed to validate it.
   
-  The component provides a fragment-based approach to enable the user to control the rendering of the fieldset removal button.
-  Applications using this component must render a removal button for each repeating fieldset inside the main component block.
-  The button should submit the form, which should result in the page reloading without the removed fieldset.
+  Applications using this component must include a deletion checkbox in the rendered repeating items so that users can remove
+  items from the list in the event that Javascript is not enabled. See the examples below for how to do this.
 
 accessibility_criteria: |
   The form controls within the fieldsets must be fully accessible as per the design system guidance for each of the form
@@ -13,74 +12,13 @@ accessibility_criteria: |
 
   When JavaScript is unavailable, the consuming application must:
 
-    * reload the page with an additional fieldset available on the form after the add another button is clicked
-    * reload the page with the specified fieldset removed from the form after a remove button is clicked
+    * TBC
 uses_component_wrapper_helper: false
 govuk_frontend_components:
   - button
 examples:
   default:
     data:
-      block: |
-        <%= render "govuk_publishing_components/components/fieldset", {
-            legend_text: "Contact"
-        } do %>
-          <%= render "govuk_publishing_components/components/input", {
-            label: {
-              text: "Name"
-            },
-            name: "contact[0][name]"
-          } %>
-          <%= render "govuk_publishing_components/components/input", {
-            label: {
-              text: "Phone"
-            },
-            name: "contact[0][phone]"
-          } %>
-          <%= render "govuk_publishing_components/components/input", {
-            label: {
-              text: "Email"
-            },
-            name: "contact[0][email]"
-          } %>
-          <%= render "govuk_publishing_components/components/checkboxes", {
-            items: {
-              label: "Delete",
-              value: 1
-            },
-            name: "contact[0][_destroy]"
-          } %>
-        <% end %>
-  with_custom_button_text:
-    data:
-      add_button_text: "Add another contact"
-      block: |
-        <%= render "govuk_publishing_components/components/fieldset", {
-            legend_text: "Contact"
-        } do %>
-          <%= render "govuk_publishing_components/components/input", {
-            label: {
-              text: "Name"
-            },
-            name: "contact[0][name]"
-          } %>
-          <%= render "govuk_publishing_components/components/input", {
-            label: {
-              text: "Phone"
-            },
-            name: "contact[0][phone]"
-          } %>
-          <%= render "govuk_publishing_components/components/input", {
-            label: {
-              text: "Email"
-            },
-            name: "contact[0][email]"
-          } %>
-          <%= render "govuk_publishing_components/components/checkboxes", {
-            items: {
-              label: "Delete",
-              value: 1
-            },
-            name: "contact[0][_destroy]"
-          } %>
-        <% end %>
+      items:
+          - rendered html fieldset with values
+          - rendered html fieldset with values
