@@ -31,20 +31,26 @@ examples:
             },
             name: "contact[0][name]"
           } %>
-            <%= render "govuk_publishing_components/components/input", {
+          <%= render "govuk_publishing_components/components/input", {
             label: {
               text: "Phone"
             },
             name: "contact[0][phone]"
           } %>
-            <%= render "govuk_publishing_components/components/input", {
+          <%= render "govuk_publishing_components/components/input", {
             label: {
               text: "Email"
             },
             name: "contact[0][email]"
           } %>
+          <%= render "govuk_publishing_components/components/checkboxes", {
+            items: {
+              label: "Delete",
+              value: 1
+            },
+            name: "contact[0][_destroy]"
+          } %>
         <% end %>
-        <%= render "govuk_publishing_components/components/add_another/remove_button", { margin_bottom: 6 } %>
   with_custom_button_text:
     data:
       add_button_text: "Add another contact"
@@ -58,17 +64,23 @@ examples:
             },
             name: "contact[0][name]"
           } %>
-            <%= render "govuk_publishing_components/components/input", {
+          <%= render "govuk_publishing_components/components/input", {
             label: {
               text: "Phone"
             },
             name: "contact[0][phone]"
           } %>
-            <%= render "govuk_publishing_components/components/input", {
+          <%= render "govuk_publishing_components/components/input", {
             label: {
               text: "Email"
             },
             name: "contact[0][email]"
           } %>
+          <%= render "govuk_publishing_components/components/checkboxes", {
+            items: {
+              label: "Delete",
+              value: 1
+            },
+            name: "contact[0][_destroy]"
+          } %>
         <% end %>
-        <%= render "govuk_publishing_components/components/add_another/remove_button", { margin_bottom: 6 } %>

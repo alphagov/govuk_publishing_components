@@ -13,10 +13,9 @@ describe "Add another", type: :view do
     assert_select "div.gem-c-add-another[data-module='add-another']"
   end
 
-  it "renders the repeated fields element containing the block provided" do
-    render_component({}) do
-      "<div class=\"item1\">item1</div>\n<div class=\"item2\">item2</div>".html_safe
-    end
+  it "renders the items provided" do
+    items = ["<div class=\"item1\">item1</div>", "<div class=\"item2\">item2</div>"]
+    render_component({ items:, empty: "" })
 
     assert_select "div.gem-c-add-another__repeated-fields .item1"
     assert_select "div.gem-c-add-another__repeated-fields .item2"
