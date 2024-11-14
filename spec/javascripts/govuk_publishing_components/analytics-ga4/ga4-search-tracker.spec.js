@@ -3,7 +3,7 @@
 describe('Google Analytics search tracking', () => {
   'use strict'
 
-  let fixture, form, input, sendSpy, ga4SearchTracker
+  let fixture, form, input, sendSpy, setItemSpy, ga4SearchTracker
   const GOVUK = window.GOVUK
 
   const html = `
@@ -39,6 +39,7 @@ describe('Google Analytics search tracking', () => {
     input = form.querySelector('input')
 
     sendSpy = spyOn(GOVUK.analyticsGa4.core, 'applySchemaAndSendData')
+    setItemSpy = spyOn(window.sessionStorage, 'setItem')
 
     ga4SearchTracker = new GOVUK.Modules.Ga4SearchTracker(form)
   })
@@ -133,6 +134,15 @@ describe('Google Analytics search tracking', () => {
         },
         'event_data'
       )
+    })
+
+    it('persists usage of autocomplete so that the next page knows it was used', () => {
+      input.dataset.autocompleteTriggerInput = 'i want to remember'
+      input.dataset.autocompleteAccepted = 'true'
+      input.value = 'i want to remember'
+
+      GOVUK.triggerEvent(form, 'submit')
+      expect(setItemSpy).toHaveBeenCalledWith('searchAutocompleteAccepted', 'true')
     })
 
     it('does not set tool_name if the user has not accepted a suggestion', () => {

@@ -60,6 +60,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // having seen the autocomplete and not used it, and not having seen it at all)
         if (this.$searchInput.dataset.autocompleteAccepted === 'true') {
           data.tool_name = 'autocomplete'
+
+          // Keep track of the fact that the autocomplete was accepted, so that we can use this as
+          // part of the `page_view` event on the subsequent page load
+          window.sessionStorage &&
+            window.sessionStorage.setItem('searchAutocompleteAccepted', 'true')
         }
 
         data.length = Number(this.$searchInput.dataset.autocompleteSuggestionsCount)
