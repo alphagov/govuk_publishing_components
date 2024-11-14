@@ -1,24 +1,33 @@
 /* eslint-env jasmine, jquery */
 /* global GOVUK */
 describe('GOVUK.Modules.AddAnother', function () {
-  let fixture, addAnother, addButton, removeButton, fields, field0, field1
+  let fixture, addAnother, addButton, removeButton, fields, fieldset0, fieldset1
 
   beforeEach(function () {
     fixture = document.createElement('form')
     fixture.setAttribute('data-module', 'AddAnother')
     fixture.setAttribute('data-add-text', 'Add another thing')
     fixture.innerHTML = `
-      <div class="js-add-another__repeated-fields">
-          <fieldset>
-              <input type="hidden" name="a[b][0][c]" value="abc"></input>
-              <label for="d_e_0_f"></label>
-              <input type="text" id="d_e_0_f" name="d[e][0][f]" value="def"></input>
-              <label for="g_h_0_i"></label>
-              <textarea id="g_h_0_i" name="g[h][0][i]">ghi</textarea>
-          </fieldset> 
+      <div>
+        <fieldset class="js-add-another__repeated-fields">
+          <input type="hidden" name="test[0][id]" value="test_id" />
+          <label for="test_0_foo">Foo</label>
+          <input type="text" id="test_0_foo" name="test[0][foo]" value="test foo" />
+          <label for="test_0_bar"></label>
+          <textarea id="test_0_bar" name="test[0][bar]">test bar</textarea>
+          <!-- <label for="test_0__destroy">Delete</label> -->
+          <!-- <input type="checkbox" id="test_0__destroy" name="test[0]_destroy" value="1" /> -->
           <button class="js-add-another__remove-button" type="submit">Delete</button>
+        </fieldset> 
+        <!-- <fieldset class="js-add-another__repeated-fields">
+          <label for="test_1_foo">Foo</label>
+          <input type="text" id="test_1_foo" name="test[1][foo]" value="" />
+          <label for="test_1_bar"></label>
+          <textarea id="test_1_bar" name="test[1][bar]">test bar</textarea>
+        </fieldset> -->
+        <button class="js-add-another__add-button" type="submit">Add another thing</button>
       </div>
-      <button class="js-add-another__add-button" type="submit">Add another thing</button>
+      
     `
     document.body.append(fixture)
 
@@ -46,69 +55,69 @@ describe('GOVUK.Modules.AddAnother', function () {
   it('should add new fields with the correct values when the "Add" button is clicked', function () {
     window.GOVUK.triggerEvent(addButton, 'click')
 
-    field0 = document.querySelectorAll('.js-add-another__repeated-fields')[0]
-    field1 = document.querySelectorAll('.js-add-another__repeated-fields')[1]
+    fieldset0 = document.querySelectorAll('.js-add-another__repeated-fields')[0]
+    fieldset1 = document.querySelectorAll('.js-add-another__repeated-fields')[1]
 
     expect(document.querySelectorAll('.js-add-another__repeated-fields').length).toBe(2)
-    expect(field0.querySelector('input[type="hidden"]').value).toBe('abc')
-    expect(field1.querySelector('input[type="hidden"]').value).toBe('')
-    expect(field0.querySelector('input[type="text"]').value).toBe('def')
-    expect(field1.querySelector('input[type="text"]').value).toBe('')
-    expect(field0.querySelector('textarea').value).toBe('ghi')
-    expect(field1.querySelector('textarea').value).toBe('')
+    expect(fieldset0.querySelector('input[type="hidden"]').value).toBe('test_id')
+    expect(fieldset1.querySelector('input[type="hidden"]').value).toBe('')
+    expect(fieldset0.querySelector('input[type="text"]').value).toBe('test foo')
+    expect(fieldset1.querySelector('input[type="text"]').value).toBe('')
+    expect(fieldset0.querySelector('textarea').value).toBe('test bar')
+    expect(fieldset1.querySelector('textarea').value).toBe('')
   })
 
   it('should move focus to the first relevant field in the new set when the "Add" button is clicked', function () {
     window.GOVUK.triggerEvent(addButton, 'click')
 
     expect(document.activeElement).toBe(
-      document.querySelector('input[name="d[e][1][f]"]')
+      document.querySelector('input[name="test[1][foo]"]')
     )
   })
 
   it('should increment the id/name/for values of the added fields', function () {
     window.GOVUK.triggerEvent(addButton, 'click')
 
-    field0 = document.querySelectorAll('.js-add-another__repeated-fields')[0]
-    field1 = document.querySelectorAll('.js-add-another__repeated-fields')[1]
+    fieldset0 = document.querySelectorAll('.js-add-another__repeated-fields')[0]
+    fieldset1 = document.querySelectorAll('.js-add-another__repeated-fields')[1]
 
     expect(
-      field0.querySelector('input[type="hidden"]').getAttribute('name')
-    ).toBe('a[b][0][c]')
+      fieldset0.querySelector('input[type="hidden"]').getAttribute('name')
+    ).toBe('test[0][id]')
     expect(
-      field1.querySelector('input[type="hidden"]').getAttribute('name')
-    ).toBe('a[b][1][c]')
-    expect(field0.querySelectorAll('label')[0].getAttribute('for')).toBe(
-      'd_e_0_f'
+      fieldset1.querySelector('input[type="hidden"]').getAttribute('name')
+    ).toBe('test[1][id]')
+    expect(fieldset0.querySelectorAll('label')[0].getAttribute('for')).toBe(
+      'test_0_foo'
     )
-    expect(field1.querySelectorAll('label')[0].getAttribute('for')).toBe(
-      'd_e_1_f'
+    expect(fieldset1.querySelectorAll('label')[0].getAttribute('for')).toBe(
+      'test_1_foo'
     )
-    expect(field0.querySelector('input[type="text"]').getAttribute('id')).toBe(
-      'd_e_0_f'
+    expect(fieldset0.querySelector('input[type="text"]').getAttribute('id')).toBe(
+      'test_0_foo'
     )
-    expect(field1.querySelector('input[type="text"]').getAttribute('id')).toBe(
-      'd_e_1_f'
+    expect(fieldset1.querySelector('input[type="text"]').getAttribute('id')).toBe(
+      'test_1_foo'
     )
     expect(
-      field0.querySelector('input[type="text"]').getAttribute('name')
-    ).toBe('d[e][0][f]')
+      fieldset0.querySelector('input[type="text"]').getAttribute('name')
+    ).toBe('test[0][foo]')
     expect(
-      field1.querySelector('input[type="text"]').getAttribute('name')
-    ).toBe('d[e][1][f]')
-    expect(field0.querySelectorAll('label')[1].getAttribute('for')).toBe(
-      'g_h_0_i'
+      fieldset1.querySelector('input[type="text"]').getAttribute('name')
+    ).toBe('test[1][foo]')
+    expect(fieldset0.querySelectorAll('label')[1].getAttribute('for')).toBe(
+      'test_0_bar'
     )
-    expect(field1.querySelectorAll('label')[1].getAttribute('for')).toBe(
-      'g_h_1_i'
+    expect(fieldset1.querySelectorAll('label')[1].getAttribute('for')).toBe(
+      'test_1_bar'
     )
-    expect(field0.querySelector('textarea').getAttribute('id')).toBe('g_h_0_i')
-    expect(field1.querySelector('textarea').getAttribute('id')).toBe('g_h_1_i')
-    expect(field0.querySelector('textarea').getAttribute('name')).toBe(
-      'g[h][0][i]'
+    expect(fieldset0.querySelector('textarea').getAttribute('id')).toBe('test_0_bar')
+    expect(fieldset1.querySelector('textarea').getAttribute('id')).toBe('test_1_bar')
+    expect(fieldset0.querySelector('textarea').getAttribute('name')).toBe(
+      'test[0][bar]'
     )
-    expect(field1.querySelector('textarea').getAttribute('name')).toBe(
-      'g[h][1][i]'
+    expect(fieldset1.querySelector('textarea').getAttribute('name')).toBe(
+      'test[1][bar]'
     )
   })
 
@@ -123,8 +132,8 @@ describe('GOVUK.Modules.AddAnother', function () {
     const hiddenField = document.querySelector('.js-hidden-destroy') || null
 
     expect(hiddenField).toBeTruthy()
-    expect(hiddenField.id).toBe('d_e_0__destroy')
-    expect(hiddenField.name).toBe('d[e][0][_destroy]')
+    expect(hiddenField.id).toBe('test_0__destroy')
+    expect(hiddenField.name).toBe('test[0][_destroy]')
     expect(hiddenField.value).toBe('true')
   })
 
@@ -136,12 +145,12 @@ describe('GOVUK.Modules.AddAnother', function () {
 
     window.GOVUK.triggerEvent(removeButton, 'click')
 
-    field0 = document.querySelectorAll('.js-add-another__repeated-fields')[0]
-    field1 = document.querySelectorAll('.js-add-another__repeated-fields')[1]
+    fieldset0 = document.querySelectorAll('.js-add-another__repeated-fields')[0]
+    fieldset1 = document.querySelectorAll('.js-add-another__repeated-fields')[1]
 
     expect(document.querySelectorAll('.js-add-another__repeated-fields').length).toBe(1)
-    expect(field0).toBeTruthy()
-    expect(field1).toBeFalsy()
+    expect(fieldset0).toBeTruthy()
+    expect(fieldset1).toBeFalsy()
   })
 
   it('should move focus to the first visible field when any "Remove" button is clicked', function () {
@@ -152,7 +161,7 @@ describe('GOVUK.Modules.AddAnother', function () {
     window.GOVUK.triggerEvent(removeButton, 'click')
 
     expect(document.activeElement).toBe(
-      document.querySelector('input[name="d[e][1][f]"]')
+      document.querySelector('input[name="test[1][foo]"]')
     )
   })
 })
