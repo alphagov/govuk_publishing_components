@@ -38,7 +38,7 @@
   data_attributes[:ga4_intervention_banner] = "" unless disable_ga4 # Added to the parent element for the GA4 pageview object to use
 
   suggestion_tag_options = {
-    class: "govuk-link gem-c-print-link",
+    class: "govuk-link gem-c-force-print-link-styles",
     href: suggestion_link_url,
     data: suggestion_data_attributes,
   }
