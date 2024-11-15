@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Rename print link classes to fix conflict ([PR #4407](https://github.com/alphagov/govuk_publishing_components/pull/4407))
+
 ## 45.4.0
 
 * Chat entry component design changes ([PR #4399](https://github.com/alphagov/govuk_publishing_components/pull/4399))
