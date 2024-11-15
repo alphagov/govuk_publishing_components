@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.4.1
 
 * Rename print link classes to fix conflict ([PR #4407](https://github.com/alphagov/govuk_publishing_components/pull/4407))
 
