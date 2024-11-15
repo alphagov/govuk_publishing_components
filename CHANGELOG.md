@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change colours on square option for share links ([PR #4409](https://github.com/alphagov/govuk_publishing_components/pull/4409))
+
 ## 45.4.1
 
 * Rename print link classes to fix conflict ([PR #4407](https://github.com/alphagov/govuk_publishing_components/pull/4407))
