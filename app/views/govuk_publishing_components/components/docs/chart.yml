@@ -6,7 +6,7 @@ body: |
   The chart relies upon chartkick and renders using JavaScript, so the table is provided as a fallback for a lack of JavaScript,
   an accessible view on the data for screenreaders, and a simple view of the raw data for all users.
 
-  The `chart_overview` option can be used to provide an explanation for screen reader users of what the graph shows.
+  The `chart_overview` option can be used to provide an explanation for screen reader users of what the chart shows.
 accessibility_criteria: |
   Charts must:
 
@@ -137,6 +137,80 @@ examples:
             - 118
             - 85
             - 80
+  with_a_different_point_size:
+    description: For some charts it may be better to reduce the point size so that the line is clearer. However it is recommended that the point size is larger to make it easier for users to move the mouse over them.
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      point_size: 0
+      keys:
+        - "2015-01-01"
+        - "2015-01-02"
+        - "2015-01-03"
+        - "2015-01-04"
+        - "2015-01-05"
+        - "2015-01-06"
+        - "2015-01-07"
+        - "2015-01-08"
+        - "2015-01-09"
+        - "2015-01-10"
+      rows:
+        - label: January 2015
+          values:
+            - 600
+            - 690
+            - 740
+            - 820
+            - 570
+            - 950
+            - 810
+            - 610
+            - 770
+            - 530
+  scale_y_axis_based_on_data:
+    description: |
+      By default the Y-axis will always start at zero, but this may not always be required.
+
+      If there are empty items in the data the chart line will either discontinue or leave a gap, as shown.
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      hide_legend: true
+      y_axis_auto_adjust: true
+      keys:
+        - "2015-01-01"
+        - "2015-01-02"
+        - "2015-01-03"
+        - "2015-01-04"
+        - "2015-01-05"
+        - "2015-01-06"
+        - "2015-01-07"
+        - "2015-01-08"
+        - "2015-01-09"
+        - "2015-01-10"
+        - "2015-01-11"
+        - "2015-01-12"
+        - "2015-01-13"
+      rows:
+        - label: January 2015
+          values:
+            - 1500
+            - 1190
+            - 1740
+            - 1820
+            - 1270
+            -
+            -
+            - 1450
+            - 1110
+            - 1210
+            - 1670
+            - 1430
+            - 1352
   with_a_different_heading_level:
     description: Use a different heading level for the chart heading. It defaults to a H2.
     data:
