@@ -9,10 +9,6 @@ body: |
 accessibility_criteria: |
   The form controls within the fieldsets must be fully accessible as per the design system guidance for each of the form
   control components.
-
-  When JavaScript is unavailable, the consuming application must:
-
-    * TBC
 uses_component_wrapper_helper: false
 govuk_frontend_components:
   - button
@@ -20,5 +16,16 @@ examples:
   default:
     data:
       items:
-          - rendered html fieldset with values
-          - rendered html fieldset with values
+        - fields: >
+            <div class="govuk-form-group">
+              <label for="person_0_name" class="gem-c-label govuk-label">Full name</label>
+              <input class="gem-c-input govuk-input" id="person_0_name" name="person[0]name">
+            </div>
+          destroy_checkbox: >
+            <input type="checkbox" name="person[0][_destroy]" id="person_0__destroy" class="govuk-checkboxes__input">
+            <label for="person_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+      empty:
+        <div class="govuk-form-group">
+          <label for="person_1_name" class="gem-c-label govuk-label">Full name</label>
+          <input class="gem-c-input govuk-input" id="person_1_name" name="person[1]name">
+        </div>

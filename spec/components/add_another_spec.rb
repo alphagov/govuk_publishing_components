@@ -28,15 +28,15 @@ describe "Add another", type: :view do
     empty = ""
     render_component({ items: default_items, empty: })
 
-    assert_select "div.gem-c-add-another__repeated-fields .item1"
-    assert_select "div.gem-c-add-another__repeated-fields .item2"
+    assert_select "div.gem-c-add-another__fieldset .item1"
+    assert_select "div.gem-c-add-another__fieldset .item2"
   end
 
   it "renders a destroy checkbox for each item" do
     empty = ""
     render_component({ items: default_items, empty: })
 
-    assert_select "div.gem-c-add-another__repeated-fields .js-add-another__destroy-checkbox", count: 2
+    assert_select "div.gem-c-add-another__fieldset .js-add-another__destroy-checkbox", count: 2
   end
 
   it "renders the empty item" do

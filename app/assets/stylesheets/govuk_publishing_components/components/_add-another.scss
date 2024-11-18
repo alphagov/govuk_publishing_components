@@ -1,3 +1,7 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/button/button";
 @import "govuk/components/fieldset/fieldset";
+
+.js-add-another__remove-button--hidden {
+  display: none;
+}
