@@ -259,7 +259,7 @@
     PostBeaconCancelled: 85,
     PostBeaconStopRecording: 86,
     PostBeaconMetricRejected: 87,
-    PostBeaconDisabled: 88,
+    // PostBeaconDisabled: 88, // Not used
     PostBeaconSendFailed: 89,
     PostBeaconCSPViolation: 90,
   };
@@ -336,7 +336,7 @@
     return str;
   }
 
-  var VERSION = "4.0.27";
+  var VERSION = "4.0.28";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -360,7 +360,10 @@
   * was prerendered or restored from BF cache
   */
   function shouldReportValue(value) {
-    return value > 0 || getPageRestoreTime() || wasPrerendered();
+    if (getPageRestoreTime() || wasPrerendered()) {
+      return value >= 0;
+    }
+    return value > 0;
   }
   /**
   * Fit an array of user timing delimited strings into a URL and return both the entries that fit and
@@ -457,10 +460,6 @@
     };
     Beacon.prototype.send = function () {
       this.logger.logEvent(LogEvent.PostBeaconSendCalled);
-      if (!this.config.enablePostBeacon) {
-        this.logger.logEvent(LogEvent.PostBeaconDisabled);
-        return;
-      }
       for (var _i = 0, _a = this.onBeforeSendCbs; _i < _a.length; _i++) {
         var cb = _a[_i];
         cb();
@@ -531,7 +530,6 @@
       conversions: getProperty(obj, "conversions"),
       cookieDomain: getProperty(obj, "cookieDomain"),
       customerid: getProperty(obj, "customerid"),
-      enablePostBeacon: getProperty(obj, "enablePostBeacon", true),
       errorBeaconUrl: getProperty(obj, "errorBeaconUrl", luxOrigin + "/error/"),
       interactionBeaconDelay: getProperty(obj, "interactionBeaconDelay", 200),
       jspagelabel: getProperty(obj, "jspagelabel"),
@@ -743,6 +741,9 @@
   function processEntry$1(entry) {
     if (entry.interactionId || (entry.entryType === "first-input" && !entryExists(entry))) {
       var duration = entry.duration, startTime = entry.startTime, interactionId = entry.interactionId, name_1 = entry.name, processingStart = entry.processingStart, processingEnd = entry.processingEnd, target = entry.target;
+      if (duration < 0) {
+        return;
+      }
       var processingTime = processingEnd - processingStart;
       var existingEntry = slowestEntriesMap[interactionId];
       var selector = target ? getNodeSelector(target) : null;
@@ -858,14 +859,14 @@
         };
       }
     }
-    var value = processTimeMetric(lcpEntry.startTime);
+    var value = lcpEntry.startTime;
     if (!shouldReportValue(value)) {
       // It's possible the LCP entry we have occurred before the current page was initialised. In
       // this case, we don't want to report the LCP value.
       return undefined;
     }
     return {
-      value: value,
+      value: processTimeMetric(value),
       subParts: subParts,
       attribution: lcpEntry.element
       ? {

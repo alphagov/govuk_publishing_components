@@ -11,6 +11,7 @@
 
 * Adjust chart options and settings ([PR #4405](https://github.com/alphagov/govuk_publishing_components/pull/4405))
 * Change colours on square option for share links ([PR #4409](https://github.com/alphagov/govuk_publishing_components/pull/4409))
+* LUX 4.0.28 ([PR #4404](https://github.com/alphagov/govuk_publishing_components/pull/4404))
 
 ## 45.4.1
 
