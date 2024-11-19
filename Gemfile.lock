@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (45.4.1)
+    govuk_publishing_components (45.5.0)
       chartkick
       govuk_app_config
       govuk_personalisation (>= 0.7.0)

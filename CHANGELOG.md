@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.5.0
 
 * Adjust chart options and settings ([PR #4405](https://github.com/alphagov/govuk_publishing_components/pull/4405))
 * Change colours on square option for share links ([PR #4409](https://github.com/alphagov/govuk_publishing_components/pull/4409))
