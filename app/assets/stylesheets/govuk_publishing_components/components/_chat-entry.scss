@@ -7,6 +7,12 @@
   padding: govuk-spacing(4);
 }
 
+.gem-c-chat-entry--margin-top-until-tablet {
+  @include govuk-media-query($until: tablet) {
+    margin-top: 35px;
+  }
+}
+
 .gem-c-chat-entry--border-top {
   border-top: 2px solid govuk-colour("blue");
   padding-top: govuk-spacing(5);
