@@ -73,4 +73,12 @@ describe "Chat entry", type: :view do
     assert_select '.gem-c-chat-entry[data-module="ga4-link-tracker"]', false
     assert_select ".gem-c-chat-entry[data-ga4-link]", false
   end
+
+  it "renders the chat entry component with a margin-top-until-tablet class" do
+    render_component({
+      margin_top_until_tablet: true,
+    })
+
+    assert_select ".gem-c-chat-entry.gem-c-chat-entry--margin-top-until-tablet"
+  end
 end

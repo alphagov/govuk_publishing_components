@@ -8,11 +8,13 @@
   border_top ||= false
   border_bottom ||= false
   disable_ga4 ||= false
+  margin_top_until_tablet ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-chat-entry")
   component_helper.add_class("gem-c-chat-entry--border-top") if border_top
   component_helper.add_class("gem-c-chat-entry--border-bottom") if border_bottom
+  component_helper.add_class("gem-c-chat-entry--margin-top-until-tablet") if margin_top_until_tablet
   component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
 
