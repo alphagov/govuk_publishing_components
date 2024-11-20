@@ -137,6 +137,41 @@ examples:
             - 118
             - 85
             - 80
+  with_specific_line_styles:
+    description:
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January in different years.
+      line_colours:
+        - orange
+        - blue
+        - green
+      line_styles:
+        - solid
+        - dotted
+        - solid
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+      rows:
+        - label: January 2015
+          values:
+            - 5
+            - 119
+            - 74
+        - label: January 2016
+          values:
+            - 5
+            - 8
+            - 37
+        - label: January 2017
+          values:
+            - 31
+            - 81
+            - 12
   with_a_different_point_size:
     description: For some charts it may be better to reduce the point size so that the line is clearer. However it is recommended that the point size is larger to make it easier for users to move the mouse over them.
     data:

@@ -8,88 +8,46 @@
   chart_heading ||= nil
   chart_heading_level ||= 2
   table_direction ||= "horizontal"
-  h_axis_title ||= nil
-  v_axis_title ||= nil
-  rows ||= []
-  keys ||= []
+  local_assigns[:h_axis_title] ||= nil
+  local_assigns[:v_axis_title] ||= nil
+  local_assigns[rows] ||= []
+  local_assigns[keys] ||= []
   chart_overview ||= nil
-  minimal ||= false
-  hide_heading ||= minimal
-  hide_legend ||= minimal
+  local_assigns[:minimal] ||= false
+  hide_heading ||= local_assigns[:minimal]
+  local_assigns[:hide_legend] ||= local_assigns[:minimal]
   link ||= false
-  height ||= 400
+  local_assigns[:height] ||= 400
   padding ||= false
-  point_size ||= 10
+  local_assigns[:point_size] ||= 10
   y_axis_auto_adjust ||= false
+  local_assigns[:line_width] ||= 2
+  line_colours ||= nil
+  line_styles ||= nil
+  chart_type ||= "line"
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
   @external_script ||= OpenStruct.new(loaded: 0)
   @external_script[:loaded] += 1
 
+  chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-chart")
   component_helper.add_class(shared_helper.get_margin_bottom)
-  component_helper.add_class("gem-c-chart--minimal") if minimal
+  component_helper.add_class("gem-c-chart--minimal") if local_assigns[:minimal]
   component_helper.add_class("gem-c-chart--padding") if padding
 
   require "chartkick"
-  Chartkick.options[:html] = '<div id="%{id}"><noscript><p class="govuk-body">Our charts are built using JavaScript but all the data is also available in the table below.</p></noscript></div>'
-  # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
-  font_16 = { color: '#000', fontName: 'GDS Transport', fontSize: '16', italic: false }
-  font_19 = { color: '#000', fontName: 'GDS Transport', fontSize: '19', italic: false }
-  legend = 'none'
-  legend = { position: 'top', textStyle: font_16 } unless hide_legend
-  point_size = 0 if minimal
-  enableInteractivity = true
-  enableInteractivity = false if minimal
-  textPosition = nil
-  textPosition = 'none' if minimal
-  y_axis_view_window_min = 0
-  y_axis_view_window_min = "auto" if y_axis_auto_adjust
+  Chartkick.options[:html] = '<div id="%{id}"></div>'
+  Chartkick.options[:html] = '<div id="%{id}"><noscript><p class="govuk-body">Our charts are built using JavaScript but all the data is also available in the table beloww.</p></noscript></div>' unless local_assigns[:minimal]
 
-  if !minimal && !chart_heading
+  if !local_assigns[:minimal] && !chart_heading
     raise ArgumentError, "A chart heading must be provided for accessibility purposes."
   end
-
-  chart_library_options = {
-    chartArea: { width: '80%', height: '60%' },
-    crosshair: { orientation: 'vertical', trigger: 'both', color: '#ccc' },
-    curveType: 'none',
-    enableInteractivity: enableInteractivity,
-    legend: legend,
-    pointSize: point_size,
-    height: height,
-    tooltip: { isHtml: true },
-    hAxis: {
-      textStyle: font_16,
-      title: h_axis_title,
-      titleTextStyle: font_19,
-      textPosition: textPosition,
-    },
-    vAxis: {
-      textStyle: font_16,
-      title: v_axis_title,
-      titleTextStyle: font_19,
-      textPosition: textPosition,
-      viewWindow: {
-        min: y_axis_view_window_min
-      }
-    },
-  }
-
-  if rows.length > 0 && keys.length > 0
-    chart_format_data = rows.map do |row|
-      {
-        name: row[:label],
-        linewidth: 10,
-        data: keys.zip(row[:values])
-      }
-    end
-  end
 %>
-<% if rows.length > 0 && keys.length > 0 %>
+<% if local_assigns[:rows].length > 0 && local_assigns[:keys].length > 0 %>
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" if @external_script[:loaded] == 1 %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if chart_heading && !hide_heading %>
@@ -102,9 +60,9 @@
       </div>
     <% end %>
 
-    <% aria_attributes = { hidden: true } if minimal %>
+    <% aria_attributes = { hidden: true } if local_assigns[:minimal] %>
     <%= content_tag :div, id: chart_id, class: "gem-c-chart__chart", aria: aria_attributes do %>
-      <% unless minimal %>
+      <% unless local_assigns[:minimal] %>
         <div class="govuk-visually-hidden">
           <%= content_tag :div, chart_overview, class: "gem-c-chart__a11y-note-1" if chart_overview %>
           <%= content_tag :div, t("components.chart.accessibility_html"), class: "gem-c-chart__a11y-note-2" %>
@@ -117,10 +75,16 @@
         </span>
       <% end %>
 
-      <%= line_chart(chart_format_data, library: chart_library_options) %>
+      <% if chart_type == "column" %>
+        <%= column_chart(chart_helper.chart_format_data, library: chart_helper.chart_options) %>
+      <% elsif chart_type == "bar" %>
+        <%= bar_chart(chart_helper.chart_format_data, library: chart_helper.chart_options) %>
+      <% else %>
+        <%= line_chart(chart_helper.chart_format_data, library: chart_helper.chart_options) %>
+      <% end %>
     <% end %>
 
-    <% unless minimal %>
+    <% unless local_assigns[:minimal] %>
       <div class="gem-c-chart__footer">
         <div class="gem-c-chart__table" id="<%= table_id %>">
           <%= render("govuk_publishing_components/components/details",
@@ -135,7 +99,7 @@
                   <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell"></td>
-                      <% keys.each do |key| %>
+                      <% local_assigns[:keys].each do |key| %>
                         <th class="govuk-table__header" scope="col">
                           <%= key %>
                         </th>
@@ -143,7 +107,7 @@
                     </tr>
                   </thead>
                   <tbody class="govuk-table__body">
-                    <% rows.each do |row| %>
+                    <% local_assigns[:rows].each do |row| %>
                       <tr class="govuk-table__row">
                         <th class="govuk-table__header" scope="row"><%= row[:label]  %></th>
                         <% row[:values].each do |value| %>
@@ -158,7 +122,7 @@
                   <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell"></td>
-                      <% rows.each do |row| %>
+                      <% local_assigns[:rows].each do |row| %>
                         <th class="govuk-table__header govuk-table__header--stacked" scope="row">
                           <%= row[:label] %>
                         </th>
@@ -166,12 +130,12 @@
                     </tr>
                   </thead>
                   <tbody class="govuk-table__body">
-                    <% keys.each_with_index do |key, index| %>
+                    <% local_assigns[:keys].each_with_index do |key, index| %>
                       <tr>
                         <th class="govuk-table__header" scope="row">
                           <%= key %>
                         </th>
-                        <% rows.each do |row| %>
+                        <% local_assigns[:rows].each do |row| %>
                           <td class="govuk-table__cell govuk-table__cell--numeric">
                             <%= number_with_delimiter row[:values][index] %>
                           </td>
