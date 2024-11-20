@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix yellow focus colour overspill ([PR #4418](https://github.com/alphagov/govuk_publishing_components/pull/4418))
+
 ## 45.5.0
 
 * Adjust chart options and settings ([PR #4405](https://github.com/alphagov/govuk_publishing_components/pull/4405))
