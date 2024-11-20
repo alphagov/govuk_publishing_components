@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.6.0
 
 * Fix yellow focus colour overspill ([PR #4418](https://github.com/alphagov/govuk_publishing_components/pull/4418))
 * Add margin_top_until_tablet option to chat entry component ([PR #4417](https://github.com/alphagov/govuk_publishing_components/pull/4417))

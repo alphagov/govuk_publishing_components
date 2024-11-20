@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (45.5.0)
+    govuk_publishing_components (45.6.0)
       chartkick
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
@@ -150,9 +150,9 @@ GEM
       sentry-rails (~> 5.3)
       sentry-ruby (~> 5.3)
       statsd-ruby (~> 1.5)
-    govuk_personalisation (1.0.0)
+    govuk_personalisation (1.1.0)
       plek (>= 1.9.0)
-      rails (>= 6, < 8)
+      rails (>= 6, < 9)
     govuk_schemas (5.0.4)
       faker (~> 3.4.1)
       json-schema (>= 2.8, < 4.4)
@@ -186,8 +186,8 @@ GEM
     json (2.7.2)
     json-schema (4.3.0)
       addressable (>= 2.8)
-    kramdown (2.4.0)
-      rexml
+    kramdown (2.5.0)
+      rexml (>= 3.3.6)
     language_server-protocol (3.17.0.3)
     link_header (0.0.8)
     logger (1.6.1)
