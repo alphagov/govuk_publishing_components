@@ -235,6 +235,25 @@ describe('Search with autocomplete component', () => {
     })
   })
 
+  it('does not trigger a requestSubmit if Enter is pressed and the menu is not shown', (done) => {
+    const form = fixture.querySelector('form')
+    const input = fixture.querySelector('input')
+    const submitSpy = spyOn(form, 'requestSubmit')
+
+    stubSuccessfulFetch([])
+    performInput(input, 'i just want to search once', () => {
+      const enterEvent = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        bubbles: true,
+        cancelable: true
+      })
+      input.dispatchEvent(enterEvent)
+
+      expect(submitSpy).not.toHaveBeenCalled()
+      done()
+    })
+  })
+
   describe('analytics data attributes', () => {
     it('sets data attributes on the input when suggestions are returned', (done) => {
       const input = fixture.querySelector('input')
