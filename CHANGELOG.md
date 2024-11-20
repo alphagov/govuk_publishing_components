@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix yellow focus colour overspill ([PR #4418](https://github.com/alphagov/govuk_publishing_components/pull/4418))
+* Add margin_top_until_tablet option to chat entry component ([PR #4417](https://github.com/alphagov/govuk_publishing_components/pull/4417))
 
 ## 45.5.0
 
