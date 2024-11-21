@@ -10,6 +10,7 @@
   rows ||= []
   keys ||= []
   chart_overview ||= nil
+  chart_type ||= "line"
   minimal ||= false
   hide_heading ||= minimal
   hide_legend ||= minimal
@@ -64,7 +65,13 @@
         </span>
       <% end %>
 
-      <%= line_chart(chart_helper.chart_format_data, library: chart_helper.chart_options) %>
+      <% if chart_type == "column" %>
+        <%= column_chart(chart_helper.chart_format_data, library: chart_helper.chart_options) %>
+      <% elsif chart_type == "bar" %>
+        <%= bar_chart(chart_helper.chart_format_data, library: chart_helper.chart_options) %>
+      <% else %>
+        <%= line_chart(chart_helper.chart_format_data, library: chart_helper.chart_options) %>
+      <% end %>
     <% end %>
 
     <% unless minimal %>

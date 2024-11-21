@@ -22,7 +22,6 @@ examples:
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
-      hide_legend: true
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -102,6 +101,77 @@ examples:
             - 27
             - 18
             - 34
+  hide_legend:
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      hide_legend: true
+      keys:
+        - "2015-01-01"
+        - "2015-01-02"
+        - "2015-01-03"
+        - "2015-01-04"
+        - "2015-01-05"
+        - "2015-01-06"
+        - "2015-01-07"
+        - "2015-01-08"
+        - "2015-01-09"
+        - "2015-01-10"
+      rows:
+        - label: January 2015
+          values:
+            - 500
+            - 1190
+            - 740
+            - 820
+            - 270
+            - 450
+            - 110
+            - 210
+            - 670
+            - 430
+  bar_chart:
+    data:
+      chart_heading: Hats owned
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      chart_type: "bar"
+      hide_legend: true
+      keys:
+        - Jon
+        - Ash
+        - James
+        - Phil
+      rows:
+        - label: Hats owned
+          values:
+            - 3
+            - 1
+            - 1
+            - 2
+  column_chart:
+    data:
+      chart_heading: Hats owned
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      chart_type: "column"
+      hide_legend: true
+      keys:
+        - Jon
+        - Ash
+        - James
+        - Phil
+      rows:
+        - label: Hats owned
+          values:
+            - 3
+            - 1
+            - 1
+            - 2
   vertical table:
     description: Reorient the table to better suit the output of some data sets.
     data:
