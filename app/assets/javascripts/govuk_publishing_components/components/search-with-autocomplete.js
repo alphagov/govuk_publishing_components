@@ -64,11 +64,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       // with the autocomplete menu at all, and then hits Enter to try to submit the form - but it
       // isn't submitted.
       //
-      // This manually triggers our form submission logic when the Enter key is pressed as a
-      // workaround (which will do nothing if the form is already in the process of submitting
-      // through `onConfirm` because the user has accepted a suggestion).
+      // This manually triggers our form submission logic when the Enter key is pressed while the
+      // dropdown is shown as a workaround (which will do nothing if the form is already in the
+      // process of submitting through `onConfirm` because the user has accepted a suggestion).
       this.$autocompleteInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') this.submitContainingForm()
+        const dropdownVisible = this.$autocompleteInput.getAttribute('aria-expanded') === 'true'
+        if (dropdownVisible && e.key === 'Enter') this.submitContainingForm()
       })
     }
 
