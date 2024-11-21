@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Extend chart component options ([PR #4424](https://github.com/alphagov/govuk_publishing_components/pull/4424))
+
 ## 45.6.1
 
 * Fix "sticky" GA4 search tracker `tool_name` ([PR #4422](https://github.com/alphagov/govuk_publishing_components/pull/4422))
