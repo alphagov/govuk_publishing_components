@@ -207,6 +207,30 @@ examples:
             - 1
             - 1
             - 2
+  format_axis_labels:
+    description: Sometimes if there are a lot of labels on the axes the chart can do strange truncation on the labels. If they are meant to be dates, the `h_axis_format` and `v_axis_format` will force a familiar date format to get around this problem.
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January.
+      h_axis_format: date
+      keys:
+        - 2024 Jan 1
+        - 2024 Jan 2
+        - 2024 Jan 3
+        - 2024 Jan 4
+        - 2024 Jan 5
+        - 2024 Jan 6
+      rows:
+        - label: January 2015
+          values:
+            - 110
+            - 119
+            - 105
+            - 109
+            - 130
+            - 131
   vertical table:
     description: Reorient the table to better suit the output of some data sets.
     data:

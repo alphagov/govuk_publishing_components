@@ -27,12 +27,14 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
           title: "Day",
           titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
           textPosition: nil,
+          format: nil,
         },
         vAxis: {
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           title: "Views",
           titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
           textPosition: nil,
+          format: nil,
           viewWindow: {
             min: 0,
           },
@@ -137,6 +139,17 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
         1 => { color: "blue", lineDashStyle: [2, 2] },
         2 => { lineDashStyle: nil },
       }
+
+      chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
+      options = chart_helper.chart_options
+      expect(options).to eql(expected)
+    end
+
+    it "returns expected options when axis label formats are changed" do
+      required_params[:h_axis_format] = "date"
+      required_params[:v_axis_format] = "date"
+      expected[:hAxis][:format] = "YYYY-MM-dd"
+      expected[:vAxis][:format] = "YYYY-MM-dd"
 
       chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
       options = chart_helper.chart_options

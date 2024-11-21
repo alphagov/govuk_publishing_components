@@ -16,6 +16,8 @@ module GovukPublishingComponents
         @y_axis_view_window_min = "auto" if options[:y_axis_auto_adjust]
         @line_colours = options[:line_colours]
         @line_styles = options[:line_styles]
+        @h_axis_format = "YYYY-MM-dd" if options[:h_axis_format] == "date"
+        @v_axis_format = "YYYY-MM-dd" if options[:v_axis_format] == "date"
       end
 
       # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
@@ -35,12 +37,14 @@ module GovukPublishingComponents
             title: @h_axis_title,
             titleTextStyle: set_font_19,
             textPosition: @text_position,
+            format: @h_axis_format,
           },
           vAxis: {
             textStyle: set_font_16,
             title: @v_axis_title,
             titleTextStyle: set_font_19,
             textPosition: @text_position,
+            format: @v_axis_format,
             viewWindow: {
               min: @y_axis_view_window_min,
             },
