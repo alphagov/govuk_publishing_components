@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.6.1
 
 * Fix "sticky" GA4 search tracker `tool_name` ([PR #4422](https://github.com/alphagov/govuk_publishing_components/pull/4422))
 * Fix `search_with_autocomplete` double submit scenario ([PR #4421](https://github.com/alphagov/govuk_publishing_components/pull/4421))
