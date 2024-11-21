@@ -65,6 +65,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           // part of the `page_view` event on the subsequent page load
           window.sessionStorage &&
             window.sessionStorage.setItem('searchAutocompleteAccepted', 'true')
+        } else {
+          // Explicitly set `tool_name` to `null` if the user has not accepted a suggestion, as
+          // `undefined` will not overwrite the current value in the analytics state (meaning a
+          // previously set value would be used if there was one)
+          data.tool_name = null
         }
 
         data.length = Number(this.$searchInput.dataset.autocompleteSuggestionsCount)

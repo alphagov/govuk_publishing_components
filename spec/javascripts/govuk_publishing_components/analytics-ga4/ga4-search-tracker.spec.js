@@ -145,7 +145,7 @@ describe('Google Analytics search tracking', () => {
       expect(setItemSpy).toHaveBeenCalledWith('searchAutocompleteAccepted', 'true')
     })
 
-    it('does not set tool_name if the user has not accepted a suggestion', () => {
+    it('sets tool_name to null if the user has not accepted a suggestion', () => {
       input.dataset.autocompleteTriggerInput = 'i want to'
       input.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
       input.dataset.autocompleteSuggestionsCount = '3'
@@ -153,7 +153,7 @@ describe('Google Analytics search tracking', () => {
       input.value = 'i want to fish'
       GOVUK.triggerEvent(form, 'submit')
 
-      expect(sendSpy.calls.mostRecent().args[0].tool_name).toBeUndefined()
+      expect(sendSpy.calls.mostRecent().args[0].tool_name).toBeNull()
     })
   })
 
