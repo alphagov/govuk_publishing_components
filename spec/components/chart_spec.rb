@@ -41,6 +41,7 @@ describe "Chart", type: :view do
   it "renders when given valid data" do
     render_component(data)
     assert_select '.gem-c-chart.govuk-\!-margin-bottom-3', 1
+    assert_select ".govuk-details__summary-text", text: "View data as a table"
   end
 
   it "renders the correct table data horizontally" do
