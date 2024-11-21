@@ -33,7 +33,7 @@ en:
         characters: characters
         words: words
     chart:
-      table_dropdown: Data table
+      table_dropdown: View data as a table
       accessibility_html: This chart is a visual representation of the data available in the table.
       accessibility_link: Skip to "%{chart_heading}" data table
       accessibility_heading: Data table for "%{chart_heading}"

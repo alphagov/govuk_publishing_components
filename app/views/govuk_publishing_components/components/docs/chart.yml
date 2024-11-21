@@ -22,7 +22,6 @@ examples:
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
-      hide_legend: true
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -102,6 +101,136 @@ examples:
             - 27
             - 18
             - 34
+  hide_legend:
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      hide_legend: true
+      keys:
+        - "2015-01-01"
+        - "2015-01-02"
+        - "2015-01-03"
+        - "2015-01-04"
+        - "2015-01-05"
+        - "2015-01-06"
+        - "2015-01-07"
+        - "2015-01-08"
+        - "2015-01-09"
+        - "2015-01-10"
+      rows:
+        - label: January 2015
+          values:
+            - 500
+            - 1190
+            - 740
+            - 820
+            - 270
+            - 450
+            - 110
+            - 210
+            - 670
+            - 430
+  with_line_colours_and_styles:
+    description: Note that line styles and colours currently only work on line charts.
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January in different years.
+      line_colours:
+        - orange
+        - blue
+        - "#88AA11"
+      line_styles:
+        - solid
+        - dotted
+        - solid
+      keys:
+        - 1st
+        - 2nd
+        - 3rd
+      rows:
+        - label: January 2015
+          values:
+            - 110
+            - 119
+            - 105
+        - label: January 2016
+          values:
+            - 71
+            - 68
+            - 75
+        - label: January 2017
+          values:
+            - 21
+            - 42
+            - 18
+  bar_chart:
+    data:
+      chart_heading: Hats owned
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      chart_type: "bar"
+      hide_legend: true
+      keys:
+        - Jon
+        - Ash
+        - James
+        - Phil
+      rows:
+        - label: Hats owned
+          values:
+            - 3
+            - 1
+            - 1
+            - 2
+  column_chart:
+    data:
+      chart_heading: Hats owned
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      chart_type: "column"
+      hide_legend: true
+      keys:
+        - Jon
+        - Ash
+        - James
+        - Phil
+      rows:
+        - label: Hats owned
+          values:
+            - 3
+            - 1
+            - 1
+            - 2
+  format_axis_labels:
+    description: Sometimes if there are a lot of labels on the axes the chart can do strange truncation on the labels. If they are meant to be dates, the `h_axis_format` and `v_axis_format` will force a familiar date format to get around this problem.
+    data:
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January.
+      h_axis_format: date
+      keys:
+        - 2024 Jan 1
+        - 2024 Jan 2
+        - 2024 Jan 3
+        - 2024 Jan 4
+        - 2024 Jan 5
+        - 2024 Jan 6
+      rows:
+        - label: January 2015
+          values:
+            - 110
+            - 119
+            - 105
+            - 109
+            - 130
+            - 131
   vertical table:
     description: Reorient the table to better suit the output of some data sets.
     data:
