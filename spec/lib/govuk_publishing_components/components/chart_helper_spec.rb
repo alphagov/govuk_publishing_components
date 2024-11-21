@@ -1,38 +1,44 @@
 RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
   describe "Chart component helper" do
-    required_params = {
-      h_axis_title: "Day",
-      v_axis_title: "Views",
-    }
+    required_params = {}
+    expected = {}
 
-    expected = {
-      chartArea: { width: "80%", height: "60%" },
-      crosshair: { orientation: "vertical", trigger: "both", color: "#ccc" },
-      curveType: "none",
-      enableInteractivity: true,
-      legend: {
-        position: "top",
-        textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
-      },
-      pointSize: 10,
-      height: 400,
-      tooltip: { isHtml: true },
-      hAxis: {
-        textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
-        title: "Day",
-        titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
-        textPosition: nil,
-      },
-      vAxis: {
-        textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
-        title: "Views",
-        titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
-        textPosition: nil,
-        viewWindow: {
-          min: 0,
+    before(:each) do
+      required_params = {
+        h_axis_title: "Day",
+        v_axis_title: "Views",
+      }
+
+      expected = {
+        chartArea: { width: "80%", height: "60%" },
+        crosshair: { orientation: "vertical", trigger: "both", color: "#ccc" },
+        curveType: "none",
+        enableInteractivity: true,
+        legend: {
+          position: "top",
+          textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
         },
-      },
-    }
+        pointSize: 10,
+        height: 400,
+        tooltip: { isHtml: true },
+        series: {},
+        hAxis: {
+          textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
+          title: "Day",
+          titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
+          textPosition: nil,
+        },
+        vAxis: {
+          textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
+          title: "Views",
+          titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
+          textPosition: nil,
+          viewWindow: {
+            min: 0,
+          },
+        },
+      }
+    end
 
     it "returns default chart options" do
       chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
@@ -121,6 +127,20 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
       chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
       data = chart_helper.chart_format_data
       expect(data).to eql(expected)
+    end
+
+    it "returns expected options when line colours and styles are changed" do
+      required_params[:line_colours] = %w[red blue]
+      required_params[:line_styles] = %w[normal dotted normal]
+      expected[:series] = {
+        0 => { color: "red", lineDashStyle: nil },
+        1 => { color: "blue", lineDashStyle: [2, 2] },
+        2 => { lineDashStyle: nil },
+      }
+
+      chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
+      options = chart_helper.chart_options
+      expect(options).to eql(expected)
     end
   end
 end

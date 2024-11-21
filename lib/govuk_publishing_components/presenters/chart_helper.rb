@@ -14,6 +14,8 @@ module GovukPublishingComponents
         @text_position = "none" if @minimal
         @y_axis_view_window_min = 0
         @y_axis_view_window_min = "auto" if options[:y_axis_auto_adjust]
+        @line_colours = options[:line_colours]
+        @line_styles = options[:line_styles]
       end
 
       # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
@@ -27,6 +29,7 @@ module GovukPublishingComponents
           pointSize: @point_size,
           height: @height,
           tooltip: { isHtml: true },
+          series: series_options,
           hAxis: {
             textStyle: set_font_16,
             title: @h_axis_title,
@@ -70,6 +73,26 @@ module GovukPublishingComponents
 
       def set_font_19
         { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false }
+      end
+
+      def series_options
+        series = {}
+        if @line_colours
+          @line_colours.each_with_index do |item, index|
+            series[index] = {} unless series[index]
+            series[index][:color] = item
+          end
+        end
+
+        if @line_styles
+          @line_styles.each_with_index do |item, index|
+            style = [2, 2] if item == "dotted"
+            series[index] = {} unless series[index]
+            series[index][:lineDashStyle] = style
+          end
+        end
+
+        series
       end
     end
   end
