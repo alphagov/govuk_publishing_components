@@ -5,9 +5,12 @@ module GovukPublishingComponents
         @rows = options[:rows]
         @keys = options[:keys]
         @minimal = options[:minimal]
+        @enable_interactivity = false
         @enable_interactivity = true unless @minimal
         @hide_legend = options[:hide_legend]
+        @hide_legend = true if @minimal
         @point_size = options[:point_size] ||= 10
+        @point_size = 0 if @minimal
         @height = options[:height] || 400
         @h_axis_title = options[:h_axis_title]
         @v_axis_title = options[:v_axis_title]
