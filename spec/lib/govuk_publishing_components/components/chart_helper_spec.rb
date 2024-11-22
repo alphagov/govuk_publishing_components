@@ -50,9 +50,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
 
     it "returns expected chart options when minimal is true" do
       required_params[:minimal] = true
-      expected[:enableInteractivity] = nil
+      expected[:enableInteractivity] = false
       expected[:hAxis][:textPosition] = "none"
       expected[:vAxis][:textPosition] = "none"
+      expected[:legend] = "none"
+      expected[:pointSize] = 0
 
       chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
       options = chart_helper.chart_options
