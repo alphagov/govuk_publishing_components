@@ -16,9 +16,7 @@
   describedby ||= nil
   has_error ||= error_message || error_items.any?
 
-  css_classes = %w(gem-c-date-input govuk-date-input)
-  form_group_css_classes = %w(govuk-form-group)
-  form_group_css_classes << "govuk-form-group--error" if has_error
+  date_css_classes = %w(gem-c-date-input govuk-date-input)
 
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
@@ -31,9 +29,14 @@
     aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("govuk-form-group")
+  component_helper.add_class("govuk-form-group--error") if has_error
+
 %>
 
-<%= content_tag :div, class: form_group_css_classes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% fieldset_content = capture do %>
     <% if hint %>
       <%= render "govuk_publishing_components/components/hint", {
@@ -51,7 +54,7 @@
       } %>
     <% end %>
 
-    <%= tag.div class: css_classes, id: id do %>
+    <%= tag.div class: date_css_classes, id: id do %>
       <% items.each do |item| %>
         <%= tag.div class: "govuk-date-input__item" do %>
           <%= render "govuk_publishing_components/components/input", {
