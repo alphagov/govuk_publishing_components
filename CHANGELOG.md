@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.7.0
 
 * Extend chart component options ([PR #4424](https://github.com/alphagov/govuk_publishing_components/pull/4424))
 * Use the first organisation to generate breadcrumbs, if no parent linked ([PR #4270](https://github.com/alphagov/govuk_publishing_components/pull/4270))
