@@ -277,7 +277,7 @@ describe('Search with autocomplete component', () => {
     })
   })
 
-  it('keeps the suggestions (but not the count) in the data attribute when subsequent requests return empty results', (done) => {
+  it('keeps the suggestions and input (but not the count) in the data attribute when subsequent requests return empty results', (done) => {
     // Allows us to override the spy on fetch to be able to stub out a subsequent request
     jasmine.getEnv().allowRespy(true)
 
@@ -296,6 +296,7 @@ describe('Search with autocomplete component', () => {
           'my favourite song is karma|' +
           'my favourite song is death by a thousand cuts'
         )
+        expect(input.dataset.autocompleteTriggerInput).toEqual('my favourite song is')
         expect(input.dataset.autocompleteSuggestionsCount).toEqual('0')
         done()
       })
