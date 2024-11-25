@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 45.7.1
 
 * search_with_autocomplete: Change trigger input tracking ([PR #4428](https://github.com/alphagov/govuk_publishing_components/pull/4428))
 * search_with_autocomplete: Standardise trigger input ([PR #4429](https://github.com/alphagov/govuk_publishing_components/pull/4429))
