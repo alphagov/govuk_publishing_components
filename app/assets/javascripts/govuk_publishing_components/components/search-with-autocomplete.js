@@ -16,6 +16,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.sourceUrl = this.$module.getAttribute('data-source-url')
       this.sourceKey = this.$module.getAttribute('data-source-key')
 
+      this.smallScreenMediaQuery = '(max-width: 639px)'
       this.isSubmitting = false
     }
 
@@ -57,6 +58,30 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$autocompleteInput.setAttribute('type', 'search')
       // Remove the original input from the DOM
       this.$originalInput.parentNode.removeChild(this.$originalInput)
+
+      // On mobile, the suggestions can be hidden by the keyboard depending on where the input is on
+      // the page. This scrolls the page to the top of the component to ensure the suggestions are
+      // visible.
+      this.$autocompleteInput.addEventListener('focus', (e) => {
+        const isSmallScreen = window.matchMedia(this.smallScreenMediaQuery).matches
+        if (!isSmallScreen) return
+
+        // Mobile browsers (iOS Safari specifically, but Chrome on Android as well) perform some
+        // "magic" viewport scrolling when focusing on an input field in order to accomodate the
+        // on-screen keyboard. This conflicts with our own attempt to scroll the page to the top of
+        // the component.
+        //
+        // A basic way of working around this is to wait for a short period of time before doing our
+        // own scrolling, but the longer the delay, the more jarring the experience - and on a slow
+        // device, even a 300ms timeout can still end up conflicting with the browser's own
+        // scrolling.
+        //
+        // Instead, we hack by setting `overflow: hidden` on the page body for a brief moment, which
+        // tricks the browser into not scrolling the viewport when focusing on the input field.
+        document.body.style.overflow = 'hidden'
+        this.$module.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        setTimeout(() => document.body.style.overflow = '', 100)
+      })
 
       // The accessible-autocomplete component has an edge case where when the menu is visible, it
       // prevents default on the Enter key event, even if the user hasn't put keyboard focus on a

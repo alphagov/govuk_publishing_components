@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* search_with_autocomplete: Change trigger input tracking ([PR #4428](https://github.com/alphagov/govuk_publishing_components/pull/4428))
+* search_with_autocomplete: Scroll component into view on small screens ([PR #4431](https://github.com/alphagov/govuk_publishing_components/pull/4431))
+
 ## 45.7.0
 
 * Extend chart component options ([PR #4424](https://github.com/alphagov/govuk_publishing_components/pull/4424))

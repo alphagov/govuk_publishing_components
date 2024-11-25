@@ -344,4 +344,39 @@ describe('Search with autocomplete component', () => {
       done()
     })
   })
+
+  describe('scroll behavior on focus', () => {
+    let component, input
+
+    beforeEach(() => {
+      component = fixture.querySelector('.gem-c-search-with-autocomplete')
+      input = fixture.querySelector('.gem-c-search-with-autocomplete__input')
+      spyOn(component, 'scrollIntoView')
+      jasmine.clock().install()
+    })
+
+    afterEach(() => {
+      jasmine.clock().uninstall()
+    })
+
+    it('scrolls component into view on small screens when input receives focus', (done) => {
+      spyOn(window, 'matchMedia').and.returnValue({ matches: true })
+
+      input.focus()
+      jasmine.clock().tick(100)
+
+      expect(component.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' })
+      done()
+    })
+
+    it('does not scroll component into view on large screens when input receives focus', (done) => {
+      spyOn(window, 'matchMedia').and.returnValue({ matches: false })
+
+      input.focus()
+      jasmine.clock().tick(100)
+
+      expect(component.scrollIntoView).not.toHaveBeenCalled()
+      done()
+    })
+  })
 })
