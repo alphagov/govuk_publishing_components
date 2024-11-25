@@ -17,15 +17,16 @@
     describedby = error_id
   end
 
-  css_classes = %w(gem-c-fieldset govuk-form-group)
-  css_classes << "govuk-form-group--error" if error_message
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-fieldset govuk-form-group")
+  component_helper.add_class("govuk-form-group--error") if error_message
 
   fieldset_classes = %w(govuk-fieldset)
 
   legend_classes = %w(govuk-fieldset__legend)
   legend_classes << "govuk-fieldset__legend--#{heading_size}" if heading_size
 %>
-<%= tag.div class: css_classes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= tag.fieldset class: fieldset_classes, aria: { describedby: describedby }, role: role, id: id do %>
     <% if heading_level %>
       <%= tag.legend class: legend_classes do %>
