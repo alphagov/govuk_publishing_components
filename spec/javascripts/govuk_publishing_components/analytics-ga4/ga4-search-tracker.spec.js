@@ -3,7 +3,7 @@
 describe('Google Analytics search tracking', () => {
   'use strict'
 
-  let fixture, form, input, sendSpy, standardiseSpy, setItemSpy, ga4SearchTracker
+  let fixture, form, input, sendSpy, setItemSpy, ga4SearchTracker
   const GOVUK = window.GOVUK
 
   const html = `
@@ -40,7 +40,6 @@ describe('Google Analytics search tracking', () => {
 
     sendSpy = spyOn(GOVUK.analyticsGa4.core, 'applySchemaAndSendData')
     setItemSpy = spyOn(window.sessionStorage, 'setItem')
-    standardiseSpy = spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'standardiseSearchTerm').and.callThrough()
 
     ga4SearchTracker = new GOVUK.Modules.Ga4SearchTracker(form)
   })
@@ -155,15 +154,6 @@ describe('Google Analytics search tracking', () => {
       GOVUK.triggerEvent(form, 'submit')
 
       expect(sendSpy.calls.mostRecent().args[0].tool_name).toBeNull()
-    })
-
-    it('standardises both the text and autocomplete_input values', () => {
-      input.dataset.autocompleteTriggerInput = 'i want to'
-      input.value = 'I want to fish'
-
-      GOVUK.triggerEvent(form, 'submit')
-      expect(standardiseSpy).toHaveBeenCalledTimes(2)
-      expect(standardiseSpy.calls.allArgs()).toEqual([['I want to fish'], ['i want to']])
     })
   })
 

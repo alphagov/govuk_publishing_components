@@ -51,7 +51,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         url: this.url,
         index_section: this.indexSection,
         index_section_count: this.indexSectionCount,
-        text: this.standardiseInput(this.$searchInput.value)
+        text: this.searchTerm()
       }
 
       if (this.$searchInput.dataset.autocompleteTriggerInput) {
@@ -73,9 +73,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
 
         data.length = Number(this.$searchInput.dataset.autocompleteSuggestionsCount)
-        data.autocomplete_input = this.standardiseInput(
-          this.$searchInput.dataset.autocompleteTriggerInput
-        )
+        data.autocomplete_input = this.$searchInput.dataset.autocompleteTriggerInput
         data.autocomplete_suggestions = this.$searchInput.dataset.autocompleteSuggestions
       }
 
@@ -85,16 +83,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     skipTracking () {
       // Skip tracking for those events that we do not want to track: where the search term is
       // present, but has not changed from its initial value
-      return this.$searchInput.value !== '' && this.$searchInput.value === this.initialKeywords
+      return this.searchTerm() !== '' && this.searchTerm() === this.initialKeywords
     }
 
-    standardiseInput (value) {
+    searchTerm () {
       const { standardiseSearchTerm } = window.GOVUK.analyticsGa4.core.trackFunctions
 
       // `standardiseSearchTerm` returns undefined for empty strings, whereas we actively want an
       // empty string as part of search events (undefined would not overwrite the current value in
       // the analytics state)
-      return standardiseSearchTerm(value) || ''
+      return standardiseSearchTerm(this.$searchInput.value) || ''
     }
   }
 
