@@ -38,11 +38,15 @@
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" if @external_script[:loaded] == 1 %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if chart_heading && !hide_heading %>
-      <%= render "govuk_publishing_components/components/heading", {
-        text: chart_heading,
-        heading_level: chart_heading_level,
-        margin_bottom: 2,
-      } %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <%= render "govuk_publishing_components/components/heading", {
+            text: chart_heading,
+            heading_level: chart_heading_level,
+            margin_bottom: 2,
+          } %>
+        </div>
+      </div>
     <% end %>
 
     <% aria_attributes = { hidden: true } if minimal %>

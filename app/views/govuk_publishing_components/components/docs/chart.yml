@@ -18,7 +18,7 @@ uses_component_wrapper_helper: true
 examples:
   default:
     data:
-      chart_heading: Page views chart
+      chart_heading: Chart showing page views on the website in January 2015
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
