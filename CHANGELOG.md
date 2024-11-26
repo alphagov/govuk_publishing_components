@@ -9,6 +9,7 @@
 
 ## 45.8.0
 
+* Limit chart heading width ([PR #4435](https://github.com/alphagov/govuk_publishing_components/pull/4435))
 * Add the component wrapper to the lead paragraph component ([PR #4434](https://github.com/alphagov/govuk_publishing_components/pull/4434))
 * Add component wrapper helper to label component ([PR #4364](https://github.com/alphagov/govuk_publishing_components/pull/4364))
 * `search_with_autocomplete`: Change trigger input tracking ([PR #4428](https://github.com/alphagov/govuk_publishing_components/pull/4428))

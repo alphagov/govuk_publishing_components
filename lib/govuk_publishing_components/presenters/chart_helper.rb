@@ -19,8 +19,14 @@ module GovukPublishingComponents
         @y_axis_view_window_min = "auto" if options[:y_axis_auto_adjust]
         @line_colours = options[:line_colours]
         @line_styles = options[:line_styles]
+
         @h_axis_format = "YYYY-MM-dd" if options[:h_axis_format] == "date"
+        @h_axis_format = "£#" if options[:h_axis_format] == "currency"
+        @h_axis_format = "#'\%'" if options[:h_axis_format] == "percent"
+
         @v_axis_format = "YYYY-MM-dd" if options[:v_axis_format] == "date"
+        @v_axis_format = "£#" if options[:v_axis_format] == "currency"
+        @v_axis_format = "#'\%'" if options[:v_axis_format] == "percent"
       end
 
       # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart

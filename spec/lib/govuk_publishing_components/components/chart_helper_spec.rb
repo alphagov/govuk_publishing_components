@@ -147,11 +147,33 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
       expect(options).to eql(expected)
     end
 
-    it "returns expected options when axis label formats are changed" do
+    it "returns expected options when axis label format is changed to date" do
       required_params[:h_axis_format] = "date"
       required_params[:v_axis_format] = "date"
       expected[:hAxis][:format] = "YYYY-MM-dd"
       expected[:vAxis][:format] = "YYYY-MM-dd"
+
+      chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
+      options = chart_helper.chart_options
+      expect(options).to eql(expected)
+    end
+
+    it "returns expected options when axis label format is changed to currency" do
+      required_params[:h_axis_format] = "currency"
+      required_params[:v_axis_format] = "currency"
+      expected[:hAxis][:format] = "£#"
+      expected[:vAxis][:format] = "£#"
+
+      chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
+      options = chart_helper.chart_options
+      expect(options).to eql(expected)
+    end
+
+    it "returns expected options when axis label format is changed to percent" do
+      required_params[:h_axis_format] = "percent"
+      required_params[:v_axis_format] = "percent"
+      expected[:hAxis][:format] = "#'\%'"
+      expected[:vAxis][:format] = "#'\%'"
 
       chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(required_params)
       options = chart_helper.chart_options

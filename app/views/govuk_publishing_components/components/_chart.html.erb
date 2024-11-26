@@ -14,7 +14,6 @@
   minimal ||= false
   hide_heading ||= minimal
   link ||= false
-  padding ||= false
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
@@ -27,7 +26,6 @@
   component_helper.add_class("gem-c-chart")
   component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.add_class("gem-c-chart--minimal") if minimal
-  component_helper.add_class("gem-c-chart--padding") if padding
 
   require "chartkick"
   Chartkick.options[:html] = '<div id="%{id}"><noscript><p class="govuk-body">Our charts are built using JavaScript but all the data is also available in the table below.</p></noscript></div>'
@@ -40,12 +38,14 @@
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" if @external_script[:loaded] == 1 %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if chart_heading && !hide_heading %>
-      <div class="gem-c-chart__header">
-        <%= render "govuk_publishing_components/components/heading", {
-          text: chart_heading,
-          heading_level: chart_heading_level,
-          margin_bottom: 2,
-        } %>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <%= render "govuk_publishing_components/components/heading", {
+            text: chart_heading,
+            heading_level: chart_heading_level,
+            margin_bottom: 2,
+          } %>
+        </div>
       </div>
     <% end %>
 
@@ -74,76 +74,74 @@
     <% end %>
 
     <% unless minimal %>
-      <div class="gem-c-chart__footer">
-        <div class="gem-c-chart__table" id="<%= table_id %>">
-          <%= render("govuk_publishing_components/components/details",
-            title: t("components.chart.table_dropdown")
-          ) do %>
-            <div tabindex="0" class="gem-c-chart__table-wrapper">
-              <table class="govuk-table">
-                <caption class="govuk-visually-hidden" id="<%= "data-table-caption-#{SecureRandom.hex(4)}" %>">
-                  <%= t("components.chart.accessibility_heading", chart_heading: chart_heading) %>
-                </caption>
-                <% if table_direction == "horizontal" %>
-                  <thead class="govuk-table__head">
+      <div class="gem-c-chart__table" id="<%= table_id %>">
+        <%= render("govuk_publishing_components/components/details",
+          title: t("components.chart.table_dropdown")
+        ) do %>
+          <div tabindex="0" class="gem-c-chart__table-wrapper">
+            <table class="govuk-table">
+              <caption class="govuk-visually-hidden" id="<%= "data-table-caption-#{SecureRandom.hex(4)}" %>">
+                <%= t("components.chart.accessibility_heading", chart_heading: chart_heading) %>
+              </caption>
+              <% if table_direction == "horizontal" %>
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"></td>
+                    <% keys.each do |key| %>
+                      <th class="govuk-table__header" scope="col">
+                        <%= key %>
+                      </th>
+                    <% end %>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <% rows.each do |row| %>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell"></td>
-                      <% keys.each do |key| %>
-                        <th class="govuk-table__header" scope="col">
-                          <%= key %>
-                        </th>
+                      <th class="govuk-table__header" scope="row"><%= row[:label]  %></th>
+                      <% row[:values].each do |value| %>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                          <%= number_with_delimiter value %>
+                        </td>
                       <% end %>
                     </tr>
-                  </thead>
-                  <tbody class="govuk-table__body">
+                  <% end %>
+                </tbody>
+              <% else %>
+                <thead class="govuk-table__head">
+                  <tr class="govuk-table__row">
+                    <td class="govuk-table__cell"></td>
                     <% rows.each do |row| %>
-                      <tr class="govuk-table__row">
-                        <th class="govuk-table__header" scope="row"><%= row[:label]  %></th>
-                        <% row[:values].each do |value| %>
-                          <td class="govuk-table__cell govuk-table__cell--numeric">
-                            <%= number_with_delimiter value %>
-                          </td>
-                        <% end %>
-                      </tr>
+                      <th class="govuk-table__header govuk-table__header--stacked" scope="row">
+                        <%= row[:label] %>
+                      </th>
                     <% end %>
-                  </tbody>
-                <% else %>
-                  <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell"></td>
+                  </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                  <% keys.each_with_index do |key, index| %>
+                    <tr>
+                      <th class="govuk-table__header" scope="row">
+                        <%= key %>
+                      </th>
                       <% rows.each do |row| %>
-                        <th class="govuk-table__header govuk-table__header--stacked" scope="row">
-                          <%= row[:label] %>
-                        </th>
+                        <td class="govuk-table__cell govuk-table__cell--numeric">
+                          <%= number_with_delimiter row[:values][index] %>
+                        </td>
                       <% end %>
                     </tr>
-                  </thead>
-                  <tbody class="govuk-table__body">
-                    <% keys.each_with_index do |key, index| %>
-                      <tr>
-                        <th class="govuk-table__header" scope="row">
-                          <%= key %>
-                        </th>
-                        <% rows.each do |row| %>
-                          <td class="govuk-table__cell govuk-table__cell--numeric">
-                            <%= number_with_delimiter row[:values][index] %>
-                          </td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                <% end %>
-              </table>
-            </div>
-          <% end %>
-        </div>
-
-        <% if link %>
-          <p class="govuk-body">
-            <%= link_to "Download chart data", link,  class: "govuk-link" %>
-          </p>
+                  <% end %>
+                </tbody>
+              <% end %>
+            </table>
+          </div>
         <% end %>
       </div>
+
+      <% if link %>
+        <p class="govuk-body">
+          <%= link_to "Download chart data", link,  class: "govuk-link" %>
+        </p>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
