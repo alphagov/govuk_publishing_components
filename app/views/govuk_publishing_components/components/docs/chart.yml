@@ -208,12 +208,20 @@ examples:
             - 1
             - 2
   format_axis_labels:
-    description: Sometimes if there are a lot of labels on the axes the chart can do strange truncation on the labels. If they are meant to be dates, the `h_axis_format` and `v_axis_format` will force a familiar date format to get around this problem.
+    description: |
+      Axis labels can be forced into date or currency format as shown.
+
+      'currency' will add a currency symbol (£) at the start of the labels.
+
+      'percent' will add a percent (%) to the end of the labels.
+
+      'date' will force a standard date format of `YYYY-MM-DD` to the labels, where they are in an undesirable date format. This can be useful if there are a lot of labels on the axes because the chart can do strange truncation sometimes.
     data:
-      chart_heading: Page views chart
+      chart_heading: Cost per day
       h_axis_title: Day
-      v_axis_title: Views
-      chart_overview: This chart shows page views for January.
+      v_axis_title: Cost
+      chart_overview: This chart shows cost per day.
+      v_axis_format: currency
       h_axis_format: date
       keys:
         - 2024 Jan 1
@@ -223,14 +231,14 @@ examples:
         - 2024 Jan 5
         - 2024 Jan 6
       rows:
-        - label: January 2015
+        - label: Cost
           values:
-            - 110
-            - 119
-            - 105
-            - 109
-            - 130
-            - 131
+            - 14
+            - 29
+            - 45
+            - 63
+            - 54
+            - 22
   vertical table:
     description: Reorient the table to better suit the output of some data sets.
     data:
