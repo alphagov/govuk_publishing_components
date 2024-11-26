@@ -2,6 +2,7 @@ name: Form character count
 description: Help users enter text when there is a limit on the number of characters they can type
 govuk_frontend_components:
   - character-count
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   The component must:
 

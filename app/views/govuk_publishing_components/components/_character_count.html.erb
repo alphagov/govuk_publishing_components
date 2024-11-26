@@ -4,17 +4,19 @@
   maxwords ||= nil
   threshold ||= nil
   textarea ||= {}
-%>
-<% if maxlength || maxwords %>
-  <%= content_tag :div,
-    class: "gem-c-character-count govuk-character-count",
-    data: {
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-character-count govuk-character-count")
+  component_helper.add_data_attribute({
       module: "govuk-character-count",
       maxlength: maxlength,
       maxwords: maxwords,
       threshold: threshold
-    } do %>
+    })
 
+%>
+<% if maxlength || maxwords %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <%= render "govuk_publishing_components/components/textarea", { id: id, character_count: true }.merge(textarea.symbolize_keys) %>
 
     <div id="<%= id %>-info" class="govuk-hint govuk-character-count__message">
