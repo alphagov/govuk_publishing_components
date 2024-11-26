@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add the component wrapper to the lead paragraph component ([PR #4434](https://github.com/alphagov/govuk_publishing_components/pull/4434))
+
 ## 45.7.0
 
 * Extend chart component options ([PR #4424](https://github.com/alphagov/govuk_publishing_components/pull/4424))

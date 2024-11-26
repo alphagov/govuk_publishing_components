@@ -1,5 +1,6 @@
 name: Lead paragraph
 description: The opening paragraph of content. Typically a content item’s description field.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   The lead paragraph must be visually distinct from other paragraphs.
 
@@ -10,6 +11,7 @@ examples:
       text: 'UK Visas and Immigration is making changes to the Immigration Rules affecting various categories.'
   right_to_left:
     data:
+      dir: 'rtl'
       text: 'قرارات تحقيقات وزارة الدفاع في الانتهاكات المزعومة للمادة ٢ والمادة ٣ من المعاهدة الاوروبية لحقوق الانسان خلال العمليات العسكرية في العراق.'
     context:
       right_to_left: true
