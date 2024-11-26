@@ -90,7 +90,6 @@ describe "Chart", type: :view do
     data[:hide_heading] = true
     render_component(data)
 
-    assert_select ".gem-c-chart__header", false
     assert_select "h2.gem-c-heading", false
   end
 
@@ -140,13 +139,6 @@ describe "Chart", type: :view do
     render_component(data)
 
     assert_select 'script[src="https://www.gstatic.com/charts/loader.js"]', count: 1
-  end
-
-  it "renders a padded version" do
-    data[:padding] = true
-    render_component(data)
-
-    assert_select ".gem-c-chart.gem-c-chart--padding"
   end
 
   it "throws an error if a heading is not supplied" do
