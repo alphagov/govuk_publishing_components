@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow the licence details to be hidden ([PR #4438](https://github.com/alphagov/govuk_publishing_components/pull/4438))
+
 ## 45.8.0
 
 * Limit chart heading width ([PR #4435](https://github.com/alphagov/govuk_publishing_components/pull/4435))

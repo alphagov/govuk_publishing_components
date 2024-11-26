@@ -169,3 +169,10 @@ examples:
             text: Rhestr o Wasanaethau Cymraeg
           - href: '/government/organisations/government-digital-service'
             text: Government Digital Service
+
+  without_licence_details:
+    description: |
+      In some limited circumstances (for example, in backend-facing admin systems) it doesn't make
+      sense to show the licence information. This can be hidden by setting `hide_licence` to `true`.
+    data:
+      hide_licence: true
