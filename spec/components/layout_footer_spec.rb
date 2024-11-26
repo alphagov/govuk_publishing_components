@@ -402,4 +402,25 @@ describe "Layout footer", type: :view do
       expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index_section":"5","index_link":"1","index_section_count":"5","text":"© Crown copyright","index_total":"1","type":"footer"}'
     end
   end
+
+  it "shows the licence by default" do
+    render_component({})
+
+    assert_select ".govuk-footer__licence-logo"
+    assert_select ".govuk-footer__licence-description"
+  end
+
+  it "allows the licence to be hidden" do
+    render_component({ hide_licence: true })
+
+    assert_no_selector ".govuk-footer__licence-logo"
+    assert_no_selector ".govuk-footer__licence-description"
+  end
+
+  it "shows the licence if hide_licence is set to false" do
+    render_component({ hide_licence: false })
+
+    assert_select ".govuk-footer__licence-logo"
+    assert_select ".govuk-footer__licence-description"
+  end
 end
