@@ -4,7 +4,6 @@
 
   <div class="govuk-grid-row">
    <div class="govuk-grid-column-two-thirds">
-      <h3 class="govuk-heading-m">Example 1: Document list with full size description, no top border</h3>
         <%= render "govuk_publishing_components/components/document_list", {
           remove_top_border: true,
           items: [
@@ -42,63 +41,6 @@
             }
           ]
         } %>
-    </div>
-    <div class="govuk-grid-column-two-thirds">
-      <h3 class="govuk-heading-m">Example 2: Standard list with extra spacing</h3>
-      <%= render "govuk_publishing_components/components/list", {
-        extra_spacing: true,
-        items: [
-          sanitize("<a href='/help/about-govuk' class='govuk-link govuk-!-font-weight-bold'>" + "About GOV.UK" + "</a>
-          <p class='govuk-body govuk-!-margin-top-1'>" + "Information about the website and the team that are building it" + "</p>"),
-          sanitize("<a href='/help/accessibility' class='govuk-link govuk-!-font-weight-bold'>" + "Accessibility" + "</a>
-          <p class='govuk-body govuk-!-margin-top-1'>" + "How new services are developed on GOV.UK and what it means for users" + "</p>"),
-          sanitize("<a href='/help/beta' class='govuk-link govuk-!-font-weight-bold'>" + "Browsers" + "</a>
-          <p class='govuk-body govuk-!-margin-top-1'>" + "Information about browsers and how to upgrade yours" + "</p>"),
-          sanitize("<a href='/help/browsers' class='govuk-link govuk-!-font-weight-bold'>" + "Cookies" + "</a>
-          <p class='govuk-body govuk-!-margin-top-1'>" + "How cookies are used on GOV.UK and each cookie’s purpose" + "</p>")
-        ]
-      } %>
-    </div>
-    <div class="govuk-grid-column-two-thirds">
-      <h3 class="govuk-heading-m">Example 3: Document list with full size description and equal item spacing, no top border</h3>
-      <%= render "govuk_publishing_components/components/document_list", {
-        equal_item_spacing: true,
-        remove_top_border: true,
-        items: [
-            {
-              link: {
-                text: "About GOV.UK",
-                path: "/become-an-apprentice",
-                description: "Information about the website and the team that are building it",
-                full_size_description: true
-              }
-            },
-            {
-              link: {
-                text: "Accessibility",
-                path: "/become-an-apprentice",
-                description: "How new services are developed on GOV.UK and what it means for users",
-                full_size_description: true
-              }
-            },
-            {
-              link: {
-                text: "Browsers",
-                path: "/become-an-apprentice",
-                description: "Information about browsers and how to upgrade yours+",
-                full_size_description: true
-              }
-            },
-            {
-              link: {
-                text: "Cookies",
-                path: "/become-an-apprentice",
-                description: "How cookies are used on GOV.UK and each cookie’s purpose",
-                full_size_description: true
-              }
-            }
-        ]
-      } %>
     </div>
   </div>
 <% content_for :before_content do %>
