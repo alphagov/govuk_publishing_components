@@ -7,6 +7,7 @@ accessibility_criteria: |
   - indicate the initial state of expandable content
   - indicate where the state of expandable content has changed
 
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:

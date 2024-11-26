@@ -17,16 +17,18 @@
   direction_class = " direction-#{direction}" if local_assigns.include?(:direction)
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  classes = %w(gem-c-metadata)
-  classes << "direction-#{direction}" if local_assigns.include?(:direction)
 
-  if inverse && inverse_compress
-    classes << "gem-c-metadata--inverse"
-  elsif inverse
-    classes << "gem-c-metadata--inverse gem-c-metadata--inverse-padded"
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-metadata")
+  component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)
+
+  if inverse
+    component_helper.add_class("gem-c-metadata--inverse")
+    component_helper.add_class("gem-c-metadata--inverse-padded") unless inverse_compress
   end
 
-  classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
+  component_helper.add_class(shared_helper.get_margin_bottom) if local_assigns[:margin_bottom]
+  component_helper.add_data_attribute({ module: "metadata" })
 
   disable_ga4 ||= false
   ga4_object = {
@@ -35,7 +37,7 @@
     section: "Top",
   }.to_json unless disable_ga4
 %>
-<%= content_tag :div, class: classes, data: { module: "metadata" } do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if title.present? %>
     <%= content_tag :div, class: "gem-c-metadata__title" do %>
       <%= render "govuk_publishing_components/components/heading", {
