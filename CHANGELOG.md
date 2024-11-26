@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow the licence details to be hidden ([PR #4438](https://github.com/alphagov/govuk_publishing_components/pull/4438))
+
 ## 45.8.0
 
 * Add the component wrapper to the lead paragraph component ([PR #4434](https://github.com/alphagov/govuk_publishing_components/pull/4434))
