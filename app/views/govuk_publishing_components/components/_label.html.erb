@@ -4,25 +4,26 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   hint_text ||= ""
-  id ||= nil
   is_radio_label ||= false
   bold ||= false
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   is_page_heading ||= false
   right_to_left ||= false
 
-  css_classes = %w[gem-c-label govuk-label]
-  css_classes << "govuk-label--s" if bold
-  css_classes << "govuk-radios__label" if is_radio_label
-  css_classes << "govuk-label--#{heading_size}" if heading_size
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-label govuk-label")
+  component_helper.add_class("govuk-label--s") if bold
+  component_helper.add_class("govuk-radios__label") if is_radio_label
+  component_helper.add_class("govuk-label--#{heading_size}") if heading_size
+  component_helper.set_dir("rtl") if right_to_left
 %>
 
 <% if is_page_heading %>
   <%= tag.h1 text, class: "govuk-label-wrapper" do %>
-    <%= tag.label text, id: id, for: html_for, class: css_classes, dir: right_to_left ? "rtl" : nil %>
+    <%= tag.label text, for: html_for, **component_helper.all_attributes %>
   <% end %>
 <% else %>
-  <%= tag.label text, id: id, for: html_for, class: css_classes, dir: right_to_left ? "rtl" : nil %>
+  <%= tag.label text, for: html_for, **component_helper.all_attributes %>
 <% end %>
 
 <% if hint_text.present? %>
