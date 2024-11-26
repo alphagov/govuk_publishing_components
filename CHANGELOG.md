@@ -10,6 +10,8 @@
 ## Unreleased
 
 * **BREAKING** Change devolved nations component type option ([PR #4535](https://github.com/alphagov/govuk_publishing_components/pull/4535))
+* **BREAKING** Add component wrapper helper to intervention component ([PR #4378](https://github.com/alphagov/govuk_publishing_components/pull/4378))
+* **BREAKING** Add component wrapper helper to the list component ([PR #4441](https://github.com/alphagov/govuk_publishing_components/pull/4441))
 * Use component wrapper on subscription links ([PR #4525](https://github.com/alphagov/govuk_publishing_components/pull/4525))
 * Use component wrapper on success alert component ([PR #4527](https://github.com/alphagov/govuk_publishing_components/pull/4527))
 * Use component wrapper on summary card component ([PR #4528](https://github.com/alphagov/govuk_publishing_components/pull/4528))
@@ -17,7 +19,6 @@
 * Use component wrapper on translation nav component ([PR #4530](https://github.com/alphagov/govuk_publishing_components/pull/4530))
 * Use component wrapper on warning text component ([PR #4351](https://github.com/alphagov/govuk_publishing_components/pull/4531))
 * Remove govspeak advisory component ([PR #4349](https://github.com/alphagov/govuk_publishing_components/pull/4349))
-* **BREAKING**: Add component wrapper helper to intervention component ([PR #4378](https://github.com/alphagov/govuk_publishing_components/pull/4378))
 * Use component wrapper on super navigation header ([PR #4534](https://github.com/alphagov/govuk_publishing_components/pull/4534))
 
 ## 47.0.0

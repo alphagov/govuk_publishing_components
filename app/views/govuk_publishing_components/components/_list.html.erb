@@ -1,20 +1,14 @@
 <%
-  aria_label ||= nil
   extra_spacing ||= nil
-  id ||= nil
   items ||= []
   list_type ||= "unordered"
   visible_counters ||= nil
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-
-  classes = %w[gem-c-list govuk-list]
-  classes << "govuk-list--bullet" if visible_counters and list_type === "unordered"
-  classes << "govuk-list--number" if visible_counters and list_type === "number"
-  classes << "govuk-list--spaced" if extra_spacing
-  # Setting the  `margin_bottom` to 4 is the same as the default margin - so we
-  # can omit the override class. To do this we leave out `4` from the array:
-  classes << shared_helper.get_margin_bottom if [0,1,2,3,5,6,7,8,9].include?(local_assigns[:margin_bottom])
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-list govuk-list")
+  component_helper.add_class("govuk-list--bullet") if visible_counters and list_type === "unordered"
+  component_helper.add_class("govuk-list--number") if visible_counters and list_type === "number"
+  component_helper.add_class("govuk-list--spaced") if extra_spacing
 
   # Default list type is unordered list.
   list_tag = "ul"
@@ -23,7 +17,7 @@
   list_tag = "ol" if list_type === "number"
 %>
 <% if items.any? %>
-  <%= content_tag list_tag, class: classes, id: id, "aria-label": aria_label do %>
+  <%= content_tag list_tag, **component_helper.all_attributes do %>
     <% items.each do |item| %>
       <li><%= raw(item) %></li>
     <% end %>

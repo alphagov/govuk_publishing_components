@@ -5,6 +5,7 @@ body: |
 
   The `items` parameter can include HTML to display - such as links or another
   list. This HTML can either be directly coded or come from another component.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   The list must:
 
@@ -31,7 +32,8 @@ examples:
   unordered_list_with_aria-label:
     description: "A list with an aria-label"
     data:
-      aria_label: "A list of delicious chocolate bars."
+      aria:
+        label: "A list of delicious chocolate bars."
       <<: *default-example-data
   unordered_list_with_bullet_points:
     description: "An unordered list with visible bullet points."

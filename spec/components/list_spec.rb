@@ -28,7 +28,9 @@ describe "List", type: :view do
 
   it "adds an aria-label" do
     render_component(
-      aria_label: "An aria-label to give this context.",
+      aria: {
+        label: "An aria-label to give this context.",
+      },
       items: ["Test item", "Another test item"],
     )
 
@@ -122,17 +124,6 @@ describe "List", type: :view do
       ],
     )
     assert_select '.gem-c-list.govuk-\!-margin-bottom-7'
-  end
-
-  it "defaults to no bottom margin if an incorrect value is passed" do
-    render_component(
-      margin_bottom: 20,
-      items: [
-        "<a href='https://example.com/'>Test item</a>",
-        "<a href='https://example.com/'>Another test item</a>",
-      ],
-    )
-    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "has no margin class added by default" do
