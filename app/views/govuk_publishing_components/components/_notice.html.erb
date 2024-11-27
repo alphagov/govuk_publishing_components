@@ -16,13 +16,16 @@
   heading_level = show_banner_title ? "h3" : "h2"
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("govuk-notification-banner gem-c-notice")
+  component_helper.add_class(shared_helper.get_margin_bottom)
 
-  css_classes = %w[govuk-notification-banner gem-c-notice]
-  css_classes << shared_helper.get_margin_bottom
+  component_helper.add_aria_attribute({ label: "Notice" })
+  component_helper.add_aria_attribute({ live: "polite" }) if aria_live
+  component_helper.add_aria_attribute({ labelledby: banner_title_id }) if show_banner_title
 
-  aria_attributes = {label: 'Notice'}
-  aria_attributes[:live] = 'polite' if aria_live
-  aria_attributes[:labelledby] = banner_title_id if show_banner_title
+  component_helper.set_lang(lang)
+  component_helper.add_role("region")
 
   description_present = description.present? || description_text.present? || description_govspeak.present?
 
@@ -33,7 +36,7 @@
   end
 %>
 <% if title || description_present %>
-  <%= tag.section class: css_classes, aria: aria_attributes, lang: lang, role: "region" do %>
+  <%= tag.section(**component_helper.all_attributes) do %>
     <%= tag.div class: "govuk-notification-banner__header" do %>
       <%= tag.h2 banner_title, class: "govuk-notification-banner__title", id: banner_title_id %>
     <% end if show_banner_title %>

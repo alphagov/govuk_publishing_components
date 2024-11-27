@@ -4,6 +4,7 @@ body: |
   The notice component replaces the notice and withdrawal notice patterns on GOV.UK.
 
   The component accepts either a simple string `description_text` parameter that it wraps in a paragraph, or a `description_govspeak` parameter that is rendered through govspeak for more complex HTML layout.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   The notice must:
 
