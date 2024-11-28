@@ -40,7 +40,7 @@
     "chartkick": "^5.0.1",
     "govuk-frontend": "5.7.1",
     "govuk-single-consent": "^3.0.9",
-    "sortablejs": "^1.15.3"
+    "sortablejs": "^1.15.5"
   },
   "devDependencies": {
     "@percy/cli": "^1.30.2",
