@@ -1,0 +1,37 @@
+<%
+  add_gem_component_stylesheet("glance-metric")
+
+  name ||= false
+  figure ||= nil
+  context ||= ""
+  measurement_display_label ||= ""
+  measurement_explicit_label ||= ""
+
+  local_assigns[:heading_level] ||= 3
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-glance-metric govuk-body")
+%>
+<% if name %>
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <%= content_tag(shared_helper.get_heading_level, class: "gem-c-glance-metric__heading") do %>
+      <%= name %>
+    <% end %>
+
+    <% if figure.nil? %>
+      <span class="gem-c-glance-metric__figure">No data</span>
+    <% else %>
+      <span class="gem-c-glance-metric__figure">
+        <%= figure %>
+        <% if measurement_display_label.present?  %>
+          <span class="gem-c-glance-metric__display-label" aria-hidden="true"><%= measurement_display_label %></span>
+        <% end %>
+        <% if measurement_explicit_label.present? %>
+          <span class="gem-c-glance-metric__explicit-label"><%= measurement_explicit_label %></span>
+        <% end %>
+    <% end %>
+    </span>
+    <p class="gem-c-glance-metric__context govuk-body-xs"><%= context %></p>
+  <% end %>
+<% end %>

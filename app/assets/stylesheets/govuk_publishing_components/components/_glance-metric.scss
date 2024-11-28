@@ -1,0 +1,75 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-glance-metric {
+  border-top: 1px solid $govuk-border-colour;
+  border-bottom: 0;
+  @include govuk-responsive-margin(6, "bottom");
+
+  &__heading {
+    min-height: 2.6em;
+    @include govuk-font($size: 24, $weight: bold);
+
+    @include govuk-responsive-margin(3, "top");
+    @include govuk-responsive-margin(1, "bottom");
+    @include govuk-responsive-padding(3, "top");
+
+    @include govuk-media-query($until: tablet) {
+      min-height: 4em;
+    }
+
+    @include govuk-media-query($until: mobile) {
+      min-height: 0;
+    }
+  }
+
+  &__figure {
+    display: flex;
+    @include govuk-font($size: 36, $weight: bold);
+    @include govuk-responsive-margin(1, "bottom");
+
+    @include govuk-media-query($until: mobile) {
+      @include govuk-font($size: 48, $weight: bold);
+    }
+  }
+
+  &__explicit-label {
+    @include govuk-visually-hidden;
+  }
+
+  &__context {
+    min-height: 5em;
+    border-bottom: 1px solid $govuk-border-colour;
+
+    @include govuk-media-query($until: mobile) {
+      @include govuk-font(16);
+      min-height: 0;
+      border-bottom: 0;
+    }
+  }
+
+  &__trend {
+    @include govuk-media-query($until: mobile) {
+      @include govuk-font(24);
+    }
+
+    &-text {
+      @include govuk-visually-hidden;
+    }
+
+    &-icon {
+      color: govuk-colour("dark-grey");
+
+      @include govuk-media-query($until: mobile) {
+        @include govuk-font(19);
+      }
+    }
+  }
+
+  &__period {
+    @include govuk-responsive-margin(6, "bottom");
+
+    @include govuk-media-query($until: mobile) {
+      @include govuk-font(16);
+    }
+  }
+}

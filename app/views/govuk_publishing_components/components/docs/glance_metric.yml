@@ -1,0 +1,37 @@
+name: "Glance metric"
+description: "The glance metric component is an at-a-glance view of data for a content item. The minimum requirements for it to display are a name and figure. "
+part_of_admin_layout: true
+body: |
+
+accessibility_criteria: |
+  This component must:
+  
+  - include an explicit label when an abbreviated label is also used
+  - communicate number value and label (if present) in a single dictation when read with a screen reader
+  - convey the meaning of the number shown
+  - The component must use the correct heading level for the page (defaults to `<h3>`) 
+
+shared_accessibility_criteria:
+  - link
+
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data:
+      name: "Unique pageviews"
+      figure: "167"
+      measurement_display_label: "m"
+      measurement_explicit_label: "million"
+      context: "This is in your top 10 items"
+  no measurement labels:
+    data:
+      name: "Feedback comments"
+      figure: "35"
+  custom heading level:
+    description: A custom heading level can be specified if necessary. Defaults to a `h3`. The heading level does not change any styling.
+    data:
+      name: "Feedback comments"
+      figure: "35"
+      measurement_display_label: "m"
+      measurement_explicit_label: "million"
+      heading_level: 2
