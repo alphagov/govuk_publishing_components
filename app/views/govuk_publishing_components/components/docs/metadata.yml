@@ -26,6 +26,9 @@ examples:
       first_published: 14 June 2014
       last_updated: 10 September 2015
   updated_with_links_to_see_details:
+    description: If a `last_updated` value exists and `see_updates_link` is set to true,
+      a "See all updates" link will be shown. The link's href will be set to `#full-publication-update-history`,
+      taking users to the change history on the same page and expanding the section, if expandable, for example, [changes to the rates of capital gains tax](https://www.gov.uk/government/publications/changes-to-the-rates-of-capital-gains-tax)
     data:
       last_updated: 10 September 2015
       see_updates_link: true
