@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add a `glance_metric` component ([PR #4452](https://github.com/alphagov/govuk_publishing_components/pull/4452))
+
 ## 46.0.0
 
 * **BREAKING** Stop setting `id` on fieldsets ([PR #4454](https://github.com/alphagov/govuk_publishing_components/pull/4454))
