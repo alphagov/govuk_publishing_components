@@ -213,6 +213,22 @@ describe "Metadata", type: :view do
     assert_select '.gem-c-metadata.govuk-\!-margin-bottom-2'
   end
 
+  it "renders the component with 3 toggle sections for 'part of', 'from' and 'other'" do
+    render_component(
+      part_of: "<a href='/link'>Department</a>",
+      from: [
+        "<a href='/from-1'>From 1</a>",
+      ],
+      other: {
+        "Related topics": [
+          "<a href='/government/topics/topic-1'>Topic 1</a>",
+        ],
+      },
+    )
+
+    assert_select "[data-module*=\"gem-toggle\"]", count: 3
+  end
+
   it "adds GA4 tracking to the 'see all updates' link" do
     render_component(last_updated: "Hello World", see_updates_link: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
 
@@ -223,7 +239,7 @@ describe "Metadata", type: :view do
     }.to_json
 
     assert_select ".gem-c-metadata__definition:nth-of-type(2)" do |alternate_see_all_updates_container|
-      expect(alternate_see_all_updates_container.attr("data-module").to_s).to eq "ga4-link-tracker"
+      expect(alternate_see_all_updates_container.attr("data-module").to_s).to eq "gem-toggle ga4-link-tracker"
       expect(alternate_see_all_updates_container.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(alternate_see_all_updates_container.attr("data-ga4-link").to_s).to eq expected_ga4_json
     end

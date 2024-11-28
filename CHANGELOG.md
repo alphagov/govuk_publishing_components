@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add 'toggle' module to each expandable region in metadata component ([PR #4397](https://github.com/alphagov/govuk_publishing_components/pull/4397))
+
 ## 45.9.0
 
 * Limit chart heading width ([PR #4435](https://github.com/alphagov/govuk_publishing_components/pull/4435))

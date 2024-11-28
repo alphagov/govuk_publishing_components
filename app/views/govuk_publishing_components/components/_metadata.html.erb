@@ -35,7 +35,7 @@
     section: "Top",
   }.to_json unless disable_ga4
 %>
-<%= content_tag :div, class: classes, data: { module: "gem-toggle metadata" } do %>
+<%= content_tag :div, class: classes, data: { module: "metadata" } do %>
   <% if title.present? %>
     <%= content_tag :div, class: "gem-c-metadata__title" do %>
       <%= render "govuk_publishing_components/components/heading", {
@@ -49,13 +49,13 @@
   <dl class="gem-c-metadata__list">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
-      <dd class="gem-c-metadata__definition">
+      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
         <%= render 'govuk_publishing_components/components/metadata/sentence', items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
     <% if part_of.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of") %>:</dt>
-      <dd class="gem-c-metadata__definition">
+      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
         <%= render 'govuk_publishing_components/components/metadata/sentence', items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
@@ -88,11 +88,13 @@
         <% if definition.any? %>
           <dt class="gem-c-metadata__term"><%= title %>:</dt>
           <dd class="gem-c-metadata__definition"
-              <% unless disable_ga4 %>
-                data-module="ga4-link-tracker"
-                data-ga4-track-links-only
-                data-ga4-link="<%= ga4_object %>"
-              <% end%>>
+            <% if disable_ga4 %>
+              data-module="gem-toggle"
+            <% else %>
+              data-module="gem-toggle ga4-link-tracker"
+              data-ga4-track-links-only
+              data-ga4-link="<%= ga4_object %>"
+            <% end%>>
             <%= render 'govuk_publishing_components/components/metadata/sentence', items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
           </dd>
         <% end %>
