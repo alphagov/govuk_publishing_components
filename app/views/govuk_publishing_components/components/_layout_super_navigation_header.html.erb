@@ -317,7 +317,7 @@
                   label: "Site-wide",
                 }
               ) do %>
-                <%= render "govuk_publishing_components/components/search", {
+                <%= render "govuk_publishing_components/components/search_with_autocomplete", {
                   name: "keywords",
                   inline_label: false,
                   label_size: "m",
@@ -326,6 +326,8 @@
                   size: "large",
                   margin_bottom: 0,
                   disable_corrections: true,
+                  source_url: [Plek.new.website_root, "/api/search/autocomplete.json"].join,
+                  source_key: "suggestions"
                 } %>
               <% end %>
             </div>
