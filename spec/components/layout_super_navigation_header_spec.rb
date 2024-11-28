@@ -163,6 +163,11 @@ describe "Super navigation header", type: :view do
     assert_select ".js-module-initialised[data-module=\"super-navigation-mega-menu\"]", false
   end
 
+  it "includes the search_with_autocomplete component with correct URL" do
+    render_component({})
+    assert_select ".gem-c-search-with-autocomplete[data-source-url='http://www.dev.gov.uk/api/search/autocomplete.json']"
+  end
+
   it "adds GA4 tracking" do
     render_component({})
 
