@@ -10,8 +10,8 @@ describe('GOVUK.Modules.AddAnother', function () {
     fixture.setAttribute('data-add-button-text', 'Add another thing')
     fixture.innerHTML = `
       <div>
-        <div class="js-add-another__fieldset">
-          <fieldset>
+        <div>
+          <fieldset class="js-add-another__fieldset">
             <legend>Thing 1</legend>
             <input type="hidden" name="test[0][id]" value="test_id" />
             <label for="test_0_foo">Foo</label>
@@ -24,8 +24,8 @@ describe('GOVUK.Modules.AddAnother', function () {
             </div>
           </fieldset>
         </div>
-        <div class="js-add-another__fieldset">
-          <fieldset>
+        <div>
+          <fieldset class="js-add-another__fieldset">
             <legend>Thing 2</legend>
             <input type="hidden" name="test[1][id]" value="test_id" />
             <label for="test_1_foo">Foo</label>
@@ -38,8 +38,8 @@ describe('GOVUK.Modules.AddAnother', function () {
             </div>
           </fieldset>
         </div>
-        <div class="js-add-another__empty">
-          <fieldset>
+        <div>
+          <fieldset class="js-add-another__empty">
             <legend>Thing 3</legend>
             <input type="hidden" name="test[2][id]" value="test_id" />
             <label for="test_2_foo">Foo</label>

@@ -62,7 +62,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.updateFieldsetsAndButtons = function () {
-    this.module.querySelectorAll('.js-add-another__fieldset:not([hidden]) > fieldset > legend')
+    this.module.querySelectorAll('.js-add-another__fieldset:not([hidden]) > legend')
       .forEach(function (legend, index) {
         legend.textContent = this.module.dataset.fieldsetLegend + ' ' + (index + 1)
       }.bind(this))
