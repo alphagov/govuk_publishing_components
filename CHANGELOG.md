@@ -11,6 +11,8 @@
 
 * Add 'toggle' module to each expandable region in metadata component ([PR #4397](https://github.com/alphagov/govuk_publishing_components/pull/4397))
 * Add a description for the metadata block 'see_updates_link' example ([PR #4447](https://github.com/alphagov/govuk_publishing_components/pull/4447))
+* Add the component wrapper to the fieldset component ([PR #4420](https://github.com/alphagov/govuk_publishing_components/pull/4434))
+* Introduce "add another" component ([PR #4420](https://github.com/alphagov/govuk_publishing_components/pull/4434))
 
 ## 45.9.0
 
