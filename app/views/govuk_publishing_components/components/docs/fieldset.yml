@@ -6,6 +6,7 @@ body: |
   You can use the `text` property or pass `text` as a block.
 accessibility_criteria: |
   - must give inputs within the fieldset context with legend text
+uses_component_wrapper_helper: true
 examples:
   default:
     data:

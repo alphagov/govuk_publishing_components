@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING** Stop setting `id` on fieldsets ([PR #4454](https://github.com/alphagov/govuk_publishing_components/pull/4454))
+
 ## 45.10.0
 
 * Add 'toggle' module to each expandable region in metadata component ([PR #4397](https://github.com/alphagov/govuk_publishing_components/pull/4397))
