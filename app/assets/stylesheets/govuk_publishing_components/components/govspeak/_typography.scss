@@ -15,6 +15,10 @@
 .gem-c-govspeak {
   @include markdown-typography;
 
+  &.gem-c-govspeak--font-size-l {
+    @include markdown-typography($base_font_size: 19, $font_size: 24, $heading_font_size: 36);
+  }
+
   &.gem-c-govspeak--direction-rtl ol,
   &.gem-c-govspeak--direction-rtl ul {
     margin-left: 0;

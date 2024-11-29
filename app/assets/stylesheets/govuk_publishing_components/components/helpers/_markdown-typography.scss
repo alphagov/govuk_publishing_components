@@ -1,7 +1,7 @@
-@mixin markdown-typography {
+@mixin markdown-typography($base_font_size: 16, $font_size: 19, $heading_font_size: 27) {
   @include govuk-text-colour;
 
-  @include govuk-font($size: 16);
+  @include govuk-font($size: $base_font_size);
 
   $gutter-two-thirds: $govuk-gutter - calc($govuk-gutter / 3);
 
@@ -10,7 +10,7 @@
   p {
     margin-top: $govuk-gutter-half;
     margin-bottom: $govuk-gutter-half;
-    @include govuk-font($size: 19);
+    @include govuk-font($size: $font_size);
 
     @include govuk-media-query($from: tablet) {
       margin-top: $gutter-two-thirds;
@@ -26,13 +26,13 @@
   h1 {
     margin: 0;
     padding: 0;
-    @include govuk-font($size: 19);
+    @include govuk-font($size: $font_size);
   }
 
   h2 {
     margin-top: $govuk-gutter;
     margin-bottom: 0;
-    @include govuk-font($size: 27, $weight: bold);
+    @include govuk-font($size: $heading_font_size, $weight: bold);
 
     @include govuk-media-query($from: desktop) {
       margin-top: $govuk-gutter * 1.5;
@@ -43,7 +43,7 @@
   h3 {
     margin-top: $govuk-gutter + 5px;
     margin-bottom: 0;
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-font($size: $font_size, $weight: bold);
   }
 
   // H4, H5 and H6 are discouraged and thus styled the same
@@ -53,7 +53,7 @@
   h6 {
     margin-top: $govuk-gutter + 5px;
     margin-bottom: 0;
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk-font($size: $font_size, $weight: bold);
 
     + p {
       margin-top: 5px;

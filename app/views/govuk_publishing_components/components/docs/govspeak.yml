@@ -911,3 +911,22 @@ examples:
             <p>Deforested area. Credit: Blue Ventures-Garth Cripps</p>
           </figcaption>
         </figure>
+  different_font_sizes:
+    description: |
+      Set a different font size for the govspeak. The only valid option is `l`.
+      
+      This option should be used rarely, in cases where the design calls for a short
+      piece of large rich text (for example, in the content of a hero block).
+    data:
+      block: |
+        <p>This is large govspeak</p>
+        <p>It is:</p>
+        <ul>
+          <li>Bigger than normal govspeak</li>
+          <li>Intended to be used rarely</li>
+          <li>A way to include large rich text when the design calls for it</li>
+        </ul>
+        <div class="call-to-action">
+          <p>It should support all the usual govspeak features, such as calls to action.</p>
+        </div>
+      font_size: "l"
