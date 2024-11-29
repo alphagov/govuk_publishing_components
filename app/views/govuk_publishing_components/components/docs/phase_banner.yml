@@ -43,5 +43,4 @@ examples:
     data:
       app_name: Skittles Maker
       phase: beta
-      inverse: true
       disable_ga4: true
