@@ -337,11 +337,11 @@ describe "Meta tags", type: :view do
 
   it "renders the has-content-history tag as true when the content has history" do
     content_item = {
-      public_updated_at: Time.parse("2017-01-01"),
+      public_updated_at: Time.zone.parse("2017-01-01"),
       details: {
-        first_public_at: Time.parse("2016-01-01"),
+        first_public_at: Time.zone.parse("2016-01-01"),
         change_history: [
-          { note: "test", public_timestamp: Time.parse("2016-01-01") },
+          { note: "test", public_timestamp: Time.zone.parse("2016-01-01") },
         ],
       },
     }
