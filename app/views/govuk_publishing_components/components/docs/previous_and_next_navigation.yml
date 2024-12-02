@@ -19,6 +19,7 @@ accessibility_criteria: |
   - identify itself as pagination navigation
   - provide a distinction between the navigation text and label text of the links both visually and for screenreaders
 
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
