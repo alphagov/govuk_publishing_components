@@ -19,7 +19,7 @@ shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
   - landmark-complementary-is-top-level # Statistic headlines are generating an aside element which can not be a top level in the examples
-  - different_font_sizes # Example includes headings, which don't conform with the document structure
+  - large_font_size # Example includes headings, which don't conform with the document structure
 uses_component_wrapper_helper: true
 examples:
   basic_content:
@@ -912,9 +912,9 @@ examples:
             <p>Deforested area. Credit: Blue Ventures-Garth Cripps</p>
           </figcaption>
         </figure>
-  different_font_sizes:
+  large_font_size:
     description: |
-      Set a different font size for the govspeak. The only valid option is `l`.
+      Set a different font size for the govspeak. The valid options are true or false (the default).
       
       This option should be used rarely, in cases where the design calls for a short
       piece of large rich text (for example, in the content of a hero block).
@@ -936,4 +936,4 @@ examples:
         <h4>Heading 4</h4>
         <h5>Heading 5</h5>
         <h6>Heading 6</h6>
-      font_size: "l"
+      large_font_size: true

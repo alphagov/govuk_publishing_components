@@ -5,7 +5,7 @@
   local_assigns[:margin_bottom] ||= 0
   direction_class = "gem-c-govspeak--direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
-  font_size_class = local_assigns.fetch(:font_size, "m").then { |font_size| "gem-c-govspeak--font-size-#{font_size}" }
+  large_font_size = local_assigns.fetch(:large_font_size, false)
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
@@ -14,7 +14,7 @@
   component_helper.add_class("js-disable-youtube") if disable_youtube_expansions
   component_helper.add_class("gem-c-govspeak--inverse") if inverse
   component_helper.add_class(shared_helper.get_margin_bottom)
-  component_helper.add_class(font_size_class)
+  component_helper.add_class("gem-c-govspeak--font-size-l") if large_font_size
   component_helper.add_data_attribute({ module: "govspeak" })
 %>
 <%= tag.div(**component_helper.all_attributes) do %>

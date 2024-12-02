@@ -54,17 +54,17 @@ describe "Govspeak", type: :view do
     assert_select ".js-disable-youtube h2", text: "youtube"
   end
 
-  it "renders with font-size m by default" do
+  it "does not render with font-size l by default" do
     render_component(
       content: "".html_safe,
     )
 
-    assert_select ".gem-c-govspeak--font-size-m"
+    assert_select ".gem-c-govspeak--font-size-l", false
   end
 
-  it "renders with font-size l when the font_size option is used" do
+  it "renders with font-size l when the large_font_size option is used" do
     render_component(
-      font_size: "l",
+      large_font_size: true,
       content: "".html_safe,
     )
 
