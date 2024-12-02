@@ -15,6 +15,7 @@
 * Use component wrapper on org logo component ([PR #4458](https://github.com/alphagov/govuk_publishing_components/pull/4458))
 * Use component wrapper on notice component ([PR #4444](https://github.com/alphagov/govuk_publishing_components/pull/4444))
 * Add component wrapper to the metadata component ([PR #4442](https://github.com/alphagov/govuk_publishing_components/pull/4442))
+* Add a `font_size` option to the govspeak component ([PR #4461](https://github.com/alphagov/govuk_publishing_components/pull/4461))
 
 ## 46.0.0
 
