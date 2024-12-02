@@ -2,16 +2,15 @@
   add_gem_component_stylesheet("previous-and-next-navigation")
   disable_ga4 ||= false
 
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("govuk-pagination govuk-pagination--block")
+  component_helper.add_role("navigation")
+  component_helper.add_aria_attribute({ label: t("components.previous_and_next_navigation.pagination") })
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
+
   if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page)
 %>
-  <nav
-    class="govuk-pagination govuk-pagination--block"
-    role="navigation"
-    aria-label="<%= t("components.previous_and_next_navigation.pagination") %>"
-    <% unless disable_ga4 %>
-      data-module="ga4-link-tracker"
-    <% end %>
-  >
+  <%= tag.nav(**component_helper.all_attributes) do %>
     <% if local_assigns.include?(:previous_page) %>
       <%
         title = previous_page[:title] || t("components.previous_and_next_navigation.previous")
@@ -73,5 +72,5 @@
         </a>
       </div>
     <% end %>
-  </nav>
+  <% end %>
 <% end %>

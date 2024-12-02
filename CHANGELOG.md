@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Use component wrapper on previous and next component ([PR #4463](https://github.com/alphagov/govuk_publishing_components/pull/4463))
+
 ## 46.1.0
 
 * Use component wrapper on panel component ([PR #4459](https://github.com/alphagov/govuk_publishing_components/pull/4459))
