@@ -14,10 +14,10 @@
 
   # Set the wrapping element to be a heading or a `div`:
   wrapping_element = (use_heading ? "h#{heading_level}" : "div").to_sym
-
-  wrapper_classes = %w[gem-c-organisation-logo]
-  wrapper_classes << brand_helper.brand_class
-  wrapper_classes << "gem-c-organisation-logo--inverse" if inverse
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-organisation-logo")
+  component_helper.add_class(brand_helper.brand_class)
+  component_helper.add_class("gem-c-organisation-logo--inverse") if inverse
 
   container_classes = [
     logo_helper.logo_container_class,
@@ -26,9 +26,7 @@
   container_classes << "gem-c-organisation-logo__container--inline" if inline
 %>
 
-<%= content_tag(wrapping_element, {
-    class: wrapper_classes
-  }) do %>
+<%= content_tag(wrapping_element, **component_helper.all_attributes) do %>
   <% if organisation[:url] %>
     <%= link_to organisation[:url], class: container_classes.join(" ") do %>
       <%= logo_helper.logo_content %>

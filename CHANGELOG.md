@@ -11,6 +11,7 @@
 
 * Use component wrapper on panel component ([PR #4459](https://github.com/alphagov/govuk_publishing_components/pull/4459))
 * Add a `glance_metric` component ([PR #4452](https://github.com/alphagov/govuk_publishing_components/pull/4452))
+* Use component wrapper on org logo component ([PR #4458](https://github.com/alphagov/govuk_publishing_components/pull/4458))
 
 ## 46.0.0
 
