@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+## 46.1.0
+
 * Use component wrapper on panel component ([PR #4459](https://github.com/alphagov/govuk_publishing_components/pull/4459))
 * Use the component wrapper on the phase banner component ([PR #4460](https://github.com/alphagov/govuk_publishing_components/pull/4460))
 * Add a `glance_metric` component ([PR #4452](https://github.com/alphagov/govuk_publishing_components/pull/4452))
