@@ -34,15 +34,22 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "accepts valid class names" do
-      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing")
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl")
       expected = {
-        class: "gem-c-component govuk-component app-c-component brand--thing brand__thing",
+        class: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
 
     it "rejects invalid class names" do
       classes = "js-okay not-cool-man"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes:)
+      }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
+    end
+
+    it "rejects classes that aren't an exact match of 'direction-rtl'" do
+      classes = "direction-rtll"
       expect {
         GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes:)
       }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
