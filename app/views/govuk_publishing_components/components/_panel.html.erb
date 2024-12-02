@@ -6,8 +6,10 @@
   append ||= false
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-panel govuk-panel govuk-panel--confirmation")
 %>
-<div class="gem-c-panel govuk-panel govuk-panel--confirmation">
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= content_tag(shared_helper.get_heading_level, class: "govuk-panel__title") do %>
     <% if prepend %>
       <span class="gem-c-panel__prepend">
@@ -29,4 +31,4 @@
       <%= description %>
     </div>
   <% end %>
-</div>
+<% end %>

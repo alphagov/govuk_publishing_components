@@ -2,6 +2,7 @@ name: Panel
 description: Used on confirmation or results pages to highlight important content.
 govuk_frontend_components:
   - panel
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   - have a text colour contrast ratio of more than 4.5:1 with its background to be visually distinct
 examples:
