@@ -5,6 +5,7 @@ accessibility_criteria: |
   The label must:
 
   - have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 examples:
@@ -42,5 +43,4 @@ examples:
     data:
       app_name: Skittles Maker
       phase: beta
-      inverse: true
       disable_ga4: true

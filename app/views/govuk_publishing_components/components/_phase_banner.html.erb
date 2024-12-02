@@ -15,26 +15,27 @@ unless message.present?
   end
 end
 
-container_css_classes = %w(gem-c-phase-banner govuk-phase-banner)
-container_css_classes << "gem-c-phase-banner--inverse" if inverse
-
-data_attributes = {}
+component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+component_helper.add_class("gem-c-phase-banner govuk-phase-banner")
+component_helper.add_class("gem-c-phase-banner--inverse") if inverse
 
 unless disable_ga4
-  data_attributes[:ga4_phase_banner] = phase
-  data_attributes[:module] = "ga4-link-tracker"
-  data_attributes[:ga4_track_links_only] = ""
-  data_attributes[:ga4_set_indexes] = ""
-  data_attributes[:ga4_link] = {
-    event_name: "navigation",
-    type: "phase banner",
-    section: Nokogiri::HTML(message).text,
-  }.to_json
+  component_helper.add_data_attribute({
+    ga4_phase_banner: phase,
+    module: "ga4-link-tracker",
+    ga4_track_links_only: "",
+    ga4_set_indexes: "",
+    ga4_link: {
+      event_name: "navigation",
+      type: "phase banner",
+      section: Nokogiri::HTML(message).text,
+    }.to_json
+  })
 end
 
 %>
 
-<%= tag.div class: container_css_classes, data: data_attributes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= tag.p class: "govuk-phase-banner__content" do %>
     <%= tag.strong app_name, class: "govuk-phase-banner__content__app-name" if app_name %>
     <%= tag.strong phase.titleize, class: "govuk-tag govuk-phase-banner__content__tag" if phase %>
