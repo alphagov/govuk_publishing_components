@@ -70,9 +70,9 @@ cy:
     devolved_nations:
       applies_to: Yn berthnasol i
       connectors:
-        last_word:
-        two_words:
-      england:
+        last_word: " a "
+        two_words: " a "
+      england: Loegr
       northern_ireland:
       scotland:
       type:
