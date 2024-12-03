@@ -24,24 +24,24 @@ module GovukPublishingComponents
       def all_attributes
         attributes = {}
 
-        attributes[:id] = @options[:id] unless @options[:id].blank?
-        attributes[:data] = @options[:data_attributes] unless @options[:data_attributes].blank?
-        attributes[:aria] = @options[:aria] unless @options[:aria].blank?
+        attributes[:id] = @options[:id] if @options[:id].present?
+        attributes[:data] = @options[:data_attributes] if @options[:data_attributes].present?
+        attributes[:aria] = @options[:aria] if @options[:aria].present?
 
         ((@options[:classes] ||= "") << " govuk-!-margin-bottom-#{@options[:margin_bottom]}").strip! if @options[:margin_bottom]
-        attributes[:class] = @options[:classes] unless @options[:classes].blank?
+        attributes[:class] = @options[:classes] if @options[:classes].present?
 
-        attributes[:role] = @options[:role] unless @options[:role].blank?
-        attributes[:lang] = @options[:lang] unless @options[:lang].blank?
-        attributes[:open] = @options[:open] unless @options[:open].blank?
+        attributes[:role] = @options[:role] if @options[:role].present?
+        attributes[:lang] = @options[:lang] if @options[:lang].present?
+        attributes[:open] = @options[:open] if @options[:open].present?
         attributes[:hidden] = @options[:hidden] unless @options[:hidden].nil?
-        attributes[:tabindex] = @options[:tabindex] unless @options[:tabindex].blank?
-        attributes[:dir] = @options[:dir] unless @options[:dir].blank?
-        attributes[:type] = @options[:type] unless @options[:type].blank?
-        attributes[:draggable] = @options[:draggable] unless @options[:draggable].blank?
-        attributes[:rel] = @options[:rel] unless @options[:rel].blank?
-        attributes[:target] = @options[:target] unless @options[:target].blank?
-        attributes[:title] = @options[:title] unless @options[:title].blank?
+        attributes[:tabindex] = @options[:tabindex] if @options[:tabindex].present?
+        attributes[:dir] = @options[:dir] if @options[:dir].present?
+        attributes[:type] = @options[:type] if @options[:type].present?
+        attributes[:draggable] = @options[:draggable] if @options[:draggable].present?
+        attributes[:rel] = @options[:rel] if @options[:rel].present?
+        attributes[:target] = @options[:target] if @options[:target].present?
+        attributes[:title] = @options[:title] if @options[:title].present?
 
         attributes
       end
