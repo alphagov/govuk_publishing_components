@@ -55,6 +55,22 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
     end
 
+    it "accepts bottom margin" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(margin_bottom: 1)
+      expected = {
+        class: "govuk-!-margin-bottom-1",
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+    end
+
+    it "accepts valid class names and bottom margin" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "gem-c-component", margin_bottom: 5)
+      expected = {
+        class: "gem-c-component govuk-!-margin-bottom-5",
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+    end
+
     it "can set an id, overriding a passed value" do
       helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
       helper.set_id("override")

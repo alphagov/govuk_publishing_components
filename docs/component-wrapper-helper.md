@@ -29,6 +29,7 @@ These options can be passed to any component that uses the component wrapper.
 - `data_attributes` - accepts a hash of data attributes
 - `aria` - accepts a hash of aria attributes
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
+- `margin_bottom` - accepts a number from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale) (defaults to no margin)
 - `role` - accepts a space separated string of roles
 - `lang` - accepts a language attribute value
 - `open` - accepts an open attribute value (true or false)
@@ -64,6 +65,9 @@ The component wrapper includes several methods to make managing options easier, 
   data_attributes ||= {}
   aria_attributes ||= {}
   role ||= nil
+
+  # margin_bottom will default to no margin, use this line to set a different default
+  local_assigns[:margin_bottom] ||= 6
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-example govuk-example") # combines the given class with any passed classes

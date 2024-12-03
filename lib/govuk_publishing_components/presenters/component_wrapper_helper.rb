@@ -14,6 +14,7 @@ module GovukPublishingComponents
         check_hidden_is_valid(@options[:hidden]) if @options.include?(:hidden)
         check_tabindex_is_valid(@options[:tabindex]) if @options.include?(:tabindex)
         check_dir_is_valid(@options[:dir]) if @options.include?(:dir)
+        get_margin_bottom(@options[:margin_bottom]) if @options.include?(:margin_bottom)
       end
 
       def all_attributes
@@ -81,6 +82,10 @@ module GovukPublishingComponents
       def set_dir(dir_attribute)
         check_dir_is_valid(dir_attribute)
         @options[:dir] = dir_attribute
+      end
+
+      def get_margin_bottom(margin_bottom)
+        add_class("govuk-!-margin-bottom-#{margin_bottom}") if [*0..9].include?(margin_bottom)
       end
 
     private
