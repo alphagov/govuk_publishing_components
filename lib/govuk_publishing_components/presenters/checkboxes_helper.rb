@@ -87,7 +87,7 @@ module GovukPublishingComponents
         checkbox_id = checkbox[:id] || "#{@id}-#{index}"
         controls = checkbox[:controls]
         aria_controls = "#{checkbox_id}-conditional-#{index || rand(1..100)}" if checkbox[:conditional].present?
-        checkbox_name = (checkbox[:name].presence || @name)
+        checkbox_name = checkbox[:name].presence || @name
         checked = true if checkbox[:checked].present?
         data = checkbox[:data_attributes] || {}
         data[:controls] = controls
