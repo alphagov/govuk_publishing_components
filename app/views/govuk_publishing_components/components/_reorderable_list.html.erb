@@ -3,11 +3,13 @@
 
   items ||= []
   input_name ||= "ordering"
-  data_attributes ||= {}
-  data_attributes[:module] = "reorderable-list"
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-reorderable-list")
+  component_helper.add_data_attribute({ module: "reorderable-list" })
 %>
 
-<%= tag.ol class: "gem-c-reorderable-list", data: data_attributes do %>
+<%= tag.ol(**component_helper.all_attributes) do %>
   <% items.each_with_index do |item, index| %>
     <%= tag.li class: "gem-c-reorderable-list__item" do %>
       <%= tag.div class: "gem-c-reorderable-list__wrapper" do %>

@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Use component wrapper on reorderable list component ([PR #4474](https://github.com/alphagov/govuk_publishing_components/pull/4474))
+
 ## 46.2.0
 
 * Support Welsh devolved nations component ([PR #4440](https://github.com/alphagov/govuk_publishing_components/pull/4440))
