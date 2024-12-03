@@ -14,6 +14,7 @@
   minimal ||= false
   hide_heading ||= minimal
   link ||= false
+  local_assigns[:margin_bottom] ||= 3
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
@@ -21,10 +22,8 @@
   @external_script[:loaded] += 1
 
   chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(local_assigns)
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-chart")
-  component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.add_class("gem-c-chart--minimal") if minimal
 
   require "chartkick"
