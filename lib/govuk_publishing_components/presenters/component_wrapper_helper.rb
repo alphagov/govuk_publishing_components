@@ -19,7 +19,6 @@ module GovukPublishingComponents
 
       def all_attributes
         attributes = {}
-
         attributes[:id] = @options[:id] unless @options[:id].blank?
         attributes[:data] = @options[:data_attributes] unless @options[:data_attributes].blank?
         attributes[:aria] = @options[:aria] unless @options[:aria].blank?
