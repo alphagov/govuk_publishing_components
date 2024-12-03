@@ -140,7 +140,7 @@ module GovukPublishingComponents
       end
 
       def active_step_nav_content_id
-        @active_step_nav_content_id ||= (@query_parameters["step-by-step-nav"].presence)
+        @active_step_nav_content_id ||= @query_parameters["step-by-step-nav"].presence
       end
 
       def steps
