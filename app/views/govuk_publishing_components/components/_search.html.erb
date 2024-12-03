@@ -3,7 +3,6 @@
   add_gem_component_stylesheet("label")
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
 
   aria_controls ||= nil
   button_text ||= t("components.search_box.search_button")

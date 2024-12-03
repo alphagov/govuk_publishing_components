@@ -105,12 +105,6 @@ describe "Auditing the components in the gem" do
           ],
         },
         {
-          link: "lib/govuk_publishing_components/presenters/heading_helper.rb",
-          match: /(GovukPublishingComponents::Presenters::HeadingHelper.new)/,
-          name: "Heading helper",
-          used_by: [],
-        },
-        {
           link: "lib/govuk_publishing_components/presenters/shared_helper.rb",
           match: /(GovukPublishingComponents::Presenters::SharedHelper.new)/,
           name: "Shared helper",
