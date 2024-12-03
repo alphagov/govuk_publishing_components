@@ -2,7 +2,6 @@
   add_gem_component_stylesheet("action-link")
 
   local_assigns[:margin_bottom] ||= 0
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   text ||= false
   nowrap_text ||= false
@@ -26,7 +25,6 @@
   css_classes << "gem-c-action-link--simple-light" if simple_light
   css_classes << "gem-c-action-link--with-subtext" if subtext
   css_classes << "gem-c-action-link--mobile-subtext" if mobile_subtext
-  css_classes << shared_helper.get_margin_bottom
 
   link_classes = %w(govuk-link gem-c-action-link__link gem-c-force-print-link-styles)
   link_classes << "govuk-link--inverse" if inverse
