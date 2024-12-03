@@ -11,6 +11,7 @@
 
 * Support Welsh devolved nations component ([PR #4440](https://github.com/alphagov/govuk_publishing_components/pull/4440))
 * Use component wrapper on previous and next component ([PR #4463](https://github.com/alphagov/govuk_publishing_components/pull/4463))
+* Use component wrapper on related nav component ([PR #4466](https://github.com/alphagov/govuk_publishing_components/pull/4466))
 
 ## 46.1.0
 

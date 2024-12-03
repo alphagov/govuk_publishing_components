@@ -3,16 +3,18 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   disable_ga4 ||= false
   ga4_type = local_assigns[:context] == :footer ? "contextual footer" : "related content"
-  data = {}
-  data[:module] = "ga4-link-tracker" unless disable_ga4
   ga4_tracking_counts ||= OpenStruct.new(index_section_count: 0)
   ga4_tracking_counts.index_section_count += related_nav_helper.index_section_count
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-related-navigation govuk-!-display-none-print")
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
 
   add_gem_component_stylesheet("related-navigation")
 %>
 <% if related_nav_helper.related_navigation? %>
   <% random = SecureRandom.hex(4) %>
-  <%= tag.div(class: "gem-c-related-navigation govuk-!-display-none-print", data: data) do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <% if local_assigns[:context] != :footer %>
       <h2 id="related-nav-related_items-<%= random %>"
           class="gem-c-related-navigation__main-heading"
