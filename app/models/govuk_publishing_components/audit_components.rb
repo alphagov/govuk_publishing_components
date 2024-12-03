@@ -275,7 +275,7 @@ module GovukPublishingComponents
         next unless File.file?(file)
 
         helpers.each do |helper|
-          next unless File.foreach(file).grep(helper[:match]).present?
+          next if File.foreach(file).grep(helper[:match]).blank?
 
           helper[:used_by] << {
             name: component[:name],

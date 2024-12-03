@@ -19,16 +19,16 @@ module GovukPublishingComponents
       def all_attributes
         attributes = {}
 
-        attributes[:id] = @options[:id] unless @options[:id].blank?
-        attributes[:data] = @options[:data_attributes] unless @options[:data_attributes].blank?
-        attributes[:aria] = @options[:aria] unless @options[:aria].blank?
-        attributes[:class] = @options[:classes] unless @options[:classes].blank?
-        attributes[:role] = @options[:role] unless @options[:role].blank?
-        attributes[:lang] = @options[:lang] unless @options[:lang].blank?
-        attributes[:open] = @options[:open] unless @options[:open].blank?
+        attributes[:id] = @options[:id] if @options[:id].present?
+        attributes[:data] = @options[:data_attributes] if @options[:data_attributes].present?
+        attributes[:aria] = @options[:aria] if @options[:aria].present?
+        attributes[:class] = @options[:classes] if @options[:classes].present?
+        attributes[:role] = @options[:role] if @options[:role].present?
+        attributes[:lang] = @options[:lang] if @options[:lang].present?
+        attributes[:open] = @options[:open] if @options[:open].present?
         attributes[:hidden] = @options[:hidden] unless @options[:hidden].nil?
-        attributes[:tabindex] = @options[:tabindex] unless @options[:tabindex].blank?
-        attributes[:dir] = @options[:dir] unless @options[:dir].blank?
+        attributes[:tabindex] = @options[:tabindex] if @options[:tabindex].present?
+        attributes[:dir] = @options[:dir] if @options[:dir].present?
 
         attributes
       end
