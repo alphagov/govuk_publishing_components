@@ -263,12 +263,6 @@ module GovukPublishingComponents
           used_by: [],
         },
         {
-          name: "Heading helper",
-          link: "lib/govuk_publishing_components/presenters/heading_helper.rb",
-          match: /(GovukPublishingComponents::Presenters::HeadingHelper.new)/,
-          used_by: [],
-        },
-        {
           name: "Shared helper",
           link: "lib/govuk_publishing_components/presenters/shared_helper.rb",
           match: /(GovukPublishingComponents::Presenters::SharedHelper.new)/,
