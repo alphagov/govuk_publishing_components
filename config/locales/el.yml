@@ -134,6 +134,7 @@ el:
       navigation_search_subheading:
       search_text:
     metadata:
+      and: και
       from: Από
       history: Ιστορικό
       last_updated: Τελευταία ενημέρωση

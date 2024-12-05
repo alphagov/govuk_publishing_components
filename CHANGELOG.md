@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add /media/ path to GA4 download link tracking ([PR #4491](https://github.com/alphagov/govuk_publishing_components/pull/4491/))
+* Translate "and" connective in metadata component for some languages ([PR #4477](https://github.com/alphagov/govuk_publishing_components/pull/4477))
 
 ## 46.3.0
 

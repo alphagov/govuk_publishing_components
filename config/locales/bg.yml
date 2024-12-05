@@ -138,6 +138,7 @@ bg:
       navigation_search_subheading:
       search_text:
     metadata:
+      and: и
       from: От
       history: История
       last_updated: Последно актуализирани

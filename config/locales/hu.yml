@@ -137,6 +137,7 @@ hu:
       navigation_search_subheading:
       search_text:
     metadata:
+      and: és
       from: Feladó
       history: Előzmények
       last_updated: Utolsó frissítés
