@@ -134,6 +134,7 @@
       navigation_search_subheading:
       search_text:
     metadata:
+      and: og
       from: Fra
       history: Historie
       last_updated: Sist oppdatert

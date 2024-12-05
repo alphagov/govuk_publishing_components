@@ -135,6 +135,7 @@ sr:
       navigation_search_subheading:
       search_text:
     metadata:
+      and: i
       from: Od
       history: Istorija
       last_updated: Poslednje ažuriranje

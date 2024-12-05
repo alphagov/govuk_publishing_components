@@ -241,6 +241,7 @@ en:
       navigation_search_subheading: Search
       search_text: Search GOV.UK
     metadata:
+      and: and
       from: From
       history: History
       last_updated: Last updated

@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use component wrapper on reorderable list component ([PR #4474](https://github.com/alphagov/govuk_publishing_components/pull/4474))
+* Translate "and" connective in metadata component for some languages ([PR #4477](https://github.com/alphagov/govuk_publishing_components/pull/4477))
 
 ## 46.2.0
 
