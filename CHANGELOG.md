@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use component wrapper on reorderable list component ([PR #4474](https://github.com/alphagov/govuk_publishing_components/pull/4474))
+* Use component wrapper on share links component ([PR #4479](https://github.com/alphagov/govuk_publishing_components/pull/4479))
 
 ## 46.2.0
 
