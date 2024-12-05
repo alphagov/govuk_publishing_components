@@ -138,7 +138,7 @@ lv:
       navigation_search_subheading:
       search_text:
     metadata:
-      and: un
+      and:
       from: 'No'
       history: Vēsture
       last_updated: Pēdējoreiz atjaunināts
