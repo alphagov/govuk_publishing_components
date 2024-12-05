@@ -137,7 +137,7 @@ ar:
       navigation_search_subheading:
       search_text:
     metadata:
-      and: و
+      and:
       from: من
       history: المحفوظات
       last_updated: التحديث الأخير

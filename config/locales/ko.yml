@@ -129,7 +129,7 @@ ko:
       navigation_search_subheading:
       search_text:
     metadata:
-      and: 그리고
+      and:
       from:
       history:
       last_updated:

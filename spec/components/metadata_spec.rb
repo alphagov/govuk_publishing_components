@@ -78,6 +78,22 @@ describe "Metadata", type: :view do
     end
   end
 
+  it "renders multiples as a single sentence (except history) in foreign language without translation of \"and\"" do
+    I18n.with_locale("ja") do
+      render_component(
+        from: %w[一 二],
+        part_of: %w[此れ 彼],
+        other: {
+          "関連項目": %w[a b c],
+        },
+      )
+
+      assert_definition("から:", "一 and 二")
+      assert_definition("一部の:", "此れ and 彼")
+      assert_definition("関連項目:", "a, b and c")
+    end
+  end
+
   it "long lists of metadata are truncated and the remainder hidden behind a toggle for from" do
     links = [
       "<a href=\"/government/organisations/ministry-of-defence\">Ministry of Defence</a>",

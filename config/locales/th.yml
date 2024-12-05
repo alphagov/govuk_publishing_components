@@ -132,7 +132,7 @@ th:
       navigation_search_subheading:
       search_text:
     metadata:
-      and: และ
+      and:
       from: จาก
       history: ประวัติ
       last_updated: อัปเดตล่าสุด

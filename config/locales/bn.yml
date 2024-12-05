@@ -135,7 +135,7 @@ bn:
       navigation_search_subheading:
       search_text:
     metadata:
-      and: এবং
+      and:
       from: থেকে
       history: ইতিহাস
       last_updated: সর্বশেষ আপডেট করা হয়েছে
