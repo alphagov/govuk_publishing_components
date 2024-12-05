@@ -14,19 +14,18 @@
   black_icons ||= false
   black_links ||= false
 
-  classes = %w(gem-c-share-links govuk-!-display-none-print)
-  classes << "gem-c-share-links--stacked" if stacked
-  classes << "gem-c-share-links--columns" if columns
-  classes << "gem-c-share-links--flexbox" if flexbox
-  classes << "gem-c-share-links--square-icons" if square_icons
-  classes << "gem-c-share-links--black-icons" if black_icons
-  classes << "gem-c-share-links--black-links" if black_links
-
-  data_attributes ||= {}
-  ((data_attributes[:module] ||= "") << " " << "ga4-link-tracker").strip! if track_as_sharing || track_as_follow
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-share-links govuk-!-display-none-print")
+  component_helper.add_class("gem-c-share-links--stacked") if stacked
+  component_helper.add_class("gem-c-share-links--columns") if columns
+  component_helper.add_class("gem-c-share-links--flexbox") if flexbox
+  component_helper.add_class("gem-c-share-links--square-icons") if square_icons
+  component_helper.add_class("gem-c-share-links--black-icons") if black_icons
+  component_helper.add_class("gem-c-share-links--black-links") if black_links
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" }) if track_as_sharing || track_as_follow
 %>
 <% if links.any? %>
-  <%= tag.div(class: classes, data: data_attributes) do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <% if title %>
       <h2 class="govuk-heading-s"><%= title %></h2>
     <% end %>

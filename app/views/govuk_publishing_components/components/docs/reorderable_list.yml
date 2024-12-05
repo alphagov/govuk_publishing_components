@@ -17,6 +17,7 @@ body: |
   you'd receive a submission of `ordering[a]=1&ordering[b]=2`, which Rails can
   translate to `"ordering" => { "a" => "1", "b" => "2" }`.
 
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   Buttons in this component must:
 

@@ -13,6 +13,8 @@ body: |
 
 accessibility_criteria: |
   The share link icons must be presentational and ignored by screen readers.
+
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 examples:
