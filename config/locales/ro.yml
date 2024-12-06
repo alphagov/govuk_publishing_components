@@ -135,6 +135,7 @@ ro:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: De la
       history: Istoric
       last_updated: Ultima actualizare

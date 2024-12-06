@@ -132,6 +132,7 @@ zh-tw:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: 從
       history: 歷史
       last_updated: 最新更新

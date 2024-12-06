@@ -134,6 +134,7 @@ es-419:
       navigation_search_subheading:
       search_text:
     metadata:
+      and: y
       from: Desde
       history: Historial
       last_updated: Última actualización

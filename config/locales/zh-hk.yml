@@ -132,6 +132,7 @@ zh-hk:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: 來自
       history: 過往記錄
       last_updated: 最近更新

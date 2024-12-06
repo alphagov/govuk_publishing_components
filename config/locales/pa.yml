@@ -134,6 +134,7 @@ pa:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: ਤੋਂ
       history: ਇਤਿਹਾਸ
       last_updated: ਪਿਛਲੀ ਵਾਰ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ

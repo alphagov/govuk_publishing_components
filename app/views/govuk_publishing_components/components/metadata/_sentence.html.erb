@@ -5,9 +5,10 @@
     remaining = items[list_limit..items.length]
     items = items[0...list_limit]
   end
+  connector = " #{t("components.metadata.and")} "
 %>
+<%= items.to_sentence(two_words_connector: connector, last_word_connector: connector).html_safe %>
 <% if remaining.any? %>
-  <%= items.to_sentence(last_word_connector: ' and ').html_safe %>
   <div class="gem-c-metadata__toggle-wrap govuk-!-display-none-print">
     <a href="#"
        class="gem-c-metadata__definition-link govuk-!-display-none-print"
@@ -20,6 +21,4 @@
     </a>
   </div>
   <span id="toggle-<%= toggle_id %>" class="gem-c-metadata__toggle-items js-hidden"><%= remaining.to_sentence.html_safe %></span>
-<% else %>
-  <%= items.to_sentence(last_word_connector: ' and ').html_safe %>
 <% end %>

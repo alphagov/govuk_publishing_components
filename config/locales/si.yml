@@ -134,6 +134,7 @@ si:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: සිට
       history: ඉතිහාසය
       last_updated: අවසන් වරට යාවත්කාලීන කළේ

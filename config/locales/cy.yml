@@ -138,6 +138,7 @@ cy:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: Gan
       history: Hanes
       last_updated: Diweddarwyd ddiwethaf
