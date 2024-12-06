@@ -163,11 +163,6 @@ describe "Super navigation header", type: :view do
     assert_select ".js-module-initialised[data-module=\"super-navigation-mega-menu\"]", false
   end
 
-  it "includes the search_with_autocomplete component with correct URL" do
-    render_component({})
-    assert_select ".gem-c-search-with-autocomplete[data-source-url='http://www.dev.gov.uk/api/search/autocomplete.json']"
-  end
-
   it "adds GA4 tracking" do
     render_component({})
 
@@ -179,5 +174,21 @@ describe "Super navigation header", type: :view do
     assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index_section":2,"index_link":1,"index_section_count":3,"index_total":6,"section":"Government activity"}\']'
     assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index_section":2,"index_link":6,"index_section_count":3,"index_total":6,"section":"Government activity"}\']'
     assert_select "form[data-module='ga4-search-tracker']"
+  end
+
+  describe "search autocomplete" do
+    it "includes the search_with_autocomplete component with correct URL when enabled" do
+      ClimateControl.modify GOVUK_ENABLE_SEARCH_AUTOCOMPLETE: "true" do
+        render_component({})
+        assert_select ".gem-c-search-with-autocomplete[data-source-url='http://www.dev.gov.uk/api/search/autocomplete.json']"
+      end
+    end
+
+    it "does not include the search autocomplete when disabled" do
+      ClimateControl.modify GOVUK_ENABLE_SEARCH_AUTOCOMPLETE: "false" do
+        render_component({})
+        assert_no_selector ".gem-c-search-with-autocomplete[data-source-url='http://www.dev.gov.uk/api/search/autocomplete.json']"
+      end
+    end
   end
 end
