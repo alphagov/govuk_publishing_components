@@ -11,6 +11,7 @@ body: |
   - creating a new component allows further iteration without impacting the accordion
 
   Background information relating to the testing and research behind this component can be found on the [Modelling Services wiki](https://gov-uk.atlassian.net/wiki/spaces/MS/pages) in Q2 to Q4, 2017/18.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   The step by step navigation must:
 

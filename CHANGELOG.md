@@ -11,6 +11,7 @@
 
 * Use component wrapper on reorderable list component ([PR #4474](https://github.com/alphagov/govuk_publishing_components/pull/4474))
 * Use "button" button type for copy to clipboard component ([PR 4480](https://github.com/alphagov/govuk_publishing_components/pull/4480))
+* Use component wrapper on step nav component ([PR #4482](https://github.com/alphagov/govuk_publishing_components/pull/4482))
 
 ## 46.2.0
 
