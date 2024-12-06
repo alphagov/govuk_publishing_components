@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use component wrapper on reorderable list component ([PR #4474](https://github.com/alphagov/govuk_publishing_components/pull/4474))
+* Use "button" button type for copy to clipboard component ([PR 4480](https://github.com/alphagov/govuk_publishing_components/pull/4480))
 
 ## 46.2.0
 
