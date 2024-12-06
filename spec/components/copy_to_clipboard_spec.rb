@@ -14,6 +14,6 @@ describe "Copy to clipboard", type: :view do
 
     assert_select "label", text: "Some label"
     assert_select "input", value: "https://www.example.org"
-    assert_select "button", value: "Copy link"
+    assert_select "button[type=\"button\"]", value: "Copy link"
   end
 end
