@@ -47,13 +47,9 @@ module GovukPublishingComponents
         )
       end
 
-      def content_type_abbr
-        content_type.abbr
-      end
+      delegate :abbr, to: :content_type, prefix: true
 
-      def content_type_name
-        content_type.name
-      end
+      delegate :name, to: :content_type, prefix: true
 
       def file_size
         attachment_data[:file_size]
