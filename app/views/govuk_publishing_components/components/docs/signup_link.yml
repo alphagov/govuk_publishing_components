@@ -4,6 +4,7 @@ accessibility_criteria: |
   - the component must use the correct heading level for the page
   - text should have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
   - the icon must not be focusable or shown to screenreaders
+uses_component_wrapper_helper: true
 shared_accessibility_criteria:
   - link
 examples:
