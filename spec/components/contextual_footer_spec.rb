@@ -24,7 +24,7 @@ RSpec.describe "Contextual footer", type: :view do
         content_item: GovukSchemas::RandomExample.for_schema(frontend_schema: "step_by_step_nav"),
       )
 
-      assert_no_selector ".gem-c-contextual-footer"
+      assert_select ".gem-c-contextual-footer", false
     end
   end
 

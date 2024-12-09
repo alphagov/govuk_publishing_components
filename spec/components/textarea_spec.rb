@@ -227,8 +227,8 @@ describe "Textarea", type: :view do
     )
 
     assert_select ".govuk-textarea[dir='rtl']"
-    assert_no_selector ".govuk-label[dir='rtl']"
-    assert_no_selector ".govuk-hint[dir='rtl']"
-    assert_no_selector ".govuk-error-message[dir='rtl']"
+    assert_select ".govuk-label[dir='rtl']", false
+    assert_select ".govuk-hint[dir='rtl']", false
+    assert_select ".govuk-error-message[dir='rtl']", false
   end
 end

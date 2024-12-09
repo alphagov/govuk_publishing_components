@@ -57,7 +57,7 @@ describe "ContextualBreadcrumbs", type: :view do
 
   it "renders parent-based breadcrumbs if the content_item is tagged to mainstream browse and there is a parent" do
     render_component(content_item: example_document_for("place", "find-regional-passport-office"))
-    assert_no_selector(".gem-c-step-nav-header")
+    assert_select(".gem-c-step-nav-header", false)
     assert_select "a", text: "Home"
     assert_select "a", text: "Passports, travel and living abroad"
     assert_select "a", text: "Passports"
@@ -72,7 +72,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = example_document_for("licence", "licence_without_continuation_link")
     content_item = remove_mainstream_browse(content_item)
     render_component(content_item:)
-    assert_no_selector(".gem-c-step-nav-header")
+    assert_select(".gem-c-step-nav-header", false)
     assert_select "a", text: "Home"
     assert_select "a", text: "Business and self-employed"
     assert_select "a", text: "Licences and licence applications"
@@ -82,7 +82,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = example_document_for("guide", "guide-with-no-parent")
     content_item = set_live_taxons(content_item)
     render_component(content_item:)
-    assert_no_selector(".gem-c-step-nav-header")
+    assert_select(".gem-c-step-nav-header", false)
     assert_select "a", text: "Home"
     assert_select "a", text: "School curriculum"
     assert_select "a", text: "Education, training and skills"
@@ -118,8 +118,8 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_mainstream_browse(content_item)
     content_item = remove_curated_related_item(content_item)
     content_item["links"]["taxons"].each { |taxon| taxon["phase"] = "draft" }
-    assert_no_selector(".gem-c-step-nav-header")
-    assert_no_selector(".gem-c-breadcrumbs")
+    assert_select(".gem-c-step-nav-header", false)
+    assert_select(".gem-c-breadcrumbs", false)
   end
 
   it "renders parent finder breadcrumb if content schema is a specialist document" do
@@ -177,8 +177,8 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_mainstream_browse(content_item)
     content_item = remove_curated_related_item(content_item)
     content_item["links"]["taxons"] = nil
-    assert_no_selector(".gem-c-step-nav-header")
-    assert_no_selector(".gem-c-breadcrumbs")
+    assert_select(".gem-c-step-nav-header", false)
+    assert_select(".gem-c-breadcrumbs", false)
   end
 
   it "renders taxon breadcrumbs even if there are mainstream browse pages if prioritise_taxon_breadcrumbs is true" do
@@ -187,8 +187,8 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = set_live_taxons(content_item)
     render_component(content_item:, prioritise_taxon_breadcrumbs: true)
     assert_select "a", text: "Home"
-    assert_no_selector "a", text: "Business and self-employed"
-    assert_no_selector "a", text: "Licences and licence applications"
+    assert_select "a", text: "Business and self-employed", count: 0
+    assert_select "a", text: "Licences and licence applications", count: 0
     assert_select "a", text: "School curriculum"
     assert_select "a", text: "Education, training and skills"
   end
@@ -201,8 +201,8 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "Home"
     assert_select "a", text: "Business and self-employed"
     assert_select "a", text: "Licences and licence applications"
-    assert_no_selector "a", text: "School curriculum"
-    assert_no_selector "a", text: "Education, training and skills"
+    assert_select "a", text: "School curriculum", count: 0
+    assert_select "a", text: "Education, training and skills", count: 0
   end
 
   it "renders mainstream browse pages if prioritise_taxon_breadcrumbs is not passed and are live taxons" do
@@ -213,7 +213,7 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "Home"
     assert_select "a", text: "Business and self-employed"
     assert_select "a", text: "Licences and licence applications"
-    assert_no_selector "a", text: "School curriculum"
-    assert_no_selector "a", text: "Education, training and skills"
+    assert_select "a", text: "School curriculum", count: 0
+    assert_select "a", text: "Education, training and skills", count: 0
   end
 end

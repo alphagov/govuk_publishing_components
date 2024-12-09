@@ -413,8 +413,8 @@ describe "Layout footer", type: :view do
   it "allows the licence to be hidden" do
     render_component({ hide_licence: true })
 
-    assert_no_selector ".govuk-footer__licence-logo"
-    assert_no_selector ".govuk-footer__licence-description"
+    assert_select ".govuk-footer__licence-logo", false
+    assert_select ".govuk-footer__licence-description", false
   end
 
   it "shows the licence if hide_licence is set to false" do

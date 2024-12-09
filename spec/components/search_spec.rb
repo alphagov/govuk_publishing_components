@@ -111,18 +111,18 @@ describe "Search", type: :view do
   it "renders the correct label size" do
     render_component(label_size: "xl")
     assert_select ".govuk-label.govuk-label--xl", text: "Search on GOV.UK"
-    assert_no_selector ".gem-c-search__label"
+    assert_select ".gem-c-search__label", false
   end
 
   it "renders the default label when given an incorrect t-shirt size" do
     render_component(label_size: "super-massive-size")
-    assert_no_selector ".govuk-label"
+    assert_select ".govuk-label", false
     assert_select ".gem-c-search__label", text: "Search on GOV.UK"
   end
 
   it "renders the default label when given no label size" do
     render_component({})
-    assert_no_selector ".govuk-label"
+    assert_select ".govuk-label", false
     assert_select ".gem-c-search__label", text: "Search on GOV.UK"
   end
 
