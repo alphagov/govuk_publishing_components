@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe "Component guide index" do
+  around do |example|
+    ClimateControl.modify(GOVUK_ENABLE_SEARCH_AUTOCOMPLETE: "true") { example.run }
+  end
+
   # Load ordering test can only fail if run as the first test in suite
   # https://github.com/rails/rails/issues/12168
   it "renders using gem layout not app layout after viewing a page on the application" do
@@ -71,6 +75,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/print-link';
 @import 'govuk_publishing_components/components/related-navigation';
 @import 'govuk_publishing_components/components/search';
+@import 'govuk_publishing_components/components/search-with-autocomplete';
 @import 'govuk_publishing_components/components/skip-link';
 @import 'govuk_publishing_components/components/step-by-step-nav';
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
@@ -98,6 +103,7 @@ describe "Component guide index" do
 //= require govuk_publishing_components/components/layout-header
 //= require govuk_publishing_components/components/layout-super-navigation-header
 //= require govuk_publishing_components/components/print-link
+//= require govuk_publishing_components/components/search-with-autocomplete
 //= require govuk_publishing_components/components/skip-link
 //= require govuk_publishing_components/components/step-by-step-nav
 //= require govuk_publishing_components/components/tabs"
