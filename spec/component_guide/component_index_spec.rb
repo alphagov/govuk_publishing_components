@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Component guide index" do
+describe "Component guide index", :capybara do
   # Load ordering test can only fail if run as the first test in suite
   # https://github.com/rails/rails/issues/12168
   it "renders using gem layout not app layout after viewing a page on the application" do

@@ -15,7 +15,7 @@ RSpec.describe "Contextual footer", type: :view do
 
     render_component(content_item:)
 
-    has_selector? ".gem-c-contextual-footer"
+    assert_select ".gem-c-contextual-footer"
   end
 
   context "part of a step by step" do

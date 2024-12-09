@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Layout for public", type: :view do
+describe "Layout for public", :capybara, type: :view do
   def component_name
     "layout_for_public"
   end

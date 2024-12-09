@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Accordion", js: true, type: :view do
+describe "Accordion", :js, :capybara do
   scenario "There is a page with the accordion rendered" do
     given_i_visit_a_page_with_the_accordion_component
     then_the_accordion_loads

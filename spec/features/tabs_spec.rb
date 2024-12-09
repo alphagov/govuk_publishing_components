@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Tabs component", js: true do
+describe "Tabs component", :js, :capybara do
   scenario "Tabs load" do
     given_i_visit_a_page_with_the_tabs_component
     then_the_tabs_load

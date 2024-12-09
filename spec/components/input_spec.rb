@@ -141,7 +141,8 @@ describe "Input", type: :view do
       name: "email-address",
       width: 11,
     )
-    expect(page).to have_no_css(".govuk-input--width-10")
+
+    assert_select ".govuk-input--width-10", false
   end
 
   context "when a hint is provided" do

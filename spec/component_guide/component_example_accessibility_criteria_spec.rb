@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Component examples with accessibility criteria" do
+describe "Component examples with accessibility criteria", :capybara do
   it "shows the accessibility acceptance criteria as HTML" do
     visit "/component-guide/test_component"
 
