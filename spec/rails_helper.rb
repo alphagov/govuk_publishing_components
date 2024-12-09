@@ -5,6 +5,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 require "capybara/rails"
 require "govuk_test"
+require "climate_control"
 
 GovukTest.configure
 Selenium::WebDriver::Options.chrome(loggingPrefs: { browser: "ALL" })

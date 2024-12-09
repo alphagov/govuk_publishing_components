@@ -317,7 +317,7 @@
                   label: "Site-wide",
                 }
               ) do %>
-                <%= render "govuk_publishing_components/components/search_with_autocomplete", {
+                <% search_options = {
                   name: "keywords",
                   inline_label: false,
                   label_size: "m",
@@ -326,9 +326,15 @@
                   size: "large",
                   margin_bottom: 0,
                   disable_corrections: true,
-                  source_url: [Plek.new.website_root, "/api/search/autocomplete.json"].join,
-                  source_key: "suggestions"
                 } %>
+                <% if ENV["GOVUK_DISABLE_SEARCH_AUTOCOMPLETE"] %>
+                  <%= render "govuk_publishing_components/components/search", search_options %>
+                <% else %>
+                  <%= render "govuk_publishing_components/components/search_with_autocomplete", search_options.merge({
+                    source_url: [Plek.new.website_root, "/api/search/autocomplete.json"].join,
+                    source_key: "suggestions",
+                  }) %>
+                <% end %>
               <% end %>
             </div>
           </div>
