@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove min-width from share links flexbox variant list-items ([PR #4488](https://github.com/alphagov/govuk_publishing_components/pull/4488))
 * Add search autocomplete to layout super navigation header ([PR #4451](https://github.com/alphagov/govuk_publishing_components/pull/4451))
 * Use component wrapper on reorderable list component ([PR #4474](https://github.com/alphagov/govuk_publishing_components/pull/4474))
 * Use "button" button type for copy to clipboard component ([PR #4480](https://github.com/alphagov/govuk_publishing_components/pull/4480))

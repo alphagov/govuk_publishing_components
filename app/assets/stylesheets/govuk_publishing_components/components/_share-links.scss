@@ -93,7 +93,10 @@ $column-width: 9.5em;
   .gem-c-share-links__list-item {
     padding-left: 0;
     padding-right: 0;
-    min-width: 180px;
+
+    @include govuk-media-query($until: tablet) {
+      min-width: 100%;
+    }
   }
 
   .gem-c-share-links__link-icon {
