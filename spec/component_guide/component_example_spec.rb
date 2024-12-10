@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Component example" do
+describe "Component example", :capybara do
   it "illustrates how to use the component" do
     visit "/component-guide/test_component"
 

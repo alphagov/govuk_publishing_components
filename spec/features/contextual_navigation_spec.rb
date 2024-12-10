@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Contextual navigation" do
+describe "Contextual navigation", :capybara do
   scenario "There's a step by step list" do
     given_theres_a_page_with_a_step_by_step
     and_i_visit_that_page

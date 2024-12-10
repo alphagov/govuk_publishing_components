@@ -141,7 +141,8 @@ describe "Input", type: :view do
       name: "email-address",
       width: 11,
     )
-    expect(page).to have_no_css(".govuk-input--width-10")
+
+    assert_select ".govuk-input--width-10", false
   end
 
   context "when a hint is provided" do
@@ -283,7 +284,7 @@ describe "Input", type: :view do
       enterkeyhint: "chocolate",
     )
 
-    assert_no_selector ".govuk-input[enterkeyhint='chocolate']"
+    assert_select ".govuk-input[enterkeyhint='chocolate']", false
   end
 
   it "renders the input and label with the correct `dir` attribute when the input is set to 'right_to_left: true'" do
@@ -314,8 +315,8 @@ describe "Input", type: :view do
     )
 
     assert_select ".govuk-input[dir='rtl']"
-    assert_no_selector ".govuk-label[dir='rtl']"
-    assert_no_selector ".govuk-hint[dir='rtl']"
-    assert_no_selector ".govuk-error-message[dir='rtl']"
+    assert_select ".govuk-label[dir='rtl']", false
+    assert_select ".govuk-hint[dir='rtl']", false
+    assert_select ".govuk-error-message[dir='rtl']", false
   end
 end

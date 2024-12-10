@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Component preview" do
+describe "Component preview", :capybara do
   it "shows all component examples on a page without header or footer" do
     visit "/component-guide/test_component_with_params/preview"
     expect(page).to have_selector(".hide-header-and-footer")

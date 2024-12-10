@@ -650,7 +650,7 @@ describe "Radio", type: :view do
 end
 
 # This component can be interacted with, so use integration tests for these cases.
-describe "Radio (integration)" do
+describe "Radio (integration)", :capybara do
   def input_visible
     false # our inputs are hidden with CSS, and rely on the label.
   end

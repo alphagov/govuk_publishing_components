@@ -15,16 +15,25 @@ RSpec.describe "Contextual footer", type: :view do
 
     render_component(content_item:)
 
-    has_selector? ".gem-c-contextual-footer"
+    assert_select ".gem-c-contextual-footer"
   end
 
   context "part of a step by step" do
     it "does not renders the footer" do
-      render_component(
-        content_item: GovukSchemas::RandomExample.for_schema(frontend_schema: "step_by_step_nav"),
-      )
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "speech") do |payload|
+        payload["links"].merge!("part_of_step_navs" => [{
+          "title" => "Step by Step",
+          "content_id" => SecureRandom.uuid,
+          "base_path" => "/step-by-step",
+          "locale" => "en",
+        }])
 
-      assert_no_selector ".gem-c-contextual-footer"
+        payload
+      end
+
+      render_component(content_item:)
+
+      assert_select ".gem-c-contextual-footer", false
     end
   end
 

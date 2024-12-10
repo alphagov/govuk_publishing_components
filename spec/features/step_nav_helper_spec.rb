@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Specimen usage of step by step navigation helpers" do
+describe "Specimen usage of step by step navigation helpers", :capybara do
   include GdsApi::TestHelpers::ContentStore
 
   context "no related step by step navigation journeys" do

@@ -1,4 +1,4 @@
-describe "When the asset helper is configured", type: :view do
+describe "When the asset helper is configured", :capybara do
   scenario "go to page with multiple GOV.UK publishing components only" do
     GovukPublishingComponents.configure do |config|
       config.exclude_css_from_static = true
