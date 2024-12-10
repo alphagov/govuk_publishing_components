@@ -24,7 +24,7 @@ module GovukPublishingComponents
 
       def organisation_breadcrumbs_items
         first_related_organisation = ContentItem.new(content_item.related_organisations.first)
-        return [] unless first_related_organisation.present?
+        return [] if first_related_organisation.blank?
 
         [{
           title: first_related_organisation.title,
