@@ -8,29 +8,23 @@
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
+  @import "govuk/components/warning-text/warning-text";
+
   .help-notice {
     $icon-size: 35px;
-    $line-height-mobile: 20px;
-    $line-height-tablet: 25px;
+    $icon-spacing: 10px;
 
     margin: 2em 0;
+    padding-left: calc($icon-size + $icon-spacing);
+    position: relative;
 
-    // Add '!' icon
-    background-image: url("govuk_publishing_components/icon-important.svg");
-    background-size: $icon-size $icon-size;
-    background-repeat: no-repeat;
-    min-height: $icon-size;
-    padding-left: $icon-size;
-
-    // Center the icon around the baseline
-    padding-top: calc(($icon-size - $line-height-mobile) / 2);
-
-    @include govuk-media-query($from: tablet) {
-      padding-top: calc(($icon-size - $line-height-tablet) / 2);
+    &::before {
+      content: "!";
+      @include govuk-typography-weight-bold($important: false);
+      @extend .govuk-warning-text__icon; // stylelint-disable-line scss/at-extend-no-missing-placeholder
     }
 
     p {
-      margin-left: 1em;
       @include govuk-font($size: 19, $weight: bold);
     }
   }
