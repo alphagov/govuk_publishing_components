@@ -2,7 +2,7 @@ require "rails_helper"
 require "percy/capybara"
 require "uri"
 
-describe "visual regression test runner Percy", visual_regression: true do
+describe "visual regression test runner Percy", :visual_regression do
   it "takes a screenshot of each component" do
     # Freeze time for consistency
     travel_to Time.zone.local(2020, 12, 1, 6, 0, 0)
