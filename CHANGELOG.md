@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 46.3.0
 
 * Remove min-width from share links flexbox variant list-items ([PR #4488](https://github.com/alphagov/govuk_publishing_components/pull/4488))
 * Add search autocomplete to layout super navigation header ([PR #4451](https://github.com/alphagov/govuk_publishing_components/pull/4451))
