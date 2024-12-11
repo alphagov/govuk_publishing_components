@@ -31,7 +31,6 @@
   hint ||= nil
   error_message ||= nil
   error_items ||= []
-  margin_bottom = margin_bottom ||= 6
 
   has_error = error_message || error_items.any?
   hint_id = "hint-#{SecureRandom.hex(4)}" if hint
@@ -40,7 +39,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-form-group")
   component_helper.add_class("govuk-form-group--error") if has_error
-  component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.set_id(id)
 
   radio_classes = %w(govuk-radios)

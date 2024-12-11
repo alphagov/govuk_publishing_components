@@ -16,8 +16,6 @@
   direction_class = ""
   direction_class = " direction-#{direction}" if local_assigns.include?(:direction)
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-metadata")
   component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)
@@ -27,7 +25,6 @@
     component_helper.add_class("gem-c-metadata--inverse-padded") unless inverse_compress
   end
 
-  component_helper.add_class(shared_helper.get_margin_bottom) if local_assigns[:margin_bottom]
   component_helper.add_data_attribute({ module: "metadata" })
 
   disable_ga4 ||= false

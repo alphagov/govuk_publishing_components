@@ -3,12 +3,10 @@
 
   text ||= ""
   inverse ||= false
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-lead-paragraph")
   component_helper.add_class("gem-c-lead-paragraph--inverse") if inverse
-  component_helper.add_class(shared_helper.get_margin_bottom) if [*0..9].include?(local_assigns[:margin_bottom])
 %>
 <% if text.present? %>
   <%= tag.p(**component_helper.all_attributes) do %>

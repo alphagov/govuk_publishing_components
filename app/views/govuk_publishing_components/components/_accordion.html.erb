@@ -13,8 +13,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.set_id(id)
   component_helper.add_class("gem-c-accordion govuk-accordion")
-  component_helper.add_class(shared_helper.get_margin_bottom)
-
   component_helper.add_data_attribute({ module: "govuk-accordion gem-accordion" })
   component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
   component_helper.add_data_attribute({ ga4_expandable: "" }) unless disable_ga4
