@@ -1,3 +1,4 @@
+// = require ./search-with-autocomplete.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
