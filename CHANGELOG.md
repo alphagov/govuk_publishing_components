@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 46.3.1
 
 * Add search-with-autocomplete to stylesheets served by static ([PR #4495](https://github.com/alphagov/govuk_publishing_components/pull/4495))
 * Add /media/ path to GA4 download link tracking ([PR #4491](https://github.com/alphagov/govuk_publishing_components/pull/4491/))
