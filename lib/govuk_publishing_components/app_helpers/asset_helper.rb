@@ -23,6 +23,7 @@ module GovukPublishingComponents
         govuk_publishing_components/components/_input.css
         govuk_publishing_components/components/_label.css
         govuk_publishing_components/components/_search.css
+        govuk_publishing_components/components/_search-with-autocomplete.css
         govuk_publishing_components/components/_skip-link.css
         govuk_publishing_components/components/_textarea.css
         govuk_publishing_components/components/_title.css
