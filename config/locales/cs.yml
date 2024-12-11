@@ -139,6 +139,7 @@ cs:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: 'Komu I:'
       history: Historie
       last_updated: 'Poslední aktualizace:'

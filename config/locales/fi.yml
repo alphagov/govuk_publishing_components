@@ -136,6 +136,7 @@ fi:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: Alkaen
       history: Historia
       last_updated: Viimeksi päivitetty

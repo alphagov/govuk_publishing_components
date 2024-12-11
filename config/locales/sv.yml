@@ -134,6 +134,7 @@ sv:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: Från
       history: Historia
       last_updated: Senast uppdaterad

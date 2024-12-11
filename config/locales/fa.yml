@@ -133,6 +133,7 @@ fa:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: از
       history: تاریخچه
       last_updated: آخرین بروزرسانی

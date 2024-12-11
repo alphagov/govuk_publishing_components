@@ -141,6 +141,7 @@ sl:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: Od
       history: Zgodovina
       last_updated: Nazadnje posodobljeno

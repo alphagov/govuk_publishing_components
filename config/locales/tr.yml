@@ -135,6 +135,7 @@ tr:
       navigation_search_subheading:
       search_text:
     metadata:
+      and:
       from: Şuradan
       history: Geçmiş
       last_updated: Son güncelleme
