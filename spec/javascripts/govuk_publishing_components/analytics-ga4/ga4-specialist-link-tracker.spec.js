@@ -371,10 +371,12 @@ describe('A specialist link tracker', function () {
           '<div class="preview-download-links">' +
             '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" path="/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" link_domain="https://assets.publishing.service.gov.uk">Preview link</a>' +
             '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" path="/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" link_domain="http://assets.publishing.service.gov.uk">Relative Spreadsheet link</a>' +
+            '<a href="https://www.gov.uk/media/66866f8d4a94d44125d9ccc1/Management_information_-_initial_teacher_education___in_year_inspection_outcomes_1_September_2023_to_30_April_2024.csv/preview" path="/media/66866f8d4a94d44125d9ccc1/Management_information_-_initial_teacher_education___in_year_inspection_outcomes_1_September_2023_to_30_April_2024.csv/preview" link_domain="https://www.gov.uk">Relative csv link</a>' +
           '</div>' +
           '<div class="not-a-preview-link">' +
             '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" link_domain="https://assets.publishing.service.gov.uk">Preview link</a>' +
             '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" link_domain="http://assets.publishing.service.gov.uk">Relative Spreadsheet link</a>' +
+'<a href="https://www.gov.uk/media/66866f8d4a94d44125d9ccc1/preview.csv" link_domain="https://www.gov.uk">Relative csv link</a>' +
           '</div>'
 
       body.appendChild(links)
@@ -509,7 +511,7 @@ describe('A specialist link tracker', function () {
 
     it('detects preview clicks on gov.uk download preview links', function () {
       var linksToTest = document.querySelectorAll('.preview-download-links a')
-
+      var external = ['true', 'true', 'false']
       for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
         var link = linksToTest[i]
@@ -518,7 +520,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'preview'
         expected.event_data.text = link.innerText.trim()
-        expected.event_data.external = 'true'
+        expected.event_data.external = external[i]
 
         expect(window.dataLayer[0]).toEqual(expected)
       }
@@ -526,7 +528,7 @@ describe('A specialist link tracker', function () {
 
     it('detects files with preview in their filename as download links instead of preview links', function () {
       var linksToTest = document.querySelectorAll('.not-a-preview-link a')
-
+      var external = ['true', 'true', 'false']
       for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
         var link = linksToTest[i]
@@ -535,7 +537,7 @@ describe('A specialist link tracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
-        expected.event_data.external = 'true'
+        expected.event_data.external = external[i]
 
         expect(window.dataLayer[0]).toEqual(expected)
       }

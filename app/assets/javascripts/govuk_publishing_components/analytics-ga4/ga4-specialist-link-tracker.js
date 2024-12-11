@@ -9,7 +9,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     init: function (config) {
       if (window.dataLayer) {
         config = config || {}
-        this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/']
+        this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/', '/media/']
         this.dedicatedDownloadDomains = config.dedicatedDownloadDomains || ['assets.publishing.service.gov.uk']
         window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(this.dedicatedDownloadDomains)
         this.handleClick = this.handleClick.bind(this)
