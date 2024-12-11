@@ -35,12 +35,6 @@ describe "Hint", type: :view do
     assert_select '.govuk-hint.govuk-\!-margin-bottom-0'
   end
 
-  it "does not default to the initial bottom margin if an incorrect value is passed" do
-    render_component(text: "For example, ‘QQ 12 34 56 C’.", margin_bottom: 12)
-
-    assert_select '.govuk-hint.govuk-\!-margin-bottom-3', false
-  end
-
   it "accepts js classes" do
     render_component(text: "For example, ‘QQ 12 34 56 C’.", classes: "js-class-one js-class-two")
 

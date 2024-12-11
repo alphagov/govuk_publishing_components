@@ -56,15 +56,6 @@ describe "Details", type: :view do
     assert_select '.govuk-details .govuk-details__summary[aria-label="label"]'
   end
 
-  it "defaults to the initial bottom margin if an incorrect value is passed" do
-    render_component(
-      title: "Some title",
-      margin_bottom: 12,
-    )
-
-    assert_select '.govuk-details.govuk-\!-margin-bottom-3'
-  end
-
   it "increments the GA4 index_section parameter when more than one component instance" do
     render_component(title: "first details")
     assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"first details","section":"first details","index_section":1}\']'

@@ -1,14 +1,12 @@
 <%
   add_gem_component_stylesheet("details")
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   open ||= nil
   disable_ga4 ||= false
   @ga4 ||= OpenStruct.new(index_section: 0) unless disable_ga4
   @ga4[:index_section] += 1 unless disable_ga4
   ga4_attributes ||= {}
-
-  margin_bottom ||= 3
+  local_assigns[:margin_bottom] ||= 3
 
   unless disable_ga4
     ga4_event = {
@@ -25,7 +23,6 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-details govuk-details")
-  component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
   component_helper.add_data_attribute({ ga4_event: ga4_event }) unless disable_ga4
   component_helper.set_open(open)

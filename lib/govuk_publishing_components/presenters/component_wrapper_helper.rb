@@ -14,6 +14,7 @@ module GovukPublishingComponents
         check_hidden_is_valid(@options[:hidden]) if @options.include?(:hidden)
         check_tabindex_is_valid(@options[:tabindex]) if @options.include?(:tabindex)
         check_dir_is_valid(@options[:dir]) if @options.include?(:dir)
+        check_margin_bottom_is_valid(@options[:margin_bottom]) if @options.include?(:margin_bottom)
       end
 
       def all_attributes
@@ -22,7 +23,10 @@ module GovukPublishingComponents
         attributes[:id] = @options[:id] unless @options[:id].blank?
         attributes[:data] = @options[:data_attributes] unless @options[:data_attributes].blank?
         attributes[:aria] = @options[:aria] unless @options[:aria].blank?
+
+        ((@options[:classes] ||= "") << " govuk-!-margin-bottom-#{@options[:margin_bottom]}").strip! if @options[:margin_bottom]
         attributes[:class] = @options[:classes] unless @options[:classes].blank?
+
         attributes[:role] = @options[:role] unless @options[:role].blank?
         attributes[:lang] = @options[:lang] unless @options[:lang].blank?
         attributes[:open] = @options[:open] unless @options[:open].blank?
@@ -81,6 +85,11 @@ module GovukPublishingComponents
       def set_dir(dir_attribute)
         check_dir_is_valid(dir_attribute)
         @options[:dir] = dir_attribute
+      end
+
+      def set_margin_bottom(margin_bottom)
+        check_margin_bottom_is_valid(margin_bottom)
+        @options[:margin_bottom] = margin_bottom
       end
 
     private
@@ -168,6 +177,10 @@ module GovukPublishingComponents
         unless /^-?[0-9]+$/.match?(tabindex_attribute)
           raise(ArgumentError, "tabindex_attribute attribute (#{tabindex_attribute}) is not recognised")
         end
+      end
+
+      def check_margin_bottom_is_valid(margin_bottom)
+        raise(ArgumentError, "margin_bottom option (#{margin_bottom}) is not recognised") unless [*0..9].include?(margin_bottom)
       end
 
       def check_dir_is_valid(dir_attribute)
