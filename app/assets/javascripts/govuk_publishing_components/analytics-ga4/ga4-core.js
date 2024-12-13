@@ -340,6 +340,11 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
         if (isSearchResult) {
           var searchQuery = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(element.getAttribute('data-ga4-search-query'))
+
+          // Limit tracked search term to 500 characters
+          if (searchQuery) {
+            searchQuery = searchQuery.substring(0, 500)
+          }
           var variant = element.getAttribute('data-ga4-ecommerce-variant')
           DEFAULT_LIST_TITLE = 'Site search results'
         }

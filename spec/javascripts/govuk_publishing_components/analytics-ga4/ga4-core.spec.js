@@ -644,6 +644,25 @@ describe('GA4 core', function () {
         expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
       })
 
+      it('limits ecommerce search term tracking to 500 characters', function () {
+        var veryLongString = ''
+
+        for (var i = 0; i < 600; i++) {
+          veryLongString = veryLongString + 'a'
+        }
+
+        resultsParentEl.setAttribute('data-ga4-search-query', veryLongString)
+
+        expectedEcommerceObject.search_results.term = veryLongString.substring(0, 500)
+
+        var builtEcommerceObject = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
+          element: resultsParentEl,
+          resultsId: 'result-count'
+        })
+
+        expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
+      })
+
       it('tracks variant and term for search results even when query is blank', function () {
         resultsParentEl.setAttribute('data-ga4-search-query', '')
         resultsParentEl.setAttribute('data-ga4-ecommerce-variant', 'upside-down')
