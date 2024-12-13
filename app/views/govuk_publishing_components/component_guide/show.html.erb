@@ -50,7 +50,7 @@
           href: "#other-examples",
           text: "Other examples",
           items: other_examples_links
-        } if @component_doc.other_examples.any?),
+        } if @component_doc.other_examples.any? or @component_doc.uses_component_wrapper_helper?),
       ].compact
     %>
     <%= render "govuk_publishing_components/components/contents_list", {
@@ -92,7 +92,7 @@
     </div>
   <% end %>
 
-  <% if @component_doc.other_examples.any? %>
+  <% if @component_doc.other_examples.any? or @component_doc.uses_component_wrapper_helper? %>
     <div class="examples">
       <h2 class="component-doc-h2" id="other-examples">Other examples</h2>
 
