@@ -11,7 +11,7 @@ describe "Single page notification button", type: :view do
 
   it "renders with the correct markup if base path is present" do
     render_component({ base_path: "/the-current-page" })
-    assert_select "form.gem-c-single-page-notification-button"
+    assert_select ".gem-c-single-page-notification-button form"
     assert_select "input[type='hidden']", value: "/the-current-page"
     assert_select ".gem-c-single-page-notification-button button.gem-c-single-page-notification-button__submit[type='submit']"
   end
@@ -90,12 +90,12 @@ describe "Single page notification button", type: :view do
 
   it "sets a default bottom margin to its wrapper" do
     render_component({ base_path: "/the-current-page" })
-    assert_select 'div.govuk-\!-margin-bottom-3 .gem-c-single-page-notification-button'
+    assert_select '.gem-c-single-page-notification-button.govuk-\!-margin-bottom-3'
   end
 
   it "adds bottom margin to its wrapper if margin_bottom is specified" do
     render_component({ base_path: "/the-current-page", margin_bottom: 9 })
-    assert_select 'div.govuk-\!-margin-bottom-9 .gem-c-single-page-notification-button'
+    assert_select '.gem-c-single-page-notification-button.govuk-\!-margin-bottom-9'
   end
 
   it "has a js-enhancement class and a data-module attribute if the js-enhancement flag is present" do
