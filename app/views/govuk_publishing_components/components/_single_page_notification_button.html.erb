@@ -2,10 +2,16 @@
   add_gem_component_stylesheet("single-page-notification-button")
 
   local_assigns[:margin_bottom] ||= 3
+  js_enhancement ||= false
 
   spnb_helper = GovukPublishingComponents::Presenters::SinglePageNotificationButtonHelper.new(local_assigns)
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-single-page-notification-button")
+  component_helper.add_class("js-personalisation-enhancement") if local_assigns[:js_enhancement]
+  component_helper.add_data_attribute({ module: "single-page-notification-button" }) if js_enhancement
+  component_helper.add_data_attribute({ button_location: spnb_helper.button_location })
+  component_helper.add_data_attribute({ button_text_subscribe: spnb_helper.button_text_subscribe })
+  component_helper.add_data_attribute({ button_text_unsubscribe: spnb_helper.button_text_unsubscribe })
 
   ga4_data_attributes = ga4_data_attributes ||= nil
   ga4_link_data_attributes = ga4_data_attributes[:ga4_link] if ga4_data_attributes
@@ -18,7 +24,7 @@
   <svg class="gem-c-single-page-notification-button__icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 459.334 459.334"><path fill="currentColor" d="M177.216 404.514c-.001.12-.009.239-.009.359 0 30.078 24.383 54.461 54.461 54.461s54.461-24.383 54.461-54.461c0-.12-.008-.239-.009-.359H175.216zM403.549 336.438l-49.015-72.002v-89.83c0-60.581-43.144-111.079-100.381-122.459V24.485C254.152 10.963 243.19 0 229.667 0s-24.485 10.963-24.485 24.485v27.663c-57.237 11.381-100.381 61.879-100.381 122.459v89.83l-49.015 72.002a24.76 24.76 0 0 0 20.468 38.693H383.08a24.761 24.761 0 0 0 20.469-38.694z"/></svg><span class="gem-c-single-page-notication-button__text"><%= spnb_helper.button_text %></span>
 <% end %>
 <%= tag.div(**component_helper.all_attributes) do %>
-  <%= tag.form class: spnb_helper.classes, action: spnb_helper.form_action, method: "POST", data: spnb_helper.data do %>
+  <%= tag.form action: spnb_helper.form_action, method: "POST" do %>
     <input type="hidden" name="base_path" value="<%= spnb_helper.base_path %>">
     <% if spnb_helper.skip_the_gov_uk_account? %>
       <input type="hidden" name="<%= spnb_helper.skip_account_param %>" value="true">

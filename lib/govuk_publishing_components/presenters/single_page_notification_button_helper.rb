@@ -1,30 +1,18 @@
 module GovukPublishingComponents
   module Presenters
     class SinglePageNotificationButtonHelper
-      attr_reader :already_subscribed, :data_attributes, :base_path, :js_enhancement, :button_type, :button_location, :classes, :skip_account
+      attr_reader :already_subscribed, :data_attributes, :base_path, :button_type, :button_location, :skip_account, :button_text_subscribe, :button_text_unsubscribe
 
       def initialize(local_assigns)
         @local_assigns = local_assigns
         @data_attributes = @local_assigns[:data_attributes] || {}
-        @js_enhancement = @local_assigns[:js_enhancement] || false
         @already_subscribed = @local_assigns[:already_subscribed] || false
         @base_path = @local_assigns[:base_path] || nil
         @button_location = button_location_is_valid? ? @local_assigns[:button_location] : nil
         @button_type = @local_assigns[:already_subscribed] ? "Unsubscribe" : "Subscribe"
-        @classes = %w[gem-c-single-page-notification-button]
-        @classes << "js-personalisation-enhancement" if js_enhancement
         @button_text_subscribe = custom_button_text_is_valid? ? custom_subscribe_text : default_subscribe_text
         @button_text_unsubscribe = custom_button_text_is_valid? ? custom_unsubscribe_text : default_unsubscribe_text
         @skip_account = @local_assigns[:skip_account] || nil
-      end
-
-      def data
-        @data_attributes[:module] = "single-page-notification-button" if js_enhancement
-        # This attribute is passed through to the personalisation API to ensure when a new button is returned from the API, it has the same button_location
-        @data_attributes[:button_location] = button_location
-        @data_attributes[:button_text_subscribe] = @button_text_subscribe
-        @data_attributes[:button_text_unsubscribe] = @button_text_unsubscribe
-        @data_attributes
       end
 
       def button_location_is_valid?
