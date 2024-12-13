@@ -63,7 +63,8 @@ describe('Google Tag Manager page view tracking', function () {
         search_term: undefined,
         tool_name: undefined,
         spelling_suggestion: undefined,
-        discovery_engine_attribution_token: undefined
+        discovery_engine_attribution_token: undefined,
+        canonical_url: undefined
       }
     }
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
@@ -716,5 +717,21 @@ describe('Google Tag Manager page view tracking', function () {
 
       expect(window.dataLayer[0].page_view.tool_name).toEqual('autocomplete')
     })
+  })
+
+  it('returns a canonical_url', function () {
+    var link = document.createElement('link')
+    var head = document.getElementsByTagName('head')[0]
+
+    link.setAttribute('rel', 'canonical')
+    link.setAttribute('href', 'https://www.gov.uk/benefits-calculators/')
+
+    head.appendChild(link)
+
+    expected.page_view.canonical_url = 'https://www.gov.uk/benefits-calculators/'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+
+    head.removeChild(link)
   })
 })

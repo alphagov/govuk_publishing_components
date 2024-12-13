@@ -66,7 +66,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             search_term: this.getSearchTerm(),
             tool_name: this.getToolName(),
             spelling_suggestion: this.getMetaContent('spelling-suggestion'),
-            discovery_engine_attribution_token: this.getMetaContent('discovery-engine-attribution-token')
+            discovery_engine_attribution_token: this.getMetaContent('discovery-engine-attribution-token'),
+            canonical_url: this.getCanonicalHref()
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
@@ -76,6 +77,14 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     removeHyphensAndDowncase: function (text) {
       if (text) {
         return text.replace(/-/g, ' ').toLowerCase()
+      }
+    },
+
+    getCanonicalHref: function () {
+      var link = document.querySelector('link[rel=canonical]')
+
+      if (link) {
+        return link.href
       }
     },
 
