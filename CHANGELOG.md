@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add canonical_url value to GA4 page view tracking ([PR #4500](https://github.com/alphagov/govuk_publishing_components/pull/4500))
 * Add margin_bottom option to component wrapper helper ([PR #4494](https://github.com/alphagov/govuk_publishing_components/pull/4494))
 * Limit GA4 search term tracking to 500 characters ([PR #4496](https://github.com/alphagov/govuk_publishing_components/pull/4496))
 
