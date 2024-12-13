@@ -4,7 +4,6 @@
   disable_ga4 ||= false
   request.query_parameters[:disable_ga4] = disable_ga4
   navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request)
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   show_ukraine_cta = navigation.show_ukraine_cta?
   ga4_tracking_counts = OpenStruct.new(index_section_count: 0)
   ga4_tracking_counts.index_section_count = 1 if show_ukraine_cta

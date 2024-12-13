@@ -3,17 +3,15 @@
 
   id ||= "inset-text-#{SecureRandom.hex(4)}"
   margin_top ||= 6
-  margin_bottom ||= 6
+  local_assigns[:margin_bottom] ||= 6
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({
     margin_top: margin_top,
-    margin_bottom: margin_bottom
   })
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-inset-text govuk-inset-text gem-c-force-print-link-styles-within")
   component_helper.add_class(shared_helper.get_margin_top)
-  component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.set_id(id)
 %>
 <%= tag.div(**component_helper.all_attributes) do %>

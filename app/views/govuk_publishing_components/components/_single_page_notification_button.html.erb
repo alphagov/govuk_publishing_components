@@ -1,18 +1,17 @@
 <%
   add_gem_component_stylesheet("single-page-notification-button")
 
+  local_assigns[:margin_bottom] ||= 3
+
   spnb_helper = GovukPublishingComponents::Presenters::SinglePageNotificationButtonHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-
-  wrapper_classes = %w(govuk-!-display-none-print)
-  wrapper_classes << shared_helper.get_margin_bottom
 
   ga4_data_attributes = ga4_data_attributes ||= nil
   ga4_link_data_attributes = ga4_data_attributes[:ga4_link] if ga4_data_attributes
   ga4_link_data_attributes[:url] = spnb_helper.form_action if ga4_link_data_attributes
 
-  component_helper.add_class(wrapper_classes.join(" "))
+  component_helper.add_class("govuk-!-display-none-print")
   component_helper.add_data_attribute({ module: ga4_data_attributes[:module] }) if ga4_data_attributes
 %>
 <% button_text = capture do %>

@@ -13,7 +13,6 @@
   classes << heading_helper.classes
   classes << brand_helper.brand_class
   classes << brand_helper.border_color_class
-  classes << shared_helper.get_margin_bottom if [*0..9].include?(local_assigns[:margin_bottom])
 
   component_helper.add_class(classes.join(" "))
   component_helper.set_id(heading_helper.id)

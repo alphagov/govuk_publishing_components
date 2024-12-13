@@ -79,16 +79,6 @@ describe "Heading", type: :view do
     assert_select '.gem-c-heading.govuk-\!-margin-bottom-7'
   end
 
-  it "defaults to no bottom margin if an incorrect value is passed" do
-    render_component(text: "Margin wat", margin_bottom: 20)
-    assert_select "[class^='govuk-\!-margin-bottom-']", false
-  end
-
-  it "has no margin class added by default" do
-    render_component(text: "No margin")
-    assert_select "[class^='govuk-\!-margin-bottom-']", false
-  end
-
   it "adds border 1" do
     render_component(text: "Border 1", border_top: 1)
     assert_select ".gem-c-heading.gem-c-heading--border-top-1"

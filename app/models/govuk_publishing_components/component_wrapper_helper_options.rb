@@ -8,6 +8,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `data_attributes` - accepts a hash of data attributes
 - `aria` - accepts a hash of aria attributes
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
+- `margin_bottom` - accepts a number from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale) (defaults to no margin)
 - `role` - accepts a space separated string of roles
 - `lang` - accepts a language attribute value
 - `open` - accepts an open attribute value (true or false)

@@ -15,10 +15,8 @@
   show_banner_title ||= false
   heading_level = show_banner_title ? "h3" : "h2"
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-notification-banner gem-c-notice")
-  component_helper.add_class(shared_helper.get_margin_bottom)
 
   component_helper.add_aria_attribute({ label: "Notice" })
   component_helper.add_aria_attribute({ live: "polite" }) if aria_live

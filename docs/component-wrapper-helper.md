@@ -29,6 +29,7 @@ These options can be passed to any component that uses the component wrapper.
 - `data_attributes` - accepts a hash of data attributes
 - `aria` - accepts a hash of aria attributes
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
+- `margin_bottom` - accepts a number from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale) (defaults to no margin)
 - `role` - accepts a space separated string of roles
 - `lang` - accepts a language attribute value
 - `open` - accepts an open attribute value (true or false)
@@ -67,6 +68,7 @@ The component wrapper includes several methods to make managing options easier, 
   data_attributes ||= {}
   aria_attributes ||= {}
   role ||= nil
+  local_assigns[:margin_bottom] ||= 4
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-example govuk-example") # combines the given class with any passed classes
@@ -78,6 +80,7 @@ The component wrapper includes several methods to make managing options easier, 
   component_helper.set_open(true) # can pass true or false
   component_helper.set_tabindex(1)
   component_helper.set_dir("rtl")
+  component_helper.set_margin_bottom(3) # can pass any number from 1 to 9
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
   component content

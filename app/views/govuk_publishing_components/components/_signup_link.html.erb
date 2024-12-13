@@ -12,7 +12,6 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-signup-link govuk-!-display-none-print")
-  component_helper.add_class(shared_helper.get_margin_bottom)
   component_helper.add_class("gem-c-signup-link--link-only") unless heading
   component_helper.add_class("gem-c-signup-link--with-background-and-border") if background
 %>
