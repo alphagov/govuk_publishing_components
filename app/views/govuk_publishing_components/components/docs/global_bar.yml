@@ -1,0 +1,8 @@
+name: Global banner
+description: A site-wide banner used to convey important information
+body: |
+  See the [opsmanual](https://docs.publishing.service.gov.uk/manual/global-banner.html) for information about what the Global banner is and when it should be activated.
+shared_accessibility_criteria:
+- link
+examples:
+  default: {}
