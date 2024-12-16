@@ -43,7 +43,7 @@
     "sortablejs": "^1.15.6"
   },
   "devDependencies": {
-    "@percy/cli": "^1.30.3",
+    "@percy/cli": "^1.30.5",
     "jasmine-browser-runner": "^2.5.0",
     "jasmine-core": "^5.4.0",
     "postcss": "^8.4.49",
