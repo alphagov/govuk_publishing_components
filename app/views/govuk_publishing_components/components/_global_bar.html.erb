@@ -3,22 +3,14 @@
 
   if before_update_time?(year: 2024, month: 12, day: 30, hour: 22, minute: 0)
     show_global_bar ||= true # Toggles the appearance of the global bar
-    title = "Bring photo ID to vote"
-    title_href = "/how-to-vote/photo-id-youll-need"
-    link_text = "Check what photo ID you'll need to vote in person in the General Election on 4 July."
-  else
-    show_global_bar = false
-    title = nil
-    title_href = nil
-    link_text = nil
+    title || nil
+    title_href || nil
+    link_text || nil
+    always_visible || false
+    # 'always_visibe' Toggles banner being permanently visible
+    # If true, banner is always_visible & doesn't disappear after 3 pageviews
+    # Regardless of value, banner is always manually dismissable by users
   end
-
-  link_href = false
-
-  # Toggles banner being permanently visible
-  # If true, banner is always_visible & does not disappear automatically after 3 pageviews
-  # Regardless of value, banner is always manually dismissable by users
-  always_visible = true
 
   global_bar_classes = %w(gem-c-global-bar govuk-!-display-none-print)
 
@@ -47,22 +39,7 @@
       <% end %>
 
       <% if link_text %>
-        <span class="gem-c-global-bar-text">
-        <% if link_href %>
-          <%= link_to(
-            link_text,
-            link_href,
-            rel: "external noreferrer",
-            class: "govuk-link js-call-to-action",
-            data: {
-              module: "ga4-link-tracker",
-              ga4_link: ga4_data,
-            },
-          ) %>
-        <% else %>
-          <%= link_text %>
-        <% end %>
-        </span>
+        <span class="gem-c-global-bar-text"><%= link_text %></span>
       <% end %>
     </p>
   </div>
