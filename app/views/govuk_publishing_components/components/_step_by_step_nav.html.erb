@@ -19,19 +19,24 @@
   step_nav_helper = GovukPublishingComponents::Presenters::StepByStepNavHelper.new
 
   disable_ga4 ||= false
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_data_attribute({
+    module: "gemstepnav",
+    show_text: t("components.step_by_step_nav.show"),
+    hide_text: t("components.step_by_step_nav.hide"),
+    show_all_text: t("components.step_by_step_nav.show_all"),
+    hide_all_text: t("components.step_by_step_nav.hide_all")
+  })
+  component_helper.add_data_attribute({ module: "ga4-event-tracker", ga4_expandable: "", }) unless disable_ga4
+  component_helper.add_data_attribute({ remember: "" }) if remember_last_step
+  component_helper.add_data_attribute({ id: tracking_id }) if tracking_id
+  component_helper.add_class("gem-c-step-nav js-hidden")
+  component_helper.add_class("govuk-!-display-none-print") if small
+  component_helper.add_class("gem-c-step-nav--large") unless small
 %>
 <% if steps %>
-  <div
-    data-module="gemstepnav<% unless disable_ga4 %> ga4-event-tracker<% end %>"
-    <%= "data-ga4-expandable" unless disable_ga4 %>
-    class="gem-c-step-nav js-hidden <% if small %>govuk-!-display-none-print<% end %> <% unless small %>gem-c-step-nav--large<% end %>"
-    <%= "data-remember" if remember_last_step %>
-    <%= "data-id=#{tracking_id}" if tracking_id %>
-    data-show-text="<%= t("components.step_by_step_nav.show") %>"
-    data-hide-text="<%= t("components.step_by_step_nav.hide") %>"
-    data-show-all-text="<%= t("components.step_by_step_nav.show_all") %>"
-    data-hide-all-text="<%= t("components.step_by_step_nav.hide_all") %>"
-  >
+  <%= tag.div(**component_helper.all_attributes) do %>
     <ol class="gem-c-step-nav__steps">
       <% steps.each_with_index do |step, step_index| %>
         <%
@@ -115,5 +120,5 @@
         </li>
       <% end %>
     </ol>
-  </div>
+  <% end %>
 <% end %>
