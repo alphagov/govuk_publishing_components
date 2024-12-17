@@ -125,7 +125,7 @@ GEM
     execjs (2.9.1)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
-    gds-api-adapters (97.4.1)
+    gds-api-adapters (97.6.0)
       addressable
       link_header
       null_logger
@@ -165,7 +165,7 @@ GEM
     hashdiff (1.1.1)
     highline (3.0.1)
     http-accept (1.7.0)
-    http-cookie (1.0.7)
+    http-cookie (1.0.8)
       domain_name (~> 0.5)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
@@ -191,7 +191,7 @@ GEM
       rexml (>= 3.3.9)
     language_server-protocol (3.17.0.3)
     link_header (0.0.8)
-    logger (1.6.1)
+    logger (1.6.2)
     logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
@@ -209,7 +209,7 @@ GEM
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.1105)
+    mime-types-data (3.2024.1203)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.1)
