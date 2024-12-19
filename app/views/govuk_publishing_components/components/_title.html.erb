@@ -8,20 +8,17 @@
   context_inside ||= false
 
   inverse ||= false
-  local_assigns[:margin_top] ||= 8
   local_assigns[:margin_bottom] ||= 8
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   classes = %w[gem-c-title]
   classes << "gem-c-title--inverse" if inverse
-  classes << shared_helper.get_margin_top
   classes << shared_helper.get_margin_bottom
 
   heading_classes = %w[gem-c-title__text]
   heading_classes << (average_title_length.present? ? 'govuk-heading-l' : 'govuk-heading-xl')
 %>
-
 <% @context_block = capture do %>
   <span class="govuk-caption-xl gem-c-title__context" <%= "lang=#{context_locale}" if context_locale.present? %>>
     <%= context %>
