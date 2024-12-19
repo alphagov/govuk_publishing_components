@@ -1,0 +1,86 @@
+@import "govuk_publishing_components/individual_component_support";
+
+// stylelint-disable selector-max-id
+.show-global-bar #global-header-bar {
+  display: none;
+}
+
+$covid-yellow: #fff500;
+$covid-grey: #262828;
+
+.gem-c-global-bar {
+  @include govuk-font(19);
+  background-color: #d9e7f2;
+  border-top: govuk-spacing(2) solid govuk-colour("blue");
+  display: none;
+
+  .show-global-bar & {
+    display: block;
+  }
+
+  .govuk-link,
+  .govuk-link:link {
+    color: govuk-colour("black");
+
+    &:visited {
+      color: govuk-colour("black");
+    }
+
+    &:focus {
+      color: govuk-colour("black");
+    }
+  }
+}
+
+.gem-c-global-bar-message {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: govuk-spacing(4) 0;
+}
+
+.gem-c-global-bar-title {
+  font-weight: 700;
+  margin-right: govuk-spacing(2);
+  margin-bottom: govuk-spacing(1);
+
+  &:only-child {
+    margin: 0;
+  }
+}
+
+.gem-c-global-bar-title,
+.gem-c-global-bar-text {
+  color: govuk-colour("black");
+}
+
+.gem-c-global-bar-title__nowrap {
+  white-space: nowrap;
+}
+
+.gem-c-global-bar-dismiss-wrapper {
+  margin-top: govuk-spacing(4);
+}
+
+.gem-c-global-bar__dismiss {
+  display: none;
+}
+
+.gem-c-global-bar__dismiss--show {
+  display: inline-block;
+}
+
+// [TODO: don't allow cross component styling like this ]
+.gem-c-govspeak .gem-c-global-bar__heading {
+  @include govuk-font(19, $weight: bold);
+  margin-top: 0;
+  margin-bottom: govuk-spacing(1);
+}
+
+.gem-c-govspeak .gem-c-global-bar__list {
+  margin-top: 0;
+}
+// [/end TODO]
+
+.gem-c-global-bar__list {
+  margin-top: 0;
+}
