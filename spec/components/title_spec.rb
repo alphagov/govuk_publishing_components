@@ -71,26 +71,6 @@ describe "Title", type: :view do
     assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
-  it "has a default margin top of 8" do
-    render_component(title: "Margin default")
-    assert_select '.gem-c-title.govuk-\!-margin-top-8'
-  end
-
-  it "applies a margin top of 0" do
-    render_component(title: "Margin 0", margin_top: 0)
-    assert_select '.gem-c-title.govuk-\!-margin-top-0'
-  end
-
-  it "applies a valid margin top" do
-    render_component(title: "Margin 4", margin_top: 4)
-    assert_select '.gem-c-title.govuk-\!-margin-top-4'
-  end
-
-  it "ignores an invalid margin top" do
-    render_component(title: "Margin wat", margin_top: 17)
-    assert_select "[class^='govuk-\!-margin-top-']", false
-  end
-
   it "applies context language if supplied to a context link" do
     render_component(title: "Bonjour", context: "Format", context_locale: "en")
     assert_select ".govuk-caption-xl[lang='en']"

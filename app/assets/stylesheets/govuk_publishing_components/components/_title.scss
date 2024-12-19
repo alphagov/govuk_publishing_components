@@ -1,5 +1,11 @@
 @import "govuk_publishing_components/individual_component_support";
 
+.gem-c-title {
+  @include govuk-media-query($from: tablet) {
+    padding-top: govuk-spacing(8);
+  }
+}
+
 .gem-c-title--inverse {
   color: govuk-colour("white");
 
