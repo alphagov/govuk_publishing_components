@@ -82,6 +82,10 @@
   }
 }
 
+.gem-c-organisation-logo__link-hide-underline:link:not(:hover) {
+  text-decoration: none;
+}
+
 .gem-c-organisation-logo--inverse {
   .gem-c-organisation-logo__container {
     border-color: govuk-colour("white");
