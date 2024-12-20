@@ -13,60 +13,55 @@ describe "Heading", type: :view do
 
   it "renders a heading correctly" do
     render_component(text: "Download documents")
-    assert_select "h2.gem-c-heading", text: "Download documents"
+    assert_select ".gem-c-heading h2", text: "Download documents"
   end
 
   it "renders a different heading level" do
     render_component(text: "Original consultation", heading_level: 3)
-    assert_select "h3.gem-c-heading", text: "Original consultation"
+    assert_select ".gem-c-heading h3", text: "Original consultation"
   end
 
   it "adds xl font size" do
     render_component(text: "Extra large", font_size: "xl")
-    assert_select ".gem-c-heading.govuk-heading-xl"
+    assert_select ".gem-c-heading h2.govuk-heading-xl"
   end
 
   it "adds l font size" do
     render_component(text: "Large", font_size: "l")
-    assert_select ".gem-c-heading.govuk-heading-l"
+    assert_select ".gem-c-heading h2.govuk-heading-l"
   end
 
   it "adds m font size" do
     render_component(text: "Medium", font_size: "m")
-    assert_select ".gem-c-heading.govuk-heading-m"
+    assert_select ".gem-c-heading h2.govuk-heading-m"
   end
 
   it "supports legacy font size option of 24" do
     render_component(text: "Medium", font_size: 24)
-    assert_select ".gem-c-heading.govuk-heading-m"
+    assert_select ".gem-c-heading h2.govuk-heading-m"
   end
 
   it "adds s font size" do
     render_component(text: "Small", font_size: "s")
-    assert_select ".gem-c-heading.govuk-heading-s"
+    assert_select ".gem-c-heading h2.govuk-heading-s"
   end
 
   it "supports legacy font size option of 19" do
     render_component(text: "Small", font_size: 19)
-    assert_select ".gem-c-heading.govuk-heading-s"
+    assert_select ".gem-c-heading h2.govuk-heading-s"
   end
 
   it "adds default font size if given no or an invalid value" do
     render_component(text: "font size not specified")
-    assert_select ".gem-c-heading.gem-c-heading--font-size-27"
+    assert_select ".gem-c-heading h2.gem-c-heading--font-size-27"
 
     render_component(text: "font size 199", font_size: 199)
-    assert_select ".gem-c-heading.gem-c-heading--font-size-27"
+    assert_select ".gem-c-heading h2.gem-c-heading--font-size-27"
   end
 
   it "has a specified id attribute" do
     render_component(text: "Consultation description", id: "custom-id")
     assert_select ".gem-c-heading[id='custom-id']", text: "Consultation description"
-  end
-
-  it "adds the correct class for publications and consultations page" do
-    render_component(text: "Consistency is nice", mobile_top_margin: true)
-    assert_select ".gem-c-heading.gem-c-heading--mobile-top-margin"
   end
 
   it "adds padding" do
@@ -107,5 +102,26 @@ describe "Heading", type: :view do
   it "inverts the heading" do
     render_component(text: "Inverted", inverse: true)
     assert_select ".gem-c-heading.gem-c-heading--inverse"
+  end
+
+  it "renders a context" do
+    render_component(text: "Hello World", context: "Format")
+    assert_select ".gem-c-heading h2", text: "Hello World"
+    assert_select ".gem-c-heading .gem-c-heading__context", text: "Format"
+  end
+
+  it "renders no title context inside" do
+    render_component(text: "Hello World", context: "Format")
+    assert_select ".gem-c-heading h2 > .gem-c-heading__context", false
+  end
+
+  it "title context appears inside" do
+    render_component(text: "Hello World", context: "Format", context_inside: true)
+    assert_select ".gem-c-heading h2 > .gem-c-heading__context", text: "Format"
+  end
+
+  it "applies context language if supplied to a context string" do
+    render_component(text: "Bonjour Monde", context: "hello", context_locale: "en")
+    assert_select ".govuk-caption-xl[lang='en']"
   end
 end

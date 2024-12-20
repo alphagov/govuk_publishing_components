@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use govuk-spacing for highlight answer govspeak component ([PR #4515](https://github.com/alphagov/govuk_publishing_components/pull/4515))
+* Add context option to heading component ([PR #4510](https://github.com/alphagov/govuk_publishing_components/pull/4510))
 
 ## 46.4.0
 
