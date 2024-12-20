@@ -15,7 +15,7 @@ accessibility_criteria: |
   - be part of a correct heading structure for a page
   - be semantically represented as a heading
   - convey the heading level
-uses_component_wrapper_helper: true  
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -47,14 +47,6 @@ examples:
     data:
       text: 'Really big bottom margin'
       margin_bottom: 9
-  with_mobile_top_margin:
-    description: |
-      On publications and consultations the layout of the page requires that the heading component have spacing above it on mobile. Since this is a specific use case, this is now an option on the component rather than the default behaviour.
-
-      It is intended that this option will ultimately be deprecated once more of the frontend is componentised and a general component model of margins is implemented.
-    data:
-      text: 'Consultation description'
-      mobile_top_margin: true
   with_border:
     description: A top border can be applied to the component of different thicknesses. Accepted values are `1` (`1px`), `2` (`2px`) and `5` (`5px`). Note that this works best with padding applied.
     data:
@@ -82,3 +74,35 @@ examples:
     data:
       text: "Ein gweinidogion"
       lang: "cy"
+  with_context:
+    description: Context is applied sometimes where the heading is used as a page title H1. Note that the text size of the context is larger than the default size of the heading, so a larger `font_size` should be applied as shown.
+    data:
+      text: I like toast
+      context: Food opinion
+      font_size: "xl"
+  with_context_inside:
+    description: |
+      If the context should be considered part of the page heading, you can nest the context within the <code><h1></code>.
+    data:
+      context: Publication
+      text: My page title
+      font_size: "xl"
+      context_inside: true
+  with_context_language_labelled:
+    description: |
+      Sometimes this component appears on a page that has been translated. The title will naturally be supplied in the required language but the context string may fall back to the default. In these instances we need to label the language so the page remains semantic and screenreaders can handle the switch.
+
+      The `lang` attribute **must** be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
+    data:
+      context: Publication
+      context_locale: en
+      text: My page title
+      font_size: "xl"
+  with_context_inverted:
+    data:
+      context: Publication
+      text: My page title
+      font_size: "xl"
+      inverse: true
+    context:
+      dark_background: true

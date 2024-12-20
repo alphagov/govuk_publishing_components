@@ -3,21 +3,36 @@
 
   brand ||= false
   lang = local_assigns[:lang].presence
+  context ||= false
+  context_locale ||= false
+  context_inside ||= false
 
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
 
-  classes = %w(gem-c-heading)
-  classes << heading_helper.classes
-  classes << brand_helper.brand_class
-  classes << brand_helper.border_color_class
-
-  component_helper.add_class(classes.join(" "))
+  component_helper.add_class("gem-c-heading")
+  component_helper.add_class(heading_helper.classes)
+  component_helper.add_class(brand_helper.brand_class)
+  component_helper.add_class(brand_helper.border_color_class)
   component_helper.set_id(heading_helper.id)
-  element = shared_helper.get_heading_level
 %>
-<%= content_tag(element, component_helper.all_attributes) do %>
-  <%= text %>
+<% context_block = capture do %>
+  <span class="govuk-caption-xl gem-c-heading__context" <%= "lang=#{context_locale}" if context_locale.present? %>>
+    <%= context %>
+  </span>
+<% end %>
+
+<%= tag.div(**component_helper.all_attributes) do %>
+  <% if context && !context_inside %>
+    <%= context_block %>
+  <% end %>
+
+  <%= content_tag(shared_helper.get_heading_level, class: heading_helper.heading_classes) do %>
+    <% if context && context_inside %>
+      <%= context_block %>
+    <% end %>
+    <%= text %>
+  <% end %>
 <% end %>
