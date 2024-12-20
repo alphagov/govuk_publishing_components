@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add context option to heading component ([PR #4510](https://github.com/alphagov/govuk_publishing_components/pull/4510))
+
 ## 46.4.0
 
 * Add canonical_url value to GA4 page view tracking ([PR #4500](https://github.com/alphagov/govuk_publishing_components/pull/4500))

@@ -75,7 +75,7 @@ describe "Chart", type: :view do
     data[:chart_heading] = "hello"
     render_component(data)
 
-    assert_select "h2.gem-c-heading", text: "hello"
+    assert_select ".gem-c-heading h2.gem-c-heading__text", text: "hello"
   end
 
   it "displays a heading with a custom heading level" do
@@ -83,7 +83,7 @@ describe "Chart", type: :view do
     data[:chart_heading_level] = 4
     render_component(data)
 
-    assert_select "h4.gem-c-heading", text: "hello"
+    assert_select ".gem-c-heading h4.gem-c-heading__text", text: "hello"
   end
 
   it "can be rendered without a visible heading" do

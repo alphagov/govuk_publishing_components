@@ -1,17 +1,17 @@
 module GovukPublishingComponents
   module Presenters
     class HeadingHelper
-      attr_reader :heading_tag, :id, :classes
+      attr_reader :heading_tag, :id, :classes, :heading_classes
 
       def initialize(options)
         @id = options[:id]
 
         @classes = ""
-        @classes << heading_size(options[:font_size])
-        @classes << " gem-c-heading--mobile-top-margin" if options[:mobile_top_margin]
         @classes << " gem-c-heading--padding" if options[:padding]
         @classes << " gem-c-heading--border-top-#{options[:border_top]}" if [1, 2, 5].include? options[:border_top]
         @classes << " gem-c-heading--inverse" if options[:inverse]
+
+        @heading_classes = "gem-c-heading__text #{heading_size(options[:font_size])}"
       end
 
     private
