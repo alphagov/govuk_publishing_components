@@ -37,9 +37,6 @@ en:
       accessibility_html: This chart is a visual representation of the data available in the table.
       accessibility_link: Skip to "%{chart_heading}" data table
       accessibility_heading: Data table for "%{chart_heading}"
-    chat_entry:
-      heading: Ask GOV.UK Chat
-      description: Get quick, tailored answers to your business questions with GOV.UK’s new AI tool
     checkboxes:
       or: or
     contents_list:
