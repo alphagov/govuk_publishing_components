@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 46.5.1
+
+* Remove chat entry component ([PR #4512](https://github.com/alphagov/govuk_publishing_components/pull/4512))
+
 ## 46.4.0
 
 * Add canonical_url value to GA4 page view tracking ([PR #4500](https://github.com/alphagov/govuk_publishing_components/pull/4500))
