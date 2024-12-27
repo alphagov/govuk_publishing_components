@@ -39,9 +39,6 @@ gd:
       accessibility_html:
       accessibility_link:
       table_dropdown:
-    chat_entry:
-      description:
-      heading:
     checkboxes:
       or: Cá háit
     contents_list:
