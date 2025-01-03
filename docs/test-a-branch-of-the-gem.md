@@ -40,7 +40,7 @@ The application to use the branch of the components gem may vary depending on wh
 Create a branch of the application and modify the Gemfile to point to the branch of `govuk_publishing_components`.
 
 ```
-gem "govuk_publishing_components", git: 'https://github.com/alphagov/govuk_publishing_components.git', branch: 'branch-name'
+gem "govuk_publishing_components", git: "https://github.com/alphagov/govuk_publishing_components.git", branch: "branch-name"
 ```
 
 Test your changes locally.
