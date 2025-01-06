@@ -10,10 +10,11 @@
   ]
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
 
-  data = {}
-  data[:module] = "ga4-link-tracker" unless disable_ga4
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-step-nav-header")
 
   unless disable_ga4
+    component_helper.add_data_attribute({ module: "ga4-link-tracker" })
     ga4_data = {
       event_name: "navigation",
       type: "super breadcrumb",
@@ -21,17 +22,13 @@
       index_total: "1",
     }.to_json
   end
-
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  classes = %w[gem-c-step-nav-header]
-  classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 %>
 <% if title %>
   <script type="application/ld+json">
     <%= raw JSON.pretty_generate(breadcrumb_presenter.structured_data) %>
   </script>
 
-  <%= tag.div(class: classes, data: data) do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <strong class="gem-c-step-nav-header__part-of">Part of</strong>
     <% if path %>
       <a href="<%= path %>"

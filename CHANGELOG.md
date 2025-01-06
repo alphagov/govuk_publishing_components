@@ -14,6 +14,7 @@
 * Add option for organisation logos to hide the link underline until it's hovered ([PR #4509](https://github.com/alphagov/govuk_publishing_components/pull/4509))
 * Remove chat entry component ([PR #4512](https://github.com/alphagov/govuk_publishing_components/pull/4512))
 * Use component wrapper on skip link component ([PR #4520](https://github.com/alphagov/govuk_publishing_components/pull/4520))
+* Use component wrapper on step nav header component ([PR #4521](https://github.com/alphagov/govuk_publishing_components/pull/4521))
 
 ## 46.4.0
 
