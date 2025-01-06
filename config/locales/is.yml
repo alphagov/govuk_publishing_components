@@ -32,11 +32,6 @@ is:
       type:
         characters: stafi
         words: orð
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: eða
     contents_list:

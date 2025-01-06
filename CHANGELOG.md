@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* **BREAKING** Remove chart component ([PR #4518](https://github.com/alphagov/govuk_publishing_components/pull/4518))
 * Use govuk-spacing for highlight answer govspeak component ([PR #4515](https://github.com/alphagov/govuk_publishing_components/pull/4515))
 * Add context option to heading component ([PR #4510](https://github.com/alphagov/govuk_publishing_components/pull/4510))
 * Add option for organisation logos to hide the link underline until it's hovered ([PR #4509](https://github.com/alphagov/govuk_publishing_components/pull/4509))

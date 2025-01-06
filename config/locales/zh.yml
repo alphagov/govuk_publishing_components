@@ -31,11 +31,6 @@ zh:
       type:
         characters: 字符
         words: 单词
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: 或
     contents_list:

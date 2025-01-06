@@ -32,11 +32,6 @@ uz:
       type:
         characters: белгилар
         words: сўзлар
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: ёки
     contents_list:

@@ -31,11 +31,6 @@ ja:
       type:
         characters: 文字
         words: 単語
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: または
     contents_list:

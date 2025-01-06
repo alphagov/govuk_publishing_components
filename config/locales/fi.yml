@@ -32,11 +32,6 @@ fi:
       type:
         characters: merkkejä
         words: sanoja
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: tai
     contents_list:

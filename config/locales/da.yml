@@ -32,11 +32,6 @@ da:
       type:
         characters: Tegn
         words: ord
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: eller
     contents_list:

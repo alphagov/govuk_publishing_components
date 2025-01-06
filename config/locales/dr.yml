@@ -35,11 +35,6 @@ dr:
       type:
         characters: ارقام
         words: کلمات
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: یا
     contents_list:

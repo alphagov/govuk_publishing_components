@@ -33,11 +33,6 @@ lt:
       type:
         characters: spaudos ženklų
         words: žodžių
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: arba
     contents_list:

@@ -32,11 +32,6 @@ he:
       type:
         characters: תווים
         words: מילים
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: או
     contents_list:
