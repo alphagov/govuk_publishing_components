@@ -13,6 +13,7 @@
 * Add context option to heading component ([PR #4510](https://github.com/alphagov/govuk_publishing_components/pull/4510))
 * Add option for organisation logos to hide the link underline until it's hovered ([PR #4509](https://github.com/alphagov/govuk_publishing_components/pull/4509))
 * Remove chat entry component ([PR #4512](https://github.com/alphagov/govuk_publishing_components/pull/4512))
+* Use component wrapper on skip link component ([PR #4520](https://github.com/alphagov/govuk_publishing_components/pull/4520))
 
 ## 46.4.0
 
