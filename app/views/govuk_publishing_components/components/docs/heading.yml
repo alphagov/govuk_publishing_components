@@ -26,7 +26,7 @@ examples:
       heading_level: 3
   different_font_sizes:
     description: |
-      Set a different font size for the heading. Uses the [GOV.UK Frontend heading sizes](https://design-system.service.gov.uk/styles/typography/#headings) but defaults to 27px for legacy reasons. Valid options are `xl`, `l`, `m` and `s`.
+      Set a different font size for the heading. Uses the [GOV.UK Frontend heading sizes](https://design-system.service.gov.uk/styles/headings/) but defaults to 27px for legacy reasons. Valid options are `xl`, `l`, `m` and `s`.
 
       This option is not tied to the `heading_level` option in order to give flexibility.
     data:
