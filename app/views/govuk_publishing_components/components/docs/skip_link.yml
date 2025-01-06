@@ -11,6 +11,7 @@ accessibility_criteria: |
   - is the first items that screen readers hear and that keyboard users tab to
 accessibility_excluded_rules:
   - skip-link # This component is creating a reference to #content which is part of the layout
+uses_component_wrapper_helper: true
 examples:
   default:
     data:

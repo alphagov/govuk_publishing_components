@@ -3,5 +3,10 @@
 
   href ||= '#main-content'
   text ||= t('components.skip_link.text')
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-skip-link govuk-skip-link govuk-!-display-none-print")
+  component_helper.add_data_attribute({ module: "govuk-skip-link" })
+
 %>
-<%= link_to(text, href, class: "gem-c-skip-link govuk-skip-link govuk-!-display-none-print", data: { module: "govuk-skip-link" }) %>
+<%= link_to(text, href, **component_helper.all_attributes) %>
