@@ -1,24 +1,13 @@
 @import "govuk_publishing_components/individual_component_support";
 
-.gem-c-heading {
+.gem-c-heading,
+.gem-c-heading__text {
   margin: 0;
 }
 
 .gem-c-heading--font-size-27 {
   @include govuk-text-colour;
   @include govuk-font(27, $weight: bold);
-}
-
-// special case for publications and consultations pages
-// separated to allow normalisation of the component for wider use
-.gem-c-heading--mobile-top-margin {
-  margin-top: govuk-spacing(6);
-  margin-bottom: govuk-spacing(3);
-
-  @include govuk-media-query($from: tablet) {
-    margin-top: 0;
-    margin-bottom: govuk-spacing(6);
-  }
 }
 
 .gem-c-heading--padding {
@@ -43,7 +32,10 @@
 }
 
 .gem-c-heading--inverse {
-  color: govuk-colour("white");
+  .gem-c-heading__context,
+  .gem-c-heading__text {
+    color: govuk-colour("white");
+  }
 }
 
 // stylelint-disable declaration-no-important
