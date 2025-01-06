@@ -183,6 +183,15 @@ examples:
         brand: cabinet-office
         crest: 'single-identity'
       inline: true
+  no_underline_until_hover:
+    description: Remove the underline text-decoration unless hovered. Useful when combined with the `inverse` option.
+    data:
+      organisation:
+        name: Cabinet Office
+        url: '/government/organisations/cabinet-office'
+        brand: cabinet-office
+        crest: 'single-identity'
+      hide_underline: true
   on_a_dark_background:
     data:
       organisation:
