@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use govuk-spacing for highlight answer govspeak component ([PR #4515](https://github.com/alphagov/govuk_publishing_components/pull/4515))
+
 ## 46.4.0
 
 * Add canonical_url value to GA4 page view tracking ([PR #4500](https://github.com/alphagov/govuk_publishing_components/pull/4500))

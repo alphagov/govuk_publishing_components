@@ -9,8 +9,8 @@ $highlight-answer-color: govuk-colour("white");
     background-color: $highlight-answer-bg-color;
     color: $highlight-answer-color;
     text-align: center;
-    padding: 1.75em .75em 1.25em;
-    margin: 0 0 1em;
+    padding: govuk-spacing(5) govuk-spacing(2) govuk-spacing(4);
+    margin: 0 0 govuk-spacing(2);
 
     p {
       color: $highlight-answer-color;
@@ -18,7 +18,7 @@ $highlight-answer-color: govuk-colour("white");
 
       em {
         display: block;
-        padding-top: .1em;
+        padding-top: govuk-spacing(2);
         color: $highlight-answer-color;
         @include govuk-font($size: 80, $weight: bold);
       }
@@ -29,7 +29,7 @@ $highlight-answer-color: govuk-colour("white");
     }
 
     @include govuk-media-query($until: tablet) {
-      margin: 0 0 1em;
+      margin: 0 0 govuk-spacing(2);
       @include govuk-font($size: 48);
 
       p {
