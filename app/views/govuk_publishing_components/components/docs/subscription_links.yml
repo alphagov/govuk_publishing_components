@@ -14,6 +14,7 @@ accessibility_criteria: |
   - show hidden elements by default when JavaScript is disabled
 shared_accessibility_criteria:
   - link
+uses_component_wrapper_helper: true
 examples:
   default:
     data:

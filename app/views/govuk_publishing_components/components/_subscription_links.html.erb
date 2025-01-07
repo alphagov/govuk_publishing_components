@@ -5,17 +5,11 @@
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 
   sl_helper = GovukPublishingComponents::Presenters::SubscriptionLinksHelper.new(local_assigns)
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  local_assigns[:margin_bottom] ||= 0
-  local_assigns[:margin_bottom] = 0 if local_assigns[:margin_bottom] > 9
-
-  css_classes = %w( gem-c-subscription-links govuk-!-display-none-print )
-  css_classes << shared_helper.get_margin_bottom unless local_assigns[:margin_bottom] == 0
-  css_classes << brand_helper.brand_class
-  css_classes << "gem-c-subscription-links--with-feed-box" if sl_helper.feed_link_box_value
-
-  data = {"module": "gem-toggle"} if sl_helper.feed_link_box_value
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-subscription-links govuk-!-display-none-print #{brand_helper.brand_class}")
+  component_helper.add_class("gem-c-subscription-links--with-feed-box") if sl_helper.feed_link_box_value
+  component_helper.add_data_attribute({ module: "gem-toggle" }) if sl_helper.feed_link_box_value
 
   hide_heading ||= false
 
@@ -23,7 +17,7 @@
   feed_link_text_locale = local_assigns[:feed_link_text_locale].presence
 %>
 <% if sl_helper.component_data_is_valid? %>
-  <%= tag.section class: css_classes, data: data do %>
+  <%= tag.section(**component_helper.all_attributes) do %>
     <% unless hide_heading %>
       <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("components.subscription_links.subscriptions") %></h2>
     <% end %>

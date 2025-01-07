@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use component wrapper on subscription links ([PR #4525](https://github.com/alphagov/govuk_publishing_components/pull/4525))
+
 ## 47.0.0
 
 * **BREAKING** Remove chart component ([PR #4518](https://github.com/alphagov/govuk_publishing_components/pull/4518))
