@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 47.0.0
 
 * **BREAKING** Remove chart component ([PR #4518](https://github.com/alphagov/govuk_publishing_components/pull/4518))
 * Use govuk-spacing for highlight answer govspeak component ([PR #4515](https://github.com/alphagov/govuk_publishing_components/pull/4515))
