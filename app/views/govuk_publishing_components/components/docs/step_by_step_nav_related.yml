@@ -16,6 +16,7 @@ accessibility_criteria: |
   - display multiple links outside of a heading in a separate list
 shared_accessibility_criteria:
   - link
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
