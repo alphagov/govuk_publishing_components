@@ -15,6 +15,7 @@
 * Use component wrapper on summary list component ([PR #4529](https://github.com/alphagov/govuk_publishing_components/pull/4529))
 * Use component wrapper on translation nav component ([PR #4530](https://github.com/alphagov/govuk_publishing_components/pull/4530))
 * Use component wrapper on warning text component ([PR #4351](https://github.com/alphagov/govuk_publishing_components/pull/4531))
+* Remove govspeak advisory component ([PR #4349](https://github.com/alphagov/govuk_publishing_components/pull/4349))
 
 ## 47.0.0
 
