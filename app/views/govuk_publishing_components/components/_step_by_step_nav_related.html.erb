@@ -4,13 +4,14 @@
   links ||= []
   pretitle ||= t("components.step_by_step_nav_related.part_of")
   always_display_as_list ||= false
-  classes = %w(gem-c-step-nav-related)
-  classes << "gem-c-step-nav-related--singular" if links.length == 1
-  data = {}
-  data[:module] = "ga4-link-tracker" unless disable_ga4
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-step-nav-related")
+  component_helper.add_class("gem-c-step-nav-related--singular") if links.length == 1
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
 %>
 <% if links.any? %>
-  <%= tag.div(class: classes, data: data) do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <h2 class="gem-c-step-nav-related__heading">
       <span class="gem-c-step-nav-related__pretitle"><%= pretitle %></span>
       <% if links.length == 1 && !always_display_as_list %>
