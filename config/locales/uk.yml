@@ -34,11 +34,6 @@ uk:
       type:
         characters: символів
         words: слів
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: або
     contents_list:

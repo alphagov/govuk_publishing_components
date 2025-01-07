@@ -33,11 +33,6 @@ hr:
       type:
         characters: znakova
         words: riječi
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: ili
     contents_list:

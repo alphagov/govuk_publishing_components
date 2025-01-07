@@ -32,11 +32,6 @@ el:
       type:
         characters: χαρακτήρες
         words: λέξεις
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: ή
     contents_list:

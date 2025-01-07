@@ -34,11 +34,6 @@ gd:
       type:
         characters: Figiúr
         words: Carachtar
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: Cá háit
     contents_list:

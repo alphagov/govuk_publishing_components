@@ -32,11 +32,6 @@ gu:
       type:
         characters: અક્ષરો
         words: શબ્દો
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: અથવા
     contents_list:

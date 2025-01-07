@@ -33,11 +33,6 @@ ro:
       type:
         characters: caractere
         words: cuvinte
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: sau
     contents_list:

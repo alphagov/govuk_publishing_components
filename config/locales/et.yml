@@ -32,11 +32,6 @@ et:
       type:
         characters: tähemärki
         words: sõnu
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: või
     contents_list:

@@ -32,11 +32,6 @@ hu:
       type:
         characters: karakterek
         words: szavak
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: vagy
     contents_list:

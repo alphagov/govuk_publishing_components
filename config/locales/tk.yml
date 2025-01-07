@@ -32,11 +32,6 @@ tk:
       type:
         characters: şekiller
         words: sözler
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: ýa-da
     contents_list:

@@ -32,11 +32,6 @@ bn:
       type:
         characters: ক্যারেক্টার
         words: শব্দসমষ্টি
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: অথবা
     contents_list:

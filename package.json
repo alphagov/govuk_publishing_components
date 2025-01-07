@@ -37,7 +37,6 @@
   "dependencies": {
     "accessible-autocomplete": "^3.0.1",
     "axe-core": "^4.10.2",
-    "chartkick": "^5.0.1",
     "govuk-frontend": "5.7.1",
     "govuk-single-consent": "^3.0.9",
     "sortablejs": "^1.15.6"

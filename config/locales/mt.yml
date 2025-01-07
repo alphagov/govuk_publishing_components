@@ -34,11 +34,6 @@ mt:
       type:
         characters: karattri
         words: kliem
-    chart:
-      accessibility_heading:
-      accessibility_html:
-      accessibility_link:
-      table_dropdown:
     checkboxes:
       or: jew
     contents_list:
