@@ -3,20 +3,16 @@
 
   description ||= nil
   title_id ||= "govuk-notification-banner-title-#{SecureRandom.hex(4)}"
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  classes = %w(gem-c-success-alert govuk-notification-banner govuk-notification-banner--success)
-  classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-success-alert govuk-notification-banner govuk-notification-banner--success")
+  component_helper.add_role("alert")
+  component_helper.set_tabindex(-1)
+  component_helper.add_aria_attribute({ labelledby: title_id })
+  component_helper.add_data_attribute({ module: "initial-focus" })
 %>
 
-<%= tag.div class: classes,
-  role: "alert",
-  tabindex: "-1",
-  aria: {
-    labelledby: title_id,
-  },
-  data: {
-    module: "initial-focus",
-  } do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <div class="govuk-notification-banner__header">
     <%= tag.h2 t("components.success_alert.success"), class: "govuk-notification-banner__title", id: title_id %>
   </div>
