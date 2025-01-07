@@ -5,6 +5,7 @@ accessibility_criteria: |
   - be focusable with a keyboard
   - be usable with a keyboard
   - indicate when it has focus
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
