@@ -5,7 +5,6 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   heading_size = "m" unless shared_helper.valid_heading_size?(heading_size)
 
-  id ||= nil
   title ||= nil
   borderless ||= false
   edit ||= {}
@@ -13,9 +12,14 @@
   items ||= []
   block ||= yield
   wide_title ||= false
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-summary-list")
+  component_helper.add_class("govuk-summary-list--no-border") if borderless
+  component_helper.add_class("gem-c-summary-list--wide-title") if wide_title
 %>
 <% if title || items.any? %>
-  <%= tag.div class: "gem-c-summary-list #{"govuk-summary-list--no-border" if borderless} #{"gem-c-summary-list--wide-title" if wide_title}", id: id do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <% if title %>
       <%= content_tag(shared_helper.get_heading_level, title, class: "govuk-heading-#{heading_size} gem-c-summary-list__group-title") %>
 
