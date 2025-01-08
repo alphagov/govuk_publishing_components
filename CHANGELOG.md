@@ -20,6 +20,7 @@
 * Use component wrapper on warning text component ([PR #4351](https://github.com/alphagov/govuk_publishing_components/pull/4531))
 * Remove govspeak advisory component ([PR #4349](https://github.com/alphagov/govuk_publishing_components/pull/4349))
 * Use component wrapper on super navigation header ([PR #4534](https://github.com/alphagov/govuk_publishing_components/pull/4534))
+* Remove `GOVUK_DISABLE_SEARCH_AUTOCOMPLETE` feature flag ([PR #4533](https://github.com/alphagov/govuk_publishing_components/pull/4533))
 
 ## 47.0.0
 

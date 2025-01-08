@@ -181,13 +181,5 @@ describe "Super navigation header", type: :view do
       render_component({})
       assert_select ".gem-c-search-with-autocomplete[data-source-url='http://www.dev.gov.uk/api/search/autocomplete.json']"
     end
-
-    it "allows the GOVUK_DISABLE_SEARCH_AUTOCOMPLETE env var presence to fallback to search without autocomplete" do
-      ClimateControl.modify GOVUK_DISABLE_SEARCH_AUTOCOMPLETE: "1" do
-        render_component({})
-        assert_select ".gem-c-search-autocomplete", false
-        assert_select ".gem-c-search"
-      end
-    end
   end
 end
