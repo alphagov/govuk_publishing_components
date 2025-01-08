@@ -3,12 +3,14 @@
 
   id ||= nil
   title ||= nil
-  data_attributes ||= {}
   summary_card_actions ||= []
   rows ||=[]
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-summary-card")
 %>
 <% if title || rows.any? %>
-  <%= tag.div class: "gem-c-summary-card", id: id, data: data_attributes do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <%= tag.div class: "govuk-summary-card" do %>
       <%= tag.div class: "govuk-summary-card__title-wrapper" do %>
         <%= tag.h2 class: "govuk-summary-card__title" do %>
