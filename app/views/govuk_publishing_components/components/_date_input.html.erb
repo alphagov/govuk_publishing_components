@@ -1,7 +1,7 @@
 <%
   add_gem_component_stylesheet("date-input")
 
-  id ||= "input-#{SecureRandom.hex(4)}"
+  date_input_id ||= "input-#{SecureRandom.hex(4)}"
   name ||= nil
   items ||= [
     { :name => "day", :width => 2 },
@@ -54,7 +54,7 @@
       } %>
     <% end %>
 
-    <%= tag.div class: date_css_classes, id: id do %>
+    <%= tag.div class: date_css_classes, id: date_input_id do %>
       <% items.each do |item| %>
         <%= tag.div class: "govuk-date-input__item" do %>
           <%= render "govuk_publishing_components/components/input", {

@@ -70,3 +70,8 @@ examples:
           name: dob-blwyddyn
           width: 4
           value: 1980
+  with_custom_date_id_value:
+    description: |
+      A custom id can be specified on the element that contains the date inputs. If omitted, a randomised id prefixed with `input-` will be used, for example `input-6c4c5730`.
+    data:
+      date_input_id: "hello_world"
