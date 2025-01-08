@@ -7,6 +7,7 @@ accessibility_criteria: |
     assistive tech
   - Should have a role of ‘alert’ to communicate that is a important and
     time sensitive message
+uses_component_wrapper_helper: true
 examples:
   default:
     data:

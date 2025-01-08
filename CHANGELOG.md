@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use component wrapper on subscription links ([PR #4525](https://github.com/alphagov/govuk_publishing_components/pull/4525))
+* Use component wrapper on success alert component ([PR #4527](https://github.com/alphagov/govuk_publishing_components/pull/4527))
 
 ## 47.0.0
 
