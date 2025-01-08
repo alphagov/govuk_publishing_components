@@ -5,6 +5,7 @@ govuk_frontend_components:
   - warning-text
 accessibility_criteria: |
   All text must have a contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
