@@ -4,12 +4,14 @@
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   translation_helper = GovukPublishingComponents::Presenters::TranslationNavHelper.new(local_assigns)
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_role("navigation")
+  component_helper.add_class("gem-c-translation-nav govuk-!-display-none-print #{translation_helper.classes} #{brand_helper.brand_class}")
+  component_helper.add_aria_attribute({ label: t("common.translations") })
 %>
 <% if translation_helper.has_translations? %>
-  <nav role="navigation"
-    class="gem-c-translation-nav govuk-!-display-none-print <%= translation_helper.classes %> <%= brand_helper.brand_class %>"
-    aria-label="<%= t("common.translations") %>"
-  >
+  <%= tag.nav(**component_helper.all_attributes) do %>
     <ul class="gem-c-translation-nav__list">
       <% translation_helper.translations.each.with_index do |translation, i| %>
         <li class="gem-c-translation-nav__list-item">
@@ -27,5 +29,5 @@
         </li>
       <% end %>
     </ul>
-  </nav>
+  <% end %>
 <% end %>
