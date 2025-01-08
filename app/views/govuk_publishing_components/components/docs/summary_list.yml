@@ -9,6 +9,7 @@ shared_accessibility_criteria:
   - link
 govuk_frontend_components:
   - summary-list
+uses_component_wrapper_helper: true
 examples:
   default:
     data: &default-example-data
