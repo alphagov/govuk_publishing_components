@@ -1,16 +1,32 @@
 <%
   add_gem_component_stylesheet("button")
+
   disable_ga4 ||= false
+  local_assigns[:type] ||= "submit" unless local_assigns[:href].present?
+  text ||= ""
 
-  # button_helper.css_classes generates "gem-c-button"
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  local_assigns[:classes] = shared_helper.classes
+  # shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  # local_assigns[:classes] = shared_helper.classes
   button = GovukPublishingComponents::Presenters::ButtonHelper.new(local_assigns)
-%>
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-button govuk-button")
+  component_helper.add_class("govuk-button--start") if local_assigns[:start]
+  component_helper.add_class("gem-c-button--secondary") if local_assigns[:secondary]
+  component_helper.add_class("gem-c-button--secondary-quiet") if local_assigns[:secondary_quiet]
+  component_helper.add_class("govuk-button--secondary") if local_assigns[:secondary_solid]
+  component_helper.add_class("govuk-button--warning") if local_assigns[:destructive]
+  component_helper.add_class("gem-c-button--inline") if local_assigns[:inline_layout]
+  component_helper.set_margin_bottom(0) if local_assigns[:info_text]
+  component_helper.add_data_attribute({ module: "govuk-button" }) if local_assigns[:href]
 
+  # if margin_bottom && !info_text
+  #   margin_class = get_margin_bottom(margin_bottom, false)
+  #   css_classes << margin_class
+  # end
+%>
 <% start_button_text = capture do %>
   <span>
-    <%= button.text %>
+    <%= text %>
   </span>
   <svg class="govuk-button__start-icon govuk-!-display-none-print" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" focusable="false" aria-hidden="true">
     <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
@@ -21,14 +37,14 @@
   if button.start
     button_text = start_button_text
   else
-    button_text = button.text
+    button_text = text
   end
 %>
 
 <% if button.link? %>
-  <%= link_to button_text, button.href, **button.html_options %>
+  <%= link_to button_text, button.href, **component_helper.all_attributes %>
 <% else %>
-  <%= content_tag :button, button_text, **button.html_options %>
+  <%= content_tag :button, button_text, **component_helper.all_attributes %>
 <% end %>
 
 <% if button.info_text %>

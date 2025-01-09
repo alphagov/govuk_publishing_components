@@ -4,7 +4,7 @@ module GovukPublishingComponents
   module Presenters
     class ButtonHelper
       attr_reader :href,
-                  :text,
+                  # :text,
                   :title,
                   :info_text,
                   :info_text_classes,
@@ -30,7 +30,7 @@ module GovukPublishingComponents
       def initialize(local_assigns)
         @disable_ga4 = local_assigns[:disable_ga4]
         @href = local_assigns[:href]
-        @text = local_assigns[:text]
+        # @text = local_assigns[:text]
         @title = local_assigns[:title]
         @info_text = local_assigns[:info_text]
         @info_text_classes = %w[gem-c-button__info-text]
@@ -40,7 +40,7 @@ module GovukPublishingComponents
         end
         @rel = local_assigns[:rel]
         @data_attributes = local_assigns[:data_attributes]&.symbolize_keys || {}
-        @data_attributes[:module] = "govuk-button #{data_attributes[:module]}".strip if link?
+        # @data_attributes[:module] = "govuk-button #{data_attributes[:module]}".strip if link?
         @margin_bottom = local_assigns[:margin_bottom]
         @inline_layout = local_assigns[:inline_layout]
         @target = local_assigns[:target]
