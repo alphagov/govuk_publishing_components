@@ -16,6 +16,7 @@
 * Use component wrapper on translation nav component ([PR #4530](https://github.com/alphagov/govuk_publishing_components/pull/4530))
 * Use component wrapper on warning text component ([PR #4351](https://github.com/alphagov/govuk_publishing_components/pull/4531))
 * Remove govspeak advisory component ([PR #4349](https://github.com/alphagov/govuk_publishing_components/pull/4349))
+* **BREAKING**: Add component wrapper helper to intervention component ([PR #4378](https://github.com/alphagov/govuk_publishing_components/pull/4378))
 
 ## 47.0.0
 

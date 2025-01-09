@@ -9,15 +9,10 @@
   hide ||= false
   new_tab ||= false
 
-  data_attributes = {}
   suggestion_data_attributes = {}
   dismiss_data_attributes = {}
   dismiss_link_data_attributes = {}
-  data_attributes[:module] = "intervention"
-  data_attributes["intervention-name"] = name
 
-  aria_attributes ||= {}
-  aria_attributes[:label] = 'Intervention'
 
   options = {
     name: name,
@@ -35,7 +30,6 @@
   disable_ga4 ||= false
   suggestion_data_attributes[:module] = "#{suggestion_data_attributes[:module]} ga4-link-tracker".strip unless disable_ga4
   suggestion_data_attributes[:ga4_link] = { event_name: "navigation", type: "intervention", section: suggestion_text, index_link: 1, index_total: 1 }.to_json unless disable_ga4
-  data_attributes[:ga4_intervention_banner] = "" unless disable_ga4 # Added to the parent element for the GA4 pageview object to use
 
   suggestion_tag_options = {
     class: "govuk-link gem-c-force-print-link-styles",
@@ -52,18 +46,20 @@
     suggestion_link_text = intervention_helper.accessible_text
   end
 
-  section_options = {
-    class: "gem-c-intervention",
-    role: "region", aria: aria_attributes,
-    data: data_attributes,
-  }
-  section_options.merge!({ hidden: true }) if hide
-
   dismiss_link_data_attributes[:module] = "#{dismiss_link_data_attributes[:module]} ga4-event-tracker".strip unless disable_ga4
   dismiss_link_data_attributes[:ga4_event] = { event_name: "select_content", type: "intervention", section: suggestion_text, action: 'closed' }.to_json unless disable_ga4
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-intervention")
+  component_helper.add_role("region")
+  component_helper.add_aria_attribute({ label: "Intervention"})
+  component_helper.add_data_attribute({ module: "intervention", intervention_name: name })
+  component_helper.add_data_attribute({ ga4_intervention_banner: "" }) unless disable_ga4 # Added to the parent element for the GA4 pageview object to use
+  component_helper.set_hidden("hidden") if hide
+
 %>
 <% if intervention_helper.show? %>
-  <%= tag.section **section_options do %>
+  <%= tag.section(**component_helper.all_attributes) do %>
     <p class="govuk-body">
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
       <% if suggestion_link_text && suggestion_link_url %>

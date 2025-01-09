@@ -21,6 +21,7 @@ shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
   - landmark-unique # aria-label attributes will be duplicated in component examples list
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
