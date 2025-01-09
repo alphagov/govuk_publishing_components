@@ -106,7 +106,7 @@ describe "Devolved Nations", type: :view do
           alternative_url: "/consultation-northern-ireland",
         },
       },
-      type: "consultation",
+      content_type: "consultation",
     )
     assert_select ".gem-c-devolved-nations > h2", text: "Applies to England"
     assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/consultation-northern-ireland']", text: "Consultation for Northern Ireland"
@@ -123,7 +123,7 @@ describe "Devolved Nations", type: :view do
           alternative_url: "/guidance-northern-ireland",
         },
       },
-      type: "detailed_guide",
+      content_type: "detailed_guide",
     )
     assert_select ".gem-c-devolved-nations > h2", text: "Applies to England"
     assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/guidance-northern-ireland']", text: "Guidance for Northern Ireland"
@@ -140,7 +140,7 @@ describe "Devolved Nations", type: :view do
           alternative_url: "/publication-northern-ireland",
         },
       },
-      type: "invalid_type",
+      content_type: "invalid_type",
     )
     assert_select ".gem-c-devolved-nations > h2", text: "Applies to England"
     assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/publication-northern-ireland']", text: "Publication for Northern Ireland"
