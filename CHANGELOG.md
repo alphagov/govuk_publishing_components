@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* **BREAKING** Change devolved nations component type option ([PR #4535](https://github.com/alphagov/govuk_publishing_components/pull/4535))
 * Use component wrapper on subscription links ([PR #4525](https://github.com/alphagov/govuk_publishing_components/pull/4525))
 * Use component wrapper on success alert component ([PR #4527](https://github.com/alphagov/govuk_publishing_components/pull/4527))
 * Use component wrapper on summary card component ([PR #4528](https://github.com/alphagov/govuk_publishing_components/pull/4528))

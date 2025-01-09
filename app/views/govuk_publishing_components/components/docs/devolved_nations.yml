@@ -72,7 +72,7 @@ examples:
         northern_ireland:
           applicable: false
           alternative_url: /
-      type: consultation
+      content_type: consultation
   applies_to_one_nation_individual_guidance_available:
     description: Specify alternative type for the content e.g. Guidance
     data:
@@ -82,7 +82,7 @@ examples:
         northern_ireland:
           applicable: false
           alternative_url: /
-      type: detailed_guide
+      content_type: detailed_guide
   specific_heading level:
     description: Use a different heading level for the main link title. Defaults to `h2` if not passed.
     data:
@@ -104,5 +104,5 @@ examples:
         northern_ireland:
           applicable: false
           alternative_url: /
-      type: detailed_guide
+      content_type: detailed_guide
       disable_ga4: true

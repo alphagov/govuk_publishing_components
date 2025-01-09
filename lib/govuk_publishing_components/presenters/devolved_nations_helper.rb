@@ -1,11 +1,11 @@
 module GovukPublishingComponents
   module Presenters
     class DevolvedNationsHelper
-      attr_reader :national_applicability, :type
+      attr_reader :national_applicability, :content_type
 
       def initialize(local_assigns)
         @national_applicability = local_assigns[:national_applicability]
-        @type = local_assigns[:type] || "publication"
+        @content_type = local_assigns[:content_type] || "publication"
       end
 
       def applicable_nations_title_text(use_english_translation = nil)
@@ -42,8 +42,8 @@ module GovukPublishingComponents
       def alternative_content_text(name)
         nation = I18n.t("components.devolved_nations.#{name}")
 
-        if I18n.exists?("components.devolved_nations.type.#{@type}")
-          I18n.t("components.devolved_nations.type.#{@type}", nation:)
+        if I18n.exists?("components.devolved_nations.type.#{@content_type}")
+          I18n.t("components.devolved_nations.type.#{@content_type}", nation:)
         else
           I18n.t("components.devolved_nations.type.publication", nation:)
         end

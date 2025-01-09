@@ -91,7 +91,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
             alternative_url: "/consultation-northern-ireland",
           },
         },
-        type: "consultation",
+        content_type: "consultation",
       )
       expect(devolved_nations_helper.applicable_nations_title_text).to eql("England")
       expect(devolved_nations_helper.alternative_content_text("northern_ireland")).to eql("Consultation for Northern Ireland")
@@ -108,7 +108,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
             alternative_url: "/guidance-northern-ireland",
           },
         },
-        type: "detailed_guide",
+        content_type: "detailed_guide",
       )
       expect(devolved_nations_helper.applicable_nations_title_text).to eql("England")
       expect(devolved_nations_helper.alternative_content_text("northern_ireland")).to eql("Guidance for Northern Ireland")
@@ -125,7 +125,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
             alternative_url: "/publication-northern-ireland",
           },
         },
-        type: "invalid_type",
+        content_type: "invalid_type",
       )
       expect(devolved_nations_helper.applicable_nations_title_text).to eql("England")
       expect(devolved_nations_helper.alternative_content_text("northern_ireland")).to eql("Publication for Northern Ireland")
