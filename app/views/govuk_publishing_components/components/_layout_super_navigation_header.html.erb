@@ -35,9 +35,6 @@
   search_toggle_button_classes << "gem-c-layout-super-navigation-header__search-toggle-button--blue-background" if blue_background
   search_toggle_button_classes << "gem-c-layout-super-navigation-header__search-toggle-button--large-navbar" if large_navbar
 
-  layout_super_navigation_header_classes = %w(gem-c-layout-super-navigation-header)
-  layout_super_navigation_header_classes << "gem-c-layout-super-navigation-header--blue-background" if blue_background
-
   item_link_classes = %w(gem-c-layout-super-navigation-header__navigation-item-link)
   item_link_classes << "gem-c-layout-super-navigation-header__navigation-item-link--blue-background" if blue_background
   item_link_classes << "gem-c-layout-super-navigation-header__navigation-item-link--large-navbar" if large_navbar
@@ -64,16 +61,14 @@
   dropdown_menu_classes << "gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar" if large_navbar
 
   absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-layout-super-navigation-header")
+  component_helper.add_class("gem-c-layout-super-navigation-header--blue-background") if blue_background
+  component_helper.add_role("banner")
+  component_helper.add_data_attribute({ module: "ga4-event-tracker ga4-link-tracker", ga4_expandable: "" })
 %>
-<%= content_tag("header",
-  {
-    role: "banner",
-    class: layout_super_navigation_header_classes,
-    data: {
-      module: "ga4-event-tracker ga4-link-tracker",
-      "ga4-expandable": '',
-    }
-}) do %>
+<%= tag.header(**component_helper.all_attributes) do %>
   <div class="gem-c-layout-super-navigation-header__container govuk-clearfix">
     <div class="govuk-width-container">
       <%= content_tag(:div, {

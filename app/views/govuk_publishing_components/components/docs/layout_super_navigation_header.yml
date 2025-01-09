@@ -26,6 +26,7 @@ accessibility_excluded_rules:
   - duplicate-id-aria
   - landmark-no-duplicate-banner
   - landmark-unique
+uses_component_wrapper_helper: true
 examples:
   default:
   with_custom_logo_link:
