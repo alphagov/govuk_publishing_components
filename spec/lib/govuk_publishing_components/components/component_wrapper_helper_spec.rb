@@ -14,6 +14,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         open: true,
         hidden: "",
         tabindex: "0",
+        type: "submit",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -29,6 +30,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         open: true,
         hidden: "",
         tabindex: "0",
+        type: "submit",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -310,6 +312,26 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
             GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(tabindex: "-1!???")
           }.to raise_error(ArgumentError, error)
         end
+      end
+    end
+
+    describe "type" do
+      it "does not accept an invalid type value" do
+        error = "type attribute (false) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(type: "false")
+        }.to raise_error(ArgumentError, error)
+      end
+
+      it "accepts valid type value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(type: "datetime-local")
+        expect(component_helper.all_attributes[:type]).to eql("datetime-local")
+      end
+
+      it "can set a type, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(type: "submit")
+        helper.set_type("button")
+        expect(helper.all_attributes[:type]).to eql("button")
       end
     end
   end
