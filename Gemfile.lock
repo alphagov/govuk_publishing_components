@@ -11,6 +11,7 @@ PATH
       rouge
       sprockets (>= 3)
       sprockets-rails
+      timecop
 
 GEM
   remote: https://rubygems.org/

@@ -1,5 +1,5 @@
 <%
-  if before_update_time?(year: 2024, month: 7, day: 4, hour: 22, minute: 0)
+  if GovukPublishingComponents::AppHelpers::TimedUpdateHelper.before_update_time?(year: 2024, month: 7, day: 4, hour: 22, minute: 0)
     show_global_bar ||= true # Toggles the appearance of the global bar
     title = "Bring photo ID to vote"
     title_href = "/how-to-vote/photo-id-youll-need"
