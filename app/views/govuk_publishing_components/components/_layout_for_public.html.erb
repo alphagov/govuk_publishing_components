@@ -65,6 +65,7 @@
     <title><%= title %></title>
 
     <%= javascript_include_tag "govuk_publishing_components/vendor/lux/lux-measurer", { async: true } %>
+    <%= javascript_include_tag "govuk_publishing_components/rum-custom-data", type: "module" %>
     <%= javascript_include_tag "govuk_publishing_components/rum-loader",
       {
         async: true,
