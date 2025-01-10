@@ -1,7 +1,4 @@
-//= require libs/GlobalBarHelper.js
 //= require govuk_publishing_components/lib/cookie-functions
-
-/* global parseCookie */
 
 'use strict'
 window.GOVUK = window.GOVUK || {}
@@ -42,7 +39,7 @@ var globalBarInit = {
 
   setBannerCookie: function () {
     var cookieCategory = window.GOVUK.getCookieCategory(GLOBAL_BAR_SEEN_COOKIE)
-    var cookieConsent = GOVUK.getConsentCookie()
+    var cookieConsent = window.GOVUK.getConsentCookie()
     var value
 
     if (cookieConsent && cookieConsent[cookieCategory]) {
@@ -73,13 +70,13 @@ var globalBarInit = {
         globalBarInit.setBannerCookie()
         globalBarInit.makeBannerVisible()
       } else {
-        currentCookieVersion = parseCookie(globalBarInit.getLatestCookie()).version
+        currentCookieVersion = window.GOVUK.parseCookie(globalBarInit.getLatestCookie()).version
 
         if (currentCookieVersion !== globalBarInit.getBannerVersion()) {
           globalBarInit.setBannerCookie()
         }
 
-        var newCookieCount = parseCookie(globalBarInit.getLatestCookie()).count
+        var newCookieCount = window.GOVUK.parseCookie(globalBarInit.getLatestCookie()).count
 
         // If banner has been manually dismissed, hide the additional info
         if (newCookieCount === 999) {
@@ -100,7 +97,7 @@ var globalBarInit = {
       if (globalBarInit.getLatestCookie() === null) {
         globalBarInit.setBannerCookie()
       } else {
-        currentCookieVersion = parseCookie(globalBarInit.getLatestCookie()).version
+        currentCookieVersion = window.GOVUK.parseCookie(globalBarInit.getLatestCookie()).version
 
         if (currentCookieVersion !== globalBarInit.getBannerVersion()) {
           globalBarInit.setBannerCookie()

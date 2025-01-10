@@ -1,7 +1,4 @@
-//= require libs/GlobalBarHelper.js
-
-/* global parseCookie */
-
+//= require govuk_publishing_components/lib/cookie-functions
 /*
   Global bar
 
@@ -22,16 +19,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (alwaysOn === 'false') {
       alwaysOn = false // in this situation we need to convert string to boolean
     }
-    var cookieCategory = GOVUK.getCookieCategory(GLOBAL_BAR_SEEN_COOKIE)
-    var cookieConsent = GOVUK.getConsentCookie()[cookieCategory]
+    var cookieCategory = window.GOVUK.getCookieCategory(GLOBAL_BAR_SEEN_COOKIE)
+    var cookieConsent = window.GOVUK.getConsentCookie()[cookieCategory]
 
     if (cookieConsent) {
       // If the cookie is not set, let's set a basic one
-      if (GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE) === null || parseCookie(GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE)).count === undefined) {
-        GOVUK.setCookie('global_bar_seen', JSON.stringify({ count: 0, version: 0 }), { days: 84 })
+      if (window.GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE) === null || window.GOVUK.parseCookie(window.GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE)).count === undefined) {
+        window.GOVUK.setCookie('global_bar_seen', JSON.stringify({ count: 0, version: 0 }), { days: 84 })
       }
 
-      var currentCookie = parseCookie(GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE))
+      var currentCookie = window.GOVUK.parseCookie(window.GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE))
       var currentCookieVersion = currentCookie.version
       var count = viewCount()
     }
@@ -49,7 +46,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     function hide (event) {
-      var currentCookie = parseCookie(GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE))
+      var currentCookie = window.GOVUK.parseCookie(window.GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE))
       var cookieVersion = currentCookieVersion
 
       if (currentCookie) {
@@ -57,7 +54,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       var cookieValue = JSON.stringify({ count: 999, version: cookieVersion })
-      GOVUK.setCookie(GLOBAL_BAR_SEEN_COOKIE, cookieValue, { days: 84 })
+      window.GOVUK.setCookie(GLOBAL_BAR_SEEN_COOKIE, cookieValue, { days: 84 })
       var additional = document.querySelector('.global-bar-additional')
       if (additional) {
         additional.classList.remove('global-bar-additional--show')
@@ -72,12 +69,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     function incrementViewCount (count) {
       count = count + 1
       var cookieValue = JSON.stringify({ count: count, version: currentCookieVersion })
-      GOVUK.setCookie(GLOBAL_BAR_SEEN_COOKIE, cookieValue, { days: 84 })
+      window.GOVUK.setCookie(GLOBAL_BAR_SEEN_COOKIE, cookieValue, { days: 84 })
     }
 
     function viewCount () {
-      var viewCountCookie = GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE)
-      var viewCount = parseInt(parseCookie(viewCountCookie).count, 10)
+      var viewCountCookie = window.GOVUK.getCookie(GLOBAL_BAR_SEEN_COOKIE)
+      var viewCount = parseInt(window.GOVUK.parseCookie(viewCountCookie).count, 10)
 
       if (isNaN(viewCount)) {
         viewCount = 0

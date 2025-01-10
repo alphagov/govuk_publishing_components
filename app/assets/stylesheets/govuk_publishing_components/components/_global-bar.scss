@@ -1,3 +1,5 @@
+@import "govuk_publishing_components/individual_component_support";
+
 // stylelint-disable selector-max-id
 .show-global-bar #global-header-bar {
   display: none;
@@ -7,10 +9,10 @@ $covid-yellow: #fff500;
 $covid-grey: #262828;
 
 .global-bar {
-  @include govuk-font(19);
   background-color: #d9e7f2;
   border-top: govuk-spacing(2) solid govuk-colour("blue");
   display: none;
+  @include govuk-font(19);
 
   .show-global-bar & {
     display: block;
@@ -68,9 +70,9 @@ $covid-grey: #262828;
 }
 
 .gem-c-govspeak .global-bar__heading {
-  @include govuk-font(19, $weight: bold);
   margin-top: 0;
   margin-bottom: govuk-spacing(1);
+  @include govuk-font(19, $weight: bold);
 }
 
 .gem-c-govspeak .global-bar__list {

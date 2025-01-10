@@ -1,4 +1,5 @@
-/* global parseCookie, expectAdditionalSectionToBeHidden */
+/* eslint-env jasmine, jquery */
+/* global GOVUK, expectAdditionalSectionToBeHidden */
 describe('Global bar module', function () {
   'use strict'
 
@@ -34,8 +35,8 @@ describe('Global bar module', function () {
       globalBar = new GOVUK.Modules.GlobalBar(element[0])
       globalBar.init()
 
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
     })
 
     it('sets basic global_bar_seen cookie if existing one is malformed', function () {
@@ -44,8 +45,8 @@ describe('Global bar module', function () {
       globalBar = new GOVUK.Modules.GlobalBar(element[0])
       globalBar.init()
 
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
     })
   })
 
@@ -69,8 +70,8 @@ describe('Global bar module', function () {
       globalBar = new GOVUK.Modules.GlobalBar(element[0])
       globalBar.init()
 
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(2)
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(2)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
     })
 
     it('hides additional information section when dismiss link is clicked', function () {
@@ -79,8 +80,8 @@ describe('Global bar module', function () {
 
       $(element).find('.dismiss')[0].click()
 
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(999)
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(999)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
 
       expectAdditionalSectionToBeHidden()
     })
@@ -91,8 +92,8 @@ describe('Global bar module', function () {
 
       $(element).find('.dismiss')[0].click()
 
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(999)
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(999)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
 
       expect($('.global-bar-dismiss').hasClass('global-bar-dismiss--show')).toBe(false)
     })
@@ -118,8 +119,8 @@ describe('Global bar module', function () {
       globalBar = new GOVUK.Modules.GlobalBar(element[0])
       globalBar.init()
 
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(2)
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(2)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
     })
 
     it('continues to increment view count when off', function () {
@@ -137,8 +138,8 @@ describe('Global bar module', function () {
       globalBar = new GOVUK.Modules.GlobalBar(element[0])
       globalBar.init()
 
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(3)
-      expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(3)
+      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(0)
     })
   })
 })

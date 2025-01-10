@@ -1,4 +1,5 @@
-/* global globalBarInit, parseCookie, expectGlobalBarToShow, expectGlobalBarToBeHidden, expectGa4AttributeToExist, expectGa4AttributeToNotExist */
+/* eslint-env jasmine, jquery */
+/* global GOVUK, globalBarInit, expectGlobalBarToShow, expectGlobalBarToBeHidden, expectGa4AttributeToExist, expectGa4AttributeToNotExist */
 
 describe('Global bar initialize', function () {
   beforeAll(function () {
@@ -19,8 +20,8 @@ describe('Global bar initialize', function () {
     GOVUK.globalBarInit.init()
 
     // The cookie should still be set, but the banner should not be visible
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
     expectGlobalBarToBeHidden()
     expectGa4AttributeToNotExist()
   })
@@ -28,8 +29,8 @@ describe('Global bar initialize', function () {
   it('sets global_bar_seen cookie', function () {
     GOVUK.globalBarInit.init()
 
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
     expectGlobalBarToShow()
     expectGa4AttributeToExist()
   })
@@ -38,8 +39,8 @@ describe('Global bar initialize', function () {
     GOVUK.setCookie('global_bar_seen', 1)
     GOVUK.globalBarInit.init()
 
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
 
     expectGlobalBarToShow()
     expectGa4AttributeToExist()
@@ -49,8 +50,8 @@ describe('Global bar initialize', function () {
     GOVUK.setCookie('global_bar_seen', JSON.stringify({ count: 1, version: 1 }))
     GOVUK.globalBarInit.init()
 
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
     expectGlobalBarToShow()
     expectGa4AttributeToExist()
   })
@@ -59,8 +60,8 @@ describe('Global bar initialize', function () {
     GOVUK.setCookie('global_bar_seen', JSON.stringify({ count: 10, version: 1 }))
     GOVUK.globalBarInit.init()
 
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
-    expect(parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).count).toBe(0)
+    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_bar_seen')).version).toBe(5)
     expectGlobalBarToShow()
     expectGa4AttributeToExist()
   })
