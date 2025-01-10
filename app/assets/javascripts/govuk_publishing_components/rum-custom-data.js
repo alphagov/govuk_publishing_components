@@ -9,4 +9,10 @@
   // is used when a browser loads a page.
   // [1]: https://github.com/alphagov/govuk-rfcs/pull/148
   LUX.addData('http-protocol', navigationPerformance.nextHopProtocol)
+
+  const serverTiming = navigationPerformance.serverTiming
+  if (serverTiming) {
+    const cacheState = serverTiming.find(entry => ['cacheHit', 'cacheMiss'].includes(entry.name))
+    if (cacheState) { LUX.addData('cache', cacheState.name) }
+  }
 }())
