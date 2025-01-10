@@ -1,0 +1,82 @@
+// stylelint-disable selector-max-id
+.show-global-bar #global-header-bar {
+  display: none;
+}
+
+$covid-yellow: #fff500;
+$covid-grey: #262828;
+
+.global-bar {
+  @include govuk-font(19);
+  background-color: #d9e7f2;
+  border-top: govuk-spacing(2) solid govuk-colour("blue");
+  display: none;
+
+  .show-global-bar & {
+    display: block;
+  }
+
+  .govuk-link,
+  .govuk-link:link {
+    color: govuk-colour("black");
+
+    &:visited {
+      color: govuk-colour("black");
+    }
+
+    &:focus {
+      color: govuk-colour("black");
+    }
+  }
+}
+
+.global-bar-message {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: govuk-spacing(4) 0;
+}
+
+.global-bar-title {
+  font-weight: 700;
+  margin-right: govuk-spacing(2);
+  margin-bottom: govuk-spacing(1);
+
+  &:only-child {
+    margin: 0;
+  }
+}
+
+.global-bar-title,
+.global-bar-text {
+  color: govuk-colour("black");
+}
+
+.global-bar-title__nowrap {
+  white-space: nowrap;
+}
+
+.global-bar-dismiss-wrapper {
+  margin-top: govuk-spacing(4);
+}
+
+.global-bar__dismiss {
+  display: none;
+}
+
+.global-bar__dismiss--show {
+  display: inline-block;
+}
+
+.gem-c-govspeak .global-bar__heading {
+  @include govuk-font(19, $weight: bold);
+  margin-top: 0;
+  margin-bottom: govuk-spacing(1);
+}
+
+.gem-c-govspeak .global-bar__list {
+  margin-top: 0;
+}
+
+.global-bar__list {
+  margin-top: 0;
+}
