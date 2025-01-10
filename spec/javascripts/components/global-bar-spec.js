@@ -1,10 +1,14 @@
 /* eslint-env jasmine, jquery */
-/* global GOVUK, expectAdditionalSectionToBeHidden */
+/* global GOVUK */
 describe('Global bar module', function () {
   'use strict'
 
   var globalBar
   var element
+
+  function expectAdditionalSectionToBeHidden () {
+    expect($('.global-bar-additional').hasClass('global-bar-additional--show')).toBe(false)
+  }
 
   beforeEach(function () {
     window.GOVUK.setConsentCookie({ settings: true })

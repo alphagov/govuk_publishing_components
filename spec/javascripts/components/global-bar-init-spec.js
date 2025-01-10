@@ -1,9 +1,33 @@
 /* eslint-env jasmine, jquery */
-/* global GOVUK, globalBarInit, expectGlobalBarToShow, expectGlobalBarToBeHidden, expectGa4AttributeToExist, expectGa4AttributeToNotExist */
+/* global GOVUK, globalBarInit */
 
 describe('Global bar initialize', function () {
+  function expectGlobalBarToShow () {
+    expect($('html').hasClass('show-global-bar')).toBe(true)
+  }
+
+  function expectGlobalBarToBeHidden () {
+    expect($('html').hasClass('show-global-bar')).toBe(false)
+  }
+
+  function expectGa4AttributeToExist () {
+    expect($('#global-bar').attr('data-ga4-global-bar')).toBe('')
+  }
+
+  function expectGa4AttributeToNotExist () {
+    expect($('#global-bar').attr('data-ga4-global-bar')).toBe(undefined)
+  }
+
+  // function expectAdditionalSectionToBeVisible () {
+  //   expect($('.global-bar-additional').hasClass('global-bar-additional--show')).toBe(true)
+  // }
+
   beforeAll(function () {
     $('html').append('<div id="global-bar"></div>')
+  })
+
+  afterAll(function () {
+    $('#global-bar').remove()
   })
 
   beforeEach(function () {

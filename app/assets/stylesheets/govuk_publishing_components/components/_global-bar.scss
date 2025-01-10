@@ -8,7 +8,7 @@
 $covid-yellow: #fff500;
 $covid-grey: #262828;
 
-.global-bar {
+.gem-c-global-bar {
   background-color: #d9e7f2;
   border-top: govuk-spacing(2) solid govuk-colour("blue");
   display: none;
@@ -32,13 +32,13 @@ $covid-grey: #262828;
   }
 }
 
-.global-bar-message {
+.gem-c-global-bar-message {
   margin-bottom: 0;
   margin-top: 0;
   padding: govuk-spacing(4) 0;
 }
 
-.global-bar-title {
+.gem-c-global-bar-title {
   font-weight: 700;
   margin-right: govuk-spacing(2);
   margin-bottom: govuk-spacing(1);
@@ -48,37 +48,37 @@ $covid-grey: #262828;
   }
 }
 
-.global-bar-title,
-.global-bar-text {
+.gem-c-global-bar-title,
+.gem-c-global-bar-text {
   color: govuk-colour("black");
 }
 
-.global-bar-title__nowrap {
+.gem-c-global-bar-title__nowrap {
   white-space: nowrap;
 }
 
-.global-bar-dismiss-wrapper {
+.gem-c-global-bar-dismiss-wrapper {
   margin-top: govuk-spacing(4);
 }
 
-.global-bar__dismiss {
+.gem-c-global-bar__dismiss {
   display: none;
 }
 
-.global-bar__dismiss--show {
+.gem-c-global-bar__dismiss--show {
   display: inline-block;
 }
 
-.gem-c-govspeak .global-bar__heading {
+.gem-c-govspeak .gem-c-global-bar__heading {
   margin-top: 0;
   margin-bottom: govuk-spacing(1);
   @include govuk-font(19, $weight: bold);
 }
 
-.gem-c-govspeak .global-bar__list {
+.gem-c-govspeak .gem-c-global-bar__list {
   margin-top: 0;
 }
 
-.global-bar__list {
+.gem-c-global-bar__list {
   margin-top: 0;
 }
