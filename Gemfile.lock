@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (47.0.0)
+    govuk_publishing_components (48.0.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
