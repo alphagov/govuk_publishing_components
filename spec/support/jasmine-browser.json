@@ -7,6 +7,7 @@
     "govuk_publishing_components/analytics-*.js",
     "govuk_publishing_components/load-analytics-*.js",
     "govuk_publishing_components/vendor/lux/lux-measurer-*.js",
+    "govuk_publishing_components/rum-custom-data-*.js",
     "component_guide/accessibility-test-*.js",
     "component_guide/filter-components-*.js",
     "component_guide/audit-filter-*.js"
