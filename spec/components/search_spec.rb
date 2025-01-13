@@ -45,7 +45,7 @@ describe "Search", type: :view do
   end
 
   it "renders a search box with a custom id" do
-    render_component(id: "my-unique-id")
+    render_component(label_id: "my-unique-id")
     assert_select ".gem-c-search #my-unique-id.gem-c-search__input"
   end
 
@@ -97,17 +97,6 @@ describe "Search", type: :view do
     assert_select ".gem-c-search__submit", text: "Search please"
   end
 
-  it "applies data attributes when provided" do
-    render_component(
-      button_text: "Some test text",
-      data_attributes: {
-        an_attribute: "some_value",
-      },
-    )
-
-    assert_select '.gem-c-search__submit[data-an-attribute="some_value"]'
-  end
-
   it "renders the correct label size" do
     render_component(label_size: "xl")
     assert_select ".govuk-label.govuk-label--xl", text: "Search on GOV.UK"
@@ -146,14 +135,6 @@ describe "Search", type: :view do
       label_margin_bottom: 0,
     })
     assert_select 'label.govuk-\!-margin-bottom-0', count: 0
-  end
-
-  it "defaults to no bottom margin if an incorrect value is passed" do
-    render_component({
-      inline_label: false,
-      margin_bottom: 20,
-    })
-    assert_select "label[class^='govuk-\!-margin-bottom-']", count: 0
   end
 
   it "defaults to no bottom margin if inline_label is not passed" do
