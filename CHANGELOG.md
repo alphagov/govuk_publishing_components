@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add type option to component wrapper helper ([PR #4536](https://github.com/alphagov/govuk_publishing_components/pull/4536))
 * **BREAKING** Change devolved nations component type option ([PR #4535](https://github.com/alphagov/govuk_publishing_components/pull/4535))
 * **BREAKING** Add component wrapper helper to intervention component ([PR #4378](https://github.com/alphagov/govuk_publishing_components/pull/4378))
 * **BREAKING** Add component wrapper helper to the list component ([PR #4441](https://github.com/alphagov/govuk_publishing_components/pull/4441))
