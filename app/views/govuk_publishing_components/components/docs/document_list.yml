@@ -246,8 +246,7 @@ examples:
           document_type: 'Statistical data set'
   with_equal_item_spacing:
     description: |
-      The new search UI has consistently equal spacing between items in the document list, instead
-      of the original larger bottom padding.
+      Use this option to add equal spacing between items in the document list.
     data:
       equal_item_spacing: true
       items:
