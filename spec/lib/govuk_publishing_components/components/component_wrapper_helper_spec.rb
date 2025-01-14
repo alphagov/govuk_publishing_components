@@ -388,6 +388,32 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       end
     end
 
+    describe "rel" do
+      it "does not accept an invalid rel value" do
+        error = "rel attribute (hubris) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "hubris")
+        }.to raise_error(ArgumentError, error)
+      end
+
+      it "accepts valid rel value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow")
+        expect(component_helper.all_attributes[:rel]).to eql("nofollow")
+      end
+
+      it "can set a rel, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow")
+        helper.set_rel("noreferrer")
+        expect(helper.all_attributes[:rel]).to eql("noreferrer")
+      end
+
+      it "can add a rel to an existing rel" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow")
+        helper.add_rel("noreferrer")
+        expect(helper.all_attributes[:rel]).to eql("nofollow noreferrer")
+      end
+    end
+
     describe "margins" do
       it "complains about an invalid margin" do
         error = "margin_bottom option (15) is not recognised"

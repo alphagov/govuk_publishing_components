@@ -16,6 +16,7 @@ module GovukPublishingComponents
         check_dir_is_valid(@options[:dir]) if @options.include?(:dir)
         check_type_is_valid(@options[:type]) if @options.include?(:type)
         check_draggable_is_valid(@options[:draggable]) if @options.include?(:draggable)
+        check_rel_is_valid(@options[:rel]) if @options.include?(:rel)
         check_margin_bottom_is_valid(@options[:margin_bottom]) if @options.include?(:margin_bottom)
       end
 
@@ -37,6 +38,7 @@ module GovukPublishingComponents
         attributes[:dir] = @options[:dir] unless @options[:dir].blank?
         attributes[:type] = @options[:type] unless @options[:type].blank?
         attributes[:draggable] = @options[:draggable] unless @options[:draggable].blank?
+        attributes[:rel] = @options[:rel] unless @options[:rel].blank?
 
         attributes
       end
@@ -99,6 +101,16 @@ module GovukPublishingComponents
       def set_draggable(draggable_attribute)
         check_draggable_is_valid(draggable_attribute)
         @options[:draggable] = draggable_attribute
+      end
+
+      def add_rel(rel_attribute)
+        check_rel_is_valid(rel_attribute)
+        extend_string(:rel, rel_attribute)
+      end
+
+      def set_rel(rel_attribute)
+        check_rel_is_valid(rel_attribute)
+        @options[:rel] = rel_attribute
       end
 
       def set_margin_bottom(margin_bottom)
@@ -221,6 +233,15 @@ module GovukPublishingComponents
         options = %w[true false]
         unless options.include? draggable_attribute
           raise(ArgumentError, "draggable attribute (#{draggable_attribute}) is not recognised")
+        end
+      end
+
+      def check_rel_is_valid(rel_attribute)
+        return if rel_attribute.blank?
+
+        options = %w[alternate author bookmark canonical dns-prefetch external expect help icon license manifest me modulepreload next nofollow noopener noreferrer opener pingback preconnect prefetch preload prerender prev privacy-policy search stylesheet tag terms-of-service]
+        unless options.include? rel_attribute
+          raise(ArgumentError, "rel attribute (#{rel_attribute}) is not recognised")
         end
       end
 
