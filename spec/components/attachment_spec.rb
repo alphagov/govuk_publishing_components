@@ -134,7 +134,7 @@ describe "Attachment", type: :view do
         url: "attachment",
         content_type: "application/vnd.oasis.opendocument.spreadsheet",
       },
-      data_attributes: { gtm: "attachment-preview" },
+      url_data_attributes: { gtm: "attachment-preview" },
     )
 
     assert_select ".gem-c-attachment__thumbnail a.govuk-link[data-gtm='attachment-preview']"

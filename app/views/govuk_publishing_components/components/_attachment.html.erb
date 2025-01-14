@@ -6,12 +6,13 @@
   hide_opendocument_metadata ||= false
   hide_order_copy_link ||= false
   attributes = []
-  data_attributes ||= {}
+  url_data_attributes ||= {}
   details_ga4_attributes ||= {}
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  container_class_names = %w[gem-c-attachment]
-  container_class_names << shared_helper.get_margin_bottom if local_assigns.key?(:margin_bottom)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-attachment")
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" })
   ga4_link = { 'event_name': 'navigation', 'type': 'attachment' }
 
   case attachment.type
@@ -55,16 +56,16 @@
     )
   end
 
-  data_attributes[:ga4_link] = ga4_link
+  url_data_attributes[:ga4_link] = ga4_link
 %>
-<%= tag.section class: class_names(container_class_names), data: { module: "ga4-link-tracker" } do %>
+<%= tag.section(**component_helper.all_attributes) do %>
   <%= tag.div class: "gem-c-attachment__thumbnail govuk-!-display-none-print" do %>
     <%= link_to attachment.url,
                 class: "govuk-link",
                 target: target,
                 tabindex: "-1",
                 "aria-hidden": true,
-                data: data_attributes do %>
+                data: url_data_attributes do %>
       <% if attachment.thumbnail_url.present? %>
         <% image_tag(attachment.thumbnail_url, alt: "", class: "gem-c-attachment__thumbnail-image gem-c-attachment__thumbnail-image--custom") %>
       <% elsif attachment.html? %>
@@ -88,7 +89,7 @@
       <%= link_to attachment.title, attachment.url,
       class: "govuk-link gem-c-attachment__link",
       target: target,
-      data: data_attributes %>
+      data: url_data_attributes %>
     <% end %>
 
     <% if attachment.reference.present? %>

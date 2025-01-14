@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* **BREAKING** Use component wrapper on attachment component ([PR #4545](https://github.com/alphagov/govuk_publishing_components/pull/4545))
 * Add 'draggable' attribute to component wrapper helper ([PR #4544](https://github.com/alphagov/govuk_publishing_components/pull/4544))
 
 ## 48.0.0
