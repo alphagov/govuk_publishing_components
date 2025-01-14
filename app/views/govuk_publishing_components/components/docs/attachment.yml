@@ -17,6 +17,7 @@ shared_accessibility_criteria:
 accessibility_criteria: |
   The thumbnail image, and the link wrapping it, must not focusable or shown to
   screenreaders.
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -89,7 +90,7 @@ examples:
       details_ga4_attributes: {
         index_section_count: 4
       }
-  with_data_attributes:
+  with_data_attributes_on_url:
     data:
       attachment:
         title: "Department for Transport information asset register"
@@ -97,7 +98,7 @@ examples:
         filename: department-for-transport-information-asset-register.csv
         content_type: application/pdf
         file_size: 20000
-      data_attributes:
+      url_data_attributes:
         gtm: "attachment-preview"
   with_margin_bottom:
     description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to no margin bottom.
