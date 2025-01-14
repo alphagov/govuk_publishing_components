@@ -336,6 +336,26 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
   end
 
+  describe "draggable" do
+    it "does not accept an invalid draggable value" do
+      error = "draggable attribute (ostrich) is not recognised"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "ostrich")
+      }.to raise_error(ArgumentError, error)
+    end
+
+    it "accepts valid draggable value" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "true")
+      expect(component_helper.all_attributes[:draggable]).to eql("true")
+    end
+
+    it "can set a draggable, overriding a passed value" do
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "true")
+      helper.set_draggable("false")
+      expect(helper.all_attributes[:draggable]).to eql("false")
+    end
+  end
+
   describe "margins" do
     it "complains about an invalid margin" do
       error = "margin_bottom option (15) is not recognised"

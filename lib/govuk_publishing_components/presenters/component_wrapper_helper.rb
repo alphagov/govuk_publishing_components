@@ -15,6 +15,7 @@ module GovukPublishingComponents
         check_tabindex_is_valid(@options[:tabindex]) if @options.include?(:tabindex)
         check_dir_is_valid(@options[:dir]) if @options.include?(:dir)
         check_type_is_valid(@options[:type]) if @options.include?(:type)
+        check_draggable_is_valid(@options[:draggable]) if @options.include?(:draggable)
         check_margin_bottom_is_valid(@options[:margin_bottom]) if @options.include?(:margin_bottom)
       end
 
@@ -35,6 +36,7 @@ module GovukPublishingComponents
         attributes[:tabindex] = @options[:tabindex] unless @options[:tabindex].blank?
         attributes[:dir] = @options[:dir] unless @options[:dir].blank?
         attributes[:type] = @options[:type] unless @options[:type].blank?
+        attributes[:draggable] = @options[:draggable] unless @options[:draggable].blank?
 
         attributes
       end
@@ -92,6 +94,11 @@ module GovukPublishingComponents
       def set_type(type_attribute)
         check_type_is_valid(type_attribute)
         @options[:type] = type_attribute
+      end
+
+      def set_draggable(draggable_attribute)
+        check_draggable_is_valid(draggable_attribute)
+        @options[:draggable] = draggable_attribute
       end
 
       def set_margin_bottom(margin_bottom)
@@ -205,6 +212,15 @@ module GovukPublishingComponents
         options = %w[button checkbox color date datetime-local email file hidden image month number password radio range reset search submit tel text time url week]
         unless options.include? type_attribute
           raise(ArgumentError, "type attribute (#{type_attribute}) is not recognised")
+        end
+      end
+
+      def check_draggable_is_valid(draggable_attribute)
+        return if draggable_attribute.blank?
+
+        options = %w[true false]
+        unless options.include? draggable_attribute
+          raise(ArgumentError, "draggable attribute (#{draggable_attribute}) is not recognised")
         end
       end
 
