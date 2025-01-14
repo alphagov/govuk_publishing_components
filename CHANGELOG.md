@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add 'draggable' attribute to component wrapper helper ([PR #4544](https://github.com/alphagov/govuk_publishing_components/pull/4544))
+
 ## 48.0.0
 
 * Report cache status to RUM ([PR #4537](https://github.com/alphagov/govuk_publishing_components/pull/4537))
