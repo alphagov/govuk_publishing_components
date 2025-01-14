@@ -45,7 +45,7 @@
     "@percy/cli": "^1.30.6",
     "jasmine-browser-runner": "^2.5.0",
     "jasmine-core": "^5.5.0",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.1",
     "standardx": "^7.0.0",
     "stylelint": "^15.11.0",
     "stylelint-config-gds": "^1.1.1",
