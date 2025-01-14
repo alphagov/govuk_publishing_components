@@ -14,7 +14,7 @@ module GovukPublishingComponents
                   :id,
                   :inline_layout,
                   :target,
-                  # :type,
+                  :type,
                   :start,
                   :secondary,
                   :secondary_quiet,
@@ -44,7 +44,7 @@ module GovukPublishingComponents
         @margin_bottom = local_assigns[:margin_bottom]
         @inline_layout = local_assigns[:inline_layout]
         @target = local_assigns[:target]
-        # @type = local_assigns[:type]
+        @type = button_type(local_assigns[:type])
         @start = local_assigns[:start]
         @data_attributes[:ga4_attributes] = ga4_attribute if start
         @secondary = local_assigns[:secondary]
@@ -53,7 +53,8 @@ module GovukPublishingComponents
         @destructive = local_assigns[:destructive]
         @name = local_assigns[:name]
         @value = local_assigns[:value]
-        @classes = local_assigns[:classes]
+        # @classes = local_assigns[:classes]
+        @classes = css_classes
         @aria_label = local_assigns[:aria_label]
         @info_text_id = "info-text-id-#{SecureRandom.hex(4)}"
         @button_id = "button-id-#{SecureRandom.hex(4)}"
@@ -85,7 +86,7 @@ module GovukPublishingComponents
       end
 
       def html_options
-        options = { class: css_classes }
+        # options = { class: css_classes }
         options[:role] = "button" if link?
         # options[:type] = button_type
         options[:id] = @button_id if info_text?
@@ -103,9 +104,9 @@ module GovukPublishingComponents
         options
       end
 
-      # def button_type
-      #   type || "submit" unless link?
-      # end
+      def button_type(type)
+        type || "submit" unless link?
+      end
 
     private
 
@@ -116,10 +117,10 @@ module GovukPublishingComponents
         css_classes << "gem-c-button--secondary-quiet" if secondary_quiet
         css_classes << "govuk-button--secondary" if secondary_solid
         css_classes << "govuk-button--warning" if destructive
-        if margin_bottom && !info_text
-          margin_class = get_margin_bottom(margin_bottom, false)
-          css_classes << margin_class
-        end
+        # if margin_bottom && !info_text
+        #   margin_class = get_margin_bottom(margin_bottom, false)
+        #   css_classes << margin_class
+        # end
         css_classes << "gem-c-button--inline" if inline_layout
         css_classes << classes if classes
         css_classes.join(" ")

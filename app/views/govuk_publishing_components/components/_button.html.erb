@@ -9,13 +9,7 @@
   # local_assigns[:classes] = shared_helper.classes
   button = GovukPublishingComponents::Presenters::ButtonHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.add_class("gem-c-button govuk-button")
-  component_helper.add_class("govuk-button--start") if local_assigns[:start]
-  component_helper.add_class("gem-c-button--secondary") if local_assigns[:secondary]
-  component_helper.add_class("gem-c-button--secondary-quiet") if local_assigns[:secondary_quiet]
-  component_helper.add_class("govuk-button--secondary") if local_assigns[:secondary_solid]
-  component_helper.add_class("govuk-button--warning") if local_assigns[:destructive]
-  component_helper.add_class("gem-c-button--inline") if local_assigns[:inline_layout]
+  component_helper.add_class(button.classes)
   component_helper.set_margin_bottom(0) if local_assigns[:info_text]
   component_helper.add_data_attribute({ module: "govuk-button" }) if local_assigns[:href]
 
