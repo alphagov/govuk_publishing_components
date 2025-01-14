@@ -107,21 +107,10 @@ describe "Button", type: :view do
   end
 
   it "renders info text with margin bottom" do
-    render_component(text: "Start now", info_text: "Information text", margin_bottom: true)
-
-    assert_select ".gem-c-button--bottom-margin", count: 0
-
-    assert_select ".govuk-button", text: "Start now"
-    assert_select ".gem-c-button__info-text.gem-c-button__info-text--bottom-margin", text: "Information text"
-  end
-
-  it "renders info text with variable margin bottom" do
-    render_component(text: "Start now", info_text: "Information text", margin_bottom: 6)
-
-    assert_select ".gem-c-button--bottom-margin", count: 0
-
-    assert_select ".govuk-button", text: "Start now"
-    assert_select '.gem-c-button__info-text.govuk-\!-margin-bottom-6', text: "Information text"
+    render_component(text: "Start now", info_text: "Information text", margin_bottom: 2)
+    assert_select '.gem-c-button.govuk-\!-margin-bottom-2', count: 0
+    assert_select ".gem-c-button", text: "Start now"
+    assert_select '.gem-c-button__info-text.govuk-\!-margin-bottom-2', text: "Information text"
   end
 
   it "renders rel attribute correctly" do

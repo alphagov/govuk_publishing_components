@@ -2,18 +2,10 @@
 @import "govuk/components/button/button";
 
 // Because govuk-frontend adds a responsive bottom margin by default for each component
-// we reset it to zero so we can set it separately using `gem-c-button--bottom-margin`
+// we reset it to zero so we can set it separately using margin classes
 // If we decide to use responsive margins consistently across components we can remove this
 .gem-c-button {
   margin-bottom: 0;
-}
-
-// this will be moved and extended into a model for general component spacing
-// once this has been decided upon and other work completed, see:
-// https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components
-.gem-c-button--bottom-margin,
-.gem-c-button__info-text--bottom-margin {
-  @include responsive-bottom-margin;
 }
 
 .gem-c-button--inline {

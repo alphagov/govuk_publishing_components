@@ -1,26 +1,19 @@
 <%
   add_gem_component_stylesheet("button")
 
-  disable_ga4 ||= false
-  local_assigns[:type] ||= "submit" unless local_assigns[:href].present?
-  text ||= ""
-
-  # shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  # local_assigns[:classes] = shared_helper.classes
   button = GovukPublishingComponents::Presenters::ButtonHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class(button.classes)
   component_helper.set_margin_bottom(0) if local_assigns[:info_text]
   component_helper.add_data_attribute({ module: "govuk-button" }) if local_assigns[:href]
-
-  # if margin_bottom && !info_text
-  #   margin_class = get_margin_bottom(margin_bottom, false)
-  #   css_classes << margin_class
-  # end
+  component_helper.add_data_attribute({ ga4_attributes: button.ga4_attributes })
+  component_helper.set_type(button.type)
+  component_helper.add_aria_attribute({ labelledby: button.aria_labelledby })
+  component_helper.set_draggable("false") if local_assigns[:href]
 %>
 <% start_button_text = capture do %>
   <span>
-    <%= text %>
+    <%= button.text %>
   </span>
   <svg class="govuk-button__start-icon govuk-!-display-none-print" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" focusable="false" aria-hidden="true">
     <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
@@ -31,7 +24,7 @@
   if button.start
     button_text = start_button_text
   else
-    button_text = text
+    button_text = button.text
   end
 %>
 

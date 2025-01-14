@@ -4,12 +4,13 @@ module GovukPublishingComponents
   module Presenters
     class ButtonHelper
       attr_reader :href,
-                  # :text,
+                  :text,
                   :title,
                   :info_text,
                   :info_text_classes,
                   :rel,
                   :data_attributes,
+                  :ga4_attributes,
                   :margin_bottom,
                   :id,
                   :inline_layout,
@@ -24,13 +25,14 @@ module GovukPublishingComponents
                   :value,
                   :classes,
                   :aria_label,
+                  :aria_labelledby,
                   :aria_controls,
                   :aria_describedby
 
       def initialize(local_assigns)
         @disable_ga4 = local_assigns[:disable_ga4]
         @href = local_assigns[:href]
-        # @text = local_assigns[:text]
+        @text = local_assigns[:text]
         @title = local_assigns[:title]
         @info_text = local_assigns[:info_text]
         @info_text_classes = %w[gem-c-button__info-text]
@@ -46,7 +48,8 @@ module GovukPublishingComponents
         @target = local_assigns[:target]
         @type = button_type(local_assigns[:type])
         @start = local_assigns[:start]
-        @data_attributes[:ga4_attributes] = ga4_attribute if start
+        # @data_attributes[:ga4_attributes] = ga4_attribute if start
+        @ga4_attributes = ga4_attribute if start
         @secondary = local_assigns[:secondary]
         @secondary_quiet = local_assigns[:secondary_quiet]
         @secondary_solid = local_assigns[:secondary_solid]
@@ -59,6 +62,7 @@ module GovukPublishingComponents
         @info_text_id = "info-text-id-#{SecureRandom.hex(4)}"
         @button_id = "button-id-#{SecureRandom.hex(4)}"
         @aria_controls = local_assigns[:aria_controls]
+        @aria_labelledby = aria_labelledby
         @aria_describedby = local_assigns[:aria_describedby]
       end
 
@@ -90,8 +94,8 @@ module GovukPublishingComponents
         options[:role] = "button" if link?
         # options[:type] = button_type
         options[:id] = @button_id if info_text?
-        options[:aria] = { labelledby: aria_labelledby }
-        options[:rel] = rel if rel
+        # options[:aria] = { labelledby: aria_labelledby }
+        # options[:rel] = rel if rel
         options[:data] = data_attributes if data_attributes
         options[:title] = title if title
         options[:target] = target if target
