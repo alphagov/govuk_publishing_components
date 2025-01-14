@@ -48,22 +48,26 @@ examples:
     data:
       number: 23
       href: "/government/organisations#ministerial_departments"
-  with_data_attributes:
+  with_nested_data_attributes:
     description: |
-      If a `href` attribute is present, `data_attributes` will apply to the `span` containing the number value (see below).
+      If a `href` attribute is present, `nested_data_attributes` will apply to the `a` containing the number value (see below). If a `href` is not present, it will apply to the `span` containing the number value.
+
+      For parent level data attributes, use `data_attributes` which comes from this component having the component wrapper.
 
       Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
       number: 23
       label: Ministerial departments
       href: "/government/organisations#ministerial_departments"
-      data_attributes:
+      nested_data_attributes:
         department-count: true
-  with_data_attributes_but_no_link:
+  with_nested_data_attributes_but_no_link:
+    description: |
+      If a `href` is not present, the data attributes will be applied to the `span` containing the big number. For parent level data attributes, use `data_attributes` which comes from this component having the component wrapper.
     data:
       number: 23
       label: Ministerial departments
-      data_attributes:
+      nested_data_attributes:
         department-count: true
   with_aria_attributes:
     description: Aria attributes are applied to the whole component instance

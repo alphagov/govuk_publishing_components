@@ -48,7 +48,7 @@ describe "Big number", type: :view do
     render_component({
       number: 500,
       href: "/tests",
-      data_attributes: {
+      nested_data_attributes: {
         my_cool_attribute: "cool",
       },
     })
@@ -73,7 +73,7 @@ describe "Big number", type: :view do
   it "adds data attributes to the span containing the number value if a href attribute is not present" do
     render_component({
       number: 500,
-      data_attributes: {
+      nested_data_attributes: {
         my_cool_attribute: "cool",
       },
     })
