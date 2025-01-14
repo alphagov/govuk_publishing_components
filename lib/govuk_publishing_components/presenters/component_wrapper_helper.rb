@@ -198,7 +198,7 @@ module GovukPublishingComponents
       end
 
       def check_dir_is_valid(dir_attribute)
-        return if dir_attribute.nil?
+        return if dir_attribute.blank?
 
         options = %w[ltr rtl auto]
         unless options.include? dir_attribute
@@ -207,7 +207,7 @@ module GovukPublishingComponents
       end
 
       def check_type_is_valid(type_attribute)
-        return if type_attribute.nil?
+        return if type_attribute.blank?
 
         options = %w[button checkbox color date datetime-local email file hidden image month number password radio range reset search submit tel text time url week]
         unless options.include? type_attribute

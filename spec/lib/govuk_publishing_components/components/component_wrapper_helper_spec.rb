@@ -14,7 +14,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         open: true,
         hidden: "",
         tabindex: "0",
+        dir: "rtl",
         type: "submit",
+        draggable: "true",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -30,7 +32,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         open: true,
         hidden: "",
         tabindex: "0",
+        dir: "rtl",
         type: "submit",
+        draggable: "true",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -43,9 +47,17 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         aria: nil,
         role: nil,
         lang: nil,
+        open: nil,
+        hidden: nil,
+        tabindex: nil,
+        dir: nil,
+        type: nil,
+        draggable: nil,
       )
       expect(component_helper.all_attributes).to eql({})
+    end
 
+    it "does not error if passed empty values" do
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(
         id: "",
         classes: "",
@@ -53,6 +65,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         aria: "",
         role: "",
         lang: "",
+        open: "",
+        tabindex: "",
+        dir: "",
+        type: "",
+        draggable: "",
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -79,32 +96,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
           GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes:)
         }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
       end
-    end
 
-    describe "setting an id" do
-      it "can set an id, overriding a passed value" do
-        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
-        helper.set_id("override")
-        expect(helper.all_attributes[:id]).to eql("override")
-      end
-
-      it "does not accept invalid ids" do
-        ["1dstartingwithnumber", "id with spaces", "idwith.dot", "id\nwithnewline"].each do |id|
-          expect {
-            GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id:)
-          }.to raise_error(ArgumentError, / contain/)
-        end
-      end
-
-      it "does not accept invalid ids when passed" do
-        expect {
-          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "valid")
-          helper.set_id("not. a. valid. id")
-        }.to raise_error(ArgumentError)
-      end
-    end
-
-    describe "classes" do
       it "can add a class to already passed classes" do
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "js-original")
         helper.add_class("gem-c-extra")
@@ -117,6 +109,34 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
           helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "js-original")
           helper.add_class(classes)
         }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
+      end
+    end
+
+    describe "setting an id" do
+      it "does not accept invalid ids" do
+        ["1dstartingwithnumber", "id with spaces", "idwith.dot", "id\nwithnewline"].each do |id|
+          expect {
+            GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id:)
+          }.to raise_error(ArgumentError, / contain/)
+        end
+      end
+
+      it "accepts a valid id" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "valid")
+        expect(helper.all_attributes[:id]).to eql("valid")
+      end
+
+      it "can set an id, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
+        helper.set_id("override")
+        expect(helper.all_attributes[:id]).to eql("override")
+      end
+
+      it "does not accept invalid ids when passed" do
+        expect {
+          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "valid")
+          helper.set_id("not. a. valid. id")
+        }.to raise_error(ArgumentError)
       end
     end
 
@@ -142,12 +162,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     describe "aria attributes" do
-      it "can add aria attributes to already passed aria attributes" do
-        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: { label: "original-label", describedby: "other" })
-        helper.add_aria_attribute({ label: "extra-label", controls: "something" })
-        expect(helper.all_attributes[:aria]).to eql({ label: "original-label extra-label", describedby: "other", controls: "something" })
-      end
-
       it "does not accept invalid aria attributes" do
         invalid_aria = { potato: "salad", label: "something", spoon: "invalid" }
         error = "Aria attribute (potato, spoon) not recognised"
@@ -156,9 +170,15 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         }.to raise_error(ArgumentError, error)
 
         expect {
-          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: { label: "something" })
+          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: { label: "something_valid" })
           helper.add_aria_attribute(invalid_aria)
         }.to raise_error(ArgumentError, error)
+      end
+
+      it "can add aria attributes to already passed aria attributes" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: { label: "original-label", describedby: "other" })
+        helper.add_aria_attribute({ label: "extra-label", controls: "something" })
+        expect(helper.all_attributes[:aria]).to eql({ label: "original-label extra-label", describedby: "other", controls: "something" })
       end
     end
 
@@ -186,6 +206,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
           helper.add_role("alert custarddoughnuts moose")
         }.to raise_error(ArgumentError, error)
       end
+
+      it "can add a role to already passed roles" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "alert")
+        helper.add_role("combobox")
+        expect(helper.all_attributes[:role]).to eql("alert combobox")
+      end
     end
 
     describe "lang" do
@@ -196,17 +222,24 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         }.to raise_error(ArgumentError, error)
       end
 
-      it "accepts valid open attribute value" do
-        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: true)
-        expect(component_helper.all_attributes[:open]).to eql(true)
+      it "accepts a valid lang value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(lang: "en")
+        expect(component_helper.all_attributes[:lang]).to eql("en")
+      end
+
+      it "can set a lang attribute, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(lang: "en")
+        helper.set_lang("de")
+        expect(helper.all_attributes[:lang]).to eql("de")
       end
     end
 
     describe "open" do
-      it "can set an open attribute, overriding a passed value" do
-        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: true)
-        helper.set_open(false)
-        expect(helper.all_attributes[:open]).to eql(nil)
+      it "does not accept an invalid open value" do
+        error = "open attribute (false) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: "false")
+        }.to raise_error(ArgumentError, error)
       end
 
       it "does not include an open attribute if the option is false" do
@@ -214,11 +247,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         expect(component_helper.all_attributes[:open]).to eql(nil)
       end
 
-      it "does not accept an invalid open value" do
-        error = "open attribute (false) is not recognised"
-        expect {
-          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: "false")
-        }.to raise_error(ArgumentError, error)
+      it "can set an open attribute, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(open: true)
+        helper.set_open(false)
+        # false should remove the attribute entirely, see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#attributes
+        expect(helper.all_attributes[:open]).to eql(nil)
       end
     end
 
@@ -334,50 +367,50 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         expect(helper.all_attributes[:type]).to eql("button")
       end
     end
-  end
 
-  describe "draggable" do
-    it "does not accept an invalid draggable value" do
-      error = "draggable attribute (ostrich) is not recognised"
-      expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "ostrich")
-      }.to raise_error(ArgumentError, error)
+    describe "draggable" do
+      it "does not accept an invalid draggable value" do
+        error = "draggable attribute (ostrich) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "ostrich")
+        }.to raise_error(ArgumentError, error)
+      end
+
+      it "accepts valid draggable value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "true")
+        expect(component_helper.all_attributes[:draggable]).to eql("true")
+      end
+
+      it "can set a draggable, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "true")
+        helper.set_draggable("false")
+        expect(helper.all_attributes[:draggable]).to eql("false")
+      end
     end
 
-    it "accepts valid draggable value" do
-      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "true")
-      expect(component_helper.all_attributes[:draggable]).to eql("true")
-    end
+    describe "margins" do
+      it "complains about an invalid margin" do
+        error = "margin_bottom option (15) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(margin_bottom: 15)
+        }.to raise_error(ArgumentError, error)
+      end
 
-    it "can set a draggable, overriding a passed value" do
-      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(draggable: "true")
-      helper.set_draggable("false")
-      expect(helper.all_attributes[:draggable]).to eql("false")
-    end
-  end
+      it "defaults to no margin" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new({})
+        expect(helper.all_attributes[:class]).to eql(nil)
+      end
 
-  describe "margins" do
-    it "complains about an invalid margin" do
-      error = "margin_bottom option (15) is not recognised"
-      expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(margin_bottom: 15)
-      }.to raise_error(ArgumentError, error)
-    end
+      it "accepts a passed margin" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(margin_bottom: 5)
+        expect(helper.all_attributes[:class]).to eql("govuk-!-margin-bottom-5")
+      end
 
-    it "defaults to no margin" do
-      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new({})
-      expect(helper.all_attributes[:class]).to eql(nil)
-    end
-
-    it "accepts a passed margin" do
-      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(margin_bottom: 5)
-      expect(helper.all_attributes[:class]).to eql("govuk-!-margin-bottom-5")
-    end
-
-    it "can set a margin, overriding a passed margin" do
-      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(margin_bottom: 5)
-      helper.set_margin_bottom(0)
-      expect(helper.all_attributes[:class]).to eql("govuk-!-margin-bottom-0")
+      it "can set a margin, overriding a passed margin" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(margin_bottom: 5)
+        helper.set_margin_bottom(0)
+        expect(helper.all_attributes[:class]).to eql("govuk-!-margin-bottom-0")
+      end
     end
   end
 end

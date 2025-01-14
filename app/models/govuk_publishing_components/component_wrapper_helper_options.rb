@@ -15,6 +15,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `hidden` - accepts an empty string, 'hidden', or 'until-found'
 - `tabindex` - accepts an integer. The integer can also be passed as a string.
 - `dir` - accepts 'rtl', 'ltr', or 'auto'.
+- `type` - accepts any valid type attribute e.g. 'button', 'submit', 'text'.
 - `draggable` - accepts a draggable attribute value (\"true\" or \"false\")
       "
     end
