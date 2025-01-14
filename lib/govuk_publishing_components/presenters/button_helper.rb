@@ -14,7 +14,7 @@ module GovukPublishingComponents
                   :id,
                   :inline_layout,
                   :target,
-                  :type,
+                  # :type,
                   :start,
                   :secondary,
                   :secondary_quiet,
@@ -44,7 +44,7 @@ module GovukPublishingComponents
         @margin_bottom = local_assigns[:margin_bottom]
         @inline_layout = local_assigns[:inline_layout]
         @target = local_assigns[:target]
-        @type = local_assigns[:type]
+        # @type = local_assigns[:type]
         @start = local_assigns[:start]
         @data_attributes[:ga4_attributes] = ga4_attribute if start
         @secondary = local_assigns[:secondary]
@@ -87,7 +87,7 @@ module GovukPublishingComponents
       def html_options
         options = { class: css_classes }
         options[:role] = "button" if link?
-        options[:type] = button_type
+        # options[:type] = button_type
         options[:id] = @button_id if info_text?
         options[:aria] = { labelledby: aria_labelledby }
         options[:rel] = rel if rel
@@ -99,13 +99,13 @@ module GovukPublishingComponents
         options[:aria] = { label: aria_label } if aria_label
         options[:aria][:controls] =  aria_controls if aria_controls
         options[:aria][:describedby] = aria_describedby if aria_describedby
-        options[:draggable] = false if link?
+        # options[:draggable] = false if link?
         options
       end
 
-      def button_type
-        type || "submit" unless link?
-      end
+      # def button_type
+      #   type || "submit" unless link?
+      # end
 
     private
 
