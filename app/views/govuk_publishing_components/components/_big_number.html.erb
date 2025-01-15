@@ -1,22 +1,21 @@
 <%
   add_gem_component_stylesheet("big-number")
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   big_number_helper = GovukPublishingComponents::Presenters::BigNumberHelper.new(local_assigns)
 
   number ||= false
   label ||= nil
   href ||= nil
-  data_attributes ||= nil
-  aria ||= nil
-  classes = ["gem-c-big-number"]
-  classes << shared_helper.get_margin_bottom
+  nested_data_attributes ||= nil
 
   value_classes = big_number_helper.value_classes
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-big-number")
 %>
 <% if number %>
   <% big_number_value = capture do %>
-    <%= tag.span class: value_classes, data: href ? nil : data_attributes do %>
+    <%= tag.span class: value_classes, data: href ? nil : nested_data_attributes do %>
       <%
         # The below check is to account for small symbols awkwardly sitting above the baseline in our typeface and adjust them to sit at the baseline for the purpose of visual harmony
         # Currently the only small symbol used with big numbers are pluses so they are specifically applied in the below code
@@ -37,9 +36,9 @@
     <% end %>
   <% end %>
 
-  <%= tag.div class: classes, aria: aria do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <% unless href.nil? %>
-      <%= link_to big_number_value, href, class: "govuk-link gem-c-big-number__link", data: data_attributes %>
+      <%= link_to big_number_value, href, class: "govuk-link gem-c-big-number__link", data: nested_data_attributes %>
     <% else %>
       <%= big_number_value %>
     <% end %>
