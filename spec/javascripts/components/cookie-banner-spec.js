@@ -153,13 +153,13 @@ describe('Cookie banner', function () {
       expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
     })
 
-    it('sets global_bar_seen cookie when accepting cookies', function () {
-      if (typeof GOVUK.globalBarInit === 'undefined') {
-        GOVUK.globalBarInit = {
+    it('sets global_banner_seen cookie when accepting cookies', function () {
+      if (typeof GOVUK.globalBannerInit === 'undefined') {
+        GOVUK.globalBannerInit = {
           init: function () {}
         }
       }
-      spyOn(GOVUK.globalBarInit, 'init')
+      spyOn(GOVUK.globalBannerInit, 'init')
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
       var element = document.querySelector('[data-module="cookie-banner"]')
@@ -175,7 +175,7 @@ describe('Cookie banner', function () {
       expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
       expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
       expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
-      expect(GOVUK.globalBarInit.init).toHaveBeenCalled()
+      expect(GOVUK.globalBannerInit.init).toHaveBeenCalled()
     })
 
     it('shows a confirmation message when cookies have been accepted', function () {

@@ -570,9 +570,9 @@ describe('Google Tag Manager page view tracking', function () {
     })
   })
 
-  it('correctly sets the global_bar parameter', function () {
+  it('correctly sets the global_banner parameter', function () {
     var div = document.createElement('div')
-    div.setAttribute('data-ga4-global-bar', '')
+    div.setAttribute('data-ga4-global-banner', '')
     document.body.appendChild(div)
     expected.page_view.global_bar = 'true'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()

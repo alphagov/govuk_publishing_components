@@ -1,20 +1,20 @@
 @import "govuk_publishing_components/individual_component_support";
 
 // stylelint-disable selector-max-id
-.show-global-bar #global-header-bar {
+.show-global-banner #global-header-bar {
   display: none;
 }
 
 $covid-yellow: #fff500;
 $covid-grey: #262828;
 
-.gem-c-global-bar {
+.gem-c-global-banner {
   background-color: #d9e7f2;
   border-top: govuk-spacing(2) solid govuk-colour("blue");
   display: none;
   @include govuk-font(19);
 
-  .show-global-bar & {
+  .show-global-banner & {
     display: block;
   }
 
@@ -32,13 +32,13 @@ $covid-grey: #262828;
   }
 }
 
-.gem-c-global-bar-message {
+.gem-c-global-banner-message {
   margin-bottom: 0;
   margin-top: 0;
   padding: govuk-spacing(4) 0;
 }
 
-.gem-c-global-bar-title {
+.gem-c-global-banner-title {
   font-weight: 700;
   margin-right: govuk-spacing(2);
   margin-bottom: govuk-spacing(1);
@@ -48,37 +48,37 @@ $covid-grey: #262828;
   }
 }
 
-.gem-c-global-bar-title,
-.gem-c-global-bar-text {
+.gem-c-global-banner-title,
+.gem-c-global-banner-text {
   color: govuk-colour("black");
 }
 
-.gem-c-global-bar-title__nowrap {
+.gem-c-global-banner-title__nowrap {
   white-space: nowrap;
 }
 
-.gem-c-global-bar-dismiss-wrapper {
+.gem-c-global-banner-dismiss-wrapper {
   margin-top: govuk-spacing(4);
 }
 
-.gem-c-global-bar__dismiss {
+.gem-c-global-banner__dismiss {
   display: none;
 }
 
-.gem-c-global-bar__dismiss--show {
+.gem-c-global-banner__dismiss--show {
   display: inline-block;
 }
 
-.gem-c-govspeak .gem-c-global-bar__heading {
+.gem-c-govspeak .gem-c-global-banner__heading {
   margin-top: 0;
   margin-bottom: govuk-spacing(1);
   @include govuk-font(19, $weight: bold);
 }
 
-.gem-c-govspeak .gem-c-global-bar__list {
+.gem-c-govspeak .gem-c-global-banner__list {
   margin-top: 0;
 }
 
-.gem-c-global-bar__list {
+.gem-c-global-banner__list {
   margin-top: 0;
 }
