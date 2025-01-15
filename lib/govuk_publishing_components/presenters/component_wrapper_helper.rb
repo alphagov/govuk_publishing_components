@@ -240,7 +240,8 @@ module GovukPublishingComponents
         return if rel_attribute.blank?
 
         options = %w[alternate author bookmark canonical dns-prefetch external expect help icon license manifest me modulepreload next nofollow noopener noreferrer opener pingback preconnect prefetch preload prerender prev privacy-policy search stylesheet tag terms-of-service]
-        unless options.include? rel_attribute
+        rel_array = rel_attribute.split(" ")
+        unless rel_array.all? { |r| options.include? r }
           raise(ArgumentError, "rel attribute (#{rel_attribute}) is not recognised")
         end
       end

@@ -396,9 +396,21 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         }.to raise_error(ArgumentError, error)
       end
 
-      it "accepts valid rel value" do
+      it "accepts a valid rel value" do
         component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow")
         expect(component_helper.all_attributes[:rel]).to eql("nofollow")
+      end
+
+      it "accepts multiple valid rel values" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow noreferrer")
+        expect(component_helper.all_attributes[:rel]).to eql("nofollow noreferrer")
+      end
+
+      it "does not accept multiple rel values if one of them is invalid" do
+        error = "rel attribute (nofollow noreferrer potato) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow noreferrer potato")
+        }.to raise_error(ArgumentError, error)
       end
 
       it "can set a rel, overriding a passed value" do
@@ -411,6 +423,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow")
         helper.add_rel("noreferrer")
         expect(helper.all_attributes[:rel]).to eql("nofollow noreferrer")
+      end
+
+      it "can add multiple rels to an existing rel" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(rel: "nofollow")
+        helper.add_rel("noreferrer external")
+        expect(helper.all_attributes[:rel]).to eql("nofollow noreferrer external")
       end
     end
 
