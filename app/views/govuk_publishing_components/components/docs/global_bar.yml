@@ -1,10 +1,21 @@
 name: Global banner
 description: A site-wide banner used to convey important information
 body: |
-  See the [opsmanual](https://docs.publishing.service.gov.uk/apps/static/global-banner.html) for information about what the Global banner is and when it should be activated.
+  The [dev docs](https://docs.publishing.service.gov.uk/manual/global-banner.html) contains information about this component and when it should be used.
 accessibility_criteria: |
   The link must:
 
   * be keyboard focusable
 examples:
-  default: {}
+  default:
+    data:
+      title: Bring photo ID to vote
+  with_a_link:
+    data:
+      title: Bring photo ID to vote
+      title_href: "https://www.gov.uk"
+  with_a_link_and_text:
+    data:
+      title: Bring photo ID to vote
+      title_href: "https://www.gov.uk"
+      text: Check what photo ID you'll need to vote in person in the General Election on 4 July.
