@@ -14,6 +14,7 @@ accessibility_criteria: |
     Attachment links within paragraphs of text do not need to meet the 24 by 24 CSS pixels requirements.    
 shared_accessibility_criteria:
 - link
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -58,10 +59,10 @@ examples:
         title: "Temporary snow ploughs: guidance note"
         url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
       target: _blank
-  with_data_attributes:
+  with_data_attributes_on_url:
     data:
       attachment:
         title: "Temporary snow ploughs: guidance note"
         url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
-      data_attributes:
+      url_data_attributes:
         gtm: "attachment-preview"

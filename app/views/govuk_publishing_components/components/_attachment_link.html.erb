@@ -3,7 +3,7 @@
 
   attachment = GovukPublishingComponents::Presenters::AttachmentHelper.new(attachment)
   target ||= nil
-  data_attributes ||= {}
+  url_data_attributes ||= {}
   attributes = []
   if attachment.content_type_name
     content = if attachment.content_type_abbr
@@ -30,11 +30,14 @@
       class: "gem-c-attachment-link__attribute",
     )
   end
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-attachment-link")
 %>
-<%= tag.span(class: "gem-c-attachment-link") do %>
+<%= tag.span(**component_helper.all_attributes) do %>
   <%= link_to(attachment.title, attachment.url,
               class: "govuk-link",
               target: target,
-              data: data_attributes) -%>
+              data: url_data_attributes) -%>
   <%= raw("(#{attributes.join(', ')})") if attributes.any? -%>
 <% end %>

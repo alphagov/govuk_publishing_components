@@ -58,7 +58,7 @@ describe "Attachment Link", type: :view do
         title: "Attachment",
         url: "attachment",
       },
-      data_attributes: { gtm: "attachment-preview" },
+      url_data_attributes: { gtm: "attachment-preview" },
     )
     assert_select "a.govuk-link[data-gtm='attachment-preview']"
   end
