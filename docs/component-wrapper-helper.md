@@ -37,6 +37,7 @@ These options can be passed to any component that uses the component wrapper.
 - `tabindex` - accepts an integer. The integer can also be passed as a string.
 - `dir` - accepts 'rtl', 'ltr', or 'auto'.
 - `type` - accepts any valid type attribute e.g. 'button', 'submit', 'text'
+- `rel` - accepts any valid rel attribute e.g. 'nofollow'
 - `draggable` - accepts a draggable attribute value ("true" or "false")
 
 To prevent breaking [component isolation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_principles.md#a-component-is-isolated-when), passed classes should only be used for JavaScript hooks and not styling. All component styling should be included only in the component itself. Any passed classes should be prefixed with `js-`. To allow for extending this option, classes prefixed with `gem-c-`, `govuk-`, `app-c-`, `brand--`, or `brand__` are also permitted, as well as an exact match of `direction-rtl`, but these classes should only be used within the component and not passed to it.
@@ -84,9 +85,42 @@ The component wrapper includes several methods to make managing options easier, 
   component_helper.set_dir("rtl")
   component_helper.set_type("text")
   component_helper.set_draggable("true")
+  component_helper.set_rel("nofollow") # overrides any existing rel
+  component_helper.add_rel("noopener") # adds to existing rel
   component_helper.set_margin_bottom(3) # can pass any number from 1 to 9
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
   component content
 <% end %>
+```
+
+### Set and add methods
+
+There are two kinds of methods for options shown above: `set` (e.g. `set_id`) and `add` (e.g. `add_class`). Either or both methods may be available for any option.
+
+Set methods are used to override a passed value with a new one, particularly for situations where the option can be only one value (e.g. `id`). This might be used with conditional logic or because the option should never be changed.
+
+```ruby
+<%
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_lang("en") if some_other_option # conditionally set the lang based on other variables
+%>
+```
+
+```ruby
+<%
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_tabindex(-1) # effectively hardcode the option
+%>
+```
+
+Add methods are used to combine one or more values. This includes adding to anything that has already been passed to the component.
+
+```ruby
+<%
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-example")
+  component_helper.add_class("gem-c-example--large") if size == 'large'
+  # class output could be `js-passed-class gem-c-example gem-c-example--large
+%>
 ```
