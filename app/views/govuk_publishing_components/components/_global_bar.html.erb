@@ -1,22 +1,14 @@
 <%
-  if GovukPublishingComponents::AppHelpers::TimedUpdateHelper.before_update_time?(year: 2024, month: 7, day: 4, hour: 22, minute: 0)
-    show_global_bar ||= true # Toggles the appearance of the global bar
-    title = "Bring photo ID to vote"
-    title_href = "/how-to-vote/photo-id-youll-need"
-    link_text = "Check what photo ID you'll need to vote in person in the General Election on 4 July."
-  else
-    show_global_bar = false
-    title = nil
-    title_href = nil
-    link_text = nil
-  end
-
+  show_global_bar = false
+  title ||= nil
+  title_href ||= nil
+  link_text ||= nil
   link_href = false
 
   # Toggles banner being permanently visible
   # If true, banner is always_visible & does not disappear automatically after 3 pageviews
   # Regardless of value, banner is always manually dismissable by users
-  always_visible = true
+  always_visible ||= false
 
   global_bar_classes = %w(gem-c-global-bar govuk-!-display-none-print)
 
