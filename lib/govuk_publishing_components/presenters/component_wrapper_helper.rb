@@ -41,6 +41,7 @@ module GovukPublishingComponents
         attributes[:draggable] = @options[:draggable] unless @options[:draggable].blank?
         attributes[:rel] = @options[:rel] unless @options[:rel].blank?
         attributes[:target] = @options[:target] unless @options[:target].blank?
+        attributes[:title] = @options[:title] unless @options[:title].blank?
 
         attributes
       end
@@ -118,6 +119,10 @@ module GovukPublishingComponents
       def set_target(target_attribute)
         check_target_is_valid(target_attribute)
         @options[:target] = target_attribute
+      end
+
+      def set_title(title_attribute)
+        @options[:title] = title_attribute
       end
 
       def set_margin_bottom(margin_bottom)

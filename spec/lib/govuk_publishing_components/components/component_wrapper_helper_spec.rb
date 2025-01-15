@@ -17,6 +17,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         dir: "rtl",
         type: "submit",
         draggable: "true",
+        title: "Hello",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -35,6 +36,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         dir: "rtl",
         type: "submit",
         draggable: "true",
+        title: "Hello",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -53,6 +55,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         dir: nil,
         type: nil,
         draggable: nil,
+        title: nil,
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -70,6 +73,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         dir: "",
         type: "",
         draggable: "",
+        title: "",
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -449,6 +453,19 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(target: "_blank")
         helper.set_target("_self")
         expect(helper.all_attributes[:target]).to eql("_self")
+      end
+    end
+
+    describe "target" do
+      it "accepts a valid title value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(title: "this is a title")
+        expect(component_helper.all_attributes[:title]).to eql("this is a title")
+      end
+
+      it "can set a title, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(title: "this is a title")
+        helper.set_title("this is a different title")
+        expect(helper.all_attributes[:title]).to eql("this is a different title")
       end
     end
 
