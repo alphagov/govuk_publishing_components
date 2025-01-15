@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add more options to the component wrapper helper ([PR #4554](https://github.com/alphagov/govuk_publishing_components/pull/4554))
 * **BREAKING**  Use component wrapper on big number component ([PR #4550](https://github.com/alphagov/govuk_publishing_components/pull/4550))
 * **BREAKING** Use component wrapper on attachment component ([PR #4545](https://github.com/alphagov/govuk_publishing_components/pull/4545))
 * **BREAKING** Use component wrapper on attachment link component ([PR #4549](https://github.com/alphagov/govuk_publishing_components/pull/4549))
