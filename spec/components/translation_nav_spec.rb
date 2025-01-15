@@ -67,7 +67,7 @@ describe "Translation nav", type: :view do
 
   it "is labelled as translation navigation" do
     render_component(translations: multiple_translations)
-    assert_select "nav[role='navigation'][aria-label='Translations']"
+    assert_select "nav[aria-label='Translations']"
   end
 
   it "adds branding correctly" do

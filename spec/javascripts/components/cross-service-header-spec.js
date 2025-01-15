@@ -10,7 +10,7 @@ describe('The _layout_header_one_login', function () {
   beforeEach(function () {
     container = document.createElement('div')
     container.innerHTML =
-      '<header class="gem-c-cross-service-header" role="banner" data-module="cross-service-header">' +
+      '<header class="gem-c-cross-service-header" data-module="cross-service-header">' +
       '<div class="gem-c-one-login-header" data-one-login-header-nav>' +
         '<div class="gem-c-one-login-header__container govuk-width-container">' +
           '<div class="gem-c-one-login-header__logo">' +

@@ -4,7 +4,6 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-pagination govuk-pagination--block")
-  component_helper.add_role("navigation")
   component_helper.add_aria_attribute({ label: t("components.previous_and_next_navigation.pagination") })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
 

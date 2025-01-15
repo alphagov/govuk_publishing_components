@@ -6,7 +6,6 @@
   translation_helper = GovukPublishingComponents::Presenters::TranslationNavHelper.new(local_assigns)
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.add_role("navigation")
   component_helper.add_class("gem-c-translation-nav govuk-!-display-none-print #{translation_helper.classes} #{brand_helper.brand_class}")
   component_helper.add_aria_attribute({ label: t("common.translations") })
 %>
