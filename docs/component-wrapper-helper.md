@@ -93,3 +93,34 @@ The component wrapper includes several methods to make managing options easier, 
   component content
 <% end %>
 ```
+
+### Set and add methods
+
+There are two kinds of methods for options shown above: `set` (e.g. `set_id`) and `add` (e.g. `add_class`). Either or both methods may be available for any option.
+
+Set methods are used to override a passed value with a new one, particularly for situations where the option can be only one value (e.g. `id`). This might be used with conditional logic or because the option should never be changed.
+
+```ruby
+<%
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_lang("en") if some_other_option # conditionally set the lang based on other variables
+%>
+```
+
+```ruby
+<%
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_tabindex(-1) # effectively hardcode the option
+%>
+```
+
+Add methods are used to combine one or more values. This includes adding to anything that has already been passed to the component.
+
+```ruby
+<%
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-example")
+  component_helper.add_class("gem-c-example--large") if size == 'large'
+  # class output could be `js-passed-class gem-c-example gem-c-example--large
+%>
+```
