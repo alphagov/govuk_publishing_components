@@ -38,6 +38,8 @@ These options can be passed to any component that uses the component wrapper.
 - `dir` - accepts 'rtl', 'ltr', or 'auto'.
 - `type` - accepts any valid type attribute e.g. 'button', 'submit', 'text'
 - `rel` - accepts any valid rel attribute e.g. 'nofollow'
+- `target` - accepts a valid target attribute e.g. '_blank'
+- `title` - accepts any string
 - `draggable` - accepts a draggable attribute value ("true" or "false")
 
 To prevent breaking [component isolation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_principles.md#a-component-is-isolated-when), passed classes should only be used for JavaScript hooks and not styling. All component styling should be included only in the component itself. Any passed classes should be prefixed with `js-`. To allow for extending this option, classes prefixed with `gem-c-`, `govuk-`, `app-c-`, `brand--`, or `brand__` are also permitted, as well as an exact match of `direction-rtl`, but these classes should only be used within the component and not passed to it.
@@ -87,6 +89,8 @@ The component wrapper includes several methods to make managing options easier, 
   component_helper.set_draggable("true")
   component_helper.set_rel("nofollow") # overrides any existing rel
   component_helper.add_rel("noopener") # adds to existing rel
+  component_helper.set_target("_blank")
+  component_helper.set_title("this is a title")
   component_helper.set_margin_bottom(3) # can pass any number from 1 to 9
 %>
 <%= tag.div(**component_helper.all_attributes) do %>

@@ -13,10 +13,12 @@ This component uses the component wrapper helper. It accepts the following optio
 - `lang` - accepts a language attribute value
 - `open` - accepts an open attribute value (true or false)
 - `hidden` - accepts an empty string, 'hidden', or 'until-found'
-- `tabindex` - accepts an integer. The integer can also be passed as a string.
-- `dir` - accepts 'rtl', 'ltr', or 'auto'.
-- `type` - accepts any valid type attribute e.g. 'button', 'submit', 'text'.
-- `rel` - accepts any valid rel attribute e.g. 'nofollow'.
+- `tabindex` - accepts an integer. The integer can also be passed as a string
+- `dir` - accepts 'rtl', 'ltr', or 'auto'
+- `type` - accepts any valid type attribute e.g. 'button', 'submit', 'text'
+- `rel` - accepts any valid rel attribute e.g. 'nofollow'
+- `target` - accepts a valid target attribute e.g. '_blank'
+- `title` - accepts any string
 - `draggable` - accepts a draggable attribute value (\"true\" or \"false\")
       "
     end
