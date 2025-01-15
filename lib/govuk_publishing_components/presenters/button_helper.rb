@@ -98,7 +98,7 @@ module GovukPublishingComponents
         # options[:rel] = rel if rel
         options[:data] = data_attributes if data_attributes
         options[:title] = title if title
-        options[:target] = target if target
+        # options[:target] = target if target
         options[:name] = name if name.present? && value.present?
         options[:value] = value if name.present? && value.present?
         options[:aria] = { label: aria_label } if aria_label
