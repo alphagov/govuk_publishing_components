@@ -432,6 +432,26 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       end
     end
 
+    describe "target" do
+      it "does not accept an invalid target value" do
+        error = "target attribute (zelda) is not recognised"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(target: "zelda")
+        }.to raise_error(ArgumentError, error)
+      end
+
+      it "accepts a valid target value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(target: "_blank")
+        expect(component_helper.all_attributes[:target]).to eql("_blank")
+      end
+
+      it "can set a target, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(target: "_blank")
+        helper.set_target("_self")
+        expect(helper.all_attributes[:target]).to eql("_self")
+      end
+    end
+
     describe "margins" do
       it "complains about an invalid margin" do
         error = "margin_bottom option (15) is not recognised"

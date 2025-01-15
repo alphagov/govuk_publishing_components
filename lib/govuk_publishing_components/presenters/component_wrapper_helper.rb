@@ -17,6 +17,7 @@ module GovukPublishingComponents
         check_type_is_valid(@options[:type]) if @options.include?(:type)
         check_draggable_is_valid(@options[:draggable]) if @options.include?(:draggable)
         check_rel_is_valid(@options[:rel]) if @options.include?(:rel)
+        check_target_is_valid(@options[:target]) if @options.include?(:target)
         check_margin_bottom_is_valid(@options[:margin_bottom]) if @options.include?(:margin_bottom)
       end
 
@@ -39,6 +40,7 @@ module GovukPublishingComponents
         attributes[:type] = @options[:type] unless @options[:type].blank?
         attributes[:draggable] = @options[:draggable] unless @options[:draggable].blank?
         attributes[:rel] = @options[:rel] unless @options[:rel].blank?
+        attributes[:target] = @options[:target] unless @options[:target].blank?
 
         attributes
       end
@@ -111,6 +113,11 @@ module GovukPublishingComponents
       def set_rel(rel_attribute)
         check_rel_is_valid(rel_attribute)
         @options[:rel] = rel_attribute
+      end
+
+      def set_target(target_attribute)
+        check_target_is_valid(target_attribute)
+        @options[:target] = target_attribute
       end
 
       def set_margin_bottom(margin_bottom)
@@ -243,6 +250,15 @@ module GovukPublishingComponents
         rel_array = rel_attribute.split(" ")
         unless rel_array.all? { |r| options.include? r }
           raise(ArgumentError, "rel attribute (#{rel_attribute}) is not recognised")
+        end
+      end
+
+      def check_target_is_valid(target_attribute)
+        return if target_attribute.blank?
+
+        options = %w[_self _blank _parent _top _unfencedTop]
+        unless options.include? target_attribute
+          raise(ArgumentError, "target attribute (#{target_attribute}) is not recognised")
         end
       end
 
