@@ -12,7 +12,7 @@
 
   global_banner_classes = %w(gem-c-global-banner govuk-!-display-none-print)
 
-  title_classes = %w(gem-c-global-banner-title)
+  title_classes = %w(gem-c-global-banner__title)
   title_classes << "js-call-to-action" if title_href
   title_classes << "govuk-link" if title_href
 
@@ -24,7 +24,7 @@
 %>
 <% if title %>
   <div id="global-banner" class="<%= global_banner_classes.join(' ') %>" data-module="global-banner" <%= "data-global-banner-permanent=true" if always_visible %> data-nosnippet>
-    <p class="gem-c-global-banner-message govuk-width-container">
+    <p class="gem-c-global-banner__message govuk-width-container">
       <% if title_href %>
         <a class="<%= title_classes.join(' ') %>" href="<%= title_href %>" data-module="ga4-link-tracker" data-ga4-link="<%= ga4_data %>"><%= title %></a>
       <% else %>
@@ -32,7 +32,7 @@
       <% end %>
 
       <% if text %>
-        <span class="gem-c-global-banner-text">
+        <span class="gem-c-global-banner__text">
           <%= text %>
         </span>
       <% end %>

@@ -32,13 +32,13 @@ $covid-grey: #262828;
   }
 }
 
-.gem-c-global-banner-message {
+.gem-c-global-banner__message {
   margin-bottom: 0;
   margin-top: 0;
   padding: govuk-spacing(4) 0;
 }
 
-.gem-c-global-banner-title {
+.gem-c-global-banner__title {
   font-weight: 700;
   margin-right: govuk-spacing(2);
   margin-bottom: govuk-spacing(1);
@@ -48,37 +48,7 @@ $covid-grey: #262828;
   }
 }
 
-.gem-c-global-banner-title,
-.gem-c-global-banner-text {
+.gem-c-global-banner__title,
+.gem-c-global-banner__text {
   color: govuk-colour("black");
-}
-
-.gem-c-global-banner-title__nowrap {
-  white-space: nowrap;
-}
-
-.gem-c-global-banner-dismiss-wrapper {
-  margin-top: govuk-spacing(4);
-}
-
-.gem-c-global-banner__dismiss {
-  display: none;
-}
-
-.gem-c-global-banner__dismiss--show {
-  display: inline-block;
-}
-
-.gem-c-govspeak .gem-c-global-banner__heading {
-  margin-top: 0;
-  margin-bottom: govuk-spacing(1);
-  @include govuk-font(19, $weight: bold);
-}
-
-.gem-c-govspeak .gem-c-global-banner__list {
-  margin-top: 0;
-}
-
-.gem-c-global-banner__list {
-  margin-top: 0;
 }
