@@ -15,6 +15,7 @@ body: |
   [contextual_breadcrumbs]: /component-guide/contextual_breadcrumbs
 accessibility_criteria: |
   Components called by this component must be accessible
+uses_component_wrapper_helper: true
 examples:
   default:
     description: Displays contacts, external links, statistical datasets, topical events, topics and world locations.

@@ -1,12 +1,17 @@
-<% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
-<% disable_ga4 ||= false %>
+<%
+  navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request)
+  disable_ga4 ||= false
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-contextual-footer govuk-!-display-none-print")
+%>
 
 <% unless navigation.content_tagged_to_current_step_by_step? %>
-  <div class="gem-c-contextual-footer govuk-!-display-none-print">
+  <%= tag.div(**component_helper.all_attributes) do %>
     <%# Rendering related navigation because no step by step list %>
     <%= render 'govuk_publishing_components/components/related_navigation',
                content_item: content_item,
                disable_ga4: disable_ga4,
                context: :footer %>
-  </div>
+  <% end %>
 <% end %>
