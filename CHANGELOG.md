@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 49.0.0
 
 * Add more options to the component wrapper helper ([PR #4554](https://github.com/alphagov/govuk_publishing_components/pull/4554))
 * **BREAKING** Use component wrapper on modal dialogue component ([PR #4555](https://github.com/alphagov/govuk_publishing_components/pull/4555))
