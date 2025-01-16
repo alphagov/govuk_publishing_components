@@ -20,17 +20,8 @@ accessibility_criteria: |
 
     Note: This decision has been made based on prior experience seeing removal of overuse of `<nav>` elements from www.GOV.UK, which made it confusing for users of assistive technologies to know what were the most important navigation aspects of GOV.UK.
     Should be challenged if user research indicates this is an issue.
-
-  - have a role of [`contentinfo`](https://www.w3.org/TR/wai-aria-1.1/#contentinfo) at the root of the component (`<footer>`)
-
-    Note: This decision has been made given that most uses of this role tend to be used directly on a `<footer>` element.
-    Assumption made is that is most predictable for users of assistive technologies.
-    The spec indicates that `contentinfo` is useful for "Examples of information included in this region of the page are copyrights and links to privacy statements.", which may indicate that it might be better placed around the 'meta' section of this component.
-    Should be challenged if user research indicates this is an issue.
 shared_accessibility_criteria:
   - link
-accessibility_excluded_rules:
-  - landmark-contentinfo-is-top-level # The footer element can not be top level in the examples
 examples:
   default:
     data: {}

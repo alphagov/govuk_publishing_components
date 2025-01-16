@@ -11,7 +11,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-footer govuk-footer")
   component_helper.add_class("gem-c-layout-footer--border") if with_border
-  component_helper.add_role("contentinfo")
   component_helper.add_data_attribute({ module: "ga4-link-tracker" })
 %>
 <%= tag.footer(**component_helper.all_attributes) do %>

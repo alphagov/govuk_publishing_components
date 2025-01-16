@@ -16,7 +16,7 @@ describe "Previous and next navigation", type: :view do
       label: "1 of 3",
     })
 
-    assert_select ".govuk-pagination[role='navigation']"
+    assert_select ".govuk-pagination"
     assert_select ".govuk-pagination__link-title", text: "Previous page"
     assert_select ".govuk-pagination__link-label", text: "1 of 3"
     assert_link("previous-page")

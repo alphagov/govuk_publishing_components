@@ -9,7 +9,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         aria: {
           labelledby: "element",
         },
-        role: "navigation",
+        role: "region",
         lang: "en",
         open: true,
         hidden: "",
@@ -28,7 +28,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         aria: {
           labelledby: "element",
         },
-        role: "navigation",
+        role: "region",
         lang: "en",
         open: true,
         hidden: "",
@@ -194,19 +194,19 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         }.to raise_error(ArgumentError, error)
 
         expect {
-          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation custarddoughnuts moose")
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "region custarddoughnuts moose")
         }.to raise_error(ArgumentError, error)
       end
 
       it "does not accept an invalid role when passed" do
         error = "Role attribute (custarddoughnuts, moose) is not recognised"
         expect {
-          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation")
+          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "region")
           helper.add_role("custarddoughnuts moose")
         }.to raise_error(ArgumentError, error)
 
         expect {
-          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation")
+          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "region")
           helper.add_role("alert custarddoughnuts moose")
         }.to raise_error(ArgumentError, error)
       end

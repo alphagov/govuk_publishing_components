@@ -16,6 +16,7 @@
 * **BREAKING** Use component wrapper on attachment link component ([PR #4549](https://github.com/alphagov/govuk_publishing_components/pull/4549))
 * Add rel attribute to component wrapper ([PR #4551](https://github.com/alphagov/govuk_publishing_components/pull/4551))
 * Add 'draggable' attribute to component wrapper helper ([PR #4544](https://github.com/alphagov/govuk_publishing_components/pull/4544))
+* Remove redundant `role` attributes from elements ([PR #4556](https://github.com/alphagov/govuk_publishing_components/pull/4556))
 
 ## 48.0.0
 
