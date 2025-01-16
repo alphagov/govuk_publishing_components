@@ -21,7 +21,6 @@ describe('Global banner module', function () {
       element = $(
         '<div id="global-banner" data-module="global-banner">' +
           '<a href="/register-to-vote" class="govuk-link js-call-to-action">Register to Vote</a>' +
-          '<div class="global-banner-additional">This is some additional content</div>' +
         '</div>'
       )
 

@@ -51,20 +51,6 @@ var globalBannerInit = {
         globalBannerInit.setBannerCookie()
       }
 
-      var newCookieCount = window.GOVUK.parseCookie(globalBannerInit.getLatestCookie()).count
-
-      // If banner has been manually dismissed, hide the additional info
-      if (newCookieCount === 999) {
-        var globalBannerAdditional = document.querySelector('.global-banner-additional')
-        if (globalBannerAdditional) {
-          globalBannerAdditional.classList.remove('global-banner-additional--show')
-        }
-        var globarBarDismiss = document.querySelector('.global-banner__dismiss')
-        if (globarBarDismiss) {
-          globarBarDismiss.classList.remove('global-banner__dismiss--show')
-        }
-      }
-
       globalBannerInit.makeBannerVisible()
     }
   }
