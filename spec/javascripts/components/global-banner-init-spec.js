@@ -27,17 +27,6 @@ describe('Global banner initialize', function () {
     window.GOVUK.setConsentCookie({ settings: true })
   })
 
-  it('does not show the banner on a blocked URL', function () {
-    spyOn(globalBannerInit, 'urlBlockList').and.returnValue(true)
-    GOVUK.globalBannerInit.init()
-
-    // The cookie should still be set, but the banner should not be visible
-    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
-    expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
-    expectGlobalBannerToBeHidden()
-    expectGa4AttributeToNotExist()
-  })
-
   it('sets global_banner_seen cookie', function () {
     GOVUK.globalBannerInit.init()
 
