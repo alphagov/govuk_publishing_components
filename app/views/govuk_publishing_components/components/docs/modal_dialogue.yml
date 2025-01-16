@@ -24,6 +24,7 @@ accessibility_criteria: |
   - return focus to last focused element on close
 
 display_preview: false
+uses_component_wrapper_helper: true
 examples:
   default:
     embed: |
@@ -100,20 +101,3 @@ examples:
           <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
           <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
           <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
-  with_data_attributes:
-    embed: |
-      <%= render "govuk_publishing_components/components/button", {
-        text: "Open modal with data attributes",
-        data_attributes: {
-          toggle: "modal",
-          target: "modal-with-data-attributes"
-        }
-      } %>
-      <%= component %>
-    data:
-      id: modal-with-data-attributes
-      data_attributes:
-        gtm: modal
-      block: |
-        <h1 class="govuk-heading-l">Modal title</h1>
-        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>

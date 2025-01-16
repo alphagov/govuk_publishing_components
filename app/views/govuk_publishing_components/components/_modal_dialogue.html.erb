@@ -3,15 +3,19 @@
 
   id ||= "modal-dialogue-#{SecureRandom.hex(4)}"
   wide ||= false
-  data_attributes = {}
   aria_label ||= nil
   dialog_classes = ["gem-c-modal-dialogue__box"]
   dialog_classes << "gem-c-modal-dialogue__box--wide" if wide
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-modal-dialogue")
+  component_helper.add_data_attribute({ module: "modal-dialogue" })
+  component_helper.set_id(id)
 %>
 
-<%= tag.div class: "gem-c-modal-dialogue", data: { module: "modal-dialogue" }, id: id do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= tag.div class: "gem-c-modal-dialogue__overlay" %>
-  <%= tag.dialog class: dialog_classes, data: data_attributes, aria: { modal: true, label: aria_label }, role: "dialog", tabindex: 0 do %>
+  <%= tag.dialog class: dialog_classes, aria: { modal: true, label: aria_label }, role: "dialog", tabindex: 0 do %>
     <%= tag.div class: "gem-c-modal-dialogue__header" do %>
       <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo_crown_only", {
         classes: %w[gem-c-modal-dialogue__logotype-crown],
