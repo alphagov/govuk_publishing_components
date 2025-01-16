@@ -6,10 +6,6 @@ describe('Global banner module', function () {
   var globalBanner
   var element
 
-  function expectAdditionalSectionToBeHidden () {
-    expect($('.global-banner-additional').hasClass('global-banner-additional--show')).toBe(false)
-  }
-
   beforeEach(function () {
     window.GOVUK.setConsentCookie({ settings: true })
     document.cookie = 'global_banner_seen=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
@@ -25,7 +21,6 @@ describe('Global banner module', function () {
       element = $(
         '<div id="global-banner" data-module="global-banner">' +
           '<a href="/register-to-vote" class="govuk-link js-call-to-action">Register to Vote</a>' +
-          '<a href="#hide-message" class="govuk-link dismiss" role="button" aria-controls="global-banner">Hide message</a>' +
           '<div class="global-banner-additional">This is some additional content</div>' +
         '</div>'
       )
@@ -59,7 +54,6 @@ describe('Global banner module', function () {
       element = $(
         '<div id="global-banner" data-module="global-banner">' +
           '<a href="/register-to-vote" class="govuk-link js-call-to-action">Register to Vote</a>' +
-          '<a href="#hide-message" class="govuk-link dismiss" role="button" aria-controls="global-banner">Hide message</a>' +
         '</div>'
       )
 
@@ -77,30 +71,6 @@ describe('Global banner module', function () {
       expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(2)
       expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(0)
     })
-
-    it('hides additional information section when dismiss link is clicked', function () {
-      globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
-      globalBanner.init()
-
-      $(element).find('.dismiss')[0].click()
-
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(999)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(0)
-
-      expectAdditionalSectionToBeHidden()
-    })
-
-    it('hides dismiss link once dismiss link is clicked', function () {
-      globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
-      globalBanner.init()
-
-      $(element).find('.dismiss')[0].click()
-
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(999)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(0)
-
-      expect($('.global-banner-dismiss').hasClass('global-banner-dismiss--show')).toBe(false)
-    })
   })
 
   describe('always on', function () {
@@ -112,7 +82,6 @@ describe('Global banner module', function () {
       element = $(
         '<div id="global-banner" data-module="global-banner" data-global-banner-permanent="true">' +
           '<a href="/register-to-vote" class="govuk-link js-call-to-action">Register to Vote</a>' +
-          '<a href="#hide-message" class="govuk-link dismiss" role="button" aria-controls="global-banner">Hide message</a>' +
         '</div>'
       )
 
@@ -131,7 +100,6 @@ describe('Global banner module', function () {
       element = $(
         '<div id="global-banner" data-module="global-banner" data-global-banner-permanent="false">' +
           '<a href="/register-to-vote" class="govuk-link js-call-to-action">Register to Vote</a>' +
-          '<a href="#hide-message" class="govuk-link dismiss" role="button" aria-controls="global-banner">Hide message</a>' +
         '</div>'
       )
 

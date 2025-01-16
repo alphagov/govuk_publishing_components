@@ -33,37 +33,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var count = viewCount()
     }
 
-    this.$module.addEventListener('click', function (e) {
-      var target = e.target
-      if (target.classList.contains('dismiss')) {
-        hide(e)
-      }
-    })
-
     // if the element is visible
     if (this.$module.offsetParent !== null && !alwaysOn) {
       incrementViewCount(count)
-    }
-
-    function hide (event) {
-      var currentCookie = window.GOVUK.parseCookie(window.GOVUK.getCookie(GLOBAL_BANNER_SEEN_COOKIE))
-      var cookieVersion = currentCookieVersion
-
-      if (currentCookie) {
-        cookieVersion = currentCookie.version
-      }
-
-      var cookieValue = JSON.stringify({ count: 999, version: cookieVersion })
-      window.GOVUK.setCookie(GLOBAL_BANNER_SEEN_COOKIE, cookieValue, { days: 84 })
-      var additional = document.querySelector('.global-banner-additional')
-      if (additional) {
-        additional.classList.remove('global-banner-additional--show')
-      }
-      var dismiss = document.querySelector('.global-banner__dismiss')
-      if (dismiss) {
-        dismiss.classList.remove('global-banner__dismiss--show')
-      }
-      event.preventDefault()
     }
 
     function incrementViewCount (count) {

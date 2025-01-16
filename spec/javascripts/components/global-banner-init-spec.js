@@ -6,21 +6,9 @@ describe('Global banner initialize', function () {
     expect($('html').hasClass('show-global-banner')).toBe(true)
   }
 
-  function expectGlobalBannerToBeHidden () {
-    expect($('html').hasClass('show-global-banner')).toBe(false)
-  }
-
   function expectGa4AttributeToExist () {
     expect($('#global-banner').attr('data-ga4-global-banner')).toBe('')
   }
-
-  function expectGa4AttributeToNotExist () {
-    expect($('#global-banner').attr('data-ga4-global-banner')).toBe(undefined)
-  }
-
-  // function expectAdditionalSectionToBeVisible () {
-  //   expect($('.global-banner-additional').hasClass('global-banner-additional--show')).toBe(true)
-  // }
 
   beforeAll(function () {
     $('html').append('<div id="global-banner"></div>')
