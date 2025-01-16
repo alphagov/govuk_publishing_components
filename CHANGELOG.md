@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use component wrapper on contextual breadcrumbs ([PR #4560](https://github.com/alphagov/govuk_publishing_components/pull/4560))
+
 ## 49.0.0
 
 * Add more options to the component wrapper helper ([PR #4554](https://github.com/alphagov/govuk_publishing_components/pull/4554))

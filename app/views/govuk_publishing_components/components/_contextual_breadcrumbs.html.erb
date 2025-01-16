@@ -4,9 +4,12 @@
   breadcrumb_selector = GovukPublishingComponents::Presenters::BreadcrumbSelector.new(content_item, request, prioritise_taxon_breadcrumbs, disable_ga4)
   inverse ||= false
   collapse_on_mobile ||= true unless local_assigns[:collapse_on_mobile].eql?(false)
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-contextual-breadcrumbs")
 %>
 
-<div class="gem-c-contextual-breadcrumbs">
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if breadcrumb_selector.step_by_step %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav_header', breadcrumb_selector.breadcrumbs %>
   <% elsif breadcrumb_selector.breadcrumbs %>
@@ -17,4 +20,4 @@
                  collapse_on_mobile: collapse_on_mobile %>
     </div>
   <% end %>
-</div>
+<% end %>
