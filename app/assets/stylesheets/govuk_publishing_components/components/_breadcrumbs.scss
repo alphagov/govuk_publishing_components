@@ -55,6 +55,22 @@
   }
 }
 
+.gem-c-breadcrumbs[dir="rtl"] {
+  text-align: start;
+
+  .govuk-breadcrumbs__list-item {
+    float: inline-start;
+    margin-inline-end: .625em;
+    padding-inline-end: .978em;
+
+    &::before {
+      transform: rotate(-135deg);
+      left: 0;
+      right: -1.2069em;
+    }
+  }
+}
+
 @include govuk-media-query($media-type: print) {
   .gem-c-breadcrumbs {
     font-size: 12pt;

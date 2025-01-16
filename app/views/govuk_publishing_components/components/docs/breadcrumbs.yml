@@ -121,3 +121,14 @@ examples:
         url: "/section/sub-section"
       - title: "Sub-sub-section"
         url: "/section/sub-section/sub-section"
+  right_to_left:
+    data:
+      collapse_on_mobile: true
+      dir: rtl
+      breadcrumbs:
+      - title: "Section"
+        url: "/section"
+      - title: "Sub-section"
+        url: "/section/sub-section"
+      - title: "Sub-sub-section"
+        url: "/section/sub-section/sub-section"
