@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Change id validation on component wrapper ([PR #4584](https://github.com/alphagov/govuk_publishing_components/pull/4584))
+* Add another: fix problem in createRemoveButtons method ([PR #11719](https://github.com/alphagov/govuk_publishing_components/pull/4586))
 
 ## 50.0.0
 

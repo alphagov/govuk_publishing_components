@@ -49,7 +49,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   AddAnother.prototype.createRemoveButtons = function () {
     var fieldsets =
-      document.querySelectorAll('.js-add-another__fieldset')
+      this.module.querySelectorAll('.js-add-another__fieldset')
     fieldsets.forEach(function (fieldset) {
       this.createRemoveButton(fieldset, this.removeExistingFieldset.bind(this))
       fieldset.querySelector('.js-add-another__destroy-checkbox').hidden = true
