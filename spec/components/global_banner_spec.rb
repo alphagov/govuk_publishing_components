@@ -24,4 +24,9 @@ describe "Global banner", type: :view do
     assert_select ".gem-c-global-banner .gem-c-global-banner__title", text: "Look here you"
     assert_select ".gem-c-global-banner .gem-c-global-banner__text", text: "This is important"
   end
+
+  it "includes the always visible option" do
+    render_component(title: "Look here you", banner_version: 1, always_visible: true)
+    assert_select ".gem-c-global-banner[data-global-banner-permanent]"
+  end
 end

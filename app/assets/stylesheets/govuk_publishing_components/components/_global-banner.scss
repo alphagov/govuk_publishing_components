@@ -1,22 +1,10 @@
 @import "govuk_publishing_components/individual_component_support";
 
-// stylelint-disable selector-max-id
-.show-global-banner #global-header-bar {
-  display: none;
-}
-
-$covid-yellow: #fff500;
-$covid-grey: #262828;
-
 .gem-c-global-banner {
   background-color: #d9e7f2;
   border-top: govuk-spacing(2) solid govuk-colour("blue");
   display: none;
   @include govuk-font(19);
-
-  .show-global-banner & {
-    display: block;
-  }
 
   .govuk-link,
   .govuk-link:link {
@@ -30,6 +18,10 @@ $covid-grey: #262828;
       color: govuk-colour("black");
     }
   }
+}
+
+.gem-c-global-banner--visible {
+  display: block;
 }
 
 .gem-c-global-banner__message {

@@ -114,7 +114,7 @@ describe('Global banner module', function () {
 
   describe('on initialise for cookies', function () {
     function expectGlobalBannerToShow () {
-      expect($('html').hasClass('show-global-banner')).toBe(true)
+      expect($('#global-banner').hasClass('gem-c-global-banner--visible')).toBe(true)
     }
 
     function expectGa4AttributeToExist () {

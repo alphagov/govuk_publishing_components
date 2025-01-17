@@ -54,7 +54,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   GlobalBanner.prototype.makeBannerVisible = function () {
-    document.documentElement.className = document.documentElement.className.concat(' show-global-banner')
+    this.$module.classList.add('gem-c-global-banner--visible')
     this.$module.setAttribute('data-ga4-global-banner', '')
   }
 
