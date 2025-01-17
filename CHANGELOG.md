@@ -11,6 +11,7 @@
 
 * Use component wrapper on contextual breadcrumbs ([PR #4560](https://github.com/alphagov/govuk_publishing_components/pull/4560))
 * Use component wrapper on contextual sidebar ([PR #4561](https://github.com/alphagov/govuk_publishing_components/pull/4561))
+* Correctly translate 'Published' word to Arabic ([PR #4563](https://github.com/alphagov/govuk_publishing_components/pull/4563))
 
 ## 49.0.0
 
