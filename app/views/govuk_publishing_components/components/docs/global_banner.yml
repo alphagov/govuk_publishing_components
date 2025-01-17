@@ -10,12 +10,15 @@ examples:
   default:
     data:
       title: Bring photo ID to vote
+      banner_version: 1
   with_a_link:
     data:
       title: Bring photo ID to vote
       title_href: "https://www.gov.uk"
+      banner_version: 1
   with_a_link_and_text:
     data:
       title: Bring photo ID to vote
       title_href: "https://www.gov.uk"
       text: Check what photo ID you'll need to vote in person in the General Election on 4 July.
+      banner_version: 1

@@ -13,9 +13,24 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module
     this.GLOBAL_BANNER_SEEN_COOKIE = 'global_banner_seen'
     this.alwaysOn = this.$module.getAttribute('data-global-banner-permanent') === 'true'
+    this.bannerVersion = parseInt(this.$module.getAttribute('data-banner-version'))
   }
 
   GlobalBanner.prototype.init = function () {
+    var currentCookieVersion
+
+    if (this.getLatestCookie() === null) {
+      this.setBannerCookie()
+      this.makeBannerVisible()
+    } else {
+      currentCookieVersion = window.GOVUK.parseCookie(this.getLatestCookie()).version
+
+      if (currentCookieVersion !== this.bannerVersion) {
+        this.setBannerCookie()
+      }
+      this.makeBannerVisible()
+    }
+
     var cookieCategory = window.GOVUK.getCookieCategory(this.GLOBAL_BANNER_SEEN_COOKIE)
     var cookieConsent = window.GOVUK.getConsentCookie()[cookieCategory]
 
@@ -26,7 +41,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       var currentCookie = window.GOVUK.parseCookie(window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE))
-      var currentCookieVersion = currentCookie.version
+      currentCookieVersion = currentCookie.version
       var count = this.viewCount()
     }
 
@@ -50,6 +65,28 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       viewCount = 0
     }
     return viewCount
+  }
+
+  GlobalBanner.prototype.getLatestCookie = function () {
+    var currentCookie = window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE)
+
+    return currentCookie
+  }
+
+  GlobalBanner.prototype.setBannerCookie = function () {
+    var cookieCategory = window.GOVUK.getCookieCategory(this.GLOBAL_BANNER_SEEN_COOKIE)
+    var cookieConsent = window.GOVUK.getConsentCookie()
+    var value
+
+    if (cookieConsent && cookieConsent[cookieCategory]) {
+      value = JSON.stringify({ count: 0, version: this.bannerVersion })
+      window.GOVUK.setCookie(this.GLOBAL_BANNER_SEEN_COOKIE, value, { days: 84 })
+    }
+  }
+
+  GlobalBanner.prototype.makeBannerVisible = function () {
+    document.documentElement.className = document.documentElement.className.concat(' show-global-banner')
+    this.$module.setAttribute('data-ga4-global-banner', '')
   }
 
   Modules.GlobalBanner = GlobalBanner

@@ -4,6 +4,7 @@
   title ||= nil
   title_href ||= nil
   text ||= nil
+  banner_version ||= nil
 
   # Toggles banner being permanently visible
   # If true, banner is always_visible & does not disappear automatically after 3 pageviews
@@ -22,8 +23,8 @@
     section: title,
   }.to_json
 %>
-<% if title %>
-  <div id="global-banner" class="<%= global_banner_classes.join(' ') %>" data-module="global-banner" <%= "data-global-banner-permanent=true" if always_visible %> data-nosnippet>
+<% if title && banner_version %>
+  <div id="global-banner" class="<%= global_banner_classes.join(' ') %>" data-module="global-banner" data-banner-version="<%= banner_version %>" <%= "data-global-banner-permanent=true" if always_visible %> data-nosnippet>
     <p class="gem-c-global-banner__message govuk-width-container">
       <% if title_href %>
         <a class="<%= title_classes.join(' ') %>" href="<%= title_href %>" data-module="ga4-link-tracker" data-ga4-link="<%= ga4_data %>"><%= title %></a>
