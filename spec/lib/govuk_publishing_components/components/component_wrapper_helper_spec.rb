@@ -17,6 +17,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         dir: "rtl",
         type: "submit",
         draggable: "true",
+        name: "a_name",
         title: "Hello",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
@@ -36,6 +37,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         dir: "rtl",
         type: "submit",
         draggable: "true",
+        name: "a_name",
         title: "Hello",
       }
       expect(component_helper.all_attributes).to eql(expected)
@@ -56,6 +58,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: nil,
         draggable: nil,
         title: nil,
+        name: nil,
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -74,6 +77,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: "",
         draggable: "",
         title: "",
+        name: "",
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -466,6 +470,19 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(title: "this is a title")
         helper.set_title("this is a different title")
         expect(helper.all_attributes[:title]).to eql("this is a different title")
+      end
+    end
+
+    describe "name" do
+      it "accepts a valid name value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(name: "a_name")
+        expect(component_helper.all_attributes[:name]).to eql("a_name")
+      end
+
+      it "can set a name, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(name: "a_name")
+        helper.set_name("another_name")
+        expect(helper.all_attributes[:name]).to eql("another_name")
       end
     end
 

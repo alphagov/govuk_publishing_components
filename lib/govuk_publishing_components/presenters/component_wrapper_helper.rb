@@ -42,6 +42,7 @@ module GovukPublishingComponents
         attributes[:rel] = @options[:rel] unless @options[:rel].blank?
         attributes[:target] = @options[:target] unless @options[:target].blank?
         attributes[:title] = @options[:title] unless @options[:title].blank?
+        attributes[:name] = @options[:name] unless @options[:name].blank?
 
         attributes
       end
@@ -123,6 +124,10 @@ module GovukPublishingComponents
 
       def set_title(title_attribute)
         @options[:title] = title_attribute
+      end
+
+      def set_name(name_attribute)
+        @options[:name] = name_attribute
       end
 
       def set_margin_bottom(margin_bottom)

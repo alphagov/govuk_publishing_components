@@ -20,6 +20,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `target` - accepts a valid target attribute e.g. '_blank'
 - `title` - accepts any string
 - `draggable` - accepts a draggable attribute value (\"true\" or \"false\")
+- `name` - accepts a name attribute
       "
     end
   end
