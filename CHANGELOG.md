@@ -14,6 +14,7 @@
 * Correctly translate 'Published' word to Arabic ([PR #4563](https://github.com/alphagov/govuk_publishing_components/pull/4563))
 * Style breadcrumbs in RTL (right-to-left) writing mode ([PR #4559](https://github.com/alphagov/govuk_publishing_components/pull/4559))
 * Improve metadata component to support RTL print styles ([PR #4365](https://github.com/alphagov/govuk_publishing_components/pull/4365))
+* Update organisation stylesheet ([PR #4565](https://github.com/alphagov/govuk_publishing_components/pull/4565))
 
 ## 49.0.0
 
