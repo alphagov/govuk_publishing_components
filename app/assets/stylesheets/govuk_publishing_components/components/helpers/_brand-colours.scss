@@ -58,9 +58,18 @@
   }
 }
 
+// Temp colour overrides
+
 .brand--department-for-science-innovation-and-technology {
   &.brand__border-color,
   .brand__border-color {
     border-color: govuk-organisation-colour("department-for-science-innovation-technology", $contrast-safe: false);
+  }
+}
+
+.brand--government-digital-service {
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #16eeee;
   }
 }

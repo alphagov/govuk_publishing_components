@@ -119,6 +119,10 @@
   @include crest($crest: "bis_crest", $xpos: 9px);
 }
 
+.gem-c-organisation-logo__crest--gds {
+  @include crest($crest: "gds_crest", $xpos: 8px);
+}
+
 .gem-c-organisation-logo__crest--hmrc {
   @include crest($crest: "hmrc_crest", $xpos: 8px);
 }
