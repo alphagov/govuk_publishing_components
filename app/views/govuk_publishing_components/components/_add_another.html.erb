@@ -4,19 +4,27 @@
   empty ||= ""
   fieldset_legend ||= ""
   add_button_text ||= "Add another"
+  empty_fields ||= false
 %>
 
-<div data-module="add-another" class="gem-c-add-another" data-add-button-text="<%= add_button_text %>" data-fieldset-legend="<%= fieldset_legend %>">
-  <% items.each_with_index do |item, index| %>
-    <%= render "govuk_publishing_components/components/fieldset", {
-      classes: "js-add-another__fieldset",
-      legend_text: "#{fieldset_legend} #{index + 1}",
-      heading_size: "m"
-    } do %>
-      <div class="js-add-another__destroy-checkbox">
-        <%= item[:destroy_checkbox] %>
-      </div>
-      <%= item[:fields] %>
+<%= tag.div class: "gem-c-add-another", data: {
+  module: "add-another",
+  "add-button-text": add_button_text,
+  "fieldset-legend": fieldset_legend,
+  "empty-fields": empty_fields
+} do %>
+  <% unless empty_fields && items.count == 0 %>
+    <% items.each_with_index do |item, index| %>
+      <%= render "govuk_publishing_components/components/fieldset", {
+        classes: "js-add-another__fieldset",
+        legend_text: "#{fieldset_legend} #{index + 1}",
+        heading_size: "m"
+      } do %>
+        <div class="js-add-another__destroy-checkbox">
+          <%= item[:destroy_checkbox] %>
+        </div>
+        <%= item[:fields] %>
+      <% end %>
     <% end %>
   <% end %>
   <%= render "govuk_publishing_components/components/fieldset", {
@@ -26,4 +34,4 @@
   } do %>
     <%= empty %>
   <% end %>
-</div>
+<% end %>

@@ -13,6 +13,7 @@
 * **BREAKING** Add global bar component from static ([PR #4538](https://github.com/alphagov/govuk_publishing_components/pull/4538))
 * Add custom padding to inverse header ([PR #4590](https://github.com/alphagov/govuk_publishing_components/pull/4590))
 * Add another: fix problem in createRemoveButtons method ([PR #11719](https://github.com/alphagov/govuk_publishing_components/pull/4586))
+* Add configuration to "Add another" ([PR #4575](https://github.com/alphagov/govuk_publishing_components/pull/4575))
 
 ## 50.0.1
 
