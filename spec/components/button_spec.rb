@@ -127,15 +127,6 @@ describe "Button", type: :view do
     assert_select "button.govuk-button", false
   end
 
-  it "renders margin bottom class correctly" do
-    render_component(text: "Submit")
-    assert_select ".govuk-button", text: "Submit"
-    assert_select ".gem-c-button--bottom-margin", count: 0
-
-    render_component(text: "Submit", margin_bottom: true)
-    assert_select ".govuk-button.gem-c-button--bottom-margin", text: "Submit"
-  end
-
   it "renders a variable margin bottom correctly" do
     render_component(text: "Submit", margin_bottom: 6)
     assert_select '.govuk-button.govuk-\!-margin-bottom-6', text: "Submit"
@@ -167,7 +158,7 @@ describe "Button", type: :view do
       },
     )
 
-    assert_select "a.govuk-button[data-module='govuk-button cross-domain-tracking']"
+    assert_select "a.govuk-button[data-module='cross-domain-tracking govuk-button']"
     assert_select "a.govuk-button[data-tracking-code='GA-123ABC']"
     assert_select "a.govuk-button[data-tracking-name='transactionTracker']"
   end

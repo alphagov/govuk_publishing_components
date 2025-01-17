@@ -9,7 +9,7 @@ module GovukPublishingComponents
                   :info_text,
                   :info_text_classes,
                   :rel,
-                  :data_attributes,
+                  # :data_attributes,
                   :ga4_attributes,
                   :margin_bottom,
                   :id,
@@ -41,7 +41,7 @@ module GovukPublishingComponents
           @info_text_classes << margin_class
         end
         @rel = local_assigns[:rel]
-        @data_attributes = local_assigns[:data_attributes]&.symbolize_keys || {}
+        # @data_attributes = local_assigns[:data_attributes]&.symbolize_keys || {}
         # @data_attributes[:module] = "govuk-button #{data_attributes[:module]}".strip if link?
         @margin_bottom = local_assigns[:margin_bottom]
         @inline_layout = local_assigns[:inline_layout]
@@ -96,7 +96,7 @@ module GovukPublishingComponents
         options[:id] = @button_id if info_text?
         # options[:aria] = { labelledby: aria_labelledby }
         # options[:rel] = rel if rel
-        options[:data] = data_attributes if data_attributes
+        # options[:data] = data_attributes if data_attributes
         options[:title] = title if title
         # options[:target] = target if target
         options[:name] = name if name.present? && value.present?
