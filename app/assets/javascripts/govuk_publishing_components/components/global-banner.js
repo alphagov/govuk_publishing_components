@@ -1,10 +1,4 @@
 //= require govuk_publishing_components/lib/cookie-functions
-/*
-  Global banner
-
-  Manages count of how many times a global banner has been seen
-  using cookies.
-*/
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
@@ -17,71 +11,46 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   GlobalBanner.prototype.init = function () {
-    var currentCookieVersion
-
-    if (this.getLatestCookie() === null) {
-      this.setBannerCookie()
-      this.makeBannerVisible()
-    } else {
-      currentCookieVersion = window.GOVUK.parseCookie(this.getLatestCookie()).version
-
-      if (currentCookieVersion !== this.bannerVersion) {
-        this.setBannerCookie()
-      }
-      this.makeBannerVisible()
-    }
-
-    var cookieCategory = window.GOVUK.getCookieCategory(this.GLOBAL_BANNER_SEEN_COOKIE)
-    var cookieConsent = window.GOVUK.getConsentCookie()[cookieCategory]
-
-    if (cookieConsent) {
-      // If the cookie is not set, let's set a basic one
-      if (window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE) === null || window.GOVUK.parseCookie(window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE)).count === undefined) {
-        window.GOVUK.setCookie('global_banner_seen', JSON.stringify({ count: 0, version: 0 }), { days: 84 })
-      }
-
-      var currentCookie = window.GOVUK.parseCookie(window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE))
-      currentCookieVersion = currentCookie.version
-      var count = this.viewCount()
-    }
-
-    // if the element is visible
-    if (this.$module.offsetParent !== null && !this.alwaysOn) {
-      this.incrementViewCount(count, currentCookieVersion)
-    }
-  }
-
-  GlobalBanner.prototype.incrementViewCount = function (count, currentCookieVersion) {
-    count = count + 1
-    var cookieValue = JSON.stringify({ count: count, version: currentCookieVersion })
-    window.GOVUK.setCookie(this.GLOBAL_BANNER_SEEN_COOKIE, cookieValue, { days: 84 })
-  }
-
-  GlobalBanner.prototype.viewCount = function () {
-    var viewCountCookie = window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE)
-    var viewCount = parseInt(window.GOVUK.parseCookie(viewCountCookie).count, 10)
-
-    if (isNaN(viewCount)) {
-      viewCount = 0
-    }
-    return viewCount
-  }
-
-  GlobalBanner.prototype.getLatestCookie = function () {
-    var currentCookie = window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE)
-
-    return currentCookie
-  }
-
-  GlobalBanner.prototype.setBannerCookie = function () {
+    // if no cookie consent just show the banner
+    // if there is cookie consent...
+    //   if there's no global banner cookie or the banner should always be shown, set the cookie and show the banner
+    //   if there is a global banner cookie, check to see if the version number matches
+    //     if it doesn't, set the global banner cookie and count to zero, show the banner
+    //     if it does, check the count, if less than 3 increment, show the banner
     var cookieCategory = window.GOVUK.getCookieCategory(this.GLOBAL_BANNER_SEEN_COOKIE)
     var cookieConsent = window.GOVUK.getConsentCookie()
-    var value
 
     if (cookieConsent && cookieConsent[cookieCategory]) {
-      value = JSON.stringify({ count: 0, version: this.bannerVersion })
-      window.GOVUK.setCookie(this.GLOBAL_BANNER_SEEN_COOKIE, value, { days: 84 })
+      var currentCookie = window.GOVUK.getCookie(this.GLOBAL_BANNER_SEEN_COOKIE)
+
+      if (currentCookie === null) {
+        this.setBannerCookie(0)
+        this.makeBannerVisible()
+      } else {
+        var currentCookieContents = JSON.parse(currentCookie)
+        var currentCookieVersion = currentCookieContents.version
+
+        if (currentCookieVersion !== this.bannerVersion) {
+          this.setBannerCookie(0)
+          this.makeBannerVisible()
+        } else {
+          var count = currentCookieContents.count
+          if (this.alwaysOn) {
+            this.makeBannerVisible()
+          } else if (count < 3) {
+            this.setBannerCookie(count + 1)
+            this.makeBannerVisible()
+          }
+        }
+      }
+    } else {
+      this.makeBannerVisible()
     }
+  }
+
+  GlobalBanner.prototype.setBannerCookie = function (count) {
+    var value = JSON.stringify({ count: count, version: this.bannerVersion })
+    window.GOVUK.setCookie(this.GLOBAL_BANNER_SEEN_COOKIE, value, { days: 84 })
   }
 
   GlobalBanner.prototype.makeBannerVisible = function () {

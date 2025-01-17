@@ -6,6 +6,10 @@ describe('Global banner module', function () {
   var globalBanner
   var element
 
+  function parseCookie (cookie) {
+    return JSON.parse(cookie)
+  }
+
   beforeEach(function () {
     window.GOVUK.setConsentCookie({ settings: true })
     document.cookie = 'global_banner_seen=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
@@ -33,8 +37,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
     })
 
     it('sets basic global_banner_seen cookie if existing one is malformed', function () {
@@ -43,8 +47,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
     })
   })
 
@@ -65,8 +69,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(2)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(6)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(2)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(6)
     })
   })
 
@@ -87,8 +91,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(2)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(11)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(2)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(11)
     })
 
     it('continues to increment view count when off', function () {
@@ -103,8 +107,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(3)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(11)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(3)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(11)
     })
   })
 
@@ -144,8 +148,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
       expectGlobalBannerToShow()
       expectGa4AttributeToExist()
     })
@@ -155,8 +159,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
 
       expectGlobalBannerToShow()
       expectGa4AttributeToExist()
@@ -167,8 +171,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
       expectGlobalBannerToShow()
       expectGa4AttributeToExist()
     })
@@ -178,8 +182,8 @@ describe('Global banner module', function () {
       globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
       globalBanner.init()
 
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
-      expect(window.GOVUK.parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(0)
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).version).toBe(5)
       expectGlobalBannerToShow()
       expectGa4AttributeToExist()
     })
