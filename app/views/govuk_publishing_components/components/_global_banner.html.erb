@@ -5,14 +5,9 @@
   title_href ||= nil
   text ||= nil
   banner_version ||= nil
-
-  # Toggles banner being permanently visible
-  # If true, banner is always_visible & does not disappear automatically after 3 pageviews
-  # Regardless of value, banner is always manually dismissable by users
-  always_visible ||= false
+  always_visible ||= false # if true banner is always visible & does not disappear automatically after 3 pageviews
 
   global_banner_classes = %w(gem-c-global-banner govuk-!-display-none-print)
-
   title_classes = %w(gem-c-global-banner__title)
   title_classes << "js-call-to-action" if title_href
   title_classes << "govuk-link" if title_href

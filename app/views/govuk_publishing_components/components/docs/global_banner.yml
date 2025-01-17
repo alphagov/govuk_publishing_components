@@ -1,11 +1,11 @@
 name: Global banner
 description: A site-wide banner used to convey important information
 body: |
-  The [dev docs](https://docs.publishing.service.gov.uk/manual/global-banner.html) contains information about this component and when it should be used.
-accessibility_criteria: |
-  The link must:
+  If a user has consented to cookies the banner will disappear after three page views, unless the `always_visible` option is used. If no cookie consent is given the banner is always shown.
 
-  * be keyboard focusable
+  The [dev docs](https://docs.publishing.service.gov.uk/manual/global-banner.html) contains further information about this component and when it should be used.
+shared_accessibility_criteria:
+  - link
 examples:
   default:
     data:
@@ -22,3 +22,9 @@ examples:
       title_href: "https://www.gov.uk"
       text: Check what photo ID you'll need to vote in person in the General Election on 4 July.
       banner_version: 1
+  always_visible:
+    description: With this option set the banner appears regardless of how many times it has been seen before.
+    data:
+      title: Bring photo ID to vote
+      banner_version: 1
+      always_visible: true
