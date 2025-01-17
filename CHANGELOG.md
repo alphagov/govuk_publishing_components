@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add name and value attributes to component wrapper helper ([PR #4568](https://github.com/alphagov/govuk_publishing_components/pull/4568))
+
 ## 49.1.0
 
 * Use component wrapper on contextual breadcrumbs ([PR #4560](https://github.com/alphagov/govuk_publishing_components/pull/4560))
