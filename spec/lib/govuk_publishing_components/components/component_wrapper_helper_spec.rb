@@ -460,7 +460,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       end
     end
 
-    describe "target" do
+    describe "title" do
       it "accepts a valid title value" do
         component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(title: "this is a title")
         expect(component_helper.all_attributes[:title]).to eql("this is a title")
