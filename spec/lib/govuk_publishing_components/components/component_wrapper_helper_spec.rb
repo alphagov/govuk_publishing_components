@@ -486,6 +486,19 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       end
     end
 
+    describe "value" do
+      it "accepts a valid value value" do
+        component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(value: "a_value")
+        expect(component_helper.all_attributes[:value]).to eql("a_value")
+      end
+
+      it "can set a value, overriding a passed value" do
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(value: "a_value")
+        helper.set_value("another_value")
+        expect(helper.all_attributes[:value]).to eql("another_value")
+      end
+    end
+
     describe "margins" do
       it "complains about an invalid margin" do
         error = "margin_bottom option (15) is not recognised"

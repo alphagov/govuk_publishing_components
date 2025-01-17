@@ -42,6 +42,7 @@ These options can be passed to any component that uses the component wrapper.
 - `title` - accepts any string
 - `draggable` - accepts a draggable attribute value ("true" or "false")
 - `name` - accepts a name attribute
+- `value` - accepts a value attribute
 
 To prevent breaking [component isolation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_principles.md#a-component-is-isolated-when), passed classes should only be used for JavaScript hooks and not styling. All component styling should be included only in the component itself. Any passed classes should be prefixed with `js-`. To allow for extending this option, classes prefixed with `gem-c-`, `govuk-`, `app-c-`, `brand--`, or `brand__` are also permitted, as well as an exact match of `direction-rtl`, but these classes should only be used within the component and not passed to it.
 

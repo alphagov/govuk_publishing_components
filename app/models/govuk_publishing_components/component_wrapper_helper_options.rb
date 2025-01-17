@@ -21,6 +21,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `title` - accepts any string
 - `draggable` - accepts a draggable attribute value (\"true\" or \"false\")
 - `name` - accepts a name attribute
+- `value` - accepts a value attribute
       "
     end
   end
