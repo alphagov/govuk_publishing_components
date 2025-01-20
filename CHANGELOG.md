@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Refactor single page notification component ([PR #4501](https://github.com/alphagov/govuk_publishing_components/pull/4501))
 * Remove shared helper from button component ([PR #4569](https://github.com/alphagov/govuk_publishing_components/pull/4569))
 * Remove shared helper from inset text component ([PR #4571](https://github.com/alphagov/govuk_publishing_components/pull/4571))
 * Use component wrapper on contextual footer ([PR #4562](https://github.com/alphagov/govuk_publishing_components/pull/4562))

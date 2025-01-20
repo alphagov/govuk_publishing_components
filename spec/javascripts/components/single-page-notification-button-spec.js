@@ -5,11 +5,16 @@ describe('Single page notification component', function () {
   var FIXTURE
 
   beforeEach(function () {
-    FIXTURE =
-      '<form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/single-page/new" method="POST" data-module="single-page-notification-button">' +
-        '<input type="hidden" name="base_path" value="/current-page-path">' +
-        '<button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>' +
-    '</form>'
+    FIXTURE = `
+      <div data-button-text-subscribe="Get emails about this page" data-button-text-unsubscribe="Stop getting emails about this page" class="gem-c-single-page-notification-button govuk-!-display-none-print govuk-!-margin-bottom-3" data-module="single-page-notification-button">
+        <form action="/email/subscriptions/single-page/new" method="POST">
+          <input type="hidden" name="base_path" value="/current-page-path">
+          <button class="govuk-body-s gem-c-single-page-notification-button__submit" type="submit">
+            <span class="gem-c-single-page-notication-button__text">Get emails about this page</span>
+        </button>
+        </form>
+      </div>
+    `
     window.setFixtures(FIXTURE)
     jasmine.Ajax.install()
   })
@@ -48,7 +53,7 @@ describe('Single page notification component', function () {
       responseText: '{\n    "base_path": "/current-page-path",\n    "active": false\n }'
     })
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button')
+    var button = document.querySelector('.gem-c-single-page-notification-button')
     expect(button).toHaveClass('gem-c-single-page-notification-button--visible')
   })
 
@@ -102,7 +107,7 @@ describe('Single page notification component', function () {
       responseText: responseText
     })
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
     expect(button).toHaveText('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
@@ -117,7 +122,7 @@ describe('Single page notification component', function () {
       responseText: responseText
     })
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
     expect(button).toHaveText('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
@@ -131,7 +136,7 @@ describe('Single page notification component', function () {
       responseText: ''
     })
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
     expect(button).toHaveText('Get emails about this page')
   })
 
@@ -140,7 +145,7 @@ describe('Single page notification component', function () {
     initButton()
     jasmine.Ajax.requests.mostRecent().responseTimeout()
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
     expect(button).toHaveText('Get emails about this page')
     jasmine.clock().uninstall()
   })
