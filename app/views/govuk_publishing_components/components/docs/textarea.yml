@@ -14,6 +14,7 @@ accessibility_criteria: |
   - have correctly associated labels
 
   Labels use the [label component](/component-guide/label).
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -26,7 +27,7 @@ examples:
       label:
         text: "What is the nature of your medical emergency?"
       name: "emergency-name"
-      id: "emergency-id"
+      textarea_id: "emergency-id"
   with_margin_bottom:
     description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of 6 (30px).
     data:
@@ -102,7 +103,7 @@ examples:
         <%= component %>
       <% end %>
     data:
-      id: "contextual-guidance-id"
+      textarea_id: "contextual-guidance-id"
       label:
         text: "Title"
         bold: true

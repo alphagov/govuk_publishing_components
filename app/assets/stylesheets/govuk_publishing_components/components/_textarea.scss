@@ -5,7 +5,11 @@
   .govuk-textarea {
     margin-bottom: 0;
 
-    + .govuk-hint {
+    ~ .govuk-hint {
+      margin-top: govuk-spacing(1);
+    }
+
+    ~ .govuk-error-message {
       margin-top: govuk-spacing(1);
     }
   }
