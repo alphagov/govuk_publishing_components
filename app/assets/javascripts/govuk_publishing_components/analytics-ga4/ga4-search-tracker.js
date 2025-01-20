@@ -22,7 +22,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
 
-      this.initialKeywords = this.$searchInput.value
+      this.initialKeywords = this.searchTerm()
 
       if (window.GOVUK.getConsentCookie() && window.GOVUK.getConsentCookie().usage) {
         this.startModule()

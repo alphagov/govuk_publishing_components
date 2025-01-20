@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use component wrapper on contextual footer ([PR #4562](https://github.com/alphagov/govuk_publishing_components/pull/4562))
+* GA4 search tracker: normalise initial value ([PR #4570](https://github.com/alphagov/govuk_publishing_components/pull/4570))
 
 ## 49.1.0
 

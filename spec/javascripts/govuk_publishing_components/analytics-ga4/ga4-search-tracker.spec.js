@@ -15,7 +15,7 @@ describe('Google Analytics search tracking', () => {
       data-ga4-search-index-section="19"
       data-ga4-search-index-section-count="89"
     >
-      <input type="search" name="keyword" value="initial value">
+      <input type="search" name="keyword" value=" iNiTiAl VaLuE ">
       <button type="submit">Search</button>
     </form>
   `
