@@ -9,14 +9,6 @@
   .govuk-link,
   .govuk-link:link {
     color: govuk-colour("black");
-
-    &:visited {
-      color: govuk-colour("black");
-    }
-
-    &:focus {
-      color: govuk-colour("black");
-    }
   }
 }
 

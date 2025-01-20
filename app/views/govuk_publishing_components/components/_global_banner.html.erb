@@ -16,7 +16,7 @@
 
   title_classes = %w(gem-c-global-banner__title)
   title_classes << "js-call-to-action" if title_href
-  title_classes << "govuk-link" if title_href
+  title_classes << "govuk-link govuk-link--no-visited-state" if title_href
 
   ga4_data = {
     event_name: "navigation",
