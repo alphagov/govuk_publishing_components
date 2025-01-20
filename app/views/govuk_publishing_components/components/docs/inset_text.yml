@@ -19,9 +19,3 @@ examples:
           <h2 class="govuk-heading-m" id='heading'>To publish this step by step you need to</h2>
           <a class="govuk-link" href='/foo'>Check for broken links</a>
         </div>
-  with_custom_margins:
-    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having margin of `6` (`30px`) top and bottom.
-    data:
-      text: "When a failure occurs, you must submit logbook, landing and transhipment data manually to the UK Fisheries Call Centre each day and by no later than 23.59 UTC"
-      margin_top: 0
-      margin_bottom: 9
