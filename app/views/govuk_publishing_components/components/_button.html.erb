@@ -3,11 +3,8 @@
   disable_ga4 ||= false
 
   # button_helper.css_classes generates "gem-c-button"
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  local_assigns[:classes] = shared_helper.classes
   button = GovukPublishingComponents::Presenters::ButtonHelper.new(local_assigns)
 %>
-
 <% start_button_text = capture do %>
   <span>
     <%= button.text %>

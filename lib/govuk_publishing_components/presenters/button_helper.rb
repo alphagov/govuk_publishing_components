@@ -53,12 +53,18 @@ module GovukPublishingComponents
         @destructive = local_assigns[:destructive]
         @name = local_assigns[:name]
         @value = local_assigns[:value]
-        @classes = local_assigns[:classes]
         @aria_label = local_assigns[:aria_label]
         @info_text_id = "info-text-id-#{SecureRandom.hex(4)}"
         @button_id = "button-id-#{SecureRandom.hex(4)}"
         @aria_controls = local_assigns[:aria_controls]
         @aria_describedby = local_assigns[:aria_describedby]
+
+        if local_assigns.include?(:classes)
+          @classes = local_assigns[:classes].split(" ")
+          unless @classes.all? { |c| c.start_with?("js-") }
+            raise(ArgumentError, "Passed classes must be prefixed with `js-`")
+          end
+        end
       end
 
       def link?
