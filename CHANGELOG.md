@@ -15,6 +15,7 @@
 * Remove shared helper from inset text component ([PR #4571](https://github.com/alphagov/govuk_publishing_components/pull/4571))
 * Use component wrapper on contextual footer ([PR #4562](https://github.com/alphagov/govuk_publishing_components/pull/4562))
 * Update Govspeak "Warning Text" component styles ([PR #4487](https://github.com/alphagov/govuk_publishing_components/pull/4487))
+* Use the RuboCop Rails config ([PR #4471](https://github.com/alphagov/govuk_publishing_components/pull/4471))
 
 ## 49.1.0
 
