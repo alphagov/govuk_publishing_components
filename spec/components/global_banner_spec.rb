@@ -5,18 +5,24 @@ describe "Global banner", type: :view do
     "global_banner"
   end
 
-  it "renders nothing without a title" do
+  it "renders nothing without any options" do
     assert_empty render_component({})
   end
 
-  it "renders with a title" do
+  it "renders with minimum required options" do
     render_component(title: "Look here you", banner_version: 1)
     assert_select ".gem-c-global-banner", text: "Look here you"
   end
 
-  it "renders with a title and a link" do
+  it "renders with a link on the title" do
     render_component(title: "Look here you", banner_version: 1, title_href: "https://www.gov.uk")
-    assert_select ".gem-c-global-banner a.gem-c-global-banner__title", text: "Look here you"
+    assert_select ".gem-c-global-banner a.gem-c-global-banner__title[href='https://www.gov.uk']", text: "Look here you"
+  end
+
+  it "includes GA4 attributes when there is a link" do
+    render_component(title: "Look here you", banner_version: 1, title_href: "https://www.gov.uk")
+    assert_select 'a.gem-c-global-banner__title[data-module="ga4-link-tracker"]'
+    assert_select 'a.gem-c-global-banner__title[data-ga4-link=\'{"event_name":"navigation","type":"global bar","section":"Look here you"}\']'
   end
 
   it "renders with a title and text" do

@@ -196,5 +196,21 @@ describe('Global banner module', function () {
       expectGlobalBannerToShow()
       expectGa4AttributeToExist()
     })
+
+    it('keeps the banner hidden if view count is 3 or more', function () {
+      GOVUK.setCookie('global_banner_seen', JSON.stringify({ count: 3, version: 5 }))
+      globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
+      globalBanner.init()
+
+      expect($('#global-banner').hasClass('gem-c-global-banner--visible')).toBe(false)
+    })
+
+    it('will not set the count higher than 3', function () {
+      GOVUK.setCookie('global_banner_seen', JSON.stringify({ count: 3, version: 5 }))
+      globalBanner = new GOVUK.Modules.GlobalBanner(element[0])
+      globalBanner.init()
+
+      expect(parseCookie(GOVUK.getCookie('global_banner_seen')).count).toBe(3)
+    })
   })
 })
