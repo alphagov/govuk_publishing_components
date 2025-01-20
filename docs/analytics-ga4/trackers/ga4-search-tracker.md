@@ -25,7 +25,14 @@ fields:
 >
 ```
 
-When the form is submitted, a `search` event with the will be tracked containing:
+When the form is submitted, a `search` event will be tracked if any of the following are true:
+- the user has interacted with the search term/keyword field (by typing)
+- the user has interacted with a filter (by typing, selecting, checking, ...)
+- the search term/keyword field was originally empty (and still is) - this lets us track "blank" search usage
+
+This event contains the following:
+- an `action` of either `search` (if the keywords/term field was modified) or `filter` (if only
+  fields other than the keywords/term field was modified)
 - the type, URL, section, index section, and index section count fields based on the data attributes
   outlined above
 - the state (text) of the search field contained within

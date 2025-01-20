@@ -7,13 +7,18 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   class Ga4SearchTracker {
     constructor ($module) {
       this.$module = $module
-      this.$searchInput = this.$module.querySelector('input[type="search"]')
+
+      const searchInput = $module.querySelector('input[type="search"]')
+      this.$searchInput = searchInput
 
       this.type = this.$module.dataset.ga4SearchType
       this.url = this.$module.dataset.ga4SearchUrl
       this.section = this.$module.dataset.ga4SearchSection
       this.indexSection = this.$module.dataset.ga4SearchIndexSection
       this.indexSectionCount = this.$module.dataset.ga4SearchIndexSectionCount
+
+      this.triggerSearchAction = false
+      this.triggerFilterAction = false
     }
 
     init () {
@@ -22,7 +27,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
 
-      this.initialKeywords = this.searchTerm()
+      // We only want to trigger search events if the user has interacted with the form in some way.
+      // The only exception to this is if the search term was empty to begin with, in which case we
+      // want to track the event regardless.
+      this.triggerSearchAction = this.$searchInput.value.trim().length > 0
+      this.$module.addEventListener('change', event => this.handleChange(event))
+      this.$module.addEventListener('input', event => this.handleChange(event))
 
       if (window.GOVUK.getConsentCookie() && window.GOVUK.getConsentCookie().usage) {
         this.startModule()
@@ -35,16 +45,28 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$module.addEventListener('submit', event => this.trackSearch(event))
     }
 
+    handleChange(event) {
+      if (event.target.type === 'search') {
+        this.triggerSearchAction = true
+      } else {
+        this.triggerFilterAction = true
+      }
+    }
+
     trackSearch () {
+      if (!this.triggerSearchAction && !this.triggerFilterAction) {
+        // Do not track an event if no changes have been made and the user is just re-submitting the
+        // same search
+        return
+      }
+
       // The original search input may have been removed from the DOM by the autocomplete component
       // if it is used, so make sure we are tracking the correct input
       this.$searchInput = this.$module.querySelector('input[type="search"]')
 
-      if (this.skipTracking()) return
-
       const data = {
         event_name: 'search',
-        action: 'search',
+        action: this.triggerSearchAction ? 'search' : 'filter',
 
         type: this.type,
         section: this.section,
@@ -78,12 +100,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
-    }
-
-    skipTracking () {
-      // Skip tracking for those events that we do not want to track: where the search term is
-      // present, but has not changed from its initial value
-      return this.searchTerm() !== '' && this.searchTerm() === this.initialKeywords
     }
 
     searchTerm () {
