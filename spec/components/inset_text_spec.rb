@@ -8,7 +8,7 @@ describe "Inset text", type: :view do
   it "renders inset text" do
     render_component(text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.")
 
-    assert_select(".govuk-inset-text.govuk-\\!-margin-top-6.govuk-\\!-margin-bottom-6", text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.")
+    assert_select(".govuk-inset-text.govuk-\\!-margin-bottom-6", text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.")
   end
 
   it "renders a block" do
@@ -30,13 +30,12 @@ describe "Inset text", type: :view do
     assert_select(".govuk-inset-text p#foo", false, "Block should not have rendered")
   end
 
-  it "applies custom margin bottom and top" do
+  it "applies custom margin bottom" do
     render_component(
       text: "margin!",
-      margin_top: 0,
       margin_bottom: 9,
     )
 
-    assert_select(".govuk-inset-text.govuk-\\!-margin-top-0.govuk-\\!-margin-bottom-9", text: "margin!")
+    assert_select(".govuk-inset-text.govuk-\\!-margin-bottom-9", text: "margin!")
   end
 end

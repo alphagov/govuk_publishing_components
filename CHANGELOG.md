@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove shared helper from inset text component ([PR #4571](https://github.com/alphagov/govuk_publishing_components/pull/4571))
 * Use component wrapper on contextual footer ([PR #4562](https://github.com/alphagov/govuk_publishing_components/pull/4562))
 
 ## 49.1.0
