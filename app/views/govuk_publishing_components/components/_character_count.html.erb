@@ -1,9 +1,14 @@
 <%
+  add_gem_component_stylesheet("error-message")
+  add_gem_component_stylesheet("character-count")
+
   id ||= "character-count-#{SecureRandom.hex(4)}"
   maxlength ||= nil
   maxwords ||= nil
   threshold ||= nil
   textarea ||= {}
+
+  textarea[:textarea_id] = id
 %>
 <% if maxlength || maxwords %>
   <%= content_tag :div,
@@ -15,14 +20,10 @@
       threshold: threshold
     } do %>
 
-    <%= render "govuk_publishing_components/components/textarea", { id: id, character_count: true }.merge(textarea.symbolize_keys) %>
+    <%= render "govuk_publishing_components/components/textarea", { textarea_id: id, character_count: true, margin_bottom: 1 }.merge(textarea.symbolize_keys) %>
 
     <div id="<%= id %>-info" class="govuk-hint govuk-character-count__message">
       <%= t("components.character_count.body", number: maxlength || maxwords, type: maxwords ? t("components.character_count.type.words") : t("components.character_count.type.characters")) %>
     </div>
   <% end %>
 <% end %>
-<%
-  add_gem_component_stylesheet("error-message")
-  add_gem_component_stylesheet("character-count")
-%>
