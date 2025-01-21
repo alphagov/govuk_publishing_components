@@ -2,11 +2,13 @@
 @import "govuk/components/button/button";
 @import "govuk/components/fieldset/fieldset";
 
-.gem-c-add-another__remove-button {
-  margin-top: govuk-spacing(6);
-  margin-bottom: 0;
-}
+.gem-c-add-another {
+  .gem-c-add-another__remove-button {
+    margin-top: govuk-spacing(6);
+    margin-bottom: 0;
+  }
 
-.js-add-another__remove-button--hidden {
-  display: none;
+  .js-add-another__remove-button--hidden {
+    display: none;
+  }
 }
