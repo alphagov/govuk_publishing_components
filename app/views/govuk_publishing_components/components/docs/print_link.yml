@@ -6,6 +6,7 @@ accessibility_criteria: |
   - The print icon must be presentational and ignored by screen readers.
 shared_accessibility_criteria:
   - link
+uses_component_wrapper_helper: true
 examples:
   default:
     description: This component calls `print()` via the browser's DOM API. By default it relies on JavaScript and is not shown in environments where JavaScript is disabled. The \"link\" here is actually a button tag because this is not a navigation event.
@@ -16,13 +17,13 @@ examples:
     description: You can specify a alternative `href` URL that will override the default behaviour. When a `href` is specified the print link will render as an anchor tag and be displayed even when JavaScript is disabled.
     data:
       href: "/print"
-  with_data_attributes:
+  with_child_data_attributes:
     description: |
-      Data attributes can be passed to the component as shown.
+      Data attributes can be passed to the link/button as shown.
 
       Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
-      data_attributes:
+      child_data_attributes:
         an_attribute: some_value
   with_custom_margins:
     description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having margin level `3` on top and bottom.
