@@ -1,6 +1,6 @@
 module GovukPublishingComponents
   class ComponentGuideController < GovukPublishingComponents::ApplicationController
-    append_view_path File.join(Rails.root, "app", "views", GovukPublishingComponents::Config.component_directory_name)
+    append_view_path Rails.root.join("app", "views", GovukPublishingComponents::Config.component_directory_name).to_s
 
     MATCH_COMPONENTS = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
 
