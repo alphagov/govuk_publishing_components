@@ -56,9 +56,9 @@ describe "Print link", type: :view do
     )
   end
 
-  it "displays data attributes" do
+  it "displays child data attributes" do
     render_component({
-      data_attributes: {
+      child_data_attributes: {
         snow: "patrol",
       },
     })
@@ -68,7 +68,7 @@ describe "Print link", type: :view do
 
   it "accepts an additional passed data module when rendering as a button" do
     render_component({
-      data_attributes: {
+      child_data_attributes: {
         module: "ga4-link-tracker",
       },
     })
@@ -79,7 +79,7 @@ describe "Print link", type: :view do
   it "accepts an additional passed data module when rendering as a link" do
     render_component({
       href: "/print",
-      data_attributes: {
+      child_data_attributes: {
         module: "ga4-link-tracker",
       },
     })

@@ -3,41 +3,40 @@
 
   text ||= t('components.print_link.text')
   href ||= nil
-  data_attributes ||= {}
+  child_data_attributes ||= {}
   require_js ||= href.nil?
   margin_top ||= 3
-  margin_bottom ||= 3
+  local_assigns[:margin_bottom] ||= 3
 
-  ((data_attributes[:module] ||= "") << " " << (require_js ? "print-link" : "button")).strip!
+  ((child_data_attributes[:module] ||= "") << " " << (require_js ? "print-link" : "button")).strip!
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({
     margin_top: margin_top,
-    margin_bottom: margin_bottom
   })
 
-  wrapper_classes = %w(gem-c-print-link govuk-!-display-none-print)
-  wrapper_classes << "gem-c-print-link--show-without-js" unless require_js
-  wrapper_classes << shared_helper.get_margin_top
-  wrapper_classes << shared_helper.get_margin_bottom
+  child_classes = %w[govuk-link]
+  child_classes << "govuk-body-s gem-c-print-link__button" if href.nil?
+  child_classes << "gem-c-print-link__link govuk-link--no-visited-state" if href.present?
 
-  classes = %w[govuk-link]
-  classes << "govuk-body-s gem-c-print-link__button" if href.nil?
-  classes << "gem-c-print-link__link govuk-link--no-visited-state" if href.present?
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-print-link govuk-!-display-none-print")
+  component_helper.add_class("gem-c-print-link--show-without-js") unless require_js
+  component_helper.add_class(shared_helper.get_margin_top)
 %>
 
-<%= tag.div class: wrapper_classes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if require_js %>
     <%= content_tag(:button, text, {
-        class: classes,
-        data: data_attributes
+        class: child_classes,
+        data: child_data_attributes
     }) %>
   <% else %>
     <%= link_to(
       text,
       href,
-      class: classes,
+      class: child_classes,
       rel: "alternate",
-      data: data_attributes,
+      data: child_data_attributes,
       role: "button"
     ) %>
   <% end %>
