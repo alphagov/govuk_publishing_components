@@ -25,8 +25,3 @@ examples:
     data:
       child_data_attributes:
         an_attribute: some_value
-  with_custom_margins:
-    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having margin level `3` on top and bottom.
-    data:
-      margin_top: 0
-      margin_bottom: 4
