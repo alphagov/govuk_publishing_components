@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove margin top from print link ([PR #4577](https://github.com/alphagov/govuk_publishing_components/pull/4577))
 * **BREAKING** Use component wrapper on print link component  ([PR #4576](https://github.com/alphagov/govuk_publishing_components/pull/4576))
 * Refactor single page notification component ([PR #4501](https://github.com/alphagov/govuk_publishing_components/pull/4501))
 * Remove shared helper from button component ([PR #4569](https://github.com/alphagov/govuk_publishing_components/pull/4569))
