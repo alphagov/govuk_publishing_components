@@ -94,6 +94,22 @@ describe "Metadata", type: :view do
     end
   end
 
+  it "renders multiples as a single sentence (except history) in a right to left foreign language" do
+    I18n.with_locale("ar") do
+      render_component(
+        from: %w[واحد اثنان],
+        part_of: %w[ثلاثة أربعة],
+        other: {
+          "المواضيع": %w[خمسة ستة سبعة],
+        },
+      )
+
+      assert_definition("من:", "واحد و اثنان")
+      assert_definition("جزء من:", "ثلاثة و أربعة")
+      assert_definition("المواضيع:", "خمسة, ستة و سبعة")
+    end
+  end
+
   it "long lists of metadata are truncated and the remainder hidden behind a toggle for from" do
     links = [
       "<a href=\"/government/organisations/ministry-of-defence\">Ministry of Defence</a>",

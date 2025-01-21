@@ -124,8 +124,8 @@ zh:
       navigation_search_subheading:
       search_text:
     metadata:
-      and:
-      from: 从
+      and: 和
+      from: 发自
       history: 历史
       last_updated: 上次更新
       part_of: 一部分
