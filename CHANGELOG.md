@@ -19,6 +19,7 @@
 * Use component wrapper on contextual footer ([PR #4562](https://github.com/alphagov/govuk_publishing_components/pull/4562))
 * Update Govspeak "Warning Text" component styles ([PR #4487](https://github.com/alphagov/govuk_publishing_components/pull/4487))
 * Make "Add another" component styles more specific ([PR #4579](https://github.com/alphagov/govuk_publishing_components/pull/4579))
+* Translate "and" connective in metadata component to Chinese, Russian and Arabic ([PR #4580](https://github.com/alphagov/govuk_publishing_components/pull/4580))
 
 ## 49.1.0
 
