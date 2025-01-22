@@ -22,7 +22,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_data_attribute({ module: "gem-toggle-input-class-on-focus" })
   component_helper.add_class("gem-c-search govuk-!-display-none-print")
-  component_helper.add_class(shared_helper.get_margin_top)
   component_helper.add_class("gem-c-search--large") if size == "large"
   component_helper.add_class("gem-c-search--large-on-mobile") if size == "large-mobile"
   component_helper.add_class("gem-c-search--homepage") if homepage
