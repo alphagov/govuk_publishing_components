@@ -51,6 +51,7 @@ examples:
       on_govuk_blue: true
       label_size: "s"
       homepage: true
+      label_margin_bottom: 3
       size: "large"
     context:
       dark_background: true
