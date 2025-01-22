@@ -34,16 +34,17 @@ examples:
     context:
       dark_background: true
   homepage:
-    description: For use on the homepage.
+    description: For use on the homepage. See the `search with autocomplete` component for reference, which wraps this component.
     data:
       label_text: "Search"
       inline_label: false
       on_govuk_blue: true
       label_size: "s"
+      label_margin_bottom: 3
       homepage: true
       size: "large"
     context:
-      dark_background: true 
+      dark_background: true
   change_label_text:
     data:
       label_text: "Search"
