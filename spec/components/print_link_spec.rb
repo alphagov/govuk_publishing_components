@@ -9,7 +9,6 @@ describe "Print link", type: :view do
     render_component({})
 
     assert_select ".gem-c-print-link"
-    assert_select ".gem-c-print-link.govuk-\\!-margin-top-3"
     assert_select ".gem-c-print-link.govuk-\\!-margin-bottom-3"
     assert_select(
       "button.gem-c-print-link__button[data-module='print-link']",
@@ -37,21 +36,6 @@ describe "Print link", type: :view do
     assert_select ".gem-c-print-link"
     assert_select(
       'a.gem-c-print-link__link[href="/print"][data-module="button"]',
-      text: "Print this page",
-    )
-  end
-
-  it "renders with custom margin" do
-    render_component({
-      margin_top: 0,
-      margin_bottom: 4,
-    })
-
-    assert_select ".gem-c-print-link"
-    assert_select ".gem-c-print-link.govuk-\\!-margin-top-0"
-    assert_select ".gem-c-print-link.govuk-\\!-margin-bottom-4"
-    assert_select(
-      "button.gem-c-print-link__button",
       text: "Print this page",
     )
   end

@@ -5,14 +5,9 @@
   href ||= nil
   child_data_attributes ||= {}
   require_js ||= href.nil?
-  margin_top ||= 3
   local_assigns[:margin_bottom] ||= 3
 
   ((child_data_attributes[:module] ||= "") << " " << (require_js ? "print-link" : "button")).strip!
-
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({
-    margin_top: margin_top,
-  })
 
   child_classes = %w[govuk-link]
   child_classes << "govuk-body-s gem-c-print-link__button" if href.nil?
@@ -21,9 +16,7 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-print-link govuk-!-display-none-print")
   component_helper.add_class("gem-c-print-link--show-without-js") unless require_js
-  component_helper.add_class(shared_helper.get_margin_top)
 %>
-
 <%= tag.div(**component_helper.all_attributes) do %>
   <% if require_js %>
     <%= content_tag(:button, text, {
