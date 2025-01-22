@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Change id validation on component wrapper ([PR #4584](https://github.com/alphagov/govuk_publishing_components/pull/4584))
+* Improve GA4 search tracking ([PR #4582](https://github.com/alphagov/govuk_publishing_components/pull/4582))
 
 ## 50.0.0
 

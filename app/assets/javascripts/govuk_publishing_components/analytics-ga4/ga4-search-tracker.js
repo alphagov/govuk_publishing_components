@@ -14,6 +14,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.section = this.$module.dataset.ga4SearchSection
       this.indexSection = this.$module.dataset.ga4SearchIndexSection
       this.indexSectionCount = this.$module.dataset.ga4SearchIndexSectionCount
+
+      // At the beginning, the user has not yet interacted with any form fields
+      this.triggeredAction = 'unchanged'
     }
 
     init () {
@@ -22,7 +25,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
 
-      this.initialKeywords = this.$searchInput.value
+      // These event handlers do not send any tracking data, they only set internal state. They are
+      // added here so if the user hasn't given consent yet but does so later, we do not end up with
+      // inconsistent module state.
+      this.$module.addEventListener('change', event => this.setTriggeredAction(event))
+      this.$module.addEventListener('input', event => this.setTriggeredAction(event))
 
       if (window.GOVUK.getConsentCookie() && window.GOVUK.getConsentCookie().usage) {
         this.startModule()
@@ -35,16 +42,24 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$module.addEventListener('submit', event => this.trackSearch(event))
     }
 
+    setTriggeredAction (event) {
+      if (event.target.type === 'search') {
+        this.triggeredAction = 'search'
+      } else if (this.triggeredAction !== 'search') {
+        // The 'search' action always takes precedence over the 'filter' action, so only set the
+        // action to 'filter' if it is not already 'search'.
+        this.triggeredAction = 'filter'
+      }
+    }
+
     trackSearch () {
       // The original search input may have been removed from the DOM by the autocomplete component
       // if it is used, so make sure we are tracking the correct input
       this.$searchInput = this.$module.querySelector('input[type="search"]')
 
-      if (this.skipTracking()) return
-
       const data = {
         event_name: 'search',
-        action: 'search',
+        action: this.triggeredAction,
 
         type: this.type,
         section: this.section,
@@ -78,12 +93,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
-    }
-
-    skipTracking () {
-      // Skip tracking for those events that we do not want to track: where the search term is
-      // present, but has not changed from its initial value
-      return this.searchTerm() !== '' && this.searchTerm() === this.initialKeywords
     }
 
     searchTerm () {

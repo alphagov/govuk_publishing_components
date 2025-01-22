@@ -3,7 +3,7 @@
 describe('Google Analytics search tracking', () => {
   'use strict'
 
-  let fixture, form, input, sendSpy, setItemSpy, ga4SearchTracker
+  let fixture, form, searchInput, filterInput, sendSpy, setItemSpy, ga4SearchTracker
   const GOVUK = window.GOVUK
 
   const html = `
@@ -16,9 +16,18 @@ describe('Google Analytics search tracking', () => {
       data-ga4-search-index-section-count="89"
     >
       <input type="search" name="keyword" value="initial value">
+      <input type="text" name="foo" value="bar">
       <button type="submit">Search</button>
     </form>
   `
+
+  const commonEventProps = {
+    type: 'site search',
+    section: 'section',
+    url: '/search',
+    index_section: '19',
+    index_section_count: '89'
+  }
 
   beforeAll(() => {
     GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
@@ -36,7 +45,8 @@ describe('Google Analytics search tracking', () => {
     fixture.innerHTML = html
 
     form = fixture.querySelector('form')
-    input = form.querySelector('input')
+    searchInput = form.querySelector('input[name="keyword"]')
+    filterInput = form.querySelector('input[name="foo"]')
 
     sendSpy = spyOn(GOVUK.analyticsGa4.core, 'applySchemaAndSendData')
     setItemSpy = spyOn(window.sessionStorage, 'setItem')
@@ -52,7 +62,7 @@ describe('Google Analytics search tracking', () => {
     beforeEach(() => {
       GOVUK.setConsentCookie({ usage: true })
 
-      form.removeChild(input)
+      form.removeChild(searchInput)
       ga4SearchTracker = new GOVUK.Modules.Ga4SearchTracker(form)
       ga4SearchTracker.init()
     })
@@ -83,103 +93,96 @@ describe('Google Analytics search tracking', () => {
       ga4SearchTracker.init()
     })
 
-    it('tracks search events when the input changes', () => {
-      input.value = 'new value'
+    it('tracks search events as `search` action when the keyword input changes', () => {
+      searchInput.value = 'new value'
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
       GOVUK.triggerEvent(form, 'submit')
 
       expect(sendSpy).toHaveBeenCalledWith(
         {
           event_name: 'search',
           action: 'search',
-          type: 'site search',
-          section: 'section',
-          url: '/search',
-          index_section: '19',
-          index_section_count: '89',
-          text: 'new value'
+          text: 'new value',
+          ...commonEventProps
         },
         'event_data'
       )
     })
 
-    it('does not track search events when the input does not change', () => {
+    it('tracks search events as `filter` action when non-keyword input changes', () => {
+      filterInput.value = 'new value'
+      GOVUK.triggerEvent(filterInput, 'input', { target: filterInput })
       GOVUK.triggerEvent(form, 'submit')
 
-      expect(sendSpy).not.toHaveBeenCalled()
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'filter',
+          text: 'initial value',
+          ...commonEventProps
+        },
+        'event_data'
+      )
+    })
+
+    it('tracks search events as `unchanged` action when nothing changes', () => {
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'unchanged',
+          text: 'initial value',
+          ...commonEventProps
+        },
+        'event_data'
+      )
     })
 
     it('includes autocomplete information if present', () => {
-      input.dataset.autocompleteTriggerInput = 'i want to'
-      input.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
-      input.dataset.autocompleteSuggestionsCount = '3'
-      input.dataset.autocompleteAccepted = 'true'
+      searchInput.dataset.autocompleteTriggerInput = 'i want to'
+      searchInput.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
+      searchInput.dataset.autocompleteSuggestionsCount = '3'
+      searchInput.dataset.autocompleteAccepted = 'true'
 
-      input.value = 'i want to fish'
+      searchInput.value = 'i want to fish'
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
       GOVUK.triggerEvent(form, 'submit')
 
       expect(sendSpy).toHaveBeenCalledWith(
         {
           event_name: 'search',
           action: 'search',
-          type: 'site search',
-          section: 'section',
-          url: '/search',
-          index_section: '19',
-          index_section_count: '89',
           text: 'i want to fish',
           tool_name: 'autocomplete',
           length: 3,
           autocomplete_input: 'i want to',
-          autocomplete_suggestions: 'i want to fish|i want to dance|i want to sleep'
+          autocomplete_suggestions: 'i want to fish|i want to dance|i want to sleep',
+          ...commonEventProps
         },
         'event_data'
       )
     })
 
     it('persists usage of autocomplete so that the next page knows it was used', () => {
-      input.dataset.autocompleteTriggerInput = 'i want to remember'
-      input.dataset.autocompleteAccepted = 'true'
-      input.value = 'i want to remember'
+      searchInput.dataset.autocompleteTriggerInput = 'i want to remember'
+      searchInput.dataset.autocompleteAccepted = 'true'
+      searchInput.value = 'i want to remember'
 
       GOVUK.triggerEvent(form, 'submit')
       expect(setItemSpy).toHaveBeenCalledWith('searchAutocompleteAccepted', 'true')
     })
 
     it('sets tool_name to null if the user has not accepted a suggestion', () => {
-      input.dataset.autocompleteTriggerInput = 'i want to'
-      input.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
-      input.dataset.autocompleteSuggestionsCount = '3'
+      searchInput.dataset.autocompleteTriggerInput = 'i want to'
+      searchInput.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
+      searchInput.dataset.autocompleteSuggestionsCount = '3'
 
-      input.value = 'i want to fish'
+      searchInput.value = 'i want to fish'
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
       GOVUK.triggerEvent(form, 'submit')
 
       expect(sendSpy.calls.mostRecent().args[0].tool_name).toBeNull()
-    })
-  })
-
-  describe('when the input is originally empty', () => {
-    beforeEach(() => {
-      GOVUK.setConsentCookie({ usage: true })
-      input.value = ''
-      ga4SearchTracker.init()
-    })
-
-    it('tracks search events even if the (empty) input is unchanged', () => {
-      GOVUK.triggerEvent(form, 'submit')
-
-      expect(sendSpy).toHaveBeenCalledWith(
-        {
-          event_name: 'search',
-          action: 'search',
-          type: 'site search',
-          section: 'section',
-          url: '/search',
-          index_section: '19',
-          index_section_count: '89',
-          text: ''
-        },
-        'event_data'
-      )
     })
   })
 })
