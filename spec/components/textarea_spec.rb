@@ -27,10 +27,12 @@ describe "Textarea", type: :view do
     render_component(
       label: { text: "Can you provide more detail?" },
       name: "more-details",
-      id: "this-id",
+      textarea_id: "this-id",
+      id: "component-id",
     )
 
-    assert_select "#this-id.govuk-textarea"
+    assert_select "#component-id.gem-c-textarea"
+    assert_select "textarea#this-id"
   end
 
   it "renders textarea with a custom number of rows" do
@@ -100,16 +102,6 @@ describe "Textarea", type: :view do
     )
 
     assert_select '.gem-c-textarea.govuk-\!-margin-bottom-4'
-  end
-
-  it "defaults to the initial bottom margin if an incorrect value is passed" do
-    render_component(
-      label: { text: "Can you provide more detail?" },
-      name: "with-fallback-margin-bottom",
-      margin_bottom: 12,
-    )
-
-    assert_select '.gem-c-textarea.govuk-\!-margin-bottom-6'
   end
 
   it "defaults to the initial bottom margin if no value is passed" do

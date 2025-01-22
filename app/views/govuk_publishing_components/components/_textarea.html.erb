@@ -1,7 +1,7 @@
 <%
   add_gem_component_stylesheet("textarea")
 
-  id ||= "textarea-#{SecureRandom.hex(4)}"
+  textarea_id ||= "textarea-#{SecureRandom.hex(4)}"
   value ||= nil
   rows ||= 5
   describedby ||= nil
@@ -11,7 +11,6 @@
   label ||= nil
   hint ||= nil
   local_assigns[:margin_bottom] ||= 6
-  local_assigns[:margin_bottom] = 6 if local_assigns[:margin_bottom] > 9
   error_message ||= nil
   error_items ||= []
   character_count ||= nil
@@ -22,14 +21,13 @@
   right_to_left ||= false
   right_to_left_help = right_to_left_help.nil? ? right_to_left : right_to_left_help
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-textarea govuk-form-group")
+  component_helper.add_class("govuk-form-group--error") if has_error
 
-  css_classes = %w(govuk-textarea)
-  css_classes << "govuk-js-character-count" if character_count
-  css_classes << "govuk-textarea--error" if has_error
-  form_group_css_classes = %w(gem-c-textarea govuk-form-group)
-  form_group_css_classes << "govuk-form-group--error" if has_error
-  form_group_css_classes << shared_helper.get_margin_bottom
+  textarea_classes = %w(govuk-textarea)
+  textarea_classes << "govuk-js-character-count" if character_count
+  textarea_classes << "govuk-textarea--error" if has_error
 
   aria_described_by ||= nil
   if hint || has_error || describedby
@@ -40,11 +38,10 @@
     aria_described_by = aria_described_by.join(" ")
   end
 %>
-
-<%= content_tag :div, class: form_group_css_classes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if label %>
     <%= render "govuk_publishing_components/components/label", {
-      html_for: id,
+      html_for: textarea_id,
       right_to_left: right_to_left_help
     }.merge(label.symbolize_keys) %>
   <% end %>
@@ -67,9 +64,9 @@
   <% end %>
 
   <%= tag.textarea name: name,
-    class: css_classes,
+    class: textarea_classes,
     dir: right_to_left ? "rtl" : nil,
-    id: id,
+    id: textarea_id,
     rows: rows,
     maxlength: maxlength,
     data: data,
