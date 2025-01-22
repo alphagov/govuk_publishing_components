@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 50.0.0
 
 * Remove margin top from search component ([PR #4581](https://github.com/alphagov/govuk_publishing_components/pull/4581))
 * **BREAKING** Add component wrapper helper to textarea ([PR #4574](https://github.com/alphagov/govuk_publishing_components/pull/4574))
