@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 50.0.1
 
 * Change id validation on component wrapper ([PR #4584](https://github.com/alphagov/govuk_publishing_components/pull/4584))
 
