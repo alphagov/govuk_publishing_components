@@ -25,7 +25,12 @@ fields:
 >
 ```
 
-When the form is submitted, a `search` event with the will be tracked containing:
+When the form is submitted, a `search` event will be tracked containing:
+- an action according to the user's interaction with the form:
+  - `search` if they have interacted with the search term field
+  - `filter` if they have interacted with any other field in the form (but not the search term
+    field)
+  - `unchanged` otherwise, for example if they have just (re-)submitted the form
 - the type, URL, section, index section, and index section count fields based on the data attributes
   outlined above
 - the state (text) of the search field contained within
