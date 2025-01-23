@@ -118,7 +118,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
 
     describe "setting an id" do
       it "does not accept invalid ids" do
-        ["1dstartingwithnumber", "id with spaces", "idwith.dot", "id\nwithnewline"].each do |id|
+        ["id with spaces", "idwith.dot", "id\nwithnewline"].each do |id|
           expect {
             GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id:)
           }.to raise_error(ArgumentError, / contain/)
@@ -126,8 +126,8 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       end
 
       it "accepts a valid id" do
-        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "valid")
-        expect(helper.all_attributes[:id]).to eql("valid")
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "valid[id]_attribute-value")
+        expect(helper.all_attributes[:id]).to eql("valid[id]_attribute-value")
       end
 
       it "can set an id, overriding a passed value" do

@@ -44,7 +44,7 @@ These options can be passed to any component that uses the component wrapper.
 
 To prevent breaking [component isolation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_principles.md#a-component-is-isolated-when), passed classes should only be used for JavaScript hooks and not styling. All component styling should be included only in the component itself. Any passed classes should be prefixed with `js-`. To allow for extending this option, classes prefixed with `gem-c-`, `govuk-`, `app-c-`, `brand--`, or `brand__` are also permitted, as well as an exact match of `direction-rtl`, but these classes should only be used within the component and not passed to it.
 
-The helper checks that any passed `id` attribute is valid, specifically that it does not start with a number or contain whitespace or contain any characters other than letters, numbers, and `_` or `-`. It also checks that role and lang attribute values are valid, along with some other checks detailed below.
+The helper checks that any passed `id` attribute is valid, specifically that it does not contain whitespace or `.` characters. It also checks that role and lang attribute values are valid, along with some other checks detailed below.
 
 An example of passing data to a component with the component wrapper:
 
