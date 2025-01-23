@@ -1,12 +1,13 @@
 <%
   add_gem_component_stylesheet("add-another")
-  items ||= []
+  start_empty ||= false
+  items = start_empty ? [] : items
   empty ||= ""
   fieldset_legend ||= ""
   add_button_text ||= "Add another"
 %>
 
-<div data-module="add-another" class="gem-c-add-another" data-add-button-text="<%= add_button_text %>" data-fieldset-legend="<%= fieldset_legend %>">
+<div data-module="add-another" class="gem-c-add-another" data-add-button-text="<%= add_button_text %>" data-fieldset-legend="<%= fieldset_legend %>" data-start-empty="<%= start_empty %>">
   <% items.each_with_index do |item, index| %>
     <%= render "govuk_publishing_components/components/fieldset", {
       classes: "js-add-another__fieldset",
