@@ -147,3 +147,12 @@ examples:
     data:
       text: Button
       aria_describedby: with_aria_describedby
+  with_form_attribute:
+    description: |
+      Buttons will usually be contained within their containing form, but sometimes it is desirable to have the button 
+      outside the form with the `form` attribute pointing to the ID of the form. See 
+      [The Mozilla dev docs on a button's `form` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#form)
+      for more information.
+    data:
+      text: With `form` argument
+      form: some_form_id

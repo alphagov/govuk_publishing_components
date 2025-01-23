@@ -25,7 +25,8 @@ module GovukPublishingComponents
                   :classes,
                   :aria_label,
                   :aria_controls,
-                  :aria_describedby
+                  :aria_describedby,
+                  :form
 
       def initialize(local_assigns)
         @disable_ga4 = local_assigns[:disable_ga4]
@@ -58,6 +59,7 @@ module GovukPublishingComponents
         @button_id = "button-id-#{SecureRandom.hex(4)}"
         @aria_controls = local_assigns[:aria_controls]
         @aria_describedby = local_assigns[:aria_describedby]
+        @form = local_assigns[:form]
 
         if local_assigns.include?(:classes)
           @classes = local_assigns[:classes].split(" ")
@@ -106,6 +108,7 @@ module GovukPublishingComponents
         options[:aria][:controls] =  aria_controls if aria_controls
         options[:aria][:describedby] = aria_describedby if aria_describedby
         options[:draggable] = false if link?
+        options[:form] = form if form
         options
       end
 
