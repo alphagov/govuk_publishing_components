@@ -5,7 +5,7 @@
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
   margin-bottom: govuk-spacing(6);
-  padding: 0 govuk-spacing(6) govuk-spacing(6);
+  padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
   box-sizing: border-box;
 }
 
@@ -22,10 +22,6 @@
   padding-left: 0;
   padding-right: 0;
   padding-bottom: govuk-spacing(3);
-}
-
-.gem-c-inverse-header--padding-top {
-  padding-top: govuk-spacing(3);
 }
 
 @include govuk-media-query($media-type: print) {

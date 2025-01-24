@@ -1,7 +1,7 @@
 name: Inverse header
 description: A wrapper to contain header content in white text
 body: |
-  This component can be passed a block of template code and will wrap it in a blue header. This is as light-touch as possible and doesn't attempt to deal with the margins and paddings of its content. White text is enforced on content and would need to be overridden where unwanted. Implemented to accommodate topic and list page headings but unopinionated about its contents.
+  This component can be passed a block of template code and will wrap it in a blue header. White text is enforced on content and would need to be overridden where unwanted. Implemented to accommodate topic and list page headings but unopinionated about its contents.
 
   If passing links to the block make sure to add [the inverse modifier](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds).
 uses_component_wrapper_helper: true
@@ -17,6 +17,19 @@ examples:
           <%= render "govuk_publishing_components/components/title", {
             title: "Education, Training and Skills",
             inverse: true
+          } %>
+          <!-- end of example content -->
+  with_custom_padding:
+    description: Custom padding can be applied as shown, using the [Design System spacing scale](https://design-system.service.gov.uk/styles/spacing/).
+    data:
+      padding_top: 6
+      padding_bottom: 1
+      block: |
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/heading", {
+            text: "Education, Training and Skills",
+            inverse: true,
+            margin_bottom: 0
           } %>
           <!-- end of example content -->
   for_full_page_width:
