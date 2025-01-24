@@ -43,6 +43,17 @@ examples:
               inverse: true
             } %>
             <!-- end of example content -->
+  with_subtext:
+    data:
+      subtext: This is some text
+      block: |
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/heading", {
+            text: "Education, Training and Skills",
+            inverse: true,
+            margin_bottom: 0
+          } %>
+          <!-- end of example content -->
   html_publication_header:
     description: "The inverse header component is used on HTML publications. [See example on GOV.UK here](https://www.gov.uk/government/publications/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application-advertisement/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application)"
     data:

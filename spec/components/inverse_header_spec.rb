@@ -38,4 +38,10 @@ describe "Inverse header", type: :view do
 
     assert_select '.gem-c-inverse-header.govuk-\!-padding-top-5.govuk-\!-padding-bottom-3'
   end
+
+  it "renders with subtext" do
+    render_component(subtext: "this is some text") { block }
+
+    assert_select ".gem-c-inverse-header__subtext", text: "this is some text"
+  end
 end
