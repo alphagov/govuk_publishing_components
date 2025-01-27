@@ -1,4 +1,10 @@
-<%= render 'govuk_publishing_components/components/title', title: GovukPublishingComponents::Config.component_guide_title, margin_top: 0 %>
+<%= render 'govuk_publishing_components/components/heading', {
+    text: GovukPublishingComponents::Config.component_guide_title,
+    heading_level: 1,
+    font_size: "xl",
+    margin_bottom: 8
+  }
+%>
 
 <div class="component-markdown">
   <p>Components are packages of template, style, behaviour and documentation that live in your application.</p>

@@ -5,7 +5,14 @@
   <% end %>
 <% end %>
 
-<%= render 'govuk_publishing_components/components/title', title: @component_doc.name, context: "Component", margin_top: 0; %>
+<%= render 'govuk_publishing_components/components/heading', {
+    text: @component_doc.name,
+    context: "Component",
+    heading_level: 1,
+    font_size: "xl",
+    margin_bottom: 8
+  }
+%>
 
 <div class="component-show">
   <div class="govuk-grid-row">

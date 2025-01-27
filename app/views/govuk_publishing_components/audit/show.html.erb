@@ -5,7 +5,13 @@
 %>
 
 <% content_for :title, "Component audit" %>
-<%= render 'govuk_publishing_components/components/title', title: "Components audit", margin_top: 0; %>
+<%= render 'govuk_publishing_components/components/heading', {
+    text: "Components audit",
+    heading_level: 1,
+    font_size: "xl",
+    margin_bottom: 8
+  }
+%>
 
 <% applications = capture do %>
   <%= render "applications" %>
