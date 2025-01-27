@@ -73,7 +73,7 @@ examples:
   with_global_banner:
     description: This allows the HTML for the global banner to be added to the page. This is only the slot for the global banner - the markup for the banner needs to be passed in.
     data:
-      global_bar: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global bar slot</div>
+      global_banner: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global banner slot</div>
   with_emergency_banner:
     description: This allows the HTML for the emergency banner to be added to the page in the correct place. This is only the slot for the emergency banner - the markup for the banner needs to be passed in.
     data:
@@ -82,7 +82,7 @@ examples:
     description: Both global banner and emergency banner should be usable together.
     data:
       emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
-      global_bar: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global bar slot</div>
+      global_banner: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global banner slot</div>
   with_account_layout_enabled:
     description: Adds account layout wrapper around the content passed in to the component
     data:

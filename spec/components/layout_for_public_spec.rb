@@ -99,22 +99,22 @@ describe "Layout for public", :capybara, type: :view do
     assert_select "#test-emergency-banner", text: "This is an emergency banner test"
   end
 
-  it "can add a global bar" do
+  it "can add a global banner" do
     render_component({
-      global_bar: "<div id='test-global-banner'>This is a global bar test</div>",
+      global_banner: "<div id='test-global-banner'>This is a global banner test</div>",
     })
 
-    assert_select "#test-global-banner", text: "This is a global bar test"
+    assert_select "#test-global-banner", text: "This is a global banner test"
   end
 
-  it "can add both an emergency banner and a global bar" do
+  it "can add both an emergency banner and a global banner" do
     render_component({
       emergency_banner: "<div id='test-emergency-banner'>This is an emergency banner test</div>",
-      global_bar: "<div id='test-global-banner'>This is a global bar test</div>",
+      global_banner: "<div id='test-global-banner'>This is a global banner test</div>",
     })
 
     assert_select "#test-emergency-banner", text: "This is an emergency banner test"
-    assert_select "#test-global-banner", text: "This is a global bar test"
+    assert_select "#test-global-banner", text: "This is a global banner test"
   end
 
   it "has a blue bar by default" do
@@ -293,16 +293,16 @@ describe "Layout for public", :capybara, type: :view do
     assert_select ".gem-c-layout-for-public.govuk-template__body.draft"
   end
 
-  it "contains a global-bar-present class when the global bar is present" do
-    render_component({ global_bar: { present: true } })
+  it "contains a global-banner-present class when the global banner is present" do
+    render_component({ global_banner: { present: true } })
 
-    assert_select ".gem-c-layout-for-public.govuk-template__body.global-bar-present"
+    assert_select ".gem-c-layout-for-public.govuk-template__body.global-banner-present"
   end
 
-  it "does not contains a global-bar-present class when the global bar is not present" do
-    render_component({ global_bar: {} })
+  it "does not contains a global-banner-present class when the global banner is not present" do
+    render_component({ global_banner: {} })
 
-    assert_select ".gem-c-layout-for-public.govuk-template__body.global-bar-present", false
+    assert_select ".gem-c-layout-for-public.govuk-template__body.global-banner-present", false
   end
 
   it "has an Open Graph image with an absolute URL" do

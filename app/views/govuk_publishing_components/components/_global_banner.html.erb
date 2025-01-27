@@ -1,0 +1,43 @@
+<%
+  add_gem_component_stylesheet("global-banner")
+
+  title ||= nil
+  title_href ||= nil
+  text ||= nil
+  banner_version ||= nil
+  always_visible ||= false # if true banner is always visible & does not disappear automatically after 3 pageviews
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-global-banner govuk-!-display-none-print")
+  component_helper.set_id("global-banner")
+  component_helper.add_data_attribute({ module: "global-banner", nosnippet: "" })
+  component_helper.add_data_attribute({ banner_version: banner_version }) if banner_version
+  component_helper.add_data_attribute({ global_banner_permanent: true }) if always_visible
+
+  title_classes = %w(gem-c-global-banner__title)
+  title_classes << "js-call-to-action" if title_href
+  title_classes << "govuk-link govuk-link--no-visited-state" if title_href
+
+  ga4_data = {
+    event_name: "navigation",
+    type: "global bar",
+    section: title,
+  }.to_json
+%>
+<% if title && banner_version %>
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <p class="gem-c-global-banner__message govuk-width-container">
+      <% if title_href %>
+        <a class="<%= title_classes.join(' ') %>" href="<%= title_href %>" data-module="ga4-link-tracker" data-ga4-link="<%= ga4_data %>"><%= title %></a>
+      <% else %>
+        <span class="<%= title_classes.join(' ') %>"><%= title %></span>
+      <% end %>
+
+      <% if text %>
+        <span class="gem-c-global-banner__text">
+          <%= text %>
+        </span>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>

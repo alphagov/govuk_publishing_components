@@ -22,7 +22,7 @@
     govuk_contact_referrer: 'essential',
     multivariatetest_cohort_coronavirus_extremely_vulnerable_rate_limit: 'essential',
     dgu_beta_banner_dismissed: 'settings',
-    global_bar_seen: 'settings',
+    global_banner_seen: 'settings',
     user_nation: 'settings',
     'JS-Detection': 'usage',
     TLSversion: 'usage',

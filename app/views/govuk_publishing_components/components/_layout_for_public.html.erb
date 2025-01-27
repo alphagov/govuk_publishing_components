@@ -5,7 +5,7 @@
   emergency_banner ||= nil
   full_width ||= false
   blue_bar ||= local_assigns.include?(:blue_bar) ? local_assigns[:blue_bar] : !full_width
-  global_bar ||= nil
+  global_banner ||= nil
   html_lang ||= "en"
   homepage ||= false
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
@@ -49,10 +49,10 @@
 # height, making the two blue bars overlap and appear as one. The class is added
 # when a) there's content for the emergency or global banner *and* b) when using
 # the contrained width layout.
-  blue_bar_dedupe = !full_width && global_bar.present?
+  blue_bar_dedupe = !full_width && global_banner.present?
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
-  body_css_classes << "global-bar-present" if global_bar.present?
+  body_css_classes << "global-banner-present" if global_banner.present?
 
   blue_bar_wrapper_classes = %w()
   blue_bar_wrapper_classes << "gem-c-layout-for-public__blue-bar-wrapper--#{blue_bar_background_colour}" if blue_bar_background_colour
@@ -137,17 +137,17 @@
 
     <%= raw(emergency_banner) %>
 
-    <% if (blue_bar && !global_bar.present? && !homepage) || (blue_bar_dedupe) %>
+    <% if (blue_bar && !global_banner.present? && !homepage) || (blue_bar_dedupe) %>
       <%= content_tag(:div, class: blue_bar_wrapper_classes) do %>
         <div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
       <% end %>
     <% end %>
 
-    <% if global_bar.present? %>
+    <% if global_banner.present? %>
       <%= content_tag("div", {
         class: blue_bar_dedupe ? "gem-c-layout-for-public__global-banner-wrapper" : nil,
       }) do %>
-        <%= raw(global_bar) %>
+        <%= raw(global_banner) %>
       <% end %>
     <% end %>
 

@@ -1,0 +1,38 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-global-banner {
+  background-color: #d9e7f2;
+  border-top: govuk-spacing(2) solid govuk-colour("blue");
+  display: none;
+  @include govuk-font(19);
+
+  .govuk-link,
+  .govuk-link:link {
+    color: govuk-colour("black");
+  }
+}
+
+.gem-c-global-banner--visible {
+  display: block;
+}
+
+.gem-c-global-banner__message {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: govuk-spacing(4) 0;
+}
+
+.gem-c-global-banner__title {
+  font-weight: 700;
+  margin-right: govuk-spacing(2);
+  margin-bottom: govuk-spacing(1);
+
+  &:only-child {
+    margin: 0;
+  }
+}
+
+.gem-c-global-banner__title,
+.gem-c-global-banner__text {
+  color: govuk-colour("black");
+}
