@@ -5,16 +5,13 @@
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
   margin-bottom: govuk-spacing(6);
-  padding: 0 govuk-spacing(6) govuk-spacing(6);
+  padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
   box-sizing: border-box;
 }
 
-.gem-c-inverse-header .gem-c-inverse-header__supplement,
-.gem-c-inverse-header .publication-header__last-changed {
+.gem-c-inverse-header__subtext {
   color: govuk-colour("white");
   margin: 0;
-  // This publication-header class is injected on publication pages, really
-  // it should be a component class or be a component in it's own right.
   @include govuk-font($size: 16, $line-height: 1.5);
 }
 
@@ -22,10 +19,6 @@
   padding-left: 0;
   padding-right: 0;
   padding-bottom: govuk-spacing(3);
-}
-
-.gem-c-inverse-header--padding-top {
-  padding-top: govuk-spacing(3);
 }
 
 @include govuk-media-query($media-type: print) {

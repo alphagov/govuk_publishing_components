@@ -1,14 +1,20 @@
 <%
   add_gem_component_stylesheet("inverse-header")
 
+  padding_top ||= nil
+  padding_bottom ||= nil
+  subtext ||= nil
+
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-inverse-header")
   component_helper.add_class("gem-c-inverse-header--full-width") if local_assigns[:full_width]
-  component_helper.add_class("gem-c-inverse-header--padding-top") unless local_assigns[:padding_top].eql?(false)
+  component_helper.add_class("govuk-!-padding-top-#{padding_top}") if [*0..9].include?(padding_top)
+  component_helper.add_class("govuk-!-padding-bottom-#{padding_bottom}") if [*0..9].include?(padding_bottom)
 %>
 <% block = yield %>
 <% unless block.empty? %>
   <%= tag.header(**component_helper.all_attributes) do %>
     <%= block %>
+    <%= content_tag(:p, subtext, class: "gem-c-inverse-header__subtext") if subtext %>
   <% end %>
 <% end %>
