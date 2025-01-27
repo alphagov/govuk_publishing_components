@@ -5,7 +5,14 @@
   <% end %>
 <% end %>
 
-<%= render 'govuk_publishing_components/components/title', title: @component_example.name, context: "#{@component_doc.name} example", margin_top: 0 %>
+<%= render 'govuk_publishing_components/components/heading', {
+    text: @component_example.name,
+    context: "#{@component_doc.name} example",
+    heading_level: 1,
+    font_size: "xl",
+    margin_bottom: 8
+  }
+%>
 
 <% code_example = capture do %>
   <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, example: @component_example } %>
