@@ -104,15 +104,9 @@
     } %>
     <% unless omit_header %>
       <% if show_explore_header %>
-        <% if homepage %>
-          <%= render "govuk_publishing_components/components/layout_for_public/layout_super_navigation_header_homepage", {
-            logo_link: logo_link,
-          } %>
-        <% else %>
-          <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
-            logo_link: logo_link,
-          } %>
-        <% end %>
+        <%= render "govuk_publishing_components/components/layout_for_public/layout_super_navigation_header_homepage", {
+          logo_link: logo_link,
+        } %>
       <% elsif show_cross_service_header %>
         <%= render "govuk_publishing_components/components/cross_service_header", {
           one_login_navigation_items: one_login_navigation_items,
