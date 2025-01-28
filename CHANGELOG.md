@@ -7,12 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 51.0.0
 
 * Remove title component margin_top option ([PR #4508](https://github.com/alphagov/govuk_publishing_components/pull/4508))
 * **BREAKING** Add global bar component from static ([PR #4538](https://github.com/alphagov/govuk_publishing_components/pull/4538))
 * Add custom padding to inverse header ([PR #4590](https://github.com/alphagov/govuk_publishing_components/pull/4590))
-* Add another: fix problem in createRemoveButtons method ([PR #11719](https://github.com/alphagov/govuk_publishing_components/pull/4586))
+* Add another: fix problem in createRemoveButtons method ([PR #4586](https://github.com/alphagov/govuk_publishing_components/pull/4586))
 * Add configuration to "Add another" ([PR #4575](https://github.com/alphagov/govuk_publishing_components/pull/4575))
 
 ## 50.0.1
