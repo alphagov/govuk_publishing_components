@@ -62,13 +62,3 @@ examples:
       margin_bottom: 0
     context:
       dark_background: true
-  using_design_system_template:
-    description: |
-      This option allows the removal of top margin from the component so that it works within a [Design System page template](https://design-system.service.gov.uk/styles/page-template/default/index.html), where spacing above the title is already provided by padding on the wrapping div.
-    embed: |
-      <main class="govuk-main-wrapper">
-        <%= component %>
-      </main>
-    data:
-      title: My page title
-      margin_top: 0
