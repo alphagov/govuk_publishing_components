@@ -67,10 +67,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         legend.textContent = this.module.dataset.fieldsetLegend + ' ' + (index + 1)
       }.bind(this))
 
-    this.module.querySelector('.js-add-another__remove-button').classList.toggle(
-      'js-add-another__remove-button--hidden',
-      this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])').length === 1
-    )
+    if (this.module.dataset.emptyFields === 'false') {
+      this.module.querySelector('.js-add-another__remove-button').classList.toggle(
+        'js-add-another__remove-button--hidden',
+        this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])').length === 1
+      )
+    }
   }
 
   AddAnother.prototype.addNewFieldset = function (event) {

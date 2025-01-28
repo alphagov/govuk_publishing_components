@@ -46,3 +46,15 @@ examples:
           <label for="person_1_name" class="gem-c-label govuk-label">Full name</label>
           <input class="gem-c-input govuk-input" id="person_1_name" name="person[1]name">
         </div>
+  start_empty:
+    description: By default no form fields are displayed when the component loads if no content is specified
+    data:
+      fieldset_legend: "Employee"
+      add_button_text: "Add an employee"
+      empty_fields: true
+      items: null
+      empty:
+        <div class="govuk-form-group">
+          <label for="employee_1_name" class="gem-c-label govuk-label">Full name</label>
+          <input class="gem-c-input govuk-input" id="employee_1_name" name="employee[1]name">
+        </div>
