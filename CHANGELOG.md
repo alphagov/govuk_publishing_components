@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add a `form` attribute to the button component ([PR #4588](https://github.com/alphagov/govuk_publishing_components/pull/4588))
+
 ## 51.0.0
 
 * Remove title component margin_top option ([PR #4508](https://github.com/alphagov/govuk_publishing_components/pull/4508))

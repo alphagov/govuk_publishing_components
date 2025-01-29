@@ -252,4 +252,10 @@ describe "Button", type: :view do
 
     assert_select '.gem-c-button[aria-describedby="Testing aria-describedby"]'
   end
+
+  it "renders with a form attribute" do
+    render_component(text: "Button", form: "some_form_id")
+
+    assert_select '.gem-c-button[form="some_form_id"]'
+  end
 end
