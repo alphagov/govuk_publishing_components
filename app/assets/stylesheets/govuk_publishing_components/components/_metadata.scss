@@ -59,17 +59,16 @@
     box-sizing: border-box;
     float: left;
     clear: left;
+    padding-left: 0;
     padding-right: govuk-spacing(1);
     margin-top: 0;
   }
 }
 
-.direction-rtl .gem-c-metadata .gem-c-metadata__term,
-.gem-c-metadata.direction-rtl .gem-c-metadata__term {
-  float: inline-start;
-  clear: inline-start;
-
+.direction-rtl .gem-c-metadata__term {
   @include govuk-media-query($from: tablet) {
+    float: right;
+    clear: right;
     padding-left: govuk-spacing(1);
     padding-right: 0;
   }
@@ -83,11 +82,6 @@
       margin-bottom: govuk-spacing(1);
     }
   }
-}
-
-.direction-rtl .gem-c-metadata .gem-c-metadata__definition,
-.gem-c-metadata.direction-rtl .gem-c-metadata__definition {
-  float: inline-start;
 }
 
 .gem-c-metadata__toggle-wrap {
