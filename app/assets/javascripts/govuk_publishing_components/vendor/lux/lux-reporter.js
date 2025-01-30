@@ -336,7 +336,7 @@
     return str;
   }
 
-  var VERSION = "4.0.28";
+  var VERSION = "4.0.29";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -626,36 +626,36 @@
     try {
       if (selector &&
         (node.nodeType === 9 || selector.length > MAX_SELECTOR_LENGTH || !node.parentNode)) {
-        // Final selector.
-        return selector;
-      }
-      var el = node;
-      // Our first preference is to use the data-sctrack attribute from anywhere in the tree
-      var trackId = getClosestScTrackAttribute(el);
-      if (trackId) {
-        return trackId;
-      }
-      if (el.id) {
-        // Once we've found an element with ID we return the selector.
-        return "#" + el.id + (selector ? ">" + selector : "");
-      }
-      else if (el) {
-        // Otherwise attempt to get parent elements recursively
-        var name_1 = el.nodeType === 1 ? el.nodeName.toLowerCase() : el.nodeName.toUpperCase();
-        var classes = el.className ? "." + el.className.replace(/\s+/g, ".") : "";
-        // Remove classes until the selector is short enough
-        while ((name_1 + classes).length > MAX_SELECTOR_LENGTH) {
-          classes = classes.split(".").slice(0, -1).join(".");
+          // Final selector.
+          return selector;
         }
-        var currentSelector = name_1 + classes + (selector ? ">" + selector : "");
-        if (el.parentNode) {
-          var selectorWithParent = getNodeSelector(el.parentNode, currentSelector);
-          if (selectorWithParent.length < MAX_SELECTOR_LENGTH) {
-            return selectorWithParent;
+        var el = node;
+        // Our first preference is to use the data-sctrack attribute from anywhere in the tree
+        var trackId = getClosestScTrackAttribute(el);
+        if (trackId) {
+          return trackId;
+        }
+        if (el.id) {
+          // Once we've found an element with ID we return the selector.
+          return "#" + el.id + (selector ? ">" + selector : "");
+        }
+        else if (el) {
+          // Otherwise attempt to get parent elements recursively
+          var name_1 = el.nodeType === 1 ? el.nodeName.toLowerCase() : el.nodeName.toUpperCase();
+          var classes = el.className ? "." + el.className.replace(/\s+/g, ".") : "";
+          // Remove classes until the selector is short enough
+          while ((name_1 + classes).length > MAX_SELECTOR_LENGTH) {
+            classes = classes.split(".").slice(0, -1).join(".");
           }
+          var currentSelector = name_1 + classes + (selector ? ">" + selector : "");
+          if (el.parentNode) {
+            var selectorWithParent = getNodeSelector(el.parentNode, currentSelector);
+            if (selectorWithParent.length < MAX_SELECTOR_LENGTH) {
+              return selectorWithParent;
+            }
+          }
+          return currentSelector;
         }
-        return currentSelector;
-      }
     }
     catch (error) {
       // Do nothing.
@@ -1963,7 +1963,7 @@
       ].join("");
     }
     function getCustomerId() {
-      return String(_thisCustomerId) || "";
+      return String(_thisCustomerId);
     }
     function avgDomDepth() {
       var aElems = document.getElementsByTagName("*");
