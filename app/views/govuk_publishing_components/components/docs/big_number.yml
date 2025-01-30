@@ -9,6 +9,7 @@ accessibility_criteria: |
   - convey the meaning of the number shown
 shared_accessibility_criteria:
 - link
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
