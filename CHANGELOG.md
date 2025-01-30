@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 51.1.0
 
 * Update to LUX 4.0.29 ([PR #4597](https://github.com/alphagov/govuk_publishing_components/pull/4597))
 * Add a `form` attribute to the button component ([PR #4588](https://github.com/alphagov/govuk_publishing_components/pull/4588))
