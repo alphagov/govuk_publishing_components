@@ -11,6 +11,7 @@
 
 * Update to LUX 4.0.29 ([PR #4597](https://github.com/alphagov/govuk_publishing_components/pull/4597))
 * Add a `form` attribute to the button component ([PR #4588](https://github.com/alphagov/govuk_publishing_components/pull/4588))
+* Fix RTL support in metadata component ([PR #4596](https://github.com/alphagov/govuk_publishing_components/pull/4596))
 
 ## 51.0.0
 

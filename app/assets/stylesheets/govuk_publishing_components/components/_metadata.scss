@@ -57,21 +57,10 @@
 
   @include govuk-media-query($from: tablet) {
     box-sizing: border-box;
-    float: left;
-    clear: left;
-    padding-right: govuk-spacing(1);
+    float: inline-start;
+    padding-inline-start: 0;
+    padding-inline-end: govuk-spacing(1);
     margin-top: 0;
-  }
-}
-
-.direction-rtl .gem-c-metadata .gem-c-metadata__term,
-.gem-c-metadata.direction-rtl .gem-c-metadata__term {
-  float: inline-start;
-  clear: inline-start;
-
-  @include govuk-media-query($from: tablet) {
-    padding-left: govuk-spacing(1);
-    padding-right: 0;
   }
 }
 
@@ -83,11 +72,6 @@
       margin-bottom: govuk-spacing(1);
     }
   }
-}
-
-.direction-rtl .gem-c-metadata .gem-c-metadata__definition,
-.gem-c-metadata.direction-rtl .gem-c-metadata__definition {
-  float: inline-start;
 }
 
 .gem-c-metadata__toggle-wrap {
