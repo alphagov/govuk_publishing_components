@@ -58,10 +58,10 @@ describe "Details", type: :view do
 
   it "increments the GA4 index_section parameter when more than one component instance" do
     render_component(title: "first details")
-    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"first details","section":"first details","index_section":1}\']'
+    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"first details","index_section":1}\']'
 
     render_component(title: "second details")
-    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"second details","section":"second details","index_section":2}\']'
+    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"second details","index_section":2}\']'
   end
 
   it "accepts GA4 event data parameters" do
@@ -69,7 +69,7 @@ describe "Details", type: :view do
       title: "some title",
       ga4_attributes: { index_section_count: 12 },
     )
-    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"some title","section":"some title","index_section":1,"index_section_count":12}\']'
+    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"detail","text":"some title","index_section":1,"index_section_count":12}\']'
   end
 
   it "can override GA4 event data parameters" do
@@ -77,7 +77,7 @@ describe "Details", type: :view do
       title: "some title",
       ga4_attributes: { type: "a mouse!", index_section_count: 12 },
     )
-    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"a mouse!","text":"some title","section":"some title","index_section":1,"index_section_count":12}\']'
+    assert_select '.govuk-details[data-ga4-event=\'{"event_name":"select_content","type":"a mouse!","text":"some title","index_section":1,"index_section_count":12}\']'
   end
 
   it "can disable GA4" do
