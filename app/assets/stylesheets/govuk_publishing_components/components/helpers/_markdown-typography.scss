@@ -77,6 +77,7 @@
   a {
     @include govuk-link-common;
     @include govuk-link-style-default;
+    @include govuk-text-break-word;
 
     &:focus {
       @include govuk-focused-text;
