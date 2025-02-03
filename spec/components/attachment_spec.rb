@@ -107,11 +107,35 @@ describe "Attachment", type: :view do
       event_name: "select_content",
       type: "detail",
       text: "Request an accessible format.",
-      section: "Request an accessible format.",
       index_section: 1,
       index_section_count: 4,
       another_attribute: "here",
+      section: "Attachment",
     }.to_json
+    assert_select ".govuk-details[data-ga4-event='#{attributes}']"
+  end
+
+  it "allows the default GA4 section on the details component to be overwritten" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "application/vnd.oasis.opendocument.spreadsheet",
+        alternative_format_contact_email: "defra.helpline@defra.gsi.gov.uk",
+      },
+      details_ga4_attributes: {
+        section: "Hello",
+      },
+    )
+    assert_select "a[href='mailto:defra.helpline@defra.gsi.gov.uk']"
+    attributes = {
+      event_name: "select_content",
+      type: "detail",
+      text: "Request an accessible format.",
+      index_section: 1,
+      section: "Hello",
+    }.to_json
+    puts rendered
     assert_select ".govuk-details[data-ga4-event='#{attributes}']"
   end
 

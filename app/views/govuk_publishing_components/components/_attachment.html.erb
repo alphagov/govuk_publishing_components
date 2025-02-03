@@ -8,6 +8,7 @@
   attributes = []
   url_data_attributes ||= {}
   details_ga4_attributes ||= {}
+  details_ga4_attributes[:section] = attachment.title unless details_ga4_attributes[:section]
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
