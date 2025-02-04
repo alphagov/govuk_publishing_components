@@ -66,9 +66,9 @@ describe "Title", type: :view do
     assert_select '.gem-c-title.govuk-\!-margin-bottom-4'
   end
 
-  it "ignores an invalid margin bottom" do
+  it "sets margin bottom to 3 if an invalid number is passed" do
     render_component(title: "Margin wat", margin_bottom: 17)
-    assert_select "[class^='govuk-\!-margin-bottom-']", false
+    assert_select '.gem-c-title.govuk-\!-margin-bottom-3'
   end
 
   it "applies context language if supplied to a context link" do
