@@ -34,7 +34,7 @@ module GovukPublishingComponents
         @is_page_heading = options[:is_page_heading]
         @description = options[:description] || nil
         @no_hint_text = options[:no_hint_text]
-        @hint_text = options[:hint_text] || "Select all that apply." unless @no_hint_text
+        @hint_text = options[:hint_text] || "Select all that apply" unless @no_hint_text
         @visually_hide_heading = options[:visually_hide_heading]
       end
 
