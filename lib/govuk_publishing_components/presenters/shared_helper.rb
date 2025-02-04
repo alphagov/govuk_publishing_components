@@ -7,13 +7,6 @@ module GovukPublishingComponents
         @options = local_assigns
         @margin_bottom = @options[:margin_bottom] || 3
         @heading_level = @options[:heading_level] || 2
-
-        if local_assigns.include?(:classes)
-          @classes = local_assigns[:classes].split(" ")
-          unless @classes.all? { |c| c.start_with?("js-") }
-            raise(ArgumentError, "Passed classes must be prefixed with `js-`")
-          end
-        end
       end
 
       def get_margin_bottom
