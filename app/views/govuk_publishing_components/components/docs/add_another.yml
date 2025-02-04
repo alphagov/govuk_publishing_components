@@ -35,7 +35,7 @@ examples:
               <input class="gem-c-input govuk-input" id="person_0_name" name="person[0]name">
             </div>
           destroy_checkbox: >
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes" data-govuk-checkboxes-init="">
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input type="checkbox" name="person[0][_destroy]" id="person_0__destroy" class="govuk-checkboxes__input">
                 <label for="person_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
