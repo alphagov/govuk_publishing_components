@@ -46,17 +46,6 @@ RSpec.describe GovukPublishingComponents::Presenters::SharedHelper do
       expect(result).to eql("span")
     end
 
-    it "accepts passed class names if prefixed with 'js-'" do
-      shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(classes: "js-okay js-fine")
-      expect(shared_helper.classes).to eql(%w[js-okay js-fine])
-    end
-
-    it "rejects passed class names if not prefixed with 'js-'" do
-      expect {
-        GovukPublishingComponents::Presenters::SharedHelper.new(classes: "js-okay not-cool-man")
-      }.to raise_error(ArgumentError, "Passed classes must be prefixed with `js-`")
-    end
-
     it "returns nil if given locale is same as page locale" do
       default_locale = I18n.locale
       shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({})

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove classes functionality from shared helper ([PR #4605](https://github.com/alphagov/govuk_publishing_components/pull/4605))
+
 ## 51.1.1
 
 * Fix RTL support in metadata component ([PR #4596](https://github.com/alphagov/govuk_publishing_components/pull/4596))
