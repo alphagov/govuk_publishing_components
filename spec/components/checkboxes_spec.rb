@@ -30,7 +30,7 @@ describe "Checkboxes", type: :view do
     assert_select "fieldset.govuk-fieldset"
     assert_select "legend", text: "What is your favourite colour?"
     assert_select "legend h1", false
-    assert_select ".govuk-hint", text: "Select all that apply."
+    assert_select ".govuk-hint", text: "Select all that apply"
     assert_select ".govuk-checkboxes"
     assert_select ".govuk-label", text: "Red"
     assert_select ".govuk-label", text: "Green"
