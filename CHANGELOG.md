@@ -12,6 +12,7 @@
 * Remove classes functionality from shared helper ([PR #4605](https://github.com/alphagov/govuk_publishing_components/pull/4605))
 * Add govuk-text-break-word style to markdown links ([PR #4603](https://github.com/alphagov/govuk_publishing_components/pull/4603))
 * Remove margin bottom functionality from shared helper ([PR #4608](https://github.com/alphagov/govuk_publishing_components/pull/4608))
+* Make padding around component previews consistent ([PR #4610](https://github.com/alphagov/govuk_publishing_components/pull/4610))
 
 ## 51.1.1
 

@@ -116,7 +116,7 @@ $gem-guide-border-width: 1px;
 }
 
 .component-guide-preview {
-  padding: ($govuk-gutter * 1.5) $govuk-gutter $govuk-gutter;
+  padding: $govuk-gutter;
   border: $gem-guide-border-width solid $govuk-border-colour;
   position: relative;
 
