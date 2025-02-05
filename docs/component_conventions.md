@@ -357,9 +357,7 @@ Code can be called and referred to in the template as follows:
 
 There is a [shared helper](https://github.com/alphagov/govuk_publishing_components/blob/main/lib/govuk_publishing_components/presenters/shared_helper.rb) that can provide common functionality to all components. This includes:
 
-- set margin bottom and top
 - set heading level and heading font size
-- allow JavaScript classes to be added that begin with `js-` but reject any others
 - translation helpers
 
 The following is an example of how to use the shared helper to set margin bottom on a component.
@@ -369,23 +367,6 @@ Add the shared helper to the component template:
 ```erb
 shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 ```
-
-Call the shared helper to provide a margin bottom class:
-
-```erb
-classes << shared_helper.get_margin_bottom
-```
-
-The component will accept a number for `margin_bottom` from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of 15px (3). If you require a different default value, change the code as shown.
-
-```erb
-local_assigns[:margin_bottom] ||= 0 # this will be the default
-shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-```
-
-Tests should be added to the component to check that the default margin bottom is correct and that the expected given margin bottom is set. The shared helper has its own tests to check that it returns the correct values.
-
-See components that use the shared helper for further examples of usage, including the accordion, attachment, button, heading, radio, and others.
 
 ## Passing HTML to a component
 
