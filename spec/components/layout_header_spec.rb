@@ -102,12 +102,6 @@ describe "Layout header", type: :view do
     assert_select ".gem-c-header__nav .govuk-header__link[data-more-than-one-word='test']", text: "Bar"
   end
 
-  it "renders the header without the bottom border" do
-    render_component(remove_bottom_border: true, environment: "public")
-
-    assert_select ".gem-c-layout-header--no-bottom-border"
-  end
-
   it "renders without a search bar by default" do
     render_component({ environment: "" })
 
