@@ -4,6 +4,12 @@
 @import "govuk/components/header/header";
 @import "govuk/components/tag/tag";
 
+// Anticipated change that will impact the blue bar
+.govuk-header__container {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
 .gem-c-layout-header--production .govuk-header__container {
   border-bottom-color: govuk-colour("red");
 }
