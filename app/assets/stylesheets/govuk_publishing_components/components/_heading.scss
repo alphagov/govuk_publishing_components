@@ -5,11 +5,6 @@
   margin: 0;
 }
 
-.gem-c-heading--font-size-27 {
-  @include govuk-text-colour;
-  @include govuk-font(27, $weight: bold);
-}
-
 .gem-c-heading--padding {
   padding: govuk-spacing(3) 0;
 }

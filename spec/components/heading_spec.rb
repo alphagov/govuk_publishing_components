@@ -53,10 +53,10 @@ describe "Heading", type: :view do
 
   it "adds default font size if given no or an invalid value" do
     render_component(text: "font size not specified")
-    assert_select ".gem-c-heading h2.gem-c-heading--font-size-27"
+    assert_select ".gem-c-heading h2.govuk-heading-m"
 
     render_component(text: "font size 199", font_size: 199)
-    assert_select ".gem-c-heading h2.gem-c-heading--font-size-27"
+    assert_select ".gem-c-heading h2.govuk-heading-m"
   end
 
   it "has a specified id attribute" do

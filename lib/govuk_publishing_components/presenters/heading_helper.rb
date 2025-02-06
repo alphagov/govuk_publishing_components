@@ -17,7 +17,6 @@ module GovukPublishingComponents
     private
 
       def heading_size(option)
-        gem_class = "gem-c-heading--font-size-"
         govuk_class = "govuk-heading-"
 
         case option
@@ -30,7 +29,7 @@ module GovukPublishingComponents
         when 19, "s"
           "#{govuk_class}s"
         else
-          "#{gem_class}27"
+          "#{govuk_class}m"
         end
       end
     end
