@@ -5,7 +5,7 @@ describe "Component example", :capybara do
     visit "/component-guide/test_component"
 
     expect(body).to include("How to call this component")
-    expect(page).to have_content('<%= render "components/test_component", { } %>')
+    expect(page).to have_content('<%= render "components/test_component", {} %>')
   end
 
   it "includes the component partial" do

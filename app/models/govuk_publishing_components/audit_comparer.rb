@@ -182,7 +182,7 @@ module GovukPublishingComponents
       warnings = []
 
       locations.each do |location|
-        next if location[:location] == "template" || location[:location] == "ruby"
+        next if %w[template ruby].include?(location[:location])
 
         location[:components].each do |component|
           raise_warning = asset_already_in_static(location[:location], component)
@@ -196,14 +196,14 @@ module GovukPublishingComponents
     def warn_about_missing_assets(components)
       warnings = []
 
-      code = components.select { |c| c[:location] == "template" || c[:location] == "ruby" }
+      code = components.select { |c| %w[template ruby].include?(c[:location]) }
       code = [
         {
           location: "code",
           components: code.map { |c| c[:components] }.flatten.uniq.sort,
         },
       ]
-      assets = components.select { |c| c[:location] == "stylesheet" || c[:location] == "javascript" }
+      assets = components.select { |c| %w[stylesheet javascript].include?(c[:location]) }
 
       warnings << find_missing_items(code, assets)
       warnings << find_missing_items(assets, code)
