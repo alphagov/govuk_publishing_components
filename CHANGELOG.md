@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix spacing between govspeak headings and attachment ([PR #4618](https://github.com/alphagov/govuk_publishing_components/pull/4618))
+
 ## 51.2.0
 
 * Remove classes functionality from shared helper ([PR #4605](https://github.com/alphagov/govuk_publishing_components/pull/4605))
