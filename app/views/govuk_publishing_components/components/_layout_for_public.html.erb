@@ -4,12 +4,10 @@
   for_static ||= false
   emergency_banner ||= nil
   full_width ||= false
-  blue_bar ||= local_assigns.include?(:blue_bar) ? local_assigns[:blue_bar] : !full_width
   global_banner ||= nil
   html_lang ||= "en"
   homepage ||= false
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
-  blue_bar_background_colour = layout_helper.blue_bar_background_colours.include?(blue_bar_background_colour) ? blue_bar_background_colour : nil
   logo_link ||= "/"
   navigation_items ||= []
   one_login_navigation_items ||= {}
@@ -31,31 +29,9 @@
   omit_account_navigation ||= false
   omit_account_phase_banner ||= false
 
-# This is a hack - but it's the only way I can find to not have two blue bars on
-# constrained width layouts.
-#
-# The full width layout hides the blue bar underneath the black header bar - so
-# full width pages won't see the blue bar unless it's added by another component
-# - and for most pages that component is the global banner.
-#
-# The constrained width layout doesn't hide the blue bar - so having the global
-# banner on a constrained width layout means there are two blue bars.
-#
-# The global banner is shown with JavaScript, so users without JavaScript won't
-# see it. So the constrained width blue bar can't be turned off as then it'll be
-# off for everyone.
-#
-# This booleon adds a CSS class that shifts the banners up by the blue bar's
-# height, making the two blue bars overlap and appear as one. The class is added
-# when a) there's content for the emergency or global banner *and* b) when using
-# the contrained width layout.
-  blue_bar_dedupe = !full_width && global_banner.present?
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
   body_css_classes << "global-banner-present" if global_banner.present?
-
-  blue_bar_wrapper_classes = %w()
-  blue_bar_wrapper_classes << "gem-c-layout-for-public__blue-bar-wrapper--#{blue_bar_background_colour}" if blue_bar_background_colour
 -%>
 <!DOCTYPE html>
   <!--[if lt IE 9]><html class="lte-ie8 govuk-template" lang="<%= html_lang %>"><![endif]-->
@@ -133,16 +109,8 @@
 
     <%= raw(emergency_banner) %>
 
-    <% if (blue_bar && !global_banner.present? && !homepage) || (blue_bar_dedupe) %>
-      <%= content_tag(:div, class: blue_bar_wrapper_classes) do %>
-        <div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
-      <% end %>
-    <% end %>
-
     <% if global_banner.present? %>
-      <%= content_tag("div", {
-        class: blue_bar_dedupe ? "gem-c-layout-for-public__global-banner-wrapper" : nil,
-      }) do %>
+      <%= content_tag("div") do %>
         <%= raw(global_banner) %>
       <% end %>
     <% end %>
