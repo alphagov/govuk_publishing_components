@@ -162,7 +162,7 @@ GEM
       capybara (>= 3.36)
       puma
       selenium-webdriver (>= 4.0)
-    hashdiff (1.1.1)
+    hashdiff (1.1.2)
     highline (3.1.2)
       reline
     http-accept (1.7.0)
@@ -515,7 +515,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rexml (3.3.9)
+    rexml (3.4.0)
     rouge (4.5.1)
     rspec-core (3.13.2)
       rspec-support (~> 3.13.0)
@@ -601,7 +601,7 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
     useragent (0.16.11)
-    webmock (3.24.0)
+    webmock (3.25.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
