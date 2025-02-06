@@ -3,9 +3,6 @@
 @import "govuk_publishing_components/govuk_frontend_support";
 @import "govuk_publishing_components/component_support";
 
-// Include required helpers
-@import "../../stylesheets/govuk_publishing_components/components/helpers/markdown-typography";
-
 $gem-guide-border-width: 1px;
 
 .component-list {
@@ -231,10 +228,6 @@ $gem-guide-border-width: 1px;
       @include govuk-font($size: 16, $weight: bold);
     }
   }
-}
-
-.component-markdown {
-  @include markdown-typography;
 }
 
 // Preview Page Styling

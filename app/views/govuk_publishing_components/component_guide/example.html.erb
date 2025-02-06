@@ -20,9 +20,11 @@
 
 <div class="component-show">
   <div class="component-doc">
-    <div class="component-markdown">
+    <%= render "govuk_publishing_components/components/govspeak", {
+      } do %>
       <%= raw(@component_example.html_description) %>
-    </div>
+    <% end %>
+
     <h2 class="component-doc-h2">
       How it looks
       <small>(<a href="<%= component_preview_path(@component_doc.id, @component_example.id) %>" class="govuk-link">preview</a>)</small>

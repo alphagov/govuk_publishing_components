@@ -6,14 +6,15 @@
   }
 %>
 
-<div class="component-markdown">
+<%= render "govuk_publishing_components/components/govspeak", {
+  } do %>
   <p>Components are packages of template, style, behaviour and documentation that live in your application.</p>
   <p>See the <a href="https://github.com/alphagov/govuk_publishing_components">govuk_publishing_components gem</a> for further details, or <a href="https://docs.publishing.service.gov.uk/manual/components.html#component-guides">a list of all component guides</a>.</p>
   <ul>
     <li>Read about how to <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/publishing-to-rubygems.md">release a new version of the gem</a></li>
     <li><a href="/component-guide/audit">View component audits</a></li>
   </ul>
-</div>
+<% end %>
 
 <form role="search" data-module="filter-components" class="component-search">
   <%= render "govuk_publishing_components/components/search", {
@@ -94,6 +95,7 @@
   </ul>
 <% end %>
 
-<div class="component-markdown">
+<%= render "govuk_publishing_components/components/govspeak", {
+  } do %>
   <p class="govuk-body">If you cannot find a suitable component consider extending an existing component or <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/generate-a-new-component.md">creating a new one</a>.</p>
-</div>
+<% end %>

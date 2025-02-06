@@ -26,9 +26,10 @@
       <%= render 'govuk_publishing_components/components/lead_paragraph', text: @component_doc.description %>
       <% if @component_doc.body.present? %>
         <div class="component-body">
-          <div class="component-markdown">
+          <%= render "govuk_publishing_components/components/govspeak", {
+            } do %>
             <%= raw(@component_doc.html_body) %>
-          </div>
+          <% end %>
         </div>
       <% end %>
       <p class="govuk-body"><%= link_to "Search for usage of this component on GitHub", @component_doc.github_search_url, class: "govuk-link" %>.</p>
@@ -77,7 +78,8 @@
 
   <% if @component_doc.govuk_frontend_components.any? %>
     <h2 class="component-doc-h2" id="govuk-design-system">GOV.UK Design System</h2>
-    <div class="component-markdown">
+    <%= render "govuk_publishing_components/components/govspeak", {
+      } do %>
       <p>This component incorporates components from the <%= link_to "GOV.UK Design System", "https://design-system.service.gov.uk" %>:</p>
 
       <ul>
@@ -85,16 +87,17 @@
         <li><%= link_to component.humanize, "https://design-system.service.gov.uk/components/#{component}" %></li>
       <% end %>
       </ul>
-    </div>
+    <% end %>
   <% end %>
 
   <% if @component_doc.accessibility_criteria.present? %>
     <div class="govuk-grid-row component-accessibility-criteria" id="accessibility-acceptance-criteria">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="component-doc-h2">Accessibility acceptance criteria</h2>
-        <div class="component-markdown">
+        <%= render "govuk_publishing_components/components/govspeak", {
+          } do %>
           <%= raw(@component_doc.html_accessibility_criteria) %>
-        </div>
+        <% end %>
       </div>
     </div>
   <% end %>
@@ -106,9 +109,10 @@
       <% if @component_doc.uses_component_wrapper_helper? %>
         <div class="component-example" id="standard-options">
           <h3 class="example-title">Standard options</h3>
-          <div class="component-markdown">
+          <%= render "govuk_publishing_components/components/govspeak", {
+            } do %>
             <%= raw(@component_doc.html_component_wrapper_options) %>
-          </div>
+          <% end %>
         </div>
       <% end %>
 
@@ -118,9 +122,11 @@
             <a href="<%= component_example_path(@component_doc.id, example.id) %>" class="govuk-link"><%= example.name %></a>
             <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>" class="govuk-link">preview</a>)</small>
           </h3>
-          <div class="component-markdown">
+          <%= render "govuk_publishing_components/components/govspeak", {
+            } do %>
             <%= raw(example.html_description) %>
-          </div>
+          <% end %>
+
           <% code_example = capture do %>
             <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
           <% end %>
