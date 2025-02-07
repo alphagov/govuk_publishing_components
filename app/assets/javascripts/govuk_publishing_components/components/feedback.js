@@ -69,40 +69,35 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }.bind(this), 1000)
     }.bind(this))
 
-    // much of the JS needed to support sending the form contents via this script is
-    // unsupported by IE, even IE11. This check causes IE to not intercept form submits
-    // and let them happen normally, which is handled already by the backend
-    if (typeof window.URLSearchParams === 'function') {
-      for (var f = 0; f < this.forms.length; f++) {
-        this.forms[f].addEventListener('submit', function (e) {
-          e.preventDefault()
-          var $form = e.target
-          var xhr = new XMLHttpRequest()
-          var url = $form.getAttribute('action')
-          var params = new FormData($form)
-          params = new URLSearchParams(params).toString()
+    for (var f = 0; f < this.forms.length; f++) {
+      this.forms[f].addEventListener('submit', function (e) {
+        e.preventDefault()
+        var $form = e.target
+        var xhr = new XMLHttpRequest()
+        var url = $form.getAttribute('action')
+        var params = new FormData($form)
+        params = new URLSearchParams(params).toString()
 
-          this.done = function () {
-            if (xhr.status === 200) {
-              this.showFormSuccess(xhr.message)
-              this.revealInitialPrompt()
-              this.setInitialAriaAttributes()
-              this.activeForm.hidden = true
-              clearInterval(this.timerInterval)
-            } else {
-              this.showError(xhr)
-              this.enableSubmitFormButton($form)
-            }
-          }.bind(this)
+        this.done = function () {
+          if (xhr.status === 200) {
+            this.showFormSuccess(xhr.message)
+            this.revealInitialPrompt()
+            this.setInitialAriaAttributes()
+            this.activeForm.hidden = true
+            clearInterval(this.timerInterval)
+          } else {
+            this.showError(xhr)
+            this.enableSubmitFormButton($form)
+          }
+        }.bind(this)
 
-          xhr.addEventListener('loadend', this.done)
-          xhr.open('POST', url, true)
-          xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        xhr.addEventListener('loadend', this.done)
+        xhr.open('POST', url, true)
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
-          this.disableSubmitFormButton($form)
-          xhr.send(params)
-        }.bind(this))
-      }
+        this.disableSubmitFormButton($form)
+        xhr.send(params)
+      }.bind(this))
     }
   }
 

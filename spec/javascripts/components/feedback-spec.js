@@ -294,390 +294,386 @@ describe('Feedback component', function () {
     })
   })
 
-  // this check prevents these tests being run if in IE11 or below
-  // because the JS doesn't work for form submissions on IE
-  if (typeof window.URLSearchParams === 'function') {
-    describe('successfully submitting the "is there anything wrong with this page" form', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
-      })
+  describe('successfully submitting the "is there anything wrong with this page" form', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
+    })
 
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
-      })
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
+    })
 
-      // note that this test will fail if the jasmine:browser
-      // 'run tests in random order' is disabled or any link in
-      // the jasmine window is clicked e.g. a specific test
-      // suite because the referrer will be localhost, not 'unknown'
-      it('submits the feedback to the feedback frontend', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
+    // note that this test will fail if the jasmine:browser
+    // 'run tests in random order' is disabled or any link in
+    // the jasmine window is clicked e.g. a specific test
+    // suite because the referrer will be localhost, not 'unknown'
+    it('submits the feedback to the feedback frontend', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
 
-        var request = jasmine.Ajax.requests.mostRecent()
-        expect(request.url).toBe('/contact/govuk/problem_reports')
-        expect(request.method).toBe('POST')
-        expect(request.data()).toEqual({
-          url: ['http://example.com/path/to/page'],
-          what_doing: ['I was looking for some information about local government.'],
-          what_wrong: ['The background should be green.'],
-          referrer: ['unknown'],
-          javascript_enabled: ['true'],
-          timer: ['0'],
-          giraffe: ['']
-        })
-      })
-
-      it('displays a success message', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
-
-        var $success = $('.js-prompt-success')
-
-        expect(($success).prop('hidden')).toBe(false)
-        expect($success).toHaveText('Thank you for your feedback')
-      })
-
-      it('focusses the success message', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
-
-        expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
-      })
-
-      it('hides the form', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
-
-        expect($('#something-is-wrong').prop('hidden')).toBe(true)
-      })
-
-      it('hides the links to show the feedback form', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
-
-        expect($('.js-prompt-questions').prop('hidden')).toBe(true)
+      var request = jasmine.Ajax.requests.mostRecent()
+      expect(request.url).toBe('/contact/govuk/problem_reports')
+      expect(request.method).toBe('POST')
+      expect(request.data()).toEqual({
+        url: ['http://example.com/path/to/page'],
+        what_doing: ['I was looking for some information about local government.'],
+        what_wrong: ['The background should be green.'],
+        referrer: ['unknown'],
+        javascript_enabled: ['true'],
+        timer: ['0'],
+        giraffe: ['']
       })
     })
 
-    describe('successfully submitting the "page is not useful" form', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
+    it('displays a success message', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
       })
 
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
+      var $success = $('.js-prompt-success')
+
+      expect(($success).prop('hidden')).toBe(false)
+      expect($success).toHaveText('Thank you for your feedback')
+    })
+
+    it('focusses the success message', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
       })
 
-      it('displays a success message', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
+      expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
+    })
 
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
+    it('hides the form', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
 
-        var $prompt = $('.js-prompt-success')
-
-        expect(($prompt).prop('hidden')).toBe(false)
-        expect($prompt).toHaveText('Thank you for your feedback')
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
       })
 
-      it('focusses the success message', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
+      expect($('#something-is-wrong').prop('hidden')).toBe(true)
+    })
 
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
+    it('hides the links to show the feedback form', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
 
-        expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
       })
 
-      it('hides the form', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
+      expect($('.js-prompt-questions').prop('hidden')).toBe(true)
+    })
+  })
 
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
+  describe('successfully submitting the "page is not useful" form', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
+    })
 
-        expect($('.js-feedback-form').prop('hidden')).toBe(true)
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
+    })
+
+    it('displays a success message', function () {
+      loadFeedbackComponent()
+      fillAndSubmitPageIsNotUsefulForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
       })
 
-      it('hides the links to show the feedback form', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
+      var $prompt = $('.js-prompt-success')
 
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 200,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
+      expect(($prompt).prop('hidden')).toBe(false)
+      expect($prompt).toHaveText('Thank you for your feedback')
+    })
 
-        expect($('.js-prompt-questions').prop('hidden')).toBe(true)
+    it('focusses the success message', function () {
+      loadFeedbackComponent()
+      fillAndSubmitPageIsNotUsefulForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
+      })
+
+      expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
+    })
+
+    it('hides the form', function () {
+      loadFeedbackComponent()
+      fillAndSubmitPageIsNotUsefulForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
+      })
+
+      expect($('.js-feedback-form').prop('hidden')).toBe(true)
+    })
+
+    it('hides the links to show the feedback form', function () {
+      loadFeedbackComponent()
+      fillAndSubmitPageIsNotUsefulForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 200,
+        contentType: 'application/json',
+        responseText: '{}'
+      })
+
+      expect($('.js-prompt-questions').prop('hidden')).toBe(true)
+    })
+  })
+
+  describe('submitting the "is something wrong with this page" form with invalid data', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
+    })
+
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
+    })
+
+    it('disables the submit button until the server responds', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+
+      expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
+      })
+
+      expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
+    })
+
+    it('retains the feedback the user originally entered', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
+      })
+
+      expect($('[name=what_doing]').val()).toEqual('I was looking for some information about local government.')
+      expect($('[name=what_wrong]').val()).toEqual('The background should be green.')
+    })
+
+    it('displays a generic error if the field isn\'t a visible part of the form', function () {
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
+      })
+
+      expect($('#something-is-wrong .js-errors').html()).toContainText(
+        'Sorry, we’re unable to receive your message right now. ' +
+        'If the problem persists, we have other ways for you to provide ' +
+        'feedback on the contact page.'
+      )
+    })
+
+    it('focusses the error message', function () {
+      loadFeedbackComponent()
+      var $input = $('#something-is-wrong .js-errors')[0]
+      spyOn($input, 'focus')
+      fillAndSubmitSomethingIsWrongForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{}'
+      })
+
+      expect($input.focus).toHaveBeenCalled()
+    })
+  })
+
+  describe('Submitting the "page is not useful" form with invalid data', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
+    })
+
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
+    })
+
+    it('disables the submit button until the server responds', function () {
+      loadFeedbackComponent()
+      fillAndSubmitPageIsNotUsefulForm()
+
+      expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
+      })
+
+      expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
+    })
+
+    it('retains the feedback the user originally entered', function () {
+      loadFeedbackComponent()
+      fillAndSubmitPageIsNotUsefulForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
+      })
+
+      expect($("[name='email_survey_signup[email_address]']").val()).toEqual('test@test.com')
+    })
+
+    it('displays a generic error if the field isn\'t a visible part of the form', function () {
+      loadFeedbackComponent()
+      fillAndSubmitPageIsNotUsefulForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
+      })
+
+      expect($('#page-is-not-useful .js-errors').html()).toContainText(
+        'Sorry, we’re unable to receive your message right now. ' +
+        'If the problem persists, we have other ways for you to provide ' +
+        'feedback on the contact page.'
+      )
+    })
+
+    it('focusses the generic error', function () {
+      loadFeedbackComponent()
+      var $input = $('#page-is-not-useful .js-errors')[0]
+      spyOn($input, 'focus')
+      fillAndSubmitPageIsNotUsefulForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"errors": {"path": ["can\'t be blank"], "description": ["can\'t be blank"]}}'
+      })
+
+      expect($input.focus).toHaveBeenCalled()
+    })
+  })
+
+  describe('submitting a form that fails because email_survey_signup[survey_source] is missing', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
+
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"message":"email survey sign up failure","errors":{"survey_source":["can\'t be blank"]}}'
       })
     })
 
-    describe('submitting the "is something wrong with this page" form with invalid data', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
-      })
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
+    })
 
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
-      })
+    it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
+      expect($('.gem-c-feedback__error-summary').html()).toContainText(
+        'Sorry, we’re unable to receive your message right now. ' +
+        'If the problem persists, we have other ways for you to provide ' +
+        'feedback on the contact page.'
+      )
+      expect($('.gem-c-feedback__error-summary').html()).not.toContainText('email survey sign up failure')
+    })
+  })
 
-      it('disables the submit button until the server responds', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
+  describe('submitting a form that fails for some reason', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
 
-        expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
 
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-        })
-
-        expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
-      })
-
-      it('retains the feedback the user originally entered', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-        })
-
-        expect($('[name=what_doing]').val()).toEqual('I was looking for some information about local government.')
-        expect($('[name=what_wrong]').val()).toEqual('The background should be green.')
-      })
-
-      it('displays a generic error if the field isn\'t a visible part of the form', function () {
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
-        })
-
-        expect($('#something-is-wrong .js-errors').html()).toContainText(
-          'Sorry, we’re unable to receive your message right now. ' +
-          'If the problem persists, we have other ways for you to provide ' +
-          'feedback on the contact page.'
-        )
-      })
-
-      it('focusses the error message', function () {
-        loadFeedbackComponent()
-        var $input = $('#something-is-wrong .js-errors')[0]
-        spyOn($input, 'focus')
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{}'
-        })
-
-        expect($input.focus).toHaveBeenCalled()
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 500,
+        contentType: 'text/plain',
+        responseText: ''
       })
     })
 
-    describe('Submitting the "page is not useful" form with invalid data', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
-      })
-
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
-      })
-
-      it('disables the submit button until the server responds', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
-
-        expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-        })
-
-        expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
-      })
-
-      it('retains the feedback the user originally entered', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-        })
-
-        expect($("[name='email_survey_signup[email_address]']").val()).toEqual('test@test.com')
-      })
-
-      it('displays a generic error if the field isn\'t a visible part of the form', function () {
-        loadFeedbackComponent()
-        fillAndSubmitPageIsNotUsefulForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
-        })
-
-        expect($('#page-is-not-useful .js-errors').html()).toContainText(
-          'Sorry, we’re unable to receive your message right now. ' +
-          'If the problem persists, we have other ways for you to provide ' +
-          'feedback on the contact page.'
-        )
-      })
-
-      it('focusses the generic error', function () {
-        loadFeedbackComponent()
-        var $input = $('#page-is-not-useful .js-errors')[0]
-        spyOn($input, 'focus')
-        fillAndSubmitPageIsNotUsefulForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"errors": {"path": ["can\'t be blank"], "description": ["can\'t be blank"]}}'
-        })
-
-        expect($input.focus).toHaveBeenCalled()
-      })
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
     })
 
-    describe('submitting a form that fails because email_survey_signup[survey_source] is missing', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
-
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 422,
-          contentType: 'application/json',
-          responseText: '{"message":"email survey sign up failure","errors":{"survey_source":["can\'t be blank"]}}'
-        })
-      })
-
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
-      })
-
-      it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
-        expect($('.gem-c-feedback__error-summary').html()).toContainText(
-          'Sorry, we’re unable to receive your message right now. ' +
-          'If the problem persists, we have other ways for you to provide ' +
-          'feedback on the contact page.'
-        )
-        expect($('.gem-c-feedback__error-summary').html()).not.toContainText('email survey sign up failure')
-      })
+    it('displays a generic error message', function () {
+      expect($('.gem-c-feedback__error-summary').html()).toContainText(
+        'Sorry, we’re unable to receive your message right now. ' +
+        'If the problem persists, we have other ways for you to provide ' +
+        'feedback on the contact page.'
+      )
     })
 
-    describe('submitting a form that fails for some reason', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
-
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-
-        jasmine.Ajax.requests.mostRecent().respondWith({
-          status: 500,
-          contentType: 'text/plain',
-          responseText: ''
-        })
-      })
-
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
-      })
-
-      it('displays a generic error message', function () {
-        expect($('.gem-c-feedback__error-summary').html()).toContainText(
-          'Sorry, we’re unable to receive your message right now. ' +
-          'If the problem persists, we have other ways for you to provide ' +
-          'feedback on the contact page.'
-        )
-      })
-
-      it('retains the feedback the user originally entered', function () {
-        expect($('[name=what_doing]').val()).toEqual('I was looking for some information about local government.')
-        expect($('[name=what_wrong]').val()).toEqual('The background should be green.')
-      })
-
-      it('re-enables the submit button', function () {
-        expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
-      })
+    it('retains the feedback the user originally entered', function () {
+      expect($('[name=what_doing]').val()).toEqual('I was looking for some information about local government.')
+      expect($('[name=what_wrong]').val()).toEqual('The background should be green.')
     })
 
-    describe('submitting a form that times out', function () {
-      beforeEach(function () {
-        jasmine.Ajax.install()
-        jasmine.clock().install()
-
-        loadFeedbackComponent()
-        fillAndSubmitSomethingIsWrongForm()
-        jasmine.Ajax.requests.mostRecent().responseTimeout()
-      })
-
-      afterEach(function () {
-        jasmine.Ajax.uninstall()
-        jasmine.clock().uninstall()
-      })
-
-      it('displays a generic error message', function () {
-        expect($('.gem-c-feedback__error-summary').html()).toContainText(
-          'Sorry, we’re unable to receive your message right now. ' +
-          'If the problem persists, we have other ways for you to provide ' +
-          'feedback on the contact page.'
-        )
-      })
+    it('re-enables the submit button', function () {
+      expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
     })
-  }
+  })
+
+  describe('submitting a form that times out', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
+      jasmine.clock().install()
+
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+      jasmine.Ajax.requests.mostRecent().responseTimeout()
+    })
+
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
+      jasmine.clock().uninstall()
+    })
+
+    it('displays a generic error message', function () {
+      expect($('.gem-c-feedback__error-summary').html()).toContainText(
+        'Sorry, we’re unable to receive your message right now. ' +
+        'If the problem persists, we have other ways for you to provide ' +
+        'feedback on the contact page.'
+      )
+    })
+  })
 
   describe('testing honeypot metadata on the "report a problem" form', function () {
     beforeEach(function () {
