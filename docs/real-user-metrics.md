@@ -87,13 +87,18 @@ The script is written in TypeScript so you will first need to `npm install` and 
 
 ### Updating
 
-Update `lux-reporter.js` by copying `dist/lux.js` from the SpeedCurve github repo. This is a case of copying and pasting, reformatting, and updating to include the variables mentioned earlier. Try to format the file so that indenting differences don't make reviewing difficult.
+To update `lux-reporter.js`, you'll need to clone [the lux.js source code](https://github.com/SpeedCurve-Metrics/lux.js) to your local machine. Run `npm install` and `npm run build` in that repo to create a `dist/lux.js` file.
+
+You can also build the version of `lux.js` that's currently on GOV.UK by using the source code on their [releases page](https://github.com/SpeedCurve-Metrics/lux.js/releases/). You can then use this to run a diff check of our version against the new version. If the changes are small enough, you could decide to just manually copy and paste the changed lines to our `lux-reporter.js` file as a simple way to update LUX.
+
+If the changes between versions are large enough, you can copy and paste all the code in the new version of `lux.js` into our `lux-reporter.js`. You will then need to update the code to include the variables mentioned below. Try to format the file as well, so that indenting differences don't make reviewing difficult.
 
 Instructions for how to update are in our copy of the file. In summary:
 
-- `customerid` and `samplerate` are the things we need to set (copy them from the current version)
-- `customerid` has to be inside the `LUX = (function () {` declaration
+- `LUX.customerid` and `LUX.samplerate` are the things we need to set (copy them from the current version)
+- `LUX.customerid` has to be inside the `LUX = (function () {` declaration
 - update the `getCustomerId` function to simply return the customerid, see [this PR for related information](https://github.com/alphagov/govuk_publishing_components/pull/3592)
+- Preserve the comments we have written - there's one at the top of our file, and one next to the `LUX = (function () {` declaration
 
 ### Testing
 
