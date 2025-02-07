@@ -5,6 +5,10 @@
 @import "govuk/components/tag/tag";
 
 // Anticipated change that will impact the blue bar
+.govuk-header {
+  border-bottom: none;
+}
+
 .govuk-header__container {
   border-bottom: none;
   margin-bottom: 0;
