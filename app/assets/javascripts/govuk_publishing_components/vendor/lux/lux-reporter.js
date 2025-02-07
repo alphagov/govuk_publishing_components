@@ -336,7 +336,7 @@
     return str;
   }
 
-  var VERSION = "4.0.29";
+  var VERSION = "4.0.30";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -623,6 +623,10 @@
   var MAX_SELECTOR_LENGTH = 100;
   function getNodeSelector(node, selector) {
     if (selector === void 0) { selector = ""; }
+    return _getNodeSelector(node, selector).slice(0, MAX_SELECTOR_LENGTH);
+  }
+  function _getNodeSelector(node, selector) {
+    if (selector === void 0) { selector = ""; }
     try {
       if (selector &&
         (node.nodeType === 9 || selector.length > MAX_SELECTOR_LENGTH || !node.parentNode)) {
@@ -668,6 +672,7 @@
   var sessionAttributions = [];
   var largestEntry;
   var maximumSessionValue = 0;
+  var MAX_CLS_SOURCES = 50;
   function processEntry$2(entry) {
     if (!entry.hadRecentInput) {
       var firstEntry = sessionEntries[0];
@@ -717,7 +722,7 @@
         startTime: processTimeMetric(largestEntry.startTime),
       }
       : null,
-      sources: sessionAttributions.length ? sessionAttributions : null,
+      sources: sessionAttributions.length ? sessionAttributions.slice(0, MAX_CLS_SOURCES) : null,
     };
   }
 
