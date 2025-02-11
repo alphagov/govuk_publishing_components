@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 51.2.1
 
 * Fix spacing between govspeak headings and attachment ([PR #4618](https://github.com/alphagov/govuk_publishing_components/pull/4618))
 * Update LUX to v4.0.30 ([PR #4621](https://github.com/alphagov/govuk_publishing_components/pull/4621))
