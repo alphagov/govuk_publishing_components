@@ -9,22 +9,13 @@
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
-  // This block is duplicated from Whitehall as a transitional step, see the
-  // commit message for 2d893c10ee3f2cab27162b9aba38b12379a71d07 before making
-  // changes, original version:
-  // https://github.com/alphagov/whitehall/blob/main/app/assets/stylesheets/frontend/helpers/_attachment.scss
   $thumbnail-width: 99px;
 
   .attachment {
     position: relative;
-    margin: govuk-spacing(6) 0;
-    padding: govuk-spacing(3) 0 0 ($thumbnail-width + govuk-spacing(6));
+    margin: 0 0 govuk-spacing(6) 0;
+    padding: 0 0 0 ($thumbnail-width + govuk-spacing(6));
     @include govuk-clearfix;
-
-    &:first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
 
     @include govuk-media-query($media-type: print) {
       padding-left: 0;
@@ -59,12 +50,12 @@
 
     .attachment-details {
       h2 {
-        margin: 0;
+        margin: 0 0 govuk-spacing(2) 0;
         @include govuk-font($size: 27);
       }
 
       p {
-        margin: govuk-spacing(2) 0;
+        margin: 0 0 govuk-spacing(2) 0;
       }
 
       .metadata {
