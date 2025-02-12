@@ -9,7 +9,6 @@ spec/dummy/app/assets/builds/*
 doc
 .yardoc
 tmp/failures.txt
-node_modules
 yarn-error.log
 coverage
 .DS_Store
