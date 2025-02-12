@@ -14,8 +14,8 @@
     $icon-size: 35px;
     $icon-spacing: 10px;
 
-    margin: 2em 0;
-    padding-left: calc($icon-size + $icon-spacing);
+    padding: govuk-spacing(3) 0 0 calc($icon-size + $icon-spacing);
+    margin: 0 0 govuk-spacing(6) 0;
     position: relative;
 
     &::before {
@@ -26,13 +26,6 @@
 
     p {
       @include govuk-font($size: 19, $weight: bold);
-    }
-  }
-
-  // Prevent excessive spacing when placed in a call-to-action block
-  .call-to-action {
-    .help-notice:first-child {
-      margin-top: 0;
     }
   }
 }
