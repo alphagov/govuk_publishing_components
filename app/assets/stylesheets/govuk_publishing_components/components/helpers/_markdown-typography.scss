@@ -1,22 +1,23 @@
 @mixin markdown-typography {
   @include govuk-text-colour;
-
   @include govuk-font($size: 16);
 
   ol,
   ul,
   p {
-    margin-top: govuk-spacing(3);
-    margin-bottom: govuk-spacing(3);
+    margin: 0 0 govuk-spacing(4) 0;
     @include govuk-font($size: 19);
-
-    @include govuk-media-query($from: tablet) {
-      margin-top: govuk-spacing(4);
-      margin-bottom: govuk-spacing(4);
-    }
   }
 
   // Headings
+
+  // put some spacing between any element followed by a heading
+  // has to be padding on the heading otherwise margins would overlap
+
+  * + h2,
+  * + h3 {
+    padding-top: govuk-spacing(4);
+  }
 
   // Markdown is expected to be styled within a document with a H1 title
   // thus H1's are not expected and are discouraged by bare styling
@@ -28,18 +29,12 @@
   }
 
   h2 {
-    margin-top: govuk-spacing(6);
-    margin-bottom: govuk-spacing(4);
+    margin: 0 0 govuk-spacing(4) 0;
     @include govuk-font($size: 27, $weight: bold);
-
-    @include govuk-media-query($from: desktop) {
-      margin-top: govuk-spacing(6) * 1.5;
-    }
   }
 
   h3 {
-    margin-top: govuk-spacing(6) + 5px;
-    margin-bottom: 0;
+    margin: 0 0 govuk-spacing(4) 0;
     @include govuk-font($size: 19, $weight: bold);
   }
 
@@ -48,25 +43,8 @@
   h4,
   h5,
   h6 {
-    margin-top: govuk-spacing(6) + 5px;
-    margin-bottom: 0;
-    @include govuk-font($size: 19, $weight: bold);
-
-    + p {
-      margin-top: 5px;
-    }
-  }
-
-  h5,
-  h6 {
     margin: 0;
-  }
-
-  h2:first-child,
-  h3:first-child,
-  h4:first-child,
-  p:first-child {
-    margin-top: 0;
+    @include govuk-font($size: 19, $weight: bold);
   }
 
   // Links
@@ -89,15 +67,8 @@
     // utilise the type attribute for the formatting. Browsers default to a
     // style of decimal.
     list-style-position: outside;
-    margin-left: govuk-spacing(4);
+    margin: 0 0 govuk-spacing(4) govuk-spacing(4);
     padding: 0;
-
-    ul,
-    ol {
-      margin-top: 0;
-      margin-bottom: 0;
-      padding: 0;
-    }
   }
 
   ul {
@@ -105,22 +76,11 @@
   }
 
   li {
-    margin: 0 0 5px;
+    margin: 0 0 govuk-spacing(2);
     padding: 0;
 
     p {
-      margin: 0;
-      padding: 0;
-    }
-
-    p + p,
-    p + ul,
-    p + ol,
-    ul + p,
-    ul + ol,
-    ol + p,
-    ol + ul {
-      margin-top: 5px;
+      margin: 0 0 govuk-spacing(2);
     }
   }
 
