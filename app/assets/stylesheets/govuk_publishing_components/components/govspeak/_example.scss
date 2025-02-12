@@ -9,15 +9,8 @@
 .gem-c-govspeak {
   .example {
     border-left: 10px solid govuk-colour("mid-grey");
-    padding: 1em 0 1em 1em;
-    margin: 2em 0;
-
-    // Remove margin from the last element
-    p:last-child,
-    ul:last-child,
-    ol:last-child {
-      margin-bottom: 0;
-    }
+    padding: govuk-spacing(4) 0 0.1234px govuk-spacing(4); // non-zero padding on bottom keeps margin of last element inside parent, simulating padding
+    margin: 0 0 govuk-spacing(4) 0;
 
     strong {
       display: block;
