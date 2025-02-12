@@ -21,7 +21,7 @@ accessibility_excluded_rules:
   - landmark-complementary-is-top-level # Statistic headlines are generating an aside element which can not be a top level in the examples
 uses_component_wrapper_helper: true
 examples:
-  basic_content:
+  default:
     data:
       block: |
         <h2>This is a title</h2>
@@ -123,7 +123,7 @@ examples:
               First line of address
               <br>Second line of address
               <br>75 This street
-              <br>United Kindom
+              <br>United Kingdom
               <br>Phone: 07123456789
               <br>
             </p>
@@ -190,386 +190,6 @@ examples:
             </li>
           </ol>
         </div>
-  heading_levels:
-    data:
-      block: |
-        <h2>This is a h2 title</h2>
-        <h3>This is a h3 title</h3>
-        <h4>This is a h4 title</h4>
-        <h5>This is a h5 title</h5>
-        <h6>This is a h6 title</h6>
-  lists:
-    data:
-      block: |
-        <h2>ordered list:</h2>
-        <ol>
-          <li>one</li>
-          <li>two</li>
-          <li>three</li>
-        </ol>
-        <h2>unordered list:</h2>
-        <ul>
-          <li>one</li>
-          <li>two</li>
-          <li>three</li>
-        </ul>
-  nested_lists:
-    data:
-      block: |
-        <h2>ordered list:</h2>
-        <ol>
-          <li>
-            <ul>
-              <li>one</li>
-              <li>two</li>
-            </ul>
-          </li>
-          <li>three</li>
-        </ol>
-        <h2>unordered list:</h2>
-        <ul>
-          <li>
-            <ul>
-              <li>one</li>
-              <li>two</li>
-            </ul>
-          </li>
-          <li>three</li>
-        </ul>
-  ordered_lists_types:
-    description: |
-      Govspeak/markdown does not generate HTML with type and start attributes,
-      however we still provide support for them as some advanced users write
-      HTML directly to achieve the list formatting.
-    data:
-      block: |
-        <h2>Lowercase alphabetical list</h2>
-        <ol type="a">
-          <li>one</li>
-          <li>two</li>
-        </ol>
-
-        <h2>Uppercase alphabetical list</h2>
-        <ol type="A">
-          <li>one</li>
-          <li>two</li>
-        </ol>
-
-        <h2>Lowercase Roman numeral list</h2>
-        <ol type="i">
-          <li>one</li>
-          <li>two</li>
-        </ol>
-
-        <h2>Uppercase Roman numberal list</h2>
-        <ol type="I">
-          <li>one</li>
-          <li>two</li>
-        </ol>
-
-        <h2>Numerical list starting at 3</h2>
-        <ol start="3">
-          <li>three</li>
-          <li>four</li>
-        </ol>
-
-        <h2>Lowercase alphabetical list, starting at 3</h2>
-        <ol type="a" start="3">
-          <li>three</li>
-          <li>four</li>
-        </ol>
-
-  legislative_lists:
-    data:
-      block: |
-        <h2>ordered list:</h2>
-        <ol class="legislative-list">
-          <li>one</li>
-          <li>two</li>
-          <li>three</li>
-        </ol>
-  image_fractions:
-    data:
-      block: |
-        <h3 id="number---fractions-1">Number - fractions</h3>
-
-        <p>Pupils should be taught to:</p>
-
-        <ul>
-        <li>recognise, find, name and write fractions <span class="fraction">
-          <img alt="1/3" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_3-9003d7f3d7cd4433647a5f6525aa7eda.png"></span>
-        , <span class="fraction">
-          <img alt="1/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_4-b6128849c8da3b46b9cb5a6918cfe084.png"></span>
-        , <span class="fraction">
-          <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
-         and <span class="fraction">
-          <img alt="3/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/3_4-cded12d0389211f864dcb27e640c64d4.png"></span>
-         of a length, shape, set of objects or quantity</li>
-          <li>write simple fractions, for example <span class="fraction">
-          <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
-         of 6 = 3 and recognise the equivalence of <span class="fraction">
-          <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
-        and <span class="fraction">
-          <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
-        </li>
-        </ul>
-        <div class="call-to-action">
-          <h4>Notes and guidance (non-statutory)</h4>
-
-          <p>Pupils use fractions as ‘fractions of’ discrete and continuous quantities by solving problems using shapes, objects and quantities. They connect unit fractions to equal sharing and grouping, to numbers when they can be calculated, and to measures, finding fractions of lengths, quantities, sets of objects or shapes. They meet <span class="fraction">
-            <img alt="3/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/3_4-cded12d0389211f864dcb27e640c64d4.png"></span>
-           as the first example of a non-unit fraction.<br><br>
-          Pupils should count in fractions up to 10, starting from any number and using the <span class="fraction">
-              <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
-           and <span class="fraction">
-              <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
-            equivalence on the number line (for example, 1<span class="fraction">
-              <img alt="1/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_4-b6128849c8da3b46b9cb5a6918cfe084.png"></span>
-          , 1<span class="fraction">
-              <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
-           (or 1<span class="fraction">
-              <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
-          ), 1<span class="fraction">
-              <img alt="3/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/3_4-cded12d0389211f864dcb27e640c64d4.png"></span>
-          , 2). This reinforces the concept of fractions as numbers and that they can add up to more than 1.
-          </p>
-        </div>
-  text_fractions:
-    data:
-      block: |
-        <p>If an image is not available for a particular fraction, then we'll fallback to text based fraction using <code>sup</code>/<code>sub</code>, like this <span class="fraction"><sup>1</sup>&frasl;<sub>100</sub></span> example.</p>
-  blockquote:
-    data:
-      block: |
-        <blockquote>
-          <p>My quote</p>
-          <p class="last-child">about things</p>
-        </blockquote>
-  tables:
-    data:
-      block: |
-        <table>
-          <caption>A table with data</caption>
-          <thead>
-            <tr>
-              <th>Group</th>
-              <th>Explanation</th>
-              <th>Current and continuing guidance</th>
-              <th>Government support</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Clinically extremely vulnerable people (all people in this cohort will have received communication from the NHS)</th>
-              <td>People defined on medical grounds a clinically extremely vulnerable, meaning they are at the greatest risk of severe illness. This group includes solid organ transplant recipients, people receiving chemotherapy, renal dialysis patients and others.</td>
-              <td>Follow shielding guidance by staying at home at all times and avoiding all non-essential face-to-face contact. This guidance is in place until end June.</td>
-              <td>Support available from the National Shielding Programme, which includes food supplies (through food boxes and priority supermarket deliveries), pharmacy deliveries and care. Support is available via the NHS Volunteer Responders app.</td>
-            </tr>
-            <tr>
-              <th>Clinically vulnerable people</th>
-              <td>People considered to be at higher risk of severe illness from COVID-19. Clinically vulnerable people include the following: people aged 70 or older, people with liver disease, people with diabetes, pregnant women and others.</td>
-              <td>Stay at home as much as possible. If you do go out, take particular care to minimise contact with others outside your household.</td>
-              <td>Range of support available while measures in place, including by local authorities and through voluntary and community groups. Support is available via the NHS Volunteer Responders app.</td>
-            </tr>
-            <tr>
-              <th>Vulnerable people (non-clinical)</th>
-              <td>There are a range of people who can be classified as ‘vulnerable’ due to non-clinical factors, such as children at risk of violence or with special education needs, victims of domestic abuse, rough sleepers and others.</td>
-              <td>People in this group will need to follow general guidance except where they are also clinically vulnerable or clinically extremely vulnerable, where they should follow guidance as set out above.</td>
-              <td>For those who need it, a range of support and guidance across public services and the benefits system, including by central and local government and the voluntary and community sector.</td>
-            </tr>
-          </tbody>
-        </table>
-  tables_with_alignments:
-    data:
-      block: |
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Default aligned</th>
-              <th class="cell-text-left" scope="col">Left aligned</th>
-              <th class="cell-text-center" scope="col">Center aligned</th>
-              <th class="cell-text-right" scope="col">Right aligned</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>First body part</td>
-              <td class="cell-text-left">Second cell</td>
-              <td class="cell-text-center">Third cell</td>
-              <td class="cell-text-right">fourth cell</td>
-            </tr>
-          </tbody>
-        </table>
-  charts:
-    description: |
-      The Government Statistical Service (GSS) guidance recommends [a limit of four categories as best practice for basic data visualisations](https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5).
-
-      Note that charts which have up to 7 categories, [chart with colours](http://govuk-publishing-components.dev.gov.uk/component-guide/govspeak/chart_with_colours/preview), for example, will display subsequent bars in `#3d3d3d`, `#a285d1` and the 7th bar in the default colour of `#0b0c0c` and will still meet the colour contrast requirements for adjacent colours.
-      Charts that have 8 or more categories will display additional bars in the default colour and will not meet colour contrast requirements for adjacent colours.
-    data:
-      block: |
-        <table class='js-barchart-table mc-auto-outdent'>
-          <caption>A table with numerical data</caption>
-          <tbody>
-            <tr>
-              <td>row 1</td><td>10</td>
-            </tr>
-            <tr>
-              <td>row 2</td><td>15</td>
-            </tr>
-            <tr>
-              <td>row 3</td><td>2</td>
-            </tr>
-            <tr>
-              <td>row 4</td><td>48</td>
-            </tr>
-          </tbody>
-        </table>
-  chart_with_colours:
-    data:
-      block: |
-        <table class="js-barchart-table mc-auto-outdent">
-          <thead>
-            <tr>
-              <th scope="col">Number position</th>
-              <th scope="col">Apples</th>
-              <th scope="col">Oranges</th>
-              <th scope="col">Bananas</th>
-              <th scope="col">Pears</th>
-              <th scope="col">Grapes</th>
-              <th scope="col">Strawberries</th>
-              <th scope="col">Plums</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Numbers inside bar</td>
-              <td>16</td>
-              <td>48</td>
-              <td>39</td>
-              <td>50</td>
-              <td>24</td>
-              <td>10</td>
-              <td>62</td>
-            </tr>
-            <tr>
-              <td>Numbers outside bar</td>
-              <td>2</td>
-              <td>1</td>
-              <td>2</td>
-              <td>1</td>
-              <td>1</td>
-              <td>2</td>
-              <td>1</td>
-            </tr>
-          </tbody>
-        </table>
-  stacked_chart:
-    data:
-      block: |
-        <table class="js-barchart-table mc-stacked mc-auto-outdent">
-          <thead>
-            <tr>
-              <th scope="col">Colours</th>
-              <th scope="col">Fruits</th>
-              <th scope="col">Vegetables</th>
-              <th scope="col">Beans</th>
-              <th scope="col">Nuts</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Red</td>
-              <td>23</td>
-              <td>9</td>
-              <td>2</td>
-              <td>1</td>
-              <td>35</td>
-            </tr>
-            <tr>
-              <td>Green</td>
-              <td>5</td>
-              <td>33</td>
-              <td>8</td>
-              <td>0</td>
-              <td>46</td>
-            </tr>
-            <tr>
-              <td>Yellow</td>
-              <td>2</td>
-              <td>10</td>
-              <td>0</td>
-              <td>15</td>
-              <td>27</td>
-            </tr>
-          </tbody>
-        </table>
-  chart_with_multiple_headings:
-    data:
-      block: |
-        <table id="multiple-table-chart" class="js-barchart-table mc-multiple">
-          <caption>Multiple Table</caption>
-          <thead>
-            <tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>
-          </thead>
-          <tbody>
-            <tr><th>Testing One</th><td>5</td><td>6</td><td>11</td></tr>
-            <tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>
-            <tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>
-          </tbody>
-        </table>
-  address:
-    data:
-      block: |
-        <div class="address">
-          <div class="adr org fn">
-            <p>
-              First line of address
-              <br>Second line of address
-              <br>75 This street
-              <br>United Kindom
-              <br>Phone: 07123456789
-              <br>
-            </p>
-          </div>
-        </div>
-        <p>Addresses are generated when using the `$A` markdown pattern.</p>
-  contact:
-    data:
-      block: |
-        <div class="contact" id="contact_1017">
-          <div class="content">
-            <div class="vcard contact-inner">
-              <p>Media enquiries</p>
-              <p class="adr">
-                <span class="street-address">2 Marsham Street<br>London</span><br>
-                <span class="postal-code">SW1P 4DF</span>
-              </p>
-              <div class="email-url-number">
-                <p class="tel"><span class="type">Press enquiries</span> 020 7XXX XXXX</p>
-                <p class="tel"><span class="type">Out of hours</span> 020 7XXX XXXX</p>
-              </div>
-              <p class="comments">A comment about the contact</p>
-            </div>
-          </div>
-        </div>
-  footnotes:
-    data:
-      block: |
-        <p>This is a text with a footnote<sup id="fnref:1a"><a href="#fn:1a" class="footnote">1</a></sup>.</p>
-
-        <div class="footnotes">
-          <ol>
-            <li id="fn:1a">
-              <p>And here is the definition. <a href="#fnref:1a" class="reversefootnote">&#8617;</a></p>
-            </li>
-            <li id="fn:2">
-              <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales" class="govuk-link">https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales</a>
-              <a href="#fnref:2" class="govuk-link">↩</a>
-            </li>
-          </ol>
-        </div>
   rtl_block:
     data:
       direction: rtl
@@ -613,107 +233,22 @@ examples:
             </tr>
           </tbody>
         </table>
-  with_youtube_embed:
+  address:
     data:
       block: |
-        <p>This content has a YouTube video link, converted to an accessible embedded player by component JavaScript.</p>
-        <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
-  with_youtube_livestream:
-    data:
-      block: |
-        <p>This content has a YouTube livestream link, converted to an accessible embedded player by component JavaScript.</p>
-        <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream video</a></p>
-  with_youtube_embed_disabled:
-    data:
-      disable_youtube_expansions: true
-      block: |
-        <p>This content has a YouTube video link, where the govspeak expansion has been disabled</p>
-        <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
-  statistic_headlines:
-    data:
-      block: |
-        <div class="stat-headline">
-          <p><em>£6bn</em>
-          Total Departmental Expenditure Limit (<abbr title="Departmental Expenditure Limit">DEL</abbr>) in financial year 2015 to 2016</p>
+        <div class="address">
+          <div class="adr org fn">
+            <p>
+              First line of address
+              <br>Second line of address
+              <br>75 This street
+              <br>United Kingdom
+              <br>Phone: 07123456789
+              <br>
+            </p>
+          </div>
         </div>
-        <p>This includes £5.8 billion Resource <abbr title="Departmental Expenditure Limit">DEL</abbr> and £0.2 billion Capital <abbr title="Departmental Expenditure Limit">DEL</abbr>. In addition, <abbr title="Department for Work and Pensions">DWP</abbr> Annually Managed Expenditure (<abbr title="Annually Managed Expenditure">AME</abbr>) in financial year 2015 to 2016 is £170.5 billion, as forecast by the Office for Budget Responsibility.</p>
-        <div class="stat-headline">
-          <p>UK employment rate
-          <em>74.1%</em>
-          between October and December 2015</p>
-        </div>
-  specialist_content:
-    data:
-      block: |
-        <h2 id="bisphosphonates">Bisphosphonates</h2>
-        <p>Bisphosphonates are used to treat osteoporosis, Paget’s disease, and as part of some cancer regimens, particularly for metastatic bone cancer and multiple myeloma. Individual bisphosphonates have different indications (see individual Summaries of Product Characteristics<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>). The following bisphosphonates are available in the UK:</p>
-
-        <ul>
-          <li>Alendronic acid</li>
-          <li>Ibandronic acid</li>
-          <li>Pamidronate disodium</li>
-          <li>Risedronate sodium</li>
-          <li>Sodium clodronate</li>
-          <li>Zoledronic acid</li>
-        </ul>
-
-        <h2 id="osteonecrosis-of-the-external-auditory-canal">Osteonecrosis of the external auditory canal</h2>
-        <p>Benign idiopathic osteonecrosis of the external auditory canal is a rare condition that can occur in the absence of antiresorptive therapy and is sometimes associated with local trauma.</p>
-
-        <div class="call-to-action">
-          <p>Advice for healthcare professionals:</p>
-          <ul>
-            <li>The possibility of osteonecrosis of the external auditory canal should be considered in patients receiving bisphosphonates who present with ear symptoms, including chronic ear infections, or in patients with suspected cholesteatoma</li>
-            <li>Possible risk factors include steroid use and chemotherapy, with or without local risk factors such as infection or trauma</li>
-            <li>Patients should be advised to report any ear pain, discharge from the ear, or an ear infection during bisphosphonate treatment</li>
-            <li>Report any cases of osteonecrosis of the external auditory canal suspected to be associated with bisphosphonates or any other medicines, including denosumab, on a <a rel="external" href="http://www.mhra.gov.uk/yellowcard">Yellow Card</a>
-          </li>
-          </ul>
-        </div>
-
-        <h2 id="evidence-for-an-association-with-bisphosphonate-treatment">Evidence for an association with bisphosphonate treatment</h2>
-        <p>Evidence from the clinical literature and from cases reported to medicines regulators, including one report received via the UK Yellow Card scheme, supports a causal association between bisphosphonates and osteonecrosis of the external auditory canal. Product information is being updated to include advice for healthcare professionals and patients.</p>
-
-        <p>A total of 29 reports indicative of osteonecrosis of the external auditory canal in association with bisphosphonates have been identified worldwide, including 11 cases reported in the clinical literature.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> <sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> <sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> <sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> <sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> <sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> <sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup> Cases have been reported with use of both intravenous or oral bisphosphonates for both cancer-related or osteoporosis indications; there is currently insufficient evidence to determine whether there is any increased risk with higher doses used for cancer-related conditions. Most cases were associated with long-term bisphosphonate therapy for 2 years or longer, and most cases had possible risk factors including: steroid use; chemotherapy; and possible local risk factors such as infection, an ear operation, or cotton-bud use. Bilateral osteonecrosis of the external ear canal was reported in some patients, as was osteonecrosis of the jaw.</p>
-
-        <p>The number of cases of osteonecrosis of the external auditory canal reported in association with bisphosphonates is low compared with the number of cases reported of bisphosphonate-related osteonecrosis of the jaw, a <a href="https://www.gov.uk/drug-safety-update/denosumab-xgeva-prolia-intravenous-bisphosphonates-osteonecrosis-of-the-jaw-further-measures-to-minimise-risk">well-established side effect of bisphosphonates</a>.<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup></p>
-
-        <h2 id="evidence-for-an-association-with-denosumab-treatment">Evidence for an association with denosumab treatment</h2>
-        <p>The available data do not support a causal relation between osteonecrosis of the external auditory canal and denosumab. However, this possible risk is being kept under close review, given that denosumab is <a href="https://www.gov.uk/drug-safety-update/denosumab-xgeva-prolia-intravenous-bisphosphonates-osteonecrosis-of-the-jaw-further-measures-to-minimise-risk">known to be associated with osteonecrosis of the jaw</a>.</p>
-
-        <p>Article citation: Drug Safety Update volume 9 issue 5 December 2015: 3.</p>
-
-        <div class="footnotes">
-          <ol>
-            <li id="fn:1">
-              <p>Summaries of Product Characteristics can be found <a rel="external" href="http://www.mhra.gov.uk/spc-pil/index.htm">here on the MHRA website</a> or on the <a rel="external" href="http://www.ema.europa.eu/ema/index.jsp?curl=pages/includes/medicines/medicines_landing_page.jsp">website of the European Medicines Agency</a>, depending whether the medicine has a national or European licence, respectively. <a href="#fnref:1" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:2">
-              <p>Bast F, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed/23202871">Bilateral bisphosphonate-associated osteonecrosis of the external ear canal: a rare case</a>. HNO. 2012; 60: 1127–29 [in German]. <a href="#fnref:2" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:3">
-              <p>Froelich K, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed?term=Froelich+K%5Bauthor%5D+AND+Bisphosphonate&amp;TransSchema=title&amp;cmd=detailssearch">Bisphosphonate-induced osteonecrosis of the external ear canal: a retrospective study</a>. Eur Arch Otorhinolaryngol 2011; 268: 1219–25. <a href="#fnref:3" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:4">
-              <p>Kharazmi M, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed/24220454">Bisphosphonate-associated osteonecrosis of the auditory canal</a>. Br J Oral Maxillofac Surg 2013; 51: e285–87. <a href="#fnref:4" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:5">
-              <p>Polizzotto MN, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed?term=Polizzotto+MN%5Bauthor%5D+AND+Bisphosphonate&amp;TransSchema=title&amp;cmd=detailssearch">Bisphosphonate-associated osteonecrosis of the auditory canal</a>. Br J Haematol 2006; 132: 114. <a href="#fnref:5" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:6">
-              <p>Salzman R, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed/23444468">Osteonecrosis of the external auditory canal associated with oral bisphosphonate therapy: case report and literature review</a>. Otol Neurotol 2013; 34: 209–13. <a href="#fnref:6" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:7">
-              <p>Thorsteinsson AL, et al. <a rel="external" href="http://www.avensonline.org/fulltextarticles/jcmcr-2332-4120-02-0007.html">Bisphosphonate-induced osteonecrosis of the external auditory canal: a case report</a>. J Clin Med Case Reports 2015; 2: 3. <a href="#fnref:7" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:8">
-              <p>Wickham N, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed?term=Wickham%5Bauthor%5D+AND+Bisphosphonate&amp;TransSchema=title&amp;cmd=detailssearch">Bisphosphonate-associated osteonecrosis of the external auditory canal</a>. J Laryngol Otol 2013; 127 (suppl 2): S51–53. <a href="#fnref:8" class="reversefootnote">↩</a></p>
-            </li>
-            <li id="fn:9">
-              <p>Patient reminder cards about the risk of osteonecrosis of the jaw are being introduced for intravenous bisphosphonates and denosumab. The cards will become available at different times for individual products. They are now available for the following products: Prolia (denosumab); Xgeva (denosumab); Aclasta (zoledronic acid); Zometa (zoledronic acid); zoledronic acid 5 mg generics and zoledronic acid 4 mg generics. The cards can be viewed <a href="https://www.gov.uk/drug-safety-update/denosumab-xgeva-prolia-intravenous-bisphosphonates-osteonecrosis-of-the-jaw-further-measures-to-minimise-risk">here</a>. <a href="#fnref:9" class="reversefootnote">↩</a></p>
-            </li>
-          </ol>
-        </div>
+        <p>Addresses are generated when using the `$A` markdown pattern.</p>
   attachment_link:
     description: Attachment link component rendered within Govspeak
     data:
@@ -750,7 +285,7 @@ examples:
                           content_type: "application/vnd.oasis.opendocument.text",
                           alternative_format_contact_email: "defra.helpline@defra.gsi.gov.uk" }
         %>
-  inline_attachment:
+  attachment_inline:
     description: Legacy inline attachment embed used by Whitehall and Specialist Publisher
     data:
       block: |
@@ -926,19 +461,20 @@ examples:
             </div>
           </div>
         </section>
-  example:
+  blockquote:
     data:
       block: |
-        <div class="example">
-          <p>
-            <strong>Example</strong>
-            This is an indented example block.<br/>
-            It may span multiple lines, <a href="#">contain links</a>.
-          </p>
-          <p>
-            It may even span multiple paragraphs.
-          </p>
-        </div>
+        <blockquote>
+          <p>My quote</p>
+          <p class="last-child">about things</p>
+        </blockquote>
+  buttons:
+    data:
+      block: |
+        <p>
+          <a role="button" class="gem-c-button govuk-button" href="https://gov.uk/random">Button</a>
+          <a class="gem-c-button govuk-button govuk-button--start" role="button" href="https://gov.uk/random"> Start button <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path></svg></a>
+        </p>
   call_to_action:
     data:
       block: |
@@ -962,26 +498,229 @@ examples:
             The water in the mouth of a blue whale weighs more than its body.
           </p>
         </div>
+  contact:
+    data:
+      block: |
+        <div class="contact" id="contact_1017">
+          <div class="content">
+            <div class="vcard contact-inner">
+              <p>Media enquiries</p>
+              <p class="adr">
+                <span class="street-address">2 Marsham Street<br>London</span><br>
+                <span class="postal-code">SW1P 4DF</span>
+              </p>
+              <div class="email-url-number">
+                <p class="tel"><span class="type">Press enquiries</span> 020 7XXX XXXX</p>
+                <p class="tel"><span class="type">Out of hours</span> 020 7XXX XXXX</p>
+              </div>
+              <p class="comments">A comment about the contact</p>
+            </div>
+          </div>
+        </div>
+  charts:
+    description: |
+      The Government Statistical Service (GSS) guidance recommends [a limit of four categories as best practice for basic data visualisations](https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5).
+
+      Note that charts which have up to 7 categories, [chart with colours](http://govuk-publishing-components.dev.gov.uk/component-guide/govspeak/chart_with_colours/preview), for example, will display subsequent bars in `#3d3d3d`, `#a285d1` and the 7th bar in the default colour of `#0b0c0c` and will still meet the colour contrast requirements for adjacent colours.
+      Charts that have 8 or more categories will display additional bars in the default colour and will not meet colour contrast requirements for adjacent colours.
+    data:
+      block: |
+        <table class='js-barchart-table mc-auto-outdent'>
+          <caption>A table with numerical data</caption>
+          <tbody>
+            <tr>
+              <td>row 1</td><td>10</td>
+            </tr>
+            <tr>
+              <td>row 2</td><td>15</td>
+            </tr>
+            <tr>
+              <td>row 3</td><td>2</td>
+            </tr>
+            <tr>
+              <td>row 4</td><td>48</td>
+            </tr>
+          </tbody>
+        </table>
+  chart_with_colours:
+    data:
+      block: |
+        <table class="js-barchart-table mc-auto-outdent">
+          <thead>
+            <tr>
+              <th scope="col">Number position</th>
+              <th scope="col">Apples</th>
+              <th scope="col">Oranges</th>
+              <th scope="col">Bananas</th>
+              <th scope="col">Pears</th>
+              <th scope="col">Grapes</th>
+              <th scope="col">Strawberries</th>
+              <th scope="col">Plums</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Numbers inside bar</td>
+              <td>16</td>
+              <td>48</td>
+              <td>39</td>
+              <td>50</td>
+              <td>24</td>
+              <td>10</td>
+              <td>62</td>
+            </tr>
+            <tr>
+              <td>Numbers outside bar</td>
+              <td>2</td>
+              <td>1</td>
+              <td>2</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+  chart_with_multiple_headings:
+    data:
+      block: |
+        <table id="multiple-table-chart" class="js-barchart-table mc-multiple">
+          <caption>Multiple Table</caption>
+          <thead>
+            <tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Testing One</th><td>5</td><td>6</td><td>11</td></tr>
+            <tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>
+            <tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>
+          </tbody>
+        </table>
+  chart_stacked:
+    data:
+      block: |
+        <table class="js-barchart-table mc-stacked mc-auto-outdent">
+          <thead>
+            <tr>
+              <th scope="col">Colours</th>
+              <th scope="col">Fruits</th>
+              <th scope="col">Vegetables</th>
+              <th scope="col">Beans</th>
+              <th scope="col">Nuts</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Red</td>
+              <td>23</td>
+              <td>9</td>
+              <td>2</td>
+              <td>1</td>
+              <td>35</td>
+            </tr>
+            <tr>
+              <td>Green</td>
+              <td>5</td>
+              <td>33</td>
+              <td>8</td>
+              <td>0</td>
+              <td>46</td>
+            </tr>
+            <tr>
+              <td>Yellow</td>
+              <td>2</td>
+              <td>10</td>
+              <td>0</td>
+              <td>15</td>
+              <td>27</td>
+            </tr>
+          </tbody>
+        </table>
+  example:
+    data:
+      block: |
+        <div class="example">
+          <p>
+            <strong>Example</strong>
+            This is an indented example block.<br/>
+            It may span multiple lines, <a href="#">contain links</a>.
+          </p>
+          <p>
+            It may even span multiple paragraphs.
+          </p>
+        </div>
+  footnotes:
+    data:
+      block: |
+        <p>This is a text with a footnote<sup id="fnref:1a"><a href="#fn:1a" class="footnote">1</a></sup>.</p>
+
+        <div class="footnotes">
+          <ol>
+            <li id="fn:1a">
+              <p>And here is the definition. <a href="#fnref:1a" class="reversefootnote">&#8617;</a></p>
+            </li>
+            <li id="fn:2">
+              <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales" class="govuk-link">https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales</a>
+              <a href="#fnref:2" class="govuk-link">↩</a>
+            </li>
+          </ol>
+        </div>
   form_download:
     data:
       block: |
         <div class="form-download">
           <p><a href="http://example.com/" title="Example form" rel="external">An example form download link.</a></p>
         </div>
-  steps:
+  image_fractions:
     data:
-      block:
-        <ol class="steps">
-          <li>
-            <p>Add numbers.</p>
-          </li>
-          <li>
-            <p>Check numbers.</p>
-          </li>
-          <li>
-            <p>Love numbers.</p>
-          </li>
-        </ol>
+      block: |
+        <h3 id="number---fractions-1">Number - fractions</h3>
+
+        <p>Pupils should be taught to:</p>
+
+        <ul>
+        <li>recognise, find, name and write fractions <span class="fraction">
+          <img alt="1/3" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_3-9003d7f3d7cd4433647a5f6525aa7eda.png"></span>
+        , <span class="fraction">
+          <img alt="1/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_4-b6128849c8da3b46b9cb5a6918cfe084.png"></span>
+        , <span class="fraction">
+          <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
+         and <span class="fraction">
+          <img alt="3/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/3_4-cded12d0389211f864dcb27e640c64d4.png"></span>
+         of a length, shape, set of objects or quantity</li>
+          <li>write simple fractions, for example <span class="fraction">
+          <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
+         of 6 = 3 and recognise the equivalence of <span class="fraction">
+          <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
+        and <span class="fraction">
+          <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
+        </li>
+        </ul>
+        <div class="call-to-action">
+          <h4>Notes and guidance (non-statutory)</h4>
+
+          <p>Pupils use fractions as ‘fractions of’ discrete and continuous quantities by solving problems using shapes, objects and quantities. They connect unit fractions to equal sharing and grouping, to numbers when they can be calculated, and to measures, finding fractions of lengths, quantities, sets of objects or shapes. They meet <span class="fraction">
+            <img alt="3/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/3_4-cded12d0389211f864dcb27e640c64d4.png"></span>
+           as the first example of a non-unit fraction.<br><br>
+          Pupils should count in fractions up to 10, starting from any number and using the <span class="fraction">
+              <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
+           and <span class="fraction">
+              <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
+            equivalence on the number line (for example, 1<span class="fraction">
+              <img alt="1/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_4-b6128849c8da3b46b9cb5a6918cfe084.png"></span>
+          , 1<span class="fraction">
+              <img alt="2/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/2_4-e071530a44f0d7980f3442c23e3edd3b.png"></span>
+           (or 1<span class="fraction">
+              <img alt="1/2" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/1_2-6e6f542bec97cb8ea3acf39cd25690ee.png"></span>
+          ), 1<span class="fraction">
+              <img alt="3/4" height="27" src="https://assets.digital.cabinet-office.gov.uk/government/assets/fractions/3_4-cded12d0389211f864dcb27e640c64d4.png"></span>
+          , 2). This reinforces the concept of fractions as numbers and that they can add up to more than 1.
+          </p>
+        </div>
+  text_fractions:
+    data:
+      block: |
+        <p>If an image is not available for a particular fraction, then we'll fallback to text based fraction using <code>sup</code>/<code>sub</code>, like this <span class="fraction"><sup>1</sup>&frasl;<sub>100</sub></span> example.</p>
   highlight_answer:
     description: |
       Used on:
@@ -1001,19 +740,14 @@ examples:
         <div class="highlight-answer">
           <p>In the 2017 to 2018 tax year, the maximum you can save in <abbr title="Individual Savings Accounts">ISAs</abbr> is <em>£20,000</em></p>
         </div>
-  place:
+  heading_levels:
     data:
       block: |
-        <div class="place">
-          <p>This is a place</p>
-        </div>
-  buttons:
-    data:
-      block: |
-        <p>
-          <a role="button" class="gem-c-button govuk-button" href="https://gov.uk/random">Button</a>
-          <a class="gem-c-button govuk-button govuk-button--start" role="button" href="https://gov.uk/random"> Start button <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false"><path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path></svg></a>
-        </p>
+        <h2>This is a h2 title</h2>
+        <h3>This is a h3 title</h3>
+        <h4>This is a h4 title</h4>
+        <h5>This is a h5 title</h5>
+        <h6>This is a h6 title</h6>
   image:
     data:
       block: |
@@ -1025,3 +759,268 @@ examples:
             <p>Deforested area. Credit: Blue Ventures-Garth Cripps</p>
           </figcaption>
         </figure>
+  lists:
+    data:
+      block: |
+        <h2>ordered list:</h2>
+        <ol>
+          <li>one</li>
+          <li>two</li>
+          <li>three</li>
+        </ol>
+        <h2>unordered list:</h2>
+        <ul>
+          <li>one</li>
+          <li>two</li>
+          <li>three</li>
+        </ul>
+  legislative_lists:
+    data:
+      block: |
+        <h2>ordered list:</h2>
+        <ol class="legislative-list">
+          <li>one</li>
+          <li>two</li>
+          <li>three</li>
+        </ol>
+  nested_lists:
+    data:
+      block: |
+        <h2>ordered list:</h2>
+        <ol>
+          <li>
+            <ul>
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          </li>
+          <li>three</li>
+        </ol>
+        <h2>unordered list:</h2>
+        <ul>
+          <li>
+            <ul>
+              <li>one</li>
+              <li>two</li>
+            </ul>
+          </li>
+          <li>three</li>
+        </ul>
+  ordered_lists_types:
+    description: |
+      Govspeak/markdown does not generate HTML with type and start attributes,
+      however we still provide support for them as some advanced users write
+      HTML directly to achieve the list formatting.
+    data:
+      block: |
+        <h2>Lowercase alphabetical list</h2>
+        <ol type="a">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Uppercase alphabetical list</h2>
+        <ol type="A">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Lowercase Roman numeral list</h2>
+        <ol type="i">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Uppercase Roman numberal list</h2>
+        <ol type="I">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Numerical list starting at 3</h2>
+        <ol start="3">
+          <li>three</li>
+          <li>four</li>
+        </ol>
+
+        <h2>Lowercase alphabetical list, starting at 3</h2>
+        <ol type="a" start="3">
+          <li>three</li>
+          <li>four</li>
+        </ol>
+  steps:
+    data:
+      block:
+        <ol class="steps">
+          <li>
+            <p>Add numbers.</p>
+          </li>
+          <li>
+            <p>Check numbers.</p>
+          </li>
+          <li>
+            <p>Love numbers.</p>
+          </li>
+        </ol>
+  place:
+    data:
+      block: |
+        <div class="place">
+          <p>This is a place</p>
+        </div>
+  statistic_headlines:
+    data:
+      block: |
+        <div class="stat-headline">
+          <p><em>£6bn</em>
+          Total Departmental Expenditure Limit (<abbr title="Departmental Expenditure Limit">DEL</abbr>) in financial year 2015 to 2016</p>
+        </div>
+        <p>This includes £5.8 billion Resource <abbr title="Departmental Expenditure Limit">DEL</abbr> and £0.2 billion Capital <abbr title="Departmental Expenditure Limit">DEL</abbr>. In addition, <abbr title="Department for Work and Pensions">DWP</abbr> Annually Managed Expenditure (<abbr title="Annually Managed Expenditure">AME</abbr>) in financial year 2015 to 2016 is £170.5 billion, as forecast by the Office for Budget Responsibility.</p>
+        <div class="stat-headline">
+          <p>UK employment rate
+          <em>74.1%</em>
+          between October and December 2015</p>
+        </div>
+  specialist_content:
+    data:
+      block: |
+        <h2 id="bisphosphonates">Bisphosphonates</h2>
+        <p>Bisphosphonates are used to treat osteoporosis, Paget’s disease, and as part of some cancer regimens, particularly for metastatic bone cancer and multiple myeloma. Individual bisphosphonates have different indications (see individual Summaries of Product Characteristics<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>). The following bisphosphonates are available in the UK:</p>
+
+        <ul>
+          <li>Alendronic acid</li>
+          <li>Ibandronic acid</li>
+          <li>Pamidronate disodium</li>
+          <li>Risedronate sodium</li>
+          <li>Sodium clodronate</li>
+          <li>Zoledronic acid</li>
+        </ul>
+
+        <h2 id="osteonecrosis-of-the-external-auditory-canal">Osteonecrosis of the external auditory canal</h2>
+        <p>Benign idiopathic osteonecrosis of the external auditory canal is a rare condition that can occur in the absence of antiresorptive therapy and is sometimes associated with local trauma.</p>
+
+        <div class="call-to-action">
+          <p>Advice for healthcare professionals:</p>
+          <ul>
+            <li>The possibility of osteonecrosis of the external auditory canal should be considered in patients receiving bisphosphonates who present with ear symptoms, including chronic ear infections, or in patients with suspected cholesteatoma</li>
+            <li>Possible risk factors include steroid use and chemotherapy, with or without local risk factors such as infection or trauma</li>
+            <li>Patients should be advised to report any ear pain, discharge from the ear, or an ear infection during bisphosphonate treatment</li>
+            <li>Report any cases of osteonecrosis of the external auditory canal suspected to be associated with bisphosphonates or any other medicines, including denosumab, on a <a rel="external" href="http://www.mhra.gov.uk/yellowcard">Yellow Card</a>
+          </li>
+          </ul>
+        </div>
+
+        <h2 id="evidence-for-an-association-with-bisphosphonate-treatment">Evidence for an association with bisphosphonate treatment</h2>
+        <p>Evidence from the clinical literature and from cases reported to medicines regulators, including one report received via the UK Yellow Card scheme, supports a causal association between bisphosphonates and osteonecrosis of the external auditory canal. Product information is being updated to include advice for healthcare professionals and patients.</p>
+
+        <p>A total of 29 reports indicative of osteonecrosis of the external auditory canal in association with bisphosphonates have been identified worldwide, including 11 cases reported in the clinical literature.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> <sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> <sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> <sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> <sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> <sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> <sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup> Cases have been reported with use of both intravenous or oral bisphosphonates for both cancer-related or osteoporosis indications; there is currently insufficient evidence to determine whether there is any increased risk with higher doses used for cancer-related conditions. Most cases were associated with long-term bisphosphonate therapy for 2 years or longer, and most cases had possible risk factors including: steroid use; chemotherapy; and possible local risk factors such as infection, an ear operation, or cotton-bud use. Bilateral osteonecrosis of the external ear canal was reported in some patients, as was osteonecrosis of the jaw.</p>
+
+        <p>The number of cases of osteonecrosis of the external auditory canal reported in association with bisphosphonates is low compared with the number of cases reported of bisphosphonate-related osteonecrosis of the jaw, a <a href="https://www.gov.uk/drug-safety-update/denosumab-xgeva-prolia-intravenous-bisphosphonates-osteonecrosis-of-the-jaw-further-measures-to-minimise-risk">well-established side effect of bisphosphonates</a>.<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup></p>
+
+        <h2 id="evidence-for-an-association-with-denosumab-treatment">Evidence for an association with denosumab treatment</h2>
+        <p>The available data do not support a causal relation between osteonecrosis of the external auditory canal and denosumab. However, this possible risk is being kept under close review, given that denosumab is <a href="https://www.gov.uk/drug-safety-update/denosumab-xgeva-prolia-intravenous-bisphosphonates-osteonecrosis-of-the-jaw-further-measures-to-minimise-risk">known to be associated with osteonecrosis of the jaw</a>.</p>
+
+        <p>Article citation: Drug Safety Update volume 9 issue 5 December 2015: 3.</p>
+
+        <div class="footnotes">
+          <ol>
+            <li id="fn:1">
+              <p>Summaries of Product Characteristics can be found <a rel="external" href="http://www.mhra.gov.uk/spc-pil/index.htm">here on the MHRA website</a> or on the <a rel="external" href="http://www.ema.europa.eu/ema/index.jsp?curl=pages/includes/medicines/medicines_landing_page.jsp">website of the European Medicines Agency</a>, depending whether the medicine has a national or European licence, respectively. <a href="#fnref:1" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:2">
+              <p>Bast F, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed/23202871">Bilateral bisphosphonate-associated osteonecrosis of the external ear canal: a rare case</a>. HNO. 2012; 60: 1127–29 [in German]. <a href="#fnref:2" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:3">
+              <p>Froelich K, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed?term=Froelich+K%5Bauthor%5D+AND+Bisphosphonate&amp;TransSchema=title&amp;cmd=detailssearch">Bisphosphonate-induced osteonecrosis of the external ear canal: a retrospective study</a>. Eur Arch Otorhinolaryngol 2011; 268: 1219–25. <a href="#fnref:3" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:4">
+              <p>Kharazmi M, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed/24220454">Bisphosphonate-associated osteonecrosis of the auditory canal</a>. Br J Oral Maxillofac Surg 2013; 51: e285–87. <a href="#fnref:4" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:5">
+              <p>Polizzotto MN, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed?term=Polizzotto+MN%5Bauthor%5D+AND+Bisphosphonate&amp;TransSchema=title&amp;cmd=detailssearch">Bisphosphonate-associated osteonecrosis of the auditory canal</a>. Br J Haematol 2006; 132: 114. <a href="#fnref:5" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:6">
+              <p>Salzman R, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed/23444468">Osteonecrosis of the external auditory canal associated with oral bisphosphonate therapy: case report and literature review</a>. Otol Neurotol 2013; 34: 209–13. <a href="#fnref:6" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:7">
+              <p>Thorsteinsson AL, et al. <a rel="external" href="http://www.avensonline.org/fulltextarticles/jcmcr-2332-4120-02-0007.html">Bisphosphonate-induced osteonecrosis of the external auditory canal: a case report</a>. J Clin Med Case Reports 2015; 2: 3. <a href="#fnref:7" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:8">
+              <p>Wickham N, et al. <a rel="external" href="http://www.ncbi.nlm.nih.gov/pubmed?term=Wickham%5Bauthor%5D+AND+Bisphosphonate&amp;TransSchema=title&amp;cmd=detailssearch">Bisphosphonate-associated osteonecrosis of the external auditory canal</a>. J Laryngol Otol 2013; 127 (suppl 2): S51–53. <a href="#fnref:8" class="reversefootnote">↩</a></p>
+            </li>
+            <li id="fn:9">
+              <p>Patient reminder cards about the risk of osteonecrosis of the jaw are being introduced for intravenous bisphosphonates and denosumab. The cards will become available at different times for individual products. They are now available for the following products: Prolia (denosumab); Xgeva (denosumab); Aclasta (zoledronic acid); Zometa (zoledronic acid); zoledronic acid 5 mg generics and zoledronic acid 4 mg generics. The cards can be viewed <a href="https://www.gov.uk/drug-safety-update/denosumab-xgeva-prolia-intravenous-bisphosphonates-osteonecrosis-of-the-jaw-further-measures-to-minimise-risk">here</a>. <a href="#fnref:9" class="reversefootnote">↩</a></p>
+            </li>
+          </ol>
+        </div>
+  tables:
+    data:
+      block: |
+        <table>
+          <caption>A table with data</caption>
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Explanation</th>
+              <th>Current and continuing guidance</th>
+              <th>Government support</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Clinically extremely vulnerable people (all people in this cohort will have received communication from the NHS)</th>
+              <td>People defined on medical grounds a clinically extremely vulnerable, meaning they are at the greatest risk of severe illness. This group includes solid organ transplant recipients, people receiving chemotherapy, renal dialysis patients and others.</td>
+              <td>Follow shielding guidance by staying at home at all times and avoiding all non-essential face-to-face contact. This guidance is in place until end June.</td>
+              <td>Support available from the National Shielding Programme, which includes food supplies (through food boxes and priority supermarket deliveries), pharmacy deliveries and care. Support is available via the NHS Volunteer Responders app.</td>
+            </tr>
+            <tr>
+              <th>Clinically vulnerable people</th>
+              <td>People considered to be at higher risk of severe illness from COVID-19. Clinically vulnerable people include the following: people aged 70 or older, people with liver disease, people with diabetes, pregnant women and others.</td>
+              <td>Stay at home as much as possible. If you do go out, take particular care to minimise contact with others outside your household.</td>
+              <td>Range of support available while measures in place, including by local authorities and through voluntary and community groups. Support is available via the NHS Volunteer Responders app.</td>
+            </tr>
+            <tr>
+              <th>Vulnerable people (non-clinical)</th>
+              <td>There are a range of people who can be classified as ‘vulnerable’ due to non-clinical factors, such as children at risk of violence or with special education needs, victims of domestic abuse, rough sleepers and others.</td>
+              <td>People in this group will need to follow general guidance except where they are also clinically vulnerable or clinically extremely vulnerable, where they should follow guidance as set out above.</td>
+              <td>For those who need it, a range of support and guidance across public services and the benefits system, including by central and local government and the voluntary and community sector.</td>
+            </tr>
+          </tbody>
+        </table>
+  tables_with_alignments:
+    data:
+      block: |
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Default aligned</th>
+              <th class="cell-text-left" scope="col">Left aligned</th>
+              <th class="cell-text-center" scope="col">Center aligned</th>
+              <th class="cell-text-right" scope="col">Right aligned</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First body part</td>
+              <td class="cell-text-left">Second cell</td>
+              <td class="cell-text-center">Third cell</td>
+              <td class="cell-text-right">fourth cell</td>
+            </tr>
+          </tbody>
+        </table>
+  youtube_embed:
+    data:
+      block: |
+        <p>This content has a YouTube video link, converted to an accessible embedded player by component JavaScript.</p>
+        <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
+  youtube_embed_disabled:
+    data:
+      disable_youtube_expansions: true
+      block: |
+        <p>This content has a YouTube video link, where the govspeak expansion has been disabled</p>
+        <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
+  youtube_livestream:
+    data:
+      block: |
+        <p>This content has a YouTube livestream link, converted to an accessible embedded player by component JavaScript.</p>
+        <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream video</a></p>
