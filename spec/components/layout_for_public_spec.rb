@@ -333,14 +333,14 @@ describe "Layout for public", :capybara, type: :view do
     end
 
     assert_select "main#custom-layout"
-    assert page.has_no_selector?("div#wrapper")
-    assert page.has_no_selector?("main.govuk-main-wrapper")
+    assert_select "div#wrapper", false
+    assert_select "main.govuk-main-wrapper", false
   end
 
   it "renders without the wrapper if for_static is not explictly set to true" do
     render_component({})
 
-    assert page.has_no_selector?("div#wrapper")
-    assert page.has_no_selector?("main.govuk-main-wrapper")
+    assert_select "div#wrapper", false
+    assert_select "main.govuk-main-wrapper", false
   end
 end
