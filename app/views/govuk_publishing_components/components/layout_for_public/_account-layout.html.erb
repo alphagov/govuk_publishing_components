@@ -12,9 +12,13 @@
     <div class="govuk-grid-column-two-thirds">
       <div id="wrapper">
         <%= yield :before_content %>
-        <main id="content">
+        <% if for_static %>
+          <main id="content">
+            <%= yield %>
+          </main>
+        <% else %>
           <%= yield %>
-        </main>
+        <% end %>
       </div>
     </div>
   </div>
