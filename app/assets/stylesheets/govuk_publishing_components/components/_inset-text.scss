@@ -6,3 +6,15 @@
     break-inside: avoid;
   }
 }
+
+.gem-c-inset-text {
+  padding-top: govuk-spacing(4);
+
+  .govuk-inset-text {
+    margin-top: 0;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    padding-top: govuk-spacing(6);
+  }
+}
