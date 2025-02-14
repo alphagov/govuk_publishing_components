@@ -112,14 +112,6 @@ describe "Super navigation header", type: :view do
     assert_select "a.govuk-header__link--homepage .govuk-visually-hidden"
   end
 
-  it "hides left border of button" do
-    render_component({
-      hide_button_left_border: true,
-    })
-
-    assert_select ".gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--no-left-border"
-  end
-
   it "allows a custom crown logo link and custom title" do
     render_component({
       logo_link: "https://www.example.com/",

@@ -7,7 +7,6 @@
   logo_text = t("components.layout_super_navigation_header.logo_text")
 
   hide_logo_text ||= false
-  hide_button_left_border ||= false
   blue_background ||= false
   large_navbar ||= false
 
@@ -28,7 +27,6 @@
   top_toggle_button_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar" if large_navbar
 
   top_toggle_button_inner_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner)
-  top_toggle_button_inner_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--no-left-border" if hide_button_left_border
   top_toggle_button_inner_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background" if blue_background
 
   search_toggle_button_classes = %w(gem-c-layout-super-navigation-header__search-toggle-button)
