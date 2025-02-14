@@ -1,8 +1,12 @@
 <%
   button_data_attributes ||= nil
   input_data_attributes ||= nil
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-copy-to-clipboard")
+  component_helper.add_data_attribute({ module: "copy-to-clipboard" })
 %>
-<div class="gem-c-copy-to-clipboard" data-module="copy-to-clipboard">
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= render "govuk_publishing_components/components/input", {
     label: {
       text: label,
@@ -19,4 +23,4 @@
     data_attributes: button_data_attributes,
     secondary_quiet: true,
   } %>
-</div>
+<% end %>
