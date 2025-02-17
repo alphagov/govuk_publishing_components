@@ -236,6 +236,12 @@ describe "Layout for public", :capybara, type: :view do
     assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
+  it "account layout renders with a main element if for_static is explicitly set to true" do
+    render_component({ show_account_layout: true, for_static: true })
+
+    assert_select ".gem-c-layout-for-public main#content"
+  end
+
   it "account layout renders with a phase banner by default" do
     render_component({ show_account_layout: true })
 
@@ -333,14 +339,20 @@ describe "Layout for public", :capybara, type: :view do
     end
 
     assert_select "main#custom-layout"
-    assert page.has_no_selector?("div#wrapper")
-    assert page.has_no_selector?("main.govuk-main-wrapper")
+    assert_select "div#wrapper", false
+    assert_select "main.govuk-main-wrapper", false
   end
 
   it "renders without the wrapper if for_static is not explictly set to true" do
     render_component({})
 
-    assert page.has_no_selector?("div#wrapper")
-    assert page.has_no_selector?("main.govuk-main-wrapper")
+    assert_select "div#wrapper", false
+    assert_select "main.govuk-main-wrapper", false
+  end
+
+  it "account layout renders without the main element if for_static is not explicitly set to true" do
+    render_component({ show_account_layout: true })
+
+    assert_select ".gem-c-layout-for-public main#content", false
   end
 end
