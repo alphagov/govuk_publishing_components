@@ -11,6 +11,7 @@
 
 * Fix bottom border colour issue in the super nav search button ([PR #4642](https://github.com/alphagov/govuk_publishing_components/pull/4642))
 * Use govuk-spacing instead of govuk-gutter ([PR #4650](https://github.com/alphagov/govuk_publishing_components/pull/4650))
+* Ensure 'search with autocomplete' component uses its own margin bottom ([PR #4637](https://github.com/alphagov/govuk_publishing_components/pull/4637))
 
 ## 52.1.0
 

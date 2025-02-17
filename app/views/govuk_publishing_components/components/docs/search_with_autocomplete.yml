@@ -60,3 +60,10 @@ examples:
       source_url: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
       source_key: suggested_autocomplete
       label_text: <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Search GOV.UK</h2>
+  with_margin_bottom:
+    description: |
+      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom value of 6.
+    data:
+      source_url: 'https://www.gov.uk/api/search.json?suggest=autocomplete'
+      source_key: suggested_autocomplete
+      margin_bottom: 9
