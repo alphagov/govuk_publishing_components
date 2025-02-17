@@ -325,24 +325,6 @@ describe "Layout for public", :capybara, type: :view do
     assert_select ".gem-c-cookie-banner + .gem-c-skip-link"
   end
 
-  it "can render a custom header instead of the default one" do
-    view.content_for(:custom_header) { content_tag(:header, "GOV.UK with a custom header", id: "custom-header") }
-    render_component({})
-
-    assert_select "header#custom-header"
-    assert page.has_no_selector?(".gem-c-layout-header")
-  end
-
-  it "can render a custom layout instead of the default one" do
-    render_component({ custom_layout: true }) do
-      content_tag(:main, "GOV.UK with a custom layout", id: "custom-layout")
-    end
-
-    assert_select "main#custom-layout"
-    assert_select "div#wrapper", false
-    assert_select "main.govuk-main-wrapper", false
-  end
-
   it "renders without the wrapper if for_static is not explictly set to true" do
     render_component({})
 

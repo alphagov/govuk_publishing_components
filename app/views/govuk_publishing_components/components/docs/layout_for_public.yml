@@ -134,19 +134,3 @@ examples:
           cookie_preferences:
             text: How GOV.UK accounts use cookies
             href: https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement
-  with_custom_layout:
-    description: Yields a custom layout for the content.
-    data:
-      custom_layout: true
-      block: |
-        <main id="custom-layout">
-          <h1>This is a custom layout</h1>
-        </main>
-  with_custom_header:
-    description: Allows the header to be replaced with HTML injected by the calling application in a `content_for` tag named `:custom_header`.
-    embed: |
-      <% content_for(:custom_header) do %>
-        <header id="custom-header">I'm a custom header</header>
-      <% end %>
-      <%= render "govuk_publishing_components/components/layout_for_public", {
-      } %>
