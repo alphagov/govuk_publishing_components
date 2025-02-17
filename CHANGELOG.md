@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make account layout respect `for_static` ([PR #4630](https://github.com/alphagov/govuk_publishing_components/pull/4630))
+
 ## 51.2.1
 
 * Fix spacing between govspeak headings and attachment ([PR #4618](https://github.com/alphagov/govuk_publishing_components/pull/4618))
