@@ -12,16 +12,20 @@
     # The `search` component has an inline label by default, but this conflicts with the accessible-
     # autocomplete component's markup and styling. Every potential use of this component is in
     # situations where we want the label not to be inline anyway, so we override the default here.
-    inline_label: false
+    # As this component has margin bottom already, we also disable the margin bottom in the search component.
+    inline_label: false,
+    margin_bottom: 0
   )
 
-  classes = %w[gem-c-search-with-autocomplete]
-  classes << "gem-c-search-with-autocomplete--large" if local_assigns[:size] == "large"
-  classes << "gem-c-search-with-autocomplete--on-govuk-blue" if local_assigns[:on_govuk_blue]
+  local_assigns[:margin_bottom] ||= 8
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-search-with-autocomplete")
+  component_helper.add_class("gem-c-search-with-autocomplete--large") if local_assigns[:size] == "large"
+  component_helper.add_class("gem-c-search-with-autocomplete--on-govuk-blue") if local_assigns[:on_govuk_blue]
+  component_helper.add_data_attribute({ module: "gem-search-with-autocomplete", source_url:, source_key: })
 %>
-<%= tag.div(
-  class: classes.join(" "),
-  data: { module: "gem-search-with-autocomplete", source_url:, source_key: }
-) do %>
+
+<%= tag.div(**component_helper.all_attributes) do %>
   <%= render "govuk_publishing_components/components/search", search_component_options %>
 <% end %>
