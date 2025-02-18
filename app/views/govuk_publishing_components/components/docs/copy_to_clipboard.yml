@@ -1,5 +1,6 @@
 name: Copy to clipboard
 description: Content that a user is intended to copy, like a URL
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
