@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix bottom border colour issue in the super nav search button ([PR #4642](https://github.com/alphagov/govuk_publishing_components/pull/4642))
+
 ## 52.1.0
 
 * Swap inset text top margin with padding ([PR #4634](https://github.com/alphagov/govuk_publishing_components/pull/4634))
