@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Swap inset text top margin with padding ([PR #4634](https://github.com/alphagov/govuk_publishing_components/pull/4634))
+* Allow margin bottom to be configured on the table component ([PR #4638](https://github.com/alphagov/govuk_publishing_components/pull/4638))
 
 ## 52.0.0
 

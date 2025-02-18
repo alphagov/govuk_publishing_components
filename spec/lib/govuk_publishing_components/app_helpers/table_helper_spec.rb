@@ -38,5 +38,20 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TableHelper do
 
       expect(table).to match(/<table(?:.*)id="table-id">/)
     end
+
+    it "can be configured to set margin_bottom on the table" do
+      # valid margin is added
+      (0..9).each do |margin|
+        table = described_class.helper(view_context, nil, margin_bottom: margin) { |_builder| }
+        expect(table).to match("<table class=\"gem-c-table govuk-table govuk-!-margin-bottom-#{margin}\">")
+      end
+
+      # invalid margin is ignored
+      invalid_margin = [-1, 10, "hello", nil, true]
+      invalid_margin.each do |margin|
+        table = described_class.helper(view_context, nil, margin_bottom: margin) { |_builder| }
+        expect(table).to match("<table class=\"gem-c-table govuk-table\">")
+      end
+    end
   end
 end

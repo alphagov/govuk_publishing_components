@@ -169,3 +169,34 @@ examples:
           format: numeric
         - text: £125
           format: numeric
+  with_custom_margin_bottom:
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). By default, this component has a margin bottom of `30px`, as determined by the design system styles.
+    data:
+      margin_bottom: 0
+      filterable: true
+      label: Filter months
+      head:
+        - text: Month you apply
+        - text: Rate for bicycles
+          format: numeric
+        - text: Rate for vehicles
+          format: numeric
+      rows:
+      -
+        - text: January
+        - text: £85
+          format: numeric
+        - text: £95
+          format: numeric
+      -
+        - text: February
+        - text: £75
+          format: numeric
+        - text: £55
+          format: numeric
+      -
+        - text: March
+        - text: £165
+          format: numeric
+        - text: £125
+          format: numeric

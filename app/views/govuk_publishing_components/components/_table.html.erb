@@ -9,6 +9,7 @@
   sortable ||= false
   filterable ||= false
   label ||= t("components.table.filter_label")
+  margin_bottom ||= nil
 
   table_id = "table-id-#{SecureRandom.hex(4)}"
   filter_count_id = "filter-count-id-#{SecureRandom.hex(4)}"
@@ -16,10 +17,11 @@
 
 <% @table = capture do %>
   <%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, caption, {
-      sortable: sortable,
-      filterable: filterable,
-      caption_classes: caption_classes,
-      table_id: table_id
+      sortable:,
+      filterable:,
+      caption_classes:,
+      table_id:,
+      margin_bottom:,
     }) do |t| %>
 
     <% if head.any? %>

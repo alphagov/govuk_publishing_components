@@ -8,6 +8,7 @@ module GovukPublishingComponents
 
         classes = %w[gem-c-table govuk-table]
         classes << "govuk-table--sortable" if opt[:sortable]
+        classes << "govuk-!-margin-bottom-#{opt[:margin_bottom]}" if [*0..9].include?(opt[:margin_bottom])
 
         caption_classes = %w[govuk-table__caption]
         caption_classes << opt[:caption_classes] if opt[:caption_classes]
