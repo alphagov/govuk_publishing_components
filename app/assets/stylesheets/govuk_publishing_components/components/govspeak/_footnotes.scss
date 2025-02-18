@@ -15,20 +15,11 @@
 .gem-c-govspeak {
   .footnotes {
     border-top: 1px solid govuk-colour("mid-grey");
-    margin-top: govuk-spacing(6);
-    padding-top: govuk-spacing(2);
+    margin: 0 0 govuk-spacing(4) 0;
+    padding-top: govuk-spacing(4);
 
     a {
       overflow-wrap: break-word;
-    }
-
-    ol {
-      margin-top: 0;
-      padding-top: 0;
-
-      li p {
-        margin: 10px 0;
-      }
     }
   }
 }

@@ -9,18 +9,9 @@
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .call-to-action {
-    margin: 2em 0;
+    margin: 0 0 govuk-spacing(4) 0;
     background-color: govuk-colour("light-grey");
-    padding: 2em;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    p:last-child,
-    ul:last-child,
-    ol:last-child {
-      margin-bottom: 0;
-    }
+    padding: govuk-spacing(6);
+    padding-bottom: govuk-spacing(2);
   }
 }
