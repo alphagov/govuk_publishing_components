@@ -39,10 +39,9 @@ examples:
       logo_link_title: "Go to example"
   homepage:
     description: |
-      This variant is used for the homepage. It toggles the following attributes: hide_button_left_border, hide_logo_text and blue_background
+      This variant is used for the homepage. It toggles the following attributes: hide_logo_text and blue_background
     data:
       hide_logo_text: true
-      hide_button_left_border: true
       blue_background: true
       large_navbar: true      
   hide_logo_text:
@@ -50,11 +49,6 @@ examples:
       Logo text is shown by default. This option allows us to hide the text for the homepage.
     data:
       hide_logo_text: true
-  remove_left_button_border:
-    description: |
-      The left border for the toggle button is shown by default. This option allows us to hide the text for the homepage.
-    data:
-      hide_button_left_border: true
   blue_blackground_colour:
     description: |
       The black background is shown by default. This option allows us to change the background colour for the homepage.
