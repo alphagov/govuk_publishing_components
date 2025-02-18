@@ -69,3 +69,10 @@ examples:
           name: dob-blwyddyn
           width: 4
           value: 1980
+  with_named_error_items:
+    data:
+      legend_text: "When was your passport issued?"
+      hint: "For example, 27 3 2007"
+      error_items:
+        - name: "year"
+          text: "The date your passport was issued must include a year"
