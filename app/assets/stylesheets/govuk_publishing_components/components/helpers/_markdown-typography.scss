@@ -32,7 +32,7 @@
   h2 {
     margin-top: $govuk-gutter;
     margin-bottom: govuk-spacing(4);
-    @include govuk-font($size: 27, $weight: bold);
+    @include govuk-font($size: 24, $weight: bold);
 
     @include govuk-media-query($from: desktop) {
       margin-top: $govuk-gutter * 1.5;
