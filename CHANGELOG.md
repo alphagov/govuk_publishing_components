@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix bottom border colour issue in the super nav search button ([PR #4642](https://github.com/alphagov/govuk_publishing_components/pull/4642))
 * Make account layout respect `for_static` ([PR #4630](https://github.com/alphagov/govuk_publishing_components/pull/4630))
 * Remove left border from the super nav menu button ([PR #4631](https://github.com/alphagov/govuk_publishing_components/pull/4631))
 
