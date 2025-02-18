@@ -5,14 +5,18 @@
   fieldset_legend ||= ""
   add_button_text ||= "Add another"
   empty_fields ||= false
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-add-another")
+  component_helper.add_data_attribute({
+    module: "add-another",
+    add_button_text:,
+    fieldset_legend:,
+    empty_fields:,
+  })
 %>
 
-<%= tag.div class: "gem-c-add-another", data: {
-  module: "add-another",
-  "add-button-text": add_button_text,
-  "fieldset-legend": fieldset_legend,
-  "empty-fields": empty_fields
-} do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% unless empty_fields && items.count == 0 %>
     <% items.each_with_index do |item, index| %>
       <%= render "govuk_publishing_components/components/fieldset", {
