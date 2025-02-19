@@ -19,7 +19,6 @@
   omit_footer_border ||= false
   omit_header ||= false
   product_name ||= nil
-  show_explore_header ||= false
   show_cross_service_header ||= false
   draft_watermark ||= false
   show_search = local_assigns.include?(:show_search) ? local_assigns[:show_search] : true
@@ -102,32 +101,19 @@
       href: "#content"
     } %>
     <% unless omit_header %>
-      <% if show_explore_header %>
-        <% if homepage %>
-          <%= render "govuk_publishing_components/components/layout_for_public/layout_super_navigation_header_homepage", {
-            logo_link: logo_link,
-          } %>
-        <% else %>
-          <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
-            logo_link: logo_link,
-          } %>
-        <% end %>
-      <% elsif show_cross_service_header %>
+      <% if show_cross_service_header %>
         <%= render "govuk_publishing_components/components/cross_service_header", {
           one_login_navigation_items: one_login_navigation_items,
           service_navigation_items: service_navigation_items,
           product_name: product_name,
         } %>
-      <% else %>
-        <%= render "govuk_publishing_components/components/layout_header", {
-          search: show_search,
+      <% elsif homepage %>
+        <%= render "govuk_publishing_components/components/layout_for_public/layout_super_navigation_header_homepage", {
           logo_link: logo_link,
-          navigation_items: navigation_items,
-          product_name: product_name,
-
-          # The (blue) bottom border needs to be underneath the emergency banner -
-          # so it has been turned off and added in manually.
-          remove_bottom_border: true,
+        } %>
+      <% else %>
+        <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
+          logo_link: logo_link,
         } %>
       <% end %>
     <% end %>
