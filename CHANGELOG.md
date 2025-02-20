@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 52.0.0
 
 * Make account layout respect `for_static` ([PR #4630](https://github.com/alphagov/govuk_publishing_components/pull/4630))
 * Remove left border from the super nav menu button ([PR #4631](https://github.com/alphagov/govuk_publishing_components/pull/4631))
