@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Swap inset text top margin with padding ([PR #4634](https://github.com/alphagov/govuk_publishing_components/pull/4634))
+
 ## 52.0.0
 
 * Make account layout respect `for_static` ([PR #4630](https://github.com/alphagov/govuk_publishing_components/pull/4630))

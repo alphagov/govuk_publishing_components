@@ -5,13 +5,15 @@
   local_assigns[:margin_bottom] ||= 6
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.add_class("gem-c-inset-text govuk-inset-text gem-c-force-print-link-styles-within")
+  component_helper.add_class("gem-c-inset-text gem-c-force-print-link-styles-within")
   component_helper.set_id(id)
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
-  <% if defined? text %>
-    <%= text %>
-  <% elsif block_given? %>
-    <%= yield %>
-  <% end %>
+  <div class="govuk-inset-text">
+    <% if defined? text %>
+      <%= text %>
+    <% elsif block_given? %>
+      <%= yield %>
+    <% end %>
+  </div>
 <% end %>

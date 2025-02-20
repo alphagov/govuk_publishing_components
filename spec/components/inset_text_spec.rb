@@ -8,7 +8,7 @@ describe "Inset text", type: :view do
   it "renders inset text" do
     render_component(text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.")
 
-    assert_select(".govuk-inset-text.govuk-\\!-margin-bottom-6", text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.")
+    assert_select(".gem-c-inset-text.govuk-\\!-margin-bottom-6", text: "It can take up to 8 weeks to register a lasting power of attorney if there are no mistakes in the application.")
   end
 
   it "renders a block" do
@@ -36,6 +36,6 @@ describe "Inset text", type: :view do
       margin_bottom: 9,
     )
 
-    assert_select(".govuk-inset-text.govuk-\\!-margin-bottom-9", text: "margin!")
+    assert_select(".gem-c-inset-text.govuk-\\!-margin-bottom-9", text: "margin!")
   end
 end
