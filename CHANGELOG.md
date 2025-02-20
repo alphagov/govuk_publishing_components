@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Swap inset text top margin with padding ([PR #4634](https://github.com/alphagov/govuk_publishing_components/pull/4634))
+* Use govuk-spacing instead of govuk-gutter ([PR #4650](https://github.com/alphagov/govuk_publishing_components/pull/4650))
 
 ## 52.0.0
 
