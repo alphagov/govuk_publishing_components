@@ -3,18 +3,16 @@
 
   @include govuk-font($size: 16);
 
-  $gutter-two-thirds: $govuk-gutter - calc($govuk-gutter / 3);
-
   ol,
   ul,
   p {
-    margin-top: $govuk-gutter-half;
-    margin-bottom: $govuk-gutter-half;
+    margin-top: govuk-spacing(3);
+    margin-bottom: govuk-spacing(3);
     @include govuk-font($size: 19);
 
     @include govuk-media-query($from: tablet) {
-      margin-top: $gutter-two-thirds;
-      margin-bottom: $gutter-two-thirds;
+      margin-top: govuk-spacing(4);
+      margin-bottom: govuk-spacing(4);
     }
   }
 
@@ -30,17 +28,17 @@
   }
 
   h2 {
-    margin-top: $govuk-gutter;
+    margin-top: govuk-spacing(6);
     margin-bottom: govuk-spacing(4);
     @include govuk-font($size: 27, $weight: bold);
 
     @include govuk-media-query($from: desktop) {
-      margin-top: $govuk-gutter * 1.5;
+      margin-top: govuk-spacing(6) * 1.5;
     }
   }
 
   h3 {
-    margin-top: $govuk-gutter + 5px;
+    margin-top: govuk-spacing(6) + 5px;
     margin-bottom: 0;
     @include govuk-font($size: 19, $weight: bold);
   }
@@ -50,7 +48,7 @@
   h4,
   h5,
   h6 {
-    margin-top: $govuk-gutter + 5px;
+    margin-top: govuk-spacing(6) + 5px;
     margin-bottom: 0;
     @include govuk-font($size: 19, $weight: bold);
 
@@ -91,7 +89,7 @@
     // utilise the type attribute for the formatting. Browsers default to a
     // style of decimal.
     list-style-position: outside;
-    margin-left: $gutter-two-thirds;
+    margin-left: govuk-spacing(4);
     padding: 0;
 
     ul,
@@ -142,8 +140,8 @@
   // Horizontal Rule
 
   hr {
-    margin-top: $govuk-gutter - 1px;
-    margin-bottom: $govuk-gutter;
+    margin-top: govuk-spacing(6) - 1px;
+    margin-bottom: govuk-spacing(6);
     border-top: 1px solid $govuk-border-colour;
   }
 
