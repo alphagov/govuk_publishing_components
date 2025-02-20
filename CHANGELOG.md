@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix bottom border colour issue in the super nav search button ([PR #4642](https://github.com/alphagov/govuk_publishing_components/pull/4642))
+* Use govuk-spacing instead of govuk-gutter ([PR #4650](https://github.com/alphagov/govuk_publishing_components/pull/4650))
 
 ## 52.1.0
 

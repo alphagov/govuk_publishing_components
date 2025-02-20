@@ -13,7 +13,7 @@ $gem-guide-border-width: 1px;
   @extend %govuk-list--bullet;
 
   li {
-    margin-bottom: $govuk-gutter-half;
+    margin-bottom: govuk-spacing(3);
     @include govuk-font($size: 19);
   }
 
@@ -27,7 +27,7 @@ $gem-guide-border-width: 1px;
 
   .js-enabled & {
     display: block;
-    margin-top: $govuk-gutter * 2;
+    margin-top: govuk-spacing(9);
   }
 }
 
@@ -45,8 +45,8 @@ $gem-guide-border-width: 1px;
 
 .component-violation {
   border: 3px solid $govuk-error-colour;
-  margin: 0 0 $govuk-gutter;
-  padding: $govuk-gutter $govuk-gutter;
+  margin: 0 0 govuk-spacing(6);
+  padding: govuk-spacing(6);
   @include govuk-text-colour;
 
   .component-violation__title {
@@ -57,13 +57,13 @@ $gem-guide-border-width: 1px;
   .component-violation__link {
     display: block;
     color: $govuk-error-colour;
-    margin: $govuk-gutter-half 0;
+    margin: govuk-spacing(3) 0;
     @include govuk-font($size: 19, $weight: bold);
   }
 }
 
 .component-doc-h2 {
-  margin: ($govuk-gutter * 1.5) 0 $govuk-gutter;
+  margin: (govuk-spacing(6) * 1.5) 0 govuk-spacing(6);
   @include govuk-text-colour;
   @include govuk-font($size: 27, $weight: bold);
 
@@ -72,15 +72,9 @@ $gem-guide-border-width: 1px;
   }
 }
 
-.component-doc-h3 {
-  margin: $govuk-gutter 0 $govuk-gutter-half;
-  @include govuk-text-colour;
-  @include govuk-font($size: 19, $weight: bold);
-}
-
 .component-call {
   margin-top: -$gem-guide-border-width;
-  margin-bottom: $govuk-gutter-half;
+  margin-bottom: govuk-spacing(3);
 
   font-family: Consolas, Monaco, "Andale Mono", monospace;
   font-size: 16px;
@@ -97,7 +91,7 @@ $gem-guide-border-width: 1px;
 
   > pre {
     margin: 0;
-    padding: $govuk-gutter;
+    padding: govuk-spacing(6);
     max-height: 300px;
     overflow: auto;
     font-family: inherit;
@@ -116,7 +110,7 @@ $gem-guide-border-width: 1px;
 }
 
 .component-guide-preview {
-  padding: $govuk-gutter;
+  padding: govuk-spacing(6);
   border: $gem-guide-border-width solid $govuk-border-colour;
   position: relative;
 
@@ -168,7 +162,7 @@ $gem-guide-border-width: 1px;
   h3,
   h4 {
     margin-top: 0;
-    margin-bottom: calc($govuk-gutter / 2);
+    margin-bottom: govuk-spacing(3);
   }
 
   h3 a {
@@ -176,7 +170,7 @@ $gem-guide-border-width: 1px;
   }
 
   h3:not(:first-child) {
-    margin-top: $govuk-gutter;
+    margin-top: govuk-spacing(6);
   }
 
   ul {
@@ -219,10 +213,10 @@ $gem-guide-border-width: 1px;
 
 .examples {
   .component-example {
-    margin: 0 0 $govuk-gutter * 1.5;
+    margin: 0 0 govuk-spacing(6) * 1.5;
 
     .example-title {
-      margin: $govuk-gutter-half 0;
+      margin: govuk-spacing(3) 0;
       @include govuk-text-colour;
       @include govuk-font($size: 24, $weight: bold);
     }
@@ -255,7 +249,7 @@ html {
 }
 
 .component-guide-preview-page {
-  padding: ($govuk-gutter * 1.5) 0;
+  padding: (govuk-spacing(6) * 1.5) 0;
   position: relative;
 
   .preview-title {
