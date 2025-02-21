@@ -52,7 +52,6 @@ examples:
     description: This allows for rendering the layout super navigation header in a different way for only the homepage.
     data:
       homepage: true
-      show_explore_header: true
   omit_footer_navigation:
     description: This allows the footer navigation to be omitted
     data:

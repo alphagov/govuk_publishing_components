@@ -47,12 +47,6 @@ describe "Layout for public", :capybara, type: :view do
     assert_select ".gem-c-layout-for-public .gem-c-search"
   end
 
-  it "can display without search bar" do
-    render_component(show_search: false)
-
-    assert_select ".gem-c-layout-for-public .gem-c-search", false
-  end
-
   it "can omit the header" do
     render_component(omit_header: true)
 
@@ -83,12 +77,6 @@ describe "Layout for public", :capybara, type: :view do
 
     assert_select ".gem-c-layout-for-public .govuk-footer__navigation", true
     assert_select ".gem-c-layout-for-public .govuk-footer__section-break", true
-  end
-
-  it "can add a product name in the header" do
-    render_component(product_name: "Account")
-
-    assert_select ".gem-c-layout-for-public .gem-c-header__product-name", text: "Account"
   end
 
   it "can add a emergency banner" do
@@ -136,7 +124,7 @@ describe "Layout for public", :capybara, type: :view do
   end
 
   it "renders homepage variant of layout super navigation header if `homepage` is true" do
-    render_component(show_explore_header: true, homepage: true)
+    render_component(homepage: true)
 
     assert_select ".govuk-header__logotype[width='32']"
     assert_select ".govuk-header__logotype[height='30']"
