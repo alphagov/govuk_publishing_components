@@ -641,7 +641,7 @@ $after-button-padding-left: govuk-spacing(4);
     right: 0;
 
     @include focus-not-focus-visible {
-      border-bottom: 1px solid govuk-colour("dark-blue");
+      border-bottom: 1px solid transparent;
       border-left: none;
       position: relative;
     }
