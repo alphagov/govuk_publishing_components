@@ -18,6 +18,7 @@
   no_border ||= false
   size ||= ""
   value ||= ""
+  local_assigns[:margin_bottom] ||= 6
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_data_attribute({ module: "gem-toggle-input-class-on-focus" })

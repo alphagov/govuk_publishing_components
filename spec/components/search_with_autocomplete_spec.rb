@@ -49,4 +49,47 @@ describe "Search with autocomplete", type: :view do
 
     assert_select ".gem-c-search.gem-c-search--on-govuk-blue.gem-c-search--large"
   end
+
+  it "applies a margin bottom of 0" do
+    render_component({
+      source_url: "http://example.org/api/autocomplete",
+      source_key: "suggestions",
+      margin_bottom: 0,
+    })
+    assert_select '.gem-c-search-with-autocomplete.govuk-\!-margin-bottom-0'
+  end
+
+  it "applies a valid margin bottom" do
+    render_component({
+      source_url: "http://example.org/api/autocomplete",
+      source_key: "suggestions",
+      margin_bottom: 4,
+    })
+    assert_select '.gem-c-search-with-autocomplete.govuk-\!-margin-bottom-4'
+  end
+
+  it "defaults to a margin bottom of 6" do
+    render_component({
+      source_url: "http://example.org/api/autocomplete",
+      source_key: "suggestions",
+    })
+    assert_select '.gem-c-search-with-autocomplete.govuk-\!-margin-bottom-6'
+  end
+
+  it "sets margin bottom to 6 if an invalid number is passed" do
+    render_component({
+      source_url: "http://example.org/api/autocomplete",
+      source_key: "suggestions",
+      margin_bottom: -1,
+    })
+    assert_select '.gem-c-search-with-autocomplete.govuk-\!-margin-bottom-6'
+  end
+
+  it "disables margin bottom on the child search component" do
+    render_component({
+      source_url: "http://example.org/api/autocomplete",
+      source_key: "suggestions",
+    })
+    assert_select '.gem-c-search.govuk-\!-margin-bottom-0'
+  end
 end

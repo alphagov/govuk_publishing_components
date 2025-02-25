@@ -8,16 +8,20 @@
     raise ArgumentError, "The search_with_autocomplete component requires source_url and source_key"
   end
 
-  search_component_options = local_assigns.except(:autocomplete, :source_url, :source_key).merge(
+  search_component_options = local_assigns.except(:autocomplete, :source_url, :source_key, :margin_bottom).merge(
     # The `search` component has an inline label by default, but this conflicts with the accessible-
     # autocomplete component's markup and styling. Every potential use of this component is in
     # situations where we want the label not to be inline anyway, so we override the default here.
-    inline_label: false
+    inline_label: false,
+    margin_bottom: 0
   )
 
   classes = %w[gem-c-search-with-autocomplete]
   classes << "gem-c-search-with-autocomplete--large" if local_assigns[:size] == "large"
   classes << "gem-c-search-with-autocomplete--on-govuk-blue" if local_assigns[:on_govuk_blue]
+
+  margin_bottom = [*0..9].include?(local_assigns[:margin_bottom]) ? local_assigns[:margin_bottom] : 6
+  classes << "govuk-!-margin-bottom-#{margin_bottom}" if margin_bottom
 %>
 <%= tag.div(
   class: classes.join(" "),
