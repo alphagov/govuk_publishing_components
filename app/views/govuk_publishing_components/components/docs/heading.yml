@@ -106,3 +106,7 @@ examples:
       inverse: true
     context:
       dark_background: true
+  with_nested_html:
+    description: HTML can be rendered within the heading as shown.
+    data:
+      text: <label>This is a label element</label>

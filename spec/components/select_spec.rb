@@ -255,6 +255,6 @@ describe "Select", type: :view do
     )
 
     assert_select "select[name=colour]"
-    assert_select ".gem-c-select h1.gem-c-title__text label.govuk-label"
+    assert_select ".gem-c-select h1.gem-c-heading__text label.govuk-label"
   end
 end

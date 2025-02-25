@@ -12,7 +12,7 @@ describe "When the asset helper is configured", :capybara do
       expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
       expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: false)
       expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: false)
-      expect(page).not_to have_selector('link[href^="/assets/govuk_publishing_components/components/_title-"][rel="stylesheet"]', visible: false)
+      expect(page).not_to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: false)
     end
   end
 
@@ -53,7 +53,7 @@ describe "When the asset helper is configured", :capybara do
       expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
       expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: false)
       expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_title-"][rel="stylesheet"]', visible: false)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: false)
     end
   end
 end

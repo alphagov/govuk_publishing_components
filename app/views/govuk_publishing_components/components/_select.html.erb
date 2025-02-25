@@ -16,8 +16,11 @@
 <% if select_helper.options.any? && id && label %>
   <%= content_tag :div, class: select_helper.css_classes do %>
     <% if is_page_heading %>
-      <% add_gem_component_stylesheet("title") %>
-      <%= tag.h1 label_tag(id, label, class: select_helper.label_classes), class: "gem-c-title__text" %>
+      <% add_gem_component_stylesheet("heading") %>
+      <%= render "govuk_publishing_components/components/heading", {
+        text: label_tag(id, label, class: select_helper.label_classes),
+        heading_level: 1
+      } %>
     <% else %>
       <%= label_tag(id, label, class: select_helper.label_classes) %>
     <% end %>
