@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Component example with automated testing", :capybara, js: true do
+describe "Component example with automated testing", :capybara, :js do
   it "has accessibility testing hooks" do
     visit "/component-guide/test_component"
     expect(page).to have_selector('[data-module="test-a11y"]')

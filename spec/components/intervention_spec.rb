@@ -19,7 +19,7 @@ describe "Intervention", type: :view do
     assert_select ".gem-c-intervention .govuk-link", text: /Hide this suggestion/
   end
 
-  it "renders the component with GA4 tracking " do
+  it "renders the component with GA4 tracking" do
     render_component(
       name: "test-campaign",
       suggestion_text: "You might be interested in",

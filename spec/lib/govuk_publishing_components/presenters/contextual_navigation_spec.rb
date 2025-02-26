@@ -2,6 +2,7 @@ require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::ContextualNavigation do
   subject { described_class.new(content_item, request) }
+
   let(:example) { %w[guide guide] }
   let(:content_item) { example_document_for(example.first, example.second) }
   let(:path) { content_item["base_path"] }

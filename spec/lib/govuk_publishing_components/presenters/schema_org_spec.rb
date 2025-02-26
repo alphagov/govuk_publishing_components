@@ -89,7 +89,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     end
 
     context "schema.org GovernmentService" do
-      before(:each) do
+      before do
         @organisations = [
           {
             "title" => "Ministry of Dragons",
@@ -306,7 +306,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         ).structured_data["mainEntity"]
 
         expect(q_and_a.count).to eq(2)
-        expect(q_and_a.map { |faq| faq["name"] }).to_not include("Step two")
+        expect(q_and_a.map { |faq| faq["name"] }).not_to include("Step two")
       end
 
       it "handles an empty body to ensure that preview works OK" do
@@ -507,7 +507,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       ).structured_data
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
-      expect(structured_data.keys).to_not include("member")
+      expect(structured_data.keys).not_to include("member")
     end
 
     it "allows override of the URL" do

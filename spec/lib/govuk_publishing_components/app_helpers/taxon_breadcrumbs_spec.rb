@@ -9,7 +9,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TaxonBreadcrumbs do
 
       expect {
         described_class.new(payload).breadcrumbs
-      }.to_not raise_error
+      }.not_to raise_error
     end
 
     it "returns the root when taxon is not specified" do

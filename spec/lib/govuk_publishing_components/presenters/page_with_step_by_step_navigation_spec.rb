@@ -275,8 +275,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       expect(sidebar[:small]).to be(true)
 
       # the page isn't in the step nav so nothing should be highlighted
-      expect(sidebar[:show_step]).to be nil
-      expect(sidebar[:highlight_step]).to be nil
+      expect(sidebar[:show_step]).to be_nil
+      expect(sidebar[:highlight_step]).to be_nil
     end
 
     it "configures active links appropriately" do

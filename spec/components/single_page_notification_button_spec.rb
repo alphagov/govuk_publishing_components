@@ -59,7 +59,7 @@ describe "Single page notification button", type: :view do
     assert_select "input[name='base_path']", value: "/the-current-page"
   end
 
-  it "set the default form action of '/email/subscriptions/single-page/new' if skip_account is present but not 'true' " do
+  it "set the default form action of '/email/subscriptions/single-page/new' if skip_account is present but not 'true'" do
     local_assigns = {
       base_path: "/the-current-page",
       skip_account: "anything-goes",

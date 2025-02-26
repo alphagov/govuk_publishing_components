@@ -5,7 +5,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnA
     it "can handle any valid content item" do
       payload = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide")
 
-      expect { described_class.new(payload).breadcrumbs }.to_not raise_error
+      expect { described_class.new(payload).breadcrumbs }.not_to raise_error
     end
 
     it "returns the root when parent is not specified" do

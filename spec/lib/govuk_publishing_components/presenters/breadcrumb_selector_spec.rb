@@ -9,6 +9,7 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
       disable_ga4,
     )
   end
+
   let(:example) { %w[guide guide] }
   let(:content_item) { example_document_for(example.first, example.second) }
   let(:path) { content_item["base_path"] }
