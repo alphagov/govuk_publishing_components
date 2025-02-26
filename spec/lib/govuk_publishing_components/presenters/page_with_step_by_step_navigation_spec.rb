@@ -321,7 +321,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       expect(step_nav_helper.active_step_by_step?).to be(false)
     end
 
-    it "shows the titles of the other step navs the content item is part of" do
+    it "shows the titles of the other step navs the content item is part of via part_of_step_navs" do
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
@@ -402,7 +402,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       expect(step_nav_helper.show_header?).to be(true)
     end
 
-    it "shows the titles of the other step navs the content item is part of" do
+    it "shows the titles of the other step navs the content item is part of via related_to_step_navs" do
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",

@@ -148,7 +148,7 @@ describe "Radio", type: :view do
     assert_select "legend h1", "What is your favourite skittle?"
   end
 
-  it "renders radio-group with a legend" do
+  it "renders radio-group with a legend at heading_level 0" do
     render_component(
       name: "radio-group-legend",
       heading: "What is your favourite smartie?",

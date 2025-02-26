@@ -60,7 +60,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
       expect(devolved_nations_helper.nations_with_urls[:wales][:alternative_url]).to eql("/publication-wales")
     end
 
-    it "returns title text, which contains one nation, and publication urls for three nations, correctly" do
+    it "returns title text, which contains one nation, and publication urls for one nation, correctly" do
       devolved_nations_helper = described_class.new(national_applicability: {
         england: {
           applicable: true,
