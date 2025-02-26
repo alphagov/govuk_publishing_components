@@ -89,8 +89,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     end
 
     context "with schema.org GovernmentService" do
-      before do
-        @organisations = [
+      let(:organisations) do
+        [
           {
             "title" => "Ministry of Dragons",
             "web_url" => "http://www.dev.gov.uk/ministry-of-dragons",
@@ -100,8 +100,9 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
             "web_url" => "http://www.dev.gov.uk/ministry-of-safety",
           },
         ]
-
-        @ordered_related_items = [
+      end
+      let(:ordered_related_items) do
+        [
           {
             "title" => "Apply for your first dragon",
             "schema_name" => "transaction",
@@ -135,7 +136,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       it "generates schema.org GovernmentService without provider when no organisation is tagged" do
-        content_item = transaction_content_item([], @ordered_related_items)
+        content_item = transaction_content_item([], ordered_related_items)
 
         structured_data = generate_structured_data(
           content_item:,
@@ -159,7 +160,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           },
         ]
 
-        content_item = transaction_content_item(@organisations, [])
+        content_item = transaction_content_item(organisations, [])
 
         structured_data = generate_structured_data(
           content_item:,
@@ -170,7 +171,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       it "generates schema.org GovernmentService without related services when there are no related services" do
-        content_item = transaction_content_item(@organisations, [])
+        content_item = transaction_content_item(organisations, [])
 
         structured_data = generate_structured_data(
           content_item:,
@@ -194,7 +195,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           },
         ]
 
-        content_item = transaction_content_item([], @ordered_related_items)
+        content_item = transaction_content_item([], ordered_related_items)
 
         structured_data = generate_structured_data(
           content_item:,
