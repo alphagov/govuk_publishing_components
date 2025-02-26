@@ -2,6 +2,7 @@ require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnOrganisations do
   subject { described_class.new(content_item) }
+
   let(:content_item) { GovukSchemas::Example.find("corporate_information_page", example_name: "best-practice-about-page") }
 
   describe "#initialize" do

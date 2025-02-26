@@ -1,6 +1,6 @@
 RSpec.describe GovukPublishingComponents::Presenters::SharedHelper do
   describe "Shared component helper" do
-    after(:each) do
+    after do
       I18n.locale = :en
     end
 
@@ -32,7 +32,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SharedHelper do
       default_locale = I18n.locale
       shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({})
 
-      expect(shared_helper.t_locale_check(default_locale)).to be nil
+      expect(shared_helper.t_locale_check(default_locale)).to be_nil
     end
 
     it "returns a locale if different to the page locale" do
@@ -57,7 +57,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SharedHelper do
       translation_key = "components.contents_list.contents"
       shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({})
 
-      expect(shared_helper.t_lang(translation_key)).to be nil
+      expect(shared_helper.t_lang(translation_key)).to be_nil
     end
 
     it "returns the locale if translation is not present" do

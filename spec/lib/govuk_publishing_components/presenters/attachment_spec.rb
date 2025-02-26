@@ -200,7 +200,7 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
         command_paper_number: "333",
         unnumbered_command_paper: true,
       )
-      expect(attachment.unnumbered_reference).to be nil
+      expect(attachment.unnumbered_reference).to be_nil
     end
 
     it "returns nil if unnumbered_hoc_paper is true and hoc_paper_number is set" do
@@ -211,7 +211,7 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
         hoc_paper_number: "444",
         unnumbered_hoc_paper: true,
       )
-      expect(attachment.unnumbered_reference).to be nil
+      expect(attachment.unnumbered_reference).to be_nil
     end
   end
 

@@ -10,7 +10,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
   describe "#related_navigation" do
     it "can handle randomly generated content" do
-      expect { payload_for("guide", {}) }.to_not raise_error
+      expect { payload_for("guide", {}) }.not_to raise_error
     end
 
     it "returns empty arrays if there are no related navigation sidebar links" do
@@ -307,7 +307,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           "related_items",
         )
 
-        expect(payload).to_not include(
+        expect(payload).not_to include(
           "related_contacts",
           "related_external_links",
           "statistical_data_sets",
@@ -331,7 +331,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           "world_locations",
         )
 
-        expect(payload).to_not include(
+        expect(payload).not_to include(
           "collections",
           "related_guides",
           "related_items",
@@ -375,6 +375,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
             "locale" => "en",
           }
         end
+
         it "generates world news links based on title without special characters" do
           payload = payload_for("speech", content_item)
           expected = {
@@ -387,6 +388,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       context "with empty base path" do
         let(:base_path) { "" }
         let(:world_location_title) { "World !@' ~Location~" }
+
         it "errors due to schema violation" do
           expect { payload_for("speech", content_item) }.to raise_error(GovukSchemas::InvalidContentGenerated)
         end
@@ -395,6 +397,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       context "with nil base path" do
         let(:base_path) { nil }
         let(:world_location_title) { "World !@' ~Location~" }
+
         it "errors due to schema violation" do
           expect { payload_for("speech", content_item) }.to raise_error(GovukSchemas::InvalidContentGenerated)
         end
@@ -403,6 +406,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       context "with base path provided" do
         let(:base_path) { "/unique-base-path" }
         let(:world_location_title) { "World !@' ~Location~" }
+
         it "generates world news links based on base path" do
           payload = payload_for("speech", content_item)
           expected = {

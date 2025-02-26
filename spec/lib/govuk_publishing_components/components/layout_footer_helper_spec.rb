@@ -1,6 +1,6 @@
 RSpec.describe GovukPublishingComponents::Presenters::LayoutFooterHelper do
   describe "Footer helper" do
-    before(:each) do
+    before do
       @navigation = [
         {
           items: [

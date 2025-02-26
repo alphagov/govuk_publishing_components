@@ -1,6 +1,6 @@
 RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
   describe "Public layout helper" do
-    before(:each) do
+    before do
       @input = [
         {
           title: "Column 1",

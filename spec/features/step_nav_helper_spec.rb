@@ -64,7 +64,7 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
 
     it "does not show the full step nav sidebar" do
-      expect(page).to_not have_css(".gem-c-step-nav")
+      expect(page).not_to have_css(".gem-c-step-nav")
     end
 
     it "shows the step nav header" do

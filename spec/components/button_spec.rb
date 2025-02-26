@@ -99,7 +99,7 @@ describe "Button", type: :view do
     assert_select ".gem-c-button__info-text", text: "Information text"
   end
 
-  it "renders info text and the relevant aria attributes " do
+  it "renders info text and the relevant aria attributes" do
     render_component(text: "Start now", info_text: "Information text")
     assert_select ".govuk-button", text: "Start now"
     assert_select ".govuk-button[aria-labelledby]", count: 1

@@ -290,7 +290,7 @@ module GovukPublishingComponents
       results = []
 
       @applications_data.each do |application|
-        next unless application[:application_found] && !application[:helper_references].blank?
+        next unless application[:application_found] && application[:helper_references].present?
 
         application[:helper_references].each do |key, value|
           location = {

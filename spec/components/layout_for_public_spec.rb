@@ -169,13 +169,13 @@ describe "Layout for public", :capybara, type: :view do
     assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
   end
 
-  it "does not contain LUX submission script when the page loads", js: true do
+  it "does not contain LUX submission script when the page loads", :js do
     visit "/public"
 
     assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "only contains LUX submission script after usage cookies have been allowed", js: true do
+  it "only contains LUX submission script after usage cookies have been allowed", :js do
     visit "/public"
 
     assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
@@ -188,7 +188,7 @@ describe "Layout for public", :capybara, type: :view do
     assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "contains real user metrics scripts on the page after usage cookies have been allowed", js: true do
+  it "contains real user metrics scripts on the page after usage cookies have been allowed", :js do
     visit "/public"
 
     click_button "Accept additional cookies"
@@ -200,7 +200,7 @@ describe "Layout for public", :capybara, type: :view do
     assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
   end
 
-  it "does not contain real user metrics scripts after usage cookies have not been allowed", js: true do
+  it "does not contain real user metrics scripts after usage cookies have not been allowed", :js do
     visit "/public"
 
     click_button "Reject additional cookies"
@@ -211,7 +211,7 @@ describe "Layout for public", :capybara, type: :view do
     assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "does not contain real user metrics scripts on page after usage cookies have not been allowed", js: true do
+  it "does not contain real user metrics scripts on page after usage cookies have not been allowed", :js do
     visit "/public"
 
     click_button "Reject additional cookies"

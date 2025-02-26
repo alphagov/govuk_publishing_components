@@ -47,8 +47,8 @@ module GovukPublishingComponents
         meta_tags["govuk:updated-at"] = content_item[:updated_at] if content_item[:updated_at]
         meta_tags["govuk:public-updated-at"] = content_item[:public_updated_at] if content_item[:public_updated_at]
         primary_publisher = content_item.dig(:links, :primary_publishing_organisation)
-        primary_publisher = primary_publisher.first[:title] unless primary_publisher.blank?
-        meta_tags["govuk:primary-publishing-organisation"] = primary_publisher unless primary_publisher.blank?
+        primary_publisher = primary_publisher.first[:title] if primary_publisher.present?
+        meta_tags["govuk:primary-publishing-organisation"] = primary_publisher if primary_publisher.present?
 
         # Some browse topics are nested in the content item, we want to grab these for GA4 tracking.
         ga4_browse_topic = content_item.dig(:links, :ordered_related_items, 0, :links, :mainstream_browse_pages, 0, :links, :parent, 0, :title)

@@ -12,7 +12,10 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
   end
 
   describe "#structured_data" do
+    subject(:structured_data) { described_class.new(page).structured_data }
+
     let(:body) { nil }
+    let(:q_and_a) { structured_data["mainEntity"] }
     let(:content_item) do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "html_publication")
       content_item["details"].merge!("body" => body) if body
@@ -25,8 +28,6 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
       }
     end
     let(:page) { GovukPublishingComponents::Presenters::Page.new(page_data) }
-    subject(:structured_data) { described_class.new(page).structured_data }
-    let(:q_and_a) { structured_data["mainEntity"] }
 
     it "behaves like an article" do
       expect(structured_data["@type"]).to eql("Article")

@@ -34,7 +34,13 @@ describe "Layout for admin", type: :view do
       end
     end
 
-    it "can receive a custom js filename for es6 " do
+    after "disable loading of separate es6 components bundle" do
+      GovukPublishingComponents.configure do |config|
+        config.use_es6_components = false
+      end
+    end
+
+    it "can receive a custom js filename for es6" do
       allow_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("application")
       expect_any_instance_of(ActionView::Base).to receive(:javascript_include_tag).with("es6-bundle", { type: "module" }).once
 
@@ -53,12 +59,6 @@ describe "Layout for admin", type: :view do
         browser_title: "Hello, admin page",
         environment: "production",
       )
-    end
-
-    after "disable loading of separate es6 components bundle" do
-      GovukPublishingComponents.configure do |config|
-        config.use_es6_components = false
-      end
     end
   end
 

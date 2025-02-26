@@ -107,7 +107,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         expect(helper.all_attributes[:class]).to eql("js-original gem-c-extra")
       end
 
-      it "will error if trying to add an invalid class to already passed classes" do
+      it "errors if trying to add an invalid class to already passed classes" do
         classes = "gem-c-extra something-invalid"
         expect {
           helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "js-original")
