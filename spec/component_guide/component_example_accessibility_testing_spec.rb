@@ -18,7 +18,7 @@ describe "Component example with automated testing", :capybara, :js do
     expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }).not_to be_empty
 
     selector_with_error = page.first(".selector").text
-    expect(page).to have_selector(selector_with_error, visible: false)
+    expect(page).to have_selector(selector_with_error, visible: :hidden)
 
     within ".component-guide-preview--violation" do
       expect(page).to have_selector("h3", text: "Images must have alternative text")

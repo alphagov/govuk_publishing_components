@@ -20,13 +20,13 @@ describe "Layout for public", :capybara, type: :view do
   it "adds a default <title> tag" do
     render_component({})
 
-    assert_select "title", visible: false, text: "GOV.UK - The best place to find government services and information"
+    assert_select "title", visible: :hidden, text: "GOV.UK - The best place to find government services and information"
   end
 
   it "adds a custom <title> tag" do
     render_component(title: "Custom GOV.UK Title")
 
-    assert_select "title", visible: false, text: "Custom GOV.UK Title"
+    assert_select "title", visible: :hidden, text: "Custom GOV.UK Title"
   end
 
   it "displays as a restricted width layout when called with the for_static parameter" do

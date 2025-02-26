@@ -6,37 +6,37 @@ describe "When the asset helper is configured", :capybara do
 
     visit "/asset_helper"
 
-    within(:xpath, "//head", visible: false) do
-      expect(page).to have_xpath("//link", visible: false, count: 3)
+    within(:xpath, "//head", visible: :hidden) do
+      expect(page).to have_xpath("//link", visible: :hidden, count: 3)
 
-      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: false)
-      expect(page).not_to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: false)
+      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).not_to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: :hidden)
     end
   end
 
   scenario "go to page with multiple GOV.UK publishing components and an app component" do
     visit "/asset_helper_with_app_component"
 
-    within(:xpath, "//head", visible: false) do
-      expect(page).to have_xpath("//link", visible: false, count: 3)
+    within(:xpath, "//head", visible: :hidden) do
+      expect(page).to have_xpath("//link", visible: :hidden, count: 3)
 
-      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/components/_app-component-"][rel="stylesheet"]', visible: false)
+      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/components/_app-component-"][rel="stylesheet"]', visible: :hidden)
     end
   end
 
   scenario "go to page with multiple GOV.UK publishing components and an app view" do
     visit "/asset_helper_with_app_view"
 
-    within(:xpath, "//head", visible: false) do
-      expect(page).to have_xpath("//link", visible: false, count: 3)
+    within(:xpath, "//head", visible: :hidden) do
+      expect(page).to have_xpath("//link", visible: :hidden, count: 3)
 
-      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/views/_app-view-"][rel="stylesheet"]', visible: false)
+      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/views/_app-view-"][rel="stylesheet"]', visible: :hidden)
     end
   end
 
@@ -47,13 +47,13 @@ describe "When the asset helper is configured", :capybara do
 
     visit "/asset_helper"
 
-    within(:xpath, "//head", visible: false) do
-      expect(page).to have_xpath("//link", visible: false, count: 4)
+    within(:xpath, "//head", visible: :hidden) do
+      expect(page).to have_xpath("//link", visible: :hidden, count: 4)
 
-      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: false)
-      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: false)
+      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: :hidden)
     end
   end
 end
