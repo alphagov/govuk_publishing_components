@@ -1,7 +1,7 @@
 RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
   describe "Devolved nations component helper" do
     it "returns title text, which contains one nation, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(national_applicability: {
+      devolved_nations_helper = described_class.new(national_applicability: {
         england: {
           applicable: true,
         },
@@ -10,7 +10,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
     end
 
     it "returns title text, which contains two nations, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(national_applicability: {
+      devolved_nations_helper = described_class.new(national_applicability: {
         england: {
           applicable: true,
         },
@@ -22,7 +22,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
     end
 
     it "returns title text, which contains three nations, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(national_applicability: {
+      devolved_nations_helper = described_class.new(national_applicability: {
         england: {
           applicable: true,
         },
@@ -37,7 +37,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
     end
 
     it "returns title text, which contains one nation, and publication urls for three nations, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(national_applicability: {
+      devolved_nations_helper = described_class.new(national_applicability: {
         england: {
           applicable: true,
         },
@@ -61,7 +61,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
     end
 
     it "returns title text, which contains one nation, and publication urls for three nations, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(national_applicability: {
+      devolved_nations_helper = described_class.new(national_applicability: {
         england: {
           applicable: true,
         },
@@ -81,7 +81,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
     end
 
     it "returns title text, which contains one nation, and consultation url for one nation, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(
+      devolved_nations_helper = described_class.new(
         national_applicability: {
           england: {
             applicable: true,
@@ -98,7 +98,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
     end
 
     it "returns title text, which contains one nation, and guidance url for one nation, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(
+      devolved_nations_helper = described_class.new(
         national_applicability: {
           england: {
             applicable: true,
@@ -115,7 +115,7 @@ RSpec.describe GovukPublishingComponents::Presenters::DevolvedNationsHelper do
     end
 
     it "returns title text, which contains one nation, and guidance url for one nation, when invalid type provided, correctly" do
-      devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(
+      devolved_nations_helper = described_class.new(
         national_applicability: {
           england: {
             applicable: true,

@@ -29,7 +29,7 @@ module GovukPublishingComponents
     private
 
       def members
-        return {} unless ministers.present?
+        return {} if ministers.blank?
 
         members = ministers_with_grouped_roles.map do |person, roles|
           person.merge("hasOccupation" => roles)
@@ -67,7 +67,7 @@ module GovukPublishingComponents
       end
 
       def role_for_minister(minister)
-        return {} unless minister["role"].present?
+        return {} if minister["role"].blank?
 
         {
           "@type" => "Role",
@@ -108,7 +108,7 @@ module GovukPublishingComponents
       def related_organisations(link_type, schema_name)
         organisations = page.content_item.dig("links", link_type)
 
-        return {} unless organisations.present?
+        return {} if organisations.blank?
 
         related_orgs = organisations.map do |org|
           page = Page.new(content_item: org)

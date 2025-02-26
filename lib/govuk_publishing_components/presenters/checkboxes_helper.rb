@@ -64,7 +64,7 @@ module GovukPublishingComponents
       end
 
       def heading_markup
-        return unless @heading.present?
+        return if @heading.blank?
 
         if @is_page_heading
           content_tag(

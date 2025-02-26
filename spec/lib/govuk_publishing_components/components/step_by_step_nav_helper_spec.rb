@@ -5,7 +5,7 @@ RSpec.describe GovukPublishingComponents::Presenters::StepByStepNavHelper do
   include ActionView::Helpers::SanitizeHelper
 
   describe "Step by step navigation helper" do
-    step_helper = GovukPublishingComponents::Presenters::StepByStepNavHelper.new
+    step_helper = described_class.new
 
     it "generates step nav ids correctly" do
       id = step_helper.generate_step_nav_id("This isn't a real step title - numb3rs okay?")

@@ -136,7 +136,7 @@ describe "Single page notification button", type: :view do
 
     assert_select "[data-module='ga4-link-tracker']", false
     assert_select ".gem-c-single-page-notification-button__submit" do |button|
-      expect(button.attr("data-ga4-link")).to eq nil
+      expect(button.attr("data-ga4-link")).to be_nil
     end
   end
 end

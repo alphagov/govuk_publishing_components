@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
   describe "Asset helper" do
-    include GovukPublishingComponents::AppHelpers::AssetHelper
+    include described_class
 
     it "exclude stylesheets already in static when exclude_css_from_static is true and the request object is not available" do
       GovukPublishingComponents.configure do |config|
@@ -19,7 +19,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
     end
 
     it "detect the total number of stylesheet paths" do
-      expect(get_component_css_paths.count).to eql(80)
+      expect(get_component_css_paths.count).to be(80)
     end
 
     it "initialize empty asset helper" do

@@ -9,10 +9,10 @@ describe GovukPublishingComponents::Config do
         config.application_javascript = "custom_javascript"
       end
 
-      expect(GovukPublishingComponents::Config.component_guide_title).to eql("My component guide")
-      expect(GovukPublishingComponents::Config.application_stylesheet).to eql("custom_stylesheet")
-      expect(GovukPublishingComponents::Config.application_javascript).to eql("custom_javascript")
-      expect(GovukPublishingComponents::Config.component_directory_name).to eql("components")
+      expect(described_class.component_guide_title).to eql("My component guide")
+      expect(described_class.application_stylesheet).to eql("custom_stylesheet")
+      expect(described_class.application_javascript).to eql("custom_javascript")
+      expect(described_class.component_directory_name).to eql("components")
     end
   end
 end
