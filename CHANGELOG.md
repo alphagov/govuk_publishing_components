@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 53.0.0
 
 * **BREAKING:** Remove title component ([PR #4653](https://github.com/alphagov/govuk_publishing_components/pull/4653))
 * Fix bottom border colour issue in the super nav search button ([PR #4642](https://github.com/alphagov/govuk_publishing_components/pull/4642))
