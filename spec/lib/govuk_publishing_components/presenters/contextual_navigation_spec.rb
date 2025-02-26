@@ -22,10 +22,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContextualNavigation do
   describe "#organisation_breadcrumbs" do
     it "calls ContentBreadcrumbsBasedOnOrganisation" do
       called_class = GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnOrganisations
-      expect(called_class).to receive(:call)
+      allow(called_class).to receive(:call)
         .with(content_item)
         .and_return([])
-      contextual_navigation.organisation_breadcrumbs
+
+      expect(contextual_navigation.organisation_breadcrumbs).to eq([])
     end
   end
 
