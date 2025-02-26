@@ -119,6 +119,7 @@ GEM
       sass-embedded (~> 1.63)
     date (3.4.1)
     diff-lcs (1.5.1)
+    docile (1.4.1)
     domain_name (0.6.20240107)
     drb (2.2.1)
     erubi (1.13.1)
@@ -590,6 +591,12 @@ GEM
     sentry-ruby (5.22.4)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.1)
+    simplecov_json_formatter (0.1.4)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -646,6 +653,7 @@ DEPENDENCIES
   rake
   rspec-rails
   rubocop-govuk
+  simplecov
   terser
   webmock
   yard
