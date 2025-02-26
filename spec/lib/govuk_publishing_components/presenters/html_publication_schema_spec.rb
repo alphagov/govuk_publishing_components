@@ -5,9 +5,10 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
     let(:page) { instance_double(GovukPublishingComponents::Presenters::Page, schema: :html_publication) }
     let(:schema) { instance_double(described_class, structured_data: true) }
 
-    it "the page is passed to this class" do
-      expect(described_class).to receive(:new).and_return(schema)
-      GovukPublishingComponents::Presenters::SchemaOrg.new(page).structured_data
+    it "returns this class as schema when the page schema is html_publication" do
+      allow(described_class).to receive(:new).and_return(schema)
+
+      expect(GovukPublishingComponents::Presenters::SchemaOrg.new(page).schema_for_page).to eq(described_class)
     end
   end
 
