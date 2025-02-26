@@ -14,9 +14,11 @@ examples:
     data:
       block: |
         <!-- example content -->
-          <%= render "govuk_publishing_components/components/title", {
-            title: "Education, Training and Skills",
-            inverse: true
+          <%= render "govuk_publishing_components/components/heading", {
+            text: "Education, Training and Skills",
+            font_size: "xl",
+            inverse: true,
+            padding: true,
           } %>
           <!-- end of example content -->
   with_custom_padding:
@@ -38,9 +40,11 @@ examples:
         full_width: true
         block: |
           <!-- example content -->
-            <%= render "govuk_publishing_components/components/title", {
-              title: "Education, Training and Skills",
-              inverse: true
+            <%= render "govuk_publishing_components/components/heading", {
+              text: "Education, Training and Skills",
+              font_size: "xl",
+              inverse: true,
+              padding: true,
             } %>
             <!-- end of example content -->
   with_subtext:
@@ -59,10 +63,12 @@ examples:
     data:
       block: |
         <!-- example content -->
-          <%= render "govuk_publishing_components/components/title", {
-            title: "LN5 0AT, Jackson Homes (Scopwick) Ltd: environmental permit application",
+          <%= render "govuk_publishing_components/components/heading", {
+            text: "LN5 0AT, Jackson Homes (Scopwick) Ltd: environmental permit application",
             inverse: true,
             context: "Notice",
+            padding: true,
+            font_size: "xl"
           } %>
           <p class="publication-header__last-changed">Published 22 April 2016</p>
           <!-- end of example content -->

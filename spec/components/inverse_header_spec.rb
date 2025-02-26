@@ -1,11 +1,11 @@
 require "rails_helper"
 
 def block
-  "<div class=\"gem-c-title gem-c-title--inverse\">
-  <p class=\"gem-c-title__context\">
+  "<div class=\"gem-c-heading gem-c-heading-inverse\">
+  <p class=\"gem-c-heading__context\">
     Publication
   </p>
-  <h1 class=\"gem-c-title__text \">
+  <h1 class=\"gem-c-heading__text \">
     HTML publication page title
   </h1>
 </div>".html_safe
@@ -23,7 +23,7 @@ describe "Inverse header", type: :view do
   it "renders content within a wrapper when content is provided" do
     render_component({}) { block }
 
-    assert_select ".gem-c-inverse-header div.gem-c-title"
+    assert_select ".gem-c-inverse-header div.gem-c-heading"
     assert_select ".gem-c-inverse-header h1", text: "HTML publication page title"
   end
 

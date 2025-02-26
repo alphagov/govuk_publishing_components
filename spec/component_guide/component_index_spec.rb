@@ -58,6 +58,7 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/error-summary';
 @import 'govuk_publishing_components/components/feedback';
 @import 'govuk_publishing_components/components/govspeak';
+@import 'govuk_publishing_components/components/heading';
 @import 'govuk_publishing_components/components/hint';
 @import 'govuk_publishing_components/components/input';
 @import 'govuk_publishing_components/components/label';
@@ -77,8 +78,7 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
 @import 'govuk_publishing_components/components/step-by-step-nav-related';
 @import 'govuk_publishing_components/components/tabs';
-@import 'govuk_publishing_components/components/textarea';
-@import 'govuk_publishing_components/components/title';"
+@import 'govuk_publishing_components/components/textarea';"
 
     expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (20)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
