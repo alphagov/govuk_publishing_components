@@ -1,3 +1,8 @@
+require "simplecov"
+SimpleCov.start "rails" do
+  enable_coverage :branch
+end
+
 require "webmock/rspec"
 require "govuk_publishing_components"
 require "govuk_schemas"
