@@ -88,7 +88,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       ])
     end
 
-    context "schema.org GovernmentService" do
+    context "with schema.org GovernmentService" do
       before do
         @organisations = [
           {
@@ -239,7 +239,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["@type"]).to eql("NewsArticle")
     end
 
-    context "schema.org FAQPages" do
+    context "with schema.org FAQPages" do
       it "parses html into questions and answers" do
         part_body = "<h2 id='step-one'>Step one</h2>
                      <p>First catch your dragon</p>

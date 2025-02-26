@@ -3,7 +3,7 @@ require "rails_helper"
 describe "Specimen usage of step by step navigation helpers", :capybara do
   include GdsApi::TestHelpers::ContentStore
 
-  context "no related step by step navigation journeys" do
+  context "with no related step by step navigation journeys" do
     before do
       content_store_has_random_item(base_path: "/step-nav/vomit-comet", schema: "transaction", part_of_step_navs: nil)
 
@@ -17,7 +17,7 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
   end
 
-  context "one related step by step navigation journey" do
+  context "with related step by step navigation journey" do
     before do
       content_store_has_random_item(base_path: "/step-nav/vomit-comet", schema: "transaction", part_of_step_navs: [spacewalk_step_nav])
 
@@ -47,7 +47,7 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
   end
 
-  context "one related step by step navigation journey with no steps" do
+  context "with one related step by step navigation journey with no steps" do
     before do
       content_store_has_random_item(base_path: "/step-nav/vomit-comet", schema: "transaction", part_of_step_navs: [zero_steps_step_nav])
 
@@ -74,7 +74,7 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
   end
 
-  context "multiple related step by step navigation journeys" do
+  context "with multiple related step by step navigation journeys" do
     before do
       content_store_has_random_item(
         base_path: "/step-nav/vomit-comet",
