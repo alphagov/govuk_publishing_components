@@ -2,8 +2,8 @@ require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
   describe "when SchemaOrg passed schema of type :html_publication" do
-    let(:page) { double schema: :html_publication }
-    let(:schema) { double structured_data: true }
+    let(:page) { instance_double(GovukPublishingComponents::Presenters::Page, schema: :html_publication) }
+    let(:schema) { instance_double(described_class, structured_data: true) }
 
     it "the page is passed to this class" do
       expect(described_class).to receive(:new).and_return(schema)
