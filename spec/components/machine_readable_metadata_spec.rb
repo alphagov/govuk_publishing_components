@@ -11,7 +11,7 @@ describe "Machine readable metadata", type: :view do
 
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
-    assert JSON.parse(json_linked_data)
+    expect { JSON.parse(json_linked_data) }.not_to raise_error
   end
 
   it "generates machine readable JSON-LD for people" do
@@ -20,7 +20,7 @@ describe "Machine readable metadata", type: :view do
 
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
-    assert JSON.parse(json_linked_data)
+    expect { JSON.parse(json_linked_data) }.not_to raise_error
   end
 
   it "uses images if available" do
@@ -56,7 +56,7 @@ describe "Machine readable metadata", type: :view do
 
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
-    assert JSON.parse(json_linked_data)
+    expect { JSON.parse(json_linked_data) }.not_to raise_error
   end
 
   it "escapes harmful HTML in the JSON" do
