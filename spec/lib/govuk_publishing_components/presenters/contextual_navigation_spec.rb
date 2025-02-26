@@ -7,7 +7,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContextualNavigation do
   let(:content_item) { example_document_for(example.first, example.second) }
   let(:path) { content_item["base_path"] }
   let(:query_parameters) { {} }
-  let(:request) { instance_double("ActionDispatch::Request", path:, query_parameters:) }
+  let(:request) { instance_double(ActionDispatch::Request, path:, query_parameters:) }
 
   def example_document_for(schema_name, example_name)
     GovukSchemas::Example.find(schema_name, example_name:)

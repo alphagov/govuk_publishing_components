@@ -118,7 +118,7 @@ module GovukPublishingComponents
           @gem_style_references << gem_style_references if gem_style_references
         end
       rescue StandardError => e
-        puts e.message
+        Rails.logger.debug e.message
       end
 
       components_found.flatten.uniq.sort

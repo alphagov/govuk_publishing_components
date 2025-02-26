@@ -25,7 +25,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
         },
       ]
 
-      @plh = GovukPublishingComponents::Presenters::PublicLayoutHelper.new({})
+      @plh = described_class.new({})
     end
 
     it "adds column sizing to each list of links and data tracking attributes to each link in that list" do

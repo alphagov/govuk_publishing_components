@@ -18,7 +18,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
     end
 
     it "keeps a space between number and text for screen reader pronunciation" do
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      cl = described_class.new({})
       # 1.Thing can be pronounced "1 dot Thing"
       # 1. Thing is always pronounced "1 Thing"
       text = "1. Thing"
@@ -35,19 +35,19 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
     end
 
     it "does nothing if no number is found" do
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      cl = described_class.new({})
       input = "Vision"
       expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "does nothing if it's just a number" do
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      cl = described_class.new({})
       input = "1"
       expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "does nothing if the number is part of the word" do
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      cl = described_class.new({})
       input = "1Vision"
       expect(cl.wrap_numbers_with_spans(input)).to eql(input)
 
@@ -56,7 +56,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
     end
 
     it "does nothing if it starts with a number longer than 3 digits" do
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      cl = described_class.new({})
       input = "2014 Vision"
       expect(cl.wrap_numbers_with_spans(input)).to eql(input)
 
@@ -68,7 +68,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
     end
 
     it "does nothing if a number is present but not at the start" do
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      cl = described_class.new({})
       input = "Run an effective welfare system part 1. Social Care"
       expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
@@ -91,12 +91,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
           text: "test3",
         },
       ]
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({ contents: })
-      expect(cl.get_index_total).to eql(4)
+      cl = described_class.new({ contents: })
+      expect(cl.get_index_total).to be(4)
     end
 
     it "returns the required GA4 event name" do
-      cl = GovukPublishingComponents::Presenters::ContentsListHelper.new({})
+      cl = described_class.new({})
       expect(cl.get_ga4_event_name("#anchor")).to eql("select_content")
       expect(cl.get_ga4_event_name("https://www.gov.uk")).to eql("navigation")
     end

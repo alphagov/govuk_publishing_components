@@ -80,7 +80,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       expect(structured_data["@type"]).to eql("Dataset")
       expect(structured_data["name"]).to eql("Dataset Title")
-      expect(structured_data["description"].length).to eql(5000)
+      expect(structured_data["description"].length).to be(5000)
       expect(structured_data["distribution"]).to eql([
         { "name" => "A picture of a cat", "contentUrl" => "https://www.gov.uk/a-cat.jpg", "encodingFormat" => "image/jpeg" },
         { "name" => "Some good boys", "url" => "https://www.gov.uk/dogs" },
@@ -142,7 +142,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.key?("provider")).to eql(false)
+        expect(structured_data.key?("provider")).to be(false)
       end
 
       it "generates schema.org GovernmentService with provider when at least one organisation exists" do
@@ -177,7 +177,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.key?("isRelatedTo")).to eql(false)
+        expect(structured_data.key?("isRelatedTo")).to be(false)
       end
 
       it "generates schema.org GovernmentService with related services when related services exist as related links" do
@@ -396,7 +396,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
       expect(structured_data["name"]).to eq("Ministry of Magic")
       expect(structured_data["description"]).to eq("The magical ministry.")
-      expect(structured_data["logo"]).to eq(nil)
+      expect(structured_data["logo"]).to be_nil
       expect(structured_data["mainEntityOfPage"]["@id"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
       expect(structured_data["potentialAction"]).to eq(search_action)
     end
@@ -656,7 +656,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :article,
       ).structured_data
 
-      expect(structured_data["about"]).to eql(nil)
+      expect(structured_data["about"]).to be_nil
     end
 
     it "links to items that belongs to the content" do

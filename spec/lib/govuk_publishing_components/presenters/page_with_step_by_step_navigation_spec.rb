@@ -155,7 +155,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         expect(step_nav_links.related_links).to eq([])
 
         expect(step_nav_links.show_sidebar?).to be false
-        expect(step_nav_links.sidebar).to eq(nil)
+        expect(step_nav_links.sidebar).to be_nil
       end
     end
 
@@ -299,7 +299,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
   context("active step by step") do
     it "returns true if there is an active step by step" do
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "e01e924b-9c7c-4c71-8241-66a575c2f61f")
-      expect(step_nav_helper.active_step_by_step?).to eq(true)
+      expect(step_nav_helper.active_step_by_step?).to be(true)
       expect(step_nav_helper.show_related_links?).to be true
       expect(step_nav_helper.show_also_part_of_step_nav?).to be false
     end
@@ -313,12 +313,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
     it "return false if there isn't an active step by step" do
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive")
-      expect(step_nav_helper.active_step_by_step?).to eq(false)
+      expect(step_nav_helper.active_step_by_step?).to be(false)
     end
 
     it "return false if it's an invalid step by step" do
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "i-dont-exist")
-      expect(step_nav_helper.active_step_by_step?).to eq(false)
+      expect(step_nav_helper.active_step_by_step?).to be(false)
     end
 
     it "shows the titles of the other step navs the content item is part of" do
@@ -362,7 +362,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         },
       }
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
-      expect(step_nav_helper.active_step_by_step?).to eq(true)
+      expect(step_nav_helper.active_step_by_step?).to be(true)
       expect(step_nav_helper.also_part_of_step_nav.count).to eq(0)
     end
 
@@ -380,7 +380,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         },
       }
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive")
-      expect(step_nav_helper.active_step_by_step?).to eq(false)
+      expect(step_nav_helper.active_step_by_step?).to be(false)
       expect(step_nav_helper.show_also_part_of_step_nav?).to be false
     end
 
@@ -398,8 +398,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         },
       }
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
-      expect(step_nav_helper.active_step_by_step?).to eq(true)
-      expect(step_nav_helper.show_header?).to eq(true)
+      expect(step_nav_helper.active_step_by_step?).to be(true)
+      expect(step_nav_helper.show_header?).to be(true)
     end
 
     it "shows the titles of the other step navs the content item is part of" do
@@ -472,7 +472,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         },
       }
       step_nav_helper = described_class.new(content_item_in_six_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
-      expect(step_nav_helper.show_also_part_of_step_nav?).to eq(false)
+      expect(step_nav_helper.show_also_part_of_step_nav?).to be(false)
     end
   end
 
@@ -938,8 +938,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
         expect(step_nav_links.show_secondary_step_by_step?).to be false
         expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
-        expect(step_nav_links.active_step_by_step?).to eq(true)
-        expect(step_nav_links.show_header?).to eq(true)
+        expect(step_nav_links.active_step_by_step?).to be(true)
+        expect(step_nav_links.show_header?).to be(true)
         expect(step_nav_links.related_links).to eq([
           {
             href: "/learn-to-spacewalk",
@@ -969,8 +969,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
         expect(step_nav_links.show_secondary_step_by_step?).to be false
         expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
-        expect(step_nav_links.active_step_by_step?).to eq(true)
-        expect(step_nav_links.show_header?).to eq(true)
+        expect(step_nav_links.active_step_by_step?).to be(true)
+        expect(step_nav_links.show_header?).to be(true)
         expect(step_nav_links.related_links).to eq([
           {
             href: "/learn-to-spacewalk",

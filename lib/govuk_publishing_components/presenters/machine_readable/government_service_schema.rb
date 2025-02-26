@@ -25,7 +25,7 @@ module GovukPublishingComponents
       def related_services
         related_links = page.content_item.dig("links", "ordered_related_items")
 
-        return {} unless related_links.present?
+        return {} if related_links.blank?
 
         {
           "isRelatedTo" => related_links.each_with_object([]) do |link, items|
@@ -43,7 +43,7 @@ module GovukPublishingComponents
       def provider
         organisations = page.content_item.dig("links", "organisations")
 
-        return {} unless organisations.present?
+        return {} if organisations.blank?
 
         providers = organisations.map do |organisation|
           {
