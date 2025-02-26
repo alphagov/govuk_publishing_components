@@ -15,7 +15,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
 
     # Create a mock request
     def request
-      double(ActionDispatch::Request, { path: "/" })
+      instance_double(ActionDispatch::Request, { path: "/" })
     end
 
     it "detect the total number of stylesheet paths" do

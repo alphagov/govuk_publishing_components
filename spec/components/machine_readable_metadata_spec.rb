@@ -71,7 +71,7 @@ describe "Machine readable metadata", type: :view do
 
   it "escapes harmful HTML nested several layers inside the JSON" do
     allow(GovukPublishingComponents::Presenters::SchemaOrg).to receive(:new)
-      .and_return(double("SchemaOrg", structured_data: {
+      .and_return(instance_double(GovukPublishingComponents::Presenters::SchemaOrg, structured_data: {
         "foo" => {
           "bar" => bad_html,
         },
