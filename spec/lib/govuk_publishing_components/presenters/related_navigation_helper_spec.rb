@@ -297,7 +297,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       )
     end
 
-    context "for a sidebar" do
+    context "with a sidebar" do
       subject(:payload) { payload_for("guide", {}, :sidebar) }
 
       it "only includes collections, guides and related items" do
@@ -318,7 +318,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       end
     end
 
-    context "for a footer" do
+    context "with a footer" do
       subject(:payload) { payload_for("guide", {}, :footer) }
 
       it "only includes contacts external links, statistical datasets, topical events, topics and world locations" do
@@ -339,7 +339,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       end
     end
 
-    context "for world link navigation" do
+    context "with world link navigation" do
       let(:world_location) do
         {
           "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",

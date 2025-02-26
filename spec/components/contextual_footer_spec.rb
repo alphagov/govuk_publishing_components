@@ -18,7 +18,7 @@ RSpec.describe "Contextual footer", type: :view do
     assert_select ".gem-c-contextual-footer"
   end
 
-  context "part of a step by step" do
+  context "when part of a step by step" do
     it "does not renders the footer" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "speech") do |payload|
         payload["links"].merge!("part_of_step_navs" => [{

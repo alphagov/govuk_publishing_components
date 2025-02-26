@@ -27,7 +27,7 @@ describe "Layout for admin", type: :view do
     )
   end
 
-  context "loads a separate bundle for es6 components" do
+  context "when loading a separate bundle for es6 components" do
     before "enable loading of separate es6 components bundle" do
       GovukPublishingComponents.configure do |config|
         config.use_es6_components = true

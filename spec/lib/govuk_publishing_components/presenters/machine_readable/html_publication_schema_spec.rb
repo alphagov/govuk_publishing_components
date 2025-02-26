@@ -100,7 +100,7 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
       end
     end
 
-    context "many headings of different types" do
+    context "with many headings of different types" do
       let(:heading_one) { Faker::Lorem.sentence }
       let(:content_one) { "<p>#{Faker::Lorem.paragraph}</p>" }
       let(:heading_two) { Faker::Lorem.sentence }
@@ -140,7 +140,7 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
       end
     end
 
-    context "many headings of different types and more lower level ones" do
+    context "with many headings of different types and more lower level ones" do
       let(:heading_one) { Faker::Lorem.sentence }
       let(:content_one) { "<p>#{Faker::Lorem.paragraph}</p>" }
       let(:heading_two) { Faker::Lorem.sentence }

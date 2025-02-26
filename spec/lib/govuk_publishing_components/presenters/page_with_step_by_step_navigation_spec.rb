@@ -118,7 +118,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     )
   end
 
-  context "rules for handling differing numbers of linked step navs" do
+  context "with rules for handling differing numbers of linked step navs" do
     let(:step_nav) do
       {
         "content_id" => "cccc-dddd",
@@ -134,7 +134,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       }
     end
 
-    context "for a content item with no step nav links" do
+    context "with a content item with no step nav links" do
       let(:content_store_response) do
         {
           "title" => "Building giant swimming pools",
@@ -159,7 +159,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
     end
 
-    context "for a content item with `part_of_step_navs` links" do
+    context "with a content item with `part_of_step_navs` links" do
       let(:content_store_response) do
         {
           "title" => "Book a session in the vomit comet",
@@ -197,7 +197,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
     end
 
-    context "for a content item with a couple of `part_of_step_navs` links" do
+    context "with a content item with a couple of `part_of_step_navs` links" do
       let(:step_nav2) do
         {
           "content_id" => "aaaa-bbbb",
@@ -240,7 +240,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
     end
 
-    context "for a content item with many `part_of_step_navs` links" do
+    context "with a content item with many `part_of_step_navs` links" do
       let(:content_store_response) do
         {
           "title" => "Book a session in the vomit comet",
@@ -263,7 +263,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     end
   end
 
-  context "configuring step by step content for a sidebar navigation element" do
+  context "when configuring step by step content for a sidebar navigation element" do
     it "sets up navigation appropriately" do
       step_nav_helper = described_class.new(content_item, "/random_url")
       expect(step_nav_helper.step_navs.count).to eq(1)
@@ -296,7 +296,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     end
   end
 
-  context("active step by step") do
+  context("with an active step by step") do
     it "returns true if there is an active step by step" do
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "e01e924b-9c7c-4c71-8241-66a575c2f61f")
       expect(step_nav_helper.active_step_by_step?).to be(true)
@@ -476,7 +476,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     end
   end
 
-  context("secondary step by steps") do
+  context("with secondary step by steps") do
     let(:step_nav) do
       {
         "content_id" => "aaaa-bbbb",
@@ -492,8 +492,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       }
     end
 
-    context "secondary steps without other step by step links" do
-      context "for a content item with a single `secondary_to_step_navs` links" do
+    context "with secondary steps without other step by step links" do
+      context "with a content item with a single `secondary_to_step_navs` links" do
         let(:content_store_response) do
           {
             "title" => "Book a session in the vomit comet",
@@ -534,7 +534,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         end
       end
 
-      context "for a content item with a couple `secondary_to_step_navs` links" do
+      context "with a content item with a couple `secondary_to_step_navs` links" do
         let(:step_nav2) do
           {
             "content_id" => "aaaa-bbbb-2",
@@ -581,7 +581,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
     end
 
-    context "secondary step by steps with primary step by steps" do
+    context "with secondary step by steps with primary step by steps" do
       let(:primary_step_nav) do
         {
           "content_id" => "PRIMARY-aaaa-bbbb",
@@ -597,7 +597,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         }
       end
 
-      context "for a content item with a single `secondary_to_step_navs` links and a single `part_of_step_navs` link" do
+      context "with a content item with a single `secondary_to_step_navs` links and a single `part_of_step_navs` link" do
         let(:content_store_response) do
           {
             "title" => "Book a session in the vomit comet",
@@ -639,7 +639,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         end
       end
 
-      context "for a content item with a couple `secondary_to_step_navs` links and a single `part_of_step_navs` link" do
+      context "with a content item with a couple `secondary_to_step_navs` links and a single `part_of_step_navs` link" do
         let(:step_nav2) do
           {
             "content_id" => "aaaa-bbbb-2",
@@ -689,7 +689,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         end
       end
 
-      context "for a content item with a single `secondary_to_step_navs` links and a couple `part_of_step_navs` link" do
+      context "with a content item with a single `secondary_to_step_navs` links and a couple `part_of_step_navs` link" do
         let(:primary_step_nav2) do
           {
             "content_id" => "PRIMARY-aaaa-bbbb-2",
@@ -736,7 +736,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         end
       end
 
-      context "for a content item with a couple `secondary_to_step_navs` links and a couple `part_of_step_navs` link" do
+      context "with a content item with a couple `secondary_to_step_navs` links and a couple `part_of_step_navs` link" do
         let(:primary_step_nav2) do
           {
             "content_id" => "PRIMARY-aaaa-bbbb-2",
@@ -792,7 +792,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
     end
 
-    context "secondary step by steps with related to step by steps" do
+    context "with secondary step by steps with related to step by steps" do
       let(:related_to_step_nav) do
         {
           "content_id" => "RELATED-aaaa-bbbb",
@@ -808,7 +808,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         }
       end
 
-      context "for a content item with a single `secondary_to_step_navs` links and a single `related_to_step_navs` link" do
+      context "with a content item with a single `secondary_to_step_navs` links and a single `related_to_step_navs` link" do
         let(:content_store_response) do
           {
             "title" => "Book a session in the vomit comet",
@@ -835,7 +835,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         end
       end
 
-      context "for a content item with a couple `secondary_to_step_navs` links and a single `related_to_step_navs` link" do
+      context "with a content item with a couple `secondary_to_step_navs` links and a single `related_to_step_navs` link" do
         let(:content_store_response) do
           {
             "title" => "Book a session in the vomit comet",
@@ -862,7 +862,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         end
       end
 
-      context "for a content item with a single `secondary_to_step_navs` links and a couple `related_to_step_navs` link" do
+      context "with a content item with a single `secondary_to_step_navs` links and a couple `related_to_step_navs` link" do
         let(:content_store_response) do
           {
             "title" => "Book a session in the vomit comet",
@@ -889,7 +889,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         end
       end
 
-      context "for a content item with a couple `secondary_to_step_navs` links and a couple `related_to_step_navs` link" do
+      context "with a content item with a couple `secondary_to_step_navs` links and a couple `related_to_step_navs` link" do
         let(:content_store_response) do
           {
             "title" => "Book a session in the vomit comet",
@@ -917,7 +917,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
     end
 
-    context "secondary step by step with active step by step" do
+    context "with secondary step by step with active step by step" do
       it "shows header for related to step nav when a step by step is active and there is also a secondary step by step" do
         related_to_step_navs = {
           "content_id" => "cccc-dddd",
