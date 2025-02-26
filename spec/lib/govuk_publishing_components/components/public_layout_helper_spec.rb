@@ -1,7 +1,7 @@
 RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
   describe "Public layout helper" do
-    before do
-      @input = [
+    let(:input) do
+      [
         {
           title: "Column 1",
           menu_contents: [
@@ -24,15 +24,14 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
           ],
         },
       ]
-
-      @plh = described_class.new({})
     end
+    let(:plh) { described_class.new({}) }
 
     it "adds column sizing to each list of links and data tracking attributes to each link in that list" do
       res = [
         {
           title: "Column 1",
-          columns: @plh.footer_navigation_columns[0],
+          columns: plh.footer_navigation_columns[0],
           items: [
             {
               href: "/help",
@@ -45,7 +44,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
         },
         {
           title: "Column 2",
-          columns: @plh.footer_navigation_columns[1],
+          columns: plh.footer_navigation_columns[1],
           items: [
             {
               href: "/contact",
@@ -55,7 +54,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
         },
       ]
 
-      expect(@plh.navigation_link_generation_from_locale(@input)).to eql(res)
+      expect(plh.navigation_link_generation_from_locale(input)).to eql(res)
     end
   end
 end
