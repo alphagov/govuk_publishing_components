@@ -2,6 +2,7 @@ require "rails_helper"
 require "percy/capybara"
 require "uri"
 
+# rubocop:disable RSpec/NoExpectationExample
 describe "visual regression test runner Percy", :visual_regression do
   it "takes a screenshot of each component" do
     # Freeze time for consistency
@@ -47,3 +48,4 @@ describe "visual regression test runner Percy", :visual_regression do
     travel_back
   end
 end
+# rubocop:enable RSpec/NoExpectationExample
