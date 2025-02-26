@@ -8,13 +8,13 @@ describe "Layout for admin", type: :view do
   it "adds the <title> tag" do
     render_component(browser_title: "Hello, admin page", environment: "production")
 
-    assert_select "title", visible: false, text: "Hello, admin page - GOV.UK Publishing"
+    assert_select "title", visible: :hidden, text: "Hello, admin page - GOV.UK Publishing"
   end
 
   it "adds the robots metatag" do
     render_component(browser_title: "Hello, admin page", environment: "production")
 
-    assert_select 'meta[name="robots"][content="noindex,nofollow,noimageindex"]', visible: false
+    assert_select 'meta[name="robots"][content="noindex,nofollow,noimageindex"]', visible: :hidden
   end
 
   it "can receive a custom js filename" do
