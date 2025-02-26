@@ -147,7 +147,7 @@ describe "Layout for public", :capybara, type: :view do
   it "does not render the blue bar with a background if an invalid background specified" do
     render_component(blue_bar: true, full_width: true, blue_bar_background_colour: "invalid")
 
-    assert page.has_no_selector? ".gem-c-layout-for-public__blue-bar-wrapper--invalid"
+    expect(page).not_to have_selector(".gem-c-layout-for-public__blue-bar-wrapper--invalid")
   end
 
   it "has the default logo link when no logo_link is specified" do
@@ -165,27 +165,27 @@ describe "Layout for public", :capybara, type: :view do
   it "contains real user metrics loader script and LUX measurer script" do
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
   end
 
   it "does not contain LUX submission script when the page loads", :js do
     visit "/public"
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "only contains LUX submission script after usage cookies have been allowed", :js do
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
 
     click_button "Accept additional cookies"
 
-    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "contains real user metrics scripts on the page after usage cookies have been allowed", :js do
@@ -195,9 +195,9 @@ describe "Layout for public", :capybara, type: :view do
 
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
-    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
   end
 
   it "does not contain real user metrics scripts after usage cookies have not been allowed", :js do
@@ -205,10 +205,10 @@ describe "Layout for public", :capybara, type: :view do
 
     click_button "Reject additional cookies"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "does not contain real user metrics scripts on page after usage cookies have not been allowed", :js do
@@ -218,10 +218,10 @@ describe "Layout for public", :capybara, type: :view do
 
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "account layout renders with a main element if for_static is explicitly set to true" do
