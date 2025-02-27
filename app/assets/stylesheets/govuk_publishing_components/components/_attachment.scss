@@ -76,6 +76,18 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   }
 }
 
+.govspeak,
+.gem-c-govspeak {
+  .gem-c-attachment__title {
+    @include govuk-font($size: 27, $weight: regular);
+    margin: 0 0 govuk-spacing(3) 0;
+  }
+
+  .gem-c-attachment__metadata {
+    margin: 0 0 govuk-spacing(3) 0;
+  }
+}
+
 .gem-c-attachment__metadata--compact {
   margin-bottom: 0;
 }
