@@ -25,29 +25,20 @@
       @include govuk-font($size: 27, $weight: bold);
     }
 
+    * + h2,
+    * + h3 {
+      padding-top: govuk-spacing(3);
+
+      @include govuk-media-query($from: tablet) {
+        padding-top: govuk-spacing(9);
+      }
+    }
+
     .stat-headline:first-child {
       margin-top: govuk-spacing(6);
 
       @include govuk-media-query($from: tablet) {
         margin-top: govuk-spacing(9) + govuk-spacing(4);
-      }
-    }
-
-    h2,
-    h3 {
-      margin-top: govuk-spacing(6);
-
-      @include govuk-media-query($from: tablet) {
-        margin-top: govuk-spacing(9) + govuk-spacing(4);
-      }
-    }
-
-    h2:first-child,
-    h3:first-child {
-      margin-top: govuk-spacing(4);
-
-      @include govuk-media-query($from: tablet) {
-        margin-top: 0;
       }
     }
 
