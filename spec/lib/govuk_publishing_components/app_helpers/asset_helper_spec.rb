@@ -7,6 +7,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
     it "exclude stylesheets already in static when exclude_css_from_static is true and the request object is not available" do
       GovukPublishingComponents.configure do |config|
         config.exclude_css_from_static = true
+        config.custom_css_exclude_list = nil
       end
 
       add_gem_component_stylesheet("button")
@@ -35,6 +36,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
     it "initialize asset helper then add multiple stylesheets but exclude 'button' stylesheet since it's already in static" do
       GovukPublishingComponents.configure do |config|
         config.exclude_css_from_static = true
+        config.custom_css_exclude_list = nil
       end
 
       add_gem_component_stylesheet("accordion")
