@@ -71,4 +71,36 @@ describe "When the asset helper is configured", :capybara do
       expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: :hidden)
     end
   end
+
+  scenario "request only unexcluded stylesheets when custom_css_exclude_list is set" do
+    GovukPublishingComponents.configure do |config|
+      config.custom_css_exclude_list = %w[notice details]
+    end
+
+    visit "/asset_helper"
+
+    within(:xpath, "//head", visible: :hidden) do
+      expect(page).to have_xpath("//link", visible: :hidden, count: 2)
+
+      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).not_to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: false)
+      expect(page).not_to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: false)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: false)
+    end
+  end
+
+  scenario "request all stylesheets when custom_css_exclude_list is set but visiting the component guide" do
+    GovukPublishingComponents.configure do |config|
+      config.custom_css_exclude_list = %w[notice details]
+    end
+
+    visit "/component-guide"
+
+    within(:xpath, "//head", visible: :hidden) do
+      expect(page).to have_xpath("//link[@rel=\"stylesheet\"]", visible: :hidden, count: 8)
+
+      expect(page).to have_selector('link[href^="/assets/component_guide/application-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: false)
+    end
+  end
 end
