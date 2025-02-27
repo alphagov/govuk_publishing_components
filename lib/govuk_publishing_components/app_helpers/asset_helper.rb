@@ -91,7 +91,9 @@ module GovukPublishingComponents
       end
 
       def viewing_component_guide?
-        request&.path&.include?("/component-guide")
+        return false unless request
+
+        request.path.include?("/component-guide")
       end
 
       def component_paths(component_list)
