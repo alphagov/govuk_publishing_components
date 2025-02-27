@@ -15,26 +15,25 @@ module GovukPublishingComponents
 
       # This is used to dedupe stylesheets.
       STATIC_STYLESHEET_LIST = %w[
-        govuk_publishing_components/components/_breadcrumbs.css
-        govuk_publishing_components/components/_button.css
-        govuk_publishing_components/components/_error-message.css
-        govuk_publishing_components/components/_heading.css
-        govuk_publishing_components/components/_hint.css
-        govuk_publishing_components/components/_input.css
-        govuk_publishing_components/components/_label.css
-        govuk_publishing_components/components/_search.css
-        govuk_publishing_components/components/_search-with-autocomplete.css
-        govuk_publishing_components/components/_skip-link.css
-        govuk_publishing_components/components/_textarea.css
-        govuk_publishing_components/components/_title.css
-
-        govuk_publishing_components/components/_cookie-banner.css
-        govuk_publishing_components/components/_cross-service-header.css
-        govuk_publishing_components/components/_feedback.css
-        govuk_publishing_components/components/_layout-footer.css
-        govuk_publishing_components/components/_layout-for-public.css
-        govuk_publishing_components/components/_layout-header.css
-        govuk_publishing_components/components/_layout-super-navigation-header.css
+        breadcrumbs
+        button
+        error-message
+        heading
+        hint
+        input
+        label
+        search
+        search-with-autocomplete
+        skip-link
+        textarea
+        title
+        cookie-banner
+        cross-service-header
+        feedback
+        layout-footer
+        layout-for-public
+        layout-header
+        layout-super-navigation-header
       ].freeze
 
       def add_stylesheet_path(component_path)
@@ -81,15 +80,22 @@ module GovukPublishingComponents
     private
 
       def is_already_used?(component)
-        if GovukPublishingComponents::Config.exclude_css_from_static && !viewing_component_guide?
-          all_component_stylesheets_being_used.include?(component) || STATIC_STYLESHEET_LIST.include?(component)
-        else
-          all_component_stylesheets_being_used.include?(component)
-        end
+        (all_component_stylesheets_being_used + component_paths(css_exclude_list)).include?(component)
+      end
+
+      def css_exclude_list
+        return [] if viewing_component_guide?
+        return STATIC_STYLESHEET_LIST if GovukPublishingComponents::Config.exclude_css_from_static
+
+        []
       end
 
       def viewing_component_guide?
         request&.path&.include?("/component-guide")
+      end
+
+      def component_paths(component_list)
+        component_list.map { |c| "govuk_publishing_components/components/_#{c}.css" }
       end
     end
   end
