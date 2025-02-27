@@ -85,6 +85,7 @@ module GovukPublishingComponents
 
       def css_exclude_list
         return [] if viewing_component_guide?
+        return GovukPublishingComponents::Config.custom_css_exclude_list if GovukPublishingComponents::Config.custom_css_exclude_list&.any?
         return STATIC_STYLESHEET_LIST if GovukPublishingComponents::Config.exclude_css_from_static
 
         []
