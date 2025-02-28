@@ -17,6 +17,7 @@ module GovukPublishingComponents
         government-frontend
         govspeak
         govspeak-preview
+        govuk-chat
         govuk-developer-docs
         local-links-manager
         manuals-publisher
