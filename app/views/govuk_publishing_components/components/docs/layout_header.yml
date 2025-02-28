@@ -59,10 +59,6 @@ examples:
     data:
       environment: production
       full_width: true
-  no_bottom_border:
-    description: This is useful for pages where a large full-width banner is the first thing to appear on the page, for example, the [GOV.UK homepage](https://www.gov.uk)
-    data:
-      remove_bottom_border: true
   with_search_bar:
     data:
       search: true

@@ -6,7 +6,6 @@
   navigation_aria_label ||= t("components.layout_header.top_level")
   navigation_items ||= []
   product_name ||= nil
-  remove_bottom_border ||= false
   search ||= false
   width_class = full_width ? "govuk-header__container--full-width" : "govuk-width-container"
   logo_link ||= "/"
@@ -14,7 +13,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-header govuk-header")
   component_helper.add_class("gem-c-layout-header--#{environment}") if environment
-  component_helper.add_class("gem-c-layout-header--no-bottom-border") if remove_bottom_border
   component_helper.add_data_attribute({ module: "govuk-header" })
 
 %>

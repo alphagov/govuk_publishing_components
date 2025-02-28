@@ -37,13 +37,6 @@ examples:
     description: This allows the header to be omitted which is currently used when rendering CSV previews from Whitehall
     data:
       omit_header: true
-  blue_bar_background:
-    description: For use when a page has a heading component with a background colour.
-    data:
-      for_static: true
-      full_width: true
-      blue_bar: true
-      blue_bar_background_colour: "no"
   omit_feedback:
     description: This allows the feedback form to be omitted
     data:
