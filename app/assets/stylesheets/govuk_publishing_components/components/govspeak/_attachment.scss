@@ -9,11 +9,6 @@
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
-  // Scope attachment and attachment-link component styles to gem-c-govspeak
-  @import "../attachment-link";
-  @import "../attachment";
-  @import "../details";
-
   // This block is duplicated from Whitehall as a transitional step, see the
   // commit message for 2d893c10ee3f2cab27162b9aba38b12379a71d07 before making
   // changes, original version:

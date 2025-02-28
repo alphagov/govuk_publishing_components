@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move govspeak attachment sass includes into view ([PR #4659](https://github.com/alphagov/govuk_publishing_components/pull/4659))
+
 ## 53.0.0
 
 * **BREAKING:** Remove title component ([PR #4653](https://github.com/alphagov/govuk_publishing_components/pull/4653))
