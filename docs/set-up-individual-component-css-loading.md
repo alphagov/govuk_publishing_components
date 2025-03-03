@@ -119,6 +119,17 @@ GovukPublishingComponents.configure do |c|
 end
 ```
 
+If you are not using static but you want to provide your own application css which bundles component css includes, and you do not want them to also be included as individual component stylesheets, you can provide a custom list of components to exclude. These component should be ones that you have explicitly
+included in your application stylesheet:
+
+```rb
+# config/initializers/govuk_publishing_components.rb
+GovukPublishingComponents.configure do |c|
+  c.custom_css_exclude_list = %w[button feedback label
+                                 layout-footer layout-super-navigation-header layout-header]
+end
+```
+
 #### Add the app components and views to the stylesheet array
 
 This bit will likely take the most time - and really benefits from a comprehensive list of what pages use which templates (and template variations).
