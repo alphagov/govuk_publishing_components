@@ -12,6 +12,7 @@
 * Change govspeak spacing model ([PR #4623](https://github.com/alphagov/govuk_publishing_components/pull/4623))
 * Move govspeak attachment sass includes into view ([PR #4659](https://github.com/alphagov/govuk_publishing_components/pull/4659))
 * **BREAKING:** Remove layout_header component from layout_for_public ([PR #4643](https://github.com/alphagov/govuk_publishing_components/pull/4643))
+* Make /help/cookies link in cookie banner absolute instead of relative ([PR #4664](https://github.com/alphagov/govuk_publishing_components/pull/4664))
 
 ## 53.0.0
 
