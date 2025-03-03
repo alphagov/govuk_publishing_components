@@ -10,7 +10,7 @@ $highlight-answer-color: govuk-colour("white");
     color: $highlight-answer-color;
     text-align: center;
     padding: govuk-spacing(5) govuk-spacing(2) govuk-spacing(4);
-    margin: 0 0 govuk-spacing(2);
+    margin: 0 0 govuk-spacing(4);
 
     p {
       color: $highlight-answer-color;
@@ -29,7 +29,6 @@ $highlight-answer-color: govuk-colour("white");
     }
 
     @include govuk-media-query($until: tablet) {
-      margin: 0 0 govuk-spacing(2);
       @include govuk-font($size: 48);
 
       p {

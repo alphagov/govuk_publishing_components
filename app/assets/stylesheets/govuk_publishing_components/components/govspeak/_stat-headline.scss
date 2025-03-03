@@ -8,13 +8,7 @@
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .stat-headline {
-    margin-bottom: govuk-spacing(3);
-    margin-top: govuk-spacing(3);
-
-    @include govuk-media-query($from: tablet) {
-      margin-bottom: govuk-spacing(4);
-      margin-top: govuk-spacing(4);
-    }
+    margin: 0 0 govuk-spacing(4) 0;
 
     p {
       margin: 0;
@@ -23,7 +17,6 @@
 
     em {
       display: block;
-      margin: 3px 0 -5px;
       @include govuk-font($size: 80, $weight: bold);
     }
   }
