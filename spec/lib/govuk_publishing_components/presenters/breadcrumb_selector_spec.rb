@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
-  subject do
+  subject(:breadcrumb_selector) do
     described_class.new(
       content_item,
       request,
@@ -9,11 +9,12 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
       disable_ga4,
     )
   end
+
   let(:example) { %w[guide guide] }
   let(:content_item) { example_document_for(example.first, example.second) }
   let(:path) { content_item["base_path"] }
   let(:query_parameters) { {} }
-  let(:request) { instance_double("ActionDispatch::Request", path:, query_parameters:) }
+  let(:request) { instance_double(ActionDispatch::Request, path:, query_parameters:) }
   let(:prioritise_taxon_breadcrumbs) { false }
   let(:disable_ga4) { false }
 
@@ -23,7 +24,7 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
 
   describe "#initialize" do
     it "does not raise exception" do
-      expect { subject }.not_to raise_error
+      expect { breadcrumb_selector }.not_to raise_error
     end
   end
 
@@ -32,7 +33,7 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
       let(:example) { %w[corporate_information_page corporate_information_page_complaints] }
 
       it "returns parent-based breadcrumbs" do
-        expect(subject.breadcrumbs).to eq([
+        expect(breadcrumb_selector.breadcrumbs).to eq([
           { title: "Home", url: "/" },
           { title: "Department of Health", url: "/government/organisations/department-of-health" },
           { title: "About us", url: "/government/organisations/department-of-health/about" },
@@ -44,7 +45,7 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
       let(:example) { %w[corporate_information_page best-practice-about-page] }
 
       it "returns breadcrumbs based on organisation" do
-        expect(subject.breadcrumbs).to eq([
+        expect(breadcrumb_selector.breadcrumbs).to eq([
           { title: "Home", url: "/" },
           { title: "Organisations", url: "/government/organisations" },
           { title: "Intellectual Property Office", url: "/government/organisations/intellectual-property-office" },
@@ -65,7 +66,7 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
       end
 
       it "returns breadcrumbs based on taxons" do
-        expect(subject.breadcrumbs).to eq([
+        expect(breadcrumb_selector.breadcrumbs).to eq([
           { title: "Home", url: "/", is_page_parent: false },
           { title: "Corporate information", url: "/corporate-information", is_page_parent: true },
         ])
@@ -80,7 +81,7 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
       end
 
       it "returns default breadcrumbs" do
-        expect(subject.breadcrumbs).to eq([
+        expect(breadcrumb_selector.breadcrumbs).to eq([
           { title: "Home", url: "/" },
         ])
       end

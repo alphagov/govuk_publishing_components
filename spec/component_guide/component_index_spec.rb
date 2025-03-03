@@ -33,13 +33,13 @@ describe "Component guide index", :capybara do
 
   it "includes component guide styles and scripts" do
     visit "/component-guide"
-    expect(page).to have_selector('link[href*="/assets/component_guide/application"]', visible: false)
-    expect(page).to have_selector('script[src*="/assets/component_guide/application"]', visible: false)
+    expect(page).to have_selector('link[href*="/assets/component_guide/application"]', visible: :hidden)
+    expect(page).to have_selector('script[src*="/assets/component_guide/application"]', visible: :hidden)
   end
 
   it "includes the application’s scripts" do
     visit "/component-guide"
-    expect(page).to have_selector('script[src*="/assets/application"]', visible: false)
+    expect(page).to have_selector('script[src*="/assets/application"]', visible: :hidden)
   end
 
   it "includes suggested sass for the application" do
@@ -83,7 +83,7 @@ describe "Component guide index", :capybara do
     expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (20)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
 
-    expect(page.find(:css, 'textarea[name="main-sass"]', visible: false).value).to eq(expected_main_sass)
+    expect(page.find(:css, 'textarea[name="main-sass"]', visible: :hidden).value).to eq(expected_main_sass)
   end
 
   it "includes suggested js for the application" do
@@ -104,7 +104,7 @@ describe "Component guide index", :capybara do
 //= require govuk_publishing_components/components/step-by-step-nav
 //= require govuk_publishing_components/components/tabs"
 
-    expect(page.find(:css, 'textarea[name="main-js"]', visible: false).value).to eq(expected_main_js)
+    expect(page.find(:css, 'textarea[name="main-js"]', visible: :hidden).value).to eq(expected_main_js)
   end
 
   it "creates a page for the component" do

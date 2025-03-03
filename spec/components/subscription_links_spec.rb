@@ -69,7 +69,7 @@ describe "subscription links", type: :view do
       assert_select "h2.gem-c-subscription-links__hidden-header"
     end
 
-    it "renders a heading by default" do
+    it "renders with a heading" do
       render_component(email_signup_link: "email-signup", feed_link: "singapore.atom", hide_heading: false)
       assert_select "h2.gem-c-subscription-links__hidden-header"
     end

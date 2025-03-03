@@ -2,17 +2,21 @@ require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
   describe "when SchemaOrg passed schema of type :html_publication" do
-    let(:page) { double schema: :html_publication }
-    let(:schema) { double structured_data: true }
+    let(:page) { instance_double(GovukPublishingComponents::Presenters::Page, schema: :html_publication) }
+    let(:schema) { instance_double(described_class, structured_data: true) }
 
-    it "the page is passed to this class" do
-      expect(described_class).to receive(:new).and_return(schema)
-      GovukPublishingComponents::Presenters::SchemaOrg.new(page).structured_data
+    it "returns this class as schema when the page schema is html_publication" do
+      allow(described_class).to receive(:new).and_return(schema)
+
+      expect(GovukPublishingComponents::Presenters::SchemaOrg.new(page).schema_for_page).to eq(described_class)
     end
   end
 
   describe "#structured_data" do
+    subject(:structured_data) { described_class.new(page).structured_data }
+
     let(:body) { nil }
+    let(:q_and_a) { structured_data["mainEntity"] }
     let(:content_item) do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "html_publication")
       content_item["details"].merge!("body" => body) if body
@@ -25,8 +29,6 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
       }
     end
     let(:page) { GovukPublishingComponents::Presenters::Page.new(page_data) }
-    subject(:structured_data) { described_class.new(page).structured_data }
-    let(:q_and_a) { structured_data["mainEntity"] }
 
     it "behaves like an article" do
       expect(structured_data["@type"]).to eql("Article")
@@ -99,7 +101,7 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
       end
     end
 
-    context "many headings of different types" do
+    context "with many headings of different types" do
       let(:heading_one) { Faker::Lorem.sentence }
       let(:content_one) { "<p>#{Faker::Lorem.paragraph}</p>" }
       let(:heading_two) { Faker::Lorem.sentence }
@@ -139,7 +141,7 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
       end
     end
 
-    context "many headings of different types and more lower level ones" do
+    context "with many headings of different types and more lower level ones" do
       let(:heading_one) { Faker::Lorem.sentence }
       let(:content_one) { "<p>#{Faker::Lorem.paragraph}</p>" }
       let(:heading_two) { Faker::Lorem.sentence }

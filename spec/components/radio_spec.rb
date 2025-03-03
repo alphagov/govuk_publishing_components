@@ -148,7 +148,7 @@ describe "Radio", type: :view do
     assert_select "legend h1", "What is your favourite skittle?"
   end
 
-  it "renders radio-group with a legend" do
+  it "renders radio-group with a legend at heading_level 0" do
     render_component(
       name: "radio-group-legend",
       heading: "What is your favourite smartie?",
@@ -647,44 +647,44 @@ describe "Radio", type: :view do
     )
     assert_select ".govuk-body", "This is a description about skittles."
   end
-end
 
-# This component can be interacted with, so use integration tests for these cases.
-describe "Radio (integration)", :capybara do
-  def input_visible
-    false # our inputs are hidden with CSS, and rely on the label.
-  end
-
-  it "radio can choose an option" do
-    visit "/component-guide/radio/default/preview"
-
-    within ".component-guide-preview" do
-      assert_text "Use GOV.UK Verify"
-      assert_text "Use Government Gateway"
-
-      expect(page).to_not have_selector("[@class='govuk-radios__input'][@checked='checked']", visible: input_visible)
-
-      page.choose(option: "govuk-verify", allow_label_click: true)
-
-      expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
-      expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+  # This component can be interacted with, so use integration tests for these cases.
+  describe "(integration)", :capybara do
+    def input_visible
+      false # our inputs are hidden with CSS, and rely on the label.
     end
-  end
 
-  it "radio can choose an option when already has one checked" do
-    visit "/component-guide/radio/with_checked_option/preview"
+    it "radio can choose an option" do
+      visit "/component-guide/radio/default/preview"
 
-    within ".component-guide-preview" do
-      assert_text "Use Government Gateway"
-      assert_text "Use GOV.UK Verify"
+      within ".component-guide-preview" do
+        assert_text "Use GOV.UK Verify"
+        assert_text "Use Government Gateway"
 
-      expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
-      expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+        expect(page).not_to have_selector("[@class='govuk-radios__input'][@checked='checked']", visible: input_visible)
 
-      page.choose(option: "government-gateway", allow_label_click: true)
+        page.choose(option: "govuk-verify", allow_label_click: true)
 
-      expect(page).to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
-      expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+        expect(page).not_to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+        expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+      end
+    end
+
+    it "radio can choose an option when already has one checked" do
+      visit "/component-guide/radio/with_checked_option/preview"
+
+      within ".component-guide-preview" do
+        assert_text "Use Government Gateway"
+        assert_text "Use GOV.UK Verify"
+
+        expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+        expect(page).not_to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+
+        page.choose(option: "government-gateway", allow_label_click: true)
+
+        expect(page).to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+        expect(page).not_to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+      end
     end
   end
 end

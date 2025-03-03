@@ -21,7 +21,7 @@ describe "Panel", type: :view do
     assert_select ".govuk-panel__body", text: "Description"
   end
 
-  it "renders a panel component with prepend, title and append " do
+  it "renders a panel component with prepend, title and append" do
     render_component(
       title: "Application complete",
       prepend: "Prepended content",
