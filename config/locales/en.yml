@@ -229,7 +229,6 @@ en:
           href: "/search/transparency-and-freedom-of-information-releases"
           description: Data, Freedom of Information releases and corporate reports
       navigation_menu_heading: Navigation menu
-      navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       search_text: Search GOV.UK
     metadata:
@@ -245,20 +244,20 @@ en:
     notice:
       banner_title: Important
     option_select:
-      found_single: option found
       found_multiple: options found
+      found_single: option found
       selected: selected
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     password_input:
-      label: Password
       button: Show
-      button_hide: Hide
-      button_aria_label: Show password
       button_aria_hide_label: Hide password
-      password_shown_announcement: Your password is visible
-      password_hidden_announcement: Your password is hidden
+      button_aria_label: Show password
+      button_hide: Hide
       error_text_prefix: Error
+      label: Password
+      password_hidden_announcement: Your password is hidden
+      password_shown_announcement: Your password is visible
     previous_and_next_navigation:
       next: Next
       pagination: Pagination
