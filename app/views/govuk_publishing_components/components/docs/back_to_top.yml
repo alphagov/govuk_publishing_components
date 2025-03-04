@@ -1,0 +1,17 @@
+name: Back to top link
+description: An anchor link intended to allow users to return to the top of the content.
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      href: "#wrapper"
+  with_different_text:
+    data:
+      href: "#wrapper"
+      text: "Back to top"
+  right_to_left:
+    data:
+      href: "#wrapper"
+    context:
+      right_to_left: true
