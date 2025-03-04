@@ -64,7 +64,7 @@ module GovukPublishingComponents
       end
 
       def heading_markup
-        return unless @heading.present?
+        return if @heading.blank?
 
         if @is_page_heading
           content_tag(
@@ -87,7 +87,7 @@ module GovukPublishingComponents
         checkbox_id = checkbox[:id] || "#{@id}-#{index}"
         controls = checkbox[:controls]
         aria_controls = "#{checkbox_id}-conditional-#{index || rand(1..100)}" if checkbox[:conditional].present?
-        checkbox_name = checkbox[:name].present? ? checkbox[:name] : @name
+        checkbox_name = checkbox[:name].presence || @name
         checked = true if checkbox[:checked].present?
         data = checkbox[:data_attributes] || {}
         data[:controls] = controls

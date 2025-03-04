@@ -124,9 +124,7 @@ module GovukPublishingComponents
         content_id == other.content_id
       end
 
-      def hash
-        content_id.hash
-      end
+      delegate :hash, to: :content_id
 
       def eql?(other)
         self == other

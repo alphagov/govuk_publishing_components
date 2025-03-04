@@ -29,7 +29,9 @@ describe "Feedback", type: :view do
     let(:utf8_url)      { ascii_url.encode }
 
     before do
+      # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(ActionDispatch::Request).to receive(:original_url).and_return(ascii_url)
+      # rubocop:enable RSpec/AnyInstance
     end
 
     it "encodes URL params to UTF-8" do

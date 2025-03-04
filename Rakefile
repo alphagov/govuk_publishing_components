@@ -17,23 +17,23 @@ RSpec::Core::RakeTask.new
 
 namespace :assets do
   desc "Test precompiling assets through dummy application"
-  task :precompile do
+  task precompile: :environment do
     Rake::Task["app:assets:precompile"].invoke
   end
 
   desc "Test cleaning assets through dummy application"
-  task :clean do
+  task clean: :environment do
     Rake::Task["app:assets:clean"].invoke
   end
 
   desc "Test clobbering assets through dummy application"
-  task :clobber do
+  task clobber: :environment do
     Rake::Task["app:assets:clobber"].invoke
   end
 end
 
 desc "Build the Sass files"
-task :dartsass do
+task dartsass: :environment do
   Rake::Task["app:dartsass:build"].invoke
 end
 
@@ -43,7 +43,7 @@ task lint: %i[rubocop environment] do
 end
 
 desc "Jasmine"
-task :jasmine do
+task jasmine: :environment do
   sh "yarn run jasmine:ci"
 end
 

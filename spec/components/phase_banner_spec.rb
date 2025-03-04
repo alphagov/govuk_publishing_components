@@ -36,7 +36,7 @@ describe "Phase banner", type: :view do
     assert_select ".govuk-phase-banner__content__tag", text: "Beta"
   end
 
-  it "correctly uses inverse mode " do
+  it "correctly uses inverse mode" do
     render_component(phase: "beta", inverse: true)
     assert_select ".gem-c-phase-banner--inverse"
   end

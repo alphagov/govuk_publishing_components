@@ -11,7 +11,7 @@ describe "Machine readable metadata", type: :view do
 
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
-    assert JSON.parse(json_linked_data)
+    expect { JSON.parse(json_linked_data) }.not_to raise_error
   end
 
   it "generates machine readable JSON-LD for people" do
@@ -20,7 +20,7 @@ describe "Machine readable metadata", type: :view do
 
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
-    assert JSON.parse(json_linked_data)
+    expect { JSON.parse(json_linked_data) }.not_to raise_error
   end
 
   it "uses images if available" do
@@ -56,7 +56,7 @@ describe "Machine readable metadata", type: :view do
 
     json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
-    assert JSON.parse(json_linked_data)
+    expect { JSON.parse(json_linked_data) }.not_to raise_error
   end
 
   it "escapes harmful HTML in the JSON" do
@@ -71,7 +71,7 @@ describe "Machine readable metadata", type: :view do
 
   it "escapes harmful HTML nested several layers inside the JSON" do
     allow(GovukPublishingComponents::Presenters::SchemaOrg).to receive(:new)
-      .and_return(double("SchemaOrg", structured_data: {
+      .and_return(instance_double(GovukPublishingComponents::Presenters::SchemaOrg, structured_data: {
         "foo" => {
           "bar" => bad_html,
         },

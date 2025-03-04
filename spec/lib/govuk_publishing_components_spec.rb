@@ -3,7 +3,7 @@ require "spec_helper"
 describe GovukPublishingComponents do
   describe ".render" do
     it "can render a component" do
-      rendered = GovukPublishingComponents.render(
+      rendered = described_class.render(
         "govuk_publishing_components/components/button",
       )
 
@@ -11,7 +11,7 @@ describe GovukPublishingComponents do
     end
 
     it "can pass the component options" do
-      rendered = GovukPublishingComponents.render(
+      rendered = described_class.render(
         "govuk_publishing_components/components/button",
         text: "My Button",
       )
@@ -20,7 +20,7 @@ describe GovukPublishingComponents do
     end
 
     it "can specify the locale to render the component in" do
-      rendered = GovukPublishingComponents.render(
+      rendered = described_class.render(
         "govuk_publishing_components/components/back_link",
         locale: "cy",
         href: "./",

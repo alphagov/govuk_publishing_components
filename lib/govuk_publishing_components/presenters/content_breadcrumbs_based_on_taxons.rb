@@ -14,7 +14,7 @@ module GovukPublishingComponents
         ordered_parents = all_parents.map.with_index do |parent, index|
           {
             title: parent.title,
-            url: parent.url_override.present? ? parent.url_override : parent.base_path,
+            url: parent.url_override.presence || parent.base_path,
             is_page_parent: index.zero?,
           }
         end

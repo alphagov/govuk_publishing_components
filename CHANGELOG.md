@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Rubocop is now configured for rails and rspec defaults ([PR #4660](https://github.com/alphagov/govuk_publishing_components/pull/4660))
+
 ## 54.0.0
 
 * Change govspeak spacing model ([PR #4623](https://github.com/alphagov/govuk_publishing_components/pull/4623))

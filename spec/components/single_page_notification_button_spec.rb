@@ -59,7 +59,7 @@ describe "Single page notification button", type: :view do
     assert_select "input[name='base_path']", value: "/the-current-page"
   end
 
-  it "set the default form action of '/email/subscriptions/single-page/new' if skip_account is present but not 'true' " do
+  it "set the default form action of '/email/subscriptions/single-page/new' if skip_account is present but not 'true'" do
     local_assigns = {
       base_path: "/the-current-page",
       skip_account: "anything-goes",
@@ -136,7 +136,7 @@ describe "Single page notification button", type: :view do
 
     assert_select "[data-module='ga4-link-tracker']", false
     assert_select ".gem-c-single-page-notification-button__submit" do |button|
-      expect(button.attr("data-ga4-link")).to eq nil
+      expect(button.attr("data-ga4-link")).to be_nil
     end
   end
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Component example with automated testing", :capybara, js: true do
+describe "Component example with automated testing", :capybara, :js do
   it "has accessibility testing hooks" do
     visit "/component-guide/test_component"
     expect(page).to have_selector('[data-module="test-a11y"]')
@@ -18,7 +18,7 @@ describe "Component example with automated testing", :capybara, js: true do
     expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }).not_to be_empty
 
     selector_with_error = page.first(".selector").text
-    expect(page).to have_selector(selector_with_error, visible: false)
+    expect(page).to have_selector(selector_with_error, visible: :hidden)
 
     within ".component-guide-preview--violation" do
       expect(page).to have_selector("h3", text: "Images must have alternative text")
@@ -29,6 +29,8 @@ describe "Component example with automated testing", :capybara, js: true do
 
   it "does not throw JavaScript errors if there are duplicate IDs" do
     visit "/component-guide/test_component_with_duplicate_ids"
+
+    expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }).to be_empty
   end
 
   it "shows incomplete accessibility warnings on the page" do

@@ -80,7 +80,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       expect(structured_data["@type"]).to eql("Dataset")
       expect(structured_data["name"]).to eql("Dataset Title")
-      expect(structured_data["description"].length).to eql(5000)
+      expect(structured_data["description"].length).to be(5000)
       expect(structured_data["distribution"]).to eql([
         { "name" => "A picture of a cat", "contentUrl" => "https://www.gov.uk/a-cat.jpg", "encodingFormat" => "image/jpeg" },
         { "name" => "Some good boys", "url" => "https://www.gov.uk/dogs" },
@@ -88,9 +88,9 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       ])
     end
 
-    context "schema.org GovernmentService" do
-      before(:each) do
-        @organisations = [
+    context "with schema.org GovernmentService" do
+      let(:organisations) do
+        [
           {
             "title" => "Ministry of Dragons",
             "web_url" => "http://www.dev.gov.uk/ministry-of-dragons",
@@ -100,8 +100,9 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
             "web_url" => "http://www.dev.gov.uk/ministry-of-safety",
           },
         ]
-
-        @ordered_related_items = [
+      end
+      let(:ordered_related_items) do
+        [
           {
             "title" => "Apply for your first dragon",
             "schema_name" => "transaction",
@@ -135,14 +136,14 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       it "generates schema.org GovernmentService without provider when no organisation is tagged" do
-        content_item = transaction_content_item([], @ordered_related_items)
+        content_item = transaction_content_item([], ordered_related_items)
 
         structured_data = generate_structured_data(
           content_item:,
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.key?("provider")).to eql(false)
+        expect(structured_data.key?("provider")).to be(false)
       end
 
       it "generates schema.org GovernmentService with provider when at least one organisation exists" do
@@ -159,7 +160,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           },
         ]
 
-        content_item = transaction_content_item(@organisations, [])
+        content_item = transaction_content_item(organisations, [])
 
         structured_data = generate_structured_data(
           content_item:,
@@ -170,14 +171,14 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       end
 
       it "generates schema.org GovernmentService without related services when there are no related services" do
-        content_item = transaction_content_item(@organisations, [])
+        content_item = transaction_content_item(organisations, [])
 
         structured_data = generate_structured_data(
           content_item:,
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.key?("isRelatedTo")).to eql(false)
+        expect(structured_data.key?("isRelatedTo")).to be(false)
       end
 
       it "generates schema.org GovernmentService with related services when related services exist as related links" do
@@ -194,7 +195,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           },
         ]
 
-        content_item = transaction_content_item([], @ordered_related_items)
+        content_item = transaction_content_item([], ordered_related_items)
 
         structured_data = generate_structured_data(
           content_item:,
@@ -239,7 +240,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["@type"]).to eql("NewsArticle")
     end
 
-    context "schema.org FAQPages" do
+    context "with schema.org FAQPages" do
       it "parses html into questions and answers" do
         part_body = "<h2 id='step-one'>Step one</h2>
                      <p>First catch your dragon</p>
@@ -306,7 +307,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         ).structured_data["mainEntity"]
 
         expect(q_and_a.count).to eq(2)
-        expect(q_and_a.map { |faq| faq["name"] }).to_not include("Step two")
+        expect(q_and_a.map { |faq| faq["name"] }).not_to include("Step two")
       end
 
       it "handles an empty body to ensure that preview works OK" do
@@ -396,7 +397,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
       expect(structured_data["name"]).to eq("Ministry of Magic")
       expect(structured_data["description"]).to eq("The magical ministry.")
-      expect(structured_data["logo"]).to eq(nil)
+      expect(structured_data["logo"]).to be_nil
       expect(structured_data["mainEntityOfPage"]["@id"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
       expect(structured_data["potentialAction"]).to eq(search_action)
     end
@@ -507,7 +508,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       ).structured_data
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
-      expect(structured_data.keys).to_not include("member")
+      expect(structured_data.keys).not_to include("member")
     end
 
     it "allows override of the URL" do
@@ -656,7 +657,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :article,
       ).structured_data
 
-      expect(structured_data["about"]).to eql(nil)
+      expect(structured_data["about"]).to be_nil
     end
 
     it "links to items that belongs to the content" do
