@@ -1,11 +1,13 @@
 <%
   add_gem_component_stylesheet("back-to-top")
   text ||= t('content_item.contents', default: "Contents")
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("govuk-link gem-c-back-to-top govuk-!-display-none-print")
 %>
-<a class="govuk-link gem-c-back-to-top govuk-!-display-none-print"
-    href="<%= href %>">
+
+<%= link_to href, **component_helper.all_attributes do %>
     <svg class="gem-c-back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17" aria-hidden="true" focusable="false">
       <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"/>
     </svg>
     <%= text %>
-</a>
+<% end %>
