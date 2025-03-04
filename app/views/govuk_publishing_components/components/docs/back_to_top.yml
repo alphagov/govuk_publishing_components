@@ -8,6 +8,7 @@ examples:
     data:
       href: "#wrapper"
   with_different_text:
+    description: By default, the component render with the text "Contents".
     data:
       href: "#wrapper"
       text: "Back to top"

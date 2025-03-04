@@ -1,6 +1,12 @@
 <%
   add_gem_component_stylesheet("back-to-top")
+
   text ||= t('content_item.contents', default: "Contents")
+
+  if href.blank? || text.blank?
+    raise ArgumentError, "The back_to_top component requires text and a href"
+  end
+
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-link gem-c-back-to-top govuk-!-display-none-print")
 %>

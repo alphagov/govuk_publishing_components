@@ -11,6 +11,24 @@ describe "Back To Top Link", type: :view do
     end
   end
 
+  it "fails to render a back to top link when blank text is given" do
+    assert_raises do
+      render_component({ text: " " })
+    end
+  end
+
+  it "fails to render a back to top link when a blank href is given" do
+    assert_raises do
+      render_component({ href: " " })
+    end
+  end
+
+  it "renders a back to top link with default text" do
+    render_component(href: "#contents")
+
+    assert_select ".gem-c-back-to-top[href='#contents']", text: "Contents"
+  end
+
   it "renders a back to top link when a href is given" do
     render_component(href: "#contents")
 
@@ -22,5 +40,4 @@ describe "Back To Top Link", type: :view do
 
     assert_select ".gem-c-back-to-top[href='#contents']", text: "Back to top"
   end
-
 end
