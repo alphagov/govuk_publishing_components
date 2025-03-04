@@ -90,7 +90,6 @@
           <%= tag.div t('components.radio.or'), class: "govuk-radios__divider" %>
         <% else %>
           <%
-            item_next = items[index + 1] unless index === items.size - 1
             label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
             label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
             conditional_id = "conditional-#{SecureRandom.hex(4)}" if item[:conditional].present?
