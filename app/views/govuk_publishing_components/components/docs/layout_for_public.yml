@@ -59,7 +59,6 @@ examples:
   navigation:
     description: Passes the navigation through to the [header component](/component-guide/layout_header/).
     data:
-      show_search: false
       navigation_items:
       - text: Navigation item 1
         href: "item-1"
