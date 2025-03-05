@@ -13,17 +13,12 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   position: relative;
   @include govuk-font(19);
   @include govuk-clearfix;
-
-  .govuk-details {
-    margin: govuk-spacing(3) 0;
-  }
 }
 
 .gem-c-attachment__thumbnail {
   position: relative;
   width: auto;
   margin-right: govuk-spacing(5);
-  margin-bottom: govuk-spacing(3);
   padding: $thumbnail-border-width;
   float: left;
 }
@@ -45,6 +40,7 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   padding-left: $thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5);
 
   .gem-c-details {
+    margin-top: govuk-spacing(3);
     word-break: break-word;
     word-wrap: break-word;
   }

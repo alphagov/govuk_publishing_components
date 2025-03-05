@@ -8,6 +8,7 @@
   attributes = []
   url_data_attributes ||= {}
   details_ga4_attributes ||= {}
+  local_assigns[:margin_bottom] ||= 6
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
@@ -126,6 +127,7 @@
       <%= render "govuk_publishing_components/components/details", {
         title: t("components.attachment.request_format_cta"),
         ga4_attributes: details_ga4_attributes,
+        margin_bottom: 0,
       } do %>
         <%= t("components.attachment.request_format_details_html", alternative_format_contact_email: attachment.alternative_format_contact_email) %>
       <% end %>
