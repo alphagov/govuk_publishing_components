@@ -283,16 +283,16 @@ describe "Attachment", type: :view do
   end
 
   it "accepts margin_bottom" do
-    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" }, margin_bottom: 6)
-    assert_select '.gem-c-attachment[class~="govuk-!-margin-bottom-6"]'
+    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" }, margin_bottom: 1)
+    assert_select '.gem-c-attachment[class~="govuk-!-margin-bottom-1"]'
 
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" }, margin_bottom: 3)
     assert_select '.gem-c-attachment[class~="govuk-!-margin-bottom-3"]'
   end
 
-  it "defaults to no margin_bottom" do
+  it "defaults to margin_bottom of 6" do
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
-    assert_select '.gem-c-attachment:not([class*="govuk-!-margin-bottom-"])'
+    assert_select '.gem-c-attachment[class~="govuk-!-margin-bottom-6"]'
   end
 
   it "includes GA4 tracking on HTML attachment links by default" do

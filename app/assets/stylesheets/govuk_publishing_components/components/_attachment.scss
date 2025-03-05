@@ -13,17 +13,11 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   position: relative;
   @include govuk-font(19);
   @include govuk-clearfix;
-
-  .govuk-details {
-    margin: govuk-spacing(3) 0;
-  }
 }
 
 .gem-c-attachment__thumbnail {
   position: relative;
   width: auto;
-  margin-right: govuk-spacing(5);
-  margin-bottom: govuk-spacing(3);
   padding: $thumbnail-border-width;
   float: left;
 }
@@ -31,20 +25,30 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
 .gem-c-attachment__thumbnail-image {
   display: block;
   width: auto; // for IE8
-  max-width: $thumbnail-width;
-  height: $thumbnail-height;
+  max-width: calc($thumbnail-width / 1.5);
+  height: calc($thumbnail-height / 1.5);
   border: $thumbnail-border-colour; // for IE9 & IE10
   outline: $thumbnail-border-width solid $thumbnail-border-colour;
   background: $thumbnail-background;
   box-shadow: $thumbnail-shadow-width $thumbnail-shadow-colour;
   fill: $thumbnail-icon-border-colour;
   stroke: $thumbnail-icon-border-colour;
+
+  @include govuk-media-query($from: tablet) {
+    max-width: $thumbnail-width;
+    height: $thumbnail-height;
+  }
 }
 
 .gem-c-attachment__details {
-  padding-left: $thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5);
+  padding-left: calc(($thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5)) / 1.5);
+
+  @include govuk-media-query($from: tablet) {
+    padding-left: $thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5);
+  }
 
   .gem-c-details {
+    margin-top: govuk-spacing(3);
     word-break: break-word;
     word-wrap: break-word;
   }
