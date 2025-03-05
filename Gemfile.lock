@@ -444,7 +444,7 @@ GEM
       racc
     percy-capybara (5.0.0)
       capybara (>= 3)
-    plek (5.2.0)
+    plek (5.2.1)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
