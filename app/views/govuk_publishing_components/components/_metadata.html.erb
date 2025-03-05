@@ -13,9 +13,6 @@
   inverse ||= false
   inverse_compress ||= false
 
-  direction_class = ""
-  direction_class = " direction-#{direction}" if local_assigns.include?(:direction)
-
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-metadata")
   component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)

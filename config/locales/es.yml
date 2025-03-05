@@ -122,11 +122,10 @@ es:
         label:
       navigation_links_columns:
       navigation_menu_heading:
-      navigation_search_heading:
       navigation_search_subheading:
       search_text:
     metadata:
-      and: y
+      and: "y"
       from: Desde
       history: Historial
       last_updated: Última actualización
