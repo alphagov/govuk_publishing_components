@@ -775,13 +775,16 @@ examples:
           <li>three</li>
         </ul>
   legislative_lists:
+    description: Example taken from [GOV.UK Immigration rules](https://www.gov.uk/guidance/immigration-rules/immigration-rules-introduction)
     data:
       block: |
-        <h2>ordered list:</h2>
         <ol class="legislative-list">
-          <li>one</li>
-          <li>two</li>
-          <li>three</li>
+          <li>6.2. In these rules:
+            <ol>
+              <li>(a) references to primary and secondary legislation refers to that legislation as amended from time to time; and</li>
+              <li>(b) unless the contrary intention appears, the following definitions apply:</li>
+            </ol>
+          </li>
         </ol>
   nested_lists:
     data:
