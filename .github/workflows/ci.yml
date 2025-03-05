@@ -97,7 +97,7 @@ jobs:
           gem push "govuk_publishing_components-${VERSION}.gem"
         fi
 
-        if ! git ls-remote --tags --exit-code origin v${VERSION}; then
-          git tag v${VERSION}
+        if ! git ls-remote --tags --exit-code origin v"${VERSION}"; then
+          git tag v"${VERSION}"
           git push --tags
         fi
