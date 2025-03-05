@@ -4,7 +4,7 @@
   for_static ||= false
   emergency_banner ||= nil
   full_width ||= false
-  blue_bar ||= local_assigns.include?(:blue_bar) ? local_assigns[:blue_bar] : !full_width
+  blue_bar = false
   global_banner ||= nil
   html_lang ||= "en"
   homepage ||= false
@@ -46,7 +46,7 @@
 # height, making the two blue bars overlap and appear as one. The class is added
 # when a) there's content for the emergency or global banner *and* b) when using
 # the contrained width layout.
-  blue_bar_dedupe = !full_width && global_banner.present?
+  blue_bar_dedupe = false
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
   body_css_classes << "global-banner-present" if global_banner.present?
