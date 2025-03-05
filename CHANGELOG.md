@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix govspeak legislative lists styles ([PR #4679](https://github.com/alphagov/govuk_publishing_components/pull/4679))
 * Adjust attachment component spacing ([PR #4669](https://github.com/alphagov/govuk_publishing_components/pull/4669))
 * Add custom css exclude list to Asset Helper ([PR #4656](https://github.com/alphagov/govuk_publishing_components/pull/4656))
 * Rubocop is now configured for rails and rspec defaults ([PR #4660](https://github.com/alphagov/govuk_publishing_components/pull/4660))
