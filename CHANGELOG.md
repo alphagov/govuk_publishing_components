@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 54.0.1
 
 * Fix govspeak legislative lists styles ([PR #4679](https://github.com/alphagov/govuk_publishing_components/pull/4679))
 * Adjust attachment component spacing ([PR #4669](https://github.com/alphagov/govuk_publishing_components/pull/4669))
