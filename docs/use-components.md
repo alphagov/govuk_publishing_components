@@ -5,7 +5,7 @@ Components are included in templates in slightly different ways depending on whe
 A component from the application would be included in a template like this:
 
 ```erb
-<%= render "components/back-to-top", href: "#contents" %>
+<%= render "components/back-to-top-link", href: "#contents" %>
 ```
 
 A component from the gem would be included like this:

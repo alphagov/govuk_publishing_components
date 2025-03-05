@@ -11,6 +11,7 @@
 
 * Add custom css exclude list to Asset Helper ([PR #4656](https://github.com/alphagov/govuk_publishing_components/pull/4656))
 * Rubocop is now configured for rails and rspec defaults ([PR #4660](https://github.com/alphagov/govuk_publishing_components/pull/4660))
+* Add back to top link component from government-frontend ([PR #4666](https://github.com/alphagov/govuk_publishing_components/pull/4666))
 
 ## 54.0.0
 

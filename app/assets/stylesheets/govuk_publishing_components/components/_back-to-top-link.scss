@@ -1,0 +1,15 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-back-to-top-link {
+  display: inline-block;
+  margin-bottom: govuk-spacing(2);
+  margin-left: govuk-spacing(3);
+  margin-right: govuk-spacing(3);
+}
+
+.gem-c-back-to-top-link__icon {
+  float: left;
+  margin-right: .3em;
+  width: .8em;
+  height: .968em;
+}
