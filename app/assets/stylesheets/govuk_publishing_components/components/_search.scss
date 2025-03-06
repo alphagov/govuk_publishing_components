@@ -257,12 +257,6 @@ $large-input-size: 50px;
   @include large-mode;
 }
 
-.gem-c-search--large-on-mobile {
-  @include govuk-media-query($until: "tablet") {
-    @include large-mode;
-  }
-}
-
 .gem-c-search--separate-label {
   .gem-c-search__label {
     position: relative;
