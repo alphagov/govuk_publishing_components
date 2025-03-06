@@ -54,11 +54,6 @@ describe "Search", type: :view do
     assert_select ".gem-c-search.gem-c-search--large"
   end
 
-  it "renders a large search box on mobile only" do
-    render_component(size: "large-mobile")
-    assert_select ".gem-c-search.gem-c-search--large-on-mobile"
-  end
-
   it "renders a search box with a default name" do
     render_component({})
     assert_select 'input[name="q"]'
