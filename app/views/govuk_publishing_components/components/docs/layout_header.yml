@@ -63,9 +63,6 @@ examples:
     description: This is useful for pages where a large full-width banner is the first thing to appear on the page, for example, the [GOV.UK homepage](https://www.gov.uk)
     data:
       remove_bottom_border: true
-  with_search_bar:
-    data:
-      search: true
   with_custom_logo_link:
     description: The header logo links to root by default. This option allows us to override that in certain instances.
     data:
