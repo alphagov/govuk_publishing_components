@@ -1,0 +1,29 @@
+<% add_gem_component_stylesheet("contents-list-with-body") %>
+<% block = yield %>
+<% unless block.empty? %>
+  <%
+    contents ||= []
+    sticky_attr = "sticky-element-container" if contents.any?
+  %>
+  <%= tag.div(
+    id: "contents",
+    class: "gem-c-contents-list-with-body",
+    data: {
+      module: sticky_attr,
+    },
+  ) do %>
+    <% if contents.any? %>
+      <div class="responsive-bottom-margin">
+        <%= render 'govuk_publishing_components/components/contents_list', contents: contents %>
+      </div>
+    <% end %>
+    <%= block %>
+    <% if contents.any? %>
+      <div data-sticky-element class="gem-c-contents-list-with-body__link-wrapper">
+        <div class="gem-c-contents-list-with-body__link-container">
+          <%= render 'govuk_publishing_components/components/back_to_top_link', href: "#contents" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
