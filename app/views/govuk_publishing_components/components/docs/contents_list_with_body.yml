@@ -15,6 +15,7 @@ accessibility_criteria: |
     * [contents-list](/component-guide/contents_list)
 shared_accessibility_criteria:
   - link
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
