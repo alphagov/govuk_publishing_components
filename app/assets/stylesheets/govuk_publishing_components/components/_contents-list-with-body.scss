@@ -15,6 +15,14 @@
   }
 }
 
+.gem-c-contents-list-with-body__list-container {
+  margin-bottom: govuk-spacing(3);
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(8);
+  }
+}
+
 .gem-c-contents-list-with-body__link-wrapper {
   padding-bottom: govuk-spacing(2);
 
