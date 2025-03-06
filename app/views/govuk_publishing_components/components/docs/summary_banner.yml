@@ -1,0 +1,28 @@
+name: Summary banner
+description: A page banner that is currently used on consultations and calls for evidence to display a summary or other important information.
+body: |
+  This component requires title and text attribute values passed to it, otherwise it will not render. This reflects how the component is currently used. If the component needed to become more flexible and work for other use cases, please raise an issue or a pull request in the gem.
+
+  Real world examples:
+
+  - [consultation](https://www.gov.uk/government/consultations/environmental-assessment-levels-for-the-amine-based-carbon-capture-process)
+  - [call for evidence](https://www.gov.uk/government/calls-for-evidence/financial-services-growth-and-competitiveness-strategy)
+accessibility_criteria: |
+  The banner must:
+
+  - be visually distinct from other content on the page
+  - have an accessible name that describes the banner as a notice
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data:
+      title: Summary
+      text: This call for evidence will inform the development of the financial services sector plan, a key part of the government’s modern industrial strategy.
+  with_secondary_text:
+    description: This example shows how the consultation and call for evidence templates use the secondary text to display dates.
+    data:
+      title: Summary
+      text: This call for evidence will inform the development of the financial services sector plan, a key part of the government’s modern industrial strategy.
+      secondary_text: This consultation ran from<br><strong class="consultation-date"><time datetime="2024-11-05T11:00:00.000+00:00">11am on 5 November 2024</time> to
+        <time datetime="2024-12-03T17:00:00.000+00:00">5pm on 3 December 2024</time></strong>

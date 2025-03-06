@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Migrate banner component from government-frontend as 'Summary banner' ([PR #4681](https://github.com/alphagov/govuk_publishing_components/pull/4681))
+
 ## 54.0.1
 
 * Fix govspeak legislative lists styles ([PR #4679](https://github.com/alphagov/govuk_publishing_components/pull/4679))
