@@ -1,0 +1,89 @@
+name: Contents list with body
+description: Combines contents-list and back-to-top components with block of body markup
+body: |
+  Wraps the HTML/ERB block passed with a content list and back to top link.
+
+  Expects one argument:
+
+  * `contents` - The contents to build a contents list, if this item is empty the contents-list and back-to-top links are excluded but the block passed is still rendered.
+
+accessibility_criteria: |
+  - The component must have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA.
+  - The component embeds contents-list and back-to-top-link components. Please see the relevant accessibility criteria:
+
+    * [back-to-top-link](/component-guide/back_to_top_link)
+    * [contents-list](/component-guide/contents_list)
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      contents:
+        - href: "#reference-unless-undertakings-accepted"
+          text: Reference unless undertakings accepted
+        - href: "#notice-of-extension-of-the-preliminary-assessment-period"
+          text: Notice of extension of the preliminary assessment period
+        - href: "#invitation-to-comment-closes-13-november-2017"
+          text: "Invitation to comment: closes 13 November 2017"
+        - href: "#launch-of-merger-inquiry"
+          text: Launch of merger inquiry
+      block: |
+        <div class="govuk-govspeak direction-ltr">
+            <h2 id="statutory-timetable">Statutory timetable</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Phase 1 date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>3 January 2018</td>
+                  <td>Decision announced</td>
+                </tr>
+                <tr>
+                  <td>30 October to 13 November 2017</td>
+                  <td>Invitation to comment</td>
+                </tr>
+                <tr>
+                  <td>27 October 2017</td>
+                  <td>Launch of merger inquiry</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h2 id="phase-1">Phase 1</h2>
+
+            <h3 id="reference-unless-undertakings-accepted">Reference unless undertakings accepted</h3>
+
+            <p>3 January 2018: The CMA has decided, on the information currently available to it, that it is or may be the case that this merger may be expected to result in a substantial lessening of competition within a market or markets in the United Kingdom. This merger will be referred for a phase 2 investigation unless the parties offer acceptable undertakings to address these competition concerns. The full text of the decision will be available shortly.</p>
+            <ul>
+              <li>Press release: <a href="https://www.gov.uk/government/news/shoppers-could-face-higher-prices-due-to-soft-drink-merger">Shoppers could face higher prices due to soft drink merger</a> (3.1.18)</li>
+            </ul>
+            <h3 id="notice-of-extension-of-the-preliminary-assessment-period">Notice of extension of the preliminary assessment period</h3>
+            <ul>
+              <li>
+            <span class="attachment-inline"><a href="https://assets.publishing.service.gov.uk/media/5a311ebfe5274a4936ee7776/refresco-notice-of-termination-of-extension.pdf">Notice of termination of extension (Refresco) </a></span> (13.12.17)</li>
+              <li>
+            <span class="attachment-inline"><a href="https://assets.publishing.service.gov.uk/media/5a26693240f0b659d1fca8d0/refresco-extension-notice.pdf">Notice of extension (Refresco)  </a></span> (5.12.17)</li>
+            </ul>
+            <h3 id="invitation-to-comment-closes-13-november-2017">Invitation to comment: closes 13 November 2017</h3>
+            <p>30 October 2017: The Competition and Markets Authority (CMA) is considering whether it is or may be the case that this transaction, if carried into effect, will result in the creation of a relevant merger situation under the merger provisions of the Enterprise Act 2002 and, if so, whether the creation of that situation may be expected to result in a substantial lessening of competition within any market or markets in the United Kingdom for goods or services.</p>
+            <h3 id="launch-of-merger-inquiry">Launch of merger inquiry</h3>
+            <p>27 October 2017: The CMA announced the launch of its merger inquiry by notice to the parties.</p>
+            <ul>
+              <li>
+            <span class="attachment-inline"><a href="https://assets.publishing.service.gov.uk/media/59f6f28d40f0b66bbc806ed1/notice_of_commencement_of_initial_period.pdf">Commencement of initial period notice</a></span> (30.10.17)</li>
+            </ul>
+            <h3 id="contact">Contact</h3>
+            <p>Please send written representations about any competition issues to:</p>
+            <div class="address"><div class="adr org fn"><p>
+            <br>Competition and Markets Authority
+            <br>Victoria House
+            <br>Southampton Row
+            <br>London
+            <br>WC1B 4AD
+            <br>
+            </p></div></div>
+          </div>
