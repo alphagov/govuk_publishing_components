@@ -111,10 +111,7 @@ hu:
             manage:
               link_text:
     layout_header:
-      hide_button: Keresés elrejtése
       menu: Menü
-      search_button: Keresés a GOV.UK-n
-      show_button: Keresés mutatása
       top_level: Legmagasabb szint
     layout_super_navigation_header:
       logo_link_title:

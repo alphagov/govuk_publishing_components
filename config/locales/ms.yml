@@ -107,10 +107,7 @@ ms:
             manage:
               link_text:
     layout_header:
-      hide_button: Sorok carian
       menu: Menu
-      search_button: Cari GOV.UK
-      show_button: Tunjuk carian
       top_level: Aras teratas
     layout_super_navigation_header:
       logo_link_title:

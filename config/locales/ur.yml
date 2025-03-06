@@ -105,10 +105,7 @@ ur:
             manage:
               link_text:
     layout_header:
-      hide_button: تلاش کو پوشیدہ کریں
       menu: مینو
-      search_button: GOV.UK پر تلاش کریں
-      show_button: تلاش دکھائیں
       top_level: اعلیٰ درجہ
     layout_super_navigation_header:
       logo_link_title:

@@ -104,10 +104,7 @@ ja:
             manage:
               link_text:
     layout_header:
-      hide_button: 検索を非表示
       menu: メニュー
-      search_button: GOV.UKを検索
-      show_button: 検索を表示
       top_level: 最上位レベル
     layout_super_navigation_header:
       logo_link_title:

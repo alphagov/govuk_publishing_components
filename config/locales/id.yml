@@ -108,10 +108,7 @@ id:
             manage:
               link_text:
     layout_header:
-      hide_button: Sembunyikan pencarian
       menu: Menu
-      search_button: Cari di GOV.UK
-      show_button: Tampilkan pencarian
       top_level: Level teratas
     layout_super_navigation_header:
       logo_link_title:

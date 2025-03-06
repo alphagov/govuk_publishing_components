@@ -111,10 +111,7 @@ ar:
             manage:
               link_text:
     layout_header:
-      hide_button: إخفاء البحث
       menu: القائمة
-      search_button: البحث في GOV.UK
-      show_button: إظهار البحث
       top_level: أفضل مستوى
     layout_super_navigation_header:
       logo_link_title:

@@ -110,10 +110,7 @@ mt:
             manage:
               link_text:
     layout_header:
-      hide_button: Aħbi t-tfittxija
       menu: Menu
-      search_button: Fittex f'GOV.UK
-      show_button: Uri t-tfittxija
       top_level: Livell ta' fuq nett
     layout_super_navigation_header:
       logo_link_title:

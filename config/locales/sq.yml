@@ -108,10 +108,7 @@ sq:
             manage:
               link_text:
     layout_header:
-      hide_button: Fshih kërkimin
       menu: Menuja
-      search_button: Kërko GOV.UK
-      show_button: Shfaq kërkimin
       top_level: Niveli më i lartë
     layout_super_navigation_header:
       logo_link_title:

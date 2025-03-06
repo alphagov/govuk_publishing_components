@@ -113,10 +113,7 @@ cs:
             manage:
               link_text:
     layout_header:
-      hide_button: Skrýt vyhledávání
       menu: Nabídka
-      search_button: Vyhledávání na GOV.UK
-      show_button: Zobrazit vyhledávání
       top_level: Nejvyšší úroveň
     layout_super_navigation_header:
       logo_link_title:

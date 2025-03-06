@@ -115,10 +115,7 @@ uk:
             manage:
               link_text:
     layout_header:
-      hide_button: Приховати пошук
       menu: Меню
-      search_button: Пошук GOV.UK
-      show_button: Показати пошук
       top_level: Вищий рівень
     layout_super_navigation_header:
       logo_link_title:

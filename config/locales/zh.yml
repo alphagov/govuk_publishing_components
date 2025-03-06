@@ -106,10 +106,7 @@ zh:
             manage:
               link_text:
     layout_header:
-      hide_button: 隐藏搜索
       menu: 菜单
-      search_button: 搜索GOV.UK
-      show_button: 显示搜索
       top_level: 最高级
     layout_super_navigation_header:
       logo_link_title:

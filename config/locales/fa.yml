@@ -107,10 +107,7 @@ fa:
             manage:
               link_text:
     layout_header:
-      hide_button: مخفی کردن جستجو
       menu: منو
-      search_button: جستجو در GOV.UK
-      show_button: نمایش جستجو
       top_level: سطح بالا
     layout_super_navigation_header:
       logo_link_title:

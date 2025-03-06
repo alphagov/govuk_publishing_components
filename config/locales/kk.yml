@@ -108,10 +108,7 @@ kk:
             manage:
               link_text:
     layout_header:
-      hide_button: Іздеуді жасыру
       menu: Мәзір
-      search_button: GOV.UK веб-сайтында іздеу
-      show_button: Іздеуді көрсету
       top_level: Жоғары деңгей
     layout_super_navigation_header:
       logo_link_title:

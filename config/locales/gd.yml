@@ -110,10 +110,7 @@ gd:
             manage:
               link_text:
     layout_header:
-      hide_button: Folaigh cuardach
       menu: Biachlár
-      search_button: Cuardaigh GOV.UK
-      show_button: Taispeáin cuardach
       top_level: Tús an taighde
     layout_super_navigation_header:
       logo_link_title:

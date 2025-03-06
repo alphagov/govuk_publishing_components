@@ -108,10 +108,7 @@ pa:
             manage:
               link_text:
     layout_header:
-      hide_button: ਖੋਜ ਲੁਕਾਓ
       menu: ਮੇਨੂ
-      search_button: GOV.UK ਦੀ ਖੋਜ ਕਰੋ
-      show_button: ਖੋਜ ਦਿਖਾਓ
       top_level: ਉੱਚ ਪੱਧਰ
     layout_super_navigation_header:
       logo_link_title:

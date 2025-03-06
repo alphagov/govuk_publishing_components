@@ -109,10 +109,7 @@ sr:
             manage:
               link_text:
     layout_header:
-      hide_button: Sakrij pretragu
       menu: Meni
-      search_button: Pretražite GOV.UK
-      show_button: Prikaži pretragu
       top_level: Najviši nivo
     layout_super_navigation_header:
       logo_link_title:

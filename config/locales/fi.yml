@@ -110,10 +110,7 @@ fi:
             manage:
               link_text:
     layout_header:
-      hide_button: Piilota haku
       menu: Valikko
-      search_button: Hae osoitteesta GOV.UK
-      show_button: Näytä haku
       top_level: Huipputaso
     layout_super_navigation_header:
       logo_link_title:

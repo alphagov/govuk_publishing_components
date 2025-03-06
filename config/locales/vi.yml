@@ -107,10 +107,7 @@ vi:
             manage:
               link_text:
     layout_header:
-      hide_button: Ẩn tìm kiếm
       menu: Menu
-      search_button: Tìm kiếm trên GOV.UK
-      show_button: Hiển thị tìm kiếm
       top_level: Mức cao nhất
     layout_super_navigation_header:
       logo_link_title:

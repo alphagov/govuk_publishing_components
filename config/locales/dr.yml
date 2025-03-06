@@ -110,10 +110,7 @@ dr:
             manage:
               link_text:
     layout_header:
-      hide_button: بخش جستجو را مخفی نمایید
       menu: فهرست
-      search_button: GOV.UK را جستجو نمایید
-      show_button: جستجو را نمایش دهید
       top_level: سطح بالا
     layout_super_navigation_header:
       logo_link_title:

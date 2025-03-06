@@ -110,10 +110,7 @@ uz:
             manage:
               link_text:
     layout_header:
-      hide_button: Излашни яшириш
       menu: Меню
-      search_button: GOV.UK излаш
-      show_button: Излашни кўрсатиш
       top_level: Юқори даража
     layout_super_navigation_header:
       logo_link_title:

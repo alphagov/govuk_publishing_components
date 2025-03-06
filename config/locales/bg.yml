@@ -112,10 +112,7 @@ bg:
             manage:
               link_text:
     layout_header:
-      hide_button: Скриване на търсенето
       menu: Меню
-      search_button: Търсене в GOV.UK
-      show_button: Показване на търсенето
       top_level: Първо ниво
     layout_super_navigation_header:
       logo_link_title:

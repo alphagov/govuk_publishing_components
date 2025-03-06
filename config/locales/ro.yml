@@ -109,10 +109,7 @@ ro:
             manage:
               link_text:
     layout_header:
-      hide_button: Ascundeți căutarea
       menu: Meniu
-      search_button: Căutați pe GOV.UK
-      show_button: Afișați căutarea
       top_level: Nivel superior
     layout_super_navigation_header:
       logo_link_title:

@@ -109,10 +109,7 @@ da:
             manage:
               link_text:
     layout_header:
-      hide_button: Skjul søgning
       menu: Menu
-      search_button: Søg i GOV.UK
-      show_button: Vis søgning
       top_level: Øverste niveau
     layout_super_navigation_header:
       logo_link_title:
