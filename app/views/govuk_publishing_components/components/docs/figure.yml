@@ -1,0 +1,43 @@
+name: Figure
+description: A figure containing an image that never exceeds the component’s width
+body: |
+  A figure should be used for images that are referenced within a page, but which can be moved around without affecting the flow of the page [(see guidance here)](https://developer.mozilla.org/en/docs/Web/HTML/Element/figure)
+
+  Examples:
+
+  - [Case Study containing an image](https://www.gov.uk/government/case-studies/2013-elections-in-swaziland)
+accessibility_criteria: |
+  The figure must:
+
+  - provide an informative text description, as alt text or caption
+
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data:
+      src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/54374/s630_the_lords_chamber.jpg'
+  figure_with_alt_text:
+    data:
+      src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/54374/s630_the_lords_chamber.jpg'
+      alt: 'An image of the lords chamber'
+  figure_with_caption:
+    data:
+      src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/54374/s630_the_lords_chamber.jpg'
+      alt: 'An image of the lords chamber'
+      caption: 'The Lords Chamber'
+  right_to_left_with_caption:
+    data:
+      src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/image_data/file/31637/s300_Visas_-_Website.jpg'
+      alt: 'تأشيرات'
+      caption: 'تأشيرات'
+    context:
+      right_to_left: true
+  figure_with_credit:
+    data:
+      src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/54374/s630_the_lords_chamber.jpg'
+      credit: Wallis Crankled
+  figure_with_caption_and_credit:
+    data:
+      src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/54374/s630_the_lords_chamber.jpg'
+      caption: The Lords Chamber
+      credit: Wallis Crankled
