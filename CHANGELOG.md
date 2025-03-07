@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove search from the layout header component ([PR #4687](https://github.com/alphagov/govuk_publishing_components/pull/4687))
+
 ## 54.0.1
 
 * Fix govspeak legislative lists styles ([PR #4679](https://github.com/alphagov/govuk_publishing_components/pull/4679))
