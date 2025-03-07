@@ -27,6 +27,8 @@ is:
       request_format_text: Þessi skrá gæti ekki hentað þeim sem notast við stoðtækni.
     back_link:
       back: Til baka
+    back_to_top_link:
+      contents: Efni
     character_count:
       body: Þú getur slegið inn allt að %{number} %{type}
       type:

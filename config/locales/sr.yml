@@ -28,6 +28,8 @@ sr:
       request_format_text: Ova datoteka možda nije pogodna za korisnike pomoćne tehnologije.
     back_link:
       back: Nazad
+    back_to_top_link:
+      contents: Sadržaj
     character_count:
       body: Možete da unesete najviše %{number} %{type}
       type:

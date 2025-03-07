@@ -26,6 +26,8 @@ ko:
       request_format_text:
     back_link:
       back:
+    back_to_top_link:
+      contents: 콘텐츠
     character_count:
       body:
       type:

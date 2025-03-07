@@ -27,6 +27,8 @@ fr:
       request_format_text: Ce fichier est susceptible de ne pas convenir aux utilisateurs de la technologie d'assistance.
     back_link:
       back: Retour
+    back_to_top_link:
+      contents: Contenu
     character_count:
       body: Vous pouvez saisir jusqu'à %{number} %{type}
       type:

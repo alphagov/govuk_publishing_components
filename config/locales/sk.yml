@@ -28,6 +28,8 @@ sk:
       request_format_text: Tento súbor nemusí byť vhodný pre používateľov asistenčných technológií.
     back_link:
       back: Späť
+    back_to_top_link:
+      contents: Obsah
     character_count:
       body: Môžete zadať až %{number} %{type}
       type:

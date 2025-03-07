@@ -27,6 +27,8 @@ de:
       request_format_text: Diese Datei ist möglicherweise nicht für Hilfsmittel-Nutzer geeignet.
     back_link:
       back: Zurück
+    back_to_top_link:
+      contents: Inhalte
     character_count:
       body: Eingeben können Sie bis zu %{number} %{type}
       type:

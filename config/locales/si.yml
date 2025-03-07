@@ -27,6 +27,8 @@ si:
       request_format_text: මෙම ගොනුව ආධාරක තාක්ෂණය භාවිතා කරන්නන් සඳහා සුදුසු නොවිය හැක.
     back_link:
       back: ආපසු
+    back_to_top_link:
+      contents: අන්තර්ගත
     character_count:
       body: ඔබට %{type} %{number} ක් දක්වා ඇතුළත් කළ හැකිය
       type:

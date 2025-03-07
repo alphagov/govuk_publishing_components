@@ -29,6 +29,8 @@ ru:
       request_format_text: "Данный документ может быть не доступен лицам, использующим \nвспомогательные технологии."
     back_link:
       back: Назад
+    back_to_top_link:
+      contents: Содержание
     character_count:
       body: Вы можете ввести до %{number} %{type}
       type:

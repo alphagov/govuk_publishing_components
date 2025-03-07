@@ -26,6 +26,8 @@ zh:
       request_format_text: 此文件可能不适合辅助技术用户使用。
     back_link:
       back: 向后
+    back_to_top_link:
+      contents: 目录
     character_count:
       body: 您最多可以输入 %{number} 个 %{type}
       type:

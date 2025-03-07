@@ -27,6 +27,8 @@ el:
       request_format_text: Αυτό το αρχείο ενδέχεται να μην είναι κατάλληλο για χρήστες βοηθητικής τεχνολογίας.
     back_link:
       back: Πίσω
+    back_to_top_link:
+      contents: Περιεχόμενα
     character_count:
       body: Μπορείτε να εισαγάγετε έως και %{number} %{type}
       type:

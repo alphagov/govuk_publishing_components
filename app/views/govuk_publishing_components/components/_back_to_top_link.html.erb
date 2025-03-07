@@ -1,10 +1,10 @@
 <%
   add_gem_component_stylesheet("back-to-top-link")
 
-  text ||= t('content_item.contents', default: "Contents")
+  text ||= t("components.back_to_top_link.contents", default: "Contents")
 
   if href.blank? || text.blank?
-    raise ArgumentError, "The back_to_top component requires text and a href"
+    raise ArgumentError, "The back_to_top_link component requires text and a href"
   end
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)

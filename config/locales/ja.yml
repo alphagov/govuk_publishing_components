@@ -26,6 +26,8 @@ ja:
       request_format_text: このファイルは、支援技術のユーザーには適していない可能性があります。
     back_link:
       back: 戻る
+    back_to_top_link:
+      contents: コンテンツ
     character_count:
       body: 最大 ％{number} ％{type} を入力できます
       type:

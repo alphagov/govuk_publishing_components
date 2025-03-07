@@ -27,6 +27,8 @@ en:
       request_format_text: This file may not be suitable for users of assistive technology.
     back_link:
       back: Back
+    back_to_top_link:
+      contents: Contents
     character_count:
       body: You can enter up to %{number} %{type}
       type:

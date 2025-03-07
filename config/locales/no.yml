@@ -27,6 +27,8 @@
       request_format_text: Denne filen er muligens ikke egnet for brukere av hjelpeteknologi.
     back_link:
       back: Tilbake
+    back_to_top_link:
+      contents: Innhold
     character_count:
       body: Du kan angi opptil %{number} %{type}
       type:
