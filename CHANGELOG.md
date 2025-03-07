@@ -13,6 +13,7 @@
 * Add back to top link component from government-frontend ([PR #4666](https://github.com/alphagov/govuk_publishing_components/pull/4666))
 * Add back to top link component translations ([PR #4689](https://github.com/alphagov/govuk_publishing_components/pull/4689))
 * Remove IE8 support from action-link component ([PR #4690](https://github.com/alphagov/govuk_publishing_components/pull/4690))
+* **BREAKING** Remove search from the layout header component ([PR #4687](https://github.com/alphagov/govuk_publishing_components/pull/4687))
 
 ## 54.0.1
 
