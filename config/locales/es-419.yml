@@ -89,6 +89,8 @@ es-419:
       what_doing: "¿Qué estaba haciendo?"
       what_wrong: "¿Qué salió mal?"
       'yes': Sí
+    figure:
+      image_credit: 'Crédito de la imagen: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

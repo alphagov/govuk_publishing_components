@@ -89,6 +89,8 @@ nl:
       what_doing: Wat was u aan het doen?
       what_wrong: Wat ging er mis?
       'yes': Ja
+    figure:
+      image_credit: 'Image credit: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

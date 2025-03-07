@@ -93,6 +93,8 @@ de:
       what_doing: Was haben Sie gemacht?
       what_wrong: Was ist schief gelaufen?
       'yes': Ja
+    figure:
+      image_credit: 'Abbildung: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

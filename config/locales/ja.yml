@@ -85,6 +85,8 @@ ja:
       what_doing: 何をしましたか？
       what_wrong: どのような不具合ですか？
       'yes': はい
+    figure:
+      image_credit: 画像著作権：%{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

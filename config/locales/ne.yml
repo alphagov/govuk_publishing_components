@@ -85,6 +85,8 @@ ne:
       what_doing:
       what_wrong:
       'yes':
+    figure:
+      image_credit: 'छवि श्रेय: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

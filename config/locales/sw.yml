@@ -89,6 +89,8 @@ sw:
       what_doing: Ulikuwa unafanya nini?
       what_wrong: Tatizo lipi lililotokea?
       'yes': Ndiyo
+    figure:
+      image_credit: 'Mpiga picha: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

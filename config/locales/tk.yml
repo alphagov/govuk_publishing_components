@@ -90,6 +90,8 @@ tk:
       what_doing: Näme edýärdiňiz?
       what_wrong: Näme nädogry boldy?
       'yes': Hawa
+    figure:
+      image_credit: 'Surat krediti: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

@@ -91,6 +91,8 @@ mt:
       what_doing: X'kont qed tagħmel?
       what_wrong: X'mar ħażin?
       'yes': Iva
+    figure:
+      image_credit: 'Kreditu għall-immaġni:  %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

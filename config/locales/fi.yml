@@ -91,6 +91,8 @@ fi:
       what_doing: Mitä olit tekemässä?
       what_wrong: Mikä meni vikaan?
       'yes': Kyllä
+    figure:
+      image_credit: 'Kuvaluotto: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

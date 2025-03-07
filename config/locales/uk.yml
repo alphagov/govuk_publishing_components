@@ -96,6 +96,8 @@ uk:
       what_doing: Що ви робили?
       what_wrong: Що пішло не так?
       'yes': Так
+    figure:
+      image_credit: 'Зображення: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

@@ -89,6 +89,8 @@ sq:
       what_doing: Cfare po bënit?
       what_wrong: Çfarë shkoi keq?
       'yes': Po
+    figure:
+      image_credit: 'Kreditet e imazhit: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:
