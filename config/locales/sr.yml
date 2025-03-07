@@ -88,6 +88,8 @@ sr:
       what_doing: Šta ste radili?
       what_wrong: Koji problem se javio?
       'yes': Da
+    figure:
+      image_credit: 'Vlasnik slike: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:
