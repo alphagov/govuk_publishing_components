@@ -51,7 +51,7 @@ module GovukPublishingComponents
     end
 
     def display_preview?
-      component[:display_preview].nil? ? true : component[:display_preview]
+      component[:display_preview].nil? || component[:display_preview]
     end
 
     def uses_component_wrapper_helper?
