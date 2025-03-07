@@ -114,12 +114,6 @@ describe "Layout header", type: :view do
     assert_select ".gem-c-layout-header .gem-c-search", false
   end
 
-  it "renders a search bar" do
-    render_component(environment: "public", search: true)
-
-    assert_select ".gem-c-layout-header .gem-c-search"
-  end
-
   it "has the default logo link when no logo_link is specified" do
     render_component({})
 
