@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove search large-mobile option ([PR #4682](https://github.com/alphagov/govuk_publishing_components/pull/4682))
+
 ## 54.0.1
 
 * Fix govspeak legislative lists styles ([PR #4679](https://github.com/alphagov/govuk_publishing_components/pull/4679))

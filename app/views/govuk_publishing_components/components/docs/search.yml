@@ -54,9 +54,6 @@ examples:
   large_version:
     data:
       size: "large"
-  large_version_on_mobile_only:
-    data:
-      size: "large-mobile"
   change_field_name:
     description: To be used if you need to change the default name 'q'
     data:
