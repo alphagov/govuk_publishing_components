@@ -15,7 +15,7 @@ describe('Magna charta', function () {
   var cW = function (max, val, padding) {
     padding = padding || 0
     var width = ((65 / max) * val + padding)
-    return `${width}%`
+    return `${parseFloat(width.toFixed(4))}%`
   }
 
   var single =
@@ -279,11 +279,10 @@ describe('Magna charta', function () {
 
       for (var cell of cells) {
         var cellText = cell.textContent
-        var cellWidth = cell.style.width
-        var calculatedWidth = parseFloat(cW(12, cellText))
+        var cellWidth = `${Number(parseFloat(cell.style.width).toFixed(4))}%`
+        var calculatedWidth = cW(12, cellText)
 
-        expect(cellWidth).toContain('%')
-        expect(parseFloat(cellWidth)).toBeCloseTo(calculatedWidth, 4)
+        expect(cellWidth).toEqual(calculatedWidth)
       }
     })
 
