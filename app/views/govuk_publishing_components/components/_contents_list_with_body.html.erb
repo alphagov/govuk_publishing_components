@@ -1,0 +1,27 @@
+<% add_gem_component_stylesheet("contents-list-with-body") %>
+<% block = yield %>
+<% unless block.empty? %>
+  <%
+    contents ||= []
+    id ||= "contents"
+    component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+    component_helper.set_id(id)
+    component_helper.add_class("gem-c-contents-list-with-body")
+    component_helper.add_data_attribute({ module: "sticky-element-container" }) if contents.any?
+  %>
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <% if contents.any? %>
+      <div class="gem-c-contents-list-with-body__list-container">
+        <%= render 'govuk_publishing_components/components/contents_list', contents: contents %>
+      </div>
+    <% end %>
+    <%= block %>
+    <% if contents.any? %>
+      <div data-sticky-element class="gem-c-contents-list-with-body__link-wrapper">
+        <div class="gem-c-contents-list-with-body__link-container">
+          <%= render 'govuk_publishing_components/components/back_to_top_link', href: "#contents" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
