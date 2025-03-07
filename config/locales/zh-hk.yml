@@ -26,6 +26,8 @@ zh-hk:
       request_format_text: 此文檔或許不適合輔助技術使用者。
     back_link:
       back: 返回
+    back_to_top_link:
+      contents: 內容
     character_count:
       body: 您最多可輸入 %{number} %{type}
       type:

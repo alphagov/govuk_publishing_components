@@ -27,6 +27,8 @@ kk:
       request_format_text: Бұл файл көмекші технология қолданушыларына сәйкес келмеуі мүмкін.
     back_link:
       back: Артқа
+    back_to_top_link:
+      contents: Мазмұны
     character_count:
       body: Ең көбі %{number} %{type} енгізе аласыз
       type:

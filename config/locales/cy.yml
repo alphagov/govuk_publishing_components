@@ -31,6 +31,8 @@ cy:
       request_format_text: Efallai na fydd y ffeil hon yn addas ar gyfer defnyddwyr technoleg gynorthwyol.
     back_link:
       back: Nôl
+    back_to_top_link:
+      contents: Cynnwys
     character_count:
       body: Gallwch roi hyd at %{number} o %{type}
       type:

@@ -26,6 +26,8 @@ vi:
       request_format_text: Tệp này có thể không phù hợp với người dùng công nghệ hỗ trợ.
     back_link:
       back: Quay lại
+    back_to_top_link:
+      contents: Mục lục
     character_count:
       body: Bạn có thể nhập tối đa %{number} %{type}
       type:

@@ -27,6 +27,8 @@ pa-pk:
       request_format_text: ہو سکدا اے کہ مدد گار ٹیکنالوجی استعمال کرن والیاں واسطے چنگی نئیں۔
     back_link:
       back: پچھے
+    back_to_top_link:
+      contents: مواد
     character_count:
       body: تُسی ایتھوں تک داخل کر سک دے او {number} %{type}%
       type:

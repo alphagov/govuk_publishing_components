@@ -27,6 +27,8 @@ fi:
       request_format_text: Tämä tiedosto ei ehkä sovellu apuvälineen käyttäjille.
     back_link:
       back: Takaisin
+    back_to_top_link:
+      contents: Sisällys
     character_count:
       body: Voit syöttää enintään %{number} %{type}
       type:

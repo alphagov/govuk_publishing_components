@@ -31,6 +31,8 @@ sl:
       request_format_text: Ta datoteka morda ni primerna za uporabnike podporne tehnologije.
     back_link:
       back: Nazaj
+    back_to_top_link:
+      contents: Vsebina
     character_count:
       body: Vpišete lahko do %{number} %{type}
       type:

@@ -28,6 +28,8 @@ cs:
       request_format_text: Tento soubor nemusí být vhodný pro uživatele asistenčních technologií.
     back_link:
       back: Zadní strana
+    back_to_top_link:
+      contents: Obsah
     character_count:
       body: Můžete zadat až %{number} %{type}
       type:

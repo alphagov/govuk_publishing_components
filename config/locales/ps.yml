@@ -27,6 +27,8 @@ ps:
       request_format_text: دا فایل ممکن د مرستندویه ټیکنالوژۍ کاروونکو لپاره مناسب نه وي.
     back_link:
       back: بیرته
+    back_to_top_link:
+      contents: منځپانګې
     character_count:
       body: تاسو کولی شئ تر %{number} %{type} پورې دننه شئ
       type:

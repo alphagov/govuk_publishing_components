@@ -27,6 +27,8 @@ da:
       request_format_text: Denne fil er muligvis ikke egnet til brugere af hjælpeteknologi.
     back_link:
       back: Tilbage
+    back_to_top_link:
+      contents: Indhold
     character_count:
       body: Du kan indtaste op til %{number} %{type}
       type:

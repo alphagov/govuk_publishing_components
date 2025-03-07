@@ -29,6 +29,8 @@ mt:
       request_format_text: Dan il-fajl jista' jkun li mżhuwiex adattat għal utenti ta' teknoloġija assistiva.
     back_link:
       back: Lura
+    back_to_top_link:
+      contents: Werrej
     character_count:
       body: Tista' ddaħħal sa %{number} %{type}
       type:

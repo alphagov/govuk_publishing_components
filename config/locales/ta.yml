@@ -27,6 +27,8 @@ ta:
       request_format_text: உதவக்கூடிய தொழில்நுட்பப் பயனர்களுக்கு இந்தக் கோப்பு பொருந்தாது.
     back_link:
       back: பின்செல்
+    back_to_top_link:
+      contents: உள்ளடக்கம்
     character_count:
       body: "%{number} %{type} வரை நீங்கள் உள்ளிடலாம்"
       type:

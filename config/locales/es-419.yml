@@ -27,6 +27,8 @@ es-419:
       request_format_text: Este archivo puede no ser adecuado para los usuarios de tecnología de asistencia.
     back_link:
       back: Volver
+    back_to_top_link:
+      contents: Contenido
     character_count:
       body: Puede introducir hasta %{number} %{type}
       type:

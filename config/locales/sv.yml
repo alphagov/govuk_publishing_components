@@ -27,6 +27,8 @@ sv:
       request_format_text: Den här filen kanske inte är lämplig för användare av hjälpmedel.
     back_link:
       back: Tillbaka till
+    back_to_top_link:
+      contents: Innehåll
     character_count:
       body: Du kan ange upp till %{number} %{type}
       type:

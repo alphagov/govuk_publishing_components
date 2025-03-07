@@ -29,6 +29,8 @@ gd:
       request_format_text: B’fhéidir nach mbeidh an comhad seo oiriúnach d’úsáideoirí feistí cúnta.
     back_link:
       back: filleadh
+    back_to_top_link:
+      contents: Clár ábhair
     character_count:
       body: Caithfidh tú %{number} %{type} a iontráil ar a mhéad
       type:

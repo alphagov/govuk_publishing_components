@@ -27,6 +27,8 @@ bn:
       request_format_text: এই নথিটি সহায়তামূলক প্রযুক্তি ব্যবহারকারীগণের জন্য উপযুক্ত নাও হতে পারে।
     back_link:
       back: ফিরে যান
+    back_to_top_link:
+      contents: বিষয়সূচী
     character_count:
       body: আপনি %{number} %{type} পর্যন্ত লিখতে পারবেন
       type:

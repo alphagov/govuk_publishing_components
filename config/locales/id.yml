@@ -26,6 +26,8 @@ id:
       request_format_text: File ini mungkin tidak sesuai untuk pengguna teknologi bantuan.
     back_link:
       back: Kembali
+    back_to_top_link:
+      contents: Konten
     character_count:
       body: Anda dapat memasukkan hingga %{number} %{type}
       type:
