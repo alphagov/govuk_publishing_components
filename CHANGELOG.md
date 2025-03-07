@@ -7,13 +7,17 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Migrate figure component from government-frontend ([PR #4688](https://github.com/alphagov/govuk_publishing_components/pull/4688))
+* Add back to top link component from government-frontend ([PR #4666](https://github.com/alphagov/govuk_publishing_components/pull/4666))
+
 ## 54.0.1
 
 * Fix govspeak legislative lists styles ([PR #4679](https://github.com/alphagov/govuk_publishing_components/pull/4679))
 * Adjust attachment component spacing ([PR #4669](https://github.com/alphagov/govuk_publishing_components/pull/4669))
 * Add custom css exclude list to Asset Helper ([PR #4656](https://github.com/alphagov/govuk_publishing_components/pull/4656))
 * Rubocop is now configured for rails and rspec defaults ([PR #4660](https://github.com/alphagov/govuk_publishing_components/pull/4660))
-* Add back to top link component from government-frontend ([PR #4666](https://github.com/alphagov/govuk_publishing_components/pull/4666))
 
 ## 54.0.0
 
