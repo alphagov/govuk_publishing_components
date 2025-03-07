@@ -27,6 +27,8 @@ sq:
       request_format_text: Ky skedar mund të mos jetë i përshtatshëm për përdoruesit e teknologjisë ndihmëse.
     back_link:
       back: Prapa
+    back_to_top_link:
+      contents: Përmbajtja
     character_count:
       body: Mund të futni deri në %{number} %{type}
       type:

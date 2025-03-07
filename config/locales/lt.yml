@@ -28,6 +28,8 @@ lt:
       request_format_text: Šis failas gali būti netinkamas pagalbinių technologijų naudotojams.
     back_link:
       back: Atgal
+    back_to_top_link:
+      contents: Turinys
     character_count:
       body: Galite naudoti iki %{number} %{type}
       type:

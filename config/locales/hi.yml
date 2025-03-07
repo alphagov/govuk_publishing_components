@@ -27,6 +27,8 @@ hi:
       request_format_text: यह फाइल शायद सहायक तकनीक के उपयोगकर्ताओं के लिए उपयुक्त न हो।
     back_link:
       back: वापस
+    back_to_top_link:
+      contents: विषय-वस्तु
     character_count:
       body: आप %{number} %{type} तक दर्ज कर सकते हैं
       type:

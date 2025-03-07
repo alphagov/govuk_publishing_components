@@ -27,6 +27,8 @@ gu:
       request_format_text: આ ફાઇલ સહાયક ટેક્નોલૉજીના યુઝર્સ માટે કદાચ અનુકૂળ નહીં હોય.
     back_link:
       back: પાછળ
+    back_to_top_link:
+      contents: વિષયવસ્તુ
     character_count:
       body: તમે %{number} %{type} સુધી દાખલ કરી શકો છો
       type:

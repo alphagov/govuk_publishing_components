@@ -29,6 +29,8 @@ uk:
       request_format_text: Цей файл може не підходити для користувачів допоміжних технологій.
     back_link:
       back: Назад
+    back_to_top_link:
+      contents: Зміст
     character_count:
       body: Ви можете ввести до %{number} %{type}
       type:

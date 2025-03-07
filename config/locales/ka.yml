@@ -27,6 +27,8 @@ ka:
       request_format_text: ეს ფაილი შესაძლოა არ იყოს შესაფერისი დამხმარე ტექნოლოგიის მომხმარებლებისთვის.
     back_link:
       back: უკან
+    back_to_top_link:
+      contents: შინაარსი
     character_count:
       body: თქვენ შეგიძლიათ შეიყვანოთ %{number} %{type}
       type:

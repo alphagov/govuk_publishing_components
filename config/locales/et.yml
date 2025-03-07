@@ -27,6 +27,8 @@ et:
       request_format_text: See fail ei pruugi hõlbustustehnoloogia kasutajatele sobida.
     back_link:
       back: Tagasi
+    back_to_top_link:
+      contents: Sisu
     character_count:
       body: Saate sisestada kuni %{number} %{type}
       type:

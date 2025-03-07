@@ -27,6 +27,8 @@ hu:
       request_format_text: Elképzelhető, hogy ez a fájl nem megfelelő a segítő technológiák felhasználói számára.
     back_link:
       back: Vissza
+    back_to_top_link:
+      contents: Tartalomjegyzék
     character_count:
       body: Maximum %{number} %{type} adhat meg
       type:

@@ -27,6 +27,8 @@ uz:
       request_format_text: Ушбу файл ёрдамчи технологиялардан фойдаланаётган шахслар учун мос келмаслиги мумкин.
     back_link:
       back: Орқага
+    back_to_top_link:
+      contents: Мундарижа
     character_count:
       body: Сиз %{number} %{type} гача киритишингиз мумкин
       type:

@@ -30,6 +30,8 @@ dr:
       request_format_text: این فایل ممکن است برای کاربران تکنالوژی کمکی مناسب نباشد.
     back_link:
       back: برگشت
+    back_to_top_link:
+      contents: محتویات
     character_count:
       body: شما میتوانید حد اکثر%{number} %{type} را وارد نمایید
       type:

@@ -27,6 +27,8 @@ tk:
       request_format_text: Bu faýl kömekçi tehnologiýany ulanyjylar üçin elýeter bolman biler.
     back_link:
       back: Yza
+    back_to_top_link:
+      contents: Mazmuny
     character_count:
       body: "%{number} %{type} çenli sanlary girizip bilersiňiz"
       type:
