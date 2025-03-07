@@ -1,5 +1,5 @@
 ---
-ko:
+ne:
   common:
     hide:
     show:
@@ -17,6 +17,7 @@ ko:
       opendocument_html:
       order_a_copy:
       page:
+        one:
         other:
       preview_aria_label:
       preview_link:
@@ -83,7 +84,7 @@ ko:
       what_wrong:
       'yes':
     figure:
-      image_credit: '이미지 저작권: %{credit}'
+      image_credit: 'छवि श्रेय: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:
