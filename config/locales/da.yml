@@ -90,6 +90,8 @@ da:
       what_doing: Hvad lavede du?
       what_wrong: Hvad gik galt?
       'yes': ja
+    figure:
+      image_credit: 'Billede kredit: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

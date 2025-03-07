@@ -86,6 +86,8 @@ ps:
       what_doing: ته څه کوې؟
       what_wrong: څه غلط شول؟
       'yes': هو
+    figure:
+      image_credit: د انځور کریډیټ:%{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

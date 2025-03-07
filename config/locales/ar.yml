@@ -92,6 +92,8 @@ ar:
       what_doing: ماذا كنت تفعل؟
       what_wrong: ما الخطأ الذي وقع؟
       'yes': نعم ‏  ‏
+    figure:
+      image_credit: 'حقوق ملكية الصورة: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

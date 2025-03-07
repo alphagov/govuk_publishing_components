@@ -89,6 +89,8 @@
       what_doing: Hva gjorde du?
       what_wrong: Hva gikk galt?
       'yes': Ja
+    figure:
+      image_credit: 'Bildekreditt: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

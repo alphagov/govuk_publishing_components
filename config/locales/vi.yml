@@ -88,6 +88,8 @@ vi:
       what_doing: Bạn đang làm gì?
       what_wrong: Sự cố gì đã xảy ra?
       'yes': Có
+    figure:
+      image_credit: 'Nguồn hình ảnh: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

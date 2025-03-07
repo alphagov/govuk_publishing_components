@@ -88,6 +88,8 @@ en:
       what_doing: What were you doing?
       what_wrong: What went wrong?
       'yes': 'Yes'
+    figure:
+      image_credit: 'Image credit: %{credit}'
     intervention:
       accessible_link_text_suffix: " (opens in a new tab)"
     layout_footer:

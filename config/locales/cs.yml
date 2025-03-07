@@ -94,6 +94,8 @@ cs:
       what_doing: Co jste dělal?
       what_wrong: Co se pokazilo?
       'yes': Ano
+    figure:
+      image_credit: zobrazení úvěru %{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

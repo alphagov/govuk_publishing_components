@@ -93,6 +93,8 @@ lv:
       what_doing: Ko jūs darījāt?
       what_wrong: Kādas problēmas radās?
       'yes': Jā
+    figure:
+      image_credit: 'Attēla autortiesības: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

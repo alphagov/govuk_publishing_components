@@ -89,6 +89,8 @@ kk:
       what_doing: Сіз не істеп жатыр едіңіз?
       what_wrong: Не дұрыс болмады?
       'yes': Иә
+    figure:
+      image_credit: 'Суретті түсірген: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

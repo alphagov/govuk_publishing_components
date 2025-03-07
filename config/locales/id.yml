@@ -89,6 +89,8 @@ id:
       what_doing: Apa yang Anda lakukan?
       what_wrong: Apa yang salah?
       'yes': Ya
+    figure:
+      image_credit: 'Kredit gambar: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

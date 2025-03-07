@@ -90,6 +90,8 @@ ro:
       what_doing: Ce făceați?
       what_wrong: Ce eroare a survenit?
       'yes': Da
+    figure:
+      image_credit: 'Autor imagine: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

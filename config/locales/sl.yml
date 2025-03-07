@@ -96,6 +96,8 @@ sl:
       what_doing: Kaj ste počeli?
       what_wrong: Kaj je šlo narobe?
       'yes': Da
+    figure:
+      image_credit: 'Avtor slike: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

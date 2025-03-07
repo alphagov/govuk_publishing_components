@@ -89,6 +89,8 @@ pa:
       what_doing: ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ?
       what_wrong: ਕੀ ਗਲਤ ਹੋਇਆ?
       'yes': ਹਾਂ
+    figure:
+      image_credit: 'ਚਿੱਤਰ ਕ੍ਰੈਡਿਟ: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:
