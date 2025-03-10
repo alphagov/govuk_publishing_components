@@ -22,12 +22,6 @@ examples:
   stop_the_label_appearing_inline:
     data:
       inline_label: false
-  no_border:
-    description: Sometimes we don't need the grey border surrounding the input field, such as when the component is used on a black background
-    data:
-      no_border: true
-    context:
-      black_background: true
   for_use_on_govuk_blue_background:
     data:
       on_govuk_blue: true

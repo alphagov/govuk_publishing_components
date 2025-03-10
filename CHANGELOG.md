@@ -12,6 +12,7 @@
 * Remove search large-mobile option ([PR #4682](https://github.com/alphagov/govuk_publishing_components/pull/4682))
 * Add back to top link component from government-frontend ([PR #4666](https://github.com/alphagov/govuk_publishing_components/pull/4666))
 * Add back to top link component translations ([PR #4689](https://github.com/alphagov/govuk_publishing_components/pull/4689))
+* Remove the `no_border` option from the search component ([PR #4693](https://github.com/alphagov/govuk_publishing_components/pull/4693))
 
 ## 54.0.1
 
