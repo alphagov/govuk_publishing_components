@@ -1,0 +1,43 @@
+name: Published dates
+description: Dates to reflect when content was published and updated
+accessibility_criteria: |
+  The published dates component must:
+
+    - indicate to users that the full history section can be expanded and collapsed
+    - inform the user of the state of the full history section (expanded or collapsed)
+    - be usable with a keyboard
+shared_accessibility_criteria:
+  - link
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data:
+      published: 1st January 1990
+  just_last_updated_date:
+    data:
+      last_updated: 20th October 2016
+  with_last_updated_date:
+    data:
+      published: 1st January 1990
+      last_updated: 20th October 2016
+  link_to_page_history:
+    description: This will set up a link to a '#history' anchor on the page. This can be used to link to another instance of this component, see [Display Page History example](/component-guide/published_dates/display_page_history)
+    data:
+      published: 1st January 1990
+      last_updated: 20th October 2016
+      link_to_history: true
+  display_page_history:
+    description: This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history.
+    data:
+      published: 1st January 1990
+      last_updated: 20th October 2016
+      history:
+      - display_time: 1st January 1990
+        note: First published
+        timestamp: 1990-01-01T15:42:37.000+00:00
+      - display_time: 20th July 1995
+        note: Updated to include information for 1994
+        timestamp: 1995-07-20T15:42:37.000+00:00
+      - display_time: 14th October 2000
+        note: Updated information on pupil premium reviews and what information schools need to publish on their websites.
+        timestamp: 2000-10-14T15:42:37.000+00:00
