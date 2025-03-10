@@ -85,6 +85,8 @@ pa-pk:
       what_doing: تُسی کیہ کر رئے سو
       what_wrong: کیہ غلط ہویا اے
       'yes': جی ہاں
+    figure:
+      image_credit: 'امیج کریڈٹ: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

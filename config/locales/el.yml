@@ -89,6 +89,8 @@ el:
       what_doing: Τι κάνατε;
       what_wrong: Τι πήγε στραβά;
       'yes': Ναι
+    figure:
+      image_credit: 'Εικόνα από: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

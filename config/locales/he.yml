@@ -89,6 +89,8 @@ he:
       what_doing: מה אתה עושה?
       what_wrong: מה השתבש?
       'yes': כן
+    figure:
+      image_credit: 'קרדיט תמונה: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

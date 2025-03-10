@@ -91,6 +91,8 @@ gd:
       what_doing: Cad atá á dhéanamh agat ?
       what_wrong: Cad a chuaigh mícheart?
       'yes': Sea
+    figure:
+      image_credit: 'Creidmheas íomhá: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

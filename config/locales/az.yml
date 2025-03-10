@@ -89,6 +89,8 @@ az:
       what_doing: Nə edirdiniz?
       what_wrong: Hansı yanlışlıq oldu?
       'yes': Bəli
+    figure:
+      image_credit: 'Təqdim edilmiş qrafik material: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

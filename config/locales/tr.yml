@@ -90,6 +90,8 @@ tr:
       what_doing: Ne yapmaktaydınız?
       what_wrong: Nasıl bir sorun oldu?
       'yes': Evet
+    figure:
+      image_credit: 'Resim sahibi: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

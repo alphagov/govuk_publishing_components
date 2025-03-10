@@ -86,6 +86,8 @@ ur:
       what_doing: آپ کیا کر رہے تھے؟
       what_wrong: کیا غلط ہوا؟
       'yes': جی ہاں
+    figure:
+      image_credit: 'تصویری کریڈٹ: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

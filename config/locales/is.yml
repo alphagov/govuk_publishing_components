@@ -89,6 +89,8 @@ is:
       what_doing: Hvað varstu að gera?
       what_wrong: Hvað fór úrskeiðis?
       'yes': Já
+    figure:
+      image_credit: Uppruni myndar %{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

@@ -1,0 +1,28 @@
+<%
+  add_gem_component_stylesheet("figure")
+  alt ||= ""
+  caption ||= ""
+  credit ||= ""
+  local_assigns[:lang] ||= "en"
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-figure")
+%>
+<%= tag.figure(**component_helper.all_attributes) do %>
+  <% if src.present? %>
+    <img class="gem-c-figure__image" src="<%= src %>" alt="<%= alt %>">
+  <% end %>
+  <% if caption.present? || credit.present? %>
+    <figcaption class="gem-c-figure__figcaption">
+      <% if caption.present? %>
+        <p class="gem-c-figure__figcaption-text">
+          <%= caption %>
+        </p>
+      <% end %>
+      <% if credit.present? %>
+        <p class="gem-c-figure__figcaption-text">
+          <%= I18n.t("components.figure.image_credit", credit: credit) %>
+        </p>
+      <% end %>
+    </figcaption>
+  <% end %>
+<% end %>

@@ -89,6 +89,8 @@ gu:
       what_doing: તમે શું કરી રહ્યા હતા?
       what_wrong: શું ગરબડ થઈ?
       'yes': હા
+    figure:
+      image_credit: ઇમેજ ક્રેડિટ:%{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

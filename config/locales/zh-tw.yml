@@ -87,6 +87,8 @@ zh-tw:
       what_doing: 你做了什麼？
       what_wrong: 哪出錯了？
       'yes': 是的
+    figure:
+      image_credit: 圖片來源： %{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

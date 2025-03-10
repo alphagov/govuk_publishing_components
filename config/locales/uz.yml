@@ -91,6 +91,8 @@ uz:
       what_doing: Сиз нима қилаётган эдингиз?
       what_wrong: Қандай хатолик бўлди?
       'yes': Ҳа
+    figure:
+      image_credit: 'График материаллар тақдим этилган: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

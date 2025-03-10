@@ -94,6 +94,8 @@ lt:
       what_doing: Ką darėte?
       what_wrong: Kas nutiko?
       'yes': Taip
+    figure:
+      image_credit: 'Nuotrauka: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

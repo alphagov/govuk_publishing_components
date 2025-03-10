@@ -94,6 +94,8 @@ sk:
       what_doing: Čo ste robili?
       what_wrong: Čo sa pokazilo?
       'yes': Áno
+    figure:
+      image_credit: 'Obrázok: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

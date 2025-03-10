@@ -93,6 +93,8 @@ hy:
       what_doing: Ի՞նչ էիք փնտրում։
       what_wrong: Ի՞նչը խնդիր առաջացավ։
       'yes': Այո
+    figure:
+      image_credit: Նկարը՝ %{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

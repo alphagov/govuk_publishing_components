@@ -89,6 +89,8 @@ so:
       what_doing: Maxaad doonaysaa inuu laguu qabto?
       what_wrong: Maxaa qaldamay?
       'yes': Haa
+    figure:
+      image_credit: 'Xuquuqda sawirka: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

@@ -93,6 +93,8 @@ cy:
       what_doing: Beth oeddech chi'n wneud?
       what_wrong: Beth aeth o'i le?
       'yes': Ie
+    figure:
+      image_credit: 'Delwedd gan: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

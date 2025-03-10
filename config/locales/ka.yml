@@ -92,6 +92,8 @@ ka:
       what_doing: რას აკეთებდით?
       what_wrong: რა მოხდა არასწორად?
       'yes': დიახ
+    figure:
+      image_credit: 'სურათ: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:
