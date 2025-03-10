@@ -27,6 +27,8 @@ he:
       request_format_text: ייתכן שקובץ זה אינו מתאים למשתמשי טכנולוגיה מסייעת.
     back_link:
       back: חזור
+    back_to_top_link:
+      contents: תוכן
     character_count:
       body: תוכל להזין עד% {number}% {type}
       type:

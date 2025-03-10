@@ -31,6 +31,8 @@ ar:
       request_format_text: قد لا يكون هذا الملف مناسبًا لمستخدمي التكنولوجيا المساعدة.
     back_link:
       back: عودة
+    back_to_top_link:
+      contents: المحتويات
     character_count:
       body: يمكنك إدخال عدد حتى %{number} %{type}
       type:

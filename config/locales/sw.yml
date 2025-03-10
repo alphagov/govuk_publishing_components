@@ -27,6 +27,8 @@ sw:
       request_format_text: Faili hii huenda haitumiki kwa watumiaji wanaotumia vifaa vya usaidizi.
     back_link:
       back: Rudi nyuma
+    back_to_top_link:
+      contents: Maudhui
     character_count:
       body: Unaweza kuweka hadi %{number} %{type}
       type:

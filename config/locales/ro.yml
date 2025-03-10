@@ -28,6 +28,8 @@ ro:
       request_format_text: Este posibil ca acest fișier să nu fie potrivit pentru utilizatorii de tehnologie de asistență.
     back_link:
       back: Înapoi
+    back_to_top_link:
+      contents: Conținut
     character_count:
       body: Puteți introduce cel mult %{number} %{type}
       type:

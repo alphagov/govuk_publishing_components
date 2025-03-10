@@ -26,6 +26,8 @@ ms:
       request_format_text: Fail ini mungkin tidak sesuai untuk pengguna teknologi bantu.
     back_link:
       back: Kembali
+    back_to_top_link:
+      contents: Kandungan
     character_count:
       body: Anda boleh memasukkan sehingga %{number} %{type}
       type:

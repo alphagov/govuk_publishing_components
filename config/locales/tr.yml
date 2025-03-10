@@ -27,6 +27,8 @@ tr:
       request_format_text: Bu dosya destekleyici teknoloji kullanıcıları için uygun olmayabilir.
     back_link:
       back: Geri
+    back_to_top_link:
+      contents: İçerikler
     character_count:
       body: "%{number} %{type} kadar giriş yapabilirsiniz"
       type:

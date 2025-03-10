@@ -1,5 +1,5 @@
 ---
-ko:
+ne:
   common:
     hide:
     show:
@@ -17,6 +17,7 @@ ko:
       opendocument_html:
       order_a_copy:
       page:
+        one:
         other:
       preview_aria_label:
       preview_link:
@@ -27,7 +28,7 @@ ko:
     back_link:
       back:
     back_to_top_link:
-      contents: 콘텐츠
+      contents: विषयवस्तु
     character_count:
       body:
       type:

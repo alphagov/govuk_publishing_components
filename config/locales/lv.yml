@@ -27,6 +27,8 @@ lv:
       request_format_text: Šis fails var nebūt piemērots palīgtehnoloģiju lietotājiem.
     back_link:
       back: Atpakaļ
+    back_to_top_link:
+      contents: Saturs
     character_count:
       body: 'Varat ievadīt ne vairā kā: %{number} %{type} '
       type:

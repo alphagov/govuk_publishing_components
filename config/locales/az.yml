@@ -27,6 +27,8 @@ az:
       request_format_text: Bu fayl köməkçi texnologiya istifadəçiləri üçün uyğun olmaya bilər.
     back_link:
       back: Geriyə
+    back_to_top_link:
+      contents: Məzmunlar
     character_count:
       body: "%{number} %{type} qədər"
       type:

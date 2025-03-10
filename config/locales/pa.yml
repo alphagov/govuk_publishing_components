@@ -27,6 +27,8 @@ pa:
       request_format_text: ਇਹ ਫਾਈਲ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੇ ਉਪਯੋਗਕਰਤਾਵਾਂ ਲਈ ਢੁਕਵੀਂ ਨਹੀਂ ਹੋ ਸਕਦੀ।
     back_link:
       back: ਵਾਪਸ
+    back_to_top_link:
+      contents: ਸਮਗਰੀ
     character_count:
       body: ਤੁਸੀਂ %{number} %{type} ਤੱਕ ਦਾਖਲ ਕਰ ਸਕਦੇ ਹੋ
       type:

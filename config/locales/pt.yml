@@ -27,6 +27,8 @@ pt:
       request_format_text: Este ficheiro pode não ser adequado para utilizadores de tecnologia assistiva.
     back_link:
       back: Voltar
+    back_to_top_link:
+      contents: Conteúdos
     character_count:
       body: Pode introduzir até %{number} %{type}
       type:

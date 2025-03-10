@@ -29,6 +29,8 @@ be:
       request_format_text: Гэты файл можа быць непрыдатным для карыстальнікаў дапаможных тэхналогій.
     back_link:
       back: Назад
+    back_to_top_link:
+      contents: Змест
     character_count:
       body: Вы можаце ўвесці да %{number} %{type}
       type:

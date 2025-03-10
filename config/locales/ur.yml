@@ -27,6 +27,8 @@ ur:
       request_format_text: ہو سکتا ہے کہ یہ فائل معاونتی ٹیکنالوجی کے صارفین کے لیے موزوں نہ ہو۔
     back_link:
       back: پیچھے
+    back_to_top_link:
+      contents: مشمولات
     character_count:
       body: آپ %{number} %{type} تک درج کر سکتے ہیں
       type:

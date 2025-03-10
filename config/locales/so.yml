@@ -27,6 +27,8 @@ so:
       request_format_text: Faylkani waxa laga yaabaa inaanu ku haboonayn isticmaalayaasha tiknoolajiyada caawinta.
     back_link:
       back: Kunoqo
+    back_to_top_link:
+      contents: Waxyaabaha uu ka koobanyahay
     character_count:
       body: Waxaad galin kartaa ilaa %{number} %{type}
       type:

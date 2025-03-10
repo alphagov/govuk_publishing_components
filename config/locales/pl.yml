@@ -29,6 +29,8 @@ pl:
       request_format_text: Ten plik może nie być odpowiedni dla użytkowników korzystających z technologii wspomagających.
     back_link:
       back: Wstecz
+    back_to_top_link:
+      contents: Zawartość
     character_count:
       body: Można wprowadzić maksymalnie %{number} %{type}
       type:

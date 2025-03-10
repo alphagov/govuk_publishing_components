@@ -29,6 +29,8 @@ hy:
       request_format_text: 'Այս ֆայլը կարող է համապատասխան չլինել օժանդակ տեխնոլոգիայից օգտվողների համար:'
     back_link:
       back: Հետ
+    back_to_top_link:
+      contents: Բովանդակություն
     character_count:
       body: Կարող եք մուտքագրել մինչև %{number} %{type}
       type:

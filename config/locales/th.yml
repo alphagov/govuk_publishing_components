@@ -26,6 +26,8 @@ th:
       request_format_text: ไฟล์นี้อาจไม่เหมาะสำหรับผู้ใช้เทคโนโลยีเพื่อการช่วยเหลือ
     back_link:
       back: กลับ
+    back_to_top_link:
+      contents: เนื้อหา
     character_count:
       body: คุณสามารถใส่ได้สูงสุด %{number} %{type}
       type:

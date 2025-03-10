@@ -27,6 +27,8 @@ bg:
       request_format_text: Този файл може да не е подходящ за потребители на помощни технологии.
     back_link:
       back: Назад
+    back_to_top_link:
+      contents: Съдържание
     character_count:
       body: Можете да въвеждате до %{number} %{type}
       type:

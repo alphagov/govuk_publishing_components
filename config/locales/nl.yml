@@ -27,6 +27,8 @@ nl:
       request_format_text: Dit bestand is mogelijk niet geschikt voor gebruikers van ondersteunende technologie.
     back_link:
       back: Terug
+    back_to_top_link:
+      contents: Inhoud
     character_count:
       body: U kunt maximaal %{number} %{type}
       type:
