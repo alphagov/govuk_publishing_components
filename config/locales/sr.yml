@@ -159,6 +159,13 @@ sr:
       previous:
     print_link:
       text: Odštampaj ovu stranicu
+    published_dates:
+      hidden_heading:
+      hide_all_updates: sakrij sva ažuriranja
+      last_updated: Poslednje ažuriranje %{date}
+      published: Objavljeno %{date}
+      see_all_updates: pogledajte sva ažuriranja
+      show_all_updates: prikaži sva ažuriranja
     radio:
       or: ili
     related_footer_navigation:

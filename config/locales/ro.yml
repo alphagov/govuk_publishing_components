@@ -159,6 +159,13 @@ ro:
       previous:
     print_link:
       text: Imprimați această pagină
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ascundeți toate actualizările
+      last_updated: Ultima actualizare %{date}
+      published: Publicat pe %{date}
+      see_all_updates: vedeți toate actualizările
+      show_all_updates: afișați toate actualizările
     radio:
       or: sau
     related_footer_navigation:

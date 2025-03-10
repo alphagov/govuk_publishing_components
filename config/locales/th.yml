@@ -156,6 +156,13 @@ th:
       previous:
     print_link:
       text: พิมพ์หน้านี้
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ซ่อนอัปเดตทั้งหมด
+      last_updated: อัปเดตล่าสุดเมื่อ %{date}
+      published: เผยแพร่เมื่อ %{date}
+      see_all_updates: ดูอัปเดตทั้งหมด
+      show_all_updates: แสดงอัปเดตทั้งหมด
     radio:
       or: หรือ
     related_footer_navigation:

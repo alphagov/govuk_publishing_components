@@ -154,6 +154,13 @@ pa-pk:
       previous:
     print_link:
       text: ایس ورقے نوں پرنٹ کرو
+    published_dates:
+      hidden_heading:
+      hide_all_updates: سارے تازہ ترین حالات نوں لُکا لوؤ
+      last_updated: اخری وار تازہ ترین بنایا %{date}
+      published: شائع ہویا %{date}
+      see_all_updates: ساری تازہ ترین صورتِ حال
+      show_all_updates: ساری تازہ ترین صورتِ حال وکھاؤ
     radio:
       or: یا
     related_footer_navigation:

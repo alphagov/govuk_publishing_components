@@ -158,6 +158,13 @@ so:
       previous:
     print_link:
       text: Daabac bogan
+    published_dates:
+      hidden_heading:
+      hide_all_updates: qari dhamaan waxa cusub
+      last_updated: Markii ugu dambaysay ee la cusboonaysiiyay %{date}
+      published: La daabacay %{date}
+      see_all_updates: eeg dhamaan cusboonaysiinaha
+      show_all_updates: muuji dhamaan cusboonaysiinaha
     radio:
       or: ama
     related_footer_navigation:

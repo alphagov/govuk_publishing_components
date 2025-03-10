@@ -160,6 +160,13 @@ dr:
       previous:
     print_link:
       text: این صفحه را پرنت نمایید
+    published_dates:
+      hidden_heading:
+      hide_all_updates: مخفی کردن تمام آپدیت ها
+      last_updated: آخرین آپدیت%{date}
+      published: منتشر شده%{date}
+      see_all_updates: تمام آپدیت ها را مشاهده نمایید
+      show_all_updates: تمام آپدیت ها را نمایش دهید
     radio:
       or: و یا
     related_footer_navigation:

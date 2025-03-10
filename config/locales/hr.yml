@@ -159,6 +159,13 @@ hr:
       previous:
     print_link:
       text: Ispišite ovu stranicu
+    published_dates:
+      hidden_heading:
+      hide_all_updates: sakriti sva ažuriranja
+      last_updated: Zadnje ažurirano %{date}
+      published: Objavljeno %{date}
+      see_all_updates: pogledajte sva ažuriranja
+      show_all_updates: prikaži sva ažuriranja
     radio:
       or: ili
     related_footer_navigation:

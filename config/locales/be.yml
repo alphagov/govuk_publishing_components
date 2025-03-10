@@ -164,6 +164,13 @@ be:
       previous:
     print_link:
       text: Надрукаваць гэтую странiцу
+    published_dates:
+      hidden_heading:
+      hide_all_updates: схаваць усе абнаўленні
+      last_updated: Апошняе абнаўленне %{date}
+      published: Апублікавана %{date}
+      see_all_updates: паглядзець усе абнаўленні
+      show_all_updates: паказаць усе абнаўленні
     radio:
       or: або
     related_footer_navigation:

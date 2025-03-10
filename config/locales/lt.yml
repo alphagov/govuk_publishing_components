@@ -163,6 +163,13 @@ lt:
       previous:
     print_link:
       text: Spausdinti šį puslapį
+    published_dates:
+      hidden_heading:
+      hide_all_updates: slėpti visą naują informacij
+      last_updated: Paskutinį kartą naujinta %{date}
+      published: Publikuota %{date}
+      see_all_updates: matyti visą naują informaciją
+      show_all_updates: rodyti visą naują informaciją
     radio:
       or: arba
     related_footer_navigation:

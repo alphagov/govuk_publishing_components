@@ -158,6 +158,13 @@ it:
       previous:
     print_link:
       text: Stampa questa pagina
+    published_dates:
+      hidden_heading:
+      hide_all_updates: nascondi tutti gli aggiornamenti
+      last_updated: Ultimo aggiornamento %{date}
+      published: Pubblicato %{date}
+      see_all_updates: vedi tutti gli aggiornamenti
+      show_all_updates: mostra tutti gli aggiornamenti
     radio:
       or: o
     related_footer_navigation:

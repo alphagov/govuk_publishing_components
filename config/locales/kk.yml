@@ -158,6 +158,13 @@ kk:
       previous:
     print_link:
       text: Осы бетті басып шығару
+    published_dates:
+      hidden_heading:
+      hide_all_updates: барлық жаңартуларды жасыру
+      last_updated: Соңғы рет %{date} жаңартылды
+      published: "%{date} күні жарияланды"
+      see_all_updates: барлық жаңартуларды қарау
+      show_all_updates: барлық жаңартуларды көрсету
     radio:
       or: немесе
     related_footer_navigation:

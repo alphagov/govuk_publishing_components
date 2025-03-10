@@ -161,6 +161,13 @@ ka:
       previous:
     print_link:
       text: ამ გვერდის ბეჭდვა
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ყველა ცვლილების დაფარვა
+      last_updated: ბოლოს განახლდა %{date}
+      published: გამოქვეყნდა %{date}
+      see_all_updates: ყველა ცვლილების ნახვა
+      show_all_updates: ყველა ცვლილების ჩვენება
     radio:
       or: ან
     related_footer_navigation:

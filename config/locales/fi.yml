@@ -160,6 +160,13 @@ fi:
       previous:
     print_link:
       text: Tulosta tämä sivu
+    published_dates:
+      hidden_heading:
+      hide_all_updates: piilota kaikki päivitykset
+      last_updated: Viimeksi päivitetty %{date}
+      published: Julkaistu %{date}
+      see_all_updates: katso kaikki palvelut
+      show_all_updates: näytä kaikki päivitykset
     radio:
       or: tai
     related_footer_navigation:

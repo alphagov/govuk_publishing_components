@@ -157,6 +157,13 @@ fa:
       previous:
     print_link:
       text: چاپ این صفحه
+    published_dates:
+      hidden_heading:
+      hide_all_updates: مخفی کردن تمام بروزرسانی‌ها
+      last_updated: آخرین بروزرسانی %{date}
+      published: منشتر شده %{date}
+      see_all_updates: مشاهده تمام بروزرسانی‌ها
+      show_all_updates: نمایش تمام بروزرسانی‌ها
     radio:
       or: یا
     related_footer_navigation:
