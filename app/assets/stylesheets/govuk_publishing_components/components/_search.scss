@@ -199,11 +199,11 @@ $large-input-size: 50px;
 
 .gem-c-search--homepage {
   .gem-c-search__submit {
-    background-color: #d2e2f1;
+    background-color: govuk-tint(govuk-colour("blue"), 80%);
     color: govuk-colour("blue");
 
     &:hover {
-      background-color: lighten(#d2e2f1, 5%);
+      background-color: govuk-tint(govuk-colour("blue"), 95%);
     }
   }
 }
