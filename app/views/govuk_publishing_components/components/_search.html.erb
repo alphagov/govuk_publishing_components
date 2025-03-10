@@ -15,7 +15,6 @@
   label_custom_class ||= nil
   name ||= "q"
   homepage ||= false
-  no_border ||= false
   size ||= ""
   value ||= ""
   local_assigns[:margin_bottom] ||= 6
@@ -25,7 +24,6 @@
   component_helper.add_class("gem-c-search govuk-!-display-none-print")
   component_helper.add_class("gem-c-search--large") if size == "large"
   component_helper.add_class("gem-c-search--homepage") if homepage
-  component_helper.add_class("gem-c-search--no-border") if no_border
   component_helper.add_class("gem-c-search--on-govuk-blue") if local_assigns[:on_govuk_blue].eql?(true)
   component_helper.add_class("gem-c-search--on-white") unless local_assigns[:on_govuk_blue].eql?(true)
   component_helper.add_class("gem-c-search--separate-label") if local_assigns.include?(:inline_label) or local_assigns.include?(:label_size)
@@ -33,7 +31,7 @@
   label_classes = []
   if (shared_helper.valid_heading_size?(label_size))
     label_classes << "govuk-label govuk-label--#{label_size}"
-    label_classes << "gem-c-search__label--white" if no_border || homepage
+    label_classes << "gem-c-search__label--white" if homepage
   else
     label_classes << "gem-c-search__label"
   end
