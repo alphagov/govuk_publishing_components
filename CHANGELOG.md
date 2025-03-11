@@ -16,6 +16,7 @@
 * **BREAKING** Remove search from the layout header component ([PR #4687](https://github.com/alphagov/govuk_publishing_components/pull/4687))
 * Remove the `no_border` option from the search component ([PR #4693](https://github.com/alphagov/govuk_publishing_components/pull/4693))
 * Migrate banner component from government-frontend as 'Summary banner' ([PR #4681](https://github.com/alphagov/govuk_publishing_components/pull/4681))
+* Add 'contents list with body' component from government-frontend ([PR #4686](https://github.com/alphagov/govuk_publishing_components/pull/4686))
 
 ## 54.0.1
 

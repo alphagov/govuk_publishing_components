@@ -1,0 +1,23 @@
+.govuk-frontend-supported .sticky-element {
+  position: absolute;
+  bottom: 0;
+
+  &--stuck-to-window {
+    bottom: 0;
+    position: fixed;
+  }
+
+  &--enabled {
+    transition: opacity, .3s, ease;
+    opacity: 1;
+
+    @include govuk-media-query($until: tablet) {
+      position: static;
+    }
+  }
+
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
