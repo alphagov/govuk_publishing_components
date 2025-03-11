@@ -12,6 +12,7 @@
 * Remove search large-mobile option ([PR #4682](https://github.com/alphagov/govuk_publishing_components/pull/4682))
 * Add back to top link component from government-frontend ([PR #4666](https://github.com/alphagov/govuk_publishing_components/pull/4666))
 * Add back to top link component translations ([PR #4689](https://github.com/alphagov/govuk_publishing_components/pull/4689))
+* Remove IE8 support from action-link component ([PR #4690](https://github.com/alphagov/govuk_publishing_components/pull/4690))
 
 ## 54.0.1
 
