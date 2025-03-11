@@ -91,6 +91,8 @@ dr:
       what_doing: مصروف چه کاری بودید؟
       what_wrong: چه اشتباهی رخ داد؟
       'yes': بلی
+    figure:
+      image_credit: "%{credit}:کریدت تصویر\n"
     intervention:
       accessible_link_text_suffix:
     layout_footer:

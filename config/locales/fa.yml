@@ -88,6 +88,8 @@ fa:
       what_doing: داشتید چه کار می‌کردید؟
       what_wrong: چه مشکلی پیش آمد؟
       'yes': بله
+    figure:
+      image_credit: 'اعتبار تصویر: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

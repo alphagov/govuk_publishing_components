@@ -93,6 +93,8 @@ pl:
       what_doing: Co robiłeś?
       what_wrong: Co poszło nie tak?
       'yes': Tak
+    figure:
+      image_credit: Obrazek:%{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

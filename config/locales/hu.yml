@@ -92,6 +92,8 @@ hu:
       what_doing: Mit csinált?
       what_wrong: Milyen hiba lépett fel?
       'yes': Igen
+    figure:
+      image_credit: 'Képaláírás: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

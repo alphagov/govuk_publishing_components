@@ -90,6 +90,8 @@ ta:
       what_doing: நீங்கள் என்ன செய்து கொண்டிருந்தீர்கள்?
       what_wrong: என்ன தவறு நடந்தது?
       'yes': ஆம்
+    figure:
+      image_credit: 'பட உதவி: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

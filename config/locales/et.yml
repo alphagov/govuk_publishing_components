@@ -92,6 +92,8 @@ et:
       what_doing: Mida te tegite?
       what_wrong: Mis läks valesti?
       'yes': Jah
+    figure:
+      image_credit: 'Pildi autoriõigus: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

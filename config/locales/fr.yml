@@ -89,6 +89,8 @@ fr:
       what_doing: Que faisiez-vous ?
       what_wrong: Qu'est-ce qui n'a pas marché ?
       'yes': Oui
+    figure:
+      image_credit: Crédit d'image : %{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

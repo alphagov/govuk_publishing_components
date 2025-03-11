@@ -95,6 +95,8 @@ be:
       what_doing: Што вы рабiлi?
       what_wrong: Што пайшло не так?
       'yes': Так
+    figure:
+      image_credit: 'Крэдыт выявы: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

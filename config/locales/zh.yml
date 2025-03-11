@@ -87,6 +87,8 @@ zh:
       what_doing: 您在干什么？
       what_wrong: 发生了哪些错误？
       'yes': 是
+    figure:
+      image_credit: 图片提供：%{credit}
     intervention:
       accessible_link_text_suffix:
     layout_footer:

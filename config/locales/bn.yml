@@ -90,6 +90,8 @@ bn:
       what_doing: আপনি কী করছিলেন?
       what_wrong: কী ভুল হয়েছিল?
       'yes': হ্যাঁ
+    figure:
+      image_credit: 'ছবির কৃতিত্ব: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

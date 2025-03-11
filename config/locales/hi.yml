@@ -89,6 +89,8 @@ hi:
       what_doing: आप क्या कर रहे थे?
       what_wrong: क्या गलत हुआ?
       'yes': हां
+    figure:
+      image_credit: 'इमेज क्रेडिट: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

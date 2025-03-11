@@ -87,6 +87,8 @@ th:
       what_doing: คุณทำอะไรอยู่ในขณะนั้น
       what_wrong: มีสิ่งใดผิดปกติ
       'yes': ใช่
+    figure:
+      image_credit: 'เครดิตภาพ: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

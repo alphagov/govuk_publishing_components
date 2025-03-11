@@ -93,6 +93,8 @@ bg:
       what_doing: Какво правихте?
       what_wrong: Какво се обърка?
       'yes': Да
+    figure:
+      image_credit: 'Изображението е от: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

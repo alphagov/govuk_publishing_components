@@ -90,6 +90,8 @@ hr:
       what_doing: Šta ste radili?
       what_wrong: Što je pošlo po zlu?
       'yes': Da
+    figure:
+      image_credit: 'Zasluga za sliku: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

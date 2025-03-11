@@ -93,6 +93,8 @@ ru:
       what_doing: Что вы делали?
       what_wrong: Что пошло не так?
       'yes': Да
+    figure:
+      image_credit: 'Графические материалы предоставлены: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

@@ -89,6 +89,8 @@ si:
       what_doing: ඔබ කුමක් ද කරමින් සිටියේ?
       what_wrong: වැරදුණේ කුමක්ද?
       'yes': ඔව්
+    figure:
+      image_credit: 'රූප සඳහා ස්තූතියි: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:

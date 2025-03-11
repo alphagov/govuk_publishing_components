@@ -84,6 +84,8 @@ ko:
       what_doing:
       what_wrong:
       'yes':
+    figure:
+      image_credit: '이미지 저작권: %{credit}'
     intervention:
       accessible_link_text_suffix:
     layout_footer:
