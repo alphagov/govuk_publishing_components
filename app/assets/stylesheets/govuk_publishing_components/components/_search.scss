@@ -232,27 +232,6 @@ $large-input-size: 50px;
   color: govuk-colour("white");
 }
 
-.gem-c-search--no-border {
-  .gem-c-search__label {
-    color: govuk-colour("white");
-  }
-
-  .gem-c-search__input[type="search"] {
-    border: 0;
-
-    &:focus {
-      @include gem-c-search-input-focus;
-      box-shadow: inset 0 0 0 4px;
-    }
-  }
-
-  .govuk-frontend-supported & {
-    .gem-c-search__label {
-      color: $govuk-secondary-text-colour;
-    }
-  }
-}
-
 .gem-c-search--large {
   @include large-mode;
 }

@@ -76,11 +76,6 @@ describe "Search", type: :view do
     assert_select '.gem-c-search.govuk-\!-margin-bottom-2'
   end
 
-  it "renders a search box with no border" do
-    render_component(no_border: true)
-    assert_select ".gem-c-search--no-border"
-  end
-
   it "renders a search box with default button text" do
     render_component({})
     assert_select ".gem-c-search__submit", text: "Search"
