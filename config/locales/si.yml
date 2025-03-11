@@ -158,6 +158,13 @@ si:
       previous:
     print_link:
       text: මෙම පිටුව මුද්රණය කරන්න
+    published_dates:
+      hidden_heading:
+      hide_all_updates: සියලු යාවත්කාලීන සඟවන්න
+      last_updated: අවසන් වරට යාවත්කාලීන කළේ %{date}
+      published: පළ කළේ %{date}
+      see_all_updates: සියලුම යාවත්කාලීනයන් බලන්න
+      show_all_updates: සියලු යාවත්කාලීනයන් පෙන්වන්න
     radio:
       or: හෝ
     related_footer_navigation:

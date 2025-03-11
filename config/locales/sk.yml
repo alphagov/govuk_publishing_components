@@ -163,6 +163,13 @@ sk:
       previous:
     print_link:
       text: Vytlačiť túto stránku
+    published_dates:
+      hidden_heading:
+      hide_all_updates: skryť všetky aktualizácie
+      last_updated: Posledná aktualizácia %{date}
+      published: Zverejnené %{date}
+      see_all_updates: pozrite si všetky aktualizácie
+      show_all_updates: zobraziť všetky aktualizácie
     radio:
       or: alebo
     related_footer_navigation:

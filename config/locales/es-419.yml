@@ -158,6 +158,13 @@ es-419:
       previous:
     print_link:
       text: Imprimir esta página
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ocultar todas las novedades
+      last_updated: Última actualización %{date}
+      published: Publicado %{date}
+      see_all_updates: ver todas las novedades
+      show_all_updates: mostrar todas las actualizaciones
     radio:
       or: o
     related_footer_navigation:

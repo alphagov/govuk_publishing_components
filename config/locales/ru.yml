@@ -162,6 +162,13 @@ ru:
       previous:
     print_link:
       text: Распечатать эту страницу
+    published_dates:
+      hidden_heading:
+      hide_all_updates: Скрыть всю последнюю информацию
+      last_updated: Последние изменения %{date}
+      published: Опубликовано %{date}
+      see_all_updates: Посмотреть всю поледнюю информацию
+      show_all_updates: Показать всю поледнюю информацию
     radio:
       or: или
     related_footer_navigation:

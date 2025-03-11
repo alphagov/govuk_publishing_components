@@ -158,6 +158,13 @@ he:
       previous:
     print_link:
       text: הדפס עמוד זה
+    published_dates:
+      hidden_heading:
+      hide_all_updates: להסתיר כל עדכונים
+      last_updated: עדכון אחרון %{date}
+      published: פורסם %{date}
+      see_all_updates: ראה כל העדכונים
+      show_all_updates: הצג כל עדכונים
     radio:
       or: או
     related_footer_navigation:

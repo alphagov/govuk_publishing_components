@@ -162,6 +162,13 @@ cy:
       previous:
     print_link:
       text: Argraffu'r dudalen hon
+    published_dates:
+      hidden_heading:
+      hide_all_updates: cuddio pob diweddariad
+      last_updated: Diweddarwyd ddiwethaf ar %{date}
+      published: Cyhoeddwyd ar %{date}
+      see_all_updates: gweld pob diweddariad
+      show_all_updates: dangos pob diweddariad
     radio:
       or: neu
     related_footer_navigation:

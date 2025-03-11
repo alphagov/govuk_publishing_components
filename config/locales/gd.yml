@@ -160,6 +160,13 @@ gd:
       previous:
     print_link:
       text: priontáil an leathanach seo
+    published_dates:
+      hidden_heading:
+      hide_all_updates: gach nuashonrú a cheilt
+      last_updated: Nuashonrú deireanach %{date}
+      published: Arna chur suas ar %{date}
+      see_all_updates: féach gach nuashonrú
+      show_all_updates: Taispeáin gach nuashonrú
     radio:
       or: Cá háit
     related_footer_navigation:

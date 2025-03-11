@@ -158,6 +158,13 @@ el:
       previous:
     print_link:
       text: Εκτύπωση αυτής της σελίδας
+    published_dates:
+      hidden_heading:
+      hide_all_updates: απόκρυψη όλων των ενημερώσεων
+      last_updated: Τελευταία ενημέρωση %{date}
+      published: Δημοσιεύτηκε %{date}
+      see_all_updates: δείτε όλες τις ενημερώσεις
+      show_all_updates: εμφάνιση όλων των ενημερώσεων
     radio:
       or: ή
     related_footer_navigation:

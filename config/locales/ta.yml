@@ -159,6 +159,13 @@ ta:
       previous:
     print_link:
       text: இந்தப் பக்கத்தை அச்செடு
+    published_dates:
+      hidden_heading:
+      hide_all_updates: அனைத்து புதுப்பித்தல்களையும் மறை
+      last_updated: கடைசியாக புதுப்பிக்கப்பட்டது %{date}
+      published: வெளியிடப்பட்ட தேதி %{date}
+      see_all_updates: அனைத்து புதுப்பித்தல்களையும் பார்க்க
+      show_all_updates: அனைத்து புதுப்பித்தல்களையும் காட்டு
     radio:
       or: அல்லது
     related_footer_navigation:

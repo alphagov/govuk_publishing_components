@@ -158,6 +158,13 @@ pa:
       previous:
     print_link:
       text: ਇਸ ਪੰਨੇ ਨੂੰ ਛਾਪੋ
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ਸਾਰੇ ਅਪਡੇਟਾਂ ਨੂੰ ਲੁਕਾਓ
+      last_updated: ਪਿਛਲੀ ਵਾਰ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ %{date}
+      published: ਪ੍ਰਕਾਸ਼ਿਤ %{date}
+      see_all_updates: ਸਾਰੇ ਅਪਡੇਟਸ ਵੇਖੋ
+      show_all_updates: ਸਾਰੇ ਅਪਡੇਟ ਦਿਖਾਉ
     radio:
       or: ਜਾਂ
     related_footer_navigation:

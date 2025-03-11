@@ -158,6 +158,13 @@ hi:
       previous:
     print_link:
       text: यह पेज प्रिंट करें
+    published_dates:
+      hidden_heading:
+      hide_all_updates: सारे अपडेट छिपाएं
+      last_updated: पिछली बार अपडेट किया गया %{date}
+      published: प्रकाशित %{date}
+      see_all_updates: सभी अपडेट देखें
+      show_all_updates: सभी अपडेट दिखाएं
     radio:
       or: या
     related_footer_navigation:

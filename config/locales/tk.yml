@@ -159,6 +159,13 @@ tk:
       previous:
     print_link:
       text: Bu sahypany çap et
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ähli täzelenmeleri gizle
+      last_updated: Soňky gezek täzelenme %{date}
+      published: Çap edilen %{date}
+      see_all_updates: ähli täzelenmelere serediň
+      show_all_updates: ähli täzelenmeleri görkez
     radio:
       or: ýa-da
     related_footer_navigation:

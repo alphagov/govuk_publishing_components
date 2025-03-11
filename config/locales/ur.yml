@@ -155,6 +155,13 @@ ur:
       previous:
     print_link:
       text: اس صفحے کا پرنٹ لیں
+    published_dates:
+      hidden_heading:
+      hide_all_updates: تمام اپ ڈیٹس کو پوشیدہ کریں
+      last_updated: آخری اپ ڈیٹ کردہ %{date}
+      published: شائع کردہ %{date}
+      see_all_updates: تمام اپ ڈیٹس دیکھیں
+      show_all_updates: تمام اپ ڈیٹس دکھائیں
     radio:
       or: یا
     related_footer_navigation:

@@ -158,6 +158,13 @@ nl:
       previous:
     print_link:
       text: Deze pagina afdrukken
+    published_dates:
+      hidden_heading:
+      hide_all_updates: verberg alle updates
+      last_updated: Laatst bijgewerkt %{date}
+      published: Gepubliceerd %{date}
+      see_all_updates: zie alle updates
+      show_all_updates: toon alle updates
     radio:
       or: of
     related_footer_navigation:

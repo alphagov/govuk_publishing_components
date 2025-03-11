@@ -156,6 +156,13 @@ zh:
       previous:
     print_link:
       text: 打印本页面
+    published_dates:
+      hidden_heading:
+      hide_all_updates: 隐藏全部更新
+      last_updated: 上次更新 %{date}
+      published: 发布 %{date}
+      see_all_updates: 查看全部更新
+      show_all_updates: 显示全部更新
     radio:
       or: 或
     related_footer_navigation:

@@ -165,6 +165,13 @@ uk:
       previous:
     print_link:
       text: Роздрукувати цю сторінку
+    published_dates:
+      hidden_heading:
+      hide_all_updates: приховати всі оновлення
+      last_updated: Останнє оновлення %{date}
+      published: Опубліковано %{date}
+      see_all_updates: переглянути всі оновлення
+      show_all_updates: показати всі оновлення
     radio:
       or: або
     related_footer_navigation:

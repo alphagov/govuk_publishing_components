@@ -157,6 +157,13 @@ vi:
       previous:
     print_link:
       text: In trang này
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ẩn tất cả các cập nhật
+      last_updated: Lần cập nhật gần đây nhất %{date}
+      published: Ngày xuất bản %{date}
+      see_all_updates: xem tất cả nội dung cập nhật
+      show_all_updates: hiển thị tất cả nội dung cập nhật
     radio:
       or: hoặc
     related_footer_navigation:

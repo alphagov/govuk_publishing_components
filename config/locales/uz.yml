@@ -160,6 +160,13 @@ uz:
       previous:
     print_link:
       text: Ушбу саҳифани чоп этиш
+    published_dates:
+      hidden_heading:
+      hide_all_updates: Барча янгиланишларни яшириш
+      last_updated: Сўнгги янгиланиш %{date}
+      published: Нашр қилинган %{date}
+      see_all_updates: Барча янгиланишларни кўриш
+      show_all_updates: янгиланишларни барчасини кўрсатиш
     radio:
       or: ёки
     related_footer_navigation:

@@ -1,0 +1,57 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-published-dates {
+  direction: ltr;
+  line-height: 1.45em;
+  color: govuk-colour("black");
+
+  .direction-rtl & {
+    direction: rtl;
+  }
+}
+
+.gem-c-published-dates__toggle {
+  display: none;
+
+  .govuk-frontend-supported & {
+    display: inline-block;
+  }
+}
+
+.gem-c-published-dates__change-history {
+  margin: govuk-spacing(4) 0;
+}
+
+.gem-c-published-dates__list {
+  padding: 0;
+}
+
+.gem-c-published-dates__change-item {
+  list-style-type: none;
+  margin-bottom: govuk-spacing(2);
+}
+
+.gem-c-published-dates__change-date {
+  display: block;
+  @include govuk-font(16, $weight: bold);
+}
+
+.gem-c-published-dates__change-note {
+  white-space: pre-line;
+}
+
+.gem-c-published-dates--history {
+  padding-top: govuk-spacing(2);
+  border-top: 1px solid $govuk-border-colour;
+}
+
+.govuk-frontend-supported .gem-c-published-dates .js-hidden {
+  display: none;
+  visibility: hidden;
+}
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-published-dates {
+    margin-top: 10mm;
+  }
+}

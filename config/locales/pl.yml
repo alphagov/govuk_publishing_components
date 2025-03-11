@@ -162,6 +162,13 @@ pl:
       previous:
     print_link:
       text: Wydrukuj tę stronę
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ukryj wszystkie aktualizacje
+      last_updated: Ostatnio zaktualizowano %{date}
+      published: Opublikowano %{date}
+      see_all_updates: zobacz wszystkie aktualizacje
+      show_all_updates: pokaż wszystkie aktualizacje
     radio:
       or: lub
     related_footer_navigation:

@@ -18,6 +18,7 @@
 * Migrate banner component from government-frontend as 'Summary banner' ([PR #4681](https://github.com/alphagov/govuk_publishing_components/pull/4681))
 * Add 'contents list with body' component from government-frontend ([PR #4686](https://github.com/alphagov/govuk_publishing_components/pull/4686))
 * Migrate figure component from government-frontend ([PR #4688](https://github.com/alphagov/govuk_publishing_components/pull/4688))
+* Migrate published dates component from government-frontend ([PR #4691](https://github.com/alphagov/govuk_publishing_components/pull/4691))
 
 ## 54.0.1
 

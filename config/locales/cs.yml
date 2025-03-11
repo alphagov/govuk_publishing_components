@@ -163,6 +163,13 @@ cs:
       previous:
     print_link:
       text: Vytisknout tuto stránku
+    published_dates:
+      hidden_heading:
+      hide_all_updates: skrýt všechny aktualizace
+      last_updated: Poslední aktualizace %{date}
+      published: Zveřejněno %{date}
+      see_all_updates: vidět všechny aktualizace
+      show_all_updates: zobrazit všechny aktualizace
     radio:
       or: nebo
     related_footer_navigation:

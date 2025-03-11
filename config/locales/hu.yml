@@ -161,6 +161,13 @@ hu:
       previous:
     print_link:
       text: Oldal kinyomtatása
+    published_dates:
+      hidden_heading:
+      hide_all_updates: minden frissítés elrejtése
+      last_updated: 'Utolsó frissítés: %{date}'
+      published: 'közzététel dátuma: %{date}'
+      see_all_updates: minden frissítés megtekintése
+      show_all_updates: minden frissítés megjelenítése
     radio:
       or: vagy
     related_footer_navigation:

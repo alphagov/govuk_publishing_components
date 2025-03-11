@@ -157,6 +157,13 @@ ne:
       previous:
     print_link:
       text:
+    published_dates:
+      hidden_heading:
+      hide_all_updates: सबै अद्यावधिक लुकाउनुहोस्
+      last_updated: पछिल्लो अद्यावधिक %{date}
+      published: प्रकाशित %{date}
+      see_all_updates: सबै अद्यावधिक हेर्नुहोस्
+      show_all_updates: सबै अद्यावधिक देखाउनुहोस्
     radio:
       or:
     related_footer_navigation:

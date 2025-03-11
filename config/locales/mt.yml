@@ -160,6 +160,13 @@ mt:
       previous:
     print_link:
       text: Stampa din il-paġna
+    published_dates:
+      hidden_heading:
+      hide_all_updates: aħbi l-aġġornamenti kollha
+      last_updated: L-aħħar aġġornament %{date}
+      published: Ippubblikat %{date}
+      see_all_updates: ara l-aġġornamenti kollha
+      show_all_updates: uri l-aġġornamenti kollha
     radio:
       or: jew
     related_footer_navigation:

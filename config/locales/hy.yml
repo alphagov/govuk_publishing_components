@@ -162,6 +162,13 @@ hy:
       previous:
     print_link:
       text: Տպել այս էջը
+    published_dates:
+      hidden_heading:
+      hide_all_updates: թաքցնել բոլոր թարմացումները
+      last_updated: Վերջին թարմացումը՝ %{date}
+      published: Հրապարակվել է՝ %{date}
+      see_all_updates: դիտել բոլոր թարմացումները
+      show_all_updates: ցույց տալ բոլոր թարմացումները
     radio:
       or: կամ
     related_footer_navigation:
