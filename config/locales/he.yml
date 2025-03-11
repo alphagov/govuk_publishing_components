@@ -108,10 +108,7 @@ he:
             manage:
               link_text:
     layout_header:
-      hide_button: הסתר חיפוש
       menu: תפריט
-      search_button: חפש GOV.UK
-      show_button: הצג חיפוש
       top_level: רמה עליונה
     layout_super_navigation_header:
       logo_link_title:

@@ -108,10 +108,7 @@ el:
             manage:
               link_text:
     layout_header:
-      hide_button: Απόκρυψη αναζήτησης
       menu: Μενού
-      search_button: Αναζήτηση στο GOV.UK
-      show_button: Εμφάνιση αναζήτησης
       top_level: Κορυφαίο επίπεδο
     layout_super_navigation_header:
       logo_link_title:

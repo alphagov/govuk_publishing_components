@@ -108,10 +108,7 @@ sv:
             manage:
               link_text:
     layout_header:
-      hide_button: Dölj sökning
       menu: Meny
-      search_button: Sök på GOV.UK
-      show_button: Visa sökning
       top_level: Högsta nivå
     layout_super_navigation_header:
       logo_link_title:

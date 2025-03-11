@@ -109,10 +109,7 @@ tk:
             manage:
               link_text:
     layout_header:
-      hide_button: Gözlegi gizle
       menu: Menýu
-      search_button: GOV.UK gözle
-      show_button: Gözlegi görkez
       top_level: Ýokary dereje
     layout_super_navigation_header:
       logo_link_title:

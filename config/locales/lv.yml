@@ -112,10 +112,7 @@ lv:
             manage:
               link_text:
     layout_header:
-      hide_button: Paslēpt meklēšanu
       menu: Izvēlne
-      search_button: Meklēt GOV.UK
-      show_button: Rādīt meklēšanu
       top_level: Augšējais līmenis
     layout_super_navigation_header:
       logo_link_title:

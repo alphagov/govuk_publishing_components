@@ -308,7 +308,7 @@ bundle exec govuk-lint-sass app/assets/stylesheets/components
 Images must be listed in `config/initializers/assets.rb` and can be referred to in Sass as follows.
 
 ```scss
-background-image: image-url("govuk_publishing_components/search-button.png");
+background-image: image-url("govuk_publishing_components/component-image.png");
 ```
 
 SVGs can also be used for images, ideally inline in templates and compressed.

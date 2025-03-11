@@ -109,10 +109,7 @@ bn:
             manage:
               link_text:
     layout_header:
-      hide_button: অনুসন্ধান লুকিয়ে রাখুন
       menu: মেনু
-      search_button: GOV.UK অনুসন্ধান করুন
-      show_button: অনুসন্ধান দেখান
       top_level: শীর্ষ পর্যায়
     layout_super_navigation_header:
       logo_link_title:

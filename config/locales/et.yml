@@ -111,10 +111,7 @@ et:
             manage:
               link_text:
     layout_header:
-      hide_button: Peida otsing
       menu: Menüü
-      search_button: Otsi saidilt GOV.UK
-      show_button: Kuva otsing
       top_level: Kõrgeim tase
     layout_super_navigation_header:
       logo_link_title:

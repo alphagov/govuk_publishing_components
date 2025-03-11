@@ -7,7 +7,6 @@
   navigation_items ||= []
   product_name ||= nil
   remove_bottom_border ||= false
-  search ||= false
   width_class = full_width ? "govuk-header__container--full-width" : "govuk-width-container"
   logo_link ||= "/"
 
@@ -32,11 +31,6 @@
       <% if navigation_items.any? %>
         <div class="govuk-header__content gem-c-header__content govuk-grid-column-full govuk-!-display-none-print">
           <%= render "govuk_publishing_components/components/layout_header/navigation_items", navigation_items: navigation_items, navigation_aria_label: navigation_aria_label %>
-        </div>
-      <% end %>
-      <% if search %>
-        <div class="govuk-grid-column-one-half gem-c-layout-header__search govuk-!-display-none-print">
-          <%= render "govuk_publishing_components/components/layout_header/search" %>
         </div>
       <% end %>
     </div>

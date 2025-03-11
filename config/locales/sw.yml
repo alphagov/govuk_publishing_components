@@ -108,10 +108,7 @@ sw:
             manage:
               link_text:
     layout_header:
-      hide_button: Ficha utafutaji
       menu: Menyu
-      search_button: Tafuta tovuti ya GOV.UK
-      show_button: Onyesha utafutaji
       top_level: Kiwango cha juu
     layout_super_navigation_header:
       logo_link_title:

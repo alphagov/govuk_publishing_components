@@ -113,10 +113,7 @@ lt:
             manage:
               link_text:
     layout_header:
-      hide_button: Slėpti paiešką
       menu: Meniu
-      search_button: Ieškoti GOV.UK
-      show_button: Rodyti paiešką
       top_level: Aukščiausias lygis
     layout_super_navigation_header:
       logo_link_title:

@@ -112,10 +112,7 @@ pl:
             manage:
               link_text:
     layout_header:
-      hide_button: Ukryj wyszukiwanie
       menu: Menu
-      search_button: Szukaj w GOV.UK
-      show_button: Pokaż wyszukiwanie
       top_level: Najwyższy poziom
     layout_super_navigation_header:
       logo_link_title:

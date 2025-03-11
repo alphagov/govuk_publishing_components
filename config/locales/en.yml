@@ -159,10 +159,7 @@ en:
             manage:
               link_text: Settings
     layout_header:
-      hide_button: Hide search
       menu: Menu
-      search_button: Search GOV.UK
-      show_button: Show search
       top_level: Top level
     layout_super_navigation_header:
       logo_link_title: Go to the GOV.UK homepage

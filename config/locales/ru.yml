@@ -112,10 +112,7 @@ ru:
             manage:
               link_text:
     layout_header:
-      hide_button: Скрыть поиск
       menu: Меню
-      search_button: Поиск на GOV.UK
-      show_button: Показать поиск
       top_level: Высший уровень
     layout_super_navigation_header:
       logo_link_title:

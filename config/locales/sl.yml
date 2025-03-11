@@ -115,10 +115,7 @@ sl:
             manage:
               link_text:
     layout_header:
-      hide_button: Skrij iskanje
       menu: Meni
-      search_button: Išči po GOV.UK
-      show_button: Pokaži iskanje
       top_level: Najvišja raven
     layout_super_navigation_header:
       logo_link_title:

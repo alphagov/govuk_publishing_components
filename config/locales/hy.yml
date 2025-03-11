@@ -112,10 +112,7 @@ hy:
             manage:
               link_text:
     layout_header:
-      hide_button: Թաքցնել որոնման դաշտը
       menu: Մենյու
-      search_button: Որոնել GOV.UK կայքը
-      show_button: Ցուցադրել որոնումը
       top_level: Բարձր մակարդակ
     layout_super_navigation_header:
       logo_link_title:

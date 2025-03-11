@@ -109,10 +109,7 @@ ta:
             manage:
               link_text:
     layout_header:
-      hide_button: தேடலை மறை
       menu: மெனு
-      search_button: GOV.UK-யில் தேடுக
-      show_button: தேடலைக் காட்டு
       top_level: முதன்மை நிலை
     layout_super_navigation_header:
       logo_link_title:

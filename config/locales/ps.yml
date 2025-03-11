@@ -105,10 +105,7 @@ ps:
             manage:
               link_text:
     layout_header:
-      hide_button: لټون پټ کړئ
       menu: مینو
-      search_button: د GOV.UK لټون وکړئ
-      show_button: لټون ښکاره کړئ
       top_level: لوړ رتبه
     layout_super_navigation_header:
       logo_link_title:

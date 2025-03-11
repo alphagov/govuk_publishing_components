@@ -106,10 +106,7 @@ zh-tw:
             manage:
               link_text:
     layout_header:
-      hide_button: 隱藏搜尋
       menu: 菜單
-      search_button: 搜尋英國政府網站
-      show_button: 展開搜尋
       top_level: 最高層
     layout_super_navigation_header:
       logo_link_title:

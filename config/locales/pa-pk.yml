@@ -104,10 +104,7 @@ pa-pk:
             manage:
               link_text:
     layout_header:
-      hide_button: کھوج نوں چھپاؤ
       menu: فہرست
-      search_button: GOV.UK دی تلاش کرو
-      show_button: اپنی تلاش دکھاؤ
       top_level: اوچی تھاں دی
     layout_super_navigation_header:
       logo_link_title:

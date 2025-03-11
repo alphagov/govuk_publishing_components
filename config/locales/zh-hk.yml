@@ -106,10 +106,7 @@ zh-hk:
             manage:
               link_text:
     layout_header:
-      hide_button: 隱藏搜尋項
       menu: 選單
-      search_button: 搜尋 GOV.UK
-      show_button: 顯示搜尋項
       top_level: 最高級別
     layout_super_navigation_header:
       logo_link_title:

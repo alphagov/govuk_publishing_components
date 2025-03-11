@@ -111,10 +111,7 @@ ka:
             manage:
               link_text:
     layout_header:
-      hide_button: ძიების დაფარვა
       menu: მენიუ
-      search_button: GOV.UK ძებნა
-      show_button: ძებნის ჩვენება
       top_level: ტოპ დონე
     layout_super_navigation_header:
       logo_link_title:

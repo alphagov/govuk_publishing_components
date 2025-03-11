@@ -108,10 +108,7 @@ hi:
             manage:
               link_text:
     layout_header:
-      hide_button: खोज छिपाएं
       menu: मेनु
-      search_button: GOV.UK खोजें
-      show_button: खोज दिखाएं
       top_level: शीर्ष स्तर
     layout_super_navigation_header:
       logo_link_title:

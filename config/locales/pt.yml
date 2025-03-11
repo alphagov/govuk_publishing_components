@@ -108,10 +108,7 @@ pt:
             manage:
               link_text:
     layout_header:
-      hide_button: Ocultar pesquisa
       menu: Menu
-      search_button: Pesquisar em GOV.UK
-      show_button: Mostrar pesquisa
       top_level: Nível superior
     layout_super_navigation_header:
       logo_link_title:

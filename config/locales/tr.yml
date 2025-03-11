@@ -109,10 +109,7 @@ tr:
             manage:
               link_text:
     layout_header:
-      hide_button: Aramayı gizle
       menu: Menü
-      search_button: GOV.UK adresini arat
-      show_button: Aramayı göster
       top_level: Üst seviye
     layout_super_navigation_header:
       logo_link_title:

@@ -108,10 +108,7 @@ si:
             manage:
               link_text:
     layout_header:
-      hide_button: සෙවීම සඟවන්න
       menu: මෙනුව
-      search_button: GOV.UK තුළ සොයන්න
-      show_button: සෙවීම පෙන්වන්න
       top_level: ඉහළ මට්ටම
     layout_super_navigation_header:
       logo_link_title:

@@ -108,10 +108,7 @@ so:
             manage:
               link_text:
     layout_header:
-      hide_button: Qari baadhista
       menu: Manyuu
-      search_button: Baadh GOV.UK
-      show_button: Muuji baadhista
       top_level: Heerka sare
     layout_super_navigation_header:
       logo_link_title:

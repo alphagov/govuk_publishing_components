@@ -113,10 +113,7 @@ sk:
             manage:
               link_text:
     layout_header:
-      hide_button: Skryť vyhľadávanie
       menu: Menu
-      search_button: Vyhľadávanie na GOV.UK
-      show_button: Zobraziť vyhľadávanie
       top_level: Najvyššia úroveň
     layout_super_navigation_header:
       logo_link_title:

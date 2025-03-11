@@ -112,10 +112,7 @@ cy:
             manage:
               link_text:
     layout_header:
-      hide_button: Cuddio'r chwiliad
       menu: Dewislen
-      search_button: Chwilio GOV.UK
-      show_button: Dangos y chwiliad
       top_level: Lefel uchaf
     layout_super_navigation_header:
       logo_link_title:
