@@ -23,6 +23,15 @@ describe "File upload", type: :view do
     assert_select ".govuk-label", text: "Upload a file"
   end
 
+  it "renders with JavaScript enhancement" do
+    render_component(
+      label: { text: "Upload a file" },
+      name: "file-upload",
+      javascript: true,
+    )
+    assert_select ".govuk-drop-zone[data-module='govuk-file-upload']"
+  end
+
   it "renders input with a data attributes" do
     render_component(
       data: { module: "contextual-guidance" },
