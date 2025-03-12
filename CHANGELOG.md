@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+- ## Unreleased
+
+* Bump govuk-frontend from 5.8.0 to 5.9.0 ([PR #4677](https://github.com/alphagov/govuk_publishing_components/pull/4677))
+
 ## 55.0.0
 
 * Remove search large-mobile option ([PR #4682](https://github.com/alphagov/govuk_publishing_components/pull/4682))
