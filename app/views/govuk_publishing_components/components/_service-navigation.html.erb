@@ -1,0 +1,32 @@
+<%
+  add_gem_component_stylesheet("service-navigation")
+%>
+
+<section aria-label="Service information" class="govuk-service-navigation"
+  data-module="govuk-service-navigation">
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <% if product_name %>
+        <span class="govuk-service-navigation__service-name">
+          <a href="#" class="govuk-service-navigation__link">
+            <%= product_name %>
+          </a>
+        </span>
+      <% end %>
+      <% if !navigation_items.empty? %>
+      <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+        <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
+          Menu
+        </button>
+        <ul class="govuk-service-navigation__list" id="navigation">
+          <% navigation_items.each do |nav| %>
+            <%= tag.li nav[:text], class: "govuk-service-navigation__item" do %>
+              <%= link_to nav[:text], nav[:href], class: "govuk-service-navigation__link" %>
+            <% end %>
+          <% end %>
+        </ul>
+      </nav>
+      <% end %>
+    </div>
+  </div>
+</section>
