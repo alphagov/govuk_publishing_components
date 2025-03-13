@@ -8,6 +8,7 @@
   suggestion_text ||= nil
   hide ||= false
   new_tab ||= false
+  image ||= nil
 
   suggestion_data_attributes = {}
   dismiss_data_attributes = {}
@@ -51,6 +52,7 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-intervention")
+  component_helper.add_class("gem-c-intervention--image") if image
   component_helper.add_role("region")
   component_helper.add_aria_attribute({ label: "Intervention"})
   component_helper.add_data_attribute({ module: "intervention", intervention_name: name })
@@ -60,12 +62,15 @@
 %>
 <% if intervention_helper.show? %>
   <%= tag.section(**component_helper.all_attributes) do %>
-    <p class="govuk-body">
+    <% valid_image = %w[hmrc].include? image %>
+    <%= tag.span(class: "gem-c-intervention__image-container gem-c-intervention__image-container--#{image}") if valid_image %>
+
+    <%= tag.p(class: "govuk-body") do %>
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
       <% if suggestion_link_text && suggestion_link_url %>
         <%= tag.a suggestion_link_text, **suggestion_tag_options %>
       <% end %>
-    </p>
+    <% end %>
 
     <% if dismiss_text %>
       <%= tag.p class: "govuk-body govuk-!-display-none-print", data: dismiss_data_attributes do %>

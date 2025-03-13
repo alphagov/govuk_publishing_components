@@ -74,3 +74,13 @@ examples:
       suggestion_link_url: /travel-abroad
       dismiss_text: Hide this suggestion
       name: another-campaign-name
+
+  with_image:
+    description: |
+      An image can be displayed as shown. Currently, this only supports `image: "hmrc"`.
+    data:
+      image: "hmrc"
+      suggestion_text: This is a promotion for an interesting product
+      suggestion_link_text: Get the interesting product
+      suggestion_link_url: www.gov.uk
+      new_tab: true
