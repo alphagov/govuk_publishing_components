@@ -25,14 +25,13 @@
         <%= render "govuk_publishing_components/components/layout_header/header_logo", {
           environment: environment,
           logo_link: logo_link,
-          product_name: product_name,
         } %>
       </div>
-      <% if navigation_items.any? %>
-        <div class="govuk-header__content gem-c-header__content govuk-grid-column-full govuk-!-display-none-print">
-          <%= render "govuk_publishing_components/components/layout_header/navigation_items", navigation_items: navigation_items, navigation_aria_label: navigation_aria_label %>
-        </div>
-      <% end %>
     </div>
   </div>
 <% end %>
+
+<%= render "govuk_publishing_components/components/service-navigation", {
+  product_name: product_name,
+  navigation_items: navigation_items,
+} %>
