@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Shift footnotes above 100/1000 further to the left ([PR #4705](https://github.com/alphagov/govuk_publishing_components/pull/4705))
+
 ## 55.0.0
 
 * Remove search large-mobile option ([PR #4682](https://github.com/alphagov/govuk_publishing_components/pull/4682))
