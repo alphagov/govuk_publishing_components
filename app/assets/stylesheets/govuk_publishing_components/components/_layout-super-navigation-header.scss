@@ -686,14 +686,6 @@ $after-button-padding-left: govuk-spacing(4);
       border-color: $govuk-focus-colour;
       box-shadow: none;
       color: $govuk-focus-colour;
-
-      // stylelint-disable max-nesting-depth
-      @include govuk-media-query($from: 360px) {
-        &::before {
-          @include chevron($govuk-focus-colour, true);
-        }
-      }
-      // stylelint-enable max-nesting-depth
     }
 
     @include focus-not-focus-visible {
