@@ -84,10 +84,6 @@ $after-button-padding-left: govuk-spacing(4);
   margin-top: -1px;
   position: relative;
 
-  .lte-ie8 & {
-    height: $black-bar-height;
-  }
-
   [hidden] {
     display: none;
   }
@@ -130,10 +126,6 @@ $after-button-padding-left: govuk-spacing(4);
 
 .gem-c-layout-super-navigation-header__content {
   width: 100%;
-}
-
-.gem-c-layout-super-navigation-header__navigation-toggle-wrapper {
-  position: relative;
 }
 
 .gem-c-layout-super-navigation-header__navigation-item,
@@ -379,17 +371,6 @@ $after-button-padding-left: govuk-spacing(4);
   display: none;
 }
 
-// Search and popular content dropdown.
-.gem-c-layout-super-navigation-header__search-and-popular {
-  display: none;
-  padding-bottom: govuk-spacing(4);
-  padding-top: govuk-spacing(4);
-
-  .js-module-initialised & {
-    display: block;
-  }
-}
-
 // Styles for top level navigation toggle button.
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   font-size: 16px;
@@ -405,9 +386,7 @@ $after-button-padding-left: govuk-spacing(4);
   position: relative;
   margin: 0;
   vertical-align: top;
-  @include govuk-link-common;
-  @include govuk-link-style-no-visited-state;
-  @include govuk-link-style-no-underline;
+  @include govuk-typography-common($font-family: $govuk-font-family);
 
   &::after {
     @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right);
@@ -705,14 +684,6 @@ $after-button-padding-left: govuk-spacing(4);
       border-color: $govuk-focus-colour;
       box-shadow: none;
       color: $govuk-focus-colour;
-
-      // stylelint-disable max-nesting-depth
-      @include govuk-media-query($from: 360px) {
-        &::before {
-          @include chevron($govuk-focus-colour, true);
-        }
-      }
-      // stylelint-enable max-nesting-depth
     }
 
     @include focus-not-focus-visible {
@@ -777,16 +748,6 @@ $after-button-padding-left: govuk-spacing(4);
   .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information,
   .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--government-activity {
     padding: 0 24px;
-  }
-}
-
-// Dropdown menu description.
-.gem-c-layout-super-navigation-header__menu-description {
-  display: none;
-
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    padding: govuk-spacing(7) 0 govuk-spacing(7) 0;
   }
 }
 
@@ -887,25 +848,6 @@ $after-button-padding-left: govuk-spacing(4);
 
   @include govuk-media-query($from: "desktop") {
     padding-bottom: govuk-spacing(2);
-  }
-}
-
-// Popular links.
-.gem-c-layout-super-navigation-header__popular-item {
-  position: relative;
-  padding: govuk-spacing(1) 0;
-}
-
-.gem-c-layout-super-navigation-header__width-container {
-  @include govuk-media-query($until: "desktop") {
-    margin: 0;
-    margin-top: govuk-spacing(6);
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    margin: 0 auto;
-    max-width: 960px;
-    padding: govuk-spacing(5);
   }
 }
 
