@@ -7,10 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 55.0.1
 
 * Shift footnotes above 100/1000 further to the left ([PR #4705](https://github.com/alphagov/govuk_publishing_components/pull/4705))
-* Delete unused CSS from layout super navigation component ([PR #4702](https://github.com/alphagov/govuk_publishing_components/pull/4682))
+* Delete unused CSS from layout super navigation component ([PR #4702](https://github.com/alphagov/govuk_publishing_components/pull/4702))
 
 ## 55.0.0
 
