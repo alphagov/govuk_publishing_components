@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Limit organisation logos to 320px/240px width ([PR #4708](https://github.com/alphagov/govuk_publishing_components/pull/4708))
+
 ## 55.0.1
 
 * Shift footnotes above 100/1000 further to the left ([PR #4705](https://github.com/alphagov/govuk_publishing_components/pull/4705))
