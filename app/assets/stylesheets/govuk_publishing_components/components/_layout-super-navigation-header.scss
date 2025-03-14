@@ -386,9 +386,7 @@ $after-button-padding-left: govuk-spacing(4);
   position: relative;
   margin: 0;
   vertical-align: top;
-  @include govuk-link-common;
-  @include govuk-link-style-no-visited-state;
-  @include govuk-link-style-no-underline;
+  @include govuk-typography-common($font-family: $govuk-font-family);
 
   &::after {
     @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right);
