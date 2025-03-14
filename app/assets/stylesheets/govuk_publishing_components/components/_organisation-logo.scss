@@ -33,9 +33,12 @@
   padding-right: govuk-spacing(1);
 }
 
-// Scale images on smaller viewports
 .gem-c-organisation-logo__image {
-  max-width: 100%;
+  max-width: 320px;
+  @include govuk-media-query($until: tablet) {
+    width: 100%;
+    max-width: 240px;
+  }
 }
 
 .gem-c-organisation-logo__crest {
