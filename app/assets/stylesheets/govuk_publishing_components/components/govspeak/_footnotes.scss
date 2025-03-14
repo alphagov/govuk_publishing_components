@@ -21,5 +21,13 @@
     a {
       overflow-wrap: break-word;
     }
+
+    ol li:nth-of-type(99) ~ li {
+      margin-left: 11px;
+    }
+
+    ol li:nth-of-type(999) ~ li {
+      margin-left: 22px;
+    }
   }
 }
