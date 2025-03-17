@@ -12,12 +12,13 @@
 * Limit organisation logos to 320px/240px width ([PR #4708](https://github.com/alphagov/govuk_publishing_components/pull/4708))
 * Update styles dependency in super navigation component ([PR #4709](https://github.com/alphagov/govuk_publishing_components/pull/4709))
 * Add 'requires JavaScript' text to feedback component survey link ([PR #4710](https://github.com/alphagov/govuk_publishing_components/pull/4710))
+* Bump govuk-frontend from 5.8.0 to 5.9.0 ([PR #4677](https://github.com/alphagov/govuk_publishing_components/pull/4677))
 
 ## 55.0.1
 
 * Shift footnotes above 100/1000 further to the left ([PR #4705](https://github.com/alphagov/govuk_publishing_components/pull/4705))
 * Delete unused CSS from layout super navigation component ([PR #4702](https://github.com/alphagov/govuk_publishing_components/pull/4702))
-* Bump govuk-frontend from 5.8.0 to 5.9.0 ([PR #4677](https://github.com/alphagov/govuk_publishing_components/pull/4677))
+
 
 ## 55.0.0
 
