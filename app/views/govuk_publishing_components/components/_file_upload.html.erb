@@ -1,4 +1,5 @@
 <%
+  add_gem_component_stylesheet("button")
   add_gem_component_stylesheet("file-upload")
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
@@ -17,6 +18,7 @@
   error_id = "error-#{SecureRandom.hex(4)}"
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   heading_level ||= nil
+  javascript ||= false
 
   css_classes = %w(gem-c-file-upload govuk-file-upload)
   css_classes << "govuk-file-upload--error" if has_error
@@ -65,7 +67,8 @@
     } %>
   <% end %>
 
-  <%= tag.input name: name,
+  <% file_upload_element = capture do %>
+    <%= tag.input name: name,
     type: "file",
     value: value,
     class: css_classes,
@@ -75,4 +78,13 @@
     aria: {
       describedby: aria_described_by
     } %>
+  <% end %>
+  
+  <% if javascript %>
+    <%= content_tag :div, class: "govuk-drop-zone", data: { module: "govuk-file-upload" } do %>
+      <%= file_upload_element %>
+    <% end %>
+  <% else %>
+    <%= file_upload_element %>
+  <% end %>  
 <% end %>
