@@ -11,6 +11,7 @@
 
 * Limit organisation logos to 320px/240px width ([PR #4708](https://github.com/alphagov/govuk_publishing_components/pull/4708))
 * Update styles dependency in super navigation component ([PR #4709](https://github.com/alphagov/govuk_publishing_components/pull/4709))
+* Add 'requires JavaScript' text to feedback component survey link ([PR #4710](https://github.com/alphagov/govuk_publishing_components/pull/4710))
 
 ## 55.0.1
 
