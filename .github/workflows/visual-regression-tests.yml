@@ -44,7 +44,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true # Also runs `bundle install`
-      - uses: actions/setup-node@v4.2.0
+      - uses: actions/setup-node@v4.3.0
         with:
           node-version: lts/* # use the latest LTS release
           cache: yarn
