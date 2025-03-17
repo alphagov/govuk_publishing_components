@@ -532,7 +532,7 @@ $after-button-padding-left: govuk-spacing(4);
     }
 
     @include focus-not-focus-visible {
-      background: govuk-colour("light-grey");
+      background: govuk-tint(govuk-colour("blue"), 95%);
 
       &::after {
         background-color: $govuk-link-colour;
@@ -540,7 +540,7 @@ $after-button-padding-left: govuk-spacing(4);
 
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         color: $govuk-link-colour;
-        border-color: govuk-colour("light-grey");
+        border-color: govuk-tint(govuk-colour("blue"), 95%);
 
         @include govuk-media-query($from: 360px) {
           &::before {
@@ -677,7 +677,7 @@ $after-button-padding-left: govuk-spacing(4);
   &.gem-c-layout-super-navigation-header__open-button {
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
       &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
+        border-bottom: $pseudo-underline-height solid govuk-tint(govuk-colour("blue"), 95%);
         color: govuk-colour("white");
       }
 
@@ -695,13 +695,13 @@ $after-button-padding-left: govuk-spacing(4);
     }
 
     @include focus-not-focus-visible {
-      background: govuk-colour("light-grey");
-      border-bottom-color: govuk-colour("light-grey");
+      background: govuk-tint(govuk-colour("blue"), 95%);
+      border-bottom-color: govuk-tint(govuk-colour("blue"), 95%);
       color: govuk-colour("light-grey");
-      outline: 1px solid govuk-colour("light-grey"); // overlap the border of the nav menu so it won't appear when menu open
+      outline: 1px solid govuk-tint(govuk-colour("blue"), 95%); // overlap the border of the nav menu so it won't appear when menu open
 
       &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
+        border-bottom: $pseudo-underline-height solid govuk-tint(govuk-colour("blue"), 95%);
       }
     }
   }
@@ -730,7 +730,7 @@ $after-button-padding-left: govuk-spacing(4);
 
 // Dropdown menu.
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
-  background: govuk-colour("light-grey");
+  background: govuk-tint(govuk-colour("blue"), 95%);
   border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
 
