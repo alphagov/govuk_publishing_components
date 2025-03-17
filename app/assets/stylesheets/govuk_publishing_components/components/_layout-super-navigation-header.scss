@@ -549,7 +549,7 @@ $after-button-padding-left: govuk-spacing(4);
     }
 
     @include focus-not-focus-visible {
-      background: govuk-colour("light-grey");
+      background: govuk-tint(govuk-colour("blue"), 95%);
 
       &::after {
         background-color: $govuk-link-colour;
@@ -557,7 +557,7 @@ $after-button-padding-left: govuk-spacing(4);
 
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         color: $govuk-link-colour;
-        border-color: govuk-colour("light-grey");
+        border-color: govuk-tint(govuk-colour("blue"), 95%);
 
         @include govuk-media-query($from: $chevron-breakpoint) {
           &::before {
@@ -719,9 +719,9 @@ $after-button-padding-left: govuk-spacing(4);
     }
 
     @include focus-not-focus-visible {
-      background: govuk-colour("light-grey");
+      background: govuk-tint(govuk-colour("blue"), 95%);
       color: govuk-colour("light-grey");
-      outline: 1px solid govuk-colour("light-grey"); // overlap the border of the nav menu so it won't appear when menu open
+      outline: 1px solid govuk-tint(govuk-colour("blue"), 95%); // overlap the border of the nav menu so it won't appear when menu open
 
       // stylelint-disable max-nesting-depth
       @media (hover: hover) and (pointer: fine) {
@@ -760,7 +760,7 @@ $after-button-padding-left: govuk-spacing(4);
 
 // JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
-  background: govuk-colour("light-grey");
+  background: govuk-tint(govuk-colour("blue"), 95%);
   border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
 
