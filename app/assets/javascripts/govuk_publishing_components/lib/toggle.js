@@ -129,8 +129,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var toggledText = this.getAttribute('data-toggled-text')
 
       if (typeof toggledText === 'string') {
-        this.setAttribute('data-toggled-text', this.innerText)
-        this.innerText = toggledText
+        this.setAttribute('data-toggled-text', this.innerHTML)
+        this.innerHTML = toggledText
       }
     })
   }
