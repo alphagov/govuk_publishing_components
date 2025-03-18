@@ -93,6 +93,16 @@ describe "Published dates", type: :view do
     assert_select '.gem-c-published-dates.govuk-\!-margin-bottom-5'
   end
 
+  it "uses an em dash instead of a hyphen" do
+    render_component(
+      published: "1st January 1990",
+      last_updated: "20th October 2016",
+      link_to_history: true,
+    )
+    assert_select "span", text: "—" # This is an em dash
+    assert_select "span", text: "-", count: 0 # This is a hyphen
+  end
+
   it "accordion has GA4 tracking" do
     render_component(
       published: "1st November 2000",
