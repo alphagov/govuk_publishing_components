@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make minor improvements to the `figure` and `published_dates` components ([PR #4718](https://github.com/alphagov/govuk_publishing_components/pull/4718))
+
 ## 55.1.0
 
 * Limit organisation logos to 320px/240px width ([PR #4708](https://github.com/alphagov/govuk_publishing_components/pull/4708))
