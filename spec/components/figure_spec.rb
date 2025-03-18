@@ -6,14 +6,18 @@ describe "Figure", type: :view do
   end
 
   it "fails to render a figure when no data is given" do
-    assert_raises do
-      render_component({})
-    end
+    render_component({})
+    assert_select "figure", false, "Should not have drawn figure with no data passed through"
   end
 
-  it "fails to render an image when no source is given" do
-    render_component(src: "", alt: "")
-    assert_select "img", false, "Should not have drawn img tag with no src"
+  it "fails to render the component when no source is given" do
+    render_component(src: nil)
+    assert_select "figure", false, "Should not have drawn figure with no src passed through"
+  end
+
+  it "fails to render the component when a blank source is given" do
+    render_component(src: "")
+    assert_select "figure", false, "Should not have drawn figure with a blank src passed through"
   end
 
   it "renders a figure correctly" do
