@@ -9,7 +9,7 @@
 %>
 <%= tag.figure(**component_helper.all_attributes) do %>
   <% if src.present? %>
-    <img class="gem-c-figure__image" src="<%= src %>" alt="<%= alt %>">
+    <%= tag.img(class: "gem-c-figure__image", src: src, alt: alt) %>
   <% end %>
   <% if caption.present? || credit.present? %>
     <figcaption class="gem-c-figure__figcaption">
