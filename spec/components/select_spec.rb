@@ -119,7 +119,7 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=medium][selected]"
   end
 
-  it "renders a select with data attributes" do
+  it "renders a select element with data attributes applied to contained option element" do
     render_component(
       id: "mydropdown",
       label: "attributes",
