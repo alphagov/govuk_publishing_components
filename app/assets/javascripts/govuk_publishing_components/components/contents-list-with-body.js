@@ -4,7 +4,7 @@
   - stick to the bottom of the window while the parent element is in view;
   - stick to the bottom of the target when the user scrolls past the bottom.
 
-  Use 'data-module="sticky-element-container"' to instantiate, and add
+  Use 'data-module="contents-list-with-body"' to instantiate, and add
   `[data-sticky-element]` to the child you want to position.
 */
 
@@ -12,7 +12,7 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function StickyElementContainer (element) {
+  function ContentsListWithBody (element) {
     this.wrapper = element
     this.stickyElement = this.wrapper.querySelector('[data-sticky-element]')
     this.hasResized = true
@@ -23,7 +23,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.stopPosition = 0
   }
 
-  StickyElementContainer.prototype.init = function () {
+  ContentsListWithBody.prototype.init = function () {
     if (!this.stickyElement) return
 
     window.onresize = this.onResize.bind(this)
@@ -32,31 +32,31 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     setInterval(this.checkScroll.bind(this), this.interval)
     this.checkResize()
     this.checkScroll()
-    this.stickyElement.classList.add('sticky-element--enabled')
+    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--enabled')
   }
 
-  StickyElementContainer.prototype.getWindowDimensions = function () {
+  ContentsListWithBody.prototype.getWindowDimensions = function () {
     return {
       height: window.innerHeight,
       width: window.innerWidth
     }
   }
 
-  StickyElementContainer.prototype.getWindowPositions = function () {
+  ContentsListWithBody.prototype.getWindowPositions = function () {
     return {
       scrollTop: window.scrollY
     }
   }
 
-  StickyElementContainer.prototype.onResize = function () {
+  ContentsListWithBody.prototype.onResize = function () {
     this.hasResized = true
   }
 
-  StickyElementContainer.prototype.onScroll = function () {
+  ContentsListWithBody.prototype.onScroll = function () {
     this.hasScrolled = true
   }
 
-  StickyElementContainer.prototype.checkResize = function () {
+  ContentsListWithBody.prototype.checkResize = function () {
     if (this.hasResized) {
       this.hasResized = false
       this.hasScrolled = true
@@ -68,7 +68,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  StickyElementContainer.prototype.checkScroll = function () {
+  ContentsListWithBody.prototype.checkScroll = function () {
     if (this.hasScrolled) {
       this.hasScrolled = false
 
@@ -79,7 +79,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  StickyElementContainer.prototype.updateVisibility = function () {
+  ContentsListWithBody.prototype.updateVisibility = function () {
     var isPastStart = this.startPosition < this.windowVerticalPosition
     if (isPastStart) {
       this.show()
@@ -88,7 +88,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  StickyElementContainer.prototype.updatePosition = function () {
+  ContentsListWithBody.prototype.updatePosition = function () {
     var isPastEnd = this.stopPosition < this.windowVerticalPosition
     if (isPastEnd) {
       this.stickToParent()
@@ -97,21 +97,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  StickyElementContainer.prototype.stickToWindow = function () {
-    this.stickyElement.classList.add('sticky-element--stuck-to-window')
+  ContentsListWithBody.prototype.stickToWindow = function () {
+    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
   }
 
-  StickyElementContainer.prototype.stickToParent = function () {
-    this.stickyElement.classList.remove('sticky-element--stuck-to-window')
+  ContentsListWithBody.prototype.stickToParent = function () {
+    this.stickyElement.classList.remove('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
   }
 
-  StickyElementContainer.prototype.show = function () {
-    this.stickyElement.classList.remove('sticky-element--hidden')
+  ContentsListWithBody.prototype.show = function () {
+    this.stickyElement.classList.remove('gem-c-contents-list-with-body__sticky-element--hidden')
   }
 
-  StickyElementContainer.prototype.hide = function () {
-    this.stickyElement.classList.add('sticky-element--hidden')
+  ContentsListWithBody.prototype.hide = function () {
+    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--hidden')
   }
 
-  Modules.StickyElementContainer = StickyElementContainer
+  Modules.ContentsListWithBody = ContentsListWithBody
 })(window.GOVUK.Modules)

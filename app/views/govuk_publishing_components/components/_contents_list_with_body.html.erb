@@ -7,7 +7,7 @@
     component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
     component_helper.set_id(id)
     component_helper.add_class("gem-c-contents-list-with-body")
-    component_helper.add_data_attribute({ module: "sticky-element-container" }) if contents.any?
+    component_helper.add_data_attribute({ module: "contents-list-with-body" }) if contents.any?
   %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if contents.any? %>

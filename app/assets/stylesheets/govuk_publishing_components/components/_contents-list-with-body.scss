@@ -1,5 +1,28 @@
 @import "govuk_publishing_components/individual_component_support";
-@import "helpers/sticky-element-container";
+
+.govuk-frontend-supported .gem-c-contents-list-with-body__sticky-element {
+  position: absolute;
+  bottom: 0;
+
+  &--stuck-to-window {
+    bottom: 0;
+    position: fixed;
+  }
+
+  &--enabled {
+    transition: opacity, .3s, ease;
+    opacity: 1;
+
+    @include govuk-media-query($until: tablet) {
+      position: static;
+    }
+  }
+
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 
 .gem-c-contents-list-with-body__link-container {
   margin: 0 auto;
@@ -31,7 +54,7 @@
   }
 }
 
-.gem-c-contents-list-with-body__link-wrapper.sticky-element--stuck-to-window {
+.gem-c-contents-list-with-body__link-wrapper.gem-c-contents-list-with-body__sticky-element--stuck-to-window {
   background-color: govuk-colour("light-grey");
   bottom: -1px; // 'Fix' for anomalous 1px margin which sporadically appears below this element.
   left: 0;

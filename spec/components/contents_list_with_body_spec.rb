@@ -24,17 +24,17 @@ describe "Contents list with body", type: :view do
     assert_includes(render_component({}) { block }, block)
   end
 
-  it "renders a sticky-element-container" do
+  it "renders with the component js module" do
     render_component({ contents: contents_list }) { block }
 
     assert_select("#contents.gem-c-contents-list-with-body")
-    assert_select("#contents[data-module='sticky-element-container']")
+    assert_select("#contents[data-module='contents-list-with-body']")
   end
 
-  it "does not apply the sticky-element-container data-module without contents data" do
+  it "does not apply the component data-module without contents data" do
     render_component({}) { block }
 
-    assert_select("#contents[data-module='sticky-element-container']", count: 0)
+    assert_select("#contents[data-module='contents-list-with-body']", count: 0)
   end
 
   it "renders a contents-list component" do
