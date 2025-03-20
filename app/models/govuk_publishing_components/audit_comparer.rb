@@ -6,7 +6,6 @@ module GovukPublishingComponents
       if gem_data[:gem_found]
         @applications_using_static = %w[
           collections
-          email-alert-frontend
           feedback
           finder-frontend
           frontend
