@@ -119,7 +119,25 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=medium][selected]"
   end
 
-  it "renders a select with data attributes" do
+  it "renders a select element with data attributes applied to contained option element" do
+    render_component(
+      id: "mydropdown",
+      label: "attributes",
+      data_attributes: {
+        an_attribute: "some_value",
+      },
+      options: [
+        {
+          value: 1,
+          text: "One",
+        },
+      ],
+    )
+
+    assert_select ".govuk-select[data-an-attribute='some_value']"
+  end
+
+  it "renders a select with options that have data attributes" do
     render_component(
       id: "mydropdown",
       label: "attributes",
