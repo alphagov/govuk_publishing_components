@@ -1,18 +1,19 @@
 # Testing components
 
 ## Tests directory structure
+
 Tests are stored in the [spec](../spec) directory with the Ruby tests written using RSpec and JavaScript tests written using Jasmine.
 
 As per Rails convention, most of the directories within the `spec` directory contain Ruby [unit tests](#unit-testing) with the directories matching those within the `app` directory. Code that is stored in the `lib` directory has corresponding tests in the `spec/lib` directory.
 
 Directories within `spec` that don’t contain Ruby unit tests are as follows:
 
- - `dummy` - contains a generic frontend application to test the gem with;
- - `dummy_gem` - required to test the [component auditing](auditing.md);
- - `features` - contains [feature tests](#feature-testing), which test that a user can accomplish a task by interacting with a component;
- - `javascripts` - contains unit tests for [JavaScript files](#javascript-modules), configuration and helper files for Jasmine;
- - `support` - contains helper files for shared test methods and logic;
- - `visual_regression_tests` - contains the [visual regression test runner](#visual-regression-testing).
+- `dummy` - contains a generic frontend application to test the gem with;
+- `dummy_gem` - required to test the [component auditing](auditing.md);
+- `features` - contains [feature tests](#feature-testing), which test that a user can accomplish a task by interacting with a component;
+- `javascripts` - contains unit tests for [JavaScript files](./javascript-modules.md), configuration and helper files for Jasmine;
+- `support` - contains helper files for shared test methods and logic;
+- `visual_regression_tests` - contains the [visual regression test runner](#visual-regression-testing).
 
 ## Unit testing
 
@@ -40,7 +41,7 @@ Characteristics of feature tests:
 
 If you create a component in the application, you can run accessibility tests against it.
 
-The gem [includes integration tests](lib/govuk_publishing_components/minitest/component_guide_test.rb) to check that your component guide and examples are error free and that they meet basic accessibility needs.
+The gem [includes integration tests](../lib/govuk_publishing_components/minitest/component_guide_test.rb) to check that your component guide and examples are error free and that they meet basic accessibility needs.
 
 Automated accessibility tests use [aXe](https://github.com/dequelabs/axe-core). Using our `AccessibilityTest` wrapper the gem runs the aXe suite against each example and throws JavaScript errors for any violations. These JavaScript errors can be used to fail a build in CI.
 
@@ -65,7 +66,6 @@ For this case you can add `accessibility_excluded_rules` to your components' doc
 
 For an example of this check [test-component-with-duplicate-ids.yml](../spec/dummy/app/views/components/docs/test-component-with-duplicate-ids.yml)
 
-
 ## Visual regression testing
 
 Visual regression tests are run on each pull request using a third-party tool called [Percy](https://percy.io) using a [GitHub Action workflow][1]. This isn't a mandatory check, so any changes that are highlighted by Percy won't prevent a pull request from being merged in.
@@ -74,7 +74,7 @@ The screenshots are public, so they can be checked without logging in. A Browser
 
 Relevant Percy setup documentation:
 
- * [Using Percy with Rails and Capybara](https://docs.percy.io/docs/capybara)
- * [Running Percy in a GitHub Action](https://docs.percy.io/docs/github-actions)
+- [Using Percy with Rails and Capybara](https://docs.percy.io/docs/capybara)
+- [Running Percy in a GitHub Action](https://docs.percy.io/docs/github-actions)
 
 [1]: https://github.com/alphagov/govuk_publishing_components/blob/e455358c8a031403c6b5b0670f891c922919a3ca/.github/workflows/visual-regression-tests.yml
