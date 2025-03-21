@@ -239,6 +239,7 @@
     NavigationStart: 41,
     PerformanceEntryReceived: 42,
     PerformanceEntryProcessed: 43,
+    TrackingParamAdded: 44,
     // Errors
     PerformanceObserverError: 51,
     InputEventPermissionError: 52,
@@ -336,7 +337,7 @@
     return str;
   }
 
-  var VERSION = "4.0.30";
+  var VERSION = "4.0.32";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -667,6 +668,35 @@
     return selector;
   }
 
+  var KNOWN_TRACKING_PARAMS = [
+    "utm_source",
+    "utm_campaign",
+    "utm_medium",
+    "utm_term",
+    "utm_content",
+  ];
+  /**
+  * Add known tracking parameters to the custom data storage.
+  */
+  function getTrackingParams() {
+    var trackingParams = {};
+    if (location.search && URLSearchParams) {
+      var p = new URLSearchParams(location.search);
+      for (
+        var _i = 0, KNOWN_TRACKING_PARAMS_1 = KNOWN_TRACKING_PARAMS;
+        _i < KNOWN_TRACKING_PARAMS_1.length;
+        _i++
+      ) {
+        var key = KNOWN_TRACKING_PARAMS_1[_i];
+        var value = p.get(key);
+        if (value) {
+          trackingParams[key] = value;
+        }
+      }
+    }
+    return trackingParams;
+  }
+
   var sessionValue = 0;
   var sessionEntries = [];
   var sessionAttributions = [];
@@ -816,13 +846,11 @@
         processingTime: clamp(floor(interaction.processingTime)),
         presentationDelay: clamp(floor(interaction.startTime + interaction.duration - interaction.processingEnd)),
       },
-      attribution: interaction.selector
-      ? {
-        elementSelector: interaction.selector,
-        elementType: ((_a = interaction.target) === null || _a === void 0 ? void 0 : _a.nodeName) || "",
+      attribution: {
         eventType: interaction.name,
-      }
-      : null,
+        elementSelector: interaction.selector || null,
+        elementType: ((_a = interaction.target) === null || _a === void 0 ? void 0 : _a.nodeName) || null,
+      },
     };
   }
   function getInteractionCount() {
@@ -2085,13 +2113,18 @@
     }
     // Return an array containing the top & left coordinates of the element.
     // from http://www.quirksmode.org/js/findpos.html
-    function findPos(e) {
+    function findPos(el) {
       var curleft = 0;
       var curtop = 0;
-      while (e) {
-        curleft += e.offsetLeft;
-        curtop += e.offsetTop;
-        e = e.offsetParent;
+      while (el) {
+        try {
+          curleft += el.offsetLeft;
+          curtop += el.offsetTop;
+          el = el.offsetParent;
+        } catch (e) {
+          // If we get an exception, just return the current values.
+          return [curleft, curtop];
+        }
       }
       return [curleft, curtop];
     }
@@ -2162,6 +2195,15 @@
         // Record the synthetic loadEventStart time for this page, unless it was already recorded
         // with LUX.markLoadTime()
         _markLoadTime();
+      }
+      // Store any tracking parameters as custom data
+      var trackingParams = getTrackingParams();
+      for (var key in trackingParams) {
+        logger.logEvent(LogEvent.TrackingParamAdded, [
+          key,
+          trackingParams[key],
+        ]);
+        addCustomDataValue("_" + key, trackingParams[key]);
       }
       var sIx = "";
       var INP = getINPDetails();
