@@ -29,21 +29,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var currentConsentCookie = window.GOVUK.cookie('cookies_policy')
     if (currentConsentCookie) {
       var currentConsentCookieJSON = JSON.parse(currentConsentCookie)
-
-      // We don't need the essential value as this cannot be changed by the user
-      delete currentConsentCookieJSON.essential
-
-      for (var cookieType in currentConsentCookieJSON) {
-        var radioButton
-
-        if (currentConsentCookieJSON[cookieType]) {
-          radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
-        } else {
-          radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
-        }
-
-        if (radioButton) {
-          radioButton.checked = true
+      if (currentConsentCookieJSON) {
+        // We don't need the essential value as this cannot be changed by the user
+        delete currentConsentCookieJSON.essential
+        for (var cookieType in currentConsentCookieJSON) {
+          var radioButton
+          if (currentConsentCookieJSON[cookieType]) {
+            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
+          } else {
+            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
+          }
+          if (radioButton) {
+            radioButton.checked = true
+          }
         }
       }
     }
