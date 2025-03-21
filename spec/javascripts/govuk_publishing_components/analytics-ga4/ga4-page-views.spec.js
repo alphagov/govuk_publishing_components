@@ -67,6 +67,9 @@ describe('Google Tag Manager page view tracking', function () {
         canonical_url: undefined
       }
     }
+    if (window.location.search) {
+      expected.page_view.query_string = window.location.search.substring(1) // get the '?something' bit of the URL and remove the '?'
+    }
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
     window.dataLayer = []
   })
@@ -682,6 +685,7 @@ describe('Google Tag Manager page view tracking', function () {
     it('functions correctly when there is no query string or data-ga4-search-query attribute', function () {
       spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('')
       expected.page_view.search_term = undefined
+      expected.page_view.query_string = undefined
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
     })
