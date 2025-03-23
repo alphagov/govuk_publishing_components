@@ -66,34 +66,6 @@
       }
     }
 
-    .attachment {
-      margin: govuk-spacing(6) 0;
-
-      &:first-child {
-        margin-top: 0;
-      }
-
-      .attachment-thumb {
-        display: none;
-      }
-
-      .attachment-details {
-        .download {
-          display: block;
-        }
-      }
-
-      .accessibility-warning {
-        h2 {
-          @include govuk-font(16);
-        }
-
-        .toggler {
-          display: none;
-        }
-      }
-    }
-
     .footnotes {
       border-top: 1px solid $govuk-text-colour;
 
