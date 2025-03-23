@@ -310,4 +310,11 @@
     // It's reapplied to captions because Firefox can't hide
     // table captions unless it's applied directly to it. Go figure.
   }
+
+  @include govuk-media-query($media-type: print) {
+    .mc-toggle-button,
+    .mc-chart-container {
+      display: none;
+    }
+  }
 }
