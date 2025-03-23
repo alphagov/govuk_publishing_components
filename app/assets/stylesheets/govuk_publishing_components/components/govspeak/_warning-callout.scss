@@ -27,5 +27,9 @@
     p {
       @include govuk-font($size: 19, $weight: bold);
     }
+
+    @include govuk-media-query($media-type: print) {
+      margin: govuk-spacing(3) 0;
+    }
   }
 }
