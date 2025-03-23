@@ -40,15 +40,8 @@
     }
 
     .info-notice,
-    .help-notice,
-    .call-to-action {
+    .help-notice {
       margin: govuk-spacing(3) 0;
-    }
-
-    .call-to-action {
-      background: none;
-      border: 1pt solid $govuk-border-colour;
-      padding: govuk-spacing(3);
     }
 
     .help-notice p {
