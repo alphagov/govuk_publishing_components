@@ -29,5 +29,13 @@
     ol li:nth-of-type(999) ~ li {
       margin-left: 22px;
     }
+
+    @include govuk-media-query($media-type: print) {
+      border-top: 1px solid $govuk-text-colour;
+
+      a[role="doc-backlink"] {
+        display: none;
+      }
+    }
   }
 }
