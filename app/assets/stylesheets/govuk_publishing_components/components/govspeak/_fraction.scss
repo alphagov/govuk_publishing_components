@@ -6,6 +6,8 @@
 // - alphagov/whitehall: ✔︎
 // - alphagov/govspeak: ✘
 
+// stylelint-disable max-nesting-depth
+
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .fraction {
@@ -18,6 +20,10 @@
       display: inline-block;
       width: auto;
       margin: 0 0 -5px;
+
+      @include govuk-media-query($media-type: print) {
+        margin-bottom: -7px;
+      }
     }
   }
 }
