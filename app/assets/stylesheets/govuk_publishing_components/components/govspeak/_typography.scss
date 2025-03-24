@@ -106,4 +106,8 @@
     @include govuk-link-common;
     @include govuk-link-style-inverse;
   }
+
+  @include govuk-media-query($media-type: print) {
+    color: $govuk-print-text-colour;
+  }
 }
