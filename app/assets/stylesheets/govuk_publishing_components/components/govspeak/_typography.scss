@@ -97,6 +97,14 @@
     font-style: normal;
     font-weight: inherit;
   }
+
+  @include govuk-media-query($media-type: print) {
+    a[href^="/"]:after,a[href^="http://"]:after,a[href^="https://"]:after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+      word-wrap: break-word;
+    }
+  }
 }
 
 .gem-c-govspeak--inverse {
