@@ -55,7 +55,22 @@ examples:
       - text: Something else
         value: option2
   with_data_attributes:
-    description: Other data attributes can be passed to the component if needed.
+    description: Data attributes can be passed to the select component if needed.
+    data:
+      id: dropdown4-3
+      label: With data attributes
+      data_attributes:
+        another_attribute: attribute 1
+        something_else: attribute 2
+      options:
+        - text: Option one
+          value: option1
+        - text: Option two
+          value: option2
+        - text: Option three
+          value: option3
+  with_data_attributes_for_options:
+    description: Other data attributes can be passed to the select component options if needed.
     data:
       id: dropdown4
       label: With data attributes

@@ -11,6 +11,7 @@
 
 * Make minor improvements to the `figure` and `published_dates` components ([PR #4718](https://github.com/alphagov/govuk_publishing_components/pull/4718))
 * **BREAKING:** Rename sticky-element-container to contents-list-with-body ([PR #4719](https://github.com/alphagov/govuk_publishing_components/pull/4719))
+* Add `data-attributes` to the `<select>` element in the `select` component ([PR #4723](https://github.com/alphagov/govuk_publishing_components/pull/4723))
 
 ## 55.1.0
 
