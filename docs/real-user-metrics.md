@@ -111,6 +111,10 @@ You can test the changes locally to ensure the file has been updated correctly.
 
 If you're using docker to run the application, your local server will have a `dev.gov.uk` domain name and it is possible to set up SpeedCurve to see the data from it. You will need to uncomment the `forceSample` line to make this work.
 
+### Check the changelog
+
+It's worth checking the [SpeedCurve changelog](https://support.speedcurve.com/changelog) to see what has been updated with this latest release in case there's anything we want to take advantage of, anything we need to configure in our dashboards, or anything that could be an issue that we should discuss before deploying.
+
 ## Protocol measuring
 
 We've added an extra bit to the end of the measurer script to [determine what protocol is in use](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-measurer.js#L161-L196) - HTTP 1, 2 or 3. This shouldn't need any updating as the measurer shouldn't change.
