@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+- ## Unreleased
+
+* Add service navigation component ([PR #4731](https://github.com/alphagov/govuk_publishing_components/pull/4731))
+
 ## 56.0.0
 
 * Make minor improvements to the `figure` and `published_dates` components ([PR #4718](https://github.com/alphagov/govuk_publishing_components/pull/4718))
