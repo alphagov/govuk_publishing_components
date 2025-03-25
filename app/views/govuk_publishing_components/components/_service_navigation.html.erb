@@ -3,10 +3,14 @@
 
   service_name ||= nil
   navigation_items ||= []
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
+  component_helper.add_aria_attribute({ label: "Service information" })
+  component_helper.add_data_attribute({ module: "govuk-service-navigation" })
 %>
 <% if navigation_items.present? %>
-  <section aria-label="Service information" class="gem-c-service-navigation govuk-service-navigation"
-    data-module="govuk-service-navigation">
+  <%= tag.section(**component_helper.all_attributes) do %>
     <div class="govuk-width-container">
       <div class="govuk-service-navigation__container">
         <% if service_name %>
@@ -38,5 +42,5 @@
         <% end %>
       </div>
     </div>
-  </section>
+  <% end %>
 <% end %>
