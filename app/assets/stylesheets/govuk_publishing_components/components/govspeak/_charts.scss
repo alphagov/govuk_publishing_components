@@ -316,5 +316,12 @@
     .mc-chart-container {
       display: none;
     }
+
+    // stylelint-disable selector-no-qualifying-type
+    // Displays the original table when printing
+    table.js-barchart-table,
+    table.js-barchart-table caption {
+      display: block;
+    }
   }
 }
