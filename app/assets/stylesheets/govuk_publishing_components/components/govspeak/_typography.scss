@@ -117,5 +117,9 @@
 
   @include govuk-media-query($media-type: print) {
     color: $govuk-print-text-colour;
+
+    a:link {
+      color: $govuk-print-text-colour;
+    }
   }
 }

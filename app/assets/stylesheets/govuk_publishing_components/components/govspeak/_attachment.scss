@@ -86,8 +86,8 @@
         }
       }
 
-      .download {
-        @include govuk-media-query($media-type: print) {
+      @include govuk-media-query($media-type: print) {
+        .download {
           display: block;
         }
       }
