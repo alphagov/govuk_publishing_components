@@ -1,0 +1,42 @@
+<%
+  add_gem_component_stylesheet("service-navigation")
+
+  service_name ||= nil
+  navigation_items ||= []
+%>
+<% if navigation_items.present? %>
+  <section aria-label="Service information" class="gem-c-service-navigation govuk-service-navigation"
+    data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+      <div class="govuk-service-navigation__container">
+        <% if service_name %>
+          <span class="govuk-service-navigation__service-name">
+            <a href="#" class="govuk-service-navigation__link">
+              <%= service_name %>
+            </a>
+          </span>
+        <% end %>
+
+        <% if navigation_items.present? %>
+          <nav aria-label="<%= t("components.layout_header.menu") %>" class="govuk-service-navigation__wrapper">
+            <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
+              Menu
+            </button>
+            <ul class="govuk-service-navigation__list" id="navigation">
+              <% navigation_items.each do |nav| %>
+                <% 
+                  nav_classes = %w(govuk-service-navigation__item)
+                  nav_classes << "govuk-service-navigation__item--active" if nav[:active]
+                  aria_current = nav[:active]
+                %>
+                <%= tag.li nav[:text], class: nav_classes do %>
+                  <%= link_to nav[:text], nav[:href], class: "govuk-service-navigation__link", aria: { current: aria_current } %>
+                <% end %>
+              <% end %>
+            </ul>
+          </nav>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

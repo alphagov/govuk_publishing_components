@@ -1,0 +1,33 @@
+name: Service Navigation
+description: Renders a box with a link to sign up for email notifications
+accessibility_criteria: |
+  - the component must use the correct heading level for the page
+  - text should have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+  - the icon must not be focusable or shown to screenreaders
+uses_component_wrapper_helper: true
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      - text: Navigation item 3
+        href: "#"
+  with_service_name:
+    data:
+      service_name: My service name
+  with_service_name_and_navigation_links:
+    data:
+      service_name: My service name
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+      - text: Navigation item 2
+        href: "#"
+      - text: Navigation item 3
+        href: "#"
