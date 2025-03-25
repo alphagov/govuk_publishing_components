@@ -275,6 +275,97 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     }
   })
 
+  describe('national insurance numbers', function () {
+    it('are stripped if they are valid NI numbers', function () {
+      // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
+      for (var i = 0; i < 50; i++) {
+        var testNumber = generateNINumber(true, false)
+        var testNumberWithSpaces = generateNINumber(true, true)
+
+        var redacted1 = pii.stripPIIWithOverride(testNumber, false, false)
+        var redacted2 = pii.stripPIIWithOverride(testNumberWithSpaces, false, false)
+        expect(redacted1).toEqual('[ni number]')
+        expect(redacted2).toEqual('[ni number]')
+      }
+    })
+
+    it('are not stripped if they are invalid NI numbers', function () {
+      // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
+      for (var i = 0; i < 50; i++) {
+        var testNumber = generateNINumber(false, false)
+        var testNumberWithSpaces = generateNINumber(false, true)
+        var redacted1 = pii.stripPIIWithOverride(testNumber, false, false)
+        var redacted2 = pii.stripPIIWithOverride(testNumberWithSpaces, false, false)
+        expect(redacted1).toEqual(testNumber)
+        expect(redacted2).toEqual(testNumberWithSpaces)
+      }
+    })
+
+    it('are stripped even if they are surrounded by other text', function () {
+      // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
+      for (var i = 0; i < 50; i++) {
+        var testNumber = '?query_string=' + generateNINumber(true, false) + '&other_value=hello'
+        var redacted = pii.stripPIIWithOverride(testNumber, false, false)
+        expect(redacted).toEqual('?query_string=[ni number]&other_value=hello')
+      }
+    })
+
+    it('are stripped even in lowercase', function () {
+      // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
+      for (var i = 0; i < 50; i++) {
+        var testNumber = generateNINumber(true, false).toLowerCase()
+        var redacted = pii.stripPIIWithOverride(testNumber, false, false)
+        expect(redacted).toEqual('[ni number]')
+      }
+    })
+  })
+
+  function getRandomNumber (range) {
+    return Math.floor(Math.random() * range)
+  }
+
+  function getRandomArrayValue (array) {
+    return array[getRandomNumber(array.length)]
+  }
+
+  function generateNINumber (validNumber, withSpaces) {
+    var firstLetters, lastLetters
+
+    if (validNumber) {
+      firstLetters = 'A B C E G H J K L M N O P R S T W X Y Z'.split(' ')
+      lastLetters = 'A B C D'.split(' ')
+    } else {
+      firstLetters = 'D F I Q U V'.split(' ')
+      lastLetters = 'E F G H I J K L M N O P Q R S T U V W X Y Z'.split(' ')
+    }
+
+    // Generate the first two random letters e.g. 'AB'
+    var niNumber = getRandomArrayValue(firstLetters) + getRandomArrayValue(firstLetters)
+
+    // Add optional space
+    if (withSpaces) {
+      niNumber += ' '
+    }
+
+    // Add 6 random digits between 0 and 9
+    for (var j = 0; j < 6; j++) {
+      niNumber += getRandomNumber(10)
+      // Add optional space after the 2nd and 4th number
+      if ((j === 1 || j === 3) && withSpaces) {
+        niNumber += ' '
+      }
+    }
+
+    // Add optional space
+    if (withSpaces) {
+      niNumber += ' '
+    }
+
+    // Add the final letter to the end of the string
+    niNumber += getRandomArrayValue(lastLetters)
+    return niNumber
+  }
+
   function resetHead () {
     $('head').find('meta[name="govuk:ga4-strip-postcodes"]').remove()
     $('head').find('meta[name="govuk:ga4-strip-dates"]').remove()

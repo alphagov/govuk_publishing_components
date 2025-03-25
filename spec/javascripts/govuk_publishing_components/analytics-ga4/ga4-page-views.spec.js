@@ -584,8 +584,8 @@ describe('Google Tag Manager page view tracking', function () {
   })
 
   it('correctly sets the query_string parameter with PII and _ga/_gl values redacted', function () {
-    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?query1=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=19900101.567&_gl=19900101.567')
-    expected.page_view.query_string = 'query1=hello&query2=world&email=[email]&postcode=[postcode]&birthday=[date]&_ga=[id]&_gl=[id]'
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?query1=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=19900101.567&_gl=19900101.567&ni_number=AA+123456+A')
+    expected.page_view.query_string = 'query1=hello&query2=world&email=[email]&postcode=[postcode]&birthday=[date]&_ga=[id]&_gl=[id]&ni_number=[ni number]'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
