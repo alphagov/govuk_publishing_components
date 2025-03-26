@@ -13,5 +13,12 @@
     background-color: govuk-colour("light-grey");
     padding: govuk-spacing(6);
     padding-bottom: govuk-spacing(2);
+
+    @include govuk-media-query($media-type: print) {
+      background: none;
+      border: 1pt solid $govuk-border-colour;
+      padding: govuk-spacing(3);
+      margin: govuk-spacing(3) 0;
+    }
   }
 }

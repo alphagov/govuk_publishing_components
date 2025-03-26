@@ -106,6 +106,10 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
     padding: 0;
   }
 
+  .gem-c-attachment__metadata {
+    color: $govuk-print-text-colour;
+  }
+
   .gem-c-attachment__metadata,
   .gem-c-attachment__metadata .govuk-link::after {
     font-size: 12pt;

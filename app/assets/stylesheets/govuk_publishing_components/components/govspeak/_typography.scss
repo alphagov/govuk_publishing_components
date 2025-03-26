@@ -97,6 +97,14 @@
     font-style: normal;
     font-weight: inherit;
   }
+
+  @include govuk-media-query($media-type: print) {
+    a[href^="/"]:after,a[href^="http://"]:after,a[href^="https://"]:after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+      word-wrap: break-word;
+    }
+  }
 }
 
 .gem-c-govspeak--inverse {
@@ -105,5 +113,13 @@
   a {
     @include govuk-link-common;
     @include govuk-link-style-inverse;
+  }
+
+  @include govuk-media-query($media-type: print) {
+    color: $govuk-print-text-colour;
+
+    a:link {
+      color: $govuk-print-text-colour;
+    }
   }
 }

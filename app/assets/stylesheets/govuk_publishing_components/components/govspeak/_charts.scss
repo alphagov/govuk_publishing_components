@@ -310,4 +310,18 @@
     // It's reapplied to captions because Firefox can't hide
     // table captions unless it's applied directly to it. Go figure.
   }
+
+  @include govuk-media-query($media-type: print) {
+    .mc-toggle-button,
+    .mc-chart-container {
+      display: none;
+    }
+
+    // stylelint-disable selector-no-qualifying-type
+    // Displays the original table when printing
+    table.js-barchart-table,
+    table.js-barchart-table caption {
+      display: block;
+    }
+  }
 }
