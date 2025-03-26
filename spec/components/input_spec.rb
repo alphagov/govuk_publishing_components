@@ -181,6 +181,10 @@ describe "Input", type: :view do
 
       assert_select ".govuk-input[aria-describedby='#{error_id}']"
     end
+
+    it "renders adds the error CSS class to the input" do
+      assert_select "input.govuk-input--error"
+    end
   end
 
   context "when error_items are provided" do
@@ -206,6 +210,27 @@ describe "Input", type: :view do
       error_id = css_select(".govuk-error-message").attr("id")
 
       assert_select ".govuk-input[aria-describedby='#{error_id}']"
+    end
+
+    it "renders adds the error CSS class to the input" do
+      assert_select "input.govuk-input--error"
+    end
+  end
+
+  context "when has_error is true but no error_message or error_items are provided" do
+    before do
+      render_component(
+        name: "email-address",
+        has_error: true,
+      )
+    end
+
+    it "renders adds the error CSS class to the input" do
+      assert_select "input.govuk-input--error"
+    end
+
+    it "does not render the error message" do
+      assert_select ".govuk-error-message", false
     end
   end
 
