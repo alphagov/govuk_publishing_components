@@ -33,29 +33,20 @@
   // Block quotes
 
   blockquote {
-    padding: 0 0 0 govuk-spacing(4);
-    margin: 0;
+    padding: 0 0 0 govuk-spacing(6);
+    margin: 0 0 govuk-spacing(4) 0;
     border: 0;
 
-    @include govuk-media-query($from: desktop) {
-      margin: 0 0 0 (- govuk-spacing(6));
-    }
-
     p {
-      padding-left: govuk-spacing(3);
+      position: relative;
 
-      @include govuk-media-query($from: tablet) {
-        padding-left: govuk-spacing(6);
-      }
-
-      &::before {
+      &:first-of-type::before {
         content: "\201C";
-        float: left;
-        clear: both;
-        margin-left: (- govuk-spacing(3));
+        position: absolute;
+        right: 100%;
       }
 
-      &:last-child::after {
+      &:last-of-type::after {
         content: "\201D";
       }
     }

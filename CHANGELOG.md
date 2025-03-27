@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix govspeak blockquotes ([PR #4739](https://github.com/alphagov/govuk_publishing_components/pull/4739))
 * Fix govspeak print styles ([PR #4730](https://github.com/alphagov/govuk_publishing_components/pull/4730))
 * Update LUX to 4.0.32 ([PR #4725](https://github.com/alphagov/govuk_publishing_components/pull/4725))
 * Fix print styles ([PR #4738](https://github.com/alphagov/govuk_publishing_components/pull/4738))

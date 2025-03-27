@@ -50,7 +50,12 @@ examples:
         </ul>
         <p>A paragraph of text following the list. I'm not going to talk about the words anymore.</p>
         <blockquote>
-          <p>This text is inside a blockquote.</p>
+          <p>This text is inside a blockquote. It is being made deliberately long so as to wrap onto a second line, which hopefully has happened by now.</p>
+        </blockquote>
+        <blockquote>
+          <p>This text is inside a blockquote with a citation.</p>
+          <p>It contains more than one paragraph, and also has extra words in order to make it wrap onto a second line so we can check that everything's okay.</p>
+          <cite>John Blockquote, inventor of the blockquote</cite>
         </blockquote>
         <p>Yet another paragraph of text. This is starting to sound familiar.</p>
         <ol>
@@ -465,8 +470,9 @@ examples:
     data:
       block: |
         <blockquote>
-          <p>My quote</p>
-          <p class="last-child">about things</p>
+          <p>This text is inside a blockquote with a citation.</p>
+          <p>It contains more than one paragraph, and also has extra words in order to make it wrap onto a second line so we can check that everything's okay.</p>
+          <cite>John Blockquote, inventor of the blockquote</cite>
         </blockquote>
   buttons:
     data:
