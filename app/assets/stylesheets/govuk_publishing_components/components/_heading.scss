@@ -51,5 +51,12 @@
   .gem-c-heading--padding[class*="--border-top"] {
     padding-top: govuk-spacing(3);
   }
+
+  .gem-c-heading--inverse {
+    .gem-c-heading__context,
+    .gem-c-heading__text {
+      color: $govuk-print-text-colour;
+    }
+  }
 }
 // stylelint-enable declaration-no-important

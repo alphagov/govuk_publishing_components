@@ -99,5 +99,15 @@
       color: $govuk-print-text-colour !important;
     }
   }
+
+  .gem-c-metadata--inverse-padded,
+  .gem-c-metadata--inverse-padded .gem-c-metadata__title {
+    padding: 0;
+  }
+
+  .gem-c-metadata--inverse-padded .gem-c-metadata__list {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 // stylelint-enable declaration-no-important
