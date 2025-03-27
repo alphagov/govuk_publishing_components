@@ -67,16 +67,10 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   margin: 0 0 govuk-spacing(3);
   color: $govuk-secondary-text-colour;
   @include govuk-font($size: 19);
+  @include govuk-text-break-word;
 
   &:last-of-type {
     margin-bottom: 0;
-  }
-
-  .gem-c-attachment__attribute {
-    // From the Design System
-    // Automatic wrapping for unbreakable text (e.g. URLs)
-    word-wrap: break-word; // Fallback for older browsers only
-    overflow-wrap: break-word;
   }
 }
 

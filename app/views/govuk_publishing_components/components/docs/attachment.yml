@@ -225,8 +225,10 @@ examples:
         url: https://www.gov.uk/government/publications/smart-meters-unlocking-the-future/smart-meters-unlocking-the-future
         type: html
   external_attachment:
+    description: |
+      The word break helper (`govuk-text-break-word`) is used from the design system to forcibly break URLs across multiple lines when they wouldn't otherwise fit.
     data:
       attachment:
         title: "Architects Registration Board annual report 2021"
-        url: https://arb.org.uk/wp-content/uploads/ARB-Annual-Report-and-Financial-Statement-2021-published.pdf
+        url: https://arb.org.uk/wpcontent/uploads/ARBAnnualReportandFinancialStatement2021published.pdf
         type: external
