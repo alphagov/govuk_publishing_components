@@ -32,6 +32,10 @@
   var VISA_PATTERN_GWF = /GWF\d{9}/g
   var VISA_PATTERN_GB = /GB\d{12}/g
 
+  // 2 valid letters - optional +/space - 6 digits with optional +/spaces every 2 digits (to account for '12 34 56') - optional +/space - 1 valid letter. Case insensitive.
+  // e.g. 'AB123456A', 'AB 12 34 56 A', 'ab 123456 a', 'ab 12 34 56 a', 'AB+12+34+56+A'
+  var NATIONAL_INSURANCE_NUMBER = /[A-CEGHJ-OPR-TW-Z]{2}(\s+|\++)?(\d{2}(\s+|\++)?){3}[A-D]/gi
+
   function shouldStripDates () {
     var metas = document.querySelectorAll('meta[name="govuk:ga4-strip-dates"]')
     return metas.length > 0
@@ -104,6 +108,7 @@
     stripped = stripped.replace(STATE_PATTERN, 'state=[state]')
     stripped = stripped.replace(VISA_PATTERN_GWF, '[gwf number]')
     stripped = stripped.replace(VISA_PATTERN_GB, '[gb eori number]')
+    stripped = stripped.replace(NATIONAL_INSURANCE_NUMBER, '[ni number]')
     stripped = this.stripQueryStringParameters(stripped)
 
     if (this.stripDatePII === true) {
