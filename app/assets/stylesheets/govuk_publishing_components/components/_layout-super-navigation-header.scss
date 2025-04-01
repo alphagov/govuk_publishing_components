@@ -137,7 +137,7 @@ $after-button-padding-left: govuk-spacing(4);
   padding: 0;
 }
 
-// Top level navigation links and search link.
+// Top level navigation links and search link, used when JavaScript is not available
 .gem-c-layout-super-navigation-header__navigation-item-link,
 .gem-c-layout-super-navigation-header__search-item-link {
   display: inline-block;
@@ -305,6 +305,14 @@ $after-button-padding-left: govuk-spacing(4);
 
 .gem-c-layout-super-navigation-header__navigation-item-link-inner {
   padding: govuk-spacing(1) $after-link-padding;
+  border-right: 1px solid $button-pipe-colour;
+}
+
+.gem-c-layout-super-navigation-header__navigation-item-link--large-navbar {
+  & .gem-c-layout-super-navigation-header__navigation-item-link-inner {
+    padding-left: 26px;
+    padding-right: 26px;
+  }
 }
 
 .gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background {
@@ -359,6 +367,11 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
   }
+}
+
+.gem-c-layout-super-navigation-header__search-item-link--large-navbar {
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .gem-c-layout-super-navigation-header__search-item-link-icon,
