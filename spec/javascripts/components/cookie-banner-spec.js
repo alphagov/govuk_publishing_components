@@ -18,11 +18,11 @@ describe('Cookie banner', function () {
                   '<div class="govuk-grid-column-two-thirds">' +
                       '<h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on GOV.UK</h2>' +
                       '<div tabindex="-1" class="govuk-cookie-banner__content gem-c-cookie-banner__confirmation">' +
-                          '<span class="gem-c-cookie-banner__content">' +
+                          '<div class="gem-c-cookie-banner__content">' +
                               '<p class="govuk-body">We use some essential cookies to make this website work.</p>' +
                               '<p class="govuk-body">We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.</p>' +
                               '<p class="govuk-body">We also use cookies set by other sites to help us deliver content from their services.</p>' +
-                          '</span>' +
+                          '</div>' +
                           '<p class="gem-c-cookie-banner__confirmation-message--accepted govuk-body" hidden="">You have accepted additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
                           '<p class="gem-c-cookie-banner__confirmation-message--rejected govuk-body" hidden="">You have rejected additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
                       '</div>' +

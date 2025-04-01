@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix HTML validation bug in cookie banner ([PR #4743](https://github.com/alphagov/govuk_publishing_components/pull/4743))
+
 ## 56.1.0
 
 * Fix govspeak blockquotes ([PR #4739](https://github.com/alphagov/govuk_publishing_components/pull/4739))
