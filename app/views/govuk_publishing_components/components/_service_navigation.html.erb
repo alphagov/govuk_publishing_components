@@ -1,0 +1,61 @@
+<%
+  add_gem_component_stylesheet("service-navigation")
+
+  service_name ||= nil
+  service_name_url ||= nil
+  navigation_items ||= []
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
+  component_helper.add_aria_attribute({ label: "Service information" }) if service_name.present?
+  component_helper.add_data_attribute({ module: "govuk-service-navigation" })
+%>
+<% if service_name.present? || navigation_items.present? %>
+  <% service_navigation_content = capture do %>
+    <div class="govuk-width-container">
+      <div class="govuk-service-navigation__container">
+        <% if service_name %>
+          <% if service_name_url %>
+            <%= tag.span(class: "govuk-service-navigation__service-name") do %>
+              <%= link_to(service_name, service_name_url, class: "govuk-service-navigation__link") %>
+            <% end %>
+          <% else %>
+            <%= tag.span(service_name, class: "govuk-service-navigation__service-name") %>
+          <% end %>
+        <% end %>
+
+        <% if navigation_items.present? %>
+          <nav aria-label="<%= t("components.layout_header.menu") %>" class="govuk-service-navigation__wrapper">
+            <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
+              Menu
+            </button>
+            <ul class="govuk-service-navigation__list" id="navigation">
+              <% navigation_items.each do |nav| %>
+                <%
+                  nav_classes = %w(govuk-service-navigation__item)
+                  nav_classes << "govuk-service-navigation__item--active" if nav[:active]
+                  aria_current = nav[:active]
+                %>
+                <%= tag.li nav[:text], class: nav_classes do %>
+                  <% if nav[:active] %>
+                    <%= link_to(nav[:href], class: "govuk-service-navigation__link", aria: { current: aria_current }) do %>
+                      <%= tag.strong(nav[:text], class: "govuk-service-navigation__active-fallback") %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to nav[:text], nav[:href], class: "govuk-service-navigation__link" %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </ul>
+          </nav>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if service_name.present? %>
+    <%= tag.section(service_navigation_content, **component_helper.all_attributes) %>
+  <% else %>
+    <%= tag.div(service_navigation_content, **component_helper.all_attributes) %>
+  <% end %>
+<% end %>
