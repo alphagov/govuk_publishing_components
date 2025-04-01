@@ -329,8 +329,6 @@ $after-button-padding-left: govuk-spacing(4);
 
   &:link,
   &:visited {
-    background: $govuk-brand-colour;
-
     &:hover {
       &::before {
         left: 0;
@@ -350,10 +348,6 @@ $after-button-padding-left: govuk-spacing(4);
       left: 0;
       right: 0;
       width: 100%;
-    }
-
-    @include focus-not-focus-visible {
-      background: $govuk-link-colour;
     }
 
     @include focus-and-focus-visible {
