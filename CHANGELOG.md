@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove unused labels for tracking-key in super navigation header ([PR #4745](https://github.com/alphagov/govuk_publishing_components/pull/4745))
 * Fix HTML validation bug in cookie banner ([PR #4743](https://github.com/alphagov/govuk_publishing_components/pull/4743))
 * Add service navigation component ([PR #4731](https://github.com/alphagov/govuk_publishing_components/pull/4731))
 
