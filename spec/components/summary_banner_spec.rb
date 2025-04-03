@@ -5,6 +5,8 @@ describe "Summary banner", type: :view do
     "summary_banner"
   end
 
+  before { allow(SecureRandom).to receive(:hex).and_return("1234") }
+
   it "fails to render a banner when nothing is passed to it" do
     assert_empty render_component({})
   end
@@ -21,9 +23,13 @@ describe "Summary banner", type: :view do
     assert_select ".gem-c-summary-banner__text", text: "This call for evidence will inform the development of the financial services sector plan, a key part of the government’s modern industrial strategy."
   end
 
-  it "renders a banner with an aria label" do
+  it "renders a banner with matching aria-labelledby and title id" do
+    title_id = "summary-banner-title-1234"
+
     render_component(title: "Summary", text: "Text")
-    assert_select "section[aria-label]"
+
+    assert_select "section[aria-labelledby='#{title_id}']"
+    assert_select ".gem-c-summary-banner__title##{title_id}"
   end
 
   it "renders a banner with title, text and secondary text correctly" do
