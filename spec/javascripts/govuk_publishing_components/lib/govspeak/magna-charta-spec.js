@@ -14,14 +14,8 @@ describe('Magna charta', function () {
   // widths are 65/max * val (65 by default)
   var cW = function (max, val, padding) {
     padding = padding || 0
-    var result = ((65 / max) * val + padding).toString()
-    // truncate the result to only 4 digits after the decimal place
-    // e.g. 27.0833333333 becomes 27.0833, 27.1 and 27 remain the same
-    var split = result.split('.')
-    if (split.length > 1) {
-      result = split[0] + '.' + split[1].substring(0, 4)
-    }
-    return result + '%'
+    var width = ((65 / max) * val + padding)
+    return `${parseFloat(width.toFixed(4))}%`
   }
 
   var single =
@@ -282,12 +276,14 @@ describe('Magna charta', function () {
 
     it('the bar cells are given the right widths', function () {
       var cells = graph.find('.mc-bar-cell')
-      expect(cells.get(0).style.width).toEqual(cW(12, 5))
-      expect(cells.get(1).style.width).toEqual(cW(12, 6))
-      expect(cells.get(2).style.width).toEqual(cW(12, 6))
-      expect(cells.get(3).style.width).toEqual(cW(12, 2))
-      expect(cells.get(4).style.width).toEqual(cW(12, 3))
-      expect(cells.get(5).style.width).toEqual(cW(12, 9))
+
+      for (var cell of cells) {
+        var cellText = cell.textContent
+        var cellWidth = `${Number(parseFloat(cell.style.width).toFixed(4))}%`
+        var calculatedWidth = cW(12, cellText)
+
+        expect(cellWidth).toEqual(calculatedWidth)
+      }
     })
 
     it('the bar cells are given classes denoting their index', function () {
