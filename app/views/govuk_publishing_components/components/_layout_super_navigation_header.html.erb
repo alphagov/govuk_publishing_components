@@ -110,7 +110,6 @@
         link = t("components.layout_super_navigation_header.navigation_link")
         show_menu_text = show_navigation_menu_text
         hide_menu_text = hide_navigation_menu_text
-        tracking_label = link[:label].downcase.gsub(/\s+/, "")
       %>
 
       <div class="govuk-width-container gem-c-layout-super-navigation-header__button-width-container">
@@ -140,7 +139,6 @@
                 text_for_show: show_menu_text,
                 toggle_desktop_group: "top",
                 toggle_mobile_group: "top",
-                tracking_key: tracking_label,
                 ga4_event: {
                   event_name: "select_content",
                   type: "header menu bar",
@@ -172,7 +170,6 @@
                 "text-for-show": show_search_menu_text,
                 "toggle-mobile-group": "top",
                 "toggle-desktop-group": "top",
-                "tracking-key": "search",
                 "ga4-event": "#{{
                   "event_name": "select_content",
                   "type": "header menu bar",
@@ -250,7 +247,6 @@
                         has_description = item[:description].present?
                         link_classes = %w[govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link]
                         link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
-                        tracking_label = column[:label].downcase.gsub(/\s+/, "")
                         link_href = absolute_links_helper.make_url_absolute(item[:href])
                       %>
                       <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
