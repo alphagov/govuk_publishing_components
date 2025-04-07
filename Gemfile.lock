@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (56.1.0)
+    govuk_publishing_components (56.2.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -140,7 +140,7 @@ GEM
       rake (>= 13)
     googleapis-common-protos-types (1.19.0)
       google-protobuf (>= 3.18, < 5.a)
-    govuk_app_config (9.16.8)
+    govuk_app_config (9.16.9)
       logstasher (~> 2.1)
       opentelemetry-exporter-otlp (>= 0.25, < 0.31)
       opentelemetry-instrumentation-all (>= 0.39.1, < 0.75.0)
@@ -418,7 +418,7 @@ GEM
     opentelemetry-instrumentation-ruby_kafka (0.22.0)
       opentelemetry-api (~> 1.0)
       opentelemetry-instrumentation-base (~> 0.23.0)
-    opentelemetry-instrumentation-sidekiq (0.26.0)
+    opentelemetry-instrumentation-sidekiq (0.26.1)
       opentelemetry-api (~> 1.0)
       opentelemetry-instrumentation-base (~> 0.23.0)
     opentelemetry-instrumentation-sinatra (0.25.0)
