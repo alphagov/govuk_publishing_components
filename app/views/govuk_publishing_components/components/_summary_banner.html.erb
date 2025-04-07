@@ -2,13 +2,14 @@
   add_gem_component_stylesheet("summary-banner")
 
   title ||= false
+  title_id = "summary-banner-title-#{SecureRandom.hex(4)}"
   text ||= false
   secondary_text ||= false
   local_assigns[:margin_bottom] ||= 7
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-summary-banner")
-  component_helper.add_aria_attribute({ label: "Notice" })
+  component_helper.add_aria_attribute({ labelledby: title_id })
   component_helper.set_lang("en")
   component_helper.add_data_attribute({ module: "ga4-link-tracker" })
   component_helper.add_data_attribute({ ga4_track_links_only: "" })
@@ -16,7 +17,7 @@
 %>
 <% if title.present? && text.present? %>
   <%= tag.section(**component_helper.all_attributes) do %>
-    <h2 class="gem-c-summary-banner__title govuk-heading-m"><%= title %></h2>
+    <h2 class="gem-c-summary-banner__title govuk-heading-m" id="<%= title_id %>"><%= title %></h2>
     <p class="gem-c-summary-banner__text">
       <%= text %>
     </p>

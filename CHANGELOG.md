@@ -11,6 +11,7 @@
 
 * Fix HTML validation bug in cookie banner ([PR #4743](https://github.com/alphagov/govuk_publishing_components/pull/4743))
 * Add service navigation component ([PR #4731](https://github.com/alphagov/govuk_publishing_components/pull/4731))
+* Add a more descriptive accessible label to summary banner ([PR #4742](https://github.com/alphagov/govuk_publishing_components/pull/4742))
 
 ## 56.1.0
 
