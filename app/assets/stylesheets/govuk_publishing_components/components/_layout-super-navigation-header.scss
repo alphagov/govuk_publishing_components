@@ -870,13 +870,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// The large menu bar is used on the homepage with no GOV.UK text
-// Resetting top back to 0 ensure the crown logo is aligned with
-// the navigation items in the header
-.gem-c-layout-super-navigation-header__logotype-crown--large-navbar[width="32"] {
-  top: 0;
-}
-
 @include govuk-media-query($from: desktop) {
   // can't use govuk-spacing here because the navbar height
   // isn't a multiple of 5 :(
@@ -884,12 +877,6 @@ $after-button-padding-left: govuk-spacing(4);
   .gem-c-layout-super-navigation-header__search-item-link--large-navbar {
     padding-top: 26px;
     padding-bottom: 26px;
-  }
-
-  .gem-c-layout-super-navigation-header__logotype-crown--large-navbar {
-    width: auto;
-    max-width: 41px; // Fix for IE11
-    height: 38px;
   }
 
   .gem-c-header__link--large-navbar:focus {

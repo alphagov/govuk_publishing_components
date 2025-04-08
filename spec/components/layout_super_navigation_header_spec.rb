@@ -145,7 +145,6 @@ describe "Super navigation header", type: :view do
     assert_select ".gem-c-layout-super-navigation-header__search-toggle-button--large-navbar"
     assert_select ".gem-c-layout-super-navigation-header__search-item-link--large-navbar"
     assert_select ".gem-c-layout-super-navigation-header__navigation-item-link--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__logotype-crown--large-navbar"
     assert_select ".gem-c-header__link--large-navbar"
   end
 
