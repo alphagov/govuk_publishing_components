@@ -158,6 +158,17 @@ describe "Devolved Nations", type: :view do
     assert_select ".gem-c-devolved-nations > h3", text: "Applies to England"
   end
 
+  it "renders a devolved nations component with an aria label of 'Nation'" do
+    render_component(
+      national_applicability: {
+        england: {
+          applicable: true,
+        },
+      },
+    )
+    assert_select ".gem-c-devolved-nations[aria-label=\"Nation\"]"
+  end
+
   it "renders a devolved nations component, with ga4 tracking, correctly" do
     render_component(
       national_applicability: {
