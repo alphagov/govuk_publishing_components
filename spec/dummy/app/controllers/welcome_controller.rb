@@ -33,7 +33,7 @@ class WelcomeController < ApplicationController
   end
 
   def metadatawithnoticeexample
-    render "metadata_with_notice_example", layout: "application"
+    render "metadata_with_notice_example", layout: "dummy_public_layout"
   end
 
   def errorsummary
