@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add an aria-label to the devolved nations component ([PR #4751](https://github.com/alphagov/govuk_publishing_components/pull/4751))
+
+
 ## 56.2.0
 
 * Remove unused labels for tracking-key in super navigation header ([PR #4745](https://github.com/alphagov/govuk_publishing_components/pull/4745))
