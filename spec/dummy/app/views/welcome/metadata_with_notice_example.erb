@@ -1,0 +1,33 @@
+<%
+@emergency_banner = ""
+@global_banner = ""
+@title = "Metadata with notice component combination" 
+%>
+
+<h1>A test page for a combination of components</h1>
+<p>This is for a visual regression test on the metadata with notice component, as seen on pages like https://www.gov.uk/government/statistics/announcements/planning-inspectorate-statistical-release-19-december-2024</p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  <div class="dark-background">
+    <%= render "govuk_publishing_components/components/metadata", {
+      inverse: true,
+      first_published: "14 June 2014",
+      last_updated: "10 September 2015",
+      margin_bottom: 0
+    } %>
+    <%= render "govuk_publishing_components/components/metadata", {
+      inverse: true,
+      other: {
+        "Release date": "23 August 2018 9:30am",
+        "Reason for change": "Date of release brought forward from 23 August 2018 to 21 August 2018 as data in its final form is now available to be published on this new date."
+      },
+      title: "The release date has been changed",
+      margin_bottom: 0,
+    } %>
+  </div>
+
+
+<%= render "govuk_publishing_components/components/notice", {
+  title: "Statistics release cancelled",
+  description: sanitize("<p class=\"govuk-body\">The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p class=\"govuk-body\">This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a class=\"govuk-link\" rel=\"external\" href=\"https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/\">www.ogauthority.co.uk</a></p>")
+} %>
