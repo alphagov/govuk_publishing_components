@@ -60,6 +60,7 @@ bn:
       title: GOV.UK-তে কুকিজ
     devolved_nations:
       applies_to:
+      aria_label:
       connectors:
         last_word:
         two_words:

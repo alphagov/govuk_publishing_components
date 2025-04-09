@@ -63,6 +63,7 @@ cy:
       title: Cwcis ar GOV.UK
     devolved_nations:
       applies_to: Yn berthnasol i
+      aria_label:
       connectors:
         last_word: " a "
         two_words: " a "

@@ -63,6 +63,7 @@ ru:
       title: Файлы "cookie" на GOV.UK
     devolved_nations:
       applies_to:
+      aria_label:
       connectors:
         last_word:
         two_words:

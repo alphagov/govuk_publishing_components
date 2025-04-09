@@ -57,6 +57,7 @@ zh-tw:
       title: 英國政府網站的cookie
     devolved_nations:
       applies_to:
+      aria_label:
       connectors:
         last_word:
         two_words:
