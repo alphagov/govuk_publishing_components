@@ -59,6 +59,7 @@ es-419:
       title: Cookies de GOV.UK
     devolved_nations:
       applies_to:
+      aria_label:
       connectors:
         last_word:
         two_words:

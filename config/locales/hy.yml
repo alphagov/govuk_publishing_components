@@ -63,6 +63,7 @@ hy:
       title: Քուքիներ GOV.UK կայքում
     devolved_nations:
       applies_to:
+      aria_label:
       connectors:
         last_word:
         two_words:

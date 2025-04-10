@@ -58,6 +58,7 @@ en:
       title: Cookies on GOV.UK
     devolved_nations:
       applies_to: Applies to
+      aria_label: Nation
       connectors:
         last_word: " and "
         two_words: " and "

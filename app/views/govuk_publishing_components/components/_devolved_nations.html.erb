@@ -10,6 +10,7 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-devolved-nations")
+  component_helper.add_aria_attribute({ label: t("components.devolved_nations.aria_label") })
 
   unless disable_ga4
     component_helper.add_data_attribute({

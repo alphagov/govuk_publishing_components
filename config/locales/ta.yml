@@ -60,6 +60,7 @@ ta:
       title: GOV.UK குக்கீஸ்கள்
     devolved_nations:
       applies_to:
+      aria_label:
       connectors:
         last_word:
         two_words:

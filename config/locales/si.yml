@@ -59,6 +59,7 @@ si:
       title: GOV.UK මත කුකීස්
     devolved_nations:
       applies_to:
+      aria_label:
       connectors:
         last_word:
         two_words:
