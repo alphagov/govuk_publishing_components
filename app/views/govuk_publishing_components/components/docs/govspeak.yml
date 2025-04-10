@@ -470,9 +470,14 @@ examples:
     data:
       block: |
         <blockquote>
-          <p>This text is inside a blockquote with a citation.</p>
-          <p>It contains more than one paragraph, and also has extra words in order to make it wrap onto a second line so we can check that everything's okay.</p>
-          <cite>John Blockquote, inventor of the blockquote</cite>
+          <p>This is a blockquote with one line in it. It should have quote marks around it.</p>
+          <cite>Jane Blockquote</cite>
+        </blockquote>
+        <blockquote>
+          <p>This is a multi line blockquote with a citation.</p>
+          <p>It contains extra words such as 'wood' and 'primly' in order to make it wrap onto a second line so we can check that everything's okay.</p>
+          <p>This is a third paragraph, and the last one, so it should have both an opening and a closing quote mark.</p>
+          <cite>John Blockquote</cite>
         </blockquote>
   buttons:
     data:
