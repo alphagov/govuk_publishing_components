@@ -40,7 +40,7 @@
     p {
       position: relative;
 
-      &:first-of-type::before {
+      &::before {
         content: "\201C";
         position: absolute;
         right: 100%;

@@ -9,8 +9,8 @@
 
 ## Unreleased
 
+* Adjust govspeak blockquotes quote marks ([PR #4755](https://github.com/alphagov/govuk_publishing_components/pull/4755))
 * Add an aria-label to the devolved nations component ([PR #4751](https://github.com/alphagov/govuk_publishing_components/pull/4751))
-
 
 ## 56.2.0
 
