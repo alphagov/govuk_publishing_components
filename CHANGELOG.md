@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 56.2.1
 
 * Adjust govspeak blockquotes quote marks ([PR #4755](https://github.com/alphagov/govuk_publishing_components/pull/4755))
 * Add an aria-label to the devolved nations component ([PR #4751](https://github.com/alphagov/govuk_publishing_components/pull/4751))
