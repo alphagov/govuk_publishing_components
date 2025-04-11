@@ -80,8 +80,8 @@ $after-button-padding-left: govuk-spacing(4);
 
 // Header layout - black bar and logo.
 .gem-c-layout-super-navigation-header {
-  background: govuk-colour("black");
-  border-top: 1px solid govuk-colour("black");
+  background: $govuk-brand-colour;
+  border-top: 1px solid $govuk-brand-colour;
   margin-top: -1px;
   position: relative;
 
