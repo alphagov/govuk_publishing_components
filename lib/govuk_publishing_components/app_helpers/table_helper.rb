@@ -53,6 +53,7 @@ module GovukPublishingComponents
           classes = %w[govuk-table__header]
           classes << "govuk-table__header--#{opt[:format]}" if opt[:format]
           classes << "govuk-table__header--active" if opt[:sort_direction]
+          classes += Array(opt[:extra_classes]) if opt[:extra_classes]
           link_classes = %w[app-table__sort-link]
           link_classes << "app-table__sort-link--#{opt[:sort_direction]}" if opt[:sort_direction]
           str = link_to str, opt[:href], class: link_classes, data: opt[:data_attributes] if opt[:href]
@@ -63,6 +64,7 @@ module GovukPublishingComponents
           classes = %w[govuk-table__cell]
           classes << "govuk-table__cell--#{opt[:format]}" if opt[:format]
           classes << "govuk-table__cell--empty" unless str
+          classes += Array(opt[:extra_classes]) if opt[:extra_classes]
           str ||= "Not set"
           tag.td str, class: classes
         end

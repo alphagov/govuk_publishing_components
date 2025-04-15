@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Table: add ability to specify classes for cells ([PR #4760](https://github.com/alphagov/govuk_publishing_components/pull/4760))
+
 ## 56.2.1
 
 * Adjust govspeak blockquotes quote marks ([PR #4755](https://github.com/alphagov/govuk_publishing_components/pull/4755))
