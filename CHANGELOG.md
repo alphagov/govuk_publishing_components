@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Table: add ability to specify column width ([PR #4760](https://github.com/alphagov/govuk_publishing_components/pull/4760))
+
 ## 56.2.2
 
 * Fix super navigation menu styling ([PR #4744](https://github.com/alphagov/govuk_publishing_components/pull/4744))

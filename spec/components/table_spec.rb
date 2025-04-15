@@ -153,4 +153,25 @@ describe "Table", type: :view do
     assert_select ".js-gem-c-table__filter"
     assert_select ".js-gem-c-table__message"
   end
+
+  it "accepts a width value for head cells" do
+    render_component(
+      head: [
+        {
+          text: "Month you apply",
+          width: "one-third",
+        },
+      ],
+      rows: [
+        [
+          {
+            text: "January",
+          },
+        ],
+      ],
+    )
+
+    # This needs [class=...] attribute syntax as Nokogiri doesn't like the `!` in the class name
+    assert_select ".govuk-table th[class='govuk-table__header govuk-!-width-one-third']", "Month you apply"
+  end
 end

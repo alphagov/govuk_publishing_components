@@ -200,3 +200,26 @@ examples:
           format: numeric
         - text: £125
           format: numeric
+  with_custom_width:
+    description: >
+      You can use `width` on a header cell to set the width of a table column if you do not want the
+      width to be inferred by the browser based on the content of its cells.
+    data:
+      head:
+        - text: Phrase
+        - text: Rating
+          width: one-half
+      rows:
+      -
+        - text: Lorem ipsum
+        - text: good
+      -
+        - text: dolor sit amet, consectetur adipiscing elit
+        - text: okay
+      -
+        - text: >
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+            molestiae non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
+            quaerat voluptatem!!!
+        - text: bad
