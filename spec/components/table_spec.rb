@@ -153,4 +153,26 @@ describe "Table", type: :view do
     assert_select ".js-gem-c-table__filter"
     assert_select ".js-gem-c-table__message"
   end
+
+  it "accepts extra classes for header and body cells" do
+    render_component(
+      head: [
+        {
+          text: "Month you apply",
+          extra_classes: %w[extra extra--month],
+        },
+      ],
+      rows: [
+        [
+          {
+            text: "January",
+            extra_classes: %w[extra extra--january],
+          },
+        ],
+      ],
+    )
+
+    assert_select ".govuk-table th.extra.extra--month", "Month you apply"
+    assert_select ".govuk-table td.extra.extra--january", "January"
+  end
 end

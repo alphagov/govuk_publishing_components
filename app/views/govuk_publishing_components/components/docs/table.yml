@@ -200,3 +200,28 @@ examples:
           format: numeric
         - text: £125
           format: numeric
+  with_extra_classes:
+    description: >
+      You can use `extra_classes` to add additional classes to a header or body cell. This lets you
+      apply width override classes for tables where the data is inconsistent in length and would
+      otherwise cause the table to display poorly.
+    data:
+      head:
+        - text: Phrase
+        - text: Rating
+          extra_classes:
+            - 'govuk-!-width-one-third'
+      rows:
+      -
+        - text: Lorem ipsum
+        - text: good
+      -
+        - text: dolor sit amet, consectetur adipiscing elit
+        - text: okay
+      -
+        - text: >
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+            molestiae non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam
+            quaerat voluptatem!!!
+        - text: bad

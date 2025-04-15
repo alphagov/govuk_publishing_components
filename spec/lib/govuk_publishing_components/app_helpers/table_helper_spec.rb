@@ -53,5 +53,25 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TableHelper do
         expect(table).to match("<table class=\"gem-c-table govuk-table\">")
       end
     end
+
+    it "can be configured to set additional classes on headers and cells as string or array" do
+      table = described_class.helper(view_context, "A pretty table") do |builder|
+        view_context.concat(builder.head do
+          view_context.concat builder.header("Hello", extra_classes: %w[extra extra--hello])
+          view_context.concat builder.header("Hallo", extra_classes: "extra extra--hallo")
+        end)
+        view_context.concat(builder.body do
+          builder.row do
+            view_context.concat builder.cell("World", extra_classes: %w[extra extra--world])
+            view_context.concat builder.cell("Welt", extra_classes: "extra extra--welt")
+          end
+        end)
+      end
+
+      expect(table).to match(/<th class="govuk-table__header extra extra--hello" scope="col">Hello<\/th>/)
+      expect(table).to match(/<th class="govuk-table__header extra extra--hallo" scope="col">Hallo<\/th>/)
+      expect(table).to match(/<td class="govuk-table__cell extra extra--world">World<\/td>/)
+      expect(table).to match(/<td class="govuk-table__cell extra extra--welt">Welt<\/td>/)
+    end
   end
 end
