@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix super navigation menu styling ([PR #4744](https://github.com/alphagov/govuk_publishing_components/pull/4744))
+
 ## 56.2.1
 
 * Adjust govspeak blockquotes quote marks ([PR #4755](https://github.com/alphagov/govuk_publishing_components/pull/4755))
