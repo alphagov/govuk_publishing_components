@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 56.2.2
 
 * Fix super navigation menu styling ([PR #4744](https://github.com/alphagov/govuk_publishing_components/pull/4744))
 
