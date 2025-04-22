@@ -26,9 +26,9 @@
 }
 
 .gem-c-feedback__prompt {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-tint(govuk-colour("blue"), 95%);
   color: govuk-colour("black");
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-tint(govuk-colour("blue"), 75%);
   outline: 0;
 }
 
