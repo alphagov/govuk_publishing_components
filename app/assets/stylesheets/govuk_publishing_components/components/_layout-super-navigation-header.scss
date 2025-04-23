@@ -4,11 +4,10 @@
 @import "mixins/grid-helper";
 
 $chevron-indent-spacing: 7px;
-$black-bar-height: 50px;
-$search-toggle-button-height: $black-bar-height;
 $pseudo-underline-height: 3px;
 $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
+$navbar-height: 50px;
 $large-navbar-height: 72px;
 
 $pale-blue-colour: #d2e2f1;
@@ -112,7 +111,7 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__button-container {
-  top: -$black-bar-height;
+  top: -$navbar-height;
   position: absolute;
   right: 0;
 
@@ -397,7 +396,7 @@ $after-button-padding-left: govuk-spacing(4);
   box-sizing: border-box;
   color: govuk-colour("white");
   cursor: pointer;
-  height: $black-bar-height;
+  height: $navbar-height;
   padding: 0;
   position: relative;
   margin: 0;
@@ -601,7 +600,7 @@ $after-button-padding-left: govuk-spacing(4);
   border: 0;
   color: govuk-colour("white");
   cursor: pointer;
-  height: $search-toggle-button-height;
+  height: $navbar-height;
   padding: govuk-spacing(3);
   position: relative;
   width: 51px;
