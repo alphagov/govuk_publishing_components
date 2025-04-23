@@ -58,6 +58,9 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// Using `:focus-visible` means that in supporting browsers the focus state won't
+// be visible when a user clicks on the element, but the focus state will still be
+// useful for those who use the keyboard to navigate around the page.
 @mixin focus-and-focus-visible {
   &:focus {
     @content;
@@ -68,6 +71,11 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// For browsers that don't support `:focus-visible`, this defaults to using
+// `:focus` with a CSS-only fallback strategy.
+//
+// Undoes the :focus styles *only* for browsers that support :focus-visible.
+// See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
 @mixin focus-not-focus-visible {
   & {
     @content;
@@ -465,8 +473,6 @@ $after-button-padding-left: govuk-spacing(4);
     // stylelint-enable max-nesting-depth
   }
 
-  // Undoes the :focus styles *only* for browsers that support :focus-visible.
-  // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
   @include focus-not-focus-visible {
     background: none;
     box-shadow: none;
@@ -505,6 +511,8 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - targets the "Menu" toggle button
+// Styles the "Menu" open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background,
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   // Open button modifier
@@ -554,6 +562,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - targets the "Menu" toggle button used on a blue background
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
   @include focus-not-focus-visible {
     &:hover {
@@ -572,6 +581,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - targets the "Menu" toggle button inner text
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
   display: inline-block;
   border-right: 1px solid govuk-colour("white");
@@ -585,7 +595,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// Styles for search toggle button.
+// JS available - targets the search toggle button
 .gem-c-layout-super-navigation-header__search-toggle-button {
   background: none;
   border: 0;
@@ -707,6 +717,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - styles the close icon, used when the search menu is in the open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon {
   color: $govuk-text-colour;
   display: none;
@@ -728,7 +739,7 @@ $after-button-padding-left: govuk-spacing(4);
   padding-bottom: govuk-spacing(7);
 }
 
-// Dropdown menu.
+// JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
   background: govuk-colour("light-grey");
   border-bottom: 1px govuk-colour("mid-grey") solid;
@@ -743,6 +754,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - adds a custom margin to the wrapper for the search items in the search dropdown
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar {
   @include govuk-media-query($until: "desktop") {
     .gem-c-layout-super-navigation-header__search-items {
@@ -751,6 +763,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - adds custom padding to the services and information and government activity sections in the menu dropdown
 @include govuk-media-query($until: "tablet") {
   // padding to make it the same as the padding for the redesign of the homepage
   .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information,
@@ -759,7 +772,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// Dropdown menu items.
+// JS available - styles the links in the dropdown menu
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
   padding: 0 0 govuk-spacing(3) 0;
@@ -771,7 +784,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// Navigation menu items.
+// JS available - wraps the `dropdown-list-item` navigation menu items
 .gem-c-layout-super-navigation-header__navigation-second-items {
   list-style: none;
   margin: 0;
@@ -783,6 +796,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - styling for the "government-activity" group of links
 .gem-c-layout-super-navigation-header__column--government-activity {
   position: relative;
 
@@ -791,6 +805,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - styling for the "services-and-information" group of links
 .gem-c-layout-super-navigation-header__navigation-second-items--services-and-information {
   @include govuk-media-query($until: "desktop") {
     border-bottom: 1px solid govuk-colour("mid-grey");
