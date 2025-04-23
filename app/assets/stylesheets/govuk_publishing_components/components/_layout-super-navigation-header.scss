@@ -3,14 +3,16 @@
 @import "mixins/prefixed-transform";
 @import "mixins/grid-helper";
 
+$pale-blue-colour: #d2e2f1;
+
 $chevron-indent-spacing: 7px;
 $pseudo-underline-height: 3px;
-$button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
 $navbar-height: 50px;
 $large-navbar-height: 72px;
 
-$pale-blue-colour: #d2e2f1;
+$button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
+$button-pipe-colour-blue-background: $pale-blue-colour;
 
 $after-link-padding: govuk-spacing(4);
 $after-button-padding-right: govuk-spacing(4);
@@ -323,7 +325,7 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background {
-  border-right: 1px solid $pale-blue-colour;
+  border-right: 1px solid $button-pipe-colour-blue-background;
 }
 
 // Search link and dropdown.
@@ -496,7 +498,7 @@ $after-button-padding-left: govuk-spacing(4);
       border-color: $button-pipe-colour;
 
       &.gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background {
-        border-color: $pale-blue-colour;
+        border-color: $button-pipe-colour-blue-background;
       }
 
       @include govuk-media-query($from: 360px) {
