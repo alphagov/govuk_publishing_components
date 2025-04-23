@@ -5,7 +5,9 @@
 
 $pale-blue-colour: #d2e2f1;
 
+$chevron-breakpoint: 360px;
 $chevron-indent-spacing: 7px;
+
 $pseudo-underline-height: 3px;
 
 $navbar-height: 50px;
@@ -501,7 +503,7 @@ $after-button-padding-left: govuk-spacing(4);
         border-color: $button-pipe-colour-blue-background;
       }
 
-      @include govuk-media-query($from: 360px) {
+      @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
           @include chevron(govuk-colour("white"), true);
         }
@@ -531,7 +533,7 @@ $after-button-padding-left: govuk-spacing(4);
         color: govuk-colour("black");
         border-color: $govuk-focus-colour;
 
-        @include govuk-media-query($from: 360px) {
+        @include govuk-media-query($from: $chevron-breakpoint) {
           &::before {
             @include chevron(govuk-colour("black"), true);
             @include prefixed-transform($rotate: 225deg, $translateY: 1px);
@@ -551,7 +553,7 @@ $after-button-padding-left: govuk-spacing(4);
         color: $govuk-link-colour;
         border-color: govuk-colour("light-grey");
 
-        @include govuk-media-query($from: 360px) {
+        @include govuk-media-query($from: $chevron-breakpoint) {
           &::before {
             @include chevron($govuk-link-colour);
             @include prefixed-transform($rotate: 225deg, $translateY: 1px);
@@ -589,7 +591,7 @@ $after-button-padding-left: govuk-spacing(4);
   margin: 0;
   padding: govuk-spacing(1) govuk-spacing(4);
 
-  @include govuk-media-query($from: 360px) {
+  @include govuk-media-query($from: $chevron-breakpoint) {
     &::before {
       @include chevron(govuk-colour("white"));
     }
