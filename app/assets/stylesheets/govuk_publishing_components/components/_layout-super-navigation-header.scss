@@ -609,6 +609,18 @@ $after-button-padding-left: govuk-spacing(4);
   position: relative;
   width: 51px;
 
+  &::after {
+    @include pseudo-underline($left: 0, $right: 0);
+  }
+
+  &:hover {
+    color: govuk-colour("mid-grey");
+
+    &::after {
+      background: govuk-colour("mid-grey");
+    }
+  }
+
   &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
     background: $govuk-brand-colour;
   }
@@ -644,11 +656,6 @@ $after-button-padding-left: govuk-spacing(4);
       border-bottom: 1px solid transparent;
       border-left: none;
       position: relative;
-    }
-
-    &:hover {
-      border-bottom: $pseudo-underline-height solid govuk-colour("mid-grey");
-      color: govuk-colour("mid-grey");
     }
 
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
