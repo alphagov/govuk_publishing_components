@@ -158,7 +158,6 @@
 
     <% unless local_assigns[:hide_footer_links] %>
       <%= render "govuk_publishing_components/components/layout_footer", {
-        with_border: !omit_footer_border,
         navigation: omit_footer_navigation ? nil : layout_helper.footer_navigation,
         meta: layout_helper.footer_meta,
       } %>
