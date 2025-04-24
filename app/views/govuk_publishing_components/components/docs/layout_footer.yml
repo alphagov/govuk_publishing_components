@@ -139,27 +139,6 @@ examples:
             attributes:
               lang: en
               hreflang: en
-  with_border:
-    data:
-      with_border: true
-      meta:
-        items:
-          - href: '/help'
-            text: Help
-          - href: '/help/privacy-notice'
-            text: Privacy
-          - href: '/help/cookies'
-            text: Cookies
-          - href: '/contact'
-            text: Contact
-          - href: '/help/accessibility-statement'
-            text: Accessibility statement
-          - href: '/help/terms-conditions'
-            text: Terms and conditions
-          - href: '/cymraeg'
-            text: Rhestr o Wasanaethau Cymraeg
-          - href: '/government/organisations/government-digital-service'
-            text: Government Digital Service
 
   without_licence_details:
     description: |
