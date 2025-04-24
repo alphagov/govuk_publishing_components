@@ -1,10 +1,6 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/footer/footer";
 
-.gem-c-layout-footer--border {
-  border-top: govuk-spacing(2) solid govuk-colour("blue");
-}
-
 .govuk-footer__list-item {
   display: inline-block;
   width: 99%;
