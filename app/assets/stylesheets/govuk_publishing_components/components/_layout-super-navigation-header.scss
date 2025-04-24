@@ -632,6 +632,22 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
 
+    &:focus-visible {
+      color: govuk-colour("black");
+
+      &::after {
+        background: govuk-colour("black");
+      }
+
+      &:hover {
+        color: govuk-colour("black");
+
+        &::after {
+          background: govuk-colour("black");
+        }
+      }
+    }
+
     @include focus-not-focus-visible {
       &::after {
         background: none;
@@ -659,24 +675,6 @@ $after-button-padding-left: govuk-spacing(4);
     border-color: govuk-colour("white");
     box-shadow: none;
     color: govuk-colour("white");
-  }
-
-  &:focus-visible {
-    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-      color: govuk-colour("black");
-
-      &::after {
-        background: govuk-colour("black");
-      }
-
-      &:hover {
-        color: govuk-colour("black");
-
-        &::after {
-          background: govuk-colour("black");
-        }
-      }
-    }
   }
 
   @include govuk-media-query($from: "desktop") {
