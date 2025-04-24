@@ -677,12 +677,6 @@ $after-button-padding-left: govuk-spacing(4);
     color: govuk-colour("white");
   }
 
-  @include govuk-media-query($from: "desktop") {
-    border: 0;
-    margin: 0;
-    right: 0;
-  }
-
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
