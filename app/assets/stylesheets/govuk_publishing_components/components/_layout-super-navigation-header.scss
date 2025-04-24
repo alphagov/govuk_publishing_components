@@ -663,7 +663,19 @@ $after-button-padding-left: govuk-spacing(4);
 
   &:focus-visible {
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-      border-bottom: $pseudo-underline-height solid govuk-colour("black");
+      color: govuk-colour("black");
+
+      &::after {
+        background: govuk-colour("black");
+      }
+
+      &:hover {
+        color: govuk-colour("black");
+
+        &::after {
+          background: govuk-colour("black");
+        }
+      }
     }
   }
 
@@ -676,17 +688,6 @@ $after-button-padding-left: govuk-spacing(4);
       border-bottom: 1px solid transparent;
       border-left: none;
       position: relative;
-    }
-
-    &:focus-visible {
-      &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-        color: govuk-colour("black");
-
-        &:hover {
-          border-bottom: $pseudo-underline-height solid govuk-colour("black");
-          color: govuk-colour("black");
-        }
-      }
     }
 
     @include focus-and-focus-visible {
