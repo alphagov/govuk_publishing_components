@@ -623,6 +623,26 @@ $after-button-padding-left: govuk-spacing(4);
 
   &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
     background: $govuk-brand-colour;
+
+    &:hover {
+      color: govuk-colour("white");
+
+      &::after {
+        background: govuk-colour("white");
+      }
+    }
+
+    @include focus-not-focus-visible {
+      &::after {
+        background: none;
+      }
+
+      &:hover {
+        &::after {
+          background: govuk-colour("white");
+        }
+      }
+    }
   }
 
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
@@ -656,23 +676,6 @@ $after-button-padding-left: govuk-spacing(4);
       border-bottom: 1px solid transparent;
       border-left: none;
       position: relative;
-    }
-
-    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-      &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("white");
-        color: govuk-colour("white");
-      }
-
-      // stylelint-disable max-nesting-depth
-      @include focus-not-focus-visible {
-        border-bottom: $pseudo-underline-height solid $govuk-brand-colour;
-
-        &:hover {
-          border-bottom: $pseudo-underline-height solid govuk-colour("white");
-        }
-      }
-      // stylelint-enable max-nesting-depth
     }
 
     &:focus-visible {
