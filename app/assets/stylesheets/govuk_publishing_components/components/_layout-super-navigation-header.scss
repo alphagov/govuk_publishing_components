@@ -608,6 +608,7 @@ $after-button-padding-left: govuk-spacing(4);
   padding: govuk-spacing(3);
   position: relative;
   width: 51px;
+  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
   &::after {
     @include pseudo-underline($left: 0, $right: 0);
@@ -619,6 +620,20 @@ $after-button-padding-left: govuk-spacing(4);
     &::after {
       background: govuk-colour("mid-grey");
     }
+  }
+
+  @include focus-and-focus-visible {
+    @include govuk-focused-text;
+    border-color: $govuk-focus-colour;
+    box-shadow: none;
+    z-index: 11;
+  }
+
+  &:focus:not(:focus-visible) {
+    background: none;
+    border-color: govuk-colour("white");
+    box-shadow: none;
+    color: govuk-colour("white");
   }
 
   &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
@@ -659,22 +674,6 @@ $after-button-padding-left: govuk-spacing(4);
         }
       }
     }
-  }
-
-  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
-
-  @include focus-and-focus-visible {
-    @include govuk-focused-text;
-    border-color: $govuk-focus-colour;
-    box-shadow: none;
-    z-index: 11;
-  }
-
-  &:focus:not(:focus-visible) {
-    background: none;
-    border-color: govuk-colour("white");
-    box-shadow: none;
-    color: govuk-colour("white");
   }
 
   // Open button modifier
