@@ -627,18 +627,21 @@ $after-button-padding-left: govuk-spacing(4);
     border-color: $govuk-focus-colour;
     box-shadow: none;
     z-index: 11;
+
+    &:hover {
+      &::after {
+        background: none;
+      }
+    }
   }
 
-  &:focus:not(:focus-visible) {
+  @include focus-not-focus-visible {
     background: none;
-    border-color: govuk-colour("white");
     box-shadow: none;
     color: govuk-colour("white");
   }
 
   &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-    background: $govuk-brand-colour;
-
     &:hover {
       color: govuk-colour("white");
 
