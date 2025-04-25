@@ -683,12 +683,10 @@ $after-button-padding-left: govuk-spacing(4);
   &.gem-c-layout-super-navigation-header__open-button {
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
       &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
         color: govuk-colour("white");
       }
 
       &:focus-visible {
-        border-bottom: $pseudo-underline-height solid govuk-colour("black");
         color: govuk-colour("black");
       }
     }
@@ -702,13 +700,16 @@ $after-button-padding-left: govuk-spacing(4);
 
     @include focus-not-focus-visible {
       background: govuk-colour("light-grey");
-      border-bottom-color: govuk-colour("light-grey");
       color: govuk-colour("light-grey");
       outline: 1px solid govuk-colour("light-grey"); // overlap the border of the nav menu so it won't appear when menu open
 
+      // stylelint-disable max-nesting-depth
       &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
+        &::after {
+          background: none;
+        }
       }
+      // stylelint-enable max-nesting-depth
     }
   }
 }
