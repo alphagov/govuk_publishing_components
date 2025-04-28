@@ -7,10 +7,17 @@
   GOVUK.analyticsGa4.Ga4FinderTracker = {
     // Called when the search results updates. Takes the event target, and a string containing the type of change and element type. Creates the GTM schema and pushes it.
     // changeEventMetadata is a string referring to the type of form change and the element type that triggered it. For example 'update-filter checkbox'.
-    trackChangeEvent: function (event, changeEventMetadata) {
+    trackChangeEvent: function (event) {
       const eventTarget = event.target
+      let changeEventMetadata = eventTarget.closest('[data-ga4-change-category]')
 
+      if (!changeEventMetadata) {
+        return
+      }
+
+      changeEventMetadata = changeEventMetadata.dataset.ga4ChangeCategory
       changeEventMetadata = changeEventMetadata.split(' ')
+
       const filterParent = eventTarget.closest('[data-ga4-filter-parent]')
       const section = eventTarget.closest('[data-ga4-section]')
       const changeType = changeEventMetadata[0]
