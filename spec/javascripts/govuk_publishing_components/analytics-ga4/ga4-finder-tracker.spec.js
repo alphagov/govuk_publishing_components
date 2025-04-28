@@ -30,7 +30,7 @@ describe('GA4 finder change tracker', function () {
       var ga4ChangeCategory = e.target.closest('[data-ga4-change-category]')
       if (ga4ChangeCategory) {
         ga4ChangeCategory = ga4ChangeCategory.getAttribute('data-ga4-change-category')
-        window.GOVUK.analyticsGa4.Ga4FinderTracker.trackChangeEvent(e.target, ga4ChangeCategory)
+        window.GOVUK.analyticsGa4.Ga4FinderTracker.trackChangeEvent(e, ga4ChangeCategory)
       }
     })
 

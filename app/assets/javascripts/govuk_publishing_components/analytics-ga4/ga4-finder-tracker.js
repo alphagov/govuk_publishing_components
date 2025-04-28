@@ -7,7 +7,9 @@
   GOVUK.analyticsGa4.Ga4FinderTracker = {
     // Called when the search results updates. Takes the event target, and a string containing the type of change and element type. Creates the GTM schema and pushes it.
     // changeEventMetadata is a string referring to the type of form change and the element type that triggered it. For example 'update-filter checkbox'.
-    trackChangeEvent: function (eventTarget, changeEventMetadata) {
+    trackChangeEvent: function (event, changeEventMetadata) {
+      const eventTarget = event.target
+
       changeEventMetadata = changeEventMetadata.split(' ')
       const filterParent = eventTarget.closest('[data-ga4-filter-parent]')
       const section = eventTarget.closest('[data-ga4-section]')
@@ -23,7 +25,7 @@
       data.type = 'finder'
       data.event_name = 'select_content'
 
-      const elementInfo = this.getElementInfo(eventTarget, elementType, section)
+      const elementInfo = this.getElementInfo(event, elementType)
       if (!elementInfo) {
         return
       }
@@ -39,10 +41,12 @@
     },
 
     // Grabs the value from the eventTarget. Checks if the filter was removed if the eventTarget is unchecked, set back to default, or has its user input removed. Returns the results as an object.
-    getElementInfo: function (eventTarget, elementType, section) {
+    getElementInfo: function (event, elementType) {
       let elementValue = ''
       let defaultValue
       let wasFilterRemoved = false
+
+      const eventTarget = event.target
 
       switch (elementType) {
         case 'checkbox': {
@@ -60,7 +64,7 @@
 
           // The "value" we need for a radio is the label text that the user sees beside the checkbox.
           elementValue = document.querySelector("label[for='" + radioId + "']").textContent
-          defaultValue = section.querySelector('input[type=radio]:first-of-type')
+          defaultValue = eventTarget.closest('[data-ga4-section]').querySelector('input[type=radio]:first-of-type')
 
           if (eventTarget.id === defaultValue.id) {
             // Radio elements being reverted to their first option (i.e. their default value) count as a "removed filter".
