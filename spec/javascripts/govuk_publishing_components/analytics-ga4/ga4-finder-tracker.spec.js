@@ -30,7 +30,7 @@ describe('GA4 finder change tracker', function () {
       var ga4ChangeCategory = e.target.closest('[data-ga4-change-category]')
       if (ga4ChangeCategory) {
         ga4ChangeCategory = ga4ChangeCategory.getAttribute('data-ga4-change-category')
-        window.GOVUK.analyticsGa4.Ga4FinderTracker.trackChangeEvent(e.target, ga4ChangeCategory)
+        window.GOVUK.analyticsGa4.Ga4FinderTracker.trackChangeEvent(e, ga4ChangeCategory)
       }
     })
 
@@ -50,6 +50,76 @@ describe('GA4 finder change tracker', function () {
 
   afterAll(function () {
     window.dataLayer = []
+  })
+
+  it('creates the correct GA4 object for an additionally specified element', function () {
+    // for a custom component that
+    // modifies a native element on
+    // user interaction
+
+    window.GOVUK.analyticsGa4.Ga4FinderTracker.extraSupportedElements = {
+      'select-multiple': function (eventTarget, event) {
+        var eventValue = event.detail.value
+        var elementValue = eventTarget.querySelector(`option[value="${eventValue}"]`).text
+        var selectedEventOption = eventTarget.querySelector(`option[value="${eventValue}"]:checked`)
+
+        return {
+          elementValue: elementValue,
+          wasFilterRemoved: !selectedEventOption
+        }
+      }
+    }
+
+    var index = { index_section: 1, index_section_count: 1 }
+
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-filter-parent', '')
+    inputParent.setAttribute('data-ga4-change-category', 'update-filter select-multiple')
+    inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
+
+    input = document.createElement('select')
+    input.setAttribute('multiple', 'true')
+    input.innerHTML = `
+      <option value="1">1</option>
+      <option value="2">2</option>
+    `
+
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change', { detail: { value: '1' } })
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.text = '1'
+    expected.event_data.action = 'remove'
+    expected.event_data.index.index_section = '1'
+    expected.event_data.index.index_section_count = '1'
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('creates the correct GA4 object for a search box keyword update with specified type', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
+    inputParent.setAttribute('data-ga4-filter-type', 'different-type')
+
+    input = document.createElement('input')
+    input.setAttribute('type', 'search')
+    input.value = 'Hello world my postcode is SW1A 0AA. My email is email@example.com'
+
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.event_name = 'search'
+    expected.event_data.url = window.location.pathname
+    expected.event_data.text = 'hello world my postcode is [postcode]. my email is [email]'
+    expected.event_data.section = 'Search'
+    expected.event_data.action = 'search'
+    expected.event_data.type = 'different-type'
+
+    expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('creates the correct GA4 object for a search box keyword update', function () {
