@@ -53,5 +53,19 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TableHelper do
         expect(table).to match("<table class=\"gem-c-table govuk-table\">")
       end
     end
+
+    it "can be given a custom width on headers" do
+      table = described_class.helper(view_context, "A pretty table") do |builder|
+        view_context.concat(builder.head do
+          view_context.concat builder.header("Hello", width: "one-third")
+          view_context.concat builder.header("Hallo", width: "two-millionths")
+        end)
+      end
+
+      # Valid with is added
+      expect(table).to match(/<th class="govuk-table__header govuk-!-width-one-third" scope="col">Hello<\/th>/)
+      # Invalid with is ignored
+      expect(table).to match(/<th class="govuk-table__header" scope="col">Hallo<\/th>/)
+    end
   end
 end

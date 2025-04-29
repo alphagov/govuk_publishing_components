@@ -20,6 +20,14 @@ module GovukPublishingComponents
       end
 
       class TableBuilder
+        ALLOWABLE_COLUMN_WIDTHS = %w[
+          three-quarters
+          two-thirds
+          one-half
+          one-third
+          one-quarter
+        ].freeze
+
         include ActionView::Helpers::UrlHelper
         include ActionView::Helpers::TagHelper
 
@@ -53,6 +61,7 @@ module GovukPublishingComponents
           classes = %w[govuk-table__header]
           classes << "govuk-table__header--#{opt[:format]}" if opt[:format]
           classes << "govuk-table__header--active" if opt[:sort_direction]
+          classes << "govuk-!-width-#{opt[:width]}" if ALLOWABLE_COLUMN_WIDTHS.include?(opt[:width])
           link_classes = %w[app-table__sort-link]
           link_classes << "app-table__sort-link--#{opt[:sort_direction]}" if opt[:sort_direction]
           str = link_to str, opt[:href], class: link_classes, data: opt[:data_attributes] if opt[:href]
