@@ -41,10 +41,7 @@
       const wasFilterRemoved = elementInfo.wasFilterRemoved
       data = this.setSchemaBasedOnChangeType(data, elementValue, elementType, wasFilterRemoved, changeType, section, filterParent)
 
-      const schemas = new window.GOVUK.analyticsGa4.Schemas()
-      const schema = schemas.mergeProperties(data, 'event_data')
-
-      window.GOVUK.analyticsGa4.core.sendData(schema)
+      window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
     },
 
     // Grabs the value from the eventTarget. Checks if the filter was removed if the eventTarget is unchecked, set back to default, or has its user input removed. Returns the results as an object.
