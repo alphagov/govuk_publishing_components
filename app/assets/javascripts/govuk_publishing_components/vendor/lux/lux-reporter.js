@@ -22,10 +22,8 @@
 (function () {
   'use strict';
 
-  function floor(x) {
-    return Math.floor(x);
-  }
   var max = Math.max;
+  var floor = Math.floor;
   var round = Math.round;
   /**
   * Clamp a number so that it is never less than 0
@@ -263,6 +261,7 @@
     // PostBeaconDisabled: 88, // Not used
     PostBeaconSendFailed: 89,
     PostBeaconCSPViolation: 90,
+    PostBeaconCollector: 91,
   };
   var Logger = /** @class */ (function () {
     function Logger() {
@@ -337,7 +336,7 @@
     return str;
   }
 
-  var VERSION = "4.0.32";
+  var VERSION = "4.1.1";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -390,6 +389,7 @@
       this.sendRetries = 0;
       this.maxMeasureTimeout = 0;
       this.flags = 0;
+      this.metricCollectors = {};
       this.onBeforeSendCbs = [];
       this.startTime = opts.startTime || getZeroTime();
       this.config = opts.config;
@@ -397,7 +397,6 @@
       this.customerId = opts.customerId;
       this.sessionId = opts.sessionId;
       this.pageId = opts.pageId;
-      this.metricData = {};
       this.maxMeasureTimeout = window.setTimeout(function () {
         _this.logger.logEvent(LogEvent.PostBeaconTimeoutReached);
         _this.stopRecording();
@@ -440,18 +439,11 @@
       this.isRecording = false;
       this.logger.logEvent(LogEvent.PostBeaconStopRecording);
     };
-    Beacon.prototype.setMetricData = function (metric, data) {
-      if (!this.isRecording) {
-        this.logger.logEvent(LogEvent.PostBeaconMetricRejected, [metric]);
-        return;
-      }
-      this.metricData[metric] = data;
+    Beacon.prototype.addCollector = function (metric, collector) {
+      this.metricCollectors[metric] = collector;
     };
     Beacon.prototype.addFlag = function (flag) {
       this.flags = addFlag(this.flags, flag);
-    };
-    Beacon.prototype.hasMetricData = function () {
-      return Object.keys(this.metricData).length > 0;
     };
     Beacon.prototype.beaconUrl = function () {
       return this.config.beaconUrlV2;
@@ -468,7 +460,16 @@
       if (!this.isBeingSampled()) {
         return;
       }
-      if (!this.hasMetricData() && !this.config.allowEmptyPostBeacon) {
+      var collectionStart = now();
+      var metricData = {};
+      for (var metric in this.metricCollectors) {
+        var data = this.metricCollectors[metric]();
+        this.logger.logEvent(LogEvent.PostBeaconCollector, [metric, !!data]);
+        if (data) {
+          metricData[metric] = data;
+        }
+      }
+      if (!Object.keys(metricData).length && !this.config.allowEmptyPostBeacon) {
         // TODO: This is only required while the new beacon is supplementary. Once it's the primary
         // beacon, we should send it regardless of how much metric data it has.
         this.logger.logEvent(LogEvent.PostBeaconCancelled);
@@ -485,11 +486,12 @@
         customerId: this.customerId,
         flags: this.flags,
         measureDuration: msSincePageInit(),
+        collectionDuration: now() - collectionStart,
         pageId: this.pageId,
         scriptVersion: VERSION,
         sessionId: this.sessionId,
         startTime: this.startTime,
-      }, this.metricData);
+      }, metricData);
       try {
         if (sendBeacon(beaconUrl, JSON.stringify(payload))) {
           this.isSent = true;
@@ -505,6 +507,14 @@
     };
     return Beacon;
   }());
+  var BeaconMetricKey;
+  (function (BeaconMetricKey) {
+    BeaconMetricKey["CLS"] = "cls";
+    BeaconMetricKey["INP"] = "inp";
+    BeaconMetricKey["LCP"] = "lcp";
+    BeaconMetricKey["LoAF"] = "loaf";
+    BeaconMetricKey["NavigationTiming"] = "navigationTiming";
+  })(BeaconMetricKey || (BeaconMetricKey = {}));
 
   function onPageLoad(callback) {
     if (document.readyState === "complete") {
@@ -631,36 +641,36 @@
     try {
       if (selector &&
         (node.nodeType === 9 || selector.length > MAX_SELECTOR_LENGTH || !node.parentNode)) {
-          // Final selector.
-          return selector;
+        // Final selector.
+        return selector;
+      }
+      var el = node;
+      // Our first preference is to use the data-sctrack attribute from anywhere in the tree
+      var trackId = getClosestScTrackAttribute(el);
+      if (trackId) {
+        return trackId;
+      }
+      if (el.id) {
+        // Once we've found an element with ID we return the selector.
+        return "#" + el.id + (selector ? ">" + selector : "");
+      }
+      else if (el) {
+        // Otherwise attempt to get parent elements recursively
+        var name_1 = el.nodeType === 1 ? el.nodeName.toLowerCase() : el.nodeName.toUpperCase();
+        var classes = el.className ? "." + el.className.replace(/\s+/g, ".") : "";
+        // Remove classes until the selector is short enough
+        while ((name_1 + classes).length > MAX_SELECTOR_LENGTH) {
+          classes = classes.split(".").slice(0, -1).join(".");
         }
-        var el = node;
-        // Our first preference is to use the data-sctrack attribute from anywhere in the tree
-        var trackId = getClosestScTrackAttribute(el);
-        if (trackId) {
-          return trackId;
-        }
-        if (el.id) {
-          // Once we've found an element with ID we return the selector.
-          return "#" + el.id + (selector ? ">" + selector : "");
-        }
-        else if (el) {
-          // Otherwise attempt to get parent elements recursively
-          var name_1 = el.nodeType === 1 ? el.nodeName.toLowerCase() : el.nodeName.toUpperCase();
-          var classes = el.className ? "." + el.className.replace(/\s+/g, ".") : "";
-          // Remove classes until the selector is short enough
-          while ((name_1 + classes).length > MAX_SELECTOR_LENGTH) {
-            classes = classes.split(".").slice(0, -1).join(".");
+        var currentSelector = name_1 + classes + (selector ? ">" + selector : "");
+        if (el.parentNode) {
+          var selectorWithParent = getNodeSelector(el.parentNode, currentSelector);
+          if (selectorWithParent.length < MAX_SELECTOR_LENGTH) {
+            return selectorWithParent;
           }
-          var currentSelector = name_1 + classes + (selector ? ">" + selector : "");
-          if (el.parentNode) {
-            var selectorWithParent = getNodeSelector(el.parentNode, currentSelector);
-            if (selectorWithParent.length < MAX_SELECTOR_LENGTH) {
-              return selectorWithParent;
-            }
-          }
-          return currentSelector;
         }
+        return currentSelector;
+      }
     }
     catch (error) {
       // Do nothing.
@@ -680,13 +690,9 @@
   */
   function getTrackingParams() {
     var trackingParams = {};
-    if (location.search && URLSearchParams) {
+    if (location.search && typeof URLSearchParams === "function") {
       var p = new URLSearchParams(location.search);
-      for (
-        var _i = 0, KNOWN_TRACKING_PARAMS_1 = KNOWN_TRACKING_PARAMS;
-        _i < KNOWN_TRACKING_PARAMS_1.length;
-        _i++
-      ) {
+      for (var _i = 0, KNOWN_TRACKING_PARAMS_1 = KNOWN_TRACKING_PARAMS; _i < KNOWN_TRACKING_PARAMS_1.length; _i++) {
         var key = KNOWN_TRACKING_PARAMS_1[_i];
         var value = p.get(key);
         if (value) {
@@ -703,7 +709,7 @@
   var largestEntry;
   var maximumSessionValue = 0;
   var MAX_CLS_SOURCES = 50;
-  function processEntry$2(entry) {
+  function processEntry$3(entry) {
     if (!entry.hadRecentInput) {
       var firstEntry = sessionEntries[0];
       var latestEntry = sessionEntries[sessionEntries.length - 1];
@@ -736,13 +742,13 @@
       maximumSessionValue = max(maximumSessionValue, sessionValue);
     }
   }
-  function reset$2() {
+  function reset$3() {
     sessionValue = 0;
     sessionEntries = [];
     maximumSessionValue = 0;
     largestEntry = undefined;
   }
-  function getData$2() {
+  function getData$3() {
     return {
       value: maximumSessionValue,
       startTime: sessionEntries[0] ? processTimeMetric(sessionEntries[0].startTime) : null,
@@ -756,12 +762,121 @@
     };
   }
 
+  /******************************************************************************
+  Copyright (c) Microsoft Corporation.
+
+  Permission to use, copy, modify, and/or distribute this software for any
+  purpose with or without fee is hereby granted.
+
+  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+  REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  PERFORMANCE OF THIS SOFTWARE.
+  ***************************************************************************** */
+  /* global Reflect, Promise, SuppressedError, Symbol, Iterator */
+
+
+  var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+      for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+      return t;
+    };
+    return __assign.apply(this, arguments);
+  };
+
+  typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+  };
+
+  var MAX_LOAF_ENTRIES = 50;
+  var MAX_LOAF_SCRIPTS = 50;
+  var entries = [];
+  function processEntry$2(entry) {
+    entries.push(entry);
+  }
+  function reset$2() {
+    entries = [];
+  }
+  function getEntries$1() {
+    return entries;
+  }
+  function getData$2() {
+    var summarizedEntries = [];
+    var totalDuration = 0;
+    var totalBlockingDuration = 0;
+    var totalStyleAndLayoutDuration = 0;
+    var totalWorkDuration = 0;
+    entries.forEach(function (entry) {
+      var startTime = entry.startTime, blockingDuration = entry.blockingDuration, duration = entry.duration, renderStart = entry.renderStart, styleAndLayoutStart = entry.styleAndLayoutStart;
+      totalDuration += duration;
+      totalBlockingDuration += blockingDuration;
+      totalStyleAndLayoutDuration += styleAndLayoutStart
+      ? clamp(startTime + duration - styleAndLayoutStart)
+      : 0;
+      totalWorkDuration += renderStart ? renderStart - startTime : duration;
+      summarizedEntries.push({
+        startTime: floor(startTime),
+        duration: floor(duration),
+        renderStart: floor(renderStart),
+        styleAndLayoutStart: floor(styleAndLayoutStart),
+        blockingDuration: floor(blockingDuration),
+      });
+    });
+    return {
+      totalBlockingDuration: floor(totalBlockingDuration),
+      totalDuration: floor(totalDuration),
+      totalEntries: entries.length,
+      totalStyleAndLayoutDuration: floor(totalStyleAndLayoutDuration),
+      totalWorkDuration: floor(totalWorkDuration),
+      entries: summarizedEntries.slice(0, MAX_LOAF_ENTRIES),
+      scripts: summarizeLoAFScripts(entries.flatMap(function (entry) { return entry.scripts; })).slice(0, MAX_LOAF_SCRIPTS),
+    };
+  }
+  function summarizeLoAFScripts(scripts) {
+    var summary = {};
+    scripts.forEach(function (script) {
+      var key = script.invoker + ":" + script.sourceURL + ":" + script.sourceFunctionName;
+      if (!summary[key]) {
+        summary[key] = {
+          sourceUrl: script.sourceURL,
+          sourceFunctionName: script.sourceFunctionName,
+          timings: [],
+          totalEntries: 0,
+          totalDuration: 0,
+          totalPauseDuration: 0,
+          totalForcedStyleAndLayoutDuration: 0,
+          invoker: script.invoker,
+          inpPhase: script.inpPhase,
+        };
+      }
+      summary[key].totalEntries++;
+      summary[key].totalDuration += script.duration;
+      summary[key].totalPauseDuration += script.pauseDuration;
+      summary[key].totalForcedStyleAndLayoutDuration += script.forcedStyleAndLayoutDuration;
+      summary[key].timings.push([floor(script.startTime), floor(script.duration)]);
+    });
+    return Object.values(summary).map(function (script) { return (__assign(__assign({}, script), { totalDuration: floor(script.totalDuration), totalPauseDuration: floor(script.totalPauseDuration), totalForcedStyleAndLayoutDuration: floor(script.totalForcedStyleAndLayoutDuration) })); });
+  }
+
   /**
   * This implementation is based on the web-vitals implementation, however it is stripped back to the
   * bare minimum required to measure just the INP value and does not store the actual event entries.
   */
   // The maximum number of interactions to store
   var MAX_INTERACTIONS = 10;
+  var INPPhase;
+  (function (INPPhase) {
+    INPPhase["InputDelay"] = "ID";
+    INPPhase["ProcessingTime"] = "PT";
+    INPPhase["PresentationDelay"] = "PD";
+  })(INPPhase || (INPPhase = {}));
   // A list of the slowest interactions
   var slowestEntries = [];
   // A map of the slowest interactions by ID
@@ -838,20 +953,50 @@
     if (!interaction) {
       return undefined;
     }
+    var duration = interaction.duration, startTime = interaction.startTime, processingStart = interaction.processingStart;
+    var inpScripts = getEntries$1()
+    .flatMap(function (entry) { return entry.scripts; })
+    // Only include scripts that started during the interaction
+    .filter(function (script) {
+      return script.startTime + script.duration >= startTime && script.startTime <= startTime + duration;
+    })
+    .map(function (_script) {
+      var script = JSON.parse(JSON.stringify(_script));
+      // Clamp the script duration to the time of the interaction
+      script.duration = script.startTime + script.duration - max(startTime, script.startTime);
+      script.inpPhase = getINPPhase(script, interaction);
+      return script;
+    });
+    var loafScripts = summarizeLoAFScripts(inpScripts);
     return {
       value: interaction.duration,
-      startTime: processTimeMetric(interaction.startTime),
+      startTime: processTimeMetric(startTime),
+      duration: interaction.duration,
       subParts: {
-        inputDelay: clamp(floor(interaction.processingStart - interaction.startTime)),
+        inputDelay: clamp(floor(processingStart - startTime)),
+        processingStart: processTimeMetric(processingStart),
+        processingEnd: processTimeMetric(interaction.processingEnd),
         processingTime: clamp(floor(interaction.processingTime)),
-        presentationDelay: clamp(floor(interaction.startTime + interaction.duration - interaction.processingEnd)),
+        presentationDelay: clamp(floor(startTime + interaction.duration - interaction.processingEnd)),
       },
       attribution: {
         eventType: interaction.name,
         elementSelector: interaction.selector || null,
         elementType: ((_a = interaction.target) === null || _a === void 0 ? void 0 : _a.nodeName) || null,
+        loafScripts: loafScripts,
       },
     };
+  }
+  function getINPPhase(script, interaction) {
+    var processingStart = interaction.processingStart, processingTime = interaction.processingTime, startTime = interaction.startTime;
+    var inputDelay = processingStart - startTime;
+    if (script.startTime < startTime + inputDelay) {
+      return INPPhase.InputDelay;
+    }
+    else if (script.startTime >= startTime + inputDelay + processingTime) {
+      return INPPhase.PresentationDelay;
+    }
+    return INPPhase.ProcessingTime;
   }
   function getInteractionCount() {
     if ("interactionCount" in performance) {
@@ -1103,24 +1248,29 @@
       observe("longtask", processAndLogEntry);
       observe("element", processAndLogEntry);
       observe("paint", processAndLogEntry);
-      observe("largest-contentful-paint", function (entry) {
+      if (observe("largest-contentful-paint", function (entry) {
         // Process the LCP entry for the legacy beacon
         processAndLogEntry(entry);
         // Process the LCP entry for the new beacon
         processEntry(entry);
-        beacon.setMetricData("lcp", getData());
-      });
-      observe("layout-shift", function (entry) {
-        processEntry$2(entry);
-        beacon.setMetricData("cls", getData$2());
+      })) {
+        beacon.addCollector(BeaconMetricKey.LCP, getData);
+      }
+      if (observe("layout-shift", function (entry) {
+        processEntry$3(entry);
         logEntry(entry);
-      });
+      })) {
+        beacon.addCollector(BeaconMetricKey.CLS, getData$3);
+      }
+      if (observe("long-animation-frame", function (entry) {
+        processEntry$2(entry);
+        logEntry(entry);
+      })) {
+        beacon.addCollector(BeaconMetricKey.LoAF, getData$2);
+      }
       var handleINPEntry_1 = function (entry) {
         processEntry$1(entry);
-        var data = getData$1();
-        if (data) {
-          beacon.setMetricData("inp", data);
-        }
+        logEntry(entry);
       };
       observe("first-input", function (entry) {
         logEntry(entry);
@@ -1134,7 +1284,7 @@
       // TODO: Set durationThreshold to 40 once performance.interactionCount is widely supported.
       // Right now we have to count every event to get the total interaction count so that we can
       // estimate a high percentile value for INP.
-      observe("event", function (entry) {
+      if (observe("event", function (entry) {
         handleINPEntry_1(entry);
         // It's useful to log the interactionId, but it is not serialised by default. Annoyingly, we
         // need to manually serialize our own object with the keys we want.
@@ -1147,7 +1297,9 @@
           processingStart: entry.processingStart,
           processingEnd: entry.processingEnd,
         });
-      }, { durationThreshold: 0 });
+      }, { durationThreshold: 0 })) {
+        beacon.addCollector(BeaconMetricKey.INP, getData$1);
+      }
     }
     catch (e) {
       logger.logEvent(LogEvent.PerformanceObserverError, [e]);
@@ -1571,7 +1723,7 @@
       if (!("LayoutShift" in self)) {
         return undefined;
       }
-      var clsData = getData$2();
+      var clsData = getData$3();
       return clsData.value.toFixed(6);
     }
     // Return the median value from an array of integers.
@@ -1714,8 +1866,9 @@
       gSyncId = createSyncId();
       gUid = refreshUniqueId(gSyncId);
       reset();
-      reset$2();
+      reset$3();
       reset$1();
+      reset$2();
       nErrors = 0;
       gFirstInputDelay = undefined;
       beacon = initPostBeacon();
@@ -2121,7 +2274,8 @@
           curleft += el.offsetLeft;
           curtop += el.offsetTop;
           el = el.offsetParent;
-        } catch (e) {
+        }
+        catch (e) {
           // If we get an exception, just return the current values.
           return [curleft, curtop];
         }
@@ -2199,10 +2353,7 @@
       // Store any tracking parameters as custom data
       var trackingParams = getTrackingParams();
       for (var key in trackingParams) {
-        logger.logEvent(LogEvent.TrackingParamAdded, [
-          key,
-          trackingParams[key],
-        ]);
+        logger.logEvent(LogEvent.TrackingParamAdded, [key, trackingParams[key]]);
         addCustomDataValue("_" + key, trackingParams[key]);
       }
       var sIx = "";
