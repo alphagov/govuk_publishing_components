@@ -40,7 +40,7 @@ The flow of the tracker is:
 
     c. Tag each element of the form that can trigger a `change` event with a `data-ga4-change-category`. This will contain some metadata about what the change is. The current categories are: `update-filter`, `update-sort`, `clear-all-filters` and `update-keyword`. As well as this, add the type of element that the filter is (further details on what types are tracked is documented below.) This assists with our tracker extracting the value of the filter. For example, a `<select>` element that updates a filter would have `data-ga4-change-category="update-filter select"`. A search box would have `data-ga4-change-category="update-keyword text"`.
 
-2. In the finder's JavaScript code, find where it updates your search results, and call `Ga4FinderTracker.trackChangeEvent()`. Pass through the `event.target` of the element that triggered the change. Also grab and pass through the `data-ga4-change-category` that was set on the event target or its parent.
+2. In the finder's JavaScript code, find where it updates your search results, and call `Ga4FinderTracker.trackChangeEvent()`. Pass through the `event` of the element that triggered the change.
 
 3. The `ga4-finder-tracker` will then grab the "value" of the event target, using the metadata passed through to help categorise what type of element the change came from. The value in this case is the name of the filter that was set, the keyword that was input. For filters, it will also determine whether the change was the filter being "added" or "removed".
 For example if the event target is a checkbox, `<input type="checkbox" data-ga4-change-category="update-filter checkbox">`, and it is `checked`, then we know the filter was added. If it isn't `checked`, we know the filter was removed.
@@ -84,6 +84,23 @@ The search value is sanitised with PII removal, + characters converted to spaces
 ### Clear all filters button
 
 On mobile, there is a "Clear all filters" button. This triggers a `change` event on the whole `<form>` element when clicked. Therefore, we have added `data-ga4-change-category="clear-all-filters"` on the parent `<form>` in our finders. The value pushed to GTM is hard coded in `Ga4FinderTracker` as "Clear all filters", so an element type is not passed through to `data-ga4-change-category` as we don't need to do any value extraction.
+
+### Extending element types
+
+To add additional element types that are not present in `govuk_publishing_components`, you can assign an object to `Ga4FinderTracker.extraSupportedElements` in the following format:
+
+```JavaScript
+{
+    `elementType`: function (eventTarget, event) {
+        return {
+            elementValue: string,
+            wasFilterRemoved: boolean,
+        }
+    }
+}
+```
+
+`extraSupportedElements` will be merged with `defaultSupportedElements`. This element type will then be used if `data-ga4-change-category` is assigned a value of `change-category elementType`.
 
 ## Example GTM Objects
 
