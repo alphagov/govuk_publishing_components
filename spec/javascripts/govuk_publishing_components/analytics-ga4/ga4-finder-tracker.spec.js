@@ -98,94 +98,66 @@ describe('GA4 finder change tracker', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('creates the correct GA4 object for a search box keyword update with specified type', function () {
-    inputParent = document.createElement('div')
-    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
-    inputParent.setAttribute('data-ga4-filter-type', 'different-type')
+  describe('for a search box keyword update', function () {
+    beforeEach(function () {
+      inputParent = document.createElement('div')
+      inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
 
-    input = document.createElement('input')
-    input.setAttribute('type', 'search')
-    input.value = 'Hello world my postcode is SW1A 0AA. My email is email@example.com'
+      input = document.createElement('input')
+      input.setAttribute('type', 'search')
+      input.value = 'Hello world my postcode is SW1A 0AA. My email is email@example.com'
 
-    inputParent.appendChild(input)
-    form.appendChild(inputParent)
+      inputParent.appendChild(input)
+      form.appendChild(inputParent)
 
-    window.GOVUK.triggerEvent(input, 'change')
+      expected.event_data.event_name = 'search'
+      expected.event_data.url = window.location.pathname
+      expected.event_data.section = 'Search'
+      expected.event_data.action = 'search'
+      expected.event_data.type = 'finder'
+    })
 
-    expected.event_data.event_name = 'search'
-    expected.event_data.url = window.location.pathname
-    expected.event_data.text = 'hello world my postcode is [postcode]. my email is [email]'
-    expected.event_data.section = 'Search'
-    expected.event_data.action = 'search'
-    expected.event_data.type = 'different-type'
+    it('creates the correct GA4 object if a specified type', function () {
+      input.value = 'Hello world my postcode is SW1A 0AA. My email is email@example.com'
+      inputParent.setAttribute('data-ga4-filter-type', 'different-type')
 
-    expect(window.dataLayer[0]).toEqual(expected)
-  })
+      window.GOVUK.triggerEvent(input, 'change')
 
-  it('creates the correct GA4 object for a search box keyword update', function () {
-    inputParent = document.createElement('div')
-    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
+      expected.event_data.text = 'hello world my postcode is [postcode]. my email is [email]'
+      expected.event_data.type = 'different-type'
 
-    input = document.createElement('input')
-    input.setAttribute('type', 'search')
-    input.value = 'Hello world my postcode is SW1A 0AA. My email is email@example.com'
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
 
-    inputParent.appendChild(input)
-    form.appendChild(inputParent)
+    it('creates the correct GA4 object', function () {
+      input.value = 'Hello world my postcode is SW1A 0AA. My email is email@example.com'
 
-    window.GOVUK.triggerEvent(input, 'change')
+      window.GOVUK.triggerEvent(input, 'change')
 
-    expected.event_data.event_name = 'search'
-    expected.event_data.url = window.location.pathname
-    expected.event_data.text = 'hello world my postcode is [postcode]. my email is [email]'
-    expected.event_data.section = 'Search'
-    expected.event_data.action = 'search'
+      expected.event_data.text = 'hello world my postcode is [postcode]. my email is [email]'
 
-    expect(window.dataLayer[0]).toEqual(expected)
-  })
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
 
-  it('trims extra spaces and converts downcases characters on a search box keyword update', function () {
-    inputParent = document.createElement('div')
-    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
+    it('trims extra spaces and converts downcases characters', function () {
+      input.value = ' I    have a lot of   SPACES   in a lot of PLACES         \n \r'
 
-    input = document.createElement('input')
-    input.setAttribute('type', 'search')
-    input.value = ' I    have a lot of   SPACES   in a lot of PLACES         \n \r'
+      window.GOVUK.triggerEvent(input, 'change')
 
-    inputParent.appendChild(input)
-    form.appendChild(inputParent)
+      expected.event_data.text = 'i have a lot of spaces in a lot of places'
 
-    window.GOVUK.triggerEvent(input, 'change')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
 
-    expected.event_data.event_name = 'search'
-    expected.event_data.url = window.location.pathname
-    expected.event_data.text = 'i have a lot of spaces in a lot of places'
-    expected.event_data.section = 'Search'
-    expected.event_data.action = 'search'
+    it('replaces + characters with spaces', function () {
+      input.value = 'i+have%2Bspaces+in+places'
 
-    expect(window.dataLayer[0]).toEqual(expected)
-  })
+      window.GOVUK.triggerEvent(input, 'change')
 
-  it('replaces + characters with spaces on a search box keyword update', function () {
-    inputParent = document.createElement('div')
-    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
+      expected.event_data.text = 'i have spaces in places'
 
-    input = document.createElement('input')
-    input.setAttribute('type', 'search')
-    input.value = 'i+have%2Bspaces+in+places'
-
-    inputParent.appendChild(input)
-    form.appendChild(inputParent)
-
-    window.GOVUK.triggerEvent(input, 'change')
-
-    expected.event_data.event_name = 'search'
-    expected.event_data.url = window.location.pathname
-    expected.event_data.text = 'i have spaces in places'
-    expected.event_data.section = 'Search'
-    expected.event_data.action = 'search'
-
-    expect(window.dataLayer[0]).toEqual(expected)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 
   it('creates the correct GA4 object for adding/removing a checkbox filter', function () {
