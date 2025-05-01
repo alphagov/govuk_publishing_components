@@ -411,16 +411,18 @@ $after-button-padding-left: govuk-spacing(4);
     @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right);
   }
 
-  &:hover {
-    color: govuk-colour("mid-grey");
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: govuk-colour("mid-grey");
 
-    &::after {
-      background: govuk-colour("mid-grey");
-    }
+      &::after {
+        background: govuk-colour("mid-grey");
+      }
 
-    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      &::before {
-        border-color: govuk-colour("mid-grey");
+      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+        &::before {
+          border-color: govuk-colour("mid-grey");
+        }
       }
     }
   }
@@ -456,9 +458,11 @@ $after-button-padding-left: govuk-spacing(4);
 
     box-shadow: none;
 
-    &:hover {
-      &::after {
-        background-color: govuk-colour("black");
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background-color: govuk-colour("black");
+        }
       }
     }
 
@@ -482,17 +486,19 @@ $after-button-padding-left: govuk-spacing(4);
     color: govuk-colour("white");
 
     // stylelint-disable max-nesting-depth
-    &:hover {
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("mid-grey");
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("mid-grey");
 
-        &::before {
-          @include chevron(govuk-colour("mid-grey"), true);
+          &::before {
+            @include chevron(govuk-colour("mid-grey"), true);
+          }
         }
-      }
 
-      &::after {
-        background: govuk-colour("mid-grey");
+        &::after {
+          background: govuk-colour("mid-grey");
+        }
       }
     }
 
@@ -568,16 +574,18 @@ $after-button-padding-left: govuk-spacing(4);
 // JS available - targets the "Menu" toggle button used on a blue background
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
   @include focus-not-focus-visible {
-    &:hover {
-      &::after {
-        background: govuk-colour("white");
-      }
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background: govuk-colour("white");
+        }
 
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("white");
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("white");
 
-        &::before {
-          border-color: govuk-colour("white");
+          &::before {
+            border-color: govuk-colour("white");
+          }
         }
       }
     }
@@ -614,11 +622,13 @@ $after-button-padding-left: govuk-spacing(4);
     @include pseudo-underline($left: 0, $right: 0);
   }
 
-  &:hover {
-    color: govuk-colour("mid-grey");
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: govuk-colour("mid-grey");
 
-    &::after {
-      background: govuk-colour("mid-grey");
+      &::after {
+        background: govuk-colour("mid-grey");
+      }
     }
   }
 
@@ -628,9 +638,11 @@ $after-button-padding-left: govuk-spacing(4);
     box-shadow: none;
     z-index: 11;
 
-    &:hover {
-      &::after {
-        background: none;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background: none;
+        }
       }
     }
   }
@@ -642,11 +654,13 @@ $after-button-padding-left: govuk-spacing(4);
   }
 
   &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-    &:hover {
-      color: govuk-colour("white");
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: govuk-colour("white");
 
-      &::after {
-        background: govuk-colour("white");
+        &::after {
+          background: govuk-colour("white");
+        }
       }
     }
 
@@ -657,11 +671,13 @@ $after-button-padding-left: govuk-spacing(4);
         background: govuk-colour("black");
       }
 
-      &:hover {
-        color: govuk-colour("black");
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: govuk-colour("black");
 
-        &::after {
-          background: govuk-colour("black");
+          &::after {
+            background: govuk-colour("black");
+          }
         }
       }
     }
@@ -671,9 +687,11 @@ $after-button-padding-left: govuk-spacing(4);
         background: none;
       }
 
-      &:hover {
-        &::after {
-          background: govuk-colour("white");
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          &::after {
+            background: govuk-colour("white");
+          }
         }
       }
     }
@@ -682,8 +700,10 @@ $after-button-padding-left: govuk-spacing(4);
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-      &:hover {
-        color: govuk-colour("white");
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: govuk-colour("white");
+        }
       }
 
       &:focus-visible {
@@ -704,9 +724,11 @@ $after-button-padding-left: govuk-spacing(4);
       outline: 1px solid govuk-colour("light-grey"); // overlap the border of the nav menu so it won't appear when menu open
 
       // stylelint-disable max-nesting-depth
-      &:hover {
-        &::after {
-          background: none;
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          &::after {
+            background: none;
+          }
         }
       }
       // stylelint-enable max-nesting-depth
