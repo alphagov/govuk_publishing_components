@@ -9,6 +9,7 @@
 //= require ./analytics-ga4/ga4-link-tracker
 //= require ./analytics-ga4/ga4-event-tracker
 //= require ./analytics-ga4/ga4-ecommerce-tracker
+//= require ./analytics-ga4/ga4-finder-tracker
 //= require ./analytics-ga4/ga4-form-tracker
 //= require ./analytics-ga4/ga4-auto-tracker
 //= require ./analytics-ga4/ga4-smart-answer-results-tracker
