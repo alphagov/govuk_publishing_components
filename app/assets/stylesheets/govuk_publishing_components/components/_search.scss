@@ -182,28 +182,17 @@ $large-input-size: 50px;
   }
 
   .gem-c-search__submit {
-    background-color: govuk-colour("black");
-    color: govuk-colour("white");
+    background-color: govuk-tint(govuk-colour("blue"), 80%);
+    color: govuk-colour("blue");
 
     &:hover {
-      background-color: lighten(govuk-colour("black"), 5%);
+      background-color: govuk-tint(govuk-colour("blue"), 95%);
     }
   }
 
   .govuk-frontend-supported & {
     .gem-c-search__label {
       color: $govuk-secondary-text-colour;
-    }
-  }
-}
-
-.gem-c-search--homepage {
-  .gem-c-search__submit {
-    background-color: govuk-tint(govuk-colour("blue"), 80%);
-    color: govuk-colour("blue");
-
-    &:hover {
-      background-color: govuk-tint(govuk-colour("blue"), 95%);
     }
   }
 }
