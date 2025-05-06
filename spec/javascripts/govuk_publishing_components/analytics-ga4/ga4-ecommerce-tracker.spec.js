@@ -280,6 +280,7 @@ describe('Google Analytics 4 ecommerce tracking', function () {
       }
 
       resultToBeClicked = document.querySelector("[data-ga4-ecommerce-path='/foreign-travel-advice']")
+      resultToBeClicked.removeAttribute('data-ga4-ecommerce-item-name')
       GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.internalLinksDomain = 'www.gov.uk/'
       GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.internalLinksDomainWithoutWww = 'gov.uk/'
     })
@@ -317,6 +318,18 @@ describe('Google Analytics 4 ecommerce tracking', function () {
 
     it('should set the remaining properties appropriately', function () {
       GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
+
+      resultToBeClicked.click()
+      expect(window.dataLayer[3].event).toBe(onSearchResultClickExpected.event)
+      expect(window.dataLayer[3].search_results).toEqual(onSearchResultClickExpected.search_results)
+    })
+
+    it('should use data-ga4-ecommerce-item-name to set item_name property if present', function () {
+      GOVUK.analyticsGa4.Ga4EcommerceTracker.init()
+
+      var differentListItemName = 'different list item name'
+      onSearchResultClickExpected.search_results.ecommerce.items[0].item_name = differentListItemName
+      resultToBeClicked.dataset.ga4EcommerceItemName = differentListItemName
 
       resultToBeClicked.click()
       expect(window.dataLayer[3].event).toBe(onSearchResultClickExpected.event)
