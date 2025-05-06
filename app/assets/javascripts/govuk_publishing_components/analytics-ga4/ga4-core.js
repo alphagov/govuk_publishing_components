@@ -364,7 +364,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           ecommerceSchema.search_results.ecommerce.items.push({
             item_id: target.getAttribute('data-ga4-ecommerce-path'),
             item_content_id: target.getAttribute('data-ga4-ecommerce-content-id') || undefined,
-            item_name: target.textContent,
+            item_name: target.getAttribute('data-ga4-ecommerce-item-name') || target.textContent,
             item_list_name: listTitle,
             index: window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(target, startPosition)
           })
