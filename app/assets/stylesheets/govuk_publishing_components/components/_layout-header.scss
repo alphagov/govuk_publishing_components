@@ -77,9 +77,6 @@
 }
 
 .gem-c-header__logo {
-  margin-top: govuk-spacing(1);
-  margin-bottom: govuk-spacing(3);
-
   @include govuk-media-query($from: desktop) {
     white-space: nowrap;
   }
@@ -95,11 +92,9 @@
 
 .gem-c-header__product-name {
   display: none;
-  margin-top: govuk-spacing(-1);
 
   @include govuk-media-query($from: tablet) {
     display: inline-block;
-    vertical-align: middle;
   }
 }
 
