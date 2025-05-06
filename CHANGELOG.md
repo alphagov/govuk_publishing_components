@@ -12,6 +12,7 @@
 * Update to LUX 4.1.1 ([PR #4778](https://github.com/alphagov/govuk_publishing_components/pull/4778))
 * Table: add ability to specify column width ([PR #4760](https://github.com/alphagov/govuk_publishing_components/pull/4760))
 * Move `Ga4FinderTracker` back into `govuk_publishing_components` ([PR #4774](https://github.com/alphagov/govuk_publishing_components/pull/4774))
+* Update super navigation menu button toggle states ([PR #4771](https://github.com/alphagov/govuk_publishing_components/pull/4771))
 
 ## 56.2.2
 

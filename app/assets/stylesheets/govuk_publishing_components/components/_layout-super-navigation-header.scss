@@ -3,15 +3,18 @@
 @import "mixins/prefixed-transform";
 @import "mixins/grid-helper";
 
-$chevron-indent-spacing: 7px;
-$black-bar-height: 50px;
-$search-toggle-button-height: $black-bar-height;
-$pseudo-underline-height: 3px;
-$button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
+$pale-blue-colour: #d2e2f1;
 
+$chevron-breakpoint: 360px;
+$chevron-indent-spacing: 7px;
+
+$pseudo-underline-height: 3px;
+
+$navbar-height: 50px;
 $large-navbar-height: 72px;
 
-$pale-blue-colour: #d2e2f1;
+$button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
+$button-pipe-colour-blue-background: $pale-blue-colour;
 
 $after-link-padding: govuk-spacing(4);
 $after-button-padding-right: govuk-spacing(4);
@@ -58,6 +61,9 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// Using `:focus-visible` means that in supporting browsers the focus state won't
+// be visible when a user clicks on the element, but the focus state will still be
+// useful for those who use the keyboard to navigate around the page.
 @mixin focus-and-focus-visible {
   &:focus {
     @content;
@@ -68,6 +74,11 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// For browsers that don't support `:focus-visible`, this defaults to using
+// `:focus` with a CSS-only fallback strategy.
+//
+// Undoes the :focus styles *only* for browsers that support :focus-visible.
+// See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
 @mixin focus-not-focus-visible {
   & {
     @content;
@@ -104,7 +115,7 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__button-container {
-  top: -$black-bar-height;
+  top: -$navbar-height;
   position: absolute;
   right: 0;
 
@@ -316,7 +327,7 @@ $after-button-padding-left: govuk-spacing(4);
 }
 
 .gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background {
-  border-right: 1px solid $pale-blue-colour;
+  border-right: 1px solid $button-pipe-colour-blue-background;
 }
 
 // Search link and dropdown.
@@ -389,7 +400,7 @@ $after-button-padding-left: govuk-spacing(4);
   box-sizing: border-box;
   color: govuk-colour("white");
   cursor: pointer;
-  height: $black-bar-height;
+  height: $navbar-height;
   padding: 0;
   position: relative;
   margin: 0;
@@ -400,16 +411,18 @@ $after-button-padding-left: govuk-spacing(4);
     @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right);
   }
 
-  &:hover {
-    color: govuk-colour("mid-grey");
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: govuk-colour("mid-grey");
 
-    &::after {
-      background: govuk-colour("mid-grey");
-    }
+      &::after {
+        background: govuk-colour("mid-grey");
+      }
 
-    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      &::before {
-        border-color: govuk-colour("mid-grey");
+      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+        &::before {
+          border-color: govuk-colour("mid-grey");
+        }
       }
     }
   }
@@ -445,9 +458,11 @@ $after-button-padding-left: govuk-spacing(4);
 
     box-shadow: none;
 
-    &:hover {
-      &::after {
-        background-color: govuk-colour("black");
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background-color: govuk-colour("black");
+        }
       }
     }
 
@@ -465,25 +480,25 @@ $after-button-padding-left: govuk-spacing(4);
     // stylelint-enable max-nesting-depth
   }
 
-  // Undoes the :focus styles *only* for browsers that support :focus-visible.
-  // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
   @include focus-not-focus-visible {
     background: none;
     box-shadow: none;
     color: govuk-colour("white");
 
     // stylelint-disable max-nesting-depth
-    &:hover {
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("mid-grey");
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("mid-grey");
 
-        &::before {
-          @include chevron(govuk-colour("mid-grey"), true);
+          &::before {
+            @include chevron(govuk-colour("mid-grey"), true);
+          }
         }
-      }
 
-      &::after {
-        background: govuk-colour("mid-grey");
+        &::after {
+          background: govuk-colour("mid-grey");
+        }
       }
     }
 
@@ -491,10 +506,10 @@ $after-button-padding-left: govuk-spacing(4);
       border-color: $button-pipe-colour;
 
       &.gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background {
-        border-color: $pale-blue-colour;
+        border-color: $button-pipe-colour-blue-background;
       }
 
-      @include govuk-media-query($from: 360px) {
+      @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
           @include chevron(govuk-colour("white"), true);
         }
@@ -505,6 +520,8 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - targets the "Menu" toggle button
+// Styles the "Menu" open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background,
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   // Open button modifier
@@ -522,7 +539,7 @@ $after-button-padding-left: govuk-spacing(4);
         color: govuk-colour("black");
         border-color: $govuk-focus-colour;
 
-        @include govuk-media-query($from: 360px) {
+        @include govuk-media-query($from: $chevron-breakpoint) {
           &::before {
             @include chevron(govuk-colour("black"), true);
             @include prefixed-transform($rotate: 225deg, $translateY: 1px);
@@ -542,7 +559,7 @@ $after-button-padding-left: govuk-spacing(4);
         color: $govuk-link-colour;
         border-color: govuk-colour("light-grey");
 
-        @include govuk-media-query($from: 360px) {
+        @include govuk-media-query($from: $chevron-breakpoint) {
           &::before {
             @include chevron($govuk-link-colour);
             @include prefixed-transform($rotate: 225deg, $translateY: 1px);
@@ -554,135 +571,142 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - targets the "Menu" toggle button used on a blue background
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
   @include focus-not-focus-visible {
-    &:hover {
-      &::after {
-        background: govuk-colour("white");
-      }
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background: govuk-colour("white");
+        }
 
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("white");
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("white");
 
-        &::before {
-          border-color: govuk-colour("white");
+          &::before {
+            border-color: govuk-colour("white");
+          }
         }
       }
     }
   }
 }
 
+// JS available - targets the "Menu" toggle button inner text
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
   display: inline-block;
   border-right: 1px solid govuk-colour("white");
   margin: 0;
   padding: govuk-spacing(1) govuk-spacing(4);
 
-  @include govuk-media-query($from: 360px) {
+  @include govuk-media-query($from: $chevron-breakpoint) {
     &::before {
       @include chevron(govuk-colour("white"));
     }
   }
 }
 
-// Styles for search toggle button.
+// JS available - targets the search toggle button
 .gem-c-layout-super-navigation-header__search-toggle-button {
   background: none;
   border: 0;
   color: govuk-colour("white");
   cursor: pointer;
-  height: $search-toggle-button-height;
+  height: $navbar-height;
   padding: govuk-spacing(3);
   position: relative;
   width: 51px;
+  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
-  &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-    background: $govuk-brand-colour;
+  &::after {
+    @include pseudo-underline($left: 0, $right: 0);
   }
 
-  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: govuk-colour("mid-grey");
+
+      &::after {
+        background: govuk-colour("mid-grey");
+      }
+    }
+  }
 
   @include focus-and-focus-visible {
     @include govuk-focused-text;
     border-color: $govuk-focus-colour;
     box-shadow: none;
     z-index: 11;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background: none;
+        }
+      }
+    }
   }
 
-  &:focus:not(:focus-visible) {
+  @include focus-not-focus-visible {
     background: none;
-    border-color: govuk-colour("white");
     box-shadow: none;
     color: govuk-colour("white");
   }
 
-  &:focus-visible {
-    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-      border-bottom: $pseudo-underline-height solid govuk-colour("black");
-    }
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    border: 0;
-    margin: 0;
-    right: 0;
-
-    @include focus-not-focus-visible {
-      border-bottom: 1px solid transparent;
-      border-left: none;
-      position: relative;
-    }
-
-    &:hover {
-      border-bottom: $pseudo-underline-height solid govuk-colour("mid-grey");
-      color: govuk-colour("mid-grey");
-    }
-
-    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+  &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("white");
         color: govuk-colour("white");
-      }
 
-      // stylelint-disable max-nesting-depth
-      @include focus-not-focus-visible {
-        border-bottom: $pseudo-underline-height solid $govuk-brand-colour;
-
-        &:hover {
-          border-bottom: $pseudo-underline-height solid govuk-colour("white");
+        &::after {
+          background: govuk-colour("white");
         }
       }
-      // stylelint-enable max-nesting-depth
     }
 
     &:focus-visible {
-      &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-        color: govuk-colour("black");
+      color: govuk-colour("black");
 
+      &::after {
+        background: govuk-colour("black");
+      }
+
+      @media (hover: hover) and (pointer: fine) {
         &:hover {
-          border-bottom: $pseudo-underline-height solid govuk-colour("black");
           color: govuk-colour("black");
+
+          &::after {
+            background: govuk-colour("black");
+          }
         }
       }
     }
 
-    @include focus-and-focus-visible {
-      @include govuk-focused-text;
-      border-bottom-color: $govuk-focus-colour;
-      box-shadow: none;
+    @include focus-not-focus-visible {
+      &::after {
+        background: none;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          &::after {
+            background: govuk-colour("white");
+          }
+        }
+      }
     }
   }
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
     &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-      &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
-        color: govuk-colour("white");
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: govuk-colour("white");
+        }
       }
 
       &:focus-visible {
-        border-bottom: $pseudo-underline-height solid govuk-colour("black");
         color: govuk-colour("black");
       }
     }
@@ -696,17 +720,23 @@ $after-button-padding-left: govuk-spacing(4);
 
     @include focus-not-focus-visible {
       background: govuk-colour("light-grey");
-      border-bottom-color: govuk-colour("light-grey");
       color: govuk-colour("light-grey");
       outline: 1px solid govuk-colour("light-grey"); // overlap the border of the nav menu so it won't appear when menu open
 
-      &:hover {
-        border-bottom: $pseudo-underline-height solid govuk-colour("light-grey");
+      // stylelint-disable max-nesting-depth
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          &::after {
+            background: none;
+          }
+        }
       }
+      // stylelint-enable max-nesting-depth
     }
   }
 }
 
+// JS available - styles the close icon, used when the search menu is in the open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon {
   color: $govuk-text-colour;
   display: none;
@@ -728,7 +758,7 @@ $after-button-padding-left: govuk-spacing(4);
   padding-bottom: govuk-spacing(7);
 }
 
-// Dropdown menu.
+// JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
   background: govuk-colour("light-grey");
   border-bottom: 1px govuk-colour("mid-grey") solid;
@@ -743,6 +773,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - adds a custom margin to the wrapper for the search items in the search dropdown
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar {
   @include govuk-media-query($until: "desktop") {
     .gem-c-layout-super-navigation-header__search-items {
@@ -751,6 +782,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - adds custom padding to the services and information and government activity sections in the menu dropdown
 @include govuk-media-query($until: "tablet") {
   // padding to make it the same as the padding for the redesign of the homepage
   .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information,
@@ -759,7 +791,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// Dropdown menu items.
+// JS available - styles the links in the dropdown menu
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
   padding: 0 0 govuk-spacing(3) 0;
@@ -771,7 +803,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// Navigation menu items.
+// JS available - wraps the `dropdown-list-item` navigation menu items
 .gem-c-layout-super-navigation-header__navigation-second-items {
   list-style: none;
   margin: 0;
@@ -783,6 +815,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - styling for the "government-activity" group of links
 .gem-c-layout-super-navigation-header__column--government-activity {
   position: relative;
 
@@ -791,6 +824,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
+// JS available - styling for the "services-and-information" group of links
 .gem-c-layout-super-navigation-header__navigation-second-items--services-and-information {
   @include govuk-media-query($until: "desktop") {
     border-bottom: 1px solid govuk-colour("mid-grey");
