@@ -154,7 +154,7 @@ $after-button-padding-left: govuk-spacing(4);
   font-size: 19px;
   font-size: govuk-px-to-rem(19px);
   font-weight: bold;
-  padding: govuk-spacing(3) 0;
+  padding: govuk-spacing(4) 0;
   position: relative;
   @include govuk-link-common;
   @include govuk-link-style-no-visited-state;
@@ -304,7 +304,7 @@ $after-button-padding-left: govuk-spacing(4);
 
 .gem-c-layout-super-navigation-header__navigation-item-link {
   @include govuk-media-query($from: "desktop") {
-    padding: govuk-spacing(3) 0;
+    padding: govuk-spacing(4) 0;
   }
 
   .js-module-initialised & {
@@ -331,7 +331,7 @@ $after-button-padding-left: govuk-spacing(4);
 
 // Search link and dropdown.
 .gem-c-layout-super-navigation-header__search-item-link {
-  padding: govuk-spacing(3);
+  padding: govuk-spacing(4);
 
   @include govuk-media-query($until: "desktop") {
     margin: 0;
