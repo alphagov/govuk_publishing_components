@@ -54,7 +54,7 @@ $after-button-padding-left: govuk-spacing(4);
   left: $left;
   position: absolute;
   right: $right;
-  bottom: 0;
+  bottom: 1px;
   top: auto;
   @if $width {
     width: $width;
