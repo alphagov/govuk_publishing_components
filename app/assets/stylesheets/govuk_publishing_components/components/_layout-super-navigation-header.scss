@@ -13,8 +13,7 @@ $pseudo-underline-height: 3px;
 $navbar-height: 60px;
 $large-navbar-height: 72px;
 
-$button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
-$button-pipe-colour-blue-background: $pale-blue-colour;
+$button-pipe-colour: $pale-blue-colour;
 
 $after-link-padding: govuk-spacing(4);
 $after-button-padding-right: govuk-spacing(4);
@@ -324,10 +323,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-.gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background {
-  border-right: 1px solid $button-pipe-colour-blue-background;
-}
-
 // Search link and dropdown.
 .gem-c-layout-super-navigation-header__search-item-link {
   padding: govuk-spacing(3);
@@ -503,9 +498,6 @@ $after-button-padding-left: govuk-spacing(4);
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-color: $button-pipe-colour;
 
-      &.gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background {
-        border-color: $button-pipe-colour-blue-background;
-      }
 
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
