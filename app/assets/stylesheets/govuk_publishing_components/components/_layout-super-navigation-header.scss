@@ -148,6 +148,7 @@ $after-button-padding-left: govuk-spacing(4);
 // Top level navigation links and search link, used when JavaScript is not available
 .gem-c-layout-super-navigation-header__navigation-item-link,
 .gem-c-layout-super-navigation-header__search-item-link {
+  color: govuk-colour("white");
   display: inline-block;
   font-size: 19px;
   font-size: govuk-px-to-rem(19px);
@@ -207,21 +208,8 @@ $after-button-padding-left: govuk-spacing(4);
     }
 
     &:hover {
-      color: govuk-colour("mid-grey");
-
       &::after {
-        background: govuk-colour("mid-grey");
-      }
-    }
-
-    &.gem-c-layout-super-navigation-header__navigation-item-link--blue-background,
-    &.gem-c-layout-super-navigation-header__search-item-link--blue-background {
-      &:hover {
-        color: govuk-colour("white");
-
-        &::after {
-          background: govuk-colour("white");
-        }
+        background: govuk-colour("white");
       }
     }
 
@@ -253,10 +241,8 @@ $after-button-padding-left: govuk-spacing(4);
       }
 
       &:hover {
-        color: govuk-colour("mid-grey");
-
         &::after {
-          background: govuk-colour("mid-grey");
+          background: govuk-colour("white");
         }
       }
 
