@@ -274,19 +274,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// to stop the black underline appearing underneath the menu
-// after it has been toggled closed if the blue background has
-// been enabled
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
-  background-color: $govuk-brand-colour;
-
-  &:focus:not(:focus-visible) {
-    &::after {
-      background: none;
-    }
-  }
-}
-
 .gem-c-layout-super-navigation-header__navigation-item-link {
   @include govuk-media-query($from: "desktop") {
     padding: govuk-spacing(4) 0;
@@ -462,6 +449,10 @@ $after-button-padding-left: govuk-spacing(4);
     background: none;
     box-shadow: none;
     color: govuk-colour("white");
+
+    &::after {
+      background: none;
+    }
 
     // stylelint-disable max-nesting-depth
     @media (hover: hover) and (pointer: fine) {
