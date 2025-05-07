@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 56.3.0
 
 * Update to LUX 4.1.1 ([PR #4778](https://github.com/alphagov/govuk_publishing_components/pull/4778))
 * Table: add ability to specify column width ([PR #4760](https://github.com/alphagov/govuk_publishing_components/pull/4760))
