@@ -392,15 +392,13 @@ $after-button-padding-left: govuk-spacing(4);
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      color: govuk-colour("mid-grey");
-
       &::after {
-        background: govuk-colour("mid-grey");
+        background: govuk-colour("white");
       }
 
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         &::before {
-          border-color: govuk-colour("mid-grey");
+          border-color: govuk-colour("white");
         }
       }
     }
@@ -468,15 +466,15 @@ $after-button-padding-left: govuk-spacing(4);
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-          color: govuk-colour("mid-grey");
+          color: govuk-colour("white");
 
           &::before {
-            @include chevron(govuk-colour("mid-grey"), true);
+            @include chevron(govuk-colour("white"), true);
           }
         }
 
         &::after {
-          background: govuk-colour("mid-grey");
+          background: govuk-colour("white");
         }
       }
     }
@@ -484,21 +482,18 @@ $after-button-padding-left: govuk-spacing(4);
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-color: $button-pipe-colour;
 
-
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
           @include chevron(govuk-colour("white"), true);
         }
       }
     }
-
     // stylelint-enable max-nesting-depth
   }
 }
 
 // JS available - targets the "Menu" toggle button
 // Styles the "Menu" open state
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background,
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
@@ -547,27 +542,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// JS available - targets the "Menu" toggle button used on a blue background
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background {
-  @include focus-not-focus-visible {
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        &::after {
-          background: govuk-colour("white");
-        }
-
-        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-          color: govuk-colour("white");
-
-          &::before {
-            border-color: govuk-colour("white");
-          }
-        }
-      }
-    }
-  }
-}
-
 // JS available - targets the "Menu" toggle button inner text
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
   display: inline-block;
@@ -598,12 +572,34 @@ $after-button-padding-left: govuk-spacing(4);
     @include pseudo-underline($left: 0, $right: 0);
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      color: govuk-colour("mid-grey");
+  &:focus-visible {
+    color: govuk-colour("black");
 
-      &::after {
-        background: govuk-colour("mid-grey");
+    &::after {
+      background: govuk-colour("black");
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: govuk-colour("black");
+
+        &::after {
+          background: govuk-colour("black");
+        }
+      }
+    }
+  }
+
+  @include focus-not-focus-visible {
+    &::after {
+      background: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background: govuk-colour("white");
+        }
       }
     }
   }
@@ -613,14 +609,6 @@ $after-button-padding-left: govuk-spacing(4);
     border-color: $govuk-focus-colour;
     box-shadow: none;
     z-index: 11;
-
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        &::after {
-          background: none;
-        }
-      }
-    }
   }
 
   @include focus-not-focus-visible {
@@ -629,28 +617,16 @@ $after-button-padding-left: govuk-spacing(4);
     color: govuk-colour("white");
   }
 
-  &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        color: govuk-colour("white");
-
-        &::after {
-          background: govuk-colour("white");
-        }
-      }
-    }
-
-    &:focus-visible {
-      color: govuk-colour("black");
-
-      &::after {
-        background: govuk-colour("black");
-      }
+  // Open button modifier
+  &.gem-c-layout-super-navigation-header__open-button {
+    @include focus-and-focus-visible {
+      @include govuk-focused-text;
+      border-color: $govuk-focus-colour;
+      box-shadow: none;
+      color: $govuk-focus-colour;
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
-          color: govuk-colour("black");
-
           &::after {
             background: govuk-colour("black");
           }
@@ -659,44 +635,7 @@ $after-button-padding-left: govuk-spacing(4);
     }
 
     @include focus-not-focus-visible {
-      &::after {
-        background: none;
-      }
-
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          &::after {
-            background: govuk-colour("white");
-          }
-        }
-      }
-    }
-  }
-
-  // Open button modifier
-  &.gem-c-layout-super-navigation-header__open-button {
-    &.gem-c-layout-super-navigation-header__search-toggle-button--blue-background {
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          color: govuk-colour("white");
-        }
-      }
-
-      &:focus-visible {
-        color: govuk-colour("black");
-      }
-    }
-
-    @include focus-and-focus-visible {
-      @include govuk-focused-text;
-      border-color: $govuk-focus-colour;
-      box-shadow: none;
-      color: $govuk-focus-colour;
-    }
-
-    @include focus-not-focus-visible {
       background: govuk-tint(govuk-colour("blue"), 95%);
-      color: govuk-colour("light-grey");
       outline: 1px solid govuk-tint(govuk-colour("blue"), 95%); // overlap the border of the nav menu so it won't appear when menu open
 
       // stylelint-disable max-nesting-depth
