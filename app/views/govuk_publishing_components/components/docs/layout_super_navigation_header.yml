@@ -52,9 +52,3 @@ examples:
       The black background is shown by default. This option allows us to change the background colour for the homepage.
     data:
       blue_background: true
-  large_navbar:
-    description: |
-      Make the links and buttons large on desktop only. Used for the homepage.
-    data:
-      large_navbar: true
-      hide_logo_text: true
