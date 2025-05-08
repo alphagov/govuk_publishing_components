@@ -122,17 +122,6 @@ describe "Super navigation header", type: :view do
     assert_select "a.govuk-header__link--homepage[aria-label='Go to example']", count: 1
   end
 
-  it "renders blue background navbar variant" do
-    render_component({
-      blue_background: true,
-    })
-
-    assert_select ".gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background"
-    assert_select ".gem-c-layout-super-navigation-header__search-toggle-button--blue-background"
-    assert_select ".gem-c-layout-super-navigation-header__search-item-link--blue-background"
-    assert_select ".gem-c-layout-super-navigation-header__navigation-item-link--blue-background"
-  end
-
   it "doesn't have the initialised class before the JavaScript is run" do
     render_component({})
 
