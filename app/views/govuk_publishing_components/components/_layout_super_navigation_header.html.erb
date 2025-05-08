@@ -6,7 +6,6 @@
   logo_text = t("components.layout_super_navigation_header.logo_text")
 
   hide_logo_text ||= false
-  blue_background ||= false
   homepage ||= false
 
   navigation_links_columns = t("components.layout_super_navigation_header.navigation_links_columns")
@@ -19,26 +18,17 @@
   hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
   show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
 
-  top_toggle_button_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button
-  )
-  top_toggle_button_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background" if blue_background
+  top_toggle_button_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button)
 
   top_toggle_button_inner_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner)
-  top_toggle_button_inner_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background" if blue_background
 
   search_toggle_button_classes = %w(gem-c-layout-super-navigation-header__search-toggle-button)
-  search_toggle_button_classes << "gem-c-layout-super-navigation-header__search-toggle-button--blue-background" if blue_background
 
   item_link_classes = %w(gem-c-layout-super-navigation-header__navigation-item-link)
-  item_link_classes << "gem-c-layout-super-navigation-header__navigation-item-link--blue-background" if blue_background
 
-  item_link_inner_classes = %w(
-    gem-c-layout-super-navigation-header__navigation-item-link-inner
-  )
-  item_link_inner_classes << "gem-c-layout-super-navigation-header__navigation-item-link-inner--blue-background" if blue_background
+  item_link_inner_classes = %w(gem-c-layout-super-navigation-header__navigation-item-link-inner)
 
   search_item_link_classes = %w(gem-c-layout-super-navigation-header__search-item-link)
-  search_item_link_classes << "gem-c-layout-super-navigation-header__search-item-link--blue-background" if blue_background
 
   header_logo_classes = %w(gem-c-layout-super-navigation-header__header-logo)
   header_logo_classes << "gem-c-layout-super-navigation-header__header-logo--homepage" if homepage
@@ -53,7 +43,6 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-super-navigation-header")
-  component_helper.add_class("gem-c-layout-super-navigation-header--blue-background") if blue_background
   component_helper.add_data_attribute({ module: "ga4-event-tracker ga4-link-tracker", ga4_expandable: "" })
 %>
 <%= tag.header(**component_helper.all_attributes) do %>

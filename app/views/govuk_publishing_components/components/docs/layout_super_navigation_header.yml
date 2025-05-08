@@ -47,8 +47,3 @@ examples:
       Logo text is shown by default. This option allows us to hide the text for the homepage.
     data:
       hide_logo_text: true
-  blue_blackground_colour:
-    description: |
-      The black background is shown by default. This option allows us to change the background colour for the homepage.
-    data:
-      blue_background: true
