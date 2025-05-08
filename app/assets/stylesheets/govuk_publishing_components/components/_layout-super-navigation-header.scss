@@ -484,52 +484,49 @@ $after-button-padding-left: govuk-spacing(4);
 
 // JS available - targets the "Menu" toggle button
 // Styles the "Menu" open state
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button {
-  // Open button modifier
-  &.gem-c-layout-super-navigation-header__open-button {
-    // stylelint-disable max-nesting-depth
-    @include focus-and-focus-visible {
-      @include govuk-focused-text;
-      box-shadow: none;
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__open-button {
+  // stylelint-disable max-nesting-depth
+  @include focus-and-focus-visible {
+    @include govuk-focused-text;
+    box-shadow: none;
 
-      &::after {
-        background-color: govuk-colour("black");
-      }
+    &::after {
+      background-color: govuk-colour("black");
+    }
 
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("black");
-        border-color: $govuk-focus-colour;
+    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+      color: govuk-colour("black");
+      border-color: $govuk-focus-colour;
 
-        @include govuk-media-query($from: $chevron-breakpoint) {
-          &::before {
-            @include chevron(govuk-colour("black"), true);
-            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
-          }
+      @include govuk-media-query($from: $chevron-breakpoint) {
+        &::before {
+          @include chevron(govuk-colour("black"), true);
+          @include prefixed-transform($rotate: 225deg, $translateY: 1px);
         }
       }
     }
-
-    @include focus-not-focus-visible {
-      background: govuk-tint(govuk-colour("blue"), 95%);
-
-      &::after {
-        background-color: $govuk-link-colour;
-      }
-
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: $govuk-link-colour;
-        border-color: govuk-tint(govuk-colour("blue"), 95%);
-
-        @include govuk-media-query($from: $chevron-breakpoint) {
-          &::before {
-            @include chevron($govuk-link-colour);
-            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
-          }
-        }
-      }
-    }
-    // stylelint-enable max-nesting-depth
   }
+
+  @include focus-not-focus-visible {
+    background: govuk-tint(govuk-colour("blue"), 95%);
+
+    &::after {
+      background-color: $govuk-link-colour;
+    }
+
+    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+      color: $govuk-link-colour;
+      border-color: govuk-tint(govuk-colour("blue"), 95%);
+
+      @include govuk-media-query($from: $chevron-breakpoint) {
+        &::before {
+          @include chevron($govuk-link-colour);
+          @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+        }
+      }
+    }
+  }
+  // stylelint-enable max-nesting-depth
 }
 
 // JS available - targets the "Menu" toggle button inner text
@@ -609,6 +606,7 @@ $after-button-padding-left: govuk-spacing(4);
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
+    // stylelint-disable max-nesting-depth
     @include focus-and-focus-visible {
       @include govuk-focused-text;
       border-color: $govuk-focus-colour;
@@ -628,7 +626,6 @@ $after-button-padding-left: govuk-spacing(4);
       background: govuk-tint(govuk-colour("blue"), 95%);
       outline: 1px solid govuk-tint(govuk-colour("blue"), 95%); // overlap the border of the nav menu so it won't appear when menu open
 
-      // stylelint-disable max-nesting-depth
       @media (hover: hover) and (pointer: fine) {
         &:hover {
           &::after {
@@ -636,8 +633,8 @@ $after-button-padding-left: govuk-spacing(4);
           }
         }
       }
-      // stylelint-enable max-nesting-depth
     }
+    // stylelint-enable max-nesting-depth
   }
 }
 
