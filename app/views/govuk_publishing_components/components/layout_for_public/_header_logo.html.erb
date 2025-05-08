@@ -1,9 +1,7 @@
 <%
   hide_logo_text ||= false
-  large_navbar ||= false
   logo_text ||= t("components.layout_super_navigation_header.logo_text")
   logotype_classes = %w(govuk-header__logotype gem-c-layout-super-navigation-header__logotype-crown)
-  logotype_classes << "gem-c-layout-super-navigation-header__logotype-crown--large-navbar" if large_navbar  
 %>
 
 <% unless hide_logo_text %>
