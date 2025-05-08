@@ -43,9 +43,4 @@ examples:
     data:
       hide_logo_text: true
       blue_background: true
-      large_navbar: true      
-  hide_logo_text:
-    description: |
-      Logo text is shown by default. This option allows us to hide the text for the homepage.
-    data:
-      hide_logo_text: true
+      large_navbar: true
