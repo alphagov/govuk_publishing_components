@@ -37,10 +37,3 @@ examples:
     data:
       logo_link: "https://www.example.com"
       logo_link_title: "Go to example"
-  homepage:
-    description: |
-      This variant is used for the homepage. It toggles the following attributes: hide_logo_text and blue_background
-    data:
-      hide_logo_text: true
-      blue_background: true
-      large_navbar: true
