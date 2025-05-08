@@ -42,8 +42,3 @@ examples:
       This variant is used only on the homepage. It adds extra spacing to the logo to align it with other content on the page that also includes additional spacing
     data:
       homepage: true
-  hide_logo_text:
-    description: |
-      Logo text is shown by default. This option allows us to hide the text for the homepage.
-    data:
-      hide_logo_text: true
