@@ -5,7 +5,6 @@
   logo_link_title ||= t("components.layout_super_navigation_header.logo_link_title")
   logo_text = t("components.layout_super_navigation_header.logo_text")
 
-  hide_logo_text ||= false
   homepage ||= false
 
   navigation_links_columns = t("components.layout_super_navigation_header.navigation_links_columns")
@@ -71,10 +70,7 @@
             label: logo_link_title,
           }
         } do %>
-          <%= render "govuk_publishing_components/components/layout_for_public/header_logo", {
-            hide_logo_text: hide_logo_text,
-            logo_text: logo_text
-          } %>
+          <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
         <% end %>
       <% end %>
     </div>
