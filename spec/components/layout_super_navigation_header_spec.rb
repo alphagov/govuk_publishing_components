@@ -133,22 +133,6 @@ describe "Super navigation header", type: :view do
     assert_select ".gem-c-layout-super-navigation-header__navigation-item-link--blue-background"
   end
 
-  it "renders large navbar variant" do
-    render_component({
-      large_navbar: true,
-      hide_logo_text: true,
-    })
-
-    assert_select ".gem-c-layout-super-navigation-header__button-container--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__header-logo--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__search-toggle-button--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__search-item-link--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__navigation-item-link--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__logotype-crown--large-navbar"
-    assert_select ".gem-c-header__link--large-navbar"
-  end
-
   it "doesn't have the initialised class before the JavaScript is run" do
     render_component({})
 

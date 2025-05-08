@@ -6,8 +6,6 @@
   logo_text = t("components.layout_super_navigation_header.logo_text")
 
   hide_logo_text ||= false
-  blue_background ||= false
-  large_navbar ||= false
 
   navigation_links_columns = t("components.layout_super_navigation_header.navigation_links_columns")
   navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
@@ -22,18 +20,15 @@
   top_toggle_button_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button
   )
   top_toggle_button_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background" if blue_background
-  top_toggle_button_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar" if large_navbar
 
   top_toggle_button_inner_classes = %w(gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner)
   top_toggle_button_inner_classes << "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner--blue-background" if blue_background
 
   search_toggle_button_classes = %w(gem-c-layout-super-navigation-header__search-toggle-button)
   search_toggle_button_classes << "gem-c-layout-super-navigation-header__search-toggle-button--blue-background" if blue_background
-  search_toggle_button_classes << "gem-c-layout-super-navigation-header__search-toggle-button--large-navbar" if large_navbar
 
   item_link_classes = %w(gem-c-layout-super-navigation-header__navigation-item-link)
   item_link_classes << "gem-c-layout-super-navigation-header__navigation-item-link--blue-background" if blue_background
-  item_link_classes << "gem-c-layout-super-navigation-header__navigation-item-link--large-navbar" if large_navbar
 
   item_link_inner_classes = %w(
     gem-c-layout-super-navigation-header__navigation-item-link-inner
@@ -42,19 +37,14 @@
 
   search_item_link_classes = %w(gem-c-layout-super-navigation-header__search-item-link)
   search_item_link_classes << "gem-c-layout-super-navigation-header__search-item-link--blue-background" if blue_background
-  search_item_link_classes << "gem-c-layout-super-navigation-header__search-item-link--large-navbar" if large_navbar
 
   header_logo_classes = %w(gem-c-layout-super-navigation-header__header-logo)
-  header_logo_classes << "gem-c-layout-super-navigation-header__header-logo--large-navbar" if large_navbar
 
   header_link_classes = %w(govuk-header__link govuk-header__link--homepage)
-  header_link_classes << "gem-c-header__link--large-navbar" if large_navbar
 
   button_container_classes = %w(gem-c-layout-super-navigation-header__button-container)
-  button_container_classes << "gem-c-layout-super-navigation-header__button-container--large-navbar" if large_navbar
 
   dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
-  dropdown_menu_classes << "gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar" if large_navbar
 
   absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
 
@@ -91,8 +81,7 @@
         } do %>
           <%= render "govuk_publishing_components/components/layout_for_public/header_logo", {
             hide_logo_text: hide_logo_text,
-            logo_text: logo_text,
-            large_navbar: large_navbar
+            logo_text: logo_text
           } %>
         <% end %>
       <% end %>

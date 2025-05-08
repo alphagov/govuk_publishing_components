@@ -289,13 +289,6 @@ $after-button-padding-left: govuk-spacing(4);
   border-right: 1px solid $button-pipe-colour;
 }
 
-.gem-c-layout-super-navigation-header__navigation-item-link--large-navbar {
-  & .gem-c-layout-super-navigation-header__navigation-item-link-inner {
-    padding-left: 26px;
-    padding-right: 26px;
-  }
-}
-
 // Search link and dropdown.
 .gem-c-layout-super-navigation-header__search-item-link {
   padding: govuk-spacing(3);
@@ -338,11 +331,6 @@ $after-button-padding-left: govuk-spacing(4);
       }
     }
   }
-}
-
-.gem-c-layout-super-navigation-header__search-item-link--large-navbar {
-  padding-left: 24px;
-  padding-right: 24px;
 }
 
 .gem-c-layout-super-navigation-header__search-item-link-icon,
@@ -676,24 +664,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-// JS available - adds a custom margin to the wrapper for the search items in the search dropdown
-.gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar {
-  @include govuk-media-query($until: "desktop") {
-    .gem-c-layout-super-navigation-header__search-items {
-      margin: 0 24px;
-    }
-  }
-}
-
-// JS available - adds custom padding to the services and information and government activity sections in the menu dropdown
-@include govuk-media-query($until: "tablet") {
-  // padding to make it the same as the padding for the redesign of the homepage
-  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--services-and-information,
-  .gem-c-layout-super-navigation-header__navigation-dropdown-menu--large-navbar .gem-c-layout-super-navigation-header__column--government-activity {
-    padding: 0 24px;
-  }
-}
-
 // JS available - styles the links in the dropdown menu
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
@@ -767,19 +737,6 @@ $after-button-padding-left: govuk-spacing(4);
   }
 }
 
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar {
-  .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-    padding-left: 26px;
-    padding-right: 26px;
-  }
-}
-
-.gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
-  padding-left: 24px;
-  padding-right: 24px;
-  width: 69px;
-}
-
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
@@ -799,68 +756,6 @@ $after-button-padding-left: govuk-spacing(4);
 .gem-c-layout-super-navigation-header__column-header {
   font-size: 24px;
 }
-
-// Ensure the total space to the left of the logo for mobile screen sizes is 24px (margin is 15px)
-@include govuk-media-query($until: tablet) {
-  .gem-c-layout-super-navigation-header__header-logo--large-navbar {
-    padding-left: 9px;
-  }
-}
-
-// The large menu bar is used on the homepage with no GOV.UK text
-// Resetting top back to 0 ensure the crown logo is aligned with
-// the navigation items in the header
-.gem-c-layout-super-navigation-header__logotype-crown--large-navbar[width="32"] {
-  top: 0;
-}
-
-@include govuk-media-query($from: desktop) {
-  // can't use govuk-spacing here because the navbar height
-  // isn't a multiple of 5 :(
-  .gem-c-layout-super-navigation-header__navigation-item-link--large-navbar,
-  .gem-c-layout-super-navigation-header__search-item-link--large-navbar {
-    padding-top: 26px;
-    padding-bottom: 26px;
-  }
-
-  .gem-c-layout-super-navigation-header__logotype-crown--large-navbar {
-    width: auto;
-    max-width: 41px; // Fix for IE11
-    height: 38px;
-  }
-
-  .gem-c-header__link--large-navbar:focus {
-    box-shadow: 0 -6px 0 12px $govuk-focus-colour;
-    border-bottom: $govuk-focus-width solid govuk-colour("black");
-    padding-bottom: 13px;
-  }
-
-  .gem-c-header__link--large-navbar:hover {
-    padding-bottom: 13px;
-  }
-
-  .gem-c-layout-super-navigation-header__header-logo--large-navbar {
-    height: 38px;
-    padding-bottom: 17px;
-    padding-top: 17px;
-  }
-
-  .gem-c-layout-super-navigation-header__search-toggle-button--large-navbar {
-    height: $large-navbar-height;
-    // to stop the search icon moving on hover
-    padding-top: 26px;
-    padding-bottom: 26px;
-  }
-
-  .gem-c-layout-super-navigation-header__button-container--large-navbar {
-    top: -$large-navbar-height;
-  }
-
-  .gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar {
-    height: $large-navbar-height;
-  }
-}
-
 @include govuk-media-query($until: tablet) {
   // can't disable responsive styling because using override classes
   // from govuk-frontend which are all responsive so have to supply
