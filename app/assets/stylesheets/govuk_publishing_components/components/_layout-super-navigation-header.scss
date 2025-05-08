@@ -92,8 +92,6 @@ $after-button-padding-left: govuk-spacing(4);
 // Header layout - black bar and logo.
 .gem-c-layout-super-navigation-header {
   background: govuk-colour("black");
-  border-top: 1px solid govuk-colour("black");
-  margin-top: -1px;
   position: relative;
 
   [hidden] {
@@ -103,7 +101,6 @@ $after-button-padding-left: govuk-spacing(4);
 
 .gem-c-layout-super-navigation-header--blue-background {
   background: $govuk-brand-colour;
-  border-top: 1px solid $govuk-brand-colour;
 }
 
 .gem-c-layout-super-navigation-header__container {
@@ -146,6 +143,24 @@ $after-button-padding-left: govuk-spacing(4);
   float: left;
   margin: 0;
   padding: 0;
+  position: relative;
+
+  &::before {
+    background-color: govuk-colour("black");
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .gem-c-layout-super-navigation-header--blue-background & {
+    &::before {
+      background-color: $govuk-brand-colour;
+    }
+  }
 }
 
 // Top level navigation links and search link, used when JavaScript is not available
@@ -636,7 +651,6 @@ $after-button-padding-left: govuk-spacing(4);
     @include govuk-focused-text;
     border-color: $govuk-focus-colour;
     box-shadow: none;
-    z-index: 11;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
