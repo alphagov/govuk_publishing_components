@@ -1025,7 +1025,7 @@ examples:
   youtube_embed:
     data:
       block: |
-        <p>This content has a YouTube video link, converted to an accessible embedded player by component JavaScript.</p>
+        <p>This content has a YouTube video link, converted to an accessible embedded player by component JavaScript. Bear in mind that the link will not convert if the paragraph it is in contains other content.</p>
         <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
   youtube_embed_disabled:
     data:
@@ -1036,5 +1036,5 @@ examples:
   youtube_livestream:
     data:
       block: |
-        <p>This content has a YouTube livestream link, converted to an accessible embedded player by component JavaScript.</p>
+        <p>This content has a YouTube livestream link, converted to an accessible embedded player by component JavaScript. Bear in mind that the link will not convert if the paragraph it is in contains other content.</p>
         <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream video</a></p>

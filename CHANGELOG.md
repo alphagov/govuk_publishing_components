@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Stop YT links being enhanced when they shouldn't ([PR #4798](https://github.com/alphagov/govuk_publishing_components/pull/4798))
+
 ## 56.3.0
 
 * Update to LUX 4.1.1 ([PR #4778](https://github.com/alphagov/govuk_publishing_components/pull/4778))

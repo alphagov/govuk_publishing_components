@@ -23,6 +23,12 @@
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
       var $linkParent = $link.closest('p')
+
+      // Only replace the <p> with a YT embed if the YT link is the only thing in the <p>.
+      // This prevents other content in the <p> being lost.
+      if ($linkParent.innerHTML !== $link.outerHTML) {
+        continue
+      }
       var href = $link.getAttribute('href')
       var text = $link.textContent
       var placeholder = document.createElement('p')
@@ -88,6 +94,12 @@
 
     var parentPara = $link.parentNode
     var parentContainer = parentPara.parentNode
+
+    // Only replace the <p> with a YT embed if the YT link is the only thing in the <p>.
+    // This prevents other content in the <p> being lost.
+    if (parentPara.innerHTML !== $link.outerHTML) {
+      return
+    }
 
     var youtubeVideoContainer = document.createElement('div')
     youtubeVideoContainer.className += this.$classOverride
