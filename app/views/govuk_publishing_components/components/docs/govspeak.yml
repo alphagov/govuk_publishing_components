@@ -1027,12 +1027,22 @@ examples:
       block: |
         <p>This content has a YouTube video link, converted to an accessible embedded player by component JavaScript. Bear in mind that the link will not convert if the paragraph it is in contains other content.</p>
         <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
-  youtube_embed_disabled:
+  youtube_embed_disabled_by_component:
     data:
       disable_youtube_expansions: true
       block: |
-        <p>This content has a YouTube video link, where the govspeak expansion has been disabled</p>
+        <p>This content has a YouTube video link, where the govspeak expansion has been disabled by the render statement for the component.</p>
         <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
+  youtube_embed_disabled_by_content:
+    description: YouTube links should not become an embed if the YouTube link is in a paragraph with other content.
+    data:
+      block: |
+        <p>This youtube video titled <a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a> should stay as a link due to this non-link text existing in the paragraph.</p>
+  youtube_embed_disabled_by_editors:
+    description: Editors can disable YouTube link enhancement by using the `data-youtube-player="off"` HTML attribute.
+    data:
+      block: |
+        <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU" data-youtube-player="off">Operations: a developer's guide, by Anna Shipman</a></p>
   youtube_livestream:
     data:
       block: |
