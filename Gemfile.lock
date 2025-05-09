@@ -126,7 +126,7 @@ GEM
     execjs (2.10.0)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    gds-api-adapters (99.1.0)
+    gds-api-adapters (99.2.0)
       addressable
       link_header
       null_logger
