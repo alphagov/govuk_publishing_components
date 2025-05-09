@@ -22,6 +22,11 @@
     var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
+
+      if (this.hasDisabledEmbed($link)) {
+        continue
+      }
+
       var $linkParent = $link.closest('p')
 
       // Only replace the <p> with a YT embed if the YT link is the only thing in the <p>.

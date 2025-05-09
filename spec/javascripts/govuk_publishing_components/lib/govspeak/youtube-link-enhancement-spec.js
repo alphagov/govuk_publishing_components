@@ -165,6 +165,63 @@ describe('Youtube link enhancement', function () {
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').length).toBe(1)
       expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').textContent).toBe('What are the Discovery, Alpha, Beta and Live stages in developing a service?')
     })
+
+    it('doesn\'t add "How to watch this video" when embedding is set to disabled', function () {
+      window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
+
+      container.innerHTML = `
+        <div class="gem-c-govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ" data-youtube-player="off">Agile at GDS</a></p>
+          <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t" data-youtube-player="off">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
+        </div>
+      `
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element)
+      enhancement.init()
+
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak .gem-c-govspeak__youtube-placeholder-link').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder').length).toBe(0)
+
+      expect(document.querySelectorAll('.gem-c-govspeak a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').textContent).toBe('Agile at GDS')
+
+      expect(document.querySelectorAll('.gem-c-govspeak a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').textContent).toBe('What are the Discovery, Alpha, Beta and Live stages in developing a service?')
+    })
+
+    it('doesn\'t add "How to watch this video" to some links when only a few are set to disabled', function () {
+      window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
+
+      container.innerHTML = `
+        <div class="gem-c-govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ?example=2" data-youtube-player="off">Agile at GDS Part 2</a></p>
+          <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
+        </div>
+      `
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element)
+      enhancement.init()
+
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak .gem-c-govspeak__youtube-placeholder-link').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder').length).toBe(2)
+
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').textContent).toBe('Agile at GDS')
+
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ?example=2"]').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ?example=2"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ?example=2"]').textContent).toBe('Agile at GDS Part 2')
+
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').textContent).toBe('What are the Discovery, Alpha, Beta and Live stages in developing a service?')
+    })
   })
 
   describe('parseVideoId', function () {
