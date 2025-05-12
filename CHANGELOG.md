@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 56.3.1
 
 * Stop YT links being enhanced when they shouldn't ([PR #4798](https://github.com/alphagov/govuk_publishing_components/pull/4798))
 
