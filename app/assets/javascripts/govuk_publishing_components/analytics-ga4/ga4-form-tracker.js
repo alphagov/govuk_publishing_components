@@ -86,7 +86,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       if (inputType === 'checkbox' && elem.checked) {
         input.answer = labelText
-      } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex].value) {
+      } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex] && elem.options[elem.selectedIndex].value) {
         input.answer = elem.options[elem.selectedIndex].text
       } else if (inputTypes.indexOf(inputType) !== -1 && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
