@@ -49,7 +49,7 @@ examples:
     data:
       omit_feedback_form: true
   homepage:
-    description: This allows for rendering the layout super navigation header in a different way for only the homepage.
+    description: This variant is used only on the homepage. It adds extra spacing to the logo to align it with other content on the page that also includes additional spacing
     data:
       homepage: true
   omit_footer_navigation:
