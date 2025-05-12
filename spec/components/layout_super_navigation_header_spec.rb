@@ -133,6 +133,14 @@ describe "Super navigation header", type: :view do
     assert_select ".gem-c-layout-super-navigation-header__navigation-item-link--blue-background"
   end
 
+  it "renders homepage variant" do
+    render_component({
+      homepage: true,
+    })
+
+    assert_select ".gem-c-layout-super-navigation-header__header-logo--homepage"
+  end
+
   it "renders large navbar variant" do
     render_component({
       large_navbar: true,
