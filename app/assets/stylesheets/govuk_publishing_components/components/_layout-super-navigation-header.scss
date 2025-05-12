@@ -898,6 +898,13 @@ $after-button-padding-left: govuk-spacing(4);
 
 // Ensure the total space to the left of the logo for mobile screen sizes is 24px (margin is 15px)
 @include govuk-media-query($until: tablet) {
+  .gem-c-layout-super-navigation-header__header-logo--homepage {
+    padding-left: 9px;
+  }
+}
+
+// Ensure the total space to the left of the logo for mobile screen sizes is 24px (margin is 15px)
+@include govuk-media-query($until: tablet) {
   .gem-c-layout-super-navigation-header__header-logo--large-navbar {
     padding-left: 9px;
   }
