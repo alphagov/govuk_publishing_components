@@ -39,11 +39,9 @@ examples:
       logo_link_title: "Go to example"
   homepage:
     description: |
-      This variant is used for the homepage. It toggles the following attributes: hide_logo_text and blue_background
+      This variant is used only on the homepage. It adds extra spacing to the logo to align it with other content on the page that also includes additional spacing
     data:
-      hide_logo_text: true
-      blue_background: true
-      large_navbar: true      
+      homepage: true
   hide_logo_text:
     description: |
       Logo text is shown by default. This option allows us to hide the text for the homepage.
