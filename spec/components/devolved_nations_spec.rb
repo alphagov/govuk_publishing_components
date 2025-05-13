@@ -47,6 +47,53 @@ describe "Devolved Nations", type: :view do
     assert_select ".gem-c-devolved-nations > h2", text: "Applies to England, Scotland and Wales"
   end
 
+  context "when the page is in Welsh" do
+    before { I18n.locale = :cy }
+    after { I18n.locale = I18n.default_locale }
+
+    it "renders a devolved nations component, which applies to one nation, correctly" do
+      render_component(
+        national_applicability: {
+          england: {
+            applicable: true,
+          },
+        },
+      )
+      assert_select ".gem-c-devolved-nations > h2", text: "Yn berthnasol i Loegr"
+    end
+
+    it "renders a devolved nations component, which applies to two nations, correctly" do
+      render_component(
+        national_applicability: {
+          wales: {
+            applicable: true,
+          },
+          england: {
+            applicable: true,
+          },
+        },
+      )
+      assert_select ".gem-c-devolved-nations > h2", text: "Yn berthnasol i Gymru a Lloegr"
+    end
+
+    it "renders a devolved nations component, which applies to three nations, correctly" do
+      render_component(
+        national_applicability: {
+          england: {
+            applicable: true,
+          },
+          wales: {
+            applicable: true,
+          },
+          scotland: {
+            applicable: true,
+          },
+        },
+      )
+      assert_select ".gem-c-devolved-nations > h2", text: "Yn berthnasol i Loegr, Cymru a'r Alban"
+    end
+  end
+
   it "renders a devolved nations component, which applies to one nation, with individual publication available, correctly" do
     render_component(
       national_applicability: {
