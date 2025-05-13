@@ -9,20 +9,21 @@ module GovukPublishingComponents
       end
 
       def applicable_nations_title_text(use_english_translation = nil)
-        @national_applicability
-          .select { |_, v| v[:applicable] == true }
-          .map { |k, _| get_translation("components.devolved_nations.#{k}", use_english_translation) }
-          .sort
-          .to_sentence(
-            two_words_connector: get_translation("components.devolved_nations.connectors.two_words", use_english_translation),
-            last_word_connector: get_translation("components.devolved_nations.connectors.last_word", use_english_translation),
-          )
+        nation_keys = @national_applicability
+                    .select { |_, v| v[:applicable] == true }
+                    .map { |k, _| k }
+        nation_keys.each_with_index.map { |k, i| name_for_position(k, i, nation_keys.count, use_english_translation) }.join
       end
 
-      def get_translation(key, use_english_translation = nil)
-        return I18n.t(key, locale: :en) if use_english_translation
-
-        I18n.t(key)
+      def name_for_position(nation, position, total, use_english_translation)
+        key = if position.zero?
+                :start
+              elsif position == (total - 1)
+                :end
+              else
+                :middle
+              end
+        I18n.t("components.devolved_nations.#{nation}.#{key}", locale: use_english_translation ? :en : nil)
       end
 
       def ga4_applicable_nations_title_text(remove_connector_word = nil)
@@ -40,7 +41,7 @@ module GovukPublishingComponents
       end
 
       def alternative_content_text(name)
-        nation = I18n.t("components.devolved_nations.#{name}")
+        nation = I18n.t("components.devolved_nations.#{name}.start")
 
         if I18n.exists?("components.devolved_nations.type.#{@content_type}")
           I18n.t("components.devolved_nations.type.#{@content_type}", nation:)
