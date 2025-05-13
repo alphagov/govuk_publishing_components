@@ -10,6 +10,7 @@
 ## Unreleased
 
 * `Ga4FormTracker` handles `selectedIndex` of `-1` ([PR #4803](https://github.com/alphagov/govuk_publishing_components/pull/4803))
+* Extra meta tags for `PageViewTracker` ([PR #4804](https://github.com/alphagov/govuk_publishing_components/pull/4804/))
 
 ## 56.3.1
 

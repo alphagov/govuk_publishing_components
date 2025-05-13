@@ -67,7 +67,11 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             tool_name: this.getToolName(),
             spelling_suggestion: this.getMetaContent('spelling-suggestion'),
             discovery_engine_attribution_token: this.getMetaContent('discovery-engine-attribution-token'),
-            canonical_url: this.getCanonicalHref()
+            canonical_url: this.getCanonicalHref(),
+
+            user_created_at: this.getMetaContent('user-created-at'),
+            user_organisation_name: this.getMetaContent('user-organisation-name'),
+            user_role: this.getMetaContent('user-role')
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
