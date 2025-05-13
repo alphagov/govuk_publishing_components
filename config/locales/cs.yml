@@ -66,14 +66,26 @@ cs:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Zavřít
       dont_include_personal_info: Neuvádějte osobní nebo finanční údaje, jako je číslo národního pojištění nebo údaje o kreditní kartě.

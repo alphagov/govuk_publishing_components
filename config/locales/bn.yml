@@ -62,14 +62,26 @@ bn:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: বন্ধ করুন
       dont_include_personal_info: আপনার জাতীয় বিমা নম্বর বা ক্রেডিট কার্ডের তথ্যের মতো ব্যক্তিগত বা আর্থিক তথ্য অন্তর্ভুক্ত করবেন না।

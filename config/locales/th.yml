@@ -59,14 +59,26 @@ th:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: ปิด
       dont_include_personal_info: อย่าใส่ข้อมูลส่วนบุคคลหรือข้อมูลทางการเงิน เช่น หมายเลขประกันสังคม (National Insurance) หรือรายละเอียดบัตรเครดิต

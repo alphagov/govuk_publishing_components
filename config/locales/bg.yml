@@ -65,14 +65,26 @@ bg:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Затваряне
       dont_include_personal_info: Не включвайте лична или финансова информация, като например номера на националната си застраховка или данни за кредитна карта.

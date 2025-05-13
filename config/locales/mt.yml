@@ -63,14 +63,26 @@ mt:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Agħlaq
       dont_include_personal_info: Tinkludix informazzjoni personali jew finanzjarja bħan-numru tal-Assigurazzjoni Nazzjonali tiegħek jew id-dettalji tal-karta tal-kreditu.

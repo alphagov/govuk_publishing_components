@@ -61,14 +61,26 @@ he:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: סגור
       dont_include_personal_info: 'אל תכלול מידע אישי או פיננסי כמו מספר הביטוח הלאומי שלך או פרטי כרטיס האשראי שלך. '

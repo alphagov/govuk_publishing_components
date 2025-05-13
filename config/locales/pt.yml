@@ -61,14 +61,26 @@ pt:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Fechar
       dont_include_personal_info: Não inclua dados pessoais ou financeiros, como o seu número de seguro nacional ou informações do cartão de crédito.

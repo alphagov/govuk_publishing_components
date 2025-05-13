@@ -64,14 +64,26 @@ hu:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Bezárás
       dont_include_personal_info: Ne adjon meg személyes vagy pénzügyi adatokat, mint például a Nemzeti Biztosítási száma vagy bankkártyaadatai.

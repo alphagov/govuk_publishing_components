@@ -61,14 +61,26 @@ es-419:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Cierre
       dont_include_personal_info: No incluya información personal o financiera, como su número de seguridad social o los datos de su tarjeta de crédito.

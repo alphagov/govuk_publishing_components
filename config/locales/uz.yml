@@ -63,14 +63,26 @@ uz:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Ёпиш
       dont_include_personal_info: Шахсий ёки молиявий маълумотларни, масалан, давлат суғуртаси рақами ёки кредит карта маълумотларини, кўрсатиш керак эмас.
