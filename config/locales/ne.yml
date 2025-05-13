@@ -107,10 +107,7 @@ ne:
             manage:
               link_text:
     layout_header:
-      hide_button:
       menu:
-      search_button:
-      show_button:
       top_level:
     layout_super_navigation_header:
       logo_link_title:
