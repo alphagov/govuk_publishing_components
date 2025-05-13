@@ -59,14 +59,26 @@ zh-tw:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: 關閉
       dont_include_personal_info: 請勿包含個人或財務資訊，例如英國國家保險號碼或信用卡細節。

@@ -61,14 +61,26 @@
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Lukk
       dont_include_personal_info: Ikke inkluder personlig eller finansiell informasjon, for eksempel ditt National Insurance-nummer eller kredittkortinformasjon.
