@@ -55,9 +55,6 @@ ko:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
       northern_ireland:
       scotland:
