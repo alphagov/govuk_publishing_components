@@ -18,6 +18,10 @@ $after-link-padding: govuk-spacing(4);
 $after-button-padding-right: govuk-spacing(4);
 $after-button-padding-left: govuk-spacing(4);
 
+$search-button-padding: govuk-spacing(3);
+$search-icon-width: 21px;
+$search-icon-height: 20px;
+
 @mixin chevron($colour, $update: false) {
   @if $update == true {
     border-bottom-color: $colour;
@@ -330,9 +334,9 @@ $after-button-padding-left: govuk-spacing(4);
 
 .gem-c-layout-super-navigation-header__search-item-link-icon,
 .gem-c-layout-super-navigation-header__search-toggle-button-link-icon {
-  height: 20px;
+  height: $search-icon-height;
   pointer-events: none;
-  width: 21px;
+  width: $search-icon-width;
 }
 
 .gem-c-layout-super-navigation-header__open-button .gem-c-layout-super-navigation-header__search-toggle-button-link-icon {
@@ -534,7 +538,7 @@ $after-button-padding-left: govuk-spacing(4);
   height: $navbar-height;
   padding: govuk-spacing(3);
   position: relative;
-  width: 51px;
+  width: calc(($search-button-padding * 2) + $search-icon-width); // width = button container left and right padding + icon width
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
   &::after {
