@@ -60,14 +60,26 @@ fa:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: بستن
       dont_include_personal_info: شامل اطلاعات شخصی یا مالی شما از جمله شماره بیمه ملی یا جزئیات کارت اعتباری شما نمی‌شود.

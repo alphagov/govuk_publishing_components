@@ -61,14 +61,26 @@ sw:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Funga
       dont_include_personal_info: Usiweke maelezo ya kibinafsi au ya fedha kama vile nambari yako ya Bima ya Kitaifa au maelezo ya kadi yako ya mikopo.

@@ -58,14 +58,26 @@ ps:
       applies_to:
       aria_label:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: تړل
       dont_include_personal_info: شخصي یا مالي معلومات شامل نکړئ لکه ستاسو د ملي بیمې شمیره یا د کریډیټ کارت توضیحات.
