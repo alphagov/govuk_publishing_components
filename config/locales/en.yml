@@ -59,18 +59,27 @@ en:
     devolved_nations:
       applies_to: Applies to
       aria_label: Nation
-      connectors:
-        last_word: " and "
-        two_words: " and "
-      england: England
-      northern_ireland: Northern Ireland
-      scotland: Scotland
+      england:
+        end: " and England"
+        middle: ", England"
+        start: England
+      northern_ireland:
+        end: " and Northern Ireland"
+        middle: ", Northern Ireland"
+        start: Northern Ireland
+      scotland:
+        end: " and Scotland"
+        middle: ", Scotland"
+        start: Scotland
       type:
         consultation: Consultation for %{nation}
         detailed_guide: Guidance for %{nation}
         guidance: Guidance for %{nation}
         publication: Publication for %{nation}
-      wales: Wales
+      wales:
+        end: " and Wales"
+        middle: ", Wales"
+        start: Wales
     feedback:
       close: Cancel
       dont_include_personal_info: Don’t include personal or financial information like your National Insurance number or credit card details.
