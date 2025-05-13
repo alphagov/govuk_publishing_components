@@ -60,18 +60,27 @@ az:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Bağla
       dont_include_personal_info: Sosial sığorta nömrəniz və ya kredit kartınızın məlumatları kimi şəxsi və ya maliyyə məlumatları daxil etməyin.

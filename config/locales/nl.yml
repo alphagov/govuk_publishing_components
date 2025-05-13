@@ -60,18 +60,27 @@ nl:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Sluiten
       dont_include_personal_info: Vermeld geen persoonlijke of financiële informatie zoals uw burgerservicenummer of creditcardgegevens.

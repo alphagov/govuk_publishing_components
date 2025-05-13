@@ -62,18 +62,27 @@ dr:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: بسته نمایید
       dont_include_personal_info: اطلاعات شخصی یا مالی مانند شماره بیمه ملی یا مشخصات  کریدت کارت خودرا اینجا قرار ندهید.

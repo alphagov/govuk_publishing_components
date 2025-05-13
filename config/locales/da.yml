@@ -61,18 +61,27 @@ da:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Luk
       dont_include_personal_info: Do not include personal or financial information such as your national insurance number or credit card information.
