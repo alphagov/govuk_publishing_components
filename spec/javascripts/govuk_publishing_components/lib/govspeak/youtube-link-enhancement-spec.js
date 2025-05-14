@@ -89,6 +89,57 @@ describe('Youtube link enhancement', function () {
       expect(document.querySelector('.gem-c-govspeak p').innerText).toBe('We use agile at GDS instead of waterfall.')
     })
 
+    it('does replace links when other punctuation is in the paragraph (cookies enabled)', function () {
+      container.innerHTML =
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
+          '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>' +
+        '</div>'
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element)
+      enhancement.init()
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(6)
+      expect(document.querySelectorAll('.gem-c-govspeak p, .gem-c-govspeak a').length).toBe(0)
+    })
+
+    it('does replace links when other punctuation is in the paragraph (cookies disabled)', function () {
+      window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
+
+      container.innerHTML =
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
+          '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>' +
+        '</div>'
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element)
+      enhancement.init()
+
+      var links = document.querySelectorAll('.gem-c-govspeak .gem-c-govspeak__youtube-placeholder-link')
+      expect(links.length).toBe(6)
+
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder').length).toBe(6)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').length).toBe(6)
+
+      var expectedLinkText = ['agile at GDS.', 'agile at GDS!', 'agile at GDS?', '"agile at GDS"', '\'agile at GDS\'', '"agile at GDS.?!"']
+
+      for (var i = 0; i < links.length; i++) {
+        expect(links[i].textContent).toBe(expectedLinkText[i])
+      }
+    })
+
     it('doesn\'t replace links when other HTML is in the paragraph (cookies enabled)', function () {
       container.innerHTML =
         '<div class="gem-c-govspeak" data-module="govspeak">' +
