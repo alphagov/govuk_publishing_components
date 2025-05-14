@@ -64,7 +64,11 @@ describe('Google Tag Manager page view tracking', function () {
         tool_name: undefined,
         spelling_suggestion: undefined,
         discovery_engine_attribution_token: undefined,
-        canonical_url: undefined
+        canonical_url: undefined,
+
+        user_created_at: undefined,
+        user_organisation_name: undefined,
+        user_role: undefined
       }
     }
     if (window.location.search) {
