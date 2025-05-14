@@ -348,7 +348,7 @@ $search-icon-height: 20px;
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   font-weight: 700;
-  background: govuk-colour("black");
+  background: none;
   border: 0;
   box-sizing: border-box;
   color: govuk-colour("white");
@@ -379,12 +379,8 @@ $search-icon-height: 20px;
   }
 
   @include govuk-media-query($from: "desktop") {
-    background: govuk-colour("black");
     display: block;
     float: left;
-    margin: 0;
-    padding: 0;
-    position: relative;
     right: 0;
   }
 
