@@ -27,8 +27,7 @@
     var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
-
-      if (this.hasDisabledEmbed($link)) {
+      if (this.hasDisabledEmbed($link) || $link.getAttribute('href').includes('/playlist')) {
         continue
       }
 
