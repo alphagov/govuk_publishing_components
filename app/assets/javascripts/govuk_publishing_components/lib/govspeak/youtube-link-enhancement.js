@@ -6,6 +6,7 @@
   var YoutubeLinkEnhancement = function ($element, $classOverride) {
     this.$element = $element
     this.$classOverride = typeof $classOverride !== 'undefined' ? $classOverride : 'gem-c-govspeak__youtube-video'
+    this.punctuationRegex = /[\.!\?"']/g // eslint-disable-line no-useless-escape
   }
 
   YoutubeLinkEnhancement.prototype.init = function () {
@@ -22,8 +23,7 @@
     var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
-
-      if (this.hasDisabledEmbed($link)) {
+      if (this.hasDisabledEmbed($link) || $link.getAttribute('href').includes('/playlist')) {
         continue
       }
 
@@ -31,7 +31,8 @@
 
       // Only replace the <p> with a YT embed if the YT link is the only thing in the <p>.
       // This prevents other content in the <p> being lost.
-      if ($linkParent.innerHTML !== $link.outerHTML) {
+      // However, if a <p> exists with only a YT link and punctuation, we do allow the punctuation characters to be lost to the YT embed.
+      if ($linkParent.innerHTML.replaceAll(this.punctuationRegex, '') !== $link.outerHTML.replaceAll(this.punctuationRegex, '')) {
         continue
       }
       var href = $link.getAttribute('href')
@@ -102,7 +103,8 @@
 
     // Only replace the <p> with a YT embed if the YT link is the only thing in the <p>.
     // This prevents other content in the <p> being lost.
-    if (parentPara.innerHTML !== $link.outerHTML) {
+    // However, if a <p> exists with only a YT link and punctuation, we do allow the punctuation characters to be lost to the YT embed.
+    if (parentPara.innerHTML.replaceAll(this.punctuationRegex, '') !== $link.outerHTML.replaceAll(this.punctuationRegex, '')) {
       return
     }
 

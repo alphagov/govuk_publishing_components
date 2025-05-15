@@ -1027,6 +1027,11 @@ examples:
       block: |
         <p>This content has a YouTube video link, converted to an accessible embedded player by component JavaScript. Bear in mind that the link will not convert if the paragraph it is in contains other content.</p>
         <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
+  youtube_embed_with_punctuation:
+    description: YouTube links should still be enhanced if punctuation is in the same paragraph but outside the YT <a> tag.
+    data:
+      block: |
+        <p>"<a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a>."</p>
   youtube_embed_disabled_by_component:
     data:
       disable_youtube_expansions: true
