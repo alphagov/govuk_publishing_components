@@ -1,7 +1,7 @@
 <%
   add_gem_component_stylesheet("cross-service-header")
 
-  product_name ||= nil
+  service_name ||= nil
   one_login_navigation_items ||= []
   service_navigation_items ||= []
   service_navigation_aria_label ||= "Service menu"
@@ -11,9 +11,8 @@
   <%= render "govuk_publishing_components/components/cross_service_header/one_login_header", {
     one_login_navigation_items: one_login_navigation_items,
   } %>
-  <%= render "govuk_publishing_components/components/cross_service_header/service_header", {
-    service_navigation_aria_label: service_navigation_aria_label,
-    service_navigation_items: service_navigation_items,
-    product_name: product_name,
+  <%= render "govuk_publishing_components/components/service_navigation", {
+    service_name: service_name,
+    navigation_items: service_navigation_items,
   } %>
 </header>

@@ -20,7 +20,7 @@ examples:
     data:
       show_account_layout: true
       show_cross_service_header: true
-      product_name: GOV.UK email subscriptions
+      service_name: GOV.UK email subscriptions
       one_login_navigation_items:
         one_login_home:
           href: "#"
@@ -30,7 +30,7 @@ examples:
     data:
       show_account_layout: true
       show_cross_service_header: true
-      product_name: GOV.UK email subscriptions
+      service_name: GOV.UK email subscriptions
       one_login_navigation_items:
         one_login_home:
           href: "#"
@@ -45,7 +45,7 @@ examples:
     data:
       show_account_layout: true
       show_cross_service_header: true
-      product_name: GOV.UK email subscriptions
+      service_name: GOV.UK email subscriptions
       one_login_navigation_items:
         one_login_home:
           href: "#"
