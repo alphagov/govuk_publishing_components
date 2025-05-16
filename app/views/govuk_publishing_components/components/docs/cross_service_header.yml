@@ -1,14 +1,28 @@
 name: Cross service header
 description: | 
-  The One Login header contains two distinct navigation menus - one for GOV.UK One Login links and another for internal service navigation.
+  The One Login header contains two distinct navigation menus - one for GOV.UK One Login links and another for internal service navigation, which uses the Design System service navigation component.
 body: |
+  On smaller screens, both menus collapse and can be shown and hidden using Javascript.
+
+  You’ll need to adapt the internal service navigation so that it includes content specific to your service. This includes adapting the accessibility markup in the internal service navigation.
+
+  ## GOV.UK One Login links in the header
+
   The header contains two links:
 
   * "GOV.UK One Login": this takes the user to their One Login ‘home’ area, where they can manage their credentials and see and access the services they've used - you don't need to update the url this points to
   * "Sign out": you'll need to adapt this link so that it signs the user out of your service and signs them out of One Login - how you do this will depend on how you've implemented sign out functionality in your service
+
+  ## Internal service navigation links in the header
+
+  The header has space to optionally add links to different parts of your service, just as the current ‘service header’ component from the Design System does. Follow the same patterns for internal service navigation links as you do with the Design System service header.
+
+  Please refer to the [One Login Service Header GitHub repo](https://github.com/govuk-one-login/service-header) for further information
 shared_accessibility_criteria:
   - link
 accessibility_criteria:
+govuk_frontend_components:
+  - service-navigation
 accessibility_excluded_rules:
   - landmark-banner-is-top-level
   - duplicate-id-aria
@@ -20,7 +34,7 @@ examples:
     data:
       show_account_layout: true
       show_cross_service_header: true
-      product_name: GOV.UK email subscriptions
+      service_name: GOV.UK email subscriptions
       one_login_navigation_items:
         one_login_home:
           href: "#"
@@ -30,7 +44,7 @@ examples:
     data:
       show_account_layout: true
       show_cross_service_header: true
-      product_name: GOV.UK email subscriptions
+      service_name: GOV.UK email subscriptions
       one_login_navigation_items:
         one_login_home:
           href: "#"
@@ -45,7 +59,7 @@ examples:
     data:
       show_account_layout: true
       show_cross_service_header: true
-      product_name: GOV.UK email subscriptions
+      service_name: GOV.UK email subscriptions
       one_login_navigation_items:
         one_login_home:
           href: "#"

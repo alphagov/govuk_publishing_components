@@ -30,9 +30,9 @@ describe "Cross service header", type: :view do
   it "renders the One Login service header" do
     render_component({ show_account_layout: true,
                        one_login_navigation_items:,
-                       product_name: "GOV.UK email subscriptions" })
+                       service_name: "GOV.UK email subscriptions" })
 
-    assert_select ".gem-c-service-header__heading", text: "GOV.UK email subscriptions"
+    assert_select ".govuk-service-navigation__service-name", text: "GOV.UK email subscriptions"
     assert_select ".gem-c-cross-service-header__button-content", text: "One Login"
     assert_select ".gem-c-one-login-header__nav__list-item:nth-child(1) [href]", text: "GOV.UK One Login"
     assert_select ".gem-c-one-login-header__nav__list-item:nth-child(2) [href]", text: "Sign out"
@@ -41,7 +41,7 @@ describe "Cross service header", type: :view do
   it "renders the One Login service header with data attributes" do
     render_component({ show_account_layout: true,
                        one_login_navigation_items: with_data_attributes,
-                       product_name: "GOV.UK email subscriptions" })
+                       service_name: "GOV.UK email subscriptions" })
 
     assert_select ".gem-c-one-login-header__nav__list-item:nth-child(1) [data-module=\'explicit-cross-domain-links\']", text: "GOV.UK One Login"
     assert_select ".gem-c-one-login-header__nav__list-item:nth-child(2) [data-module=\'explicit-cross-domain-links\']", text: "Sign out"
@@ -55,10 +55,10 @@ describe "Cross service header", type: :view do
     ]
     render_component({ show_account_layout: true,
                        one_login_navigation_items:,
-                       product_name: "GOV.UK email subscriptions",
+                       service_name: "GOV.UK email subscriptions",
                        service_navigation_items: })
 
-    assert_select ".gem-c-service-header nav"
-    assert_select ".gem-c-service-header__nav-list-item", count: 3
+    assert_select ".govuk-service-navigation__list"
+    assert_select ".govuk-service-navigation__item", count: 3
   end
 end

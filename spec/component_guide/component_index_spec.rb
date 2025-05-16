@@ -73,6 +73,7 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/related-navigation';
 @import 'govuk_publishing_components/components/search';
 @import 'govuk_publishing_components/components/search-with-autocomplete';
+@import 'govuk_publishing_components/components/service-navigation';
 @import 'govuk_publishing_components/components/skip-link';
 @import 'govuk_publishing_components/components/step-by-step-nav';
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
@@ -100,6 +101,7 @@ describe "Component guide index", :capybara do
 //= require govuk_publishing_components/components/layout-super-navigation-header
 //= require govuk_publishing_components/components/print-link
 //= require govuk_publishing_components/components/search-with-autocomplete
+//= require govuk_publishing_components/components/service-navigation
 //= require govuk_publishing_components/components/skip-link
 //= require govuk_publishing_components/components/step-by-step-nav
 //= require govuk_publishing_components/components/tabs"
