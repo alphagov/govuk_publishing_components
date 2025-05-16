@@ -1,49 +1,6 @@
 @import "govuk_publishing_components/individual_component_support";
 
-// start mixins and variables
 $govuk-header-link-underline-thickness: 3px;
-
-@mixin toggle-button-focus($default-text-colour) {
-  color: $default-text-colour;
-  // apply focus style on :focus for browsers which support :focus but not :focus-visible
-  &:focus {
-    @include govuk-focused-text;
-
-    // overwrite previous styles for browsers which support :focus-visible
-    &:not(:focus-visible) {
-      outline: none;
-      color: $default-text-colour;
-      background: none;
-      box-shadow: none;
-    }
-
-    // apply focus style on :focus-visible for browsers which support :focus-visible
-    &-visible {
-      @include govuk-focused-text;
-    }
-  }
-}
-
-@mixin nav-style($nav-open-class) {
-  display: block;
-  // if JS is unavailable, the nav links are expanded and the toggle button is hidden
-  .toggle-enabled & {
-    display: none;
-
-    &#{$nav-open-class} {
-      display: block;
-    }
-
-    @include govuk-media-query($from: tablet) {
-      display: block;
-    }
-  }
-
-  @include govuk-media-query($until: tablet) {
-    width: 100%;
-  }
-}
-// end mixins and variables
 
 .gem-c-cross-service-header__button {
   display: none;
@@ -88,12 +45,25 @@ $govuk-header-link-underline-thickness: 3px;
     }
   }
 
-  &.gem-c-cross-service-header__button--service-header {
-    @include toggle-button-focus($govuk-link-colour);
-  }
-
   &.gem-c-cross-service-header__button--one-login {
-    @include toggle-button-focus(govuk-colour("white"));
+    color: govuk-colour("white");
+    // apply focus style on :focus for browsers which support :focus but not :focus-visible
+    &:focus {
+      @include govuk-focused-text;
+
+      // overwrite previous styles for browsers which support :focus-visible
+      &:not(:focus-visible) {
+        outline: none;
+        color: govuk-colour("white");
+        background: none;
+        box-shadow: none;
+      }
+
+      // apply focus style on :focus-visible for browsers which support :focus-visible
+      &-visible {
+        @include govuk-focused-text;
+      }
+    }
   }
 }
 
@@ -192,10 +162,14 @@ $govuk-header-link-underline-thickness: 3px;
 
 .gem-c-one-login-header__logotype {
   display: inline-block;
+  position: relative;
+  top: -3px;
 
   // Add a gap after the logo in case it's followed by a product name. This
   // gets removed later if the logotype is a :last-child.
   margin-right: govuk-spacing(1);
+  fill: currentcolor;
+  vertical-align: top;
 
   // Prevent readability backplate from obscuring underline in Windows High
   // Contrast Mode
@@ -209,22 +183,6 @@ $govuk-header-link-underline-thickness: 3px;
   &:last-child {
     margin-right: 0;
   }
-}
-
-.gem-c-one-login-header__logotype-crown {
-  position: relative;
-  top: -1px;
-  margin-right: 1px;
-  fill: currentcolor;
-  vertical-align: top;
-}
-
-// Spacing adjustment for Tudor crown, as the new graphic is narrower than the
-// existing crown. In Frontend v5, this rule should replace the equivalent in
-// the block above.
-.gem-c-one-login-header__logotype-crown[width="32"] {
-  top: -3px;
-  margin-right: 2px;
 }
 
 .gem-c-one-login-header__logotype-crown-fallback-image {
@@ -276,7 +234,10 @@ $govuk-header-link-underline-thickness: 3px;
 }
 
 .gem-c-one-login-header__nav {
-  @include nav-style(".gem-c-one-login-header__nav--open");
+  @include govuk-media-query ($until: tablet) {
+    width: 100%;
+  }
+
   @include govuk-media-query($from: tablet) {
     max-width: 66%;
   }
@@ -286,6 +247,24 @@ $govuk-header-link-underline-thickness: 3px;
   margin: 0;
   padding: 0;
   list-style: none;
+  display: block;
+
+  // if JS is unavailable, the nav links are expanded and the toggle button is hidden
+  .toggle-enabled & {
+    @include govuk-media-query ($until: tablet) {
+      display: none;
+    }
+
+    @include govuk-media-query ($from: tablet) {
+      display: flex;
+    }
+  }
+
+  .gem-c-one-login-header__nav--open & {
+    @include govuk-media-query ($until: tablet) {
+      display: block;
+    }
+  }
 
   @include govuk-media-query($from: tablet) {
     padding: govuk-spacing(2) 0;
@@ -345,97 +324,6 @@ $govuk-header-link-underline-thickness: 3px;
   }
 }
 // end One Login header styles
-
-// start service navigation styles
-.gem-c-service-header {
-  background-color: govuk-colour("light-grey");
-  border-bottom: 1px solid govuk-colour("mid-grey");
-}
-
-.gem-c-service-header__container {
-  padding-top: govuk-spacing(1);
-
-  @include govuk-media-query ($until: tablet) {
-    margin-bottom: govuk-spacing(1);
-  }
-
-  @include govuk-media-query ($from: tablet) {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-
-.gem-c-service-header__heading {
-  color: $govuk-text-colour;
-  padding: govuk-spacing(3) 0;
-  margin: 0;
-  flex-grow: 1;
-  @include govuk-font($size: 24, $weight: bold);
-
-  @include govuk-media-query($until: tablet) {
-    padding: govuk-spacing(1) 0;
-  }
-}
-
-.gem-c-service-header__nav {
-  @include nav-style(".gem-c-service-header__nav--open");
-}
-
-.gem-c-service-header__nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  @include govuk-font($size: 19, $weight: bold);
-
-  @include govuk-media-query($from: tablet) {
-    @include govuk-font($size: 19, $weight: bold);
-  }
-}
-
-.gem-c-service-header__nav-list-item {
-  margin: govuk-spacing(3) 0 govuk-spacing(4);
-
-  &.gem-c-service-header__nav-list-item--active {
-    padding-left: govuk-spacing(3);
-    border-left: govuk-spacing(1) solid $govuk-link-colour;
-  }
-
-  @include govuk-media-query($from: tablet) {
-    display: inline-block;
-    margin: 0 govuk-spacing(6) 0 0;
-    border-bottom: govuk-spacing(1) solid transparent;
-
-    &:last-of-type {
-      margin: 0;
-    }
-
-    &.gem-c-service-header__nav-list-item--active {
-      border-left: 0;
-      padding-left: 0;
-      border-bottom: govuk-spacing(1) solid $govuk-link-colour;
-    }
-  }
-}
-
-.gem-c-service-header__nav-list-item-link {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
-  @include govuk-link-style-no-visited-state;
-
-  &:not(:hover) {
-    text-decoration: none;
-  }
-
-  @include govuk-media-query($from: tablet) {
-    display: inline-block;
-    padding: govuk-spacing(3) 0 govuk-spacing(3);
-
-    &:focus {
-      box-shadow: 0 (-(govuk-spacing(1))) $govuk-focus-colour, 0 govuk-spacing(1) $govuk-focus-text-colour;
-    }
-  }
-}
-// end service navigation styles
 
 @include govuk-media-query($media-type: print) {
   .gem-c-cross-service-header {
