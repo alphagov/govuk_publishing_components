@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Upgrade cross service header to v3.0.0 ([PR #4811](https://github.com/alphagov/govuk_publishing_components/pull/4811/))
+
 ## 56.3.2
 
 * `Ga4FormTracker` handles `selectedIndex` of `-1` ([PR #4803](https://github.com/alphagov/govuk_publishing_components/pull/4803))
