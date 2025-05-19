@@ -89,6 +89,57 @@ describe('Youtube link enhancement', function () {
       expect(document.querySelector('.gem-c-govspeak p').innerText).toBe('We use agile at GDS instead of waterfall.')
     })
 
+    it('does replace links when other punctuation is in the paragraph (cookies enabled)', function () {
+      container.innerHTML =
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
+          '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>' +
+        '</div>'
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element)
+      enhancement.init()
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(6)
+      expect(document.querySelectorAll('.gem-c-govspeak p, .gem-c-govspeak a').length).toBe(0)
+    })
+
+    it('does replace links when other punctuation is in the paragraph (cookies disabled)', function () {
+      window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
+
+      container.innerHTML =
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
+          '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
+          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>' +
+        '</div>'
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element)
+      enhancement.init()
+
+      var links = document.querySelectorAll('.gem-c-govspeak .gem-c-govspeak__youtube-placeholder-link')
+      expect(links.length).toBe(6)
+
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder').length).toBe(6)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').length).toBe(6)
+
+      var expectedLinkText = ['agile at GDS.', 'agile at GDS!', 'agile at GDS?', '"agile at GDS"', '\'agile at GDS\'', '"agile at GDS.?!"']
+
+      for (var i = 0; i < links.length; i++) {
+        expect(links[i].textContent).toBe(expectedLinkText[i])
+      }
+    })
+
     it('doesn\'t replace links when other HTML is in the paragraph (cookies enabled)', function () {
       container.innerHTML =
         '<div class="gem-c-govspeak" data-module="govspeak">' +
@@ -219,6 +270,41 @@ describe('Youtube link enhancement', function () {
       expect(document.querySelectorAll('.gem-c-govspeak a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ?example=2"]').length).toBe(1)
       expect(document.querySelector('.gem-c-govspeak a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ?example=2"]').textContent).toBe('Agile at GDS Part 2')
 
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').textContent).toBe('What are the Discovery, Alpha, Beta and Live stages in developing a service?')
+    })
+
+    it('doesn\'t add "How to watch this video" to links that are YT playlists', function () {
+      window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
+
+      container.innerHTML = `
+        <div class="gem-c-govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>
+          <p><a href="https://www.youtube.com/playlist?list=PLFNWGffju2p3CPjLC9eIA3uNmfWjNQjrf">This is a playlist</a></p>
+          <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
+        </div>
+      `
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element)
+      enhancement.init()
+
+      // Should be zero video enhancements and two cookies disabled messages
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak .gem-c-govspeak__youtube-placeholder-link').length).toBe(2)
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder').length).toBe(2)
+
+      // First link should get the cookies disabled message
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/watch?v=0XpAtr24uUQ"]').textContent).toBe('Agile at GDS')
+
+      // Playlist link shouldn't get the cookies disabled message
+      expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://www.youtube.com/playlist?list=PLFNWGffju2p3CPjLC9eIA3uNmfWjNQjrf"]').length).toBe(0)
+      expect(document.querySelectorAll('.gem-c-govspeak a[href="https://www.youtube.com/playlist?list=PLFNWGffju2p3CPjLC9eIA3uNmfWjNQjrf"]').length).toBe(1)
+      expect(document.querySelector('.gem-c-govspeak a[href="https://www.youtube.com/playlist?list=PLFNWGffju2p3CPjLC9eIA3uNmfWjNQjrf"]').textContent).toBe('This is a playlist')
+
+      // Third link should get the cookies disabled message
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').length).toBe(1)
       expect(document.querySelector('.gem-c-govspeak__youtube-placeholder a[href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t"]').textContent).toBe('What are the Discovery, Alpha, Beta and Live stages in developing a service?')
     })
