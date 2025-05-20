@@ -110,13 +110,17 @@ $after-button-padding-left: govuk-spacing(4);
   position: relative;
 }
 
+.crown-container {
+  float: left;
+}
+
 .gem-c-layout-super-navigation-header__button-width-container {
   position: relative;
 }
 
 .gem-c-layout-super-navigation-header__button-container {
   top: -$navbar-height;
-  position: absolute;
+  float: right;
   right: 0;
 
   @include govuk-media-query($until: "tablet") {
@@ -407,6 +411,7 @@ $after-button-padding-left: govuk-spacing(4);
   vertical-align: top;
   @include govuk-typography-common($font-family: $govuk-font-family);
 
+
   &::after {
     @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right);
   }
@@ -435,6 +440,9 @@ $after-button-padding-left: govuk-spacing(4);
     padding: 0;
     position: relative;
     right: 0;
+    position: absolute;
+    top: 0;
+    right: 100px;
   }
 
   &:focus-visible {
@@ -618,6 +626,12 @@ $after-button-padding-left: govuk-spacing(4);
   width: 51px;
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
+  position: absolute;
+  top: 0;
+  right: 30px;
+  float: right;
+  display: block;
+
   &::after {
     @include pseudo-underline($left: 0, $right: 0);
   }
@@ -763,6 +777,7 @@ $after-button-padding-left: govuk-spacing(4);
   background: govuk-colour("light-grey");
   border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
+
 
   @include govuk-media-query($until: 300px) {
     padding-top: 80px;
