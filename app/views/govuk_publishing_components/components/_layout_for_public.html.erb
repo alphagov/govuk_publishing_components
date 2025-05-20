@@ -19,6 +19,7 @@
   omit_footer_border ||= false
   omit_header ||= false
   product_name ||= nil
+  service_name ||= nil
   show_cross_service_header ||= false
   draft_watermark ||= false
   title ||= "GOV.UK - The best place to find government services and information"
@@ -104,7 +105,7 @@
         <%= render "govuk_publishing_components/components/cross_service_header", {
           one_login_navigation_items: one_login_navigation_items,
           service_navigation_items: service_navigation_items,
-          product_name: product_name,
+          service_name: service_name,
         } %>
       <% elsif homepage %>
         <%= render "govuk_publishing_components/components/layout_for_public/layout_super_navigation_header_homepage", {

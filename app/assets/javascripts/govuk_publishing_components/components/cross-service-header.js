@@ -23,9 +23,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       return
     }
     /**
-    * The header can render with one or two navigation elements which collapse
-    * into dropdowns on the mobile variation. This initialises the dropdown
-    * functionality for all navs that have a menu button which has:
+    * The header navigation elements collapse into dropdowns on the mobile variation.
+    * This initialises the dropdown functionality for all navs that have a menu button which has:
     * 1. a class of .js-x-header-toggle
     * 2. an aria-controls attribute which can be mapped to the ID of the element
     * that should be hidden on mobile
