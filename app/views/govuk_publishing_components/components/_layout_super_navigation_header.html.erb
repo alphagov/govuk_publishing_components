@@ -114,11 +114,12 @@
         hide_menu_text = hide_navigation_menu_text
       %>
 
-      <div class="govuk-width-container gem-c-layout-super-navigation-header__button-width-container">
+      <div class=" gem-c-layout-super-navigation-header__button-width-container">
         <%= content_tag(:div, {
           class: button_container_classes
         }) do %>
-          <div class="gem-c-layout-super-navigation-header__navigation-item">
+          <div class="govuk-width-container">
+          <div class=" gem-c-layout-super-navigation-header__navigation-item">
             <%= link_to link[:href], {
               class: item_link_classes,
             } do %>
@@ -156,6 +157,7 @@
             }) do %>
               <%= tag.span link[:label], class: top_toggle_button_inner_classes %>
             <% end %>
+          </div>
           </div>
 
           <%= content_tag(:div, {
@@ -215,7 +217,7 @@
           </div>
         </div>
       <% end %>
-
+        <div class="govuk-width-container">
           <div class="gem-c-layout-super-navigation-header__search-item">
             <%= content_tag(:button, {
               id: "super-search-menu-toggle",
@@ -274,6 +276,7 @@
             <% end %>
           </div>
         <% end %>
+      </div>
       </div>
 
       

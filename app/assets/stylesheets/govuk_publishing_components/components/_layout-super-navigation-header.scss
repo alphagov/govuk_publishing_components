@@ -442,7 +442,7 @@ $after-button-padding-left: govuk-spacing(4);
     right: 0;
     position: absolute;
     top: 0;
-    right: 50px;
+    right: 100px;
   }
 
   &:focus-visible {
@@ -628,7 +628,9 @@ $after-button-padding-left: govuk-spacing(4);
 
   position: absolute;
   top: 0;
-  right: 0;
+  right: 30px;
+  float: right;
+  display: block;
 
   &::after {
     @include pseudo-underline($left: 0, $right: 0);
