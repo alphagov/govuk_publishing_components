@@ -33,6 +33,10 @@ describe "visual regression test runner Percy", :visual_regression do
     # as part of the component guide, and another one at `/public`.
     component_links << URI("/public")
 
+    # Include an example that shows a real-life undocumented use case of multiple components together.
+    # Its inclusion here is to make it visible. The medium to long term aim is to redesign the use case to make it more usable.
+    component_links << URI("/metadatawithnoticeexample")
+
     component_links.each do |link|
       next if all_components_to_skip.include?(link.path)
 
