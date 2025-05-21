@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add middleware to optimise GA4 Attributes by reducing unnecessary escaping ([PR #4813](https://github.com/alphagov/govuk_publishing_components/pull/4813))
+
 ## 57.0.0
 
 * **BREAKING:** Upgrade cross service header to v3.0.0 ([PR #4811](https://github.com/alphagov/govuk_publishing_components/pull/4811/))
