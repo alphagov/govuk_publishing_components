@@ -60,18 +60,27 @@ pa:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: ਬੰਦ ਕਰੋ
       dont_include_personal_info: ਨਿੱਜੀ ਜਾਂ ਵਿੱਤੀ ਜਾਣਕਾਰੀ ਜਿਵੇਂ ਕਿ ਤੁਹਾਡਾ ਰਾਸ਼ਟਰੀ ਬੀਮਾ ਨੰਬਰ ਜਾਂ ਕ੍ਰੈਡਿਟ ਕਾਰਡ ਦੇ ਵੇਰਵੇ ਸ਼ਾਮਲ ਨਾ ਕਰੋ.

@@ -60,18 +60,27 @@ it:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Chiudi
       dont_include_personal_info: Non includere informazioni personali o finanziarie come il numero di previdenza sociale o i dettagli della carta di credito.
