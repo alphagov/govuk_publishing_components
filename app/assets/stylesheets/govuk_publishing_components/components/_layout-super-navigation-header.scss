@@ -49,7 +49,7 @@ $search-icon-height: 20px;
   top: 0;
 }
 
-@mixin pseudo-underline($left: govuk-spacing(4), $right: govuk-spacing(4), $width: false) {
+@mixin pseudo-underline($left: govuk-spacing(2), $right: govuk-spacing(2), $width: false) {
   background: none;
   content: "";
   height: $pseudo-underline-height;
@@ -199,7 +199,7 @@ $search-icon-height: 20px;
 
     &::after {
       @include make-selectable-area-bigger;
-      @include pseudo-underline($left: $after-link-padding, $right: $after-link-padding);
+      @include pseudo-underline;
     }
 
     &::before {
@@ -261,7 +261,7 @@ $search-icon-height: 20px;
       margin: 0;
 
       &::after {
-        @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right, $width: 100%);
+        @include pseudo-underline($width: 100%);
       }
     }
     // stylelint-enable max-nesting-depth
@@ -361,7 +361,7 @@ $search-icon-height: 20px;
   @include govuk-typography-common($font-family: $govuk-font-family);
 
   &::after {
-    @include pseudo-underline($left: $after-button-padding-left, $right: $after-button-padding-right);
+    @include pseudo-underline;
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -538,7 +538,7 @@ $search-icon-height: 20px;
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
   &::after {
-    @include pseudo-underline($left: 0, $right: 0);
+    @include pseudo-underline;
   }
 
   &:focus-visible {
