@@ -16,8 +16,15 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         if (!text) {
           return // do nothing if no text has been selected
         }
-        var target = event.target.tagName
-        if (target === 'INPUT' || target === 'TEXTAREA') {
+
+        var target = event.target
+
+        if (target.closest && target.closest('[data-ga4-no-copy]')) {
+          return // do nothing if data-ga4-no-copy present
+        }
+
+        var tagName = target.tagName
+        if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
           return // do nothing if text is being copied from an input
         }
 
