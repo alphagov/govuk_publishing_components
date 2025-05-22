@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix welsh translations of Devolved Nations component ([PR #4807](https://github.com/alphagov/govuk_publishing_components/pull/4807))
 * Add tracking to `ReorderableList` ([PR #4835](https://github.com/alphagov/govuk_publishing_components/pull/4835))
 * Add tracking to `AddAnother` ([PR #4836](https://github.com/alphagov/govuk_publishing_components/pull/4836))
 * Add phone numbers to GA4 PII redaction ([PR #4840](https://github.com/alphagov/govuk_publishing_components/pull/4840))
