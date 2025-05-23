@@ -161,86 +161,34 @@ $search-icon-height: 20px;
     margin: 0;
   }
 
+  &::after {
+    @include pseudo-underline;
+  }
+
   &:hover {
     @include govuk-link-hover-decoration;
+
+    &::after {
+      background: govuk-colour("white");
+    }
   }
 
   &,
   &:link,
   &:visited {
+    color: govuk-colour("white");
     float: left;
     font-size: 16px;
     font-size: govuk-px-to-rem(16px);
     height: govuk-spacing(4);
+    text-decoration: none;
 
-    @include focus-and-focus-visible {
-      @include govuk-focused-text;
-    }
-
-    // Undoes the :focus styles *only* for browsers that support :focus-visible.
-    // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
-    &:focus:not(:focus-visible) {
-      background: none;
+    &:focus {
       box-shadow: none;
-      color: $govuk-link-colour;
-
-      .gem-c-layout-super-navigation-header__navigation-item-link-inner {
-        border-right-color: $button-pipe-colour;
-      }
-
-      &:hover {
-        @include govuk-link-decoration;
-        @include govuk-link-hover-decoration;
-        color: $govuk-link-hover-colour;
-      }
-    }
-
-    &::after {
-      @include make-selectable-area-bigger;
-      @include pseudo-underline;
-    }
-
-    &:hover {
-      &::after {
-        background: govuk-colour("white");
-      }
-    }
-
-    @include focus-and-focus-visible {
-      .gem-c-layout-super-navigation-header__navigation-item-link-inner {
-        border-right-color: $govuk-focus-colour;
-        background: $govuk-focus-colour;
-      }
-
-      &,
-      &:hover {
-        box-shadow: none;
-        color: $govuk-focus-text-colour;
-
-        &::after {
-          background: $govuk-focus-text-colour;
-        }
-      }
-    }
-
-    @include focus-not-focus-visible {
-      &,
-      &:hover {
-        text-decoration: none;
-      }
-
-      & {
-        color: govuk-colour("white");
-      }
-
-      &:hover {
-        &::after {
-          background: govuk-colour("white");
-        }
-      }
+      color: $govuk-focus-text-colour;
 
       &::after {
-        background: none;
+        background: $govuk-focus-text-colour;
       }
     }
 
@@ -255,72 +203,27 @@ $search-icon-height: 20px;
       margin: 0;
 
       &::after {
-        @include pseudo-underline($width: 100%);
+        @include pseudo-underline;
       }
     }
   }
-
-  &::after {
-    @include make-selectable-area-bigger;
-  }
 }
 
+// Specific styles for the "Menu" link
 .gem-c-layout-super-navigation-header__navigation-item-link {
-  @include govuk-media-query($from: "desktop") {
-    padding: govuk-spacing(4) 0;
-  }
-
   .js-module-initialised & {
     margin-left: govuk-spacing(4);
     @include govuk-link-style-no-underline;
   }
-}
 
-.gem-c-layout-super-navigation-header__navigation-item-link-inner {
-  padding: govuk-spacing(1) $after-link-padding;
-  border-right: 1px solid $button-pipe-colour;
-}
-
-// Search link and dropdown.
-.gem-c-layout-super-navigation-header__search-item-link {
-  padding: govuk-spacing(4);
-
-  @include govuk-media-query($until: "desktop") {
-    margin: 0;
+  .gem-c-layout-super-navigation-header__navigation-item-link-inner {
+    padding: govuk-spacing(1) $after-link-padding;
+    border-right: 1px solid $button-pipe-colour;
   }
 
-  &:link,
-  &:visited {
-    &:hover {
-      &::before {
-        left: 0;
-        right: 0;
-      }
-    }
-
-    &:focus {
-      background: $govuk-focus-colour;
-
-      &::before {
-        content: none;
-      }
-    }
-
-    &::after {
-      left: 0;
-      right: 0;
-      width: 100%;
-    }
-
-    @include focus-and-focus-visible {
-      &:hover {
-        background: $govuk-focus-colour;
-      }
-
-      &::after,
-      &:hover::after {
-        background: $govuk-focus-colour;
-      }
+  &:focus {
+    .gem-c-layout-super-navigation-header__navigation-item-link-inner {
+      border-right-color: $govuk-focus-colour;
     }
   }
 }
