@@ -191,31 +191,11 @@ $search-icon-height: 20px;
         background: $govuk-focus-text-colour;
       }
     }
-
-    .js-module-initialised & {
-      // If js is initialised, we are hiding the links and
-      // making the buttons visible instead. This means we have
-      // to remove the padding added to make the links vertically
-      // aligned, as the buttons are styled vertically aligned by
-      // default.
-
-      padding: 0;
-      margin: 0;
-
-      &::after {
-        @include pseudo-underline;
-      }
-    }
   }
 }
 
 // Specific styles for the "Menu" link
 .gem-c-layout-super-navigation-header__navigation-item-link {
-  .js-module-initialised & {
-    margin-left: govuk-spacing(4);
-    @include govuk-link-style-no-underline;
-  }
-
   .gem-c-layout-super-navigation-header__navigation-item-link-inner {
     padding: govuk-spacing(1) $after-link-padding;
     border-right: 1px solid $button-pipe-colour;
