@@ -3,6 +3,9 @@
 $input-size: 40px;
 $large-input-size: 50px;
 
+$search-submit-button-colour: $govuk-blue-tint-80;
+$search-submit-button-hover-colour: $govuk-blue-tint-95;
+
 @mixin large-mode {
   .gem-c-search__label {
     @include govuk-font($size: 19, $line-height: $large-input-size);
@@ -182,11 +185,11 @@ $large-input-size: 50px;
   }
 
   .gem-c-search__submit {
-    background-color: govuk-tint(govuk-colour("blue"), 80%);
+    background-color: $search-submit-button-colour;
     color: govuk-colour("blue");
 
     &:hover {
-      background-color: $govuk-rebrand-template-background-colour;
+      background-color: $search-submit-button-hover-colour;
     }
   }
 
