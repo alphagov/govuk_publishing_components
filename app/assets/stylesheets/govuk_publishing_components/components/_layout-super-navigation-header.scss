@@ -91,6 +91,7 @@ $search-icon-height: 20px;
   }
 }
 
+// stylelint-disable max-nesting-depth
 .gem-c-layout-super-navigation-header {
   background: $govuk-brand-colour;
   border-top: 1px solid $govuk-brand-colour;
@@ -169,7 +170,6 @@ $search-icon-height: 20px;
   &,
   &:link,
   &:visited {
-    // stylelint-disable max-nesting-depth
     float: left;
     font-size: 16px;
     font-size: govuk-px-to-rem(16px);
@@ -264,7 +264,6 @@ $search-icon-height: 20px;
         @include pseudo-underline($width: 100%);
       }
     }
-    // stylelint-enable max-nesting-depth
   }
 
   &::after {
@@ -372,29 +371,7 @@ $search-icon-height: 20px;
 
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         &::before {
-          border-color: govuk-colour("white");
-        }
-      }
-    }
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    float: left;
-    right: 0;
-  }
-
-  &:focus-visible {
-    &:hover {
-      .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("black");
-
-        &::after {
-          background: govuk-colour("black");
-        }
-
-        &::before {
-          @include chevron(govuk-colour("black"), true);
+          border-color: chevron(govuk-colour("white"));
         }
       }
     }
@@ -405,26 +382,33 @@ $search-icon-height: 20px;
 
     box-shadow: none;
 
+    &::after {
+      background-color: govuk-colour("black");
+    }
+
+    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+      border-color: $govuk-focus-colour;
+
+      &::before {
+        @include chevron(govuk-colour("black"));
+      }
+    }
+
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         &::after {
           background-color: govuk-colour("black");
         }
+
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("black");
+
+          &::before {
+            @include chevron(govuk-colour("black"));
+          }
+        }
       }
     }
-
-    &::after {
-      background-color: govuk-colour("black");
-    }
-    // stylelint-disable max-nesting-depth
-    .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      border-color: $govuk-focus-colour;
-
-      &::before {
-        @include chevron(govuk-colour("black"), true);
-      }
-    }
-    // stylelint-enable max-nesting-depth
   }
 
   @include focus-not-focus-visible {
@@ -436,38 +420,43 @@ $search-icon-height: 20px;
       background: none;
     }
 
-    // stylelint-disable max-nesting-depth
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-          &::before {
-            @include chevron(govuk-colour("white"), true);
-          }
-        }
-
-        &::after {
-          background: govuk-colour("white");
-        }
-      }
-    }
-
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-color: $button-pipe-colour;
 
-      @include govuk-media-query($from: $chevron-breakpoint) {
-        &::before {
-          @include chevron(govuk-colour("white"), true);
+      &::before {
+        @include chevron(govuk-colour("white"));
+      }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        &::after {
+          background: govuk-colour("white");
+        }
+
+        .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+          color: govuk-colour("white");
+
+          @include govuk-media-query($from: $chevron-breakpoint) {
+            &::before {
+              @include chevron(govuk-colour("white"));
+            }
+          }
         }
       }
     }
-    // stylelint-enable max-nesting-depth
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    float: left;
+    right: 0;
   }
 }
 
 // JS available - targets the "Menu" toggle button
 // Styles the "Menu" open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__open-button {
-  // stylelint-disable max-nesting-depth
   @include focus-and-focus-visible {
     @include govuk-focused-text;
     box-shadow: none;
@@ -508,7 +497,6 @@ $search-icon-height: 20px;
       }
     }
   }
-  // stylelint-enable max-nesting-depth
 }
 
 // JS available - targets the "Menu" toggle button inner text
@@ -579,13 +567,22 @@ $search-icon-height: 20px;
     &::after {
       background: none;
     }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: govuk-colour("white");
+
+        &::after {
+          background: govuk-colour("white");
+        }
+      }
+    }
   }
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
     color: govuk-colour("blue");
 
-    // stylelint-disable max-nesting-depth
     @include focus-and-focus-visible {
       @include govuk-focused-text;
       border-color: $govuk-focus-colour;
@@ -622,7 +619,6 @@ $search-icon-height: 20px;
         }
       }
     }
-    // stylelint-enable max-nesting-depth
   }
 }
 
@@ -800,3 +796,4 @@ $search-icon-height: 20px;
     padding: 10px 0 !important; // stylelint-disable-line declaration-no-important
   }
 }
+// stylelint-enable max-nesting-depth
