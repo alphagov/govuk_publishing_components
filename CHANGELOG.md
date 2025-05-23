@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add support for exceptions to `Ga4CopyTracker` ([PR #4823](https://github.com/alphagov/govuk_publishing_components/pull/4823))
+
 ## 57.0.0
 
 * **BREAKING:** Upgrade cross service header to v3.0.0 ([PR #4811](https://github.com/alphagov/govuk_publishing_components/pull/4811/))

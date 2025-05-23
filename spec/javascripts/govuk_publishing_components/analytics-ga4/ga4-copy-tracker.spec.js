@@ -64,6 +64,21 @@ describe('Google Analytics 4 copy tracker', function () {
     document.body.removeChild(element)
   })
 
+  it('does not send data if copying from an element with data-ga4-no-copy set', function () {
+    var html = '<p id="p_tag">hello</p>'
+    var element = document.createElement('div')
+    element.dataset.ga4NoCopy = 'true'
+    element.innerHTML = html
+    document.body.appendChild(element)
+    spyOn(window, 'getSelection').and.returnValue('no thankyou')
+
+    window.GOVUK.triggerEvent(document.getElementById('p_tag'), 'copy')
+
+    expect(window.dataLayer.length).toEqual(0)
+
+    document.body.removeChild(element)
+  })
+
   it('cleans line breaks and other characters from copied text', function () {
     var text = 'This is some text\n\nThis is some more\tAnd some more\n     and     some spaces    \n'
     expected.event_data.text = 'This is some text This is some'

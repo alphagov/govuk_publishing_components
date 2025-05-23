@@ -4,6 +4,7 @@ This script creates an event when text is copied from a GOV.UK page. When initia
 
 - some text has been selected
 - the selected text is not inside an INPUT or TEXTAREA
+- the selected text is not within a parent node that has `data-ga4-no-copy` set
 
 The second check is based around concerns over PII. Text copied from the body of a GOV.UK page should not include PII, but text inside a text input is written by users, and therefore could contain PII. Note that if text is selected spanning multiple elements including a text input, the browser automatically does not include the text from inputs.
 
