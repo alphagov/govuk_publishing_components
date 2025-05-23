@@ -541,8 +541,20 @@ $search-icon-height: 20px;
     @include pseudo-underline;
   }
 
-  &:focus-visible {
-    color: govuk-colour("black");
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      &::after {
+        background: govuk-colour("white");
+      }
+    }
+  }
+
+  @include focus-and-focus-visible {
+    @include govuk-focused-text;
+
+    border-color: $govuk-focus-colour;
+    box-shadow: none;
+    z-index: 11;
 
     &::after {
       background: govuk-colour("black");
@@ -560,40 +572,28 @@ $search-icon-height: 20px;
   }
 
   @include focus-not-focus-visible {
-    &::after {
-      background: none;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        &::after {
-          background: govuk-colour("white");
-        }
-      }
-    }
-  }
-
-  @include focus-and-focus-visible {
-    @include govuk-focused-text;
-    border-color: $govuk-focus-colour;
-    box-shadow: none;
-    z-index: 11;
-  }
-
-  @include focus-not-focus-visible {
     background: none;
     box-shadow: none;
     color: govuk-colour("white");
+
+    &::after {
+      background: none;
+    }
   }
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
+    color: govuk-colour("blue");
+
     // stylelint-disable max-nesting-depth
     @include focus-and-focus-visible {
       @include govuk-focused-text;
       border-color: $govuk-focus-colour;
       box-shadow: none;
-      color: $govuk-focus-colour;
+
+      &::after {
+        background: govuk-colour("black");
+      }
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
@@ -608,10 +608,16 @@ $search-icon-height: 20px;
       background: $govuk-rebrand-template-background-colour;
       outline: 1px solid $govuk-rebrand-template-background-colour; // overlap the border of the nav menu so it won't appear when menu open
 
+      color: govuk-colour("blue");
+
+      &::after {
+        background: govuk-colour("blue");
+      }
+
       @media (hover: hover) and (pointer: fine) {
         &:hover {
           &::after {
-            background: none;
+            background: govuk-colour("blue");
           }
         }
       }
@@ -622,7 +628,6 @@ $search-icon-height: 20px;
 
 // JS available - styles the close icon, used when the search menu is in the open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon {
-  color: $govuk-text-colour;
   display: none;
   font-size: 36px;
   font-weight: normal;
@@ -632,8 +637,10 @@ $search-icon-height: 20px;
   right: 0;
   text-align: center;
   top: 0;
+}
 
-  .gem-c-layout-super-navigation-header__open-button & {
+.gem-c-layout-super-navigation-header__open-button {
+  .gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon {
     display: block;
   }
 }
