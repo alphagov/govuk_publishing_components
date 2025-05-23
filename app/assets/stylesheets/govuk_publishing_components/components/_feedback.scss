@@ -26,7 +26,7 @@
 }
 
 .gem-c-feedback__prompt {
-  background-color: govuk-tint(govuk-colour("blue"), 95%);
+  background-color: $govuk-rebrand-template-background-colour;
   color: govuk-colour("black");
   border-top: 1px solid govuk-tint(govuk-colour("blue"), 50%);
   outline: 0;
