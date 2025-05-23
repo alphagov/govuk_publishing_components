@@ -200,10 +200,6 @@ $search-icon-height: 20px;
       @include pseudo-underline;
     }
 
-    &::before {
-      @include chevron(govuk-colour("white"), true);
-    }
-
     &:hover {
       &::after {
         background: govuk-colour("white");
@@ -345,7 +341,7 @@ $search-icon-height: 20px;
   display: none;
 }
 
-// Styles for top level navigation toggle button.
+// JS available - target the "Menu" toggle button
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
@@ -366,6 +362,19 @@ $search-icon-height: 20px;
     @include pseudo-underline;
   }
 
+  .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
+    display: inline-block;
+    border-right: 1px solid $button-pipe-colour;
+    margin: 0;
+    padding: govuk-spacing(1) govuk-spacing(4);
+
+    @include govuk-media-query($from: $chevron-breakpoint) {
+      &::before {
+        @include chevron(govuk-colour("white"));
+      }
+    }
+  }
+
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       &::after {
@@ -374,7 +383,7 @@ $search-icon-height: 20px;
 
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         &::before {
-          border-color: chevron(govuk-colour("white"));
+          @include chevron(govuk-colour("white"), true);
         }
       }
     }
@@ -393,7 +402,7 @@ $search-icon-height: 20px;
       border-right-color: $govuk-focus-colour;
 
       &::before {
-        @include chevron(govuk-colour("black"));
+        @include chevron(govuk-colour("black"), true);
       }
     }
 
@@ -407,7 +416,7 @@ $search-icon-height: 20px;
           color: govuk-colour("black");
 
           &::before {
-            @include chevron(govuk-colour("black"));
+            @include chevron(govuk-colour("black"), true);
           }
         }
       }
@@ -426,8 +435,10 @@ $search-icon-height: 20px;
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-right-color: $button-pipe-colour;
 
-      &::before {
-        @include chevron(govuk-colour("white"));
+      @include govuk-media-query($from: $chevron-breakpoint) {
+        &::before {
+          @include chevron(govuk-colour("white"), true);
+        }
       }
     }
 
@@ -440,10 +451,8 @@ $search-icon-height: 20px;
         .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
           color: govuk-colour("white");
 
-          @include govuk-media-query($from: $chevron-breakpoint) {
-            &::before {
-              @include chevron(govuk-colour("white"));
-            }
+          &::before {
+            @include chevron(govuk-colour("white"), true);
           }
         }
       }
@@ -472,11 +481,9 @@ $search-icon-height: 20px;
       color: govuk-colour("black");
       border-right-color: $govuk-focus-colour;
 
-      @include govuk-media-query($from: $chevron-breakpoint) {
-        &::before {
-          @include chevron(govuk-colour("black"), true);
-          @include prefixed-transform($rotate: 225deg, $translateY: 1px);
-        }
+      &::before {
+        @include chevron(govuk-colour("black"), true);
+        @include prefixed-transform($rotate: 225deg, $translateY: 1px);
       }
     }
   }
@@ -494,24 +501,10 @@ $search-icon-height: 20px;
 
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
-          @include chevron($govuk-link-colour);
+          @include chevron($govuk-link-colour, true);
           @include prefixed-transform($rotate: 225deg, $translateY: 1px);
         }
       }
-    }
-  }
-}
-
-// JS available - targets the "Menu" toggle button inner text
-.gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-  display: inline-block;
-  border-right: 1px solid $button-pipe-colour;
-  margin: 0;
-  padding: govuk-spacing(1) govuk-spacing(4);
-
-  @include govuk-media-query($from: $chevron-breakpoint) {
-    &::before {
-      @include chevron(govuk-colour("white"));
     }
   }
 }
