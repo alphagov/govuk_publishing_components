@@ -186,7 +186,7 @@ $large-input-size: 50px;
     color: govuk-colour("blue");
 
     &:hover {
-      background-color: govuk-tint(govuk-colour("blue"), 95%);
+      background-color: $govuk-rebrand-template-background-colour;
     }
   }
 
