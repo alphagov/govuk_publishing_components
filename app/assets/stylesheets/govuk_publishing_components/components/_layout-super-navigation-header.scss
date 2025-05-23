@@ -490,7 +490,7 @@ $search-icon-height: 20px;
   }
 
   @include focus-not-focus-visible {
-    background: govuk-tint(govuk-colour("blue"), 95%);
+    background: $govuk-rebrand-template-background-colour;
 
     &::after {
       background-color: $govuk-link-colour;
@@ -498,7 +498,7 @@ $search-icon-height: 20px;
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       color: $govuk-link-colour;
-      border-color: govuk-tint(govuk-colour("blue"), 95%);
+      border-color: $govuk-rebrand-template-background-colour;
 
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
@@ -605,8 +605,8 @@ $search-icon-height: 20px;
     }
 
     @include focus-not-focus-visible {
-      background: govuk-tint(govuk-colour("blue"), 95%);
-      outline: 1px solid govuk-tint(govuk-colour("blue"), 95%); // overlap the border of the nav menu so it won't appear when menu open
+      background: $govuk-rebrand-template-background-colour;
+      outline: 1px solid $govuk-rebrand-template-background-colour; // overlap the border of the nav menu so it won't appear when menu open
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
@@ -644,7 +644,7 @@ $search-icon-height: 20px;
 
 // JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
-  background: govuk-tint(govuk-colour("blue"), 95%);
+  background: $govuk-rebrand-template-background-colour;
   border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
 
