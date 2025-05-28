@@ -1,5 +1,9 @@
 @import "govuk_publishing_components/all_components";
 
+.dark-background {
+  background-color: govuk-colour("blue");
+}
+
 /*
   this is for testing the auditing code
 
