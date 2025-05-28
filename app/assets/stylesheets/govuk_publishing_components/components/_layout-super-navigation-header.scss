@@ -111,9 +111,13 @@ $search-icon-height: 20px;
   position: relative;
 }
 
+.crown-container {
+  float: left;
+}
+
 .gem-c-layout-super-navigation-header__button-container {
   top: -$navbar-height;
-  position: absolute;
+  float: right;
   right: 0;
 
   @include govuk-media-query($until: "tablet") {
@@ -382,6 +386,9 @@ $search-icon-height: 20px;
     display: block;
     float: left;
     right: 0;
+        position: absolute;
+    top: 0;
+    right: 100px;
   }
 
   &:focus-visible {
@@ -536,6 +543,12 @@ $search-icon-height: 20px;
   position: relative;
   width: calc(($search-button-padding * 2) + $search-icon-width); // width = button container left and right padding + icon width
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
+
+  position: absolute;
+  top: 0;
+  right: 30px;
+  float: right;
+  display: block;
 
   &::after {
     @include pseudo-underline($left: 0, $right: 0);
