@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 57.1.0
 
 * Add middleware to optimise GA4 Attributes by reducing unnecessary escaping ([PR #4813](https://github.com/alphagov/govuk_publishing_components/pull/4813))
 * Add support for exceptions to `Ga4CopyTracker` ([PR #4823](https://github.com/alphagov/govuk_publishing_components/pull/4823))
