@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add tracking to `ReorderableList` ([PR #4835](https://github.com/alphagov/govuk_publishing_components/pull/4835))
+* Add tracking to `AddAnother` ([PR #4836](https://github.com/alphagov/govuk_publishing_components/pull/4836))
 
 ## 57.1.0
 

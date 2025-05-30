@@ -4,15 +4,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function AddAnother (module) {
     this.module = module
+    this.disableGa4 = this.module.dataset.disableGa4
     this.emptyFieldset = undefined
     this.addAnotherButton = undefined
   }
 
-  function createButton (textContent, additionalClass = '') {
+  function createButton (textContent, additionalClass = '', dataAttributes = {}) {
     var button = document.createElement('button')
     button.className = 'gem-c-button govuk-button ' + additionalClass
     button.type = 'button'
     button.textContent = textContent
+
+    Object.keys(dataAttributes).forEach(dataAttribute => {
+      button.dataset[dataAttribute] = dataAttributes[dataAttribute]
+    })
+
     return button
   }
 
@@ -23,21 +29,50 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.updateFieldsetsAndButtons()
   }
 
+  AddAnother.prototype.createEventData = function (data) {
+    var eventData = Object.assign({
+      event_name: 'select_content',
+      type: 'add another'
+    }, data)
+
+    var sectionElement = this.module.closest('[data-ga4-section]')
+
+    if (sectionElement) {
+      eventData.section = sectionElement.dataset.ga4Section
+    }
+
+    return JSON.stringify(eventData)
+  }
+
   AddAnother.prototype.createAddAnotherButton = function () {
+    var dataAttributes = {}
+
+    if (!this.disableGa4) {
+      dataAttributes.ga4Event = this.createEventData({ action: 'added' })
+    }
+
     this.addAnotherButton =
       createButton(
         this.module.dataset.addButtonText,
-        'js-add-another__add-button govuk-button--secondary'
+        'js-add-another__add-button govuk-button--secondary',
+        dataAttributes
       )
     this.addAnotherButton.addEventListener('click', this.addNewFieldset.bind(this))
     this.module.appendChild(this.addAnotherButton)
   }
 
   AddAnother.prototype.createRemoveButton = function (fieldset, removeFunction) {
+    var dataAttributes = {}
+
+    if (!this.disableGa4) {
+      dataAttributes.ga4Event = this.createEventData({ action: 'deleted' })
+    }
+
     var removeButton =
       createButton(
         'Delete',
-        'js-add-another__remove-button gem-c-add-another__remove-button govuk-button--warning'
+        'js-add-another__remove-button gem-c-add-another__remove-button govuk-button--warning',
+        dataAttributes
       )
     removeButton.addEventListener('click', function (event) {
       removeFunction(event)
@@ -62,16 +97,31 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.updateFieldsetsAndButtons = function () {
-    this.module.querySelectorAll('.js-add-another__fieldset:not([hidden]) > fieldset > legend')
-      .forEach(function (legend, index) {
-        legend.textContent = this.module.dataset.fieldsetLegend + ' ' + (index + 1)
-      }.bind(this))
+    var visibleFields = this.module.querySelectorAll('.js-add-another__fieldset:not([hidden]) > fieldset')
+
+    visibleFields.forEach(function (field, index) {
+      field.querySelector('legend').textContent = this.module.dataset.fieldsetLegend + ' ' + (index + 1)
+
+      var trackedRemoveButton = field.parentNode.querySelector('.js-add-another__remove-button[data-ga4-event]')
+
+      if (trackedRemoveButton) {
+        trackedRemoveButton.dataset.indexSection = index
+        trackedRemoveButton.dataset.indexSectionCount = visibleFields.length + 1
+      }
+    }.bind(this))
 
     if (this.module.dataset.emptyFields === 'false') {
       this.module.querySelector('.js-add-another__remove-button').classList.toggle(
         'js-add-another__remove-button--hidden',
         this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])').length === 1
       )
+    }
+
+    var trackedAddAnotherButton = this.module.querySelector('.js-add-another__add-button[data-ga4-event]')
+
+    if (trackedAddAnotherButton) {
+      trackedAddAnotherButton.dataset.indexSection = visibleFields.length
+      trackedAddAnotherButton.dataset.indexSectionCount = visibleFields.length + 1
     }
   }
 
