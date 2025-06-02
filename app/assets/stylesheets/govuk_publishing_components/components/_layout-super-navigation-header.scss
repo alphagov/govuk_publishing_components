@@ -12,11 +12,15 @@ $navbar-height: 60px;
 
 $button-pipe-colour: $govuk-blue-tint-95;
 
-$after-link-padding: govuk-spacing(4);
-$after-button-padding-right: govuk-spacing(4);
-$after-button-padding-left: govuk-spacing(4);
+$nav-button-horizontal-padding: govuk-spacing(3);
+$nav-button-horizontal-padding-chevron-breakpoint: govuk-spacing(4);
 
-$search-button-padding: govuk-spacing(4);
+$menu-button-padding: govuk-spacing(1) $nav-button-horizontal-padding;
+$menu-button-padding-chevron-breakpoint: govuk-spacing(1) $nav-button-horizontal-padding-chevron-breakpoint;
+
+$search-button-padding: govuk-spacing(4) $nav-button-horizontal-padding;
+$search-button-padding-chevron-breakpoint: govuk-spacing(4) $nav-button-horizontal-padding-chevron-breakpoint;
+
 $search-icon-width: 21px;
 $search-icon-height: 20px;
 
@@ -197,8 +201,12 @@ $search-icon-height: 20px;
 // Specific styles for the "Menu" link
 .gem-c-layout-super-navigation-header__navigation-item-link {
   .gem-c-layout-super-navigation-header__navigation-item-link-inner {
-    padding: govuk-spacing(1) $after-link-padding;
+    padding: $menu-button-padding;
     border-right: 1px solid $button-pipe-colour;
+
+    @include govuk-media-query($from: $chevron-breakpoint) {
+      padding: $menu-button-padding-chevron-breakpoint;
+    }
   }
 
   &:focus {
@@ -211,6 +219,10 @@ $search-icon-height: 20px;
 // Specific styles for the "Search" link
 .gem-c-layout-super-navigation-header__search-item-link {
   padding: $search-button-padding;
+
+  @include govuk-media-query($from: $chevron-breakpoint) {
+    padding: $search-button-padding-chevron-breakpoint;
+  }
 }
 
 .gem-c-layout-super-navigation-header__search-item-link-icon,
@@ -249,9 +261,11 @@ $search-icon-height: 20px;
     display: inline-block;
     border-right: 1px solid $button-pipe-colour;
     margin: 0;
-    padding: govuk-spacing(1) govuk-spacing(4);
+    padding: $menu-button-padding;
 
     @include govuk-media-query($from: $chevron-breakpoint) {
+      padding: $menu-button-padding-chevron-breakpoint;
+
       &::before {
         @include chevron(govuk-colour("white"));
       }
@@ -401,8 +415,13 @@ $search-icon-height: 20px;
   height: $navbar-height;
   padding: $search-button-padding;
   position: relative;
-  width: calc(($search-button-padding * 2) + $search-icon-width); // width = button container left and right padding + icon width
+  width: calc(($nav-button-horizontal-padding * 2) + $search-icon-width); // width = button container left and right padding + icon width
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
+
+  @include govuk-media-query($from: $chevron-breakpoint) {
+    padding: $search-button-padding-chevron-breakpoint;
+    width: calc(($nav-button-horizontal-padding-chevron-breakpoint * 2) + $search-icon-width);  // width = button container left and right padding + icon width
+  }
 
   &::after {
     @include pseudo-underline;
