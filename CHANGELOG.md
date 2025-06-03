@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add tracking to `ReorderableList` ([PR #4835](https://github.com/alphagov/govuk_publishing_components/pull/4835))
+
 ## 57.1.0
 
 * Add middleware to optimise GA4 Attributes by reducing unnecessary escaping ([PR #4813](https://github.com/alphagov/govuk_publishing_components/pull/4813))
