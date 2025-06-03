@@ -9,6 +9,9 @@ The values that are redacted by default are:
 - Reset password tokens become `reset_password_token=[reset_password_token]`
 - Unlock tokens become `unlock_token=[unlock_token]`
 - State values become `state=[state]`
+- Visa application values become `[gwf number]` or `[gb eori number]`
+- National Insurance numbers become `[ni number]`
+- UK phone numbers become `[phone number]`
 
 Additional values that can be redacted are:
 - Dates - `2022-02-22` becomes `[date]`
