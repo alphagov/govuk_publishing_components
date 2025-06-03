@@ -74,6 +74,22 @@ examples:
           title: "Table 2.1: Budget 2018 policy decisions"
         - id: "5ebd75d7-6c37-4b93-b444-1b7c49757fb9"
           title: "Table 2.2: Measures announced at Autumn Budget 2017 or earlier that will take effect from November 2018 or later (£ million)"
+  without_ga4_tracking:
+    description: |
+      Disables GA4 tracking on the reorderable list. Tracking is enabled by default. This adds a data module and data-attributes with JSONs to the reorderable list. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
+    data:
+      disable_ga4: true
+      items:
+        - id: "ce99dd60-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018"
+        - id: "d321cb86-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018 (web)"
+        - id: "63a6d29e-6b6d-4157-9067-84c1a390e352"
+          title: "Impact on households: distributional analysis to accompany Budget 2018"
+        - id: "0a4d377d-68f4-472f-b2e3-ef71dc750f85"
+          title: "Table 2.1: Budget 2018 policy decisions"
+        - id: "5ebd75d7-6c37-4b93-b444-1b7c49757fb9"
+          title: "Table 2.2: Measures announced at Autumn Budget 2017 or earlier that will take effect from November 2018 or later (£ million)"
   with_custom_input_name:
     data:
       input_name: "attachments[ordering]"

@@ -53,6 +53,35 @@ describe "Reorderable list", type: :view do
     end
   end
 
+  it "adds correct data attributes if tracking enabled" do
+    render_component(items:)
+
+    assert_select ".gem-c-reorderable-list[data-module~='ga4-event-tracker']"
+    assert_select ".gem-c-reorderable-list__item", 5
+    assert_select ".gem-c-reorderable-list__item" do |elements|
+      elements.each_with_index do |element, index|
+        expected_dataset = {
+          event_name: "select_content",
+          type: "reorderable list",
+          section: items[index][:title],
+          index_section: index,
+          index_section_count: elements.length,
+        }
+
+        assert_select element, ".gem-c-reorderable-list__actions .js-reorderable-list-up", data_ga4_event: expected_dataset.merge({ action: "Up" }).as_json
+        assert_select element, ".gem-c-reorderable-list__actions .js-reorderable-list-down", data_ga4_event: expected_dataset.merge({ action: "Down" }).as_json
+      end
+    end
+  end
+
+  it "does not add correct data attributes if tracking disabled" do
+    render_component(items:, disable_ga4: true)
+
+    assert_select ".gem-c-reorderable-list[data-module~='ga4-event-tracker']", 0
+    assert_select ".gem-c-reorderable-list__item", 5
+    assert_select ".gem-c-reorderable-list__item [data-ga4-event]", 0
+  end
+
   it "renders allows custom input names" do
     render_component(items:, input_name: "attachments[ordering]")
 

@@ -3,14 +3,30 @@
 
   items ||= []
   input_name ||= "ordering"
+  disable_ga4 ||= false
+  ga4_attributes ||= {
+    event_name: 'select_content',
+    type: 'reorderable list',
+  }
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-reorderable-list")
   component_helper.add_data_attribute({ module: "reorderable-list" })
+  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
 %>
 
 <%= tag.ol(**component_helper.all_attributes) do %>
   <% items.each_with_index do |item, index| %>
+
+    <%
+      ga4_event = nil
+
+      unless disable_ga4
+        ga4_event = ga4_attributes
+        ga4_event.merge!({ section: item[:title], index_section: index, index_section_count: items.length }) unless disable_ga4
+      end
+    %>
+
     <%= tag.li class: "gem-c-reorderable-list__item" do %>
       <%= tag.div class: "gem-c-reorderable-list__wrapper" do %>
         <%= tag.div class: "gem-c-reorderable-list__content" do %>
@@ -33,14 +49,20 @@
             type: "button",
             aria_label: "Move \"#{item[:title]}\" up",
             classes: "js-reorderable-list-up",
-            secondary_solid: true
+            secondary_solid: true,
+            data_attributes: {
+              ga4_event: ga4_event && ga4_event.merge({ action: 'Up' }).as_json
+            }
           } %>
           <%= render "govuk_publishing_components/components/button", {
             text: "Down",
             type: "button",
             aria_label: "Move \"#{item[:title]}\" down",
             classes: "js-reorderable-list-down",
-            secondary_solid: true
+            secondary_solid: true,
+            data_attributes: {
+              ga4_event: ga4_event && ga4_event.merge({ action: 'Down' }).as_json
+            }
           } %>
         <% end %>
       <% end %>
