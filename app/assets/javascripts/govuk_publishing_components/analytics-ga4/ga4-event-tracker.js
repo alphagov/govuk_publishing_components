@@ -28,6 +28,26 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
+  Ga4EventTracker.prototype.getTargetDatasetSchema = function (element) {
+    var targetDataset
+
+    try {
+      targetDataset = element.dataset
+    } catch (error) {
+      console.error(error)
+    }
+
+    var eventData = {}
+
+    Object.keys(targetDataset).forEach(function (key) {
+      var schemaKey = window.GOVUK.analyticsGa4.core.trackFunctions.toSnakeCase(key)
+
+      eventData[schemaKey] = targetDataset[key]
+    })
+
+    return eventData
+  }
+
   Ga4EventTracker.prototype.trackClick = function (event) {
     if (event.tracked) return
     var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
@@ -40,6 +60,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         console.error('GA4 configuration error: ' + e.message, window.location)
         return
       }
+
+      data = Object.assign(data, this.getTargetDatasetSchema(target))
 
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
