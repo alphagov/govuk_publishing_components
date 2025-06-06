@@ -521,3 +521,9 @@ $code-delete-bg: #fadddd;
     content: ")";
   }
 }
+
+// Note: This is a temporary override to ensure the background color on component preview
+// pages remains white, this can be removed once the --rebrand flag is removed from govuk-frontend
+.govuk-template--rebranded {
+  background: #ffffff;
+}
