@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add tracking to `ReorderableList` ([PR #4835](https://github.com/alphagov/govuk_publishing_components/pull/4835))
+* Add image functionality to the intervention banner ([PR #4845](https://github.com/alphagov/govuk_publishing_components/pull/4845))
 
 ## 57.1.0
 
