@@ -16,6 +16,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       onSort: function () {
         this.updateOrderIndexes()
         this.triggerEvent(this.$module, 'reorder-drag')
+      }.bind(this),
+
+      onEnd: function (event) {
+        if (event.oldIndex !== event.newIndex) {
+          var item = event.item
+          var eventData = item.querySelector('[data-ga4-event]')
+
+          if (eventData) {
+            item.dataset.ga4Event = eventData.dataset.ga4Event
+            item.dataset.action = 'drag and drop'
+            item.dataset.text = event.newIndex > event.oldIndex ? 'Up' : 'Down'
+            this.triggerEvent(item, 'click')
+            delete item.dataset.ga4Event
+          }
+        }
       }.bind(this)
     })
 
@@ -84,10 +99,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   ReorderableList.prototype.updateOrderIndexes = function () {
-    var $orderInputs = this.$module.querySelectorAll('.gem-c-reorderable-list__actions input')
-    for (var i = 0; i < $orderInputs.length; i++) {
-      $orderInputs[i].setAttribute('value', i + 1)
-    }
+    var $actions = this.$module.querySelectorAll('.gem-c-reorderable-list__actions')
+
+    $actions.forEach(function ($action, index) {
+      $action.querySelector('input').value = index + 1
+
+      $action.querySelectorAll('button[data-ga4-event]').forEach(function ($trackButton) {
+        $trackButton.dataset.indexSection = index
+      })
+    })
   }
 
   ReorderableList.prototype.triggerEvent = function (element, eventName) {

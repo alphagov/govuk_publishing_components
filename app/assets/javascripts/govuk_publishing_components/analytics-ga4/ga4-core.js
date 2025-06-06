@@ -211,6 +211,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         return string.substring(string.length - stringToFind.length, string.length) === stringToFind
       },
 
+      toSnakeCase: function (str) {
+        return str.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase()
+      },
+
       populateLinkDomain: function (href) {
         // We always want mailto links to have an undefined link_domain
         if (this.isMailToLink(href)) {

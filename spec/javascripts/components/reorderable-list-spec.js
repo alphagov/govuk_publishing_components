@@ -18,8 +18,8 @@ describe('Reorderable list component', function () {
           '</div>' +
           '<div class="gem-c-reorderable-list__actions">' +
             '<input name="new_order[]" value="1" class="gem-c-input govuk-input govuk-input--width-2" id="input-278a8924" type="text">' +
-            '<button type="button" class="js-reorderable-list-up">Up</button>' +
-            '<button type="button" class="js-reorderable-list-down">Down</button>' +
+            '<button type="button" data-ga4-event="" class="js-reorderable-list-up">Up</button>' +
+            '<button type="button" data-ga4-event="" class="js-reorderable-list-down">Down</button>' +
           '</div>' +
         '</div>' +
       '</li>' +
@@ -142,6 +142,19 @@ describe('Reorderable list component', function () {
     it('should trigger a reorder-drag event', function () {
       expect('reorder-drag').toHaveBeenTriggeredOn(element)
     })
+
+    it('should update index section data attribute of button if tracked', function () {
+      var firstItemUpButton = document.querySelector('li:nth-child(1) .js-reorderable-list-up')
+      var firstItemDownButton = document.querySelector('li:nth-child(1) .js-reorderable-list-down')
+      var secondItemUpButton = document.querySelector('li:nth-child(2) .js-reorderable-list-up')
+      var secondItemDownButton = document.querySelector('li:nth-child(2) .js-reorderable-list-down')
+
+      expect(firstItemUpButton.dataset.indexSection).not.toEqual('0')
+      expect(firstItemDownButton.dataset.indexSection).not.toEqual('0')
+
+      expect(secondItemUpButton.dataset.indexSection).toEqual('1')
+      expect(secondItemDownButton.dataset.indexSection).toEqual('1')
+    })
   })
 
   describe('when clicking the Down button on first item', function () {
@@ -172,6 +185,19 @@ describe('Reorderable list component', function () {
     it('should trigger a reorder-move-down event', function () {
       expect('reorder-move-down').toHaveBeenTriggeredOn(firstItemDownButton)
     })
+
+    it('should update index section data attribute of button if tracked', function () {
+      var firstItemUpButton = document.querySelector('li:nth-child(1) .js-reorderable-list-up')
+      var firstItemDownButton = document.querySelector('li:nth-child(1) .js-reorderable-list-down')
+      var secondItemUpButton = document.querySelector('li:nth-child(2) .js-reorderable-list-up')
+      var secondItemDownButton = document.querySelector('li:nth-child(2) .js-reorderable-list-down')
+
+      expect(firstItemUpButton.dataset.indexSection).not.toEqual('0')
+      expect(firstItemDownButton.dataset.indexSection).not.toEqual('0')
+
+      expect(secondItemUpButton.dataset.indexSection).toEqual('1')
+      expect(secondItemDownButton.dataset.indexSection).toEqual('1')
+    })
   })
 
   describe('when clicking the Up button on the second item', function () {
@@ -201,6 +227,19 @@ describe('Reorderable list component', function () {
 
     it('should trigger a reorder-move-up event', function () {
       expect('reorder-move-up').toHaveBeenTriggeredOn(secondItemUpButton)
+    })
+
+    it('should update index section data attribute of button if tracked', function () {
+      var firstItemUpButton = document.querySelector('li:nth-child(1) .js-reorderable-list-up')
+      var firstItemDownButton = document.querySelector('li:nth-child(1) .js-reorderable-list-down')
+      var secondItemUpButton = document.querySelector('li:nth-child(2) .js-reorderable-list-up')
+      var secondItemDownButton = document.querySelector('li:nth-child(2) .js-reorderable-list-down')
+
+      expect(firstItemUpButton.dataset.indexSection).not.toEqual('0')
+      expect(firstItemDownButton.dataset.indexSection).not.toEqual('0')
+
+      expect(secondItemUpButton.dataset.indexSection).toEqual('1')
+      expect(secondItemDownButton.dataset.indexSection).toEqual('1')
     })
   })
 })

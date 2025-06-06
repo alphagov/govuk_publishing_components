@@ -133,6 +133,22 @@ describe('Google Analytics event tracker', function () {
       element.click()
       expect(window.dataLayer[0].not_a_schema_attribute).toEqual(undefined)
     })
+
+    it('includes data attributes assigned to the dataset that are in the schema', function () {
+      expected.event_data.index.index_section = '5'
+      element.setAttribute('data-index-section', 5)
+      element.click()
+
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('does not include data attributes assigned to the dataset that are not in the schema', function () {
+      expected.event_data.not_a_schema_attribute = 'value'
+      element.setAttribute('data-not-a-schema-attribute', 'value')
+      element.click()
+
+      expect(window.dataLayer[0]).not.toEqual(expected)
+    })
   })
 
   describe('doing simple tracking on a nested tracked elements', function () {
