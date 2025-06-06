@@ -5,6 +5,7 @@
   fieldset_legend ||= ""
   add_button_text ||= "Add another"
   empty_fields ||= false
+  disable_ga4 ||= nil
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-add-another")
@@ -13,6 +14,7 @@
     add_button_text:,
     fieldset_legend:,
     empty_fields:,
+    disable_ga4:,
   })
 %>
 
