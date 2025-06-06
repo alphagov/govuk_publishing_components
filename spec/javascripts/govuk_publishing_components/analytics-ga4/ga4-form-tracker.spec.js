@@ -301,6 +301,37 @@ describe('Google Analytics form tracking', function () {
     })
   })
 
+  describe('when tracking a form with character count enabled', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-include-text', '')
+      element.setAttribute('data-ga4-form-use-text-count', '')
+      expected = schema.mergeProperties(attributes, 'event_data')
+      expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('collects character count from a text input', function () {
+      element.innerHTML =
+        '<label for="text">Text label</label>' +
+        '<input type="text" id="text" name="test-text" value="Some text"/>'
+
+      expected.event_data.text = '9'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('when tracking a form with undefined instead of no answer given', function () {
     beforeEach(function () {
       var attributes = {
