@@ -9,6 +9,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.trackingTrigger = 'data-ga4-form' // elements with this attribute get tracked
     this.includeTextInputValues = this.module.hasAttribute('data-ga4-form-include-text')
     this.recordJson = this.module.hasAttribute('data-ga4-form-record-json')
+    this.useTextCount = this.module.hasAttribute('data-ga4-form-use-text-count')
     this.redacted = false
     this.useFallbackValue = this.module.hasAttribute('data-ga4-form-no-answer-undefined') ? undefined : 'No answer given'
   }
@@ -87,6 +88,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       input.section = labelText
 
+      var isTextField = inputTypes.indexOf(inputType) !== -1 || inputNodename === 'TEXTAREA'
+
       if (elem.checked) {
         input.answer = labelText
 
@@ -101,10 +104,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex] && elem.options[elem.selectedIndex].value) {
         input.answer = elem.options[elem.selectedIndex].text
-      } else if (inputTypes.indexOf(inputType) !== -1 && elem.value) {
+      } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
-          var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-          input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
+          if (this.useTextCount) {
+            input.answer = elem.value.length
+          } else {
+            var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+            input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
+          }
         } else {
           // if recording JSON and text input not allowed
           // set the specific answer to '[REDACTED]'
