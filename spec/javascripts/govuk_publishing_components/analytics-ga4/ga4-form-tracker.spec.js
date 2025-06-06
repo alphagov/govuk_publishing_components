@@ -233,6 +233,74 @@ describe('Google Analytics form tracking', function () {
     })
   })
 
+  describe('when tracking a form with JSON recording', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-record-json', '')
+      expected = schema.mergeProperties(attributes, 'event_data')
+      expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('collects data from a checkbox with a legend', function () {
+      element.innerHTML =
+        '<fieldset>' +
+        '<legend>Checkbox legend</legend>' +
+        '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
+        '</fieldset>'
+
+      document.getElementById('c1').checked = true
+
+      expected.event_data.text = JSON.stringify({ 'Checkbox legend': 'checkbox1' })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from a radio with a legend', function () {
+      element.innerHTML =
+        '<fieldset>' +
+        '<legend>Checkbox legend</legend>' +
+        '<label><input type="radio" id="r1" name="checkbox[]" value="radio1"/>radio1</label>' +
+        '</fieldset>'
+
+      document.getElementById('r1').checked = true
+
+      expected.event_data.text = JSON.stringify({ 'Checkbox legend': 'radio1' })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from a select and a text input', function () {
+      element.innerHTML =
+        '<label for="s1">Select label</label>' +
+        '<select name="select" id="s1">' +
+          '<option value="option1">Option 1</option>' +
+          '<option value="option2">Option 2</option>' +
+          '<option value="option3">Option 3</option>' +
+        '</select>' +
+        '<label for="text">Text label</label>' +
+        '<input type="text" id="text" name="test-text" value="Some text"/>'
+      var select = document.getElementById('s1')
+      select.selectedIndex = 2
+      window.GOVUK.triggerEvent(select, 'change')
+      expected.event_data.text = JSON.stringify({ 'Select label': 'Option 3', 'Text label': '[REDACTED]' })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('when tracking a form with undefined instead of no answer given', function () {
     beforeEach(function () {
       var attributes = {

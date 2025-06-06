@@ -37,4 +37,16 @@ In the example above, the following would be pushed to the dataLayer. Note that 
 }
 ```
 
+If the `data-ga4-form-record-json` attribute is set on the form then the JSON format will be used for the `text` field. So instead of the `text` being set to:
+
+```
+value,value,[REDACTED]
+```
+
+with `data-ga4-form-record-json` it will be set to:
+
+```
+{ "label1": "value", "label2": "value", "label3": "[REDACTED]" }
+```
+
 When a form is submitted with an empty input value, the tracker will set the `text` value in the dataLayer to `"No answer given"`. If you require empty input to be sent as `undefined` instead, add the `data-ga4-form-no-answer-undefined` attribute to the form.
