@@ -148,6 +148,39 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('collects data from checked conditional fields', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<label for="c1">checkbox1</label>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c3">checkbox3</label>' +
+          '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+        '</div>'
+
+      document.getElementById('c1').checked = true
+      document.getElementById('c3').checked = true
+
+      expected.event_data.text = 'checkbox3'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('does not collect data from unchecked conditional fields', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<label for="c1">checkbox1</label>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="text">Label</label>' +
+          '<input type="text" id="text" name="test-text" value="Some text"/>' +
+        '</div>'
+
+      expected.event_data.text = 'No answer given'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('collects data from checkboxes', function () {
       element.innerHTML =
         '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
@@ -249,6 +282,44 @@ describe('Google Analytics form tracking', function () {
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       tracker.init()
+    })
+
+    it('collects data from checked conditional checkboxes', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<fieldset>' +
+          '<legend>Checkbox legend</legend>' +
+          '<label for="c3">checkbox3</label>' +
+          '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+          '</fieldset>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
+        '</div>'
+
+      document.getElementById('c1').checked = true
+      document.getElementById('c3').checked = true
+
+      expected.event_data.text = JSON.stringify({ checkbox1: { 'Checkbox legend': 'checkbox3' } })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from checked conditional input', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<label for="c1">checkbox1</label>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="text">Text label</label>' +
+          '<input type="text" id="text" name="test-text" value="Some text"/>' +
+        '</div>'
+
+      document.getElementById('c1').checked = true
+
+      expected.event_data.text = JSON.stringify({ checkbox1: { 'Text label': '[REDACTED]' } })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
     })
 
     it('collects data from a checkbox with a legend', function () {
