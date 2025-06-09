@@ -2,8 +2,17 @@
 
 describe('Google Analytics form tracking', function () {
   var GOVUK = window.GOVUK
+  var schema = new GOVUK.analyticsGa4.Schemas()
   var element
   var expected
+
+  var attributes = {
+    event_name: 'form_response',
+    type: 'smart answer',
+    section: 'What is the title of this question?',
+    action: 'Continue',
+    tool_name: 'What is the title of this smart answer?'
+  }
 
   function agreeToCookies () {
     GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
@@ -80,21 +89,8 @@ describe('Google Analytics form tracking', function () {
 
   describe('when tracking a form', function () {
     beforeEach(function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?'
-      }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'smart answer'
-      expected.event_data.section = 'What is the title of this question?'
-      expected.event_data.action = 'Continue'
-      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected = schema.mergeProperties(attributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
@@ -108,15 +104,9 @@ describe('Google Analytics form tracking', function () {
     })
 
     it('allows the text value to be overridden', function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?',
-        text: 'Hello World'
-      }
-      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      var overriddenText = JSON.parse(JSON.stringify(attributes))
+      overriddenText.text = 'Hello World'
+      element.setAttribute('data-ga4-form', JSON.stringify(overriddenText))
       window.GOVUK.triggerEvent(element, 'submit')
       expected.event_data.text = 'Hello World'
       expect(window.dataLayer[0]).toEqual(expected)
@@ -254,13 +244,7 @@ describe('Google Analytics form tracking', function () {
       }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
       element.setAttribute('data-ga4-form-no-answer-undefined', '')
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'smart answer'
-      expected.event_data.section = 'What is the title of this question?'
-      expected.event_data.action = 'Continue'
-      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected = schema.mergeProperties(attributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
@@ -268,13 +252,6 @@ describe('Google Analytics form tracking', function () {
     })
 
     it('allows the fallback value when the text is empty to be undefined', function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?'
-      }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
       window.GOVUK.triggerEvent(element, 'submit')
       expected.event_data.text = undefined
@@ -284,22 +261,10 @@ describe('Google Analytics form tracking', function () {
 
   describe('when tracking a form with text redaction disabled', function () {
     beforeEach(function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?'
-      }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
       element.setAttribute('data-ga4-form-include-text', '')
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'smart answer'
-      expected.event_data.section = 'What is the title of this question?'
-      expected.event_data.action = 'Continue'
-      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected = schema.mergeProperties(attributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
@@ -350,20 +315,16 @@ describe('Google Analytics form tracking', function () {
 
   describe('when tracking search forms', function () {
     beforeEach(function () {
-      var attributes = {
+      var searchAttributes = {
         event_name: 'form_response',
         type: 'header menu bar',
         section: 'Search',
         action: 'search'
       }
-      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form', JSON.stringify(searchAttributes))
       element.setAttribute('data-ga4-form-include-text', '')
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'header menu bar'
-      expected.event_data.section = 'Search'
-      expected.event_data.action = 'search'
+      expected = schema.mergeProperties(searchAttributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
