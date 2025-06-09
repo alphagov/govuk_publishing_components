@@ -11,12 +11,6 @@ describe('GA4 finder change tracker', function () {
   var option2
   var expected
 
-  beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
-  })
-
   beforeEach(function () {
     window.dataLayer = []
     form = document.createElement('form')

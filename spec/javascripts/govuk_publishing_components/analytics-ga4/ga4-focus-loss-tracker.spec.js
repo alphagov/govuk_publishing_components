@@ -5,12 +5,6 @@ describe('GA4 focus loss tracker', function () {
   var element
   var expected
 
-  beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
-  })
-
   beforeEach(function () {
     window.dataLayer = []
     element = document.createElement('div')

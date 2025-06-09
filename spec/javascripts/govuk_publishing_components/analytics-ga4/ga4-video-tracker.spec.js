@@ -8,7 +8,6 @@ describe('Google Analytics video tracker', function () {
     window.dataLayer = []
     videoTracker = window.GOVUK.analyticsGa4.analyticsModules.VideoTracker
     videoTracker.init()
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
     event = {
       target: {
         id: 1,
