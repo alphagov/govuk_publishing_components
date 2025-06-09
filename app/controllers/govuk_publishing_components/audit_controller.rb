@@ -5,7 +5,6 @@ module GovukPublishingComponents
         account-api
         collections
         collections-publisher
-        contacts-admin
         content-data-admin
         content-publisher
         content-tagger
