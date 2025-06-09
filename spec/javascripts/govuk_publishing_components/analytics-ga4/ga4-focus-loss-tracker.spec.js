@@ -5,14 +5,6 @@ describe('GA4 focus loss tracker', function () {
   var element
   var expected
 
-  function agreeToCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-  }
-
-  function denyCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
-  }
-
   beforeAll(function () {
     window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
     window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
@@ -23,7 +15,7 @@ describe('GA4 focus loss tracker', function () {
     window.dataLayer = []
     element = document.createElement('div')
     document.body.appendChild(element)
-    agreeToCookies()
+    this.agreeToCookies()
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
@@ -38,7 +30,7 @@ describe('GA4 focus loss tracker', function () {
 
   describe('when the user has a cookie consent choice', function () {
     it('starts the module if consent has already been given', function () {
-      agreeToCookies()
+      this.agreeToCookies()
       var tracker = new GOVUK.Modules.Ga4FocusLossTracker(element)
       spyOn(tracker, 'startModule').and.callThrough()
       tracker.init()
@@ -47,7 +39,7 @@ describe('GA4 focus loss tracker', function () {
     })
 
     it('starts the module on the same page as cookie consent is given', function () {
-      denyCookies()
+      this.denyCookies()
       var tracker = new GOVUK.Modules.Ga4FocusLossTracker(element)
       spyOn(tracker, 'startModule').and.callThrough()
       tracker.init()
@@ -64,7 +56,7 @@ describe('GA4 focus loss tracker', function () {
     })
 
     it('does not do anything if consent is not given', function () {
-      denyCookies()
+      this.denyCookies()
       var tracker = new GOVUK.Modules.Ga4FocusLossTracker(element)
       spyOn(tracker, 'startModule')
       tracker.init()
