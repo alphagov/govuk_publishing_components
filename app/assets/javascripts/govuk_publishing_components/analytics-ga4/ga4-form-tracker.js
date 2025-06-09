@@ -89,8 +89,25 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       input.section = labelText
 
       var isTextField = inputTypes.indexOf(inputType) !== -1 || inputNodename === 'TEXTAREA'
+      var conditionalField = elem.closest('.govuk-checkboxes__conditional')
+      var conditionalCheckbox = conditionalField && conditionalField.querySelector('[aria-controls="' + conditionalField.id + '"]')
+      var conditionalCheckboxChecked = conditionalCheckbox && conditionalCheckbox.checked
 
-      if (elem.checked) {
+      if (conditionalField && conditionalCheckboxChecked) {
+        var conditionalCheckboxLabel = conditionalField.querySelector('[for="' + conditionalCheckbox.id + '"]')
+
+        if (conditionalCheckboxLabel) {
+          input.parentSection = conditionalCheckboxLabel.innerText
+        }
+      }
+
+      if (conditionalCheckbox && !conditionalCheckboxChecked) {
+        // don't include conditional field if condition not checked
+        inputs.splice(i, 1)
+      } else if (conditionalField && elem.hasAttribute('aria-controls')) {
+        // don't include conditional field control in text
+        inputs.splice(i, 1)
+      } else if (elem.checked) {
         input.answer = labelText
 
         var fieldset = elem.closest('fieldset')
@@ -138,9 +155,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (answer) {
         if (this.recordJson) {
           var fieldSection = data[i].section
+          var parentFieldSection = data[i].parentSection
 
           if (fieldSection) {
-            answers[fieldSection] = answer
+            if (parentFieldSection) {
+              answers[parentFieldSection] = answers[parentFieldSection] || {}
+              answers[parentFieldSection][fieldSection] = answer
+            } else {
+              answers[fieldSection] = answer
+            }
           }
         } else {
           answers.push(answer)
