@@ -13,14 +13,6 @@ describe('GA4 link tracker', function () {
     }
   }
 
-  function agreeToCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-  }
-
-  function denyCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
-  }
-
   beforeAll(function () {
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
     spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getHostname').and.returnValue('www.gov.uk')
@@ -38,7 +30,7 @@ describe('GA4 link tracker', function () {
     expected.govuk_gem_version = 'aVersion'
     expected.event_data.link_domain = 'https://www.gov.uk'
     expected.timestamp = '123456'
-    agreeToCookies()
+    this.agreeToCookies()
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
@@ -52,7 +44,7 @@ describe('GA4 link tracker', function () {
     })
 
     it('starts the module if consent has already been given', function () {
-      agreeToCookies()
+      this.agreeToCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(tracker, 'trackClick')
@@ -63,7 +55,7 @@ describe('GA4 link tracker', function () {
     })
 
     it('starts the module on the same page as cookie consent is given', function () {
-      denyCookies()
+      this.denyCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(tracker, 'trackClick')
@@ -85,7 +77,7 @@ describe('GA4 link tracker', function () {
     })
 
     it('does not do anything if consent is not given', function () {
-      denyCookies()
+      this.denyCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
       spyOn(tracker, 'trackClick')

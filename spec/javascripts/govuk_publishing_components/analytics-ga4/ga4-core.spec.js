@@ -15,7 +15,6 @@ describe('GA4 core', function () {
     window.GOVUK.analyticsGa4.vars.id = undefined
     window.GOVUK.analyticsGa4.vars.auth = undefined
     window.GOVUK.analyticsGa4.vars.preview = undefined
-    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
   })
 
   afterEach(function () {
@@ -538,10 +537,6 @@ describe('GA4 core', function () {
       var results
       var expectedEcommerceObject
 
-      function agreeToCookies () {
-        GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-      }
-
       beforeEach(function () {
         resultsCount = document.createElement('span')
         resultsCount.id = 'result-count'
@@ -612,7 +607,7 @@ describe('GA4 core', function () {
         resultsParentEl.appendChild(results)
         resultsParentEl.appendChild(resultsCount)
         document.body.appendChild(resultsParentEl)
-        agreeToCookies()
+        this.agreeToCookies()
       })
 
       afterEach(function () {

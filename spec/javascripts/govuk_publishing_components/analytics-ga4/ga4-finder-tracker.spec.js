@@ -11,10 +11,6 @@ describe('GA4 finder change tracker', function () {
   var option2
   var expected
 
-  function agreeToCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-  }
-
   beforeAll(function () {
     window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
     window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
@@ -40,7 +36,7 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.type = 'finder'
     expected.timestamp = '123456'
 
-    agreeToCookies()
+    this.agreeToCookies()
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 

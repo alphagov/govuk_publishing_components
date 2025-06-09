@@ -9,6 +9,14 @@ beforeAll(function () {
   window.GOVUK.analyticsGa4.vars.internalDomains = ['www.gov.uk']
   window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
 
+  this.agreeToCookies = function () {
+    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+  }
+
+  this.denyCookies = function () {
+    GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
+  }
+
   delete ga
 })
 
