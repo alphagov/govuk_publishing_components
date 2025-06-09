@@ -5,7 +5,7 @@ beforeAll(function () {
   window.GOVUK.analyticsGa4.vars.id = 'test-id'
   window.GOVUK.analyticsGa4.vars.auth = 'test-auth'
   window.GOVUK.analyticsGa4.vars.preview = 'test-preview'
-  window.GOVUK.analyticsGa4.vars.gem_version = 'gem-version'
+  window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
   window.GOVUK.analyticsGa4.vars.internalDomains = ['www.gov.uk']
   window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
 

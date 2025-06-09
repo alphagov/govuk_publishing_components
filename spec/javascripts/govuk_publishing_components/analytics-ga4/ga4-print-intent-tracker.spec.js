@@ -4,12 +4,6 @@ describe('Google Analytics 4 print intent tracker', function () {
   var GOVUK = window.GOVUK
   var expected
 
-  beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
-  })
-
   beforeEach(function () {
     window.dataLayer = []
     expected = new GOVUK.analyticsGa4.Schemas().eventSchema()

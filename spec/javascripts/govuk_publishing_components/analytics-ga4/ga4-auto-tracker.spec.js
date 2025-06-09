@@ -5,11 +5,6 @@ describe('Google Analytics auto tracker', function () {
   var element
   var expected
 
-  beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-  })
-
   beforeEach(function () {
     window.dataLayer = []
     element = document.createElement('form')

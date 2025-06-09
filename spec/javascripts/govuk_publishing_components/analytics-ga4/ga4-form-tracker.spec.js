@@ -14,12 +14,6 @@ describe('Google Analytics form tracking', function () {
     tool_name: 'What is the title of this smart answer?'
   }
 
-  beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
-  })
-
   beforeEach(function () {
     window.dataLayer = []
     element = document.createElement('form')
