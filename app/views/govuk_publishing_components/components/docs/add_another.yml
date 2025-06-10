@@ -46,6 +46,31 @@ examples:
           <label for="person_1_name" class="gem-c-label govuk-label">Full name</label>
           <input class="gem-c-input govuk-input" id="person_1_name" name="person[1]name">
         </div>
+  without_ga4_tracking:
+    description: |
+      Disables GA4 tracking on the add another component. Tracking is enabled by default. This adds a data module and data-attributes with JSONs to the add another component buttons. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
+    data:
+      fieldset_legend: "Item"
+      add_button_text: "Add another item"
+      disable_ga4: true
+      items:
+        - fields: >
+            <div class="govuk-form-group">
+              <label for="item_0_name" class="gem-c-label govuk-label">Full name</label>
+              <input class="gem-c-input govuk-input" id="item_0_name" name="item[0]name">
+            </div>
+          destroy_checkbox: >
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="item[0][_destroy]" id="item_0__destroy" class="govuk-checkboxes__input">
+                <label for="item_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+              </div>
+            </div>
+      empty:
+        <div class="govuk-form-group">
+          <label for="item_1_name" class="gem-c-label govuk-label">Full name</label>
+          <input class="gem-c-input govuk-input" id="item_1_name" name="item[1]name">
+        </div>        
   start_empty:
     description: By default no form fields are displayed when the component loads if no content is specified
     data:
