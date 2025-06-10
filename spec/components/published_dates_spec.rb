@@ -11,15 +11,17 @@ describe "Published dates", type: :view do
 
   it "renders published date" do
     render_component(published: "1st November 2000")
-    assert_select ".gem-c-published-dates", text: "Updates to this page
-      Published 1st November 2000"
+    assert_select ".gem-c-published-dates h2.govuk-visually-hidden", text: "Updates to this page"
+    assert_select ".gem-c-published-dates div", text: "Published 1st November 2000"
   end
 
   it "renders published date and last updated date" do
     render_component(published: "1st November 2000", last_updated: "15th July 2015")
-    assert_select ".gem-c-published-dates", text: "Updates to this page
-      Published 1st November 2000
-      Last updated 15th July 2015"
+    assert_select ".gem-c-published-dates", {
+      html: "<h2 class=\"govuk-visually-hidden\">Updates to this page</h2>
+      <div>Published 1st November 2000</div>
+      Last updated 15th July 2015",
+    }
   end
 
   it "links to full page history" do
