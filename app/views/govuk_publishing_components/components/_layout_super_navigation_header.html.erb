@@ -46,8 +46,6 @@
 <%= tag.header(**component_helper.all_attributes) do %>
   <div class="gem-c-layout-super-navigation-header__container govuk-clearfix">
     <div class="govuk-width-container">
-      <div class="crown-container">
-
       <%= content_tag(:div, {
         class: header_logo_classes
       }) do %>
@@ -74,7 +72,6 @@
           <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
         <% end %>
       <% end %>
-      </div>
     </div>
     <nav
       aria-labelledby="super-navigation-menu-heading"
