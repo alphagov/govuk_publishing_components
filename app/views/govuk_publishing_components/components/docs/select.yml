@@ -42,6 +42,19 @@ examples:
         selected: true
       - text: Option three
         value: option3
+  with_disabled_options:
+    description: Options can be disabled using the `disabled` parameter. Note that it is possible to have an option that is both disabled and selected.
+    data:
+      id: dropdown2-0
+      label: Option 3 disabled
+      options:
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
+      - text: Option three
+        value: option3
+        disabled: true
   with_hint:
     description: When a hint is included the `aria-describedby` attribute of the select is included to point to the hint. When an error and a hint are present, that attribute includes the IDs of both the hint and the error.
     data:
