@@ -1,0 +1,246 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-govspeak {
+  color: var(--govspeak-text-colour);
+
+  @include govuk-font($size: 16);
+
+  ol,
+  ul,
+  p {
+    margin: 0 0 govuk-spacing(4) 0;
+    @include govuk-font-size($size: 19);
+  }
+
+  // Headings
+
+  // put some spacing between any element followed by a heading
+  // has to be padding on the heading otherwise margins would overlap
+
+  * + h2,
+  * + h3 {
+  padding-top: govuk-spacing(4);
+  }
+
+  // Markdown is expected to be styled within a document with a H1 title
+  // thus H1's are not expected and are discouraged by bare styling
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    @include govuk-font-size($size: 19);
+  }
+
+  h2 {
+    margin: 0 0 govuk-spacing(4) 0;
+    @include govuk-font-size($size: 27);
+    @include govuk-typography-weight-bold();
+  }
+
+  h3 {
+    margin: 0 0 govuk-spacing(4) 0;
+    @include govuk-font-size($size: 19);
+    @include govuk-typography-weight-bold();
+  }
+
+  // H4, H5 and H6 are discouraged and thus styled the same
+
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    @include govuk-font-size($size: 19);
+    @include govuk-typography-weight-bold();
+  }
+
+  // Links
+
+  a {
+    &:link {
+      color: var(--govuk-link-colour);
+    }
+
+    &:visited {
+      color: var(--govuk-link-visited-colour);
+    }
+
+    &:hover {
+      color: var(--govuk-link-hover-colour);
+    }
+
+    &:active {
+      color: var(--govuk-link-active-colour);
+    }
+
+  // When focussed, the text colour needs to be darker to ensure that colour
+  // contrast is still acceptable
+  &:focus {
+    color: var(--govuk-focus-text-colour);
+  }
+    @include govuk-text-break-word;
+
+    &:focus {
+      outline: $govuk-focus-width solid transparent;
+      color: var(--govuk-focus-text-colour);
+      background-color: var(--govuk-focus-colour);
+      box-shadow:
+        0 -2px var(--govuk-focus-colour),
+        0 4px var(--govuk-focus-text-colour);
+      // When link is focussed, hide the default underline since the
+      // box shadow adds the "underline"
+      text-decoration: none;
+    }
+  }
+
+  // Lists
+
+  ol,
+  ul {
+    // we intentionally don't set list-style for ol elements, so that they can
+    // utilise the type attribute for the formatting. Browsers default to a
+    // style of decimal.
+    list-style-position: outside;
+    margin: 0 0 govuk-spacing(4) govuk-spacing(4);
+    padding: 0;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  li {
+    margin: 0 0 govuk-spacing(2);
+    padding: 0;
+
+    p {
+      margin: 0 0 govuk-spacing(2);
+    }
+  }
+
+  // Text styles
+
+  sup {
+    font-size: .8em;
+    line-height: .7em;
+    vertical-align: super;
+  }
+
+  abbr {
+    cursor: help;
+    text-decoration: none;
+  }
+
+  // Horizontal Rule
+
+  hr {
+    margin-top: govuk-spacing(6) - 1px;
+    margin-bottom: govuk-spacing(6);
+    border-top: 1px solid var(--govuk-border-colour);
+  }
+
+
+  &.gem-c-govspeak--direction-rtl ol,
+  &.gem-c-govspeak--direction-rtl ul {
+    margin-left: 0;
+    margin-right: govuk-spacing(4);
+
+    a {
+      overflow-wrap: break-word;
+    }
+
+    ul,
+    ol {
+      margin-bottom: 0;
+    }
+  }
+
+  // Block quotes
+
+  blockquote {
+    padding: 0 0 0 govuk-spacing(6);
+    margin: 0 0 govuk-spacing(4) 0;
+    border: 0;
+
+    p {
+      position: relative;
+
+      &::before {
+        content: "\201C";
+        position: absolute;
+        right: 100%;
+      }
+
+      &:last-of-type::after {
+        content: "\201D";
+      }
+    }
+  }
+
+  &.gem-c-govspeak--direction-rtl blockquote {
+    padding: 0 govuk-spacing(4) 0 0;
+
+    @include govuk-media-query($from: desktop) {
+      margin: 0 (- govuk-spacing(6)) 0 0;
+    }
+
+    p {
+      padding-right: govuk-spacing(3);
+      padding-left: 0;
+
+      @include govuk-media-query($from: tablet) {
+        padding-right: govuk-spacing(6);
+        padding-left: 0;
+      }
+
+      &::before {
+        content: "\201D";
+        float: right;
+        margin-right: (- govuk-spacing(3));
+        margin-left: 0;
+      }
+
+      &:last-child::after {
+        content: "\201C";
+      }
+    }
+  }
+
+  // Text styles
+
+  em,
+  i {
+    font-style: normal;
+    font-weight: inherit;
+  }
+}
+
+.gem-c-govspeak--inverse {
+  color: var(--govspeak-text-colour-inverse);
+
+  a {
+    &:link {
+      color: var(--govuk-link-colour-inverse);
+    }
+
+    &:visited {
+      color: var(--govuk-link-visited-colour-inverse);
+    }
+
+    &:hover {
+      color: var(--govuk-link-hover-colour-inverse);
+    }
+
+    &:active {
+      color: var(--govuk-link-active-colour-inverse);
+    }
+  }
+}
+
+
+.govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
+.gem-c-govspeak {
+  &.gem-c-govspeak--direction-rtl {
+    direction: rtl;
+    text-align: start;
+  }
+}
