@@ -44,13 +44,15 @@ module GovukPublishingComponents
           [
             option[:text],
             option[:value],
-            options_data_attribute(option[:data_attributes]),
+            options_extra_attributes(option[:data_attributes], option[:disabled]),
           ]
         end
       end
 
-      def options_data_attribute(attributes)
-        return {} if attributes.nil?
+      def options_extra_attributes(attributes, disabled)
+        attrs = {}
+        attrs[:disabled] = true if disabled
+        return attrs if attributes.nil?
 
         attrs = {}
         attributes.each do |key, value|

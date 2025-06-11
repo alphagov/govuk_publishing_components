@@ -119,6 +119,64 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=medium][selected]"
   end
 
+  it "renders a select with a disabled item" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      options: [
+        {
+          value: "big",
+          text: "Big",
+        },
+        {
+          value: "medium",
+          text: "Medium",
+          disabled: true,
+        },
+        {
+          value: "small",
+          text: "Small",
+        },
+      ],
+    )
+
+    assert_select ".govuk-select option[value=big][disabled]", false
+    assert_select ".govuk-select option[value=medium][disabled]"
+    assert_select ".govuk-select option[value=small][disabled]", false
+  end
+
+  it "renders a select with a selected item and several disabled items" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      options: [
+        {
+          value: "big",
+          text: "Big",
+        },
+        {
+          value: "medium",
+          text: "Medium",
+          selected: true,
+        },
+        {
+          value: "small",
+          text: "Small",
+          disabled: true,
+        },
+        {
+          value: "tiny",
+          text: "Tiny",
+          disabled: true,
+        },
+      ],
+    )
+
+    assert_select ".govuk-select option[value=medium][selected]"
+    assert_select ".govuk-select option[value=small][disabled]"
+    assert_select ".govuk-select option[value=tiny][disabled]"
+  end
+
   it "renders a select element with data attributes applied to contained option element" do
     render_component(
       id: "mydropdown",
