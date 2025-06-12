@@ -67,6 +67,18 @@ examples:
         value: option1
       - text: Something else
         value: option2
+  with_aria_controls:
+    data:
+      id: dropdown4-4
+      label: My Dropdown
+      aria_controls: dropdown4-3
+      options:
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
+      - text: Option three
+        value: option3
   with_data_attributes:
     description: Data attributes can be passed to the select component if needed.
     data:
