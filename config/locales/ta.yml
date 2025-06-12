@@ -61,18 +61,27 @@ ta:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: மூடு
       dont_include_personal_info: உங்கள் தேசிய காப்பீட்டு எண் அல்லது கடன் அட்டை விபரங்கள் போன்ற தனிப்பட்ட அல்லது நிதிசார் விபரங்களைச் சேர்க்க வேண்டாம்.

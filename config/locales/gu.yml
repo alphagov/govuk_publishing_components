@@ -60,18 +60,27 @@ gu:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: બંધ કરો
       dont_include_personal_info: તમારો રાષ્ટ્રીય વીમા નંબર અથવા ક્રેડિટ કાર્ડ વિગતો જેવી વ્યક્તિગત કે નાણાંકીય માહિતી તેમાં સામેલ કરશો નહીં.

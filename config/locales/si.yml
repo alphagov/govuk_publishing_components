@@ -60,18 +60,27 @@ si:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: වසන්න
       dont_include_personal_info: ඔබේ ජාතික රක්ෂණ අංකය හෝ ක්රෙඩිට් කාඩ්පත් විස්තර වැනි පෞද්ගලික හෝ මූල්ය තොරතුරු ඇතුළත් නොකරන්න.

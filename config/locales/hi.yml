@@ -60,18 +60,27 @@ hi:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: बंद करे
       dont_include_personal_info: अपनी राष्ट्रीय बीमा संख्या या क्रेडिट कार्ड विवरण जैसी व्यक्तिगत या वित्तीय जानकारी शामिल न करें।

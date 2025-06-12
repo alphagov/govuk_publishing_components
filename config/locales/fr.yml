@@ -60,18 +60,27 @@ fr:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Fermer
       dont_include_personal_info: Ne pas ajouter des informations personnelles ou financières comme le numéro de votre assurance nationale ou les détails de votre carte de crédit.

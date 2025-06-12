@@ -64,18 +64,27 @@ cy:
     devolved_nations:
       applies_to: Yn berthnasol i
       aria_label:
-      connectors:
-        last_word: " a "
-        two_words: " a "
-      england: Loegr
+      england:
+        end: " a Lloegr"
+        middle: ", Lloegr"
+        start: Loegr
       northern_ireland:
+        end: " a Gogledd Iwerddon"
+        middle: ", Gogledd Iwerddon"
+        start: Ogledd Iwerddon
       scotland:
+        end: " a'r Alban"
+        middle: ", yr Alban"
+        start: "'r Alban"
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
-      wales: Gymru
+      wales:
+        end: " a Chymru"
+        middle: ", Cymru"
+        start: Gymru
     feedback:
       close: Cau
       dont_include_personal_info: Peidiwch â chynnwys gwybodaeth bersonol neu ariannol fel eich rhif Yswiriant Gwladol neu rif cerdyn credyd.

@@ -62,18 +62,27 @@ gd:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Dúnadh
       dont_include_personal_info: Ná cuir aon fhaisnéis phearsanta nó airgeadais san áireamh, mar d’uimhir Árachais Náisiúnta nó sonraí cárta creidmheasa.

@@ -67,18 +67,27 @@ uk:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Закрити
       dont_include_personal_info: Не вказуйте персональну чи фінансову інформацію, наприклад номер свого національного страхування або дані кредитної картки.

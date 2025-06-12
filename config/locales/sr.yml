@@ -61,18 +61,27 @@ sr:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close: Zatvori
       dont_include_personal_info: Nemojte navoditi lični ili finansijske podatke, na primer svoj broj osiguranja ili podatke o kreditnoj kartici.

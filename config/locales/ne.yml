@@ -56,18 +56,27 @@ ne:
     devolved_nations:
       applies_to:
       aria_label:
-      connectors:
-        last_word:
-        two_words:
       england:
+        end:
+        middle:
+        start:
       northern_ireland:
+        end:
+        middle:
+        start:
       scotland:
+        end:
+        middle:
+        start:
       type:
         consultation:
         detailed_guide:
         guidance:
         publication:
       wales:
+        end:
+        middle:
+        start:
     feedback:
       close:
       dont_include_personal_info:
@@ -107,10 +116,7 @@ ne:
             manage:
               link_text:
     layout_header:
-      hide_button:
       menu:
-      search_button:
-      show_button:
       top_level:
     layout_super_navigation_header:
       logo_link_title:
