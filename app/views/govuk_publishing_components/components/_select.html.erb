@@ -7,12 +7,16 @@
   name ||= id
   is_page_heading ||= false
   data_attributes ||= {}
+  aria_controls ||= nil
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
 
-  aria_describedby = { describedby: select_helper.describedby }
+  aria_attributes = {
+    controls: aria_controls,
+    describedby: select_helper.describedby
+  }
 %>
 <% if select_helper.options.any? && id && label %>
   <%= content_tag :div, class: select_helper.css_classes do %>
@@ -40,6 +44,6 @@
       } %>
     <% end %>
 
-    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_helper.select_classes, aria: aria_describedby, data: data_attributes %>
+    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_helper.select_classes, aria: aria_attributes, data: data_attributes %>
   <% end %>
 <% end %>
