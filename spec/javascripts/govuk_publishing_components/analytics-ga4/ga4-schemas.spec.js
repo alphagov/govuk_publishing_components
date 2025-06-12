@@ -3,12 +3,6 @@
 describe('Google Analytics schemas', function () {
   var schemas
 
-  beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
-  })
-
   beforeEach(function () {
     schemas = new window.GOVUK.analyticsGa4.Schemas()
   })

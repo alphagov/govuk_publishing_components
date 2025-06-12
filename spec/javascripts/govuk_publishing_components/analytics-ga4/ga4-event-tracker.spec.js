@@ -5,14 +5,6 @@ describe('Google Analytics event tracker', function () {
   var element
   var expected
 
-  function agreeToCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-  }
-
-  function denyCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
-  }
-
   beforeAll(function () {
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
   })
@@ -20,7 +12,7 @@ describe('Google Analytics event tracker', function () {
   beforeEach(function () {
     window.dataLayer = []
     element = document.createElement('div')
-    agreeToCookies()
+    this.agreeToCookies()
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
@@ -34,7 +26,7 @@ describe('Google Analytics event tracker', function () {
 
   describe('when the user has a cookie consent choice', function () {
     it('starts the module if consent has already been given', function () {
-      agreeToCookies()
+      this.agreeToCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4EventTracker(element)
       spyOn(tracker, 'trackClick')
@@ -45,7 +37,7 @@ describe('Google Analytics event tracker', function () {
     })
 
     it('starts the module on the same page as cookie consent is given', function () {
-      denyCookies()
+      this.denyCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4EventTracker(element)
       spyOn(tracker, 'trackClick')
@@ -67,7 +59,7 @@ describe('Google Analytics event tracker', function () {
     })
 
     it('does not do anything if consent is not given', function () {
-      denyCookies()
+      this.denyCookies()
       document.body.appendChild(element)
       var tracker = new GOVUK.Modules.Ga4EventTracker(element)
       spyOn(tracker, 'trackClick')
