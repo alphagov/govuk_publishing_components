@@ -5,7 +5,6 @@
   navigation ||= []
   hide_licence ||= false
   layout_footer_helper = GovukPublishingComponents::Presenters::LayoutFooterHelper.new(navigation, meta)
-  absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-footer govuk-footer")
@@ -73,10 +72,8 @@
                           unless attributes[:data][:ga4_link]
                             attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, ga4_section_index, section[:title], index_total)
                           end
-
-                          href = absolute_links_helper.make_url_absolute(item[:href])
                         %>
-                        <%= link_to item[:text], href, attributes %>
+                        <%= link_to item[:text], item[:href], attributes %>
                       </li>
                     <% end %>
                   <% end %>
@@ -106,10 +103,8 @@
                   unless attributes[:data][:ga4_link]
                     attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, navigation.length, "Support links", index_total)
                   end
-
-                  href = absolute_links_helper.make_url_absolute(item[:href])
                 %>
-                <%= link_to item[:text], href, attributes %>
+                <%= link_to item[:text], item[:href], attributes %>
               </li>
             <% end %>
           </ul>
