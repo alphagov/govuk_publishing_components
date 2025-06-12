@@ -37,8 +37,6 @@
 
   dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
 
-  absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
-
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-super-navigation-header")
   component_helper.add_data_attribute({ module: "ga4-event-tracker ga4-link-tracker", ga4_expandable: "" })
@@ -223,10 +221,9 @@
                         has_description = item[:description].present?
                         link_classes = %w[govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link]
                         link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
-                        link_href = absolute_links_helper.make_url_absolute(item[:href])
                       %>
                       <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
-                        <%= link_to item[:label], link_href, {
+                        <%= link_to item[:label], item[:href], {
                           class: link_classes,
                           data: {
                             ga4_link: {
@@ -272,7 +269,7 @@
                   ga4_search_index_section: 3,
                   ga4_search_index_section_count: 3,
                 },
-                action: absolute_links_helper.make_url_absolute("/search/all"),
+                action: "/search/all",
                 method: "get",
                 role: "search",
                 aria: {
