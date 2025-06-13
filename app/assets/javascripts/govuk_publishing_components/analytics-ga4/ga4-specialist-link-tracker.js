@@ -9,7 +9,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     init: function (config) {
       if (window.dataLayer) {
         config = config || {}
-        this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/', '/media/']
+        this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/', '/media/', '/csv-preview/']
         this.dedicatedDownloadDomains = config.dedicatedDownloadDomains || ['assets.publishing.service.gov.uk']
         window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(this.dedicatedDownloadDomains)
         this.handleClick = this.handleClick.bind(this)
@@ -151,7 +151,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       Regex is used over JS string methods as this should work with anchor links, query string parameters and files that may have 'preview' in their name.
       */
       var previewRegex = /\.\w+\/preview/i
-      return previewRegex.test(href)
+      return previewRegex.test(href) || href.startsWith('https://www.gov.uk/csv-preview/')
     },
 
     hrefPointsToDownloadPath: function (href) {
