@@ -14,6 +14,7 @@
 * Add tracking to `AddAnother` ([PR #4836](https://github.com/alphagov/govuk_publishing_components/pull/4836))
 * Add phone numbers to GA4 PII redaction ([PR #4840](https://github.com/alphagov/govuk_publishing_components/pull/4840))
 * Add image functionality to the intervention banner ([PR #4845](https://github.com/alphagov/govuk_publishing_components/pull/4845))
+* Add extra functionality to trackFormSubmit of Ga4FormTracker ([PR #4847](https://github.com/alphagov/govuk_publishing_components/pull/4847/))
 
 ## 57.1.0
 
