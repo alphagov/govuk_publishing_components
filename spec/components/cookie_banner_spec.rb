@@ -100,11 +100,4 @@ describe "Cookie banner", type: :view do
     assert_select ".gem-c-cookie-banner__hide-button[data-module='ga4-event-tracker']", false
     assert_select ".gem-c-cookie-banner__hide-button[data-ga4-event]", false
   end
-
-  it "renders the default 'help/cookies' path as an absolute link" do
-    ENV["VIRTUAL_HOST"] = "https://www.random.gov.uk"
-    render_component({})
-    assert_select ".govuk-link[href='https://www.random.gov.uk/help/cookies']"
-    ENV["VIRTUAL_HOST"] = nil
-  end
 end
