@@ -8,6 +8,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.module = module
     this.trackingTrigger = 'data-ga4-form' // elements with this attribute get tracked
     this.includeTextInputValues = this.module.hasAttribute('data-ga4-form-include-text')
+    this.recordJson = this.module.hasAttribute('data-ga4-form-record-json')
+    this.useTextCount = this.module.hasAttribute('data-ga4-form-use-text-count')
     this.redacted = false
     this.useFallbackValue = this.module.hasAttribute('data-ga4-form-no-answer-undefined') ? undefined : 'No answer given'
   }
@@ -84,19 +86,58 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var inputNodename = elem.nodeName
       var inputTypes = ['text', 'search', 'email', 'number']
 
-      if (inputType === 'checkbox' && elem.checked) {
+      input.section = labelText
+
+      var isTextField = inputTypes.indexOf(inputType) !== -1 || inputNodename === 'TEXTAREA'
+      var conditionalField = elem.closest('.govuk-checkboxes__conditional')
+      var conditionalCheckbox = conditionalField && conditionalField.querySelector('[aria-controls="' + conditionalField.id + '"]')
+      var conditionalCheckboxChecked = conditionalCheckbox && conditionalCheckbox.checked
+
+      if (conditionalField && conditionalCheckboxChecked) {
+        var conditionalCheckboxLabel = conditionalField.querySelector('[for="' + conditionalCheckbox.id + '"]')
+
+        if (conditionalCheckboxLabel) {
+          input.parentSection = conditionalCheckboxLabel.innerText
+        }
+      }
+
+      if (conditionalCheckbox && !conditionalCheckboxChecked) {
+        // don't include conditional field if condition not checked
+        inputs.splice(i, 1)
+      } else if (conditionalField && elem.hasAttribute('aria-controls')) {
+        // don't include conditional field control in text
+        inputs.splice(i, 1)
+      } else if (elem.checked) {
         input.answer = labelText
+
+        var fieldset = elem.closest('fieldset')
+
+        if (fieldset) {
+          var legend = fieldset.querySelector('legend')
+
+          if (legend) {
+            input.section = legend.innerText
+          }
+        }
       } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex] && elem.options[elem.selectedIndex].value) {
         input.answer = elem.options[elem.selectedIndex].text
-      } else if (inputTypes.indexOf(inputType) !== -1 && elem.value) {
+      } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
-          var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-          input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
+          if (this.useTextCount) {
+            input.answer = elem.value.length
+          } else {
+            var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+            input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
+          }
         } else {
-          this.redacted = true
+          // if recording JSON and text input not allowed
+          // set the specific answer to '[REDACTED]'
+          if (this.recordJson) {
+            input.answer = '[REDACTED]'
+          } else {
+            this.redacted = true
+          }
         }
-      } else if (inputType === 'radio' && elem.checked) {
-        input.answer = labelText
       } else {
         // remove the input from those gathered as it has no value
         inputs.splice(i, 1)
@@ -106,19 +147,38 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4FormTracker.prototype.combineGivenAnswers = function (data) {
-    var answers = []
+    var answers = this.recordJson ? {} : []
+
     for (var i = 0; i < data.length; i++) {
       var answer = data[i].answer
+
       if (answer) {
-        answers.push(answer)
+        if (this.recordJson) {
+          var fieldSection = data[i].section
+          var parentFieldSection = data[i].parentSection
+
+          if (fieldSection) {
+            if (parentFieldSection) {
+              answers[parentFieldSection] = answers[parentFieldSection] || {}
+              answers[parentFieldSection][fieldSection] = answer
+            } else {
+              answers[fieldSection] = answer
+            }
+          }
+        } else {
+          answers.push(answer)
+        }
       }
     }
-    if (this.redacted) {
+    // default behaviour for redacted text is to omit
+    // answer and append '[REDACTED]' to final joined text
+    // if JSON being recorded then prevent this as answer
+    // will be already redacted
+    if (this.redacted && !this.recordJson) {
       answers.push('[REDACTED]')
     }
 
-    answers = answers.join(',')
-    return answers
+    return this.recordJson ? JSON.stringify(answers) : answers.join(',')
   }
 
   Modules.Ga4FormTracker = Ga4FormTracker

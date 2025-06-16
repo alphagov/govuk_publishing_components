@@ -2,8 +2,17 @@
 
 describe('Google Analytics form tracking', function () {
   var GOVUK = window.GOVUK
+  var schema = new GOVUK.analyticsGa4.Schemas()
   var element
   var expected
+
+  var attributes = {
+    event_name: 'form_response',
+    type: 'smart answer',
+    section: 'What is the title of this question?',
+    action: 'Continue',
+    tool_name: 'What is the title of this smart answer?'
+  }
 
   function agreeToCookies () {
     GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
@@ -80,21 +89,8 @@ describe('Google Analytics form tracking', function () {
 
   describe('when tracking a form', function () {
     beforeEach(function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?'
-      }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'smart answer'
-      expected.event_data.section = 'What is the title of this question?'
-      expected.event_data.action = 'Continue'
-      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected = schema.mergeProperties(attributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
@@ -108,15 +104,9 @@ describe('Google Analytics form tracking', function () {
     })
 
     it('allows the text value to be overridden', function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?',
-        text: 'Hello World'
-      }
-      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      var overriddenText = JSON.parse(JSON.stringify(attributes))
+      overriddenText.text = 'Hello World'
+      element.setAttribute('data-ga4-form', JSON.stringify(overriddenText))
       window.GOVUK.triggerEvent(element, 'submit')
       expected.event_data.text = 'Hello World'
       expect(window.dataLayer[0]).toEqual(expected)
@@ -153,6 +143,39 @@ describe('Google Analytics form tracking', function () {
         '<label for="textid3">Label</label>' +
         '<input type="email" id="textid3" name="test-text3" value="text 3"/>'
       expected.event_data.text = '[REDACTED]'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from checked conditional fields', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<label for="c1">checkbox1</label>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c3">checkbox3</label>' +
+          '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+        '</div>'
+
+      document.getElementById('c1').checked = true
+      document.getElementById('c3').checked = true
+
+      expected.event_data.text = 'checkbox3'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('does not collect data from unchecked conditional fields', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<label for="c1">checkbox1</label>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="text">Label</label>' +
+          '<input type="text" id="text" name="test-text" value="Some text"/>' +
+        '</div>'
+
+      expected.event_data.text = 'No answer given'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
@@ -243,6 +266,143 @@ describe('Google Analytics form tracking', function () {
     })
   })
 
+  describe('when tracking a form with JSON recording', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-record-json', '')
+      expected = schema.mergeProperties(attributes, 'event_data')
+      expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('collects data from checked conditional checkboxes', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<fieldset>' +
+          '<legend>Checkbox legend</legend>' +
+          '<label for="c3">checkbox3</label>' +
+          '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+          '</fieldset>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
+        '</div>'
+
+      document.getElementById('c1').checked = true
+      document.getElementById('c3').checked = true
+
+      expected.event_data.text = JSON.stringify({ checkbox1: { 'Checkbox legend': 'checkbox3' } })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from checked conditional input', function () {
+      element.innerHTML =
+        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<label for="c1">checkbox1</label>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="text">Text label</label>' +
+          '<input type="text" id="text" name="test-text" value="Some text"/>' +
+        '</div>'
+
+      document.getElementById('c1').checked = true
+
+      expected.event_data.text = JSON.stringify({ checkbox1: { 'Text label': '[REDACTED]' } })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from a checkbox with a legend', function () {
+      element.innerHTML =
+        '<fieldset>' +
+        '<legend>Checkbox legend</legend>' +
+        '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
+        '</fieldset>'
+
+      document.getElementById('c1').checked = true
+
+      expected.event_data.text = JSON.stringify({ 'Checkbox legend': 'checkbox1' })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from a radio with a legend', function () {
+      element.innerHTML =
+        '<fieldset>' +
+        '<legend>Checkbox legend</legend>' +
+        '<label><input type="radio" id="r1" name="checkbox[]" value="radio1"/>radio1</label>' +
+        '</fieldset>'
+
+      document.getElementById('r1').checked = true
+
+      expected.event_data.text = JSON.stringify({ 'Checkbox legend': 'radio1' })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from a select and a text input', function () {
+      element.innerHTML =
+        '<label for="s1">Select label</label>' +
+        '<select name="select" id="s1">' +
+          '<option value="option1">Option 1</option>' +
+          '<option value="option2">Option 2</option>' +
+          '<option value="option3">Option 3</option>' +
+        '</select>' +
+        '<label for="text">Text label</label>' +
+        '<input type="text" id="text" name="test-text" value="Some text"/>'
+      var select = document.getElementById('s1')
+      select.selectedIndex = 2
+      window.GOVUK.triggerEvent(select, 'change')
+      expected.event_data.text = JSON.stringify({ 'Select label': 'Option 3', 'Text label': '[REDACTED]' })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
+  describe('when tracking a form with character count enabled', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-include-text', '')
+      element.setAttribute('data-ga4-form-use-text-count', '')
+      expected = schema.mergeProperties(attributes, 'event_data')
+      expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('collects character count from a text input', function () {
+      element.innerHTML =
+        '<label for="text">Text label</label>' +
+        '<input type="text" id="text" name="test-text" value="Some text"/>'
+
+      expected.event_data.text = '9'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('when tracking a form with undefined instead of no answer given', function () {
     beforeEach(function () {
       var attributes = {
@@ -254,13 +414,7 @@ describe('Google Analytics form tracking', function () {
       }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
       element.setAttribute('data-ga4-form-no-answer-undefined', '')
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'smart answer'
-      expected.event_data.section = 'What is the title of this question?'
-      expected.event_data.action = 'Continue'
-      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected = schema.mergeProperties(attributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
@@ -268,13 +422,6 @@ describe('Google Analytics form tracking', function () {
     })
 
     it('allows the fallback value when the text is empty to be undefined', function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?'
-      }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
       window.GOVUK.triggerEvent(element, 'submit')
       expected.event_data.text = undefined
@@ -284,22 +431,10 @@ describe('Google Analytics form tracking', function () {
 
   describe('when tracking a form with text redaction disabled', function () {
     beforeEach(function () {
-      var attributes = {
-        event_name: 'form_response',
-        type: 'smart answer',
-        section: 'What is the title of this question?',
-        action: 'Continue',
-        tool_name: 'What is the title of this smart answer?'
-      }
       element.setAttribute('data-ga4-form', JSON.stringify(attributes))
       element.setAttribute('data-ga4-form-include-text', '')
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'smart answer'
-      expected.event_data.section = 'What is the title of this question?'
-      expected.event_data.action = 'Continue'
-      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected = schema.mergeProperties(attributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
@@ -350,20 +485,16 @@ describe('Google Analytics form tracking', function () {
 
   describe('when tracking search forms', function () {
     beforeEach(function () {
-      var attributes = {
+      var searchAttributes = {
         event_name: 'form_response',
         type: 'header menu bar',
         section: 'Search',
         action: 'search'
       }
-      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form', JSON.stringify(searchAttributes))
       element.setAttribute('data-ga4-form-include-text', '')
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_response'
-      expected.event_data.type = 'header menu bar'
-      expected.event_data.section = 'Search'
-      expected.event_data.action = 'search'
+      expected = schema.mergeProperties(searchAttributes, 'event_data')
       expected.govuk_gem_version = 'aVersion'
       expected.timestamp = '123456'
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
