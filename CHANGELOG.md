@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 57.2.0
 
 * Fix welsh translations of Devolved Nations component ([PR #4807](https://github.com/alphagov/govuk_publishing_components/pull/4807))
 * Add tracking to `ReorderableList` ([PR #4835](https://github.com/alphagov/govuk_publishing_components/pull/4835))
