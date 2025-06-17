@@ -14,25 +14,11 @@ describe('Google Analytics form tracking', function () {
     tool_name: 'What is the title of this smart answer?'
   }
 
-  function agreeToCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-  }
-
-  function denyCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
-  }
-
-  beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
-  })
-
   beforeEach(function () {
     window.dataLayer = []
     element = document.createElement('form')
     document.body.appendChild(element)
-    agreeToCookies()
+    this.agreeToCookies()
     spyOn(GOVUK.analyticsGa4.core, 'getTimestamp').and.returnValue('123456')
   })
 
@@ -46,7 +32,7 @@ describe('Google Analytics form tracking', function () {
 
   describe('when the user has a cookie consent choice', function () {
     it('starts the module if consent has already been given', function () {
-      agreeToCookies()
+      this.agreeToCookies()
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       spyOn(tracker, 'trackFormSubmit')
       tracker.init()
@@ -56,7 +42,7 @@ describe('Google Analytics form tracking', function () {
     })
 
     it('starts the module on the same page as cookie consent is given', function () {
-      denyCookies()
+      this.denyCookies()
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       spyOn(tracker, 'trackFormSubmit')
       tracker.init()
@@ -77,7 +63,7 @@ describe('Google Analytics form tracking', function () {
     })
 
     it('does not do anything if consent is not given', function () {
-      denyCookies()
+      this.denyCookies()
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
       spyOn(tracker, 'trackFormSubmit')
       tracker.init()

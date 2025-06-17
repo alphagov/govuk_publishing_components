@@ -10,10 +10,6 @@ describe('Google Analytics 4 ecommerce tracking', function () {
   var onSearchResultClickExpected
   var pageViewExpected
 
-  function agreeToCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-  }
-
   beforeEach(function () {
     searchResultsHeading = document.createElement('h2')
     searchResultsHeading.id = 'js-result-count'
@@ -87,7 +83,7 @@ describe('Google Analytics 4 ecommerce tracking', function () {
     searchResultsParentEl.appendChild(searchResults)
     searchResultsParentEl.appendChild(searchResultsHeading)
     document.body.appendChild(searchResultsParentEl)
-    agreeToCookies()
+    this.agreeToCookies()
   })
 
   afterEach(function () {

@@ -5,9 +5,6 @@ describe('Google Analytics 4 copy tracker', function () {
   var expected
 
   beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
     GOVUK.analyticsGa4.analyticsModules.Ga4CopyTracker.init()
   })
 

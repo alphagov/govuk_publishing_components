@@ -9,10 +9,6 @@ describe('GA4 smart answer results tracking', function () {
   var onPageLoadExpected
   var onSmartAnswerResultClickExpected
 
-  function agreeToCookies () {
-    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-  }
-
   beforeEach(function () {
     smartAnswerResultsCount = document.createElement('span')
     smartAnswerResultsCount.id = 'ga4-ecommerce-result-count'
@@ -83,7 +79,7 @@ describe('GA4 smart answer results tracking', function () {
     smartAnswerResultsParentEl.appendChild(smartAnswerResults)
     smartAnswerResultsParentEl.appendChild(smartAnswerResultsCount)
     document.body.appendChild(smartAnswerResultsParentEl)
-    agreeToCookies()
+    this.agreeToCookies()
   })
 
   afterEach(function () {
