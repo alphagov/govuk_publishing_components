@@ -150,8 +150,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       For example, .csv/preview or .mp4/preview will be matched.
       Regex is used over JS string methods as this should work with anchor links, query string parameters and files that may have 'preview' in their name.
       */
-      var previewRegex = /\.\w+\/preview/i
-      return previewRegex.test(href) || href.startsWith('https://www.gov.uk/csv-preview/')
+      var previewRegex = /\.\w+\/preview|(\/csv-preview\/)/i
+      return previewRegex.test(href)
     },
 
     hrefPointsToDownloadPath: function (href) {

@@ -378,7 +378,7 @@ describe('A specialist link tracker', function () {
             '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" link_domain="https://assets.publishing.service.gov.uk">Preview link</a>' +
             '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" link_domain="http://assets.publishing.service.gov.uk">Relative Spreadsheet link</a>' +
             '<a href="https://www.gov.uk/media/66866f8d4a94d44125d9ccc1/preview.csv" link_domain="https://www.gov.uk">Relative csv link</a>' +
-            '<a href="https://www.gov.uk/media/csv-preview/test.csv" link_domain="https://www.gov.uk">csv link</a>' +
+            '<a href="https://www.gov.uk/media/csv-preview-test.csv" link_domain="https://www.gov.uk">csv link</a>' +
           '</div>'
 
       body.appendChild(links)
