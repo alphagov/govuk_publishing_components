@@ -30,6 +30,17 @@ examples:
         value: option2
       - text: Option three
         value: option3
+  disabled:
+    data:
+      id: dropdown-default
+      label: My Dropdown
+      options:
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
+      - text: Option three
+        value: option3        
   with_blank_option:
     description: Include a blank option
     data:
