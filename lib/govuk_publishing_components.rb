@@ -28,6 +28,7 @@ require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_org
 require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_taxons"
 require "govuk_publishing_components/presenters/checkboxes_helper"
 require "govuk_publishing_components/presenters/select_helper"
+require "govuk_publishing_components/presenters/select_with_search_helper"
 require "govuk_publishing_components/presenters/meta_tags"
 require "govuk_publishing_components/presenters/content_item"
 require "govuk_publishing_components/presenters/translation_nav_helper"
