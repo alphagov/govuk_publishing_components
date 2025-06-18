@@ -1,6 +1,6 @@
 <%
-  add_gem_component_stylesheet("select-with-search")
   add_gem_component_stylesheet("select")
+  add_gem_component_stylesheet("select-with-search")
 
   id ||= false
   label ||= false
@@ -9,6 +9,7 @@
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
+  # select_helper.select_classes generates "gem-c-select-with-search"
   select_helper = GovukPublishingComponents::Presenters::SelectWithSearchHelper.new(local_assigns)
   multiple = local_assigns[:select].present? ? local_assigns[:select][:multiple] : false
 %>
