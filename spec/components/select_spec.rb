@@ -119,6 +119,64 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=medium][selected]"
   end
 
+  it "renders a select with a disabled item" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      options: [
+        {
+          value: "big",
+          text: "Big",
+        },
+        {
+          value: "medium",
+          text: "Medium",
+          disabled: true,
+        },
+        {
+          value: "small",
+          text: "Small",
+        },
+      ],
+    )
+
+    assert_select ".govuk-select option[value=big][disabled]", false
+    assert_select ".govuk-select option[value=medium][disabled]"
+    assert_select ".govuk-select option[value=small][disabled]", false
+  end
+
+  it "renders a select with a selected item and several disabled items" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      options: [
+        {
+          value: "big",
+          text: "Big",
+        },
+        {
+          value: "medium",
+          text: "Medium",
+          selected: true,
+        },
+        {
+          value: "small",
+          text: "Small",
+          disabled: true,
+        },
+        {
+          value: "tiny",
+          text: "Tiny",
+          disabled: true,
+        },
+      ],
+    )
+
+    assert_select ".govuk-select option[value=medium][selected]"
+    assert_select ".govuk-select option[value=small][disabled]"
+    assert_select ".govuk-select option[value=tiny][disabled]"
+  end
+
   it "renders a select element with data attributes applied to contained option element" do
     render_component(
       id: "mydropdown",
@@ -226,6 +284,42 @@ describe "Select", type: :view do
 
     assert_select ".gem-c-select .govuk-hint", "this is a hint"
     assert_select ".gem-c-select .govuk-select[aria-describedby='error_id hint_id']"
+  end
+
+  it "accepts an aria-controls attribute" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      aria_controls: "js-test",
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+      ],
+    )
+
+    assert_select ".gem-c-select .govuk-select[aria-controls='js-test']"
+  end
+
+  it "applies aria-describedby if a hint and an error are present as well as aria-controls" do
+    render_component(
+      id: "mydropdown",
+      label: "attributes",
+      hint: "this is a hint",
+      hint_id: "hint_id",
+      error_id: "error_id",
+      aria_controls: "js-test",
+      options: [
+        {
+          value: 1,
+          text: "One",
+        },
+      ],
+    )
+
+    assert_select ".gem-c-select .govuk-hint", "this is a hint"
+    assert_select ".gem-c-select .govuk-select[aria-describedby='error_id hint_id'][aria-controls='js-test']"
   end
 
   it "renders a select box full width" do
