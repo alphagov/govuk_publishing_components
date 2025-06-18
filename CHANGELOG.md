@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 57.3.0
 
 * Add more options to the select component ([PR #4858](https://github.com/alphagov/govuk_publishing_components/pull/4858))
 * Fix GA4 tracking for asset preview links ([PR #4863](https://github.com/alphagov/govuk_publishing_components/pull/4863))
