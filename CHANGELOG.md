@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add more options to the select component ([PR #4858](https://github.com/alphagov/govuk_publishing_components/pull/4858))
+
 ## 57.2.0
 
 * Fix welsh translations of Devolved Nations component ([PR #4807](https://github.com/alphagov/govuk_publishing_components/pull/4807))
