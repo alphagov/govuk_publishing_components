@@ -70,18 +70,27 @@ ky:
       title: GOV.UK’де кукилер
     devolved_nations:
       applies_to: Буга колдонулат
-      connectors:
-        last_word: " жана "
-        two_words: " жана "
-      england: Англия
-      northern_ireland: Түндүк Ирландия
-      scotland: Шотландия
+      england:
+        end: " жана Англия"
+        middle: ", Англия"
+        start: Англия
+      northern_ireland:
+        end: " жана Түндүк Ирландия"
+        middle: ", Түндүк Ирландия"
+        start: Түндүк Ирландия
+      scotland:
+        end: " жана Шотландия"
+        middle: ", Шотландия"
+        start: Шотландия
       type:
         consultation: "%{nation} үчүн консультация"
         detailed_guide: "%{nation} үчүн жетекчилик"
         guidance: "%{nation} үчүн жетекчилик"
         publication: "%{nation} үчүн жарыялоо"
-      wales: Уэльс
+      wales:
+        end: " жана Уэльс"
+        middle: ", Уэльс"
+        start: Уэльс
     feedback:
       close: Жокко чыгаруу
       dont_include_personal_info: Улуттук камсыздандыруу номериңиз же кредиттик картанын
