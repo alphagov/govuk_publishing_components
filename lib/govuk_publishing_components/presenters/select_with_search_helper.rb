@@ -7,7 +7,7 @@ module GovukPublishingComponents
     class SelectWithSearchHelper
       include ActionView::Helpers::FormOptionsHelper
 
-      attr_reader :options, :selected_options, :error_id, :error_items, :aria
+      attr_reader :options, :selected_options, :aria, :options_markup
 
       delegate :describedby,
                :hint_id,
@@ -24,34 +24,28 @@ module GovukPublishingComponents
         @grouped_options = local_assigns[:grouped_options]
         @include_blank = local_assigns[:include_blank]
         @selected_options = []
+        @options_markup = get_options
         @local_assigns = local_assigns
       end
 
       def css_classes
-        classes = %w[gem-c-select-with-search govuk-form-group]
-        classes << "govuk-form-group--error" if error_items.any?
+        classes = @select_helper.css_classes
+        classes << "gem-c-select-with-search"
         classes
       end
 
-      def options_html
-        if @grouped_options.present?
-          blank_option_if_include_blank +
+    private
+
+      def get_options
+        blank_option_if_include_blank +
+          if @grouped_options.present?
             grouped_and_ungrouped_options_for_select(@grouped_options)
-        elsif @options.present?
-          blank_option_if_include_blank +
+          elsif @options.present?
             options_for_select(
               transform_options(@options),
               selected_options,
             )
-        end
-      end
-
-      def data_attributes
-        data_attributes = @local_assigns[:data_attributes] || {}
-        data_attributes[:module] ||= ""
-        data_attributes[:module] << " select-with-search"
-        data_attributes[:module].strip!
-        data_attributes
+          end
       end
 
       def grouped_and_ungrouped_options_for_select(unsorted_options)
@@ -71,8 +65,6 @@ module GovukPublishingComponents
         options_for_select(transform_options(single_options), selected_options) +
           grouped_options_for_select(transform_grouped_options(grouped_options), selected_options)
       end
-
-    private
 
       def transform_options(options)
         options.map do |option|
