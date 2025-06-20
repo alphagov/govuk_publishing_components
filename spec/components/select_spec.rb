@@ -54,6 +54,23 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=government-gateway]"
   end
 
+  it "renders a select box with multiple" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      multiple: true,
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+      ],
+    )
+
+    assert_select "input[type=hidden][name*='mydropdown']"
+    assert_select "select[name*='mydropdown'][id=mydropdown][multiple]"
+  end
+
   it "renders a select box with multiple items" do
     render_component(
       id: "mydropdown",
