@@ -20,7 +20,7 @@
   }
 
   YoutubeLinkEnhancement.prototype.paragraphHasOtherContent = function (paragraph, link) {
-    return paragraph.innerHTML.replaceAll(this.punctuationRegex, '') !== link.outerHTML.replaceAll(this.punctuationRegex, '')
+    return paragraph.innerHTML.replaceAll(this.punctuationRegex, '').trim() !== link.outerHTML.replaceAll(this.punctuationRegex, '').trim()
   }
 
   YoutubeLinkEnhancement.prototype.decorateLink = function () {

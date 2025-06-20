@@ -93,7 +93,7 @@ describe('Youtube link enhancement', function () {
       container.innerHTML =
         '<div class="gem-c-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>' +
+          '\n       \n<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>\n\n' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
           '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
           '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
