@@ -28,10 +28,10 @@
       hint_id: select_helper.hint_id,
     } %>
 
-    <% if select_helper.error_message %>
+    <% if select_helper.error_items.any? %>
       <%= render "govuk_publishing_components/components/error_message", {
         id: select_helper.error_id,
-        text: select_helper.error_message
+        items: select_helper.error_items,
       } %>
     <% end %>
 
