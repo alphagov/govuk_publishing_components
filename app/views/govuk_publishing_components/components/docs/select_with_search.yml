@@ -1,18 +1,11 @@
-name: Select with search
+name: Select with search (experimental)
 description: A dropdown select with search
 body: |
-  NOTE: this component currently fails WCAG compliance for keyboard navigation, as the total number of options are not
-  announced when using Voice Over
+  A Javascript enhanced dropdown select. This component is progressively enhanced, if
+  Javascript is unavailable then it will use the select component.
 
-  Use this component to create a JavaScript-enhanced dropdown select.
-
-  It's powered by [Choices.js][], which is similar to [Select2][] but without the jQuery dependency.
-  And it's styled to look like [Accessible Autocomplete][], or any other [GOV.UK Design System][] component.
-
-  [Choices.js]: https://choices-js.github.io/Choices/
-  [Select2]: https://select2.org/
-  [Accessible Autocomplete]: https://alphagov.github.io/accessible-autocomplete/examples/
-  [GOV.UK Design System]: https://design-system.service.gov.uk/
+  This is an experimental component as it currently fails WCAG compliance for keyboard navigation. The total number of options are not
+  announced when using Voice Over.
 accessibility_criteria: |
   - accept focus
   - be focusable with a keyboard
