@@ -11,7 +11,7 @@
   heading_size ||= false
   multiple ||= false
 
-  select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
+  select_helper ||= GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
 
   aria_attributes = {
     controls: aria_controls,
