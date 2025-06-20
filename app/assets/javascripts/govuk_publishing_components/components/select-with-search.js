@@ -5,7 +5,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
 ;(function (Modules) {
   function SelectWithSearch (module) {
     this.module = module
-    this.select = this.module.querySelector('select')
+    this.select = this.module.matches('select') ? this.module : this.module.querySelector('select')
   }
 
   SelectWithSearch.prototype.init = function () {

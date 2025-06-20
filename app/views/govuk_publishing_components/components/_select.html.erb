@@ -6,44 +6,39 @@
   label ||= false
   name ||= id
   is_page_heading ||= false
-  data_attributes ||= {}
   aria_controls ||= nil
+  multiple ||= false
+  heading_size ||= nil
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
-  select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+
+  data_attributes ||= {}
+
+  select_helper ||= GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
 
   aria_attributes = {
     controls: aria_controls,
     describedby: select_helper.describedby
   }
 %>
-<% if select_helper.options.any? && id && label %>
+
+<% if select_helper.option_markup && id && label %>
   <%= content_tag :div, class: select_helper.css_classes do %>
-    <% if is_page_heading %>
-      <% add_gem_component_stylesheet("heading") %>
-      <%= render "govuk_publishing_components/components/heading", {
-        text: label_tag(id, label, class: select_helper.label_classes),
-        heading_level: 1
-      } %>
-    <% else %>
-      <%= label_tag(id, label, class: select_helper.label_classes) %>
-    <% end %>
+    <%= render "govuk_publishing_components/components/label", {
+      html_for: id,
+      text: label,
+      heading_size:,
+      hint_text: select_helper.hint,
+      hint_id: select_helper.hint_id,
+    } %>
 
-    <% if select_helper.hint %>
-      <%= render "govuk_publishing_components/components/hint", {
-        id: select_helper.hint_id,
-        text: hint
-      } %>
-    <% end %>
-
-    <% if select_helper.error_message %>
+    <% if select_helper.has_error? %>
       <%= render "govuk_publishing_components/components/error_message", {
         id: select_helper.error_id,
-        text: select_helper.error_message
+        items: select_helper.error_items,
       } %>
     <% end %>
 
-    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_helper.select_classes, aria: aria_attributes, data: data_attributes %>
+    <%= select_tag name, select_helper.option_markup, id: id, class: select_helper.select_classes, aria: aria_attributes, data: component_helper.data_attributes, multiple: %>
   <% end %>
 <% end %>

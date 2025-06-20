@@ -7,20 +7,22 @@ module GovukPublishingComponents
     class SelectWithSearchHelper
       include ActionView::Helpers::FormOptionsHelper
 
-      attr_reader :options, :selected_options, :error_id, :error_items, :aria
+      attr_reader :options, :option_markup, :selected_options, :error_id, :aria
 
       delegate :describedby,
                :hint_id,
                :hint,
                :label_classes,
                :select_classes,
-               to: :@select_helper
+               :error_items,
+               :has_error?,
+               :get_options,
+               to: :@select_helper, allow_nil: true
 
       def initialize(local_assigns)
         @select_helper = SelectHelper.new(local_assigns.except(:options, :grouped_options))
         @error_id = "error-#{SecureRandom.hex(4)}"
-        @error_items = local_assigns[:error_items] || []
-        @aria = @error_items.any? ? { describedby: @error_id } : @describedby
+        @aria = @select_helper.error_items.any? ? { describedby: @error_id } : @describedby
         @options = local_assigns[:options]
         @grouped_options = local_assigns[:grouped_options]
         @include_blank = local_assigns[:include_blank]
@@ -29,12 +31,12 @@ module GovukPublishingComponents
       end
 
       def css_classes
-        classes = %w[gem-c-select-with-search govuk-form-group]
-        classes << "govuk-form-group--error" if error_items.any?
+        classes = @select_helper.css_classes
+        classes << "gem-c-select-with-search"
         classes
       end
 
-      def options_html
+      def option_markup
         if @grouped_options.present?
           blank_option_if_include_blank +
             grouped_and_ungrouped_options_for_select(@grouped_options)
@@ -45,14 +47,6 @@ module GovukPublishingComponents
               selected_options,
             )
         end
-      end
-
-      def data_attributes
-        data_attributes = @local_assigns[:data_attributes] || {}
-        data_attributes[:module] ||= ""
-        data_attributes[:module] << " select-with-search"
-        data_attributes[:module].strip!
-        data_attributes
       end
 
       def grouped_and_ungrouped_options_for_select(unsorted_options)
@@ -69,25 +63,16 @@ module GovukPublishingComponents
         end
         single_options.flatten!
 
-        options_for_select(transform_options(single_options), selected_options) +
+        options_for_select(get_options, selected_options) +
           grouped_options_for_select(transform_grouped_options(grouped_options), selected_options)
       end
 
     private
+      def get_grouped_options
+        return if grouped_options.nil?
 
-      def transform_options(options)
-        options.map do |option|
-          @selected_options << option[:value] if option[:selected]
-          [
-            option[:text],
-            option[:value],
-          ]
-        end
-      end
-
-      def transform_grouped_options(grouped_options)
         grouped_options.map do |(group, options)|
-          [group, transform_options(options)]
+          [group, get_options(options)]
         end
       end
 
