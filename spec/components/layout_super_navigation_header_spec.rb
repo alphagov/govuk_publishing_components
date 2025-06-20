@@ -103,15 +103,6 @@ describe "Super navigation header", type: :view do
     assert_select "a.govuk-header__link--homepage[href='https://www.example.com/']", count: 1
   end
 
-  it "hides logo text and renders visually hidden span" do
-    render_component({
-      hide_logo_text: true,
-    })
-
-    assert_select "a.govuk-header__link--homepage[href='https://www.gov.uk/']", "GOV.UK"
-    assert_select "a.govuk-header__link--homepage .govuk-visually-hidden"
-  end
-
   it "allows a custom crown logo link and custom title" do
     render_component({
       logo_link: "https://www.example.com/",
@@ -122,31 +113,12 @@ describe "Super navigation header", type: :view do
     assert_select "a.govuk-header__link--homepage[aria-label='Go to example']", count: 1
   end
 
-  it "renders blue background navbar variant" do
+  it "renders homepage variant" do
     render_component({
-      blue_background: true,
+      homepage: true,
     })
 
-    assert_select ".gem-c-layout-super-navigation-header__navigation-top-toggle-button--blue-background"
-    assert_select ".gem-c-layout-super-navigation-header__search-toggle-button--blue-background"
-    assert_select ".gem-c-layout-super-navigation-header__search-item-link--blue-background"
-    assert_select ".gem-c-layout-super-navigation-header__navigation-item-link--blue-background"
-  end
-
-  it "renders large navbar variant" do
-    render_component({
-      large_navbar: true,
-      hide_logo_text: true,
-    })
-
-    assert_select ".gem-c-layout-super-navigation-header__button-container--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__header-logo--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__navigation-top-toggle-button--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__search-toggle-button--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__search-item-link--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__navigation-item-link--large-navbar"
-    assert_select ".gem-c-layout-super-navigation-header__logotype-crown--large-navbar"
-    assert_select ".gem-c-header__link--large-navbar"
+    assert_select ".gem-c-layout-super-navigation-header__header-logo--homepage"
   end
 
   it "doesn't have the initialised class before the JavaScript is run" do

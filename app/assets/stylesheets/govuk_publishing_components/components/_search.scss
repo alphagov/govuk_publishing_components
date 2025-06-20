@@ -3,6 +3,9 @@
 $input-size: 40px;
 $large-input-size: 50px;
 
+$search-submit-button-colour: $govuk-blue-tint-80;
+$search-submit-button-hover-colour: $govuk-blue-tint-95;
+
 @mixin large-mode {
   .gem-c-search__label {
     @include govuk-font($size: 19, $line-height: $large-input-size);
@@ -182,28 +185,17 @@ $large-input-size: 50px;
   }
 
   .gem-c-search__submit {
-    background-color: govuk-colour("black");
-    color: govuk-colour("white");
+    background-color: $search-submit-button-colour;
+    color: govuk-colour("blue");
 
     &:hover {
-      background-color: lighten(govuk-colour("black"), 5%);
+      background-color: $search-submit-button-hover-colour;
     }
   }
 
   .govuk-frontend-supported & {
     .gem-c-search__label {
       color: $govuk-secondary-text-colour;
-    }
-  }
-}
-
-.gem-c-search--homepage {
-  .gem-c-search__submit {
-    background-color: #d2e2f1;
-    color: govuk-colour("blue");
-
-    &:hover {
-      background-color: lighten(#d2e2f1, 5%);
     }
   }
 }

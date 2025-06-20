@@ -1,5 +1,8 @@
 @import "govuk_publishing_components/individual_component_support";
 
+$feedback-prompt-background-colour: $govuk-blue-tint-95;
+$feedback-prompt-border-top-colour: $govuk-blue-tint-50;
+
 .gem-c-feedback {
   background: govuk-colour("white");
   margin-top: govuk-spacing(6);
@@ -26,9 +29,9 @@
 }
 
 .gem-c-feedback__prompt {
-  background-color: govuk-colour("light-grey");
+  background-color: $feedback-prompt-background-colour;
   color: govuk-colour("black");
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid $feedback-prompt-border-top-colour;
   outline: 0;
 }
 
