@@ -15,8 +15,7 @@
   end
   text = raw(text)
 
-  absolute_links_helper = GovukPublishingComponents::Presenters::AbsoluteLinksHelper.new()
-  cookie_preferences_href ||= absolute_links_helper.make_url_absolute("/help/cookies")
+  cookie_preferences_href ||= "/help/cookies"
   confirmation_message ||= raw(t("components.cookie_banner.confirmation_message.html",
                                 link: link_to(
                                   t("components.cookie_banner.confirmation_message.link"),
