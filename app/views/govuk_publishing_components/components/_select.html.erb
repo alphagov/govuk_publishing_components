@@ -8,9 +8,8 @@
   is_page_heading ||= false
   data_attributes ||= {}
   aria_controls ||= nil
+  heading_size ||= false
 
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
 
   aria_attributes = {
@@ -20,22 +19,14 @@
 %>
 <% if select_helper.options.any? && id && label %>
   <%= content_tag :div, class: select_helper.css_classes do %>
-    <% if is_page_heading %>
-      <% add_gem_component_stylesheet("heading") %>
-      <%= render "govuk_publishing_components/components/heading", {
-        text: label_tag(id, label, class: select_helper.label_classes),
-        heading_level: 1
-      } %>
-    <% else %>
-      <%= label_tag(id, label, class: select_helper.label_classes) %>
-    <% end %>
-
-    <% if select_helper.hint %>
-      <%= render "govuk_publishing_components/components/hint", {
-        id: select_helper.hint_id,
-        text: hint
-      } %>
-    <% end %>
+    <%= render "govuk_publishing_components/components/label", {
+      html_for: id,
+      text: label,
+      heading_size:,
+      is_page_heading:,
+      hint_text: select_helper.hint,
+      hint_id: select_helper.hint_id,
+    } %>
 
     <% if select_helper.error_message %>
       <%= render "govuk_publishing_components/components/error_message", {
