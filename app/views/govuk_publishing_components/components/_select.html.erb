@@ -18,7 +18,7 @@
     describedby: select_helper.describedby
   }
 %>
-<% if select_helper.options.any? && id && label %>
+<% if select_helper.options_markup.present? && id && label %>
   <%= content_tag :div, class: select_helper.css_classes do %>
     <%= render "govuk_publishing_components/components/label", {
       html_for: id,
@@ -41,6 +41,6 @@
     <% if multiple %>
       <%= hidden_field_tag name, nil %>
     <% end %>
-    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_helper.select_classes, aria: aria_attributes, data: data_attributes, multiple: %>
+    <%= select_tag name, select_helper.options_markup, id: id, class: select_helper.select_classes, aria: aria_attributes, data: data_attributes, multiple: %>
   <% end %>
 <% end %>
