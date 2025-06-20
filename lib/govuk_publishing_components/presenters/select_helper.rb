@@ -1,7 +1,9 @@
 module GovukPublishingComponents
   module Presenters
     class SelectHelper
-      attr_reader :options, :option_markup, :selected_option, :error_items, :error_id, :hint, :hint_id, :describedby
+      include ActionView::Helpers::FormOptionsHelper
+
+      attr_reader :options, :options_markup, :error_items, :error_id, :hint, :hint_id, :describedby
 
       def initialize(local_assigns)
         @options = local_assigns[:options] || []
@@ -12,7 +14,7 @@ module GovukPublishingComponents
         @hint_id = local_assigns[:hint_id] || nil
         @heading_size = local_assigns[:heading_size]
         @full_width = local_assigns[:full_width] || false
-        @option_markup = get_options
+        @options_markup = options_for_select(get_options, @selected_option)
         @describedby = get_describedby
       end
 
