@@ -20,7 +20,7 @@
   }
 
   YoutubeLinkEnhancement.prototype.paragraphHasOtherContent = function (paragraph, link) {
-    return paragraph.innerHTML.replaceAll(this.punctuationRegex, '') !== link.outerHTML.replaceAll(this.punctuationRegex, '')
+    return paragraph.innerHTML.replaceAll(this.punctuationRegex, '').trim() !== link.outerHTML.replaceAll(this.punctuationRegex, '').trim()
   }
 
   YoutubeLinkEnhancement.prototype.decorateLink = function () {
@@ -222,6 +222,17 @@
     }
   }
 
+  YoutubeLinkEnhancement.sanitiseVideoId = function (pathname) {
+    // YouTube links can now contain an ?si= param in the URL.
+    // This usually only appears on youtu.be links but it's appearing for us on youtube.com URLs due to some Whitehall regex being outdated.
+    // Therefore we need to use regex to remove it from the path.
+    // E.g. youtube.com/watch?v=[video-id]?si=ABCzJtVWBAZ2o_l3
+    // ?=si in this case isn't a valid query parameter as it isn't using an &, so we can't use JS' native URL API to filter it out.
+    if (pathname) {
+      return pathname.replace(/(\?|&)(.+)=.+/g, '')
+    }
+  }
+
   // This is a public class method so it can be used outside of this embed to
   // check that user input for videos will be supported in govspeak
   YoutubeLinkEnhancement.parseVideoId = function (url) {
@@ -232,9 +243,10 @@
     } catch (e) { return undefined }
 
     if (u.host === 'www.youtube.com' || u.host === 'youtube.com') {
-      return u.searchParams.get('v') || undefined
+      return this.sanitiseVideoId(u.searchParams.get('v')) || undefined
     } else if (u.host === 'youtu.be') {
-      return u.pathname.slice(1) // Trim the leading /
+      var pathName = u.pathname.slice(1) // Trim the leading /
+      return this.sanitiseVideoId(pathName)
     }
   }
 

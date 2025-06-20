@@ -93,7 +93,7 @@ describe('Youtube link enhancement', function () {
       container.innerHTML =
         '<div class="gem-c-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>' +
+          '\n       \n<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>\n\n' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
           '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
           '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
@@ -428,6 +428,36 @@ describe('Youtube link enhancement', function () {
       var id = GOVUK.GovspeakYoutubeLinkEnhancement.parseLivestream(url)
 
       expect(id).not.toBeDefined()
+    })
+  })
+
+  describe('sanitise video id', function () {
+    const expected = 'qZLy91qcB7M'
+
+    it('removes ?si= like params from the path', function () {
+      const path = 'qZLy91qcB7M?si=ecMsC8hlHh9TxOnh'
+      expect(GOVUK.GovspeakYoutubeLinkEnhancement.sanitiseVideoId(path)).toEqual(expected)
+    })
+
+    it('removes &t= like params from the path', function () {
+      const path = 'qZLy91qcB7M&t=15s'
+      expect(GOVUK.GovspeakYoutubeLinkEnhancement.sanitiseVideoId(path)).toEqual(expected)
+    })
+
+    it('removes both ?=si like and &t= like params from the path', function () {
+      const path = 'qZLy91qcB7M?si=ecMsC8hlHh9TxOnh&t=15s'
+      expect(GOVUK.GovspeakYoutubeLinkEnhancement.sanitiseVideoId(path)).toEqual(expected)
+    })
+
+    it('calls sanitiseVideoId in parseVideoId for both youtu.be and youtube.com URLs', function () {
+      spyOn(GOVUK.GovspeakYoutubeLinkEnhancement, 'sanitiseVideoId').and.callThrough()
+
+      const urls = ['https://youtu.be/qZLy91qcB7M?si=ecMsC8hlHh9TxOnh&t=15s', 'https://www.youtube.com/watch?v=qZLy91qcB7M?si=ecMsC8hlHh9TxOnh&t=15s', 'https://youtube.com/watch?v=qZLy91qcB7M?si=ecMsC8hlHh9TxOnh&t=15s']
+
+      urls.forEach((url, index) => {
+        expect(GOVUK.GovspeakYoutubeLinkEnhancement.parseVideoId(url)).toEqual(expected)
+        expect(GOVUK.GovspeakYoutubeLinkEnhancement.sanitiseVideoId.calls.count()).toBe(index + 1)
+      })
     })
   })
 })

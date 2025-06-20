@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix extra data in YouTube URLs breaking embeds ([PR #4882](https://github.com/alphagov/govuk_publishing_components/pull/4882))
+
 ## 57.3.0
 
 * Add more options to the select component ([PR #4858](https://github.com/alphagov/govuk_publishing_components/pull/4858))
