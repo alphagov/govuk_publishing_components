@@ -25,8 +25,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
           if (eventData) {
             item.dataset.ga4Event = eventData.dataset.ga4Event
+            item.dataset.indexSection = event.oldIndex
             item.dataset.action = 'drag and drop'
-            item.dataset.text = event.newIndex > event.oldIndex ? 'Up' : 'Down'
+            item.dataset.text = event.newIndex > event.oldIndex ? 'Down' : 'Up'
             this.triggerEvent(item, 'click')
             delete item.dataset.ga4Event
           }
