@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 57.3.1
 
 * Fix extra data in YouTube URLs breaking embeds ([PR #4882](https://github.com/alphagov/govuk_publishing_components/pull/4882))
 * Fix `ReorderableList` tracking on drag and drop ([PR #4886](https://github.com/alphagov/govuk_publishing_components/pull/4886))
