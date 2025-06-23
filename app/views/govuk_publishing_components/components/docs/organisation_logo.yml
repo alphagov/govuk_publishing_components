@@ -150,7 +150,7 @@ examples:
         url: '/government/organisations/hm-prison-service'
         brand: 'ministry-of-justice'
         image:
-          url: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/organisation/logo/321/HMPS.jpg'
+          url: 'https://assets.publishing.service.gov.uk/media/6850134301d3b0e7b62da740/hmps_25_gov_240x188.png'
           alt_text: 'HM Prison Service'
   without_a_link:
     data:
