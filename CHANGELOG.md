@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add support for specifying `input[type=search]` to `Ga4SearchTracker` ([PR #4887](https://github.com/alphagov/govuk_publishing_components/pull/4887))
+
 ## 58.1.1
 
 * Fix `AddAnother` `ga4_start_index` bug ([PR #4900](https://github.com/alphagov/govuk_publishing_components/pull/4900))

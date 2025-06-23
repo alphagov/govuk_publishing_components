@@ -9,6 +9,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$module = $module
       this.$searchInput = this.$module.querySelector('input[type="search"]')
 
+      this.searchInputName = this.$module.dataset.ga4SearchInputName
       this.type = this.$module.dataset.ga4SearchType
       this.url = this.$module.dataset.ga4SearchUrl
       this.section = this.$module.dataset.ga4SearchSection
@@ -44,6 +45,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     setTriggeredAction (event) {
       if (event.target.type === 'search') {
+        // if `searchInputName` set then only set `triggeredAction` to `search`
+        // if changed `input[type=search]` matches `input[name=searchInputName]`
+        if (this.searchInputName && event.target.name !== this.searchInputName) return
         this.triggeredAction = 'search'
       } else if (this.triggeredAction !== 'search') {
         // The 'search' action always takes precedence over the 'filter' action, so only set the
