@@ -86,7 +86,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var inputNodename = elem.nodeName
       var inputTypes = ['text', 'search', 'email', 'number']
 
-      input.section = labelText
+      input.section = labelText.replace(/\s/g, " ")
 
       var isTextField = inputTypes.indexOf(inputType) !== -1 || inputNodename === 'TEXTAREA'
       var conditionalField = elem.closest('.govuk-checkboxes__conditional')
@@ -97,7 +97,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var conditionalCheckboxLabel = conditionalField.querySelector('[for="' + conditionalCheckbox.id + '"]')
 
         if (conditionalCheckboxLabel) {
-          input.parentSection = conditionalCheckboxLabel.innerText
+          input.parentSection = conditionalCheckboxLabel.innerText.replace(/\s/g, " ")
         }
       }
 
@@ -120,7 +120,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           }
         }
       } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex] && elem.options[elem.selectedIndex].value) {
-        input.answer = elem.options[elem.selectedIndex].text
+        var checkedOptions = elem.querySelectorAll('option:checked')
+        for (var i = 0; i < checkedOptions.length; i++) {
+          input.answer = (input.answer || '') + ' ' + checkedOptions[i].innerText
+        }
+        input.answer = input.answer.trim()
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
           if (this.useTextCount) {
