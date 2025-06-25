@@ -9,6 +9,7 @@
 
 ## Unreleased changes
 
+* Make global links relative instead of absolute ([PR #4855](https://github.com/alphagov/govuk_publishing_components/pull/4855))
 * Add Kyrgyz translations ([PR #4875](https://github.com/alphagov/govuk_publishing_components/pull/4875))
 * Render contact block lists without decoration ([PR #4897](https://github.com/alphagov/govuk_publishing_components/pull/4897))
 
