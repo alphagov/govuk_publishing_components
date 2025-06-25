@@ -4,7 +4,7 @@
   for_static ||= false
   emergency_banner ||= nil
   full_width ||= false
-  blue_bar ||= local_assigns.include?(:blue_bar) ? local_assigns[:blue_bar] : !full_width
+  blue_bar = false
   global_banner ||= nil
   html_lang ||= "en"
   homepage ||= false
@@ -47,7 +47,7 @@
 # height, making the two blue bars overlap and appear as one. The class is added
 # when a) there's content for the emergency or global banner *and* b) when using
 # the contrained width layout.
-  blue_bar_dedupe = !full_width && global_banner.present?
+  blue_bar_dedupe = false
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
   body_css_classes << "global-banner-present" if global_banner.present?
@@ -56,8 +56,8 @@
   blue_bar_wrapper_classes << "gem-c-layout-for-public__blue-bar-wrapper--#{blue_bar_background_colour}" if blue_bar_background_colour
 -%>
 <!DOCTYPE html>
-  <!--[if lt IE 9]><html class="lte-ie8 govuk-template" lang="<%= html_lang %>"><![endif]-->
-  <!--[if gt IE 8]><!--><html class="govuk-template" lang="<%= html_lang %>"><!--<![endif]-->
+  <!--[if lt IE 9]><html class="lte-ie8 govuk-template govuk-template--rebranded" lang="<%= html_lang %>"><![endif]-->
+  <!--[if gt IE 8]><!--><html class="govuk-template govuk-template--rebranded" lang="<%= html_lang %>"><!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <title><%= title %></title>
@@ -81,10 +81,10 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <link rel="icon" sizes="48x48" href="<%= asset_path 'favicon.ico' %>">
     <link rel="icon" sizes="any" href="<%= asset_path 'favicon.svg' %>" type="image/svg+xml">
-    <link rel="mask-icon" href="<%= asset_path 'govuk-icon-mask.svg' %>" color="#0b0c0c">
+    <link rel="mask-icon" href="<%= asset_path 'govuk-icon-mask.svg' %>" color="#1d70b8">
     <link rel="apple-touch-icon" href="<%= asset_path 'govuk-icon-180.png' %>">
 
-    <meta name="theme-color" content="#0b0c0c" />
+    <meta name="theme-color" content="#1d70b8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <% # The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
@@ -107,12 +107,9 @@
           service_navigation_items: service_navigation_items,
           service_name: service_name,
         } %>
-      <% elsif homepage %>
-        <%= render "govuk_publishing_components/components/layout_for_public/layout_super_navigation_header_homepage", {
-          logo_link: logo_link,
-        } %>
       <% else %>
         <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
+          homepage:,
           logo_link: logo_link,
         } %>
       <% end %>
@@ -163,7 +160,6 @@
 
     <% unless local_assigns[:hide_footer_links] %>
       <%= render "govuk_publishing_components/components/layout_footer", {
-        with_border: !omit_footer_border,
         navigation: omit_footer_navigation ? nil : layout_helper.footer_navigation,
         meta: layout_helper.footer_meta,
       } %>

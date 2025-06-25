@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Bump govuk frontend to 5.10.1 ([PR #4852](https://github.com/alphagov/govuk_publishing_components/pull/4852))
+
 ## 57.3.1
 
 * Fix extra data in YouTube URLs breaking embeds ([PR #4882](https://github.com/alphagov/govuk_publishing_components/pull/4882))
