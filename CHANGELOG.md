@@ -14,6 +14,7 @@
 * Render contact block lists without decoration ([PR #4897](https://github.com/alphagov/govuk_publishing_components/pull/4897))
 * Add extra options to `AddAnother` component tracking ([PR #4888](https://github.com/alphagov/govuk_publishing_components/pull/4888))
 * Add multiple to File Upload component ([PR #4888](https://github.com/alphagov/govuk_publishing_components/pull/4888))
+* Add extra attributes to `Schema` ([PR #4893](https://github.com/alphagov/govuk_publishing_components/pull/4893))
 
 ## 58.0.0
 
