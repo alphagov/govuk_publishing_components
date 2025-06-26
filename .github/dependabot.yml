@@ -8,8 +8,6 @@ updates:
     directory: "/"
     schedule:
       interval: daily
-    ignore:
-      - dependency-name: "govuk-frontend"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
