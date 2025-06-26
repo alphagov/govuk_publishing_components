@@ -528,6 +528,20 @@ examples:
             </div>
           </div>
         </div>
+  contact_with_embedded_list:
+    data:
+      block: |
+        <div class="contact" id="contact_1017">
+          <div class="content">
+            <div class="vcard contact-inner">
+              <p>Media enquiries</p>
+              <ul>
+                <li>Press enquiries: 020 7XXX XXXX</li>
+                <li>Out of hours: 020 7XXX XXXX</li>
+              </ul>
+            </div>
+          </div>
+        </div>
   charts:
     description: |
       The Government Statistical Service (GSS) guidance recommends [a limit of four categories as best practice for basic data visualisations](https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5).

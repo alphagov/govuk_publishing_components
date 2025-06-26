@@ -21,6 +21,16 @@
     position: relative;
     @include govuk-clearfix;
 
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: govuk-spacing(1);
+      }
+    }
+
     .content {
       float: none;
       width: 100%;
