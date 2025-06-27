@@ -32,6 +32,15 @@ describe "File upload", type: :view do
     assert_select ".govuk-drop-zone[data-module='govuk-file-upload']"
   end
 
+  it "renders input with multiple" do
+    render_component(
+      label: { text: "Upload a file" },
+      name: "file-upload",
+      multiple: true,
+    )
+    assert_select ".govuk-file-upload[multiple]"
+  end
+
   it "renders input with a data attributes" do
     render_component(
       data: { module: "contextual-guidance" },

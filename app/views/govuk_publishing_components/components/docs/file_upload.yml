@@ -26,6 +26,12 @@ examples:
         text: "Upload a file"
       name: "file-upload"
       javascript: true
+  with_multiple:
+    data:
+      label:
+        text: "Upload a file"
+      name: "file-upload"
+      multiple: true
   with_hint:
     data:
       label:
