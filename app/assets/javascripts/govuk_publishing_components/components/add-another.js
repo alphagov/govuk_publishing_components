@@ -63,28 +63,30 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.createRemoveButton = function (fieldset, removeFunction) {
-    var dataAttributes = {}
+    if (!this.disableDelete) {
+      var dataAttributes = {}
 
-    if (!this.disableGa4) {
-      dataAttributes.ga4Event = this.createEventData({ action: 'deleted' })
+      if (!this.disableGa4) {
+        dataAttributes.ga4Event = this.createEventData({ action: 'deleted' })
+      }
+
+      var removeButton =
+          createButton(
+              'Delete',
+              'js-add-another__remove-button gem-c-add-another__remove-button govuk-button--warning',
+              dataAttributes
+          )
+      removeButton.addEventListener('click', function (event) {
+        removeFunction(event)
+        this.updateFieldsetsAndButtons()
+        this.addAnotherButton.focus()
+      }.bind(this))
+      fieldset.appendChild(removeButton)
     }
-
-    var removeButton =
-      createButton(
-        'Delete',
-        'js-add-another__remove-button gem-c-add-another__remove-button govuk-button--warning',
-        dataAttributes
-      )
-    removeButton.addEventListener('click', function (event) {
-      removeFunction(event)
-      this.updateFieldsetsAndButtons()
-      this.addAnotherButton.focus()
-    }.bind(this))
-    fieldset.appendChild(removeButton)
   }
 
   AddAnother.prototype.createRemoveButtons = function () {
-    if (this.disableDelete) {
+    if (!this.disableDelete) {
       var fieldsets =
           this.module.querySelectorAll('.js-add-another__fieldset')
       fieldsets.forEach(function (fieldset) {
@@ -113,7 +115,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
     }.bind(this))
 
-    if (this.module.dataset.emptyFields === 'false') {
+    if (this.module.dataset.emptyFields === 'false' && !this.disableDelete) {
       this.module.querySelector('.js-add-another__remove-button').classList.toggle(
         'js-add-another__remove-button--hidden',
         this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])').length === 1

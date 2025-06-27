@@ -141,6 +141,60 @@ describe('GOVUK.Modules.AddAnother', function () {
     })
   })
 
+  describe('Delete option is disabled', function () {
+    beforeEach(function () {
+      fixture = document.createElement('form')
+      fixture.setAttribute('data-module', 'AddAnother')
+      fixture.setAttribute('data-disable-ga4', 'false')
+      fixture.setAttribute('data-disable-delete', 'true')
+      fixture.setAttribute('data-fieldset-legend', 'Thing')
+      fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.innerHTML = `
+        <div>
+          <div class="js-add-another__fieldset">
+            <fieldset>
+              <legend>Thing 1</legend>
+              <input type="hidden" name="test[0][id]" value="test_id" />
+              <label for="test_0_foo">Foo</label>
+              <input type="text" id="test_0_foo" name="test[0][foo]" value="test foo" />
+              <label for="test_0_bar"></label>
+              <textarea id="test_0_bar" name="test[0][bar]">test bar</textarea>
+              <label for="test_0__destroy">Delete</label>
+              <div class="js-add-another__destroy-checkbox">
+                <input type="checkbox" id="test_0_destroy" name="test[0][_destroy]" />
+              </div>
+            </fieldset>
+          </div>
+          <div class="js-add-another__empty">
+            <fieldset>
+              <legend>Thing 2</legend>
+              <input type="hidden" name="test[1][id]" value="test_id" />
+              <label for="test_1_foo">Foo</label>
+              <input type="text" id="test_1_foo" name="test[1][foo]" value="" />
+              <label for="test_1_bar"></label>
+              <textarea id="test_1_bar" name="test[1][bar]"></textarea>
+              <label for="test_1__destroy">Delete</label>
+            </fieldset>
+          </div>
+        </div>
+      `
+      document.body.append(fixture)
+
+      addAnother = new GOVUK.Modules.AddAnother(fixture)
+      addButton = document.querySelector('.js-add-another__add-button')
+    })
+
+    it('should not show delete button', function () {
+      var removeButtons = document.querySelectorAll('.js-add-another__remove-button')
+
+      expect(removeButtons.length).toBeFalsy()
+    })
+
+    afterEach(function () {
+      document.body.removeChild(fixture)
+    })
+  })
+
   describe('Two fieldsets are rendered', function () {
     beforeEach(function () {
       fixture = document.createElement('form')

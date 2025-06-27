@@ -28,7 +28,7 @@
         legend_text: "#{fieldset_legend} #{index + 1}",
         heading_size: "m"
       } do %>
-        <% unless disable_delete %>
+        <% unless disable_delete == true %>
           <div class="js-add-another__destroy-checkbox">
             <%= item[:destroy_checkbox] %>
           </div>
