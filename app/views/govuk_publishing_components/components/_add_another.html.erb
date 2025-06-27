@@ -6,6 +6,7 @@
   add_button_text ||= "Add another"
   empty_fields ||= false
   disable_ga4 ||= nil
+  disable_delete ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-add-another")
@@ -15,6 +16,7 @@
     fieldset_legend:,
     empty_fields:,
     disable_ga4:,
+    disable_delete:,
   })
 %>
 
@@ -26,9 +28,11 @@
         legend_text: "#{fieldset_legend} #{index + 1}",
         heading_size: "m"
       } do %>
-        <div class="js-add-another__destroy-checkbox">
-          <%= item[:destroy_checkbox] %>
-        </div>
+        <% unless disable_delete %>
+          <div class="js-add-another__destroy-checkbox">
+            <%= item[:destroy_checkbox] %>
+          </div>
+        <% end %>
         <%= item[:fields] %>
       <% end %>
     <% end %>

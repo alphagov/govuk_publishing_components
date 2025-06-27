@@ -6,7 +6,7 @@ body: |
   This component is currently experimental because more research is needed to
   validate it.
   
-  Applications using this component must include a deletion checkbox in addtion
+  Applications using this component must include a deletion checkbox in addition
   to the rendered repeating items as well as an empty field. The checkboxes and
   empty field are required to allow users without javascript to add new items
   and remove existing items from the list. See the examples below for how to do
@@ -45,6 +45,23 @@ examples:
         <div class="govuk-form-group">
           <label for="person_1_name" class="gem-c-label govuk-label">Full name</label>
           <input class="gem-c-input govuk-input" id="person_1_name" name="person[1]name">
+        </div>
+  without_delete_option:
+    description: This will not provide a Delete option, of the user should only be able to add to or edit the list
+    data:
+      fieldset_legend: "Person"
+      add_button_text: "Add another person"
+      disable_delete: true
+      items:
+        - fields: >
+            <div class="govuk-form-group">
+              <label for="person_0_name" class="gem-c-label govuk-label">Full name</label>
+              <input class="gem-c-input govuk-input" id="person_0_name" name="person[0]name">
+            </div>
+      empty:
+        <div class="govuk-form-group">
+        <label for="person_1_name" class="gem-c-label govuk-label">Full name</label>
+        <input class="gem-c-input govuk-input" id="person_1_name" name="person[1]name">
         </div>
   without_ga4_tracking:
     description: |

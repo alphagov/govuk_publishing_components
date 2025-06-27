@@ -5,6 +5,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function AddAnother (module) {
     this.module = module
     this.disableGa4 = this.module.dataset.disableGa4
+    this.disableDelete = this.module.dataset.disableDelete
     this.emptyFieldset = undefined
     this.addAnotherButton = undefined
   }
@@ -83,12 +84,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.createRemoveButtons = function () {
-    var fieldsets =
-      this.module.querySelectorAll('.js-add-another__fieldset')
-    fieldsets.forEach(function (fieldset) {
-      this.createRemoveButton(fieldset, this.removeExistingFieldset.bind(this))
-      fieldset.querySelector('.js-add-another__destroy-checkbox').hidden = true
-    }.bind(this))
+    if (this.disableDelete) {
+      var fieldsets =
+          this.module.querySelectorAll('.js-add-another__fieldset')
+      fieldsets.forEach(function (fieldset) {
+        this.createRemoveButton(fieldset, this.removeExistingFieldset.bind(this))
+        fieldset.querySelector('.js-add-another__destroy-checkbox').hidden = true
+      }.bind(this))
+    }
   }
 
   AddAnother.prototype.removeEmptyFieldset = function () {
