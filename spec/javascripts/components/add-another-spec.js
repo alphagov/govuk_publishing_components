@@ -3,7 +3,7 @@
 describe('GOVUK.Modules.AddAnother', function () {
   var fixture, addAnother, addButton, fieldset, fieldset0, fieldset1, fieldset2, fieldset3
 
-  function checkEventData (visibleFields) {
+  function checkEventData (visibleFields, startIndex = 1, indexSectionCount = null) {
     visibleFields.forEach(function (field, index) {
       var trackedRemoveButton = field.parentNode.querySelector('.js-add-another__remove-button[data-ga4-event]')
 
@@ -15,8 +15,8 @@ describe('GOVUK.Modules.AddAnother', function () {
         action: 'deleted'
       }))
 
-      expect(trackedRemoveButton.dataset.indexSection).toBe(String(index))
-      expect(trackedRemoveButton.dataset.indexSectionCount).toBe(String(visibleFields.length + 1))
+      expect(trackedRemoveButton.dataset.indexSection).toBe(String(startIndex + index))
+      expect(trackedRemoveButton.dataset.indexSectionCount).toBe(String(indexSectionCount || visibleFields.length))
     })
   }
 
@@ -397,6 +397,84 @@ describe('GOVUK.Modules.AddAnother', function () {
       expect(document.activeElement).toBe(
         document.querySelector('.js-add-another__add-button')
       )
+    })
+  })
+
+  describe('One fieldset is rendered with additional GA4 attributes set', function () {
+    beforeEach(function () {
+      fixture = document.createElement('form')
+      fixture.setAttribute('data-module', 'add-another')
+      fixture.setAttribute('data-fieldset-legend', 'Thing')
+      fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.setAttribute('data-ga4-start-index', '2')
+      fixture.setAttribute('data-ga4-index-section-count', '5')
+      fixture.innerHTML = `
+        <div>
+          <div class="js-add-another__fieldset">
+            <fieldset>
+              <legend>Thing 1</legend>
+              <input type="hidden" name="test[0][id]" value="test_id" />
+              <label for="test_0_foo">Foo</label>
+              <input type="text" id="test_0_foo" name="test[0][foo]" value="test foo" />
+              <label for="test_0_bar"></label>
+              <textarea id="test_0_bar" name="test[0][bar]">test bar</textarea>
+              <label for="test_0__destroy">Delete</label>
+              <div class="js-add-another__destroy-checkbox">
+                <input type="checkbox" id="test_0_destroy" name="test[0][_destroy]" />
+              </div>
+            </fieldset>
+          </div>
+          <div class="js-add-another__fieldset">
+            <fieldset>
+              <legend>Thing 2</legend>
+              <input type="hidden" name="test[1][id]" value="test_id" />
+              <label for="test_1_foo">Foo</label>
+              <input type="text" id="test_1_foo" name="test[1][foo]" value="test foo" />
+              <label for="test_1_bar"></label>
+              <textarea id="test_1_bar" name="test[1][bar]">test bar</textarea>
+              <label for="test_1__destroy">Delete</label>
+              <div class="js-add-another__destroy-checkbox">
+                <input type="checkbox" id="test_1_destroy" name="test[1][_destroy]" />
+              </div>
+            </fieldset>
+          </div>
+          <div class="js-add-another__empty">
+            <fieldset>
+              <legend>Thing 3</legend>
+              <input type="hidden" name="test[2][id]" value="test_id" />
+              <label for="test_2_foo">Foo</label>
+              <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
+              <label for="test_2_bar"></label>
+              <textarea id="test_2_bar" name="test[2][bar]"></textarea>
+              <label for="test_2__destroy">Delete</label>
+            </fieldset>
+          </div>
+        </div>
+      `
+      document.body.append(fixture)
+
+      addAnother = new GOVUK.Modules.AddAnother(fixture)
+      addAnother.init()
+
+      addButton = document.querySelector('.js-add-another__add-button')
+    })
+
+    afterEach(function () {
+      document.body.removeChild(fixture)
+    })
+
+    it('should add data attributes if GA4 enabled', function () {
+      var visibleFields = document.querySelectorAll('.js-add-another__fieldset:not([hidden]) > fieldset')
+
+      checkEventData(visibleFields, 2, 5)
+    })
+
+    it('should update GA4 data attributes when the "Add" button is clicked', function () {
+      window.GOVUK.triggerEvent(addButton, 'click')
+
+      var visibleFields = document.querySelectorAll('.js-add-another__fieldset:not([hidden]) > fieldset')
+
+      checkEventData(visibleFields, 2, 5)
     })
   })
 })
