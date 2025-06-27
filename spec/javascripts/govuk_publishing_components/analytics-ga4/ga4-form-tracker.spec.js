@@ -210,6 +210,22 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('collects data from select multiple elements', function () {
+      element.innerHTML =
+        '<label for="s1">Label</label>' +
+        '<select name="select" id="s1">' +
+          '<option selected value="option1">Option 1</option>' +
+          '<option value="option2">Option 2</option>' +
+          '<option selected value="option3">Option 3</option>' +
+        '</select>'
+
+
+      expected.event_data.text = 'Option 1, Option 3'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('collects data from a select and a text input', function () {
       element.innerHTML =
         '<label for="s1">Label</label>' +

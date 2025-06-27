@@ -120,7 +120,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           }
         }
       } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex] && elem.options[elem.selectedIndex].value) {
-        input.answer = elem.options[elem.selectedIndex].text
+        var selectedOptions = Array.from(elem.querySelectorAll('option:checked')).map(function (option) { return String(option.text) })
+        input.answer = selectedOptions.join(', ')
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
           if (this.useTextCount) {
