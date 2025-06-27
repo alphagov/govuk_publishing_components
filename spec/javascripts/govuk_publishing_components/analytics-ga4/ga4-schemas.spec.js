@@ -37,7 +37,9 @@ describe('Google Analytics schemas', function () {
         length: undefined,
         video_percent: undefined,
         autocomplete_input: undefined,
-        autocomplete_suggestions: undefined
+        autocomplete_suggestions: undefined,
+        content_id: this.undefined,
+        user_id: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -74,7 +76,9 @@ describe('Google Analytics schemas', function () {
         length: undefined,
         video_percent: undefined,
         autocomplete_input: undefined,
-        autocomplete_suggestions: undefined
+        autocomplete_suggestions: undefined,
+        content_id: this.undefined,
+        user_id: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -111,7 +115,9 @@ describe('Google Analytics schemas', function () {
         length: undefined,
         video_percent: undefined,
         autocomplete_input: undefined,
-        autocomplete_suggestions: undefined
+        autocomplete_suggestions: undefined,
+        content_id: this.undefined,
+        user_id: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')
@@ -149,7 +155,9 @@ describe('Google Analytics schemas', function () {
         length: undefined,
         video_percent: undefined,
         autocomplete_input: undefined,
-        autocomplete_suggestions: undefined
+        autocomplete_suggestions: undefined,
+        content_id: this.undefined,
+        user_id: this.undefined
       }
     }
     var returned = schemas.mergeProperties(data, 'example')

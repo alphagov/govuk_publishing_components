@@ -33,7 +33,9 @@
         length: this.undefined,
         video_percent: this.undefined,
         autocomplete_input: this.undefined,
-        autocomplete_suggestions: this.undefined
+        autocomplete_suggestions: this.undefined,
+        content_id: this.undefined,
+        user_id: this.undefined
       }
     }
   }
