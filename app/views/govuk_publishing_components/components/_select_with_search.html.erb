@@ -1,0 +1,14 @@
+<%
+  add_gem_component_stylesheet("select-with-search")
+
+  # select_helper.select_classes generates "gem-c-select-with-search"
+  select_helper = GovukPublishingComponents::Presenters::SelectWithSearchHelper.new(local_assigns)
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_data_attribute({ module: "select-with-search" })
+%>
+<%= render "govuk_publishing_components/components/select", {
+  **local_assigns,
+  **component_helper.all_attributes,
+  select_helper:
+}.with_indifferent_access %>
