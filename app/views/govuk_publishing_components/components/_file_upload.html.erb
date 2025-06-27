@@ -8,6 +8,7 @@
   value ||= nil
   accept ||= nil
   data ||= nil
+  multiple ||= nil
 
   label ||= nil
   hint ||= nil
@@ -75,6 +76,7 @@
     id: id,
     data: data,
     accept: accept,
+    multiple: multiple,
     aria: {
       describedby: aria_described_by
     } %>
