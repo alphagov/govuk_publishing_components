@@ -7,6 +7,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.disableGa4 = this.module.dataset.disableGa4
     this.emptyFieldset = undefined
     this.addAnotherButton = undefined
+    this.startIndex = Number(this.module.dataset.ga4StartIndex) || 1
+    this.indexSectionCount = Number(this.module.dataset.ga4IndexSectionCount)
   }
 
   function createButton (textContent, additionalClass = '', dataAttributes = {}) {
@@ -105,8 +107,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var trackedRemoveButton = field.parentNode.querySelector('.js-add-another__remove-button[data-ga4-event]')
 
       if (trackedRemoveButton) {
-        trackedRemoveButton.dataset.indexSection = index
-        trackedRemoveButton.dataset.indexSectionCount = visibleFields.length + 1
+        trackedRemoveButton.dataset.indexSection = this.startIndex + index
+        trackedRemoveButton.dataset.indexSectionCount = this.indexSectionCount || visibleFields.length
       }
     }.bind(this))
 
@@ -120,8 +122,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var trackedAddAnotherButton = this.module.querySelector('.js-add-another__add-button[data-ga4-event]')
 
     if (trackedAddAnotherButton) {
-      trackedAddAnotherButton.dataset.indexSection = visibleFields.length
-      trackedAddAnotherButton.dataset.indexSectionCount = visibleFields.length + 1
+      trackedAddAnotherButton.dataset.indexSection = this.indexSectionCount || visibleFields.length
+      trackedAddAnotherButton.dataset.indexSectionCount = this.indexSectionCount || visibleFields.length
     }
   }
 
