@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased changes
+## 58.1.0
 
 * Make global links relative instead of absolute ([PR #4855](https://github.com/alphagov/govuk_publishing_components/pull/4855))
 * Add Kyrgyz translations ([PR #4875](https://github.com/alphagov/govuk_publishing_components/pull/4875))
