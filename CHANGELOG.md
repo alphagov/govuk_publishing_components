@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix `AddAnother` `ga4_start_index` bug ([PR #4900](https://github.com/alphagov/govuk_publishing_components/pull/4900))
+* Fix super navigation toggle border styling ([PR #4894](https://github.com/alphagov/govuk_publishing_components/pull/4894))
 
 ## 58.1.0
 
