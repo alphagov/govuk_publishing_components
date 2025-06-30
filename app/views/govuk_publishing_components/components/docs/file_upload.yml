@@ -65,3 +65,9 @@ examples:
       name: "name"
       heading_level: 1
       heading_size: "l"
+  with_multiple:
+    data:
+      label:
+        text: "Upload a file"
+      name: "file-upload"
+      multiple: true      
