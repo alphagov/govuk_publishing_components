@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Make heading sizes match govuk-frontend ([PR #4620](https://github.com/alphagov/govuk_publishing_components/pull/4620))
 * Fix `AddAnother` `ga4_start_index` bug ([PR #4900](https://github.com/alphagov/govuk_publishing_components/pull/4900))
 
 ## 58.1.0
