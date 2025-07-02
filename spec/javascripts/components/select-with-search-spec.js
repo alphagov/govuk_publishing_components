@@ -45,6 +45,32 @@ describe('GOVUK.Modules.SelectWithSearch', function () {
     })
   })
 
+  describe('select with `aria-describedby`', () => {
+    const ariaDescribedBy = 'hint-id error-id'
+
+    beforeEach(function () {
+      component = document.createElement('div')
+      component.innerHTML = `
+        <label for="example">Choose a colour</label>
+        <select aria-describedby="${ariaDescribedBy}" id="example">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+        </select>
+      `
+      select = component.querySelector('select')
+
+      module = new GOVUK.Modules.SelectWithSearch(select)
+      module.init()
+    })
+
+    it('includes `aria-describedby` of select in `aria-labelledby`', () => {
+      expect(
+        component.querySelector(`[aria-labelledby="example-label ${ariaDescribedBy}"]`)
+      ).toBeTruthy()
+    })
+  })
+
   describe('simple select which can be left blank', () => {
     beforeEach(function () {
       component = document.createElement('div')

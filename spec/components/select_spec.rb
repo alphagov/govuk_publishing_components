@@ -71,6 +71,22 @@ describe "Select", type: :view do
     assert_select "select[name*='mydropdown'][id=mydropdown][multiple]"
   end
 
+  it "renders a select box with `id` assigned to label" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      multiple: true,
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+      ],
+    )
+
+    assert_select "label[id=mydropdown-label]"
+  end
+
   it "renders a select box with multiple items" do
     render_component(
       id: "mydropdown",

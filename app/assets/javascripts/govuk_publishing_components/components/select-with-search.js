@@ -23,6 +23,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
         : 'Select one'
     }
 
+    const ariaDescribedBy = this.module.getAttribute('aria-describedby') || ''
+
     this.choices = new window.Choices(this.module, {
       allowHTML: true,
       searchPlaceholderValue: 'Search in list',
@@ -30,7 +32,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
       itemSelectText: '',
       searchResultLimit: 100,
       removeItemButton: this.module.multiple,
-      labelId: this.module.id,
+      labelId: this.module.id + '-label ' + ariaDescribedBy,
       callbackOnInit: function () {
         // For the multiple select, move the input field to
         // the top of the feedback area, so that the selected
