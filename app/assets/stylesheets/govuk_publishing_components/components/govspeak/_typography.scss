@@ -53,26 +53,13 @@
   }
 
   &.gem-c-govspeak--direction-rtl blockquote {
-    padding: 0 govuk-spacing(4) 0 0;
-
-    @include govuk-media-query($from: desktop) {
-      margin: 0 (- govuk-spacing(6)) 0 0;
-    }
+    padding: 0 govuk-spacing(6) 0 0;
 
     p {
-      padding-right: govuk-spacing(3);
-      padding-left: 0;
-
-      @include govuk-media-query($from: tablet) {
-        padding-right: govuk-spacing(6);
-        padding-left: 0;
-      }
-
       &::before {
         content: "\201D";
-        float: right;
-        margin-right: (- govuk-spacing(3));
-        margin-left: 0;
+        right: unset;
+        left: 100%;
       }
 
       &:last-child::after {
