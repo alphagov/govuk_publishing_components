@@ -8,7 +8,7 @@ $chevron-indent-spacing: 7px;
 
 $pseudo-underline-height: 3px;
 
-$navbar-height: 60px;
+$navbar-height: 61px;
 
 $button-pipe-colour: $govuk-blue-tint-95;
 
@@ -98,7 +98,6 @@ $search-icon-height: 20px;
   background: $govuk-brand-colour;
   border-top: 1px solid $govuk-brand-colour;
   margin-top: -1px;
-  border-bottom: 1px solid transparent;
   position: relative;
 
   [hidden] {
@@ -694,4 +693,10 @@ $search-icon-height: 20px;
     padding: 10px 0 !important; // stylelint-disable-line declaration-no-important
   }
 }
+
+// Used to add a transparent bottom border for forced-colour modes
+.transparent-bottom-border {
+  border-bottom: 1px solid transparent;
+}
+
 // stylelint-enable max-nesting-depth
