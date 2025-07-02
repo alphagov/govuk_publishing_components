@@ -22,6 +22,7 @@
 <% if select_helper.options_markup.present? && id && label %>
   <%= content_tag :div, class: select_helper.css_classes do %>
     <%= render "govuk_publishing_components/components/label", {
+      id: "#{id}-label",
       html_for: id,
       text: label,
       heading_size:,
