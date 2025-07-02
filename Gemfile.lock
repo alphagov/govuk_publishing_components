@@ -125,7 +125,7 @@ GEM
     erb (5.0.1)
     erubi (1.13.1)
     execjs (2.10.0)
-    faker (3.5.1)
+    faker (3.5.2)
       i18n (>= 1.8.11, < 2)
     gds-api-adapters (99.2.0)
       addressable
