@@ -74,6 +74,54 @@ describe('Google Analytics search tracking', () => {
     })
   })
 
+  describe('if data-ga4-tracked-search is defined', () => {
+    const ga4SearchInputName = 'tracked-search-name'
+
+    beforeEach(() => {
+      GOVUK.setConsentCookie({ usage: true })
+
+      form.dataset.ga4SearchInputName = ga4SearchInputName
+
+      ga4SearchTracker = new GOVUK.Modules.Ga4SearchTracker(form)
+      ga4SearchTracker.init()
+    })
+
+    it('tracks search events as `search` action when change occurs on tracked search', () => {
+      searchInput.name = ga4SearchInputName
+      searchInput.value = 'new value'
+      GOVUK.triggerEvent(filterInput, 'input', { target: filterInput })
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'search',
+          text: 'new value',
+          ...commonEventProps
+        },
+        'event_data'
+      )
+    })
+
+    it('does not track search events as `search` action when change occurs on untracked search', () => {
+      searchInput.value = 'new value'
+      GOVUK.triggerEvent(filterInput, 'input', { target: filterInput })
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'filter',
+          text: 'new value',
+          ...commonEventProps
+        },
+        'event_data'
+      )
+    })
+  })
+
   describe('when usage tracking is declined', () => {
     beforeEach(() => {
       GOVUK.setConsentCookie({ usage: false })

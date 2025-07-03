@@ -36,3 +36,5 @@ When the form is submitted, a `search` event will be tracked containing:
 - the state (text) of the search field contained within
 - information about the user's interaction with autocomplete (if present), based on attributes set
   by the `search_with_autocomplete` component
+
+If `data-ga4-search-input-name` (optional) is defined, then the event `action` will only be set to `search` if the search field has the same name as `data-ga4-search-input-name`.
