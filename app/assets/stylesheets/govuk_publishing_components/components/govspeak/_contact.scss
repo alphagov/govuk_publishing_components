@@ -31,19 +31,19 @@
       }
     }
 
+    .email-url-number {
+      .email {
+        word-wrap: break-word;
+      }
+
+      span {
+        display: block;
+      }
+    }
+
     .content {
       float: none;
       width: 100%;
-
-      .email-url-number {
-        .email {
-          word-wrap: break-word;
-        }
-
-        span {
-          display: block;
-        }
-      }
 
       .comments {
         @include govuk-font($size: 16);
