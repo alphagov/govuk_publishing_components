@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 58.2.0
 
 * Add Select with Search component ([PR #4879](https://github.com/alphagov/govuk_publishing_components/pull/4879))
 * Add support for specifying `input[type=search]` to `Ga4SearchTracker` ([PR #4887](https://github.com/alphagov/govuk_publishing_components/pull/4887))
