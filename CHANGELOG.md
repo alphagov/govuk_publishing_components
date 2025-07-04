@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add Select with Search component ([PR #4879](https://github.com/alphagov/govuk_publishing_components/pull/4879))
 * Add support for specifying `input[type=search]` to `Ga4SearchTracker` ([PR #4887](https://github.com/alphagov/govuk_publishing_components/pull/4887))
 
 ## 58.1.1
