@@ -54,6 +54,39 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=government-gateway]"
   end
 
+  it "renders a select box with multiple" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      multiple: true,
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+      ],
+    )
+
+    assert_select "input[type=hidden][name*='mydropdown']"
+    assert_select "select[name*='mydropdown'][id=mydropdown][multiple]"
+  end
+
+  it "renders a select box with `id` assigned to label" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      multiple: true,
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+      ],
+    )
+
+    assert_select "label[id=mydropdown-label]"
+  end
+
   it "renders a select box with multiple items" do
     render_component(
       id: "mydropdown",
@@ -367,6 +400,6 @@ describe "Select", type: :view do
     )
 
     assert_select "select[name=colour]"
-    assert_select ".gem-c-select h1.gem-c-heading__text label.govuk-label"
+    assert_select ".gem-c-select h1 label.govuk-label"
   end
 end

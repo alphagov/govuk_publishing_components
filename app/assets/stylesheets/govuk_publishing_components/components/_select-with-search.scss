@@ -1,0 +1,168 @@
+// overload the choices.js variables
+
+$font-size: 19px;
+
+$choices-bg-color: govuk-colour("white") !default;
+$choices-font-size-lg: $font-size !default;
+$choices-font-size-md: $font-size !default;
+$choices-font-size-sm: $font-size !default;
+$choices-primary-color: #ffffff !default; // can't use mixin here because of Choices.js Sass functions
+$choices-text-color: govuk-colour("black");
+$choices-icon-cross: url("select-with-search/cross-icon.svg");
+$choices-border-radius: 0 !default;
+$choices-border-radius-item: 0 !default;
+$choices-z-index: 2 !default;
+$choices-button-dimension: 12px !default;
+
+@import "govuk_publishing_components/individual_component_support";
+@import "mixins/prefixed-transform";
+@import "govuk/components/label/label";
+@import "choices.js/src/styles/choices";
+
+.gem-c-select-with-search {
+  .choices * {
+    // Something inside .choices needs this – I'm not sure what yet
+    box-sizing: border-box;
+    font-family: $govuk-font-family;
+  }
+
+  .choices[data-type*="select-one"]::after {
+    @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
+    @include prefixed-transform($translateY: -50%);
+    margin: 0;
+  }
+
+  .choices.is-open[data-type*="select-one"]::after {
+    margin: 0;
+    bottom: govuk-em(1px, $font-size);
+    @include prefixed-transform($translateY: -50%, $rotate: 180deg);
+  }
+
+  .choices[data-type*="select-multiple"] .choices__button,
+  .choices[data-type*="text"] .choices__button {
+    border-color: govuk-colour("mid-grey");
+    border-right: 1px solid govuk-colour("mid-grey");
+    padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) govuk-spacing(2);
+    margin-right: 0;
+
+    &:hover {
+      background-color: govuk-colour("mid-grey");
+      border-color: govuk-colour("dark-grey");
+      box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("dark-grey");
+    }
+
+    &:focus {
+      background-color: $govuk-focus-colour;
+      box-shadow: 0 $govuk-border-width-form-element 0 $govuk-focus-text-colour;
+    }
+  }
+
+  .choices.is-disabled {
+    .choices__item[data-deletable] {
+      background-color: govuk-colour("white");
+    }
+
+    .choices__button {
+      display: none;
+    }
+  }
+
+  .choices__input {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .choices__inner {
+    padding: govuk-spacing(1);
+    border: $govuk-border-width-form-element solid govuk-colour("black");
+  }
+
+  &.govuk-form-group--error .choices:not(.is-active):not(.is-focused):not(.is-open) .choices__inner {
+    border-color: $govuk-error-colour;
+  }
+
+  .choices.is-focused,
+  .choices.is-open {
+    overflow: visible;
+  }
+
+  .choices.is-flipped .choices__list {
+    border-radius: 0; // this isn't set by a variable unlike all other border radius :(
+    border-width: $govuk-border-width-form-element;
+  }
+
+  .choices.is-focused .choices__inner,
+  .choices.is-open .choices__inner {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+    // Ensure outline appears outside of the element
+    outline-offset: 0;
+    // Double the border by adding its width again. Use `box-shadow` to do
+    // this instead of changing `border-width` (which changes element size)
+    // and since `outline` is already used for the yellow focus state.
+    box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+  }
+
+  .choices__list--multiple {
+    display: block;
+
+    &:not(:empty) {
+      margin-block-start: 6px;
+      border-block-start: 1px solid $govuk-border-colour;
+      padding-block-end: 5px;
+    }
+  }
+
+  .choices__list--multiple .choices__item {
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    padding: 0 0 0 govuk-spacing(2);
+    margin: govuk-spacing(2) govuk-spacing(2) 0 0;
+    background-color: govuk-colour("light-grey");
+    box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("mid-grey");
+    line-height: 1;
+    color: $govuk-text-colour;
+
+    .is-disabled & {
+      opacity: 0.5;
+    }
+  }
+
+  // Dropdown
+  .choices__list--dropdown,
+  .choices__list[aria-expanded] {
+    border: $govuk-border-width-form-element solid govuk-colour("black");
+    border-top-width: 0;
+
+    .is-flipped & {
+      border-top-width: $govuk-border-width-form-element;
+      border-bottom-width: 0;
+    }
+  }
+
+  .choices__list--dropdown .choices__item,
+  .choices__list[aria-expanded] .choices__item {
+    position: relative;
+    border-bottom: 1px solid govuk-colour("mid-grey");
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted,
+  .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+    background-color: govuk-colour("blue");
+    border-color: govuk-colour("blue");
+    color: govuk-colour("white");
+    outline: none;
+  }
+
+  .choices__heading {
+    @include govuk-typography-weight-bold;
+    color: govuk-colour("black"); // Choices.js doesn't use a variable for this color for some reason :(
+    padding: govuk-spacing(6) govuk-spacing(2) govuk-spacing(2);
+    border-bottom: 1px solid govuk-colour("mid-grey");
+    cursor: default;
+  }
+}

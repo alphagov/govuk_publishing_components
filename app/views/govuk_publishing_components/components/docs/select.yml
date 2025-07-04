@@ -174,3 +174,14 @@ examples:
         value: option1
       - text: Option two
         value: option2
+  with_multiple:
+    data:
+      id: dropdown-multiple-id
+      id: dropdown-multiple
+      label: My Dropdown
+      multiple: true
+      options:
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2

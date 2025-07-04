@@ -1,23 +1,26 @@
 module GovukPublishingComponents
   module Presenters
     class SelectHelper
-      attr_reader :options, :option_markup, :selected_option, :error_message, :error_id, :hint, :hint_id, :describedby
+      include ActionView::Helpers::FormOptionsHelper
+
+      attr_reader :options, :options_markup, :error_items, :error_id, :hint, :hint_id, :describedby
 
       def initialize(local_assigns)
         @options = local_assigns[:options] || []
-        @error_message = local_assigns[:error_message]
+        @error_items = local_assigns[:error_items] || []
+        @error_items << { text: local_assigns[:error_message] } if local_assigns[:error_message]
         @error_id = local_assigns[:error_id] || nil
         @hint = local_assigns[:hint] || nil
         @hint_id = local_assigns[:hint_id] || nil
         @heading_size = local_assigns[:heading_size]
         @full_width = local_assigns[:full_width] || false
-        @option_markup = get_options
+        @options_markup = options_for_select(get_options, @selected_option)
         @describedby = get_describedby
       end
 
       def css_classes
         classes = %w[govuk-form-group gem-c-select]
-        classes << "govuk-form-group--error" if @error_message
+        classes << "govuk-form-group--error" if @error_items.present?
         classes
       end
 
@@ -66,7 +69,7 @@ module GovukPublishingComponents
       def get_describedby
         describedby = %w[]
 
-        if @error_message || @error_id
+        if @error_items.present? || @error_id
           @error_id ||= "error-#{SecureRandom.hex(4)}"
           describedby << @error_id
         end
