@@ -14,6 +14,7 @@
 
 ## 58.1.1
 
+* Make heading sizes match govuk-frontend ([PR #4620](https://github.com/alphagov/govuk_publishing_components/pull/4620))
 * Fix `AddAnother` `ga4_start_index` bug ([PR #4900](https://github.com/alphagov/govuk_publishing_components/pull/4900))
 * Fix super navigation toggle border styling ([PR #4894](https://github.com/alphagov/govuk_publishing_components/pull/4894))
 * Fix quotation marks for right-to-left languages ([PR #4903](https://github.com/alphagov/govuk_publishing_components/pull/4903))
