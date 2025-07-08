@@ -64,7 +64,7 @@ module GovukPublishingComponents
       end
 
       def skip_the_gov_uk_account?
-        @skip_account == "true"
+        @skip_account == "true" || @skip_account == true
       end
     end
   end
