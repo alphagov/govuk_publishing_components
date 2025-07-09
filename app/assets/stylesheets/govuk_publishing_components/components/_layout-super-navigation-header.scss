@@ -128,27 +128,34 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__header-logo {
-  display: inline-block;
   line-height: 1;
   padding-bottom: 12px;
   padding-top: 16px;
+  flex-grow: 1; // make the logo fill all of the space available
+  flex-shrink: 0; // ensure the logo does not shrink
 }
 
 .gem-c-layout-super-navigation-header__content {
   width: 100%;
-}
-
-.gem-c-layout-super-navigation-header__navigation-item {
-  right: 60px;
-  position: absolute;
-  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .gem-c-layout-super-navigation-header__navigation-item,
 .gem-c-layout-super-navigation-header__search-item {
+  position: relative; // fix underline
   display: block;
   margin: 0;
   padding: 0;
+}
+
+.gem-c-layout-super-navigation-header__search-item {
+  margin-right: -15px;
+
+  @include govuk-media-query($from: "desktop") {
+    margin-right: 0;
+  }
 }
 
 // Top level navigation links and search link, used when JavaScript is not available
@@ -414,7 +421,6 @@ $search-icon-height: 20px;
 // JS available - targets the search toggle button
 .gem-c-layout-super-navigation-header__search-toggle-button {
   display: block;
-  position: absolute;
   float: right;
   background: none;
   border: 0;
@@ -555,10 +561,10 @@ $search-icon-height: 20px;
 
 // JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+  width: 100%;
+  order: 1;
   background: $govuk-rebrand-template-background-colour;
-  border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
-  float: right;
 
   @include govuk-media-query($until: 300px) {
     padding-top: 80px;
@@ -708,7 +714,19 @@ $search-icon-height: 20px;
 
 // Used to add a transparent bottom border for forced-colour modes
 .transparent-bottom-border {
-  border-bottom: 1px solid transparent;
+  @media (forced-colors: active) {
+    border-bottom: 1px solid transparent;
+  }
+}
+
+.js-dropdown-background::before {
+  content: "";
+  position: absolute;
+  top: $navbar-height;
+  bottom: 0;
+  width: 100%;
+  background: $govuk-rebrand-template-background-colour;
+  box-shadow: 0 1px govuk-colour("mid-grey");
 }
 
 // stylelint-enable max-nesting-depth
