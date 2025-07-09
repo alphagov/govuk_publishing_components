@@ -42,8 +42,11 @@
   component_helper.add_data_attribute({ module: "ga4-event-tracker ga4-link-tracker", ga4_expandable: "" })
 %>
 <%= tag.header(**component_helper.all_attributes) do %>
-  <div class="gem-c-layout-super-navigation-header__container govuk-clearfix">
-    <div class="govuk-width-container transparent-bottom-border">
+    <nav
+      aria-labelledby="super-navigation-menu-heading"
+      class="gem-c-layout-super-navigation-header__content govuk-!-display-none-print"
+      data-module="super-navigation-mega-menu"
+    >
       <%= content_tag(:div, {
         class: header_logo_classes
       }) do %>
@@ -70,12 +73,6 @@
           <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
         <% end %>
       <% end %>
-    </div>
-    <nav
-      aria-labelledby="super-navigation-menu-heading"
-      class="gem-c-layout-super-navigation-header__content govuk-!-display-none-print"
-      data-module="super-navigation-mega-menu"
-    >
       <h2 id="super-navigation-menu-heading" class="govuk-visually-hidden">
         <%= navigation_menu_heading %>
       </h2>
@@ -86,107 +83,44 @@
         hide_menu_text = hide_navigation_menu_text
       %>
 
-      <div class="govuk-width-container gem-c-layout-super-navigation-header__button-width-container">
-        <%= content_tag(:div, {
-          class: button_container_classes
+      <! -- NAV BUTTON -->
+      <div class="gem-c-layout-super-navigation-header__navigation-item">
+        <%= link_to link[:href], {
+          class: item_link_classes,
+        } do %>
+          <% content_tag(:span, {
+            class: item_link_inner_classes
+          }) do %>
+            <%= link[:label] %>
+          <% end %>
+        <% end %>
+
+        <%= content_tag(:button, {
+          aria: {
+            controls: "super-navigation-menu",
+            expanded: false,
+            label: show_menu_text,
+          },
+          class: top_toggle_button_classes,
+          data: {
+            text_for_hide: hide_menu_text,
+            text_for_show: show_menu_text,
+            toggle_desktop_group: "top",
+            toggle_mobile_group: "top",
+            ga4_event: {
+              event_name: "select_content",
+              type: "header menu bar",
+              text: link[:label],
+              index_section: 1,
+              index_section_count: 2,
+              section: link[:label]
+            }
+          },
+          hidden: true,
+          id: "super-navigation-menu-toggle",
+          type: "button",
         }) do %>
-          <div class="gem-c-layout-super-navigation-header__navigation-item">
-            <%= link_to link[:href], {
-              class: item_link_classes,
-            } do %>
-              <% content_tag(:span, {
-                class: item_link_inner_classes
-              }) do %>
-                <%= link[:label] %>
-              <% end %>
-            <% end %>
-
-            <%= content_tag(:button, {
-              aria: {
-                controls: "super-navigation-menu",
-                expanded: false,
-                label: show_menu_text,
-              },
-              class: top_toggle_button_classes,
-              data: {
-                text_for_hide: hide_menu_text,
-                text_for_show: show_menu_text,
-                toggle_desktop_group: "top",
-                toggle_mobile_group: "top",
-                ga4_event: {
-                  event_name: "select_content",
-                  type: "header menu bar",
-                  text: link[:label],
-                  index_section: 1,
-                  index_section_count: 2,
-                  section: link[:label]
-                }
-              },
-              hidden: true,
-              id: "super-navigation-menu-toggle",
-              type: "button",
-            }) do %>
-              <%= tag.span link[:label], class: top_toggle_button_inner_classes %>
-            <% end %>
-          </div>
-
-          <div class="gem-c-layout-super-navigation-header__search-item">
-            <%= content_tag(:button, {
-              id: "super-search-menu-toggle",
-              class: search_toggle_button_classes,
-              aria: {
-                controls: "super-search-menu",
-                expanded: "true",
-                label: hide_search_menu_text,
-              },
-              data: {
-                "text-for-hide": hide_search_menu_text,
-                "text-for-show": show_search_menu_text,
-                "toggle-mobile-group": "top",
-                "toggle-desktop-group": "top",
-                "ga4-event": "#{{
-                  "event_name": "select_content",
-                  "type": "header menu bar",
-                  "text": "Search",
-                  "index_section": 2,
-                  "index_section_count": 2,
-                  "section": "Search"
-                  }.to_json
-                }"
-              },
-              hidden: true,
-              type: "button",
-            }) do %>
-              <span class="govuk-visually-hidden">
-                <%= search_text %>
-              </span>
-              <%=
-                render "govuk_publishing_components/components/search/search_icon", {
-                  classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
-                }
-              %>
-              <span
-                aria-hidden="true"
-                class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
-                focusable="false"
-              >
-                &times;
-              </span>
-            <% end %>
-
-            <%= link_to "/search", {
-              class: search_item_link_classes
-            } do %>
-              <span class="govuk-visually-hidden">
-                <%= search_text %>
-              </span>
-              <%=
-                render "govuk_publishing_components/components/search/search_icon", {
-                  classes: %w[gem-c-layout-super-navigation-header__search-item-link-icon],
-                }
-              %>
-            <% end %>
-          </div>
+          <%= tag.span link[:label], class: top_toggle_button_inner_classes %>
         <% end %>
       </div>
 
@@ -246,7 +180,65 @@
           </div>
         </div>
       <% end %>
+       <! -- SEARCH BUTTON -->
+      <div class="gem-c-layout-super-navigation-header__search-item">
+        <%= content_tag(:button, {
+          id: "super-search-menu-toggle",
+          class: search_toggle_button_classes,
+          aria: {
+            controls: "super-search-menu",
+            expanded: "true",
+            label: hide_search_menu_text,
+          },
+          data: {
+            "text-for-hide": hide_search_menu_text,
+            "text-for-show": show_search_menu_text,
+            "toggle-mobile-group": "top",
+            "toggle-desktop-group": "top",
+            "ga4-event": "#{{
+              "event_name": "select_content",
+              "type": "header menu bar",
+              "text": "Search",
+              "index_section": 2,
+              "index_section_count": 2,
+              "section": "Search"
+              }.to_json
+            }"
+          },
+          hidden: true,
+          type: "button",
+        }) do %>
+          <span class="govuk-visually-hidden">
+            <%= search_text %>
+          </span>
+          <%=
+            render "govuk_publishing_components/components/search/search_icon", {
+              classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
+            }
+          %>
+          <span
+            aria-hidden="true"
+            class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
+            focusable="false"
+          >
+            &times;
+          </span>
+        <% end %>
 
+        <%= link_to "/search", {
+          class: search_item_link_classes
+        } do %>
+          <span class="govuk-visually-hidden">
+            <%= search_text %>
+          </span>
+          <%=
+            render "govuk_publishing_components/components/search/search_icon", {
+              classes: %w[gem-c-layout-super-navigation-header__search-item-link-icon],
+            }
+          %>
+        <% end %>
+      </div>
+      <! -- SEARCH MENU -->
       <%= content_tag(:div, {
         id: "super-search-menu",
         hidden: "",
@@ -294,5 +286,4 @@
         </div>
       <% end %>
     </nav>
-  </div>
 <% end %>
