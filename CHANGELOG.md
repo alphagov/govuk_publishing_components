@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow skip_account to act based on boolean and string ([PR #4910](https://github.com/alphagov/govuk_publishing_components/pull/4910))
+
 ## 58.2.0
 
 * Add Select with Search component ([PR #4879](https://github.com/alphagov/govuk_publishing_components/pull/4879))
