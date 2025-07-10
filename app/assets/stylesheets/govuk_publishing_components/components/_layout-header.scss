@@ -2,24 +2,6 @@
 @import "govuk_publishing_components/components/search";
 @import "govuk_publishing_components/components/skip-link";
 @import "govuk/components/header/header";
-@import "govuk/components/tag/tag";
-
-.gem-c-layout-header--production .govuk-header__container {
-  border-bottom-color: govuk-colour("red");
-}
-
-.gem-c-layout-header--integration .govuk-header__container,
-.gem-c-layout-header--staging .govuk-header__container {
-  border-bottom-color: govuk-colour("yellow");
-}
-
-.gem-c-layout-header--example .govuk-header__container {
-  border-bottom-color: govuk-colour("bright-purple");
-}
-
-.gem-c-layout-header--development .govuk-header__container {
-  border-bottom-color: govuk-colour("dark-grey");
-}
 
 .gem-c-layout-header--no-bottom-border,
 .gem-c-layout-header--no-bottom-border .govuk-header__container {
@@ -76,6 +58,11 @@
   }
 }
 
+.gem-c-header__environment {
+  padding-top: 2px;
+  padding-bottom: 3px;
+}
+
 .gem-c-header__logo {
   @include govuk-media-query($from: desktop) {
     white-space: nowrap;
@@ -96,34 +83,6 @@
   @include govuk-media-query($from: tablet) {
     display: inline-block;
   }
-}
-
-.gem-c-environment-tag {
-  padding: 2px 5px 0;
-  margin-left: 3px;
-  margin-top: govuk-spacing(-2);
-  vertical-align: middle;
-  @include govuk-font($size: 16, $weight: "bold");
-}
-
-.gem-c-environment-tag--production {
-  background-color: govuk-colour("red");
-  color: govuk-colour("white");
-}
-
-.gem-c-environment-tag--example {
-  background-color: govuk-colour("bright-purple");
-}
-
-.gem-c-environment-tag--development {
-  background-color: govuk-colour("dark-grey");
-  color: govuk-colour("white");
-}
-
-.gem-c-environment-tag--staging,
-.gem-c-environment-tag--integration {
-  background-color: govuk-colour("yellow");
-  color: govuk-colour("black");
 }
 
 .govuk-header__navigation-item--collapsed-menu-only {
@@ -155,8 +114,7 @@
       padding: 0 2mm 2mm 0;
     }
 
-    .gem-c-header__product-name,
-    .gem-c-environment-tag {
+    .gem-c-header__product-name {
       color: $govuk-print-text-colour;
       background: none;
     }

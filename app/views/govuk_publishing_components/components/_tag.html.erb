@@ -1,0 +1,20 @@
+<%
+  add_gem_component_stylesheet("tag")
+
+  text ||= nil
+  if text.blank?
+    raise ArgumentError, "The tag component requires text"
+  end
+  text = text.capitalize
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class('govuk-tag gem-c-tag')
+
+  colours = %w[grey green turquoise blue light-blue purple pink red orange yellow]
+  colour ||= nil
+  component_helper.add_class("govuk-tag--#{colour}") if colours.include?(colour)
+%>
+
+<%= tag.strong(**component_helper.all_attributes) do %>
+  <%= text %>
+<% end %>

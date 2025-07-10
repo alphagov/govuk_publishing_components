@@ -14,21 +14,29 @@ describe "Layout header", type: :view do
   it "renders the header without environment tag if no environment is given" do
     render_component({})
 
-    assert_select ".gem-c-environment-tag", 0
+    assert_select ".gem-c-tag", 0
   end
 
-  it "renders the header with environment tag and environment modifier class" do
+  it "renders the header with the environment tag" do
     render_component(environment: "staging")
 
-    assert_select ".govuk-header.gem-c-layout-header--staging"
-    assert_select ".gem-c-environment-tag", text: "Staging"
+    assert_select ".gem-c-tag", text: "Staging"
+  end
+
+  it "renders the header with correct environment tag colours" do
+    expected_colours = %w[red yellow yellow purple grey]
+
+    %w[production staging integration example development].each_with_index do |environment, index|
+      render_component(environment: environment)
+      assert_select ".govuk-tag--#{expected_colours[index]}"
+    end
   end
 
   it "renders the product name" do
     render_component(environment: "staging", product_name: "Product name")
 
     assert_select ".govuk-header__product-name", text: "Product name"
-    assert_select ".gem-c-environment-tag", text: "Staging"
+    assert_select ".gem-c-tag", text: "Staging"
   end
 
   it "renders at a constrained width by default" do

@@ -42,6 +42,19 @@ examples:
       - text: Hidden on desktop
         href: "item-3"
         show_only_in_collapsed_menu: true
+  with_product_name_and_navigation:
+    data:
+      product_name: Component Guide 999.9.9
+      environment: production
+      navigation_items:
+      - text: Navigation item 1
+        href: "item-1"
+        active: true
+      - text: Navigation item 2
+        href: "item-2"
+      - text: Hidden on desktop
+        href: "item-3"
+        show_only_in_collapsed_menu: true
   with_navigation_link_data_attributes:
     description: Supports adding data attributes i.e for tracking
     data:
