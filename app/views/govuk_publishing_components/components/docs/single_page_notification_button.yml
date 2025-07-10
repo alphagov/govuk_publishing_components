@@ -9,7 +9,7 @@ body: |
   When the button is clicked, the `base_path` is submitted to an endpoint which proceeds to check the user's authentication status and whether they are already subscribed to the page or not. Depending on these factors, they will be routed accordingly.
 accessibility_criteria: |
   - The bell icon must be presentational and ignored by screen readers.
-uses_component_wrapper_helper: true  
+uses_component_wrapper_helper: true
 examples:
   default:
     description: By default this component prompts the user to subscribe to email notifications to this page.
@@ -33,12 +33,6 @@ examples:
             index_link: 1
           index_total: 1
           section: "Top"
-  with_margin_bottom:
-    description: |
-      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 15px.
-    data:
-      base_path: '/current-page-path'
-      margin_bottom: 5
   with_js_enhancement:
     description: |
       If the `js-enhancement` flag is present, the component uses JavaScript to check if the user has already subscribed to email notifications on the current page and accordingly updates its tracking attribute and (optionally) button text.

@@ -20,12 +20,6 @@ examples:
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
-  with_margin:
-    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom, although some margin is supplied by the links themselves (so that when they stack on mobile there is space between them).
-    data:
-      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
-      feed_link: '/foreign-travel-advice/singapore.atom'
-      margin_bottom: 9
   with_only_email_signup_link:
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
@@ -70,7 +64,7 @@ examples:
       small_form: true
   without_heading:
     description: |
-      By default the component includes an h2 heading. The component could be used anywhere on the page and could mean that it produces invalid markup or make the site unaccessible.
+      By default the component includes a visually hidden h2 heading. This option removes it, because the component could be used anywhere on the page and could otherwise break the heading structure.
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
