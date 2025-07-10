@@ -1,4 +1,16 @@
-<div class="govuk-header__logo gem-c-header__logo">
+<%
+  colour_map = {
+    "production" => "red",
+    "staging" => "yellow",
+    "integration" => "yellow",
+    "example" => "purple",
+    "development" => "grey",
+  }
+
+  environment_exists = !environment.blank?
+%>
+
+<div class="govuk-header__logo gem-c-header__logo <%= "gem-c-header__logo--environment" if environment_exists %>">
   <a href="<%= logo_link %>" class="govuk-header__link govuk-header__link--homepage">
     <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
     <% if product_name %>
@@ -6,10 +18,8 @@
         <%= product_name %>
       </span>
     <% end %>
-    <% if environment %>
-      <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">
-        <%= environment.titleize %>
-      </span>
-    <% end %>
   </a>
+  <% if environment_exists %>
+    <%= render "govuk_publishing_components/components/tag", { text: environment, header: true, colour: colour_map[environment.downcase] } %>
+  <% end %>
 </div>

@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Allow skip_account to act based on boolean and string ([PR #4910](https://github.com/alphagov/govuk_publishing_components/pull/4910))
+* Introduce tag component ([PR #4914](https://github.com/alphagov/govuk_publishing_components/pull/4914))
 
 ## 58.2.0
 
