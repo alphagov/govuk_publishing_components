@@ -105,10 +105,6 @@ $search-icon-height: 20px;
   }
 }
 
-.gem-c-layout-super-navigation-header__container {
-  position: relative;
-}
-
 .gem-c-layout-super-navigation-header__button-width-container {
   position: relative;
 }
@@ -128,22 +124,27 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__header-logo {
-  display: inline-block;
   line-height: 1;
   padding-bottom: 12px;
   padding-top: 16px;
+  grid-column: 2 / 2;
+  grid-row: 1 / 1;
 }
 
 .gem-c-layout-super-navigation-header__content {
-  width: 100%;
+  display: grid;
+  grid-template-rows: 61px auto;
+  grid-template-columns: 1fr minmax(auto,960px) 1fr;
 }
 
-.gem-c-layout-super-navigation-header__navigation-item,
+.gem-c-layout-super-navigation-header__navigation-item {
+  grid-column: 2 / 2;
+  grid-row: 1 / 1;
+}
+
 .gem-c-layout-super-navigation-header__search-item {
-  display: block;
-  float: left;
-  margin: 0;
-  padding: 0;
+  grid-column: 2 / 2;
+  grid-row: 1 / 1;
 }
 
 // Top level navigation links and search link, used when JavaScript is not available
@@ -237,6 +238,7 @@ $search-icon-height: 20px;
 
 // JS available - target the "Menu" toggle button
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
+  float: right;
   font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   font-weight: 700;
@@ -248,7 +250,7 @@ $search-icon-height: 20px;
   height: $navbar-height;
   padding: 0;
   position: relative;
-  margin: 0;
+  margin-right: 61px;
   vertical-align: top;
   @include govuk-typography-common($font-family: $govuk-font-family);
 
@@ -354,12 +356,6 @@ $search-icon-height: 20px;
       }
     }
   }
-
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    float: left;
-    right: 0;
-  }
 }
 
 // JS available - targets the "Menu" toggle button
@@ -407,6 +403,7 @@ $search-icon-height: 20px;
 
 // JS available - targets the search toggle button
 .gem-c-layout-super-navigation-header__search-toggle-button {
+  float: right;
   background: none;
   border: 0;
   color: govuk-colour("white");
@@ -547,6 +544,8 @@ $search-icon-height: 20px;
   background: $govuk-rebrand-template-background-colour;
   border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
+  grid-column: 1 / 4;
+  grid-row: 2 / 2;
 
   @include govuk-media-query($until: 300px) {
     padding-top: 80px;
