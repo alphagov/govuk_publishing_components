@@ -72,16 +72,6 @@ examples:
       simple_light: true
     context:
       dark_background: true
-  with_dark_icon:
-    data:
-      text: Coronavirus (COVID-19)
-      href: "/my-test-page"
-      dark_icon: true
-  with_dark_large_icon:
-    data:
-      text: Coronavirus (COVID-19)
-      href: "/my-test-page"
-      dark_large_icon: true
   with_light_icon:
     data:
       text: Coronavirus (COVID-19)
