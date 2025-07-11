@@ -48,7 +48,7 @@ describe "When the asset helper is configured", :capybara do
     visit "/component-guide"
 
     within(:xpath, "//head", visible: :hidden) do
-      expect(page).to have_xpath("//link[@rel=\"stylesheet\"]", visible: :hidden, count: 8)
+      expect(page).to have_xpath("//link[@rel=\"stylesheet\"]", visible: :hidden, count: 9)
 
       expect(page).to have_selector('link[href^="/assets/component_guide/application-"][rel="stylesheet"]', visible: :hidden)
       expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: :hidden)
@@ -97,7 +97,7 @@ describe "When the asset helper is configured", :capybara do
     visit "/component-guide"
 
     within(:xpath, "//head", visible: :hidden) do
-      expect(page).to have_xpath("//link[@rel=\"stylesheet\"]", visible: :hidden, count: 8)
+      expect(page).to have_xpath("//link[@rel=\"stylesheet\"]", visible: :hidden, count: 9)
 
       expect(page).to have_selector('link[href^="/assets/component_guide/application-"][rel="stylesheet"]', visible: :hidden)
       expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: :hidden)

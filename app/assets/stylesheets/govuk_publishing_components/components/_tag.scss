@@ -1,0 +1,15 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-tag.gem-c-tag--header {
+  @include govuk-media-query($from: desktop) {
+    margin-top: -13px;
+    vertical-align: middle;
+  }
+}
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-tag {
+    color: $govuk-print-text-colour;
+    background: none;
+  }
+}

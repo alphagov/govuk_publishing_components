@@ -82,6 +82,15 @@
   }
 }
 
+.gem-c-header__logo--environment {
+  @include govuk-media-query($until: desktop) {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+}
+
 .gem-c-header__content.govuk-header__content {
   width: auto;
 
