@@ -13,6 +13,7 @@
 * Allow skip_account to act based on boolean and string ([PR #4910](https://github.com/alphagov/govuk_publishing_components/pull/4910))
 * Make heading sizes match govuk-frontend ([PR #4620](https://github.com/alphagov/govuk_publishing_components/pull/4620))
 * **BREAKING:** Introduce tag component ([PR #4914](https://github.com/alphagov/govuk_publishing_components/pull/4914))
+* Action link component updates ([PR #4915](https://github.com/alphagov/govuk_publishing_components/pull/4915))
 
 ## 58.2.0
 
