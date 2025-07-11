@@ -15,21 +15,19 @@
   dark_large_icon ||= false
   light_icon ||= false
 
-  css_classes = %w(gem-c-action-link)
-  css_classes << "gem-c-action-link--inverse" if inverse
-  css_classes << "gem-c-action-link--dark-icon" if dark_icon
-  css_classes << "gem-c-action-link--dark-large-icon" if dark_large_icon
-  css_classes << "gem-c-action-link--light-icon" if light_icon
-  css_classes << "gem-c-action-link--simple" if simple
-  css_classes << "gem-c-action-link--simple-light" if simple_light
-  css_classes << "gem-c-action-link--with-subtext" if subtext
-  css_classes << "gem-c-action-link--mobile-subtext" if mobile_subtext
-
   link_classes = %w(govuk-link gem-c-action-link__link gem-c-force-print-link-styles)
   link_classes << "govuk-link--inverse" if inverse
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.add_class(css_classes.join(" "))
+  component_helper.add_class("gem-c-action-link")
+  component_helper.add_class("gem-c-action-link--inverse") if inverse
+  component_helper.add_class("gem-c-action-link--dark-icon") if dark_icon
+  component_helper.add_class("gem-c-action-link--dark-large-icon") if dark_large_icon
+  component_helper.add_class("gem-c-action-link--light-icon") if light_icon
+  component_helper.add_class("gem-c-action-link--simple") if simple
+  component_helper.add_class("gem-c-action-link--simple-light") if simple_light
+  component_helper.add_class("gem-c-action-link--with-subtext") if subtext
+  component_helper.add_class("gem-c-action-link--mobile-subtext") if mobile_subtext
 %>
 <% if text.present? %>
   <%= tag.div(**component_helper.all_attributes) do %>
