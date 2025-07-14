@@ -11,7 +11,6 @@
   inverse ||= false
   simple ||= false
   simple_light ||= false
-  light_icon ||= false
 
   link_classes = %w(govuk-link gem-c-action-link__link gem-c-force-print-link-styles)
   link_classes << "govuk-link--inverse" if inverse
@@ -19,7 +18,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-action-link")
   component_helper.add_class("gem-c-action-link--inverse") if inverse
-  component_helper.add_class("gem-c-action-link--light-icon") if light_icon
   component_helper.add_class("gem-c-action-link--simple") if simple
   component_helper.add_class("gem-c-action-link--simple-light") if simple_light
   component_helper.add_class("gem-c-action-link--with-subtext") if subtext
