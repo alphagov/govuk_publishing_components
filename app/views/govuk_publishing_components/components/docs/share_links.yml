@@ -252,6 +252,16 @@ examples:
           icon: 'linkedin'
         },
         {
+          href: '/threads-share-link',
+          text: 'Threads',
+          icon: 'threads'
+        },
+        {
+          href: '/bluesky-share-link',
+          text: 'Bluesky',
+          icon: 'bluesky'
+        },
+        {
           href: '/whatsapp-share-link',
           text: 'WhatsApp',
           icon: 'whatsapp'
