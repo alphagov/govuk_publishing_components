@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 59.0.0
 
 * Add Bluesky and Threads logos to share_links component ([PR #4918](https://github.com/alphagov/govuk_publishing_components/pull/4918))
 * Allow skip_account to act based on boolean and string ([PR #4910](https://github.com/alphagov/govuk_publishing_components/pull/4910))
