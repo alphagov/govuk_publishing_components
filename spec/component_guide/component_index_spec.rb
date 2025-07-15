@@ -79,6 +79,7 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
 @import 'govuk_publishing_components/components/step-by-step-nav-related';
 @import 'govuk_publishing_components/components/tabs';
+@import 'govuk_publishing_components/components/tag';
 @import 'govuk_publishing_components/components/textarea';"
 
     expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (20)")

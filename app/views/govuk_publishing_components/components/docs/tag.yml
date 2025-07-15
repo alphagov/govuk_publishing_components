@@ -1,0 +1,57 @@
+name: Tag
+description: Use the tag component to show users the status of something. For example, the server environment the page is being rendered from.
+accessibility_criteria: |
+  - should have a text colour contrast ratio of more than 4.5:1 with its background to be visually distinct
+  - does not use colour alone to convey information
+  - should not be used within a link, as a button, or for interactivity
+uses_component_wrapper_helper: true
+govuk_frontend_components:
+  - tag
+examples:
+  default:
+    data:
+      text: Hello world!
+  sentence_case_conversion:
+    description: The component automatically converts text to sentence case as shown.
+    data:
+      text: HELLO WORLD!
+  grey:
+    data:
+      text: Hello world!
+      colour: grey
+  green:
+    data:
+      text: Hello world!
+      colour: green
+  turquoise:
+    data:
+      text: Hello world!
+      colour: turquoise
+  blue:
+    data:
+      text: Hello world!
+      colour: blue
+  light_blue:
+    data:
+      text: Hello world!
+      colour: light-blue
+  purple:
+    data:
+      text: Hello world!
+      colour: purple
+  pink:
+    data:
+      text: Hello world!
+      colour: pink
+  red:
+    data:
+      text: Hello world!
+      colour: red
+  orange:
+    data:
+      text: Hello world!
+      colour: orange
+  yellow:
+    data:
+      text: Hello world!
+      colour: yellow
