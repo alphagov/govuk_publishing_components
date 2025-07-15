@@ -140,7 +140,7 @@ $gem-guide-border-width: 1px;
 
 .component-guide-preview--simple {
   border: 0;
-  padding: govuk-spacing(2);
+  padding: 0;
 
   &::before {
     display: none;
@@ -248,14 +248,14 @@ html {
   // stylelint-enable selector-max-id
 }
 
+// wraps each component variation on the preview page
 .component-guide-preview-page {
-  padding: (govuk-spacing(6) * 1.5) 0;
-  position: relative;
+  margin-bottom: govuk-spacing(9);
 
   .preview-title {
     margin-top: 0;
-    margin-bottom: 1em;
-    @include govuk-font($size: 16, $weight: bold);
+    margin-bottom: govuk-spacing(4);
+    @include govuk-font($size: 19, $weight: bold);
 
     a {
       @include govuk-link-common;
