@@ -13,49 +13,10 @@ examples:
       text: Look at this margin
       href: "/page"
       margin_bottom: 9
-  with_no_wrapping_text:
-    data:
-      text: "Coronavirus (COVID-19):"
-      nowrap_text: what you need to do
-      href: "/page"
   inverse:
     data:
       text: "Coronavirus (COVID-19)"
       href: "/page"
-      inverse: true
-    context:
-      dark_background: true
-  with_subtext:
-    data:
-      text: Emergency something
-      href: "/page"
-      subtext: This is about the emergency
-  with_subtext_on_a_dark_background:
-    data:
-      text: Emergency something
-      href: "/page"
-      subtext: This is about the emergency that is happening right now unfortunately so pay attention
-      inverse: true
-    context:
-      dark_background: true
-  mobile_subtext:
-    description: Lock the subtext beneath the main text, so the component with subtext always appears as it does on mobile.
-    data:
-      text: Try not to panic now
-      href: "/page"
-      subtext: "The thing that is happening is pretty scary but we'll get through it"
-      mobile_subtext: true
-  with_link_on_subtext:
-    description: The subtext can also be a link if required. The link on the main text is optional.
-    data:
-      text: Remain calm
-      subtext: Better things are ahead
-      subtext_href: "/page"
-  with_link_on_subtext_on_a_dark_background:
-    data:
-      text: Remain calm
-      subtext: Better things are ahead
-      subtext_href: "/page"
       inverse: true
     context:
       dark_background: true
@@ -64,11 +25,3 @@ examples:
       text: Getting financial help and keeping your business safe
       href: "/financial-help"
       simple: true
-  simple_light_arrow:
-    data:
-      text: Getting financial help and keeping your business safe
-      href: "/financial-help"
-      inverse: true
-      simple_light: true
-    context:
-      dark_background: true

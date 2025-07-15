@@ -3,11 +3,7 @@
 
   local_assigns[:margin_bottom] ||= 0
   text ||= false
-  nowrap_text ||= false
   href ||= false
-  subtext ||= false
-  subtext_href ||= false
-  mobile_subtext ||= false
   inverse ||= false
   simple ||= false
   simple_light ||= false
@@ -19,9 +15,6 @@
   component_helper.add_class("gem-c-action-link")
   component_helper.add_class("gem-c-action-link--inverse") if inverse
   component_helper.add_class("gem-c-action-link--simple") if simple
-  component_helper.add_class("gem-c-action-link--simple-light") if simple_light
-  component_helper.add_class("gem-c-action-link--with-subtext") if subtext
-  component_helper.add_class("gem-c-action-link--mobile-subtext") if mobile_subtext
 %>
 <% if text.present? %>
   <%= tag.div(**component_helper.all_attributes) do %>
@@ -29,7 +22,6 @@
       <span class="gem-c-action-link__link-wrapper">
         <% main_text = capture do %>
           <%= text %>
-          <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
         <% end %>
 
         <% if href.present? %>
@@ -40,24 +32,7 @@
           <%= main_text %>
         <% end %>
       </span>
-
-      <% if subtext %>
-        <span class="gem-c-action-link__subtext-wrapper">
-          <% if subtext_href %>
-            <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") do %>
-              <%= link_to subtext, subtext_href, class: link_classes %>
-            <% end %>
-          <% else %>
-            <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
-          <% end %>
-        </span>
-      <% end %>
     <% end %>
-
-    <% if subtext %>
-      <%= content_tag(:span, contents, class: "gem-c-action-link__contents-wrapper") %>
-    <% else %>
-      <%= contents %>
-    <% end %>
+    <%= contents %>
   <% end %>
 <% end %>
