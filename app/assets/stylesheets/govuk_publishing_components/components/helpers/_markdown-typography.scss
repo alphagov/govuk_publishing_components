@@ -30,7 +30,7 @@
 
   h2 {
     margin: 0 0 govuk-spacing(4) 0;
-    @include govuk-font($size: 27, $weight: bold);
+    @include govuk-font($size: 24, $weight: bold);
   }
 
   h3 {
