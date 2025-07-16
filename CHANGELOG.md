@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Change skip_account to only accept a boolean ([PR #](https://github.com/alphagov/govuk_publishing_components/pull/4927))
+* Update cross service header to rebranded version ([PR #4922](https://github.com/alphagov/govuk_publishing_components/pull/4922))
 
 ## 59.0.1
 
