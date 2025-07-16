@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix broken background colour on Select with Search component ([PR #4924](https://github.com/alphagov/govuk_publishing_components/pull/4924))
+
 ## 59.0.0
 
 * Add Bluesky and Threads logos to share_links component ([PR #4918](https://github.com/alphagov/govuk_publishing_components/pull/4918))
