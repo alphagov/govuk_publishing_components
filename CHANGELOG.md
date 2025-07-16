@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update Action link component markup and styles ([PR #4932](https://github.com/alphagov/govuk_publishing_components/pull/4932))
+* Update cross service header to rebranded version ([PR #4922](https://github.com/alphagov/govuk_publishing_components/pull/4922))
 
 ## 59.1.1
 
