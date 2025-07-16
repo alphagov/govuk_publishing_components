@@ -17,6 +17,11 @@
     margin: 0 0 govuk-spacing(6) 0;
   }
 
+  .address {
+    // Override the browser default of italics for <address>
+    font-style: normal;
+  }
+
   .contact {
     position: relative;
     @include govuk-clearfix;
