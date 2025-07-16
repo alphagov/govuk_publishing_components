@@ -1,5 +1,7 @@
 // overload the choices.js variables
 
+@import "govuk_publishing_components/individual_component_support";
+
 $font-size: 19px;
 
 $choices-bg-color: govuk-colour("white") !default;
@@ -14,7 +16,6 @@ $choices-border-radius-item: 0 !default;
 $choices-z-index: 2 !default;
 $choices-button-dimension: 12px !default;
 
-@import "govuk_publishing_components/individual_component_support";
 @import "mixins/prefixed-transform";
 @import "govuk/components/label/label";
 @import "choices.js/src/styles/choices";
