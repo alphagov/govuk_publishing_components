@@ -1,7 +1,8 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-action-link {
-  display: table;
+  align-items: center;
+  display: flex;
 
   @include govuk-media-query($until: tablet) {
     max-width: 410px;
@@ -9,13 +10,14 @@
 
   &::before {
     content: "";
-    display: table-cell;
     width: 36px;
     height: 28px;
     background: url("govuk_publishing_components/action-link-arrow--light.svg");
     background-repeat: no-repeat;
     background-size: 28px auto;
     background-position: 0 0;
+    align-self: flex-start;
+    flex-shrink: 0;
 
     @include govuk-media-query($from: tablet) {
       width: 45px;
@@ -26,8 +28,6 @@
 }
 
 .gem-c-action-link__link-wrapper {
-  display: table-cell;
-  vertical-align: middle;
   @include govuk-font(19, $weight: bold, $line-height: 1.3);
 }
 
