@@ -52,11 +52,6 @@ RSpec.describe GovukPublishingComponents::Presenters::SinglePageNotificationButt
       expect(single_helper.skip_account_param).to eq("single_page_subscription")
     end
 
-    it "sets skip_account when skip_account is a string value of true" do
-      single_helper = described_class.new(skip_account: "true")
-      expect(single_helper.skip_the_gov_uk_account?).to be(true)
-    end
-
     it "sets skip_account when skip_account is a boolean value of true" do
       single_helper = described_class.new(skip_account: true)
       expect(single_helper.skip_the_gov_uk_account?).to be(true)
@@ -68,7 +63,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SinglePageNotificationButt
     end
 
     it "doesn't set skip_account with an invalid value" do
-      single_helper = described_class.new(skip_account: "moo")
+      single_helper = described_class.new(skip_account: "true")
       expect(single_helper.skip_the_gov_uk_account?).to be(false)
     end
   end
