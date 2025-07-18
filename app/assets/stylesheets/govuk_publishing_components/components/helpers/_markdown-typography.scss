@@ -1,12 +1,14 @@
+@use "govuk/base" as govuk_frontend;
+
 @mixin markdown-typography {
-  @include govuk-text-colour;
-  @include govuk-font($size: 16);
+  @include govuk_frontend.govuk-text-colour;
+  @include govuk_frontend.govuk-font($size: 16);
 
   ol,
   ul,
   p {
-    margin: 0 0 govuk-spacing(4) 0;
-    @include govuk-font($size: 19);
+    margin: 0 0 govuk_frontend.govuk-spacing(4) 0;
+    @include govuk_frontend.govuk-font($size: 19);
   }
 
   // Headings
@@ -16,7 +18,7 @@
 
   * + h2,
   * + h3 {
-    padding-top: govuk-spacing(4);
+    padding-top: govuk_frontend.govuk-spacing(4);
   }
 
   // Markdown is expected to be styled within a document with a H1 title
@@ -25,17 +27,17 @@
   h1 {
     margin: 0;
     padding: 0;
-    @include govuk-font($size: 19);
+    @include govuk_frontend.govuk-font($size: 19);
   }
 
   h2 {
-    margin: 0 0 govuk-spacing(4) 0;
-    @include govuk-font($size: 24, $weight: bold);
+    margin: 0 0 govuk_frontend.govuk-spacing(4) 0;
+    @include govuk_frontend.govuk-font($size: 24, $weight: bold);
   }
 
   h3 {
-    margin: 0 0 govuk-spacing(4) 0;
-    @include govuk-font($size: 19, $weight: bold);
+    margin: 0 0 govuk_frontend.govuk-spacing(4) 0;
+    @include govuk_frontend.govuk-font($size: 19, $weight: bold);
   }
 
   // H4, H5 and H6 are discouraged and thus styled the same
@@ -44,18 +46,18 @@
   h5,
   h6 {
     margin: 0;
-    @include govuk-font($size: 19, $weight: bold);
+    @include govuk_frontend.govuk-font($size: 19, $weight: bold);
   }
 
   // Links
 
   a {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
-    @include govuk-text-break-word;
+    @include govuk_frontend.govuk-link-common;
+    @include govuk_frontend.govuk-link-style-default;
+    @include govuk_frontend.govuk-text-break-word;
 
     &:focus {
-      @include govuk-focused-text;
+      @include govuk_frontend.govuk-focused-text;
     }
   }
 
@@ -67,7 +69,7 @@
     // utilise the type attribute for the formatting. Browsers default to a
     // style of decimal.
     list-style-position: outside;
-    margin: 0 0 govuk-spacing(4) govuk-spacing(4);
+    margin: 0 0 govuk_frontend.govuk-spacing(4) govuk_frontend.govuk-spacing(4);
     padding: 0;
   }
 
@@ -76,11 +78,11 @@
   }
 
   li {
-    margin: 0 0 govuk-spacing(2);
+    margin: 0 0 govuk_frontend.govuk-spacing(2);
     padding: 0;
 
     p {
-      margin: 0 0 govuk-spacing(2);
+      margin: 0 0 govuk_frontend.govuk-spacing(2);
     }
   }
 
@@ -100,14 +102,14 @@
   // Horizontal Rule
 
   hr {
-    margin-top: govuk-spacing(6) - 1px;
-    margin-bottom: govuk-spacing(6);
-    border-top: 1px solid $govuk-border-colour;
+    margin-top: govuk_frontend.govuk-spacing(6) - 1px;
+    margin-bottom: govuk_frontend.govuk-spacing(6);
+    border-top: 1px solid govuk_frontend.$govuk-border-colour;
   }
 
   code {
     padding: 0 5px;
     color: #d13118;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk_frontend.govuk-colour("light-grey");
   }
 }

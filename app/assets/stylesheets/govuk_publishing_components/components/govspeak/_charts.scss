@@ -9,8 +9,10 @@
 // adapted from magna-charta example stylesheet
 // https://github.com/alphagov/magna-charta/blob/master/demo/stylesheets/magna-charta.css
 
-// stylelint-disable max-nesting-depth
+@use "govuk/base" as *;
+@use "sass:list";
 
+// stylelint-disable max-nesting-depth
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   // DEFAULT CHART STYLES
@@ -92,9 +94,9 @@
       }
 
       // Key colours
-      @for $i from 0 to length($bar-colours) {
+      @for $i from 0 to list.length($bar-colours) {
         .mc-key-#{$i + 1} {
-          border-left-color: nth($bar-colours, $i + 1);
+          border-left-color: list.nth($bar-colours, $i + 1);
         }
       }
     }
@@ -150,10 +152,10 @@
         }
 
         // Bar colours
-        @for $i from 0 to length($bar-colours) {
+        @for $i from 0 to list.length($bar-colours) {
           .mc-bar-#{$i + 1} {
-            background-color: nth($bar-colours, $i + 1);
-            color: nth($bar-text-colours, $i + 1);
+            background-color: list.nth($bar-colours, $i + 1);
+            color: list.nth($bar-text-colours, $i + 1);
           }
         }
 
@@ -211,15 +213,15 @@
     }
 
     // Charts with multiple columns get different coloured bars
-    $len: length($bar-colours);
+    $len: list.length($bar-colours);
 
     @for $i from 0 to $len {
       .mc-tr .mc-td.mc-bar-cell.mc-bar-#{$i + 1} {
-        background-color: nth($bar-colours, $i + 1);
+        background-color: list.nth($bar-colours, $i + 1);
       }
 
       .mc-tr .mc-th.mc-key-#{$i + 1} {
-        border-left-color: nth($bar-colours, $i + 1);
+        border-left-color: list.nth($bar-colours, $i + 1);
       }
     }
 

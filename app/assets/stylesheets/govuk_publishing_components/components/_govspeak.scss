@@ -1,25 +1,25 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support";
 
-@import "govspeak/attachment";
-@import "govspeak/button";
-@import "govspeak/call-to-action";
-@import "govspeak/charts";
-@import "govspeak/contact";
-@import "govspeak/example";
-@import "govspeak/footnotes";
-@import "govspeak/form-download";
-@import "govspeak/fraction";
-@import "govspeak/highlight-answer";
-@import "govspeak/images";
-@import "govspeak/information-callout";
-@import "govspeak/legislative-list";
-@import "govspeak/media-player";
-@import "govspeak/place";
-@import "govspeak/stat-headline";
-@import "govspeak/steps";
-@import "govspeak/tables";
-@import "govspeak/typography";
-@import "govspeak/warning-callout";
+@use "govspeak/attachment";
+@use "govspeak/button";
+@use "govspeak/call-to-action";
+@use "govspeak/charts";
+@use "govspeak/contact";
+@use "govspeak/example";
+@use "govspeak/footnotes";
+@use "govspeak/form-download";
+@use "govspeak/fraction";
+@use "govspeak/highlight-answer";
+@use "govspeak/images";
+@use "govspeak/information-callout";
+@use "govspeak/legislative-list";
+@use "govspeak/media-player";
+@use "govspeak/place";
+@use "govspeak/stat-headline";
+@use "govspeak/steps";
+@use "govspeak/tables";
+@use "govspeak/typography";
+@use "govspeak/warning-callout";
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {

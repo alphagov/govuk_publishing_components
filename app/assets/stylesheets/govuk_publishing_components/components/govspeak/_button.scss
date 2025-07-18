@@ -1,8 +1,9 @@
+@use "govuk/base" as *;
+@use "govuk/components/button/button";
+
 // stylelint-disable scss/at-extend-no-missing-placeholder
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
-  @import "govuk/components/button/button";
-
   // Some links in Govspeak should look like buttons[1] when using:
   // ```
   //    {button}[Random page](https://gov.uk/random){/button}
