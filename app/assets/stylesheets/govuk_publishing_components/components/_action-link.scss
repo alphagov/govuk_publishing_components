@@ -1,8 +1,12 @@
 @import "govuk_publishing_components/individual_component_support";
 
 .gem-c-action-link {
-  align-items: center;
-  display: flex;
+  display: table;
+
+  @supports (display: flex) {
+    align-items: center;
+    display: flex;
+  }
 
   @include govuk-media-query($until: tablet) {
     max-width: 410px;
@@ -10,7 +14,12 @@
 }
 
 .gem-c-action-link__icon {
-  align-self: flex-start;
+  @supports (display: flex) {
+    align-self: flex-start;
+  }
+  @supports not (display: flex) {
+    display: table-cell;
+  }
   box-sizing: border-box;
   flex-shrink: 0;
   height: 28px;
@@ -49,6 +58,10 @@
 
 .gem-c-action-link__link-wrapper {
   @include govuk-font(19, $weight: bold, $line-height: 1.3);
+  @supports not (display: flex) {
+    display: table-cell;
+    vertical-align: middle;
+  }
 }
 
 .gem-c-action-link__link {
