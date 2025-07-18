@@ -62,6 +62,17 @@ describe "Service navigation", type: :view do
     assert_select(".govuk-service-navigation__wrapper[aria-label='Custom label']")
   end
 
+  it "renders with govuk-width-container by default" do
+    render_component({ navigation_items: })
+    assert_select(".gem-c-service-navigation div.govuk-width-container")
+  end
+
+  it "renders with the full width class if full_width is true" do
+    render_component({ navigation_items:, full_width: true })
+    assert_select(".gem-c-service-navigation div.govuk-width-container", false)
+    assert_select(".gem-c-service-navigation div.gem-c-service-navigation--full-width")
+  end
+
   it "renders with active and current navigation item" do
     updated_navigation_items = navigation_items.map { |item| item[:text] == "Navigation item 2" ? item.merge(active: true) : item }
     render_component({ navigation_items: updated_navigation_items })

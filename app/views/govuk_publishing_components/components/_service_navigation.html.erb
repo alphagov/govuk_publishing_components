@@ -10,10 +10,12 @@
   component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
   component_helper.add_aria_attribute({ label: "Service information" }) if service_name.present?
   component_helper.add_data_attribute({ module: "govuk-service-navigation" })
+
+  full_width ||= false
 %>
 <% if service_name.present? || navigation_items.present? %>
   <% service_navigation_content = capture do %>
-    <div class="govuk-width-container">
+    <div class="<%= full_width ? "gem-c-service-navigation--full-width" : "govuk-width-container" %>">
       <div class="govuk-service-navigation__container">
         <% if service_name %>
           <% if service_name_url %>
