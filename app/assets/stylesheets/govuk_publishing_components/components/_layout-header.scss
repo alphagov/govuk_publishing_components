@@ -59,9 +59,9 @@
 }
 
 .gem-c-header__logo {
-  @include govuk-media-query($from: desktop) {
-    white-space: nowrap;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: govuk-spacing(2);
 }
 
 .gem-c-header__content.govuk-header__content {
