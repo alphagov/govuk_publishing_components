@@ -3,14 +3,9 @@
 @import "govuk_publishing_components/components/skip-link";
 @import "govuk/components/header/header";
 
-.gem-c-layout-header--no-bottom-border,
-.gem-c-layout-header--no-bottom-border .govuk-header__container {
-  margin-bottom: 0;
+.gem-c-layout-header.gem-c-layout-header--no-bottom-border,
+.gem-c-layout-header.gem-c-layout-header--no-bottom-border .govuk-header__container {
   border-bottom: 0;
-
-  @include govuk-media-query($until: tablet) {
-    padding-bottom: govuk-spacing(1);
-  }
 }
 
 .gem-c-layout-header--search-left {
