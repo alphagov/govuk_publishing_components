@@ -38,21 +38,12 @@
         </svg>
       </span>
     <% end %>
-    <% contents = capture do %>
-      <span class="gem-c-action-link__link-wrapper">
-        <% main_text = capture do %>
-          <%= text %>
-        <% end %>
-
-        <% if href.present? %>
-          <%= link_to href, class: link_classes do %>
-            <%= main_text %>
-          <% end %>
-        <% else %>
-          <%= main_text %>
-        <% end %>
-      </span>
-    <% end %>
-    <%= contents %>
+    <span class="gem-c-action-link__link-wrapper">
+      <% if href.present? %>
+        <%= link_to text, href, class: link_classes %>
+      <% else %>
+        <%= text %>
+      <% end %>
+    </span>
   <% end %>
 <% end %>
