@@ -14,6 +14,7 @@
 ## 59.0.1
 
 * Fix broken background colour on Select with Search component ([PR #4924](https://github.com/alphagov/govuk_publishing_components/pull/4924))
+* Update Action link component markup and styles ([PR #4932](https://github.com/alphagov/govuk_publishing_components/pull/4932))
 
 ## 59.0.0
 
