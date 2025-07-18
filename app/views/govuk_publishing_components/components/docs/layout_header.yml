@@ -31,17 +31,21 @@ examples:
       environment: production
       product_name: Product
   with_navigation:
+    description: Note that [remove_bottom_border](#no_bottom_border) automatically gets set to true on the header when navigation items are added.
     data:
       environment: production
       navigation_items:
-      - text: Navigation item 1
+      - text: Mainstream browse
         href: "item-1"
         active: true
-      - text: Navigation item 2
+      - text: Step by steps
         href: "item-2"
-      - text: Hidden on desktop
+      - text: Some kind of topic page
         href: "item-3"
-        show_only_in_collapsed_menu: true
+      - text: Jonathan Doe
+        href: "item-4"
+      - text: Logout
+        href: "item-5"
   with_product_name_and_navigation:
     data:
       product_name: Component Guide 999.9.9
@@ -52,9 +56,8 @@ examples:
         active: true
       - text: Navigation item 2
         href: "item-2"
-      - text: Hidden on desktop
+      - text: Navigation item 3
         href: "item-3"
-        show_only_in_collapsed_menu: true
   with_navigation_link_data_attributes:
     description: Supports adding data attributes i.e for tracking
     data:
@@ -73,7 +76,7 @@ examples:
       environment: production
       full_width: true
   no_bottom_border:
-    description: This is useful for pages where a large full-width banner is the first thing to appear on the page, for example, the [GOV.UK homepage](https://www.gov.uk)
+    description: This is useful for pages where a large full-width banner is the first thing to appear on the page, for example, the [GOV.UK homepage](https://www.gov.uk). This is also automatically enabled when navigation items exist.
     data:
       remove_bottom_border: true
   with_custom_logo_link:

@@ -57,21 +57,38 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__product-name", text: "Product name"
   end
 
-  it "renders the header with navigation items" do
+  it "renders the header with service navigation items" do
     navigation_items = [
       { text: "Foo", href: "/foo", active: true },
       { text: "Bar", href: "/bar" },
-      { text: "Hello", href: "/hello", show_only_in_collapsed_menu: true },
+      { text: "Hello", href: "/hello" },
     ]
 
     render_component(environment: "staging", navigation_items:)
 
-    assert_select ".govuk-header__navigation .govuk-header__menu-button", text: "Menu"
-    assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--active", text: "Foo"
-    assert_select ".govuk-header__navigation-item", text: "Bar"
-    assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--collapsed-menu-only", text: "Hello"
-    assert_select ".gem-c-header__nav[aria-label='Top level']"
-    assert_select ".govuk-header__menu-button[hidden]"
+    assert_select(".gem-c-service-navigation .govuk-width-container")
+    assert_select(".gem-c-service-navigation .gem-c-service-navigation--full-width", false)
+    assert_select ".govuk-service-navigation__list"
+
+    assert_select ".govuk-service-navigation__wrapper .govuk-service-navigation__toggle", text: "Menu"
+    assert_select ".govuk-service-navigation__item.govuk-service-navigation__item--active", text: "Foo"
+    assert_select ".govuk-service-navigation__item", text: "Bar"
+    assert_select ".govuk-service-navigation__item", text: "Hello"
+    assert_select ".govuk-service-navigation__wrapper[aria-label='Top level']"
+    assert_select ".govuk-service-navigation__toggle[hidden]"
+  end
+
+  it "renders the service navigation with full_width when full_width is true" do
+    navigation_items = [
+      { text: "Foo", href: "/foo", active: true },
+      { text: "Bar", href: "/bar" },
+      { text: "Hello", href: "/hello" },
+    ]
+
+    render_component(environment: "staging", navigation_items:, full_width: true)
+
+    assert_select(".gem-c-service-navigation div.govuk-width-container", false)
+    assert_select(".gem-c-service-navigation div.gem-c-service-navigation--full-width")
   end
 
   it "renders the header navigation items with custom aria-label when navigation_aria_label is specified" do
@@ -83,7 +100,7 @@ describe "Layout header", type: :view do
 
     render_component(environment: "staging", navigation_items:, navigation_aria_label: "My fancy label")
 
-    assert_select ".gem-c-header__nav[aria-label='My fancy label']"
+    assert_select ".govuk-service-navigation__wrapper[aria-label='My fancy label']"
   end
 
   it "renders the navigation links with data attributes when specified" do
@@ -106,8 +123,8 @@ describe "Layout header", type: :view do
 
     render_component(navigation_items:)
 
-    assert_select ".gem-c-header__nav .govuk-header__link[data-hello='world']", text: "Foo"
-    assert_select ".gem-c-header__nav .govuk-header__link[data-more-than-one-word='test']", text: "Bar"
+    assert_select ".govuk-service-navigation__list .govuk-service-navigation__link[data-hello='world']", text: "Foo"
+    assert_select ".govuk-service-navigation__list .govuk-service-navigation__link[data-more-than-one-word='test']", text: "Bar"
   end
 
   it "renders the header without the bottom border" do

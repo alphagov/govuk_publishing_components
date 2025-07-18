@@ -12,25 +12,23 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-header govuk-header")
-  component_helper.add_class("gem-c-layout-header--no-bottom-border") if remove_bottom_border
+  component_helper.add_class("gem-c-layout-header--no-bottom-border") if remove_bottom_border || navigation_items
   component_helper.add_data_attribute({ module: "govuk-header" })
 %>
 
 <%= tag.header(**component_helper.all_attributes) do %>
-  <div class="govuk-header__container <%= width_class %>">
-    <div class="govuk-grid-row">
-      <div class="gem-c-layout-header__logo govuk-grid-column-one-half">
-        <%= render "govuk_publishing_components/components/layout_header/header_logo", {
-          environment: environment,
-          logo_link: logo_link,
-          product_name: product_name,
-        } %>
-      </div>
-      <% if navigation_items.any? %>
-        <div class="govuk-header__content gem-c-header__content govuk-grid-column-full govuk-!-display-none-print">
-          <%= render "govuk_publishing_components/components/layout_header/navigation_items", navigation_items: navigation_items, navigation_aria_label: navigation_aria_label %>
-        </div>
-      <% end %>
-    </div>
+  <div class="govuk-header__container <%= width_class %> gem-c-layout-header__logo">
+    <%= render "govuk_publishing_components/components/layout_header/header_logo", {
+      environment:,
+      logo_link:,
+      product_name:,
+    } %>
   </div>
+  <% if navigation_items.any? %>
+    <%= render "govuk_publishing_components/components/service_navigation", {
+      navigation_items:,
+      navigation_aria_label:,
+      full_width:,
+    } %>
+  <% end %>
 <% end %>
