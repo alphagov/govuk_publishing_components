@@ -19,17 +19,19 @@
 <% if text.present? %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if simple || simple_light %>
-      <span class="gem-c-action-link__icon gem-c-action-link__icon--simple">
-        <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" fill="none" viewBox="0 0 23 23">
-          <path fill="#272828" d="M14.943 11.795 10.44 7.292 11.733 6l5.795 5.795-5.795 5.795-1.293-1.292 4.503-4.503Z" />
-          <path fill="#272828" d="M3.956 10.881h11.485v1.828H3.956v-1.828Z" />
+      <span class="gem-c-action-link__icon gem-c-action-link__icon--simple" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" viewBox="0 0 23 23">
+          <g class="gem-c-action-link__icon__arrow">
+            <path d="M14.943 11.795 10.44 7.292 11.733 6l5.795 5.795-5.795 5.795-1.293-1.292 4.503-4.503Z" />
+            <path d="M3.956 10.881h11.485v1.828H3.956v-1.828Z" />
+          </g>
         </svg>
       </span>
     <% elsif %>
-      <span class="gem-c-action-link__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" fill="none" viewBox="0 0 27 27">
-          <circle cx="13.5" cy="13.5" r="13.5" fill="#EEEFEF"/>
-          <g fill="#000">
+      <span class="gem-c-action-link__icon" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true" viewBox="0 0 27 27">
+          <circle class="gem-c-action-link__icon__circle" cx="13.5" cy="13.5" r="13.5" />
+          <g class="gem-c-action-link__icon__arrow">
             <path d="m17.701 13.526-3.827-3.828L14.973 8.6l4.926 4.926-4.926 4.926-1.099-1.099 3.827-3.827Z"/>
             <path d="M8.363 12.749h9.762v1.554H8.363v-1.554Z"/>
           </g>
