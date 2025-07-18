@@ -38,11 +38,11 @@
                 %>
                 <%= tag.li nav[:text], class: nav_classes do %>
                   <% if nav[:active] %>
-                    <%= link_to(nav[:href], class: "govuk-service-navigation__link", aria: { current: aria_current }) do %>
+                    <%= link_to(nav[:href], class: "govuk-service-navigation__link", aria: { current: aria_current }, data: nav[:data]) do %>
                       <%= tag.strong(nav[:text], class: "govuk-service-navigation__active-fallback") %>
                     <% end %>
                   <% else %>
-                    <%= link_to nav[:text], nav[:href], class: "govuk-service-navigation__link" %>
+                    <%= link_to nav[:text], nav[:href], class: "govuk-service-navigation__link", data: nav[:data] %>
                   <% end %>
                 <% end %>
               <% end %>

@@ -10,6 +10,10 @@ describe "Service navigation", type: :view do
       {
         text: "Navigation item 1",
         href: "#",
+        data: {
+          hello: "world",
+          another: "test",
+        },
       },
       {
         text: "Navigation item 2",
@@ -18,6 +22,10 @@ describe "Service navigation", type: :view do
       {
         text: "Navigation item 3",
         href: "#",
+        data: {
+          example: "attribute",
+          another: "one",
+        },
       },
     ]
   end
@@ -34,6 +42,14 @@ describe "Service navigation", type: :view do
     assert_select(".govuk-service-navigation__item:nth-child(1) .govuk-service-navigation__link", text: "Navigation item 1")
     assert_select(".govuk-service-navigation__item:nth-child(2) .govuk-service-navigation__link", text: "Navigation item 2")
     assert_select(".govuk-service-navigation__item:nth-child(3) .govuk-service-navigation__link", text: "Navigation item 3")
+  end
+
+  it "renders with data attributes on links" do
+    render_component({ navigation_items: })
+    assert_select("div.gem-c-service-navigation")
+    assert_select(".govuk-service-navigation__item:nth-child(1) .govuk-service-navigation__link[data-hello=world][data-another=test]")
+    assert_select(".govuk-service-navigation__item:nth-child(2) .govuk-service-navigation__link[data-hello=world][data-another=test]", false)
+    assert_select(".govuk-service-navigation__item:nth-child(3) .govuk-service-navigation__link[data-example=attribute][data-another=one]")
   end
 
   it "renders with active and current navigation item" do
