@@ -3,53 +3,9 @@
 @import "govuk_publishing_components/components/skip-link";
 @import "govuk/components/header/header";
 
-.gem-c-layout-header--no-bottom-border,
-.gem-c-layout-header--no-bottom-border .govuk-header__container {
-  margin-bottom: 0;
+.gem-c-layout-header.gem-c-layout-header--no-bottom-border,
+.gem-c-layout-header.gem-c-layout-header--no-bottom-border .govuk-header__container {
   border-bottom: 0;
-
-  @include govuk-media-query($until: tablet) {
-    padding-bottom: govuk-spacing(1);
-  }
-}
-
-.gem-c-layout-header--search-left {
-  .gem-c-header__menu-button.govuk-header__menu-button {
-    margin-top: - govuk-spacing(7);
-    left: govuk-spacing(3);
-  }
-
-  .gem-c-header__nav-wrapper {
-    position: relative;
-    padding-left: 0;
-  }
-
-  .govuk-header__navigation--end {
-    padding-top: 0;
-    text-align: left;
-  }
-
-  .gem-c-header__content {
-    position: relative;
-    width: 100%;
-    padding-bottom: govuk-spacing(2);
-  }
-
-  @include govuk-media-query($from: desktop) {
-    .govuk-header__navigation-item {
-      padding: 0 0 govuk-spacing(1) 0;
-    }
-
-    .gem-c-header__logo {
-      margin-top: 0;
-    }
-
-    .gem-c-header__content.govuk-header__content {
-      @include govuk-grid-column(two-thirds);
-      padding-left: govuk-spacing(6);
-      padding-right: govuk-spacing(1);
-    }
-  }
 }
 
 .gem-c-layout-header__logo {
@@ -64,17 +20,9 @@
 }
 
 .gem-c-header__logo {
-  @include govuk-media-query($from: desktop) {
-    white-space: nowrap;
-  }
-}
-
-.gem-c-header__content.govuk-header__content {
-  width: auto;
-
-  @include govuk-media-query($from: desktop) {
-    float: right;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: govuk-spacing(2);
 }
 
 .gem-c-header__product-name {
@@ -83,21 +31,6 @@
   @include govuk-media-query($from: tablet) {
     display: inline-block;
   }
-}
-
-.govuk-header__navigation-item--collapsed-menu-only {
-  @include govuk-media-query($from: desktop) {
-    display: none;
-  }
-}
-
-.govuk-header__menu-button.gem-c-header__menu-button {
-  top: govuk-spacing(4);
-  right: 0;
-}
-
-.gem-c-header__nav {
-  clear: both;
 }
 
 @include govuk-media-query($media-type: print) {
