@@ -4,6 +4,7 @@
   service_name ||= nil
   service_name_url ||= nil
   navigation_items ||= []
+  navigation_aria_label ||= t("components.layout_header.menu")
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
@@ -25,7 +26,7 @@
         <% end %>
 
         <% if navigation_items.present? %>
-          <nav aria-label="<%= t("components.layout_header.menu") %>" class="govuk-service-navigation__wrapper">
+          <nav aria-label="<%= navigation_aria_label %>" class="govuk-service-navigation__wrapper">
             <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
               Menu
             </button>
