@@ -55,3 +55,12 @@ examples:
         data:
           module: "example-2"
           something_else: "hello 2"
+  with_custom_aria_label_on_the_nav_element:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      navigation_aria_label: "Custom label"
