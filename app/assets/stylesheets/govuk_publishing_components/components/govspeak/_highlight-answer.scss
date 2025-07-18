@@ -1,5 +1,6 @@
-// stylelint-disable max-nesting-depth
+@use "govuk/base" as *;
 
+// stylelint-disable max-nesting-depth
 $highlight-answer-bg-color: govuk-colour("green");
 $highlight-answer-color: govuk-colour("white");
 
