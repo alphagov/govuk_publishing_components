@@ -1,0 +1,173 @@
+{
+  "name": "choices.js",
+  "version": "11.1.0",
+  "description": "A vanilla JS customisable text input/select box plugin",
+  "main": "./public/assets/scripts/choices.js",
+  "module": "./public/assets/scripts/choices.mjs",
+  "unpkg": "./public/assets/scripts/choices.js",
+  "jsdelivr": "./public/assets/scripts/choices.js",
+  "types": "./public/types/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./public/types/src/index.d.ts",
+      "import": "./public/assets/scripts/choices.mjs",
+      "require": "./public/assets/scripts/choices.js",
+      "style": "./public/assets/styles/choices.css",
+      "sass": "./src/styles/choices.scss"
+    },
+    "./search-basic": {
+      "types": "./public/types/src/index.d.ts",
+      "import": "./public/assets/scripts/choices.search-basic.mjs",
+      "require": "./public/assets/scripts/choices.search-basic.min.js"
+    },
+    "./search-prefix": {
+      "types": "./public/types/src/index.d.ts",
+      "import": "./public/assets/scripts/choices.search-prefix.mjs",
+      "require": "./public/assets/scripts/choices.search-prefix.min.js"
+    },
+    "./search-kmp": {
+      "types": "./public/types/src/index.d.ts",
+      "import": "./public/assets/scripts/choices.search-kmp.mjs",
+      "require": "./public/assets/scripts/choices.search-kmp.min.js"
+    },
+    "./search-none": {
+      "types": "./public/types/src/index.d.ts",
+      "import": "./public/assets/scripts/choices.search-none.mjs",
+      "require": "./public/assets/scripts/choices.search-none.min.js"
+    },
+    "./public/assets/styles/*.css": "./public/assets/styles/*.css",
+    "./src/styles/*.scss": "./src/styles/*.scss",
+    "./src/styles/*": "./src/styles/*.scss"
+  },
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
+  "scripts": {
+    "start": "run-p js:watch css:watch",
+    "build": "run-p js:build css:build",
+    "lint": "run-p lint:js lint:scss",
+    "lint:js": "eslint src/scripts test/scripts test-e2e",
+    "lint:scss": "stylelint src/**/*.scss",
+    "bundlesize": "bundlesize",
+    "playwright:cli": "playwright test --project=chromium",
+    "playwright:gui": "playwright test --ui  --project=chromium",
+    "test": "run-s test:unit test:e2e:all",
+    "test:unit": "vitest run",
+    "test:unit:watch": "npm run test:unit -- --watch --inspect=5556",
+    "test:unit:coverage": "vitest run --coverage",
+    "test:e2e": "run-s playwright:cli",
+    "test:e2e:all": "playwright test",
+    "js:watch": "rollup -w --bundleConfigAsCjs -c scripts/rollup.config.mjs --environment TARGET:. --environment OUTPUT_TYPES:umd --environment WATCH_HOST:localhost",
+    "js:build": "rollup --bundleConfigAsCjs -c scripts/rollup.config.mjs --environment WITH_D_TS_FILES:1 && mv public/assets/scripts/src public/types/",
+    "js:build-dev": "rollup --bundleConfigAsCjs -c scripts/rollup.config.mjs --environment TARGET:. --environment OUTPUT_TYPES:umd",
+    "js:build-dev:esm": "rollup --bundleConfigAsCjs -c scripts/rollup.config.mjs --environment TARGET:. --environment OUTPUT_TYPES:mjs",
+    "css:watch": "nodemon -e scss -x \"npm run css:build\"",
+    "css:build": "run-s css:sass css:prefix css:min",
+    "css:sass": "sass -I scss src/styles/base.scss public/assets/styles/base.css && sass -I scss src/styles/choices.scss public/assets/styles/choices.css",
+    "css:prefix": "postcss public/assets/styles/*.css --use autoprefixer --no-map --env prod --dir public/assets/styles",
+    "css:min": "csso public/assets/styles/base.css --output public/assets/styles/base.min.css && csso public/assets/styles/choices.css --output public/assets/styles/choices.min.css",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jshjohnson/Choices.git"
+  },
+  "author": "Josh Johnson",
+  "license": "MIT",
+  "files": [
+    "public/assets/scripts",
+    "public/assets/styles",
+    "public/types",
+    "src"
+  ],
+  "bugs": {
+    "url": "https://github.com/jshjohnson/Choices/issues"
+  },
+  "homepage": "https://github.com/jshjohnson/Choices#readme",
+  "keywords": [
+    "customisable",
+    "input",
+    "select",
+    "vanilla",
+    "plugin",
+    "js"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-object-rest-spread": "^7.24.7",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/preset-typescript": "^7.24.7",
+    "@playwright/test": "^1.46.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-eslint": "^9.0.5",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.7",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/chai": "^4.3.17",
+    "@types/node": "^22.2.0",
+    "@types/sinon": "^17.0.3",
+    "@types/sinon-chai": "^3.2.12",
+    "@vitest/coverage-v8": "^2.0.5",
+    "autoprefixer": "^10.4.20",
+    "bundlesize": "^0.18.2",
+    "chai": "^5.1.1",
+    "cross-process-lock": "^2.1.1",
+    "csso-cli": "^4.0.2",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-compat": "6.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-sort-class-members": "^1.20.0",
+    "eslint-plugin-tree-shaking": "^1.12.2",
+    "husky": "^9.1.4",
+    "jsdom": "^24.1.1",
+    "lint-staged": "^15.2.7",
+    "nodemon": "^3.1.4",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.41",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.3.3",
+    "rollup": "^4.20.0",
+    "rollup-plugin-dev": "^2.0.5",
+    "sass": "^1.77.8",
+    "sinon": "^18.0.0",
+    "sinon-chai": "^4.0.0",
+    "stylelint": "^16.7.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.0.1",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "fuse.js": "^7.0.0"
+  },
+  "npmName": "choices.js",
+  "npmFileMap": [
+    {
+      "files": [
+        "public/assets/scripts/*",
+        "public/assets/styles/*",
+        "public/types/*",
+        "src/icons/*"
+      ]
+    }
+  ],
+  "bundlesize": [
+    {
+      "path": "public/assets/scripts/choices*.min.js",
+      "maxSize": "25 kB"
+    },
+    {
+      "path": "public/assets/styles/choices.min.css",
+      "maxSize": "2.5 kB"
+    }
+  ]
+}
