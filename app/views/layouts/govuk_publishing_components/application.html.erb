@@ -1,8 +1,12 @@
 <% content_for :body do %>
   <% if @preview %>
-    <main id="wrapper" class="govuk-width-container">
-      <%= yield %>
-    </main>
+    <div class="govuk-width-container">
+      <div class="govuk-grid-row">
+        <main id="wrapper" class="govuk-main-wrapper">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
   <% else %>
     <%= render "govuk_publishing_components/components/layout_header", {
       environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
