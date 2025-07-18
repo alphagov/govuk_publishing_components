@@ -65,3 +65,13 @@ examples:
       - text: Navigation item 2
         href: "#"
       navigation_aria_label: "Custom label"
+  full_width:
+    description: This is difficult to preview because the preview windows are constrained, but the nav will stretch to the size of its container.
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      full_width: true
