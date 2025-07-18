@@ -43,9 +43,7 @@
         <% end %>
 
         <% if href.present? %>
-          <%= link_to href, class: link_classes do %>
-            <%= main_text %>
-          <% end %>
+          <%= link_to main_text, href, class: link_classes %>
         <% else %>
           <%= main_text %>
         <% end %>
