@@ -26,8 +26,8 @@
   width: 36px;
 
   svg {
+    height: 28px;
     width: 28px;
-    height: auto;
   }
 
   @include govuk-media-query($from: tablet) {
@@ -35,7 +35,7 @@
     width: 45px;
 
     svg {
-      height: auto;
+      height: 35px;
       width: 35px;
     }
   }
@@ -48,6 +48,7 @@
 
   svg {
     fill: #272828;
+    height: 25px;
     width: 25px;
 
     @media (forced-colors: active) {
