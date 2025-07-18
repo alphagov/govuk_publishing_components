@@ -52,6 +52,16 @@ describe "Service navigation", type: :view do
     assert_select(".govuk-service-navigation__item:nth-child(3) .govuk-service-navigation__link[data-example=attribute][data-another=one]")
   end
 
+  it "renders with a default aria label on the nav element" do
+    render_component({ navigation_items: })
+    assert_select(".govuk-service-navigation__wrapper[aria-label='Menu']")
+  end
+
+  it "renders with a custom aria label on the nav element" do
+    render_component({ navigation_items:, navigation_aria_label: "Custom label" })
+    assert_select(".govuk-service-navigation__wrapper[aria-label='Custom label']")
+  end
+
   it "renders with active and current navigation item" do
     updated_navigation_items = navigation_items.map { |item| item[:text] == "Navigation item 2" ? item.merge(active: true) : item }
     render_component({ navigation_items: updated_navigation_items })
