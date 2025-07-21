@@ -46,6 +46,21 @@ examples:
         href: "item-4"
       - text: Logout
         href: "item-5"
+  with_deprecated_navigation:
+    description: Note that [remove_bottom_border](#no_bottom_border) automatically gets set to true on the header when navigation items are added.
+    data:
+      environment: production
+      deprecated_navigation: true
+      navigation_items:
+      - text: Mainstream browse
+        href: "item-1"
+        active: true
+      - text: Step by steps
+        href: "item-2"
+      - text: Jonathan Doe
+        href: "item-3"
+      - text: Logout
+        href: "item-4"
   with_product_name_and_navigation:
     data:
       product_name: Component Guide 999.9.9
