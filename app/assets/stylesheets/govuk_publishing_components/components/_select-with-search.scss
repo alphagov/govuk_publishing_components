@@ -27,6 +27,10 @@ $choices-button-dimension: 12px !default;
     font-family: $govuk-font-family;
   }
 
+  .choices[data-type="select-one"] .choices__list--dropdown .choices__list .choices__placeholder {
+    opacity: 1;
+  }
+
   .choices[data-type*="select-one"]::after {
     @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
     @include prefixed-transform($translateY: -50%);

@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Change skip_account to only accept a boolean ([PR #](https://github.com/alphagov/govuk_publishing_components/pull/4927))
+* Fix opacity issue on first selected item in choices.js dropdown ([PR #4936](https://github.com/alphagov/govuk_publishing_components/pull/4936))
 
 ## 59.0.1
 
