@@ -8,7 +8,15 @@
   }
 
   environment_exists = !environment.blank?
+  deprecated_navigation ||= false
 %>
+
+<% if environment_exists && deprecated_navigation %>
+  <div class="gem-c-header__environment">
+    <%= render "govuk_publishing_components/components/tag", { text: environment, colour: colour_map[environment.downcase] } %>
+  </div>
+<% end %>
+
 <div class="govuk-header__logo gem-c-header__logo">
   <a href="<%= logo_link %>" class="govuk-header__link govuk-header__link--homepage">
     <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
@@ -18,7 +26,7 @@
       </span>
     <% end %>
   </a>
-  <% if environment_exists %>
+  <% if environment_exists && !deprecated_navigation %>
     <div class="gem-c-header__environment">
       <%= render "govuk_publishing_components/components/tag", { text: environment, colour: colour_map[environment.downcase] } %>
     </div>

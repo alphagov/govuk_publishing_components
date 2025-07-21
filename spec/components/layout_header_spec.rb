@@ -150,4 +150,57 @@ describe "Layout header", type: :view do
 
     assert_select ".govuk-header__link--homepage[href='https://example.com']"
   end
+
+  it "renders the header with deprecated navigation items" do
+    navigation_items = [
+      { text: "Foo", href: "/foo", active: true },
+      { text: "Bar", href: "/bar" },
+      { text: "Hello", href: "/hello", show_only_in_collapsed_menu: true },
+    ]
+
+    render_component(environment: "staging", navigation_items:, deprecated_navigation: true)
+
+    assert_select ".govuk-header__navigation .govuk-header__menu-button", text: "Menu"
+    assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--active", text: "Foo"
+    assert_select ".govuk-header__navigation-item", text: "Bar"
+    assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--collapsed-menu-only", text: "Hello"
+    assert_select ".gem-c-header__nav[aria-label='Top level']"
+    assert_select ".govuk-header__menu-button[hidden]"
+  end
+
+  it "renders the deprecated header navigation items with custom aria-label when navigation_aria_label is specified" do
+    navigation_items = [
+      { text: "Foo", href: "/foo", active: true },
+      { text: "Bar", href: "/bar" },
+      { text: "Hello", href: "/hello", show_only_in_collapsed_menu: true },
+    ]
+
+    render_component(environment: "staging", navigation_items:, navigation_aria_label: "My fancy label", deprecated_navigation: true)
+
+    assert_select ".gem-c-header__nav[aria-label='My fancy label']"
+  end
+
+  it "renders the deprecated navigation links with data attributes when specified" do
+    navigation_items = [
+      {
+        text: "Foo",
+        href: "/foo",
+        data: {
+          hello: "world",
+        },
+      },
+      {
+        text: "Bar",
+        href: "/bar",
+        data: {
+          more_than_one_word: "test",
+        },
+      },
+    ]
+
+    render_component(navigation_items:, deprecated_navigation: true)
+
+    assert_select ".gem-c-header__nav .govuk-header__link[data-hello='world']", text: "Foo"
+    assert_select ".gem-c-header__nav .govuk-header__link[data-more-than-one-word='test']", text: "Bar"
+  end
 end
