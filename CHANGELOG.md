@@ -11,6 +11,7 @@
 
 * Change skip_account to only accept a boolean ([PR #](https://github.com/alphagov/govuk_publishing_components/pull/4927))
 * Fix opacity issue on first selected item in choices.js dropdown ([PR #4936](https://github.com/alphagov/govuk_publishing_components/pull/4936))
+* Add `user-id` to `page_view` tracked event ([PR #4935](https://github.com/alphagov/govuk_publishing_components/pull/4935))
 
 ## 59.0.1
 
