@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add spaces to phone number PII redaction ([PR #4937](https://github.com/alphagov/govuk_publishing_components/pull/4937))
+
 ## 59.1.0
 
 * Change skip_account to only accept a boolean ([PR #4927](https://github.com/alphagov/govuk_publishing_components/pull/4927))
