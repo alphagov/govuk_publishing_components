@@ -71,7 +71,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
             user_created_at: this.getMetaContent('user-created-at'),
             user_organisation_name: this.getMetaContent('user-organisation-name'),
-            user_role: this.getMetaContent('user-role')
+            user_role: this.getMetaContent('user-role'),
+            user_id: this.getMetaContent('user-id')
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
