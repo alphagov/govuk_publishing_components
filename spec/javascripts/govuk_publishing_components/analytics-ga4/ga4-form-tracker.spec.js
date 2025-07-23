@@ -210,6 +210,21 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('collects data from select[multiple] elements', function () {
+      element.innerHTML =
+        '<label for="s1">Label</label>' +
+        '<select multiple name="select" id="s1">' +
+          '<option selected value="option1">Option 1</option>' +
+          '<option selected value="option2">Option 2</option>' +
+          '<option value="option3">Option 3</option>' +
+        '</select>'
+
+      expected.event_data.text = 'Option 1,Option 2'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('collects data from a select and a text input', function () {
       element.innerHTML =
         '<label for="s1">Label</label>' +
@@ -352,6 +367,23 @@ describe('Google Analytics form tracking', function () {
       select.selectedIndex = 2
       window.GOVUK.triggerEvent(select, 'change')
       expected.event_data.text = JSON.stringify({ 'Select label': 'Option 3', 'Text label': '[REDACTED]' })
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from multiple checkboxes with a legend', function () {
+      element.innerHTML =
+        '<fieldset>' +
+        '<legend>Checkbox legend</legend>' +
+        '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
+        '<label><input type="checkbox" id="c2" name="checkbox[]" value="checkbox2"/>checkbox2</label>' +
+        '</fieldset>'
+
+      document.getElementById('c1').checked = true
+      document.getElementById('c2').checked = true
+
+      expected.event_data.text = JSON.stringify({ 'Checkbox legend': 'checkbox1,checkbox2' })
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)

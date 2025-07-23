@@ -14,6 +14,7 @@
 * Add `user-id` to `page_view` tracked event ([PR #4935](https://github.com/alphagov/govuk_publishing_components/pull/4935))
 * Override the browser default of italics for <address> in govspeak ([PR #4923](https://github.com/alphagov/govuk_publishing_components/pull/4923))
 * Update LUX to 4.2.0 ([PR #4945](https://github.com/alphagov/govuk_publishing_components/pull/4945))
+* GA4FormTracker fixes to form_response ([PR #4944](https://github.com/alphagov/govuk_publishing_components/pull/4944))
 
 ## 59.0.1
 
