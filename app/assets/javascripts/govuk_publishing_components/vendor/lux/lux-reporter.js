@@ -169,21 +169,6 @@
     return getNavigationEntry().redirectCount > 0 || timing.redirectEnd > 0;
   }
 
-  var Flags = {
-    InitCalled: 1 << 0,
-    NavTimingNotSupported: 1 << 1,
-    UserTimingNotSupported: 1 << 2,
-    VisibilityStateNotVisible: 1 << 3,
-    BeaconSentFromUnloadHandler: 1 << 4,
-    BeaconSentAfterTimeout: 1 << 5,
-    PageLabelFromDocumentTitle: 1 << 6,
-    PageLabelFromLabelProp: 1 << 7,
-    PageLabelFromGlobalVariable: 1 << 8,
-    PageLabelFromUrlPattern: 1 << 9,
-    PageWasPrerendered: 1 << 10,
-    PageWasBfCacheRestored: 1 << 11,
-    BeaconBlockedByCsp: 1 << 12,
-  };
   function addFlag(flags, flag) {
     return flags | flag;
   }
@@ -210,72 +195,6 @@
       window.detachEvent("on" + type, callback);
     }
   }
-
-  var LogEvent = {
-    // Internal events
-    EvaluationStart: 1,
-    EvaluationEnd: 2,
-    InitCalled: 3,
-    MarkCalled: 4,
-    MeasureCalled: 5,
-    AddDataCalled: 6,
-    SendCalled: 7,
-    ForceSampleCalled: 8,
-    DataCollectionStart: 9,
-    UnloadHandlerTriggered: 10,
-    OnloadHandlerTriggered: 11,
-    MarkLoadTimeCalled: 12,
-    SendCancelledPageHidden: 13,
-    // Data collection events
-    SessionIsSampled: 21,
-    SessionIsNotSampled: 22,
-    MainBeaconSent: 23,
-    UserTimingBeaconSent: 24,
-    InteractionBeaconSent: 25,
-    CustomDataBeaconSent: 26,
-    // Metric information
-    NavigationStart: 41,
-    PerformanceEntryReceived: 42,
-    PerformanceEntryProcessed: 43,
-    TrackingParamAdded: 44,
-    // Errors
-    PerformanceObserverError: 51,
-    InputEventPermissionError: 52,
-    InnerHtmlAccessError: 53,
-    EventTargetAccessError: 54,
-    CookieReadError: 55,
-    CookieSetError: 56,
-    PageLabelEvaluationError: 57,
-    // Browser support messages
-    NavTimingNotSupported: 71,
-    PaintTimingNotSupported: 72,
-    // POST beacon events
-    PostBeaconInitialised: 80,
-    PostBeaconSendCalled: 81,
-    PostBeaconTimeoutReached: 82,
-    PostBeaconSent: 83,
-    PostBeaconAlreadySent: 84,
-    PostBeaconCancelled: 85,
-    PostBeaconStopRecording: 86,
-    PostBeaconMetricRejected: 87,
-    // PostBeaconDisabled: 88, // Not used
-    PostBeaconSendFailed: 89,
-    PostBeaconCSPViolation: 90,
-    PostBeaconCollector: 91,
-  };
-  var Logger = /** @class */ (function () {
-    function Logger() {
-      this.events = [];
-    }
-    Logger.prototype.logEvent = function (event, args) {
-      if (args === void 0) { args = []; }
-      this.events.push([now(), event, args]);
-    };
-    Logger.prototype.getEvents = function () {
-      return this.events;
-    };
-    return Logger;
-  }());
 
   var START_MARK = "LUX_start";
   var END_MARK = "LUX_end";
@@ -336,7 +255,7 @@
     return str;
   }
 
-  var VERSION = "4.1.1";
+  var VERSION = "4.2.0";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -398,7 +317,7 @@
       this.sessionId = opts.sessionId;
       this.pageId = opts.pageId;
       this.maxMeasureTimeout = window.setTimeout(function () {
-        _this.logger.logEvent(LogEvent.PostBeaconTimeoutReached);
+        _this.logger.logEvent(82 /* LogEvent.PostBeaconTimeoutReached */);
         _this.stopRecording();
         _this.send();
       }, this.config.maxMeasureTime - msSincePageInit());
@@ -416,8 +335,8 @@
           }
           // Update the V2 beacon URL
           _this.config.beaconUrlV2 = _this.config.beaconUrlFallback;
-          _this.logger.logEvent(LogEvent.PostBeaconCSPViolation, [_this.config.beaconUrlV2]);
-          _this.addFlag(Flags.BeaconBlockedByCsp);
+          _this.logger.logEvent(90 /* LogEvent.PostBeaconCSPViolation */, [_this.config.beaconUrlV2]);
+          _this.addFlag(4096 /* Flags.BeaconBlockedByCsp */);
           // Not all browsers return false if sendBeacon fails. In this case, `this.isSent` will be
           // true, even though the beacon wasn't sent. We need to reset this flag to ensure we can
           // retry sending the beacon.
@@ -429,7 +348,7 @@
           }
         }
       });
-      this.logger.logEvent(LogEvent.PostBeaconInitialised);
+      this.logger.logEvent(80 /* LogEvent.PostBeaconInitialised */);
     }
     Beacon.prototype.isBeingSampled = function () {
       var bucket = parseInt(String(this.sessionId).slice(-2));
@@ -437,7 +356,7 @@
     };
     Beacon.prototype.stopRecording = function () {
       this.isRecording = false;
-      this.logger.logEvent(LogEvent.PostBeaconStopRecording);
+      this.logger.logEvent(86 /* LogEvent.PostBeaconStopRecording */);
     };
     Beacon.prototype.addCollector = function (metric, collector) {
       this.metricCollectors[metric] = collector;
@@ -452,7 +371,7 @@
       this.onBeforeSendCbs.push(cb);
     };
     Beacon.prototype.send = function () {
-      this.logger.logEvent(LogEvent.PostBeaconSendCalled);
+      this.logger.logEvent(81 /* LogEvent.PostBeaconSendCalled */);
       for (var _i = 0, _a = this.onBeforeSendCbs; _i < _a.length; _i++) {
         var cb = _a[_i];
         cb();
@@ -463,8 +382,8 @@
       var collectionStart = now();
       var metricData = {};
       for (var metric in this.metricCollectors) {
-        var data = this.metricCollectors[metric]();
-        this.logger.logEvent(LogEvent.PostBeaconCollector, [metric, !!data]);
+        var data = this.metricCollectors[metric](this.config);
+        this.logger.logEvent(91 /* LogEvent.PostBeaconCollector */, [metric, !!data]);
         if (data) {
           metricData[metric] = data;
         }
@@ -472,11 +391,11 @@
       if (!Object.keys(metricData).length && !this.config.allowEmptyPostBeacon) {
         // TODO: This is only required while the new beacon is supplementary. Once it's the primary
         // beacon, we should send it regardless of how much metric data it has.
-        this.logger.logEvent(LogEvent.PostBeaconCancelled);
+        this.logger.logEvent(85 /* LogEvent.PostBeaconCancelled */);
         return;
       }
       if (this.isSent) {
-        this.logger.logEvent(LogEvent.PostBeaconAlreadySent);
+        this.logger.logEvent(84 /* LogEvent.PostBeaconAlreadySent */);
         return;
       }
       // Only clear the max measure timeout if there's data to send.
@@ -495,14 +414,14 @@
       try {
         if (sendBeacon(beaconUrl, JSON.stringify(payload))) {
           this.isSent = true;
-          this.logger.logEvent(LogEvent.PostBeaconSent, [beaconUrl, payload]);
+          this.logger.logEvent(83 /* LogEvent.PostBeaconSent */, [beaconUrl, payload]);
         }
       }
       catch (e) {
         // Intentionally empty; handled below
       }
       if (!this.isSent) {
-        this.logger.logEvent(LogEvent.PostBeaconSendFailed, [beaconUrl, payload]);
+        this.logger.logEvent(89 /* LogEvent.PostBeaconSendFailed */, [beaconUrl, payload]);
       }
     };
     return Beacon;
@@ -545,6 +464,7 @@
       interactionBeaconDelay: getProperty(obj, "interactionBeaconDelay", 200),
       jspagelabel: getProperty(obj, "jspagelabel"),
       label: getProperty(obj, "label"),
+      maxAttributionEntries: getProperty(obj, "maxAttributionEntries", 25),
       maxBeaconUrlLength: getProperty(obj, "maxBeaconUrlLength", 8190),
       maxBeaconUTEntries: getProperty(obj, "maxBeaconUTEntries", 20),
       maxErrors: getProperty(obj, "maxErrors", 5),
@@ -703,12 +623,25 @@
     return trackingParams;
   }
 
+  var Logger = /** @class */ (function () {
+    function Logger() {
+      this.events = [];
+    }
+    Logger.prototype.logEvent = function (event, args) {
+      if (args === void 0) { args = []; }
+      this.events.push([now(), event, args]);
+    };
+    Logger.prototype.getEvents = function () {
+      return this.events;
+    };
+    return Logger;
+  }());
+
   var sessionValue = 0;
   var sessionEntries = [];
   var sessionAttributions = [];
   var largestEntry;
   var maximumSessionValue = 0;
-  var MAX_CLS_SOURCES = 50;
   function processEntry$3(entry) {
     if (!entry.hadRecentInput) {
       var firstEntry = sessionEntries[0];
@@ -748,7 +681,10 @@
     maximumSessionValue = 0;
     largestEntry = undefined;
   }
-  function getData$3() {
+  function getData$3(config) {
+    if (!("LayoutShift" in self)) {
+      return undefined;
+    }
     return {
       value: maximumSessionValue,
       startTime: sessionEntries[0] ? processTimeMetric(sessionEntries[0].startTime) : null,
@@ -758,7 +694,7 @@
         startTime: processTimeMetric(largestEntry.startTime),
       }
       : null,
-      sources: sessionAttributions.length ? sessionAttributions.slice(0, MAX_CLS_SOURCES) : null,
+      sources: sessionAttributions.length ? sessionAttributions.slice(0, config.maxAttributionEntries) : null,
     };
   }
 
@@ -795,8 +731,6 @@
     return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
   };
 
-  var MAX_LOAF_ENTRIES = 50;
-  var MAX_LOAF_SCRIPTS = 50;
   var entries = [];
   function processEntry$2(entry) {
     entries.push(entry);
@@ -807,7 +741,7 @@
   function getEntries$1() {
     return entries;
   }
-  function getData$2() {
+  function getData$2(config) {
     var summarizedEntries = [];
     var totalDuration = 0;
     var totalBlockingDuration = 0;
@@ -835,34 +769,42 @@
       totalEntries: entries.length,
       totalStyleAndLayoutDuration: floor(totalStyleAndLayoutDuration),
       totalWorkDuration: floor(totalWorkDuration),
-      entries: summarizedEntries.slice(0, MAX_LOAF_ENTRIES),
-      scripts: summarizeLoAFScripts(entries.flatMap(function (entry) { return entry.scripts; })).slice(0, MAX_LOAF_SCRIPTS),
-    };
+      scripts: summarizeLoAFScripts(entries.flatMap(function (entry) { return entry.scripts; }), config),
+      // Only keep the slowest LoAF entries
+      entries: summarizedEntries
+        .sort(function (a, b) { return b.duration - a.duration; })
+        .slice(0, config.maxAttributionEntries)
+        .sort(function (a, b) { return a.startTime - b.startTime; }),
+      };
   }
-  function summarizeLoAFScripts(scripts) {
+  function summarizeLoAFScripts(scripts, config) {
     var summary = {};
     scripts.forEach(function (script) {
-      var key = script.invoker + ":" + script.sourceURL + ":" + script.sourceFunctionName;
+      var key = script.sourceURL;
       if (!summary[key]) {
         summary[key] = {
           sourceUrl: script.sourceURL,
-          sourceFunctionName: script.sourceFunctionName,
+          sourceFunctionName: "",
           timings: [],
           totalEntries: 0,
           totalDuration: 0,
+          totalBlockingDuration: 0,
           totalPauseDuration: 0,
           totalForcedStyleAndLayoutDuration: 0,
-          invoker: script.invoker,
+          invoker: "",
           inpPhase: script.inpPhase,
         };
       }
       summary[key].totalEntries++;
       summary[key].totalDuration += script.duration;
+      summary[key].totalBlockingDuration += max(0, script.duration - 50);
       summary[key].totalPauseDuration += script.pauseDuration;
       summary[key].totalForcedStyleAndLayoutDuration += script.forcedStyleAndLayoutDuration;
       summary[key].timings.push([floor(script.startTime), floor(script.duration)]);
     });
-    return Object.values(summary).map(function (script) { return (__assign(__assign({}, script), { totalDuration: floor(script.totalDuration), totalPauseDuration: floor(script.totalPauseDuration), totalForcedStyleAndLayoutDuration: floor(script.totalForcedStyleAndLayoutDuration) })); });
+    return Object.values(summary).map(function (script) { return (__assign(__assign({}, script), { totalDuration: floor(script.totalDuration), totalPauseDuration: floor(script.totalPauseDuration), totalForcedStyleAndLayoutDuration: floor(script.totalForcedStyleAndLayoutDuration) })); })
+      .sort(function (a, b) { return b.totalDuration - a.totalDuration; })
+      .slice(0, config.maxAttributionEntries);
   }
 
   /**
@@ -947,7 +889,7 @@
     var index = Math.min(slowestEntries.length - 1, Math.floor(getInteractionCount() / 50));
     return slowestEntries[index];
   }
-  function getData$1() {
+  function getData$1(config) {
     var _a;
     var interaction = getHighPercentileInteraction();
     if (!interaction) {
@@ -967,7 +909,7 @@
       script.inpPhase = getINPPhase(script, interaction);
       return script;
     });
-    var loafScripts = summarizeLoAFScripts(inpScripts);
+    var loafScripts = summarizeLoAFScripts(inpScripts, config);
     return {
       value: interaction.duration,
       startTime: processTimeMetric(startTime),
@@ -1162,7 +1104,7 @@
     // -------------------------------------------------------------------------
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
-    logger.logEvent(LogEvent.EvaluationStart, [VERSION, JSON.stringify(globalConfig)]);
+    logger.logEvent(1 /* LogEvent.EvaluationStart */, [VERSION, JSON.stringify(globalConfig)]);
     // Variable aliases that allow the minifier to reduce file size.
     var document = window.document;
     var addEventListener = window.addEventListener;
@@ -1226,18 +1168,9 @@
     // Storing the customer ID in a local variable makes it possible to run multiple instances of lux.js
     // on the same page.
     var _thisCustomerId = LUX.customerid;
-    var initPostBeacon = function () {
-      return new Beacon({
-        config: globalConfig,
-        logger: logger,
-        customerId: getCustomerId(),
-        sessionId: gUid,
-        pageId: gSyncId,
-      });
-    };
-    var beacon = initPostBeacon();
+    var beaconCollectors = [];
     var logEntry = function (entry) {
-      logger.logEvent(LogEvent.PerformanceEntryReceived, [entry]);
+      logger.logEvent(42 /* LogEvent.PerformanceEntryReceived */, [entry]);
     };
     // Most PerformanceEntry types we log an event for and add it to the global entry store.
     var processAndLogEntry = function (entry) {
@@ -1254,19 +1187,19 @@
         // Process the LCP entry for the new beacon
         processEntry(entry);
       })) {
-        beacon.addCollector(BeaconMetricKey.LCP, getData);
+        beaconCollectors.push([BeaconMetricKey.LCP, getData]);
       }
       if (observe("layout-shift", function (entry) {
         processEntry$3(entry);
         logEntry(entry);
       })) {
-        beacon.addCollector(BeaconMetricKey.CLS, getData$3);
+        beaconCollectors.push([BeaconMetricKey.CLS, getData$3]);
       }
       if (observe("long-animation-frame", function (entry) {
         processEntry$2(entry);
         logEntry(entry);
       })) {
-        beacon.addCollector(BeaconMetricKey.LoAF, getData$2);
+        beaconCollectors.push([BeaconMetricKey.LoAF, getData$2]);
       }
       var handleINPEntry_1 = function (entry) {
         processEntry$1(entry);
@@ -1298,25 +1231,40 @@
           processingEnd: entry.processingEnd,
         });
       }, { durationThreshold: 0 })) {
-        beacon.addCollector(BeaconMetricKey.INP, getData$1);
+        beaconCollectors.push([BeaconMetricKey.INP, getData$1]);
       }
     }
     catch (e) {
-      logger.logEvent(LogEvent.PerformanceObserverError, [e]);
+      logger.logEvent(51 /* LogEvent.PerformanceObserverError */, [e]);
     }
+    var initPostBeacon = function () {
+      var b = new Beacon({
+        config: globalConfig,
+        logger: logger,
+        customerId: getCustomerId(),
+        sessionId: gUid,
+        pageId: gSyncId,
+      });
+      beaconCollectors.forEach(function (_a) {
+        var metric = _a[0], collector = _a[1];
+        b.addCollector(metric, collector);
+      });
+      return b;
+    };
+    var beacon = initPostBeacon();
     if (_sample()) {
-      logger.logEvent(LogEvent.SessionIsSampled, [globalConfig.samplerate]);
+      logger.logEvent(21 /* LogEvent.SessionIsSampled */, [globalConfig.samplerate]);
     }
     else {
-      logger.logEvent(LogEvent.SessionIsNotSampled, [globalConfig.samplerate]);
+      logger.logEvent(22 /* LogEvent.SessionIsNotSampled */, [globalConfig.samplerate]);
     }
     var gLuxSnippetStart = LUX.ns ? LUX.ns - timing.navigationStart : 0;
     if (!performance.timing) {
-      logger.logEvent(LogEvent.NavTimingNotSupported);
-      gFlags = addFlag(gFlags, Flags.NavTimingNotSupported);
-      beacon.addFlag(Flags.NavTimingNotSupported);
+      logger.logEvent(71 /* LogEvent.NavTimingNotSupported */);
+      gFlags = addFlag(gFlags, 2 /* Flags.NavTimingNotSupported */);
+      beacon.addFlag(2 /* Flags.NavTimingNotSupported */);
     }
-    logger.logEvent(LogEvent.NavigationStart, [timing.navigationStart]);
+    logger.logEvent(41 /* LogEvent.NavigationStart */, [timing.navigationStart]);
     ////////////////////// FID BEGIN
     // FIRST INPUT DELAY (FID)
     // The basic idea behind FID is to attach various input event listeners and measure the time
@@ -1362,7 +1310,7 @@
       }
       catch (e) {
         // bail - no need to return anything
-        logger.logEvent(LogEvent.InputEventPermissionError);
+        logger.logEvent(52 /* LogEvent.InputEventPermissionError */);
         return;
       }
       if (bCancelable) {
@@ -1401,7 +1349,7 @@
       for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
       }
-      logger.logEvent(LogEvent.MarkCalled, args);
+      logger.logEvent(4 /* LogEvent.MarkCalled */, args);
       if (performance.mark) {
         // Use the native performance.mark where possible...
         return performance.mark.apply(performance, args);
@@ -1419,8 +1367,8 @@
           startTime: startTime,
         };
         gaMarks.push(entry);
-        gFlags = addFlag(gFlags, Flags.UserTimingNotSupported);
-        beacon.addFlag(Flags.UserTimingNotSupported);
+        gFlags = addFlag(gFlags, 4 /* Flags.UserTimingNotSupported */);
+        beacon.addFlag(4 /* Flags.UserTimingNotSupported */);
         return entry;
       }
     }
@@ -1431,7 +1379,7 @@
       for (var _i = 0; _i < arguments.length; _i++) {
         args[_i] = arguments[_i];
       }
-      logger.logEvent(LogEvent.MeasureCalled, args);
+      logger.logEvent(5 /* LogEvent.MeasureCalled */, args);
       var name = args[0];
       var startMarkName = args[1];
       var endMarkName = args[2];
@@ -1522,8 +1470,8 @@
           duration: duration,
         };
         gaMeasures.push(entry);
-        gFlags = addFlag(gFlags, Flags.UserTimingNotSupported);
-        beacon.addFlag(Flags.UserTimingNotSupported);
+        gFlags = addFlag(gFlags, 4 /* Flags.UserTimingNotSupported */);
+        beacon.addFlag(4 /* Flags.UserTimingNotSupported */);
         return entry;
       }
     }
@@ -1620,7 +1568,7 @@
         if (entry.identifier && entry.startTime) {
           var value = processTimeMetric(entry.startTime);
           if (shouldReportValue(value)) {
-            logger.logEvent(LogEvent.PerformanceEntryProcessed, [entry]);
+            logger.logEvent(43 /* LogEvent.PerformanceEntryProcessed */, [entry]);
             aET.push(entry.identifier + "|" + value);
           }
         }
@@ -1649,7 +1597,7 @@
           }
           // Only process entries that we calculated to have a valid duration
           if (dur > 0) {
-            logger.logEvent(LogEvent.PerformanceEntryProcessed, [entry]);
+            logger.logEvent(43 /* LogEvent.PerformanceEntryProcessed */, [entry]);
             var type = entry.attribution[0].name;
             if (!hCPU[type]) {
               hCPU[type] = 0;
@@ -1718,13 +1666,6 @@
       var count = aValues.length;
       var median = arrayMedian(aValues);
       return { count: count, median: median, max: max, fci: fci };
-    }
-    function getCLS() {
-      if (!("LayoutShift" in self)) {
-        return undefined;
-      }
-      var clsData = getData$3();
-      return clsData.value.toFixed(6);
     }
     // Return the median value from an array of integers.
     function arrayMedian(aValues) {
@@ -1799,7 +1740,7 @@
       return aIx.join(",");
     }
     function _addData(name, value) {
-      logger.logEvent(LogEvent.AddDataCalled, [name, value]);
+      logger.logEvent(6 /* LogEvent.AddDataCalled */, [name, value]);
       if (typeof name === "string") {
         addCustomDataValue(name, value);
       }
@@ -1847,7 +1788,7 @@
       else {
         _mark(START_MARK);
       }
-      logger.logEvent(LogEvent.InitCalled);
+      logger.logEvent(3 /* LogEvent.InitCalled */);
       // This is an edge case where LUX.auto = true but LUX.init() has been called. In this case, the
       // POST beacon will not be sent automatically, so we need to send it here.
       if (globalConfig.auto && !beacon.isSent) {
@@ -1875,8 +1816,8 @@
       // Clear flags then set the flag that init was called (ie, this is a SPA).
       if (clearFlags) {
         gFlags = 0;
-        gFlags = addFlag(gFlags, Flags.InitCalled);
-        beacon.addFlag(Flags.InitCalled);
+        gFlags = addFlag(gFlags, 1 /* Flags.InitCalled */);
+        beacon.addFlag(1 /* Flags.InitCalled */);
       }
       // Reset the maximum measure timeout
       createMaxMeasureTimeout();
@@ -1973,7 +1914,7 @@
         }
         catch (e) {
           // It seems like IE throws an error when accessing the innerHTML property
-          logger.logEvent(LogEvent.InnerHtmlAccessError);
+          logger.logEvent(53 /* LogEvent.InnerHtmlAccessError */);
           return -1;
         }
       }
@@ -2092,7 +2033,7 @@
         var lastEntry = lcpEntries[lcpEntries.length - 1];
         var value = processTimeMetric(lastEntry.startTime);
         if (shouldReportValue(value)) {
-          logger.logEvent(LogEvent.PerformanceEntryProcessed, [lastEntry]);
+          logger.logEvent(43 /* LogEvent.PerformanceEntryProcessed */, [lastEntry]);
           return value;
         }
       }
@@ -2119,7 +2060,7 @@
         // If IE/Edge, use the prefixed `msFirstPaint` property (see http://msdn.microsoft.com/ff974719).
         return floor(timing.msFirstPaint - timing.navigationStart);
       }
-      logger.logEvent(LogEvent.PaintTimingNotSupported);
+      logger.logEvent(72 /* LogEvent.PaintTimingNotSupported */);
       return undefined;
     }
     function getINPDetails() {
@@ -2285,7 +2226,7 @@
     // Mark the load time of the current page. Intended to be used in SPAs where it is not desirable to
     // send the beacon as soon as the page has finished loading.
     function _markLoadTime(time) {
-      logger.logEvent(LogEvent.MarkLoadTimeCalled, [time]);
+      logger.logEvent(12 /* LogEvent.MarkLoadTimeCalled */, [time]);
       if (time) {
         _mark(END_MARK, { startTime: time });
       }
@@ -2296,8 +2237,8 @@
     function createMaxMeasureTimeout() {
       clearMaxMeasureTimeout();
       gMaxMeasureTimeout = setTimeout(function () {
-        gFlags = addFlag(gFlags, Flags.BeaconSentAfterTimeout);
-        beacon.addFlag(Flags.BeaconSentAfterTimeout);
+        gFlags = addFlag(gFlags, 32 /* Flags.BeaconSentAfterTimeout */);
+        beacon.addFlag(32 /* Flags.BeaconSentAfterTimeout */);
         _sendLux();
       }, globalConfig.maxMeasureTime - msSincePageInit());
     }
@@ -2330,7 +2271,7 @@
     function _sendLux() {
       var _a;
       if (!isVisible() && !globalConfig.trackHiddenPages) {
-        logger.logEvent(LogEvent.SendCancelledPageHidden);
+        logger.logEvent(13 /* LogEvent.SendCancelledPageHidden */);
         return;
       }
       clearMaxMeasureTimeout();
@@ -2342,7 +2283,7 @@
       ) {
         return;
       }
-      logger.logEvent(LogEvent.DataCollectionStart);
+      logger.logEvent(9 /* LogEvent.DataCollectionStart */);
       var startMark = _getMark(START_MARK);
       var endMark = _getMark(END_MARK);
       if (!startMark || (endMark && endMark.startTime < startMark.startTime)) {
@@ -2353,7 +2294,7 @@
       // Store any tracking parameters as custom data
       var trackingParams = getTrackingParams();
       for (var key in trackingParams) {
-        logger.logEvent(LogEvent.TrackingParamAdded, [key, trackingParams[key]]);
+        logger.logEvent(44 /* LogEvent.TrackingParamAdded */, [key, trackingParams[key]]);
         addCustomDataValue("_" + key, trackingParams[key]);
       }
       var sIx = "";
@@ -2370,15 +2311,15 @@
       }
       var sET = elementTimingValues(); // Element Timing data
       var sCPU = cpuTimes();
-      var CLS = getCLS();
+      var clsData = getData$3(globalConfig);
       var sLuxjs = selfLoading();
       if (!isVisible()) {
-        gFlags = addFlag(gFlags, Flags.VisibilityStateNotVisible);
-        beacon.addFlag(Flags.VisibilityStateNotVisible);
+        gFlags = addFlag(gFlags, 8 /* Flags.VisibilityStateNotVisible */);
+        beacon.addFlag(8 /* Flags.VisibilityStateNotVisible */);
       }
       if (wasPrerendered()) {
-        gFlags = addFlag(gFlags, Flags.PageWasPrerendered);
-        beacon.addFlag(Flags.PageWasPrerendered);
+        gFlags = addFlag(gFlags, 1024 /* Flags.PageWasPrerendered */);
+        beacon.addFlag(1024 /* Flags.PageWasPrerendered */);
       }
       if (globalConfig.serverTiming) {
         var navEntry = getNavigationEntry();
@@ -2449,9 +2390,9 @@
       (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
       (sCPU ? "&CPU=" + sCPU : "") +
       (sET ? "&ET=" + sET : "") + // element timing
-      (typeof CLS !== "undefined" ? "&CLS=" + CLS : "") +
+      (clsData ? "&CLS=" + clsData.value.toFixed(6) : "") +
       // INP and sub-parts
-      (typeof INP !== "undefined" ? getINPString(INP) : "");
+      (INP ? getINPString(INP) : "");
       // We add the user timing entries last so that we can split them to reduce the URL size if necessary.
       var utValues = userTimingValues();
       var _b = fitUserTimingEntries(utValues, globalConfig, baseUrl + metricsQueryString), beaconUtValues = _b[0], remainingUtValues = _b[1];
@@ -2459,7 +2400,7 @@
       var mainBeaconUrl = baseUrl +
       metricsQueryString +
       (beaconUtValues.length > 0 ? "&UT=" + beaconUtValues.join(",") : "");
-      logger.logEvent(LogEvent.MainBeaconSent, [mainBeaconUrl]);
+      logger.logEvent(23 /* LogEvent.MainBeaconSent */, [mainBeaconUrl]);
       _sendBeacon(mainBeaconUrl);
       // Set some states.
       gbLuxSent = 1;
@@ -2469,7 +2410,7 @@
       while (remainingUtValues.length) {
         _a = fitUserTimingEntries(remainingUtValues, globalConfig, baseUrl), beaconUtValues = _a[0], remainingUtValues = _a[1];
         var utBeaconUrl = baseUrl + "&UT=" + beaconUtValues.join(",");
-        logger.logEvent(LogEvent.UserTimingBeaconSent, [utBeaconUrl]);
+        logger.logEvent(24 /* LogEvent.UserTimingBeaconSent */, [utBeaconUrl]);
         _sendBeacon(utBeaconUrl);
       }
     }
@@ -2497,7 +2438,7 @@
         sIx +
         (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
         (typeof INP !== "undefined" ? getINPString(INP) : "");
-        logger.logEvent(LogEvent.InteractionBeaconSent, [beaconUrl]);
+        logger.logEvent(25 /* LogEvent.InteractionBeaconSent */, [beaconUrl]);
         _sendBeacon(beaconUrl);
         gbIxSent = 1;
       }
@@ -2516,7 +2457,7 @@
       var customDataValues = valuesToString(getUpdatedCustomData());
       if (customDataValues) {
         var beaconUrl = _getBeaconUrl(getUpdatedCustomData());
-        logger.logEvent(LogEvent.CustomDataBeaconSent, [beaconUrl]);
+        logger.logEvent(26 /* LogEvent.CustomDataBeaconSent */, [beaconUrl]);
         _sendBeacon(beaconUrl);
       }
     }
@@ -2580,7 +2521,7 @@
           }
         }
         catch (e) {
-          logger.logEvent(LogEvent.EventTargetAccessError);
+          logger.logEvent(54 /* LogEvent.EventTargetAccessError */);
         }
         if (target) {
           if (e.clientX) {
@@ -2599,9 +2540,9 @@
     }
     function _addUnloadHandlers() {
       var onunload = function () {
-        gFlags = addFlag(gFlags, Flags.BeaconSentFromUnloadHandler);
-        beacon.addFlag(Flags.BeaconSentFromUnloadHandler);
-        logger.logEvent(LogEvent.UnloadHandlerTriggered);
+        gFlags = addFlag(gFlags, 16 /* Flags.BeaconSentFromUnloadHandler */);
+        beacon.addFlag(16 /* Flags.BeaconSentFromUnloadHandler */);
+        logger.logEvent(10 /* LogEvent.UnloadHandlerTriggered */);
         _sendLux();
         _sendIx();
         beacon.send();
@@ -2677,15 +2618,15 @@
     // Return the current page label.
     function _getPageLabel() {
       if (LUX.label) {
-        gFlags = addFlag(gFlags, Flags.PageLabelFromLabelProp);
-        beacon.addFlag(Flags.PageLabelFromLabelProp);
+        gFlags = addFlag(gFlags, 128 /* Flags.PageLabelFromLabelProp */);
+        beacon.addFlag(128 /* Flags.PageLabelFromLabelProp */);
         return LUX.label;
       }
       if (typeof LUX.pagegroups !== "undefined") {
         var label = getMatchesFromPatternMap(LUX.pagegroups, location.hostname, location.pathname, true);
         if (label) {
-          gFlags = addFlag(gFlags, Flags.PageLabelFromUrlPattern);
-          beacon.addFlag(Flags.PageLabelFromUrlPattern);
+          gFlags = addFlag(gFlags, 512 /* Flags.PageLabelFromUrlPattern */);
+          beacon.addFlag(512 /* Flags.PageLabelFromUrlPattern */);
           return label;
         }
       }
@@ -2694,18 +2635,18 @@
         try {
           var label = evaluateJsPageLabel();
           if (label) {
-            gFlags = addFlag(gFlags, Flags.PageLabelFromGlobalVariable);
-            beacon.addFlag(Flags.PageLabelFromGlobalVariable);
+            gFlags = addFlag(gFlags, 256 /* Flags.PageLabelFromGlobalVariable */);
+            beacon.addFlag(256 /* Flags.PageLabelFromGlobalVariable */);
             return label;
           }
         }
         catch (e) {
-          logger.logEvent(LogEvent.PageLabelEvaluationError, [LUX.jspagelabel, e]);
+          logger.logEvent(57 /* LogEvent.PageLabelEvaluationError */, [LUX.jspagelabel, e]);
         }
       }
       // default to document.title
-      gFlags = addFlag(gFlags, Flags.PageLabelFromDocumentTitle);
-      beacon.addFlag(Flags.PageLabelFromDocumentTitle);
+      gFlags = addFlag(gFlags, 64 /* Flags.PageLabelFromDocumentTitle */);
+      beacon.addFlag(64 /* Flags.PageLabelFromDocumentTitle */);
       return document.title;
     }
     function _getCookie(name) {
@@ -2721,7 +2662,7 @@
         }
       }
       catch (e) {
-        logger.logEvent(LogEvent.CookieReadError);
+        logger.logEvent(55 /* LogEvent.CookieReadError */);
       }
       return undefined;
     }
@@ -2736,7 +2677,7 @@
         "; path=/; SameSite=Lax";
       }
       catch (e) {
-        logger.logEvent(LogEvent.CookieSetError);
+        logger.logEvent(56 /* LogEvent.CookieSetError */);
       }
     }
     // Set "LUX.auto=false" to disable send results automatically and
@@ -2754,7 +2695,7 @@
         var elapsedTime = msSincePageInit();
         var timeRemaining = globalConfig.minMeasureTime - elapsedTime;
         if (timeRemaining <= 0) {
-          logger.logEvent(LogEvent.OnloadHandlerTriggered, [
+          logger.logEvent(11 /* LogEvent.OnloadHandlerTriggered */, [
             elapsedTime,
             globalConfig.minMeasureTime,
           ]);
@@ -2789,8 +2730,8 @@
               _markLoadTime();
             }
             // Flag the current page as a bfcache restore
-            gFlags = addFlag(gFlags, Flags.PageWasBfCacheRestored);
-            beacon.addFlag(Flags.PageWasBfCacheRestored);
+            gFlags = addFlag(gFlags, 2048 /* Flags.PageWasBfCacheRestored */);
+            beacon.addFlag(2048 /* Flags.PageWasBfCacheRestored */);
           }, 0);
         }
       });
@@ -2814,7 +2755,7 @@
     globalLux.init = _init;
     globalLux.markLoadTime = _markLoadTime;
     globalLux.send = function () {
-      logger.logEvent(LogEvent.SendCalled);
+      logger.logEvent(7 /* LogEvent.SendCalled */);
       beacon.send();
       _sendLux();
     };
@@ -2825,7 +2766,7 @@
       return logger.getEvents();
     };
     globalLux.forceSample = function () {
-      logger.logEvent(LogEvent.ForceSampleCalled);
+      logger.logEvent(8 /* LogEvent.ForceSampleCalled */);
       setUniqueId(createSyncId(true));
     };
     globalLux.doUpdate = function () {
@@ -2852,7 +2793,7 @@
     if (typeof window.LUX_ae !== "undefined") {
       window.LUX_ae.forEach(errorHandler);
     }
-    logger.logEvent(LogEvent.EvaluationEnd);
+    logger.logEvent(2 /* LogEvent.EvaluationEnd */);
     return globalLux;
   })();
   window.LUX = LUX;
