@@ -13,6 +13,7 @@
 * Fix opacity issue on first selected item in choices.js dropdown ([PR #4936](https://github.com/alphagov/govuk_publishing_components/pull/4936))
 * Add `user-id` to `page_view` tracked event ([PR #4935](https://github.com/alphagov/govuk_publishing_components/pull/4935))
 * Override the browser default of italics for <address> in govspeak ([PR #4923](https://github.com/alphagov/govuk_publishing_components/pull/4923))
+* Update LUX to 4.2.0 ([PR #4945](https://github.com/alphagov/govuk_publishing_components/pull/4945))
 
 ## 59.0.1
 
