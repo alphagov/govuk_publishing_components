@@ -1,6 +1,6 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/radios/radios";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/radios/radios";
 
 .gem-c-radio__heading-text {
-  margin: 0 0 govuk-spacing(4) 0;
+  margin: 0 0 govuk_frontend.govuk-spacing(4) 0;
 }

@@ -1,5 +1,5 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/footer/footer";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/footer/footer";
 
 .govuk-footer__list-item {
   display: inline-block;
@@ -7,7 +7,7 @@
 }
 
 .gem-c-layout-footer .govuk-footer__list {
-  padding-bottom: govuk-spacing(7);
+  padding-bottom: govuk_frontend.govuk-spacing(7);
 }
 
 .gem-c-layout-footer .govuk-footer__list-item:nth-child(odd):last-child {
@@ -17,12 +17,12 @@
   margin-bottom: 20px;
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .govuk-footer {
     background: none;
     margin: 25mm 0 0;
     padding: 5mm 0 0;
-    border-top: 2pt solid $govuk-print-text-colour;
+    border-top: 2pt solid govuk_frontend.$govuk-print-text-colour;
 
     .govuk-width-container {
       margin: 0;

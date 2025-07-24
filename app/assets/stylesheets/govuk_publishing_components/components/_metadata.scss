@@ -1,15 +1,15 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-metadata {
-  @include govuk-text-colour;
-  @include govuk-font(16);
-  @include responsive-bottom-margin;
-  @include govuk-clearfix;
+  @include govuk_frontend.govuk-text-colour;
+  @include govuk_frontend.govuk-font(16);
+  @include govuk_frontend.responsive-bottom-margin;
+  @include govuk_frontend.govuk-clearfix;
 
   a {
     font-weight: bold;
-    @include govuk-link-common;
-    @include govuk-link-style-default;
+    @include govuk_frontend.govuk-link-common;
+    @include govuk_frontend.govuk-link-style-default;
   }
 
   .gem-c-metadata__definition-link {
@@ -24,25 +24,25 @@
 }
 
 .gem-c-metadata--inverse {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
 
   a {
-    @include govuk-link-style-inverse;
+    @include govuk_frontend.govuk-link-style-inverse;
   }
 }
 
 .gem-c-metadata--inverse-padded {
-  padding: govuk-spacing(2);
+  padding: govuk_frontend.govuk-spacing(2);
 
   .gem-c-metadata__title {
-    padding: 0 govuk-spacing(3);
+    padding: 0 govuk_frontend.govuk-spacing(3);
   }
 
   .gem-c-metadata__list {
-    margin: govuk-spacing(2);
+    margin: govuk_frontend.govuk-spacing(2);
 
-    @include govuk-media-query($from: tablet) {
-      margin: govuk-spacing(3);
+    @include govuk_frontend.govuk-media-query($from: tablet) {
+      margin: govuk_frontend.govuk-spacing(3);
     }
   }
 }
@@ -55,11 +55,11 @@
 .gem-c-metadata__term {
   margin-top: .5em;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     box-sizing: border-box;
     float: inline-start;
     padding-inline-start: 0;
-    padding-inline-end: govuk-spacing(1);
+    padding-inline-end: govuk_frontend.govuk-spacing(1);
     margin-top: 0;
   }
 }
@@ -67,9 +67,9 @@
 .gem-c-metadata__definition {
   margin: 0;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     &:not(:last-of-type) {
-      margin-bottom: govuk-spacing(1);
+      margin-bottom: govuk_frontend.govuk-spacing(1);
     }
   }
 }
@@ -87,16 +87,16 @@
 }
 
 // stylelint-disable declaration-no-important
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-metadata {
     break-inside: avoid;
-    color: $govuk-print-text-colour !important;
+    color: govuk_frontend.$govuk-print-text-colour !important;
     background: none;
     margin-bottom: 5mm;
 
     a,
     a:visited {
-      color: $govuk-print-text-colour !important;
+      color: govuk_frontend.$govuk-print-text-colour !important;
     }
   }
 

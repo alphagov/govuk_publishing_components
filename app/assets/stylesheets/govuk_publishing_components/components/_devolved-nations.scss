@@ -1,23 +1,23 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-devolved-nations {
-  background: govuk-colour("light-grey");
-  margin-bottom: govuk-spacing(3);
-  padding: govuk-spacing(3);
+  background: govuk_frontend.govuk-colour("light-grey");
+  margin-bottom: govuk_frontend.govuk-spacing(3);
+  padding: govuk_frontend.govuk-spacing(3);
 
-  @include govuk-media-query($from: desktop) {
-    margin-bottom: govuk-spacing(8);
-    padding: govuk-spacing(4) govuk-spacing(6);
+  @include govuk_frontend.govuk-media-query($from: desktop) {
+    margin-bottom: govuk_frontend.govuk-spacing(8);
+    padding: govuk_frontend.govuk-spacing(4) govuk_frontend.govuk-spacing(6);
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-devolved-nations {
-    border: 2pt solid $govuk-print-text-colour;
+    border: 2pt solid govuk_frontend.$govuk-print-text-colour;
     margin: 0 0 5mm;
 
     * {
-      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+      color: govuk_frontend.$govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
     }
 
     .govuk-list li {

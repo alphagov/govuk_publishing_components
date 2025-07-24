@@ -1,17 +1,17 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/panel/panel";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/panel/panel";
 
 .gem-c-panel__prepend {
-  margin-bottom: govuk-spacing(3);
-  @include govuk-font($size: 24, $weight: bold);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
+  @include govuk_frontend.govuk-font($size: 24, $weight: bold);
 }
 
 .gem-c-panel__append {
-  @include govuk-font($size: 24, $weight: bold);
+  @include govuk_frontend.govuk-font($size: 24, $weight: bold);
 }
 
 .gem-c-panel__prepend ~ .govuk-panel__title-text {
-  margin-bottom: govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
 }
 
 .gem-c-panel__append,

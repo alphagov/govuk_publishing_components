@@ -1,9 +1,9 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "mixins/grid-helper";
-@import "mixins/prefixed-transform";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "mixins/grid-helper";
+@use "mixins/prefixed-transform";
 
 .gem-c-cards__heading {
-  @include govuk-responsive-margin(6, "bottom");
+  @include govuk_frontend.govuk-responsive-margin(6, "bottom");
 }
 
 .gem-c-cards__list {
@@ -11,10 +11,10 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-column-gap: govuk-spacing(6); // Use deprecated grid-column-gap for Grade C browser support
-  column-gap: govuk-spacing(6);
+  grid-column-gap: govuk_frontend.govuk-spacing(6); // Use deprecated grid-column-gap for Grade C browser support
+  column-gap: govuk_frontend.govuk-spacing(6);
 
-  @include govuk-media-query($from: "desktop") {
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
     // For browsers that don't support CSS grid, constrain the width to 50% to improve usability
     // especially for screen magnifier users
     width: 50%;
@@ -39,7 +39,7 @@
 }
 
 .gem-c-cards__heading--underline + .gem-c-cards__list {
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk_frontend.$govuk-border-colour;
 
   .gem-c-cards__list-item {
     &:first-child {
@@ -51,22 +51,22 @@
 }
 
 .gem-c-cards__list--two-column-desktop {
-  @include govuk-media-query($from: "tablet") {
-    grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
-    grid-template-columns: fractions(2); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
+  @include govuk_frontend.govuk-media-query($from: "tablet") {
+    grid-auto-rows: grid-helper.fractions(1); // Set all rows to same fractional height of the complete grid
+    grid-template-columns: grid-helper.fractions(2); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
   }
 }
 
 .gem-c-cards__list--three-column-desktop {
-  @include govuk-media-query($from: "desktop") {
-    grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
-    grid-template-columns: fractions(3); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
+    grid-auto-rows: grid-helper.fractions(1); // Set all rows to same fractional height of the complete grid
+    grid-template-columns: grid-helper.fractions(3); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
   }
 }
 
 .gem-c-cards__list-item {
-  border-top: 1px solid $govuk-border-colour;
-  padding: govuk-spacing(1) 0 govuk-spacing(4) 0;
+  border-top: 1px solid govuk_frontend.$govuk-border-colour;
+  padding: govuk_frontend.govuk-spacing(1) 0 govuk_frontend.govuk-spacing(4) 0;
 }
 
 .gem-c-cards__list-item-wrapper {
@@ -78,10 +78,10 @@
 }
 
 .gem-c-cards__sub-heading {
-  margin: 0 govuk-spacing(6) govuk-spacing(2) 0;
+  margin: 0 govuk_frontend.govuk-spacing(6) govuk_frontend.govuk-spacing(2) 0;
 
   // Ensure card content width is constrained to two thirds on desktop
-  @include govuk-media-query($from: "desktop") {
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
     max-width: 66.6667%;
   }
 }
@@ -101,37 +101,37 @@
     $dimension: 7px;
     $width: 3px;
 
-    border-right: $width solid $govuk-brand-colour;
-    border-top: $width solid $govuk-brand-colour;
+    border-right: $width solid govuk_frontend.$govuk-brand-colour;
+    border-top: $width solid govuk_frontend.$govuk-brand-colour;
     content: "";
     display: block;
     height: $dimension;
     position: absolute;
-    right: govuk-spacing(1);
+    right: govuk_frontend.govuk-spacing(1);
     top: 50%;
     margin-top: 5px;
-    @include prefixed-transform($rotate: 45deg);
+    @include prefixed-transform.prefixed-transform($rotate: 45deg);
     width: $dimension;
   }
 
   &:hover {
     &::before {
-      border-color: $govuk-link-hover-colour;
+      border-color: govuk_frontend.$govuk-link-hover-colour;
     }
   }
 
   &:focus {
     &::before {
-      border-color: $govuk-focus-text-colour;
+      border-color: govuk_frontend.$govuk-focus-text-colour;
     }
   }
 }
 
 .gem-c-cards__description {
-  margin: 0 govuk-spacing(6) 0 0;
+  margin: 0 govuk_frontend.govuk-spacing(6) 0 0;
 
   // Ensure card content width is constrained to two thirds on desktop
-  @include govuk-media-query($from: "desktop") {
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
     max-width: 66.6667%;
   }
 }
@@ -155,7 +155,7 @@
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-cards__list {
     display: block;
   }

@@ -1,12 +1,12 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-reorderable-list {
   list-style-type: none;
-  margin-bottom: govuk-spacing(6);
+  margin-bottom: govuk_frontend.govuk-spacing(6);
   margin-top: 0;
   padding-left: 0;
   position: relative;
-  @include govuk-font(19, bold);
+  @include govuk_frontend.govuk-font(19, bold);
 
   .govuk-form-group {
     margin-bottom: 0;
@@ -14,18 +14,18 @@
 }
 
 .gem-c-reorderable-list__item {
-  margin-bottom: govuk-spacing(3);
-  border: 1px solid $govuk-border-colour;
-  padding: govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
+  border: 1px solid govuk_frontend.$govuk-border-colour;
+  padding: govuk_frontend.govuk-spacing(3);
 }
 
 .gem-c-reorderable-list__item--chosen {
-  background-color: govuk-colour("light-grey");
-  outline: 2px dotted $govuk-border-colour;
+  background-color: govuk_frontend.govuk-colour("light-grey");
+  outline: 2px dotted govuk_frontend.$govuk-border-colour;
 }
 
 .gem-c-reorderable-list__item--drag {
-  background-color: govuk-colour("white");
+  background-color: govuk_frontend.govuk-colour("white");
   list-style-type: none;
 
   .gem-c-reorderable-list__actions {
@@ -36,15 +36,15 @@
 .gem-c-reorderable-list__wrapper {
   display: block;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk_frontend.govuk-media-query($from: desktop) {
     display: inline-flex;
     width: 100%;
   }
 }
 
 .gem-c-reorderable-list__content {
-  margin-bottom: govuk-spacing(2);
-  @include govuk-media-query($from: desktop) {
+  margin-bottom: govuk_frontend.govuk-spacing(2);
+  @include govuk_frontend.govuk-media-query($from: desktop) {
     margin-bottom: 0;
     flex: 0 1 auto;
     min-width: 65%;
@@ -57,13 +57,13 @@
 
 .gem-c-reorderable-list__description {
   margin: 0;
-  @include govuk-font(16, regular);
+  @include govuk_frontend.govuk-font(16, regular);
 }
 
 .gem-c-reorderable-list__actions {
   display: block;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk_frontend.govuk-media-query($from: desktop) {
     flex: 1 0 auto;
     text-align: right;
   }
@@ -75,7 +75,7 @@
 
 .govuk-frontend-supported {
   .gem-c-reorderable-list__item {
-    @include govuk-media-query($from: desktop) {
+    @include govuk_frontend.govuk-media-query($from: desktop) {
       cursor: move;
     }
   }
@@ -86,15 +86,15 @@
 
   .gem-c-reorderable-list__actions .gem-c-button {
     display: inline-block;
-    margin-left: govuk-spacing(3);
+    margin-left: govuk_frontend.govuk-spacing(3);
     width: 80px;
   }
 
   .gem-c-reorderable-list__actions .gem-c-button:first-of-type {
     margin-left: 0;
 
-    @include govuk-media-query($from: desktop) {
-      margin-left: govuk-spacing(3);
+    @include govuk_frontend.govuk-media-query($from: desktop) {
+      margin-left: govuk_frontend.govuk-spacing(3);
     }
   }
 
@@ -102,7 +102,7 @@
   .gem-c-reorderable-list__item:last-child .gem-c-button:last-of-type {
     display: none;
 
-    @include govuk-media-query($from: desktop) {
+    @include govuk_frontend.govuk-media-query($from: desktop) {
       display: inline-block;
       visibility: hidden;
     }
@@ -111,8 +111,8 @@
   .gem-c-reorderable-list__item:first-child .gem-c-button:last-of-type {
     margin-left: 0;
 
-    @include govuk-media-query($from: desktop) {
-      margin-left: govuk-spacing(3);
+    @include govuk_frontend.govuk-media-query($from: desktop) {
+      margin-left: govuk_frontend.govuk-spacing(3);
     }
   }
 }

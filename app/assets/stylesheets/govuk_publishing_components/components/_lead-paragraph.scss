@@ -1,20 +1,20 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-lead-paragraph {
   margin-top: 0;
   // Ensure the text has a line-length of around 60 characters
   max-width: 30em;
-  @include govuk-text-colour;
-  @include responsive-bottom-margin;
-  @include govuk-font(24);
+  @include govuk_frontend.govuk-text-colour;
+  @include govuk_frontend.responsive-bottom-margin;
+  @include govuk_frontend.govuk-font(24);
 }
 
 .gem-c-lead-paragraph--inverse {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-lead-paragraph {
-    color: $govuk-print-text-colour;
+    color: govuk_frontend.$govuk-print-text-colour;
   }
 }

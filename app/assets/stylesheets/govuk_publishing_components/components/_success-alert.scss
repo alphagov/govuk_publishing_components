@@ -1,23 +1,23 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/notification-banner/notification-banner";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/notification-banner/notification-banner";
 
 .gem-c-success-alert__message {
-  @include govuk-font(19, $weight: bold);
+  @include govuk_frontend.govuk-font(19, $weight: bold);
 }
 
 // stylelint-disable declaration-no-important
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-success-alert {
     break-inside: avoid;
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk_frontend.$govuk-print-text-colour;
 
     * {
-      color: $govuk-print-text-colour !important;
+      color: govuk_frontend.$govuk-print-text-colour !important;
     }
 
     .govuk-notification-banner__header {
-      border-bottom: 1pt solid $govuk-print-text-colour;
+      border-bottom: 1pt solid govuk_frontend.$govuk-print-text-colour;
     }
 
     .govuk-notification-banner__title {

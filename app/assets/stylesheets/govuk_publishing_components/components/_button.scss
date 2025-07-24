@@ -1,5 +1,5 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/button/button";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/button/button";
 
 // Because govuk-frontend adds a responsive bottom margin by default for each component
 // we reset it to zero so we can set it separately using `gem-c-button--bottom-margin`
@@ -13,20 +13,20 @@
 // https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components
 .gem-c-button--bottom-margin,
 .gem-c-button__info-text--bottom-margin {
-  @include responsive-bottom-margin;
+  @include govuk_frontend.responsive-bottom-margin;
 }
 
 .gem-c-button--inline {
   display: block;
   width: 100%;
-  margin-bottom: govuk-spacing(1);
+  margin-bottom: govuk_frontend.govuk-spacing(1);
   vertical-align: top;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk_frontend.govuk-media-query($from: desktop) {
     display: inline-block;
     width: auto;
     vertical-align: baseline;
-    margin-right: govuk-spacing(2);
+    margin-right: govuk_frontend.govuk-spacing(2);
   }
 }
 
@@ -34,34 +34,34 @@
   display: block;
   max-width: 14em;
   margin-top: .5em;
-  @include govuk-text-colour;
-  @include govuk-font($size: 16);
+  @include govuk_frontend.govuk-text-colour;
+  @include govuk_frontend.govuk-font($size: 16);
 }
 
 .gem-c-button--secondary {
-  padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
-  border-color: $gem-secondary-button-colour;
-  color: $gem-secondary-button-colour;
-  background-color: $gem-secondary-button-background-colour;
+  padding: (govuk_frontend.govuk-spacing(2) - govuk_frontend.$govuk-border-width-form-element) govuk_frontend.govuk-spacing(2); // s1
+  border-color: govuk_frontend.$gem-secondary-button-colour;
+  color: govuk_frontend.$gem-secondary-button-colour;
+  background-color: govuk_frontend.$gem-secondary-button-background-colour;
   box-shadow: none;
 
   &:link,
   &:visited,
   &:active,
   &:focus {
-    color: $gem-secondary-button-colour;
-    background-color: $gem-secondary-button-background-colour;
+    color: govuk_frontend.$gem-secondary-button-colour;
+    background-color: govuk_frontend.$gem-secondary-button-background-colour;
     text-decoration: none;
   }
 
   &:link:focus {
-    color: $gem-secondary-button-colour;
+    color: govuk_frontend.$gem-secondary-button-colour;
   }
 
   &:hover {
-    border-color: $gem-secondary-button-hover-colour;
-    color: $gem-secondary-button-hover-colour;
-    background-color: $gem-secondary-button-hover-background-colour;
+    border-color: govuk_frontend.$gem-secondary-button-hover-colour;
+    color: govuk_frontend.$gem-secondary-button-hover-colour;
+    background-color: govuk_frontend.$gem-secondary-button-hover-background-colour;
     text-decoration: none;
   }
 
@@ -71,29 +71,29 @@
 }
 
 .gem-c-button--secondary-quiet {
-  padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
-  border-color: $gem-quiet-button-colour;
-  color: $gem-quiet-button-colour;
-  background-color: $gem-secondary-button-background-colour;
+  padding: (govuk_frontend.govuk-spacing(2) - govuk_frontend.$govuk-border-width-form-element) govuk_frontend.govuk-spacing(2); // s1
+  border-color: govuk_frontend.$gem-quiet-button-colour;
+  color: govuk_frontend.$gem-quiet-button-colour;
+  background-color: govuk_frontend.$gem-secondary-button-background-colour;
   box-shadow: none;
 
   &:link,
   &:visited,
   &:active,
   &:focus {
-    color: $gem-quiet-button-colour;
-    background-color: $gem-secondary-button-background-colour;
+    color: govuk_frontend.$gem-quiet-button-colour;
+    background-color: govuk_frontend.$gem-secondary-button-background-colour;
     text-decoration: none;
   }
 
   &:link:focus {
-    color: $gem-quiet-button-colour;
+    color: govuk_frontend.$gem-quiet-button-colour;
   }
 
   &:hover {
-    border-color: $gem-quiet-button-hover-colour;
-    color: $gem-quiet-button-hover-colour;
-    background-color: $gem-secondary-button-hover-background-colour;
+    border-color: govuk_frontend.$gem-quiet-button-hover-colour;
+    color: govuk_frontend.$gem-quiet-button-hover-colour;
+    background-color: govuk_frontend.$gem-secondary-button-hover-background-colour;
     text-decoration: none;
   }
 
@@ -102,13 +102,13 @@
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-button {
-    @include govuk-font(16);
+    @include govuk_frontend.govuk-font(16);
     display: inline-block;
-    padding: govuk-spacing(1);
-    border: solid 1px govuk-colour("black");
-    color: $govuk-text-colour;
+    padding: govuk_frontend.govuk-spacing(1);
+    border: solid 1px govuk_frontend.govuk-colour("black");
+    color: govuk_frontend.$govuk-text-colour;
     text-decoration: none;
   }
 }

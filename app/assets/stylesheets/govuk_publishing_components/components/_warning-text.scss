@@ -1,12 +1,12 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/warning-text/warning-text";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/warning-text/warning-text";
 
 .gem-c-warning-text .govuk-warning-text__text {
   margin: 0;
   // Ensure the font-size is always set to 19px
   // This prevents the default user agent styles being applied to heading elements used in the warning-text component following a change in v5.0.0, see:
   // https://github.com/alphagov/govuk-frontend/pull/4267
-  @include govuk-font($size: 19, $weight: bold);
+  @include govuk_frontend.govuk-font($size: 19, $weight: bold);
 }
 
 .gem-c-warning-text__text--no-indent {
@@ -15,20 +15,20 @@
 }
 
 .gem-c-warning-text .gem-c-warning-text__text--large {
-  @include govuk-font($size: 24, $weight: bold);
+  @include govuk_frontend.govuk-font($size: 24, $weight: bold);
 }
 
 .gem-c-warning-text__text--highlight {
-  color: $govuk-error-colour;
+  color: govuk_frontend.$govuk-error-colour;
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-warning-text * {
-    color: $govuk-print-text-colour;
+    color: govuk_frontend.$govuk-print-text-colour;
   }
 
   .govuk-warning-text__icon {
     background: none;
-    color: $govuk-print-text-colour;
+    color: govuk_frontend.$govuk-print-text-colour;
   }
 }

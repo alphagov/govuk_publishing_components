@@ -1,9 +1,9 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/notification-banner/notification-banner";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/notification-banner/notification-banner";
 
 .gem-c-notice {
   clear: both;
-  @include govuk-responsive-margin(8, "bottom");
+  @include govuk_frontend.govuk-responsive-margin(8, "bottom");
 
   .govuk-govspeak {
     p:last-child {
@@ -18,8 +18,8 @@
 
 .gem-c-notice__title {
   a {
-    @include govuk-link-common;
-    @include govuk-link-style-default;
-    @include govuk-link-print-friendly;
+    @include govuk_frontend.govuk-link-common;
+    @include govuk_frontend.govuk-link-style-default;
+    @include govuk_frontend.govuk-link-print-friendly;
   }
 }

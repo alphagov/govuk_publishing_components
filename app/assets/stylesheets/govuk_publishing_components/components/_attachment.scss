@@ -1,18 +1,18 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 $thumbnail-width: 99px;
 $thumbnail-height: 140px;
 $thumbnail-border-width: 5px;
-$thumbnail-background: govuk-colour("white");
+$thumbnail-background: govuk_frontend.govuk-colour("white");
 $thumbnail-border-colour: rgba(11, 12, 12, .1);
 $thumbnail-shadow-colour: rgba(11, 12, 12, .4);
 $thumbnail-shadow-width: 0 2px 2px;
-$thumbnail-icon-border-colour: govuk-colour("mid-grey");
+$thumbnail-icon-border-colour: govuk_frontend.govuk-colour("mid-grey");
 
 .gem-c-attachment {
   position: relative;
-  @include govuk-font(19);
-  @include govuk-clearfix;
+  @include govuk_frontend.govuk-font(19);
+  @include govuk_frontend.govuk-clearfix;
 }
 
 .gem-c-attachment__thumbnail {
@@ -34,29 +34,29 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   fill: $thumbnail-icon-border-colour;
   stroke: $thumbnail-icon-border-colour;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     max-width: $thumbnail-width;
     height: $thumbnail-height;
   }
 }
 
 .gem-c-attachment__details {
-  padding-left: calc(($thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5)) / 1.5);
+  padding-left: calc(($thumbnail-width + $thumbnail-border-width * 2 + govuk_frontend.govuk-spacing(5)) / 1.5);
 
-  @include govuk-media-query($from: tablet) {
-    padding-left: $thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    padding-left: $thumbnail-width + $thumbnail-border-width * 2 + govuk_frontend.govuk-spacing(5);
   }
 
   .gem-c-details {
-    margin-top: govuk-spacing(3);
+    margin-top: govuk_frontend.govuk-spacing(3);
     word-break: break-word;
     word-wrap: break-word;
   }
 }
 
 .gem-c-attachment__title {
-  margin: 0 0 govuk-spacing(3);
-  @include govuk-font($size: 27);
+  margin: 0 0 govuk_frontend.govuk-spacing(3);
+  @include govuk_frontend.govuk-font($size: 27);
 }
 
 .gem-c-attachment__link {
@@ -64,10 +64,10 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
 }
 
 .gem-c-attachment__metadata {
-  margin: 0 0 govuk-spacing(3);
-  color: $govuk-secondary-text-colour;
-  @include govuk-font($size: 19);
-  @include govuk-text-break-word;
+  margin: 0 0 govuk_frontend.govuk-spacing(3);
+  color: govuk_frontend.$govuk-secondary-text-colour;
+  @include govuk_frontend.govuk-font($size: 19);
+  @include govuk_frontend.govuk-text-break-word;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -77,12 +77,12 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
 .govspeak,
 .gem-c-govspeak {
   .gem-c-attachment__title {
-    margin: 0 0 govuk-spacing(3) 0;
-    @include govuk-font($size: 27, $weight: regular);
+    margin: 0 0 govuk_frontend.govuk-spacing(3) 0;
+    @include govuk_frontend.govuk-font($size: 27, $weight: regular);
   }
 
   .gem-c-attachment__metadata {
-    margin: 0 0 govuk-spacing(3) 0;
+    margin: 0 0 govuk_frontend.govuk-spacing(3) 0;
   }
 }
 
@@ -95,13 +95,13 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   cursor: help;
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-attachment__details {
     padding: 0;
   }
 
   .gem-c-attachment__metadata {
-    color: $govuk-print-text-colour;
+    color: govuk_frontend.$govuk-print-text-colour;
   }
 
   .gem-c-attachment__metadata,

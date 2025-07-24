@@ -1,9 +1,9 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
-$govuk-modal-margin: govuk-spacing(6);
+$govuk-modal-margin: govuk_frontend.govuk-spacing(6);
 $govuk-modal-close-button-size: 44px;
 $govuk-modal-z-index: 1000;
-$govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $govuk-border-width-form-element * 2;
+$govuk-modal-wide-breakpoint: govuk_frontend.$govuk-page-width + $govuk-modal-margin * 2 + govuk_frontend.$govuk-border-width-form-element * 2;
 
 .gem-c-modal-dialogue {
   display: none;
@@ -21,7 +21,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 .gem-c-modal-dialogue__box {
   display: block;
   position: fixed;
-  background: govuk-colour("white");
+  background: govuk_frontend.govuk-colour("white");
   top: 0;
   right: 0;
   bottom: 0;
@@ -34,31 +34,31 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   border: 0;
 
   &:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: govuk_frontend.$govuk-focus-width solid govuk_frontend.$govuk-focus-colour;
   }
 
-  @include govuk-font($size: 19);
-  @include govuk-text-colour;
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-font($size: 19);
+  @include govuk_frontend.govuk-text-colour;
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     position: relative;
     top: inherit;
     right: inherit;
     bottom: inherit;
     left: inherit;
     width: auto;
-    max-width: calc($govuk-page-width * (2 / 3));
+    max-width: calc(govuk_frontend.$govuk-page-width * (2 / 3));
     height: auto;
     margin: $govuk-modal-margin auto;
-    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+    border: govuk_frontend.$govuk-border-width-form-element solid govuk_frontend.$govuk-input-border-colour;
   }
 }
 
 .gem-c-modal-dialogue__box--wide {
-  @include govuk-media-query($from: tablet) {
-    max-width: $govuk-page-width;
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    max-width: govuk_frontend.$govuk-page-width;
   }
 
-  @include govuk-media-query($from: tablet, $until: $govuk-modal-wide-breakpoint) {
+  @include govuk_frontend.govuk-media-query($from: tablet, $until: $govuk-modal-wide-breakpoint) {
     margin: $govuk-modal-margin;
   }
 }
@@ -72,13 +72,13 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   width: 100%;
   height: 100%;
   opacity: .8;
-  background: govuk-colour("black");
+  background: govuk_frontend.govuk-colour("black");
   pointer-events: none;
   touch-action: none;
 }
 
 .gem-o-template--modal {
-  @include govuk-media-query($media-type: screen) {
+  @include govuk_frontend.govuk-media-query($media-type: screen) {
     overflow-y: inherit;
   }
 }
@@ -99,9 +99,9 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 }
 
 .gem-c-modal-dialogue__header {
-  padding: 9px govuk-spacing(3) 10px;
-  color: govuk-colour("white");
-  background: govuk-colour("black");
+  padding: 9px govuk_frontend.govuk-spacing(3) 10px;
+  color: govuk_frontend.govuk-colour("white");
+  background: govuk_frontend.govuk-colour("black");
 }
 
 .gem-c-modal-dialogue__logotype-crown {
@@ -117,8 +117,8 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 }
 
 .gem-c-modal-dialogue__content {
-  padding: govuk-spacing(3);
-  background: govuk-colour("white");
+  padding: govuk_frontend.govuk-spacing(3);
+  background: govuk_frontend.govuk-colour("white");
 }
 
 .gem-c-modal-dialogue__close-button {
@@ -128,12 +128,12 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   width: $govuk-modal-close-button-size;
   height: $govuk-modal-close-button-size;
   border: 0;
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
   background: none;
   cursor: pointer;
 
-  @include govuk-font($size: 36, $weight: bold, $line-height: 1.3);
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-font($size: 36, $weight: bold, $line-height: 1.3);
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     font-size: 36px;
     line-height: 1.3;
   }
@@ -142,8 +142,8 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   &:hover {
     outline: none;
     box-shadow: none;
-    color: govuk-colour("black");
-    background: $govuk-focus-colour;
-    @include govuk-focused-text;
+    color: govuk_frontend.govuk-colour("black");
+    background: govuk_frontend.$govuk-focus-colour;
+    @include govuk_frontend.govuk-focused-text;
   }
 }

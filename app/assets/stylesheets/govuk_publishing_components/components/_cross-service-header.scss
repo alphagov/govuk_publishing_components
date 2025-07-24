@@ -1,17 +1,17 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 $govuk-header-link-underline-thickness: 3px;
 $toggle-content-spacing: 8px;
 $toggle-padding: 15px;
-$block-link-spacing: govuk-spacing(3);
+$block-link-spacing: govuk_frontend.govuk-spacing(3);
 $logo-height: 30px;
 $toggle-border-height: 3px;
 
 .gem-c-rebranded-one-login-header {
-  @include govuk-font($size: 16);
-  color: govuk-colour("white");
+  @include govuk_frontend.govuk-font($size: 16);
+  color: govuk_frontend.govuk-colour("white");
   position: relative;
-  background: $govuk-brand-colour;
+  background: govuk_frontend.$govuk-brand-colour;
 }
 
 .gem-c-rebranded-one-login-header__container {
@@ -31,7 +31,7 @@ $toggle-border-height: 3px;
   padding-bottom: 12px;
   box-sizing: border-box;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk_frontend.govuk-media-query($from: desktop) {
     width: 33.33%;
     padding-right: $toggle-padding;
   }
@@ -58,17 +58,17 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-one-login-header__link--homepage {
   // Font size needs to be set on the link so that the box sizing is correct
   // in Firefox
-  @include govuk-font($size: false, $weight: bold);
+  @include govuk_frontend.govuk-font($size: false, $weight: bold);
   display: inline;
-  margin-right: govuk-spacing(2);
+  margin-right: govuk_frontend.govuk-spacing(2);
   font-size: 30px; // We don't have a mixin that produces 30px font size
   line-height: 1;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     &:focus {
       // Replicate the focus box shadow but without the -2px y-offset of the first yellow shadow
       // This is to stop the logo getting cut off by the box shadow when focused on above a product name
-      box-shadow: 0 0 $govuk-focus-colour;
+      box-shadow: 0 0 govuk_frontend.$govuk-focus-colour;
     }
   }
 
@@ -97,21 +97,21 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-one-login-header__nav__link {
   &:link,
   &:visited {
-    @include govuk-typography-common;
-    @include govuk-link-style-inverse;
+    @include govuk_frontend.govuk-typography-common;
+    @include govuk_frontend.govuk-link-style-inverse;
     text-decoration: none;
 
     &:hover {
       text-decoration: underline;
       text-decoration-thickness: $govuk-header-link-underline-thickness;
 
-      @if $govuk-link-underline-offset {
-        text-underline-offset: $govuk-link-underline-offset;
+      @if govuk_frontend.$govuk-link-underline-offset {
+        text-underline-offset: govuk_frontend.$govuk-link-underline-offset;
       }
     }
 
     &:focus {
-      @include govuk-focused-text;
+      @include govuk_frontend.govuk-focused-text;
     }
   }
 }
@@ -124,12 +124,12 @@ $toggle-border-height: 3px;
   }
 
   &:not(:focus) {
-    background-color: $govuk-brand-colour;
+    background-color: govuk_frontend.$govuk-brand-colour;
   }
 }
 
 .gem-c-rebranded-one-login-header__nav {
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     width: 100%;
 
     &.gem-c-rebranded-one-login-header__nav--open {
@@ -137,7 +137,7 @@ $toggle-border-height: 3px;
     }
   }
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     max-width: 66%;
   }
 }
@@ -145,7 +145,7 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-one-login-header__nav__link {
   font-weight: bold;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     position: relative;
     padding: $block-link-spacing 0;
 
@@ -170,7 +170,7 @@ $toggle-border-height: 3px;
 
         &::after {
           display: block;
-          background-color: govuk-colour("white");
+          background-color: govuk_frontend.govuk-colour("white");
         }
       }
 
@@ -179,35 +179,35 @@ $toggle-border-height: 3px;
 
         &::after {
           display: block;
-          background-color: $govuk-focus-text-colour;
+          background-color: govuk_frontend.$govuk-focus-text-colour;
         }
       }
     }
   }
 
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     &:link:link,
     &:link:visited,
     &:visited:link,
     &:visited:visited {
-      color: $govuk-brand-colour;
+      color: govuk_frontend.$govuk-brand-colour;
 
       &:focus {
-        color: $govuk-focus-text-colour;
+        color: govuk_frontend.$govuk-focus-text-colour;
       }
     }
   }
 }
 
 .gem-c-rebranded-one-login-header__nav__link-content {
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     padding: 0 $block-link-spacing;
     display: flex;
     align-items: center;
 
     &--sign-out {
       height: $logo-height;
-      border-left: 1px solid govuk-colour("white");
+      border-left: 1px solid govuk_frontend.govuk-colour("white");
     }
   }
 }
@@ -217,39 +217,39 @@ $toggle-border-height: 3px;
   padding: 0;
   list-style: none;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     display: flex;
     align-items: center;
   }
 
-  @include govuk-media-query($until: tablet) {
-    background-color: govuk-colour("white");
-    color: $govuk-brand-colour;
+  @include govuk_frontend.govuk-media-query($until: tablet) {
+    background-color: govuk_frontend.govuk-colour("white");
+    color: govuk_frontend.$govuk-brand-colour;
     margin-right: -(govuk-spacing(3));
     margin-left: -(govuk-spacing(3));
-    padding: 0 govuk-spacing(3);
+    padding: 0 govuk_frontend.govuk-spacing(3);
   }
 }
 
 // if JS is unavailable, the nav links are expanded and the toggle button is hidden
 .toggle-enabled .gem-c-rebranded-one-login-header__nav__list {
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     display: none;
   }
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     display: flex;
   }
 }
 
 .gem-c-rebranded-one-login-header__nav--open .gem-c-rebranded-one-login-header__nav__list {
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     display: block;
   }
 }
 
 .gem-c-rebranded-one-login-header__nav__list-item {
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     border-left: none;
     margin-right: 0;
     padding: 0;
@@ -257,11 +257,11 @@ $toggle-border-height: 3px;
     align-items: center;
   }
 
-  @include govuk-media-query($until: tablet) {
-    padding: govuk-spacing(3) 0;
+  @include govuk_frontend.govuk-media-query($until: tablet) {
+    padding: govuk_frontend.govuk-spacing(3) 0;
 
     &:not(:last-child) {
-      border-bottom: 1px solid govuk-colour("mid-grey");
+      border-bottom: 1px solid govuk_frontend.govuk-colour("mid-grey");
     }
   }
 }
@@ -271,14 +271,14 @@ $toggle-border-height: 3px;
 }
 
 .gem-c-rebranded-cross-service-header__logo--nav {
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     display: none;
   }
 }
 
 .gem-c-rebranded-cross-service-header__toggle {
   display: none;
-  @include govuk-font($size: 16, $weight: bold);
+  @include govuk_frontend.govuk-font($size: 16, $weight: bold);
   position: absolute;
   right: 0;
   top: 0;
@@ -291,8 +291,8 @@ $toggle-border-height: 3px;
   margin-right: -(govuk-spacing(3));
 
   @mixin toggle-button-focus {
-    color: $govuk-focus-text-colour;
-    background-color: $govuk-focus-colour;
+    color: govuk_frontend.$govuk-focus-text-colour;
+    background-color: govuk_frontend.$govuk-focus-colour;
     outline: 3px solid transparent;
   }
 
@@ -314,15 +314,15 @@ $toggle-border-height: 3px;
   }
 
   &.gem-c-rebranded-cross-service-header__toggle--open {
-    background-color: govuk-colour("white");
-    color: $govuk-brand-colour;
+    background-color: govuk_frontend.govuk-colour("white");
+    color: govuk_frontend.$govuk-brand-colour;
   }
 }
 
 .toggle-enabled .gem-c-rebranded-cross-service-header__toggle {
   display: inline;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     display: none;
   }
 }
@@ -361,20 +361,20 @@ $toggle-border-height: 3px;
     bottom: calc(1px - $toggle-padding);
 
     .gem-c-rebranded-cross-service-header__toggle:hover & {
-      background-color: govuk-colour("white");
+      background-color: govuk_frontend.govuk-colour("white");
     }
 
     .gem-c-rebranded-cross-service-header__toggle--open &,
     .gem-c-rebranded-cross-service-header__toggle--open:hover & {
-      background-color: $govuk-brand-colour;
+      background-color: govuk_frontend.$govuk-brand-colour;
     }
 
     .gem-c-rebranded-cross-service-header__toggle:focus &,
     .gem-c-rebranded-cross-service-header__toggle:focus-visible & {
-      background-color: $govuk-focus-text-colour;
+      background-color: govuk_frontend.$govuk-focus-text-colour;
 
       &:hover {
-        background-color: $govuk-focus-text-colour;
+        background-color: govuk_frontend.$govuk-focus-text-colour;
       }
     }
   }
@@ -384,7 +384,7 @@ $toggle-border-height: 3px;
   fill: #00ffe0;
 
   // Override Dot colour when printing
-  @include govuk-media-query($media-type: print) {
+  @include govuk_frontend.govuk-media-query($media-type: print) {
     fill: currentcolor;
   }
 

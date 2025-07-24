@@ -1,75 +1,75 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-glance-metric {
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk_frontend.$govuk-border-colour;
   border-bottom: 0;
-  @include govuk-responsive-margin(6, "bottom");
+  @include govuk_frontend.govuk-responsive-margin(6, "bottom");
 
   &__heading {
     min-height: 2.6em;
-    @include govuk-font($size: 24, $weight: bold);
+    @include govuk_frontend.govuk-font($size: 24, $weight: bold);
 
-    @include govuk-responsive-margin(3, "top");
-    @include govuk-responsive-margin(1, "bottom");
-    @include govuk-responsive-padding(3, "top");
+    @include govuk_frontend.govuk-responsive-margin(3, "top");
+    @include govuk_frontend.govuk-responsive-margin(1, "bottom");
+    @include govuk_frontend.govuk-responsive-padding(3, "top");
 
-    @include govuk-media-query($until: tablet) {
+    @include govuk_frontend.govuk-media-query($until: tablet) {
       min-height: 4em;
     }
 
-    @include govuk-media-query($until: mobile) {
+    @include govuk_frontend.govuk-media-query($until: mobile) {
       min-height: 0;
     }
   }
 
   &__figure {
     display: flex;
-    @include govuk-font($size: 36, $weight: bold);
-    @include govuk-responsive-margin(1, "bottom");
+    @include govuk_frontend.govuk-font($size: 36, $weight: bold);
+    @include govuk_frontend.govuk-responsive-margin(1, "bottom");
 
-    @include govuk-media-query($until: mobile) {
-      @include govuk-font($size: 48, $weight: bold);
+    @include govuk_frontend.govuk-media-query($until: mobile) {
+      @include govuk_frontend.govuk-font($size: 48, $weight: bold);
     }
   }
 
   &__explicit-label {
-    @include govuk-visually-hidden;
+    @include govuk_frontend.govuk-visually-hidden;
   }
 
   &__context {
     min-height: 5em;
-    border-bottom: 1px solid $govuk-border-colour;
+    border-bottom: 1px solid govuk_frontend.$govuk-border-colour;
 
-    @include govuk-media-query($until: mobile) {
-      @include govuk-font(16);
+    @include govuk_frontend.govuk-media-query($until: mobile) {
+      @include govuk_frontend.govuk-font(16);
       min-height: 0;
       border-bottom: 0;
     }
   }
 
   &__trend {
-    @include govuk-media-query($until: mobile) {
-      @include govuk-font(24);
+    @include govuk_frontend.govuk-media-query($until: mobile) {
+      @include govuk_frontend.govuk-font(24);
     }
 
     &-text {
-      @include govuk-visually-hidden;
+      @include govuk_frontend.govuk-visually-hidden;
     }
 
     &-icon {
-      color: govuk-colour("dark-grey");
+      color: govuk_frontend.govuk-colour("dark-grey");
 
-      @include govuk-media-query($until: mobile) {
-        @include govuk-font(19);
+      @include govuk_frontend.govuk-media-query($until: mobile) {
+        @include govuk_frontend.govuk-font(19);
       }
     }
   }
 
   &__period {
-    @include govuk-responsive-margin(6, "bottom");
+    @include govuk_frontend.govuk-responsive-margin(6, "bottom");
 
-    @include govuk-media-query($until: mobile) {
-      @include govuk-font(16);
+    @include govuk_frontend.govuk-media-query($until: mobile) {
+      @include govuk_frontend.govuk-font(16);
     }
   }
 }

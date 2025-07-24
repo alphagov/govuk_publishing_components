@@ -1,9 +1,9 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-published-dates {
   direction: ltr;
   line-height: 1.45em;
-  color: govuk-colour("black");
+  color: govuk_frontend.govuk-colour("black");
 
   .direction-rtl & {
     direction: rtl;
@@ -19,7 +19,7 @@
 }
 
 .gem-c-published-dates__change-history {
-  margin: govuk-spacing(4) 0;
+  margin: govuk_frontend.govuk-spacing(4) 0;
 }
 
 .gem-c-published-dates__list {
@@ -28,12 +28,12 @@
 
 .gem-c-published-dates__change-item {
   list-style-type: none;
-  margin-bottom: govuk-spacing(2);
+  margin-bottom: govuk_frontend.govuk-spacing(2);
 }
 
 .gem-c-published-dates__change-date {
   display: block;
-  @include govuk-font(16, $weight: bold);
+  @include govuk_frontend.govuk-font(16, $weight: bold);
 }
 
 .gem-c-published-dates__change-note {
@@ -41,8 +41,8 @@
 }
 
 .gem-c-published-dates--history {
-  padding-top: govuk-spacing(2);
-  border-top: 1px solid $govuk-border-colour;
+  padding-top: govuk_frontend.govuk-spacing(2);
+  border-top: 1px solid govuk_frontend.$govuk-border-colour;
 }
 
 .govuk-frontend-supported .gem-c-published-dates .js-hidden {
@@ -50,7 +50,7 @@
   visibility: hidden;
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-published-dates {
     margin-top: 10mm;
   }

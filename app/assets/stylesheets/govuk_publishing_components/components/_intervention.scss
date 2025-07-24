@@ -1,11 +1,11 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-intervention {
-  background-color: govuk-colour("light-grey");
-  border-left: 10px solid $govuk-success-colour;
-  @include govuk-text-colour;
-  @include govuk-responsive-padding(3);
-  @include govuk-responsive-margin(6, "bottom");
+  background-color: govuk_frontend.govuk-colour("light-grey");
+  border-left: 10px solid govuk_frontend.$govuk-success-colour;
+  @include govuk_frontend.govuk-text-colour;
+  @include govuk_frontend.govuk-responsive-padding(3);
+  @include govuk_frontend.govuk-responsive-margin(6, "bottom");
 
   .govuk-body:last-of-type {
     margin-bottom: 0;
@@ -20,7 +20,7 @@
 .gem-c-intervention__image-container {
   min-width: 50px;
   height: 50px;
-  margin-right: govuk-spacing(4);
+  margin-right: govuk_frontend.govuk-spacing(4);
   background-size: 50px;
 }
 
@@ -39,11 +39,11 @@
   margin-bottom: -2px;
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-intervention {
     break-inside: avoid;
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk_frontend.$govuk-print-text-colour;
 
     .govuk-body {
       margin: 0;

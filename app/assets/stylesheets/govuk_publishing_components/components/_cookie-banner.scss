@@ -1,5 +1,5 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/cookie-banner/cookie-banner";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/cookie-banner/cookie-banner";
 
 .gem-c-cookie-banner {
   [hidden],
@@ -17,7 +17,7 @@
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-cookie-banner {
     display: none !important; // stylelint-disable-line declaration-no-important
   }

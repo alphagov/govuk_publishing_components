@@ -1,5 +1,5 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/input/input";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/input/input";
 
 $search-icon-size: 40px;
 
@@ -8,10 +8,10 @@ $search-icon-size: 40px;
   position: relative;
   z-index: 1;
   margin-bottom: -$search-icon-size;
-  margin-bottom: -(govuk-px-to-rem($search-icon-size));
+  margin-bottom: -(govuk_frontend.govuk-px-to-rem($search-icon-size));
   width: $search-icon-size;
   height: $search-icon-size;
-  height: govuk-px-to-rem($search-icon-size);
+  height: govuk_frontend.govuk-px-to-rem($search-icon-size);
   background: url("govuk_publishing_components/icon-search.svg") no-repeat -3px center;
 }
 
@@ -21,10 +21,10 @@ $search-icon-size: 40px;
 .gem-c-input.govuk-input {
   margin: 0;
   min-width: 0;
-  padding: govuk-spacing(1);
+  padding: govuk_frontend.govuk-spacing(1);
   box-sizing: border-box;
 
   &.gem-c-input--with-search-icon {
-    padding-left: govuk-spacing(6);
+    padding-left: govuk_frontend.govuk-spacing(6);
   }
 }

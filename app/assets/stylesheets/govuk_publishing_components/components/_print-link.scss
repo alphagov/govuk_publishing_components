@@ -1,4 +1,4 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 $gem-c-print-link-background-width: 16px;
 $gem-c-print-link-background-height: 18px;
@@ -19,38 +19,38 @@ $gem-c-print-link-background-height: 18px;
 
 .gem-c-print-link__link,
 .gem-c-print-link__button {
-  background: url("govuk_publishing_components/icon-print.png") no-repeat govuk-spacing(2) 50%;
+  background: url("govuk_publishing_components/icon-print.png") no-repeat govuk_frontend.govuk-spacing(2) 50%;
   background-size: $gem-c-print-link-background-width $gem-c-print-link-background-height;
-  padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) (govuk-spacing(4) + $gem-c-print-link-background-width);
+  padding: govuk_frontend.govuk-spacing(2) govuk_frontend.govuk-spacing(2) govuk_frontend.govuk-spacing(2) (govuk_frontend.govuk-spacing(4) + $gem-c-print-link-background-width); // stylelint-disable-line stylistic/max-line-length
   text-decoration: none;
 
-  @include govuk-device-pixel-ratio($ratio: 2) {
+  @include govuk_frontend.govuk-device-pixel-ratio($ratio: 2) {
     background-image: url("govuk_publishing_components/icon-print-2x.png");
   }
 
   &:hover {
-    background-color: govuk-colour("light-grey");
+    background-color: govuk_frontend.govuk-colour("light-grey");
   }
 }
 
 .gem-c-print-link__link {
-  box-shadow: inset 0 0 0 1px govuk-colour("dark-grey");
+  box-shadow: inset 0 0 0 1px govuk_frontend.govuk-colour("dark-grey");
 
   &:focus {
     border: 0;
-    box-shadow: 0 $govuk-focus-width $govuk-text-colour;
+    box-shadow: 0 govuk_frontend.$govuk-focus-width govuk_frontend.$govuk-text-colour;
   }
 }
 
 .gem-c-print-link__button {
-  border: 1px solid govuk-colour("dark-grey");
-  color: $govuk-link-colour;
+  border: 1px solid govuk_frontend.govuk-colour("dark-grey");
+  color: govuk_frontend.$govuk-link-colour;
   cursor: pointer;
-  margin: govuk-spacing(0);
+  margin: govuk_frontend.govuk-spacing(0);
 
   &:focus {
-    background-color: $govuk-focus-colour;
-    border-color: transparent;
-    @include govuk-focused-text;
+    background-color: govuk_frontend.$govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
+    border-color: transparent !important; // stylelint-disable-line declaration-no-important
+    @include govuk_frontend.govuk-focused-text;
   }
 }

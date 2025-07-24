@@ -1,36 +1,36 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-inverse-header {
   width: 100%;
-  background-color: govuk-colour("blue");
-  color: govuk-colour("white");
-  margin-bottom: govuk-spacing(6);
-  padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
+  background-color: govuk_frontend.govuk-colour("blue");
+  color: govuk_frontend.govuk-colour("white");
+  margin-bottom: govuk_frontend.govuk-spacing(6);
+  padding: govuk_frontend.govuk-spacing(3) govuk_frontend.govuk-spacing(6) govuk_frontend.govuk-spacing(6) govuk_frontend.govuk-spacing(6);
   box-sizing: border-box;
 }
 
 .gem-c-inverse-header__subtext {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
   margin: 0;
-  @include govuk-font($size: 16, $line-height: 1.5);
+  @include govuk_frontend.govuk-font($size: 16, $line-height: 1.5);
 }
 
 .gem-c-inverse-header--full-width {
   padding-left: 0;
   padding-right: 0;
-  padding-bottom: govuk-spacing(3);
+  padding-bottom: govuk_frontend.govuk-spacing(3);
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-inverse-header {
     background: none;
     padding-left: 0;
     padding-right: 0;
-    border-bottom: 2pt solid $govuk-print-text-colour;
+    border-bottom: 2pt solid govuk_frontend.$govuk-print-text-colour;
 
     &,
     & * {
-      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+      color: govuk_frontend.$govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
     }
   }
 }
