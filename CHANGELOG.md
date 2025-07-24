@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 59.1.0
 
-* Change skip_account to only accept a boolean ([PR #](https://github.com/alphagov/govuk_publishing_components/pull/4927))
+* Change skip_account to only accept a boolean ([PR #4927](https://github.com/alphagov/govuk_publishing_components/pull/4927))
 * Fix opacity issue on first selected item in choices.js dropdown ([PR #4936](https://github.com/alphagov/govuk_publishing_components/pull/4936))
 * Add `user-id` to `page_view` tracked event ([PR #4935](https://github.com/alphagov/govuk_publishing_components/pull/4935))
 * Override the browser default of italics for <address> in govspeak ([PR #4923](https://github.com/alphagov/govuk_publishing_components/pull/4923))
