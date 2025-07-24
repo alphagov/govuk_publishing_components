@@ -86,7 +86,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var inputNodename = elem.nodeName
       var inputTypes = ['text', 'search', 'email', 'number']
 
-      input.section = labelText
+      input.section = labelText.replace(/\r?\n|\r/g, '')
 
       var isTextField = inputTypes.indexOf(inputType) !== -1 || inputNodename === 'TEXTAREA'
       var conditionalField = elem.closest('.govuk-checkboxes__conditional')
@@ -119,8 +119,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
             input.section = legend.innerText
           }
         }
-      } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex] && elem.options[elem.selectedIndex].value) {
-        input.answer = elem.options[elem.selectedIndex].text
+      } else if (inputNodename === 'SELECT' && elem.querySelectorAll('option:checked')) {
+        input.answer = Array.from(elem.querySelectorAll('option:checked')).map(function (element) { return element.text }).join(',')
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
           if (this.useTextCount) {
@@ -160,9 +160,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           if (fieldSection) {
             if (parentFieldSection) {
               answers[parentFieldSection] = answers[parentFieldSection] || {}
-              answers[parentFieldSection][fieldSection] = answer
+              answers[parentFieldSection][fieldSection] = answers[parentFieldSection][fieldSection] || ''
+              answers[parentFieldSection][fieldSection] += ((answers[parentFieldSection][fieldSection] ? ',' : '') + answer)
             } else {
-              answers[fieldSection] = answer
+              answers[fieldSection] = answers[fieldSection] || ''
+              answers[fieldSection] += ((answers[fieldSection] ? ',' : '') + answer)
             }
           }
         } else {
