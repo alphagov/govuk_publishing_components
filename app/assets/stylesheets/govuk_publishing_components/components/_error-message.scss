@@ -1,2 +1,2 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/error-message/error-message";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/error-message/error-message";

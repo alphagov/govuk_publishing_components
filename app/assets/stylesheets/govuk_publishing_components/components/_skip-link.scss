@@ -1,2 +1,2 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/skip-link/skip-link";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/skip-link/skip-link";

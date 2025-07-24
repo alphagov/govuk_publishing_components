@@ -1,2 +1,2 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/service-navigation/service-navigation";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/service-navigation/service-navigation";
