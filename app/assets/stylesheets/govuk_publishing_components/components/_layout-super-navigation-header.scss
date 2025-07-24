@@ -109,24 +109,6 @@ $search-icon-height: 20px;
   position: relative;
 }
 
-.gem-c-layout-super-navigation-header__button-width-container {
-  position: relative;
-}
-
-.gem-c-layout-super-navigation-header__button-container {
-  top: -$navbar-height;
-  position: absolute;
-  right: 0;
-
-  @include govuk-media-query($until: "tablet") {
-    margin-right: govuk-spacing(-3);
-  }
-
-  @include govuk-media-query($until: 300px) {
-    position: static;
-  }
-}
-
 .gem-c-layout-super-navigation-header__header-logo {
   line-height: 1;
   padding-bottom: 12px;
