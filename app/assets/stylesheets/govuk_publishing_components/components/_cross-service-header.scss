@@ -2,7 +2,7 @@
 
 $govuk-header-link-underline-thickness: 3px;
 $toggle-content-spacing: 8px;
-$toggle-padding-bottom: 18px;
+$toggle-padding: 15px;
 $block-link-spacing: govuk-spacing(3);
 $logo-height: 30px;
 $toggle-border-height: 3px;
@@ -12,10 +12,6 @@ $toggle-border-height: 3px;
   color: govuk-colour("white");
   position: relative;
   background: $govuk-brand-colour;
-
-  @media (forced-colors: active) {
-    border-bottom: 1px solid transparent;
-  }
 }
 
 .gem-c-rebranded-one-login-header__container {
@@ -24,6 +20,7 @@ $toggle-border-height: 3px;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  border-bottom: 1px solid transparent;
 }
 
 .gem-c-rebranded-one-login-header__logo {
@@ -32,10 +29,11 @@ $toggle-border-height: 3px;
   // this strange non-standard spacing came from the Design System
   padding-top: 16px;
   padding-bottom: 12px;
+  box-sizing: border-box;
 
   @include govuk-media-query($from: desktop) {
     width: 33.33%;
-    padding-right: govuk-spacing(3);
+    padding-right: $toggle-padding;
   }
 }
 
@@ -43,10 +41,11 @@ $toggle-border-height: 3px;
   display: inline-block;
   position: relative;
   top: -3px;
+  margin-bottom: 2px;
   // this is in place to ensure the GOVUK logo doesn't overflow when text magnification is used
   max-width: 80vw;
   fill: currentcolor;
-  vertical-align: top;
+  vertical-align: sub;
 
   // Prevent readability backplate from obscuring underline in Windows High
   // Contrast Mode
@@ -60,7 +59,7 @@ $toggle-border-height: 3px;
   // Font size needs to be set on the link so that the box sizing is correct
   // in Firefox
   @include govuk-font($size: false, $weight: bold);
-  display: inline-block;
+  display: inline;
   margin-right: govuk-spacing(2);
   font-size: 30px; // We don't have a mixin that produces 30px font size
   line-height: 1;
@@ -132,6 +131,10 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-one-login-header__nav {
   @include govuk-media-query($until: tablet) {
     width: 100%;
+
+    &.gem-c-rebranded-one-login-header__nav--open {
+      border-top: 1px solid transparent;
+    }
   }
 
   @include govuk-media-query($from: tablet) {
@@ -225,7 +228,6 @@ $toggle-border-height: 3px;
     margin-right: -(govuk-spacing(3));
     margin-left: -(govuk-spacing(3));
     padding: 0 govuk-spacing(3);
-    border-bottom: 1px solid $govuk-brand-colour;
   }
 }
 
@@ -277,15 +279,16 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-cross-service-header__toggle {
   display: none;
   @include govuk-font($size: 16, $weight: bold);
-  position: relative;
+  position: absolute;
+  right: 0;
+  top: 0;
   cursor: pointer;
   border: 0;
   margin: 0;
   background: none;
   color: inherit;
-  padding: govuk-spacing(3) govuk-spacing(3) $toggle-padding-bottom govuk-spacing(3);
+  padding: $toggle-padding $toggle-padding calc($toggle-padding + 1px) $toggle-padding;
   margin-right: -(govuk-spacing(3));
-  align-self: start;
 
   @mixin toggle-button-focus {
     color: $govuk-focus-text-colour;
@@ -313,10 +316,6 @@ $toggle-border-height: 3px;
   &.gem-c-rebranded-cross-service-header__toggle--open {
     background-color: govuk-colour("white");
     color: $govuk-brand-colour;
-
-    &::before {
-      transform: translateY(-20%) rotate(-45deg);
-    }
   }
 }
 
@@ -358,7 +357,8 @@ $toggle-border-height: 3px;
     width: 100%;
     height: $toggle-border-height;
     background-color: transparent;
-    bottom: -$toggle-padding-bottom;
+    // the underline that appears on hover/focus should be 1px from the bottom of the container
+    bottom: calc(1px - $toggle-padding);
 
     .gem-c-rebranded-cross-service-header__toggle:hover & {
       background-color: govuk-colour("white");
