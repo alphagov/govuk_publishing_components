@@ -1,5 +1,5 @@
 // This file contains the styles for the Component Guide.
-
+@use "sass:color";
 @import "govuk_publishing_components/govuk_frontend_support";
 @import "govuk_publishing_components/component_support";
 
@@ -267,10 +267,10 @@ html {
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
-$code-00: scale-color(govuk-colour("light-grey"), $lightness: 50%); // Default Background
+$code-00: color.scale(govuk-colour("light-grey"), $lightness: 50%); // Default Background
 $code-01: #f5f5f5; // Lighter Background (Unused)
 $code-02: #bfc1c3; // Selection Background
-$code-03: darken($govuk-secondary-text-colour, 2%); // Comments, Invisibles, Line Highlighting
+$code-03: color.adjust($govuk-secondary-text-colour, $lightness: -2%); // Comments, Invisibles, Line Highlighting
 $code-04: #e8e8e8; // Dark Foreground (Unused)
 $code-05: $govuk-text-colour; // Default Foreground, Caret, Delimiters, Operators
 $code-06: #ffffff; // Light Foreground (Unused)

@@ -1,3 +1,4 @@
+@use "sass:color";
 @import "govuk_publishing_components/individual_component_support";
 
 $input-size: 40px;
@@ -206,7 +207,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
     color: govuk-colour("white");
 
     &:hover {
-      background-color: lighten(govuk-colour("blue"), 5%);
+      background-color: color.adjust(govuk-colour("blue"), $lightness: 5%);
     }
   }
 

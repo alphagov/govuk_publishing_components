@@ -296,9 +296,9 @@
     }
 
     &:focus {
-      @include govuk-focused-text;
       background-color: $govuk-focus-colour;
       border-color: transparent;
+      @include govuk-focused-text;
     }
   }
 
