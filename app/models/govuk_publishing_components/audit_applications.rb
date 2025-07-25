@@ -18,7 +18,7 @@ module GovukPublishingComponents
 
         find_components = /(?<=govuk_publishing_components\/components\/)[a-zA-Z_-]+(?=['"])/
 
-        @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/ # if using the all stylesheets option
+        @find_all_stylesheets = /@(?:import|use) ["']{1}govuk_publishing_components\/all_components/ # if using the all stylesheets option
         @find_individual_asset_model = /render_component_stylesheets/ # if using per page component asset loading
         @uses_individual_asset_model = false
         find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
