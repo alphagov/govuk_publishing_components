@@ -20,6 +20,10 @@ describe('Google Analytics schemas', function () {
         type: 'test_type',
         url: undefined,
         text: undefined,
+        text_2: this.undefined,
+        text_3: this.undefined,
+        text_4: this.undefined,
+        text_5: this.undefined,
         index: {
           index_link: undefined,
           index_section: undefined,
@@ -59,6 +63,10 @@ describe('Google Analytics schemas', function () {
         type: undefined,
         url: undefined,
         text: undefined,
+        text_2: this.undefined,
+        text_3: this.undefined,
+        text_4: this.undefined,
+        text_5: this.undefined,
         index: {
           index_link: '3',
           index_section: '1',
@@ -98,6 +106,10 @@ describe('Google Analytics schemas', function () {
         type: undefined,
         url: undefined,
         text: undefined,
+        text_2: this.undefined,
+        text_3: this.undefined,
+        text_4: this.undefined,
+        text_5: this.undefined,
         index: {
           index_link: '1',
           index_section: undefined,
@@ -138,6 +150,10 @@ describe('Google Analytics schemas', function () {
         type: undefined,
         url: undefined,
         text: undefined,
+        text_2: this.undefined,
+        text_3: this.undefined,
+        text_4: this.undefined,
+        text_5: this.undefined,
         index: {
           index_link: '1',
           index_section: undefined,

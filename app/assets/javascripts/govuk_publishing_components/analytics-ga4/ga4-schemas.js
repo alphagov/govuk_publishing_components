@@ -16,6 +16,10 @@
         type: this.undefined,
         url: this.undefined,
         text: this.undefined,
+        text_2: this.undefined,
+        text_3: this.undefined,
+        text_4: this.undefined,
+        text_5: this.undefined,
         index: {
           index_link: this.undefined,
           index_section: this.undefined,
