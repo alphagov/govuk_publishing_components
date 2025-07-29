@@ -10,6 +10,7 @@
 ## 59.1.1
 
 * Add spaces to phone number PII redaction ([PR #4937](https://github.com/alphagov/govuk_publishing_components/pull/4937))
+* Update Action link component markup and styles ([PR #4932](https://github.com/alphagov/govuk_publishing_components/pull/4932))
 
 ## 59.1.0
 
