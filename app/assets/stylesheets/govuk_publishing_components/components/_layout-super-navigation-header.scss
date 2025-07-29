@@ -286,9 +286,9 @@ $search-icon-height: 20px;
   }
 
   @include focus-and-focus-visible {
+    // this declaration overrides govuk-focused-text but the compiler prefers @include to be last
+    box-shadow: none !important; // stylelint-disable-line declaration-no-important
     @include govuk-focused-text;
-
-    box-shadow: none;
 
     &::after {
       background-color: govuk-colour("black");
@@ -366,8 +366,9 @@ $search-icon-height: 20px;
 // Styles the "Menu" open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button.gem-c-layout-super-navigation-header__open-button {
   @include focus-and-focus-visible {
+    // this declaration overrides govuk-focused-text because the compiler prefers @include to be last
+    box-shadow: none !important; // stylelint-disable-line declaration-no-important
     @include govuk-focused-text;
-    box-shadow: none;
 
     &::after {
       background-color: govuk-colour("black");
@@ -435,11 +436,11 @@ $search-icon-height: 20px;
   }
 
   @include focus-and-focus-visible {
-    @include govuk-focused-text;
-
-    border-color: $govuk-focus-colour;
-    box-shadow: none;
     z-index: 11;
+    // these declarations override govuk-focused-text because the compiler prefers @include to be last
+    border-color: $govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
+    box-shadow: none !important; // stylelint-disable-line declaration-no-important
+    @include govuk-focused-text;
 
     &::after {
       background: govuk-colour("black");
@@ -481,9 +482,10 @@ $search-icon-height: 20px;
     color: govuk-colour("blue");
 
     @include focus-and-focus-visible {
+      // these declarations override govuk-focused-text because the compiler prefers @include to be last
+      border-color: $govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
+      box-shadow: none !important; // stylelint-disable-line declaration-no-important
       @include govuk-focused-text;
-      border-color: $govuk-focus-colour;
-      box-shadow: none;
 
       &::after {
         background: govuk-colour("black");

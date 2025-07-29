@@ -1,3 +1,7 @@
+@use "sass:list";
+@use "sass:string";
+@use "sass:math";
+
 /// Set grid row or column value using the fraction unit.
 ///
 /// @param {Integer} $number - number of fractions that the grid row or column
@@ -16,7 +20,7 @@
     $fractions: $fractions + " 1fr";
   }
 
-  @return unquote($fractions);
+  @return string.unquote($fractions);
 }
 
 /// Arrange items into columns
@@ -48,7 +52,7 @@
 ///  }
 ///
 @mixin columns($items, $columns, $selector: "*", $flow: row) {
-  $rows: ceil(calc($items / $columns));
+  $rows: math.ceil(calc($items / $columns));
 
   display: -ms-grid;
   display: grid;
@@ -73,19 +77,19 @@
 
         // stylelint-disable max-nesting-depth
         @if $counter <= $items {
-          $this-row: append($this-row, $counter);
+          $this-row: list.append($this-row, $counter);
         }
         // stylelint-enable max-nesting-depth
       }
 
-      $grid: append($grid, $this-row, "comma");
+      $grid: list.append($grid, $this-row, "comma");
     }
 
-    @for $row-count from 1 through length($grid) {
-      $this-column: nth($grid, $row-count);
+    @for $row-count from 1 through list.length($grid) {
+      $this-column: list.nth($grid, $row-count);
 
-      @for $item-index from 1 through length($this-column) {
-        $this-item: nth($this-column, $item-index);
+      @for $item-index from 1 through list.length($this-column) {
+        $this-item: list.nth($this-column, $item-index);
 
         & > #{$selector}:nth-child(#{$this-item}) {
           -ms-grid-column: $item-index;
@@ -113,23 +117,23 @@
 
         // stylelint-disable max-nesting-depth
         @if $counter <= $items {
-          $this-row: append($this-row, $counter);
+          $this-row: list.append($this-row, $counter);
         }
         // stylelint-enable max-nesting-depth
       }
 
-      $grid: append($grid, $this-row, "comma");
+      $grid: list.append($grid, $this-row, "comma");
     }
 
     // Now we can loop through the list of lists to create the rules needed for
     // the older grid syntax; fist looping through the list to get the number
     // needed for the column, then looping again to get the number for the grid
     // row:
-    @for $column_index from 1 through length($grid) {
-      $this-row: nth($grid, $column_index);
+    @for $column_index from 1 through list.length($grid) {
+      $this-row: list.nth($grid, $column_index);
 
-      @for $item-index from 1 through length($this-row) {
-        $this-item: nth($this-row, $item-index);
+      @for $item-index from 1 through list.length($this-row) {
+        $this-item: list.nth($this-row, $item-index);
 
         & > #{$selector}:nth-child(#{$this-item}) {
           -ms-grid-column: $column_index;

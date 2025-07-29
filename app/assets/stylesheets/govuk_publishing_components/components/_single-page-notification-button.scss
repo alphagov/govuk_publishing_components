@@ -9,10 +9,8 @@
   background: none;
 
   &:focus {
-    @include govuk-focused-text;
-    background-color: $govuk-focus-colour;
     border-color: transparent;
-    box-shadow: 0 $govuk-focus-width $govuk-text-colour;
+    @include govuk-focused-text;
   }
 
   &:hover {
@@ -21,6 +19,7 @@
 
     &:focus {
       color: $govuk-text-colour;
+      box-shadow: 0 $govuk-focus-width $govuk-text-colour;
     }
   }
 }

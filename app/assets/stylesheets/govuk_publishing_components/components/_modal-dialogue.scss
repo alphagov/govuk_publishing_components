@@ -140,11 +140,10 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 
   &:focus,
   &:hover {
-    @include govuk-focused-text;
-
     outline: none;
     box-shadow: none;
     color: govuk-colour("black");
     background: $govuk-focus-colour;
+    @include govuk-focused-text;
   }
 }
