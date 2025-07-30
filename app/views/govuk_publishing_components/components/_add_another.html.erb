@@ -40,4 +40,13 @@
   } do %>
     <%= empty %>
   <% end %>
+  <template class="js-add-another__empty-template">
+    <%= render "govuk_publishing_components/components/fieldset", {
+      classes: "js-add-another__fieldset",
+      legend_text: "#{fieldset_legend} #{items.length + 1}",
+      heading_size: "m"
+    } do %>
+      <%= empty %>
+    <% end %>
+  </template>
 <% end %>
