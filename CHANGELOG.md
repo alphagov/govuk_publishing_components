@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update Action link component markup and styles ([PR #4932](https://github.com/alphagov/govuk_publishing_components/pull/4932))
+* Make H3's on the feedback component to H2's to avoid them appearing subordinate to unrelated headings ([PR #4958](https://github.com/alphagov/govuk_publishing_components/pull/4958))
 
 ## 59.1.1
 
