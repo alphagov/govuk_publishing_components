@@ -53,6 +53,19 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_1__destroy">Delete</label>
             </fieldset>
           </div>
+          <template class="js-add-another__empty-template">
+            <div class=".js-add-another__fieldset">
+              <fieldset>
+                <legend>Thing 2</legend>
+                <input type="hidden" name="test[1][id]" value="test_id" />
+                <label for="test_1_foo">Foo</label>
+                <input type="text" id="test_1_foo" name="test[1][foo]" value="" />
+                <label for="test_1_bar"></label>
+                <textarea id="test_1_bar" name="test[1][bar]"></textarea>
+                <label for="test_1__destroy">Delete</label>
+              </fieldset>
+            </div>
+          </template>
         </div>
       `
       document.body.append(fixture)
@@ -122,6 +135,19 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_1__destroy">Delete</label>
             </fieldset>
           </div>
+          <template class="js-add-another__empty-template">
+            <div class=".js-add-another__fieldset">
+              <fieldset>
+                <legend>Thing 2</legend>
+                <input type="hidden" name="test[1][id]" value="test_id" />
+                <label for="test_1_foo">Foo</label>
+                <input type="text" id="test_1_foo" name="test[1][foo]" value="" />
+                <label for="test_1_bar"></label>
+                <textarea id="test_1_bar" name="test[1][bar]"></textarea>
+                <label for="test_1__destroy">Delete</label>
+              </fieldset>
+            </div>
+          </template>
         </div>
       `
       document.body.append(fixture)
@@ -188,6 +214,19 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_2__destroy">Delete</label>
             </fieldset>
           </div>
+          <template class="js-add-another__empty-template">
+            <div class=".js-add-another__fieldset">
+              <fieldset>
+                <legend>Thing 3</legend>
+                <input type="hidden" name="test[2][id]" value="test_id" />
+                <label for="test_2_foo">Foo</label>
+                <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
+                <label for="test_2_bar"></label>
+                <textarea id="test_2_bar" name="test[2][bar]"></textarea>
+                <label for="test_2__destroy">Delete</label>
+              </fieldset>
+            </div>
+          </template>
         </div>
       `
       document.body.append(fixture)
@@ -449,6 +488,19 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_2__destroy">Delete</label>
             </fieldset>
           </div>
+          <template class="js-add-another__empty-template">
+            <div class="js-add-another__fieldset">
+              <fieldset>
+                <legend>Thing 3</legend>
+                <input type="hidden" name="test[2][id]" value="test_id" />
+                <label for="test_2_foo">Foo</label>
+                <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
+                <label for="test_2_bar"></label>
+                <textarea id="test_2_bar" name="test[2][bar]"></textarea>
+                <label for="test_2__destroy">Delete</label>
+              </fieldset>
+            </div>
+          </template>
         </div>
       `
       document.body.append(fixture)
@@ -475,6 +527,76 @@ describe('GOVUK.Modules.AddAnother', function () {
       var visibleFields = document.querySelectorAll('.js-add-another__fieldset:not([hidden]) > fieldset')
 
       checkEventData(visibleFields, 2, 5)
+    })
+  })
+
+  describe('starting modules on new fieldsets', function () {
+    beforeEach(function () {
+      GOVUK.Modules.TestModule = function (module) {}
+
+      fixture = document.createElement('form')
+      fixture.setAttribute('data-module', 'AddAnother')
+      fixture.setAttribute('data-fieldset-legend', 'Thing')
+      fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.innerHTML = `
+        <div>
+          <div class="js-add-another__fieldset">
+            <fieldset>
+              <legend>Thing 1</legend>
+              <input type="hidden" name="test[0][id]" value="test_id" />
+              <label for="test_0_foo">Foo</label>
+              <input type="text" id="test_0_foo" name="test[0][foo]" value="test foo" />
+              <label for="test_0_bar"></label>
+              <textarea id="test_0_bar" name="test[0][bar]">test bar</textarea>
+              <label for="test_0__destroy">Delete</label>
+              <div class="js-add-another__destroy-checkbox">
+                <input type="checkbox" id="test_0_destroy" name="test[0][_destroy]" />
+              </div>
+            </fieldset>
+          </div>
+          <div class="js-add-another__empty">
+            <fieldset>
+              <legend>Thing 2</legend>
+              <input type="hidden" name="test[1][id]" value="test_id" />
+              <label for="test_1_foo">Foo</label>
+              <input type="text" id="test_1_foo" name="test[1][foo]" value="" />
+              <label for="test_1_bar"></label>
+              <textarea id="test_1_bar" name="test[1][bar]"></textarea>
+              <label for="test_1__destroy">Delete</label>
+            </fieldset>
+          </div>
+          <template class="js-add-another__empty-template">
+            <div class="js-add-another__fieldset" data-module="test-module">
+              <fieldset>
+                <legend>Thing 2</legend>
+                <input type="hidden" name="test[1][id]" value="test_id" />
+                <label for="test_1_foo">Foo</label>
+                <input type="text" id="test_1_foo" name="test[1][foo]" value="" />
+                <label for="test_1_bar"></label>
+                <textarea id="test_1_bar" name="test[1][bar]"></textarea>
+                <label for="test_1__destroy">Delete</label>
+              </fieldset>
+            </div>
+          </template>
+        </div>
+      `
+      document.body.append(fixture)
+
+      addAnother = new GOVUK.Modules.AddAnother(fixture)
+      addAnother.init()
+
+      addButton = document.querySelector('.js-add-another__add-button')
+    })
+
+    afterEach(function () {
+      document.body.removeChild(fixture)
+      delete GOVUK.Modules.TestModule
+    })
+
+    it('should start modules in new fields', function () {
+      window.GOVUK.triggerEvent(addButton, 'click')
+      var newFieldset = document.querySelectorAll('.js-add-another__fieldset')[1]
+      expect(newFieldset.dataset.testModuleModuleStarted).toBeDefined()
     })
   })
 })

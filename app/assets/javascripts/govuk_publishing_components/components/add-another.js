@@ -5,7 +5,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function AddAnother (module) {
     this.module = module
     this.disableGa4 = this.module.dataset.disableGa4
-    this.emptyFieldset = undefined
     this.addAnotherButton = undefined
     this.startIndex = Number(this.module.dataset.ga4StartIndex) || 1
     this.indexSectionCount = Number(this.module.dataset.ga4IndexSectionCount)
@@ -94,8 +93,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.removeEmptyFieldset = function () {
-    this.emptyFieldset = this.module.querySelector('.js-add-another__empty')
-    this.emptyFieldset.remove()
+    this.module.querySelector('.js-add-another__empty').remove()
   }
 
   AddAnother.prototype.updateFieldsetsAndButtons = function () {
@@ -129,14 +127,17 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   AddAnother.prototype.addNewFieldset = function (event) {
     var button = event.target
-    var newFieldset = this.emptyFieldset.cloneNode(true)
-    newFieldset.classList.remove('js-add-another__empty')
+    var newFieldsetTemplate = this.module.querySelector('.js-add-another__empty-template')
+    var newFieldset = newFieldsetTemplate.content.cloneNode(true).children[0]
     newFieldset.classList.add('js-add-another__fieldset')
     this.createRemoveButton(newFieldset, this.removeNewFieldset.bind(this))
     button.before(newFieldset)
 
-    this.incrementAttributes(this.emptyFieldset)
+    this.incrementAttributes(newFieldsetTemplate.content)
     this.updateFieldsetsAndButtons()
+
+    // Initialise any modules included in new fieldset
+    window.GOVUK.modules.start(newFieldset)
 
     // Move focus to first visible field in new set
     newFieldset

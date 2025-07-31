@@ -83,3 +83,41 @@ examples:
           <label for="employee_1_name" class="gem-c-label govuk-label">Full name</label>
           <input class="gem-c-input govuk-input" id="employee_1_name" name="employee[1]name">
         </div>
+
+  with_select_with_search:
+    description: Add another with a select with search input
+    data:
+      fieldset_legend: "Organisation"
+      add_button_text: "Add another organisation"
+      items:
+        - fields: >
+            <div class="govuk-form-group">
+              <label for="organisations_1">Select Organisation 1</label>
+              <select name="organisations[0][id]" id="organisations_1" class="govuk-select" data-module="select-with-search" tabindex="-1">
+                <option value="" selected="">Select one</option>
+                <option value="4dfe21ee-acfa-4fc1-9513-cc764e814205" selected="selected">Academy for Justice Commissioning</option>
+                <option value="b854f170-53c8-4098-bf77-e8ef42f93107">Academy for Social Justice</option>
+                <option value="ce357bdb-6396-426a-9f1f-8cbfb444cffd">Academy for Social Justice Commissioning</option>
+                <option value="a0f338c5-e94c-42f8-9c26-b9c2eb6850d3">Accelerated Access Review</option>
+                <option value="92bbe2da-8d5f-480b-8da1-50b18e317654">Accelerated Capability Environment</option>
+              </select>
+            </div>
+          destroy_checkbox: >
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="organisations[0][_destroy]" id="organisation_0__destroy" class="govuk-checkboxes__input">
+                <label for="organisation_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+              </div>
+            </div>
+      empty:
+        <div class="govuk-form-group">
+          <label for="organisations_2">Select Organisation 2</label>
+          <select name="organisations[1][id]" id="organisations_2" class="govuk-select" tabindex="-1" data-module="select-with-search">
+          <option value="" selected="">Select one</option>
+          <option value="4dfe21ee-acfa-4fc1-9513-cc764e814205">Academy for Justice Commissioning</option>
+          <option value="b854f170-53c8-4098-bf77-e8ef42f93107">Academy for Social Justice</option>
+          <option value="ce357bdb-6396-426a-9f1f-8cbfb444cffd">Academy for Social Justice Commissioning</option>
+          <option value="a0f338c5-e94c-42f8-9c26-b9c2eb6850d3">Accelerated Access Review</option>
+          <option value="92bbe2da-8d5f-480b-8da1-50b18e317654">Accelerated Capability Environment</option>
+          </select>
+        <div class="govuk-form-group">
