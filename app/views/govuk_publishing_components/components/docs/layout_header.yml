@@ -6,6 +6,7 @@ body: |
 govuk_frontend_components:
   - header
 uses_component_wrapper_helper: true
+capture_full_width_screenshot: true
 accessibility_excluded_rules:
   - landmark-banner-is-top-level # The header element can not be top level in the examples
   - duplicate-id # IDs will be duplicated in component examples list
@@ -85,8 +86,6 @@ examples:
       - text: Worldwide
         href: "item-2"
   full_width:
-    description: |
-      This is difficult to preview because the preview windows are constrained, but the header will stretch to the size of its container.
     data:
       environment: production
       full_width: true
