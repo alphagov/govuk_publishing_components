@@ -370,12 +370,26 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         const redactedNumber = pii.stripPIIWithOverride(phoneNumber)
         expect(redactedNumber).toEqual('[phone number]')
       }
+
+      // Without + prefix
+      for (let i = 0; i < 50; i++) {
+        const phoneNumber = generatePhoneNumber('447', 9)
+        const redactedNumber = pii.stripPIIWithOverride(phoneNumber)
+        expect(redactedNumber).toEqual('[phone number]')
+      }
     })
 
     it('are stripped if they are valid international UK mobile numbers with spacing', function () {
       // Test 50 random phone numbers so we aren't storing any numbers in code.
       for (let i = 0; i < 50; i++) {
         const phoneNumber = generatePhoneNumber('+447', 9, '', spaceIndexes.UK_MOBILE_INTERNATIONAL)
+        const redactedNumber = pii.stripPIIWithOverride(phoneNumber)
+        expect(redactedNumber).toEqual('[phone number]')
+      }
+
+      // Without + prefix
+      for (let i = 0; i < 50; i++) {
+        const phoneNumber = generatePhoneNumber('+447', 9, '', spaceIndexes.UK_MOBILE_INTERNATIONAL).replace('+', '')
         const redactedNumber = pii.stripPIIWithOverride(phoneNumber)
         expect(redactedNumber).toEqual('[phone number]')
       }
@@ -429,7 +443,16 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
       // Test 50 random phone numbers so we aren't storing any numbers in code.
       for (let i = 0; i < 50; i++) {
         // A landline can start with 01, 02, 04, or 06, so we generate all 4 examples here.
-        const numbers = [generatePhoneNumber('+441', 9), generatePhoneNumber('+442', 9), generatePhoneNumber('+444', 9), generatePhoneNumber('+446', 9)]
+        const numbers = [
+          generatePhoneNumber('+441', 9),
+          generatePhoneNumber('+442', 9),
+          generatePhoneNumber('+444', 9),
+          generatePhoneNumber('+446', 9),
+          generatePhoneNumber('441', 9),
+          generatePhoneNumber('+442', 9),
+          generatePhoneNumber('444', 9),
+          generatePhoneNumber('446', 9)
+        ]
         for (const number of numbers) {
           const redactedNumber = pii.stripPIIWithOverride(number)
           expect(redactedNumber).toEqual('[phone number]')
@@ -453,7 +476,20 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
           generatePhoneNumber('+441', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3),
           generatePhoneNumber('+442', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3),
           generatePhoneNumber('+444', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3),
-          generatePhoneNumber('+446', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3)]
+          generatePhoneNumber('+446', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3),
+          generatePhoneNumber('+441', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_1).replace('+', ''),
+          generatePhoneNumber('+442', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_1).replace('+', ''),
+          generatePhoneNumber('+444', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_1).replace('+', ''),
+          generatePhoneNumber('+446', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_1).replace('+', ''),
+          generatePhoneNumber('+441', 8, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_2).replace('+', ''),
+          generatePhoneNumber('+442', 8, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_2).replace('+', ''),
+          generatePhoneNumber('+444', 8, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_2).replace('+', ''),
+          generatePhoneNumber('+446', 8, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_2).replace('+', ''),
+          generatePhoneNumber('+441', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3).replace('+', ''),
+          generatePhoneNumber('+442', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3).replace('+', ''),
+          generatePhoneNumber('+444', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3).replace('+', ''),
+          generatePhoneNumber('+446', 9, '', spaceIndexes.UK_LANDLINE_INTERNATIONAL_3).replace('+', '')]
+
         for (const number of numbers) {
           const redactedNumber = pii.stripPIIWithOverride(number)
           expect(redactedNumber).toEqual('[phone number]')
@@ -502,6 +538,35 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         generatePhoneNumber('+442', 8, 'test'),
         generatePhoneNumber('+444', 8, 'test'),
         generatePhoneNumber('+446', 8, 'test')]
+
+      for (const number of numbers) {
+        const redactedNumber = pii.stripPIIWithOverride(number)
+        expect(redactedNumber.includes('[phone number]')).toEqual(true)
+      }
+    })
+
+    it('are stripped when special characters are used instead of a "+" prefix and/or different ways of representing whitespace', function () {
+      const numbers = [
+        '07123%20123456',
+        '07123+123456',
+        '+447123%20123456',
+        '+447123%20123456',
+        '+447123+123456',
+        '%2B447123123456',
+        '020+123+1234',
+        '020+1234+1234',
+        '020%20123%201234',
+        '020%201234%201234',
+        '02123+123456',
+        '02123%20123456',
+        '+4420+123+1234',
+        '+4420%20123%201234',
+        '%2B4420 123 1234',
+        '+442123%20123456',
+        '+442123+123456',
+        '%2B442123+123456',
+        '447123%20123456'
+      ]
 
       for (const number of numbers) {
         const redactedNumber = pii.stripPIIWithOverride(number)

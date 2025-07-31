@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add special characters to GA4 phone number PII redaction ([PR #4955](https://github.com/alphagov/govuk_publishing_components/pull/4955))
+
 ## 59.2.0
 
 * Update Action link component markup and styles ([PR #4932](https://github.com/alphagov/govuk_publishing_components/pull/4932))
