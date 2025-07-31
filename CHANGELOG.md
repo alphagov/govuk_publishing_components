@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 59.2.0
 
 * Update Action link component markup and styles ([PR #4932](https://github.com/alphagov/govuk_publishing_components/pull/4932))
 * Update cross service header to rebranded version ([PR #4959](https://github.com/alphagov/govuk_publishing_components/pull/4959))
