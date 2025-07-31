@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add special characters to GA4 phone number PII redaction ([PR #4955](https://github.com/alphagov/govuk_publishing_components/pull/4955))
+* **BREAKING** Replace default layout_header menu with service navigation component ([PR #4934](https://github.com/alphagov/govuk_publishing_components/pull/4934))
 
 ## 59.2.0
 
