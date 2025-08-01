@@ -1,7 +1,7 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/header/header";
-@import "mixins/prefixed-transform";
-@import "mixins/grid-helper";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/header/header";
+@use "mixins/prefixed-transform";
+@use "mixins/grid-helper";
 
 $chevron-breakpoint: 360px;
 $chevron-indent-spacing: 7px;
@@ -10,16 +10,16 @@ $pseudo-underline-height: 3px;
 
 $navbar-height: 61px;
 
-$button-pipe-colour: $govuk-blue-tint-95;
+$button-pipe-colour: govuk_frontend.$govuk-blue-tint-95;
 
-$nav-button-horizontal-padding: govuk-spacing(3);
-$nav-button-horizontal-padding-chevron-breakpoint: govuk-spacing(4);
+$nav-button-horizontal-padding: govuk_frontend.govuk-spacing(3);
+$nav-button-horizontal-padding-chevron-breakpoint: govuk_frontend.govuk-spacing(4);
 
-$menu-button-padding: govuk-spacing(1) $nav-button-horizontal-padding;
-$menu-button-padding-chevron-breakpoint: govuk-spacing(1) $nav-button-horizontal-padding-chevron-breakpoint;
+$menu-button-padding: govuk_frontend.govuk-spacing(1) $nav-button-horizontal-padding;
+$menu-button-padding-chevron-breakpoint: govuk_frontend.govuk-spacing(1) $nav-button-horizontal-padding-chevron-breakpoint;
 
-$search-button-padding: govuk-spacing(4) $nav-button-horizontal-padding;
-$search-button-padding-chevron-breakpoint: govuk-spacing(4) $nav-button-horizontal-padding-chevron-breakpoint;
+$search-button-padding: govuk_frontend.govuk-spacing(4) $nav-button-horizontal-padding;
+$search-button-padding-chevron-breakpoint: govuk_frontend.govuk-spacing(4) $nav-button-horizontal-padding-chevron-breakpoint;
 
 $search-icon-width: 21px;
 $search-icon-height: 20px;
@@ -29,7 +29,7 @@ $search-icon-height: 20px;
     border-bottom-color: $colour;
     border-right-color: $colour;
   } @else {
-    @include prefixed-transform($rotate: 45deg, $translateY: -35%);
+    @include prefixed-transform.prefixed-transform($rotate: 45deg, $translateY: -35%);
     border-bottom: 2px solid $colour;
     border-right: 2px solid $colour;
     content: "";
@@ -51,7 +51,7 @@ $search-icon-height: 20px;
   top: 0;
 }
 
-@mixin pseudo-underline($left: govuk-spacing(2), $right: govuk-spacing(2), $width: false) {
+@mixin pseudo-underline($left: govuk_frontend.govuk-spacing(2), $right: govuk_frontend.govuk-spacing(2), $width: false) {
   background: none;
   content: "";
   height: $pseudo-underline-height;
@@ -95,8 +95,8 @@ $search-icon-height: 20px;
 
 // stylelint-disable max-nesting-depth
 .gem-c-layout-super-navigation-header {
-  background: $govuk-brand-colour;
-  border-top: 1px solid $govuk-brand-colour;
+  background: govuk_frontend.$govuk-brand-colour;
+  border-top: 1px solid govuk_frontend.$govuk-brand-colour;
   margin-top: -1px;
   position: relative;
 
@@ -118,11 +118,11 @@ $search-icon-height: 20px;
   position: absolute;
   right: 0;
 
-  @include govuk-media-query($until: "tablet") {
-    margin-right: govuk-spacing(-3);
+  @include govuk_frontend.govuk-media-query($until: "tablet") {
+    margin-right: govuk_frontend.govuk-spacing(-3);
   }
 
-  @include govuk-media-query($until: 300px) {
+  @include govuk_frontend.govuk-media-query($until: 300px) {
     position: static;
   }
 }
@@ -149,17 +149,17 @@ $search-icon-height: 20px;
 // Top level navigation links and search link, used when JavaScript is not available
 .gem-c-layout-super-navigation-header__navigation-item-link,
 .gem-c-layout-super-navigation-header__search-item-link {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
   display: inline-block;
   font-size: 19px;
-  font-size: govuk-px-to-rem(19px);
+  font-size: govuk_frontend.govuk-px-to-rem(19px);
   font-weight: bold;
-  padding: govuk-spacing(4) 0;
+  padding: govuk_frontend.govuk-spacing(4) 0;
   position: relative;
-  @include govuk-link-common;
-  @include govuk-link-style-no-visited-state;
+  @include govuk_frontend.govuk-link-common;
+  @include govuk_frontend.govuk-link-style-no-visited-state;
 
-  @include govuk-media-query($from: "desktop") {
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
     display: block;
     margin: 0;
   }
@@ -169,29 +169,29 @@ $search-icon-height: 20px;
   }
 
   &:hover {
-    @include govuk-link-hover-decoration;
+    @include govuk_frontend.govuk-link-hover-decoration;
 
     &::after {
-      background: govuk-colour("white");
+      background: govuk_frontend.govuk-colour("white");
     }
   }
 
   &,
   &:link,
   &:visited {
-    color: govuk-colour("white");
+    color: govuk_frontend.govuk-colour("white");
     float: left;
     font-size: 16px;
-    font-size: govuk-px-to-rem(16px);
-    height: govuk-spacing(4);
+    font-size: govuk_frontend.govuk-px-to-rem(16px);
+    height: govuk_frontend.govuk-spacing(4);
     text-decoration: none;
 
     &:focus {
       box-shadow: none;
-      color: $govuk-focus-text-colour;
+      color: govuk_frontend.$govuk-focus-text-colour;
 
       &::after {
-        background: $govuk-focus-text-colour;
+        background: govuk_frontend.$govuk-focus-text-colour;
       }
     }
   }
@@ -203,14 +203,14 @@ $search-icon-height: 20px;
     padding: $menu-button-padding;
     border-right: 1px solid $button-pipe-colour;
 
-    @include govuk-media-query($from: $chevron-breakpoint) {
+    @include govuk_frontend.govuk-media-query($from: $chevron-breakpoint) {
       padding: $menu-button-padding-chevron-breakpoint;
     }
   }
 
   &:focus {
     .gem-c-layout-super-navigation-header__navigation-item-link-inner {
-      border-right-color: $govuk-focus-colour;
+      border-right-color: govuk_frontend.$govuk-focus-colour;
     }
   }
 }
@@ -219,7 +219,7 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__search-item-link {
   padding: $search-button-padding;
 
-  @include govuk-media-query($from: $chevron-breakpoint) {
+  @include govuk_frontend.govuk-media-query($from: $chevron-breakpoint) {
     padding: $search-button-padding-chevron-breakpoint;
   }
 }
@@ -238,19 +238,19 @@ $search-icon-height: 20px;
 // JS available - target the "Menu" toggle button
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
   font-size: 16px;
-  font-size: govuk-px-to-rem(16px);
+  font-size: govuk_frontend.govuk-px-to-rem(16px);
   font-weight: 700;
   background: none;
   border: 0;
   box-sizing: border-box;
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
   cursor: pointer;
   height: $navbar-height;
   padding: 0;
   position: relative;
   margin: 0;
   vertical-align: top;
-  @include govuk-typography-common($font-family: $govuk-font-family);
+  @include govuk_frontend.govuk-typography-common($font-family: govuk_frontend.$govuk-font-family);
 
   &::after {
     @include pseudo-underline;
@@ -262,11 +262,11 @@ $search-icon-height: 20px;
     margin: 0;
     padding: $menu-button-padding;
 
-    @include govuk-media-query($from: $chevron-breakpoint) {
+    @include govuk_frontend.govuk-media-query($from: $chevron-breakpoint) {
       padding: $menu-button-padding-chevron-breakpoint;
 
       &::before {
-        @include chevron(govuk-colour("white"));
+        @include chevron(govuk_frontend.govuk-colour("white"));
       }
     }
   }
@@ -274,12 +274,12 @@ $search-icon-height: 20px;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       &::after {
-        background: govuk-colour("white");
+        background: govuk_frontend.govuk-colour("white");
       }
 
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         &::before {
-          @include chevron(govuk-colour("white"), true);
+          @include chevron(govuk_frontend.govuk-colour("white"), true);
         }
       }
     }
@@ -288,31 +288,31 @@ $search-icon-height: 20px;
   @include focus-and-focus-visible {
     // this declaration overrides govuk-focused-text but the compiler prefers @include to be last
     box-shadow: none !important; // stylelint-disable-line declaration-no-important
-    @include govuk-focused-text;
+    @include govuk_frontend.govuk-focused-text;
 
     &::after {
-      background-color: govuk-colour("black");
+      background-color: govuk_frontend.govuk-colour("black");
     }
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      border-right-color: $govuk-focus-colour;
+      border-right-color: govuk_frontend.$govuk-focus-colour;
 
       &::before {
-        @include chevron(govuk-colour("black"), true);
+        @include chevron(govuk_frontend.govuk-colour("black"), true);
       }
     }
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         &::after {
-          background-color: govuk-colour("black");
+          background-color: govuk_frontend.govuk-colour("black");
         }
 
         .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-          color: govuk-colour("black");
+          color: govuk_frontend.govuk-colour("black");
 
           &::before {
-            @include chevron(govuk-colour("black"), true);
+            @include chevron(govuk_frontend.govuk-colour("black"), true);
           }
         }
       }
@@ -322,7 +322,7 @@ $search-icon-height: 20px;
   @include focus-not-focus-visible {
     background: none;
     box-shadow: none;
-    color: govuk-colour("white");
+    color: govuk_frontend.govuk-colour("white");
 
     &::after {
       background: none;
@@ -331,9 +331,9 @@ $search-icon-height: 20px;
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       border-right-color: $button-pipe-colour;
 
-      @include govuk-media-query($from: $chevron-breakpoint) {
+      @include govuk_frontend.govuk-media-query($from: $chevron-breakpoint) {
         &::before {
-          @include chevron(govuk-colour("white"), true);
+          @include chevron(govuk_frontend.govuk-colour("white"), true);
         }
       }
     }
@@ -341,21 +341,21 @@ $search-icon-height: 20px;
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         &::after {
-          background: govuk-colour("white");
+          background: govuk_frontend.govuk-colour("white");
         }
 
         .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-          color: govuk-colour("white");
+          color: govuk_frontend.govuk-colour("white");
 
           &::before {
-            @include chevron(govuk-colour("white"), true);
+            @include chevron(govuk_frontend.govuk-colour("white"), true);
           }
         }
       }
     }
   }
 
-  @include govuk-media-query($from: "desktop") {
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
     display: block;
     float: left;
     right: 0;
@@ -368,38 +368,38 @@ $search-icon-height: 20px;
   @include focus-and-focus-visible {
     // this declaration overrides govuk-focused-text because the compiler prefers @include to be last
     box-shadow: none !important; // stylelint-disable-line declaration-no-important
-    @include govuk-focused-text;
+    @include govuk_frontend.govuk-focused-text;
 
     &::after {
-      background-color: govuk-colour("black");
+      background-color: govuk_frontend.govuk-colour("black");
     }
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      color: govuk-colour("black");
-      border-right-color: $govuk-focus-colour;
+      color: govuk_frontend.govuk-colour("black");
+      border-right-color: govuk_frontend.$govuk-focus-colour;
 
       &::before {
-        @include chevron(govuk-colour("black"), true);
-        @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+        @include chevron(govuk_frontend.govuk-colour("black"), true);
+        @include prefixed-transform.prefixed-transform($rotate: 225deg, $translateY: 1px);
       }
     }
   }
 
   @include focus-not-focus-visible {
-    background: $govuk-rebrand-template-background-colour;
+    background: govuk_frontend.$govuk-rebrand-template-background-colour;
 
     &::after {
-      background-color: $govuk-link-colour;
+      background-color: govuk_frontend.$govuk-link-colour;
     }
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      color: $govuk-link-colour;
+      color: govuk_frontend.$govuk-link-colour;
       border-right-color: $button-pipe-colour;
 
-      @include govuk-media-query($from: $chevron-breakpoint) {
+      @include govuk_frontend.govuk-media-query($from: $chevron-breakpoint) {
         &::before {
-          @include chevron($govuk-link-colour, true);
-          @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          @include chevron(govuk_frontend.$govuk-link-colour, true);
+          @include prefixed-transform.prefixed-transform($rotate: 225deg, $translateY: 1px);
         }
       }
     }
@@ -410,15 +410,15 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__search-toggle-button {
   background: none;
   border: 0;
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
   cursor: pointer;
   height: $navbar-height;
   padding: $search-button-padding;
   position: relative;
   width: calc(($nav-button-horizontal-padding * 2) + $search-icon-width); // width = button container left and right padding + icon width
-  @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
+  @include govuk_frontend.govuk-font($size: 19, $weight: "bold", $line-height: 20px);
 
-  @include govuk-media-query($from: $chevron-breakpoint) {
+  @include govuk_frontend.govuk-media-query($from: $chevron-breakpoint) {
     padding: $search-button-padding-chevron-breakpoint;
     width: calc(($nav-button-horizontal-padding-chevron-breakpoint * 2) + $search-icon-width);  // width = button container left and right padding + icon width
   }
@@ -430,7 +430,7 @@ $search-icon-height: 20px;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       &::after {
-        background: govuk-colour("white");
+        background: govuk_frontend.govuk-colour("white");
       }
     }
   }
@@ -438,20 +438,20 @@ $search-icon-height: 20px;
   @include focus-and-focus-visible {
     z-index: 11;
     // these declarations override govuk-focused-text because the compiler prefers @include to be last
-    border-color: $govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
+    border-color: govuk_frontend.$govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
     box-shadow: none !important; // stylelint-disable-line declaration-no-important
-    @include govuk-focused-text;
+    @include govuk_frontend.govuk-focused-text;
 
     &::after {
-      background: govuk-colour("black");
+      background: govuk_frontend.govuk-colour("black");
     }
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: govuk-colour("black");
+        color: govuk_frontend.govuk-colour("black");
 
         &::after {
-          background: govuk-colour("black");
+          background: govuk_frontend.govuk-colour("black");
         }
       }
     }
@@ -460,7 +460,7 @@ $search-icon-height: 20px;
   @include focus-not-focus-visible {
     background: none;
     box-shadow: none;
-    color: govuk-colour("white");
+    color: govuk_frontend.govuk-colour("white");
 
     &::after {
       background: none;
@@ -468,10 +468,10 @@ $search-icon-height: 20px;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: govuk-colour("white");
+        color: govuk_frontend.govuk-colour("white");
 
         &::after {
-          background: govuk-colour("white");
+          background: govuk_frontend.govuk-colour("white");
         }
       }
     }
@@ -479,41 +479,41 @@ $search-icon-height: 20px;
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
-    color: govuk-colour("blue");
+    color: govuk_frontend.govuk-colour("blue");
 
     @include focus-and-focus-visible {
       // these declarations override govuk-focused-text because the compiler prefers @include to be last
-      border-color: $govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
+      border-color: govuk_frontend.$govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
       box-shadow: none !important; // stylelint-disable-line declaration-no-important
-      @include govuk-focused-text;
+      @include govuk_frontend.govuk-focused-text;
 
       &::after {
-        background: govuk-colour("black");
+        background: govuk_frontend.govuk-colour("black");
       }
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
           &::after {
-            background: govuk-colour("black");
+            background: govuk_frontend.govuk-colour("black");
           }
         }
       }
     }
 
     @include focus-not-focus-visible {
-      background: $govuk-rebrand-template-background-colour;
-      outline: 1px solid $govuk-rebrand-template-background-colour; // overlap the border of the nav menu so it won't appear when menu open
+      background: govuk_frontend.$govuk-rebrand-template-background-colour;
+      outline: 1px solid govuk_frontend.$govuk-rebrand-template-background-colour; // overlap the border of the nav menu so it won't appear when menu open
 
-      color: govuk-colour("blue");
+      color: govuk_frontend.govuk-colour("blue");
 
       &::after {
-        background: govuk-colour("blue");
+        background: govuk_frontend.govuk-colour("blue");
       }
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
           &::after {
-            background: govuk-colour("blue");
+            background: govuk_frontend.govuk-colour("blue");
           }
         }
       }
@@ -541,33 +541,33 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__search-container {
-  padding-bottom: govuk-spacing(7);
+  padding-bottom: govuk_frontend.govuk-spacing(7);
 }
 
 // JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
-  background: $govuk-rebrand-template-background-colour;
-  border-bottom: 1px govuk-colour("mid-grey") solid;
-  padding-top: govuk-spacing(6);
+  background: govuk_frontend.$govuk-rebrand-template-background-colour;
+  border-bottom: 1px govuk_frontend.govuk-colour("mid-grey") solid;
+  padding-top: govuk_frontend.govuk-spacing(6);
 
-  @include govuk-media-query($until: 300px) {
+  @include govuk_frontend.govuk-media-query($until: 300px) {
     padding-top: 80px;
   }
 
-  @include govuk-media-query($from: "desktop") {
-    padding-top: govuk-spacing(8);
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
+    padding-top: govuk_frontend.govuk-spacing(8);
   }
 }
 
 // JS available - styles the links in the dropdown menu
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
-  padding: 0 0 govuk-spacing(3) 0;
+  padding: 0 0 govuk_frontend.govuk-spacing(3) 0;
   position: relative;
-  margin: 0 0 govuk-spacing(2) 0;
-  @include govuk-media-query($from: "desktop") {
-    padding: 0 0 govuk-spacing(3) 0;
-    margin: 0 govuk-spacing(3) govuk-spacing(1) govuk-spacing(3);
+  margin: 0 0 govuk_frontend.govuk-spacing(2) 0;
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
+    padding: 0 0 govuk_frontend.govuk-spacing(3) 0;
+    margin: 0 govuk_frontend.govuk-spacing(3) govuk_frontend.govuk-spacing(1) govuk_frontend.govuk-spacing(3);
   }
 }
 
@@ -575,11 +575,11 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__navigation-second-items {
   list-style: none;
   margin: 0;
-  padding: govuk-spacing(3) govuk-spacing(5) govuk-spacing(5) 0;
+  padding: govuk_frontend.govuk-spacing(3) govuk_frontend.govuk-spacing(5) govuk_frontend.govuk-spacing(5) 0;
 
-  @include govuk-media-query($from: "desktop") {
-    margin: 0 (0 - govuk-spacing(3)) govuk-spacing(9);
-    padding: govuk-spacing(2) 0 0 0;
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
+    margin: 0 (0 - govuk_frontend.govuk-spacing(3)) govuk_frontend.govuk-spacing(9);
+    padding: govuk_frontend.govuk-spacing(2) 0 0 0;
   }
 }
 
@@ -587,32 +587,32 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__column--government-activity {
   position: relative;
 
-  @include govuk-media-query($until: "desktop") {
-    margin-top: govuk-spacing(6);
+  @include govuk_frontend.govuk-media-query($until: "desktop") {
+    margin-top: govuk_frontend.govuk-spacing(6);
   }
 }
 
 // JS available - styling for the "services-and-information" group of links
 .gem-c-layout-super-navigation-header__navigation-second-items--services-and-information {
-  @include govuk-media-query($until: "desktop") {
-    border-bottom: 1px solid govuk-colour("mid-grey");
+  @include govuk_frontend.govuk-media-query($until: "desktop") {
+    border-bottom: 1px solid govuk_frontend.govuk-colour("mid-grey");
   }
 
-  @include govuk-media-query($from: "desktop") {
-    @include columns($items: 16, $columns: 2, $selector: "li", $flow: column);
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
+    @include grid-helper.columns($items: 16, $columns: 2, $selector: "li", $flow: column);
   }
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link {
   font-size: 16px;
-  font-size: govuk-px-to-rem(16px);
+  font-size: govuk_frontend.govuk-px-to-rem(16px);
   font-weight: bold;
 
   &::after {
     @include make-selectable-area-bigger;
   }
 
-  @include govuk-media-query($from: "desktop") {
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
     padding: 0;
 
     &::after {
@@ -623,7 +623,7 @@ $search-icon-height: 20px;
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
   font-size: 16px;
-  font-size: govuk-px-to-rem(16px);
+  font-size: govuk_frontend.govuk-px-to-rem(16px);
   font-weight: bold;
 
   &::after {
@@ -634,17 +634,17 @@ $search-icon-height: 20px;
 
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
   font-size: 16px;
-  font-size: govuk-px-to-rem(16px);
+  font-size: govuk_frontend.govuk-px-to-rem(16px);
   font-weight: normal;
-  margin: govuk-spacing(1) 0 0 0;
-  @include govuk-typography-common;
+  margin: govuk_frontend.govuk-spacing(1) 0 0 0;
+  @include govuk_frontend.govuk-typography-common;
 }
 
 .gem-c-layout-super-navigation-header__search-form {
   padding: 0;
 
-  @include govuk-media-query($from: "desktop") {
-    padding-bottom: govuk-spacing(2);
+  @include govuk_frontend.govuk-media-query($from: "desktop") {
+    padding-bottom: govuk_frontend.govuk-spacing(2);
   }
 }
 
@@ -653,27 +653,27 @@ $search-icon-height: 20px;
 }
 
 // Ensure the total space to the left of the logo for mobile screen sizes is 24px (margin is 15px)
-@include govuk-media-query($until: tablet) {
+@include govuk_frontend.govuk-media-query($until: tablet) {
   .gem-c-layout-super-navigation-header__header-logo--homepage {
     padding-left: 9px;
   }
 }
 
-@include govuk-media-query($until: tablet) {
+@include govuk_frontend.govuk-media-query($until: tablet) {
   // can't disable responsive styling because using override classes
   // from govuk-frontend which are all responsive so have to supply
   // custom class to the label of the search component to turn off
   // the responsive font size
   .gem-c-layout-super-navigation-header__search-label--large-navbar {
     font-size: 24px;
-    font-size: govuk-px-to-rem(24px);
+    font-size: govuk_frontend.govuk-px-to-rem(24px);
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-layout-super-navigation-header {
     border-top: 0;
-    border-bottom: 2pt solid $govuk-print-text-colour;
+    border-bottom: 2pt solid govuk_frontend.$govuk-print-text-colour;
     margin: 0 0 5mm;
     background: none;
 
@@ -683,7 +683,7 @@ $search-icon-height: 20px;
     }
 
     * {
-      color: $govuk-print-text-colour;
+      color: govuk_frontend.$govuk-print-text-colour;
     }
 
     .govuk-width-container {

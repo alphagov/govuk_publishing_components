@@ -1,40 +1,40 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/breadcrumbs/breadcrumbs";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/breadcrumbs/breadcrumbs";
 
 .gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item .govuk-breadcrumbs__link {
   &:link,
   &:visited,
   &:hover,
   &:active {
-    color: govuk-colour("white");
+    color: govuk_frontend.govuk-colour("white");
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk_frontend.$govuk-focus-text-colour;
   }
 }
 
 .gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
 }
 
 .gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item::before {
-  border-color: govuk-colour("white");
+  border-color: govuk_frontend.govuk-colour("white");
 }
 
 .gem-c-breadcrumbs--border-bottom {
-  border-bottom: 1px solid $govuk-border-colour;
-  padding-bottom: govuk-spacing(1);
+  border-bottom: 1px solid govuk_frontend.$govuk-border-colour;
+  padding-bottom: govuk_frontend.govuk-spacing(1);
 
   &.govuk-breadcrumbs--collapse-on-mobile {
-    @include govuk-media-query($until: tablet) {
+    @include govuk_frontend.govuk-media-query($until: tablet) {
       padding-bottom: 0;
     }
   }
 }
 
 .govuk-breadcrumbs--collapse-on-mobile {
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     .govuk-breadcrumbs__list-item {
       padding-top: 14px;
       padding-bottom: 14px;
@@ -71,7 +71,7 @@
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-breadcrumbs {
     font-size: 12pt;
   }
@@ -81,11 +81,11 @@
     .govuk-breadcrumbs__list-item {
       .govuk-breadcrumbs__link:link,
       .govuk-breadcrumbs__link:visited {
-        color: $govuk-print-text-colour;
+        color: govuk_frontend.$govuk-print-text-colour;
       }
 
       &::before {
-        border-color: $govuk-print-text-colour;
+        border-color: govuk_frontend.$govuk-print-text-colour;
       }
     }
   }

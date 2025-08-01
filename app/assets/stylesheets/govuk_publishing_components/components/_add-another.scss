@@ -1,6 +1,6 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/button/button";
-@import "govuk/components/fieldset/fieldset";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/button/button";
+@use "govuk/components/fieldset/fieldset";
 
 .gem-c-add-another {
   .gem-c-add-another__remove-button {

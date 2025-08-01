@@ -1,10 +1,10 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-back-to-top-link {
   display: inline-block;
-  margin-bottom: govuk-spacing(2);
-  margin-left: govuk-spacing(3);
-  margin-right: govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(2);
+  margin-left: govuk_frontend.govuk-spacing(3);
+  margin-right: govuk_frontend.govuk-spacing(3);
 }
 
 .gem-c-back-to-top-link__icon {

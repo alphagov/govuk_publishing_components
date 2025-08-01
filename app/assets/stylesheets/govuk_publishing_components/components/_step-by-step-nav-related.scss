@@ -1,30 +1,30 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-step-nav-related {
-  border-top: 2px solid govuk-colour("blue");
-  margin-bottom: govuk-spacing(6);
-  @include govuk-text-colour;
+  border-top: 2px solid govuk_frontend.govuk-colour("blue");
+  margin-bottom: govuk_frontend.govuk-spacing(6);
+  @include govuk_frontend.govuk-text-colour;
 }
 
 .gem-c-step-nav-related__heading {
-  margin-top: govuk-spacing(3);
-  margin-bottom: govuk-spacing(2);
-  @include govuk-font(19, $weight: bold);
+  margin-top: govuk_frontend.govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(2);
+  @include govuk_frontend.govuk-font(19, $weight: bold);
 }
 
 .gem-c-step-nav-related__links {
   list-style: none;
   margin: 0;
   padding: 0;
-  @include govuk-font(16);
+  @include govuk_frontend.govuk-font(16);
 }
 
 .gem-c-step-nav-related--singular {
-  margin-bottom: govuk-spacing(2) + 3;
+  margin-bottom: govuk_frontend.govuk-spacing(2) + 3;
 
   .gem-c-step-nav-related__heading {
-    margin-top: govuk-spacing(4);
-    @include govuk-font(19, $weight: bold, $line-height: 1.4);
+    margin-top: govuk_frontend.govuk-spacing(4);
+    @include govuk_frontend.govuk-font(19, $weight: bold, $line-height: 1.4);
   }
 
   .gem-c-step-nav-related__pretitle {
@@ -34,20 +34,20 @@
 
 .gem-c-step-nav-related__pretitle {
   display: block;
-  margin-bottom: govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
 
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(1);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    margin-bottom: govuk_frontend.govuk-spacing(1);
   }
 }
 
 .gem-c-step-nav-related__link-item {
-  margin-top: govuk-spacing(3);
+  margin-top: govuk_frontend.govuk-spacing(3);
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-step-nav-related {
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk_frontend.$govuk-print-text-colour;
   }
 }

@@ -1,4 +1,4 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 $share-button-width: 30px;
 $share-button-height: 30px;
@@ -14,17 +14,17 @@ $share-button-height: 30px;
   position: relative;
   display: inline-block;
   min-height: $share-button-height;
-  padding-top: govuk-spacing(1);
-  padding-left: ($share-button-width + govuk-spacing(2));
-  padding-right: govuk-spacing(2);
-  margin-bottom: govuk-spacing(2);
+  padding-top: govuk_frontend.govuk-spacing(1);
+  padding-left: ($share-button-width + govuk_frontend.govuk-spacing(2));
+  padding-right: govuk_frontend.govuk-spacing(2);
+  margin-bottom: govuk_frontend.govuk-spacing(2);
   font-size: calc($share-button-height / 2);
 }
 
 .gem-c-share-links__link {
-  margin-right: govuk-spacing(6);
-  @include govuk-font(16, $weight: bold);
-  @include govuk-template-link-focus-override;
+  margin-right: govuk_frontend.govuk-spacing(6);
+  @include govuk_frontend.govuk-font(16, $weight: bold);
+  @include govuk_frontend.govuk-template-link-focus-override;
 }
 
 .gem-c-share-links__link-icon {
@@ -45,12 +45,12 @@ $share-button-height: 30px;
   .gem-c-share-links__link {
     display: inline-block;
     margin-right: 0;
-    margin-left: govuk-spacing(6);
+    margin-left: govuk_frontend.govuk-spacing(6);
   }
 
   .gem-c-share-links__list-item {
-    padding-left: govuk-spacing(2);
-    padding-right: ($share-button-width + govuk-spacing(2));
+    padding-left: govuk_frontend.govuk-spacing(2);
+    padding-right: ($share-button-width + govuk_frontend.govuk-spacing(2));
   }
 
   .gem-c-share-links__link-icon {
@@ -65,7 +65,7 @@ $column-width: 9.5em;
   .gem-c-share-links__list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax($column-width, 1fr));
-    @include govuk-clearfix;
+    @include govuk_frontend.govuk-clearfix;
   }
 
   .gem-c-share-links__list-item {
@@ -94,7 +94,7 @@ $column-width: 9.5em;
     padding-left: 0;
     padding-right: 0;
 
-    @include govuk-media-query($until: tablet) {
+    @include govuk_frontend.govuk-media-query($until: tablet) {
       min-width: 100%;
     }
   }
@@ -103,7 +103,7 @@ $column-width: 9.5em;
     display: inline-flex;
     position: relative;
     vertical-align: middle;
-    margin-right: govuk-spacing(2);
+    margin-right: govuk_frontend.govuk-spacing(2);
   }
 
   .gem-c-share-links__label {
@@ -131,28 +131,28 @@ $column-width: 9.5em;
 
 .gem-c-share-links--square-icons {
   .gem-c-share-links__link-icon {
-    background-color: govuk-colour("light-grey");
-    color: govuk-colour("black");
-    padding: govuk-spacing(2);
+    background-color: govuk_frontend.govuk-colour("light-grey");
+    color: govuk_frontend.govuk-colour("black");
+    padding: govuk_frontend.govuk-spacing(2);
   }
 
   .gem-c-share-links__label {
-    @include govuk-font(19, $weight: bold);
+    @include govuk_frontend.govuk-font(19, $weight: bold);
   }
 
   .gem-c-share-links__link:focus {
-    box-shadow: 0 0 $govuk-focus-colour, 0 4px govuk-colour("black");
+    box-shadow: 0 0 govuk_frontend.$govuk-focus-colour, 0 4px govuk_frontend.govuk-colour("black");
   }
 }
 
 .gem-c-share-links--black-icons {
   .gem-c-share-links__link-icon {
-    color: govuk-colour("black");
+    color: govuk_frontend.govuk-colour("black");
   }
 }
 
 .gem-c-share-links--black-links {
   .gem-c-share-links__label {
-    color: govuk-colour("black");
+    color: govuk_frontend.govuk-colour("black");
   }
 }

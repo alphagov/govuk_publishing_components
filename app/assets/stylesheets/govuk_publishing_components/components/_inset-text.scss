@@ -1,20 +1,20 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/inset-text/inset-text";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/inset-text/inset-text";
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-inset-text {
     break-inside: avoid;
   }
 }
 
 .gem-c-inset-text {
-  padding-top: govuk-spacing(4);
+  padding-top: govuk_frontend.govuk-spacing(4);
 
   .govuk-inset-text {
     margin-top: 0;
   }
 
-  @include govuk-media-query($from: tablet) {
-    padding-top: govuk-spacing(6);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    padding-top: govuk_frontend.govuk-spacing(6);
   }
 }

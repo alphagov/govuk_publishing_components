@@ -1,4 +1,4 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .govuk-frontend-supported .gem-c-contents-list-with-body__sticky-element {
   position: absolute;
@@ -13,7 +13,7 @@
     transition: opacity, .3s, ease;
     opacity: 1;
 
-    @include govuk-media-query($until: tablet) {
+    @include govuk_frontend.govuk-media-query($until: tablet) {
       position: static;
     }
   }
@@ -28,7 +28,7 @@
   margin: 0 auto;
   padding: 0;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     max-width: 1024px;
   }
 
@@ -39,23 +39,23 @@
 }
 
 .gem-c-contents-list-with-body__list-container {
-  margin-bottom: govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
 
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(8);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    margin-bottom: govuk_frontend.govuk-spacing(8);
   }
 }
 
 .gem-c-contents-list-with-body__link-wrapper {
-  padding-bottom: govuk-spacing(2);
+  padding-bottom: govuk_frontend.govuk-spacing(2);
 
   .gem-c-back-to-top-link {
-    padding-bottom: govuk-spacing(2);
+    padding-bottom: govuk_frontend.govuk-spacing(2);
   }
 }
 
 .gem-c-contents-list-with-body__link-wrapper.gem-c-contents-list-with-body__sticky-element--stuck-to-window {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk_frontend.govuk-colour("light-grey");
   bottom: -1px; // 'Fix' for anomalous 1px margin which sporadically appears below this element.
   left: 0;
   margin: 0;
@@ -65,17 +65,17 @@
   width: 100%;
   z-index: 10;
 
-  @include govuk-media-query($from: tablet) {
-    padding-left: govuk-spacing(2);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    padding-left: govuk_frontend.govuk-spacing(2);
   }
 
   .gem-c-back-to-top-link {
     margin-bottom: 0;
-    padding: govuk-spacing(3);
+    padding: govuk_frontend.govuk-spacing(3);
     width: 66%;
 
-    @include govuk-media-query($from: tablet) {
-      padding: govuk-spacing(4);
+    @include govuk_frontend.govuk-media-query($from: tablet) {
+      padding: govuk_frontend.govuk-spacing(4);
     }
   }
 }

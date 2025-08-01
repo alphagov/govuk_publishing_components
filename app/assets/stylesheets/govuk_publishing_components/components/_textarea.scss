@@ -1,21 +1,21 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/textarea/textarea";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/textarea/textarea";
 
 .gem-c-textarea {
   .govuk-textarea {
     margin-bottom: 0;
 
     ~ .govuk-hint {
-      margin-top: govuk-spacing(1);
+      margin-top: govuk_frontend.govuk-spacing(1);
     }
 
     ~ .govuk-error-message {
-      margin-top: govuk-spacing(1);
+      margin-top: govuk_frontend.govuk-spacing(1);
     }
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-textarea {
     .gem-c-label,
     .gem-c-error-message,

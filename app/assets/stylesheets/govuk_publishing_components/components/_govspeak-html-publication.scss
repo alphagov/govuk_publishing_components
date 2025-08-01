@@ -1,10 +1,10 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 // stylelint-disable max-nesting-depth
 
 // Override govspeak styles with HTML publication specific ones
 .gem-c-govspeak-html-publication {
-  margin-bottom: govuk-spacing(6) * 1.5;
+  margin-bottom: govuk_frontend.govuk-spacing(6) * 1.5;
   z-index: 2;
 
   // This fixes the positioning of the sticky element. The reason it's done on the parent element
@@ -18,27 +18,27 @@
 
   .gem-c-govspeak {
     h2 {
-      @include govuk-font($size: 36, $weight: bold);
+      @include govuk_frontend.govuk-font($size: 36, $weight: bold);
     }
 
     h3 {
-      @include govuk-font($size: 27, $weight: bold);
+      @include govuk_frontend.govuk-font($size: 27, $weight: bold);
     }
 
     * + h2,
     * + h3 {
-      padding-top: govuk-spacing(3);
+      padding-top: govuk_frontend.govuk-spacing(3);
 
-      @include govuk-media-query($from: tablet) {
-        padding-top: govuk-spacing(9);
+      @include govuk_frontend.govuk-media-query($from: tablet) {
+        padding-top: govuk_frontend.govuk-spacing(9);
       }
     }
 
     .stat-headline:first-child {
-      margin-top: govuk-spacing(6);
+      margin-top: govuk_frontend.govuk-spacing(6);
 
-      @include govuk-media-query($from: tablet) {
-        margin-top: govuk-spacing(9) + govuk-spacing(4);
+      @include govuk_frontend.govuk-media-query($from: tablet) {
+        margin-top: govuk_frontend.govuk-spacing(9) + govuk_frontend.govuk-spacing(4);
       }
     }
 
@@ -60,8 +60,8 @@
     table.financial-data {
       .numeric {
         text-align: right;
-        @include govuk-font-tabular-numbers;
-        @include govuk-font(16, $weight: regular);
+        @include govuk_frontend.govuk-font-tabular-numbers;
+        @include govuk_frontend.govuk-font(16, $weight: regular);
       }
 
       // make all elements inside thead look the same
@@ -69,16 +69,16 @@
       // and make all of thead and tfoot stand out
       thead,
       tfoot {
-        background-color: govuk-colour("light-grey");
+        background-color: govuk_frontend.govuk-colour("light-grey");
       }
 
       thead th,
       thead td {
-        @include govuk-font-tabular-numbers;
-        @include govuk-font(16, $weight: bold);
+        @include govuk_frontend.govuk-font-tabular-numbers;
+        @include govuk_frontend.govuk-font(16, $weight: bold);
 
         &.numeric {
-          @include govuk-font(16, $weight: bold);
+          @include govuk_frontend.govuk-font(16, $weight: bold);
         }
       }
 
@@ -92,30 +92,30 @@
       // is intentionally small and not balanced with other padding
       // as tables can be quite wide
       tr > :first-child {
-        padding-left: govuk-spacing(1);
+        padding-left: govuk_frontend.govuk-spacing(1);
       }
 
       // add spacing so that groupings are clearer
       tr.section-heading > * {
         font-weight: bold;
-        padding-top: govuk-spacing(6);
+        padding-top: govuk_frontend.govuk-spacing(6);
       }
 
       // ideally this should be just a top margin on the tfoot
       // but as that is very tricky, this is more complex
       tbody:last-of-type tr:last-child > *,
       tfoot ~ tbody:last-of-type tr:last-child > * {
-        padding-bottom: govuk-spacing(6);
+        padding-bottom: govuk_frontend.govuk-spacing(6);
       }
 
       tbody:last-child tr:last-child > * {
-        padding-bottom: govuk-spacing(2);
+        padding-bottom: govuk_frontend.govuk-spacing(2);
       }
 
       // total and subtotal rows
       tr.subtotal > *,
       tr.total > * {
-        border-top: 3px solid govuk-colour("mid-grey");
+        border-top: 3px solid govuk_frontend.govuk-colour("mid-grey");
       }
 
       tr.total > *,
@@ -126,14 +126,14 @@
       // the total is usually in the tfoot, so already has that background colour
       // but when it's used inside the tbody, it should also be highlighted
       tr.total {
-        background-color: govuk-colour("light-grey");
+        background-color: govuk_frontend.govuk-colour("light-grey");
       }
     }
     // stylelint-enable selector-no-qualifying-type
   }
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-govspeak-html-publication {
     .govuk-sticky-element {
       display: none;

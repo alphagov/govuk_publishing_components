@@ -1,7 +1,7 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/error-summary/error-summary";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/error-summary/error-summary";
 
 .gem-c-error-summary__list-item {
-  color: $govuk-error-colour;
-  @include govuk-font($size: 19, $weight: bold);
+  color: govuk_frontend.$govuk-error-colour;
+  @include govuk_frontend.govuk-font($size: 19, $weight: bold);
 }

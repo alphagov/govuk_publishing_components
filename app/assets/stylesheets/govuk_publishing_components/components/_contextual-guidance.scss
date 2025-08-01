@@ -1,4 +1,4 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-contextual-guidance {
   .govuk-grid-column-one-third {
@@ -15,12 +15,12 @@
 
 .gem-c-contextual-guidance__wrapper {
   position: relative;
-  margin-bottom: govuk-spacing(7);
-  @include govuk-font(19);
+  margin-bottom: govuk_frontend.govuk-spacing(7);
+  @include govuk_frontend.govuk-font(19);
 
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(7);
-    padding-top: govuk-spacing(6);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    margin-bottom: govuk_frontend.govuk-spacing(7);
+    padding-top: govuk_frontend.govuk-spacing(6);
   }
 }
 
@@ -28,22 +28,22 @@
   .gem-c-contextual-guidance__wrapper {
     display: none;
 
-    @include govuk-media-query($from: tablet) {
+    @include govuk_frontend.govuk-media-query($from: tablet) {
       position: absolute;
-      width: calc(100% - #{govuk-spacing(6)});
+      width: calc(100% - #{govuk_frontend.govuk-spacing(6)});
     }
   }
 }
 
 .gem-c-contextual-guidance__guidance {
-  padding-left: govuk-spacing(3);
-  border-left: 4px solid $govuk-focus-colour;
-  background: govuk-colour("white");
+  padding-left: govuk_frontend.govuk-spacing(3);
+  border-left: 4px solid govuk_frontend.$govuk-focus-colour;
+  background: govuk_frontend.govuk-colour("white");
 
-  @include govuk-media-query($from: tablet) {
-    padding-top: govuk-spacing(5);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    padding-top: govuk_frontend.govuk-spacing(5);
     padding-left: 0;
-    border-top: 5px solid $govuk-focus-colour;
+    border-top: 5px solid govuk_frontend.$govuk-focus-colour;
     border-left: 0;
   }
 }

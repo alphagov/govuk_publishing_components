@@ -1,13 +1,13 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/date-input/date-input";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/date-input/date-input";
 
 // Add spacing between input items on narrow containers when they collapse under each other
 .govuk-date-input {
-  margin-top: - govuk-spacing(2);
+  margin-top: - govuk_frontend.govuk-spacing(2);
 }
 
 .govuk-date-input__item {
-  margin-top: govuk-spacing(2);
+  margin-top: govuk_frontend.govuk-spacing(2);
 }
 
 // Remove spacing for the last input item to make the most of space when in narrow containers

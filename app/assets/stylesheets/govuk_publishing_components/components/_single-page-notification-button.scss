@@ -1,33 +1,33 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-single-page-notification-button__submit {
-  padding: govuk-spacing(2);
-  margin: govuk-spacing(0);
-  border: 1px solid govuk-colour("dark-grey");
-  color: $govuk-link-colour;
+  padding: govuk_frontend.govuk-spacing(2);
+  margin: govuk_frontend.govuk-spacing(0);
+  border: 1px solid govuk_frontend.govuk-colour("dark-grey");
+  color: govuk_frontend.$govuk-link-colour;
   cursor: pointer;
   background: none;
 
   &:focus {
     border-color: transparent;
-    @include govuk-focused-text;
+    @include govuk_frontend.govuk-focused-text;
   }
 
   &:hover {
-    background-color: govuk-colour("light-grey");
-    color: $govuk-link-hover-colour;
+    background-color: govuk_frontend.govuk-colour("light-grey");
+    color: govuk_frontend.$govuk-link-hover-colour;
 
     &:focus {
-      color: $govuk-text-colour;
-      box-shadow: 0 $govuk-focus-width $govuk-text-colour;
+      color: govuk_frontend.$govuk-text-colour;
+      box-shadow: 0 govuk_frontend.$govuk-focus-width govuk_frontend.$govuk-text-colour;
     }
   }
 }
 
 .gem-c-single-page-notification-button__icon {
-  color: govuk-colour("black");
+  color: govuk_frontend.govuk-colour("black");
   vertical-align: top;
-  margin-right: govuk-spacing(1);
+  margin-right: govuk_frontend.govuk-spacing(1);
 }
 
 .govuk-frontend-supported .gem-c-single-page-notification-button.js-personalisation-enhancement {

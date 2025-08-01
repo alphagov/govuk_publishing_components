@@ -1,7 +1,7 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-signup-link__link {
-  @include govuk-font($size: 19);
+  @include govuk_frontend.govuk-font($size: 19);
 }
 
 .gem-c-signup-link__inner {
@@ -11,26 +11,26 @@
 .gem-c-signup-link__icon {
   position: absolute;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     top: 2px;
   }
 }
 
 .gem-c-signup-link__title {
-  margin-bottom: govuk-spacing(2);
-  margin-left: govuk-spacing(5);
+  margin-bottom: govuk_frontend.govuk-spacing(2);
+  margin-left: govuk_frontend.govuk-spacing(5);
 }
 
 .gem-c-signup-link--with-background-and-border {
-  padding: govuk-spacing(6);
-  background-color: govuk-colour("light-grey");
-  border: 1px solid $govuk-border-colour;
+  padding: govuk_frontend.govuk-spacing(6);
+  background-color: govuk_frontend.govuk-colour("light-grey");
+  border: 1px solid govuk_frontend.$govuk-border-colour;
 }
 
 .gem-c-signup-link--link-only .gem-c-signup-link__link {
   display: inline-block;
   vertical-align: top;
   font-weight: bold;
-  margin-left: govuk-spacing(5);
+  margin-left: govuk_frontend.govuk-spacing(5);
   margin-bottom: 0;
 }

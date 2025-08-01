@@ -1,4 +1,4 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 // Default logo corresponds with the "medium stacked" Whitehall equivalent
 .gem-c-organisation-logo {
@@ -6,10 +6,10 @@
   // When this is a heading the margin needs to be set to stop it from
   // inheriting the browser's default margin:
   margin: 0;
-  @include govuk-typography-common;
-  @include govuk-font-size(19);
+  @include govuk_frontend.govuk-typography-common;
+  @include govuk_frontend.govuk-font-size(19);
 
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     // only override line-height on small screens otherwise use govuk-font-size
     // line-height
     line-height: 1.35;
@@ -20,7 +20,7 @@
   text-transform: none;
   text-decoration: none;
   display: block;
-  color: govuk-colour("black");
+  color: govuk_frontend.govuk-colour("black");
   height: auto;
   width: auto;
 
@@ -30,12 +30,12 @@
 
 .gem-c-organisation-logo__container--inline {
   display: inline-block;
-  padding-right: govuk-spacing(1);
+  padding-right: govuk_frontend.govuk-spacing(1);
 }
 
 .gem-c-organisation-logo__image {
   max-width: 320px;
-  @include govuk-media-query($until: tablet) {
+  @include govuk_frontend.govuk-media-query($until: tablet) {
     width: 100%;
     max-width: 240px;
   }
@@ -43,7 +43,7 @@
 
 .gem-c-organisation-logo__crest {
   // Default brand colour
-  border-left: 2px solid govuk-colour("black");
+  border-left: 2px solid govuk_frontend.govuk-colour("black");
   padding-top: 35px;
   padding-left: 8px;
 
@@ -59,8 +59,8 @@
 }
 
 .gem-c-organisation-logo__link {
-  @include govuk-link-common;
-  @include govuk-link-style-text;
+  @include govuk_frontend.govuk-link-common;
+  @include govuk_frontend.govuk-link-style-text;
 
   & { // stylelint-disable-line no-duplicate-selectors
     // overriding the govuk-link font
@@ -68,19 +68,19 @@
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk_frontend.$govuk-link-hover-colour;
   }
 
   &:active {
-    color: govuk-colour("black");
-    @include govuk-link-hover-decoration;
+    color: govuk_frontend.govuk-colour("black");
+    @include govuk_frontend.govuk-link-hover-decoration;
   }
 
   &:focus {
     // Using `@include govuk-focused-text;` would obscure the text. Tweaked
     // spacing needed to prevent overlap of the text and the focus state's thick
     // black line.
-    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-colour, 0 8px $govuk-focus-text-colour;
+    box-shadow: 0 -2px govuk_frontend.$govuk-focus-colour, 0 4px govuk_frontend.$govuk-focus-colour, 0 8px govuk_frontend.$govuk-focus-text-colour;
     text-decoration: none;
   }
 }
@@ -91,8 +91,8 @@
 
 .gem-c-organisation-logo--inverse {
   .gem-c-organisation-logo__container {
-    border-color: govuk-colour("white");
-    @include govuk-link-style-inverse;
+    border-color: govuk_frontend.govuk-colour("white");
+    @include govuk_frontend.govuk-link-style-inverse;
   }
 
   .gem-c-organisation-logo__crest {
@@ -172,7 +172,7 @@
   @include tall-crest;
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-organisation-logo__container {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;

@@ -1,33 +1,33 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-summary-banner {
   direction: ltr;
-  background: $govuk-brand-colour;
-  color: govuk-colour("white");
-  padding: govuk-spacing(6) govuk-spacing(3) govuk-spacing(3);
+  background: govuk_frontend.$govuk-brand-colour;
+  color: govuk_frontend.govuk-colour("white");
+  padding: govuk_frontend.govuk-spacing(6) govuk_frontend.govuk-spacing(3) govuk_frontend.govuk-spacing(3);
   clear: both;
-  @include govuk-font(19);
+  @include govuk_frontend.govuk-font(19);
 
-  @include govuk-media-query($from: tablet) {
-    padding: govuk-spacing(7) govuk-spacing(6) govuk-spacing(5);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    padding: govuk_frontend.govuk-spacing(7) govuk_frontend.govuk-spacing(6) govuk_frontend.govuk-spacing(5);
   }
 
   a {
-    @include govuk-link-common;
-    @include govuk-link-style-inverse;
+    @include govuk_frontend.govuk-link-common;
+    @include govuk_frontend.govuk-link-style-inverse;
   }
 }
 
 .gem-c-summary-banner__title {
-  margin-bottom: govuk-spacing(6);
-  color: govuk-colour("white");
-  @include govuk-font(27, $weight: bold);
+  margin-bottom: govuk_frontend.govuk-spacing(6);
+  color: govuk_frontend.govuk-colour("white");
+  @include govuk_frontend.govuk-font(27, $weight: bold);
 }
 
 .gem-c-summary-banner__text {
   // Ensure the text has a line-length of around 60 characters
   max-width: 30em;
   padding: 0;
-  margin-bottom: govuk-spacing(4);
-  @include govuk-font(19);
+  margin-bottom: govuk_frontend.govuk-spacing(4);
+  @include govuk_frontend.govuk-font(19);
 }

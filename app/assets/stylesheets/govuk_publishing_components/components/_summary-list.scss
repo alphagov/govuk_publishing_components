@@ -1,14 +1,14 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/summary-list/summary-list";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/summary-list/summary-list";
 
 .gem-c-summary-list {
-  border-bottom: 1px solid $govuk-border-colour;
+  border-bottom: 1px solid govuk_frontend.$govuk-border-colour;
 
-  @include govuk-font(19);
-  @include govuk-responsive-margin(6, "top");
+  @include govuk_frontend.govuk-font(19);
+  @include govuk_frontend.govuk-responsive-margin(6, "top");
 
   &:nth-of-type(1) {
-    margin-top: govuk-spacing(0);
+    margin-top: govuk_frontend.govuk-spacing(0);
   }
 
   &:nth-last-of-type(1) {
@@ -21,27 +21,27 @@
 }
 
 .gem-c-summary-list__group-title {
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     display: inline-block;
-    margin-right: govuk-spacing(3);
+    margin-right: govuk_frontend.govuk-spacing(3);
   }
 }
 
 .gem-c-summary-list__group-actions-list {
-  margin-bottom: govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     float: right;
     width: auto;
   }
 }
 
 .gem-c-summary__block {
-  @include govuk-responsive-margin(6, "bottom");
+  @include govuk_frontend.govuk-responsive-margin(6, "bottom");
 }
 
 .gem-c-summary-list--wide-title {
-  @include govuk-media-query($from: "tablet") {
+  @include govuk_frontend.govuk-media-query($from: "tablet") {
     .govuk-summary-list__key {
       width: 60%;
     }

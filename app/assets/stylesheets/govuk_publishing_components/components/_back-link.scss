@@ -1,2 +1,2 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/back-link/back-link";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/back-link/back-link";

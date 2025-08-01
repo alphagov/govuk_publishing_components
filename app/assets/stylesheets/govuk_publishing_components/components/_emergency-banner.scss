@@ -1,21 +1,21 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-emergency-banner {
-  background-color: govuk-colour("mid-grey");
-  color: govuk-colour("white");
+  background-color: govuk_frontend.govuk-colour("mid-grey");
+  color: govuk_frontend.govuk-colour("white");
   margin-top: 2px;
-  padding: govuk-spacing(3) 0;
-  @include govuk-font(19);
+  padding: govuk_frontend.govuk-spacing(3) 0;
+  @include govuk_frontend.govuk-font(19);
 
-  @include govuk-media-query($from: tablet) {
-    padding: govuk-spacing(6) 0;
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    padding: govuk_frontend.govuk-spacing(6) 0;
   }
 }
 
 .gem-c-emergency-banner--homepage {
-  border-bottom: govuk-spacing(1) solid govuk-colour("white");
-  border-top: govuk-spacing(1) solid govuk-colour("white");
-  margin-bottom: govuk-spacing(-2);
+  border-bottom: govuk_frontend.govuk-spacing(1) solid govuk_frontend.govuk-colour("white");
+  border-top: govuk_frontend.govuk-spacing(1) solid govuk_frontend.govuk-colour("white");
+  margin-bottom: govuk_frontend.govuk-spacing(-2);
   margin-top: 0;
   position: relative;
   z-index: 10;
@@ -23,22 +23,22 @@
 
 .gem-c-emergency-banner__heading {
   margin: 0;
-  @include govuk-font(24, $weight: bold);
+  @include govuk_frontend.govuk-font(24, $weight: bold);
 }
 
 .gem-c-emergency-banner__heading--homepage {
-  @include govuk-font(48, $weight: bold);
+  @include govuk_frontend.govuk-font(48, $weight: bold);
 
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(4);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    margin-bottom: govuk_frontend.govuk-spacing(4);
   }
 }
 
 .gem-c-emergency-banner__description {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
   margin-top: 0;
-  margin-bottom: govuk-spacing(4);
-  @include govuk-font(19);
+  margin-bottom: govuk_frontend.govuk-spacing(4);
+  @include govuk_frontend.govuk-font(19);
 
   &:last-child {
     margin-bottom: 0;
@@ -46,24 +46,24 @@
 }
 
 .gem-c-emergency-banner__description--homepage {
-  margin: govuk-spacing(4) 0;
+  margin: govuk_frontend.govuk-spacing(4) 0;
 }
 
 .gem-c-emergency-banner__link {
-  @include govuk-font(19);
+  @include govuk_frontend.govuk-font(19);
 }
 
 .gem-c-emergency-banner__link:link,
 .gem-c-emergency-banner__link:visited {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
 }
 
 .gem-c-emergency-banner__link:focus {
-  @include govuk-focused-text;
+  @include govuk_frontend.govuk-focused-text;
 }
 
 .gem-c-emergency-banner--notable-death {
-  background-color: govuk-colour("black");
+  background-color: govuk_frontend.govuk-colour("black");
 }
 
 .gem-c-emergency-banner--national-emergency {
@@ -77,7 +77,7 @@
   background-color: #00847d;
 }
 
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   .gem-c-emergency-banner {
     display: none;
   }

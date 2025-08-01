@@ -1,12 +1,12 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-option-select {
   position: relative;
-  padding: 0 0 govuk-spacing(2);
-  margin-bottom: govuk-spacing(2);
-  border-bottom: 1px solid $govuk-border-colour;
+  padding: 0 0 govuk_frontend.govuk-spacing(2);
+  margin-bottom: govuk_frontend.govuk-spacing(2);
+  border-bottom: 1px solid govuk_frontend.$govuk-border-colour;
 
-  @include govuk-media-query($from: desktop) {
+  @include govuk_frontend.govuk-media-query($from: desktop) {
     // Redefine scrollbars on desktop where these lists are scrollable
     // so they are always visible in option lists
     ::-webkit-scrollbar {
@@ -29,7 +29,7 @@
 
 .gem-c-option-select__title {
   margin: 0;
-  @include govuk-font(19);
+  @include govuk_frontend.govuk-font(19);
 }
 
 .gem-c-option-select__button {
@@ -39,12 +39,12 @@
   text-align: left;
   padding: 0;
   cursor: pointer;
-  color: $govuk-link-colour;
+  color: govuk_frontend.$govuk-link-colour;
 
   &:hover {
     text-decoration: underline;
     text-underline-offset: .1em;
-    @include govuk-link-hover-decoration;
+    @include govuk_frontend.govuk-link-hover-decoration;
   }
 
   &::-moz-focus-inner {
@@ -54,7 +54,7 @@
   &:focus {
     outline: none;
     text-decoration: none;
-    @include govuk-focused-text;
+    @include govuk_frontend.govuk-focused-text;
   }
 
   &[disabled] {
@@ -80,7 +80,7 @@
   width: 30px;
   height: 40px;
   margin-inline: 10px 4px;
-  fill: govuk-colour("black");
+  fill: govuk_frontend.govuk-colour("black");
 }
 
 .gem-c-option-select__container {
@@ -88,7 +88,7 @@
   max-height: 200px;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: govuk-colour("white");
+  background-color: govuk_frontend.govuk-colour("white");
 
   &:focus {
     outline: 0;
@@ -100,21 +100,21 @@
 }
 
 .gem-c-option-select__container-inner {
-  padding: govuk-spacing(1) 13px;
+  padding: govuk_frontend.govuk-spacing(1) 13px;
 }
 
 .gem-c-option-select__filter {
   position: relative;
-  background: govuk-colour("white");
-  padding: 13px 13px govuk-spacing(2) 13px;
+  background: govuk_frontend.govuk-colour("white");
+  padding: 13px 13px govuk_frontend.govuk-spacing(2) 13px;
 }
 
 .gem-c-option-select__filter-input {
-  background: url("option-select/input-icon.svg") govuk-colour("white") no-repeat -5px -3px;
-  @include govuk-font(19);
+  background: url("option-select/input-icon.svg") govuk_frontend.govuk-colour("white") no-repeat -5px -3px;
+  @include govuk_frontend.govuk-font(19);
 
-  @include govuk-media-query($from: tablet) {
-    @include govuk-font(16);
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    @include govuk_frontend.govuk-font(16);
   }
 }
 
@@ -125,7 +125,7 @@
 .govuk-frontend-supported {
   .gem-c-option-select__heading {
     position: relative;
-    margin: 0 0 govuk-spacing(1);
+    margin: 0 0 govuk_frontend.govuk-spacing(1);
   }
 
   .gem-c-option-select__toggle {
@@ -158,8 +158,8 @@
 
 .gem-c-option-select__selected-counter {
   margin-left: 44px;
-  color: $govuk-text-colour;
-  @include govuk-font($size: 16, $line-height: 1);
+  color: govuk_frontend.$govuk-text-colour;
+  @include govuk_frontend.govuk-font($size: 16, $line-height: 1);
 }
 
 .gem-c-option-select.js-closed {

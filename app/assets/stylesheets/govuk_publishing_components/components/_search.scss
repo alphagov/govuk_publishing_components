@@ -1,15 +1,15 @@
 @use "sass:color";
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 $input-size: 40px;
 $large-input-size: 50px;
 
-$search-submit-button-colour: $govuk-blue-tint-80;
-$search-submit-button-hover-colour: $govuk-blue-tint-95;
+$search-submit-button-colour: govuk_frontend.$govuk-blue-tint-80;
+$search-submit-button-hover-colour: govuk_frontend.$govuk-blue-tint-95;
 
 @mixin large-mode {
   .gem-c-search__label {
-    @include govuk-font($size: 19, $line-height: $large-input-size);
+    @include govuk_frontend.govuk-font($size: 19, $line-height: $large-input-size);
   }
 
   .gem-c-search__input[type="search"] {
@@ -32,17 +32,17 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
 .gem-c-search__label {
   display: block;
-  color: $govuk-text-colour;
+  color: govuk_frontend.$govuk-text-colour;
   cursor: text;
   text-overflow: ellipsis;
   height: 90%;
   overflow: hidden;
   white-space: nowrap;
-  @include govuk-font($size: 19, $line-height: $input-size);
+  @include govuk_frontend.govuk-font($size: 19, $line-height: $input-size);
 
   h1 {
     margin: 0;
-    @include govuk-font($size: 19, $line-height: $input-size);
+    @include govuk_frontend.govuk-font($size: 19, $line-height: $input-size);
   }
 
   .govuk-frontend-supported & {
@@ -51,41 +51,41 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
     top: 2px;
     bottom: 2px;
     max-width: 68%;
-    padding-left: govuk-spacing(3);
+    padding-left: govuk_frontend.govuk-spacing(3);
     z-index: 1;
-    color: $govuk-secondary-text-colour;
-    background: govuk-colour("white");
+    color: govuk_frontend.$govuk-secondary-text-colour;
+    background: govuk_frontend.govuk-colour("white");
   }
 
   // match label colour with the label component colour
   // when javascript is enabled and inline_label option  is set to false
   .govuk-frontend-supported .gem-c-search--separate-label & {
-    color: $govuk-text-colour;
+    color: govuk_frontend.$govuk-text-colour;
   }
 }
 
 @mixin gem-c-search-input-focus {
-  outline: $govuk-focus-width solid $govuk-focus-colour;
+  outline: govuk_frontend.$govuk-focus-width solid govuk_frontend.$govuk-focus-colour;
   // Ensure outline appears outside of the element
   outline-offset: 0;
   // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width`
   // Also, `outline` cannot be utilised here as it is already used for the yellow focus state.
-  box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+  box-shadow: inset 0 0 0 govuk_frontend.$govuk-border-width-form-element;
 }
 
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
   margin: 0;
   width: 100%;
-  height: govuk-em(40, 19);
-  padding: govuk-em(6, 19);
-  border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-  background: govuk-colour("white");
+  height: govuk_frontend.govuk-em(40, 19);
+  padding: govuk_frontend.govuk-em(6, 19);
+  border: govuk_frontend.$govuk-border-width-form-element solid govuk_frontend.$govuk-input-border-colour;
+  background: govuk_frontend.govuk-colour("white");
   border-radius: 0; // otherwise iphones apply an automatic border radius
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  @include govuk-font($size: 19, $line-height: calc(28 / 19));
+  @include govuk_frontend.govuk-font($size: 19, $line-height: calc(28 / 19));
 
   // the .focus class is added by JS and ensures that the input remains above the label once clicked/filled in
   &:focus,
@@ -116,7 +116,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
   cursor: pointer;
   border-radius: 0;
   // render a border in high contrast mode
-  outline: $govuk-border-width-form-element solid transparent;
+  outline: govuk_frontend.$govuk-border-width-form-element solid transparent;
   // Ensure outline appears outside of the element
   outline-offset: 0;
   position: relative;
@@ -138,11 +138,11 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
   &:focus {
     z-index: 2;
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: govuk_frontend.$govuk-focus-width solid govuk_frontend.$govuk-focus-colour;
     // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width` - this is for consistency with
     // Also, `outline` cannot be utilised
     // here as it is already used for the yellow focus state.
-    box-shadow: inset 0 0 0 $govuk-border-width-form-element * 2 govuk-colour("black");
+    box-shadow: inset 0 0 0 govuk_frontend.$govuk-border-width-form-element * 2 govuk_frontend.govuk-colour("black");
   }
 
   &::-moz-focus-inner {
@@ -153,7 +153,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 .gem-c-search__item-wrapper {
   display: table;
   width: 100%;
-  background: govuk-colour("white");
+  background: govuk_frontend.govuk-colour("white");
 }
 
 // general class applied to search input and button wrapper
@@ -169,13 +169,13 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
 .gem-c-search--on-govuk-blue {
   .gem-c-search__label {
-    color: govuk-colour("white");
+    color: govuk_frontend.govuk-colour("white");
   }
 
   .gem-c-search__input {
     border-width: 0;
     // Render a border in high contrast mode
-    outline: $govuk-border-width-form-element solid transparent;
+    outline: govuk_frontend.$govuk-border-width-form-element solid transparent;
     // Ensure outline appears outside of the element
     outline-offset: 0;
 
@@ -187,7 +187,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
   .gem-c-search__submit {
     background-color: $search-submit-button-colour;
-    color: govuk-colour("blue");
+    color: govuk_frontend.govuk-colour("blue");
 
     &:hover {
       background-color: $search-submit-button-hover-colour;
@@ -196,18 +196,18 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
   .govuk-frontend-supported & {
     .gem-c-search__label {
-      color: $govuk-secondary-text-colour;
+      color: govuk_frontend.$govuk-secondary-text-colour;
     }
   }
 }
 
 .gem-c-search--on-white {
   .gem-c-search__submit {
-    background-color: govuk-colour("blue");
-    color: govuk-colour("white");
+    background-color: govuk_frontend.govuk-colour("blue");
+    color: govuk_frontend.govuk-colour("white");
 
     &:hover {
-      background-color: color.adjust(govuk-colour("blue"), $lightness: 5%);
+      background-color: color.adjust(govuk_frontend.govuk-colour("blue"), $lightness: 5%);
     }
   }
 
@@ -222,7 +222,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 }
 
 .govuk-label.gem-c-search__label--white {
-  color: govuk-colour("white");
+  color: govuk_frontend.govuk-colour("white");
 }
 
 .gem-c-search--large {

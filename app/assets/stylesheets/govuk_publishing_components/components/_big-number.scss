@@ -1,19 +1,19 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-big-number {
-  margin-bottom: govuk-spacing(3);
-  @include govuk-text-colour;
+  margin-bottom: govuk_frontend.govuk-spacing(3);
+  @include govuk_frontend.govuk-text-colour;
 }
 
 .gem-c-big-number__value {
   line-height: 1;
   font-size: 80px;
-  font-size: govuk-px-to-rem(80px);
-  @include govuk-font($size: false, $weight: bold);
+  font-size: govuk_frontend.govuk-px-to-rem(80px);
+  @include govuk_frontend.govuk-font($size: false, $weight: bold);
 }
 
 .gem-c-big-number__label {
-  @include govuk-font($size: 19, $weight: bold);
+  @include govuk_frontend.govuk-font($size: 19, $weight: bold);
 
   // This pseudo element is to bypass an issue with NVDA where block level elements are dictated separately.
   // What's happening here is that the label and the number technically have an inline relationship
@@ -30,19 +30,19 @@
 
   // Add govuk-link hover decoration to main value if no label present but a href attribute is
   .gem-c-big-number__value--decorated {
-    @include govuk-link-decoration;
-    @include govuk-link-style-no-underline;
+    @include govuk_frontend.govuk-link-decoration;
+    @include govuk_frontend.govuk-link-style-no-underline;
   }
 
   .gem-c-big-number__label {
-    @include govuk-link-decoration;
+    @include govuk_frontend.govuk-link-decoration;
   }
 
   &:hover,
   &:active {
     .gem-c-big-number__label,
     .gem-c-big-number__value--decorated {
-      @include govuk-link-hover-decoration;
+      @include govuk_frontend.govuk-link-hover-decoration;
     }
   }
 

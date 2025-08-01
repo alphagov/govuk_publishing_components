@@ -1,5 +1,5 @@
-@import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/accordion/accordion";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
+@use "govuk/components/accordion/accordion";
 
 // Prevent elements inside the button from receiving click events
 .gem-c-accordion__show-all > * {
@@ -11,7 +11,7 @@
 // TODO: Replace with the print styles that will come from GOV.UK Frontend.
 
 // stylelint-disable declaration-no-important
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   // Open all of the accordion sections.
   .govuk-accordion__section-content {
     display: block !important;
@@ -36,8 +36,8 @@
 
   // Change the summary subheading size.
   .govuk-accordion__section-summary {
-    @include govuk-typography-common;
-    @include govuk-font-size($size: 16, $important: true);
+    @include govuk_frontend.govuk-typography-common;
+    @include govuk_frontend.govuk-font-size($size: 16, $important: true);
   }
 
   // Hide the unusable "Show all" and "Show" sections.

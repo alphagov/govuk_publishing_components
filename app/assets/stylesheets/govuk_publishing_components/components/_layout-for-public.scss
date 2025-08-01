@@ -1,12 +1,12 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-layout-for-public {
-  font-family: $govuk-font-family;
+  font-family: govuk_frontend.$govuk-font-family;
 }
 
 .gem-c-layout-for-public__blue-bar {
-  background: $govuk-brand-colour;
-  height: govuk-spacing(2);
+  background: govuk_frontend.$govuk-brand-colour;
+  height: govuk_frontend.govuk-spacing(2);
 }
 
 .gem-c-layout-for-public__blue-bar-wrapper--browse {
@@ -14,17 +14,17 @@
 }
 
 .govuk-frontend-supported .gem-c-layout-for-public__global-banner-wrapper {
-  margin-top: - govuk-spacing(2);
-  min-height: govuk-spacing(2);
+  margin-top: - govuk_frontend.govuk-spacing(2);
+  min-height: govuk_frontend.govuk-spacing(2);
   position: relative;
 }
 
 .gem-c-layout-for-public-account-menu {
-  margin: 0 0 govuk-spacing(6) 0;
+  margin: 0 0 govuk_frontend.govuk-spacing(6) 0;
   padding: 0;
 
-  @include govuk-media-query($from: desktop) {
-    margin-right: govuk-spacing(4);
+  @include govuk_frontend.govuk-media-query($from: desktop) {
+    margin-right: govuk_frontend.govuk-spacing(4);
   }
 }
 
@@ -35,15 +35,15 @@ $current-indicator-width: 4px;
   list-style-type: none;
   padding: 12px 0;
 
-  @include govuk-media-query($from: tablet) {
-    margin: 0 0 govuk-spacing(4);
-    padding: govuk-spacing(1) 0;
+  @include govuk_frontend.govuk-media-query($from: tablet) {
+    margin: 0 0 govuk_frontend.govuk-spacing(4);
+    padding: govuk_frontend.govuk-spacing(1) 0;
   }
 }
 
 .gem-c-layout-for-public-account-menu__item--current {
-  margin-left: -(govuk-spacing(2) + $current-indicator-width);
-  padding-left: govuk-spacing(2);
+  margin-left: -(govuk_frontend.govuk-spacing(2) + $current-indicator-width);
+  padding-left: govuk_frontend.govuk-spacing(2);
   border-left: $current-indicator-width solid govuk-colour("blue");
 
   .gem-c-layout-for-public-account-menu__link {
@@ -52,9 +52,9 @@ $current-indicator-width: 4px;
 }
 
 .gem-c-layout-for-public-account-menu__link {
-  @include govuk-font(19, $weight: "bold");
+  @include govuk_frontend.govuk-font(19, $weight: "bold");
 
   &:not(:focus):hover {
-    color: $govuk-link-colour;
+    color: govuk_frontend.$govuk-link-colour;
   }
 }

@@ -1,13 +1,13 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-global-banner {
   background-color: #d9e7f2;
   display: none;
-  @include govuk-font(19);
+  @include govuk_frontend.govuk-font(19);
 
   .govuk-link,
   .govuk-link:link {
-    color: govuk-colour("black");
+    color: govuk_frontend.govuk-colour("black");
   }
 }
 
@@ -18,13 +18,13 @@
 .gem-c-global-banner__message {
   margin-bottom: 0;
   margin-top: 0;
-  padding: govuk-spacing(4) 0;
+  padding: govuk_frontend.govuk-spacing(4) 0;
 }
 
 .gem-c-global-banner__title {
   font-weight: 700;
-  margin-right: govuk-spacing(2);
-  margin-bottom: govuk-spacing(1);
+  margin-right: govuk_frontend.govuk-spacing(2);
+  margin-bottom: govuk_frontend.govuk-spacing(1);
 
   &:only-child {
     margin: 0;
@@ -33,5 +33,5 @@
 
 .gem-c-global-banner__title,
 .gem-c-global-banner__text {
-  color: govuk-colour("black");
+  color: govuk_frontend.govuk-colour("black");
 }

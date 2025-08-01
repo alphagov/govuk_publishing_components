@@ -5,6 +5,8 @@
 // - alphagov/whitehall: ✔︎
 // - alphagov/govspeak: ✔︎
 
+@use "govuk/base" as *;
+
 .gem-c-govspeak__youtube-video {
   position: relative;
   height: 0;

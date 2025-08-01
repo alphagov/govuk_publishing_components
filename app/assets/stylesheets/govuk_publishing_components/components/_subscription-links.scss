@@ -1,12 +1,12 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-subscription-links {
-  @include govuk-text-colour;
-  @include govuk-font(19, $weight: bold);
+  @include govuk_frontend.govuk-text-colour;
+  @include govuk_frontend.govuk-font(19, $weight: bold);
 }
 
 .gem-c-subscription-links__hidden-header {
-  @include govuk-visually-hidden;
+  @include govuk_frontend.govuk-visually-hidden;
 }
 
 .gem-c-subscription-links__list {
@@ -16,14 +16,14 @@
 }
 
 .gem-c-subscription-links__list--small {
-  @include govuk-font(16);
+  @include govuk_frontend.govuk-font(16);
 }
 
 .gem-c-subscription-links__list-item {
   display: inline-block;
   vertical-align: middle;
-  margin-right: govuk-spacing(4);
-  margin-bottom: govuk-spacing(3);
+  margin-right: govuk_frontend.govuk-spacing(4);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
 
   &:last-child {
     margin-right: 0;
@@ -34,10 +34,10 @@
   display: inline-block;
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: govuk-spacing(2);
+  margin-bottom: govuk_frontend.govuk-spacing(2);
 
   &:first-child {
-    margin-right: govuk-spacing(2);
+    margin-right: govuk_frontend.govuk-spacing(2);
   }
 
   &:only-child {
@@ -50,7 +50,7 @@
   background-repeat: no-repeat;
   background-position: 0 20%;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk_frontend.govuk-media-query($from: tablet) {
     background-position: 0 35%;
   }
 }
@@ -58,21 +58,21 @@
 .gem-c-subscription-links__item--button {
   cursor: pointer;
   display: none;
-  padding: govuk-spacing(2);
-  border: 1px solid $gem-quiet-button-colour;
-  background-color: $gem-secondary-button-background-colour;
-  @include govuk-font(19, $weight: bold);
+  padding: govuk_frontend.govuk-spacing(2);
+  border: 1px solid govuk_frontend.$gem-quiet-button-colour;
+  background-color: govuk_frontend.$gem-secondary-button-background-colour;
+  @include govuk_frontend.govuk-font(19, $weight: bold);
 
   .govuk-frontend-supported & {
     display: inline-block;
   }
 
   &:not(.brand__color) {
-    color: $govuk-link-colour;
+    color: govuk_frontend.$govuk-link-colour;
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk_frontend.$govuk-link-hover-colour;
   }
 
   &:visited,
@@ -82,21 +82,21 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
-    border: 1px solid $govuk-focus-colour;
+    color: govuk_frontend.$govuk-focus-text-colour;
+    border: 1px solid govuk_frontend.$govuk-focus-colour;
     outline: 3px solid transparent;
   }
 
   &:hover:not(:focus) {
-    background-color: $gem-secondary-button-hover-background-colour;
+    background-color: govuk_frontend.$gem-secondary-button-hover-background-colour;
     text-decoration: none;
   }
 }
 
 .gem-c-subscription-links__feed-box {
-  padding: govuk-spacing(3);
-  margin-bottom: govuk-spacing(3);
-  background: govuk-colour("light-grey");
+  padding: govuk_frontend.govuk-spacing(3);
+  margin-bottom: govuk_frontend.govuk-spacing(3);
+  background: govuk_frontend.govuk-colour("light-grey");
 
   .govuk-frontend-supported &.js-hidden {
     display: none;
@@ -105,23 +105,23 @@
 
 .gem-c-subscription-links__feed-hidden-description {
   .govuk-frontend-supported & {
-    @include govuk-visually-hidden;
+    @include govuk_frontend.govuk-visually-hidden;
   }
 }
 
 .gem-c-subscription-links__icon {
-  margin-right: govuk-spacing(1);
-  color: govuk-colour("black");
+  margin-right: govuk_frontend.govuk-spacing(1);
+  color: govuk_frontend.govuk-colour("black");
 }
 
 .gem-c-subscription-links__list-item--small .gem-c-subscription-links__icon {
-  @include scale(.9);
+  @include govuk_frontend.scale(.9);
   transform-origin: bottom left;
 }
 
 .gem-c-subscription-links--with-feed-box {
   .gem-c-subscription-links__item--link {
-    padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) 0;
+    padding: govuk_frontend.govuk-spacing(2) govuk_frontend.govuk-spacing(2) govuk_frontend.govuk-spacing(2) 0;
     border: 1px solid transparent;
 
     &:focus {

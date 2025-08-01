@@ -1,4 +1,4 @@
-@import "govuk_publishing_components/individual_component_support";
+@use "govuk_publishing_components/individual_component_support" as govuk_frontend;
 
 .gem-c-heading,
 .gem-c-heading__text {
@@ -6,7 +6,7 @@
 }
 
 .gem-c-heading--padding {
-  padding: govuk-spacing(3) 0;
+  padding: govuk_frontend.govuk-spacing(3) 0;
 }
 
 // border color will default to black
@@ -29,28 +29,28 @@
 .gem-c-heading--inverse {
   .gem-c-heading__context,
   .gem-c-heading__text {
-    color: govuk-colour("white");
+    color: govuk_frontend.govuk-colour("white");
   }
 }
 
 // stylelint-disable declaration-no-important
-@include govuk-media-query($media-type: print) {
+@include govuk_frontend.govuk-media-query($media-type: print) {
   // Override margins and colors
   .gem-c-heading {
     margin: 0 !important;
-    color: $govuk-print-text-colour !important;
-    border-color: $govuk-print-text-colour !important;
+    color: govuk_frontend.$govuk-print-text-colour !important;
+    border-color: govuk_frontend.$govuk-print-text-colour !important;
     padding: 0;
   }
 
   .gem-c-heading--padding[class*="--border-top"] {
-    padding-top: govuk-spacing(3);
+    padding-top: govuk_frontend.govuk-spacing(3);
   }
 
   .gem-c-heading--inverse {
     .gem-c-heading__context,
     .gem-c-heading__text {
-      color: $govuk-print-text-colour;
+      color: govuk_frontend.$govuk-print-text-colour;
     }
   }
 }
