@@ -121,10 +121,12 @@ $gem-guide-border-width: 1px;
 
   &.dark-background {
     background-color: govuk-colour("blue");
+    padding: govuk-spacing(3);
   }
 
   &.black-background {
     background-color: govuk-colour("black");
+    padding: govuk-spacing(3);
   }
 
   &.component-output {
