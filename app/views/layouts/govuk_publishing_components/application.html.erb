@@ -45,7 +45,7 @@
     <%= render_component_stylesheets %>
     <%= yield :extra_headers %>
   </head>
-  <body class="gem-c-layout-for-admin govuk-template__body <%= 'hide-header-and-footer' if @preview %>">
+  <body class="gem-c-layout-for-admin govuk-template__body">
     <%= javascript_tag nonce: true do -%>
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     <% end -%>
