@@ -50,3 +50,20 @@ with `data-ga4-form-record-json` it will be set to:
 ```
 
 When a form is submitted with an empty input value, the tracker will set the `text` value in the dataLayer to `"No answer given"`. If you require empty input to be sent as `undefined` instead, add the `data-ga4-form-no-answer-undefined` attribute to the form.
+
+If the `data-ga4-form-split-response-text` attribute is set on the form then the `text` value in the dataLayer will be split into 5 fields to overcome the GA4 500 character limit:
+
+```
+{
+  'event': 'event_data',
+  'event_data': {
+    'event_name': 'form_response',
+    'type': 'smart answer',
+    'tool_name': 'How do I eat more healthily?',
+    'section': 'What are your favourite puddings?',
+    'text': '500 character long text',
+    'text_2': 'More characters after the 500',
+    'action': 'Continue'
+  }
+}
+```

@@ -390,6 +390,67 @@ describe('Google Analytics form tracking', function () {
     })
   })
 
+  describe('when tracking a form with text splitting enabled', function () {
+    var longText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar quam ac elit pulvinar, quis iaculis lorem tristique. Nunc hendrerit urna et metus iaculis lobortis. Aenean tempor, lectus at blandit aliquet, neque felis aliquet leo, ornare tristique nibh augue sit amet tellus. Curabitur sit amet maximus lorem. Nullam volutpat, dolor id mollis ultrices, dui libero venenatis nibh, vel mollis nulla diam vel leo. Vestibulum tempus quam sit amet nisi cursus, et cursus ipsum semper. Vivamus eu.'
+    var overriddenText = JSON.parse(JSON.stringify(attributes))
+
+    beforeEach(function () {
+      overriddenText.text = ''
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-split-response-text', '')
+      expected = schema.mergeProperties(attributes, 'event_data')
+      expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('splits text into multiple dimensions if over 500 characters', function () {
+      overriddenText.text = longText + 's'
+      element.setAttribute('data-ga4-form', JSON.stringify(overriddenText))
+      window.GOVUK.triggerEvent(element, 'submit')
+      expected.event_data.text = longText
+      expected.event_data.text_2 = 's'
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('splits text into as many dimensions as required', function () {
+      overriddenText.text = longText
+      expected.event_data.text = longText
+
+      for (var x = 2; x < 6; x++) {
+        overriddenText.text += longText
+        element.setAttribute('data-ga4-form', JSON.stringify(overriddenText))
+        for (var y = 2; y < 6; y++) {
+          if (y <= x) {
+            expected.event_data['text_' + String(y)] = longText
+          }
+        }
+        window.GOVUK.triggerEvent(element, 'submit')
+        expect(window.dataLayer[window.dataLayer.length - 1]).toEqual(expected)
+      }
+    })
+
+    it('does not split text into multiple dimensions if 500 characters', function () {
+      overriddenText.text = longText
+      element.setAttribute('data-ga4-form', JSON.stringify(overriddenText))
+      window.GOVUK.triggerEvent(element, 'submit')
+      expected.event_data.text = longText
+      expected.event_data.text_2 = undefined
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('does not split text into multiple dimensions if 499 characters', function () {
+      var shortenedText = longText.slice(0, longText.length - 1)
+      overriddenText.text = shortenedText
+      element.setAttribute('data-ga4-form', JSON.stringify(overriddenText))
+      window.GOVUK.triggerEvent(element, 'submit')
+      expected.event_data.text = shortenedText
+      expected.event_data.text_2 = undefined
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('when tracking a form with character count enabled', function () {
     beforeEach(function () {
       var attributes = {

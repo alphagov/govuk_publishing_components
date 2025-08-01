@@ -10,6 +10,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.includeTextInputValues = this.module.hasAttribute('data-ga4-form-include-text')
     this.recordJson = this.module.hasAttribute('data-ga4-form-record-json')
     this.useTextCount = this.module.hasAttribute('data-ga4-form-use-text-count')
+    this.splitText = this.module.hasAttribute('data-ga4-form-split-response-text')
     this.redacted = false
     this.useFallbackValue = this.module.hasAttribute('data-ga4-form-no-answer-undefined') ? undefined : 'No answer given'
   }
@@ -52,8 +53,26 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (data.action === 'search' && data.text) {
         data.text = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(data.text)
       }
+
+      if (data.text && this.splitText) {
+        data = this.splitFormResponseText(data)
+      }
+
       window.GOVUK.analyticsGa4.core.applySchemaAndSendData(data, 'event_data')
     }
+  }
+
+  Ga4FormTracker.prototype.splitFormResponseText = function (data) {
+    var text = data.text
+    var dimensions = Math.min(Math.ceil(data.text.length / 500), 5)
+
+    data.text = text.slice(0, 500)
+
+    for (var i = 1; i < dimensions; i++) {
+      data['text_' + (i + 1)] = text.slice(i * 500, i * 500 + 500)
+    }
+
+    return data
   }
 
   Ga4FormTracker.prototype.getFormInputs = function () {
