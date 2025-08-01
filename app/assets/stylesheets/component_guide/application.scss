@@ -237,17 +237,6 @@ html {
   font-family: $govuk-font-family;
 }
 
-.hide-header-and-footer {
-  // stylelint-disable selector-max-id
-  #global-header,
-  #global-header-bar,
-  #global-breadcrumb,
-  #footer {
-    display: none;
-  }
-  // stylelint-enable selector-max-id
-}
-
 // wraps each component variation on the preview page
 .component-guide-preview-page {
   margin-bottom: govuk-spacing(9);
