@@ -30,7 +30,7 @@ describe "Component example with automated testing", :capybara, :js do
   it "does not throw JavaScript errors if there are duplicate IDs" do
     visit "/component-guide/test_component_with_duplicate_ids"
 
-    expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }).to be_empty
+    expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }.compact).to be_empty
   end
 
   it "shows incomplete accessibility warnings on the page" do
