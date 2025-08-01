@@ -8,6 +8,7 @@ accessibility_excluded_rules:
   - duplicate-id-aria
   - landmark-unique
 uses_component_wrapper_helper: true
+capture_full_width_screenshot: true
 govuk_frontend_components:
   - service-navigation
 shared_accessibility_criteria:

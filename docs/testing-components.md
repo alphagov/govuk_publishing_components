@@ -72,6 +72,12 @@ Visual regression tests are run on each pull request using a third-party tool ca
 
 The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
 
+If you want to capture full width screenshots for a component, add the flag below to the component documentation YAML file.
+
+```yml
+capture_full_width_screenshot: true
+```
+
 Relevant Percy setup documentation:
 
 - [Using Percy with Rails and Capybara](https://docs.percy.io/docs/capybara)
