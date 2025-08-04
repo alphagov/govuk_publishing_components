@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove conditional comments and styles for Internet Explorer ([PR #4966](https://github.com/alphagov/govuk_publishing_components/pull/4966))
+* Make H3's on the feedback component into H2's to avoid them appearing subordinate to unrelated headings ([PR #4958](https://github.com/alphagov/govuk_publishing_components/pull/4958))
 
 ## 60.0.0
 
