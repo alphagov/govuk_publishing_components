@@ -1,2 +1,6 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/service-navigation/service-navigation";
+
+.gem-c-service-navigation--full-width {
+  padding-left: govuk-spacing(3);
+}

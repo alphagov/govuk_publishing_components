@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Split long text for `Ga4FormTracker` submit ([PR #4950](https://github.com/alphagov/govuk_publishing_components/pull/4950))
+* **BREAKING** Replace default layout_header menu with service navigation component ([PR #4934](https://github.com/alphagov/govuk_publishing_components/pull/4934))
 
 ## 59.2.1
 

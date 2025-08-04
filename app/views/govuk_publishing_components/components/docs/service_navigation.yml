@@ -40,3 +40,37 @@ examples:
         href: "#"
       - text: Navigation item 3
         href: "#"
+  with_data_attributes_on_items:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+        data:
+          module: "example"
+          something_else: "hello"
+      - text: Navigation item 2
+        href: "#"
+        active: true
+        data:
+          module: "example-2"
+          something_else: "hello 2"
+  with_custom_aria_label_on_the_nav_element:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      navigation_aria_label: "Custom label"
+  full_width:
+    description: This is difficult to preview because the preview windows are constrained, but nav will stretch to the size of its container. Padding left is added to prevent the first menu item from colliding with the edge of the screen. Right spacing is already provided by the menu items.
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      full_width: true

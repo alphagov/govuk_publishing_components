@@ -4,15 +4,18 @@
   service_name ||= nil
   service_name_url ||= nil
   navigation_items ||= []
+  navigation_aria_label ||= t("components.layout_header.menu")
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
   component_helper.add_aria_attribute({ label: "Service information" }) if service_name.present?
   component_helper.add_data_attribute({ module: "govuk-service-navigation" })
+
+  full_width ||= false
 %>
 <% if service_name.present? || navigation_items.present? %>
   <% service_navigation_content = capture do %>
-    <div class="govuk-width-container">
+    <div class="<%= full_width ? "gem-c-service-navigation--full-width" : "govuk-width-container" %>">
       <div class="govuk-service-navigation__container">
         <% if service_name %>
           <% if service_name_url %>
@@ -25,7 +28,7 @@
         <% end %>
 
         <% if navigation_items.present? %>
-          <nav aria-label="<%= t("components.layout_header.menu") %>" class="govuk-service-navigation__wrapper">
+          <nav aria-label="<%= navigation_aria_label %>" class="govuk-service-navigation__wrapper">
             <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
               Menu
             </button>
@@ -38,11 +41,11 @@
                 %>
                 <%= tag.li nav[:text], class: nav_classes do %>
                   <% if nav[:active] %>
-                    <%= link_to(nav[:href], class: "govuk-service-navigation__link", aria: { current: aria_current }) do %>
+                    <%= link_to(nav[:href], class: "govuk-service-navigation__link", aria: { current: aria_current }, data: nav[:data]) do %>
                       <%= tag.strong(nav[:text], class: "govuk-service-navigation__active-fallback") %>
                     <% end %>
                   <% else %>
-                    <%= link_to nav[:text], nav[:href], class: "govuk-service-navigation__link" %>
+                    <%= link_to nav[:text], nav[:href], class: "govuk-service-navigation__link", data: nav[:data] %>
                   <% end %>
                 <% end %>
               <% end %>
