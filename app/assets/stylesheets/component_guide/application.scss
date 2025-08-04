@@ -255,6 +255,14 @@ html {
   }
 }
 
+// Add spacing to the left of the component title on the preview page
+// when using the full screen width
+.govuk-full-width-container {
+  .preview-title {
+    padding-left: govuk-spacing(3);
+  }
+}
+
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
