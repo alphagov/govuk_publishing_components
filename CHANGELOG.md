@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove conditional comments and styles for Internet Explorer ([PR #4966](https://github.com/alphagov/govuk_publishing_components/pull/4966))
+
 ## 60.0.0
 
 * Split long text for `Ga4FormTracker` submit ([PR #4950](https://github.com/alphagov/govuk_publishing_components/pull/4950))
