@@ -348,8 +348,14 @@ examples:
       first_published: 14 June 2014
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
+  with_title:
+    data:
+      last_updated: 10 September 2015
+      see_updates_link: true
+      title: Title
   on_a_dark_background:
     data:
+      title: This is a title
       inverse: true
       from: [
         "<a href='/government/organisations/ministry-of-defence'>Ministry of Defence</a>",
@@ -371,6 +377,7 @@ examples:
   on_a_dark_background_without_padding:
     description: By default the inverse option includes extra spacing around the component. This option removes this padding. Note that both the `inverse` and `inverse_compress` options must be supplied.
     data:
+      title: This is a title
       inverse: true
       inverse_compress: true
       from: [
@@ -404,17 +411,3 @@ examples:
       last_updated: 10 September 2015
       see_updates_link: true
       disable_ga4: true
-  with_title:
-    data:
-      last_updated: 10 September 2015
-      see_updates_link: true
-      title: Title
-  on_a_dark_background_with_title:
-    data:
-      inverse: true
-      other:
-        Release date: 23 August 2018 9:30am
-        Reason for change: Date of release brought forward from 23 August 2018 to 21 August 2018 as data in its final form is now available to be published on this new date.
-      title: The release date has been changed
-    context:
-      dark_background: true
