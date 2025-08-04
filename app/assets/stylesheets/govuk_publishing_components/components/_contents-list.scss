@@ -61,18 +61,6 @@
       right: 0;
     }
   }
-
-  // Focus styles on IE8 and older include the
-  // left margin, creating an odd white box with
-  // orange border around the em dash.
-  // Use inline-block and vertical alignment to
-  // fix focus styles
-  //
-  // https://github.com/alphagov/government-frontend/pull/420#issuecomment-320632386
-  .lte-ie8 & .gem-c-contents-list__link {
-    display: inline-block;
-    vertical-align: top;
-  }
 }
 
 .gem-c-contents-list--alternative-line-style {
