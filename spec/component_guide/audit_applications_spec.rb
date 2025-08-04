@@ -99,6 +99,13 @@ describe "Auditing the components in applications" do
             template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_test_component.html.erb",
           },
           {
+            name: "test component using full page width",
+            application: "app-dir",
+            template_exists: true,
+            template_lines: 4,
+            template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_test_component_using_full_page_width.html.erb",
+          },
+          {
             name: "test component using wrapper",
             application: "app-dir",
             template_exists: true,
@@ -196,7 +203,7 @@ describe "Auditing the components in applications" do
           javascript_test: 0,
           print_stylesheet: 0,
           stylesheet: 1,
-          template: 15,
+          template: 16,
           test: 0,
           uses_govuk_frontend_css: 0,
           uses_govuk_frontend_js: 0,
