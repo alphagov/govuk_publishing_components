@@ -1,0 +1,6 @@
+name: Test component that uses the full page width
+description: A test component that uses the full page width for the dummy app
+capture_full_width_screenshot: true
+examples:
+  default:
+    data: {}

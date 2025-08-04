@@ -27,6 +27,7 @@ accessibility_excluded_rules:
   - landmark-no-duplicate-banner
   - landmark-unique
 uses_component_wrapper_helper: true
+capture_full_width_screenshot: true
 examples:
   default:
   with_custom_logo_link:

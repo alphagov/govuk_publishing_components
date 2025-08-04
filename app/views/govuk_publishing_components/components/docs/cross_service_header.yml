@@ -18,6 +18,7 @@ body: |
   The header has space to optionally add links to different parts of your service, just as the current ‘service header’ component from the Design System does. Follow the same patterns for internal service navigation links as you do with the Design System service header.
 
   Please refer to the [One Login Service Header GitHub repo](https://github.com/govuk-one-login/service-header) for further information
+capture_full_width_screenshot: true
 shared_accessibility_criteria:
   - link
 accessibility_criteria:

@@ -121,10 +121,12 @@ $gem-guide-border-width: 1px;
 
   &.dark-background {
     background-color: govuk-colour("blue");
+    padding: govuk-spacing(3);
   }
 
   &.black-background {
     background-color: govuk-colour("black");
+    padding: govuk-spacing(3);
   }
 
   &.component-output {
@@ -140,7 +142,7 @@ $gem-guide-border-width: 1px;
 
 .component-guide-preview--simple {
   border: 0;
-  padding: govuk-spacing(2);
+  padding: 0;
 
   &::before {
     display: none;
@@ -237,30 +239,27 @@ html {
   font-family: $govuk-font-family;
 }
 
-.hide-header-and-footer {
-  // stylelint-disable selector-max-id
-  #global-header,
-  #global-header-bar,
-  #global-breadcrumb,
-  #footer {
-    display: none;
-  }
-  // stylelint-enable selector-max-id
-}
-
+// wraps each component variation on the preview page
 .component-guide-preview-page {
-  padding: (govuk-spacing(6) * 1.5) 0;
-  position: relative;
+  margin-bottom: govuk-spacing(9);
 
   .preview-title {
     margin-top: 0;
-    margin-bottom: 1em;
-    @include govuk-font($size: 16, $weight: bold);
+    margin-bottom: govuk-spacing(4);
+    @include govuk-font($size: 19, $weight: bold);
 
     a {
       @include govuk-link-common;
       @include govuk-link-style-text;
     }
+  }
+}
+
+// Add spacing to the left of the component title on the preview page
+// when using the full screen width
+.govuk-full-width-container {
+  .preview-title {
+    padding-left: govuk-spacing(3);
   }
 }
 

@@ -1,19 +1,21 @@
 <% content_for :body do %>
   <% if @preview %>
-    <main id="wrapper" class="govuk-width-container">
-      <%= yield %>
-    </main>
+    <%= tag.div id: "wrapper", class: @component_doc.get_govuk_container_class do %>
+      <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing">
+        <%= yield %>
+      </main>
+    <% end %>
   <% else %>
     <%= render "govuk_publishing_components/components/layout_header", {
       environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
       product_name: "#{GovukPublishingComponents::Config.component_guide_title} #{GovukPublishingComponents::VERSION}",
       href: component_guide_path
     } %>
-    <div class="govuk-width-container app-width-container--wide">
+    <div id="wrapper" class="govuk-width-container">
       <% if @guide_breadcrumbs %>
         <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
       <% end %>
-      <main id="wrapper" class="govuk-main-wrapper">
+      <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing">
         <%= yield %>
       </main>
     </div>
@@ -43,7 +45,7 @@
     <%= render_component_stylesheets %>
     <%= yield :extra_headers %>
   </head>
-  <body class="gem-c-layout-for-admin govuk-template__body <%= 'hide-header-and-footer' if @preview %>">
+  <body class="gem-c-layout-for-admin govuk-template__body">
     <%= javascript_tag nonce: true do -%>
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     <% end -%>

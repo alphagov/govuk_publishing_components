@@ -8,6 +8,7 @@ accessibility_excluded_rules:
   - duplicate-id-aria
   - landmark-unique
 uses_component_wrapper_helper: true
+capture_full_width_screenshot: true
 govuk_frontend_components:
   - service-navigation
 shared_accessibility_criteria:
@@ -65,7 +66,6 @@ examples:
         href: "#"
       navigation_aria_label: "Custom label"
   full_width:
-    description: This is difficult to preview because the preview windows are constrained, but nav will stretch to the size of its container. Padding left is added to prevent the first menu item from colliding with the edge of the screen. Right spacing is already provided by the menu items.
     data:
       navigation_items:
       - text: Navigation item 1

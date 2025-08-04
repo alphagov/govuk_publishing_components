@@ -54,8 +54,16 @@ module GovukPublishingComponents
       component[:display_preview].nil? || component[:display_preview]
     end
 
+    def capture_full_width_screenshot?
+      component[:capture_full_width_screenshot]
+    end
+
     def uses_component_wrapper_helper?
       component[:uses_component_wrapper_helper]
+    end
+
+    def get_govuk_container_class
+      capture_full_width_screenshot? ? "govuk-full-width-container" : "govuk-width-container"
     end
 
     def html_body
