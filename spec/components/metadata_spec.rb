@@ -304,7 +304,7 @@ describe "Metadata", type: :view do
   it "renders the component with a title" do
     render_component(from: "<a href='/link'>Department</a>", title: "my title")
 
-    assert_select ".gem-c-metadata__title", text: "my title"
+    assert_select ".gem-c-heading", text: "my title"
   end
 
   def assert_truncation(length, limit)
