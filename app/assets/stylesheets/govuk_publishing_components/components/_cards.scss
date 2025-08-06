@@ -1,6 +1,6 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "mixins/grid-helper";
-@import "mixins/prefixed-transform";
+@import "mixins/css3";
 
 .gem-c-cards__heading {
   @include govuk-responsive-margin(6, "bottom");
