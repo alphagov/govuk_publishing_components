@@ -8,10 +8,10 @@ $logo-height: 30px;
 $toggle-border-height: 3px;
 
 .gem-c-rebranded-one-login-header {
-  @include govuk-font($size: 16);
   color: govuk-colour("white");
   position: relative;
   background: $govuk-brand-colour;
+  @include govuk-font($size: 16);
 }
 
 .gem-c-rebranded-one-login-header__container {
@@ -58,11 +58,11 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-one-login-header__link--homepage {
   // Font size needs to be set on the link so that the box sizing is correct
   // in Firefox
-  @include govuk-font($size: false, $weight: bold);
   display: inline;
   margin-right: govuk-spacing(2);
   font-size: 30px; // We don't have a mixin that produces 30px font size
   line-height: 1;
+  @include govuk-font($size: false, $weight: bold);
 
   @include govuk-media-query($from: tablet) {
     &:focus {
@@ -97,9 +97,9 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-one-login-header__nav__link {
   &:link,
   &:visited {
+    text-decoration: none;
     @include govuk-typography-common;
     @include govuk-link-style-inverse;
-    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
@@ -278,7 +278,6 @@ $toggle-border-height: 3px;
 
 .gem-c-rebranded-cross-service-header__toggle {
   display: none;
-  @include govuk-font($size: 16, $weight: bold);
   position: absolute;
   right: 0;
   top: 0;
@@ -289,6 +288,7 @@ $toggle-border-height: 3px;
   color: inherit;
   padding: $toggle-padding $toggle-padding calc($toggle-padding + 1px) $toggle-padding;
   margin-right: -(govuk-spacing(3));
+  @include govuk-font($size: 16, $weight: bold);
 
   @mixin toggle-button-focus {
     color: $govuk-focus-text-colour;
