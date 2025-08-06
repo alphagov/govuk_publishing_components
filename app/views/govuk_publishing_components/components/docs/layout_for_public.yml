@@ -3,6 +3,7 @@ description: A layout to be used by public-facing applications
 body: |
   Because it is an entire HTML document, this component can only be [previewed on a separate page](/public).
 
+capture_full_width_screenshot: true
 display_preview: false
 display_html: true
 accessibility_criteria: |
