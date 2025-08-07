@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 60.0.1
 
 * Remove conditional comments and styles for Internet Explorer ([PR #4966](https://github.com/alphagov/govuk_publishing_components/pull/4966))
 * Make H3's on the feedback component into H2's to avoid them appearing subordinate to unrelated headings ([PR #4958](https://github.com/alphagov/govuk_publishing_components/pull/4958))
