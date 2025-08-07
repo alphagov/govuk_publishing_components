@@ -33,14 +33,12 @@
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
   <% if title.present? %>
-    <%= content_tag :div, class: "gem-c-metadata__title" do %>
-      <%= render "govuk_publishing_components/components/heading", {
-        text: sanitize(title),
-        font_size: "m",
-        inverse:,
-        margin_bottom: 0,
-      } %>
-    <% end %>
+    <%= render "govuk_publishing_components/components/heading", {
+      text: sanitize(title),
+      font_size: "m",
+      inverse:,
+      margin_bottom: 0,
+    } %>
   <% end %>
   <dl class="gem-c-metadata__list">
     <% if from.any? %>
