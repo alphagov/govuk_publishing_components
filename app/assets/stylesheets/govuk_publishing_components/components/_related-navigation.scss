@@ -50,8 +50,6 @@
   @include govuk-media-query($from: tablet) {
     line-height: 1.28;
   }
-
-  @include govuk-template-link-focus-override;
 }
 
 .gem-c-related-navigation__link--truncated-links {
@@ -70,19 +68,10 @@
 
 .gem-c-related-navigation__section-link {
   font-weight: bold;
-
-  @include govuk-template-link-focus-override;
 }
 
 .gem-c-related-navigation__section-link--other {
   font-weight: normal;
-
-  @include govuk-template-link-focus-override;
-}
-
-.gem-c-related-navigation__section-link--footer {
-
-  @include govuk-template-link-focus-override;
 }
 
 .gem-c-related-navigation__section-link--inline {
