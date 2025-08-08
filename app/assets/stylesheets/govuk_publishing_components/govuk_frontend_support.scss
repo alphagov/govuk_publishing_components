@@ -4,8 +4,6 @@
 @import "govuk/base";
 
 @import "components/mixins/margins";
-// TODO: remove this focus override when govuk_template is no longer used
-@import "components/mixins/govuk-template-link-focus-override";
 
 $govuk-suppressed-warnings: (
   organisation-colours
