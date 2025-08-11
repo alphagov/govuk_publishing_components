@@ -11,6 +11,7 @@
 
 * Remove unneeded Sass mixins ([PR #4969](https://github.com/alphagov/govuk_publishing_components/pull/4969))
 * Upgrade to LUX version 4.3.2 ([PR #5018](https://github.com/alphagov/govuk_publishing_components/pull/5018))
+* Add content block styles ([PR #4973](https://github.com/alphagov/govuk_publishing_components/pull/4973))
 
 ## 60.2.1
 
