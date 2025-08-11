@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add content block styles ([PR #4973](https://github.com/alphagov/govuk_publishing_components/pull/4973))
+
 ## 60.0.1
 
 * Remove conditional comments and styles for Internet Explorer ([PR #4966](https://github.com/alphagov/govuk_publishing_components/pull/4966))
