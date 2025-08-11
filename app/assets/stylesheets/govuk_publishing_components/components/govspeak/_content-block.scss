@@ -1,0 +1,27 @@
+@import "govuk/core/lists";
+@import "govuk/core/typography";
+
+.content-block,
+.content-block__contact-key,
+.content-block__contact-value,
+.content-block__contact-list {
+  margin: 0;
+  padding: 0;
+}
+
+.content-block__contact-list {
+  .content-block__contact-key {
+    @extend %govuk-heading-m;
+  }
+}
+
+.content-block__contact-list--nested {
+  .content-block__contact-key {
+    @extend %govuk-heading-s;
+  }
+}
+
+.content-block .content-block__list {
+  @extend %govuk-list;
+  margin-left: 0;
+}
