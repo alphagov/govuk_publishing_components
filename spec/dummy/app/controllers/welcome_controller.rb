@@ -32,6 +32,10 @@ class WelcomeController < ApplicationController
     render "accordion_example", layout: "dummy_admin_layout"
   end
 
+  def metadatawithnoticeexample
+    render "metadata_with_notice_example", layout: "dummy_public_layout"
+  end
+
   def errorsummary
     render "error_summary", layout: "dummy_admin_layout"
   end
