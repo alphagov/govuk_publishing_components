@@ -7,6 +7,8 @@ body: |
 
   It applies styling to standard Markdown content, eg; paragraphs, headings and lists. It also applies styling to Govspeak specific markup, like [callouts](https://github.com/alphagov/govspeak#callouts), [contacts](https://github.com/alphagov/govspeak#points-of-contact) and [highlights](https://github.com/alphagov/govspeak#highlights).
 
+  Govspeak includes classes such as `fn` and `org` on some elements that are part of the [microformats](https://developers.google.com/custom-search/docs/structured_data#using-microformats) specification for representing commonly published items.
+
   Some JavaScript behaviours are applied to this component:
 
   - Progressively enhanced, accessible charts (using [Magna Charta](https://github.com/alphagov/magna-charta), derived from tabular data (see [example](./govspeak/charts))
