@@ -688,6 +688,15 @@ $search-icon-height: 20px;
   .gem-c-layout-super-navigation-header__header-logo {
     padding: 10px 0 !important; // stylelint-disable-line declaration-no-important
   }
+
+  // Hide menu links, buttons and dropdown
+  .gem-c-layout-super-navigation-header__navigation-item-link,
+  .gem-c-layout-super-navigation-header__navigation-item,
+  .gem-c-layout-super-navigation-header__search-item-link,
+  .gem-c-layout-super-navigation-header__search-item,
+  .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+    display: none;
+  }
 }
 
 // Used to add a transparent bottom border for forced-colour modes
