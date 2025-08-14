@@ -1,0 +1,231 @@
+---
+ti:
+  common:
+    hide: ይተሓባእ
+    show: ይረአ
+    toggle_less: ውሑድ ኣርእይ
+    toggle_more: "%{show} %{number} ዝያዳ"
+    translations: ትርጉማት
+  components:
+    accordion:
+      hide_all: ኩሉ ክፍልታት ሕባእ
+      show_all: ኩሉ ክፍልታት ኣርኢ
+      this_section_visually_hidden: እዚ ክፍሊ እዚ
+    article_schema:
+      scoped_search_description: ኣብ ውሽጢ %{title} ድለ
+    attachment:
+      opendocument_html: እዚ ፋይል ብመልክዕ "ክፉት ዶክመንት" እዩ ዘሎ።
+      order_a_copy: ቅዳሕ/ኮፒ ኣዝዝ
+      page:
+        one: 1 ገጽ
+        other: "%{count} ገጻት"
+      preview_aria_label: "%{title} ብ ኦንላይን ርአ"
+      preview_link: ብ ኦንላይን ርአ
+      reference: መወከሲ፡ %{reference}
+      request_format_cta: ተበጻሒ መልክዕ/ፎርማት ሕተት።
+      request_format_details_html: ሓጋዚ ቴክኖሎጂ (ከም ስክሪን ሪደር መሳሊ) ትጥቀም እንተ ደኣ ኮንካ፣ እሞ ነዚ ዶክመንት በቲ ሓጋዚ ቴክኖሎጂ ንምድህሳሱ ምቹእ ብዝኾነ መልክዑ እንተ ደኣ ደሊኻ ኮንካ፣ በጃኻ ናብ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> ኢመይል ስደድ። እንታይ ዓይነት ፎርማት ወይ መልክዕ ከም ዘድልየካ ንገረና። ከምኡ ውን እንታይ ሓጋዚ ቴክኖሎጂ ትጥቀም እንተ ደኣ ነጊርካና ውን ሓጋዚ እዩ።
+      request_format_text: እዚ ፋይል እዚ ን ብሓገዝ ቴክኖሎጂ ተጠቀምቲ ንዝኾኑ ዘይምቹእ ክኸውን ይኽእል እዩ።
+    back_link:
+      back: ተመለስ
+    character_count:
+      body: ክሳብ %{number} %{type} ከተእቱ ትኽእል ኢኻ።
+      type:
+        characters: ገጸ ባህርያት
+        words: ቃላት
+    chart:
+      accessibility_heading: ሰንጠረዥ ዳታ ን "%{chart_heading}"።
+      accessibility_html: እዚ ቻርት እዚ ብዓይኒ ዝርአ ውክልና ናይቲ ኣብቲ ሰንጠረዥ ዘሎ ዳታ  እዩ።
+      accessibility_link: ናብ "%{chart_heading}" ዳታ ሰንጠረዥ
+      table_dropdown: ዳታ ብ ሰደቓ መልክዕ ርአ
+    chat_entry:
+      description: ንናይ ንግዲ ሕቶታትኩም ቅልጡፍን ዝተመጣጠነን መልሲ ብ ናይ ጎቭ.ዩኬ/GOV.UK  ሓድሽ ሰብ ሰርሖ ብልሒ AI ተጠቂምኩም መልሲ ርኸቡ።
+      heading: ጎቭ.ዩኬ/GOV.UK  ቻት ሕተቱ
+    checkboxes:
+      or: ወይ
+    contents_list:
+      contents: ትሕዝቶ
+    contextual_sidebar:
+      pretitle: ከምኡ ውን ኣካል ናይ
+    cookie_banner:
+      buttons:
+        accept_cookies: ተወሳኺ ኩኪስ ተቐበል
+        reject_cookies: ተወሳኺ ኩኪስ ንጸግ
+        view_cookies: ኩኪስ ርአ
+      confirmation_message:
+        accepted: ተወሳኺ ኩኪስ ተቐቢልካ ኣለኻ
+        html: ኣብ ዝኾነ እዋን %{link} ክትገብር ትኽእል ኢኻ
+        link: ናይ ኩኪስ ቅጥዕታትካ ቀይር
+        rejected: ተወሳኺ ኩኪስ ነጺግካ ኣለኻ
+      hide: ነዚ መልእኽቲ ሕባእ
+      text:
+      - እዚ መርበብ ሓበሬታ ብዝግባ ንኽሰርሕ ገለ ኣገደስቲ ኩኪስ ንጥቀም።
+      - ጎቭ.ዩኬ/GOV.UK ከመይ ጌርካ ከም እትጥቀመሉ ንምርዳእ፡ ቅጥዕታትካ ንምዝካርን መንግስታዊ ኣገልግሎታት ንምምሕያሽን ተወሳኺ ኩኪስ ከነቐምጥ ንደሊ።
+      - ብኻልኦት መርበባት ሓበሬታ ካብ ኣገልግሎታቶም ትሕዝቶ ንኸነቕርብ ዝሕግዙና ኩኪስ እውን ንጥቀም ኢና።
+      title: ኩኪስ ኣብ ጎቭ.ዩኬ/GOV.UK
+    devolved_nations:
+      applies_to: ዝምልከቶም
+      aria_label: Nation
+      england:
+        end: " ከምኡ እውን ኢንግላንድ"
+        middle: "፡ ኢንግላንድ"
+        start: ኢንግላንድ
+      northern_ireland:
+        end: " ከምኡ እውን ሰሜን ኣየርላንድ"
+        middle: "፡ ሰሜን ኣየርላንድ"
+        start: ሰሜን ኣየርላንድ
+      scotland:
+        end: " ከምኡ እውን ስኮትላንድ"
+        middle: "፡ ስኮትላንድ"
+        start: ስኮትላንድ
+      type:
+        consultation: ምኽሪ ን %{nation}
+        detailed_guide: መምርሒ ን %{nation}
+        guidance: መምርሒ ን %{nation}
+        publication: ሕትመት ን %{nation}
+      wales:
+        end: " ከምኡ እውን ዌልስ"
+        middle: "፡ ዌልስ"
+        start: ዌልስ
+    feedback:
+      close: ሰርዝ
+      dont_include_personal_info: ከም ቁጽሪ ሃገራዊ መድሕንካ ወይ ዝርዝር ናይ ክረዲት ካርድካ ዝኣመሰለ ውልቃዊ ወይ ፋይናንሳዊ ሓበሬታ ኣይተካትት።
+      email_address: ናይ ኢመይል ኣድራሻ
+      help_us_improve_govuk: ጎቭ.ዩኬ/GOV.UK ንምምሕያሽ ሓግዙና።
+      is_not_useful: እዚ ገጽ እዚ ጠቓሚ ኣይኮነን።
+      is_this_page_useful: እዚ ገጽ እዚ ጠቓሚ ድዩ?
+      is_useful: እዚ ገጽ ጠቓሚ እዩ
+      maybe: ምናልባት
+      more_about_visit: ጎቭ.ዩኬ/GOV.UK ንምምሕያሽ ንኽሕግዘና፡ ብዛዕባ ሎሚ ዝገበርኩሞ ምብጻሕ ዝያዳ ክንፈልጥ ንደሊ።
+      'no': አይኮንን
+      send: ስደድ
+      send_me_survey: እቲ ናይ መጽናዕቲ ዳህሳስ ስደዱለይ
+      something_wrong: ኣብዚ ገጽ ጸገም እንተሃልዩኩም ሪፖርት ግበሩ
+      thank_you_for_feedback: ንዝሃብኩምና ርእይቶ ነመስግን
+      what_doing: እንታይ ትገብር ነይርካ?
+      what_wrong: ብጌጋ ዝኸደ እንታይ ነይሩ?
+      'yes': እወ
+    intervention:
+      accessible_link_text_suffix: "(ኣብ ሓድሽ ታብ/ክፍሊ ይኽፈት)\n"
+    layout_footer:
+      copyright_html: ክራውን ኮፒ ራይት /መሰል ቅዳሕ ዘውዲ
+      licence_html: 'ብዘይካ እቲ ካልእ ዝተገልጸኩሉ ትሕዝቶ ኣብ ትሕቲ "ክፉት መንግስታዊ ፍቓድ" ይርከብ፣ '
+      support_links: ናይ ደገፍ መላግቦታት/ሊንክ
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html: እዚ ሓድሽ ኣገልግሎት እዩ ናትኩም "ግብረ መልሲ" ኣገልግሎታትና ንምምሕያሽ ክሕግዘና እዩ።
+        navigation:
+          menu_bar:
+            account:
+              link_text: ናትካ ጎቭ.ዩኬ/GOV.UK ሓደ መእተዊ
+            manage:
+              link_text: ቅጥዕታት
+    layout_header:
+      hide_button: መድለዪ ሕባእ
+      menu: 'ዝርዝር '
+      search_button: ጎቭ.ዩኬ/GOV.UK ዝብል ድለ
+      show_button: መድለዪ ከም ዝርአ ግበር
+      top_level: ላዕለዋይ ደረጃ
+    layout_super_navigation_header:
+      logo_link_title: ናብ መበገሲ ገጽ ጎቭ.ዩኬ/GOV.UK ኪድ
+      logo_text: ጎቭ.ዩኬ/GOV.UK
+      menu_toggle_label:
+        hide: "%{label} ዝርዝር ሕባእ"
+        show: "%{label} ዝርዝር ኣርእይ"
+      navigation_link:
+        label: ዝርዝር
+      navigation_menu_heading: ናይ ምድህሳስ ዝርዝር
+      navigation_search_heading: ምድላይ ህቡባት ገጻትን
+      navigation_search_subheading: ምድላይ / ሰርች ምግባር
+      search_text: ጎቭ.ዩኬ/GOV.UK ዝብል ድለ
+    metadata:
+      and: ከምኡ ውን
+      from: ካብ
+      history: ሕሉፍ ታሪኽ
+      last_updated: ናይ መወዳእታ ዝተሓደሰ
+      part_of: ሓደ ክፋል ናይ
+      published: ዝተሓትመ
+      see_all_updates: ኩሉ ሓድሽ ሓበሬታ ርአ
+    modal_dialogue:
+      close_modal: ሞዳል ዝርርብ ዕጸዎ።
+    notice:
+      banner_title: ጠቃሚ
+    option_select:
+      found_multiple: ኣማራጺታት ተረኺቦም
+      found_single: ኣማራጺ ተረኺቡ
+      selected: ተመሪጹ
+    organisation_schema:
+      all_content_search_description: ኩሉ ትሕዝቶ ካብ %{organisation} ርኸብ
+    password_input:
+      button: ኣርኢ
+      button_aria_hide_label: መሕለፊ ቓል/ፓስዎርድ ሕባእ
+      button_aria_label: መሕለፊ ቓል/ፓስዎርድ ኣርኢ
+      button_hide: ይተሓባእ
+      error_text_prefix: ጌጋ
+      label: መሕለፊ ቓል/ፓስዎርድ
+      password_hidden_announcement: መሕለፊ ቓል/ፓስዎርድካ ተሓቢኡ ኣሎ
+      password_shown_announcement: መሕለፊ ቓል/ፓስዎርድካ ይርአ ኣሎ
+    previous_and_next_navigation:
+      next: ዝቅጽል
+      pagination: ገጻት ምግባር
+      previous: ዝሓለፈ
+    print_link:
+      text: ነዚ ገጽ ሕተሞ
+    radio:
+      or: ወይ
+    related_footer_navigation:
+      collections: እኩባት
+      policies: ፖሊሲታት
+      statistical_data_sets: ስታቲስቲካዊ  እኩብ ዳታታት/ሓበሬታታት
+      topical_events: እዋናዊ ፍጻመታት
+    related_navigation:
+      collections: እኩብ
+      external_links: ኣብ ካልእ ቦታታት ኣብ መርበብ ሓበሬታ
+      policies: ፖሊሲ
+      publishers: ሕትመት ብ
+      related_contacts: ካልኦት ኣድራሻታት/ኮንታክትስ
+      related_content: ተዛማዲ ትሕዝቶ
+      related_external_links: ኣብ ካልእ ቦታታት ኣብ መርበብ ሓበሬታ
+      related_guides: ዝርዝር መምርሒ
+      statistical_data_sets: ስታቲስቲካዊ  እኩብ ዳታ/ሓበሬታ
+      topical_events: እዋናዊ ፍጻመ
+      topics: ነቲ ኣርእስቲ ዳህሰሶ
+      ukraine:
+        title: ወራር ዩክሬን
+      world_locations: ናይ ዓለም ቦታታት
+    search_box:
+      input_title: ምድላይ / ሰርች ምግባር
+      label: ኣብ ጎቭ.ዩኬ/GOV.UK ድለዩ።
+      search_button: ምድላይ / ሰርች ምግባር
+    share_links:
+      all_opens_in_new_tab: እዞም ዝስዕቡ መላግቦታት ኣብ ሓድሽ ክፍሊ/ታብ ይኽፈቱ
+      opens_in_new_tab: "(ኣብ ሓድሽ ክፍሊ/ታብ ይኽፈት)"
+    single_page_notification_button:
+      subscribe_text: ብዛዕባ እዚ ገጽ ኢመይላት ክትረኽቡ ትኽእሉ ኢኹም
+      unsubscribe_text: ብዛዕባ እዚ ገጽ ዝምልከት ኢመይላት ምምጻእ ኣቋርጽ
+    skip_link:
+      text: ናብ ቀንዲ ትሕዝቶ ዝለል
+    step_by_step_nav:
+      hide: ይተሓባእ
+      hide_all: ኩሉ ስጉምትታት ይተሓባእ
+      show: አርኢ
+      show_all: ኩሉ ስጉምትታት ኣርኢ
+    step_by_step_nav_related:
+      part_of: ሓደ ክፋል ናይ
+    subscription_links:
+      email_signup_link_text: ኢመይላት ውሰዱ
+      feed_link_label: ነዚ ዩ.ኣር.ኤል/URL ኣብ ናትካ ናይ ንባብ ገጽ/ፊድ ኮፒ ፔስት በሎ።
+      feed_link_text: ን ፊድ ሳብስክራይብ ግበር
+      subscriptions: ምዝገባ
+    success_alert:
+      success: ዓወት
+    summary_list:
+      delete: ደምስስ
+      edit: ለውጢ
+    table:
+      filter_count: ውጽኢት ናይቲ ዝኣተወ ተርም
+      filter_label: ፊልተር
+      filter_message: ዝሰማማዕ ውጽኢት የለን
+    tabs:
+      contents: ትሕዝቶ
