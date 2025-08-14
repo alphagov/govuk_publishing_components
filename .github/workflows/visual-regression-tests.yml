@@ -38,7 +38,7 @@ jobs:
   visual-regression-test-components:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ inputs.ref || github.ref }}
       - uses: ruby/setup-ruby@v1
