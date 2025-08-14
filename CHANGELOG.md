@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove unused imports in layout-header.scss ([PR #4985](https://github.com/alphagov/govuk_publishing_components/pull/4985))
+
 ## 60.0.1
 
 * Remove conditional comments and styles for Internet Explorer ([PR #4966](https://github.com/alphagov/govuk_publishing_components/pull/4966))
