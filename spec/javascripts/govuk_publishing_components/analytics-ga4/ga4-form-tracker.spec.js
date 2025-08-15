@@ -610,4 +610,38 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
   })
+
+  describe('when tracking a form with select count enabled', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-use-select-count', '')
+      expected = schema.mergeProperties(attributes, 'event_data')
+      expected.govuk_gem_version = 'aVersion'
+      expected.timestamp = '123456'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('collects selected option count from a select', function () {
+      element.innerHTML =
+        '<label for="s1">Label</label>' +
+        '<select multiple name="select" id="s1">' +
+          '<option selected value="option1">Option 1</option>' +
+          '<option selected value="option2">Option 2</option>' +
+          '<option value="option3">Option 3</option>' +
+        '</select>'
+
+      expected.event_data.text = '2'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
 })

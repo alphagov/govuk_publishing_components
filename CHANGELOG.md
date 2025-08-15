@@ -12,6 +12,7 @@
 * Add Kurdish Sorani and Tigrinyan translations ([PR #4987](https://github.com/alphagov/govuk_publishing_components/pull/4987))
 * Remove unused imports in layout-header.scss ([PR #4985](https://github.com/alphagov/govuk_publishing_components/pull/4985))
 * Remove aria-expanded from feedback component Cancel buttons ([PR #4974](https://github.com/alphagov/govuk_publishing_components/pull/4974))
+* Add `data-ga4-form-use-select-count` to form tracker ([PR #4988](https://github.com/alphagov/govuk_publishing_components/pull/4988))
 
 ## 60.0.1
 
