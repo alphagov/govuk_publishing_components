@@ -19,8 +19,6 @@ The data attributes are used as follows:
 - `action` records the text of the form submission button e.g. `Continue`
 - `tool_name` records the overall name of the smart answer e.g. `How do I eat more healthily?`
 
-The script will automatically collect the answer submitted in the `text` field. For questions where multiple answers are possible, these will be comma separated. Where the answer is a text input, the value given is replaced with `[REDACTED]`, to avoid collecting personally identifiable information. If all inputs should not have their text redacted, add a `data-ga4-form-include-text` attribute to the form. If you only want a certain text input to be exempt from redaction, add a `data-ga4-form-include-input` attribute to that input element. If the `data-ga4-form-use-text-count` attribute is also used then the form will use the text count of a text input instead of the value of the text field.
-
 In the example above, the following would be pushed to the dataLayer. Note that the schema automatically populates empty values, and that attributes not in the schema are ignored.
 
 ```
@@ -37,21 +35,25 @@ In the example above, the following would be pushed to the dataLayer. Note that 
 }
 ```
 
-If the `data-ga4-form-record-json` attribute is set on the form then the JSON format will be used for the `text` field. So instead of the `text` being set to:
+The script will automatically collect the answer submitted in the `text` field. For questions where multiple answers are possible, these will be comma separated. Where the answer is a text input, the value given is replaced with `[REDACTED]`, to avoid collecting personally identifiable information.
 
-```
-value,value,[REDACTED]
-```
+## Options for `text` field
 
-with `data-ga4-form-record-json` it will be set to:
+There are several optional data attributes, which will enable different output for the `text` field.
 
-```
-{ "label1": "value", "label2": "value", "label3": "[REDACTED]" }
-```
 
-When a form is submitted with an empty input value, the tracker will set the `text` value in the dataLayer to `"No answer given"`. If you require empty input to be sent as `undefined` instead, add the `data-ga4-form-no-answer-undefined` attribute to the form.
+| Data attribute | Element apply to | Description | Before | After |
+| -------- | ------- | -------- | ------- | ------- |
+| `data-ga4-form-include-text`  | `form` | Prevents redaction of text inputs  | `[REDACTED],[REDACTED]` | `Text input value,Another text input value` |
+| `data-ga4-form-include-input`  | `input[type=text]` | Prevents redaction of specific text input  | `[REDACTED],[REDACTED]` | `[REDACTED],Specific text input value` |
+| `data-ga4-form-use-text-count`  | `form` | Uses character count instead of text input value | `[REDACTED]` | `24` |
+| `data-ga4-form-use-select-count`  | `form` | Uses number of selected options instead of selected options values  | `yoghurt,pie,trifle` | `3` |
+| `data-ga4-form-record-json`  | `form` | Uses JSON format with label of input as key | `yoghurt,ice cream,trifle` | `{ "What are your favourite cold puddings?": "yoghurt,ice cream,trifle" }` |
+| `data-ga4-form-no-answer-undefined` | `form` | Use `undefined` instead of `No answer given` for empty inputs | `"No answer given"` | `undefined` |
 
-If the `data-ga4-form-split-response-text` attribute is set on the form then the `text` value in the dataLayer will be split into 5 fields to overcome the GA4 500 character limit:
+These can be used in combination as well as separately.
+
+Additionally, there is a `data-ga4-form-split-response-text` attribute. If this is set on the form then the `text` value in the dataLayer will be split into 5 fields to overcome the GA4 500 character limit:
 
 ```
 {

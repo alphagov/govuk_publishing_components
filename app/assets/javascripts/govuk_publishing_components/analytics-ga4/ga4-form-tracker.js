@@ -11,6 +11,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.recordJson = this.module.hasAttribute('data-ga4-form-record-json')
     this.useTextCount = this.module.hasAttribute('data-ga4-form-use-text-count')
     this.splitText = this.module.hasAttribute('data-ga4-form-split-response-text')
+    this.useSelectCount = this.module.hasAttribute('data-ga4-form-use-select-count')
     this.redacted = false
     this.useFallbackValue = this.module.hasAttribute('data-ga4-form-no-answer-undefined') ? undefined : 'No answer given'
   }
@@ -139,7 +140,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           }
         }
       } else if (inputNodename === 'SELECT' && elem.querySelectorAll('option:checked')) {
-        input.answer = Array.from(elem.querySelectorAll('option:checked')).map(function (element) { return element.text }).join(',')
+        var selectedOptions = Array.from(elem.querySelectorAll('option:checked')).map(function (element) { return element.text })
+        input.answer = this.useSelectCount ? selectedOptions.length : selectedOptions.join(',')
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
           if (this.useTextCount) {
