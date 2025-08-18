@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 60.0.2
 
 * Add Kurdish Sorani and Tigrinyan translations ([PR #4987](https://github.com/alphagov/govuk_publishing_components/pull/4987))
 * Remove unused imports in layout-header.scss ([PR #4985](https://github.com/alphagov/govuk_publishing_components/pull/4985))
