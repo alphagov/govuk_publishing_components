@@ -679,16 +679,20 @@ examples:
   footnotes:
     data:
       block: |
-        <p>This is a text with a footnote<sup id="fnref:1a"><a href="#fn:1a" class="footnote">1</a></sup>.</p>
+        <p>This is a text with a footnote<sup id="fnref:1a"><a href="#fn:1a" class="footnote">1</a></sup>. This is some more text with another footnote<sup id="fnref:2a"><a href="#fn:2a" class="footnote">2</a></sup>.</p>
+        <p>This is a whole new paragraph with yet another footnote<sup id="fnref:3a"><a href="#fn:3a" class="footnote">3</a></sup>.</p>
 
         <div class="footnotes">
           <ol>
             <li id="fn:1a">
               <p>And here is the definition. <a href="#fnref:1a" class="reversefootnote">&#8617;</a></p>
             </li>
-            <li id="fn:2">
+            <li id="fn:2a">
               <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales" class="govuk-link">https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales</a>
-              <a href="#fnref:2" class="govuk-link">↩</a>
+              <a href="#fnref:2a" class="govuk-link">↩</a>
+            </li>
+            <li id="fn:3a">
+              <p>And here is another definition. <a href="#fnref:3a" class="reversefootnote">&#8617;</a></p>
             </li>
           </ol>
         </div>
