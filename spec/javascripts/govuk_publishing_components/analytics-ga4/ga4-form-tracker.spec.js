@@ -396,6 +396,70 @@ describe('Google Analytics form tracking', function () {
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })
+
+    it('collects data from date inputs', function () {
+      element.innerHTML =
+      '<fieldset class="govuk-date-input">' +
+      '<legend>Date</legend>' +
+      '<div class="govuk-date-input__item">' +
+      '  <div class="govuk-form-group">' +
+      '    <label for="date_1i" class="gem-c-label govuk-label">Day</label>' +
+      '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="day" id="date_1i" type="text" value="19">' +
+      '  </div>' +
+      '</div>' +
+      '<div class="govuk-date-input__item">' +
+      '  <div class="govuk-form-group">' +
+      '    <label for="date_2i" class="gem-c-label govuk-label">Month</label>' +
+      '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="month" id="date_2i" type="text" value="08">' +
+      '  </div>' +
+      '</div>' +
+      '<div class="govuk-date-input__item">' +
+      '  <div class="govuk-form-group">' +
+      '    <label for="date_3i" class="gem-c-label govuk-label">Year</label>' +
+      '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="year" id="date_3i" type="text" value="2025">' +
+      '   </div>' +
+      '</div>' +
+      '</fieldset>'
+
+      expected.event_data.text = JSON.stringify({ 'Date - Day': '19', 'Date - Month': '08', 'Date - Year': '2025' })
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('uses conditonal fieldset legend when collecting data from date inputs', function () {
+      element.innerHTML =
+        '<fieldset id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<legend>Parent legend</legend>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
+          '<fieldset class="govuk-date-input">' +
+          '<legend>Date</legend>' +
+          '<div class="govuk-date-input__item">' +
+          '  <div class="govuk-form-group">' +
+          '    <label for="date_1i" class="gem-c-label govuk-label">Day</label>' +
+          '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="day" id="date_1i" type="text" value="19">' +
+          '  </div>' +
+          '</div>' +
+          '<div class="govuk-date-input__item">' +
+          '  <div class="govuk-form-group">' +
+          '    <label for="date_2i" class="gem-c-label govuk-label">Month</label>' +
+          '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="month" id="date_2i" type="text" value="08">' +
+          '  </div>' +
+          '</div>' +
+          '<div class="govuk-date-input__item">' +
+          '  <div class="govuk-form-group">' +
+          '    <label for="date_3i" class="gem-c-label govuk-label">Year</label>' +
+          '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="year" id="date_3i" type="text" value="2025">' +
+          '   </div>' +
+          '</div>' +
+          '</fieldset>' +
+        '</fieldset>'
+
+      document.getElementById('c1').checked = true
+      expected.event_data.text = JSON.stringify({ 'Parent legend - Day': '19', 'Parent legend - Month': '08', 'Parent legend - Year': '2025' })
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 
   describe('when tracking a form with text splitting enabled', function () {

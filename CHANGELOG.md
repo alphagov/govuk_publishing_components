@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Adjustments to how Ga4FormTracker sets text on submit ([PR #4994](https://github.com/alphagov/govuk_publishing_components/pull/4994))
+
 ## 61.0.3
 
 * Fix govspeak styles ([PR #5037](https://github.com/alphagov/govuk_publishing_components/pull/5037))

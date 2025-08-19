@@ -113,6 +113,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var conditionalCheckbox = conditionalField && this.module.querySelector('[aria-controls="' + conditionalField.id + '"]')
       var conditionalCheckboxChecked = conditionalCheckbox && conditionalCheckbox.checked
 
+      var isDateField = elem.closest('.govuk-date-input')
+
       if (conditionalCheckbox && !conditionalCheckboxChecked) {
         // don't include conditional field if condition not checked
         inputs.splice(i, 1)
@@ -136,7 +138,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         input.answer = this.useSelectCount ? selectedOptions.length : selectedOptions.join(',')
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
-          if (this.useTextCount) {
+          if (this.useTextCount && !isDateField) {
             input.answer = elem.value.length
           } else {
             var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
@@ -156,11 +158,28 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         inputs.splice(i, 1)
       }
 
+      var parentFieldset
+      var parentLegend
+
       if (conditionalField && conditionalCheckboxChecked) {
-        var parentFieldset = conditionalField.closest('fieldset')
-        var parentLegend = parentFieldset && parentFieldset.querySelector('legend')
+        parentFieldset = conditionalField.closest('fieldset')
+        parentLegend = parentFieldset && parentFieldset.querySelector('legend')
 
         if (parentLegend) {
+          input.section = parentLegend.innerText + ' - ' + input.section
+        }
+      } else if (isDateField) {
+        var dateFieldset = elem.closest('.govuk-date-input').closest('fieldset')
+        var dateLegend = dateFieldset && dateFieldset.querySelector('legend')
+
+        parentFieldset = dateFieldset.parentNode.closest('fieldset')
+
+        if (dateLegend) {
+          input.section = dateLegend.innerText + ' - ' + input.section
+        }
+
+        if (parentFieldset) {
+          parentLegend = parentFieldset.querySelector('legend')
           input.section = parentLegend.innerText + ' - ' + input.section
         }
       }
