@@ -136,17 +136,19 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checked conditional fields', function () {
       element.innerHTML =
+        '<div>' +
+        '<label for="c1">checkbox1</label>' +
+        '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
         '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
-          '<label for="c1">checkbox1</label>' +
-          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
           '<label for="c3">checkbox3</label>' +
           '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+        '</div>' +
         '</div>'
 
       document.getElementById('c1').checked = true
       document.getElementById('c3').checked = true
 
-      expected.event_data.text = 'checkbox3'
+      expected.event_data.text = 'checkbox1,checkbox3'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
@@ -154,11 +156,13 @@ describe('Google Analytics form tracking', function () {
 
     it('does not collect data from unchecked conditional fields', function () {
       element.innerHTML =
+        '<div>' +
+        '<label for="c1">checkbox1</label>' +
+        '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
         '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
-          '<label for="c1">checkbox1</label>' +
-          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
-          '<label for="text">Label</label>' +
-          '<input type="text" id="text" name="test-text" value="Some text"/>' +
+          '<label for="c3">checkbox3</label>' +
+          '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+        '</div>' +
         '</div>'
 
       expected.event_data.text = 'No answer given'
@@ -287,20 +291,21 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checked conditional checkboxes', function () {
       element.innerHTML =
-        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+        '<fieldset id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<legend>Parent legend</legend>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
           '<fieldset>' +
           '<legend>Checkbox legend</legend>' +
           '<label for="c3">checkbox3</label>' +
           '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
           '</fieldset>' +
-          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
-          '<label for="c1">checkbox1</label>' +
-        '</div>'
+        '</fieldset>'
 
       document.getElementById('c1').checked = true
       document.getElementById('c3').checked = true
 
-      expected.event_data.text = JSON.stringify({ checkbox1: { 'Checkbox legend': 'checkbox3' } })
+      expected.event_data.text = JSON.stringify({ 'Parent legend - Checkbox legend': 'checkbox3' })
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
@@ -308,16 +313,19 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checked conditional input', function () {
       element.innerHTML =
-        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
-          '<label for="c1">checkbox1</label>' +
+        '<fieldset id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<legend>Parent legend</legend>' +
           '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
+          '<fieldset>' +
           '<label for="text">Text label</label>' +
           '<input type="text" id="text" name="test-text" value="Some text"/>' +
-        '</div>'
+          '</fieldset>' +
+        '</fieldset>'
 
       document.getElementById('c1').checked = true
 
-      expected.event_data.text = JSON.stringify({ checkbox1: { 'Text label': '[REDACTED]' } })
+      expected.event_data.text = JSON.stringify({ 'Parent legend - Text label': '[REDACTED]' })
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)

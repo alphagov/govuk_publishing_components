@@ -110,16 +110,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var isTextField = inputTypes.indexOf(inputType) !== -1 || inputNodename === 'TEXTAREA'
       var conditionalField = elem.closest('.govuk-checkboxes__conditional')
-      var conditionalCheckbox = conditionalField && conditionalField.querySelector('[aria-controls="' + conditionalField.id + '"]')
+      var conditionalCheckbox = conditionalField && this.module.querySelector('[aria-controls="' + conditionalField.id + '"]')
       var conditionalCheckboxChecked = conditionalCheckbox && conditionalCheckbox.checked
-
-      if (conditionalField && conditionalCheckboxChecked) {
-        var conditionalCheckboxLabel = conditionalField.querySelector('[for="' + conditionalCheckbox.id + '"]')
-
-        if (conditionalCheckboxLabel) {
-          input.parentSection = conditionalCheckboxLabel.innerText
-        }
-      }
 
       if (conditionalCheckbox && !conditionalCheckboxChecked) {
         // don't include conditional field if condition not checked
@@ -163,6 +155,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // remove the input from those gathered as it has no value
         inputs.splice(i, 1)
       }
+
+      if (conditionalField && conditionalCheckboxChecked) {
+        var parentFieldset = conditionalField.closest('fieldset')
+        var parentLegend = parentFieldset && parentFieldset.querySelector('legend')
+
+        if (parentLegend) {
+          input.section = parentLegend.innerText + ' - ' + input.section
+        }
+      }
     }
     return inputs
   }
@@ -176,17 +177,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (answer) {
         if (this.recordJson) {
           var fieldSection = data[i].section
-          var parentFieldSection = data[i].parentSection
 
           if (fieldSection) {
-            if (parentFieldSection) {
-              answers[parentFieldSection] = answers[parentFieldSection] || {}
-              answers[parentFieldSection][fieldSection] = answers[parentFieldSection][fieldSection] || ''
-              answers[parentFieldSection][fieldSection] += ((answers[parentFieldSection][fieldSection] ? ',' : '') + answer)
-            } else {
-              answers[fieldSection] = answers[fieldSection] || ''
-              answers[fieldSection] += ((answers[fieldSection] ? ',' : '') + answer)
-            }
+            answers[fieldSection] = answers[fieldSection] ? (answers[fieldSection] + ',') : ''
+            answers[fieldSection] += answer
           }
         } else {
           answers.push(answer)
