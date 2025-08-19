@@ -30,6 +30,11 @@
       margin-left: 22px;
     }
 
+    li:target {
+      background: govuk-colour("light-grey");
+      border-bottom: solid 3px $govuk-border-colour;
+    }
+
     @include govuk-media-query($media-type: print) {
       border-top: 1px solid $govuk-text-colour;
 

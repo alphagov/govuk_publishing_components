@@ -9,6 +9,7 @@
 
 ## 60.0.2
 
+* Style govspeak footnote targets ([PR #4992](https://github.com/alphagov/govuk_publishing_components/pull/4992))
 * Add Kurdish Sorani and Tigrinyan translations ([PR #4987](https://github.com/alphagov/govuk_publishing_components/pull/4987))
 * Remove unused imports in layout-header.scss ([PR #4985](https://github.com/alphagov/govuk_publishing_components/pull/4985))
 * Remove aria-expanded from feedback component Cancel buttons ([PR #4974](https://github.com/alphagov/govuk_publishing_components/pull/4974))
