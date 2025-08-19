@@ -113,6 +113,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var conditionalCheckbox = conditionalField && this.module.querySelector('[aria-controls="' + conditionalField.id + '"]')
       var conditionalCheckboxChecked = conditionalCheckbox && conditionalCheckbox.checked
 
+      var isDateField = elem.closest('.govuk-date-input')
+
       if (conditionalCheckbox && !conditionalCheckboxChecked) {
         // don't include conditional field if condition not checked
         inputs.splice(i, 1)
@@ -162,6 +164,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
         if (parentLegend) {
           input.section = parentLegend.innerText + ' - ' + input.section
+        }
+      } else if (isDateField) {
+        var dateFieldset = elem.closest('.govuk-date-input').closest('fieldset')
+        var dateLegend = dateFieldset && dateFieldset.querySelector('legend')
+
+        if (dateLegend) {
+          input.section = dateLegend.innerText + ' - ' + input.section
         }
       }
     }
