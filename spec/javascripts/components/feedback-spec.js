@@ -25,7 +25,7 @@ describe('Feedback component', function () {
                 </li>
                 <li class="gem-c-feedback__option-list-item">
                   <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful"
-                    aria-controls="page-is-not-useful" aria-expanded="false"
+                    aria-controls="page-is-not-useful"
                     data-ga4-event="{'event_name':'form_submit','type':'feedback','text':'No','section':'Is this page useful?','tool_name':'Is this page useful?'}">
                     No <span class="govuk-visually-hidden">this page is not useful</span>
                   </button>
@@ -41,7 +41,7 @@ describe('Feedback component', function () {
             class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions"
             hidden>
             <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong"
-              aria-expanded="false" aria-controls="something-is-wrong"
+              aria-controls="something-is-wrong"
               data-ga4-event="{'event_name':'form_submit','type':'feedback','text':'Report a problem with this page','section':'Is this page useful?','tool_name':'Is this page useful?'}">
               Report a problem with this page
             </button>
@@ -130,13 +130,6 @@ describe('Feedback component', function () {
     expect($('.gem-c-feedback .js-prompt-questions').prop('hidden')).toBe(false)
   })
 
-  it('conveys that the form is not expanded', function () {
-    loadFeedbackComponent()
-
-    expect($('.js-toggle-form[aria-controls="page-is-not-useful"]').attr('aria-expanded')).toBe('false')
-    expect($('.js-toggle-form[aria-controls="something-is-wrong"]').attr('aria-expanded')).toBe('false')
-  })
-
   // note that this test will fail in the browser 'run tests in random order' is disabled
   // or any link in the jasmine window is clicked e.g. a specific test suite
   // because the referrer will be localhost, not 'unknown'
@@ -180,14 +173,6 @@ describe('Feedback component', function () {
       expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
     })
 
-    it('conveys that the form is now expanded', function () {
-      loadFeedbackComponent()
-      $('.js-page-is-not-useful')[0].click()
-
-      expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('true')
-      expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
-    })
-
     it('has the page path in the survey', function () {
       var testPath = '/government/organisations/government-digital-service'
       var expectedUrl = 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + testPath
@@ -228,14 +213,6 @@ describe('Feedback component', function () {
       expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
     })
 
-    it('conveys that the form is now expanded', function () {
-      loadFeedbackComponent()
-      $('.js-something-is-wrong')[0].click()
-
-      expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false')
-      expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('true')
-    })
-
     it('focusses the first field in the form', function () {
       loadFeedbackComponent()
       var $input = $('#something-is-wrong .govuk-textarea')[0]
@@ -261,13 +238,6 @@ describe('Feedback component', function () {
       expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
       expect(document.activeElement).toBe($('.js-something-is-wrong').get(0))
     })
-
-    it('conveys that the form is not expanded', function () {
-      loadFeedbackComponent()
-
-      expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false')
-      expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
-    })
   })
 
   describe('Clicking the close link in the "not useful" form', function () {
@@ -284,13 +254,6 @@ describe('Feedback component', function () {
     it('shows the prompt', function () {
       expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
       expect(document.activeElement).toBe($('.js-page-is-not-useful').get(0))
-    })
-
-    it('conveys that the form is not expanded', function () {
-      loadFeedbackComponent()
-
-      expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false')
-      expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
     })
   })
 
