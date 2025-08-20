@@ -7,9 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## 60.0.2
+## 60.1.0
 
 * Style govspeak footnote targets ([PR #4992](https://github.com/alphagov/govuk_publishing_components/pull/4992))
+* Upgrade to version 5.11.1 of govuk-frontend ([PR #4933](https://github.com/alphagov/govuk_publishing_components/pull/4933))
+
+## 60.0.2
+
 * Add Kurdish Sorani and Tigrinyan translations ([PR #4987](https://github.com/alphagov/govuk_publishing_components/pull/4987))
 * Remove unused imports in layout-header.scss ([PR #4985](https://github.com/alphagov/govuk_publishing_components/pull/4985))
 * Remove aria-expanded from feedback component Cancel buttons ([PR #4974](https://github.com/alphagov/govuk_publishing_components/pull/4974))
