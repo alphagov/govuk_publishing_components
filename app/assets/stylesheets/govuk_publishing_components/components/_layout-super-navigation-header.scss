@@ -673,7 +673,9 @@ $search-icon-height: 20px;
 
 // Used to add a transparent bottom border for forced-colour modes
 .transparent-bottom-border {
-  border-bottom: 1px solid transparent;
+  @media (forced-colors: active) {
+    border-bottom: 1px solid transparent;
+  }
 }
 
 // stylelint-enable max-nesting-depth
