@@ -725,4 +725,11 @@ $search-icon-height: 20px;
   box-shadow: 0 1px govuk-colour("mid-grey");
 }
 
+// govuk-frontend includes spacing to the right of the logo to offset it from the product name
+// as we do not include the product name in the super navigation menu we can remove this to make best use
+// of space at smaller screen sizes
+.govuk-header__link--homepage {
+  margin-right: 0;
+}
+
 // stylelint-enable max-nesting-depth
