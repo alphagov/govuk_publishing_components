@@ -114,10 +114,14 @@ $search-icon-height: 20px;
   line-height: 1;
   padding-bottom: 12px;
   padding-top: 16px;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 .gem-c-layout-super-navigation-header__content {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .gem-c-layout-super-navigation-header__navigation-item,
@@ -521,13 +525,11 @@ $search-icon-height: 20px;
 
 // JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+  width: 100%;
+  order: 1;
   background: $govuk-rebrand-template-background-colour;
   border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
-
-  @include govuk-media-query($until: 300px) {
-    padding-top: 80px;
-  }
 
   @include govuk-media-query($from: "desktop") {
     padding-top: govuk-spacing(8);
