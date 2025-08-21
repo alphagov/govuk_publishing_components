@@ -116,6 +116,14 @@ $search-icon-height: 20px;
   padding-top: 16px;
   flex-grow: 1;
   flex-shrink: 0;
+
+  // remove the right margin from the govuk-logo to ensure the super nav menu buttons
+  // do not wrap onto a new line when the screen width is 360px ($chevron-breakpoint)
+  // govuk-frontend includes spacing to the right of the logo to offset it from the product name
+  // as we do not include a product name in the super navigation menu, we can set the right margin to 0
+  .govuk-header__link--homepage {
+    margin-right: 0;
+  }
 }
 
 .gem-c-layout-super-navigation-header__content {
