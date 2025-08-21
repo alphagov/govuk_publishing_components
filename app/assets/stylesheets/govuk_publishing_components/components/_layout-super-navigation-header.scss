@@ -116,6 +116,13 @@ $search-icon-height: 20px;
   padding-top: 16px;
   flex-grow: 1;
   flex-shrink: 0;
+
+  // govuk-frontend includes spacing to the right of the logo to offset it from the product name
+  // as we do not include the product name in the super navigation menu we can remove this to make best use
+  // of the space available at smaller screen sizes
+  .govuk-header__link--homepage {
+    margin-right: 0;
+  }
 }
 
 .gem-c-layout-super-navigation-header__content {
