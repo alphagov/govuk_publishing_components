@@ -131,6 +131,14 @@ $search-icon-height: 20px;
   padding: 0;
 }
 
+.gem-c-layout-super-navigation-header__search-item {
+  margin-right: -15px;
+
+  @include govuk-media-query($from: "desktop") {
+    margin-right: 0;
+  }
+}
+
 // Top level navigation links and search link, used when JavaScript is not available
 .gem-c-layout-super-navigation-header__navigation-item-link,
 .gem-c-layout-super-navigation-header__search-item-link {
