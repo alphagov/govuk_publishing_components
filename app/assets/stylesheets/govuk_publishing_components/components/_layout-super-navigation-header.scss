@@ -544,11 +544,24 @@ $search-icon-height: 20px;
   width: 100%;
   order: 1; // Ensure the dropdown menu appears after the super navigation buttons which have a default order of 0
   background: $govuk-rebrand-template-background-colour;
-  border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
 
   @include govuk-media-query($from: "desktop") {
     padding-top: govuk-spacing(8);
+  }
+}
+
+// Ensure the dropdown menu background is offset from the menu height and
+// takes up the full screen width
+.govuk-frontend-supported .gem-c-layout-super-navigation-header {
+  &::before {
+    content: "";
+    position: absolute;
+    top: $navbar-height;
+    bottom: 0;
+    width: 100%;
+    background: $govuk-rebrand-template-background-colour;
+    box-shadow: 0 1px govuk-colour("mid-grey");
   }
 }
 
