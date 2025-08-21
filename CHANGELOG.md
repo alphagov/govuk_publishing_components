@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Address string literal deprecation ([PR #4999](https://github.com/alphagov/govuk_publishing_components/pull/4999))
+
 ## 60.1.0
 
 * Style govspeak footnote targets ([PR #4992](https://github.com/alphagov/govuk_publishing_components/pull/4992))
