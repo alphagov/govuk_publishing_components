@@ -6,6 +6,8 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
+- Fix two string literal deprecation warnings which were logging in Minitest
+  runs for dependent apps running on Ruby 3.4.
 
 ## 60.1.0
 
