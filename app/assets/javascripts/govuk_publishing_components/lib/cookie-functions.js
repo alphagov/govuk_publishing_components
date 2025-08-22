@@ -24,6 +24,7 @@
     dgu_beta_banner_dismissed: 'settings',
     global_banner_seen: 'settings',
     user_nation: 'settings',
+    govuk_chat_onboarding_complete: 'settings', // cookie details page to be updated when this is in use
     'JS-Detection': 'usage',
     TLSversion: 'usage',
     _ga_VBLT2V3FZR: 'usage', // gtag cookie used to persist the session state, integration
