@@ -134,7 +134,7 @@ $search-icon-height: 20px;
 
 .gem-c-layout-super-navigation-header__navigation-item,
 .gem-c-layout-super-navigation-header__search-item {
-  display: block;
+  display: inline-block;
   margin: 0;
   padding: 0;
 }
@@ -160,11 +160,6 @@ $search-icon-height: 20px;
   @include govuk-link-common;
   @include govuk-link-style-no-visited-state;
 
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    margin: 0;
-  }
-
   &::after {
     @include pseudo-underline;
   }
@@ -181,7 +176,6 @@ $search-icon-height: 20px;
   &:link,
   &:visited {
     color: govuk-colour("white");
-    float: left;
     font-size: 16px;
     font-size: govuk-px-to-rem(16px);
     height: govuk-spacing(4);
