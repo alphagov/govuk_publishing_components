@@ -7,9 +7,9 @@ module GovukPublishingComponents
         @id = options[:id]
 
         @classes = ""
-        @classes << " gem-c-heading--padding" if options[:padding]
-        @classes << " gem-c-heading--border-top-#{options[:border_top]}" if [1, 2, 5].include? options[:border_top]
-        @classes << " gem-c-heading--inverse" if options[:inverse]
+        @classes += " gem-c-heading--padding" if options[:padding]
+        @classes += " gem-c-heading--border-top-#{options[:border_top]}" if [1, 2, 5].include? options[:border_top]
+        @classes += " gem-c-heading--inverse" if options[:inverse]
 
         @heading_classes = "gem-c-heading__text #{heading_size(options[:font_size])}"
       end
