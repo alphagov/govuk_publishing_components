@@ -107,6 +107,10 @@ $search-icon-height: 20px;
 
 .gem-c-layout-super-navigation-header__container {
   position: relative;
+  // the background color is set again on the nav container to ensure the menu buttons are still
+  // visible when the text scale is increased
+  // related issue: https://github.com/alphagov/govuk_publishing_components/issues/4208
+  background: $govuk-brand-colour;
 }
 
 .gem-c-layout-super-navigation-header__header-logo {
