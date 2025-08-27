@@ -268,7 +268,7 @@ module GovukPublishingComponents
       end
 
       def extend_string(option, string)
-        ((@options[option] ||= "") << " #{string}").strip!
+        @options[option] = "#{@options[option]} #{string}".strip
       end
 
       def extend_object(option, object)
