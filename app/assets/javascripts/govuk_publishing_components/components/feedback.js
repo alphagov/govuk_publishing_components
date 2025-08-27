@@ -24,7 +24,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Feedback.prototype.init = function () {
-    this.setInitialAriaAttributes()
     this.setHiddenValues()
     this.setSurveyPath()
     this.prompt.hidden = false
@@ -38,7 +37,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         e.preventDefault()
         var el = e.target.closest('button')
         this.toggleForm(el.getAttribute('aria-controls'))
-        this.updateAriaAttributes(el)
       }.bind(this))
     }
 
@@ -49,7 +47,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var el = e.target
         var formToToggle = el.getAttribute('aria-controls')
         this.toggleForm(formToToggle)
-        this.setInitialAriaAttributes()
         this.revealInitialPrompt()
         var refocusClass = '.js-' + formToToggle
         this.$module.querySelector(refocusClass).focus()
@@ -82,7 +79,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           if (xhr.status === 200) {
             this.showFormSuccess(xhr.message)
             this.revealInitialPrompt()
-            this.setInitialAriaAttributes()
             this.activeForm.hidden = true
             clearInterval(this.timerInterval)
           } else {
@@ -109,11 +105,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Feedback.prototype.enableSubmitFormButton = function ($form) {
     var formButton = $form.querySelector('[type="submit"]')
     formButton.removeAttribute('disabled')
-  }
-
-  Feedback.prototype.setInitialAriaAttributes = function () {
-    this.pageIsNotUsefulButton.setAttribute('aria-expanded', false)
-    this.somethingIsWrongButton.setAttribute('aria-expanded', false)
   }
 
   Feedback.prototype.setHiddenValues = function () {
@@ -155,10 +146,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var encodedPath = encodeURI(pathWithoutEmailPII)
       surveyLink.setAttribute('href', 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + encodedPath)
     }
-  }
-
-  Feedback.prototype.updateAriaAttributes = function (linkClicked) {
-    linkClicked.setAttribute('aria-expanded', true)
   }
 
   Feedback.prototype.toggleForm = function (formId) {
