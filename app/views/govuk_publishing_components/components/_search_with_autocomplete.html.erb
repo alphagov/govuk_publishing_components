@@ -13,7 +13,7 @@
     # autocomplete component's markup and styling. Every potential use of this component is in
     # situations where we want the label not to be inline anyway, so we override the default here.
     inline_label: false,
-    margin_bottom: 0
+    margin_bottom: 0,
   )
 
   classes = %w[gem-c-search-with-autocomplete]
@@ -25,7 +25,7 @@
 %>
 <%= tag.div(
   class: classes.join(" "),
-  data: { module: "gem-search-with-autocomplete", source_url:, source_key: }
+  data: { module: "gem-search-with-autocomplete", source_url:, source_key: },
 ) do %>
   <%= render "govuk_publishing_components/components/search", search_component_options %>
 <% end %>

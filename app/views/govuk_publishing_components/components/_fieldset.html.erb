@@ -32,9 +32,8 @@
         <%= content_tag(
               shared_helper.get_heading_level,
               legend_text,
-              class: "govuk-fieldset__heading"
-            )
-        %>
+              class: "govuk-fieldset__heading",
+            ) %>
       <% end %>
     <% else %>
       <%= tag.legend legend_text, class: legend_classes %>
@@ -42,7 +41,7 @@
     <% if error_message %>
       <%= render "govuk_publishing_components/components/error_message", {
         text: error_message,
-        id: error_id
+        id: error_id,
       } %>
     <% end %>
     <%= text %>

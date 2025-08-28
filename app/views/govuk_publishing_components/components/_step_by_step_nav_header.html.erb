@@ -6,7 +6,7 @@
   disable_ga4 ||= false
   breadcrumbs = [
     { title: "Home", url: "/" },
-    { title: title, url: path }
+    { title: title, url: path },
   ]
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
 
@@ -35,8 +35,7 @@
         class="gem-c-step-nav-header__title govuk-link gem-c-force-print-link-styles"
         <% unless disable_ga4 %>
           data-ga4-link='<%= ga4_data %>'
-        <% end %>
-      >
+        <% end %>>
         <%= title %>
       </a>
     <% else %>

@@ -7,7 +7,7 @@
     "development" => "grey",
   }
 
-  environment_exists = !environment.blank?
+  environment_exists = environment.present?
   deprecated_navigation ||= false
 %>
 

@@ -5,11 +5,11 @@
         <% content.each do |item| %>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              <%= item[:name] %> (<%= pluralize(item[:count], 'use') %>)
+              <%= item[:name] %> (<%= pluralize(item[:count], "use") %>)
             </dt>
             <dd class="govuk-summary-list__value">
               <% item[:locations].each do |application| %>
-                <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
+                <% github_link = "https://github.com/alphagov/" + application[:name] + "/blob/main/" %>
                 <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
                   <summary class="govuk-details__summary">
                     <span class="govuk-details__summary-text">
@@ -43,7 +43,7 @@
         text: summary,
       },
       content: {
-        html: accordion_content
+        html: accordion_content,
       },
     }
   %>

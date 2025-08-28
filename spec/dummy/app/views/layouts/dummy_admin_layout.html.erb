@@ -3,9 +3,9 @@
   product_name = "Publishing"
 %>
 
-<%= render 'govuk_publishing_components/components/layout_for_admin', {
+<%= render "govuk_publishing_components/components/layout_for_admin", {
   environment: environment,
-  browser_title: "Example admin page"
+  browser_title: "Example admin page",
 } do %>
   <%= render "govuk_publishing_components/components/skip_link" %>
   <%= render "govuk_publishing_components/components/layout_header", {
@@ -13,9 +13,9 @@
     product_name: product_name,
     navigation_items: [
       {text: "John Doe", href: "#profile"},
-      {text: "Log out", href: "#logout"}
-    ]
-  }%>
+      {text: "Log out", href: "#logout"},
+    ],
+  } %>
   <div class="govuk-width-container">
     <%# breadcrumbs, backlink, phasebanner goes here %>
     <main class="govuk-main-wrapper " id="main-content">

@@ -17,7 +17,7 @@
   inline ||= false
   heading_level = shared_helper.get_heading_level
   heading_classes = %w(govuk-fieldset__heading)
-  heading_classes << "gem-c-radio__heading-text" if heading_level == 'h1'
+  heading_classes << "gem-c-radio__heading-text" if heading_level == "h1"
 
   if (shared_helper.valid_heading_size?(heading_size))
     size = heading_size
@@ -69,7 +69,7 @@
     <% if hint %>
       <%= render "govuk_publishing_components/components/hint", {
         id: hint_id,
-        text: hint
+        text: hint,
       } %>
     <% end %>
 
@@ -83,11 +83,11 @@
 
     <%= content_tag :div, class: radio_classes,
       data: {
-        module: ('govuk-radios' if has_conditional)
+        module: ("govuk-radios" if has_conditional),
       } do %>
       <% items.each_with_index do |item, index| %>
         <% if item === :or %>
-          <%= tag.div t('components.radio.or'), class: "govuk-radios__divider" %>
+          <%= tag.div t("components.radio.or"), class: "govuk-radios__divider" %>
         <% else %>
           <%
             label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
@@ -110,18 +110,17 @@
                 id: label_id,
                 type: "radio",
                 aria: {
-                  describedby: label_hint_id
+                  describedby: label_hint_id,
                 },
                 data: data_attrs,
-              }
-            %>
+              } %>
             <%= render "govuk_publishing_components/components/label", {
               hint_id: label_hint_id,
               html_for: label_id,
               is_radio_label: true,
               hint_text: item[:hint_text],
               text: item[:text],
-              bold: item[:bold]
+              bold: item[:bold],
             } %>
           <% end %>
 

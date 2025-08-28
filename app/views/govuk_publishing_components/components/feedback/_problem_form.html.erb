@@ -21,19 +21,19 @@
 
       <%= render "govuk_publishing_components/components/textarea", {
         label: {
-          text: t("components.feedback.what_doing")
+          text: t("components.feedback.what_doing"),
         },
         name: "what_doing",
         rows: 3,
-        describedby: "feedback_explanation"
+        describedby: "feedback_explanation",
       } do %> <% end %>
 
       <%= render "govuk_publishing_components/components/textarea", {
         label: {
-          text: t("components.feedback.what_wrong")
+          text: t("components.feedback.what_wrong"),
         },
         name: "what_wrong",
-        rows: 3
+        rows: 3,
       } do %> <% end %>
 
       <%
@@ -44,7 +44,7 @@
             type: "feedback",
             text: t("components.feedback.send", locale: :en),
             section: heading_text,
-            tool_name: heading_text
+            tool_name: heading_text,
           }.to_json
         end
       %>
@@ -52,8 +52,8 @@
       <%= render "govuk_publishing_components/components/button", {
         text: t("components.feedback.send"),
         data_attributes: {
-          ga4_event: ga4_submit_button_event
-        }
+          ga4_event: ga4_submit_button_event,
+        },
       } %>
 
       <button
@@ -71,7 +71,7 @@
   # This seems to be a more reliable way to make sure the script is executed.
 %>
 
-<%= javascript_tag nonce: true do -%>
+ <%= javascript_tag nonce: true do -%>
   document.addEventListener("DOMContentLoaded", function () {
     var input = document.querySelector("#giraffe"),
       form = document.querySelector("#something-is-wrong")
@@ -83,4 +83,4 @@
       e.preventDefault();
     }
   });
-<% end -%>
+<% end %>

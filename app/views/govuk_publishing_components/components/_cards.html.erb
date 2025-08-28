@@ -6,9 +6,9 @@
   columns ||= false
 
   ul_classes = %w[gem-c-cards__list]
-  ul_classes << 'gem-c-cards__list--one-column' unless columns
-  ul_classes << 'gem-c-cards__list--two-column-desktop' if columns == 2
-  ul_classes << 'gem-c-cards__list--three-column-desktop' if columns == 3
+  ul_classes << "gem-c-cards__list--one-column" unless columns
+  ul_classes << "gem-c-cards__list--two-column-desktop" if columns == 2
+  ul_classes << "gem-c-cards__list--three-column-desktop" if columns == 3
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
@@ -25,7 +25,7 @@
         <%= heading %>
       <% end %>
     <% end %>
-    <%= content_tag('ul', class: ul_classes ) do %>
+    <%= content_tag("ul", class: ul_classes ) do %>
       <%
         items.each do |item|
         link = item[:link]

@@ -24,11 +24,9 @@
                 "index_link": "1",
                 index_total: "1",
                 section: pretitle,
-              }.to_json
-            %>
+              }.to_json %>
               data-ga4-link="<%= ga4_attributes %>"
-            <% end %>
-          >
+            <% end %>>
             <%= links[0][:text] %>
           </a>
         </h2>
@@ -46,11 +44,9 @@
                     index_link: (index + 1).to_s,
                     index_total: (links.length).to_s,
                     section: pretitle,
-                  }.to_json
-                %>
+                  }.to_json %>
                   data-ga4-link="<%= ga4_attributes %>"
-                <% end %>
-              >
+                <% end %>>
                 <%= link[:text] %>
               </a>
             </li>

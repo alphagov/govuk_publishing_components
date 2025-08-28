@@ -20,12 +20,10 @@
           class="gem-c-related-navigation__main-heading"
           <%= shared_helper.t_lang(
               "components.related_#{local_assigns[:context]}_navigation.related_content",
-              default: 'components.related_navigation.related_content'
-            )
-          %>
-      >
+              default: "components.related_navigation.related_content",
+            ) %>>
         <%= t("components.related_#{local_assigns[:context]}_navigation.related_content",
-              default: t('components.related_navigation.related_content')) %>
+              default: t("components.related_navigation.related_content")) %>
       </h2>
     <% end %>
 
@@ -35,7 +33,7 @@
 
       <% section_index += 1 %>
 
-      <%= render 'govuk_publishing_components/components/related_navigation/section',
+      <%= render "govuk_publishing_components/components/related_navigation/section",
         related_nav_helper: related_nav_helper,
         shared_helper: shared_helper,
         section_title: section_title,

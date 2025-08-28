@@ -75,7 +75,7 @@
           <%
             item_body_actions = (item.fetch(:edit, {}).any? || item.fetch(:delete, {}).any?)
 
-            if any_body_actions.present? && !item_body_actions.present?
+            if any_body_actions.present? && item_body_actions.blank?
               classes = "govuk-summary-list__row govuk-summary-list__row--no-actions"
             else
               classes = "govuk-summary-list__row"

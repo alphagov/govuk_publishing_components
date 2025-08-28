@@ -28,9 +28,9 @@
   <%= tag.div(**component_helper.all_attributes) do %>
     <p class="gem-c-global-banner__message govuk-width-container">
       <% if title_href %>
-        <a class="<%= title_classes.join(' ') %>" href="<%= title_href %>" data-module="ga4-link-tracker" data-ga4-link="<%= ga4_data %>"><%= title %></a>
+        <a class="<%= title_classes.join(" ") %>" href="<%= title_href %>" data-module="ga4-link-tracker" data-ga4-link="<%= ga4_data %>"><%= title %></a>
       <% else %>
-        <span class="<%= title_classes.join(' ') %>"><%= title %></span>
+        <span class="<%= title_classes.join(" ") %>"><%= title %></span>
       <% end %>
 
       <% if text %>

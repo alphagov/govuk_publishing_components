@@ -7,7 +7,7 @@ message ||= nil
 inverse ||= false
 disable_ga4 ||= false
 
-unless message.present?
+if message.blank?
   if phase == "beta"
     message = raw("This part of GOV.UK is being rebuilt &ndash; <a class=\"govuk-link\" href=\"/help/beta\">find out what beta means</a>")
   elsif phase == "alpha"
@@ -29,10 +29,9 @@ unless disable_ga4
       event_name: "navigation",
       type: "phase banner",
       section: Nokogiri::HTML(message).text,
-    }.to_json
+    }.to_json,
   })
 end
-
 %>
 
 <%= tag.div(**component_helper.all_attributes) do %>
