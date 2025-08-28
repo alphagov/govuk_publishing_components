@@ -70,7 +70,7 @@
         },
       } %>
 
-    <% # Used for Google Analytics 4 debugging. Must be placed before load-analytics script. %>
+    <%# Used for Google Analytics 4 debugging. Must be placed before load-analytics script. %>
     <meta name="govuk:components_gem_version" content="<%= GovukPublishingComponents::VERSION %>">
     <%= javascript_include_tag "govuk_publishing_components/load-analytics", type: "module" %>
 
@@ -85,7 +85,7 @@
     <meta name="theme-color" content="#1d70b8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <% # The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
+    <%# The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
     <meta property="og:image" content="<%= asset_url("govuk-opengraph-image.png", host: Plek.website_root) %>">
 
     <%= yield :head %>
