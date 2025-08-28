@@ -57,7 +57,7 @@
 <!DOCTYPE html>
 <html class="govuk-template govuk-template--rebranded" lang="<%= html_lang %>">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title><%= title %></title>
 
     <%= javascript_include_tag "govuk_publishing_components/vendor/lux/lux-measurer", { async: true } %>
@@ -66,23 +66,23 @@
       {
         async: true,
         data: {
-          "lux-reporter-script": path_to_javascript("govuk_publishing_components/vendor/lux/lux-reporter")
-        }
+          "lux-reporter-script": path_to_javascript("govuk_publishing_components/vendor/lux/lux-reporter"),
+        },
       } %>
 
     <% # Used for Google Analytics 4 debugging. Must be placed before load-analytics script. %>
-    <meta name="govuk:components_gem_version" content="<%= GovukPublishingComponents::VERSION %>" />
+    <meta name="govuk:components_gem_version" content="<%= GovukPublishingComponents::VERSION %>">
     <%= javascript_include_tag "govuk_publishing_components/load-analytics", type: "module" %>
 
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", media: "all" %>
-    <link rel="icon" sizes="48x48" href="<%= asset_path 'favicon.ico' %>">
-    <link rel="icon" sizes="any" href="<%= asset_path 'favicon.svg' %>" type="image/svg+xml">
-    <link rel="mask-icon" href="<%= asset_path 'govuk-icon-mask.svg' %>" color="#1d70b8">
-    <link rel="apple-touch-icon" href="<%= asset_path 'govuk-icon-180.png' %>">
+    <link rel="icon" sizes="48x48" href="<%= asset_path "favicon.ico" %>">
+    <link rel="icon" sizes="any" href="<%= asset_path "favicon.svg" %>" type="image/svg+xml">
+    <link rel="mask-icon" href="<%= asset_path "govuk-icon-mask.svg" %>" color="#1d70b8">
+    <link rel="apple-touch-icon" href="<%= asset_path "govuk-icon-180.png" %>">
 
-    <meta name="theme-color" content="#1d70b8" />
+    <meta name="theme-color" content="#1d70b8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <% # The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
@@ -93,10 +93,10 @@
   <%= tag.body class: body_css_classes do %>
     <%= javascript_tag nonce: true do -%>
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
-    <% end -%>
+    <% end %>
     <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
     <%= render "govuk_publishing_components/components/skip_link", {
-      href: "#content"
+      href: "#content",
     } %>
     <% unless omit_header %>
       <% if show_cross_service_header %>
@@ -162,9 +162,9 @@
         meta: layout_helper.footer_meta,
       } %>
     <% end %>
-    <%= javascript_include_tag 'application', type: "module" %>
+    <%= javascript_include_tag "application", type: "module" %>
     <% if GovukPublishingComponents::Config.use_es6_components %>
-      <%= javascript_include_tag 'es6-components', type: "module" %>
+      <%= javascript_include_tag "es6-components", type: "module" %>
     <% end %>
   <% end %>
 </html>

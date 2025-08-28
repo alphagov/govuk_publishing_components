@@ -6,7 +6,7 @@
   items ||= [
     { :name => "day", :width => 2 },
     { :name => "month", :width => 2 },
-    { :name => "year", :width => 4 }
+    { :name => "year", :width => 4 },
   ]
   autocomplete_date_of_birth ||= nil
   legend_text ||= nil
@@ -39,7 +39,7 @@
       <%= render "govuk_publishing_components/components/hint", {
         id: hint_id,
         text: hint,
-        margin_bottom: 2
+        margin_bottom: 2,
       } %>
     <% end %>
 
@@ -56,7 +56,7 @@
         <%= tag.div class: "govuk-date-input__item" do %>
           <%= render "govuk_publishing_components/components/input", {
             label: {
-              text: item[:label] || item[:name].capitalize
+              text: item[:label] || item[:name].capitalize,
             },
             grouped: true,
             has_error: has_error,
@@ -66,7 +66,7 @@
             id: item[:id],
             type: "number",
             data: item[:data],
-            autocomplete: autocomplete_date_of_birth ? "bday-#{item[:name]}" : nil
+            autocomplete: autocomplete_date_of_birth ? "bday-#{item[:name]}" : nil,
           } %>
         <% end %>
       <% end %>
@@ -78,7 +78,7 @@
       describedby: aria_described_by,
       legend_text: legend_text,
       text: fieldset_content,
-      role: "group"
+      role: "group",
     } %>
   <% else %>
     <%= fieldset_content %>

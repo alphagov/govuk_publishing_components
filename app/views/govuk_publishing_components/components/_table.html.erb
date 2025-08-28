@@ -45,11 +45,11 @@
             <% if cellindex == 0 && first_cell_is_header %>
               <%= t.header cell[:text], {
                 scope: "row",
-                format: cell[:format]
+                format: cell[:format],
               } %>
             <% else %>
               <%= t.cell cell[:text], {
-                format: cell[:format]
+                format: cell[:format],
               } %>
             <% end %>
           <% end %>
@@ -64,7 +64,7 @@
     <div class="js-gem-c-table__filter govuk-!-display-none govuk-!-display-none-print">
       <%= render "govuk_publishing_components/components/input", {
         label: {
-          text: label
+          text: label,
         },
         name: "filter",
         controls: table_id,

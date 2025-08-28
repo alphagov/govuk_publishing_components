@@ -36,10 +36,10 @@
           <li class="gem-c-feedback__option-list-item govuk-visually-hidden" hidden>
             <% # Maybe button exists only to try and capture clicks by bots %>
             <%= link_to "/contact/govuk", {
-              class: 'gem-c-feedback__prompt-link',
-              role: 'button',
-              hidden: 'hidden',
-              'aria-hidden': 'true',
+              class: "gem-c-feedback__prompt-link",
+              role: "button",
+              hidden: "hidden",
+              'aria-hidden': "true",
             } do %>
               <%= t("components.feedback.maybe") %>
             <% end %>
@@ -80,7 +80,7 @@
         class: "govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong",
         aria: {
           expanded: "false",
-          controls: "something-is-wrong"
+          controls: "something-is-wrong",
         },
         data: {
           ga4_event: ga4_problem_button_event,

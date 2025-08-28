@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en" class="govuk-template govuk-template--rebranded">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title><%= browser_title %> - GOV.UK <%= product_name %></title>
     <meta name="robots" content="noindex,nofollow,noimageindex">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
   <body class="gem-c-layout-for-admin govuk-template__body">
     <%= javascript_tag nonce: true do -%>
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
-    <% end -%>
+    <% end %>
     <%= yield %>
     <% if use_type_module %>
       <%= javascript_include_tag js_filename, type: "module" %>

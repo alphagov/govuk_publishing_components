@@ -26,9 +26,9 @@
     show_text: t("components.step_by_step_nav.show"),
     hide_text: t("components.step_by_step_nav.hide"),
     show_all_text: t("components.step_by_step_nav.show_all"),
-    hide_all_text: t("components.step_by_step_nav.hide_all")
+    hide_all_text: t("components.step_by_step_nav.hide_all"),
   })
-  component_helper.add_data_attribute({ module: "ga4-event-tracker", ga4_expandable: "", }) unless disable_ga4
+  component_helper.add_data_attribute({ module: "ga4-event-tracker", ga4_expandable: "" }) unless disable_ga4
   component_helper.add_data_attribute({ remember: "" }) if remember_last_step
   component_helper.add_data_attribute({ id: tracking_id }) if tracking_id
   component_helper.add_class("gem-c-step-nav js-hidden")
@@ -45,20 +45,19 @@
           id = step_nav_helper.generate_step_nav_id(step[:title])
 
           logic = false
-          logic = step[:logic] if ["and", "or"].include? step[:logic]
+          logic = step[:logic] if %w[and or].include? step[:logic]
           circle_class = "gem-c-step-nav__circle--number"
           circle_class = "gem-c-step-nav__circle--logic" if logic
         %>
         <li class="gem-c-step-nav__step js-step
           <%= "gem-c-step-nav__step--active" if step_is_active %>"
-          <% if step_is_active %>aria-current="step"<% end %>
+          <% if step_is_active %> aria-current="step"<% end %>
           <%= "data-show" if step_count == show_step %>
           id="<%= id %>"
           data-track-count="stepNavSection"
-          <%= "data-optional" if step[:optional] %>
-        >
+          <%= "data-optional" if step[:optional] %>>
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="<%= "#{step_index + 1}" %>">
-            <%= content_tag("h#{heading_level}", class: 'gem-c-step-nav__title') do %>
+            <%= content_tag("h#{heading_level}", class: "gem-c-step-nav__title") do %>
               <span class="gem-c-step-nav__circle <%= circle_class %>">
                 <span class="gem-c-step-nav__circle-inner">
                   <span class="gem-c-step-nav__circle-background">
@@ -91,8 +90,8 @@
                   "type": "step by step",
                   "index_section": step_index + 1,
                   "index_section_count": steps.length,
-                  "section": step[:title]
-                }.to_json
+                  "section": step[:title],
+                }.to_json,
               }
             end
           %>
@@ -110,7 +109,7 @@
               <%= step_nav_helper.render_step_nav_element(element, options) %>
 
               <%
-                if element[:type] == 'list'
+                if element[:type] == "list"
                   options[:link_index] += element[:contents].length
                 end
               %>

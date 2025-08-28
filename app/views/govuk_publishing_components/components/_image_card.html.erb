@@ -18,9 +18,9 @@
   text_wrapper_classes = %w[gem-c-image-card__text-wrapper]
   text_wrapper_classes << "gem-c-image-card__text-wrapper--two-thirds" if card_helper.two_thirds
 
-  font_size ||= card_helper.large ? 'm' : 's'
+  font_size ||= card_helper.large ? "m" : "s"
   heading_class = %w[gem-c-image-card__title]
-  heading_class << shared_helper.get_heading_size(font_size, 's')
+  heading_class << shared_helper.get_heading_size(font_size, "s")
 
   heading_link_classes = %w[
     gem-c-image-card__title-link
@@ -58,12 +58,11 @@
       <% if card_helper.extra_details.any? %>
         <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not card_helper.extra_details_no_indent %>">
           <% card_helper.extra_details.each do |link| %>
-            <li class="gem-c-image-card__list-item <%= "gem-c-image-card__list-item--text" if not link[:href].present? %>">
+            <li class="gem-c-image-card__list-item <%= "gem-c-image-card__list-item--text" if link[:href].blank? %>">
               <% if link[:href].present? %>
                 <%= link_to link[:text], link[:href],
                   class: extra_link_classes,
-                  data: link[:data_attributes]
-                %>
+                  data: link[:data_attributes] %>
               <% else %>
                 <%= link[:text] %>
               <% end %>

@@ -5,13 +5,12 @@
 %>
 
 <% content_for :title, "Component audit" %>
-<%= render 'govuk_publishing_components/components/heading', {
+<%= render "govuk_publishing_components/components/heading", {
     text: "Components audit",
     heading_level: 1,
     font_size: "xl",
-    margin_bottom: 8
-  }
-%>
+    margin_bottom: 8,
+  } %>
 
 <% applications = capture do %>
   <%= render "applications" %>
@@ -33,8 +32,8 @@
         id: "components-gem",
         label: "Components",
         content: components,
-      }
-    ]
+      },
+    ],
   } %>
 <% else %>
   <%= render "components" %>

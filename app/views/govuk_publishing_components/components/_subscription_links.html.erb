@@ -21,31 +21,31 @@
     <% unless hide_heading %>
       <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("components.subscription_links.subscriptions") %></h2>
     <% end %>
-    <ul class="gem-c-subscription-links__list<%= ' gem-c-subscription-links__list--small' if local_assigns[:small_form] == true %>">
+    <ul class="gem-c-subscription-links__list<%= " gem-c-subscription-links__list--small" if local_assigns[:small_form] == true %>">
       <% if sl_helper.email_signup_link.present? %>
-        <li class="gem-c-subscription-links__list-item<%= ' gem-c-subscription-links__list-item--small' if local_assigns[:small_form] == true %>" >
+        <li class="gem-c-subscription-links__list-item<%= " gem-c-subscription-links__list-item--small" if local_assigns[:small_form] == true %>">
           <% email_link_text = capture do %>
-            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z" />
             </svg><%= sl_helper.email_signup_link_text %>
           <% end %>
           <%= link_to email_link_text, sl_helper.email_signup_link, {
             class: "govuk-link gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--link",
             data: sl_helper.email_signup_link_data_attributes,
-            lang: email_signup_link_text_locale
+            lang: email_signup_link_text_locale,
           } %>
         </li>
       <% end %>
 
       <% if sl_helper.feed_link_box_value || sl_helper.feed_link %>
-        <li class="gem-c-subscription-links__list-item<%= ' gem-c-subscription-links__list-item--small' if local_assigns[:small_form] == true %>">
+        <li class="gem-c-subscription-links__list-item<%= " gem-c-subscription-links__list-item--small" if local_assigns[:small_form] == true %>">
           <% feed_link_text = capture do %>
-            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M1.996 11A2 2 0 0 0 0 12.993c0 1.101.895 1.99 1.996 1.99 1.106 0 2-.889 2-1.99a2 2 0 0 0-2-1.993zM.002 5.097V7.97c1.872 0 3.632.733 4.958 2.059A6.984 6.984 0 0 1 7.015 15h2.888c0-5.461-4.443-9.903-9.9-9.903zM.006 0v2.876c6.676 0 12.11 5.44 12.11 12.124H15C15 6.731 8.273 0 .006 0z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M1.996 11A2 2 0 0 0 0 12.993c0 1.101.895 1.99 1.996 1.99 1.106 0 2-.889 2-1.99a2 2 0 0 0-2-1.993zM.002 5.097V7.97c1.872 0 3.632.733 4.958 2.059A6.984 6.984 0 0 1 7.015 15h2.888c0-5.461-4.443-9.903-9.9-9.903zM.006 0v2.876c6.676 0 12.11 5.44 12.11 12.124H15C15 6.731 8.273 0 .006 0z" />
             </svg><%= sl_helper.feed_link_text %>
           <% end %>
           <%= tag.button(feed_link_text,
             class: "govuk-link govuk-link--no-underline gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--button",
             data: sl_helper.feed_link_data_attributes,
-            lang: feed_link_text_locale
+            lang: feed_link_text_locale,
           ) if sl_helper.feed_link_box_value %>
           <%= link_to(feed_link_text, sl_helper.feed_link,
             class: "govuk-link govuk-link--no-underline gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--link",
@@ -65,7 +65,7 @@
               text: t("components.subscription_links.feed_link_label"),
             },
             name: "feed-reader-box",
-            value: feed_link_box_value
+            value: feed_link_box_value,
           } %>
         </div>
       </div>

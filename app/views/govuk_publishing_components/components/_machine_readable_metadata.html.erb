@@ -1,9 +1,9 @@
 <% local_assigns[:logo_url] = image_url("govuk_publishing_components/govuk-logo.png") %>
 <% local_assigns[:image_placeholders] = [
-  image_url("govuk_publishing_components/govuk-schema-placeholder-1x1.png"),
+     image_url("govuk_publishing_components/govuk-schema-placeholder-1x1.png"),
   image_url("govuk_publishing_components/govuk-schema-placeholder-4x3.png"),
   image_url("govuk_publishing_components/govuk-schema-placeholder-16x9.png"),
-] %>
+   ] %>
 <% local_assigns[:request_path] = request.path %>
 <% page = GovukPublishingComponents::Presenters::Page.new(local_assigns) %>
 <% structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(page).structured_data %>
@@ -12,21 +12,21 @@
   <%= raw(json_escape(JSON.pretty_generate(structured_data))) %>
 </script>
 
-<link rel="canonical" href="<%= page.canonical_url %>" />
+<link rel="canonical" href="<%= page.canonical_url %>">
 
-<meta property="og:site_name" content="GOV.UK" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="<%= page.canonical_url %>" />
-<meta property="og:title" content="<% if page.withdrawn? %>[Withdrawn] <% end %><%= page.title %>" />
-<meta property="og:description" content="<%= strip_tags(page.description) %>" />
+<meta property="og:site_name" content="GOV.UK">
+<meta property="og:type" content="article">
+<meta property="og:url" content="<%= page.canonical_url %>">
+<meta property="og:title" content="<% if page.withdrawn? %>[Withdrawn] <% end %><%= page.title %>">
+<meta property="og:description" content="<%= strip_tags(page.description) %>">
 
 <% if page.has_image? %>
-  <meta property="og:image" content="<%= page.image_url %>" />
-  <meta property="og:image:alt" content="<%= page.image_alt_text %>" />
+  <meta property="og:image" content="<%= page.image_url %>">
+  <meta property="og:image:alt" content="<%= page.image_alt_text %>">
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="<%= page.image_url %>" />
-  <meta name="twitter:image:alt" content="<%= page.image_alt_text %>" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="<%= page.image_url %>">
+  <meta name="twitter:image:alt" content="<%= page.image_alt_text %>">
 <% else %>
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary">
 <% end %>

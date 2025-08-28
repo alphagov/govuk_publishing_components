@@ -12,14 +12,14 @@
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if contents.any? %>
       <div class="gem-c-contents-list-with-body__list-container">
-        <%= render 'govuk_publishing_components/components/contents_list', contents: contents %>
+        <%= render "govuk_publishing_components/components/contents_list", contents: contents %>
       </div>
     <% end %>
     <%= block %>
     <% if contents.any? %>
       <div data-sticky-element class="gem-c-contents-list-with-body__link-wrapper">
         <div class="gem-c-contents-list-with-body__link-container">
-          <%= render 'govuk_publishing_components/components/back_to_top_link', href: "#contents" %>
+          <%= render "govuk_publishing_components/components/back_to_top_link", href: "#contents" %>
         </div>
       </div>
     <% end %>

@@ -9,11 +9,11 @@
     <%= render "govuk_publishing_components/components/layout_header", {
       environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
       product_name: "#{GovukPublishingComponents::Config.component_guide_title} #{GovukPublishingComponents::VERSION}",
-      href: component_guide_path
+      href: component_guide_path,
     } %>
     <div id="wrapper" class="govuk-width-container">
       <% if @guide_breadcrumbs %>
-        <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
+        <%= render "govuk_publishing_components/components/breadcrumbs", breadcrumbs: @guide_breadcrumbs %>
       <% end %>
       <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing">
         <%= yield %>
@@ -48,7 +48,7 @@
   <body class="gem-c-layout-for-admin govuk-template__body">
     <%= javascript_tag nonce: true do -%>
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
-    <% end -%>
+    <% end %>
     <%= yield :body %>
 
     <%= javascript_include_tag "component_guide/application" %>

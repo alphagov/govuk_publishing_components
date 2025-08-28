@@ -24,7 +24,7 @@
         text: "Lists what files each component has",
       },
       content: {
-        html: component_files
+        html: component_files,
       },
     }
   %>
@@ -37,7 +37,7 @@
             <a href="<%= component[:link] %>" class="govuk-link"><%= component[:component] %></a>
           </dt>
           <dd class="govuk-summary-list__value">
-            <%= component[:sub_components].join(', ') %>
+            <%= component[:sub_components].join(", ") %>
           </dd>
         </div>
       <% end %>
@@ -53,24 +53,23 @@
         text: "Shows which components contain other components",
       },
       content: {
-        html: components_within_components
+        html: components_within_components,
       },
     }
   %>
 
-  <%= render 'items_in_applications',
-    heading: 'Gem components used by applications',
-    summary: 'Shows which applications use gem components',
+  <%= render "items_in_applications",
+    heading: "Gem components used by applications",
+    summary: "Shows which applications use gem components",
     content: @components[:components_by_application],
-    items: component_items
-  %>
+    items: component_items %>
 
   <% helpers_by_component = capture do %>
     <dl class="govuk-summary-list">
       <% @components[:helper_usage].each do |helper| %>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/<%= helper[:link] %>" class="govuk-link"><%= helper[:name] %></a> 
+            <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/<%= helper[:link] %>" class="govuk-link"><%= helper[:name] %></a>
           </dt>
           <dd class="govuk-summary-list__value">
             <details class="govuk-details" data-module="govuk-details">
@@ -82,14 +81,14 @@
               <div class="govuk-details__text">
                 <ul class="govuk-list govuk-list--bullet">
                   <% helper[:used_by].each do |component| %>
-                    <% github_link = 'https://github.com/alphagov/govuk_publishing_components/tree/main/app/views/govuk_publishing_components/components/' %>                    
+                    <% github_link = "https://github.com/alphagov/govuk_publishing_components/tree/main/app/views/govuk_publishing_components/components/" %>
                     <li>
                       <a href="<%= github_link %><%= component[:link] %>" class="govuk-link"><%= component[:name] %></a>
                     </li>
-                  <% end %>            
+                  <% end %>
                 </ul>
               </div>
-            </details>            
+            </details>
           </dd>
         </div>
       <% end %>
@@ -105,20 +104,19 @@
         text: "Shows which gem components use common helpers",
       },
       content: {
-        html: helpers_by_component
+        html: helpers_by_component,
       },
     }
   %>
 
-  <%= render 'items_in_applications',
-    heading: 'Gem helpers used by applications',
-    summary: 'Shows any applications that use helpers from the components gem',
+  <%= render "items_in_applications",
+    heading: "Gem helpers used by applications",
+    summary: "Shows any applications that use helpers from the components gem",
     content: @components[:helpers_used_by_applications],
-    items: component_items
-  %>
+    items: component_items %>
 
   <%= render "govuk_publishing_components/components/accordion", {
-    items: component_items
+    items: component_items,
   } %>
 <% else %>
   <p class="govuk-body">No components found.</p>

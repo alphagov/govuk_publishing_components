@@ -42,7 +42,7 @@
   <% if label %>
     <%= render "govuk_publishing_components/components/label", {
       html_for: textarea_id,
-      right_to_left: right_to_left_help
+      right_to_left: right_to_left_help,
     }.merge(label.symbolize_keys) %>
   <% end %>
 
@@ -50,7 +50,7 @@
     <%= render "govuk_publishing_components/components/hint", {
       id: hint_id,
       text: hint,
-      right_to_left: right_to_left_help
+      right_to_left: right_to_left_help,
     } %>
   <% end %>
 
@@ -59,7 +59,7 @@
       id: error_id,
       text: error_message,
       items: error_items,
-      right_to_left: right_to_left_help
+      right_to_left: right_to_left_help,
     } %>
   <% end %>
 
@@ -72,7 +72,7 @@
     data: data,
     spellcheck: spellcheck,
     aria: {
-      describedby: aria_described_by
+      describedby: aria_described_by,
     } do %><%= value %><% end %>
   <% if block_given? %>
     <%= yield %>

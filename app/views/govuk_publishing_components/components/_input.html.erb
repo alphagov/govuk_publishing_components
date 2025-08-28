@@ -53,14 +53,14 @@
     aria_described_by = aria_described_by.join(" ")
   end
 
-  checked_enterkeyhint = enterkeyhint if [
-    "done",
-    "enter",
-    "go",
-    "next",
-    "previous",
-    "search",
-    "send",
+  checked_enterkeyhint = enterkeyhint if %w[
+    done
+    enter
+    go
+    next
+    previous
+    search
+    send
   ].include?(enterkeyhint)
 
   if type == "number"
@@ -75,7 +75,7 @@
       <%= render "govuk_publishing_components/components/label", {
         html_for: id,
         heading_size: heading_size,
-        right_to_left: right_to_left_help
+        right_to_left: right_to_left_help,
       }.merge(label.symbolize_keys) %>
     <% end %>
 
@@ -92,7 +92,7 @@
     <%= render "govuk_publishing_components/components/hint", {
       id: hint_id,
       text: hint,
-      right_to_left: right_to_left_help
+      right_to_left: right_to_left_help,
     } %>
   <% end %>
 
@@ -101,14 +101,14 @@
       id: error_id,
       text: error_message,
       items: error_items,
-      right_to_left: right_to_left_help
+      right_to_left: right_to_left_help,
     } %>
   <% end %>
 
   <% input_tag = tag.input(
     aria: {
       describedby: aria_described_by,
-      controls: controls
+      controls: controls,
     },
     autocomplete: autocomplete,
     autofocus: autofocus,
@@ -125,7 +125,7 @@
     spellcheck: spellcheck,
     tabindex: tabindex,
     type: type,
-    value: value
+    value: value,
   ) %>
 
   <% if prefix && suffix %>

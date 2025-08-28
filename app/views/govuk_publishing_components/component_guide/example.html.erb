@@ -1,18 +1,17 @@
 <% content_for :title, "#{@component_example.name} example - #{@component_doc.name} component" %>
 <% content_for :application_stylesheet do %>
   <% if @component_doc.source == "application" && application_stylesheet_in_use? %>
-    <%= render 'application_stylesheet' %>
+    <%= render "application_stylesheet" %>
   <% end %>
 <% end %>
 
-<%= render 'govuk_publishing_components/components/heading', {
+<%= render "govuk_publishing_components/components/heading", {
     text: @component_example.name,
     context: "#{@component_doc.name} example",
     heading_level: 1,
     font_size: "xl",
-    margin_bottom: 8
-  }
-%>
+    margin_bottom: 8,
+  } %>
 
 <% code_example = capture do %>
   <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, example: @component_example } %>

@@ -1,10 +1,10 @@
 <% if @content_item %>
-  <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_item.parsed_content %>
+  <%= render "govuk_publishing_components/components/contextual_breadcrumbs", content_item: @content_item.parsed_content %>
 <% end %>
 
 <div class="grid-row">
   <div class="column-two-thirds">
-    <%= render 'govuk_publishing_components/components/heading', text: @content_item ? "Contextual navigation for '#{@content_item["title"]}'" : 'Contextual navigation reference' %>
+    <%= render "govuk_publishing_components/components/heading", text: @content_item ? "Contextual navigation for '#{@content_item["title"]}'" : "Contextual navigation reference" %>
   </div>
 </div>
 
@@ -12,7 +12,7 @@
   <div class="column-two-thirds">
     <% content = capture do %>
       <% if @content_item %>
-          <p>You're looking at the contextual navigation for the page <%= link_to @content_item["title"], "https://www.gov.uk#{@content_item["base_path"]}", target: '_blank' %></p>
+          <p>You're looking at the contextual navigation for the page <%= link_to @content_item["title"], "https://www.gov.uk#{@content_item["base_path"]}", target: "_blank", rel: "noopener" %></p>
       <% end %>
 
       <p>You can look at the contextual navigation for any page by replacing the part after /contextual-navigation in the URL (eg. /contextual-navigation<strong>/state-pension-calculator</strong>).</p>
@@ -30,16 +30,16 @@
       </ul>
     <% end %>
 
-    <%= render 'govuk_publishing_components/components/govspeak', content: content %>
+    <%= render "govuk_publishing_components/components/govspeak", content: content %>
 
     <% if @content_item %>
-      <%= render 'govuk_publishing_components/components/contextual_footer', content_item: @content_item.parsed_content %>
+      <%= render "govuk_publishing_components/components/contextual_footer", content_item: @content_item.parsed_content %>
     <% end %>
   </div>
 
   <div class="column-one-third">
     <% if @content_item %>
-      <%= render 'govuk_publishing_components/components/contextual_sidebar', content_item: @content_item.parsed_content %>
+      <%= render "govuk_publishing_components/components/contextual_sidebar", content_item: @content_item.parsed_content %>
     <% end %>
   </div>
 </div>
