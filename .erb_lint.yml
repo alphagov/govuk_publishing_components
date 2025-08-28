@@ -11,6 +11,8 @@ linters:
       - 'application/ld+json'
     allow_blank: false
     disallow_inline_scripts: false
+  NoJavascriptTagHelper:
+    enabled: false
   Rubocop:
     enabled: true
     exclude:
