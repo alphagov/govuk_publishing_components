@@ -4,6 +4,13 @@ exclude:
   - '**/vendor/**/*'
   - 'test/fixtures/**'
 linters:
+  AllowedScriptType:
+    enabled: true
+    allowed_types:
+      - 'text/javascript'
+      - 'application/ld+json'
+    allow_blank: false
+    disallow_inline_scripts: false
   Rubocop:
     enabled: true
     exclude:
