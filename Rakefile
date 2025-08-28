@@ -40,6 +40,7 @@ end
 desc "Linting for Ruby, JS and SASS"
 task lint: %i[rubocop environment] do
   sh "yarn run lint"
+  sh "bundle exec erb_lint ."
 end
 
 desc "Jasmine"

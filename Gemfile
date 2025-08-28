@@ -16,3 +16,5 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+gem "erb_lint", "~> 0.9.0"
