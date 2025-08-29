@@ -2,6 +2,8 @@
 [![status](https://github.com/alphagov/govuk_publishing_components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/alphagov/govuk_publishing_components/actions/workflows/ci.yml?query=branch%3Amain)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Stylelint Style Guide](https://img.shields.io/badge/code_style-stylelint-brightgreen.svg)](https://github.com/alphagov/stylelint-config-gds/)
+[![Rubocop Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/alphagov/rubocop-govuk)
+[![erb_lint Style Guide](https://img.shields.io/badge/code_style-erb_lint-brightgreen.svg)](https://github.com/Shopify/erb_lint)
 
 govuk_publishing_components is a Ruby gem to document and distribute components for GOV.UK applications. It provides:
 

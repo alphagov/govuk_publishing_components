@@ -296,11 +296,32 @@ This is a variation of the previous class, to be used on parent elements that co
 
 ### Linting
 
-All stylesheets must be linted according to [the style rules](https://github.com/alphagov/govuk-lint/blob/master/configs/scss_lint/gds-sass-styleguide.yml) in [govuk-lint](https://github.com/alphagov/govuk-lint).
+All stylesheets must be linted according to [the style rules](https://github.com/alphagov/stylelint-config-gds/blob/main/scss-rules.js) in [stylelint-config-gds](https://github.com/alphagov/stylelint-config-gds/).
 
 ```sh
-# Lint Sass in your application components using govuk-lint
-bundle exec govuk-lint-sass app/assets/stylesheets/components
+# Lint Sass in your application components using stylelint
+yarn run lint
+```
+
+All JavaScript must be linted according to [standardjs](https://standardjs.com).
+
+```sh
+# Lint JS in your application components using standardx
+yarn run standardx app/ spec/
+```
+
+All Ruby code must be linted according to [rubocop](https://github.com/alphagov/rubocop-govuk).
+
+```sh
+# Lint Ruby in your application components using rubocop
+bundle exec rubocop
+```
+
+All .html.erb code must be linted according to [erb_lint](https://github.com/Shopify/erb_lint).
+
+```sh
+# Lint .html.erb in your application components using erb_lint
+bundle exec erb_lint .
 ```
 
 ## Images
