@@ -58,7 +58,7 @@
         end
 
         section_classes = %w(govuk-accordion__section)
-        section_classes << 'govuk-accordion__section--expanded' if item[:expanded]
+        section_classes << "govuk-accordion__section--expanded" if item[:expanded]
 
         summary_classes = %w(govuk-accordion__section-summary govuk-body)
       %>
@@ -68,14 +68,14 @@
             content_tag(
               shared_helper.get_heading_level,
               content_tag(
-                'span',
+                "span",
                 item[:heading][:text],
                 class: "govuk-accordion__section-button",
-                id: "#{id}-heading-#{index}"
+                id: "#{id}-heading-#{index}",
               ),
               class: "govuk-accordion__section-heading",
               id: item[:heading][:id],
-              data: item[:data_attributes]
+              data: item[:data_attributes],
             )
           %>
           <%= tag.div(item[:summary][:text], id: "#{id}-summary-#{index}", class: summary_classes) if item[:summary].present? %>
@@ -84,7 +84,7 @@
           item[:content][:html],
           id: "#{id}-content-#{index}",
           class: "govuk-accordion__section-content",
-          data: ga4_link_data_attributes
+          data: ga4_link_data_attributes,
         ) %>
       <% end %>
     <% end %>

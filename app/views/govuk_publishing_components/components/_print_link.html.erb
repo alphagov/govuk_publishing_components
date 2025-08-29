@@ -1,7 +1,7 @@
 <%
   add_gem_component_stylesheet("print-link")
 
-  text ||= t('components.print_link.text')
+  text ||= t("components.print_link.text")
   href ||= nil
   child_data_attributes ||= {}
   require_js ||= href.nil?
@@ -21,7 +21,7 @@
   <% if require_js %>
     <%= content_tag(:button, text, {
         class: child_classes,
-        data: child_data_attributes
+        data: child_data_attributes,
     }) %>
   <% else %>
     <%= link_to(
@@ -30,7 +30,7 @@
       class: child_classes,
       rel: "alternate",
       data: child_data_attributes,
-      role: "button"
+      role: "button",
     ) %>
   <% end %>
 <% end %>

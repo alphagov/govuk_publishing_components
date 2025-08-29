@@ -29,7 +29,7 @@
 %>
 <%= tag.details(**component_helper.all_attributes) do %>
   <%= tag.summary class: "govuk-details__summary", aria: summary_aria_attributes do %>
-    <span class="govuk-details__summary-text" <% unless disable_ga4 %>data-ga4-expandable<% end %>>
+    <span class="govuk-details__summary-text" <% unless disable_ga4 %> data-ga4-expandable<% end %>>
       <%= title %>
     </span>
   <% end %>

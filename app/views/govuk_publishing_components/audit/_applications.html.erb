@@ -5,12 +5,12 @@
 <%= render "govuk_publishing_components/components/heading", {
   text: title,
   font_size: "l",
-  margin_bottom: 6
+  margin_bottom: 6,
 } %>
 
 <% if @applications.any? %>
   <%= render "govuk_publishing_components/components/details", {
-    title: "How to use this information"
+    title: "How to use this information",
   } do %>
     <p class="govuk-body">This page shows information about component use on GOV.UK. This information has been cross referenced with the components in the gem to produce warnings where e.g. JavaScript for a component exists but has not been included in an application.</p>
     <p class="govuk-body">Warnings should be investigated, although there may be a reason why the application has been configured as it is. Note that 'code' can refer to templates or ruby code.</p>
@@ -34,18 +34,18 @@
 
     <% accordion_content = capture do %>
       <% if application[:application_found] %>
-        <% github_link = 'https://github.com/alphagov/' + application[:dir] + '/blob/main/' %>
+        <% github_link = "https://github.com/alphagov/" + application[:dir] + "/blob/main/" %>
 
         <% if @other_applications %>
           <% if application[:uses_individual_asset_model] %>
             <%= render "govuk_publishing_components/components/warning_text", {
-              text: raw("This application uses <a class=\"govuk-link\" href=\"https://github.com/alphagov/govuk_publishing_components/blob/main/docs/set-up-individual-component-css-loading.md\">per page asset loading</a> for components. Warnings about missing stylesheets have been suppressed.")
+              text: raw("This application uses <a class=\"govuk-link\" href=\"https://github.com/alphagov/govuk_publishing_components/blob/main/docs/set-up-individual-component-css-loading.md\">per page asset loading</a> for components. Warnings about missing stylesheets have been suppressed."),
             } %>
           <% end %>
 
           <% if application[:uses_static] %>
             <%= render "govuk_publishing_components/components/warning_text", {
-              text: raw("This application uses <a href=\"https://github.com/alphagov/static\" class=\"govuk-link\">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.")
+              text: raw("This application uses <a href=\"https://github.com/alphagov/static\" class=\"govuk-link\">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed."),
             } %>
           <% end %>
 
@@ -80,13 +80,13 @@
           <%
             items << {
               field: "#{item[:name]} (#{item[:value].length})",
-              value: content
+              value: content,
             }
           %>
         <% end %>
 
         <%= render "govuk_publishing_components/components/summary_list", {
-          items: items
+          items: items,
         } %>
 
         <% if application[:gem_style_references].any? %>
@@ -101,7 +101,7 @@
           <ul class="govuk-list govuk-list--bullet">
             <% application[:gem_style_references].each do |ref| %>
               <li>
-                <%= link_to ref, github_link + ref, class: 'govuk-link' %>
+                <%= link_to ref, github_link + ref, class: "govuk-link" %>
               </li>
             <% end %>
           </ul>
@@ -118,7 +118,7 @@
           <ul class="govuk-list govuk-list--bullet">
             <% application[:jquery_references].each do |ref| %>
               <li>
-                <%= link_to ref, github_link + ref, class: 'govuk-link' %>
+                <%= link_to ref, github_link + ref, class: "govuk-link" %>
               </li>
             <% end %>
           </ul>
@@ -143,13 +143,13 @@
     <%
       {
         heading: {
-          text: application[:name]
+          text: application[:name],
         },
         summary: {
-          text: sanitize(summary)
+          text: sanitize(summary),
         },
         content: {
-          html: accordion_content
+          html: accordion_content,
         },
       }
     %>
@@ -157,7 +157,7 @@
 
   <% if ENV["MAIN_COMPONENT_GUIDE"] %>
     <%= render "govuk_publishing_components/components/accordion", {
-      items: application_items
+      items: application_items,
     } %>
   <% else %>
     <p class="govuk-body"><%= sanitize(summary) %></p>

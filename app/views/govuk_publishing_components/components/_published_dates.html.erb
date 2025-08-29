@@ -16,24 +16,23 @@
 %>
 <% if published || last_updated %>
   <%= tag.div(**component_helper.all_attributes) do %>
-    <h2 class="govuk-visually-hidden"><%= t('components.published_dates.hidden_heading') %></h2>
+    <h2 class="govuk-visually-hidden"><%= t("components.published_dates.hidden_heading") %></h2>
     <% if published %>
-      <div><%= t('components.published_dates.published', date: published) %></div>
+      <div><%= t("components.published_dates.published", date: published) %></div>
     <% end %>
     <% if last_updated %>
-      <%= t('components.published_dates.last_updated', date: last_updated) %>
+      <%= t("components.published_dates.last_updated", date: last_updated) %>
       <% if link_to_history && history.empty? %>
-        <span aria-hidden="true">— </span><a href="#history" class="gem-c-published-dates__history-link govuk-link"><%= t('components.published_dates.see_all_updates', locale: :en) %></a>
+        <span aria-hidden="true">— </span><a href="#history" class="gem-c-published-dates__history-link govuk-link"><%= t("components.published_dates.see_all_updates", locale: :en) %></a>
       <% elsif history.any? %>
         <a href="#full-history"
         class="gem-c-published-dates__toggle govuk-link"
         data-controls="full-history"
         data-expanded="false"
-        data-toggled-text="<span aria-hidden='true'>‐ </span><%= t('components.published_dates.hide_all_updates', locale: :en) %>"
+        data-toggled-text="<span aria-hidden='true'>‐ </span><%= t("components.published_dates.hide_all_updates", locale: :en) %>"
         data-module="ga4-event-tracker"
         data-ga4-event="<%= {event_name: "select_content", type: "content history", section: "Footer"}.to_json %>"
-        data-ga4-expandable
-        ><span aria-hidden="true">+ </span><%= t('components.published_dates.show_all_updates', locale: :en) %></a>
+        data-ga4-expandable><span aria-hidden="true">+ </span><%= t("components.published_dates.show_all_updates", locale: :en) %></a>
         <div class="gem-c-published-dates__change-history js-hidden" id="full-history">
           <ol class="gem-c-published-dates__list">
             <% history.each do |change| %>

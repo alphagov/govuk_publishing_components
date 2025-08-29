@@ -1,11 +1,11 @@
 <div class="govuk-width-container">
   <%= render "govuk_publishing_components/components/phase_banner", {
     phase: "beta",
-    message: sanitize(t("components.layout_for_public.account_layout.feedback.banners.phase_banner_html"))
+    message: sanitize(t("components.layout_for_public.account_layout.feedback.banners.phase_banner_html")),
   } unless omit_account_phase_banner %>
 
   <div class="govuk-grid-row govuk-main-wrapper">
-    <%= tag.div(class: 'govuk-grid-column-one-third') do %>
+    <%= tag.div(class: "govuk-grid-column-one-third") do %>
       <%= render "govuk_publishing_components/components/layout_for_public/account-navigation", { page_is: account_nav_location} %>
     <% end unless omit_account_navigation %>
 

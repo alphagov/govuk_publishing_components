@@ -17,7 +17,7 @@
       module: "govuk-character-count",
       maxlength: maxlength,
       maxwords: maxwords,
-      threshold: threshold
+      threshold: threshold,
     } do %>
 
     <%= render "govuk_publishing_components/components/textarea", { textarea_id: id, character_count: true, margin_bottom: 1 }.merge(textarea.symbolize_keys) %>

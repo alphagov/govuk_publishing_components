@@ -10,7 +10,7 @@
   <% else %>
     <%=
       heading_class = related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title)
-      heading_data = { 'track-count' => related_nav_helper.section_data_track_count(:related_item_section) }
+      heading_data = { "track-count" => related_nav_helper.section_data_track_count(:related_item_section) }
       heading_id = "related-nav-#{section_title}-#{random}"
       heading_level = related_nav_helper.section_heading_level
       heading_text = related_nav_helper.construct_section_text(section_title, true)
@@ -48,7 +48,7 @@
           lang: shared_helper.t_locale_check(link[:locale]),
           data: {
             ga4_link: ga4_attributes,
-          }
+          },
         )
       %>
       <% if index <= section_link_limit %>
@@ -65,14 +65,14 @@
         data_attributes_link = {
           controls: "toggle_#{section_title}",
           expanded: "false",
-          toggled_text: t("common.toggle_less")
+          toggled_text: t("common.toggle_less"),
         }
         data_attributes_link[:ga4_event] = { "event_name": "select_content", "type": "related content" } unless disable_ga4
       %>
       <%= tag.li(class: classes, data: data_attributes_li) do %>
         <%= link_to("#", class: "gem-c-related-navigation__toggle", data: data_attributes_link) do %>
           <%= t("common.toggle_more",
-            show: t('common.show'),
+            show: t("common.show"),
             number: related_nav_helper.remaining_link_count(links)) %>
         <% end %>
       <% end %>

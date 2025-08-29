@@ -1,18 +1,17 @@
 <% content_for :title, "#{@component_doc.name} component" %>
 <% content_for :application_stylesheet do %>
   <% if @component_doc.source == "application" && application_stylesheet_in_use? %>
-    <%= render 'application_stylesheet' %>
+    <%= render "application_stylesheet" %>
   <% end %>
 <% end %>
 
-<%= render 'govuk_publishing_components/components/heading', {
+<%= render "govuk_publishing_components/components/heading", {
     text: @component_doc.name,
     context: "Component",
     heading_level: 1,
     font_size: "xl",
-    margin_bottom: 8
-  }
-%>
+    margin_bottom: 8,
+  } %>
 
 <div class="component-show">
   <div class="govuk-grid-row">
@@ -23,7 +22,7 @@
           <a class="component-violation__link" href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/accessibility_acceptance_criteria.md">Please define accessibility acceptance criteria for this component.</a>
         </div>
       <% end %>
-      <%= render 'govuk_publishing_components/components/lead_paragraph', text: @component_doc.description %>
+      <%= render "govuk_publishing_components/components/lead_paragraph", text: @component_doc.description %>
       <% if @component_doc.body.present? %>
         <div class="component-body">
           <div class="component-markdown">
@@ -40,12 +39,12 @@
       other_examples_links = []
       other_examples_links << {
         href: "#standard-options",
-        text: "Standard options"
+        text: "Standard options",
       } if @component_doc.uses_component_wrapper_helper?
       other_examples_links.concat(@component_doc.other_examples.map do | example |
         {
           href: "##{example.id}",
-          text: example.name
+          text: example.name,
         }
       end)
       content_items = [
@@ -56,12 +55,12 @@
         ({
           href: "#other-examples",
           text: "Other examples",
-          items: other_examples_links
+          items: other_examples_links,
         } if @component_doc.other_examples.any? or @component_doc.uses_component_wrapper_helper?),
       ].compact
     %>
     <%= render "govuk_publishing_components/components/contents_list", {
-      contents: content_items
+      contents: content_items,
     } %>
   </div>
 
