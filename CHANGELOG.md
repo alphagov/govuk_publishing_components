@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Address string literal deprecation ([PR #4999](https://github.com/alphagov/govuk_publishing_components/pull/4999))
+* Introduce erb_lint linter ([PR #5003](https://github.com/alphagov/govuk_publishing_components/pull/5003))
 
 ## 60.1.0
 
