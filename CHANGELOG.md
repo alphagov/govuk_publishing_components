@@ -12,6 +12,7 @@
 * Address string literal deprecation ([PR #4999](https://github.com/alphagov/govuk_publishing_components/pull/4999))
 * Remove focusable attribute from the close icon on the super nav search menu ([PR #5005](https://github.com/alphagov/govuk_publishing_components/pull/5005))
 * Remove date PII from GA4 page view tracking ([PR #5004](https://github.com/alphagov/govuk_publishing_components/pull/5004))
+* Introduce erb_lint linter ([PR #5003](https://github.com/alphagov/govuk_publishing_components/pull/5003))
 
 ## 60.1.0
 
