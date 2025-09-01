@@ -35,7 +35,7 @@ describe('The super header navigation', function () {
                               '<circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>' +
                               '<line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>' +
                           '</svg>' +
-                          '<span aria-hidden="true" class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon" focusable="false">' +
+                          '<span aria-hidden="true" class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon">' +
                               '×' +
                           '</span>' +
                       '</button>' +
