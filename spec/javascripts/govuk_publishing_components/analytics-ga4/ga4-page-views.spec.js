@@ -355,10 +355,21 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('removes email, postcode, date, and phone number pii from the title, location and referrer', function () {
-    document.title = 'example@gov.uk - SW12AA - 2020-01-01 - 0123456789'
-    expected.page_view.title = '[email] - [postcode] - [date] - [phone number]'
+  it('removes email, postcode, and phone number pii from the page title', function () {
+    document.title = 'example@gov.uk - SW12AA - 0123456789'
+    expected.page_view.title = '[email] - [postcode] - [phone number]'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
 
+  it('doesn\'t remove dates from the page title', function () {
+    document.title = '01-01-2026'
+    expected.page_view.title = '01-01-2026'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('removes email, postcode, date, and phone number pii from the page location and referrer', function () {
     spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/example@gov.uk/SW12AA/2020-01-01/0123456789')
     expected.page_view.referrer = 'https://gov.uk/[email]/[postcode]/[date]/[phone number]'
 
