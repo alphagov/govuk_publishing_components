@@ -188,15 +188,6 @@ describe('Feedback component', function () {
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
     })
 
-    it('focusses the first field in the form', function () {
-      loadFeedbackComponent()
-      var $input = $('#page-is-not-useful .gem-c-input')[0]
-      spyOn($input, 'focus')
-      $('.js-page-is-not-useful')[0].click()
-
-      expect($input.focus).toHaveBeenCalled()
-    })
-
     it('has the page path in the survey', function () {
       var testPath = '/government/organisations/government-digital-service'
       var expectedUrl = 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + testPath
@@ -390,71 +381,6 @@ describe('Feedback component', function () {
     })
   })
 
-  describe('successfully submitting the "page is not useful" form', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
-    })
-
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    it('displays a success message', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      var $prompt = $('.js-prompt-success')
-
-      expect(($prompt).prop('hidden')).toBe(false)
-      expect($prompt).toHaveText('Thank you for your feedback')
-    })
-
-    it('focusses the success message', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
-    })
-
-    it('hides the form', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      expect($('.js-feedback-form').prop('hidden')).toBe(true)
-    })
-
-    it('hides the links to show the feedback form', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      expect($('.js-prompt-questions').prop('hidden')).toBe(true)
-    })
-  })
-
   describe('submitting the "is something wrong with this page" form with invalid data', function () {
     beforeEach(function () {
       jasmine.Ajax.install()
@@ -520,76 +446,6 @@ describe('Feedback component', function () {
         status: 422,
         contentType: 'application/json',
         responseText: '{}'
-      })
-
-      expect($input.focus).toHaveBeenCalled()
-    })
-  })
-
-  describe('Submitting the "page is not useful" form with invalid data', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
-    })
-
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    it('disables the submit button until the server responds', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-      })
-
-      expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
-    })
-
-    it('retains the feedback the user originally entered', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-      })
-
-      expect($("[name='email_survey_signup[email_address]']").val()).toEqual('test@test.com')
-    })
-
-    it('displays a generic error if the field isn\'t a visible part of the form', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
-      })
-
-      expect($('#page-is-not-useful .js-errors').html()).toContainText(
-        'Sorry, we’re unable to receive your message right now. ' +
-        'If the problem persists, we have other ways for you to provide ' +
-        'feedback on the contact page.'
-      )
-    })
-
-    it('focusses the generic error', function () {
-      loadFeedbackComponent()
-      var $input = $('#page-is-not-useful .js-errors')[0]
-      spyOn($input, 'focus')
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"path": ["can\'t be blank"], "description": ["can\'t be blank"]}}'
       })
 
       expect($input.focus).toHaveBeenCalled()
@@ -720,13 +576,6 @@ describe('Feedback component', function () {
     var $form = $('.gem-c-feedback #something-is-wrong')
     $form.find('[name=what_doing]').val('I was looking for some information about local government.')
     $form.find('[name=what_wrong]').val('The background should be green.')
-    $form.find('[type=submit]')[0].click()
-  }
-
-  function fillAndSubmitPageIsNotUsefulForm () {
-    $('.js-page-is-not-useful')[0].click()
-    var $form = $('.gem-c-feedback #page-is-not-useful')
-    $form.find('[name="email_survey_signup[email_address]"]').val('test@test.com')
     $form.find('[type=submit]')[0].click()
   }
 })
