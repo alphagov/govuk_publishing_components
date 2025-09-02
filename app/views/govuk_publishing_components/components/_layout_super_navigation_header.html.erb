@@ -130,6 +130,63 @@
             <% end %>
           </div>
 
+          <%= content_tag(:div, {
+        id: "super-navigation-menu",
+        hidden: "",
+        class: dropdown_menu_classes,
+      }) do %>
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
+
+            <% navigation_links_columns.each_with_index do | column, column_index | %>
+              <%
+                case column[:size]
+                when 2
+                  width_class = "govuk-grid-column-two-thirds-from-desktop"
+                when 3
+                  width_class = "govuk-grid-column-full-from-desktop"
+                else
+                  width_class = "govuk-grid-column-one-third-from-desktop"
+                end
+              %>
+
+              <div class="<%= width_class %> gem-c-layout-super-navigation-header__column--<%= column[:label].downcase.gsub(" ", "-") %>">
+                <h3 class="govuk-heading-m gem-c-layout-super-navigation-header__column-header">
+                  <%= column[:label] %>
+                </h3>
+                <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= column[:label].downcase.gsub(" ", "-") %>">
+                  <% index_total = column[:menu_contents].length %>
+                  <% column[:menu_contents].each_with_index do | item, index | %>
+                      <%
+                        has_description = item[:description].present?
+                        link_classes = %w[govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link]
+                        link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
+                      %>
+                      <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                        <%= link_to item[:label], item[:href], {
+                          class: link_classes,
+                          data: {
+                            ga4_link: {
+                              "event_name": "navigation",
+                              "type": "header menu bar",
+                              "index_section": column_index + 1,
+                              "index_link": index + 1,
+                              "index_section_count": 3,
+                              "index_total": index_total,
+                              "section": column[:label],
+                            }
+                          }
+                        } %>
+                        <%= tag.p item[:description], class: "gem-c-layout-super-navigation-header__navigation-second-item-description" if has_description %>
+                      </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
           <div class="gem-c-layout-super-navigation-header__search-item">
             <%= content_tag(:button, {
               id: "super-search-menu-toggle",
@@ -188,63 +245,6 @@
           </div>
         <% end %>
       </div>
-
-      <%= content_tag(:div, {
-        id: "super-navigation-menu",
-        hidden: "",
-        class: dropdown_menu_classes,
-      }) do %>
-        <div class="govuk-width-container">
-          <div class="govuk-grid-row gem-c-layout-super-navigation-header__navigation-items">
-
-            <% navigation_links_columns.each_with_index do | column, column_index | %>
-              <%
-                case column[:size]
-                when 2
-                  width_class = "govuk-grid-column-two-thirds-from-desktop"
-                when 3
-                  width_class = "govuk-grid-column-full-from-desktop"
-                else
-                  width_class = "govuk-grid-column-one-third-from-desktop"
-                end
-              %>
-
-              <div class="<%= width_class %> gem-c-layout-super-navigation-header__column--<%= column[:label].downcase.gsub(" ", "-") %>">
-                <h3 class="govuk-heading-m gem-c-layout-super-navigation-header__column-header">
-                  <%= column[:label] %>
-                </h3>
-                <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= column[:label].downcase.gsub(" ", "-") %>">
-                  <% index_total = column[:menu_contents].length %>
-                  <% column[:menu_contents].each_with_index do | item, index | %>
-                      <%
-                        has_description = item[:description].present?
-                        link_classes = %w[govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link]
-                        link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
-                      %>
-                      <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
-                        <%= link_to item[:label], item[:href], {
-                          class: link_classes,
-                          data: {
-                            ga4_link: {
-                              "event_name": "navigation",
-                              "type": "header menu bar",
-                              "index_section": column_index + 1,
-                              "index_link": index + 1,
-                              "index_section_count": 3,
-                              "index_total": index_total,
-                              "section": column[:label],
-                            }
-                          }
-                        } %>
-                        <%= tag.p item[:description], class: "gem-c-layout-super-navigation-header__navigation-second-item-description" if has_description %>
-                      </li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
 
       <%= content_tag(:div, {
         id: "super-search-menu",
