@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Upgrade to LUX 4.2.1 ([PR #5007](https://github.com/alphagov/govuk_publishing_components/pull/5007))
 * Address string literal deprecation ([PR #4999](https://github.com/alphagov/govuk_publishing_components/pull/4999))
 
 ## 60.1.0

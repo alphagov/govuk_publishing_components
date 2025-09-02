@@ -22,9 +22,9 @@
 (function () {
   'use strict';
 
-  var max = Math.max;
-  var floor = Math.floor;
-  var round = Math.round;
+  const max = Math.max;
+  const floor = Math.floor;
+  const round = Math.round;
   /**
   * Clamp a number so that it is never less than 0
   */
@@ -41,16 +41,15 @@
 
   var scriptStartTime = now();
 
-  var _a;
   // If the various performance APIs aren't available, we export an empty object to
   // prevent having to make regular typeof checks.
-  var performance = window.performance || {};
-  var timing = performance.timing || {
+  const performance = window.performance || {};
+  const timing = performance.timing || {
     activationStart: 0,
     // If performance.timing isn't available, we attempt to polyfill the navigationStart value.
     // Our first attempt is from LUX.ns, which is the time that the snippet execution began. If this
     // is not available, we fall back to the time that the current script execution began.
-    navigationStart: ((_a = window.LUX) === null || _a === void 0 ? void 0 : _a.ns) || scriptStartTime,
+    navigationStart: window.LUX?.ns || scriptStartTime,
   };
   function navigationType() {
     if (performance.navigation && typeof performance.navigation.type !== "undefined") {
@@ -67,34 +66,34 @@
   * @see https://w3c.github.io/resource-timing/#dom-performanceresourcetiming-deliverytype
   */
   function deliveryType() {
-    var navEntry = getNavigationEntry();
+    const navEntry = getNavigationEntry();
     if ("deliveryType" in navEntry) {
       return navEntry.deliveryType || "(empty string)";
     }
     return undefined;
   }
   function getNavigationEntry() {
-    var navEntries = getEntriesByType("navigation");
+    const navEntries = getEntriesByType("navigation");
     if (navEntries.length) {
-      var nativeEntry = navEntries[0];
-      var entry_1 = {
+      const nativeEntry = navEntries[0];
+      const entry = {
         navigationStart: 0,
         activationStart: 0,
       };
-      for (var key in nativeEntry) {
-        entry_1[key] = nativeEntry[key];
+      for (const key in nativeEntry) {
+        entry[key] = nativeEntry[key];
       }
-      return entry_1;
+      return entry;
     }
-    var navType = navigationType();
-    var entry = {
+    const navType = navigationType();
+    const entry = {
       navigationStart: 0,
       activationStart: 0,
       startTime: 0,
       type: navType == 2 ? "back_forward" : navType === 1 ? "reload" : "navigate",
     };
     if (true) {
-      for (var key in timing) {
+      for (const key in timing) {
         if (typeof timing[key] === "number" && key !== "navigationStart") {
           entry[key] = floor(timing[key] - timing.navigationStart);
         }
@@ -109,7 +108,7 @@
   */
   function getEntriesByType(type) {
     if (typeof performance.getEntriesByType === "function") {
-      var entries = performance.getEntriesByType(type);
+      const entries = performance.getEntriesByType(type);
       if (entries && entries.length) {
         return entries;
       }
@@ -123,7 +122,7 @@
   */
   function getEntriesByName(type) {
     if (typeof performance.getEntriesByName === "function") {
-      var entries = performance.getEntriesByName(type);
+      const entries = performance.getEntriesByName(type);
       if (entries && entries.length) {
         return entries;
       }
@@ -139,18 +138,18 @@
     return true;
   }
   function onVisible(cb) {
-    afterPrerender(function () {
+    afterPrerender(() => {
       if (isVisible()) {
         cb();
       }
       else {
-        var onVisibleCallback_1 = function () {
+        const onVisibleCallback = () => {
           if (isVisible()) {
             cb();
-            removeEventListener("visibilitychange", onVisibleCallback_1);
+            removeEventListener("visibilitychange", onVisibleCallback);
           }
         };
-        addEventListener("visibilitychange", onVisibleCallback_1, true);
+        addEventListener("visibilitychange", onVisibleCallback, true);
       }
     });
   }
@@ -175,8 +174,7 @@
 
   // Wrapper to support older browsers (<= IE8)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function addListener(type, callback, useCapture) {
-    if (useCapture === void 0) { useCapture = false; }
+  function addListener(type, callback, useCapture = false) {
     if (addEventListener) {
       addEventListener(type, callback, useCapture);
     }
@@ -186,8 +184,7 @@
   }
   // Wrapper to support older browsers (<= IE8)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function removeListener(type, callback, useCapture) {
-    if (useCapture === void 0) { useCapture = false; }
+  function removeListener(type, callback, useCapture = false) {
     if (removeEventListener) {
       removeEventListener(type, callback, useCapture);
     }
@@ -196,14 +193,14 @@
     }
   }
 
-  var START_MARK = "LUX_start";
-  var END_MARK = "LUX_end";
-  var BOOLEAN_TRUE = "true";
+  const START_MARK = "LUX_start";
+  const END_MARK = "LUX_end";
+  const BOOLEAN_TRUE = "true";
 
   /**
   * Milliseconds since navigationStart representing when the page was restored from the bfcache
   */
-  var pageRestoreTime;
+  let pageRestoreTime;
   function setPageRestoreTime(time) {
     pageRestoreTime = time;
   }
@@ -216,8 +213,7 @@
   * is the page restore time. On all other pages this value will be zero.
   */
   function getZeroTime() {
-    var _a;
-    return max(getPageRestoreTime() || 0, getNavigationEntry().activationStart, ((_a = getEntriesByName(START_MARK).pop()) === null || _a === void 0 ? void 0 : _a.startTime) || 0);
+    return max(getPageRestoreTime() || 0, getNavigationEntry().activationStart, getEntriesByName(START_MARK).pop()?.startTime || 0);
   }
   /**
   * Most time-based metrics that LUX reports should be relative to the "zero" marker, rounded down
@@ -240,8 +236,8 @@
   * time since the last LUX.init() call.
   */
   function msSincePageInit() {
-    var sinceNavigationStart = msSinceNavigationStart();
-    var startMark = getEntriesByName(START_MARK).pop();
+    const sinceNavigationStart = msSinceNavigationStart();
+    const startMark = getEntriesByName(START_MARK).pop();
     if (startMark) {
       return floor(sinceNavigationStart - startMark.startTime);
     }
@@ -255,25 +251,24 @@
     return str;
   }
 
-  var VERSION = "4.2.0";
+  const VERSION = "4.2.1";
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
   */
-  function versionAsFloat(ver) {
-    if (ver === void 0) { ver = VERSION; }
-    var parts = ver.split(".");
+  function versionAsFloat(ver = VERSION) {
+    const parts = ver.split(".");
     return parseFloat(parts[0] + "." + padStart(parts[1], 2, "0") + padStart(parts[2], 2, "0"));
   }
 
-  var sendBeaconFallback = function (url, data) {
-    var xhr = new XMLHttpRequest();
+  const sendBeaconFallback = (url, data) => {
+    const xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("content-type", "application/json");
     xhr.send(String(data));
     return true;
   };
-  var sendBeacon = "sendBeacon" in navigator ? navigator.sendBeacon.bind(navigator) : sendBeaconFallback;
+  const sendBeacon = "sendBeacon" in navigator ? navigator.sendBeacon.bind(navigator) : sendBeaconFallback;
   /**
   * Some values should only be reported if they are non-zero. The exception to this is when the page
   * was prerendered or restored from BF cache
@@ -290,8 +285,8 @@
   */
   function fitUserTimingEntries(utValues, config, url) {
     // Start with the maximum allowed UT entries per beacon
-    var beaconUtValues = utValues.slice(0, config.maxBeaconUTEntries);
-    var remainingUtValues = utValues.slice(config.maxBeaconUTEntries);
+    const beaconUtValues = utValues.slice(0, config.maxBeaconUTEntries);
+    const remainingUtValues = utValues.slice(config.maxBeaconUTEntries);
     // Trim UT entries until they fit within the maximum URL length, ensuring at least one UT entry
     // is included.
     while ((url + "&UT=" + beaconUtValues.join(",")).length > config.maxBeaconUrlLength &&
@@ -300,89 +295,93 @@
     }
     return [beaconUtValues, remainingUtValues];
   }
-  var Beacon = /** @class */ (function () {
-    function Beacon(opts) {
-      var _this = this;
-      this.isRecording = true;
-      this.isSent = false;
-      this.sendRetries = 0;
-      this.maxMeasureTimeout = 0;
-      this.flags = 0;
-      this.metricCollectors = {};
-      this.onBeforeSendCbs = [];
+  class Beacon {
+    config;
+    logger;
+    isRecording = true;
+    isSent = false;
+    sendRetries = 0;
+    maxMeasureTimeout = 0;
+    customerId;
+    pageId;
+    sessionId;
+    flags = 0;
+    startTime;
+    metricCollectors = {};
+    onBeforeSendCbs = [];
+    constructor(opts) {
       this.startTime = opts.startTime || getZeroTime();
       this.config = opts.config;
       this.logger = opts.logger;
       this.customerId = opts.customerId;
       this.sessionId = opts.sessionId;
       this.pageId = opts.pageId;
-      this.maxMeasureTimeout = window.setTimeout(function () {
-        _this.logger.logEvent(82 /* LogEvent.PostBeaconTimeoutReached */);
-        _this.stopRecording();
-        _this.send();
+      this.maxMeasureTimeout = window.setTimeout(() => {
+        this.logger.logEvent(82 /* LogEvent.PostBeaconTimeoutReached */);
+        this.stopRecording();
+        this.send();
       }, this.config.maxMeasureTime - msSincePageInit());
-      addListener("securitypolicyviolation", function (e) {
-        if (e.disposition !== "report" && e.blockedURI === _this.config.beaconUrlV2 && "URL" in self) {
+      addListener("securitypolicyviolation", (e) => {
+        if (e.disposition !== "report" && e.blockedURI === this.config.beaconUrlV2 && "URL" in self) {
           // Some websites might have CSP rules that allow the GET beacon, but not the POST beacon.
           // We can detect this here and attempt to send the beacon to a fallback endpoint.
           //
           // If the fallback endpoint has not been provided in the config, we will fall back to using
           // the POST beacon pathname on the GET beacon origin.
-          if (!_this.config.beaconUrlFallback) {
-            var getOrigin = new URL(_this.config.beaconUrl).origin;
-            var postPathname = new URL(_this.config.beaconUrlV2).pathname;
-            _this.config.beaconUrlFallback = getOrigin + postPathname;
+          if (!this.config.beaconUrlFallback) {
+            const getOrigin = new URL(this.config.beaconUrl).origin;
+            const postPathname = new URL(this.config.beaconUrlV2).pathname;
+            this.config.beaconUrlFallback = getOrigin + postPathname;
           }
           // Update the V2 beacon URL
-          _this.config.beaconUrlV2 = _this.config.beaconUrlFallback;
-          _this.logger.logEvent(90 /* LogEvent.PostBeaconCSPViolation */, [_this.config.beaconUrlV2]);
-          _this.addFlag(4096 /* Flags.BeaconBlockedByCsp */);
+          this.config.beaconUrlV2 = this.config.beaconUrlFallback;
+          this.logger.logEvent(90 /* LogEvent.PostBeaconCSPViolation */, [this.config.beaconUrlV2]);
+          this.addFlag(4096 /* Flags.BeaconBlockedByCsp */);
           // Not all browsers return false if sendBeacon fails. In this case, `this.isSent` will be
           // true, even though the beacon wasn't sent. We need to reset this flag to ensure we can
           // retry sending the beacon.
-          _this.isSent = false;
+          this.isSent = false;
           // Try to send the beacon again
-          if (_this.sendRetries < 1) {
-            _this.sendRetries++;
-            _this.send();
+          if (this.sendRetries < 1) {
+            this.sendRetries++;
+            this.send();
           }
         }
       });
       this.logger.logEvent(80 /* LogEvent.PostBeaconInitialised */);
     }
-    Beacon.prototype.isBeingSampled = function () {
-      var bucket = parseInt(String(this.sessionId).slice(-2));
+    isBeingSampled() {
+      const bucket = parseInt(String(this.sessionId).slice(-2));
       return bucket < this.config.samplerate;
-    };
-    Beacon.prototype.stopRecording = function () {
+    }
+    stopRecording() {
       this.isRecording = false;
       this.logger.logEvent(86 /* LogEvent.PostBeaconStopRecording */);
-    };
-    Beacon.prototype.addCollector = function (metric, collector) {
+    }
+    addCollector(metric, collector) {
       this.metricCollectors[metric] = collector;
-    };
-    Beacon.prototype.addFlag = function (flag) {
+    }
+    addFlag(flag) {
       this.flags = addFlag(this.flags, flag);
-    };
-    Beacon.prototype.beaconUrl = function () {
+    }
+    beaconUrl() {
       return this.config.beaconUrlV2;
-    };
-    Beacon.prototype.onBeforeSend = function (cb) {
+    }
+    onBeforeSend(cb) {
       this.onBeforeSendCbs.push(cb);
-    };
-    Beacon.prototype.send = function () {
+    }
+    send() {
       this.logger.logEvent(81 /* LogEvent.PostBeaconSendCalled */);
-      for (var _i = 0, _a = this.onBeforeSendCbs; _i < _a.length; _i++) {
-        var cb = _a[_i];
+      for (const cb of this.onBeforeSendCbs) {
         cb();
       }
       if (!this.isBeingSampled()) {
         return;
       }
-      var collectionStart = now();
-      var metricData = {};
-      for (var metric in this.metricCollectors) {
-        var data = this.metricCollectors[metric](this.config);
+      const collectionStart = now();
+      const metricData = {};
+      for (const metric in this.metricCollectors) {
+        const data = this.metricCollectors[metric](this.config);
         this.logger.logEvent(91 /* LogEvent.PostBeaconCollector */, [metric, !!data]);
         if (data) {
           metricData[metric] = data;
@@ -400,8 +399,8 @@
       }
       // Only clear the max measure timeout if there's data to send.
       clearTimeout(this.maxMeasureTimeout);
-      var beaconUrl = this.beaconUrl();
-      var payload = Object.assign({
+      const beaconUrl = this.beaconUrl();
+      const payload = Object.assign({
         customerId: this.customerId,
         flags: this.flags,
         measureDuration: msSincePageInit(),
@@ -423,9 +422,8 @@
       if (!this.isSent) {
         this.logger.logEvent(89 /* LogEvent.PostBeaconSendFailed */, [beaconUrl, payload]);
       }
-    };
-    return Beacon;
-  }());
+    }
+  }
   var BeaconMetricKey;
   (function (BeaconMetricKey) {
     BeaconMetricKey["CLS"] = "cls";
@@ -442,15 +440,15 @@
     }
     else {
       // Listen for the onload event and run the callback after a short delay
-      addListener("load", function () {
+      addListener("load", () => {
         setTimeout(callback, 200);
       });
     }
   }
 
-  var luxOrigin = "https://lux.speedcurve.com";
+  const luxOrigin = "https://lux.speedcurve.com";
   function fromObject(obj) {
-    var autoMode = getProperty(obj, "auto", true);
+    const autoMode = getProperty(obj, "auto", true);
     return {
       allowEmptyPostBeacon: getProperty(obj, "allowEmptyPostBeacon", false),
       auto: autoMode,
@@ -468,7 +466,7 @@
       maxBeaconUrlLength: getProperty(obj, "maxBeaconUrlLength", 8190),
       maxBeaconUTEntries: getProperty(obj, "maxBeaconUTEntries", 20),
       maxErrors: getProperty(obj, "maxErrors", 5),
-      maxMeasureTime: getProperty(obj, "maxMeasureTime", 60000),
+      maxMeasureTime: getProperty(obj, "maxMeasureTime", 60_000),
       measureUntil: getProperty(obj, "measureUntil", "onload"),
       minMeasureTime: getProperty(obj, "minMeasureTime", 0),
       newBeaconOnPageShow: getProperty(obj, "newBeaconOnPageShow", false),
@@ -487,13 +485,13 @@
     return defaultValue;
   }
 
-  var SESSION_COOKIE_NAME = "lux_uid";
+  const SESSION_COOKIE_NAME = "lux_uid";
 
-  var customDataValues = {};
-  var updatedCustomData = {};
+  const customDataValues = {};
+  let updatedCustomData = {};
   function addCustomDataValue(name, value) {
-    var typeV = typeof value;
-    var valueIsEmpty = typeV === "undefined" || value === null;
+    const typeV = typeof value;
+    const valueIsEmpty = typeV === "undefined" || value === null;
     if (!valueIsEmpty && customDataValues[name] !== value) {
       // If the value is new or different to the previous value, record it so that later we can send
       // only the values that have changed.
@@ -519,10 +517,10 @@
   * Convert a set of custom data values to the string format expected by the backend.
   */
   function valuesToString(values) {
-    var strings = [];
-    for (var key in values) {
+    const strings = [];
+    for (let key in values) {
       // Convert all values to strings
-      var value = "" + values[key];
+      let value = "" + values[key];
       // Strip out reserved characters (, and | are used as delimiters)
       key = key.replace(/,/g, "").replace(/\|/g, "");
       value = value.replace(/,/g, "").replace(/\|/g, "");
@@ -532,9 +530,8 @@
   }
 
   function getClosestScTrackAttribute(el) {
-    var _a;
     if (el.hasAttribute("data-sctrack")) {
-      var trackId = (_a = el.getAttribute("data-sctrack")) === null || _a === void 0 ? void 0 : _a.trim();
+      const trackId = el.getAttribute("data-sctrack")?.trim();
       if (trackId) {
         return trackId;
       }
@@ -551,22 +548,20 @@
     }
     return false;
   }
-  var MAX_SELECTOR_LENGTH = 100;
-  function getNodeSelector(node, selector) {
-    if (selector === void 0) { selector = ""; }
+  const MAX_SELECTOR_LENGTH = 100;
+  function getNodeSelector(node, selector = "") {
     return _getNodeSelector(node, selector).slice(0, MAX_SELECTOR_LENGTH);
   }
-  function _getNodeSelector(node, selector) {
-    if (selector === void 0) { selector = ""; }
+  function _getNodeSelector(node, selector = "") {
     try {
       if (selector &&
         (node.nodeType === 9 || selector.length > MAX_SELECTOR_LENGTH || !node.parentNode)) {
         // Final selector.
         return selector;
       }
-      var el = node;
+      const el = node;
       // Our first preference is to use the data-sctrack attribute from anywhere in the tree
-      var trackId = getClosestScTrackAttribute(el);
+      const trackId = getClosestScTrackAttribute(el);
       if (trackId) {
         return trackId;
       }
@@ -576,15 +571,15 @@
       }
       else if (el) {
         // Otherwise attempt to get parent elements recursively
-        var name_1 = el.nodeType === 1 ? el.nodeName.toLowerCase() : el.nodeName.toUpperCase();
-        var classes = el.className ? "." + el.className.replace(/\s+/g, ".") : "";
+        const name = el.nodeType === 1 ? el.nodeName.toLowerCase() : el.nodeName.toUpperCase();
+        let classes = el.className ? "." + el.className.replace(/\s+/g, ".") : "";
         // Remove classes until the selector is short enough
-        while ((name_1 + classes).length > MAX_SELECTOR_LENGTH) {
+        while ((name + classes).length > MAX_SELECTOR_LENGTH) {
           classes = classes.split(".").slice(0, -1).join(".");
         }
-        var currentSelector = name_1 + classes + (selector ? ">" + selector : "");
+        const currentSelector = name + classes + (selector ? ">" + selector : "");
         if (el.parentNode) {
-          var selectorWithParent = getNodeSelector(el.parentNode, currentSelector);
+          const selectorWithParent = getNodeSelector(el.parentNode, currentSelector);
           if (selectorWithParent.length < MAX_SELECTOR_LENGTH) {
             return selectorWithParent;
           }
@@ -598,7 +593,27 @@
     return selector;
   }
 
-  var KNOWN_TRACKING_PARAMS = [
+  const subscribers = {};
+  const eventData = {};
+  function subscribe(event, callback) {
+    if (!subscribers[event]) {
+      subscribers[event] = [];
+    }
+    subscribers[event].push(callback);
+    // Ensure previous event data is available to new subscribers
+    if (eventData[event] !== undefined) {
+      callback(eventData[event]);
+    }
+  }
+  function emit(event, data) {
+    eventData[event] = data;
+    if (!subscribers[event]) {
+      return;
+    }
+    subscribers[event].forEach((callback) => callback(data));
+  }
+
+  const KNOWN_TRACKING_PARAMS = [
     "utm_source",
     "utm_campaign",
     "utm_medium",
@@ -609,12 +624,11 @@
   * Add known tracking parameters to the custom data storage.
   */
   function getTrackingParams() {
-    var trackingParams = {};
+    const trackingParams = {};
     if (location.search && typeof URLSearchParams === "function") {
-      var p = new URLSearchParams(location.search);
-      for (var _i = 0, KNOWN_TRACKING_PARAMS_1 = KNOWN_TRACKING_PARAMS; _i < KNOWN_TRACKING_PARAMS_1.length; _i++) {
-        var key = KNOWN_TRACKING_PARAMS_1[_i];
-        var value = p.get(key);
+      const p = new URLSearchParams(location.search);
+      for (const key of KNOWN_TRACKING_PARAMS) {
+        const value = p.get(key);
         if (value) {
           trackingParams[key] = value;
         }
@@ -623,42 +637,38 @@
     return trackingParams;
   }
 
-  var Logger = /** @class */ (function () {
-    function Logger() {
-      this.events = [];
-    }
-    Logger.prototype.logEvent = function (event, args) {
-      if (args === void 0) { args = []; }
+  class Logger {
+    events = [];
+    logEvent(event, args = []) {
       this.events.push([now(), event, args]);
-    };
-    Logger.prototype.getEvents = function () {
+    }
+    getEvents() {
       return this.events;
-    };
-    return Logger;
-  }());
+    }
+  }
 
-  var sessionValue = 0;
-  var sessionEntries = [];
-  var sessionAttributions = [];
-  var largestEntry;
-  var maximumSessionValue = 0;
+  let sessionValue = 0;
+  let sessionEntries = [];
+  let sessionAttributions = [];
+  let largestEntry;
+  let maximumSessionValue = 0;
   function processEntry$3(entry) {
     if (!entry.hadRecentInput) {
-      var firstEntry = sessionEntries[0];
-      var latestEntry = sessionEntries[sessionEntries.length - 1];
-      var sources = entry.sources
+      const firstEntry = sessionEntries[0];
+      const latestEntry = sessionEntries[sessionEntries.length - 1];
+      const sources = entry.sources
       ? entry.sources
-      .filter(function (source) { return source.node; })
-      .map(function (source) { return ({
+      .filter((source) => source.node)
+      .map((source) => ({
         value: entry.value,
         startTime: processTimeMetric(entry.startTime),
         elementSelector: getNodeSelector(source.node),
         elementType: source.node.nodeName,
-      }); })
+      }))
       : [];
       if (sessionEntries.length &&
         (entry.startTime - latestEntry.startTime >= 1000 ||
-        entry.startTime - firstEntry.startTime >= 5000)) {
+          entry.startTime - firstEntry.startTime >= 5000)) {
         sessionValue = entry.value;
         sessionEntries = [entry];
         sessionAttributions = sources;
@@ -694,44 +704,13 @@
         startTime: processTimeMetric(largestEntry.startTime),
       }
       : null,
-      sources: sessionAttributions.length ? sessionAttributions.slice(0, config.maxAttributionEntries) : null,
+      sources: sessionAttributions.length
+      ? sessionAttributions.slice(0, config.maxAttributionEntries)
+      : null,
     };
   }
 
-  /******************************************************************************
-  Copyright (c) Microsoft Corporation.
-
-  Permission to use, copy, modify, and/or distribute this software for any
-  purpose with or without fee is hereby granted.
-
-  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-  REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-  AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-  INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-  LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-  OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-  PERFORMANCE OF THIS SOFTWARE.
-  ***************************************************************************** */
-  /* global Reflect, Promise, SuppressedError, Symbol, Iterator */
-
-
-  var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-      for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-      }
-      return t;
-    };
-    return __assign.apply(this, arguments);
-  };
-
-  typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
-    var e = new Error(message);
-    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-  };
-
-  var entries = [];
+  let entries = [];
   function processEntry$2(entry) {
     entries.push(entry);
   }
@@ -742,13 +721,13 @@
     return entries;
   }
   function getData$2(config) {
-    var summarizedEntries = [];
-    var totalDuration = 0;
-    var totalBlockingDuration = 0;
-    var totalStyleAndLayoutDuration = 0;
-    var totalWorkDuration = 0;
-    entries.forEach(function (entry) {
-      var startTime = entry.startTime, blockingDuration = entry.blockingDuration, duration = entry.duration, renderStart = entry.renderStart, styleAndLayoutStart = entry.styleAndLayoutStart;
+    const summarizedEntries = [];
+    let totalDuration = 0;
+    let totalBlockingDuration = 0;
+    let totalStyleAndLayoutDuration = 0;
+    let totalWorkDuration = 0;
+    entries.forEach((entry) => {
+      const { startTime, blockingDuration, duration, renderStart, styleAndLayoutStart } = entry;
       totalDuration += duration;
       totalBlockingDuration += blockingDuration;
       totalStyleAndLayoutDuration += styleAndLayoutStart
@@ -769,18 +748,18 @@
       totalEntries: entries.length,
       totalStyleAndLayoutDuration: floor(totalStyleAndLayoutDuration),
       totalWorkDuration: floor(totalWorkDuration),
-      scripts: summarizeLoAFScripts(entries.flatMap(function (entry) { return entry.scripts; }), config),
+      scripts: summarizeLoAFScripts(entries.flatMap((entry) => entry.scripts), config),
       // Only keep the slowest LoAF entries
       entries: summarizedEntries
-        .sort(function (a, b) { return b.duration - a.duration; })
-        .slice(0, config.maxAttributionEntries)
-        .sort(function (a, b) { return a.startTime - b.startTime; }),
-      };
+      .sort((a, b) => b.duration - a.duration)
+      .slice(0, config.maxAttributionEntries)
+      .sort((a, b) => a.startTime - b.startTime),
+    };
   }
   function summarizeLoAFScripts(scripts, config) {
-    var summary = {};
-    scripts.forEach(function (script) {
-      var key = script.sourceURL;
+    const summary = {};
+    scripts.forEach((script) => {
+      const key = script.sourceURL;
       if (!summary[key]) {
         summary[key] = {
           sourceUrl: script.sourceURL,
@@ -802,9 +781,15 @@
       summary[key].totalForcedStyleAndLayoutDuration += script.forcedStyleAndLayoutDuration;
       summary[key].timings.push([floor(script.startTime), floor(script.duration)]);
     });
-    return Object.values(summary).map(function (script) { return (__assign(__assign({}, script), { totalDuration: floor(script.totalDuration), totalPauseDuration: floor(script.totalPauseDuration), totalForcedStyleAndLayoutDuration: floor(script.totalForcedStyleAndLayoutDuration) })); })
-      .sort(function (a, b) { return b.totalDuration - a.totalDuration; })
-      .slice(0, config.maxAttributionEntries);
+    return Object.values(summary)
+    .map((script) => ({
+      ...script,
+      totalDuration: floor(script.totalDuration),
+      totalPauseDuration: floor(script.totalPauseDuration),
+      totalForcedStyleAndLayoutDuration: floor(script.totalForcedStyleAndLayoutDuration),
+    }))
+    .sort((a, b) => b.totalDuration - a.totalDuration)
+    .slice(0, config.maxAttributionEntries);
   }
 
   /**
@@ -812,7 +797,7 @@
   * bare minimum required to measure just the INP value and does not store the actual event entries.
   */
   // The maximum number of interactions to store
-  var MAX_INTERACTIONS = 10;
+  const MAX_INTERACTIONS = 10;
   var INPPhase;
   (function (INPPhase) {
     INPPhase["InputDelay"] = "ID";
@@ -820,11 +805,11 @@
     INPPhase["PresentationDelay"] = "PD";
   })(INPPhase || (INPPhase = {}));
   // A list of the slowest interactions
-  var slowestEntries = [];
+  let slowestEntries = [];
   // A map of the slowest interactions by ID
-  var slowestEntriesMap = {};
+  let slowestEntriesMap = {};
   // The total number of interactions recorded on the page
-  var interactionCountEstimate = 0;
+  let interactionCountEstimate = 0;
   function reset$1() {
     interactionCountEstimate = 0;
     slowestEntries = [];
@@ -832,22 +817,22 @@
   }
   function processEntry$1(entry) {
     if (entry.interactionId || (entry.entryType === "first-input" && !entryExists(entry))) {
-      var duration = entry.duration, startTime = entry.startTime, interactionId = entry.interactionId, name_1 = entry.name, processingStart = entry.processingStart, processingEnd = entry.processingEnd, target = entry.target;
+      const { duration, startTime, interactionId, name, processingStart, processingEnd, target } = entry;
       if (duration < 0) {
         return;
       }
-      var processingTime = processingEnd - processingStart;
-      var existingEntry = slowestEntriesMap[interactionId];
-      var selector = target ? getNodeSelector(target) : null;
+      const processingTime = processingEnd - processingStart;
+      const existingEntry = slowestEntriesMap[interactionId];
+      const selector = target ? getNodeSelector(target) : null;
       if (existingEntry) {
-        var longerDuration = duration > existingEntry.duration;
-        var sameWithLongerProcessingTime = duration === existingEntry.duration && processingTime > existingEntry.processingTime;
+        const longerDuration = duration > existingEntry.duration;
+        const sameWithLongerProcessingTime = duration === existingEntry.duration && processingTime > existingEntry.processingTime;
         if (longerDuration || sameWithLongerProcessingTime) {
           // Only replace an existing interation if the duration is longer, or if the duration is the
           // same but the processing time is longer. The logic around this is that the interaction with
           // longer processing time is likely to be the event that actually had a handler.
           existingEntry.duration = duration;
-          existingEntry.name = name_1;
+          existingEntry.name = name;
           existingEntry.processingEnd = processingEnd;
           existingEntry.processingStart = processingStart;
           existingEntry.processingTime = processingTime;
@@ -859,57 +844,54 @@
       else {
         interactionCountEstimate++;
         slowestEntriesMap[interactionId] = {
-          duration: duration,
-          interactionId: interactionId,
-          name: name_1,
-          processingEnd: processingEnd,
-          processingStart: processingStart,
-          processingTime: processingTime,
-          selector: selector,
-          startTime: startTime,
-          target: target,
+          duration,
+          interactionId,
+          name,
+          processingEnd,
+          processingStart,
+          processingTime,
+          selector,
+          startTime,
+          target,
         };
         slowestEntries.push(slowestEntriesMap[interactionId]);
       }
       // Only store the longest <MAX_INTERACTIONS> interactions
-      slowestEntries.sort(function (a, b) { return b.duration - a.duration; });
-      slowestEntries.splice(MAX_INTERACTIONS).forEach(function (entry) {
+      slowestEntries.sort((a, b) => b.duration - a.duration);
+      slowestEntries.splice(MAX_INTERACTIONS).forEach((entry) => {
         delete slowestEntriesMap[entry.interactionId];
       });
     }
   }
   function entryExists(e1) {
-    return slowestEntries.some(function (e2) { return e1.startTime === e2.startTime && e1.duration === e2.duration; });
+    return slowestEntries.some((e2) => e1.startTime === e2.startTime && e1.duration === e2.duration);
   }
   /**
   * Returns an estimated high percentile INP value based on the total number of interactions on the
   * current page.
   */
   function getHighPercentileInteraction() {
-    var index = Math.min(slowestEntries.length - 1, Math.floor(getInteractionCount() / 50));
+    const index = Math.min(slowestEntries.length - 1, Math.floor(getInteractionCount() / 50));
     return slowestEntries[index];
   }
   function getData$1(config) {
-    var _a;
-    var interaction = getHighPercentileInteraction();
+    const interaction = getHighPercentileInteraction();
     if (!interaction) {
       return undefined;
     }
-    var duration = interaction.duration, startTime = interaction.startTime, processingStart = interaction.processingStart;
-    var inpScripts = getEntries$1()
-    .flatMap(function (entry) { return entry.scripts; })
+    const { duration, startTime, processingStart } = interaction;
+    const inpScripts = getEntries$1()
+    .flatMap((entry) => entry.scripts)
     // Only include scripts that started during the interaction
-    .filter(function (script) {
-      return script.startTime + script.duration >= startTime && script.startTime <= startTime + duration;
-    })
-    .map(function (_script) {
-      var script = JSON.parse(JSON.stringify(_script));
+    .filter((script) => script.startTime + script.duration >= startTime && script.startTime <= startTime + duration)
+    .map((_script) => {
+      const script = JSON.parse(JSON.stringify(_script));
       // Clamp the script duration to the time of the interaction
       script.duration = script.startTime + script.duration - max(startTime, script.startTime);
       script.inpPhase = getINPPhase(script, interaction);
       return script;
     });
-    var loafScripts = summarizeLoAFScripts(inpScripts, config);
+    const loafScripts = summarizeLoAFScripts(inpScripts, config);
     return {
       value: interaction.duration,
       startTime: processTimeMetric(startTime),
@@ -924,14 +906,14 @@
       attribution: {
         eventType: interaction.name,
         elementSelector: interaction.selector || null,
-        elementType: ((_a = interaction.target) === null || _a === void 0 ? void 0 : _a.nodeName) || null,
-        loafScripts: loafScripts,
+        elementType: interaction.target?.nodeName || null,
+        loafScripts,
       },
     };
   }
   function getINPPhase(script, interaction) {
-    var processingStart = interaction.processingStart, processingTime = interaction.processingTime, startTime = interaction.startTime;
-    var inputDelay = processingStart - startTime;
+    const { processingStart, processingTime, startTime } = interaction;
+    const inputDelay = processingStart - startTime;
     if (script.startTime < startTime + inputDelay) {
       return INPPhase.InputDelay;
     }
@@ -947,7 +929,7 @@
     return interactionCountEstimate;
   }
 
-  var lcpEntry;
+  let lcpEntry;
   function processEntry(entry) {
     if (!lcpEntry || entry.startTime > lcpEntry.startTime) {
       lcpEntry = entry;
@@ -960,18 +942,18 @@
     if (!lcpEntry) {
       return undefined;
     }
-    var subParts = null;
+    let subParts = null;
     if (lcpEntry.url) {
-      var lcpResource = getEntriesByType("resource").find(function (resource) { return resource.name === lcpEntry.url; });
+      const lcpResource = getEntriesByType("resource").find((resource) => resource.name === lcpEntry.url);
       if (lcpResource) {
-        var navEntry = getNavigationEntry();
-        var responseStart = navEntry.responseStart || timing.responseStart;
-        var activationStart = navEntry.activationStart;
-        var ttfb = max(0, responseStart - activationStart);
-        var lcpStartTime = lcpResource.startTime;
-        var lcpRequestStart = (lcpResource.requestStart || lcpStartTime) - activationStart;
-        var lcpResponseEnd = max(lcpRequestStart, lcpResource.responseEnd - activationStart);
-        var lcpRenderTime = max(lcpResponseEnd, lcpStartTime - activationStart);
+        const navEntry = getNavigationEntry();
+        const responseStart = navEntry.responseStart || timing.responseStart;
+        const activationStart = navEntry.activationStart;
+        const ttfb = max(0, responseStart - activationStart);
+        const lcpStartTime = lcpResource.startTime;
+        const lcpRequestStart = (lcpResource.requestStart || lcpStartTime) - activationStart;
+        const lcpResponseEnd = max(lcpRequestStart, lcpResource.responseEnd - activationStart);
+        const lcpRenderTime = max(lcpResponseEnd, lcpStartTime - activationStart);
         subParts = {
           resourceLoadDelay: clamp(floor(lcpRequestStart - ttfb)),
           resourceLoadTime: clamp(floor(lcpResponseEnd - lcpRequestStart)),
@@ -979,7 +961,7 @@
         };
       }
     }
-    var value = lcpEntry.startTime;
+    const value = lcpEntry.startTime;
     if (!shouldReportValue(value)) {
       // It's possible the LCP entry we have occurred before the current page was initialised. In
       // this case, we don't want to report the LCP value.
@@ -987,7 +969,7 @@
     }
     return {
       value: processTimeMetric(value),
-      subParts: subParts,
+      subParts,
       attribution: lcpEntry.element
       ? {
         elementSelector: getNodeSelector(lcpEntry.element),
@@ -997,20 +979,20 @@
     };
   }
 
-  var ALL_ENTRIES = [];
+  const ALL_ENTRIES = [];
   function observe(type, callback, options) {
     if (typeof PerformanceObserver === "function" &&
       PerformanceObserver.supportedEntryTypes.includes(type)) {
-      var po = new PerformanceObserver(function (list) {
-        list.getEntries().forEach(function (entry) { return callback(entry); });
+      const po = new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => callback(entry));
       });
-      po.observe(Object.assign({ type: type, buffered: true }, { options: options }));
+      po.observe(Object.assign({ type, buffered: true }, { options }));
       return po;
     }
     return undefined;
   }
   function getEntries(type) {
-    return ALL_ENTRIES.filter(function (entry) { return entry.entryType === type; });
+    return ALL_ENTRIES.filter((entry) => entry.entryType === type);
   }
   function addEntry(entry) {
     ALL_ENTRIES.push(entry);
@@ -1019,24 +1001,24 @@
   /**
   * A server timing metric that has its value set to the duration field
   */
-  var TYPE_DURATION = "r";
+  const TYPE_DURATION = "r";
   /**
   * When a description metric has no value, we consider it to be a boolean and set it to this value.
   */
-  var BOOLEAN_TRUE_VALUE = "true";
+  const BOOLEAN_TRUE_VALUE = "true";
   function getKeyValuePairs(config, serverTiming) {
-    var pairs = {};
-    serverTiming.forEach(function (stEntry) {
-      var name = stEntry.name;
-      var description = stEntry.description;
+    const pairs = {};
+    serverTiming.forEach((stEntry) => {
+      const name = stEntry.name;
+      const description = stEntry.description;
       if (name in config) {
-        var spec = config[name];
-        var multiplier = spec[1];
+        const spec = config[name];
+        const multiplier = spec[1];
         if (spec[0] === TYPE_DURATION) {
           pairs[name] = stEntry.duration * (multiplier || 1);
         }
         else if (description && multiplier) {
-          var numericValue = parseFloat(description);
+          const numericValue = parseFloat(description);
           if (!isNaN(numericValue)) {
             pairs[name] = numericValue * multiplier;
           }
@@ -1050,12 +1032,12 @@
   }
 
   function getMatchesFromPatternMap(patternMap, hostname, pathname, firstOnly) {
-    var matches = [];
-    for (var key in patternMap) {
-      var patterns = patternMap[key];
+    const matches = [];
+    for (const key in patternMap) {
+      const patterns = patternMap[key];
       if (Array.isArray(patterns)) {
-        for (var i in patterns) {
-          var pattern = patterns[i];
+        for (const i in patterns) {
+          const pattern = patterns[i];
           if (typeof pattern === "string" && patternMatchesUrl(pattern, hostname, pathname)) {
             if (firstOnly) {
               return key;
@@ -1071,7 +1053,7 @@
     return matches;
   }
   function patternMatchesUrl(pattern, hostname, pathname) {
-    var regex = createRegExpFromPattern(pattern);
+    const regex = createRegExpFromPattern(pattern);
     if (pattern.charAt(0) === "/") {
       // Rule is a pathname only
       return regex.test(pathname);
@@ -1087,8 +1069,8 @@
     return str.replace(/[-/\\^$+?.()|[\]{}]/g, "\\$&");
   }
 
-  var LUX = window.LUX || {};
-  var scriptEndTime = scriptStartTime;
+  let LUX = window.LUX || {};
+  let scriptEndTime = scriptStartTime;
   LUX = (function () {
     // -------------------------------------------------------------------------
     // Settings
@@ -1102,19 +1084,19 @@
     // -------------------------------------------------------------------------
     /// End
     // -------------------------------------------------------------------------
-    var logger = new Logger();
-    var globalConfig = fromObject(LUX);
+    const logger = new Logger();
+    const globalConfig = fromObject(LUX);
     logger.logEvent(1 /* LogEvent.EvaluationStart */, [VERSION, JSON.stringify(globalConfig)]);
     // Variable aliases that allow the minifier to reduce file size.
-    var document = window.document;
-    var addEventListener = window.addEventListener;
-    var removeEventListener = window.removeEventListener;
-    var setTimeout = window.setTimeout;
-    var clearTimeout = window.clearTimeout;
-    var encodeURIComponent = window.encodeURIComponent;
-    var thisScript = document.currentScript || {};
+    const document = window.document;
+    const addEventListener = window.addEventListener;
+    const removeEventListener = window.removeEventListener;
+    const setTimeout = window.setTimeout;
+    const clearTimeout = window.clearTimeout;
+    const encodeURIComponent = window.encodeURIComponent;
+    const thisScript = document.currentScript || {};
     // Log JS errors.
-    var nErrors = 0;
+    let nErrors = 0;
     function errorHandler(e) {
       if (!globalConfig.trackErrors) {
         return;
@@ -1122,7 +1104,7 @@
       nErrors++;
       if (e && typeof e.filename !== "undefined" && typeof e.message !== "undefined") {
         // Always send LUX errors
-        var isLuxError = e.filename.indexOf("/lux.js?") > -1 || e.message.indexOf("LUX") > -1;
+        const isLuxError = e.filename.indexOf("/lux.js?") > -1 || e.message.indexOf("LUX") > -1;
         if (isLuxError || (nErrors <= globalConfig.maxErrors && _sample())) {
           // Sample & limit other errors.
           // Send the error beacon.
@@ -1152,28 +1134,28 @@
     }
     addEventListener("error", errorHandler);
     // Bitmask of flags for this session & page
-    var gFlags = 0;
-    var gaMarks = [];
-    var gaMeasures = [];
-    var ghIx = {}; // hash for Interaction Metrics (scroll, click, keyboard)
-    var gbLuxSent = 0; // have we sent the LUX data? (avoid sending twice in unload)
-    var gbNavSent = 0; // have we sent the Nav Timing beacon yet? (avoid sending twice for SPA)
-    var gbIxSent = 0; // have we sent the IX data? (avoid sending twice for SPA)
-    var gbFirstPV = 1; // this is the first page view (vs. a SPA "soft nav")
-    var gSessionTimeout = 30 * 60; // number of seconds after which we consider a session to have "timed out" (used for calculating bouncerate)
-    var gSyncId = createSyncId(); // if we send multiple beacons, use this to sync them (eg, LUX & IX) (also called "luxid")
-    var gUid = refreshUniqueId(gSyncId); // cookie for this session ("Unique ID")
-    var gCustomDataTimeout; // setTimeout timer for sending a Custom data beacon after onload
-    var gMaxMeasureTimeout; // setTimeout timer for sending the beacon after a maximum measurement time
+    let gFlags = 0;
+    const gaMarks = [];
+    const gaMeasures = [];
+    let ghIx = {}; // hash for Interaction Metrics (scroll, click, keyboard)
+    let gbLuxSent = 0; // have we sent the LUX data? (avoid sending twice in unload)
+    let gbNavSent = 0; // have we sent the Nav Timing beacon yet? (avoid sending twice for SPA)
+    let gbIxSent = 0; // have we sent the IX data? (avoid sending twice for SPA)
+    let gbFirstPV = 1; // this is the first page view (vs. a SPA "soft nav")
+    const gSessionTimeout = 30 * 60; // number of seconds after which we consider a session to have "timed out" (used for calculating bouncerate)
+    let gSyncId = createSyncId(); // if we send multiple beacons, use this to sync them (eg, LUX & IX) (also called "luxid")
+    let gUid = refreshUniqueId(gSyncId); // cookie for this session ("Unique ID")
+    let gCustomDataTimeout; // setTimeout timer for sending a Custom data beacon after onload
+    let gMaxMeasureTimeout; // setTimeout timer for sending the beacon after a maximum measurement time
     // Storing the customer ID in a local variable makes it possible to run multiple instances of lux.js
     // on the same page.
-    var _thisCustomerId = LUX.customerid;
-    var beaconCollectors = [];
-    var logEntry = function (entry) {
+    let _thisCustomerId = LUX.customerid;
+    const beaconCollectors = [];
+    const logEntry = (entry) => {
       logger.logEvent(42 /* LogEvent.PerformanceEntryReceived */, [entry]);
     };
     // Most PerformanceEntry types we log an event for and add it to the global entry store.
-    var processAndLogEntry = function (entry) {
+    const processAndLogEntry = (entry) => {
       addEntry(entry);
       logEntry(entry);
     };
@@ -1181,7 +1163,7 @@
       observe("longtask", processAndLogEntry);
       observe("element", processAndLogEntry);
       observe("paint", processAndLogEntry);
-      if (observe("largest-contentful-paint", function (entry) {
+      if (observe("largest-contentful-paint", (entry) => {
         // Process the LCP entry for the legacy beacon
         processAndLogEntry(entry);
         // Process the LCP entry for the new beacon
@@ -1189,36 +1171,36 @@
       })) {
         beaconCollectors.push([BeaconMetricKey.LCP, getData]);
       }
-      if (observe("layout-shift", function (entry) {
+      if (observe("layout-shift", (entry) => {
         processEntry$3(entry);
         logEntry(entry);
       })) {
         beaconCollectors.push([BeaconMetricKey.CLS, getData$3]);
       }
-      if (observe("long-animation-frame", function (entry) {
+      if (observe("long-animation-frame", (entry) => {
         processEntry$2(entry);
         logEntry(entry);
       })) {
         beaconCollectors.push([BeaconMetricKey.LoAF, getData$2]);
       }
-      var handleINPEntry_1 = function (entry) {
+      const handleINPEntry = (entry) => {
         processEntry$1(entry);
         logEntry(entry);
       };
-      observe("first-input", function (entry) {
+      observe("first-input", (entry) => {
         logEntry(entry);
-        var entryTime = entry.processingStart - entry.startTime;
+        const entryTime = entry.processingStart - entry.startTime;
         if (!gFirstInputDelay || gFirstInputDelay < entryTime) {
           gFirstInputDelay = floor(entryTime);
         }
         // Allow first-input events to be considered for INP
-        handleINPEntry_1(entry);
+        handleINPEntry(entry);
       });
       // TODO: Set durationThreshold to 40 once performance.interactionCount is widely supported.
       // Right now we have to count every event to get the total interaction count so that we can
       // estimate a high percentile value for INP.
-      if (observe("event", function (entry) {
-        handleINPEntry_1(entry);
+      if (observe("event", (entry) => {
+        handleINPEntry(entry);
         // It's useful to log the interactionId, but it is not serialised by default. Annoyingly, we
         // need to manually serialize our own object with the keys we want.
         logEntry({
@@ -1237,28 +1219,27 @@
     catch (e) {
       logger.logEvent(51 /* LogEvent.PerformanceObserverError */, [e]);
     }
-    var initPostBeacon = function () {
-      var b = new Beacon({
+    const initPostBeacon = () => {
+      const b = new Beacon({
         config: globalConfig,
-        logger: logger,
+        logger,
         customerId: getCustomerId(),
         sessionId: gUid,
         pageId: gSyncId,
       });
-      beaconCollectors.forEach(function (_a) {
-        var metric = _a[0], collector = _a[1];
+      beaconCollectors.forEach(([metric, collector]) => {
         b.addCollector(metric, collector);
       });
       return b;
     };
-    var beacon = initPostBeacon();
+    let beacon = initPostBeacon();
     if (_sample()) {
       logger.logEvent(21 /* LogEvent.SessionIsSampled */, [globalConfig.samplerate]);
     }
     else {
       logger.logEvent(22 /* LogEvent.SessionIsNotSampled */, [globalConfig.samplerate]);
     }
-    var gLuxSnippetStart = LUX.ns ? LUX.ns - timing.navigationStart : 0;
+    const gLuxSnippetStart = LUX.ns ? LUX.ns - timing.navigationStart : 0;
     if (!performance.timing) {
       logger.logEvent(71 /* LogEvent.NavTimingNotSupported */);
       gFlags = addFlag(gFlags, 2 /* Flags.NavTimingNotSupported */);
@@ -1269,9 +1250,9 @@
     // FIRST INPUT DELAY (FID)
     // The basic idea behind FID is to attach various input event listeners and measure the time
     // between when the event happens and when the handler executes. That is FID.
-    var gFirstInputDelay;
-    var gaEventTypes = ["click", "mousedown", "keydown", "touchstart", "pointerdown"]; // NOTE: does NOT include scroll!
-    var ghListenerOptions = { passive: true, capture: true };
+    let gFirstInputDelay;
+    const gaEventTypes = ["click", "mousedown", "keydown", "touchstart", "pointerdown"]; // NOTE: does NOT include scroll!
+    const ghListenerOptions = { passive: true, capture: true };
     // Record the FIRST input delay.
     function recordDelay(delay) {
       if (!gFirstInputDelay) {
@@ -1303,7 +1284,7 @@
     // Record FID as the delta between when the event happened and when the
     // listener was able to execute.
     function onInput(evt) {
-      var bCancelable = false;
+      let bCancelable = false;
       try {
         // Seeing "Permission denied" errors, so do a simple try-catch.
         bCancelable = evt.cancelable;
@@ -1314,19 +1295,19 @@
         return;
       }
       if (bCancelable) {
-        var now_1 = msSinceNavigationStart();
-        var eventTimeStamp = evt.timeStamp;
+        let now = msSinceNavigationStart();
+        const eventTimeStamp = evt.timeStamp;
         if (eventTimeStamp > 1520000000) {
           // If the event timeStamp is an epoch time instead of a time relative to NavigationStart,
           // then compare it to Date.now() instead of performance.now().
-          now_1 = Number(new Date());
+          now = Number(new Date());
         }
-        if (eventTimeStamp > now_1) {
+        if (eventTimeStamp > now) {
           // If there is a race condition and eventTimeStamp happened after
           // this code was executed, something is wrong. Bail.
           return;
         }
-        var delay = now_1 - eventTimeStamp;
+        const delay = now - eventTimeStamp;
         if (evt.type === "pointerdown") {
           // special case
           onPointerDown(delay);
@@ -1343,28 +1324,23 @@
     ////////////////////// FID END
     // This is a wrapper around performance.mark that falls back to a polyfill when the User Timing
     // API isn't supported.
-    function _mark() {
-      var _a, _b;
-      var args = [];
-      for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-      }
+    function _mark(...args) {
       logger.logEvent(4 /* LogEvent.MarkCalled */, args);
       if (performance.mark) {
         // Use the native performance.mark where possible...
-        return performance.mark.apply(performance, args);
+        return performance.mark(...args);
       }
       // ...Otherwise provide a polyfill
       if (true) {
-        var name_1 = args[0];
-        var detail = ((_a = args[1]) === null || _a === void 0 ? void 0 : _a.detail) || null;
-        var startTime = ((_b = args[1]) === null || _b === void 0 ? void 0 : _b.startTime) || msSincePageInit();
-        var entry = {
+        const name = args[0];
+        const detail = args[1]?.detail || null;
+        const startTime = args[1]?.startTime || msSincePageInit();
+        const entry = {
           entryType: "mark",
           duration: 0,
-          name: name_1,
-          detail: detail,
-          startTime: startTime,
+          name,
+          detail,
+          startTime,
         };
         gaMarks.push(entry);
         gFlags = addFlag(gFlags, 4 /* Flags.UserTimingNotSupported */);
@@ -1374,16 +1350,12 @@
     }
     // This is a wrapper around performance.measure that falls back to a polyfill when the User Timing
     // API isn't supported.
-    function _measure() {
-      var args = [];
-      for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-      }
+    function _measure(...args) {
       logger.logEvent(5 /* LogEvent.MeasureCalled */, args);
-      var name = args[0];
-      var startMarkName = args[1];
-      var endMarkName = args[2];
-      var options;
+      const name = args[0];
+      let startMarkName = args[1];
+      let endMarkName = args[2];
+      let options;
       if (typeof startMarkName === "object") {
         options = args[1];
         startMarkName = options.start;
@@ -1416,20 +1388,20 @@
       }
       if (performance.measure) {
         // Use the native performance.measure where possible...
-        return performance.measure.apply(performance, args);
+        return performance.measure(...args);
       }
       // ...Otherwise provide a polyfill
       if (true) {
-        var navEntry = getNavigationEntry();
-        var startTime = typeof startMarkName === "number" ? startMarkName : 0;
-        var endTime = typeof endMarkName === "number" ? endMarkName : msSincePageInit();
-        var throwError = function (missingMark) {
+        const navEntry = getNavigationEntry();
+        let startTime = typeof startMarkName === "number" ? startMarkName : 0;
+        let endTime = typeof endMarkName === "number" ? endMarkName : msSincePageInit();
+        const throwError = (missingMark) => {
           throw new DOMException("Failed to execute 'measure' on 'Performance': The mark '" +
             missingMark +
             "' does not exist");
         };
         if (typeof startMarkName === "string") {
-          var startMark = _getMark(startMarkName);
+          const startMark = _getMark(startMarkName);
           if (startMark) {
             startTime = startMark.startTime;
           }
@@ -1442,7 +1414,7 @@
           }
         }
         if (typeof endMarkName === "string") {
-          var endMark = _getMark(endMarkName);
+          const endMark = _getMark(endMarkName);
           if (endMark) {
             endTime = endMark.startTime;
           }
@@ -1454,20 +1426,20 @@
             throwError(endMarkName);
           }
         }
-        var duration = endTime - startTime;
-        var detail = null;
+        let duration = endTime - startTime;
+        let detail = null;
         if (options) {
           if (options.duration) {
             duration = options.duration;
           }
           detail = options.detail;
         }
-        var entry = {
+        const entry = {
           entryType: "measure",
-          name: name,
-          detail: detail,
-          startTime: startTime,
-          duration: duration,
+          name,
+          detail,
+          startTime,
+          duration,
         };
         gaMeasures.push(entry);
         gFlags = addFlag(gFlags, 4 /* Flags.UserTimingNotSupported */);
@@ -1481,8 +1453,8 @@
     }
     function _getM(name, aItems) {
       if (aItems) {
-        for (var i = aItems.length - 1; i >= 0; i--) {
-          var m = aItems[i];
+        for (let i = aItems.length - 1; i >= 0; i--) {
+          const m = aItems[i];
           if (name === m.name) {
             return m;
           }
@@ -1492,7 +1464,7 @@
     }
     // Return an array of marks.
     function _getMarks() {
-      var marks = getEntriesByType("mark");
+      const marks = getEntriesByType("mark");
       if (marks.length) {
         return marks;
       }
@@ -1500,7 +1472,7 @@
     }
     // Return an array of measures.
     function _getMeasures() {
-      var measures = getEntriesByType("measure");
+      const measures = getEntriesByType("measure");
       if (measures.length) {
         return measures;
       }
@@ -1511,49 +1483,49 @@
       // The User Timing spec allows for there to be multiple marks with the same name,
       // and multiple measures with the same name. But we can only send back one value
       // for a name, so we always take the maximum value.
-      var hUT = {};
-      var startMark = _getMark(START_MARK);
+      const hUT = {};
+      const startMark = _getMark(START_MARK);
       // For user timing values taken in a SPA page load, we need to adjust them
       // so that they're zeroed against the last LUX.init() call.
-      var tZero = getZeroTime();
+      const tZero = getZeroTime();
       // marks
-      _getMarks().forEach(function (mark) {
-        var name = mark.name;
+      _getMarks().forEach((mark) => {
+        const name = mark.name;
         if (name === START_MARK || name === END_MARK) {
           // Don't include the internal marks in the beacon
           return;
         }
-        var startTime = floor(mark.startTime - tZero);
+        const startTime = floor(mark.startTime - tZero);
         if (startTime < 0) {
           // Exclude marks that were taken before the current SPA page view
           return;
         }
         if (typeof hUT[name] === "undefined") {
-          hUT[name] = { startTime: startTime };
+          hUT[name] = { startTime };
         }
         else {
           hUT[name].startTime = max(startTime, hUT[name].startTime);
         }
       });
       // measures
-      _getMeasures().forEach(function (measure) {
+      _getMeasures().forEach((measure) => {
         if (startMark && measure.startTime < startMark.startTime) {
           // Exclude measures that were taken before the current SPA page view
           return;
         }
-        var name = measure.name;
-        var startTime = floor(measure.startTime - tZero);
-        var duration = floor(measure.duration);
+        const name = measure.name;
+        const startTime = floor(measure.startTime - tZero);
+        const duration = floor(measure.duration);
         if (typeof hUT[name] === "undefined" || startTime > hUT[name].startTime) {
-          hUT[name] = { startTime: startTime, duration: duration };
+          hUT[name] = { startTime, duration };
         }
       });
       // Convert the user timing values into a delimited string. This string takes the format
       // markName|startTime,measureName|startTime|duration,[markName...]
-      var aUT = [];
-      for (var utName in hUT) {
-        var _a = hUT[utName], startTime = _a.startTime, duration = _a.duration;
-        var utParts = [utName, startTime];
+      const aUT = [];
+      for (const utName in hUT) {
+        const { startTime, duration } = hUT[utName];
+        const utParts = [utName, startTime];
         if (typeof duration !== "undefined") {
           utParts.push(duration);
         }
@@ -1563,10 +1535,10 @@
     }
     // Return a string of Element Timing Metrics formatted for beacon querystring.
     function elementTimingValues() {
-      var aET = [];
-      getEntries("element").forEach(function (entry) {
+      const aET = [];
+      getEntries("element").forEach((entry) => {
         if (entry.identifier && entry.startTime) {
-          var value = processTimeMetric(entry.startTime);
+          const value = processTimeMetric(entry.startTime);
           if (shouldReportValue(value)) {
             logger.logEvent(43 /* LogEvent.PerformanceEntryProcessed */, [entry]);
             aET.push(entry.identifier + "|" + value);
@@ -1581,24 +1553,24 @@
         // Do not return any CPU metrics if Long Tasks API is not supported.
         return "";
       }
-      var sCPU = "";
-      var hCPU = {};
-      var hCPUDetails = {}; // TODO - Could remove this later after large totals go away.
-      var longTaskEntries = getEntries("longtask");
+      let sCPU = "";
+      const hCPU = {};
+      const hCPUDetails = {}; // TODO - Could remove this later after large totals go away.
+      const longTaskEntries = getEntries("longtask");
       // Add up totals for each "type" of long task
       if (longTaskEntries.length) {
-        var tZero_1 = getZeroTime();
-        longTaskEntries.forEach(function (entry) {
-          var dur = floor(entry.duration);
-          if (entry.startTime < tZero_1) {
+        const tZero = getZeroTime();
+        longTaskEntries.forEach((entry) => {
+          let dur = floor(entry.duration);
+          if (entry.startTime < tZero) {
             // In a SPA it is possible that we were in the middle of a Long Task when
             // LUX.init() was called. If so, only include the duration after tZero.
-            dur -= tZero_1 - entry.startTime;
+            dur -= tZero - entry.startTime;
           }
           // Only process entries that we calculated to have a valid duration
           if (dur > 0) {
             logger.logEvent(43 /* LogEvent.PerformanceEntryProcessed */, [entry]);
-            var type = entry.attribution[0].name;
+            const type = entry.attribution[0].name;
             if (!hCPU[type]) {
               hCPU[type] = 0;
               hCPUDetails[type] = "";
@@ -1610,14 +1582,14 @@
         });
       }
       // TODO - Add more types if/when they become available.
-      var jsType = typeof hCPU["script"] !== "undefined" ? "script" : "unknown"; // spec changed from "script" to "unknown" Nov 2018
+      const jsType = typeof hCPU["script"] !== "undefined" ? "script" : "unknown"; // spec changed from "script" to "unknown" Nov 2018
       if (typeof hCPU[jsType] === "undefined") {
         // Initialize default values for pages that have *no Long Tasks*.
         hCPU[jsType] = 0;
         hCPUDetails[jsType] = "";
       }
-      var hStats = cpuStats(hCPUDetails[jsType]);
-      var sStats = ",n|" +
+      const hStats = cpuStats(hCPUDetails[jsType]);
+      const sStats = ",n|" +
       hStats.count +
       ",d|" +
       hStats.median +
@@ -1630,19 +1602,19 @@
     // Return a hash of "stats" about the CPU details incl. count, max, and median.
     function cpuStats(sDetails) {
       // tuples of starttime|duration, eg: ,456|250,789|250,1012|250
-      var max = 0;
+      let max = 0;
       // FCI is beginning of 5 second window of no Long Tasks _after_ first contentful paint
-      var fcp = getFcp();
-      var fci = fcp || 0;
+      const fcp = getFcp();
+      let fci = fcp || 0;
       // If FCP is not supported, we can't calculate a valid FCI.
-      var bFoundFci = typeof fcp === "undefined";
-      var aValues = [];
-      var aTuples = sDetails.split(",");
-      for (var i = 0; i < aTuples.length; i++) {
-        var aTuple = aTuples[i].split("|");
+      let bFoundFci = typeof fcp === "undefined";
+      const aValues = [];
+      const aTuples = sDetails.split(",");
+      for (let i = 0; i < aTuples.length; i++) {
+        const aTuple = aTuples[i].split("|");
         if (aTuple.length === 2) {
-          var start = parseInt(aTuple[0]);
-          var dur = parseInt(aTuple[1]);
+          const start = parseInt(aTuple[0]);
+          const dur = parseInt(aTuple[1]);
           aValues.push(dur);
           max = dur > max ? dur : max;
           // FCI
@@ -1655,7 +1627,7 @@
             }
             else {
               // Less than 5 seconds of inactivity
-              var val = processTimeMetric(start + dur);
+              const val = processTimeMetric(start + dur);
               if (shouldReportValue(val)) {
                 fci = val; // FCI is now the end of this Long Task
               }
@@ -1663,16 +1635,16 @@
           }
         }
       }
-      var count = aValues.length;
-      var median = arrayMedian(aValues);
-      return { count: count, median: median, max: max, fci: fci };
+      const count = aValues.length;
+      const median = arrayMedian(aValues);
+      return { count, median, max, fci };
     }
     // Return the median value from an array of integers.
     function arrayMedian(aValues) {
       if (0 === aValues.length) {
         return 0;
       }
-      var half = floor(aValues.length / 2);
+      const half = floor(aValues.length / 2);
       aValues.sort(sortNumeric);
       if (aValues.length % 2) {
         // Return the middle value.
@@ -1685,21 +1657,21 @@
     }
     // Track how long it took lux.js to load via Resource Timing.
     function selfLoading() {
-      var sLuxjs = "";
+      let sLuxjs = "";
       if (gbFirstPV && performance.getEntriesByName) {
         // Get the lux script URL (including querystring params).
-        var aResources = performance.getEntriesByName(thisScript.src);
+        const aResources = performance.getEntriesByName(thisScript.src);
         if (aResources && aResources.length) {
-          var r = aResources[0];
+          const r = aResources[0];
           // DO NOT USE DURATION!!!!!
           // See https://www.stevesouders.com/blog/2014/11/25/serious-confusion-with-resource-timing/
-          var dns = floor(r.domainLookupEnd - r.domainLookupStart);
-          var tcp = floor(r.connectEnd - r.connectStart);
-          var fb = floor(r.responseStart - r.requestStart);
-          var content = floor(r.responseEnd - r.responseStart);
-          var networkDuration = dns + tcp + fb + content;
-          var parseEval = scriptEndTime - scriptStartTime;
-          var transferSize = r.encodedBodySize ? r.encodedBodySize : 0;
+          const dns = floor(r.domainLookupEnd - r.domainLookupStart);
+          const tcp = floor(r.connectEnd - r.connectStart);
+          const fb = floor(r.responseStart - r.requestStart);
+          const content = floor(r.responseEnd - r.responseStart);
+          const networkDuration = dns + tcp + fb + content;
+          const parseEval = scriptEndTime - scriptStartTime;
+          const transferSize = r.encodedBodySize ? r.encodedBodySize : 0;
           // Instead of a delimiter use a 1-letter abbreviation as a separator.
           sLuxjs =
           "d" +
@@ -1733,8 +1705,8 @@
     }
     // Return a string of Interaction Metrics formatted for beacon querystring.
     function ixValues() {
-      var aIx = [];
-      for (var key in ghIx) {
+      const aIx = [];
+      for (const key in ghIx) {
         aIx.push(key + "|" + encodeURIComponent(ghIx[key]));
       }
       return aIx.join(",");
@@ -1764,26 +1736,25 @@
       if (typeof gUid === "undefined" || typeof globalConfig.samplerate === "undefined") {
         return false; // bail
       }
-      var nThis = ("" + gUid).substr(-2); // number for THIS page - from 00 to 99
+      const nThis = ("" + gUid).substr(-2); // number for THIS page - from 00 to 99
       return parseInt(nThis) < globalConfig.samplerate;
     }
     /**
     * Re-initialize lux.js to start a new "page". This is typically called within a SPA at the
     * beginning of a page transition, but is also called internally when the BF cache is restored.
     */
-    function _init(startTime, clearFlags) {
-      if (clearFlags === void 0) { clearFlags = true; }
+    function _init(startTime, clearFlags = true) {
       // Some customers (incorrectly) call LUX.init on the very first page load of a SPA. This would
       // cause some first-page-only data (like paint metrics) to be lost. To prevent this, we silently
       // bail from this function when we detect an unnecessary LUX.init call.
-      var endMark = _getMark(END_MARK);
+      const endMark = _getMark(END_MARK);
       if (!endMark) {
         return;
       }
       // Mark the "navigationStart" for this SPA page. A start time can be passed through, for example
       // to set a page's start time as an event timestamp.
       if (startTime) {
-        _mark(START_MARK, { startTime: startTime });
+        _mark(START_MARK, { startTime });
       }
       else {
         _mark(START_MARK);
@@ -1824,7 +1795,7 @@
     }
     // Return the number of blocking (synchronous) external scripts in the page.
     function blockingScripts() {
-      var lastViewportElem = lastViewportElement();
+      const lastViewportElem = lastViewportElement();
       if (!lastViewportElem) {
         // If we can not find the last DOM element in the viewport,
         // use the old technique of just counting sync scripts.
@@ -1832,10 +1803,10 @@
       }
       // Find all the synchronous scripts that are ABOVE the last DOM element in the
       // viewport. (If they are BELOW then they do not block rendering of initial viewport.)
-      var aElems = document.getElementsByTagName("script");
-      var num = 0;
-      for (var i = 0, len = aElems.length; i < len; i++) {
-        var e = aElems[i];
+      const aElems = document.getElementsByTagName("script");
+      let num = 0;
+      for (let i = 0, len = aElems.length; i < len; i++) {
+        const e = aElems[i];
         if (e.src &&
           !e.async &&
           !e.defer &&
@@ -1849,10 +1820,10 @@
     }
     // Return the number of blocking (synchronous) external scripts in the page.
     function blockingStylesheets() {
-      var nBlocking = 0;
-      var aElems = document.getElementsByTagName("link");
-      for (var i = 0, len = aElems.length; i < len; i++) {
-        var e = aElems[i];
+      let nBlocking = 0;
+      const aElems = document.getElementsByTagName("link");
+      for (let i = 0, len = aElems.length; i < len; i++) {
+        const e = aElems[i];
         if (e.href && "stylesheet" === e.rel && 0 !== e.href.indexOf("data:")) {
           if (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1869,10 +1840,10 @@
     }
     // Return the number of synchronous external scripts in the page.
     function syncScripts() {
-      var aElems = document.getElementsByTagName("script");
-      var num = 0;
-      for (var i = 0, len = aElems.length; i < len; i++) {
-        var e = aElems[i];
+      const aElems = document.getElementsByTagName("script");
+      let num = 0;
+      for (let i = 0, len = aElems.length; i < len; i++) {
+        const e = aElems[i];
         if (e.src && !e.async && !e.defer) {
           // If the script has a SRC and async is false, then increment the counter.
           num++;
@@ -1882,10 +1853,10 @@
     }
     // Return the number of external scripts in the page.
     function numScripts() {
-      var aElems = document.getElementsByTagName("script");
-      var num = 0;
-      for (var i = 0, len = aElems.length; i < len; i++) {
-        var e = aElems[i];
+      const aElems = document.getElementsByTagName("script");
+      let num = 0;
+      for (let i = 0, len = aElems.length; i < len; i++) {
+        const e = aElems[i];
         if (e.src) {
           num++;
         }
@@ -1894,10 +1865,10 @@
     }
     // Return the number of stylesheets in the page.
     function numStylesheets() {
-      var aElems = document.getElementsByTagName("link");
-      var num = 0;
-      for (var i = 0, len = aElems.length; i < len; i++) {
-        var e = aElems[i];
+      const aElems = document.getElementsByTagName("link");
+      let num = 0;
+      for (let i = 0, len = aElems.length; i < len; i++) {
+        const e = aElems[i];
         if (e.href && "stylesheet" == e.rel) {
           num++;
         }
@@ -1905,10 +1876,10 @@
       return num;
     }
     function inlineTagSize(tagName) {
-      var aElems = document.getElementsByTagName(tagName);
-      var size = 0;
-      for (var i = 0, len = aElems.length; i < len; i++) {
-        var e = aElems[i];
+      const aElems = document.getElementsByTagName(tagName);
+      let size = 0;
+      for (let i = 0, len = aElems.length; i < len; i++) {
+        const e = aElems[i];
         try {
           size += e.innerHTML.length;
         }
@@ -1921,16 +1892,16 @@
       return size;
     }
     function getNavTiming() {
-      var s = "";
-      var ns = timing.navigationStart;
-      var startMark = _getMark(START_MARK);
-      var endMark = _getMark(END_MARK);
+      let s = "";
+      let ns = timing.navigationStart;
+      const startMark = _getMark(START_MARK);
+      const endMark = _getMark(END_MARK);
       if (startMark && endMark && !getPageRestoreTime()) {
         // This is a SPA page view, so send the SPA marks & measures instead of Nav Timing.
         // Note: getPageRestoreTime() indicates this was a bfcache restore, which we don't want to treat as a SPA.
-        var start = floor(startMark.startTime); // the start mark is "zero"
+        const start = floor(startMark.startTime); // the start mark is "zero"
         ns += start; // "navigationStart" for a SPA is the real navigationStart plus the start mark
-        var end = floor(endMark.startTime) - start; // delta from start mark
+        const end = floor(endMark.startTime) - start; // delta from start mark
         s =
         ns +
         // fetchStart and activationStart are the same as navigationStart for a SPA
@@ -1946,13 +1917,13 @@
       }
       else if (performance.timing) {
         // Return the real Nav Timing metrics because this is the "main" page view (not a SPA)
-        var navEntry_1 = getNavigationEntry();
-        var startRender = getStartRender();
-        var fcp = getFcp();
-        var lcp = getLcp();
-        var prefixNTValue = function (key, prefix, ignoreZero) {
-          if (typeof navEntry_1[key] === "number") {
-            var value = navEntry_1[key];
+        const navEntry = getNavigationEntry();
+        const startRender = getStartRender();
+        const fcp = getFcp();
+        const lcp = getLcp();
+        const prefixNTValue = (key, prefix, ignoreZero) => {
+          if (typeof navEntry[key] === "number") {
+            const value = navEntry[key];
             // We allow zero values for most navigation timing metrics, but for some metrics we want
             // to ignore zeroes. The exceptions are that all metrics can be zero if the page was either
             // prerendered or restored from the BF cache.
@@ -1962,19 +1933,19 @@
           }
           return "";
         };
-        var loadEventStartStr = prefixNTValue("loadEventStart", "ls", true);
-        var loadEventEndStr = prefixNTValue("loadEventEnd", "le", true);
+        let loadEventStartStr = prefixNTValue("loadEventStart", "ls", true);
+        let loadEventEndStr = prefixNTValue("loadEventEnd", "le", true);
         if (getPageRestoreTime() && startMark && endMark) {
           // For bfcache restores, we set the load time to the time it took for the page to be restored.
-          var loadTime = floor(endMark.startTime - startMark.startTime);
+          const loadTime = floor(endMark.startTime - startMark.startTime);
           loadEventStartStr = "ls" + loadTime;
           loadEventEndStr = "le" + loadTime;
         }
-        var redirect = wasRedirected();
-        var isSecure = document.location.protocol === "https:";
+        const redirect = wasRedirected();
+        const isSecure = document.location.protocol === "https:";
         s = [
           ns,
-          "as" + clamp(navEntry_1.activationStart),
+          "as" + clamp(navEntry.activationStart),
           redirect && !getPageRestoreTime() ? prefixNTValue("redirectStart", "rs") : "",
           redirect && !getPageRestoreTime() ? prefixNTValue("redirectEnd", "re") : "",
           prefixNTValue("fetchStart", "fs"),
@@ -1999,7 +1970,7 @@
       }
       else if (endMark) {
         // This is a "main" page view that does NOT support Navigation Timing - strange.
-        var end = floor(endMark.startTime);
+        const end = floor(endMark.startTime);
         s =
         ns +
         "fs" +
@@ -2014,11 +1985,11 @@
     }
     // Return First Contentful Paint or undefined if not supported.
     function getFcp() {
-      var paintEntries = getEntriesByType("paint");
-      for (var i = 0; i < paintEntries.length; i++) {
-        var entry = paintEntries[i];
+      const paintEntries = getEntriesByType("paint");
+      for (let i = 0; i < paintEntries.length; i++) {
+        const entry = paintEntries[i];
         if (entry.name === "first-contentful-paint") {
-          var value = processTimeMetric(entry.startTime);
+          const value = processTimeMetric(entry.startTime);
           if (shouldReportValue(value)) {
             return value;
           }
@@ -2028,10 +1999,10 @@
     }
     // Return Largest Contentful Paint or undefined if not supported.
     function getLcp() {
-      var lcpEntries = getEntries("largest-contentful-paint");
+      const lcpEntries = getEntries("largest-contentful-paint");
       if (lcpEntries.length) {
-        var lastEntry = lcpEntries[lcpEntries.length - 1];
-        var value = processTimeMetric(lastEntry.startTime);
+        const lastEntry = lcpEntries[lcpEntries.length - 1];
+        const value = processTimeMetric(lastEntry.startTime);
         if (shouldReportValue(value)) {
           logger.logEvent(43 /* LogEvent.PerformanceEntryProcessed */, [lastEntry]);
           return value;
@@ -2044,12 +2015,12 @@
     // Return undefined if not supported.
     function getStartRender() {
       if ("PerformancePaintTiming" in self) {
-        var paintEntries = getEntriesByType("paint");
+        const paintEntries = getEntriesByType("paint");
         if (paintEntries.length) {
-          var paintValues = paintEntries.map(function (entry) { return entry.startTime; }).sort(sortNumeric);
+          const paintValues = paintEntries.map((entry) => entry.startTime).sort(sortNumeric);
           // Use the earliest valid paint entry as the start render time.
-          for (var i = 0; i < paintValues.length; i++) {
-            var value = processTimeMetric(paintValues[i]);
+          for (let i = 0; i < paintValues.length; i++) {
+            const value = processTimeMetric(paintValues[i]);
             if (shouldReportValue(value)) {
               return value;
             }
@@ -2093,17 +2064,17 @@
       return String(_thisCustomerId);
     }
     function avgDomDepth() {
-      var aElems = document.getElementsByTagName("*");
-      var i = aElems.length;
-      var totalParents = 0;
+      const aElems = document.getElementsByTagName("*");
+      let i = aElems.length;
+      let totalParents = 0;
       while (i--) {
         totalParents += numParents(aElems[i]);
       }
-      var average = round(totalParents / aElems.length);
+      const average = round(totalParents / aElems.length);
       return average;
     }
     function numParents(elem) {
-      var n = 0;
+      let n = 0;
       if (elem.parentNode) {
         while ((elem = elem.parentNode)) {
           n++;
@@ -2112,13 +2083,13 @@
       return n;
     }
     function docHeight(doc) {
-      var body = doc.body, docelem = doc.documentElement;
-      var height = max(body ? body.scrollHeight : 0, body ? body.offsetHeight : 0, docelem ? docelem.clientHeight : 0, docelem ? docelem.scrollHeight : 0, docelem ? docelem.offsetHeight : 0);
+      const body = doc.body, docelem = doc.documentElement;
+      const height = max(body ? body.scrollHeight : 0, body ? body.offsetHeight : 0, docelem ? docelem.clientHeight : 0, docelem ? docelem.scrollHeight : 0, docelem ? docelem.offsetHeight : 0);
       return height;
     }
     function docWidth(doc) {
-      var body = doc.body, docelem = doc.documentElement;
-      var width = max(body ? body.scrollWidth : 0, body ? body.offsetWidth : 0, docelem ? docelem.clientWidth : 0, docelem ? docelem.scrollWidth : 0, docelem ? docelem.offsetWidth : 0);
+      const body = doc.body, docelem = doc.documentElement;
+      const width = max(body ? body.scrollWidth : 0, body ? body.offsetWidth : 0, docelem ? docelem.clientWidth : 0, docelem ? docelem.scrollWidth : 0, docelem ? docelem.offsetWidth : 0);
       return width;
     }
     // Return the main HTML document transfer size (in bytes).
@@ -2128,8 +2099,8 @@
     // Return the connection type based on Network Information API.
     // Note this API is in flux.
     function connectionType() {
-      var c = navigator.connection;
-      var connType = "";
+      const c = navigator.connection;
+      let connType = "";
       if (c && c.effectiveType) {
         connType = c.effectiveType;
         if ("slow-2g" === connType) {
@@ -2146,11 +2117,11 @@
     }
     // Return an array of image elements that are in the top viewport.
     function imagesATF() {
-      var aImages = document.getElementsByTagName("img");
-      var aImagesAtf = [];
+      const aImages = document.getElementsByTagName("img");
+      const aImagesAtf = [];
       if (aImages) {
-        for (var i = 0, len = aImages.length; i < len; i++) {
-          var image = aImages[i];
+        for (let i = 0, len = aImages.length; i < len; i++) {
+          const image = aImages[i];
           if (inViewport(image)) {
             aImagesAtf.push(image);
           }
@@ -2165,15 +2136,15 @@
         // but if no parent then start with BODY.
         parent = document.body;
       }
-      var lastChildInViewport;
+      let lastChildInViewport;
       if (parent) {
         // Got errors that parent was null so testing again here.
         // Find the last child that is in the viewport.
         // Elements are listed in DOM order.
-        var aChildren = parent.children;
+        const aChildren = parent.children;
         if (aChildren) {
-          for (var i = 0, len = aChildren.length; i < len; i++) {
-            var child = aChildren[i];
+          for (let i = 0, len = aChildren.length; i < len; i++) {
+            const child = aChildren[i];
             if (inViewport(child)) {
               // The children are in DOM order, so we just have to
               // save the LAST child that was in the viewport.
@@ -2194,10 +2165,10 @@
     }
     // Return true if the element is in the viewport.
     function inViewport(e) {
-      var vh = document.documentElement.clientHeight;
-      var vw = document.documentElement.clientWidth;
+      const vh = document.documentElement.clientHeight;
+      const vw = document.documentElement.clientWidth;
       // Return true if the top-left corner is in the viewport and it has width & height.
-      var lt = findPos(e);
+      const lt = findPos(e);
       return (lt[0] >= 0 &&
         lt[1] >= 0 &&
         lt[0] < vw &&
@@ -2208,8 +2179,8 @@
     // Return an array containing the top & left coordinates of the element.
     // from http://www.quirksmode.org/js/findpos.html
     function findPos(el) {
-      var curleft = 0;
-      var curtop = 0;
+      let curleft = 0;
+      let curtop = 0;
       while (el) {
         try {
           curleft += el.offsetLeft;
@@ -2236,7 +2207,7 @@
     }
     function createMaxMeasureTimeout() {
       clearMaxMeasureTimeout();
-      gMaxMeasureTimeout = setTimeout(function () {
+      gMaxMeasureTimeout = setTimeout(() => {
         gFlags = addFlag(gFlags, 32 /* Flags.BeaconSentAfterTimeout */);
         beacon.addFlag(32 /* Flags.BeaconSentAfterTimeout */);
         _sendLux();
@@ -2248,7 +2219,7 @@
       }
     }
     function _getBeaconUrl(customData) {
-      var queryParams = [
+      const queryParams = [
         "v=" + versionAsFloat(),
         "id=" + getCustomerId(),
         "sid=" + gSyncId,
@@ -2260,7 +2231,7 @@
       if (gFlags) {
         queryParams.push("fl=" + gFlags);
       }
-      var customDataValues = valuesToString(customData);
+      const customDataValues = valuesToString(customData);
       if (customDataValues) {
         queryParams.push("CD=" + customDataValues);
         clearUpdateCustomData();
@@ -2268,14 +2239,13 @@
       return globalConfig.beaconUrl + "?" + queryParams.join("&");
     }
     // Beacon back the LUX data.
-    function _sendLux() {
-      var _a;
-      if (!isVisible() && !globalConfig.trackHiddenPages) {
+    function _sendLux(fromUnload = false) {
+      if (!isVisible() && !globalConfig.trackHiddenPages && !fromUnload) {
         logger.logEvent(13 /* LogEvent.SendCancelledPageHidden */);
         return;
       }
       clearMaxMeasureTimeout();
-      var customerid = getCustomerId();
+      const customerid = getCustomerId();
       if (!customerid ||
         !gSyncId ||
         !_sample() || // OUTSIDE the sampled range
@@ -2284,21 +2254,21 @@
         return;
       }
       logger.logEvent(9 /* LogEvent.DataCollectionStart */);
-      var startMark = _getMark(START_MARK);
-      var endMark = _getMark(END_MARK);
+      const startMark = _getMark(START_MARK);
+      const endMark = _getMark(END_MARK);
       if (!startMark || (endMark && endMark.startTime < startMark.startTime)) {
         // Record the synthetic loadEventStart time for this page, unless it was already recorded
         // with LUX.markLoadTime()
         _markLoadTime();
       }
       // Store any tracking parameters as custom data
-      var trackingParams = getTrackingParams();
-      for (var key in trackingParams) {
+      const trackingParams = getTrackingParams();
+      for (const key in trackingParams) {
         logger.logEvent(44 /* LogEvent.TrackingParamAdded */, [key, trackingParams[key]]);
         addCustomDataValue("_" + key, trackingParams[key]);
       }
-      var sIx = "";
-      var INP = getINPDetails();
+      let sIx = "";
+      let INP = getINPDetails();
       // If we haven't already sent an interaction beacon, check for interaction metrics and include
       // them in the main beacon.
       if (!gbIxSent) {
@@ -2309,10 +2279,10 @@
           INP = undefined;
         }
       }
-      var sET = elementTimingValues(); // Element Timing data
-      var sCPU = cpuTimes();
-      var clsData = getData$3(globalConfig);
-      var sLuxjs = selfLoading();
+      const sET = elementTimingValues(); // Element Timing data
+      const sCPU = cpuTimes();
+      const clsData = getData$3(globalConfig);
+      const sLuxjs = selfLoading();
       if (!isVisible()) {
         gFlags = addFlag(gFlags, 8 /* Flags.VisibilityStateNotVisible */);
         beacon.addFlag(8 /* Flags.VisibilityStateNotVisible */);
@@ -2322,31 +2292,31 @@
         beacon.addFlag(1024 /* Flags.PageWasPrerendered */);
       }
       if (globalConfig.serverTiming) {
-        var navEntry = getNavigationEntry();
+        const navEntry = getNavigationEntry();
         if (navEntry.serverTiming) {
-          var stPairs = getKeyValuePairs(globalConfig.serverTiming, navEntry.serverTiming);
-          for (var name_2 in stPairs) {
-            _addData(name_2, stPairs[name_2]);
+          const stPairs = getKeyValuePairs(globalConfig.serverTiming, navEntry.serverTiming);
+          for (const name in stPairs) {
+            _addData(name, stPairs[name]);
           }
         }
       }
       if (LUX.conversions) {
-        getMatchesFromPatternMap(LUX.conversions, location.hostname, location.pathname).forEach(function (conversion) {
+        getMatchesFromPatternMap(LUX.conversions, location.hostname, location.pathname).forEach((conversion) => {
           LUX.addData(conversion, BOOLEAN_TRUE);
         });
       }
       // We want ALL beacons to have ALL the data used for query filters (geo, pagelabel, browser, & custom data).
       // So we create a base URL that has all the necessary information:
-      var baseUrl = _getBeaconUrl(getAllCustomData());
-      var is = inlineTagSize("script");
-      var ic = inlineTagSize("style");
-      var ds = docSize();
-      var ct = connectionType();
-      var dt = deliveryType();
+      const baseUrl = _getBeaconUrl(getAllCustomData());
+      const is = inlineTagSize("script");
+      const ic = inlineTagSize("style");
+      const ds = docSize();
+      const ct = connectionType();
+      const dt = deliveryType();
       // Note some page stat values (the `PS` query string) are non-numeric. To make extracting these
       // values easier, we append an underscore "_" to the value. Values this is used for include
       // connection type (ct) and delivery type (dt).
-      var metricsQueryString =
+      const metricsQueryString =
       // only send Nav Timing and lux.js metrics on initial pageload (not for SPA page views)
       (gbNavSent ? "" : "&NT=" + getNavTiming()) +
       "&LJS=" +
@@ -2394,10 +2364,10 @@
       // INP and sub-parts
       (INP ? getINPString(INP) : "");
       // We add the user timing entries last so that we can split them to reduce the URL size if necessary.
-      var utValues = userTimingValues();
-      var _b = fitUserTimingEntries(utValues, globalConfig, baseUrl + metricsQueryString), beaconUtValues = _b[0], remainingUtValues = _b[1];
+      const utValues = userTimingValues();
+      let [beaconUtValues, remainingUtValues] = fitUserTimingEntries(utValues, globalConfig, baseUrl + metricsQueryString);
       // Send the MAIN LUX beacon.
-      var mainBeaconUrl = baseUrl +
+      const mainBeaconUrl = baseUrl +
       metricsQueryString +
       (beaconUtValues.length > 0 ? "&UT=" + beaconUtValues.join(",") : "");
       logger.logEvent(23 /* LogEvent.MainBeaconSent */, [mainBeaconUrl]);
@@ -2408,20 +2378,20 @@
       gbIxSent = sIx ? 1 : 0;
       // Send other beacons for JUST User Timing.
       while (remainingUtValues.length) {
-        _a = fitUserTimingEntries(remainingUtValues, globalConfig, baseUrl), beaconUtValues = _a[0], remainingUtValues = _a[1];
-        var utBeaconUrl = baseUrl + "&UT=" + beaconUtValues.join(",");
+        [beaconUtValues, remainingUtValues] = fitUserTimingEntries(remainingUtValues, globalConfig, baseUrl);
+        const utBeaconUrl = baseUrl + "&UT=" + beaconUtValues.join(",");
         logger.logEvent(24 /* LogEvent.UserTimingBeaconSent */, [utBeaconUrl]);
         _sendBeacon(utBeaconUrl);
       }
     }
-    var ixTimerId;
+    let ixTimerId;
     function _sendIxAfterDelay() {
       clearTimeout(ixTimerId);
       ixTimerId = setTimeout(_sendIx, globalConfig.interactionBeaconDelay);
     }
     // Beacon back the IX data separately (need to sync with LUX beacon on the backend).
     function _sendIx() {
-      var customerid = getCustomerId();
+      const customerid = getCustomerId();
       if (!customerid ||
         !gSyncId ||
         !_sample() || // OUTSIDE the sampled range
@@ -2430,10 +2400,10 @@
       ) {
         return;
       }
-      var sIx = ixValues(); // Interaction Metrics
-      var INP = getINPDetails();
+      const sIx = ixValues(); // Interaction Metrics
+      const INP = getINPDetails();
       if (sIx) {
-        var beaconUrl = _getBeaconUrl(getUpdatedCustomData()) +
+        const beaconUrl = _getBeaconUrl(getUpdatedCustomData()) +
         "&IX=" +
         sIx +
         (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
@@ -2446,7 +2416,7 @@
     // Beacon back custom data that is recorded _after_ the main beacon was sent
     // (i.e., custom data after window.onload).
     function _sendCustomData() {
-      var customerid = getCustomerId();
+      const customerid = getCustomerId();
       if (!customerid ||
         !gSyncId ||
         !_sample() || // OUTSIDE the sampled range
@@ -2454,15 +2424,16 @@
       ) {
         return;
       }
-      var customDataValues = valuesToString(getUpdatedCustomData());
+      const customDataValues = valuesToString(getUpdatedCustomData());
       if (customDataValues) {
-        var beaconUrl = _getBeaconUrl(getUpdatedCustomData());
+        const beaconUrl = _getBeaconUrl(getUpdatedCustomData());
         logger.logEvent(26 /* LogEvent.CustomDataBeaconSent */, [beaconUrl]);
         _sendBeacon(beaconUrl);
       }
     }
     function _sendBeacon(url) {
       new Image().src = url;
+      emit("beacon", url);
     }
     // INTERACTION METRICS
     // Register event handlers to detect Interaction Metrics.
@@ -2479,7 +2450,7 @@
       }
     }
     function _keyHandler(e) {
-      var keyCode = e.keyCode;
+      const { keyCode } = e;
       /**
       * Ignore modifier keys
       *
@@ -2495,7 +2466,7 @@
       if (typeof ghIx["k"] === "undefined") {
         ghIx["k"] = msSincePageInit();
         if (e && e.target instanceof Element) {
-          var trackId = getNodeSelector(e.target);
+          const trackId = getNodeSelector(e.target);
           if (trackId) {
             ghIx["ki"] = trackId;
           }
@@ -2513,7 +2484,7 @@
         // Only one interaction type is recorded. Scrolls are considered less important, so delete
         // any scroll times if they exist.
         delete ghIx["s"];
-        var target = void 0;
+        let target;
         try {
           // Seeing "Permission denied" errors, so do a simple try-catch.
           if (e && e.target instanceof Element) {
@@ -2529,7 +2500,7 @@
             ghIx["cx"] = e.clientX;
             ghIx["cy"] = e.clientY;
           }
-          var trackId = getNodeSelector(target);
+          const trackId = getNodeSelector(target);
           if (trackId) {
             ghIx["ci"] = trackId;
           }
@@ -2539,11 +2510,11 @@
       _removeIxHandlers();
     }
     function _addUnloadHandlers() {
-      var onunload = function () {
+      const onunload = () => {
         gFlags = addFlag(gFlags, 16 /* Flags.BeaconSentFromUnloadHandler */);
         beacon.addFlag(16 /* Flags.BeaconSentFromUnloadHandler */);
         logger.logEvent(10 /* LogEvent.UnloadHandlerTriggered */);
-        _sendLux();
+        _sendLux(true);
         _sendIx();
         beacon.send();
       };
@@ -2557,7 +2528,7 @@
         addListener("unload", onunload, true);
         addListener("beforeunload", onunload, true);
       }
-      addListener("visibilitychange", function () {
+      addListener("visibilitychange", () => {
         if (document.visibilityState === "hidden") {
           onunload();
         }
@@ -2576,29 +2547,33 @@
     // This is a big number (epoch ms . random) that is used to matchup a LUX beacon with a separate IX beacon
     // (because they get sent at different times). Each "page view" (including SPA) should have a
     // unique gSyncId.
-    function createSyncId(inSampleBucket) {
-      if (inSampleBucket === void 0) { inSampleBucket = false; }
+    function createSyncId(inSampleBucket = false) {
+      let syncId;
       if (inSampleBucket) {
         // "00" matches all sample rates
-        return Number(new Date()) + "00000";
+        syncId = Number(new Date()) + "00000";
       }
-      return Number(new Date()) + padStart(String(round(100000 * Math.random())), 5, "0");
+      else {
+        syncId = Number(new Date()) + padStart(String(round(100000 * Math.random())), 5, "0");
+      }
+      emit("new_page_id", syncId);
+      return syncId;
     }
     // Unique ID (also known as Session ID)
     // We use this to track all the page views in a single user session.
     // If there is NOT a UID then set it to the new value (which is the same as the "sync ID" for this page).
     // Refresh its expiration date and return its value.
     function refreshUniqueId(newValue) {
-      var uid = _getCookie(SESSION_COOKIE_NAME);
+      let uid = _getCookie(SESSION_COOKIE_NAME);
       if (!uid || uid.length < 11) {
         uid = newValue;
       }
       else {
         // Prevent sessions lasting more than 24 hours.
         // The first 10 characters of uid is the epoch time when the session started.
-        var uidStart = parseInt(uid.substring(0, 10));
-        var now_2 = Number(new Date()) / 1000; // in seconds
-        if (now_2 - uidStart > 24 * 60 * 60) {
+        const uidStart = parseInt(uid.substring(0, 10));
+        const now = Number(new Date()) / 1000; // in seconds
+        if (now - uidStart > 24 * 60 * 60) {
           // older than 24 hours - reset to new value
           uid = newValue;
         }
@@ -2623,7 +2598,7 @@
         return LUX.label;
       }
       if (typeof LUX.pagegroups !== "undefined") {
-        var label = getMatchesFromPatternMap(LUX.pagegroups, location.hostname, location.pathname, true);
+        const label = getMatchesFromPatternMap(LUX.pagegroups, location.hostname, location.pathname, true);
         if (label) {
           gFlags = addFlag(gFlags, 512 /* Flags.PageLabelFromUrlPattern */);
           beacon.addFlag(512 /* Flags.PageLabelFromUrlPattern */);
@@ -2631,9 +2606,9 @@
         }
       }
       if (typeof LUX.jspagelabel !== "undefined") {
-        var evaluateJsPageLabel = Function('"use strict"; return ' + LUX.jspagelabel);
+        const evaluateJsPageLabel = Function('"use strict"; return ' + LUX.jspagelabel);
         try {
-          var label = evaluateJsPageLabel();
+          const label = evaluateJsPageLabel();
           if (label) {
             gFlags = addFlag(gFlags, 256 /* Flags.PageLabelFromGlobalVariable */);
             beacon.addFlag(256 /* Flags.PageLabelFromGlobalVariable */);
@@ -2652,9 +2627,9 @@
     function _getCookie(name) {
       try {
         // Seeing "Permission denied" errors, so do a simple try-catch.
-        var aTuples = document.cookie.split(";");
-        for (var i = 0; i < aTuples.length; i++) {
-          var aTuple = aTuples[i].split("=");
+        const aTuples = document.cookie.split(";");
+        for (let i = 0; i < aTuples.length; i++) {
+          const aTuple = aTuples[i].split("=");
           if (name === aTuple[0].trim()) {
             // cookie name starts with " " if not first
             return unescape(aTuple[1]);
@@ -2683,7 +2658,7 @@
     // Set "LUX.auto=false" to disable send results automatically and
     // instead you must call LUX.send() explicitly.
     if (globalConfig.auto) {
-      var sendBeaconWhenVisible_1 = function () {
+      const sendBeaconWhenVisible = () => {
         if (globalConfig.trackHiddenPages) {
           _sendLux();
         }
@@ -2691,30 +2666,30 @@
           onVisible(_sendLux);
         }
       };
-      var sendBeaconAfterMinimumMeasureTime_1 = function () {
-        var elapsedTime = msSincePageInit();
-        var timeRemaining = globalConfig.minMeasureTime - elapsedTime;
+      const sendBeaconAfterMinimumMeasureTime = () => {
+        const elapsedTime = msSincePageInit();
+        const timeRemaining = globalConfig.minMeasureTime - elapsedTime;
         if (timeRemaining <= 0) {
           logger.logEvent(11 /* LogEvent.OnloadHandlerTriggered */, [
             elapsedTime,
             globalConfig.minMeasureTime,
           ]);
           if (globalConfig.measureUntil === "onload") {
-            onPageLoad(sendBeaconWhenVisible_1);
+            onPageLoad(sendBeaconWhenVisible);
           }
         }
         else {
           // Try again after the minimum measurement time has elapsed
-          setTimeout(sendBeaconAfterMinimumMeasureTime_1, timeRemaining);
+          setTimeout(sendBeaconAfterMinimumMeasureTime, timeRemaining);
         }
       };
-      sendBeaconAfterMinimumMeasureTime_1();
+      sendBeaconAfterMinimumMeasureTime();
     }
     // When newBeaconOnPageShow = true, we initiate a new page view whenever a page is restored from
     // bfcache. Since we have no "onload" event to hook into after a bfcache restore, we rely on the
     // unload and maxMeasureTime handlers to send the beacon.
     if (globalConfig.newBeaconOnPageShow) {
-      addEventListener("pageshow", function (event) {
+      addEventListener("pageshow", (event) => {
         if (event.persisted) {
           // Record the timestamp of the bfcache restore
           setPageRestoreTime(event.timeStamp);
@@ -2722,7 +2697,7 @@
           // restore. Wrapping this in a setTimeout ensures the browser has enough time to update the
           // visibility.
           // See https://bugs.chromium.org/p/chromium/issues/detail?id=1133363
-          setTimeout(function () {
+          setTimeout(() => {
             if (gbLuxSent) {
               // If the beacon was already sent for this page, we start a new page view and mark the
               // load time as the time it took to restore the page.
@@ -2748,28 +2723,29 @@
     * LUX functions and properties must be attached to the existing global object to ensure that
     * changes made to the global object are reflected in the "internal" LUX object, and vice versa.
     */
-    var globalLux = globalConfig;
+    const globalLux = globalConfig;
     // Functions
     globalLux.mark = _mark;
     globalLux.measure = _measure;
     globalLux.init = _init;
     globalLux.markLoadTime = _markLoadTime;
-    globalLux.send = function () {
+    globalLux.on = subscribe;
+    globalLux.send = () => {
       logger.logEvent(7 /* LogEvent.SendCalled */);
       beacon.send();
       _sendLux();
     };
     globalLux.addData = _addData;
     globalLux.getSessionId = _getUniqueId; // so customers can do their own sampling
-    globalLux.getDebug = function () {
+    globalLux.getDebug = () => {
       console.log("SpeedCurve RUM debugging documentation: https://support.speedcurve.com/docs/rum-js-api#luxgetdebug");
       return logger.getEvents();
     };
-    globalLux.forceSample = function () {
+    globalLux.forceSample = () => {
       logger.logEvent(8 /* LogEvent.ForceSampleCalled */);
       setUniqueId(createSyncId(true));
     };
-    globalLux.doUpdate = function () {
+    globalLux.doUpdate = () => {
       // Deprecated, intentionally empty.
     };
     globalLux.cmd = _runCommand;
@@ -2778,8 +2754,7 @@
     /**
     * Run a command from the command queue
     */
-    function _runCommand(_a) {
-      var fn = _a[0], args = _a.slice(1);
+    function _runCommand([fn, ...args]) {
       if (typeof globalLux[fn] === "function") {
         // eslint-disable-next-line @typescript-eslint/ban-types
         globalLux[fn].apply(globalLux, args);
