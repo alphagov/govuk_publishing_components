@@ -13,6 +13,7 @@ linters:
     disallow_inline_scripts: false
   NoJavascriptTagHelper:
     enabled: false
+    correction_style: 'plain'
   Rubocop:
     enabled: true
     exclude:
