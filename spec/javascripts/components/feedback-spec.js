@@ -3,106 +3,115 @@
 
 describe('Feedback component', function () {
   var feedbackComponent
-  var FIXTURE =
-  '<div class="gem-c-feedback govuk-!-display-none-print" data-module="feedback">' +
+  var FIXTURE = `
+    <div data-module="feedback ga4-event-tracker" class="gem-c-feedback govuk-!-display-none-print">
+      <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
+        <div class="gem-c-feedback__prompt-content">
+          <div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>
+            <div class="gem-c-feedback__prompt-question-answer">
+              <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
+              <ul class="gem-c-feedback__option-list">
+                <li class="gem-c-feedback__option-list-item govuk-visually-hidden" hidden>
+                  <a class="gem-c-feedback__prompt-link" role="button" hidden="hidden" aria-hidden="true"
+                    href="/contact/govuk">
+                    Maybe
+                  </a>
+                </li>
+                <li class="gem-c-feedback__option-list-item">
+                  <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful"
+                    data-ga4-event="{'event_name':'form_submit','type':'feedback','text':'Yes','section':'Is this page useful?','tool_name':'Is this page useful?'}">
+                    Yes <span class="govuk-visually-hidden">this page is useful</span>
+                  </button>
+                </li>
+                <li class="gem-c-feedback__option-list-item">
+                  <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful"
+                    aria-controls="page-is-not-useful" aria-expanded="false"
+                    data-ga4-event="{'event_name':'form_submit','type':'feedback','text':'No','section':'Is this page useful?','tool_name':'Is this page useful?'}">
+                    No <span class="govuk-visually-hidden">this page is not useful</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert"
+            hidden>
+            Thank you for your feedback
+          </div>
+          <div
+            class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions"
+            hidden>
+            <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong"
+              aria-expanded="false" aria-controls="something-is-wrong"
+              data-ga4-event="{'event_name':'form_submit','type':'feedback','text':'Report a problem with this page','section':'Is this page useful?','tool_name':'Is this page useful?'}">
+              Report a problem with this page
+            </button>
+          </div>
+        </div>
+      </div>
 
-    '<div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">' +
-      '<div class="gem-c-feedback__prompt-content">' +
-        '<div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>' +
-          '<div class="gem-c-feedback__prompt-question-answer">' +
-            '<h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>' +
-            '<ul class="gem-c-feedback__option-list">' +
-              '<li class="gem-c-feedback__option-list-item govuk-visually-hidden" style="display: none" hidden>' +
-                '<a class="gem-c-feedback__prompt-link" role="button" style="display: none" hidden="hidden" aria-hidden="true" href="/contact/govuk">' +
-                  'Maybe' +
-                '</a>' +
-              '</li>' +
-              '<li class="gem-c-feedback__option-list-item">' +
-                '<button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful">' +
-                  'Yes <span class="govuk-visually-hidden">this page is useful</span>' +
-                '</button>' +
-              '</li>' +
-              '<li class="gem-c-feedback__option-list-item">' +
-                '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" aria-controls="page-is-not-useful" aria-expanded="false">' +
-                  'No <span class="govuk-visually-hidden">this page is not useful</span>' +
-                '</button>' +
-              '</li>' +
-            '</ul>' +
-          '</div>' +
-        '</div>' +
-        '<div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden>' +
-          'Thank you for your feedback' +
-        '</div>' +
-        '<div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" hidden>' +
-          '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" aria-controls="something-is-wrong" aria-expanded="false">' +
-            'Report a problem with this page' +
-          '</button>' +
-        '</div>' +
-      '</div>' +
-    '</div>' +
+      <form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form"
+        method="post" hidden>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-errors" tabindex="-1" hidden>
+            </div>
 
-    '<form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form" method="post" hidden>' +
-      '<div class="govuk-grid-row">' +
-        '<div class="govuk-grid-column-two-thirds">' +
-          '<div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-errors" tabindex="-1" hidden></div>' +
-          '<input type="hidden" name="url" value="http://example.com/path/to/page">' +
+            <input type="hidden" name="url" value="http://example.com/path/to/page">
 
-          '<h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>' +
-          '<p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don\'t include personal or financial information like your National Insurance number or credit card details.</p>' +
+            <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+            <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don’t include personal or
+              financial information like your National Insurance number or credit card details.</p>
 
-          '<div class="govuk-visually-hidden" aria-hidden="true">' +
-            '<label for="giraffe">This field is for robots only. Please leave blank</label>' +
-            '<input id="giraffe" name="giraffe" type="text" pattern=".{0}" tabindex="-1" autocomplete="off">' +
-          '</div>' +
+            <div class="govuk-visually-hidden" aria-hidden="true">
+              <label for="giraffe">This field is for robots only. Please leave blank</label>
+              <input id="giraffe" name="giraffe" type="text" pattern=".{0}" tabindex="-1" autocomplete="off">
+            </div>
 
-          '<div class="gem-c-textarea govuk-form-group govuk-!-margin-bottom-6">' +
-            '<label for="textarea-4d591836" class="gem-c-label govuk-label">' +
-              'What were you doing?' +
-            '</label>' +
-            '<textarea name="what_doing" class="govuk-textarea" id="textarea-4d591836" rows="3" spellcheck="true aria-describedby="feedback_explanation"></textarea>' +
-          '</div>' +
+            <div class="gem-c-textarea govuk-form-group govuk-!-margin-bottom-6">
+              <label for="textarea-edc33d56" class="gem-c-label govuk-label">What were you doing?</label>
+              <textarea name="what_doing" class="govuk-textarea" id="textarea-edc33d56" rows="3" spellcheck="true"
+                aria-describedby="feedback_explanation">
+              </textarea>
+            </div>
 
-          '<div class="gem-c-textarea govuk-form-group govuk-!-margin-bottom-6">' +
-            '<label for="textarea-f10d1d59" class="gem-c-label govuk-label">What went wrong?</label>' +
-            '<textarea name="what_wrong" class="govuk-textarea" id="textarea-f10d1d59" rows="3" spellcheck="true"></textarea>' +
-          '</div>' +
+            <div class="gem-c-textarea govuk-form-group govuk-!-margin-bottom-6">
+              <label for="textarea-d9d79a09" class="gem-c-label govuk-label">What went wrong?</label>
+              <textarea name="what_wrong" class="govuk-textarea" id="textarea-d9d79a09" rows="3"
+                spellcheck="true"></textarea>
+            </div>
 
-          '<button class="gem-c-button govuk-button" type="submit">Send</button>' +
+            <button class="gem-c-button govuk-button" type="submit"
+              data-ga4-event="{'event_name':'form_submit','type':'feedback','text':'Send','section':'Help us improve GOV.UK','tool_name':'Help us improve GOV.UK'}">
+              Send
+            </button>
+            <button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
+              aria-controls="something-is-wrong">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+      <div id="page-is-not-useful"
+        class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
+            <div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden></div>
 
-          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form" aria-controls="something-is-wrong" aria-expanded="true">' +
-            'Cancel' +
-          '</button>' +
-
-        '</div>' +
-      '</div>' +
-    '</form>' +
-
-    '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form" method="post">' +
-      '<div class="govuk-grid-row">' +
-        '<div class="govuk-grid-column-two-thirds" id="survey-wrapper">' +
-          '<div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden></div>' +
-          '<input name="email_survey_signup[survey_id]" type="hidden" value="an_id">' +
-          '<input name="email_survey_signup[survey_source]" type="hidden" value="a_source">' +
-
-          '<h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>' +
-          '<p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we\'d like to know more about your visit today. We\'ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don\'t worry we won\'t send you spam or share your email address with anyone. <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js" class="govuk-link">Please fill in this survey</a>.</p>' +
-
-          '<div class="govuk-form-group">' +
-            '<label for="input-11111111" class="gem-c-label govuk-label">Email address</label>' +
-            '<input aria-describedby="survey_explanation" autocomplete="email" class="gem-c-input govuk-input" id="input-11111111" name="email_survey_signup[email_address]" spellcheck="false" type="email">' +
-          '</div>' +
-
-          '<button class="gem-c-button govuk-button" type="submit">Send me the survey</button>' +
-
-          '<button class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form" aria-controls="page-is-not-useful" aria-expanded="true" hidden>' +
-            'Cancel' +
-          '</button>' +
-
-        '</div>' +
-      '</div>' +
-    '</form>' +
-
-  '</div>'
+            <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+            <p id="survey_explanation" class="gem-c-feedback__form-paragraph">
+              To help us improve GOV.UK, we’d like to know more about your visit today.
+              <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js" class="govuk-link" target="_blank"
+                rel="noopener noreferrer external">Please fill in this survey (opens in a new
+                tab<noscript> and requires JavaScript</noscript>)</a>.
+            </p>
+            <button class="govuk-button govuk-button--secondary js-close-form" aria-controls="page-is-not-useful" hidden>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
 
   beforeEach(function () {
     window.setFixtures(FIXTURE)
@@ -177,15 +186,6 @@ describe('Feedback component', function () {
 
       expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('true')
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false')
-    })
-
-    it('focusses the first field in the form', function () {
-      loadFeedbackComponent()
-      var $input = $('#page-is-not-useful .gem-c-input')[0]
-      spyOn($input, 'focus')
-      $('.js-page-is-not-useful')[0].click()
-
-      expect($input.focus).toHaveBeenCalled()
     })
 
     it('has the page path in the survey', function () {
@@ -381,71 +381,6 @@ describe('Feedback component', function () {
     })
   })
 
-  describe('successfully submitting the "page is not useful" form', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
-    })
-
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    it('displays a success message', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      var $prompt = $('.js-prompt-success')
-
-      expect(($prompt).prop('hidden')).toBe(false)
-      expect($prompt).toHaveText('Thank you for your feedback')
-    })
-
-    it('focusses the success message', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
-    })
-
-    it('hides the form', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      expect($('.js-feedback-form').prop('hidden')).toBe(true)
-    })
-
-    it('hides the links to show the feedback form', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      expect($('.js-prompt-questions').prop('hidden')).toBe(true)
-    })
-  })
-
   describe('submitting the "is something wrong with this page" form with invalid data', function () {
     beforeEach(function () {
       jasmine.Ajax.install()
@@ -511,76 +446,6 @@ describe('Feedback component', function () {
         status: 422,
         contentType: 'application/json',
         responseText: '{}'
-      })
-
-      expect($input.focus).toHaveBeenCalled()
-    })
-  })
-
-  describe('Submitting the "page is not useful" form with invalid data', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
-    })
-
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    it('disables the submit button until the server responds', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-      })
-
-      expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
-    })
-
-    it('retains the feedback the user originally entered', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-      })
-
-      expect($("[name='email_survey_signup[email_address]']").val()).toEqual('test@test.com')
-    })
-
-    it('displays a generic error if the field isn\'t a visible part of the form', function () {
-      loadFeedbackComponent()
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
-      })
-
-      expect($('#page-is-not-useful .js-errors').html()).toContainText(
-        'Sorry, we’re unable to receive your message right now. ' +
-        'If the problem persists, we have other ways for you to provide ' +
-        'feedback on the contact page.'
-      )
-    })
-
-    it('focusses the generic error', function () {
-      loadFeedbackComponent()
-      var $input = $('#page-is-not-useful .js-errors')[0]
-      spyOn($input, 'focus')
-      fillAndSubmitPageIsNotUsefulForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"path": ["can\'t be blank"], "description": ["can\'t be blank"]}}'
       })
 
       expect($input.focus).toHaveBeenCalled()
@@ -711,13 +576,6 @@ describe('Feedback component', function () {
     var $form = $('.gem-c-feedback #something-is-wrong')
     $form.find('[name=what_doing]').val('I was looking for some information about local government.')
     $form.find('[name=what_wrong]').val('The background should be green.')
-    $form.find('[type=submit]')[0].click()
-  }
-
-  function fillAndSubmitPageIsNotUsefulForm () {
-    $('.js-page-is-not-useful')[0].click()
-    var $form = $('.gem-c-feedback #page-is-not-useful')
-    $form.find('[name="email_survey_signup[email_address]"]').val('test@test.com')
     $form.find('[type=submit]')[0].click()
   }
 })
