@@ -159,7 +159,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     getTitle: function () {
-      return this.PIIRemover.stripPIIWithOverride(document.title, true, true)
+      return this.PIIRemover.stripPIIWithOverride(document.title, false, true)
     },
 
     // window.httpStatusCode is set in the source of the error page in static
