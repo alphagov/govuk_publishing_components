@@ -3,7 +3,7 @@
 </p>
 <table class="govuk-table">
   <thead class="govuk-table__head">
-    <tr class="govuk-table__row" <% if show_application_name %>data-audit-headings<% end %>>
+    <tr class="govuk-table__row" <% if show_application_name %> data-audit-headings<% end %>>
       <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="total">Component</th>
       <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="template" title="Component has a template">
         Template
@@ -61,7 +61,7 @@
       </th>
     </tr>
   </thead>
-  <tbody class="govuk-table__body" <% if show_application_name %>data-audit-list<% end %>>
+  <tbody class="govuk-table__body" <% if show_application_name %> data-audit-list<% end %>>
     <% passed_components[:component_file_details].each do |component| %>
       <tr class="govuk-table__row" data-application="<%= component[:application] %>">
         <th scope="row" class="govuk-table__header" data-component-type="total">

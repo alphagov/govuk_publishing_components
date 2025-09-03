@@ -14,7 +14,7 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-attachment")
   component_helper.add_data_attribute({ module: "ga4-link-tracker" })
-  ga4_link = { 'event_name': 'navigation', 'type': 'attachment' }
+  ga4_link = { 'event_name': "navigation", 'type': "attachment" }
 
   case attachment.type
   when "file"
@@ -43,7 +43,7 @@
       )
     end
 
-    ga4_link[:event_name] = 'file_download'
+    ga4_link[:event_name] = "file_download"
 
   when "html"
     attributes << tag.span(
@@ -102,7 +102,7 @@
     <% end %>
 
     <% if attributes.any? %>
-      <%= tag.p raw(attributes.join(', ')), class: "gem-c-attachment__metadata" %>
+      <%= tag.p raw(attributes.join(", ")), class: "gem-c-attachment__metadata" %>
     <% end %>
 
     <% if attachment.preview_url.present? %>
@@ -110,7 +110,7 @@
     <% end %>
 
     <% if attachment.is_official_document && !hide_order_copy_link %>
-      <%= tag.p link_to(t("components.attachment.order_a_copy"), "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents", class: "govuk-link govuk-link--no-visited-state", target: "_blank"),
+      <%= tag.p link_to(t("components.attachment.order_a_copy"), "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents", class: "govuk-link govuk-link--no-visited-state", target: "_blank", rel: "noopener"),
         class: "gem-c-attachment__metadata" %>
     <% end %>
 

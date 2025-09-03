@@ -24,7 +24,7 @@
       <%= render "govuk_publishing_components/components/fieldset", {
         classes: "js-add-another__fieldset",
         legend_text: "#{fieldset_legend} #{index + 1}",
-        heading_size: "m"
+        heading_size: "m",
       } do %>
         <div class="js-add-another__destroy-checkbox">
           <%= item[:destroy_checkbox] %>
@@ -36,7 +36,7 @@
   <%= render "govuk_publishing_components/components/fieldset", {
     classes: "js-add-another__empty",
     legend_text: "#{fieldset_legend} #{items.length + 1}",
-    heading_size: "m"
+    heading_size: "m",
   } do %>
     <%= empty %>
   <% end %>
@@ -44,7 +44,7 @@
     <%= render "govuk_publishing_components/components/fieldset", {
       classes: "js-add-another__fieldset",
       legend_text: "#{fieldset_legend} #{items.length + 1}",
-      heading_size: "m"
+      heading_size: "m",
     } do %>
       <%= empty %>
     <% end %>

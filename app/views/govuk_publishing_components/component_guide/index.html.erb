@@ -1,10 +1,9 @@
-<%= render 'govuk_publishing_components/components/heading', {
+<%= render "govuk_publishing_components/components/heading", {
     text: GovukPublishingComponents::Config.component_guide_title,
     heading_level: 1,
     font_size: "xl",
-    margin_bottom: 8
-  }
-%>
+    margin_bottom: 8,
+  } %>
 
 <div class="component-markdown">
   <p>Components are packages of template, style, behaviour and documentation that live in your application.</p>
@@ -17,7 +16,7 @@
 
 <form role="search" data-module="filter-components" class="component-search">
   <%= render "govuk_publishing_components/components/search", {
-    label_text: "Search components"
+    label_text: "Search components",
   } %>
 </form>
 
@@ -37,21 +36,21 @@
   <h2 class="component-doc-h2">Gem components used by this app (<%= @used_components.length %>)</h2>
 
   <%= render "govuk_publishing_components/components/details", {
-    title: "Suggested imports for this application"
+    title: "Suggested imports for this application",
   } do %>
     <%= render "govuk_publishing_components/components/textarea", {
       label: {
-        text: "Add this to your application's main scss file, before your other local imports."
+        text: "Add this to your application's main scss file, before your other local imports.",
       },
       name: "main-sass",
-      value: @components_in_use_sass
+      value: @components_in_use_sass,
     } %>
     <%= render "govuk_publishing_components/components/textarea", {
       label: {
-        text: "Add this to your application's main js file, before your other local imports."
+        text: "Add this to your application's main js file, before your other local imports.",
       },
       name: "main-js",
-      value: @components_in_use_js
+      value: @components_in_use_js,
     } %>
   <% end %>
 <pre>

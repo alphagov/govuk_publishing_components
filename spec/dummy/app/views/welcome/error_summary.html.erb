@@ -4,36 +4,36 @@
   items: [
     {
       text: "Link to first input",
-      href: "#example-error-1"
+      href: "#example-error-1",
     },
     {
       text: "Link to second input",
-      href: "#example-error-2"
-    }
-  ]
+      href: "#example-error-2",
+    },
+  ],
 } %>
 
 <%= render "govuk_publishing_components/components/heading", {
   text: "My page title",
-  heading_level: 1
+  heading_level: 1,
 } %>
 
 <%= render "govuk_publishing_components/components/input", {
   id: "example-error-1",
   label: {
-    text: "What is your name?"
+    text: "What is your name?",
   },
   name: "name",
-  error_message: "First input error"
+  error_message: "First input error",
 } %>
 
 <% input = render "govuk_publishing_components/components/input", {
   id: "example-error-2",
   label: {
-    text: "What is your name?"
+    text: "What is your name?",
   },
   name: "name",
-  error_message: "Second input error"
+  error_message: "Second input error",
 } %>
 
 <%= render "govuk_publishing_components/components/tabs", {
@@ -41,12 +41,12 @@
     {
       id: "tab1",
       label: "First section",
-      content: input
+      content: input,
     },
     {
       id: "tab2",
       label: "Second section",
-      content: "Content for second section"
-    }
-  ]
+      content: "Content for second section",
+    },
+  ],
 } %>

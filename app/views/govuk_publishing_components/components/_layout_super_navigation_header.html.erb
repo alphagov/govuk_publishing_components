@@ -45,7 +45,7 @@
   <div class="gem-c-layout-super-navigation-header__container govuk-clearfix">
     <div class="govuk-width-container transparent-bottom-border">
       <%= content_tag(:div, {
-        class: header_logo_classes
+        class: header_logo_classes,
       }) do %>
         <%= link_to logo_link, {
           class: header_link_classes,
@@ -59,13 +59,13 @@
               "index_link": 1,
               "index_section": 0,
               "index_section_count": 2,
-              "index_total": 1
-            }.to_json
+              "index_total": 1,
+            }.to_json,
           },
           id: "logo",
           aria: {
             label: logo_link_title,
-          }
+          },
         } do %>
           <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
         <% end %>
@@ -74,8 +74,7 @@
     <nav
       aria-labelledby="super-navigation-menu-heading"
       class="gem-c-layout-super-navigation-header__content govuk-!-display-none-print"
-      data-module="super-navigation-mega-menu"
-    >
+      data-module="super-navigation-mega-menu">
       <h2 id="super-navigation-menu-heading" class="govuk-visually-hidden">
         <%= navigation_menu_heading %>
       </h2>
@@ -88,14 +87,14 @@
 
       <div class="govuk-width-container gem-c-layout-super-navigation-header__button-width-container">
         <%= content_tag(:div, {
-          class: button_container_classes
+          class: button_container_classes,
         }) do %>
           <div class="gem-c-layout-super-navigation-header__navigation-item">
             <%= link_to link[:href], {
               class: item_link_classes,
             } do %>
               <% content_tag(:span, {
-                class: item_link_inner_classes
+                class: item_link_inner_classes,
               }) do %>
                 <%= link[:label] %>
               <% end %>
@@ -119,8 +118,8 @@
                   text: link[:label],
                   index_section: 1,
                   index_section_count: 2,
-                  section: link[:label]
-                }
+                  section: link[:label],
+                },
               },
               hidden: true,
               id: "super-navigation-menu-toggle",
@@ -150,9 +149,9 @@
                   "text": "Search",
                   "index_section": 2,
                   "index_section_count": 2,
-                  "section": "Search"
+                  "section": "Search",
                   }.to_json
-                }"
+                }",
               },
               hidden: true,
               type: "button",
@@ -167,14 +166,13 @@
               %>
               <span
                 aria-hidden="true"
-                class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
-              >
+                class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon">
                 &times;
               </span>
             <% end %>
 
             <%= link_to "/search", {
-              class: search_item_link_classes
+              class: search_item_link_classes,
             } do %>
               <span class="govuk-visually-hidden">
                 <%= search_text %>
@@ -233,8 +231,8 @@
                               "index_section_count": 3,
                               "index_total": index_total,
                               "section": column[:label],
-                            }
-                          }
+                            },
+                          },
                         } %>
                         <%= tag.p item[:description], class: "gem-c-layout-super-navigation-header__navigation-second-item-description" if has_description %>
                       </li>
@@ -273,7 +271,7 @@
                 role: "search",
                 aria: {
                   label: "Site-wide",
-                }
+                },
               ) do %>
                 <%= render "govuk_publishing_components/components/search_with_autocomplete", {
                   name: "keywords",

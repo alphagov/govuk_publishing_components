@@ -1,7 +1,7 @@
 <%
   add_gem_component_stylesheet("cookie-banner")
 
-  id ||= 'global-cookie-message'
+  id ||= "global-cookie-message"
   title ||= t("components.cookie_banner.title")
   text ||= t("components.cookie_banner.text")
   if text.kind_of?(Array)
@@ -61,12 +61,12 @@
         <%= render "govuk_publishing_components/components/button", {
           name: "cookies",
           text: services_cookies.dig(:yes, :text) || "Yes",
-          data_attributes: { "accept-cookies": "true", }.merge(services_cookies.dig(:yes, :data_attributes) || {})
+          data_attributes: { "accept-cookies": "true" }.merge(services_cookies.dig(:yes, :data_attributes) || {}),
         } %>
         <%= render "govuk_publishing_components/components/button", {
           name: "cookies",
           text: services_cookies.dig(:no, :text) || "No",
-          data_attributes: { "reject-cookies": "true", }.merge(services_cookies.dig(:no, :data_attributes) || {})
+          data_attributes: { "reject-cookies": "true" }.merge(services_cookies.dig(:no, :data_attributes) || {}),
         } %>
         <% if services_cookies[:cookie_preferences] %>
           <%= link_to services_cookies.dig(:cookie_preferences, :text), services_cookies.dig(:cookie_preferences, :href), class: "govuk-link" %>
@@ -78,14 +78,14 @@
             data_attributes: {
               "accept-cookies": "true",
               "cookie-types": "all",
-            }
+            },
         } %>
         <%= render "govuk_publishing_components/components/button", {
             name: "cookies",
             text: t("components.cookie_banner.buttons.reject_cookies"),
             data_attributes: {
               "reject-cookies": "true",
-            }
+            },
         } %>
         <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
       <% end %>
@@ -96,7 +96,7 @@
           event_name: "select_content",
           type: "cookie banner",
           action: "closed",
-          section: t("components.cookie_banner.confirmation_message.accepted", locale: :en)
+          section: t("components.cookie_banner.confirmation_message.accepted", locale: :en),
         }.to_json unless disable_ga4
       %>
       <button

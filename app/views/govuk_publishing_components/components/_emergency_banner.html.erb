@@ -41,7 +41,7 @@
         event_name: "navigation",
         type: "emergency banner",
         section: heading,
-      }.to_json
+      }.to_json,
     })
   end
 %>
@@ -49,11 +49,11 @@
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <%= content_tag('h2', id: "emergency-banner-heading", class: heading_classes) do %>
+        <%= content_tag("h2", id: "emergency-banner-heading", class: heading_classes) do %>
           <%= heading %>
         <% end %>
         <% if short_description %>
-          <%= content_tag('p', class: description_classes) do %>
+          <%= content_tag("p", class: description_classes) do %>
             <%= short_description %>
           <% end %>
         <% end %>

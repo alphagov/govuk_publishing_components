@@ -6,7 +6,7 @@
       <%= link_to(
         t("components.layout_for_public.account_layout.navigation.menu_bar.account.link_text"),
         GovukPersonalisation::Urls.your_account,
-        class: 'gem-c-layout-for-public-account-menu__link govuk-link govuk-link--no-visited-state',
+        class: "gem-c-layout-for-public-account-menu__link govuk-link govuk-link--no-visited-state",
         'aria-current': page_is == "your-account" ? "page" : nil,
       ) %>
     </li>
@@ -14,7 +14,7 @@
       <%= link_to(
         t("components.layout_for_public.account_layout.navigation.menu_bar.manage.link_text"),
         GovukPersonalisation::Urls.manage,
-        class: 'gem-c-layout-for-public-account-menu__link govuk-link govuk-link--no-visited-state',
+        class: "gem-c-layout-for-public-account-menu__link govuk-link govuk-link--no-visited-state",
         'aria-current': page_is == "manage" ? "page" : nil,
         data: { module: "explicit-cross-domain-links" },
       ) %>

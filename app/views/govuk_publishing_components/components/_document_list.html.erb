@@ -25,7 +25,7 @@
       ga4_link: {
         "event_name": "navigation",
         "type": "document list",
-      }.merge(ga4_extra_data)
+      }.merge(ga4_extra_data),
     })
   end
 %>
@@ -43,12 +43,12 @@
             item_classes = "#{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
 
             if item[:link][:path]
-              rel = [
-                "external",
-                "nofollow",
-                "noopener",
-                "noreferrer",
-                "opener",
+              rel = %w[
+                external
+                nofollow
+                noopener
+                noreferrer
+                opener
               ].include?(item[:link][:rel]) ? item[:link][:rel] : nil
 
               link_to(
@@ -91,7 +91,7 @@
                 ) do %>
                   <% if item_metadata_key.to_s.eql?("public_updated_at") %>
                     <time datetime="<%= item_metadata_value.iso8601 %>">
-                      <%= l(item_metadata_value, format: '%e %B %Y') %>
+                      <%= l(item_metadata_value, format: "%e %B %Y") %>
                     </time>
                   <% else %>
                     <%= item_metadata_value %>

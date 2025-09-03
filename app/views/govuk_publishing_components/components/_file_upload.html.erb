@@ -40,7 +40,7 @@
     <% label_markup = capture do %>
       <%= render "govuk_publishing_components/components/label", {
         html_for: id,
-        heading_size: heading_size
+        heading_size: heading_size,
       }.merge(label.symbolize_keys) %>
     <% end %>
 
@@ -56,7 +56,7 @@
   <% if hint %>
     <%= render "govuk_publishing_components/components/hint", {
       id: hint_id,
-      text: hint
+      text: hint,
     } %>
   <% end %>
 
@@ -78,15 +78,15 @@
     accept: accept,
     multiple: multiple,
     aria: {
-      describedby: aria_described_by
+      describedby: aria_described_by,
     } %>
   <% end %>
-  
+
   <% if javascript %>
     <%= content_tag :div, class: "govuk-drop-zone", data: { module: "govuk-file-upload" } do %>
       <%= file_upload_element %>
     <% end %>
   <% else %>
     <%= file_upload_element %>
-  <% end %>  
+  <% end %>
 <% end %>

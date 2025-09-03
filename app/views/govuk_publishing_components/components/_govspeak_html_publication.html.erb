@@ -7,7 +7,7 @@
   govspeak_locals[:disable_youtube_expansions] = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
 %>
 <div class="gem-c-govspeak-html-publication">
-  <%= render 'govuk_publishing_components/components/govspeak', govspeak_locals do %>
+  <%= render "govuk_publishing_components/components/govspeak", govspeak_locals do %>
     <%= yield %>
   <% end %>
 </div>
