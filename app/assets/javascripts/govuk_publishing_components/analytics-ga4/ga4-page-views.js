@@ -85,11 +85,21 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       }
     },
 
+    getBasePath: function () {
+      return this.getMetaContent('ga4-base-path')
+    },
+
     getCanonicalHref: function () {
       var link = document.querySelector('link[rel=canonical]')
 
       if (link) {
         return link.href
+      }
+
+      var basePath = this.getBasePath()
+
+      if (basePath) {
+        return window.location.origin + basePath // e.g. https://www.gov.uk + /browse
       }
     },
 

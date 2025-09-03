@@ -739,7 +739,7 @@ describe('Google Tag Manager page view tracking', function () {
     })
   })
 
-  it('returns a canonical_url', function () {
+  it('returns a canonical_url if the link element exists', function () {
     var link = document.createElement('link')
     var head = document.getElementsByTagName('head')[0]
 
@@ -753,5 +753,20 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
 
     head.removeChild(link)
+  })
+
+  it('falls back to constructing a canonical_url if the link element doesn\'t exist', function () {
+    var meta = document.createElement('meta')
+    meta.setAttribute('name', 'govuk:ga4-base-path')
+    meta.setAttribute('content', '/browse/example')
+    var head = document.getElementsByTagName('head')[0]
+
+    head.appendChild(meta)
+
+    expected.page_view.canonical_url = window.location.origin + '/browse/example'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+
+    head.removeChild(meta)
   })
 })
