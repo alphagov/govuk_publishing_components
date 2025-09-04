@@ -50,7 +50,7 @@ en:
         html: You can %{link} at any time.
         link: change your cookie settings
         rejected: You have rejected additional cookies
-      hide: Hide this message
+      hide: Hide cookie message
       text:
       - We use some essential cookies to make this website work.
       - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
