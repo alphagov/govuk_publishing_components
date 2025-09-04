@@ -43,7 +43,7 @@ describe "Cookie banner", type: :view do
   it "renders a hide link within the confirmation banner" do
     render_component({})
 
-    assert_select ".govuk-button-group .gem-c-cookie-banner__hide-button", text: "Hide this message"
+    assert_select ".govuk-button-group .gem-c-cookie-banner__hide-button", text: "Hide cookie message"
     assert_select '.gem-c-cookie-banner__hide-button[data-module="ga4-event-tracker"]'
   end
 
