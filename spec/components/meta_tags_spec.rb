@@ -509,6 +509,19 @@ describe "Meta tags", type: :view do
     assert_no_meta_tag("govuk:ga4-political-status")
   end
 
+  it "renders govuk:ga4-base-path by grabbing the content item's base path" do
+    render_component(content_item: example_document_for("transaction", "transaction"))
+    assert_meta_tag("govuk:ga4-base-path", "/council-tax-bands")
+  end
+
+  it "doesn't render govuk:ga4-base-path if there's no base path in the content item" do
+    content_item = example_document_for("html_publication", "published_with_history_mode")
+    content_item.delete("base_path")
+
+    render_component(content_item:)
+    assert_no_meta_tag("govuk:ga4-base-path")
+  end
+
   def assert_political_status_for(political, current, expected_political_status)
     render_component(content_item: { details: { political:, government: { current:, slug: "government" } } })
     assert_meta_tag("govuk:political-status", expected_political_status)
