@@ -50,7 +50,7 @@ et:
         html: Saate %{link} igal ajal.
         link: muuda oma küpsiste seadeid
         rejected:
-      hide: Peida see sõnum
+      hide:
       text:
       - Kasutame selle veebisaidi toimimiseks mõningaid olulisi küpsiseid.
       - Soovime seadistada täiendavaid küpsiseid

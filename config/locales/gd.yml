@@ -52,7 +52,7 @@ gd:
         html: Is féidir leat %{link} ag am ar bith.
         link: Athraigh do chuid socruithe fianán
         rejected:
-      hide: Folaigh an teachtaireacht seo
+      hide:
       text:
       - Úsáidimid fianáin áirithe atá riachtanach le haghaidh gnáthoibriú an láithreáin ghréasáin seo
       - Ba mhaith linn fianáin bhreise a shocrú chun tuiscint a fháil ar an gcaoi a n-úsáideann tú GOV.UK

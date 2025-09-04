@@ -50,7 +50,7 @@ tr:
         html: İstediğiniz zaman %{link} yapabilirsiniz.
         link: çerez ayarlarınızı değiştirin
         rejected:
-      hide: Bu mesajı gizle
+      hide:
       text:
       - Bu web sitesini çalıştırmak için bazı gerekli çerezleri kullanıyoruz.
       - GOV.UK sitesini nasıl kullanacağınızı öğrenmek

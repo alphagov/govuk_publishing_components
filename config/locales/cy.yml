@@ -54,7 +54,7 @@ cy:
         html: Gallwch %{link} unrhyw bryd.
         link: newid eich gosodiadau cwcis
         rejected:
-      hide: Cuddio'r neges hon
+      hide:
       text:
       - Rydyn ni'n defnyddio rhai cwcis hanfodol i wneud i'r wefan hon weithio.
       - Fe hoffen ni osod cwcis ychwanegol i ddeall sut rydych chi'n defnyddio GOV.UK

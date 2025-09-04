@@ -50,7 +50,7 @@ tk:
         html: Islendik wagt %{link} edip bilersiňiz.
         link: kukiler sazlamalaryňyzy üýtgediň
         rejected:
-      hide: Bu habary gizle
+      hide:
       text:
       - Bu internet sahypasyny işletmek üçin käbir möhüm kukileri ulanýarys.
       - GOV.UK-ny nähili ulanýandygyňyza düşünmek

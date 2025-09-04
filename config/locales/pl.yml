@@ -52,7 +52,7 @@ pl:
         html: Możesz %{link} w każdej chwili.
         link: zmień ustawienia plików cookie
         rejected:
-      hide: Ukryj tę wiadomość
+      hide:
       text:
       - Niektóre pliki cookie są niezbędne
       - aby umożliwić działanie tej strony.

@@ -49,7 +49,7 @@ zh-tw:
         html: 可以隨時 %{link}。
         link: 更改你的cookie設定
         rejected:
-      hide: 隱藏此訊息
+      hide:
       text:
       - 我們使用一些必要的 cookie 來正常運作本網站。
       - 我們想設置額外的 cookie 以了解你如何使用英國政府網站、記憶你的設置並改進當局服務

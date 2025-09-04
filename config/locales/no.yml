@@ -50,7 +50,7 @@
         html: Du kan %{link} når som helst.
         link: endre innstillingene for informasjonskapsler
         rejected:
-      hide: Skjul denne meldingen
+      hide:
       text:
       - Vi bruker noen viktige informasjonskapsler for å få dette nettstedet til å fungere.
       - Vi vil gjerne sette flere informasjonskapsler for å forstå hvordan du bruker GOV.UK

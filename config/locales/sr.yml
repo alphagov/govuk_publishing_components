@@ -51,7 +51,7 @@ sr:
         html: U svakom trenutku možete da %{link}.
         link: promenite podešavanja kolačića
         rejected:
-      hide: Sakrij ovu poruku
+      hide:
       text:
       - Koristimo osnovne kolačiće za funkcionisanje ovog veb-sajta.
       - Želimo da podesimo dodatne kolačiće da bismo razumeli način na koji koristite GOV.UK

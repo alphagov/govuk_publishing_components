@@ -49,7 +49,7 @@ zh-hk:
         html: 您可隨時 %{link} 。
         link: 更改您的 cookie 設定
         rejected:
-      hide: 隱藏此一訊息
+      hide:
       text:
       - 我們使用部份基本 cookies 讓此一網站運作。
       - 我們希望設定更多 cookies 了解您使用 GOV.UK 的方式，請記下您的設定並改善政府服務。

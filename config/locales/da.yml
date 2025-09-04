@@ -50,7 +50,7 @@ da:
         html: Du kan %{link} når som helst.
         link: ændre dine cookie-indstillinger
         rejected:
-      hide: Skjul denne meddelelse
+      hide:
       text:
       - Vi bruger nogle vigtige cookies for at få dette websted til at fungere.
       - Vi vil gerne indstille yderligere cookies for at forstå

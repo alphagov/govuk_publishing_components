@@ -50,7 +50,7 @@ es-419:
         html: Puede %{link} en cualquier momento.
         link: cambiar la configuración de cookies
         rejected:
-      hide: Ocultar este mensaje
+      hide:
       text:
       - Utilizamos algunas cookies esenciales para que este sitio web funcione
       - Nos gustaría establecer cookies adicionales para entender cómo ud. utiliza GOV.UK

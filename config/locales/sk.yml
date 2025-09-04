@@ -51,7 +51,7 @@ sk:
         html: Kedykoľvek môžete %{link}.
         link: zmeniť nastavenia súborov cookie
         rejected:
-      hide: Skryť túto správu
+      hide:
       text:
       - "„Používame niektoré základné súbory cookie"
       - aby táto webová stránka fungovala.“

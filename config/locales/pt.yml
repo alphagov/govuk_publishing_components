@@ -50,7 +50,7 @@ pt:
         html: Pode %{link} a qualquer momento.
         link: alterar as suas definições de cookies
         rejected:
-      hide: Ocultar esta mensagem
+      hide:
       text:
       - Utilizamos alguns cookies essenciais para permitir o funcionamento deste site.
       - Gostaríamos de definir cookies adicionais para compreendermos como utiliza o site GOV.UK

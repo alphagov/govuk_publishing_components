@@ -49,7 +49,7 @@ zh:
         html: 您可以随时 %{link}。
         link: 更改您的cookie设置
         rejected:
-      hide: 隐藏此消息
+      hide:
       text:
       - 我们使用一些基本的cookie以使本网站运作。
       - 我们希望设置额外的cookie，以了解您如何使用GOV.UK，记住您的设置，并改善政府服务。

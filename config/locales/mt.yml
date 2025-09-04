@@ -52,7 +52,7 @@ mt:
         html: Tista' %{link} kull ħin.
         link: Ibdel is-settings tal-cookie tiegħek
         rejected:
-      hide: Aħbi dan il-messaġġ
+      hide:
       text:
       - Aħna nużaw xi cookies essenzjali biex inħaddmu din il-websajt.
       - Nixtiequ nżidu cookies addizzjonali biex nifhmu kif inti tuża'  GOV.UK

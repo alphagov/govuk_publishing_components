@@ -50,7 +50,7 @@ fi:
         html: Voit %{link} milloin tahansa.
         link: muuta evästeasetuksia
         rejected:
-      hide: Piilota tämä viesti
+      hide:
       text:
       - Käytämme joitain välttämättömiä evästeitä saadaksemme tämän sivuston toimimaan.
       - Haluamme asettaa lisäevästeitä ymmärtääksemme

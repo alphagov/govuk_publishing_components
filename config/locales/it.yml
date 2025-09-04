@@ -50,7 +50,7 @@ it:
         html: Puoi %{link} in qualsiasi momento.
         link: modifica le tue impostazioni per i cookie
         rejected:
-      hide: Nascondi questo messaggio
+      hide:
       text:
       - Utilizziamo alcuni cookie essenziali per far funzionare questo sito web.
       - Vorremmo impostare cookie aggiuntivi per capire come usi GOV.UK

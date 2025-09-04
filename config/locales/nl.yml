@@ -50,7 +50,7 @@ nl:
         html: U kunt %{link} op elk gewenst moment
         link: uw cookie-instellingen wijzigen
         rejected:
-      hide: Deze melding verbergen
+      hide:
       text:
       - We gebruiken een aantal essentiële cookies om deze website te laten werken.
       - We willen graag extra cookies plaatsen om te begrijpen hoe u GOV.UK gebruikt
