@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Set `row_classes` in the Summary Card component to be an array ([PR #5011](https://github.com/alphagov/govuk_publishing_components/pull/5011))
+
 ## 60.2.0
 
 * Upgrade to LUX 4.2.1 ([PR #5007](https://github.com/alphagov/govuk_publishing_components/pull/5007))
