@@ -31,8 +31,8 @@
           <%= tag.dl class: "govuk-summary-list" do %>
             <% rows.each do |row| %>
               <%
-                row_classes = "govuk-summary-list__row"
-                row_classes << " govuk-summary-list__row--no-actions" if row[:actions].blank?
+                row_classes = %w(govuk-summary-list__row)
+                row_classes << "govuk-summary-list__row--no-actions" if row[:actions].blank?
               %>
               <%= tag.div class: row_classes, data: row[:data] do %>
                 <%= tag.dt class: "govuk-summary-list__key" do %>
