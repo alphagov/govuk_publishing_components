@@ -111,6 +111,11 @@ $search-icon-height: 20px;
   // visible when the text scale is increased
   // related issue: https://github.com/alphagov/govuk_publishing_components/issues/4208
   background: $govuk-brand-colour;
+
+  // add a transparent bottom border for forced-color modes
+  @media (forced-colors: active) {
+    border-bottom: 1px solid transparent;
+  }
 }
 
 .gem-c-layout-super-navigation-header__header-logo {
@@ -704,13 +709,6 @@ $search-icon-height: 20px;
   .gem-c-layout-super-navigation-header__search-item,
   .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
     display: none;
-  }
-}
-
-// Used to add a transparent bottom border for forced-colour modes
-.transparent-bottom-border {
-  @media (forced-colors: active) {
-    border-bottom: 1px solid transparent;
   }
 }
 
