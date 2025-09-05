@@ -51,7 +51,7 @@ ro:
         html: Puteți să %{link} în orice moment.
         link: modificați setările pentru cookie-uri
         rejected:
-      hide: Ascundeți acest mesaj
+      hide:
       text:
       - Utilizăm unele cookie-uri esențiale pentru ca acest website să poată funcționa.
       - Dorim să setăm cookie-uri suplimentare ca să înțelegem cum utilizați GOV.UK

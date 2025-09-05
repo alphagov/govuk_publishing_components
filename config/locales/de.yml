@@ -50,7 +50,7 @@ de:
         html: Sie können jederzeit %{link}.
         link: Cookie-Einstellungen ändern
         rejected:
-      hide: Diese Meldung ausblenden
+      hide:
       text:
       - Wir verwenden einige essenzielle Cookies
       - damit diese Webseite ordnungsgemäß funktioniert.

@@ -50,7 +50,7 @@ sq:
         html: Ju mund të %{link} në çdo kohë.
         link: ndryshoni cilësimet tuaja të cookies
         rejected:
-      hide: Fshih këtë mesazh
+      hide:
       text:
       - Ne përdorim disa cookie thelbësore për ta bërë këtë faqe interneti të funksionojë.
       - Ne do të donim të vendosnim cookie shtesë për të kuptuar se si përdorni GOV.UK

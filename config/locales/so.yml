@@ -50,7 +50,7 @@ so:
         html: Waxaad gali karta %{link} wakhti kasta.
         link: badel cookie settings kaaga
         rejected:
-      hide: Qari fariintan
+      hide:
       text:
       - Waxaan isticmaalkaa xogkaydin muhiim ah si websaaytkan uu u shaqeeyo.
       - Waxaan jeclaan lahayn inaan dejino xog kaydino dheeraad ah si aan u fahanto sida loo isticmaalo GOV.UK

@@ -50,7 +50,7 @@ sv:
         html: Du kan %{link} när som helst.
         link: ändra dina cookie-inställningar
         rejected:
-      hide: Dölj det här meddelandet
+      hide:
       text:
       - Vi använder vissa viktiga cookies för att den här webbplatsen ska fungera.
       - Vi vill ställa in ytterligare cookies för att förstå hur du använder GOV.UK

@@ -51,7 +51,7 @@ lt:
         html: Galite %{link} bet kuriuo metu.
         link: keisti slapukų nustatymus
         rejected:
-      hide: Slėpti šį pranešimą
+      hide:
       text:
       - Naudojame kai kuriuos būtinus slapukus
       - kad ši interneto svetainė galėtų veikti.

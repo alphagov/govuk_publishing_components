@@ -50,7 +50,7 @@ sw:
         html: Unaweza %{link} wakati wowote.
         link: badilisha mipangilio yako ya vidakuzi
         rejected:
-      hide: Ficha ujumbe huu
+      hide:
       text:
       - Tunatumia vidakuzi muhimu ili kufanya tovuti hii ifanye kazi.
       - Tungependa kuweka vidakuzi vya ziada ili kuelewa jinsi unavyotumia tovuti ya GOV.UK

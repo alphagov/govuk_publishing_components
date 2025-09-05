@@ -49,7 +49,7 @@ vi:
         html: Bạn có thể %{link} bất kỳ lúc nào.
         link: thay đổi cài đặt cookie của bạn
         rejected:
-      hide: Ẩn thông báo này
+      hide:
       text:
       - Chúng tôi sử dụng một số cookie cần thiết để vận hành trang web này.
       - Chúng tôi muốn đặt các cookie bổ sung để hiểu cách bạn sử dụng GOV.UK

@@ -50,7 +50,7 @@ hu:
         html: 'Ön bármikor megteheti a következőt: %{link}.'
         link: változtassa meg sütibeállításait
         rejected:
-      hide: Üzenet elrejtése
+      hide:
       text:
       - A weboldalunk biztosítása érdekében néhány létfontosságú sütit használunk.
       - Szeretnénk további sütiket beállítani

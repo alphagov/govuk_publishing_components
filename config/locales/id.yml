@@ -49,7 +49,7 @@ id:
         html: Anda dapat menautkan %{link} kapan saja.
         link: ubah pengaturan cookie Anda
         rejected:
-      hide: Sembunyikan pesan ini
+      hide:
       text:
       - Kami menggunakan beberapa cookie yang sangat dibutuhkan untuk membuat situs web ini berfungsi.
       - Kami ingin mengatur cookie tambahan untuk memahami cara Anda menggunakan situs GOV.UK

@@ -51,7 +51,7 @@ hr:
         html: Možete %{link} u bilo kojem trenutku.
         link: promijenite postavke kolačića
         rejected:
-      hide: Sakrij ovu poruku
+      hide:
       text:
       - Koristimo neke bitne kolačiće za funkcioniranje ove web stranice.
       - Željeli bismo postaviti dodatne kolačiće kako bismo razumjeli kako koristite GOV.UK

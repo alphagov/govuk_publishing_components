@@ -54,7 +54,7 @@ sl:
         html: Kadar koli lahko %{link}.
         link: spremenite nastavitve piškotkov
         rejected:
-      hide: Skrijte to sporočilo
+      hide:
       text:
       - Za delovanje spletne strani uporabljamo nekaj bistvenih piškotkov.
       - Radi bi namestili dodatne piškotke

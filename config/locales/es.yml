@@ -50,7 +50,7 @@ es:
         html: Puede %{link} en cualquier momento.
         link: cambie la configuración de cookies
         rejected:
-      hide: Ocultar este mensaje
+      hide:
       text:
       - "“Utilizamos algunas cookies esenciales para hacer que este sitio web funcione.”"
       - "“Nos gustaría establecer cookies adicionales para comprender cómo utiliza GOV.UK"

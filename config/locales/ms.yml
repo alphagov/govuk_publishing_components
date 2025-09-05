@@ -49,7 +49,7 @@ ms:
         html: Anda boleh %{link} pada bila-bila masa.
         link: ubah tetapan kuki anda
         rejected:
-      hide: Sorok mesej ini
+      hide:
       text:
       - Kami menggunakan beberapa kuki penting untuk menjadikan laman web ini berfungsi.
       - Kami ingin menetapkan kuki tambahan untuk memahami cara anda menggunakan GOV.UK

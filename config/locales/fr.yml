@@ -50,7 +50,7 @@ fr:
         html: Vous pouvez %{link} à tout moment.
         link: modifier vos paramètres de cookies
         rejected:
-      hide: Masquer ce message
+      hide:
       text:
       - Nous nous servons de certains cookies indispensables pour le fonctionnement de ce site Web.
       - Nous aimerions définir des cookies supplémentaires pour comprendre votre utilisation de GOV.UK

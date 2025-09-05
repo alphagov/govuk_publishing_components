@@ -51,7 +51,7 @@ cs:
         html: Kdykoli můžete %{link}.
         link: Změna nastavení souborů cookie
         rejected:
-      hide: Skrýt tuto zprávu
+      hide:
       text:
       - Používáme některé základní soubory cookie
       - aby tyto webové stránky fungovaly.

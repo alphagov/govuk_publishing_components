@@ -50,7 +50,7 @@ is:
         html: Þú getur %{link} hvenær sem er.
         link: breyta vafraköku stillingunum þínum
         rejected:
-      hide: Fela þessi skilaboð
+      hide:
       text:
       - Við notum nokkrar nauðsynlegar vafrakökur til að tryggja virkni síðunnar.
       - Við viljum setja fleiri vafrakökur til að átta okkur á hvernig þú notar GOV.UK

@@ -50,7 +50,7 @@ az:
         html: İstənilən vaxt %{link}.
         link: Kuki parametrlərinizi dəyişdirin
         rejected:
-      hide: Bu mesajı gizlət
+      hide:
       text:
       - Biz bu vebsaytın işləməsini təmin etmək üçün bəzi zəruri kukilərdən istifadə edirik.
       - Biz GOV.UK-dən necə istifadə etdiyinizi anlamaq

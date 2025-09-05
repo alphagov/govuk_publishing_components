@@ -50,7 +50,7 @@ lv:
         html: Varat %{link} jebkurā laikā.
         link: mainīt sīkfailu iestatījumus
         rejected:
-      hide: Paslēpt šo ziņojumu
+      hide:
       text:
       - Mēs izmantojam vairākus būtiskos sīkfailus
       - lai šī tīmekļa vietne varētu darboties.
