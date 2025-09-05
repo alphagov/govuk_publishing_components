@@ -74,17 +74,6 @@ examples:
       - locale: 'cy'
         base_path: '/cy'
         text: 'Cymraeg'
-  with_no_top_margin:
-    data:
-      no_margin_top: true
-      translations:
-      - locale: 'en'
-        base_path: '/en'
-        text: 'English'
-        active: true
-      - locale: 'cy'
-        base_path: '/cy'
-        text: 'Cymraeg'
   with_data_attributes_on_links:
     description: Data attributes can be passed for each link as shown.
     data:
