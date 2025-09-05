@@ -1,4 +1,5 @@
 @import "govuk_publishing_components/individual_component_support";
+@import "mixins/css3";
 
 .gem-c-subscription-links {
   @include govuk-text-colour;
