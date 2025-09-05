@@ -76,11 +76,6 @@ describe "Translation nav", type: :view do
     assert_select ".gem-c-translation-nav .brand__color"
   end
 
-  it "has no margin top when option passed" do
-    render_component(translations: multiple_translations, no_margin_top: true)
-    assert_select ".gem-c-translation-nav--no-margin-top"
-  end
-
   it "renders as inverse when option passed" do
     render_component(translations: multiple_translations, inverse: true)
     assert_select ".gem-c-translation-nav--inverse"
