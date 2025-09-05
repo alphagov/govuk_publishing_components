@@ -5,16 +5,3 @@
     margin-bottom: govuk-spacing(7);
   }
 }
-
-@mixin responsive-top-margin {
-  margin-top: govuk-spacing(3);
-
-  @include govuk-media-query($from: tablet) {
-    margin-top: govuk-spacing(7);
-  }
-}
-
-@mixin responsive-vertical-margins {
-  @include responsive-bottom-margin;
-  @include responsive-top-margin;
-}
