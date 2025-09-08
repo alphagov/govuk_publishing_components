@@ -1,7 +1,6 @@
 module GovukPublishingComponents
   module Presenters
     class PublicLayoutHelper
-      BLUE_BAR_BACKGROUND_COLOURS = %w[browse].freeze
       FOOTER_NAVIGATION_COLUMNS = [2, 1].freeze
       FOOTER_META = {
         items: [
@@ -63,10 +62,6 @@ module GovukPublishingComponents
 
       def footer_navigation_columns
         FOOTER_NAVIGATION_COLUMNS
-      end
-
-      def blue_bar_background_colours
-        BLUE_BAR_BACKGROUND_COLOURS
       end
     end
   end

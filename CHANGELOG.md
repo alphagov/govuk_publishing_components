@@ -11,6 +11,7 @@
 
 * Set `row_classes` in the Summary Card component to be an array ([PR #5011](https://github.com/alphagov/govuk_publishing_components/pull/5011))
 * Update cookie banner component hide button text ([PR #5012](https://github.com/alphagov/govuk_publishing_components/pull/5012))
+* Remove the blue_bar option from layout_for_public template ([PR #5016](https://github.com/alphagov/govuk_publishing_components/pull/5016))
 * Add govuk_chat_onboarding_complete cookie to cookie categories ([PR #5014](https://github.com/alphagov/govuk_publishing_components/pull/5014))
 
 ## 60.2.0
