@@ -8,7 +8,6 @@
   html_lang ||= "en"
   homepage ||= false
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
-  blue_bar_background_colour = layout_helper.blue_bar_background_colours.include?(blue_bar_background_colour) ? blue_bar_background_colour : nil
   logo_link ||= "/"
   navigation_items ||= []
   one_login_navigation_items ||= {}
@@ -30,9 +29,6 @@
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
   body_css_classes << "global-banner-present" if global_banner.present?
-
-  blue_bar_wrapper_classes = %w()
-  blue_bar_wrapper_classes << "gem-c-layout-for-public__blue-bar-wrapper--#{blue_bar_background_colour}" if blue_bar_background_colour
 -%>
 <!DOCTYPE html>
 <html class="govuk-template govuk-template--rebranded" lang="<%= html_lang %>">
