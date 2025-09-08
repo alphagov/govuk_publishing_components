@@ -105,42 +105,6 @@ describe "Layout for public", :capybara, type: :view do
     assert_select "#test-global-banner", text: "This is a global banner test"
   end
 
-  it "has no blue bar by default" do
-    render_component({})
-
-    assert_select ".gem-c-layout-for-public__blue-bar", false
-  end
-
-  it "has no blue bar when using the full width layout" do
-    render_component(full_width: true)
-
-    assert_select ".gem-c-layout-for-public__blue-bar", false
-  end
-
-  it "does not render the blue bar even if `blue_bar` is `true`" do
-    render_component(blue_bar: true)
-
-    assert_select ".gem-c-layout-for-public__blue-bar", false
-  end
-
-  it "does not render the blue bar even if `full_width` is true and `blue_bar` is true" do
-    render_component(full_width: true, blue_bar: true)
-
-    assert_select ".gem-c-layout-for-public__blue-bar", false
-  end
-
-  it "does not render the blue bar with a background even if valid background specified" do
-    render_component(blue_bar: true, full_width: true, blue_bar_background_colour: "browse")
-
-    assert_select ".gem-c-layout-for-public__blue-bar-wrapper--browse .gem-c-layout-for-public__blue-bar", false
-  end
-
-  it "does not render the blue bar with a background if an invalid background specified" do
-    render_component(blue_bar: true, full_width: true, blue_bar_background_colour: "invalid")
-
-    expect(page).not_to have_selector(".gem-c-layout-for-public__blue-bar-wrapper--invalid")
-  end
-
   it "has the default logo link when no logo_link is specified" do
     render_component({})
 
