@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 60.2.1
 
 * Set `row_classes` in the Summary Card component to be an array ([PR #5011](https://github.com/alphagov/govuk_publishing_components/pull/5011))
 * Update cookie banner component hide button text ([PR #5012](https://github.com/alphagov/govuk_publishing_components/pull/5012))
