@@ -2,15 +2,13 @@
 
 .gem-c-inverse-header {
   width: 100%;
-  background-color: govuk-colour("blue");
-  color: govuk-colour("white");
+  background-color: $govuk-blue-tint-80;
   margin-bottom: govuk-spacing(6);
   padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
   box-sizing: border-box;
 }
 
 .gem-c-inverse-header__subtext {
-  color: govuk-colour("white");
   margin: 0;
   @include govuk-font($size: 16, $line-height: 1.5);
 }
@@ -19,6 +17,11 @@
   padding-left: 0;
   padding-right: 0;
   padding-bottom: govuk-spacing(3);
+}
+
+.gem-c-inverse-header--html-publication-header {
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
 }
 
 @include govuk-media-query($media-type: print) {
