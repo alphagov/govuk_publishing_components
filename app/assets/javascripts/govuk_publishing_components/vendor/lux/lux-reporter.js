@@ -268,7 +268,7 @@
     return sinceNavigationStart;
   }
 
-  var version = "4.3.0";
+  var version = "4.3.2";
 
   function padStart(str, length, char) {
     while (str.length < length) {
@@ -586,8 +586,8 @@
     try {
       if (selector &&
         (node.nodeType === 9 || selector.length > MAX_SELECTOR_LENGTH || !node.parentNode)) {
-          // Final selector.
-          return selector;
+        // Final selector.
+        return selector;
       }
       var el = node;
       // Our first preference is to use the data-sctrack attribute from anywhere in the tree
@@ -684,10 +684,10 @@
       if (sessionEntries.length &&
         (entry.startTime - latestEntry.startTime >= 1000 ||
           entry.startTime - firstEntry.startTime >= 5000)) {
-          sessionValue = entry.value;
-          sessionEntries = [entry];
-          sessionAttributions = sources;
-          largestEntry = entry;
+        sessionValue = entry.value;
+        sessionEntries = [entry];
+        sessionAttributions = sources;
+        largestEntry = entry;
       }
       else {
         sessionValue += entry.value;
@@ -1714,7 +1714,7 @@
     // Track how long it took lux.js to load via Resource Timing.
     function selfLoading() {
       var sLuxjs = "";
-      if (gbFirstPV && performance.getEntriesByName) {
+      if (gbFirstPV && performance.getEntriesByName && thisScript.src) {
         // Get the lux script URL (including querystring params).
         var aResources = performance.getEntriesByName(thisScript.src);
         if (aResources && aResources.length) {
@@ -2277,8 +2277,8 @@
       if (gFlags) {
         queryParams.push("fl=" + gFlags);
       }
-      if (globalLux.snippetVersion) {
-        queryParams.push("sv=" + globalLux.snippetVersion);
+      if (LUX.snippetVersion) {
+        queryParams.push("sv=" + LUX.snippetVersion);
       }
       var customDataValues = valuesToString(customData);
       if (customDataValues) {
@@ -2900,4 +2900,3 @@
   // End of more settings
   // ---------------------------------------------------------------------------
 })();
-//# sourceMappingURL=lux.js.map
