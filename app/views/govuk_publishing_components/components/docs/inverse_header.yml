@@ -1,9 +1,9 @@
 name: Inverse header
-description: A wrapper to contain header content in white text
+description: A wrapper to contain header content
 body: |
-  This component can be passed a block of template code and will wrap it in a blue header. White text is enforced on content and would need to be overridden where unwanted. Implemented to accommodate topic and list page headings but unopinionated about its contents.
+  This component can be passed a block of template code and will wrap it in a light blue header. Implemented to accommodate topic and list page headings but unopinionated about its contents.
 
-  If passing links to the block make sure to add [the inverse modifier](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds).
+  If passing links to the block make sure to add [the inverse link style](#with_paragraph_and_link), or in the case of the html publication header variant, [the inverse modifier](https://design-system.service.gov.uk/styles/links/#links-on-dark-backgrounds).
 uses_component_wrapper_helper: true
 accessibility_criteria: |
   The component must:
@@ -17,7 +17,6 @@ examples:
           <%= render "govuk_publishing_components/components/heading", {
             text: "Education, Training and Skills",
             font_size: "xl",
-            inverse: true,
             padding: true,
           } %>
           <!-- end of example content -->
@@ -30,7 +29,6 @@ examples:
         <!-- example content -->
           <%= render "govuk_publishing_components/components/heading", {
             text: "Education, Training and Skills",
-            inverse: true,
             margin_bottom: 0
           } %>
           <!-- end of example content -->
@@ -43,7 +41,6 @@ examples:
             <%= render "govuk_publishing_components/components/heading", {
               text: "Education, Training and Skills",
               font_size: "xl",
-              inverse: true,
               padding: true,
             } %>
             <!-- end of example content -->
@@ -54,13 +51,13 @@ examples:
         <!-- example content -->
           <%= render "govuk_publishing_components/components/heading", {
             text: "Education, Training and Skills",
-            inverse: true,
             margin_bottom: 0
           } %>
           <!-- end of example content -->
   html_publication_header:
-    description: "The inverse header component is used on HTML publications. [See example on GOV.UK here](https://www.gov.uk/government/publications/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application-advertisement/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application)"
+    description: "The html publication header with a blue background is used on HTML publications and CSV previews. [See example of a HTML publication on GOV.UK here](https://www.gov.uk/government/publications/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application-advertisement/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application), and [an example of a CSV preview on GOV.UK here](https://www.gov.uk/csv-preview/6756eeb07ec19a3516f79a3d/Malpractice_in_VTQ_-_Example_CSV_File.csv)"
     data:
+      html_publication_header: true
       block: |
         <!-- example content -->
           <%= render "govuk_publishing_components/components/heading", {
@@ -75,6 +72,6 @@ examples:
   with_paragraph_and_link:
     data:
       block: |
-        <p class="gem-c-lead-paragraph gem-c-lead-paragraph--inverse">
-          Schools and academies, further and higher education, apprenticeships and <a href="#other-skills" class="govuk-link govuk-link--inverse">other skills</a> training, student funding, early years.
+        <p class="gem-c-lead-paragraph">
+          Schools and academies, further and higher education, apprenticeships and <a href="#other-skills" class="govuk-link">other skills</a> training, student funding, early years.
         </p>
