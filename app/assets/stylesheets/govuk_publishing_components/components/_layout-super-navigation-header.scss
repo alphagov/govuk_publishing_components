@@ -95,6 +95,7 @@ $search-icon-height: 20px;
 
 // stylelint-disable max-nesting-depth
 .gem-c-layout-super-navigation-header {
+  overflow: hidden;
   background: $govuk-brand-colour;
   border-top: 1px solid $govuk-brand-colour;
   margin-top: -1px;
@@ -544,6 +545,7 @@ $search-icon-height: 20px;
 
 // JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+  position: relative;
   width: 100%;
   order: 1; // Ensure the dropdown menu appears after the super navigation buttons which have a default order of 0
   background: $govuk-rebrand-template-background-colour;
@@ -552,19 +554,24 @@ $search-icon-height: 20px;
   @include govuk-media-query($from: "desktop") {
     padding-top: govuk-spacing(8);
   }
-}
 
-// Ensure the dropdown menu background is offset from the menu height and
-// takes up the full screen width
-.govuk-frontend-supported .gem-c-layout-super-navigation-header {
-  &::before {
+  &::before,
+  &::after {
     content: "";
     position: absolute;
-    top: $navbar-height;
-    bottom: 0;
-    width: 100%;
+    z-index: 10;
+    top: 0;
+    height: 100%;
     background: $govuk-rebrand-template-background-colour;
-    box-shadow: 0 1px govuk-colour("mid-grey");
+    width: 100000px;
+  }
+
+  &::before {
+    right: 100%;
+  }
+
+  &::after {
+    left: 100%;
   }
 }
 
