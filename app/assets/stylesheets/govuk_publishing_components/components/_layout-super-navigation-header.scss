@@ -107,23 +107,14 @@ $search-icon-height: 20px;
 
 .gem-c-layout-super-navigation-header__container {
   position: relative;
-}
+  // the background color is set again on the nav container to ensure the menu buttons are still
+  // visible when the text scale is increased
+  // related issue: https://github.com/alphagov/govuk_publishing_components/issues/4208
+  background: $govuk-brand-colour;
 
-.gem-c-layout-super-navigation-header__button-width-container {
-  position: relative;
-}
-
-.gem-c-layout-super-navigation-header__button-container {
-  top: -$navbar-height;
-  position: absolute;
-  right: 0;
-
-  @include govuk-media-query($until: "tablet") {
-    margin-right: govuk-spacing(-3);
-  }
-
-  @include govuk-media-query($until: 300px) {
-    position: static;
+  // add a transparent bottom border for forced-color modes
+  @media (forced-colors: active) {
+    border-bottom: 1px solid transparent;
   }
 }
 
@@ -132,18 +123,37 @@ $search-icon-height: 20px;
   line-height: 1;
   padding-bottom: 12px;
   padding-top: 16px;
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  // remove the right margin from the govuk-logo to ensure the super nav menu buttons
+  // do not wrap onto a new line when the screen width is 360px ($chevron-breakpoint)
+  // govuk-frontend includes spacing to the right of the logo to offset it from the product name
+  // as we do not include a product name in the super navigation menu, we can set the right margin to 0
+  .govuk-header__link--homepage {
+    margin-right: 0;
+  }
 }
 
 .gem-c-layout-super-navigation-header__content {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .gem-c-layout-super-navigation-header__navigation-item,
 .gem-c-layout-super-navigation-header__search-item {
-  display: block;
-  float: left;
+  display: inline-block;
   margin: 0;
   padding: 0;
+}
+
+.gem-c-layout-super-navigation-header__search-item {
+  margin-right: -15px;
+
+  @include govuk-media-query($from: "desktop") {
+    margin-right: 0;
+  }
 }
 
 // Top level navigation links and search link, used when JavaScript is not available
@@ -158,11 +168,6 @@ $search-icon-height: 20px;
   position: relative;
   @include govuk-link-common;
   @include govuk-link-style-no-visited-state;
-
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    margin: 0;
-  }
 
   &::after {
     @include pseudo-underline;
@@ -180,7 +185,6 @@ $search-icon-height: 20px;
   &:link,
   &:visited {
     color: govuk-colour("white");
-    float: left;
     font-size: 16px;
     font-size: govuk-px-to-rem(16px);
     height: govuk-spacing(4);
@@ -353,12 +357,6 @@ $search-icon-height: 20px;
         }
       }
     }
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    float: left;
-    right: 0;
   }
 }
 
@@ -546,16 +544,27 @@ $search-icon-height: 20px;
 
 // JS available - dropdown menu
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+  width: 100%;
+  order: 1; // Ensure the dropdown menu appears after the super navigation buttons which have a default order of 0
   background: $govuk-rebrand-template-background-colour;
-  border-bottom: 1px govuk-colour("mid-grey") solid;
   padding-top: govuk-spacing(6);
-
-  @include govuk-media-query($until: 300px) {
-    padding-top: 80px;
-  }
 
   @include govuk-media-query($from: "desktop") {
     padding-top: govuk-spacing(8);
+  }
+}
+
+// Ensure the dropdown menu background is offset from the menu height and
+// takes up the full screen width
+.govuk-frontend-supported .gem-c-layout-super-navigation-header {
+  &::before {
+    content: "";
+    position: absolute;
+    top: $navbar-height;
+    bottom: 0;
+    width: 100%;
+    background: $govuk-rebrand-template-background-colour;
+    box-shadow: 0 1px govuk-colour("mid-grey");
   }
 }
 
@@ -694,11 +703,13 @@ $search-icon-height: 20px;
   .gem-c-layout-super-navigation-header__header-logo {
     padding: 10px 0 !important; // stylelint-disable-line declaration-no-important
   }
-}
 
-// Used to add a transparent bottom border for forced-colour modes
-.transparent-bottom-border {
-  border-bottom: 1px solid transparent;
+  // Hide menu links, buttons and dropdown
+  .gem-c-layout-super-navigation-header__navigation-item,
+  .gem-c-layout-super-navigation-header__search-item,
+  .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+    display: none;
+  }
 }
 
 // stylelint-enable max-nesting-depth
