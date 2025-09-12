@@ -25,10 +25,6 @@
   @include govuk-font($size: 16);
 }
 
-.gem-c-contents-list__link {
-  @include govuk-template-link-focus-override;
-}
-
 .gem-c-contents-list__list-item--parent > .gem-c-contents-list__link {
   font-weight: $govuk-font-weight-bold;
 }
