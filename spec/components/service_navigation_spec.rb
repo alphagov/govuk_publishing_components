@@ -34,11 +34,11 @@ describe "Service navigation", type: :view do
     assert_empty render_component({})
   end
 
-  it "renders with navigation items" do
+  it "renders with multiple navigation items and toggle" do
     render_component({ navigation_items: })
 
     assert_select("div.gem-c-service-navigation")
-
+    assert_select(".govuk-service-navigation__toggle", text: "Menu")
     assert_select(".govuk-service-navigation__item:nth-child(1) .govuk-service-navigation__link", text: "Navigation item 1")
     assert_select(".govuk-service-navigation__item:nth-child(2) .govuk-service-navigation__link", text: "Navigation item 2")
     assert_select(".govuk-service-navigation__item:nth-child(3) .govuk-service-navigation__link", text: "Navigation item 3")
@@ -96,5 +96,40 @@ describe "Service navigation", type: :view do
     assert_select("section.gem-c-service-navigation")
 
     assert_select("span.govuk-service-navigation__service-name .govuk-service-navigation__link", text: "My service name")
+  end
+
+  it "renders without toggle if collapse_navigation_on_mobile is `false`" do
+    render_component({ navigation_items:, collapse_navigation_on_mobile: false })
+    assert_select(".govuk-service-navigation__toggle", false)
+  end
+
+  it "renders without toggle if the navigation only has one item" do
+    render_component({ navigation_items: [
+                         {
+                           text: "Navigation item 1",
+                           href: "#",
+                           data: {
+                             hello: "world",
+                             another: "test",
+                           },
+                         },
+                       ],
+                       inverse: true })
+    assert_select(".govuk-service-navigation__toggle", false)
+  end
+
+  it "renders with toggle if the navigation only has one item but `collapse_navigation_on_mobile` is true'" do
+    render_component({ navigation_items: [
+                         {
+                           text: "Navigation item 1",
+                           href: "#",
+                           data: {
+                             hello: "world",
+                             another: "test",
+                           },
+                         },
+                       ],
+                       collapse_navigation_on_mobile: true })
+    assert_select(".govuk-service-navigation__toggle", text: "Menu")
   end
 end

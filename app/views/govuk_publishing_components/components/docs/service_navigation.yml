@@ -74,3 +74,23 @@ examples:
       - text: Navigation item 2
         href: "#"
       full_width: true
+  with_navigation_links_and_collapse_navigation_on_mobile_set_to_false:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      collapse_navigation_on_mobile: false
+  with_a_single_navigation_item:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+  with_a_single_navigation_item_and_collapse_navigation_on_mobile:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+      collapse_navigation_on_mobile: true

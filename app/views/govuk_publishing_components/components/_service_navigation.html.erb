@@ -5,6 +5,7 @@
   service_name_url ||= nil
   navigation_items ||= []
   navigation_aria_label ||= t("components.layout_header.menu")
+  collapse_navigation_on_mobile = local_assigns.fetch(:collapse_navigation_on_mobile, navigation_items.length > 1)
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
@@ -29,9 +30,11 @@
 
         <% if navigation_items.present? %>
           <nav aria-label="<%= navigation_aria_label %>" class="govuk-service-navigation__wrapper">
-            <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
-              Menu
-            </button>
+            <% if collapse_navigation_on_mobile %>
+              <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
+                Menu
+              </button>
+            <% end %>
             <ul class="govuk-service-navigation__list" id="navigation">
               <% navigation_items.each do |nav| %>
                 <%
