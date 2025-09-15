@@ -3,7 +3,6 @@
 .gem-c-translation-nav {
   margin-bottom: govuk-spacing(6);
   border-bottom: 1px solid $govuk-border-colour;
-  @include responsive-top-margin;
   @include govuk-text-colour;
   @include govuk-font(16);
 }
@@ -48,8 +47,4 @@
 .gem-c-translation-nav__list-item:last-child {
   border-right: 0;
   border-left: 0;
-}
-
-.gem-c-translation-nav--no-margin-top {
-  margin-top: 0;
 }
