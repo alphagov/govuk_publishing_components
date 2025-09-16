@@ -5,10 +5,12 @@
   service_name_url ||= nil
   navigation_items ||= []
   navigation_aria_label ||= t("components.layout_header.menu")
+  inverse ||= false
   collapse_navigation_on_mobile = local_assigns.fetch(:collapse_navigation_on_mobile, navigation_items.length > 1)
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
+  component_helper.add_class("govuk-service-navigation--inverse") if inverse
   component_helper.add_aria_attribute({ label: "Service information" }) if service_name.present?
   component_helper.add_data_attribute({ module: "govuk-service-navigation" })
 

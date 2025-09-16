@@ -98,6 +98,11 @@ describe "Service navigation", type: :view do
     assert_select("span.govuk-service-navigation__service-name .govuk-service-navigation__link", text: "My service name")
   end
 
+  it "renders with inverse styles" do
+    render_component({ navigation_items:, inverse: true })
+    assert_select(".gem-c-service-navigation.govuk-service-navigation--inverse")
+  end
+
   it "renders without toggle if collapse_navigation_on_mobile is `false`" do
     render_component({ navigation_items:, collapse_navigation_on_mobile: false })
     assert_select(".govuk-service-navigation__toggle", false)

@@ -74,6 +74,15 @@ examples:
       - text: Navigation item 2
         href: "#"
       full_width: true
+  inverse:
+    data:
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      inverse: true
   with_navigation_links_and_collapse_navigation_on_mobile_set_to_false:
     data:
       navigation_items:
