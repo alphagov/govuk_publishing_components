@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* GOV.UK Frontend v5.11.0 and v5.11.1 updates ([PR #5023](https://github.com/alphagov/govuk_publishing_components/pull/5023))
+
 ## 61.0.0
 
 * Remove unneeded Sass mixins ([PR #4969](https://github.com/alphagov/govuk_publishing_components/pull/4969))
