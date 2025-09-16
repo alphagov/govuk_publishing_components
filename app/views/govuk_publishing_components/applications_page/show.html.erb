@@ -1,0 +1,63 @@
+<% content_for :title, "Component audit" %>
+<% add_gem_component_stylesheet("table") %>
+
+<%= render "govuk_publishing_components/components/heading", {
+  text: "Applications",
+  heading_level: 1,
+  font_size: "xl",
+  margin_bottom: 8,
+} %>
+
+<% if @cache_status && @performcache_status %>
+  <p class="govuk-body">The results below are cached for 5 minutes. If you are expecting a change and cannot see it, try again later.</p>
+<% end %>
+
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header sticky-table-header">Application</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Source</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Gem version</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Slimmer version</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Dartsass version</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+    <% @applications_output.each do |app| %>
+      <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+          <a href="<%= app[:link] %>" class="govuk-link"><%= app[:name] %></a>
+        </td>
+        <td class="govuk-table__cell">
+          <% if app[:location] %>
+            <%= app[:location] %>
+          <% else %>
+            not found
+          <% end %>
+        </td>
+        <td class="govuk-table__cell">
+          <% if app[:gem_version] %>
+            <%= render "govuk_publishing_components/components/tag", {
+              text: app[:gem_version],
+              colour: app[:gem_version_status],
+            } %>
+          <% end %>
+        </td>
+        <td class="govuk-table__cell">
+          <% if app[:slimmer_version] %>
+            <%= render "govuk_publishing_components/components/tag", {
+              text: app[:slimmer_version],
+            } %>
+          <% end %>
+        </td>
+        <td class="govuk-table__cell">
+          <% if app[:dartsass_version] %>
+            <%= render "govuk_publishing_components/components/tag", {
+              text: app[:dartsass_version],
+            } %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
