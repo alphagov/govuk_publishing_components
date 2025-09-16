@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix heading component margin ([PR #5026](https://github.com/alphagov/govuk_publishing_components/pull/5026))
 * GOV.UK Frontend v5.11.0 and v5.11.1 updates ([PR #5023](https://github.com/alphagov/govuk_publishing_components/pull/5023))
 
 ## 61.0.0
