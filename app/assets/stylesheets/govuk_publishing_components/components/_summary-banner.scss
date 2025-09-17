@@ -19,7 +19,7 @@
 }
 
 .gem-c-summary-banner__title {
-  margin-bottom: govuk-spacing(6);
+  margin: 0 0 govuk-spacing(6) 0;
   color: govuk-colour("white");
   @include govuk-font(27, $weight: bold);
 }
