@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update search button spacing in super navigation menu on tablet devices ([PR #5028](https://github.com/alphagov/govuk_publishing_components/pull/5028))
+
 ## 61.0.1
 
 * Fix heading component margin ([PR #5026](https://github.com/alphagov/govuk_publishing_components/pull/5026))
