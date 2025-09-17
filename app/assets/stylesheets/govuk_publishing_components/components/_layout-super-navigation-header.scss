@@ -151,7 +151,7 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__search-item {
   margin-right: -15px;
 
-  @include govuk-media-query($from: "desktop") {
+  @include govuk-media-query($from: "tablet") {
     margin-right: 0;
   }
 }
