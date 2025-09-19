@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix print link button styles ([PR #5036](https://github.com/alphagov/govuk_publishing_components/pull/5036))
+
 ## 61.0.2
 
 * Fix incorrect colour on summary banner heading ([PR #5030](https://github.com/alphagov/govuk_publishing_components/pull/5030))
