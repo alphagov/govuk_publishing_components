@@ -6,16 +6,13 @@
   padding: 0;
 }
 
-.content-block__contact-list {
-  .content-block__contact-key {
-    margin-bottom: govuk-spacing(4);
-    @include govuk-font(24, $weight: "bold");
-  }
+.content-block__contact-key {
+  @include govuk-responsive-margin(4, "bottom");
+  @include govuk-font(24, $weight: "bold");
 }
 
 .content-block__contact-list--nested {
   .content-block__contact-key {
-    margin-bottom: govuk-spacing(4);
     @include govuk-font(19, $weight: "bold");
   }
 }
