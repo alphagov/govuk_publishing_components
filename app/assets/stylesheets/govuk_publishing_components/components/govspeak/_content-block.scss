@@ -1,6 +1,3 @@
-@import "govuk/core/lists";
-@import "govuk/core/typography";
-
 .content-block,
 .content-block__contact-key,
 .content-block__contact-value,
@@ -9,19 +6,18 @@
   padding: 0;
 }
 
-.content-block__contact-list {
-  .content-block__contact-key {
-    @extend %govuk-heading-m;
-  }
+.content-block__contact-key {
+  @include govuk-responsive-margin(4, "bottom");
+  @include govuk-font(24, $weight: "bold");
 }
 
 .content-block__contact-list--nested {
   .content-block__contact-key {
-    @extend %govuk-heading-s;
+    @include govuk-font(19, $weight: "bold");
   }
 }
 
 .content-block .content-block__list {
-  @extend %govuk-list;
   margin-left: 0;
+  list-style: none;
 }
