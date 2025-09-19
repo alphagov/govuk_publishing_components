@@ -12,7 +12,7 @@
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 
-  link_classes = %w[gem-c-contents-list__link govuk-link gem-c-force-print-link-styles]
+  link_classes = %w[gem-c-contents-list__link govuk-link gem-print-force-link-styles]
   link_classes << brand_helper.color_class
   link_classes << "govuk-link--no-underline" unless underline_links
 
