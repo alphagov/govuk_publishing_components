@@ -11,6 +11,7 @@
 
 * Fix govspeak styles ([PR #5037](https://github.com/alphagov/govuk_publishing_components/pull/5037))
 * Fix print link button styles ([PR #5036](https://github.com/alphagov/govuk_publishing_components/pull/5036))
+* Rename `gem-c-print-force-` classes to `gem-print-force-` ([PR #5034](https://github.com/alphagov/govuk_publishing_components/pull/5034))
 
 ## 61.0.2
 

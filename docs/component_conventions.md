@@ -280,18 +280,18 @@ Note that only the immediate child columns will be affected. If a child column a
 
 #### Consistent link formatting
 
-**`.gem-c-force-print-link-styles`**
+**`.gem-print-force-link-styles`**
 
 This class ensures that printed links receive consistent formatting. It should be added to any link element that will be printed. Typically this  means applying it to links with the `govuk-link` class.
 
-Links with a `govuk-link` class will display their href when printed. This makes printed links more useful, but uses more space. When adding the `gem-c-force-print-link-styles` class to these links, the following changes are made to the printed output:
+Links with a `govuk-link` class will display their href when printed. This makes printed links more useful, but uses more space. When adding the `gem-print-force-link-styles` class to these links, the following changes are made to the printed output:
 - the link colour is set to black
 - the font size is reduced slighlty
 - the layout of the href is improved by making it a block element and forcing it to display on a new line
 
-**`.gem-c-force-print-link-styles-within`**
+**`.gem-print-force-link-styles-within`**
 
-This is a variation of the previous class, to be used on parent elements that contain links with the `govuk-link` class. This can be used when the `gem-c-force-print-link-styles` class cannot be applied directly to a link, such as with the [inset_text component](https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_inset_text.html.erb).
+This is a variation of the previous class, to be used on parent elements that contain links with the `govuk-link` class. This can be used when the `gem-print-force-link-styles` class cannot be applied directly to a link, such as with the [inset_text component](https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_inset_text.html.erb).
 
 
 ### Linting

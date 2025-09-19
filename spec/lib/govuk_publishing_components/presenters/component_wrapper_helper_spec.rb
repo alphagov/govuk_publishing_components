@@ -80,9 +80,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
 
     describe "classes" do
       it "accepts valid class names" do
-        component_helper = described_class.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl")
+        component_helper = described_class.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles")
         expected = {
-          class: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl",
+          class: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles",
         }
         expect(component_helper.all_attributes).to eql(expected)
       end
