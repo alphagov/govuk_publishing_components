@@ -4,6 +4,7 @@ module GovukPublishingComponents
     def initialize(gem_components: false, limit_to: false)
       @limit_to = limit_to
       @documentation_directory = gem_components ? gem_documentation_directory : app_documentation_directory
+      @source = gem_components ? "gem" : "application"
     end
 
     def get(id)
@@ -27,7 +28,7 @@ module GovukPublishingComponents
 
     def fetch_component_doc_files
       doc_files = Rails.root.join(@documentation_directory, "*.yml")
-      Dir[doc_files].sort.map { |file| parse_documentation(file) }
+      Dir[doc_files].sort.map { |file| parse_documentation(file).merge(source: @source) }
     end
 
     def component_in_use?(component)
@@ -38,15 +39,16 @@ module GovukPublishingComponents
       file = Rails.root.join(@documentation_directory, "#{id}.yml")
       if !file.exist?
         file = gem_documentation_directory.join("#{id}.yml")
-        parse_documentation(file).merge(source: "gem")
+        @source = "gem"
       else
-        parse_documentation(file).merge(source: "application")
+        @source = "application"
       end
+      parse_documentation(file).merge(source: @source)
     end
 
     def parse_documentation(file)
       yaml = YAML.load_file(file, aliases: true, permitted_classes: [Symbol, Time, Date])
-      { id: File.basename(file, ".yml") }.merge(yaml).with_indifferent_access
+      { id: File.basename(file, ".yml") }.merge(yaml).merge(source: @source).with_indifferent_access
     end
 
     def app_documentation_directory

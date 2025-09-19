@@ -1,0 +1,33 @@
+<h1>All components</h1>
+<p class="govuk-body" id="component-count">Components: 94</p>
+<ul id="components-list">
+<% @all_components.each do |component| %>
+  <li><a href="#<%= component.id %>_heading" class="govuk-link"><%= component.name %></a></li>
+<% end %>
+</ul>
+
+<% @all_components.each do |component| %>
+  <%= tag.div(id: "#{component.id}_container", class: "component_container") do %>
+    <%= tag.h2(id: "#{component.id}_heading", class: "component_heading") do %>
+      <%= link_to component.name, "/component-guide/#{component.id}", class: "govuk-link" %>
+    <% end %>
+
+    <% component.examples.each_with_index do |example, index| %>
+      <%= tag.div(class: "govuk-!-margin-top-8") do %>
+        <%= tag.h3(class: "#{component.id}_component_example_heading") do %>
+          <%= link_to example.name, "/component-guide/#{component.id}/#{example.id}", class: "govuk-link" %>
+        <% end %>
+        <%
+          div_classes = "component-guide-preview"
+          div_classes << " #{component.id}_component_example"
+          div_classes << " direction-rtl" if example.right_to_left?
+          div_classes << " dark-background" if example.dark_background?
+          div_classes << " black-background" if example.black_background?
+        %>
+        <%= tag.div(id: "#{component.id}_component_example_#{index}", class: div_classes) do %>
+          <%= render "govuk_publishing_components/component_guide/component_doc/component_output", example: example, component_doc: component %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
