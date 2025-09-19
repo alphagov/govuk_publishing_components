@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 61.0.3
 
 * Fix govspeak styles ([PR #5037](https://github.com/alphagov/govuk_publishing_components/pull/5037))
 * Fix print link button styles ([PR #5036](https://github.com/alphagov/govuk_publishing_components/pull/5036))
