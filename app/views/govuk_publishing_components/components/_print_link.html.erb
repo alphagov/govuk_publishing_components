@@ -10,7 +10,7 @@
   ((child_data_attributes[:module] ||= "") << " " << (require_js ? "print-link" : "button")).strip!
 
   child_classes = %w[govuk-link]
-  child_classes << "govuk-body-s gem-c-print-link__button" if href.nil?
+  child_classes << "gem-c-print-link__button" if href.nil?
   child_classes << "gem-c-print-link__link govuk-link--no-visited-state" if href.present?
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
