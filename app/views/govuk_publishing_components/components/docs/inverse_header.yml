@@ -73,5 +73,5 @@ examples:
     data:
       block: |
         <p class="gem-c-lead-paragraph">
-          Schools and academies, further and higher education, apprenticeships and <a href="#other-skills" class="govuk-link">other skills</a> training, student funding, early years.
+          Schools and academies, further and higher education apprenticeships and <a href="#other-skills" class="govuk-link gem-c-inverse-header__link">other skills</a> training, student funding, early years.
         </p>

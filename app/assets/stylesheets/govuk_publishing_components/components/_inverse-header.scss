@@ -14,6 +14,14 @@
   @include govuk-font($size: 16, $line-height: 1.5);
 }
 
+.gem-c-inverse-header__link {
+  &:link,
+  &:visited,
+  &:active {
+    color: govuk-colour("black");
+  }
+}
+
 .gem-c-inverse-header--full-width {
   padding-left: 0;
   padding-right: 0;
