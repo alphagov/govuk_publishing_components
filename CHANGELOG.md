@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Revert GA4 phone number PII changes ([PR #5039](https://github.com/alphagov/govuk_publishing_components/pull/5039))
+
 ## 61.0.3
 
 * Fix govspeak styles ([PR #5037](https://github.com/alphagov/govuk_publishing_components/pull/5037))
