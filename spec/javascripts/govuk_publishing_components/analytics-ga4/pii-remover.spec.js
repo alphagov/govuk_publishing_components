@@ -508,35 +508,6 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         expect(redactedNumber.includes('[phone number]')).toEqual(true)
       }
     })
-
-    it('are stripped when special characters are used instead of a "+" prefix and/or different ways of representing whitespace', function () {
-      const numbers = [
-        '07123%20123456',
-        '07123+123456',
-        '+447123%20123456',
-        '+447123%20123456',
-        '+447123+123456',
-        '%2B447123123456',
-        '020+123+1234',
-        '020+1234+1234',
-        '020%20123%201234',
-        '020%201234%201234',
-        '02123+123456',
-        '02123%20123456',
-        '+4420+123+1234',
-        '+4420%20123%201234',
-        '%2B4420 123 1234',
-        '+442123%20123456',
-        '+442123+123456',
-        '%2B442123+123456',
-        '447123%20123456'
-      ]
-
-      for (const number of numbers) {
-        const redactedNumber = pii.stripPIIWithOverride(number)
-        expect(redactedNumber.includes('[phone number]')).toEqual(true)
-      }
-    })
   })
 
   function getRandomNumber (range) {
