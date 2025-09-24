@@ -135,7 +135,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       } else if (inputNodename === 'SELECT' && elem.querySelectorAll('option:checked')) {
         var selectedOptions = Array.from(elem.querySelectorAll('option:checked')).map(function (element) { return element.text })
-        input.answer = this.useSelectCount && selectedOptions.length > 1 ? selectedOptions.length : selectedOptions.join(',')
+
+        if (selectedOptions.length === 1 && !elem.value.length) {
+          // if placeholder value in select, do not include as not filled in
+          inputs.splice(i, 1)
+        } else {
+          input.answer = this.useSelectCount && selectedOptions.length > 1 ? selectedOptions.length : selectedOptions.join(',')
+        }
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
           if (this.useTextCount && !isDateField) {

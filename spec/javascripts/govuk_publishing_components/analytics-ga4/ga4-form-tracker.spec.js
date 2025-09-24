@@ -214,6 +214,22 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('does not collect data from select elements with placeholder', function () {
+      element.innerHTML =
+        '<label for="s1">Label</label>' +
+        '<select name="select" id="s1">' +
+          '<option selected value>Placeholder</option>' +
+          '<option value="option1">Option 1</option>' +
+          '<option value="option2">Option 2</option>' +
+        '</select>'
+      var select = document.getElementById('s1')
+      window.GOVUK.triggerEvent(select, 'change')
+      expected.event_data.text = 'No answer given'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('collects data from select[multiple] elements', function () {
       element.innerHTML =
         '<label for="s1">Label</label>' +
