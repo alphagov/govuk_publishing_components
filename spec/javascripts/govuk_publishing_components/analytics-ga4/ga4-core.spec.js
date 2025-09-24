@@ -295,8 +295,8 @@ describe('GA4 core', function () {
     })
 
     it('standardises search terms for consistency across trackers', function () {
-      var searchTerm = 'NO UPPERCASE, NO %2B plus + signs, NO PII email@example.com SW1A 2AA AA123456A 0123456789 1st Jan 1990  and    NO    extra    spaces \n \r      '
-      var expected = 'no uppercase, no plus signs, no pii [email] [postcode] [ni number] [phone number] 1st jan 1990 and no extra spaces'
+      var searchTerm = 'NO UPPERCASE, NO %2B plus + signs, NO PII email@example.com SW1A 2AA AA123456A 1st Jan 1990 and    NO    extra    spaces \n \r      '
+      var expected = 'no uppercase, no plus signs, no pii [email] [postcode] [ni number] 1st jan 1990 and no extra spaces'
 
       searchTerm = GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(searchTerm)
       expect(searchTerm).toEqual(expected)

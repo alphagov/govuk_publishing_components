@@ -36,11 +36,6 @@
   // e.g. 'AB123456A', 'AB 12 34 56 A', 'ab 123456 a', 'ab 12 34 56 a', 'AB+12+34+56+A'
   var NATIONAL_INSURANCE_NUMBER = /[A-CEGHJ-OPR-TW-Z]{2}(\s+|\++)?(\d{2}(\s+|\++)?){3}[A-D]/gi
 
-  var UK_MOBILE_NUMBER = /07\d{9}/g
-  var UK_MOBILE_NUMBER_INTERNATIONAL = /\+447\d{9}/g
-  var UK_LANDLINE_NUMBER = /0[1246]\d{8,9}/g
-  var UK_LANDLINE_NUMBER_INTERNATIONAL = /\+44[1246]\d{8,9}/g
-
   function shouldStripDates () {
     var metas = document.querySelectorAll('meta[name="govuk:ga4-strip-dates"]')
     return metas.length > 0
@@ -114,11 +109,6 @@
     stripped = stripped.replace(VISA_PATTERN_GWF, '[gwf number]')
     stripped = stripped.replace(VISA_PATTERN_GB, '[gb eori number]')
     stripped = stripped.replace(NATIONAL_INSURANCE_NUMBER, '[ni number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER, '[phone number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER_INTERNATIONAL, '[phone number]')
-    stripped = stripped.replace(UK_MOBILE_NUMBER, '[phone number]')
-    stripped = stripped.replace(UK_MOBILE_NUMBER_INTERNATIONAL, '[phone number]')
-
     stripped = this.stripQueryStringParameters(stripped)
 
     if (this.stripDatePII === true) {
