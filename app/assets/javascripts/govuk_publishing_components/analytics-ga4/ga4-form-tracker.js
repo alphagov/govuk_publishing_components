@@ -110,16 +110,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var isTextField = inputTypes.indexOf(inputType) !== -1 || inputNodename === 'TEXTAREA'
       var conditionalField = elem.closest('.govuk-checkboxes__conditional')
-      var conditionalCheckbox = conditionalField && conditionalField.querySelector('[aria-controls="' + conditionalField.id + '"]')
+      var conditionalCheckbox = conditionalField && this.module.querySelector('[aria-controls="' + conditionalField.id + '"]')
       var conditionalCheckboxChecked = conditionalCheckbox && conditionalCheckbox.checked
 
-      if (conditionalField && conditionalCheckboxChecked) {
-        var conditionalCheckboxLabel = conditionalField.querySelector('[for="' + conditionalCheckbox.id + '"]')
-
-        if (conditionalCheckboxLabel) {
-          input.parentSection = conditionalCheckboxLabel.innerText
-        }
-      }
+      var isDateField = elem.closest('.govuk-date-input')
 
       if (conditionalCheckbox && !conditionalCheckboxChecked) {
         // don't include conditional field if condition not checked
@@ -141,10 +135,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       } else if (inputNodename === 'SELECT' && elem.querySelectorAll('option:checked')) {
         var selectedOptions = Array.from(elem.querySelectorAll('option:checked')).map(function (element) { return element.text })
-        input.answer = this.useSelectCount ? selectedOptions.length : selectedOptions.join(',')
+
+        if (selectedOptions.length === 1 && !elem.value.length) {
+          // if placeholder value in select, do not include as not filled in
+          inputs.splice(i, 1)
+        } else {
+          input.answer = this.useSelectCount && selectedOptions.length > 1 ? selectedOptions.length : selectedOptions.join(',')
+        }
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
-          if (this.useTextCount) {
+          if (this.useTextCount && !isDateField) {
             input.answer = elem.value.length
           } else {
             var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
@@ -163,6 +163,32 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // remove the input from those gathered as it has no value
         inputs.splice(i, 1)
       }
+
+      var parentFieldset
+      var parentLegend
+
+      if (conditionalField && conditionalCheckboxChecked) {
+        parentFieldset = conditionalField.closest('fieldset')
+        parentLegend = parentFieldset && parentFieldset.querySelector('legend')
+
+        if (parentLegend) {
+          input.section = parentLegend.innerText + ' - ' + input.section
+        }
+      } else if (isDateField) {
+        var dateFieldset = elem.closest('.govuk-date-input').closest('fieldset')
+        var dateLegend = dateFieldset && dateFieldset.querySelector('legend')
+
+        parentFieldset = dateFieldset.parentNode.closest('fieldset')
+
+        if (dateLegend) {
+          input.section = dateLegend.innerText + ' - ' + input.section
+        }
+
+        if (parentFieldset) {
+          parentLegend = parentFieldset.querySelector('legend')
+          input.section = parentLegend.innerText + ' - ' + input.section
+        }
+      }
     }
     return inputs
   }
@@ -176,17 +202,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (answer) {
         if (this.recordJson) {
           var fieldSection = data[i].section
-          var parentFieldSection = data[i].parentSection
 
           if (fieldSection) {
-            if (parentFieldSection) {
-              answers[parentFieldSection] = answers[parentFieldSection] || {}
-              answers[parentFieldSection][fieldSection] = answers[parentFieldSection][fieldSection] || ''
-              answers[parentFieldSection][fieldSection] += ((answers[parentFieldSection][fieldSection] ? ',' : '') + answer)
-            } else {
-              answers[fieldSection] = answers[fieldSection] || ''
-              answers[fieldSection] += ((answers[fieldSection] ? ',' : '') + answer)
-            }
+            answers[fieldSection] = answers[fieldSection] ? (answers[fieldSection] + ',') : ''
+            answers[fieldSection] += answer
           }
         } else {
           answers.push(answer)
