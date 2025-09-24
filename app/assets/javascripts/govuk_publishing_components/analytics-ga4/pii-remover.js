@@ -36,12 +36,10 @@
   // e.g. 'AB123456A', 'AB 12 34 56 A', 'ab 123456 a', 'ab 12 34 56 a', 'AB+12+34+56+A'
   var NATIONAL_INSURANCE_NUMBER = /[A-CEGHJ-OPR-TW-Z]{2}(\s+|\++)?(\d{2}(\s+|\++)?){3}[A-D]/gi
 
-  var UK_MOBILE_NUMBER = /07\d{3}\s?\d{6}/g // 07123 123456 or 07123123456
-  var UK_MOBILE_NUMBER_INTERNATIONAL = /\+447\d{3}\s?\d{6}/g // +447123 123456 or +447123123456
-  var UK_LANDLINE_NUMBER = /0[1246]\d{1}\s?\d{3,4}\s?\d{4}/g // 020 123 1234 or 020 1234 1234 or 0201231234 or 02012341234
-  var UK_LANDLINE_NUMBER_2 = /0[1246]\d{3}\s\d{6}/g // 02123 123456
-  var UK_LANDLINE_NUMBER_INTERNATIONAL = /\+44[1246]\d{1}\s?\d{3,4}\s?\d{4}/g // +4420 123 1234 or +4420 1234 1234
-  var UK_LANDLINE_NUMBER_INTERNATIONAL_2 = /\+44[1246]\d{3}\s\d{6}/g // +442123 123456
+  var UK_MOBILE_NUMBER = /07\d{9}/g
+  var UK_MOBILE_NUMBER_INTERNATIONAL = /\+447\d{9}/g
+  var UK_LANDLINE_NUMBER = /0[1246]\d{8,9}/g
+  var UK_LANDLINE_NUMBER_INTERNATIONAL = /\+44[1246]\d{8,9}/g
 
   function shouldStripDates () {
     var metas = document.querySelectorAll('meta[name="govuk:ga4-strip-dates"]')
@@ -117,9 +115,7 @@
     stripped = stripped.replace(VISA_PATTERN_GB, '[gb eori number]')
     stripped = stripped.replace(NATIONAL_INSURANCE_NUMBER, '[ni number]')
     stripped = stripped.replace(UK_LANDLINE_NUMBER, '[phone number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER_2, '[phone number]')
     stripped = stripped.replace(UK_LANDLINE_NUMBER_INTERNATIONAL, '[phone number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER_INTERNATIONAL_2, '[phone number]')
     stripped = stripped.replace(UK_MOBILE_NUMBER, '[phone number]')
     stripped = stripped.replace(UK_MOBILE_NUMBER_INTERNATIONAL, '[phone number]')
 
