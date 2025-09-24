@@ -715,5 +715,20 @@ describe('Google Analytics form tracking', function () {
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })
+
+    it('collects single selected option from a select', function () {
+      element.innerHTML =
+        '<label for="s1">Label</label>' +
+        '<select multiple name="select" id="s1">' +
+          '<option selected value="option1">Option 1</option>' +
+          '<option value="option2">Option 2</option>' +
+          '<option value="option3">Option 3</option>' +
+        '</select>'
+
+      expected.event_data.text = 'Option 1'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 })
