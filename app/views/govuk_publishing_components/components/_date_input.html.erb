@@ -15,6 +15,8 @@
   error_items ||= []
   describedby ||= nil
   has_error ||= error_message || error_items.any?
+  error_item_names = error_items.group_by { |ei| ei[:name] }.keys.compact_blank
+  has_no_named_errors = error_item_names.none?
 
   css_classes = %w(gem-c-date-input govuk-date-input)
   form_group_css_classes = %w(govuk-form-group)
@@ -59,7 +61,7 @@
               text: item[:label] || item[:name].capitalize,
             },
             grouped: true,
-            has_error: has_error,
+            has_error: error_item_names.include?(item[:name]) || (has_error && has_no_named_errors),
             name: name ? (name + "[" + item[:name] + "]") : item[:name],
             value: item[:value],
             width: item[:width],
