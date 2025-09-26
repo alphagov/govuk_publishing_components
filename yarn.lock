@@ -1578,10 +1578,10 @@ gopd@^1.2.0:
   resolved "https://registry.yarnpkg.com/gopd/-/gopd-1.2.0.tgz#89f56b8217bdbc8802bd299df6d7f1081d7e51a1"
   integrity sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==
 
-govuk-frontend@5.11.2:
-  version "5.11.2"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.11.2.tgz#4c6f5f9617636c002f27c99ba62d2631be7ed19f"
-  integrity sha512-eHV8EMxYNjc+omFhB0HktQ3QmA3ZRdDsgRDlUIik+TpUHerR3XKXpo4zh/OGO2/C2mz65cX0XT0k4QrRFJZU8Q==
+govuk-frontend@5.12.0:
+  version "5.12.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.12.0.tgz#315e460c2556ff076ff7b4150e1c7aae371df23b"
+  integrity sha512-gNr/UVDoORVOqVKTC9i9HOKKPeM4IDTAqtnd3t6U8LQibEr+8Q+FB7Id0u/MfR/5mqPfenG/+VGLW96vJXok/g==
 
 govuk-single-consent@^3.0.9:
   version "3.0.9"
