@@ -14,39 +14,35 @@
   width: 36px;
   vertical-align: middle;
 
-  svg {
-    height: 28px;
-    vertical-align: middle;
-    width: 28px;
+  @include govuk-media-query($from: tablet) {
+    width: 45px;
+  }
+}
 
-    .gem-c-action-link__icon__circle {
-      fill: #eeefef;
+.gem-c-action-link__svg {
+  height: 28px;
+  vertical-align: middle;
+  width: 28px;
 
-      // stylelint-disable max-nesting-depth
-      @media (forced-colors: active) {
-        fill: LinkText;
-      }
-      // stylelint-enable max-nesting-depth
+  .gem-c-action-link__icon__circle {
+    fill: #eeefef;
+
+    @media (forced-colors: active) {
+      fill: LinkText;
     }
+  }
 
-    .gem-c-action-link__icon__arrow {
-      fill: #000000;
+  .gem-c-action-link__icon__arrow {
+    fill: #000000;
 
-      // stylelint-disable max-nesting-depth
-      @media (forced-colors: active) {
-        fill: Canvas;
-      }
-      // stylelint-enable max-nesting-depth
+    @media (forced-colors: active) {
+      fill: Canvas;
     }
   }
 
   @include govuk-media-query($from: tablet) {
-    width: 45px;
-
-    svg {
-      height: 35px;
-      width: 35px;
-    }
+    height: 35px;
+    width: 35px;
   }
 }
 
@@ -54,18 +50,16 @@
   padding-top: 2px;
   width: 30px;
 
-  svg {
+  .gem-c-action-link__svg {
     height: 25px;
     width: 25px;
+  }
 
-    .gem-c-action-link__icon__arrow {
-      fill: #272828;
+  .gem-c-action-link__icon__arrow {
+    fill: #272828;
 
-      // stylelint-disable max-nesting-depth
-      @media (forced-colors: active) {
-        fill: currentcolor;
-      }
-      // stylelint-enable max-nesting-depth
+    @media (forced-colors: active) {
+      fill: currentcolor;
     }
   }
 }
