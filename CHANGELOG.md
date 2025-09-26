@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Adjust action link arrow ([PR #5040](https://github.com/alphagov/govuk_publishing_components/pull/5040))
+
 ## 61.0.3
 
 * Fix govspeak styles ([PR #5037](https://github.com/alphagov/govuk_publishing_components/pull/5037))

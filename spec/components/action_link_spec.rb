@@ -43,4 +43,13 @@ describe "Action link", type: :view do
     )
     assert_select ".gem-c-action-link--inverse"
   end
+
+  it "renders large version" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      large: true,
+    )
+    assert_select ".gem-c-action-link.gem-c-action-link--large"
+  end
 end
