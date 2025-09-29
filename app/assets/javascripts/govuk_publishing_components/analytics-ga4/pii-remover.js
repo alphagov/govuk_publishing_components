@@ -36,13 +36,6 @@
   // e.g. 'AB123456A', 'AB 12 34 56 A', 'ab 123456 a', 'ab 12 34 56 a', 'AB+12+34+56+A'
   var NATIONAL_INSURANCE_NUMBER = /[A-CEGHJ-OPR-TW-Z]{2}(\s+|\++)?(\d{2}(\s+|\++)?){3}[A-D]/gi
 
-  var UK_MOBILE_NUMBER = /07\d{3}[\s%20+]?\d{6,8}/g // 07123 123456 or 07123123456 or 07123+123456 or 07123%20123456
-  var UK_MOBILE_NUMBER_INTERNATIONAL = /(\+|%2B)?447\d{3}[\s%20+]?\d{6,8}/gi // +447123 123456 or +447123123456 or +447123%20123456 or +447123+123456 or %2B447123123456. Plus at start is optional.
-  var UK_LANDLINE_NUMBER = /0[1246]\d{1}[\s%20+]?\d{3,6}[\s%20+]?\d{4,6}/g // 020 123 1234 or 020 1234 1234 or 0201231234 or 02012341234 or 020+123+1234 or 020+1234+1234 or 020%20123%201234 or 020%201234%201234
-  var UK_LANDLINE_NUMBER_2 = /0[1246]\d{3}[\s%20+]\d{6,8}/g // 02123 123456 or 02123+123456 or 02123%20123456
-  var UK_LANDLINE_NUMBER_INTERNATIONAL = /(\+|%2B)?44[1246]\d{1}[\s%20+]?\d{3,6}[\s%20+]?\d{4,6}/g // // +4420 123 1234 or +4420 1234 1234 or +4420+123+1234 or +4420%20123%201234 or %2B4420 123 1234. Plus at start is optional.
-  var UK_LANDLINE_NUMBER_INTERNATIONAL_2 = /(\+|%2B)?44[1246]\d{3}[\s%20+]\d{6,8}/g // +442123 123456 or +442123%20123456 or +442123+123456 or %2B442123+123456. Plus at start is optional.
-
   function shouldStripDates () {
     var metas = document.querySelectorAll('meta[name="govuk:ga4-strip-dates"]')
     return metas.length > 0
@@ -116,13 +109,6 @@
     stripped = stripped.replace(VISA_PATTERN_GWF, '[gwf number]')
     stripped = stripped.replace(VISA_PATTERN_GB, '[gb eori number]')
     stripped = stripped.replace(NATIONAL_INSURANCE_NUMBER, '[ni number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER, '[phone number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER_2, '[phone number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER_INTERNATIONAL, '[phone number]')
-    stripped = stripped.replace(UK_LANDLINE_NUMBER_INTERNATIONAL_2, '[phone number]')
-    stripped = stripped.replace(UK_MOBILE_NUMBER, '[phone number]')
-    stripped = stripped.replace(UK_MOBILE_NUMBER_INTERNATIONAL, '[phone number]')
-
     stripped = this.stripQueryStringParameters(stripped)
 
     if (this.stripDatePII === true) {

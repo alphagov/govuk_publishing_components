@@ -355,9 +355,9 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('removes email, postcode, and phone number pii from the page title', function () {
+  it('removes email and postcode pii from the page title', function () {
     document.title = 'example@gov.uk - SW12AA - 0123456789'
-    expected.page_view.title = '[email] - [postcode] - [phone number]'
+    expected.page_view.title = '[email] - [postcode] - 0123456789'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
@@ -369,9 +369,9 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('removes email, postcode, date, and phone number pii from the page location and referrer', function () {
-    spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/example@gov.uk/SW12AA/2020-01-01/0123456789')
-    expected.page_view.referrer = 'https://gov.uk/[email]/[postcode]/[date]/[phone number]'
+  it('removes email, postcode, and date pii from the page location and referrer', function () {
+    spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/example@gov.uk/SW12AA/2020-01-01')
+    expected.page_view.referrer = 'https://gov.uk/[email]/[postcode]/[date]'
 
     // We can't spy on location, so instead we use an anchor link to change the URL temporarily
 
@@ -381,10 +381,10 @@ describe('Google Tag Manager page view tracking', function () {
     linkForURLMock.click()
     var location = document.location.href
 
-    expected.page_view.location = location + '[email]/[postcode]/[date]/[phone number]'
+    expected.page_view.location = location + '[email]/[postcode]/[date]'
 
     // Add personally identifiable information to the current page location
-    linkForURLMock.href = '#example@gov.uk/SW12AA/2020-01-01/0123456789'
+    linkForURLMock.href = '#example@gov.uk/SW12AA/2020-01-01'
     linkForURLMock.click()
 
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
@@ -600,8 +600,8 @@ describe('Google Tag Manager page view tracking', function () {
   })
 
   it('correctly sets the query_string parameter with PII and _ga/_gl values redacted', function () {
-    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?query1=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=19900101.567&_gl=19900101.567&ni_number=AA+123456+A&phone_number=0123456789')
-    expected.page_view.query_string = 'query1=hello&query2=world&email=[email]&postcode=[postcode]&birthday=[date]&_ga=[id]&_gl=[id]&ni_number=[ni number]&phone_number=[phone number]'
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getSearch').and.returnValue('?query1=hello&query2=world&email=email@example.com&postcode=SW12AA&birthday=1990-01-01&_ga=19900101.567&_gl=19900101.567&ni_number=AA+123456+A')
+    expected.page_view.query_string = 'query1=hello&query2=world&email=[email]&postcode=[postcode]&birthday=[date]&_ga=[id]&_gl=[id]&ni_number=[ni number]'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
