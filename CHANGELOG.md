@@ -8,7 +8,9 @@
   of the commit log.
 
 ## Unreleased
+
 * Adjustments to how Ga4FormTracker sets text on submit ([PR #4994](https://github.com/alphagov/govuk_publishing_components/pull/4994))
+* Update organisation logo sizing ([PR #5052](https://github.com/alphagov/govuk_publishing_components/pull/5052))
 
 ## 61.1.0
 
