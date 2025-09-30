@@ -34,10 +34,12 @@
 }
 
 .gem-c-organisation-logo__image {
-  max-width: 320px;
+  height: auto;
+  max-width: min(320px, 100%);
+  width: 100%;
+
   @include govuk-media-query($until: tablet) {
-    width: 100%;
-    max-width: 240px;
+    max-width: min(240px, 100%);
   }
 }
 
