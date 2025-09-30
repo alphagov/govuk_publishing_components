@@ -25,3 +25,10 @@ examples:
       text: Getting financial help and keeping your business safe
       href: "/financial-help"
       simple: true
+  large:
+    description: For use on the GOV.UK homepage popular links.
+    data:
+      text: This way for cookies
+      href: "/cookies"
+      large: true
+
