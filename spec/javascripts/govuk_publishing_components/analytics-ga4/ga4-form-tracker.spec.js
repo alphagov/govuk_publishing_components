@@ -136,17 +136,19 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checked conditional fields', function () {
       element.innerHTML =
+        '<div>' +
+        '<label for="c1">checkbox1</label>' +
+        '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
         '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
-          '<label for="c1">checkbox1</label>' +
-          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
           '<label for="c3">checkbox3</label>' +
           '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+        '</div>' +
         '</div>'
 
       document.getElementById('c1').checked = true
       document.getElementById('c3').checked = true
 
-      expected.event_data.text = 'checkbox3'
+      expected.event_data.text = 'checkbox1,checkbox3'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
@@ -154,11 +156,13 @@ describe('Google Analytics form tracking', function () {
 
     it('does not collect data from unchecked conditional fields', function () {
       element.innerHTML =
+        '<div>' +
+        '<label for="c1">checkbox1</label>' +
+        '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
         '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
-          '<label for="c1">checkbox1</label>' +
-          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
-          '<label for="text">Label</label>' +
-          '<input type="text" id="text" name="test-text" value="Some text"/>' +
+          '<label for="c3">checkbox3</label>' +
+          '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+        '</div>' +
         '</div>'
 
       expected.event_data.text = 'No answer given'
@@ -205,6 +209,22 @@ describe('Google Analytics form tracking', function () {
       select.selectedIndex = 2
       window.GOVUK.triggerEvent(select, 'change')
       expected.event_data.text = 'Option 3'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('does not collect data from select elements with placeholder', function () {
+      element.innerHTML =
+        '<label for="s1">Label</label>' +
+        '<select name="select" id="s1">' +
+          '<option selected value>Placeholder</option>' +
+          '<option value="option1">Option 1</option>' +
+          '<option value="option2">Option 2</option>' +
+        '</select>'
+      var select = document.getElementById('s1')
+      window.GOVUK.triggerEvent(select, 'change')
+      expected.event_data.text = 'No answer given'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
@@ -287,20 +307,21 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checked conditional checkboxes', function () {
       element.innerHTML =
-        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+        '<fieldset id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<legend>Parent legend</legend>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
           '<fieldset>' +
           '<legend>Checkbox legend</legend>' +
           '<label for="c3">checkbox3</label>' +
           '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
           '</fieldset>' +
-          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
-          '<label for="c1">checkbox1</label>' +
-        '</div>'
+        '</fieldset>'
 
       document.getElementById('c1').checked = true
       document.getElementById('c3').checked = true
 
-      expected.event_data.text = JSON.stringify({ checkbox1: { 'Checkbox legend': 'checkbox3' } })
+      expected.event_data.text = JSON.stringify({ 'Parent legend - Checkbox legend': 'checkbox3' })
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
@@ -308,16 +329,19 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checked conditional input', function () {
       element.innerHTML =
-        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
-          '<label for="c1">checkbox1</label>' +
+        '<fieldset id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<legend>Parent legend</legend>' +
           '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
+          '<fieldset>' +
           '<label for="text">Text label</label>' +
           '<input type="text" id="text" name="test-text" value="Some text"/>' +
-        '</div>'
+          '</fieldset>' +
+        '</fieldset>'
 
       document.getElementById('c1').checked = true
 
-      expected.event_data.text = JSON.stringify({ checkbox1: { 'Text label': '[REDACTED]' } })
+      expected.event_data.text = JSON.stringify({ 'Parent legend - Text label': '[REDACTED]' })
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
@@ -385,6 +409,70 @@ describe('Google Analytics form tracking', function () {
 
       expected.event_data.text = JSON.stringify({ 'Checkbox legend': 'checkbox1,checkbox2' })
 
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from date inputs', function () {
+      element.innerHTML =
+      '<fieldset class="govuk-date-input">' +
+      '<legend>Date</legend>' +
+      '<div class="govuk-date-input__item">' +
+      '  <div class="govuk-form-group">' +
+      '    <label for="date_1i" class="gem-c-label govuk-label">Day</label>' +
+      '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="day" id="date_1i" type="text" value="19">' +
+      '  </div>' +
+      '</div>' +
+      '<div class="govuk-date-input__item">' +
+      '  <div class="govuk-form-group">' +
+      '    <label for="date_2i" class="gem-c-label govuk-label">Month</label>' +
+      '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="month" id="date_2i" type="text" value="08">' +
+      '  </div>' +
+      '</div>' +
+      '<div class="govuk-date-input__item">' +
+      '  <div class="govuk-form-group">' +
+      '    <label for="date_3i" class="gem-c-label govuk-label">Year</label>' +
+      '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="year" id="date_3i" type="text" value="2025">' +
+      '   </div>' +
+      '</div>' +
+      '</fieldset>'
+
+      expected.event_data.text = JSON.stringify({ 'Date - Day': '19', 'Date - Month': '08', 'Date - Year': '2025' })
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('uses conditonal fieldset legend when collecting data from date inputs', function () {
+      element.innerHTML =
+        '<fieldset id="conditional-field" class="govuk-checkboxes__conditional">' +
+          '<legend>Parent legend</legend>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<label for="c1">checkbox1</label>' +
+          '<fieldset class="govuk-date-input">' +
+          '<legend>Date</legend>' +
+          '<div class="govuk-date-input__item">' +
+          '  <div class="govuk-form-group">' +
+          '    <label for="date_1i" class="gem-c-label govuk-label">Day</label>' +
+          '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="day" id="date_1i" type="text" value="19">' +
+          '  </div>' +
+          '</div>' +
+          '<div class="govuk-date-input__item">' +
+          '  <div class="govuk-form-group">' +
+          '    <label for="date_2i" class="gem-c-label govuk-label">Month</label>' +
+          '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="month" id="date_2i" type="text" value="08">' +
+          '  </div>' +
+          '</div>' +
+          '<div class="govuk-date-input__item">' +
+          '  <div class="govuk-form-group">' +
+          '    <label for="date_3i" class="gem-c-label govuk-label">Year</label>' +
+          '    <input data-ga4-form-include-input class="gem-c-input govuk-input govuk-input--width-4" name="year" id="date_3i" type="text" value="2025">' +
+          '   </div>' +
+          '</div>' +
+          '</fieldset>' +
+        '</fieldset>'
+
+      document.getElementById('c1').checked = true
+      expected.event_data.text = JSON.stringify({ 'Parent legend - Day': '19', 'Parent legend - Month': '08', 'Parent legend - Year': '2025' })
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -639,6 +727,21 @@ describe('Google Analytics form tracking', function () {
         '</select>'
 
       expected.event_data.text = '2'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects single selected option from a select', function () {
+      element.innerHTML =
+        '<label for="s1">Label</label>' +
+        '<select multiple name="select" id="s1">' +
+          '<option selected value="option1">Option 1</option>' +
+          '<option value="option2">Option 2</option>' +
+          '<option value="option3">Option 3</option>' +
+        '</select>'
+
+      expected.event_data.text = 'Option 1'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
