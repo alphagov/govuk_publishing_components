@@ -35,6 +35,9 @@ module GovukPublishingComponents
     def preview
       @component_examples = []
       @component_doc = component_docs.get(params[:component])
+      @all_gem_component_docs = gem_component_docs.all
+      @excluded_components = %w[contextual_breadcrumbs contextual_footer contextual_sidebar copy_to_clipboard google_tag_manager_script list machine_readable_metadata meta_tags]
+      @excluded_components << @component_doc.id
       @preview = true
 
       if params[:example].present?
