@@ -268,7 +268,7 @@
     return sinceNavigationStart;
   }
 
-  var version = "4.3.2";
+  var version = "4.3.3";
 
   function padStart(str, length, char) {
     while (str.length < length) {
