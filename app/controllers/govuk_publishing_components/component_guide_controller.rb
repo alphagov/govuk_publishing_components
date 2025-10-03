@@ -36,6 +36,8 @@ module GovukPublishingComponents
       @component_examples = []
       @component_doc = component_docs.get(params[:component])
       @all_gem_component_docs = gem_component_docs.all
+      @render_component_first = true if params[:component_css_first]
+      @all_gem_component_docs.reverse! if params[:reversed] == "true"
       @excluded_components = %w[contextual_breadcrumbs contextual_footer contextual_sidebar copy_to_clipboard google_tag_manager_script list machine_readable_metadata meta_tags]
       @excluded_components << @component_doc.id
       @preview = true

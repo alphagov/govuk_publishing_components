@@ -25,8 +25,8 @@ describe "visual regression test runner Percy", :visual_regression do
 
     component_links = find("#list-all-components-in-the-gem")
       .all("a")
-      .map do |link|
-        URI("#{link[:href]}/preview")
+      .flat_map do |link|
+        [URI("#{link[:href]}/preview"), URI("#{link[:href]}/preview?component_css_first=true")]
       end
 
     # The public layout component has two previews - one with multiple versions
