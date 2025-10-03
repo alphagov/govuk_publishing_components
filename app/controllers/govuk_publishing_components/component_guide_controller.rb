@@ -36,10 +36,19 @@ module GovukPublishingComponents
       @component_examples = []
       @component_doc = component_docs.get(params[:component])
       @all_gem_component_docs = gem_component_docs.all
-      @render_component_first = true if params[:component_css_first]
       @all_gem_component_docs.reverse! if params[:reversed] == "true"
+
+      # We need a list of excluded components, as trying to render their CSS will result in a crash in the view
       @excluded_components = %w[contextual_breadcrumbs contextual_footer contextual_sidebar copy_to_clipboard google_tag_manager_script list machine_readable_metadata meta_tags]
-      @excluded_components << @component_doc.id
+
+      if params[:component_css_first] && !@component_doc.id.in?(@excluded_components)
+        # If we're rendering the component CSS first, again we need to make sure it has a CSS file otherwise it will crash
+        @render_component_first = true
+      else
+        # If we're rendering the component's CSS last, the partial render statement will handle that for us, so we can exclude it from our render code.
+        @excluded_components << @component_doc.id
+      end
+
       @preview = true
 
       if params[:example].present?
