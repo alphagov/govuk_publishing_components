@@ -39,7 +39,7 @@ describe "visual regression test runner Percy", :visual_regression do
       visit(link)
 
       name = title.gsub(/(: Default|) preview - Component Guide/, "")
-
+      puts name
       page.find(:css, "body > #wrapper", wait: 20)
 
       page.percy_snapshot(name)
