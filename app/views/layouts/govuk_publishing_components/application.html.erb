@@ -32,9 +32,6 @@
           <%= @component_examples.first.name %>
         <% end %>
         preview -
-        <% if @render_component_first %>
-          (component rendered first) -
-        <% end %>
       <% end %>
       <%= yield :title %><% if content_for(:title) %> - <% end %><%= GovukPublishingComponents::Config.component_guide_title %>
     </title>
