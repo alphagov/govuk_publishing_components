@@ -7,7 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 61.1.1
+
 * Adjustments to how Ga4FormTracker sets text on submit ([PR #4994](https://github.com/alphagov/govuk_publishing_components/pull/4994))
 
 ## 61.1.0
