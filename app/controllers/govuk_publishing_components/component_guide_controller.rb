@@ -35,6 +35,20 @@ module GovukPublishingComponents
     def preview
       @component_examples = []
       @component_doc = component_docs.get(params[:component])
+
+      all_components = true if params[:all_components] == "true"
+      @all_gem_component_docs = []
+      if all_components
+
+        # We need a list of components with no CSS, as trying to render their CSS will result in a crash in the view
+        excluded_components = %w[contextual_breadcrumbs contextual_footer contextual_sidebar copy_to_clipboard google_tag_manager_script list machine_readable_metadata meta_tags]
+
+        # Remove components without CSS, and the current component. The current component is excluded as the view will handle rendering its CSS.
+        @all_gem_component_docs = gem_component_docs.all.reject { |component| component.id.in?(excluded_components) || component.id == @component_doc.id }
+
+        @render_component_first = params[:render_component_first] == "true" unless @component_doc.id.in?(excluded_components)
+      end
+
       @preview = true
 
       if params[:example].present?
