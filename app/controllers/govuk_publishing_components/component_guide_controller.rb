@@ -58,7 +58,7 @@ module GovukPublishingComponents
       end
 
       percy = true if params[:percy] == "true"
-      @preview_title = preview_title(@component_doc, @component_examples, @all_components, @render_component_first, percy)
+      @preview_title = preview_title(@component_doc, @component_examples, all_components, @render_component_first, percy)
     end
 
     def components_in_use_sass
@@ -203,7 +203,7 @@ module GovukPublishingComponents
                  end
       end
 
-      title << "- #{GovukPublishingComponents::Config.component_guide_title}"
+      title << "- #{GovukPublishingComponents::Config.component_guide_title}" unless percy
 
       title.join(" ")
     end
