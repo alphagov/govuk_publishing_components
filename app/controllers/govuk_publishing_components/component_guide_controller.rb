@@ -57,8 +57,8 @@ module GovukPublishingComponents
         @component_examples = @component_doc.examples
       end
 
-      @percy = true if params[:percy] == "true"
-      @preview_title = preview_title(@component_doc, @component_examples, @all_components, @render_component_first, @percy)
+      percy = true if params[:percy] == "true"
+      @preview_title = preview_title(@component_doc, @component_examples, @all_components, @render_component_first, percy)
     end
 
     def components_in_use_sass
