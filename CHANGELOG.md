@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow every component's CSS files to render on a component's preview page ([PR #5055](https://github.com/alphagov/govuk_publishing_components/pull/5055))
+
 ## 61.1.1
 
 * Adjustments to how Ga4FormTracker sets text on submit ([PR #4994](https://github.com/alphagov/govuk_publishing_components/pull/4994))
