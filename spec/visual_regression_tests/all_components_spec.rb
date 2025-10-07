@@ -27,9 +27,9 @@ describe "visual regression test runner Percy", :visual_regression do
       .all("a")
       .flat_map do |link|
         [
-          URI("#{link[:href]}/preview"),
-          URI("#{link[:href]}/preview?all_components=true"),
-          URI("#{link[:href]}/preview?all_components=true&render_component_first=true"),
+          URI("#{link[:href]}/preview?percy=true"),
+          URI("#{link[:href]}/preview?percy=true&all_components=true"),
+          URI("#{link[:href]}/preview?percy=true&all_components=true&render_component_first=true"),
         ]
       end
 
@@ -42,11 +42,9 @@ describe "visual regression test runner Percy", :visual_regression do
 
       visit(link)
 
-      name = title.gsub(/(: Default|) preview - Component Guide/, "")
-
       page.find(:css, "body > #wrapper", wait: 10)
 
-      page.percy_snapshot(name)
+      page.percy_snapshot(title)
     end
 
     travel_back

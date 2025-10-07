@@ -26,15 +26,7 @@
 <html lang="en" class="<%= "govuk-template" unless @preview %> govuk-template--rebranded">
   <head>
     <meta charset="utf-8">
-    <title>
-      <% if @preview %>
-        <%= @component_doc.name %><% if @component_examples.length == 1 %>:
-          <%= @component_examples.first.name %>
-        <% end %>
-        preview -
-      <% end %>
-      <%= yield :title %><% if content_for(:title) %> - <% end %><%= GovukPublishingComponents::Config.component_guide_title %>
-    </title>
+    <title><% if @preview %><%= @preview_title %><% else %><%= yield :title %><% if content_for(:title) %> - <% end %><%= GovukPublishingComponents::Config.component_guide_title %><% end %></title>
     <meta name="robots" content="noindex,nofollow,noimageindex">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
