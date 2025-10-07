@@ -35,6 +35,21 @@ module GovukPublishingComponents
     def preview
       @component_examples = []
       @component_doc = component_docs.get(params[:component])
+
+      @all_components = true if params[:all_components] == "true"
+      @all_gem_component_docs = []
+      @all_app_component_docs = []
+      if @all_components
+        @component_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
+
+        # Remove components without CSS, and the current component. The current component is excluded as the view will handle rendering its CSS.
+        @all_gem_component_docs = gem_component_docs.all.reject { |component| !component_has_sass_file(component.id.gsub("_", "-")) || component.id == @component_doc.id }
+        @all_app_component_docs = component_docs.all.reject { |component| !app_component_has_sass_file(component.id.gsub("_", "-")) || component.id == @component_doc.id }
+
+        @current_component_id = @component_doc.id.gsub("_", "-")
+        @render_component_first = params[:render_component_first] == "true" unless !component_has_sass_file(@current_component_id) && !app_component_has_sass_file(@current_component_id)
+      end
+
       @preview = true
 
       if params[:example].present?
@@ -134,6 +149,10 @@ module GovukPublishingComponents
       end
 
       extra_components.flatten.uniq.sort
+    end
+
+    def app_component_has_sass_file(component)
+      Pathname.new(Rails.root + "app/assets/stylesheets/components/_#{component}.scss").exist?
     end
 
     def component_has_sass_file(component)
