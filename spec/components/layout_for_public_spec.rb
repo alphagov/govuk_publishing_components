@@ -239,7 +239,7 @@ describe "Layout for public", :capybara, type: :view do
   it "displays as draft watermark" do
     render_component({ draft_watermark: true })
 
-    assert_select ".gem-c-layout-for-public.govuk-template__body.draft"
+    assert_select ".gem-c-layout-for-public.gem-c-layout-for-public--draft"
   end
 
   it "contains a global-banner-present class when the global banner is present" do
