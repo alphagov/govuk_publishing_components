@@ -31,6 +31,10 @@ $choices-button-dimension: 12px !default;
     opacity: 1;
   }
 
+  .choices__placeholder {
+    opacity: 0.6;
+  }
+
   .choices[data-type*="select-one"]::after {
     @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
     @include prefixed-transform($translateY: -50%);
