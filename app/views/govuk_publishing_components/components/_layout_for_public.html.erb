@@ -27,7 +27,7 @@
   omit_account_phase_banner ||= false
 
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
-  body_css_classes << "draft" if draft_watermark
+  body_css_classes << "gem-c-layout-for-public--draft" if draft_watermark
   body_css_classes << "global-banner-present" if global_banner.present?
 -%>
 <!DOCTYPE html>

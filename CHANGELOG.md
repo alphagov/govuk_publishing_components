@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move draft watermark from static to layout_for_public ([PR #5062](https://github.com/alphagov/govuk_publishing_components/pull/5062))
+
 ## 61.1.1
 
 * Adjustments to how Ga4FormTracker sets text on submit ([PR #4994](https://github.com/alphagov/govuk_publishing_components/pull/4994))

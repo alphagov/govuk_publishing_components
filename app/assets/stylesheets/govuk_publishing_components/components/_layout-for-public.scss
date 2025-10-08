@@ -4,6 +4,13 @@
   font-family: $govuk-font-family;
 }
 
+.gem-c-layout-for-public--draft {
+  background-image: url("govuk_publishing_components/draft-watermark.png");
+  background-repeat: repeat-y;
+  background-position: 50% 0;
+  background-size: contain;
+}
+
 .gem-c-layout-for-public-account-menu {
   margin: 0 0 govuk-spacing(6) 0;
   padding: 0;
