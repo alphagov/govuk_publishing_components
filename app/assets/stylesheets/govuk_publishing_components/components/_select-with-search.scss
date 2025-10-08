@@ -175,3 +175,12 @@ $choices-button-dimension: 12px !default;
     cursor: default;
   }
 }
+
+// High contrast mode adjustments
+@media (forced-colors: active) {
+  .choices__list--dropdown .choices__item--selectable.is-highlighted,
+  .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+    forced-color-adjust: none; // opt out of all default forced-colors adjustments
+    background-color: Highlight;
+  }
+}
