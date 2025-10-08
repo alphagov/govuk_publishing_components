@@ -33,6 +33,10 @@ describe "visual regression test runner Percy", :visual_regression do
     # as part of the component guide, and another one at `/public`.
     component_links << URI("/public")
 
+    # Test all components rendering on the same page to ensure component isolation is working correctly
+    component_links << URI("/component-guide/all-components")
+    component_links << URI("/component-guide/all-components?reversed=true")
+
     component_links.each do |link|
       next if all_components_to_skip.include?(link.path)
 
