@@ -44,16 +44,6 @@ examples:
               padding: true,
             } %>
             <!-- end of example content -->
-  with_subtext:
-    data:
-      subtext: This is some text
-      block: |
-        <!-- example content -->
-          <%= render "govuk_publishing_components/components/heading", {
-            text: "Education, Training and Skills",
-            margin_bottom: 0
-          } %>
-          <!-- end of example content -->
   html_publication_header:
     description: "The html publication header with a blue background is used on HTML publications and CSV previews. [See example of a HTML publication on GOV.UK here](https://www.gov.uk/government/publications/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application-advertisement/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application), and [an example of a CSV preview on GOV.UK here](https://www.gov.uk/csv-preview/6756eeb07ec19a3516f79a3d/Malpractice_in_VTQ_-_Example_CSV_File.csv)"
     data:
@@ -68,6 +58,19 @@ examples:
             font_size: "xl"
           } %>
           <p class="publication-header__last-changed">Published 22 April 2016</p>
+          <!-- end of example content -->
+  html_publication_header_with_subtext:
+    description: "The white subtext can be used with the html publication header variant. We don't currently support black subtext to be used with the default variant as it's not in use on GOV.UK. If you need this please add it as a variant to the component."
+    data:
+      subtext: This is some text
+      html_publication_header: true
+      block: |
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/heading", {
+            text: "Education, Training and Skills",
+            inverse: true,
+            margin_bottom: 0
+          } %>
           <!-- end of example content -->
   with_paragraph_and_link:
     data:
