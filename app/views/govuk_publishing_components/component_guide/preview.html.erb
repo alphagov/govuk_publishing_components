@@ -1,9 +1,15 @@
 <% content_for :application_stylesheet do %>
+  <% if @render_component_first %>
+    <% add_gem_component_stylesheet(@component_doc.id.gsub("_", "-")) %>
+  <% end %>
+  <% @all_gem_component_docs.each do |component| %>
+    <% add_gem_component_stylesheet(component.id.gsub("_", "-")) %>
+  <% end %>
+
   <% if @component_doc.source == "application" && application_stylesheet_in_use? %>
     <%= render "application_stylesheet" %>
   <% end %>
 <% end %>
-
 <% @component_examples.each do |example| %>
   <div class="component-guide-preview-page">
     <% if @component_examples.length > 1 %>

@@ -44,7 +44,7 @@ describe "All components" do
         expect(File).to exist(rspec_file)
       end
 
-      it "has a correctly named SCSS file", not_applicable: component_name.in?(%w[contextual_breadcrumbs contextual_footer contextual_sidebar google_tag_manager_script list machine_readable_metadata meta_tags]) do
+      it "has a correctly named SCSS file", not_applicable: component_name.in?(%w[contextual_breadcrumbs contextual_footer contextual_sidebar copy_to_clipboard google_tag_manager_script list machine_readable_metadata meta_tags]) do
         css_file = "#{__dir__}/../../app/assets/stylesheets/govuk_publishing_components/components/_#{component_name.tr('_', '-')}.scss"
 
         expect(File).to exist(css_file)
