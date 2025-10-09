@@ -31,6 +31,10 @@ $choices-button-dimension: 12px !default;
     opacity: 1;
   }
 
+  .choices__placeholder {
+    opacity: 0.6;
+  }
+
   .choices[data-type*="select-one"]::after {
     @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
     @include prefixed-transform($translateY: -50%);
@@ -169,5 +173,14 @@ $choices-button-dimension: 12px !default;
     padding: govuk-spacing(6) govuk-spacing(2) govuk-spacing(2);
     border-bottom: 1px solid govuk-colour("mid-grey");
     cursor: default;
+  }
+}
+
+// High contrast mode adjustments
+@media (forced-colors: active) {
+  .choices__list--dropdown .choices__item--selectable.is-highlighted,
+  .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+    forced-color-adjust: none; // opt out of all default forced-colors adjustments
+    background-color: Highlight;
   }
 }
