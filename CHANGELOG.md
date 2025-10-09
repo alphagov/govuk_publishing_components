@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update organisation logo sizing ([PR #5052](https://github.com/alphagov/govuk_publishing_components/pull/5052))
+
 ## 61.1.2
 
 * Move draft watermark from static to layout_for_public ([PR #5062](https://github.com/alphagov/govuk_publishing_components/pull/5062))
