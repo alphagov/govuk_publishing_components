@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 61.1.3
 
 * Fix accessibility failures on the select with search component ([PR #5064](https://github.com/alphagov/govuk_publishing_components/pull/5064))
 
