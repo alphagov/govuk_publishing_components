@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update organisation logo sizing ([PR #5052](https://github.com/alphagov/govuk_publishing_components/pull/5052))
+* Add visually hidden text to the Contextual sidebar component heading ([PR #5058](https://github.com/alphagov/govuk_publishing_components/pull/5058))
 
 ## 61.1.3
 
