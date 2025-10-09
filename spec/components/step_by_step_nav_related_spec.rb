@@ -51,7 +51,7 @@ describe "Step by step navigation related", type: :view do
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .govuk-link"
 
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "Part of"
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "This page is Part of"
     assert_select "#{this_link}[href='/link1']", text: "Link 1"
   end
 
@@ -60,7 +60,7 @@ describe "Step by step navigation related", type: :view do
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
 
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "Part of"
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "This page is Part of"
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']", text: "Link 1"
     assert_select this_link, text: "Link 2"
   end
@@ -74,7 +74,7 @@ describe "Step by step navigation related", type: :view do
   it "displays as a list when always_display_as_list is passed in" do
     render_component(links: one_link, always_display_as_list: true)
 
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "Part of"
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "This page is Part of"
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']", text: "Link 1"
   end
 
