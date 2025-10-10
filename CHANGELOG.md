@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow every component's CSS files to render on a component's preview page ([PR #5055](https://github.com/alphagov/govuk_publishing_components/pull/5055))
+
 ## 61.1.3
 
 * Fix accessibility failures on the select with search component ([PR #5064](https://github.com/alphagov/govuk_publishing_components/pull/5064))
