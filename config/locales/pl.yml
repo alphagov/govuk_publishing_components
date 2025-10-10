@@ -220,6 +220,8 @@ pl:
       show_all: Pokaż wszystkie kroki
     step_by_step_nav_related:
       part_of: Część
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Otrzymuj wiadomości e-mail
       feed_link_label: Skopiuj i wklej ten adres URL do swojego czytnika kanałów

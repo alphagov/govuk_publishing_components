@@ -214,6 +214,8 @@ zh:
       show_all: 显示全部步骤
     step_by_step_nav_related:
       part_of: 一部分
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: 获取电子邮件
       feed_link_label: 将此URL复制并粘贴到推送阅读器

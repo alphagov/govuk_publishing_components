@@ -216,6 +216,8 @@ so:
       show_all: Muuji dhamaan talaabooyinka
     step_by_step_nav_related:
       part_of: Ka qeyba
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Hel iimaylada
       feed_link_label: Soo koobiyee oo ku dul badal URL goobtaada baadhista

@@ -212,6 +212,8 @@ ku:
       show_all: هەموو هەنگاوەکان پیشان بدە
     step_by_step_nav_related:
       part_of: بەشێک لە
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: ئیمەیڵەکان بەدەست بهێنە
       feed_link_label: ئەم URL ە کۆپی بکە و بیخە ناو خوێنەری فیدەکەتەوە

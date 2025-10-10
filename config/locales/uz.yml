@@ -218,6 +218,8 @@ uz:
       show_all: Босқичларни барчасини кўрсатиш
     step_by_step_nav_related:
       part_of: Қисм
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Электрон манзилларни олиш
       feed_link_label: RSS-лентани ўқиш учун мижозга ушбу URLни нусхалаш ва ўрнатиш

@@ -216,6 +216,8 @@ hi:
       show_all: सभी चरण दिखाएं
     step_by_step_nav_related:
       part_of: का भाग
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: ईमेल प्राप्त करें
       feed_link_label: इस URL को अपने फीड रीडर में कॉपी और पेस्ट करें

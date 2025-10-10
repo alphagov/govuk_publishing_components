@@ -216,6 +216,8 @@ el:
       show_all: Εμφάνιση όλων των βημάτων
     step_by_step_nav_related:
       part_of: Μέρος του
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Λάβετε email
       feed_link_label: Αντιγράψτε και επικολλήστε αυτό το URL στο πρόγραμμα ανάγνωσης ροής
