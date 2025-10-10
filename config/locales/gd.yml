@@ -218,6 +218,8 @@ gd:
       show_all: Taispeáin gach céim den chlár
     step_by_step_nav_related:
       part_of: Chuid
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Faigh r-phost
       feed_link_label: Cóipeáil agus greamaigh an URL seo i do léitheoir beatha

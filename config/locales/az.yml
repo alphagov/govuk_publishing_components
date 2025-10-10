@@ -216,6 +216,8 @@ az:
       show_all: Bütün addımları göstər
     step_by_step_nav_related:
       part_of: Hissə
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: E-məktublar alın
       feed_link_label: Bu URL-i veb-kanal oxuyucunuza daxil edin

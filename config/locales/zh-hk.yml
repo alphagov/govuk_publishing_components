@@ -214,6 +214,8 @@ zh-hk:
       show_all: 顯示所有步驟
     step_by_step_nav_related:
       part_of: 部份
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: 獲取電子郵件
       feed_link_label: 複製這一 URL 並貼上您的內容閱讀工具

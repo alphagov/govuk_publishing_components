@@ -221,6 +221,8 @@ cs:
       show_all: Zobrazit všechny kroky
     step_by_step_nav_related:
       part_of: Část
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Získat e-maily
       feed_link_label: Zkopírujte a vložte tuto adresu URL do čtečky kanálů

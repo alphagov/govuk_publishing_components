@@ -219,6 +219,8 @@ ka:
       show_all: ყველა ნაბიჯის ჩვენება
     step_by_step_nav_related:
       part_of: ნაწილი
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: ელ. წერილების მიღება
       feed_link_label: ამ URL-ის დაკოპირება და ჩასმა თქვენი ველის წამკითხველში

@@ -217,6 +217,8 @@ ro:
       show_all: Afișați toți pașii
     step_by_step_nav_related:
       part_of: Parte din
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Primiți e-mailuri
       feed_link_label: Copiați și inserați această adresă URL în cititorul de fluxuri

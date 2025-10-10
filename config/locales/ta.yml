@@ -217,6 +217,8 @@ ta:
       show_all: அனைத்து படிநிலைகளையும் காட்டு
     step_by_step_nav_related:
       part_of: பகுதி
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: மின்னஞ்சல்களைப் பெறுக
       feed_link_label: உங்கள் செய்தியூட்ட ரீடரில் இந்த URL-ஐ நகலெடுத்து ஒட்டவும்

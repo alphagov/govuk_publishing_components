@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add visually hidden text to the Contextual sidebar component heading ([PR #5058](https://github.com/alphagov/govuk_publishing_components/pull/5058))
+
 ## 61.1.3
 
 * Fix accessibility failures on the select with search component ([PR #5064](https://github.com/alphagov/govuk_publishing_components/pull/5064))
