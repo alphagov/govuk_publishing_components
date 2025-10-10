@@ -216,6 +216,8 @@ gu:
       show_all: તમામ સ્ટેપ્સ દર્શાવો
     step_by_step_nav_related:
       part_of: નો ભાગ
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: ઈમેલ્સ મેળવો
       feed_link_label: આ URL કૉપી કરીને તમારા ફીડ રીડરમાં પેસ્ટ કરો

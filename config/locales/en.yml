@@ -331,6 +331,8 @@ en:
       show_all: Show all steps
     step_by_step_nav_related:
       part_of: Part of
+      this_page_is: This page is
+      this_page_is_part_of_html: "<span class='govuk-visually-hidden'>%{this_page_is}</span> %{part_of}"
     subscription_links:
       email_signup_link_text: Get emails
       feed_link_label: Copy and paste this URL into your feed reader

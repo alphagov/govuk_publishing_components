@@ -212,6 +212,8 @@ pa-pk:
       show_all: اپنے سارے اقدام وکھاؤ
     step_by_step_nav_related:
       part_of: ایس دا حصہ
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: ای میلز حاصل کرو
       feed_link_label: ایس یو آر ایل نوں اپنے فیڈ ریڈر وچ کاپی  تے پیسٹ کرو

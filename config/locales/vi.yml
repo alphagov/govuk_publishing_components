@@ -215,6 +215,8 @@ vi:
       show_all: Hiển thị tất cả các bước
     step_by_step_nav_related:
       part_of: Một phần của
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Nhận email
       feed_link_label: Sao chép và dán URL này vào trình đọc nguồn cấp dữ liệu của bạn
