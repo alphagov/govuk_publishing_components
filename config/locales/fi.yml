@@ -218,6 +218,8 @@ fi:
       show_all: Näytä kaikki vaiheet
     step_by_step_nav_related:
       part_of: Osa
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Hanki sähköpostit
       feed_link_label: Kopioi ja liitä tämä URL osoite syötteenlukijaasi

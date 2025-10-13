@@ -216,6 +216,8 @@ pa:
       show_all: ਸਾਰੇ ਕਦਮ ਦਿਖਾਉ
     step_by_step_nav_related:
       part_of: ਦਾ ਹਿੱਸਾ
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: ਈਮੇਲਾਂ ਪ੍ਰਾਪਤ ਕਰੋ
       feed_link_label: ਇਸ URL ਨੂੰ ਕਾਪੀ ਕਰੋ ਅਤੇ ਆਪਣੇ ਫੀਡ ਰੀਡਰ ਵਿੱਚ ਪੇਸਟ ਕਰੋ

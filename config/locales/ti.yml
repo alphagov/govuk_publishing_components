@@ -213,6 +213,8 @@ ti:
       show_all: ኩሉ ስጉምትታት ኣርኢ
     step_by_step_nav_related:
       part_of: ሓደ ክፋል ናይ
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: ኢመይላት ውሰዱ
       feed_link_label: ነዚ ዩ.ኣር.ኤል/URL ኣብ ናትካ ናይ ንባብ ገጽ/ፊድ ኮፒ ፔስት በሎ።

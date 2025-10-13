@@ -221,6 +221,8 @@ sk:
       show_all: Zobraziť všetky kroky
     step_by_step_nav_related:
       part_of: Časť
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Dostávať e-maily
       feed_link_label: Skopírujte a vložte túto adresu URL do čítačky

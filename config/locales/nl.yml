@@ -216,6 +216,8 @@ nl:
       show_all: Toon alle stappen
     step_by_step_nav_related:
       part_of: Onderdeel van
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Ontvang e-mails
       feed_link_label: Kopieer en plak deze URL in je feed reader

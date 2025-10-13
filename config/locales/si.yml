@@ -216,6 +216,8 @@ si:
       show_all: සියලු පියවර පෙන්වන්න
     step_by_step_nav_related:
       part_of: කොටසක්
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: විද්‍යුත් තැපෑල් ලබා ගන්න
       feed_link_label: මෙම URL එක පිටපත් කර ඔබේ පෝෂණ කියවන්නා තුළ අලවන්න

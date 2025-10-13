@@ -218,6 +218,8 @@ mt:
       show_all: Uri l-passi kollha
     step_by_step_nav_related:
       part_of: Parti minn
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Ġib l-imejls
       feed_link_label: Ikkopja u ippejstja dan l-URL fil-qarrej tal-feed tiegħek

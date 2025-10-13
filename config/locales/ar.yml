@@ -219,6 +219,8 @@ ar:
       show_all: عرض كل الخطوات
     step_by_step_nav_related:
       part_of: جزء من
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: احصل على رسائل البريد الإلكتروني
       feed_link_label: انسخ والصق عنوان URL هذا في قارئ الموجز الخاص بك

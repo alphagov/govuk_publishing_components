@@ -216,6 +216,8 @@
       show_all: Vis alle trinnene
     step_by_step_nav_related:
       part_of: Del av
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Få e-post
       feed_link_label: Kopier og lim inn denne nettadressen i feedleseren din
