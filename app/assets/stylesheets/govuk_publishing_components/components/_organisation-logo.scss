@@ -38,11 +38,6 @@
   height: auto;
   max-width: 300px;
   width: 100%;
-
-  @include govuk-media-query($until: tablet) {
-    width: 100%;
-    max-width: 240px;
-  }
 }
 
 .gem-c-organisation-logo__crest {
