@@ -43,6 +43,16 @@ describe('GOVUK.Modules.SelectWithSearch', function () {
         'Search in list'
       )
     })
+
+    it('includes `aria-labelledby` in both the listbox and the combobox', () => {
+      expect(
+        component.querySelector('[role="listbox"][aria-labelledby="example-label "]')
+      ).toBeTruthy()
+
+      expect(
+        component.querySelector('[role="combobox"][aria-labelledby="example-label "]')
+      ).toBeTruthy()
+    })
   })
 
   describe('select with `aria-describedby`', () => {
@@ -64,9 +74,13 @@ describe('GOVUK.Modules.SelectWithSearch', function () {
       module.init()
     })
 
-    it('includes `aria-describedby` of select in `aria-labelledby`', () => {
+    it('includes `aria-describedby` of select in `aria-labelledby` in both the listbox and the combobox', () => {
       expect(
-        component.querySelector(`[aria-labelledby="example-label ${ariaDescribedBy}"]`)
+        component.querySelector(`[role="listbox"][aria-labelledby="example-label ${ariaDescribedBy}"]`)
+      ).toBeTruthy()
+
+      expect(
+        component.querySelector(`[role="combobox"][aria-labelledby="example-label ${ariaDescribedBy}"]`)
       ).toBeTruthy()
     })
   })

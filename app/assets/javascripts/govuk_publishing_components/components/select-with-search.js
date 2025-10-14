@@ -24,6 +24,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
     }
 
     const ariaDescribedBy = this.module.getAttribute('aria-describedby') || ''
+    const labelId = this.module.id + '-label ' + ariaDescribedBy
 
     this.choices = new window.Choices(this.module, {
       allowHTML: true,
@@ -32,7 +33,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
       itemSelectText: '',
       searchResultLimit: 100,
       removeItemButton: this.module.multiple,
-      labelId: this.module.id + '-label ' + ariaDescribedBy,
+      labelId: labelId,
       callbackOnInit: function () {
         // For the multiple select, move the input field to
         // the top of the feedback area, so that the selected
@@ -42,6 +43,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
           const input = this.input.element
           inner.prepend(input)
         }
+        // Add aria-labelledby to the listbox as well as the combobox
+        const listbox = this.itemList.element
+        listbox.setAttribute('aria-labelledby', labelId)
       },
       // https://fusejs.io/api/options.html
       fuseOptions: {
