@@ -7,7 +7,6 @@ module GovukPublishingComponents
         @applications_using_static = %w[
           collections
           finder-frontend
-          frontend
           government-frontend
           service-manual-frontend
           smart-answers
