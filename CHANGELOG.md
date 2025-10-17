@@ -11,6 +11,7 @@
 
 * Allow every component's CSS files to render on a component's preview page ([PR #5055](https://github.com/alphagov/govuk_publishing_components/pull/5055))
 * Add missing languages to component wrapper helper ([PR #5081](https://github.com/alphagov/govuk_publishing_components/pull/5081))
+* Implement redesigned inverse header ([PR #5053](https://github.com/alphagov/govuk_publishing_components/pull/5053))
 
 ## 61.2.0
 
