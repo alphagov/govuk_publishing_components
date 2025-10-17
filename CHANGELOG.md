@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 61.3.0
 
 * Allow every component's CSS files to render on a component's preview page ([PR #5055](https://github.com/alphagov/govuk_publishing_components/pull/5055))
 * Add missing languages to component wrapper helper ([PR #5081](https://github.com/alphagov/govuk_publishing_components/pull/5081))
