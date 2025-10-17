@@ -12,7 +12,7 @@
 <!-- To help Designers, please include a link to specific elements to review, -->
 <!-- for example to https://components-gem-pr-[PULL REQUEST NUMBER].herokuapp.com/public -->
 
-<!-- Please ensure component CSS isolation is working on your component. You can render your component alongside every other component's CSS by looking at `/component-guide/[your-component]/preview?all_components=true` and `/component-guide/[your-component]/preview?all_components=true&render_component_first=true`>
+<!-- Please ensure component CSS isolation is working on your component. You can render your component alongside every other component's CSS by looking at `/component-guide/[your-component]/preview?all_components=true` and `/component-guide/[your-component]/preview?all_components=true&render_component_first=true` -->
 
 ### Before
 
