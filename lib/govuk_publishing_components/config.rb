@@ -37,12 +37,10 @@ module GovukPublishingComponents
 
     def self.all_stylesheets
       stylesheets = Dir.glob("#{gem_directory}/app/assets/stylesheets/govuk_publishing_components/components/*.scss")
-      # _copy-to-clipboard.css is removed due to being an empty stylesheet
-      included_files = stylesheets.reject { |path| path.include?("copy-to-clipboard") }
 
       application_stylesheet_hash = { "#{gem_directory}/app/assets/stylesheets/component_guide/application.scss" => "component_guide/application.css" }
 
-      included_files.each_with_object(application_stylesheet_hash) do |path, hsh|
+      stylesheets.each_with_object(application_stylesheet_hash) do |path, hsh|
         hsh[path] = "govuk_publishing_components/components/#{File.basename(path, '.*')}.css"
       end
     end
