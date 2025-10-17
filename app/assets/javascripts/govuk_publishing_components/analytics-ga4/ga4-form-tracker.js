@@ -7,6 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function Ga4FormTracker (module) {
     this.module = module
     this.trackingTrigger = 'data-ga4-form' // elements with this attribute get tracked
+    this.trackFormChanges = this.module.hasAttribute('data-ga4-form-track-changes')
     this.includeTextInputValues = this.module.hasAttribute('data-ga4-form-include-text')
     this.recordJson = this.module.hasAttribute('data-ga4-form-record-json')
     this.useTextCount = this.module.hasAttribute('data-ga4-form-use-text-count')
@@ -31,6 +32,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4FormTracker.prototype.startModule = function () {
     if (window.dataLayer) {
       window.removeEventListener('cookie-consent', this.start)
+      if (this.trackFormChanges) {
+        this.module.addEventListener('change', this.trackFormChange.bind(this))
+      }
       this.module.addEventListener('submit', this.trackFormSubmit.bind(this))
     }
   }
@@ -221,6 +225,137 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     return this.recordJson ? JSON.stringify(answers) : answers.join(',')
+  }
+
+  // extra utility function for parsing
+  // JSON string data attributes (convention
+  // of the components library tracking)
+  Ga4FormTracker.prototype.getJson = function (target, attribute) {
+    let dataContainer
+    let data
+
+    try {
+      dataContainer = target.closest(`[${attribute}]`)
+      data = dataContainer.getAttribute(attribute)
+      return JSON.parse(data)
+    } catch (e) {
+      console.error(
+        `GA4 configuration error: ${e.message}, attempt to access ${attribute} on ${target}`,
+        window.location
+      )
+    }
+  }
+
+  Ga4FormTracker.prototype.dateTimeComponent = function (target) {
+    return (
+      target.closest('.app-c-datetime-fields') ||
+      target.closest('.govuk-date-input')
+    )
+  }
+
+  Ga4FormTracker.prototype.getSection = function (target, checkableValue) {
+    const { id } = target
+
+    const fieldset = target.closest('fieldset')
+    const legend = fieldset && fieldset.querySelector('legend')
+    const sectionContainer = this.module.closest('[data-ga4-section]')
+    const label = this.module.querySelector(`label[for='${window.CSS.escape(id)}']`)
+    const dateTimeComponent = this.dateTimeComponent(target)
+
+    let section = sectionContainer && sectionContainer.dataset.ga4Section
+
+    if (legend && (checkableValue || dateTimeComponent)) {
+      section = legend ? legend.innerText : section
+
+      if (dateTimeComponent) {
+        // this is an intermediary measure!! need to rework the legends
+        // for all datetime fields so they are more descriptive as
+        // nested legends have inconsistent screenreader behaviour
+        // this work can happen as part of moving datetime out of whitehall
+        const dateTimeFieldset = dateTimeComponent.closest('fieldset')
+        if (dateTimeFieldset) {
+          const dateTimeLegend = dateTimeFieldset.querySelector('legend')
+          if (dateTimeLegend && dateTimeLegend.innerText !== section) {
+            section = `${dateTimeLegend.innerText} - ${section}`
+          }
+        }
+      }
+    } else {
+      section = label ? label.innerText : section
+    }
+
+    return section
+  }
+
+  Ga4FormTracker.prototype.handleDateComponent = function (target) {
+    const isDateComponent = target.closest('.govuk-date-input')
+    const value = target.value
+
+    if (!isDateComponent) { return value }
+
+    // only track if completely filled in
+    const inputs = [
+      ...target.closest('.govuk-date-input').querySelectorAll('input')
+    ]
+    const allInputsSet = inputs.every((input) => input.value)
+
+    if (allInputsSet) {
+      return inputs.map((input) => input.value).join('/')
+    }
+  }
+
+  // Ga4FormTracker does not track form changes
+  // so we need to define an extra function
+  Ga4FormTracker.prototype.trackFormChange = function (event) {
+    const target = event.target
+    const { type, id } = target
+
+    if (type === 'search') return
+
+    const index = target.hasAttribute('data-ga4-index') ? this.getJson(target, 'data-ga4-index') : {}
+    const value = (event.detail && event.detail.value) || target.value
+
+    // a radio or check input with a `name` and `value`
+    // or an option of `value` within a `select` with `name`
+    const checkableValue = this.module.querySelector(
+      `#${window.CSS.escape(id)}[value="${window.CSS.escape(value)}"], #${window.CSS.escape(id)} [value="${window.CSS.escape(value)}"]`
+    )
+
+    let action = 'select'
+    let text
+
+    if (checkableValue) {
+      // radio, check, option can have `:checked` pseudo-class
+      if (!checkableValue.matches(':checked')) {
+        action = 'remove'
+      }
+
+      text = checkableValue.innerText
+
+      if (!text) {
+        // it's not an option so has no innerText
+        text = this.module.querySelector(`label[for='${window.CSS.escape(id)}']`).innerText
+      }
+    } else if (!text) {
+      // it's a free form text field
+      text = this.handleDateComponent(target)
+
+      if (!text) return
+    }
+
+    window.GOVUK.analyticsGa4.core.applySchemaAndSendData(
+      {
+        ...index,
+        section: this.getSection(
+          target,
+          checkableValue && checkableValue.matches(':not(option)')
+        ),
+        event_name: 'select_content',
+        action,
+        text: text.replace(/\r?\n|\r/g, ' ')
+      },
+      'event_data'
+    )
   }
 
   Modules.Ga4FormTracker = Ga4FormTracker
