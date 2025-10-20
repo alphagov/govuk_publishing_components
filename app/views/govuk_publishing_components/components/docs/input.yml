@@ -189,7 +189,7 @@ examples:
 
       By default the input element and the label both display text in a left to right direction.
 
-      When the `right_to_left` parameter of the input component is set to `true` both the input and the label, hint and error message display their content in a right to left direction. 
+      When the `right_to_left` parameter of the input component is set to `true` both the input and the label, hint and error message display their content in a right to left direction.
     data:
       label:
         text: "Some input text to be displayed right to left with a label that displays in the same direction"
@@ -198,7 +198,6 @@ examples:
       name: rtl-input-text
       value: "العربيَّة"
       right_to_left: true
-
   with_separate_dir_attributes_for_field_and_help_text:
     description: |
       Allows the correct display of right to left languages.
@@ -215,3 +214,9 @@ examples:
       right_to_left: true
       right_to_left_help: false
       error_message: "An error message that displays in the same text direction as the label"
+  with_error_but_no_error_message_or_error_items:
+    data:
+      label:
+        text: "Day"
+      name: "day"
+      has_error: true
