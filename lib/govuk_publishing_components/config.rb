@@ -35,6 +35,10 @@ module GovukPublishingComponents
       Gem::Specification.find_by_name("govuk_publishing_components").gem_dir
     end
 
+    def self.component_guide_stylesheet
+      { "#{gem_directory}/app/assets/stylesheets/component_guide/application.scss" => "component_guide/application.css" }
+    end
+
     def self.all_stylesheets
       stylesheets = Dir.glob("#{gem_directory}/app/assets/stylesheets/govuk_publishing_components/components/*.scss")
 
