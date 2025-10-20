@@ -11,6 +11,7 @@
 //= require ./analytics-ga4/ga4-ecommerce-tracker
 //= require ./analytics-ga4/ga4-finder-tracker
 //= require ./analytics-ga4/ga4-form-tracker
+//= require ./analytics-ga4/ga4-form-change-tracker
 //= require ./analytics-ga4/ga4-auto-tracker
 //= require ./analytics-ga4/ga4-smart-answer-results-tracker
 //= require ./analytics-ga4/ga4-scroll-tracker
