@@ -67,6 +67,17 @@ For example:
 
 If you load the component guide in the application the suggested Sass for it has been generated for you. Click the 'Suggested imports for this application' link, then copy and paste the output into your `application.scss` file.
 
+If you are not using [individual component css loading](set-up-individual-component-css-loading.md) you will need add the stylesheet for the component guide into the applications `dartsass.rb`, using `GovukPublishingComponents::Config.component_guide_stylesheet`, which should look something like the following.
+
+```Ruby
+APP_STYLESHEETS = {
+  "application.scss" => "application.css",
+}.freeze
+
+all_stylesheets = APP_STYLESHEETS.merge(GovukPublishingComponents::Config.component_guide_stylesheet)
+Rails.application.config.dartsass.builds = all_stylesheets
+```
+
 ### Import all Sass (deprecated, will be removed in a later version)
 
 ```scss
