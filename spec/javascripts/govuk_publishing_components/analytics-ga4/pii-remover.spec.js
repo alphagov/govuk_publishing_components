@@ -1,11 +1,12 @@
 /* eslint-env jasmine, jquery */
 /* global GOVUK */
 
-describe('GOVUK.analyticsGa4.PIIRemover', function () {
-  var pii
+describe('GOVUK.analyticsGa4.pdRemover', function () {
+  var pd
+  
 
   beforeEach(function () {
-    pii = new GOVUK.analyticsGa4.PIIRemover()
+    pd = new GOVUK.analyticsGa4.pdRemover()
   })
 
   afterEach(function () {
@@ -14,7 +15,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
 
   describe('by default', function () {
     it('strips email addresses, but not postcodes and dates from strings', function () {
-      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date, and this is another 1 January 1990 date')
+      var string = pd.strippd('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date, and this is another 1 January 1990 date')
       expect(string).toEqual('this is [email] address, this is a sw1a 1aa postcode, this is a 2019-01-21 date, and this is another 1 January 1990 date')
     })
 
@@ -33,7 +34,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         date2: 'this is another 1 January 1990 date'
       }
 
-      obj = pii.stripPII(obj)
+      obj = pd.strippd(obj)
       expect(obj).toEqual(strippedObj)
     })
 
@@ -52,42 +53,42 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         'this is another 1 January 1990 date'
       ]
 
-      arr = pii.stripPII(arr)
+      arr = pd.strippd(arr)
       expect(arr).toEqual(strippedArr)
     })
 
     it('strips visa application numbers', function () {
-      var string = pii.stripPII('my visa application numbers are GWF123456789 and GB123456789000')
+      var string = pd.strippd('my visa application numbers are GWF123456789 and GB123456789000')
       expect(string).toEqual('my visa application numbers are [gwf number] and [gb eori number]')
     })
   })
 
-  describe('by default for account specific PII', function () {
+  describe('by default for account specific Personal data', function () {
     it('redacts the expected list of URL parameters', function () {
-      var resetPasswordToken = pii.stripPII('https://www.account.publishing.service.gov.uk/new-account?reset_password_token=4be6f4db-f32a-4d75-b0c7-3b3533ff31c4&somethingelse=24342fdjfskf')
+      var resetPasswordToken = pd.strippd('https://www.account.publishing.service.gov.uk/new-account?reset_password_token=4be6f4db-f32a-4d75-b0c7-3b3533ff31c4&somethingelse=24342fdjfskf')
       expect(resetPasswordToken).toEqual('https://www.account.publishing.service.gov.uk/new-account?reset_password_token=[reset_password_token]&somethingelse=24342fdjfskf')
 
-      var unlockToken = pii.stripPII('https://www.account.publishing.service.gov.uk/new-account?unlock_token=4be6f4db-f32a-4d75-b0c7-3b3533ff31c4&somethingelse=24342fdjfskf')
+      var unlockToken = pd.strippd('https://www.account.publishing.service.gov.uk/new-account?unlock_token=4be6f4db-f32a-4d75-b0c7-3b3533ff31c4&somethingelse=24342fdjfskf')
       expect(unlockToken).toEqual('https://www.account.publishing.service.gov.uk/new-account?unlock_token=[unlock_token]&somethingelse=24342fdjfskf')
 
-      var state = pii.stripPII('https://www.account.publishing.service.gov.uk/new-account?state=4be6f4db-f32a-4d75-b0c7-3b3533ff31c4&somethingelse=24342fdjfskf')
+      var state = pd.strippd('https://www.account.publishing.service.gov.uk/new-account?state=4be6f4db-f32a-4d75-b0c7-3b3533ff31c4&somethingelse=24342fdjfskf')
       expect(state).toEqual('https://www.account.publishing.service.gov.uk/new-account?state=[state]&somethingelse=24342fdjfskf')
     })
   })
 
-  describe('when configured to remove all PII', function () {
+  describe('when configured to remove all personal data', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
       pageWantsPostcodesStripped()
-      pii = new GOVUK.analyticsGa4.PIIRemover()
+      pd = new GOVUK.analyticsGa4.pdRemover()
     })
 
     it('strips email addresses, postcodes and dates from strings', function () {
-      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date, and this is another 1 January 1990 date')
+      var string = pd.stripPD('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date, and this is another 1 January 1990 date')
       expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a [date] date, and this is another [date] date')
     })
 
-    it('strips all PII from objects', function () {
+    it('strips most personal data from objects', function () {
       var obj = {
         email: 'this is an@email.com address',
         postcode: 'this is a sw1a 1aa postcode',
@@ -104,11 +105,11 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         uuid: 'd6c2de5d-ef90-45d1-82d4-5f2438369eea'
       }
 
-      obj = pii.stripPII(obj)
+      obj = pd.stripPD(obj)
       expect(obj).toEqual(strippedObj)
     })
 
-    it('strips all PII from arrays', function () {
+    it('strips most personal data from arrays', function () {
       var arr = [
         'this is an@email.com address',
         'this is a sw1a 1aa postcode',
@@ -123,7 +124,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         'and this is another [date] date'
       ]
 
-      arr = pii.stripPII(arr)
+      arr = pd.stripPD(arr)
       expect(arr).toEqual(strippedArr)
     })
   })
@@ -131,18 +132,18 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
   describe('when there is a govuk:ga4-strip-postcodes meta tag present', function () {
     beforeEach(function () {
       pageWantsPostcodesStripped()
-      pii = new GOVUK.analyticsGa4.PIIRemover()
+      pd = new GOVUK.analyticsGa4.PDRemover()
     })
 
     it('observes the meta tag and strips out postcodes', function () {
-      expect(pii.stripPostcodePII).toEqual(true)
-      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a long GL194LYX postcode, this is a 2019-01-21 date, this is another 1 January 1990 date, this is a d6c2de5d-ef90-45d1-82d4-5f2438369eea content ID, this is a p800refund')
+      expect(pd.stripPostcodePD).toEqual(true)
+      var string = pd.stripPD('this is an@email.com address, this is a sw1a 1aa postcode, this is a long GL194LYX postcode, this is a 2019-01-21 date, this is another 1 January 1990 date, this is a d6c2de5d-ef90-45d1-82d4-5f2438369eea content ID, this is a p800refund')
       expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a long [postcode] postcode, this is a 2019-01-21 date, this is another 1 January 1990 date, this is a d6c2de5d-ef90-45d1-82d4-5f2438369eea content ID, this is a p800refund')
     })
 
     it('doesn\'t strip out UUIDs in URLs', function () {
-      expect(pii.stripPostcodePII).toEqual(true)
-      var string = pii.stripPII('gov.uk/thing?postcode=sw1a1aa&uuid=d6c2de5d-ef90-45d1-82d4-5f2438369eea')
+      expect(pd.stripPostcodePD).toEqual(true)
+      var string = pd.stripPD('gov.uk/thing?postcode=sw1a1aa&uuid=d6c2de5d-ef90-45d1-82d4-5f2438369eea')
       expect(string).toEqual('gov.uk/thing?postcode=[postcode]&uuid=d6c2de5d-ef90-45d1-82d4-5f2438369eea')
     })
   })
@@ -150,29 +151,29 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
   describe('when there is a govuk:ga4-strip-query-string-parameters meta tag present', function () {
     it('strips specified query strings that are identified in a string', function () {
       pageWantsQueryStringParametersStripped(['strip-parameter-1', 'strip-parameter-2'])
-      pii = new GOVUK.analyticsGa4.PIIRemover()
-      var string = pii.stripPII('this is a string with a url /test?strip-parameter-1=secret&strip-parameter-2=more-secret')
+      pd = new GOVUK.analyticsGa4.PDRemover()
+      var string = pd.stripPD('this is a string with a url /test?strip-parameter-1=secret&strip-parameter-2=more-secret')
       expect(string).toEqual('this is a string with a url /test?strip-parameter-1=[strip-parameter-1]&strip-parameter-2=[strip-parameter-2]')
     })
 
     it('can strip query strings with special characters', function () {
       pageWantsQueryStringParametersStripped(['parameter[]'])
-      pii = new GOVUK.analyticsGa4.PIIRemover()
-      var string = pii.stripPII('/url?parameter[]=secret&parameter[]=more-secret')
+      pd = new GOVUK.analyticsGa4.PDRemover()
+      var string = pd.stripPD('/url?parameter[]=secret&parameter[]=more-secret')
       expect(string).toEqual('/url?parameter[]=[parameter[]]&parameter[]=[parameter[]]')
     })
 
     it('matches a URL with a fragment', function () {
       pageWantsQueryStringParametersStripped(['parameter'])
-      pii = new GOVUK.analyticsGa4.PIIRemover()
-      var string = pii.stripPII('/url?parameter=secret#anchor')
+      pd = new GOVUK.analyticsGa4.PDRemover()
+      var string = pd.stripPD('/url?parameter=secret#anchor')
       expect(string).toEqual('/url?parameter=[parameter]#anchor')
     })
 
     it('doesn\'t match params without a query string prefix', function () {
       pageWantsQueryStringParametersStripped(['parameter'])
-      pii = new GOVUK.analyticsGa4.PIIRemover()
-      var string = pii.stripPII('parameter=secret')
+      pd = new GOVUK.analyticsGa4.PDRemover()
+      var string = pd.stripPD('parameter=secret')
       expect(string).toEqual('parameter=secret')
     })
   })
@@ -180,12 +181,12 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
   describe('when there is a govuk:ga4-strip-dates meta tag present', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
-      pii = new GOVUK.analyticsGa4.PIIRemover()
+      pd = new GOVUK.analyticsGa4.PDRemover()
     })
 
     it('observes the meta tag and strips out dates', function () {
-      expect(pii.stripDatePII).toEqual(true)
-      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date, and this is another 1 January 1990 date')
+      expect(pd.stripDatePD).toEqual(true)
+      var string = pd.stripPD('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date, and this is another 1 January 1990 date')
       expect(string).toEqual('this is [email] address, this is a sw1a 1aa postcode, this is a [date] date, and this is another [date] date')
     })
   })
@@ -194,32 +195,32 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
       pageWantsPostcodesStripped()
-      pii = new GOVUK.analyticsGa4.PIIRemover()
+      pd = new GOVUK.analyticsGa4.PDRemover()
     })
 
     it('observes the override and strips out emails', function () {
-      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', false, false)
+      var string = pd.stripPDWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', false, false)
       expect(string).toEqual('this is [email] address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date')
     })
 
     it('observes the override and strips out emails and dates', function () {
-      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', true, false)
+      var string = pd.stripPDWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', true, false)
       expect(string).toEqual('this is [email] address, this is a sw1a 1aa postcode, this is a [date] date and this is another [date] date')
     })
 
     it('observes the override and strips out emails and postcodes', function () {
-      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', false, true)
+      var string = pd.stripPDWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', false, true)
       expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a 2019-01-21 date and this is another 1 January 1990 date')
     })
 
     it('observes the override and strips out emails, postcodes and dates', function () {
-      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', true, true)
+      var string = pd.stripPDWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date and this is another 1 January 1990 date', true, true)
       expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a [date] date and this is another [date] date')
     })
   })
 
   it('ensures the email address regex does not include the + character', function () {
-    var string = pii.stripPIIWithOverride('hello+world+email@example.com+SW12AA+1990-01-01', false, false)
+    var string = pd.stripPDWithOverride('hello+world+email@example.com+SW12AA+1990-01-01', false, false)
     expect(string).toEqual('hello+world+[email]+SW12AA+1990-01-01')
   })
 
@@ -270,7 +271,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
 
     for (i = 0; i < dates.length; i++) {
       var date = dates[i]
-      var string = pii.stripPIIWithOverride(date, true, true)
+      var string = pd.stripPDWithOverride(date, true, true)
       expect(string).toEqual('[date]')
     }
   })
@@ -282,8 +283,8 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
         var testNumber = generateNINumber(true, false)
         var testNumberWithSpaces = generateNINumber(true, true)
 
-        var redacted1 = pii.stripPIIWithOverride(testNumber, false, false)
-        var redacted2 = pii.stripPIIWithOverride(testNumberWithSpaces, false, false)
+        var redacted1 = pd.stripPDWithOverride(testNumber, false, false)
+        var redacted2 = pd.stripPDWithOverride(testNumberWithSpaces, false, false)
         expect(redacted1).toEqual('[ni number]')
         expect(redacted2).toEqual('[ni number]')
       }
@@ -294,8 +295,8 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
       for (var i = 0; i < 50; i++) {
         var testNumber = generateNINumber(false, false)
         var testNumberWithSpaces = generateNINumber(false, true)
-        var redacted1 = pii.stripPIIWithOverride(testNumber, false, false)
-        var redacted2 = pii.stripPIIWithOverride(testNumberWithSpaces, false, false)
+        var redacted1 = pd.stripPDWithOverride(testNumber, false, false)
+        var redacted2 = pd.stripPDWithOverride(testNumberWithSpaces, false, false)
         expect(redacted1).toEqual(testNumber)
         expect(redacted2).toEqual(testNumberWithSpaces)
       }
@@ -305,7 +306,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
       // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
       for (var i = 0; i < 50; i++) {
         var testNumber = '?query_string=' + generateNINumber(true, false) + '&other_value=hello'
-        var redacted = pii.stripPIIWithOverride(testNumber, false, false)
+        var redacted = pd.stripPDWithOverride(testNumber, false, false)
         expect(redacted).toEqual('?query_string=[ni number]&other_value=hello')
       }
     })
@@ -314,7 +315,7 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
       // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
       for (var i = 0; i < 50; i++) {
         var testNumber = generateNINumber(true, false).toLowerCase()
-        var redacted = pii.stripPIIWithOverride(testNumber, false, false)
+        var redacted = pd.stripPDWithOverride(testNumber, false, false)
         expect(redacted).toEqual('[ni number]')
       }
     })
