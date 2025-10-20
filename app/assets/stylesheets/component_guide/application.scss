@@ -1,7 +1,6 @@
 // This file contains the styles for the Component Guide.
 @use "sass:color";
-@import "govuk_publishing_components/govuk_frontend_support";
-@import "govuk_publishing_components/component_support";
+@import "govuk_publishing_components/all_components";
 
 // Include required helpers
 @import "../../stylesheets/govuk_publishing_components/components/helpers/markdown-typography";
