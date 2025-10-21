@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix layout_for_public issues when translated ([PR #5090](https://github.com/alphagov/govuk_publishing_components/pull/5090))
+
 ## 61.3.0
 
 * Allow every component's CSS files to render on a component's preview page ([PR #5055](https://github.com/alphagov/govuk_publishing_components/pull/5055))
