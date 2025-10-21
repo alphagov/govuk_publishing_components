@@ -104,8 +104,8 @@ es:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class='govuk-footer__link govuk-footer__copyright-logo' href='http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Derechos de autor de la corona</a>
-      licence_html: Todo el contenido está disponible bajo la <a class='govuk-footer__link' href='https://www.nationalarchives.gov.uk/doc/open-government-license/version/3/" rel='license'>Licencia de Gobierno Abierto v3,0</a>, excepto donde se indique lo contrario
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Derechos de autor de la corona</a>
+      licence_html: Todo el contenido está disponible bajo la <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-license/version/3/" rel="license">Licencia de Gobierno Abierto v3,0</a>, excepto donde se indique lo contrario
       navigation_links:
       support_links: Enlaces de soporte
     layout_for_public:
