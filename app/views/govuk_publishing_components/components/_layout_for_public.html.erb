@@ -82,10 +82,12 @@
           service_name: service_name,
         } %>
       <% else %>
-        <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
-          homepage:,
-          logo_link: logo_link,
-        } %>
+        <% I18n.with_locale(:en) do %>
+          <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
+            homepage:,
+            logo_link: logo_link,
+          } %>
+        <% end %>
       <% end %>
     <% end %>
 
