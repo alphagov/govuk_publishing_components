@@ -10,7 +10,7 @@
 
   classes = %w[gem-c-breadcrumbs govuk-breadcrumbs]
   classes << "govuk-breadcrumbs--collapse-on-mobile" if collapse_on_mobile
-  classes << "gem-c-breadcrumbs--inverse" if inverse
+  classes << "govuk-breadcrumbs--inverse" if inverse
   classes << "gem-c-breadcrumbs--border-bottom" if border == "bottom"
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
