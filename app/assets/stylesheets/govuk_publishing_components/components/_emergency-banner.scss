@@ -49,19 +49,6 @@
   margin: govuk-spacing(4) 0;
 }
 
-.gem-c-emergency-banner__link {
-  @include govuk-font(19);
-}
-
-.gem-c-emergency-banner__link:link,
-.gem-c-emergency-banner__link:visited {
-  color: govuk-colour("white");
-}
-
-.gem-c-emergency-banner__link:focus {
-  @include govuk-focused-text;
-}
-
 .gem-c-emergency-banner--notable-death {
   background-color: govuk-colour("black");
 }
