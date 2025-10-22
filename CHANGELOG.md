@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING** Implement redesigned inverse header ([PR #5053](https://github.com/alphagov/govuk_publishing_components/pull/5053))
+
 ## 61.3.1
 
 * Fix layout_for_public issues when translated ([PR #5090](https://github.com/alphagov/govuk_publishing_components/pull/5090))
