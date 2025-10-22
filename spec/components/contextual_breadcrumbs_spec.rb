@@ -65,7 +65,7 @@ describe "ContextualBreadcrumbs", type: :view do
 
   it "renders inverse parent-based breadcrumbs if the content_item is tagged to mainstream browse" do
     render_component(content_item: example_document_for("place", "find-regional-passport-office"), inverse: true)
-    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
+    assert_select ".gem-c-breadcrumbs.govuk-breadcrumbs--inverse"
   end
 
   it "renders curated related items breadcrumbs if the content_item has curated related items" do
@@ -94,7 +94,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_curated_related_item(content_item)
     content_item = set_live_taxons(content_item)
     render_component(content_item:, inverse: true)
-    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
+    assert_select ".gem-c-breadcrumbs.govuk-breadcrumbs--inverse"
   end
 
   it "renders parent-based breadcrumbs if the content item is a corporate information page with a parent" do
@@ -169,7 +169,7 @@ describe "ContextualBreadcrumbs", type: :view do
   it "renders inverse parent finder breadcrumb" do
     content_item = example_document_for("guide", "guide-with-facet-groups")
     render_component(content_item:, prioritise_taxon_breadcrumbs: true, inverse: true)
-    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
+    assert_select ".gem-c-breadcrumbs.govuk-breadcrumbs--inverse"
   end
 
   it "renders no breadcrumbs if there aren't any" do
