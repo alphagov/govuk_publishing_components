@@ -41,17 +41,17 @@ describe "Emergency Banner", type: :view do
 
   it "renders no link if link not specified" do
     render_component(emergency_banner_attributes({ campaign_class: "local-emergency" }))
-    assert_select ".gem-c-emergency-banner__link", false
+    assert_select ".govuk-link", false
   end
 
   it "renders link with More Information if link specified but no link text specified" do
     render_component(emergency_banner_attributes({ campaign_class: "local-emergency", link: "https://www.gov.uk" }))
-    assert_select ".gem-c-emergency-banner__link", text: "More information"
+    assert_select ".govuk-link", text: "More information"
   end
 
   it "renders link with link_text if link_text and link both specified" do
     render_component(emergency_banner_attributes({ campaign_class: "local-emergency", link_text: "Link Text", link: "https://www.gov.uk" }))
-    assert_select ".gem-c-emergency-banner__link", text: "Link Text"
+    assert_select ".govuk-link", text: "Link Text"
   end
 
   it "renders short_description if short_description specified" do
