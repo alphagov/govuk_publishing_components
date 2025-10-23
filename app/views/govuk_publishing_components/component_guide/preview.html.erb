@@ -1,20 +1,4 @@
-<% content_for :application_stylesheet do
-  if @all_components
-    # If rendering the component CSS first, do it explicitly here. If not, the component partial render will handle the CSS import.
-    if @render_component_first
-      if @component_doc.source == "application"
-        add_app_component_stylesheet(@current_component_id)
-      else
-        add_gem_component_stylesheet(@current_component_id)
-      end
-    end
-    @all_gem_component_docs.each do |component|
-      add_gem_component_stylesheet(component.id.gsub("_", "-"))
-    end
-    @all_app_component_docs.each do |component|
-      add_app_component_stylesheet(component.id.gsub("_", "-"))
-    end
-  end %>
+<% content_for :application_stylesheet do %>
   <% if @component_doc.source == "application" && application_stylesheet_in_use? %>
     <%= render "application_stylesheet" %>
   <% end %>
