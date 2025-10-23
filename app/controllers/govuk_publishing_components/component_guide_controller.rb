@@ -57,9 +57,6 @@ module GovukPublishingComponents
       else
         @component_examples = @component_doc.examples
       end
-
-      @percy = true if params[:percy] == "true"
-      @preview_title = preview_title(@component_doc, @component_examples, @all_components, @render_component_first, @percy)
     end
 
     def components_in_use_sass
@@ -189,28 +186,6 @@ module GovukPublishingComponents
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end
-    end
-
-    def preview_title(component, component_examples, all_components, render_component_first, percy)
-      title = [component.name]
-
-      if component_examples.length == 1 && !percy
-        title[0] << ": #{component_examples.first.name} preview"
-      end
-
-      if all_components
-        title << "+ every component's CSS file"
-
-        title << if render_component_first
-                   "- component rendering first"
-                 else
-                   "- component rendering last"
-                 end
-      end
-
-      title << "- #{GovukPublishingComponents::Config.component_guide_title}" unless percy
-
-      title.join(" ")
     end
   end
 end
