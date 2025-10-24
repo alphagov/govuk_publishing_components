@@ -59,10 +59,6 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   @include govuk-font($size: 27);
 }
 
-.gem-c-attachment__link {
-  line-height: 1.29;
-}
-
 .gem-c-attachment__metadata {
   margin: 0 0 govuk-spacing(3);
   color: $govuk-secondary-text-colour;

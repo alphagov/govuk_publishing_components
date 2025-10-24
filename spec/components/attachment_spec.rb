@@ -256,12 +256,12 @@ describe "Attachment", type: :view do
 
   it "displays a custom heading level if heading_level is specified" do
     render_component(heading_level: 3, attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
-    assert_select "h3.gem-c-attachment__title .gem-c-attachment__link", text: "Attachment"
+    assert_select "h3.gem-c-attachment__title .govuk-link", text: "Attachment"
   end
 
   it "defaults to h2 if heading_level is not specified" do
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
-    assert_select "h2.gem-c-attachment__title .gem-c-attachment__link", text: "Attachment"
+    assert_select "h2.gem-c-attachment__title .govuk-link", text: "Attachment"
   end
 
   it "renders HTML attachments" do
@@ -306,7 +306,7 @@ describe "Attachment", type: :view do
     )
     assert_select "section[data-module=ga4-link-tracker]"
     assert_select ".gem-c-attachment__thumbnail a[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
-    assert_select ".gem-c-attachment__link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
+    assert_select ".govuk-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"attachment\"}']"
   end
 
   it "includes GA4 tracking on file attachment links by default" do
@@ -321,6 +321,6 @@ describe "Attachment", type: :view do
 
     assert_select "section[data-module=ga4-link-tracker]"
     assert_select ".gem-c-attachment__thumbnail a[data-ga4-link='{\"event_name\":\"file_download\",\"type\":\"attachment\"}']"
-    assert_select ".gem-c-attachment__link[data-ga4-link='{\"event_name\":\"file_download\",\"type\":\"attachment\"}']"
+    assert_select ".govuk-link[data-ga4-link='{\"event_name\":\"file_download\",\"type\":\"attachment\"}']"
   end
 end
