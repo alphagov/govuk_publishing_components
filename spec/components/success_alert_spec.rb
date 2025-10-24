@@ -7,7 +7,7 @@ describe "Success Alert", type: :view do
 
   it "shows the message" do
     render_component(message: "Foo")
-    assert_select ".gem-c-success-alert__message", text: "Foo"
+    assert_select ".govuk-notification-banner__heading", text: "Foo"
   end
 
   it "allows a block to be given for description" do
