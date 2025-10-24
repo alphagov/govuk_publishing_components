@@ -84,20 +84,3 @@ Relevant Percy setup documentation:
 - [Running Percy in a GitHub Action](https://docs.percy.io/docs/github-actions)
 
 [1]: https://github.com/alphagov/govuk_publishing_components/blob/e455358c8a031403c6b5b0670f891c922919a3ca/.github/workflows/visual-regression-tests.yml
-
-## CSS Specificity testing
-
-It's possible that changes you make to a component can influence other components. To help prevent this, you can test a component alongside every other components CSS file to ensure there are no unexpected changes.
-
-Change the component guide preview page URL as follows to test a component with other component CSS.
-
-- `?all_components=true` e.g. https://components.publishing.service.gov.uk/component-guide/button/preview?all_components=true
-- `?all_components=true&render_component_first=true` will load the current component CSS after other component CSS (defaults to loading the current component CSS last) e.g. https://components.publishing.service.gov.uk/component-guide/button/preview?all_components=true&render_component_first=true
-
-We are not using these versions of the component preview on Percy in order to stay within our monthly screenshot usage limits. You can use Percy in your PR to automatically detect any visual changes when all component's CSS are rendered at once, however the code change to achieve this should not be merged.
-
-To do this, navigate to `spec/visual_regression_tests/all_components_spec.rb` and replace `URI("#{link[:href]}/preview?percy=true")` with the all components query params: either ` URI("#{link[:href]}/preview?percy=true&all_components=true")` or `URI("#{link[:href]}/preview?percy=true&all_components=true&render_component_first=true")`. This will set Percy to use this new page for screenshots.
-
-Then, in `app/controllers/govuk_publishing_components/component_guide_controller.rb` go to the `preview_title` function and remove the `if all_components` if statement block. This is because Percy uses page titles to identify screenshots, so here you're essentially making the "all components" page have the same page title as the default page, so that Percy can connect the new page screenshots with the existing screenshots on `main`.
-
- When you push this change and open a PR, Percy will then do a visual regression test between the default screenshots on `main`, and screenshots in your branch that import every component's CSS. Once you are done testing, revert the commit so that the default screenshots on `main` are not overwritten.

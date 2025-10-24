@@ -35,21 +35,6 @@ module GovukPublishingComponents
     def preview
       @component_examples = []
       @component_doc = component_docs.get(params[:component])
-
-      @all_components = true if params[:all_components] == "true"
-      @all_gem_component_docs = []
-      @all_app_component_docs = []
-      if @all_components
-        @component_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
-
-        # Remove components without CSS, and the current component. The current component is excluded as the view will handle rendering its CSS.
-        @all_gem_component_docs = gem_component_docs.all.reject { |component| !component_has_sass_file(component.id.gsub("_", "-")) || component.id == @component_doc.id }
-        @all_app_component_docs = component_docs.all.reject { |component| !app_component_has_sass_file(component.id.gsub("_", "-")) || component.id == @component_doc.id }
-
-        @current_component_id = @component_doc.id.gsub("_", "-")
-        @render_component_first = params[:render_component_first] == "true" unless !component_has_sass_file(@current_component_id) && !app_component_has_sass_file(@current_component_id)
-      end
-
       @preview = true
 
       if params[:example].present?
@@ -57,9 +42,6 @@ module GovukPublishingComponents
       else
         @component_examples = @component_doc.examples
       end
-
-      @percy = true if params[:percy] == "true"
-      @preview_title = preview_title(@component_doc, @component_examples, @all_components, @render_component_first, @percy)
     end
 
     def components_in_use_sass
@@ -154,10 +136,6 @@ module GovukPublishingComponents
       extra_components.flatten.uniq.sort
     end
 
-    def app_component_has_sass_file(component)
-      Pathname.new(Rails.root + "app/assets/stylesheets/components/_#{component}.scss").exist?
-    end
-
     def component_has_sass_file(component)
       Pathname.new(@component_gem_path + "/app/assets/stylesheets/govuk_publishing_components/components/_#{component}.scss").exist?
     end
@@ -189,28 +167,6 @@ module GovukPublishingComponents
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end
-    end
-
-    def preview_title(component, component_examples, all_components, render_component_first, percy)
-      title = [component.name]
-
-      if component_examples.length == 1 && !percy
-        title[0] << ": #{component_examples.first.name} preview"
-      end
-
-      if all_components
-        title << "+ every component's CSS file"
-
-        title << if render_component_first
-                   "- component rendering first"
-                 else
-                   "- component rendering last"
-                 end
-      end
-
-      title << "- #{GovukPublishingComponents::Config.component_guide_title}" unless percy
-
-      title.join(" ")
     end
   end
 end
