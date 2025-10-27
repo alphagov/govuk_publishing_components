@@ -22,6 +22,10 @@ module GovukPublishingComponents
       def inverse_class
         "gem-c-translation-nav--inverse"
       end
+
+      def link_class
+        "govuk-link--inverse" if @inverse
+      end
     end
   end
 end
