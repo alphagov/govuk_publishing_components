@@ -1,10 +1,6 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/notification-banner/notification-banner";
 
-.gem-c-success-alert__message {
-  @include govuk-font(19, $weight: bold);
-}
-
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-success-alert {
