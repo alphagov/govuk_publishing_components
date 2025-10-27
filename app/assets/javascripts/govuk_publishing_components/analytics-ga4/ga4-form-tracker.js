@@ -85,7 +85,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var labelFor = label.getAttribute('for')
       var input = false
       if (labelFor) {
-        input = this.module.querySelector('[id=' + labelFor + ']')
+        input = this.module.querySelector('[id="' + labelFor + '"]')
       } else {
         input = label.querySelector('input')
       }
