@@ -1,0 +1,33 @@
+<%
+  raise "filter action required" unless defined?(local_assigns[:filter_action])
+
+  filter_options_helper = GovukPublishingComponents::Presenters::FilterOptionsHelper.new(local_assigns)
+
+  data_attributes ||= {}
+  disable_ga4 ||= nil
+
+  unless disable_ga4
+    data_attributes[:module] = "ga4-finder-tracker"
+  end
+%>
+
+<% if filter_options_helper.filter_options.present? %>
+  <%= form_with url: filter_options_helper.form_action, method: :get, data: data_attributes do |form| %>
+    <% filter_options.each do |filter_option| %>
+      <% fields = capture do %>
+        <% filter_option => {filter_type:, **args} %>
+        <%= render "govuk_publishing_components/components/#{filter_type}", **args %>
+      <% end %>
+      <% if filter_option[:section] %>
+        <%= render "govuk_publishing_components/components/fieldset", {
+          legend_text: filter_option[:section],
+          heading_level: 3,
+          heading_size: "s",
+          text: fields
+        } %>
+      <% else %>
+        <%= fields %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
