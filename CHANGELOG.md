@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix component guide for applications without individual css loading ([PR #5087](https://github.com/alphagov/govuk_publishing_components/pull/5087))
 * Standardise success alert text size ([PR #5098](https://github.com/alphagov/govuk_publishing_components/pull/5098))
 * Revert #5055 "Allow every component's CSS files to render on a component's preview page" ([PR #5096](https://github.com/alphagov/govuk_publishing_components/pull/5096))
 
