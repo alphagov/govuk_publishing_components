@@ -1,6 +1,11 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/accordion/accordion";
 
+* {
+  font-size: 100px;
+  background-color: red;
+}
+
 // Prevent elements inside the button from receiving click events
 .gem-c-accordion__show-all > * {
   pointer-events: none;
