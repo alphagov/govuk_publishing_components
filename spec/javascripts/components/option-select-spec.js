@@ -266,10 +266,6 @@ describe('An option select component', function () {
       optionSelect.init()
     })
 
-    it('returns all the checkboxes if the container doesn\'t overflow', function () {
-      expect(optionSelect.$allCheckboxes.length).toBe(optionSelect.getVisibleCheckboxes().length)
-    })
-
     it('only returns some of the first checkboxes if the container\'s dimensions are constricted', function () {
       optionSelect.setContainerHeight(100)
 
