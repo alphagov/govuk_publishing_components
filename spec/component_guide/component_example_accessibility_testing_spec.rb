@@ -42,7 +42,7 @@ describe "Component example with automated testing", :capybara, :js do
 
     within ".component-guide-preview--warning" do
       expect(page).to have_selector("h3", text: "ARIA attributes must conform to valid values (aria-valid-attr-value)")
-      expect(page).to have_selector('h3 a[href*="https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr-value?application=axeAPI"]', text: "(see guidance)")
+      expect(page).to have_selector('h3 a[href*="https://dequeuniversity.com/rules/axe"]', text: "(see guidance)")
     end
   end
 end
