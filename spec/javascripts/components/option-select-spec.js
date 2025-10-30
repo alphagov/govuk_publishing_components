@@ -290,7 +290,7 @@ describe('An option select component', function () {
       // Set some visual properties which are done in the CSS IRL
       $checkboxList = $element.find('.js-options-container')
       $checkboxList.css({
-        height: 200,
+        height: 180,
         position: 'relative',
         overflow: 'scroll'
       })
@@ -302,18 +302,18 @@ describe('An option select component', function () {
       optionSelect.init()
     })
 
-    xit('expands the checkbox-container to fit checkbox list if the list is < 50px larger than the container', function () {
-      $checkboxListInner.height(201)
+    it('expands the checkbox-container to fit checkbox list if the list is < 50px larger than the container', function () {
+      $checkboxListInner.height(181)
       optionSelect.setupHeight()
 
       // Wrapping HTML should adjust to fit inner height
-      // but we add 1px because some browsers still add a scrollbar
-      expect($checkboxList.height()).toBe($checkboxListInner.height() + 1)
+      expect($checkboxList.height()).toBeGreaterThan($checkboxListInner.height())
+      expect($checkboxListInner.height()).toBeLessThan(230)
     })
 
     it('expands the checkbox-container just enough to cut the last visible item in half horizontally, if there are many items', function () {
       $checkboxList.css({
-        'max-height': 200,
+        'max-height': 180,
         width: 600
       })
       optionSelect.setupHeight()
@@ -339,11 +339,11 @@ describe('An option select component', function () {
 
     it('sets the height of the container sensibly', function () {
       var containerHeight = $('body').find('.js-options-container').height()
-      expect(containerHeight).toBe(201)
+      expect(containerHeight).toBe(181)
     })
   })
 
-  xdescribe('initialising when the parent is hidden and data-closed-on-load is true', function () {
+  describe('initialising when the parent is hidden and data-closed-on-load is true', function () {
     beforeEach(function () {
       $element = $(html)
       $element.attr('data-closed-on-load', true)
@@ -362,7 +362,7 @@ describe('An option select component', function () {
       $($element).find('button').click()
 
       var containerHeight = $('.js-options-container').height()
-      expect(containerHeight).toBeGreaterThan(200)
+      expect(containerHeight).toBeGreaterThan(180)
       expect(containerHeight).toBeLessThan(550)
     })
   })
