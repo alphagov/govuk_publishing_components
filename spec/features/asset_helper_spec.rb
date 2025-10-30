@@ -40,6 +40,21 @@ describe "When the asset helper is configured", :capybara do
     end
   end
 
+  scenario "request all stylesheets when exclude_css_from_static is set to true" do
+    GovukPublishingComponents.configure do |config|
+      config.exclude_css_from_static = true
+    end
+
+    visit "/asset_helper"
+
+    within(:xpath, "//head", visible: :hidden) do
+      expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_notice-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).to have_selector('link[href^="/assets/govuk_publishing_components/components/_details-"][rel="stylesheet"]', visible: :hidden)
+      expect(page).not_to have_selector('link[href^="/assets/govuk_publishing_components/components/_heading-"][rel="stylesheet"]', visible: :hidden)
+    end
+  end
+
   scenario "request all stylesheets when exclude_css_from_static is set to false" do
     GovukPublishingComponents.configure do |config|
       config.exclude_css_from_static = false
