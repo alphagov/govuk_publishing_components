@@ -21,7 +21,7 @@
               hreflang: translation[:locale],
               lang: translation[:locale],
               rel: "alternate",
-              class: "govuk-link gem-c-translation-nav__link #{brand_helper.color_class}",
+              class: "govuk-link #{translation_helper.link_class} #{brand_helper.color_class}",
               data: translation[:data_attributes] %>
           <% end %>
         </li>

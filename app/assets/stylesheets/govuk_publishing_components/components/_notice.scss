@@ -2,9 +2,6 @@
 @import "govuk/components/notification-banner/notification-banner";
 
 .gem-c-notice {
-  clear: both;
-  @include govuk-responsive-margin(8, "bottom");
-
   .govuk-govspeak {
     p:last-child {
       margin-bottom: 0;
