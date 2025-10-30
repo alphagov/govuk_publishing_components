@@ -9,29 +9,6 @@
   }
 }
 
-// We have some styles within GOVUK (.content-block) which can leak into the list styles for this component.
-// These styles are defined in Static:
-// https://github.com/alphagov/static/blob/a815620cada7ea1c65428c1c3b3ac4dbe28977bf/app/assets/stylesheets/helpers/_text.scss
-// This sets more specific selectors so those unwanted styles are overidden
-ul.govuk-tabs__list { // stylelint-disable-line selector-no-qualifying-type
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  @include govuk-responsive-margin(6, "bottom");
-}
-
-li.govuk-tabs__list-item { // stylelint-disable-line selector-no-qualifying-type
-  margin-left: govuk-spacing(5);
-}
-
-.govuk-frontend-supported { // stylelint-disable-line no-duplicate-selectors
-  @include govuk-media-query($from: tablet) {
-    ul.govuk-tabs__list { // stylelint-disable-line selector-no-qualifying-type
-      margin-bottom: 0;
-    }
-  }
-}
-
 @include govuk-media-query($media-type: print) {
   .govuk-tabs__title {
     display: block !important; // stylelint-disable-line declaration-no-important

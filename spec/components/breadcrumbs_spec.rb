@@ -87,7 +87,7 @@ describe "Breadcrumbs", type: :view do
       inverse: true,
     )
 
-    assert_select ".gem-c-breadcrumbs--inverse"
+    assert_select ".govuk-breadcrumbs--inverse"
   end
 
   it "renders breadcrumb items without link as text" do

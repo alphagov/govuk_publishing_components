@@ -33,18 +33,9 @@
 
 .gem-c-translation-nav--inverse {
   border-color: govuk-colour("white");
-
-  .gem-c-translation-nav__list-item,
-  .gem-c-translation-nav__link {
-    color: govuk-colour("white");
-
-    &:focus {
-      color: govuk-colour("black");
-    }
-  }
+  color: govuk-colour("white");
 }
 
 .gem-c-translation-nav__list-item:last-child {
-  border-right: 0;
-  border-left: 0;
+  border: 0;
 }

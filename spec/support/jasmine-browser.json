@@ -22,6 +22,7 @@
     "helpers/jquery-1.12.4.js",
     "helpers/jasmine-jquery-2.0.5.js",
     "helpers/SpecHelper.js",
+    "helpers/form-helper.js",
     "vendor/*.js"
   ],
   "browser": "headlessChrome"
