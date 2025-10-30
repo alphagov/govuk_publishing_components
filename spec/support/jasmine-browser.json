@@ -13,6 +13,7 @@
     "component_guide/audit-filter-*.js"
   ],
   "cssFiles": [
+    "component_guide/application-*.css"
   ],
   "specDir": "spec/javascripts",
   "specFiles": [
