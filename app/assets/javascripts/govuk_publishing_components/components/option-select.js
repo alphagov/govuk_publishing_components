@@ -251,6 +251,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   OptionSelect.prototype.setContainerHeight = function setContainerHeight (height) {
     this.$optionsContainer.style.height = height + 'px'
+    this.$optionsContainer.style.maxHeight = height + 'px'
   }
 
   OptionSelect.prototype.isCheckboxVisible = function isCheckboxVisible (option) {
