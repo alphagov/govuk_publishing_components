@@ -296,12 +296,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var isComponentParentHidden = this.isComponentParentHidden()
 
     if (isComponentParentHidden) {
-      initialOptionContainerHeight = 200
-      height = 200
+      initialOptionContainerHeight = 180
+      height = 180
     }
 
     // Resize if the list is only slightly bigger than its container
-    // If isComponentParentHidden is true, then 200 < 250
+    // If isComponentParentHidden is true, then 180 < 250
     // And the container height is always set to 201px
     if (height < initialOptionContainerHeight + 50) {
       this.setContainerHeight(height + 1)
