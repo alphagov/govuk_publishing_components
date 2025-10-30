@@ -1,16 +1,15 @@
 module GovukPublishingComponents
   module Presenters
     class FilterOptionsHelper
-      attr_reader :form_action, :reset_fields_link, :filter_options
+      attr_reader :form_action, :reset_fields_link
 
       def initialize(local_assigns)
         @filter_action = local_assigns[:filter_action]
         @anchor = local_assigns[:anchor] || ""
-        @query_string_params = local_assigns[:anchor] || ""
-        @filter_options = local_assigns[:filter_options] || []
+        @reset_link_query_string = local_assigns[:anchor] || ""
 
         @form_action = @filter_action + @anchor
-        @reset_fields_link = @filter_action + @query_string_params + @anchor
+        @reset_fields_link = @filter_action + @reset_link_query_string + @anchor
       end
     end
   end
