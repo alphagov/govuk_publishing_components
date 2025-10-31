@@ -120,7 +120,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         this.addClassesToHeader()
         this.applyWidths()
         this.insert()
-        this.$table.classList.add('mc-hidden')
+        this.$table.classList.add('govuk-visually-hidden')
         this.applyOutdent()
       } catch (error) {
         console.error('MagnaCharta error:', error)
@@ -200,6 +200,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     toggleStatus.setAttribute('role', 'alert')
 
     link.classList.add('govuk-body-s', 'mc-toggle-button')
+    link.setAttribute('aria-hidden', 'true')
     link.appendChild(toggleText)
     link.appendChild(toggleStatus)
 
@@ -217,7 +218,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var toggleStatus = that.toggleLink.querySelector('.mc-toggle-status')
 
       that.$graphContainer.classList.toggle('mc-hidden')
-      that.$table.classList.toggle('mc-hidden')
+      that.$table.classList.toggle('govuk-visually-hidden')
 
       toggleText.innerHTML = toggleText.innerHTML === tableVisible ? chartVisible : tableVisible
       toggleStatus.innerHTML = toggleStatus.innerHTML === tableAlert ? chartAlert : tableAlert
