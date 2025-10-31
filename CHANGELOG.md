@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Hide the Magna Charta toggle button from screen-reader users ([PR #5118](https://github.com/alphagov/govuk_publishing_components/pull/5118))
+
 ## 61.4.0
 
 * Fix component guide for applications without individual css loading ([PR #5087](https://github.com/alphagov/govuk_publishing_components/pull/5087))
