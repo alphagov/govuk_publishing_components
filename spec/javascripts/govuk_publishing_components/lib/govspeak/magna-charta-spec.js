@@ -151,12 +151,12 @@ describe('Magna charta', function () {
 
     it('running toggle switches between chart and table', function () {
       toggle[0].click()
-      expect(table).not.toHaveClass('mc-hidden')
+      expect(table).not.toHaveClass('govuk-visually-hidden')
       expect(graphContainer).toHaveClass('mc-hidden')
 
       // toggle it back
       toggle[0].click()
-      expect(table).toHaveClass('mc-hidden')
+      expect(table).toHaveClass('govuk-visually-hidden')
       expect(graphContainer).not.toHaveClass('mc-hidden')
     })
 
@@ -326,13 +326,13 @@ describe('Magna charta', function () {
     })
 
     it('doesnt show the chart initially', function () {
-      expect(table).not.toHaveClass('mc-hidden')
+      expect(table).not.toHaveClass('govuk-visually-hidden')
       expect(graphContainer).toHaveClass('mc-hidden')
     })
 
     it('graph is shown when toggle is called', function () {
       element.find('.mc-toggle-button')[0].click()
-      expect(table).toHaveClass('mc-hidden')
+      expect(table).toHaveClass('govuk-visually-hidden')
       expect(graphContainer).not.toHaveClass('mc-hidden')
     })
   })
