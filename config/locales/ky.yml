@@ -159,7 +159,7 @@ ky:
       label: Сырсөз
       password_hidden_announcement: Сырсөзүңүз жашырылган
       password_shown_announcement: Сырсөзүңүз көрсөтүлгөн
-    previous_and_next_navigation:
+    pagination:
       next: Кийинки
       pagination: Барактоо
       previous: Мурунку
