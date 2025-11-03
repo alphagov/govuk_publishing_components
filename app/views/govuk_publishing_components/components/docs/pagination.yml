@@ -2,15 +2,26 @@ name: Pagination
 description: Navigational links that allow users to navigate within a series of pages
   or elements.
 body: |
-  This component accepts 2 optional parameters, previous and next.
+  This component accepts 3 optional parameters: previous, next and items.
 
-  Each optional parameter accepts:
+  The next and previous parameters accept:
 
   - an URL for the link
   - a title for the URL
   - a label that can add extra info (ie page number) that will be displayed under the title
 
   If one of the 2 parameters is nil, no link will appear.
+
+  The item parameter accepts an array of objects with the following parameters:
+
+  - an href for the link
+  - a number of the page (required if ellipsis not set)
+  - current, if set then the item will be styled as the current page
+  - ellipsis, if set then the item will not be a link but will be a seperator with the text of "..."
+  - visually hidden text, which will override the default aria label of the page link (Page NUMBER)
+
+  For more guidance on best practice, please refer to the [GOV.UK Design System's Pagination guidance](https://design-system.service.gov.uk/components/pagination/).
+
 accessibility_criteria: |
   Icons in the component must not be announced by screen readers.
 
@@ -77,3 +88,47 @@ examples:
         url: next-page
         title: Next
         label: 'Driver CPC part 1 test: theory'
+  both_previous_and_next_with_items:
+    data:
+      previous_page:
+        url: previous-page
+      next_page:
+        url: next-page
+      items:
+      - number: 1
+        href: "#"
+      - ellipsis: true
+      - number: 6
+        href: "#"
+      - number: 7
+        href: "#"
+        current: true
+      - number: 8
+        href: "#"
+      - ellipsis: true
+      - number: 42
+        href: "#"
+  next_with_items:
+    data:
+      next_page:
+        url: next-page
+      items:
+      - number: 1
+        href: "#"
+        current: true
+      - number: 2
+        href: "#"
+      - number: 3
+        href: "#"
+  previous_with_items:
+    data:
+      previous_page:
+        url: next-page
+      items:
+      - number: 1
+        href: "#"
+      - number: 2
+        href: "#"
+      - number: 3
+        href: "#"
+        current: true

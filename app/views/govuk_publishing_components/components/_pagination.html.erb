@@ -1,13 +1,17 @@
 <%
   add_gem_component_stylesheet("pagination")
   disable_ga4 ||= false
+  items ||= nil
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.add_class("govuk-pagination govuk-pagination--block")
+  component_helper.add_class("govuk-pagination")
+  component_helper.add_class("govuk-pagination--block") unless items.present?
   component_helper.add_aria_attribute({ label: t("components.pagination.pagination") })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
 
-  if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page)
+  ga4_type = items.present? ? "pagination" : "previous and next"
+
+  if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page) || items.present?
 %>
   <%= tag.nav(**component_helper.all_attributes) do %>
     <% if local_assigns.include?(:previous_page) %>
@@ -23,7 +27,7 @@
           <% unless disable_ga4 %>
             data-ga4-link="<%= {
               event_name: "navigation",
-              type: "previous and next",
+              type: ga4_type,
               text: previous_page[:label] || title,
               section: "Previous",
             }.to_json %>"
@@ -40,12 +44,65 @@
       </div>
     <% end %>
 
+    <% if items.present? %>
+      <ul class="govuk-pagination__list">
+        <% items.each_with_index do |item, index| %>
+          <%
+            { href: nil, ellipsis: nil, current: nil, number: nil, visually_hidden_text: nil, **item.symbolize_keys } => { href:, ellipsis:, current:, number:, visually_hidden_text: }
+
+            raise "Number required for item #{index}" if ellipsis.blank? && number.blank?
+
+            list_item_classes = %w[govuk-pagination__item]
+            list_item_classes << "govuk-pagination__item--ellipsis" if ellipsis
+            list_item_classes << "govuk-pagination__item--current" if current
+
+            item_aria_label = visually_hidden_text || "Page #{number}"
+          %>
+
+          <%= tag.li class: list_item_classes do %>
+            <% if ellipsis %>
+              &ctdot;
+            <% else %>
+              <%
+                ga4_attributes = {
+                  event_name: "navigation",
+                  type: ga4_type,
+                  text: number,
+                  section: "Pagination list",
+                }
+              %>
+
+              <%= tag.a(
+                number,
+                class: "govuk-link govuk-pagination__link",
+                href: href,
+                aria: {
+                  label: item_aria_label,
+                  current: current ? "page" : nil,
+                },
+                data: {
+                  ga4_link: !disable_ga4 ? ga4_attributes : nil,
+                },
+              ) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+
     <% if local_assigns.include?(:next_page) %>
       <%
         title = next_page[:title] || t("components.pagination.next")
         link_text_classes = %w[govuk-pagination__link-title]
         link_text_classes << "govuk-pagination__link-title--decorated" if next_page[:label].blank?
       %>
+
+      <% next_icon = capture do %>
+        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+          <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+        </svg>
+      <% end %>
+
       <div class="govuk-pagination__next">
         <a class="govuk-link govuk-pagination__link"
           href="<%= next_page[:url] %>"
@@ -53,18 +110,21 @@
           <% unless disable_ga4 %>
             data-ga4-link="<%= {
               event_name: "navigation",
-              type: "previous and next",
+              type: ga4_type,
               text: next_page[:label] || title,
               section: "Next",
             }.to_json %>"
           <% end %>>
-          <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-            <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-          </svg>
+          <% unless items.present? %>
+            <%= next_icon %>
+          <% end %>
           <%= tag.span(title, class: link_text_classes) %>
           <% if next_page[:label].present? %>
             <span class="govuk-visually-hidden">:</span>
             <span class="govuk-pagination__link-label"><%= next_page[:label] %></span>
+          <% end %>
+          <% if items.present? %>
+            <%= next_icon %>
           <% end %>
         </a>
       </div>
