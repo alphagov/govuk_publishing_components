@@ -36,6 +36,7 @@
         <% fields = capture do %>
           <% filter_option[:fields].each do |field| %>
             <% field => {filter_type:, **args} %>
+            <% raise "Unsupported filter_type: #{filter_type}" unless filter_options_helper.valid_filter_type?(filter_type) %>
             <%= render "govuk_publishing_components/components/#{filter_type}", **args %>
           <% end %>
         <% end %>
