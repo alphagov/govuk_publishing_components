@@ -1,4 +1,4 @@
-name: Previous and next navigation
+name: Pagination
 description: Navigational links that allow users to navigate within a series of pages
   or elements.
 body: |

@@ -1,8 +1,8 @@
 require "rails_helper"
 
-describe "Previous and next navigation", type: :view do
+describe "Pagination", type: :view do
   def component_name
-    "previous_and_next_navigation"
+    "pagination"
   end
 
   it "renders if no parameters" do

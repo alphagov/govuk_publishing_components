@@ -1,10 +1,10 @@
 <%
-  add_gem_component_stylesheet("previous-and-next-navigation")
+  add_gem_component_stylesheet("pagination")
   disable_ga4 ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-pagination govuk-pagination--block")
-  component_helper.add_aria_attribute({ label: t("components.previous_and_next_navigation.pagination") })
+  component_helper.add_aria_attribute({ label: t("components.pagination.pagination") })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
 
   if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page)
@@ -12,7 +12,7 @@
   <%= tag.nav(**component_helper.all_attributes) do %>
     <% if local_assigns.include?(:previous_page) %>
       <%
-        title = previous_page[:title] || t("components.previous_and_next_navigation.previous")
+        title = previous_page[:title] || t("components.pagination.previous")
         link_text_classes = %w[govuk-pagination__link-title]
         link_text_classes << "govuk-pagination__link-title--decorated" if previous_page[:label].blank?
       %>
@@ -42,7 +42,7 @@
 
     <% if local_assigns.include?(:next_page) %>
       <%
-        title = next_page[:title] || t("components.previous_and_next_navigation.next")
+        title = next_page[:title] || t("components.pagination.next")
         link_text_classes = %w[govuk-pagination__link-title]
         link_text_classes << "govuk-pagination__link-title--decorated" if next_page[:label].blank?
       %>
