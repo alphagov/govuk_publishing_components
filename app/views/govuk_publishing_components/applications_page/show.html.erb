@@ -19,7 +19,7 @@
       <th scope="col" class="govuk-table__header sticky-table-header">Source</th>
       <th scope="col" class="govuk-table__header sticky-table-header">Gem version</th>
       <th scope="col" class="govuk-table__header sticky-table-header">Slimmer version</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Dartsass version</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Sass version</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -51,9 +51,9 @@
           <% end %>
         </td>
         <td class="govuk-table__cell">
-          <% if app[:dartsass_version] %>
+          <% if app[:sass_version] %>
             <%= render "govuk_publishing_components/components/tag", {
-              text: app[:dartsass_version],
+              text: app[:sass_version],
             } %>
           <% end %>
         </td>

@@ -20,8 +20,8 @@ module GovukPublishingComponents
       parse_file(@gemfilelock, /slimmer \(([^)>=~ ]+)\)/)
     end
 
-    def dartsass_version
-      parse_file(@gemfilelock, /dartsass-rails \(([^)>=~ ]+)\)/)
+    def sass_version
+      parse_file(@gemfilelock, /sass-embedded \(([^)>=~ ]+)\)/)
     end
 
   private
