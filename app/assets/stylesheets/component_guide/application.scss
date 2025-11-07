@@ -21,19 +21,6 @@ $gem-guide-border-width: 1px;
   }
 }
 
-.component-search {
-  display: none;
-
-  .js-enabled & {
-    display: block;
-    margin-top: govuk-spacing(9);
-  }
-}
-
-.component-guide-hidden {
-  display: none;
-}
-
 .component-doc {
   @include govuk-font($size: 16);
 
