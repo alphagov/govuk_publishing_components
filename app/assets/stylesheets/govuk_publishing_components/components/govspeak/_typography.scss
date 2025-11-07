@@ -101,3 +101,30 @@
     }
   }
 }
+
+// Test overriding govspeak heading level styles
+.gem-c-govspeak--long-form-content {
+  h2 {
+    margin: 0 0 govuk-spacing(6) 0; // Set margin bottom to 30px to match the design system for `l` font sizes
+    @include govuk-font($size: 36, $weight: bold);
+  }
+
+  h3 {
+    margin: 0 0 govuk-spacing(4) 0;
+    @include govuk-font($size: 24, $weight: bold);
+  }
+
+  // Add support for h4 elements in long form content
+  h4 {
+    margin: 0 0 govuk-spacing(3) 0;
+    @include govuk-font($size: 19, $weight: bold);
+  }
+
+  // H4, H5 and H6 are discouraged and thus styled the same
+  // h4,
+  h5,
+  h6 {
+    margin: 0;
+    @include govuk-font($size: 19, $weight: bold);
+  }
+}
