@@ -1,6 +1,6 @@
 module GovukPublishingComponents
   class ApplicationsPage
-    attr_reader :location
+    attr_reader :source
 
     def initialize(application)
       @application = application
@@ -39,7 +39,7 @@ module GovukPublishingComponents
       lockfile = "#{@dir}/Gemfile.lock"
       return unless File.file?(lockfile)
 
-      @location = "local"
+      @source = "local"
       File.read(lockfile)
     end
 
@@ -47,11 +47,11 @@ module GovukPublishingComponents
       uri = URI("https://raw.githubusercontent.com/alphagov/#{@application}/main/Gemfile.lock")
       result = Net::HTTP.get_response(uri)
       if result.is_a?(Net::HTTPSuccess)
-        @location = "remote"
+        @source = "remote"
         result.body
       end
     rescue StandardError
-      @location = nil
+      @source = nil
     end
 
     def parse_file(src, regex)

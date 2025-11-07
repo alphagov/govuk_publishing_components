@@ -1,0 +1,39 @@
+<% content.each do |app| %>
+  <tr class="govuk-table__row">
+    <td class="govuk-table__cell">
+      <a href="<%= app[:link] %>" class="govuk-link"><%= app[:name] %></a>
+    </td>
+    <td class="govuk-table__cell">
+      <%= type %>
+    </td>
+    <td class="govuk-table__cell">
+      <% if app[:source] %>
+        <%= app[:source] %>
+      <% else %>
+        not found
+      <% end %>
+    </td>
+    <td class="govuk-table__cell">
+      <% if app[:gem_version] %>
+        <%= render "govuk_publishing_components/components/tag", {
+          text: app[:gem_version],
+          colour: app[:gem_version_status],
+        } %>
+      <% end %>
+    </td>
+    <td class="govuk-table__cell">
+      <% if app[:slimmer_version] %>
+        <%= render "govuk_publishing_components/components/tag", {
+          text: app[:slimmer_version],
+        } %>
+      <% end %>
+    </td>
+    <td class="govuk-table__cell">
+      <% if app[:sass_version] %>
+        <%= render "govuk_publishing_components/components/tag", {
+          text: app[:sass_version],
+        } %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

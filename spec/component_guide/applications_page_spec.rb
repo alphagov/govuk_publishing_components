@@ -29,7 +29,7 @@ describe "The applications status page" do
     it "returns all information" do
       allow(File).to receive_messages(file?: true, read: fake_gemfile)
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
-      expect(app.location).to eq("local")
+      expect(app.source).to eq("local")
       expect(app.gem_version).to eq("61.3.1")
       expect(app.slimmer_version).to eq("18.7.0")
       expect(app.sass_version).to eq("1.93.2")
@@ -38,7 +38,7 @@ describe "The applications status page" do
     it "returns incomplete information" do
       allow(File).to receive_messages(file?: true, read: fake_gemfile_partial)
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
-      expect(app.location).to eq("local")
+      expect(app.source).to eq("local")
       expect(app.gem_version).to eq("61.3.5")
       expect(app.slimmer_version).to be_nil
       expect(app.sass_version).to be_nil
@@ -50,7 +50,7 @@ describe "The applications status page" do
       stub_request(:get, "https://raw.githubusercontent.com:443/alphagov/#{fake_app}/main/Gemfile.lock").to_return(status: 404, body: "", headers: {})
 
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
-      expect(app.location).to be_nil
+      expect(app.source).to be_nil
       expect(app.gem_version).to be_nil
       expect(app.slimmer_version).to be_nil
       expect(app.sass_version).to be_nil
@@ -60,7 +60,7 @@ describe "The applications status page" do
       stub_request(:get, "https://raw.githubusercontent.com:443/alphagov/#{fake_app}/main/Gemfile.lock").to_return(status: 200, body: fake_gemfile, headers: {})
 
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
-      expect(app.location).to eq("remote")
+      expect(app.source).to eq("remote")
       expect(app.gem_version).to eq("61.3.1")
       expect(app.slimmer_version).to eq("18.7.0")
       expect(app.sass_version).to eq("1.93.2")
