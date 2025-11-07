@@ -5,7 +5,7 @@
     margin_bottom: 8,
   } %>
 
-<div class="component-markdown">
+<div class="component-markdown govuk-!-margin-bottom-8">
   <p>Components are packages of template, style, behaviour and documentation that live in your application.</p>
   <p>See the <a href="https://github.com/alphagov/govuk_publishing_components">govuk_publishing_components gem</a> for further details, or <a href="https://docs.publishing.service.gov.uk/manual/components.html#component-guides">a list of all component guides</a>.</p>
   <ul>
@@ -15,85 +15,81 @@
   </ul>
 </div>
 
-<form role="search" data-module="filter-components" class="component-search">
-  <%= render "govuk_publishing_components/components/search", {
-    label_text: "Search components",
-  } %>
-</form>
+<div data-module="filter-list" data-filter-label="Search components">
+  <% if !ENV["MAIN_COMPONENT_GUIDE"] %>
+    <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
+    <ul class="component-list" id="list-components-in-this-application">
+      <% @component_docs.each do |component_doc| %>
+        <li>
+          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+          <p>
+            <%= component_doc.description %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
 
-<% if !ENV["MAIN_COMPONENT_GUIDE"] %>
-  <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
-  <ul class="component-list" id="list-components-in-this-application">
-    <% @component_docs.each do |component_doc| %>
-      <li>
-        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-        <p>
-          <%= component_doc.description %>
-        </p>
-      </li>
+    <h2 class="component-doc-h2">Gem components used by this app (<%= @used_components.length %>)</h2>
+
+    <%= render "govuk_publishing_components/components/details", {
+      title: "Suggested imports for this application",
+    } do %>
+      <%= render "govuk_publishing_components/components/textarea", {
+        label: {
+          text: "Add this to your application's main scss file, before your other local imports.",
+        },
+        name: "main-sass",
+        value: @components_in_use_sass,
+      } %>
+      <%= render "govuk_publishing_components/components/textarea", {
+        label: {
+          text: "Add this to your application's main js file, before your other local imports.",
+        },
+        name: "main-js",
+        value: @components_in_use_js,
+      } %>
     <% end %>
-  </ul>
+  <pre>
 
-  <h2 class="component-doc-h2">Gem components used by this app (<%= @used_components.length %>)</h2>
+  </pre>
 
-  <%= render "govuk_publishing_components/components/details", {
-    title: "Suggested imports for this application",
-  } do %>
-    <%= render "govuk_publishing_components/components/textarea", {
-      label: {
-        text: "Add this to your application's main scss file, before your other local imports.",
-      },
-      name: "main-sass",
-      value: @components_in_use_sass,
-    } %>
-    <%= render "govuk_publishing_components/components/textarea", {
-      label: {
-        text: "Add this to your application's main js file, before your other local imports.",
-      },
-      name: "main-js",
-      value: @components_in_use_js,
-    } %>
+    <ul class="component-list">
+      <% @used_components.each do |component_doc| %>
+        <li data-filter-item>
+          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+          <p>
+            <%= component_doc.description %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+
+    <h2 class="component-doc-h2">Gem components not used by this app (<%= @unused_components.length %>)</h2>
+    <ul class="component-list">
+      <% @unused_components.each do |component_doc| %>
+        <li data-filter-item>
+          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+          <p>
+            <%= component_doc.description %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+
+  <% else %>
+    <ul class="component-list" id="list-all-components-in-the-gem">
+      <% @gem_component_docs.each do |component_doc| %>
+        <li data-filter-item>
+          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+          <p>
+            <%= component_doc.description %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
-<pre>
 
-</pre>
-
-  <ul class="component-list">
-    <% @used_components.each do |component_doc| %>
-      <li>
-        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-        <p>
-          <%= component_doc.description %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-
-  <h2 class="component-doc-h2">Gem components not used by this app (<%= @unused_components.length %>)</h2>
-  <ul class="component-list">
-    <% @unused_components.each do |component_doc| %>
-      <li>
-        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-        <p>
-          <%= component_doc.description %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-
-<% else %>
-  <ul class="component-list" id="list-all-components-in-the-gem">
-    <% @gem_component_docs.each do |component_doc| %>
-      <li>
-        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-        <p>
-          <%= component_doc.description %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<div class="component-markdown">
-  <p class="govuk-body">If you cannot find a suitable component consider extending an existing component or <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/generate-a-new-component.md">creating a new one</a>.</p>
+  <div class="component-markdown">
+    <p class="govuk-body">If you cannot find a suitable component consider extending an existing component or <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/generate-a-new-component.md">creating a new one</a>.</p>
+  </div>
 </div>
