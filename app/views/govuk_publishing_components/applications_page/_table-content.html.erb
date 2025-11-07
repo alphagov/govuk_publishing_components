@@ -1,5 +1,5 @@
 <% content.each do |app| %>
-  <tr class="govuk-table__row">
+  <tr class="govuk-table__row" data-filter-item>
     <td class="govuk-table__cell">
       <a href="<%= app[:link] %>" class="govuk-link"><%= app[:name] %></a>
     </td>

@@ -12,20 +12,22 @@
   <p class="govuk-body">The results below are cached for 5 minutes. If you are expecting a change and cannot see it, try again later.</p>
 <% end %>
 
-<table class="govuk-table">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header sticky-table-header">Application</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Type</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Source</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Gem version</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Slimmer version</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Sass version</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <%= render "table-content", content: @applications_output.select { |a| a[:type] == "public-facing" }, type: "Public facing" %>
-    <%= render "table-content", content: @applications_output.select { |a| a[:type] == "publishing" }, type: "Publishing" %>
-    <%= render "table-content", content: @applications_output.select { |a| a[:type] == "utility" }, type: "Utility" %>
-  </tbody>
-</table>
+<div data-module="filter-list">
+  <table class="govuk-table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header sticky-table-header">Application</th>
+        <th scope="col" class="govuk-table__header sticky-table-header">Type</th>
+        <th scope="col" class="govuk-table__header sticky-table-header">Source</th>
+        <th scope="col" class="govuk-table__header sticky-table-header">Gem version</th>
+        <th scope="col" class="govuk-table__header sticky-table-header">Slimmer version</th>
+        <th scope="col" class="govuk-table__header sticky-table-header">Sass version</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <%= render "table-content", content: @applications_output.select { |a| a[:type] == "public-facing" }, type: "Public facing" %>
+      <%= render "table-content", content: @applications_output.select { |a| a[:type] == "publishing" }, type: "Publishing" %>
+      <%= render "table-content", content: @applications_output.select { |a| a[:type] == "utility" }, type: "Utility" %>
+    </tbody>
+  </table>
+</div>
