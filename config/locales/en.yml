@@ -4,7 +4,9 @@ en:
     hide: Hide
     show: Show
     toggle_less: Show fewer
-    toggle_more: "%{show} %{number} more"
+    toggle_less_visually_hidden: possibly a different 
+    toggle_more_html: "%{show} %{number} more %{toggle_more_visually_hidden}"
+    toggle_more_visually_hidden: links
     translations: Translations
   components:
     accordion:

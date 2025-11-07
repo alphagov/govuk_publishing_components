@@ -71,9 +71,11 @@
       %>
       <%= tag.li(class: classes, data: data_attributes_li) do %>
         <%= link_to("#", class: "gem-c-related-navigation__toggle", data: data_attributes_link) do %>
-          <%= t("common.toggle_more",
+          <%= t("common.toggle_more_html",
             show: t("common.show"),
-            number: related_nav_helper.remaining_link_count(links)) %>
+            number: related_nav_helper.remaining_link_count(links),
+            toggle_more_visually_hidden: '<span class="govuk-visually-hidden">' + t("common.toggle_more_visually_hidden") + '</span>'
+          ) %>
         <% end %>
       <% end %>
 
