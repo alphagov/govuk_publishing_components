@@ -18,11 +18,13 @@ module GovukPublishingComponents
     def show
       @component_doc = component_docs.get(params[:component])
       @guide_breadcrumbs = [index_breadcrumb, component_breadcrumb(@component_doc)]
+      @component_doc_rtl = right_to_left_example(component_docs.get(params[:component]).example)
     end
 
     def example
       @component_doc = component_docs.get(params[:component])
       @component_example = @component_doc.examples.find { |f| f.id == params[:example] }
+      @component_doc_rtl = right_to_left_example(component_docs.get(params[:component]).example)
       @guide_breadcrumbs = [
         index_breadcrumb,
         component_breadcrumb(@component_doc, @component_example),
@@ -167,6 +169,12 @@ module GovukPublishingComponents
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end
+    end
+
+    def right_to_left_example(example)
+      example.data[:dir] = "rtl"
+      example.context["right_to_left"] = true
+      example
     end
   end
 end

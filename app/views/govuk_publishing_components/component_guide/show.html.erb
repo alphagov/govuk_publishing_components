@@ -71,6 +71,16 @@
   </h2>
   <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
 
+  <% if @component_doc.uses_component_wrapper_helper? %>
+    <div class="govuk-!-margin-top-4">
+      <%= render "govuk_publishing_components/components/details", {
+        title: "See component right to left",
+      } do %>
+        <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc_rtl %>
+      <% end %>
+    </div>
+  <% end %>
+
   <h2 class="component-doc-h2" id="how-to-call-this-component">How to call this component</h2>
   <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: @component_doc.example %>
 
