@@ -59,10 +59,12 @@
       components: @unused_components,
     } %>
   <% else %>
-    <%= render partial: "component_list", locals: {
-      size: @gem_component_docs.length,
-      components: @gem_component_docs,
-    } %>
+    <div id="list-all-components-in-the-gem">
+      <%= render partial: "component_list", locals: {
+        size: @gem_component_docs.length,
+        components: @gem_component_docs,
+      } %>
+    </div>
   <% end %>
 
   <div class="component-markdown">
