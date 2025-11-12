@@ -17,76 +17,52 @@
 
 <div data-module="filter-list" data-filter-label="Search components">
   <% if !ENV["MAIN_COMPONENT_GUIDE"] %>
-    <h2 class="govuk-heading-m">Components in this application (<%= @component_docs.length %>)</h2>
-    <ul class="govuk-list govuk-list--bullet govuk-list--spaced" id="list-components-in-this-application">
-      <% @component_docs.each do |component_doc| %>
-        <li data-filter-item>
-          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p class="govuk-body">
-            <%= component_doc.description %>
-          </p>
-        </li>
+    <%= render partial: "component_list", locals: {
+      heading: "Components in this application",
+      size: @component_docs.length,
+      components: @component_docs,
+    } %>
+
+    <% details = capture do %>
+      <%= render "govuk_publishing_components/components/details", {
+        title: "Suggested imports for this application",
+        margin_bottom: 6,
+      } do %>
+        <%= render "govuk_publishing_components/components/textarea", {
+          label: {
+            text: "Add this to your application's main scss file, before your other local imports.",
+          },
+          name: "main-sass",
+          value: @components_in_use_sass,
+        } %>
+        <%= render "govuk_publishing_components/components/textarea", {
+          label: {
+            text: "Add this to your application's main js file, before your other local imports.",
+          },
+          name: "main-js",
+          value: @components_in_use_js,
+          margin_bottom: 0,
+        } %>
       <% end %>
-    </ul>
-
-    <h2 class="govuk-heading-m">Gem components used by this app (<%= @used_components.length %>)</h2>
-
-    <%= render "govuk_publishing_components/components/details", {
-      title: "Suggested imports for this application",
-    } do %>
-      <%= render "govuk_publishing_components/components/textarea", {
-        label: {
-          text: "Add this to your application's main scss file, before your other local imports.",
-        },
-        name: "main-sass",
-        value: @components_in_use_sass,
-      } %>
-      <%= render "govuk_publishing_components/components/textarea", {
-        label: {
-          text: "Add this to your application's main js file, before your other local imports.",
-        },
-        name: "main-js",
-        value: @components_in_use_js,
-      } %>
     <% end %>
-  <pre>
 
-  </pre>
+    <%= render partial: "component_list", locals: {
+      heading: "Gem components used by this app",
+      size: @used_components.length,
+      components: @used_components,
+      details: details,
+    } %>
 
-    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-      <% @used_components.each do |component_doc| %>
-        <li data-filter-item>
-          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p class="govuk-body">
-            <%= component_doc.description %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
-
-    <h2 class="govuk-heading-m">Gem components not used by this app (<%= @unused_components.length %>)</h2>
-    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-      <% @unused_components.each do |component_doc| %>
-        <li data-filter-item>
-          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p class="govuk-body">
-            <%= component_doc.description %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
-
+    <%= render partial: "component_list", locals: {
+      heading: "Gem components not used by this app",
+      size: @unused_components.length,
+      components: @unused_components,
+    } %>
   <% else %>
-    <ul class="govuk-list govuk-list--bullet govuk-list--spaced" id="list-all-components-in-the-gem">
-      <% @gem_component_docs.each do |component_doc| %>
-        <li data-filter-item>
-          <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p class="govuk-body">
-            <%= component_doc.description %>
-          </p>
-        </li>
-      <% end %>
-    </ul>
+    <%= render partial: "component_list", locals: {
+      size: @gem_component_docs.length,
+      components: @gem_component_docs,
+    } %>
   <% end %>
 
   <div class="component-markdown">

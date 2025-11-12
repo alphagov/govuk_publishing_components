@@ -1,0 +1,14 @@
+<% if local_assigns[:heading] %>
+  <h2 class="govuk-heading-m"><%= local_assigns[:heading] %> (<%= local_assigns[:size] %>)</h2>
+<% end %>
+<%= local_assigns[:details] if local_assigns[:details] %>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+  <% local_assigns[:components].each do |component_doc| %>
+    <li data-filter-item>
+      <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+      <p class="govuk-body">
+        <%= component_doc.description %>
+      </p>
+    </li>
+  <% end %>
+</ul>
