@@ -62,8 +62,8 @@
   var _a;
   // If the various performance APIs aren't available, we export an empty object to
   // prevent having to make regular typeof checks.
-  var performance$1 = window.performance || {};
-  var timing = performance$1.timing || {
+  var performance = window.performance || {};
+  var timing = performance.timing || {
     activationStart: 0,
     // If performance.timing isn't available, we attempt to polyfill the navigationStart value.
     // Our first attempt is from LUX.ns, which is the time that the snippet execution began. If this
@@ -71,8 +71,8 @@
     navigationStart: ((_a = window.LUX) === null || _a === void 0 ? void 0 : _a.ns) || scriptStartTime,
   };
   function navigationType() {
-    if (performance$1.navigation && typeof performance$1.navigation.type !== "undefined") {
-      return performance$1.navigation.type;
+    if (performance.navigation && typeof performance.navigation.type !== "undefined") {
+      return performance.navigation.type;
     }
     return "";
   }
@@ -126,8 +126,8 @@
   * of an empty PerformanceEntryList.
   */
   function getEntriesByType(type) {
-    if (typeof performance$1.getEntriesByType === "function") {
-      var entries = performance$1.getEntriesByType(type);
+    if (typeof performance.getEntriesByType === "function") {
+      var entries = performance.getEntriesByType(type);
       if (entries && entries[length]) {
         return entries;
       }
@@ -140,8 +140,8 @@
   * of an empty PerformanceEntryList.
   */
   function getEntriesByName(type) {
-    if (typeof performance$1.getEntriesByName === "function") {
-      var entries = performance$1.getEntriesByName(type);
+    if (typeof performance.getEntriesByName === "function") {
+      var entries = performance.getEntriesByName(type);
       if (entries && entries[length]) {
         return entries;
       }
@@ -268,8 +268,8 @@
   * Returns the number of milliseconds since navigationStart.
   */
   function msSinceNavigationStart() {
-    if (performance$1.now) {
-      return floor(performance$1.now());
+    if (performance.now) {
+      return floor(performance.now());
     }
     return now() - timing[navigationStart];
   }
@@ -286,7 +286,7 @@
     return sinceNavigationStart;
   }
 
-  var version = "4.4.0";
+  var version = "4.4.2";
 
   function padStart(str, length$1, char) {
     while (str[length] < length$1) {
@@ -996,8 +996,8 @@
     return INPPhase.ProcessingTime;
   }
   function getInteractionCount() {
-    if ("interactionCount" in performance$1) {
-      return performance$1.interactionCount;
+    if ("interactionCount" in performance) {
+      return performance.interactionCount;
     }
     return interactionCountEstimate;
   }
@@ -1056,7 +1056,7 @@
   }
 
   function getData$1() {
-    var startMark = performance.getEntriesByName(START_MARK).pop();
+    var startMark = getEntriesByName(START_MARK).pop();
     if (startMark) {
       // Don't report navigation timing in SPA beacons
       return undefined;
@@ -1225,7 +1225,8 @@
     return str.replace(/[-/\\^$+?.()|[\]{}]/g, "\\$&");
   }
 
-  var LUX = window.LUX || {};
+  var global = window;
+  var LUX = global.LUX || {};
   var scriptEndTime = scriptStartTime;
   LUX = (function () {
     // -------------------------------------------------------------------------
@@ -1244,13 +1245,13 @@
     var globalConfig = fromObject(LUX);
     logger.logEvent(1 /* LogEvent.EvaluationStart */, [VERSION, JSON.stringify(globalConfig)]);
     // Variable aliases that allow the minifier to reduce file size.
-    var document = window.document;
+    var document = global.document;
     var documentElement = document.documentElement || {};
-    var addEventListener = window.addEventListener;
-    var removeEventListener = window.removeEventListener;
-    var setTimeout = window.setTimeout;
-    var clearTimeout = window.clearTimeout;
-    var encodeURIComponent = window.encodeURIComponent;
+    var addEventListener = global.addEventListener;
+    var removeEventListener = global.removeEventListener;
+    var setTimeout = global.setTimeout;
+    var clearTimeout = global.clearTimeout;
+    var encodeURIComponent = global.encodeURIComponent;
     var thisScript = document.currentScript || {};
     // Log JS errors.
     var nErrors = 0;
@@ -1411,7 +1412,7 @@
       logger.logEvent(22 /* LogEvent.SessionIsNotSampled */, [globalConfig.samplerate]);
     }
     var gLuxSnippetStart = LUX.ns ? LUX.ns - timing[navigationStart] : 0;
-    if (!performance$1.timing) {
+    if (!performance.timing) {
       logger.logEvent(71 /* LogEvent.NavTimingNotSupported */);
       gFlags = addFlag(gFlags, 2 /* Flags.NavTimingNotSupported */);
       beacon.addFlag(2 /* Flags.NavTimingNotSupported */);
@@ -1502,9 +1503,9 @@
         args[_i] = arguments[_i];
       }
       logger.logEvent(4 /* LogEvent.MarkCalled */, args);
-      if (performance$1.mark) {
+      if (performance.mark) {
         // Use the native performance.mark where possible...
-        return performance$1.mark.apply(performance$1, args);
+        return performance.mark.apply(performance, args);
       }
       // ...Otherwise provide a polyfill
       {
@@ -1566,9 +1567,9 @@
           args[1] = startMarkName;
         }
       }
-      if (performance$1.measure) {
+      if (performance.measure) {
         // Use the native performance.measure where possible...
-        return performance$1.measure.apply(performance$1, args);
+        return performance.measure.apply(performance, args);
       }
       // ...Otherwise provide a polyfill
       {
@@ -1838,9 +1839,9 @@
     // Track how long it took lux.js to load via Resource Timing.
     function selfLoading() {
       var sLuxjs = "";
-      if (gbFirstPV && performance$1.getEntriesByName && thisScript.src) {
+      if (gbFirstPV && performance.getEntriesByName && thisScript.src) {
         // Get the lux script URL (including querystring params).
-        var aResources = performance$1.getEntriesByName(thisScript.src);
+        var aResources = performance.getEntriesByName(thisScript.src);
         if (aResources && aResources[length]) {
           var r = aResources[0];
           // DO NOT USE DURATION!!!!!
@@ -2081,7 +2082,7 @@
         0 +
         (end > 0 ? "ls" + end + "le" + end : "");
       }
-      else if (performance$1.timing) {
+      else if (performance.timing) {
         // Return the real Nav Timing metrics because this is the "main" page view (not a SPA)
         var navEntry_1 = getNavigationEntry();
         var startRender = getStartRender();
@@ -2197,7 +2198,7 @@
           }
         }
       }
-      if (performance$1.timing && timing.msFirstPaint && true) {
+      if (performance.timing && timing.msFirstPaint && true) {
         // If IE/Edge, use the prefixed `msFirstPaint` property (see http://msdn.microsoft.com/ff974719).
         return floor(timing.msFirstPaint - timing[navigationStart]);
       }
@@ -3003,13 +3004,13 @@
       LUX.ac.forEach(_runCommand);
     }
     // process the error events that happened before lux.js got loaded
-    if (typeof window.LUX_ae !== "undefined") {
-      window.LUX_ae.forEach(errorHandler);
+    if (typeof global.LUX_ae !== "undefined") {
+      global.LUX_ae.forEach(errorHandler);
     }
     logger.logEvent(2 /* LogEvent.EvaluationEnd */);
     return globalLux;
   })();
-  window.LUX = LUX;
+  global.LUX = LUX;
   scriptEndTime = now();
   // ---------------------------------------------------------------------------
   // More settings
