@@ -20,7 +20,7 @@
     <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
     <ul class="component-list" id="list-components-in-this-application">
       <% @component_docs.each do |component_doc| %>
-        <li>
+        <li data-filter-item>
           <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
           <p>
             <%= component_doc.description %>
