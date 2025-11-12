@@ -68,7 +68,7 @@ $gem-guide-border-width: 1px;
 }
 
 .component-guide-preview {
-  padding: govuk-spacing(6);
+  padding: govuk-spacing(8) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
   border: $gem-guide-border-width solid $govuk-border-colour;
   position: relative;
 
