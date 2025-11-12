@@ -17,7 +17,7 @@
 
 <div data-module="filter-list" data-filter-label="Search components">
   <% if !ENV["MAIN_COMPONENT_GUIDE"] %>
-    <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
+    <h2 class="govuk-heading-m">Components in this application (<%= @component_docs.length %>)</h2>
     <ul class="govuk-list govuk-list--bullet govuk-list--spaced" id="list-components-in-this-application">
       <% @component_docs.each do |component_doc| %>
         <li data-filter-item>
@@ -29,7 +29,7 @@
       <% end %>
     </ul>
 
-    <h2 class="component-doc-h2">Gem components used by this app (<%= @used_components.length %>)</h2>
+    <h2 class="govuk-heading-m">Gem components used by this app (<%= @used_components.length %>)</h2>
 
     <%= render "govuk_publishing_components/components/details", {
       title: "Suggested imports for this application",
@@ -64,7 +64,7 @@
       <% end %>
     </ul>
 
-    <h2 class="component-doc-h2">Gem components not used by this app (<%= @unused_components.length %>)</h2>
+    <h2 class="govuk-heading-m">Gem components not used by this app (<%= @unused_components.length %>)</h2>
     <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
       <% @unused_components.each do |component_doc| %>
         <li data-filter-item>

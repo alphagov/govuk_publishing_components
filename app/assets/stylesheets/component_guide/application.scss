@@ -9,10 +9,6 @@ $gem-guide-border-width: 1px;
 
 .component-doc {
   @include govuk-font($size: 16);
-
-  .component-doc-h2:first-child {
-    margin-top: 0;
-  }
 }
 
 .component-violation {
@@ -31,16 +27,6 @@ $gem-guide-border-width: 1px;
     color: $govuk-error-colour;
     margin: govuk-spacing(3) 0;
     @include govuk-font($size: 19, $weight: bold);
-  }
-}
-
-.component-doc-h2 {
-  margin: (govuk-spacing(6) * 1.5) 0 govuk-spacing(6);
-  @include govuk-text-colour;
-  @include govuk-font($size: 27, $weight: bold);
-
-  small {
-    @include govuk-font($size: 16, $weight: bold);
   }
 }
 
