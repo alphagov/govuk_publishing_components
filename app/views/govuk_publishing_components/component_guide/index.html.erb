@@ -18,11 +18,11 @@
 <div data-module="filter-list" data-filter-label="Search components">
   <% if !ENV["MAIN_COMPONENT_GUIDE"] %>
     <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
-    <ul class="component-list" id="list-components-in-this-application">
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced" id="list-components-in-this-application">
       <% @component_docs.each do |component_doc| %>
         <li data-filter-item>
           <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p>
+          <p class="govuk-body">
             <%= component_doc.description %>
           </p>
         </li>
@@ -53,11 +53,11 @@
 
   </pre>
 
-    <ul class="component-list">
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
       <% @used_components.each do |component_doc| %>
         <li data-filter-item>
           <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p>
+          <p class="govuk-body">
             <%= component_doc.description %>
           </p>
         </li>
@@ -65,11 +65,11 @@
     </ul>
 
     <h2 class="component-doc-h2">Gem components not used by this app (<%= @unused_components.length %>)</h2>
-    <ul class="component-list">
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
       <% @unused_components.each do |component_doc| %>
         <li data-filter-item>
           <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p>
+          <p class="govuk-body">
             <%= component_doc.description %>
           </p>
         </li>
@@ -77,11 +77,11 @@
     </ul>
 
   <% else %>
-    <ul class="component-list" id="list-all-components-in-the-gem">
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced" id="list-all-components-in-the-gem">
       <% @gem_component_docs.each do |component_doc| %>
         <li data-filter-item>
           <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
-          <p>
+          <p class="govuk-body">
             <%= component_doc.description %>
           </p>
         </li>

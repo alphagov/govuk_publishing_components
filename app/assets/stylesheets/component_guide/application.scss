@@ -7,20 +7,6 @@
 
 $gem-guide-border-width: 1px;
 
-.component-list {
-  @include govuk-text-colour;
-  @extend %govuk-list--bullet;
-
-  li {
-    margin-bottom: govuk-spacing(3);
-    @include govuk-font($size: 19);
-  }
-
-  p {
-    margin: 0;
-  }
-}
-
 .component-doc {
   @include govuk-font($size: 16);
 
