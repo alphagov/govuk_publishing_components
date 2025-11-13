@@ -30,8 +30,14 @@ module GovukPublishingComponents
         logo_class = "gem-c-organisation-logo__container"
         logo_class = "#{logo_class} gem-c-organisation-logo__link" if url
         logo_class = "#{logo_class} gem-c-organisation-logo__link-hide-underline" if hide_underline
-        logo_class = "#{logo_class} gem-c-organisation-logo__crest gem-c-organisation-logo__crest--#{crest}" if crest
+        logo_class = "#{logo_class} gem-c-organisation-logo__crest gem-c-organisation-logo__crest--#{crest}" if crest_has_visual_identity?
         logo_class
+      end
+
+    private
+
+      def crest_has_visual_identity?
+        crest.present? && !%w[no-identity custom].include?(crest)
       end
     end
   end
