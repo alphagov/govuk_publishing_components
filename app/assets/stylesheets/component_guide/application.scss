@@ -241,6 +241,16 @@ html {
   }
 }
 
+.component-guide-details {
+  .govuk-details .govuk-details__text {
+    font-size: unset;
+
+    p {
+      margin: unset;
+    }
+  }
+}
+
 // Add spacing to the left of the component title on the preview page
 // when using the full screen width
 .govuk-full-width-container {

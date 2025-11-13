@@ -9,12 +9,6 @@ examples:
   default:
     data:
       text: 'UK Visas and Immigration is making changes to the Immigration Rules affecting various categories.'
-  right_to_left:
-    data:
-      dir: 'rtl'
-      text: 'قرارات تحقيقات وزارة الدفاع في الانتهاكات المزعومة للمادة ٢ والمادة ٣ من المعاهدة الاوروبية لحقوق الانسان خلال العمليات العسكرية في العراق.'
-    context:
-      right_to_left: true
   on_topic_page:
     description: Lead paragraphs need to support being placed on a blue background to work with the new taxonomy topic page designs
     data:
