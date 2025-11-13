@@ -72,7 +72,7 @@
   <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
 
   <% if @component_doc.uses_component_wrapper_helper? %>
-    <div class="govuk-!-margin-top-4">
+    <div class="component-guide-details govuk-!-margin-top-4">
       <%= render "govuk_publishing_components/components/details", {
         title: "See component right to left",
       } do %>
