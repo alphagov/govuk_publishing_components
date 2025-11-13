@@ -28,6 +28,12 @@ examples:
         name: 'Single Identity'
         url: 'http://www.gov.uk'
         crest: 'single-identity'
+  no_identity:
+    data:
+      organisation:
+        name: 'No Identity'
+        url: 'http://www.gov.uk'
+        crest: 'no-identity'
   attorney_generals_office:
     data:
       organisation:
@@ -139,7 +145,7 @@ examples:
         name: 'Land Registry'
         url: '/government/organisations/land-registry'
         brand: 'department-for-business-innovation-skills'
-        crest: null
+        crest: "custom"
         image:
           url: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/organisation/logo/69/HMLR_logo.png'
           alt_text: 'Land Registry'
