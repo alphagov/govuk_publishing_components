@@ -9,6 +9,7 @@
   direction_class = "gem-c-govspeak--direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-govspeak govuk-govspeak")
   component_helper.add_class(direction_class) if direction_class
