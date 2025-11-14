@@ -85,7 +85,7 @@
 
 .gem-c-option-select__container {
   position: relative;
-  max-height: 200px;
+  max-height: 180px;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: govuk-colour("white");
@@ -144,7 +144,7 @@
   }
 
   .gem-c-option-select__container {
-    height: 200px;
+    height: 180px;
   }
 
   .gem-c-option-select__container--large {
