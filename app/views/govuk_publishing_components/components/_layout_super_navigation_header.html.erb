@@ -35,6 +35,7 @@
 
   dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-super-navigation-header")
   component_helper.add_data_attribute({ module: "ga4-event-tracker ga4-link-tracker", ga4_expandable: "" })

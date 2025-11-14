@@ -13,6 +13,7 @@
   classes << "govuk-breadcrumbs--inverse" if inverse
   classes << "gem-c-breadcrumbs--border-bottom" if border == "bottom"
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class(classes.join(" "))
   component_helper.add_aria_attribute({ label: "Breadcrumb" })
