@@ -18,6 +18,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: "submit",
         draggable: "true",
         title: "Hello",
+        suppress_output: true,
       }
       component_helper = described_class.new(args)
       expected = {
@@ -56,6 +57,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: nil,
         draggable: nil,
         title: nil,
+        suppress_output: true,
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -74,13 +76,40 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: "",
         draggable: "",
         title: "",
+        suppress_output: true,
       )
       expect(component_helper.all_attributes).to eql({})
     end
 
+    it "outputs component options details" do
+      args = {
+        id: "this-is-my-id",
+        data_attributes: {
+          module: "this-is-my-module",
+        },
+        aria: {
+          labelledby: "element",
+        },
+        title: "Hello",
+      }
+      component_helper = described_class.new(args)
+      expected = {
+        id: "this-is-my-id",
+        data: {
+          options: "id,data_attributes,aria,title",
+          module: "this-is-my-module",
+        },
+        aria: {
+          labelledby: "element",
+        },
+        title: "Hello",
+      }
+      expect(component_helper.all_attributes).to eql(expected)
+    end
+
     describe "classes" do
       it "accepts valid class names" do
-        component_helper = described_class.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles")
+        component_helper = described_class.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles", suppress_output: true)
         expected = {
           class: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles",
         }
@@ -159,7 +188,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       end
 
       it "can add data attributes to already passed data attributes" do
-        helper = described_class.new(data_attributes: { module: "original-module", other: "other" })
+        helper = described_class.new(data_attributes: { module: "original-module", other: "other" }, suppress_output: true)
         helper.add_data_attribute({ module: "extra-module", another: "another" })
         expect(helper.all_attributes[:data]).to eql({ module: "original-module extra-module", other: "other", another: "another" })
       end

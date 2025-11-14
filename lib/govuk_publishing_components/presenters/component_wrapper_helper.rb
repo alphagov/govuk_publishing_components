@@ -19,6 +19,7 @@ module GovukPublishingComponents
         check_rel_is_valid(@options[:rel]) if @options.include?(:rel)
         check_target_is_valid(@options[:target]) if @options.include?(:target)
         check_margin_bottom_is_valid(@options[:margin_bottom]) if @options.include?(:margin_bottom)
+        add_data_attribute({ options: @options.keys.join(",") }) unless @options.include?(:suppress_output)
       end
 
       def all_attributes
