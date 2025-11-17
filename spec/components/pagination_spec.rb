@@ -11,7 +11,7 @@ describe "Pagination", type: :view do
 
   it "renders previous pagination" do
     render_component(previous_page: {
-      url: "previous-page",
+      href: "previous-page",
       title: "Previous page",
       label: "1 of 3",
     })
@@ -24,7 +24,7 @@ describe "Pagination", type: :view do
 
   it "render pagination" do
     render_component(next_page: {
-      url: "next-page",
+      href: "next-page",
       title: "Next page",
       label: "2 of 3",
     })
@@ -89,18 +89,18 @@ describe "Pagination", type: :view do
           },
         ],
       )
-    }.to raise_error(ActionView::Template::Error, "Number required for item 0")
+    }.to raise_error(ActionView::Template::Error, "Number or ellipsis value required for item 0")
   end
 
   it "makes distinction between the navigation text and label text of the links when a label is present" do
     render_component(
       previous_page: {
-        url: "previous-page",
+        href: "previous-page",
         title: "Previous page",
         label: "1 of 3",
       },
       next_page: {
-        url: "next-page",
+        href: "next-page",
         title: "Next page",
         label: "2 of 3",
       },
@@ -113,11 +113,11 @@ describe "Pagination", type: :view do
   it "does not make a distinction between the navigation text and label text of the links when labels are not present" do
     render_component(
       previous_page: {
-        url: "previous-page",
+        href: "previous-page",
         title: "Previous page",
       },
       next_page: {
-        url: "next-page",
+        href: "next-page",
         title: "Next page",
       },
     )
@@ -129,11 +129,11 @@ describe "Pagination", type: :view do
   it "includes GA4 tracking" do
     render_component(
       previous_page: {
-        url: "previous-page",
+        href: "previous-page",
         title: "Previous page",
       },
       next_page: {
-        url: "next-page",
+        href: "next-page",
         title: "Next page",
       },
     )
@@ -168,11 +168,11 @@ describe "Pagination", type: :view do
   it "includes GA4 tracking for pagination" do
     render_component(
       previous_page: {
-        url: "previous-page",
+        href: "previous-page",
         title: "Previous page",
       },
       next_page: {
-        url: "next-page",
+        href: "next-page",
         title: "Next page",
       },
       items: [
@@ -225,11 +225,11 @@ describe "Pagination", type: :view do
     render_component(
       disable_ga4: true,
       previous_page: {
-        url: "previous-page",
+        href: "previous-page",
         title: "Previous page",
       },
       next_page: {
-        url: "next-page",
+        href: "next-page",
         title: "Next page",
       },
       items: [

@@ -5,129 +5,36 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-pagination")
-  component_helper.add_class("govuk-pagination--block") unless items.present?
+  component_helper.add_class("govuk-pagination--block") if items.blank?
   component_helper.add_aria_attribute({ label: t("components.pagination.pagination") })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
+%>
+<% prev_icon = capture do %>
+  <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+    <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+  </svg>
+<% end %>
+<% next_icon = capture do %>
+  <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+    <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+  </svg>
+<% end %>
+<%
+  if local_assigns[:next_page].present?
+    local_assigns[:next_page][:icon] = next_icon
+  end
 
-  ga4_type = items.present? ? "pagination" : "previous and next"
+  if local_assigns[:previous_page].present?
+    local_assigns[:previous_page][:icon] = prev_icon
+  end
 
-  if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page) || items.present?
+  pagination_helper = GovukPublishingComponents::Presenters::PaginationHelper.new(local_assigns)
+
+  if pagination_helper.has_links?
 %>
   <%= tag.nav(**component_helper.all_attributes) do %>
-    <% if local_assigns.include?(:previous_page) %>
-      <%
-        title = previous_page[:title] || t("components.pagination.previous")
-        link_text_classes = %w[govuk-pagination__link-title]
-        link_text_classes << "govuk-pagination__link-title--decorated" if previous_page[:label].blank?
-      %>
-      <div class="govuk-pagination__prev">
-        <a class="govuk-link govuk-pagination__link"
-          href="<%= previous_page[:url] %>"
-          rel="prev"
-          <% unless disable_ga4 %>
-            data-ga4-link="<%= {
-              event_name: "navigation",
-              type: ga4_type,
-              text: previous_page[:label] || title,
-              section: "Previous",
-            }.to_json %>"
-          <% end %>>
-          <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-            <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
-          </svg>
-          <%= tag.span(title, class: link_text_classes) %>
-          <% if previous_page[:label].present? %>
-            <span class="govuk-visually-hidden">:</span>
-            <span class="govuk-pagination__link-label"><%= previous_page[:label] %></span>
-          <% end %>
-        </a>
-      </div>
-    <% end %>
-
-    <% if items.present? %>
-      <ul class="govuk-pagination__list">
-        <% items.each_with_index do |item, index| %>
-          <%
-            { href: nil, ellipsis: nil, current: nil, number: nil, visually_hidden_text: nil, **item.symbolize_keys } => { href:, ellipsis:, current:, number:, visually_hidden_text: }
-
-            raise "Number required for item #{index}" if ellipsis.blank? && number.blank?
-
-            list_item_classes = %w[govuk-pagination__item]
-            list_item_classes << "govuk-pagination__item--ellipsis" if ellipsis
-            list_item_classes << "govuk-pagination__item--current" if current
-
-            item_aria_label = visually_hidden_text || "Page #{number}"
-          %>
-
-          <%= tag.li class: list_item_classes do %>
-            <% if ellipsis %>
-              &ctdot;
-            <% else %>
-              <%
-                ga4_attributes = {
-                  event_name: "navigation",
-                  type: ga4_type,
-                  text: number,
-                  section: "Pagination list",
-                }
-              %>
-
-              <%= tag.a(
-                number,
-                class: "govuk-link govuk-pagination__link",
-                href: href,
-                aria: {
-                  label: item_aria_label,
-                  current: current ? "page" : nil,
-                },
-                data: {
-                  ga4_link: !disable_ga4 ? ga4_attributes : nil,
-                },
-              ) %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <% if local_assigns.include?(:next_page) %>
-      <%
-        title = next_page[:title] || t("components.pagination.next")
-        link_text_classes = %w[govuk-pagination__link-title]
-        link_text_classes << "govuk-pagination__link-title--decorated" if next_page[:label].blank?
-      %>
-
-      <% next_icon = capture do %>
-        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
-          <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
-        </svg>
-      <% end %>
-
-      <div class="govuk-pagination__next">
-        <a class="govuk-link govuk-pagination__link"
-          href="<%= next_page[:url] %>"
-          rel="next"
-          <% unless disable_ga4 %>
-            data-ga4-link="<%= {
-              event_name: "navigation",
-              type: ga4_type,
-              text: next_page[:label] || title,
-              section: "Next",
-            }.to_json %>"
-          <% end %>>
-          <% unless items.present? %>
-            <%= next_icon %>
-          <% end %>
-          <%= tag.span(title, class: link_text_classes) %>
-          <% if next_page[:label].present? %>
-            <span class="govuk-visually-hidden">:</span>
-            <span class="govuk-pagination__link-label"><%= next_page[:label] %></span>
-          <% end %>
-          <% if items.present? %>
-            <%= next_icon %>
-          <% end %>
-        </a>
-      </div>
-    <% end %>
+    <%= pagination_helper.prev_link %>
+    <%= pagination_helper.page_links %>
+    <%= pagination_helper.next_link %>
   <% end %>
 <% end %>
