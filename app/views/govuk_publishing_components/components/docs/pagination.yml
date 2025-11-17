@@ -39,41 +39,41 @@ examples:
   default:
     data:
       previous_page:
-        url: previous-page
+        href: previous-page
         title: Previous page
         label: 1 of 3
   only_next:
     data:
       next_page:
-        url: next-page
+        href: next-page
         title: Next page
         label: Tax disc
   both_previous_and_next:
     data:
       previous_page:
-        url: previous-page
+        href: previous-page
         title: Previous page
         label: 1 of 3
       next_page:
-        url: next-page
+        href: next-page
         title: Next page
         label: 3 of 3
   both_previous_and_next_no_labels:
     data:
       previous_page:
-        url: previous-page
+        href: previous-page
         title: Previous page
       next_page:
-        url: next-page
+        href: next-page
         title: Next page
   become_a_lorry_bus_driver_example:
     data:
       previous_page:
-        url: previous-page
+        href: previous-page
         title: Previous
         label: Applying for a provisional lorry or bus licence
       next_page:
-        url: next-page
+        href: next-page
         title: Next
         label: 'Driver CPC part 1 test: theory'
   without_ga4_tracking:
@@ -81,19 +81,19 @@ examples:
     data:
       disable_ga4: true
       previous_page:
-        url: previous-page
+        href: previous-page
         title: Previous
         label: Applying for a provisional lorry or bus licence
       next_page:
-        url: next-page
+        href: next-page
         title: Next
         label: 'Driver CPC part 1 test: theory'
   both_previous_and_next_with_items:
     data:
       previous_page:
-        url: previous-page
+        href: previous-page
       next_page:
-        url: next-page
+        href: next-page
       items:
       - number: 1
         href: "#"
@@ -111,7 +111,7 @@ examples:
   next_with_items:
     data:
       next_page:
-        url: next-page
+        href: next-page
       items:
       - number: 1
         href: "#"
@@ -123,7 +123,7 @@ examples:
   previous_with_items:
     data:
       previous_page:
-        url: next-page
+        href: next-page
       items:
       - number: 1
         href: "#"
