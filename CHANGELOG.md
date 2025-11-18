@@ -10,6 +10,7 @@
 ## Unreleased
 
 * LUX v4.4.2 ([PR #5127](https://github.com/alphagov/govuk_publishing_components/pull/5127))
+* Upgrade to version 5.13.0 of govuk-frontend ([PR #5071](https://github.com/alphagov/govuk_publishing_components/pull/5071))
 
 ## 62.0.0
 
