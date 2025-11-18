@@ -1,3 +1,5 @@
+require "govuk_app_config"
+
 RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
   describe "Component helper" do
     it "accepts basic component attributes" do
@@ -81,30 +83,86 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       expect(component_helper.all_attributes).to eql({})
     end
 
-    it "outputs component options details" do
-      args = {
-        id: "this-is-my-id",
-        data_attributes: {
-          module: "this-is-my-module",
-        },
-        aria: {
-          labelledby: "element",
-        },
-        title: "Hello",
-      }
-      component_helper = described_class.new(args)
-      expected = {
-        id: "this-is-my-id",
-        data: {
-          options: "id,data_attributes,aria,title",
-          module: "this-is-my-module",
-        },
-        aria: {
-          labelledby: "element",
-        },
-        title: "Hello",
-      }
-      expect(component_helper.all_attributes).to eql(expected)
+    describe "component options" do
+      it "outputs basic details" do
+        args = {
+          id: "this-is-my-id",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+        }.to_json
+        expect(component_helper.all_attributes[:data][:options]).to eql(expected)
+      end
+
+      it "outputs complex details and truncates them" do
+        args = {
+          id: "this-is-my-id",
+          data_attributes: {
+            module: "this-is-my-module",
+          },
+          title: "This is a very long title that should be shortened as it is too long.",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+          data: {
+            module: "this-is-my-module",
+            options: {
+              id: "this-is-my-id",
+              data_attributes: {
+                module: "this-is-my-module",
+              },
+              title: "This is a very long title that should be shortened",
+            }.to_json,
+          },
+          title: "This is a very long title that should be shortened as it is too long.",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+
+      it "outputs complex details and removes HTML" do
+        args = {
+          id: "this-is-my-id",
+          data_attributes: {
+            module: "this-is-my-module",
+          },
+          title: "<strong>This</strong> is a very long title that should be shortened as it is too long.",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+          data: {
+            module: "this-is-my-module",
+            options: {
+              id: "this-is-my-id",
+              data_attributes: {
+                module: "this-is-my-module",
+              },
+              title: "This is a very long title that should be shortened",
+            }.to_json,
+          },
+          title: "<strong>This</strong> is a very long title that should be shortened as it is too long.",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+    end
+
+    describe "when on production" do
+      before do
+        stub_const("ENV", { "GOVUK_ENVIRONMENT" => "production" })
+      end
+
+      it "does not include component options" do
+        args = {
+          id: "this-is-my-id",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
     end
 
     describe "classes" do

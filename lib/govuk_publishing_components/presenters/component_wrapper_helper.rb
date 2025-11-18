@@ -1,6 +1,8 @@
 module GovukPublishingComponents
   module Presenters
     class ComponentWrapperHelper
+      include ActionView::Helpers::SanitizeHelper
+
       def initialize(options)
         @options = options
 
@@ -19,7 +21,7 @@ module GovukPublishingComponents
         check_rel_is_valid(@options[:rel]) if @options.include?(:rel)
         check_target_is_valid(@options[:target]) if @options.include?(:target)
         check_margin_bottom_is_valid(@options[:margin_bottom]) if @options.include?(:margin_bottom)
-        add_data_attribute({ options: @options.keys.join(",") }) unless @options.include?(:suppress_output)
+        add_data_attribute({ options: options_passed }) unless in_production? || @options.include?(:suppress_output)
       end
 
       def all_attributes
@@ -45,6 +47,15 @@ module GovukPublishingComponents
         attributes[:title] = @options[:title] if @options[:title].present?
 
         attributes
+      end
+
+      def options_passed
+        @options.transform_values { |v| v.is_a?(Hash) ? v : strip_tags(v.to_s)[0, 50] }.to_h.to_json
+      end
+
+      def in_production?
+        # https://github.com/alphagov/govuk_app_config?tab=readme-ov-file#environment
+        %w[production staging].include? GovukEnvironment.current
       end
 
       def set_id(id)
