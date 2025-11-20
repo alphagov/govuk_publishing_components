@@ -336,12 +336,6 @@ examples:
         - <a href="/government/world/tonga">Tonga</a>
         - <a href="/government/world/wallis-and-futuna">Wallis and Futuna</a>
       first_published: 5 December 2013
-  basic_rtl:
-    data:
-      direction: rtl
-      from: <a href='/government/organisations/cabinet-office'>Cabinet Office</a>
-      history: Updated 2 weeks ago
-      part_of: <a href='/government/topics/environment'>Environment</a>
   external_link:
     data:
       from: <a href='/government/organisations/cabinet-office'>Cabinet Office</a>
