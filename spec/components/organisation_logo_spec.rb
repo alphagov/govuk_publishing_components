@@ -37,6 +37,21 @@ describe "Organisation logo", type: :view do
     assert_select ".gem-c-organisation-logo__container.gem-c-organisation-logo__crest.gem-c-organisation-logo__crest--single-identity"
   end
 
+  it "omits the crest class when not specified" do
+    render_component(organisation: { name: "Crestless" })
+    assert_select ".gem-c-organisation-logo__container.gem-c-organisation-logo__crest", count: 0
+  end
+
+  it "omits the crest class when the crest has no identity" do
+    render_component(organisation: { name: "Crestless", crest: "no-identity" })
+    assert_select ".gem-c-organisation-logo__container.gem-c-organisation-logo__crest", count: 0
+  end
+
+  it "omits the crest class when the crest is a custom logo" do
+    render_component(organisation: { name: "Custom crest", crest: "custom" })
+    assert_select ".gem-c-organisation-logo__container.gem-c-organisation-logo__crest", count: 0
+  end
+
   it "renders an image when specified" do
     render_component(organisation: { name: "Custom image", image: { url: "/url", alt_text: "alt" } })
     assert_select ".gem-c-organisation-logo__container img[src='/url'][alt='alt']"

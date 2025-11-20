@@ -11,6 +11,7 @@
 
 * LUX v4.4.2 ([PR #5127](https://github.com/alphagov/govuk_publishing_components/pull/5127))
 * Upgrade to version 5.13.0 of govuk-frontend ([PR #5071](https://github.com/alphagov/govuk_publishing_components/pull/5071))
+* Do not add crest classes for organisation logos with no visual identity or a custom logo ([PR #5131](https://github.com/alphagov/govuk_publishing_components/pull/5131))
 
 ## 62.0.0
 
