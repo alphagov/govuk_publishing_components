@@ -82,7 +82,7 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/tag';
 @import 'govuk_publishing_components/components/textarea';"
 
-    expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (20)")
+    expect(page).to have_selector(".govuk-heading-m", text: "Gem components used by this app (20)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
 
     expect(page.find(:css, 'textarea[name="main-sass"]', visible: :hidden).value).to eq(expected_main_sass)
