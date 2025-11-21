@@ -34,16 +34,11 @@
   text-decoration: none;
 }
 
-.gem-c-contextual-sidebar__cta--ukraine {
-  border-top: 7px solid #fed700;
-  position: relative;
+.gem-c-contextual-sidebar__cta-ukraine {
+  margin-top: -7px;
+  border-top: 7px solid #4b7ec1;
 
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -14px;
-    border-top: 7px solid #4b7ec1;
+  .gem-c-contextual-sidebar__cta {
+    border-top: 7px solid #fed700;
   }
 }
