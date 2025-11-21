@@ -5,6 +5,7 @@
   credit ||= ""
   src ||= nil
   local_assigns[:lang] ||= "en"
+  local_assigns[:margin_bottom] ||= 8
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-figure")
 %>
