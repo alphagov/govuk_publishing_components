@@ -4,31 +4,33 @@
   lang = shared_helper.t_locale("components.related_navigation.ukraine.title")
   data_module = "ga4-link-tracker" unless disable_ga4
 %>
-<%= tag.div class: "gem-c-contextual-sidebar__cta gem-c-contextual-sidebar__cta--ukraine", data: { module: data_module } do %>
-  <%= tag.h2 title, class: "gem-c-contextual-sidebar__heading govuk-heading-s" %>
-  <%= tag.ul class: "gem-c-contextual-sidebar__list" do %>
-    <% index_total = t("components.related_navigation.ukraine.links").length %>
-    <% t("components.related_navigation.ukraine.links").each_with_index do |link, index| %>
-      <%= tag.li class: "gem-c-contextual-sidebar__text govuk-body" do %>
-        <%
-          ga4_attributes = {
-            event_name: "navigation",
-            type: "related content",
-            index_section: "#{ga4_tracking_counts.index_section_count}",
-            index_link: "#{index + 1}",
-            index_section_count: "#{ga4_tracking_counts.index_section_count}",
-            index_total: "#{index_total}",
-            section: title,
-          } unless disable_ga4
-        %>
-        <%= link_to link[:label],
-          link[:href],
-          class: "govuk-link",
-          data: {
-            ga4_link: ga4_attributes,
-          },
-          lang: lang %>
+<div class="gem-c-contextual-sidebar__cta-ukraine">
+  <%= tag.div class: "gem-c-contextual-sidebar__cta", data: { module: data_module } do %>
+    <%= tag.h2 title, class: "gem-c-contextual-sidebar__heading govuk-heading-s" %>
+    <%= tag.ul class: "gem-c-contextual-sidebar__list" do %>
+      <% index_total = t("components.related_navigation.ukraine.links").length %>
+      <% t("components.related_navigation.ukraine.links").each_with_index do |link, index| %>
+        <%= tag.li class: "gem-c-contextual-sidebar__text govuk-body" do %>
+          <%
+            ga4_attributes = {
+              event_name: "navigation",
+              type: "related content",
+              index_section: "#{ga4_tracking_counts.index_section_count}",
+              index_link: "#{index + 1}",
+              index_section_count: "#{ga4_tracking_counts.index_section_count}",
+              index_total: "#{index_total}",
+              section: title,
+            } unless disable_ga4
+          %>
+          <%= link_to link[:label],
+            link[:href],
+            class: "govuk-link",
+            data: {
+              ga4_link: ga4_attributes,
+            },
+            lang: lang %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
