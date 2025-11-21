@@ -1,5 +1,9 @@
-<% content_for :title, "Component audit" %>
+<% content_for :title, "Applications consistency" %>
 <% add_gem_component_stylesheet("table") %>
+
+<%= render "govuk_publishing_components/components/back_link", {
+  href: "/component-guide",
+} %>
 
 <%= render "govuk_publishing_components/components/heading", {
   text: "Applications",
