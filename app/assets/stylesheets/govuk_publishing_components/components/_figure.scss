@@ -1,46 +1,24 @@
 @import "govuk_publishing_components/individual_component_support";
 
-.gem-c-figure {
-  border-top: 1px solid $govuk-border-colour;
-  padding-top: govuk-spacing(3);
-  margin: 0;
-  margin-bottom: govuk-spacing(8);
-  @include govuk-clearfix;
+$gap: govuk-spacing(1);
 
-  @include govuk-media-query($until: tablet) {
-    margin-bottom: govuk-spacing(6);
-  }
+.gem-c-figure {
+  margin: 0;
+  display: table;
 }
 
 .gem-c-figure__image {
-  display: block;
-  width: 100%;
-
-  @include govuk-media-query($from: tablet) {
-    float: inline-start;
-    width: 50%;
-  }
+  max-width: 100%;
+  display: table-row;
 }
 
 .gem-c-figure__figcaption {
-  @include govuk-font(16);
-
-  @include govuk-media-query($from: tablet) {
-    display: block;
-    vertical-align: top;
-    box-sizing: border-box;
-    float: inline-end;
-    padding-inline-start: govuk-spacing(3);
-    width: 50%;
-  }
-
-  @include govuk-media-query($until: tablet) {
-    margin-top: govuk-spacing(2);
-  }
+  display: table-caption;
+  caption-side: bottom;
 }
 
 .gem-c-figure__figcaption-text {
-  margin: 0;
-  margin-bottom: govuk-spacing(2);
-  @include govuk-font(16);
+  margin: govuk-spacing(2) 0 0 0;
+  color: $govuk-secondary-text-colour;
+  @include govuk-font(19);
 }
