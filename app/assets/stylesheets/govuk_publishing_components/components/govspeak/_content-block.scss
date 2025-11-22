@@ -7,14 +7,8 @@
 }
 
 .content-block__contact-key {
+  @include govuk-font(19, $weight: "bold");
   @include govuk-responsive-margin(4, "bottom");
-  @include govuk-font(24, $weight: "bold");
-}
-
-.content-block__contact-list--nested {
-  .content-block__contact-key {
-    @include govuk-font(19, $weight: "bold");
-  }
 }
 
 .content-block .content-block__list {

@@ -547,69 +547,64 @@ examples:
   contact_content_block:
     data:
       block: |
-        <div class="content-block content-block--contact">
-          <dl class="vcard content-block__contact-list">
-            <dt class="content-block__contact-key fn org">Get help with your application</dt>
+        <div class="vcard">
+          <dl class="content-block__contact-list">
+            <dt class="content-block__contact-key">Address</dt>
             <dd class="content-block__contact-value">
-              <dl class="content-block__contact-list--nested">
-                <dt class="content-block__contact-key">Address</dt>
-                <dd class="content-block__contact-value">
-                  <p class="adr">
-                    <span class="street-address"> 49 to 53 Cherry Street</span>,<br><span class="locality">London</span>,<br><span class="postal-code"> AB1 2DC </span>
-                  </p>
-                </dd>
-                <dt class="content-block__contact-key">Email</dt>
-                <dd class="content-block__contact-value">
-                  <ul class="content-block__list">
-                    <li>
-                      <a href="mailto:name@example.com" class="email">
-                        name@example.com
-                      </a>
-                    </li>
-                    <li>
-                      <p>We aim to respond within 2 working days</p>
-                    </li>
-                  </ul>
-                </dd>
-                <dt class="content-block__contact-key">Phone</dt>
-                <dd class="content-block__contact-value">
-                  <p>If you have a unique reference number, have it with you when you call.</p>
-                  <ul class="content-block__list">
-                    <li>
-                      <span>Phone: </span>
-                      <span class="tel">020 7946 0101</span>
-                    </li>
-                    <li>
-                      <span>Textphone: </span>
-                      <span class="tel">020 7946 0102</span>
-                    </li>
-                    <li>
-                      <span>Welsh language: </span>
-                      <span class="tel">020 7946 0103</span>
-                    </li>
-                  </ul>
-                  <p>Monday to Friday, 8am to 6pm<br>
-                    Saturday and Sunday, 10am to 4pm</p>
-                  <p>
-                    <a href="https://gov.uk/call-charges">
-                      Find out about call charges
-                    </a>
-                  </p>
-                </dd>
-                <dt class="content-block__contact-key">Webchat</dt>
-                <dd class="content-block__contact-value">
-                  <ul class="content-block__list">
-                    <li>
-                      <a href="http://example.com" class="url">
-                        Speak to an adviser now
-                      </a>
-                    </li>
-                    <li>
-                      <p>Current waiting time is 17 minutes</p>
-                    </li>
-                  </ul>
-                </dd>
-              </dl>
+              <p class="adr">
+                <span class="street-address"> 49 to 53 Cherry Street</span>,<br><span class="locality">London</span>,<br><span class="postal-code"> AB1 2DC </span>
+              </p>
+            </dd>
+            <dt class="content-block__contact-key">Email</dt>
+            <dd class="content-block__contact-value">
+              <ul class="content-block__list">
+                <li>
+                  <a href="mailto:name@example.com" class="email">
+                    name@example.com
+                  </a>
+                </li>
+                <li>
+                  <p>We aim to respond within 2 working days</p>
+                </li>
+              </ul>
+            </dd>
+            <dt class="content-block__contact-key">Phone</dt>
+            <dd class="content-block__contact-value">
+              <p>If you have a unique reference number, have it with you when you call.</p>
+              <ul class="content-block__list">
+                <li>
+                  <span>Phone: </span>
+                  <span class="tel">020 7946 0101</span>
+                </li>
+                <li>
+                  <span>Textphone: </span>
+                  <span class="tel">020 7946 0102</span>
+                </li>
+                <li>
+                  <span>Welsh language: </span>
+                  <span class="tel">020 7946 0103</span>
+                </li>
+              </ul>
+              <p>Monday to Friday, 8am to 6pm<br>
+                Saturday and Sunday, 10am to 4pm</p>
+              <p>
+                <a href="https://gov.uk/call-charges">
+                  Find out about call charges
+                </a>
+              </p>
+            </dd>
+            <dt class="content-block__contact-key">Webchat</dt>
+            <dd class="content-block__contact-value">
+              <ul class="content-block__list">
+                <li>
+                  <a href="http://example.com" class="url">
+                    Speak to an adviser now
+                  </a>
+                </li>
+                <li>
+                  <p>Current waiting time is 17 minutes</p>
+                </li>
+              </ul>
             </dd>
           </dl>
         </div>
