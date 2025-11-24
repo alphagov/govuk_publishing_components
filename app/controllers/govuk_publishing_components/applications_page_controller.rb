@@ -8,11 +8,11 @@ module GovukPublishingComponents
         },
         {
           type: "publishing",
-          apps: %w[content-publisher content-data-admin collections-publisher travel-advice-publisher whitehall datagovuk_find local-links-manager places-manager support manuals-publisher maslow service-manual-publisher short-url-manager specialist-publisher content-tagger publisher transition search-admin].sort,
+          apps: %w[content-data-admin collections-publisher travel-advice-publisher whitehall datagovuk_find local-links-manager places-manager support manuals-publisher service-manual-publisher short-url-manager specialist-publisher content-tagger publisher transition search-admin].sort,
         },
         {
           type: "utility",
-          apps: %w[account-api signon govspeak govspeak-preview release govuk-developer-docs search-v2-evaluator govuk-chat].sort,
+          apps: %w[account-api signon govspeak govspeak-preview release govuk-developer-docs govuk-chat].sort,
         },
       ]
 
