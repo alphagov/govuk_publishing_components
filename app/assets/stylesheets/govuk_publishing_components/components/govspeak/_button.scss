@@ -1,44 +1,12 @@
-// stylelint-disable scss/at-extend-no-missing-placeholder
+@import "govuk/components/button/button";
+
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
-  @import "govuk/components/button/button";
+  .govuk-button {
+    margin-bottom: 32px;
 
-  // Some links in Govspeak should look like buttons[1] when using:
-  // ```
-  //    {button}[Random page](https://gov.uk/random){/button}
-  // ```.
-  //
-  // To make sure that the link styles don't override the button styles this
-  // needs more specificity.
-  //
-  // Govspeak targets link by using element selectors; so the selector
-  // `.gem-c-govspeak a:link` will override `.govuk-button`. Extending
-  // `govuk-button` here gives `gem-c-govspeak .gem-c-button` and prevents the
-  // link-that-looks-like-a-button from being overriden.
-
-  // [1]: https://github.com/alphagov/govspeak#button
-  .gem-c-button {
-    @extend .govuk-button;
-  }
-
-  .govuk-button--start {
-    @extend .govuk-button--start;
-  }
-
-  @include govuk-media-query($media-type: print) {
-    .gem-c-button {
-      box-shadow: none;
-      border: 2pt solid $govuk-print-text-colour;
-
-      &,
-      & * {
-        background: none;
-        color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
-      }
-
-      &::after {
-        display: none;
-      }
+    @include govuk-media-query($until: tablet) {
+      margin-bottom: 22px;
     }
   }
 }
