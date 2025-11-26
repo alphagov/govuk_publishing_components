@@ -6,12 +6,11 @@
 // - alphagov/whitehall: ✔︎
 // - alphagov/govspeak: ✔︎
 
-// stylelint-disable max-nesting-depth
+@import "govuk/components/warning-text/warning-text";
 
+// stylelint-disable max-nesting-depth
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
-  @import "govuk/components/warning-text/warning-text";
-
   .help-notice {
     $icon-size: 35px;
     $icon-spacing: 10px;
