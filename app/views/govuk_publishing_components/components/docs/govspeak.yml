@@ -874,6 +874,12 @@ examples:
           <li>two</li>
           <li>three</li>
         </ul>
+        <h2>unordered list without bullets:</h2>
+        <ul class="list-no-bullets">
+          <li>one</li>
+          <li>two</li>
+          <li>three</li>
+        </ul>
   legislative_lists:
     description: Example taken from [GOV.UK Immigration rules](https://www.gov.uk/guidance/immigration-rules/immigration-rules-introduction)
     data:
