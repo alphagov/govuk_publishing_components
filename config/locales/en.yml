@@ -5,6 +5,8 @@ en:
     show: Show
     toggle_less: Show fewer
     toggle_more: "%{show} %{number} more"
+    toggle_less_html: "Show fewer <span class='govuk-visually-hidden'>%{visually_hidden_text}</span>"
+    toggle_more_html: "%{show} %{number} more <span class='govuk-visually-hidden'>%{visually_hidden_text}</span>"
     translations: Translations
   components:
     accordion:
@@ -300,6 +302,15 @@ en:
       statistical_data_sets: Statistical data set
       topical_events: Topical event
       topics: Explore the topic
+      toggle_visually_hidden_text: 
+        related_items: related content links
+        collections: collections
+        related_guides: detailed guidance links
+        topics: topics
+        topical_events: topical events
+        world_locations: world locations
+        statistical_data_sets: statistical data sets
+        related_external_links: external links
       ukraine:
         links:
         - label: UK visa support for Ukrainian nationals

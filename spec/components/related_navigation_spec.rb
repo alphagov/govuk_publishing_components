@@ -155,7 +155,7 @@ describe "Related navigation", type: :view do
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
-    assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more"
+    assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more world locations"
     assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']"
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/mauritius/news\"]", text: "Mauritius"
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/brazil/news\"]", text: "Brazil"
@@ -250,7 +250,7 @@ describe "Related navigation", type: :view do
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']"
-    assert_select ".gem-c-related-navigation__toggle[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"related content\"}']", text: "Show 2 more"
+    assert_select ".gem-c-related-navigation__toggle[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"related content\"}']", text: "Show 2 more world locations"
   end
 
   it "allows GA4 to be disabled" do
