@@ -72,6 +72,20 @@ examples:
             margin_bottom: 0
           } %>
           <!-- end of example content -->
+  hmrc_header:
+    description: For use on HMRC manual pages such as [Capital Gains Manual](https://www.gov.uk/hmrc-internal-manuals/capital-gains-manual).
+    data:
+      hmrc_header: true
+      block: |
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/heading", {
+            context: "HMRC internal manual",
+            text: "Capital Gains Manual",
+            inverse: true,
+            margin_bottom: 0,
+            font_size: "xl"
+          } %>
+          <!-- end of example content -->
   with_paragraph_and_link:
     data:
       block: |

@@ -11,6 +11,7 @@
   component_helper.add_class("gem-c-inverse-header--html-publication-header") if local_assigns[:html_publication_header]
   component_helper.add_class("govuk-!-padding-top-#{padding_top}") if [*0..9].include?(padding_top)
   component_helper.add_class("govuk-!-padding-bottom-#{padding_bottom}") if [*0..9].include?(padding_bottom)
+  component_helper.add_class("gem-c-inverse-header--hmrc-header") if local_assigns[:hmrc_header]
 %>
 <% block = yield %>
 <% unless block.empty? %>
