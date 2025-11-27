@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* **BREAKING** Replace Previous and Next Navigation with Pagination ([PR #5121](https://github.com/alphagov/govuk_publishing_components/pull/5121))
+
 ## 62.1.0
 
 * Adjust govspeak imports of component styles ([PR #5142](https://github.com/alphagov/govuk_publishing_components/pull/5142))
