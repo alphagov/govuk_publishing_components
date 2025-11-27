@@ -6,70 +6,30 @@
   display: flex;
   display: -ms-flexbox;
   flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
+  -ms-flex-direction: row-reverse;
+  gap: govuk-spacing(2);
+  justify-content: space-between;
+  align-items: stretch;
   @include govuk-text-colour;
-  @include govuk-clearfix;
 
-  @include govuk-media-query($from: mobile, $until: tablet) {
-    display: block;
-
-    .gem-c-image-card__text-wrapper {
-      float: right;
-      padding-left: 0;
-    }
+  @include govuk-media-query($until: tablet) {
+    flex-direction: row-reverse;
+    gap: govuk-spacing(3);
   }
 }
 
-.gem-c-image-card__header-and-context-wrapper {
-  display: flex;
-  flex-direction: column-reverse;
-  -ms-flex-direction: column-reverse;
+.gem-c-image-card__text-wrapper {
+  flex-grow: 1;
+  flex-basis: 50%;
 }
 
 .gem-c-image-card__image-wrapper {
+  flex-grow: 1;
+  flex-basis: 50%;
   margin: 0;
 
   @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(2);
     height: 100%;
-  }
-
-  + .gem-c-image-card__text-wrapper {
-    @include govuk-media-query($until: tablet) {
-      padding-left: 0;
-    }
-  }
-}
-
-@include govuk-media-query($from: mobile, $until: tablet) {
-  .gem-c-image-card {
-    margin: 0 (- govuk-spacing(3)) govuk-spacing(6) (- govuk-spacing(3));
-  }
-
-  .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column($width: one-half, $at: mobile);
-  }
-
-  .gem-c-image-card__text-wrapper {
-    @include govuk-grid-column($width: one-half, $at: mobile);
-  }
-
-  .gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--one-third {
-    @include govuk-grid-column($width: one-third, $float: right, $at: mobile);
-  }
-
-  .gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds {
-    @include govuk-grid-column($width: two-thirds, $float: right, $at: mobile);
-  }
-}
-
-@include govuk-media-query($from: tablet) {
-  .gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--one-third {
-    @include govuk-grid-column($width: one-third, $float: right, $at: tablet);
-  }
-
-  .gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds {
-    @include govuk-grid-column($width: two-thirds, $float: right, $at: tablet);
   }
 }
 
@@ -77,68 +37,8 @@
   display: block;
   height: auto;
   width: 100%;
+  border: 0;
   border-top: 1px solid $govuk-border-colour;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-}
-
-.gem-c-image-card.gem-c-image-card--two-thirds {
-  // Change default flex-direction from column-reverse
-  // so that the image and text appear in the same row,
-  // with the image to the left
-  flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  // Wrap flex items onto a new line and ensure
-  // that items are aligned correctly
-  flex-wrap: wrap-reverse;
-  -ms-flex-wrap: wrap-reverse;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.gem-c-image-card--two-thirds {
-  .gem-c-image-card__image {
-    border-top: none;
-  }
-
-  // TODO: Temporary fixes to ensure the layout
-  // renders correctly on screen sizes less than 320px wide
-  @include govuk-media-query($until: "mobile") {
-    padding: 0 govuk-spacing(3);
-  }
-
-  .gem-c-image-card__image-wrapper {
-    @include govuk-media-query($until: "mobile") {
-      margin-bottom: govuk-spacing(2);
-    }
-  }
-
-  // Ensures the font-size is 19px on all screen sizes
-  .gem-c-image-card__title-link--large-font-size-mobile,
-  .gem-c-image-card__description--large-font-size-mobile {
-    @include govuk-media-query($until: "tablet") {
-      font-size: 19px;
-      font-size: govuk-px-to-rem(19);
-    }
-  }
-}
-
-.gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--one-third {
-  // The first two values set flex-grow and flex-basis to 0
-  // This ensures that the flex item does not grow or shrink
-  // The the last value, sets flex-basis to 95px
-  // padding-left is set to 15px and the image used is 80px wide
-  flex: 0 0 95px;
-  padding-right: 0;
-}
-
-.gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds {
-  // The first two values set flex-grow and flex-basis to 1
-  // This allows the flex item contain the image card text to grow or shrink
-  // The last value, sets flex-basis to 70%
-  // If the width of the flex-item shrinks below 70%, it will wrap onto a new line
-  flex: 1 1 70%;
 }
 
 .gem-c-image-card__title {
@@ -155,22 +55,13 @@
   // position relative and a higher z-index to put them above the after element
   &::after {
     content: "";
+    display: block;
     position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
     right: 0;
     height: 100%;
-    $ie-background: rgba(255, 255, 255, 0);
-    background: $ie-background; // because internet explorer
-    -ms-high-contrast-adjust: none;
-  }
-
-  @include govuk-media-query($from: mobile, $until: tablet) {
-    &::after {
-      left: govuk-spacing(3);
-      right: govuk-spacing(3);
-    }
   }
 }
 
@@ -235,47 +126,34 @@
   }
 }
 
-.gem-c-image-card--large.gem-c-image-card {
-  display: flex;
-  margin: 0 0 govuk-spacing(6) 0;
-  @include govuk-media-query($from: tablet) {
-    display: block;
+.gem-c-image-card--two-thirds {
+  flex-direction: row-reverse;
+  gap: govuk-spacing(3);
+
+  .gem-c-image-card__text-wrapper {
+    flex: 1 1 70%;
+  }
+
+  .gem-c-image-card__image-wrapper {
+    flex: 0 0 80px;
+  }
+
+  .gem-c-image-card__image {
+    border-top: none;
+  }
+
+  @include govuk-media-query($until: "mobile") {
+    flex-direction: column-reverse;
   }
 }
 
 .gem-c-image-card--large {
-  .gem-c-image-card__image-wrapper {
-    margin-bottom: govuk-spacing(2);
-    float: none;
-    width: auto;
-    max-width: 100%;
-    @include govuk-grid-column($width: one-half, $at: tablet);
+  flex-direction: column-reverse;
+  gap: govuk-spacing(2);
 
-    & { // stylelint-disable-line no-duplicate-selectors
-      // overriding the padding from govuk-grid-column mixin
-      padding: 0;
-    }
-
-    @include govuk-media-query($from: tablet) {
-      padding: 0 govuk-spacing(2) 0 0;
-      margin-bottom: 0;
-    }
-  }
-
-  .gem-c-image-card__text-wrapper {
-    overflow: hidden;
-    @include govuk-grid-column($width: one-half, $at: tablet);
-
-    & { // stylelint-disable-line no-duplicate-selectors
-      // overriding the padding from govuk-grid-column mixin
-      padding: 0;
-    }
-
-    @include govuk-media-query($from: tablet) {
-      float: right;
-      padding: 0 govuk-spacing(3);
-      margin-bottom: 0;
-    }
+  @include govuk-media-query($from: tablet) {
+    flex-direction: row-reverse;
+    gap: govuk-spacing(5);
   }
 
   .gem-c-image-card__title {
@@ -337,15 +215,6 @@
 
 .gem-c-image-card__youtube-thumbnail-container:focus .gem-c-image-card__youtube-thumbnail-container-text {
   @include govuk-focused-text;
-}
-
-.gem-c-image-card--no-image {
-  .gem-c-image-card__text-wrapper {
-    @include govuk-media-query($from: mobile, $until: tablet) {
-      float: left;
-      padding: 0 govuk-spacing(3);
-    }
-  }
 }
 
 // stylelint-disable declaration-no-important
