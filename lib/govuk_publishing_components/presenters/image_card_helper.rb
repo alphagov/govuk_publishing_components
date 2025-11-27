@@ -58,7 +58,6 @@ module GovukPublishingComponents
 
       def image
         classes = %w[gem-c-image-card__image-wrapper]
-        classes << "gem-c-image-card__image-wrapper--one-third" if @two_thirds
         height = 200
         width = 300
         height = 90 if @two_thirds
