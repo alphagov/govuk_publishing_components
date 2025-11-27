@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* **BREAKING** Remove youtube functionality from image card ([PR #5146](https://github.com/alphagov/govuk_publishing_components/pull/5146))
+
 ## 62.1.0
 
 * Adjust govspeak imports of component styles ([PR #5142](https://github.com/alphagov/govuk_publishing_components/pull/5142))
