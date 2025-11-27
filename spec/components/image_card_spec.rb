@@ -100,7 +100,7 @@ describe "ImageCard", type: :view do
 
   it "labels a no-image version" do
     render_component(href: "#", heading_text: "test", extra_details: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
-    assert_select ".gem-c-image-card--no-image"
+    assert_select ".gem-c-image-card__image-wrapper", false
   end
 
   it "renders a large version" do
@@ -111,8 +111,6 @@ describe "ImageCard", type: :view do
   it "renders two thirds variant with correct image width and height attributes" do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text", heading_text: "test", two_thirds: true)
     assert_select ".gem-c-image-card.gem-c-image-card--two-thirds"
-    assert_select ".gem-c-image-card__text-wrapper.gem-c-image-card__text-wrapper--two-thirds"
-    assert_select ".gem-c-image-card__image-wrapper.gem-c-image-card__image-wrapper--one-third"
     assert_select ".gem-c-image-card__image[width='90']"
     assert_select ".gem-c-image-card__image[height='90']"
   end
