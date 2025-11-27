@@ -10,6 +10,7 @@
 ## Unreleased
 
 * **BREAKING** Replace Previous and Next Navigation with Pagination ([PR #5121](https://github.com/alphagov/govuk_publishing_components/pull/5121))
+* **BREAKING** Remove youtube functionality from image card ([PR #5146](https://github.com/alphagov/govuk_publishing_components/pull/5146))
 
 ## 62.3.0
 
