@@ -8,6 +8,7 @@
   inverse ||= false
   collapse_navigation_on_mobile = local_assigns.fetch(:collapse_navigation_on_mobile, navigation_items.length > 1)
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-service-navigation govuk-service-navigation")
   component_helper.add_class("govuk-service-navigation--inverse") if inverse

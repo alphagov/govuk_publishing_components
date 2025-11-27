@@ -7,6 +7,7 @@
   banner_version ||= nil
   always_visible ||= false # if true banner is always visible & does not disappear automatically after 3 pageviews
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-global-banner govuk-!-display-none-print")
   component_helper.set_id("global-banner")
