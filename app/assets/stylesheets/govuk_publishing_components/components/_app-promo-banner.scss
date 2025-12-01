@@ -1,0 +1,43 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-app-promo-banner {
+  display: none;
+  gap: 20px;
+  flex-direction: column;
+  background-color: $govuk-rebrand-template-background-colour;
+  border-top: 4px solid $govuk-brand-colour;
+  @include govuk-text-colour;
+  @include govuk-responsive-padding(3);
+}
+
+.gem-c-app-promo-banner--visible {
+  display: flex;
+}
+
+.gem-c-app-promo-banner__container {
+  display: flex;
+  gap: 20px;
+}
+
+.gem-c-app-promo-banner__icon {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.gem-c-app-promo-banner__content {
+  flex: 1;
+}
+
+.gem-c-app-promo-banner__heading {
+  margin-bottom: 0;
+}
+
+.gem-c-app-promo-banner__text {
+  margin-bottom: 0;
+}
+
+.gem-c-app-promo-banner__action-links {
+  display: flex;
+  gap: 20px;
+  justify-content: end;
+}

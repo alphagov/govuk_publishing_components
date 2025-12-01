@@ -1,0 +1,37 @@
+<%
+  add_gem_component_stylesheet("app_promo_banner")
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-app-promo-banner")
+  component_helper.add_role("region")
+  component_helper.add_aria_attribute({ label: t("components.app_promo_banner.aria_label")})
+  component_helper.set_hidden("hidden")
+  component_helper.add_data_attribute({ module: "app-promo-banner" })
+%>
+
+<%= tag.div(**component_helper.all_attributes) do %>
+  <%= tag.div(class: "gem-c-app-promo-banner__container") do %>
+    <%= image_tag((asset_path "govuk_publishing_components/app_promo_banner/govuk-app-icon.png"),
+      alt: "",
+      class: "gem-c-app-promo-banner__icon",
+      width: "64",
+      height: "64"
+    ) %>
+    <%= tag.div(class: "gem-c-app-promo-banner__content") do %>
+      <%= tag.p t("components.app_promo_banner.heading_text"), class: "gem-c-app-promo-banner__heading govuk-heading-s" %>
+      <%= tag.p t("components.app_promo_banner.body_text"), class: "gem-c-app-promo-banner__text govuk-body-s" %>
+    <% end %>
+  <% end %>
+  <%= tag.div(class: "gem-c-app-promo-banner__action-links govuk-body") do %>
+    <%# Uses the same approach as the intervention banner, this should ideally be a button %>
+    <%= link_to t("components.app_promo_banner.close"), "#", class: "govuk-link" %>
+    <%= link_to t("components.app_promo_banner.view"),
+      "https://play.google.com/store/apps/details?id=uk.gov.govuk&hl=en_GB",
+      class: "govuk-link js-dismiss-link",
+      data: {
+        module: "ga4-link-tracker",
+        ga4_link: "{ 'event_name': 'navigation', 'type': 'playstore' }",
+      }
+    %>
+  <% end %>
+<% end %>

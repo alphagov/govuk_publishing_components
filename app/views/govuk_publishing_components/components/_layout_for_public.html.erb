@@ -71,6 +71,7 @@
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     <% end %>
     <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
+    <%= render "govuk_publishing_components/components/app_promo_banner" %>
     <%= render "govuk_publishing_components/components/skip_link", {
       href: "#content",
     } %>
