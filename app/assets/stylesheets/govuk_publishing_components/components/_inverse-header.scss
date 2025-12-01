@@ -6,6 +6,11 @@
   margin-bottom: govuk-spacing(6);
   padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
   box-sizing: border-box;
+
+  @include govuk-media-query($until: desktop) {
+    padding-left: govuk-spacing(3);
+    padding-right: govuk-spacing(3);
+  }
 }
 
 .gem-c-inverse-header__subtext {

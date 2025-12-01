@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Decrease inverse header mobile/tablet padding ([PR #5149](https://github.com/alphagov/govuk_publishing_components/pull/5149))
+
 ## 62.1.0
 
 * Adjust govspeak imports of component styles ([PR #5142](https://github.com/alphagov/govuk_publishing_components/pull/5142))
