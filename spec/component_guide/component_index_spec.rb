@@ -47,6 +47,7 @@ describe "Component guide index", :capybara do
     expected_main_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/component_support';
 @import 'govuk_publishing_components/components/accordion';
+@import 'govuk_publishing_components/components/app-promo-banner';
 @import 'govuk_publishing_components/components/back-link';
 @import 'govuk_publishing_components/components/breadcrumbs';
 @import 'govuk_publishing_components/components/button';
@@ -92,6 +93,7 @@ describe "Component guide index", :capybara do
     visit "/component-guide"
     expected_main_js = "//= require govuk_publishing_components/lib
 //= require govuk_publishing_components/components/accordion
+//= require govuk_publishing_components/components/app-promo-banner
 //= require govuk_publishing_components/components/button
 //= require govuk_publishing_components/components/cookie-banner
 //= require govuk_publishing_components/components/cross-service-header
