@@ -44,4 +44,22 @@ describe "Inverse header", type: :view do
 
     assert_select ".gem-c-inverse-header__subtext", text: "this is some text"
   end
+
+  it "renders correct css class for use on HMRC manuals" do
+    render_component(hmrc_header: true) { block }
+
+    assert_select ".gem-c-inverse-header--hmrc-header"
+  end
+
+  it "does not render the css class for use on HTML publications by default" do
+    render_component({}) { block }
+
+    assert_select ".gem-c-inverse-header--html-publication-header", false
+  end
+
+  it "renders correct css class for use on HTML publications" do
+    render_component(html_publication_header: true) { block }
+
+    assert_select ".gem-c-inverse-header--html-publication-header"
+  end
 end

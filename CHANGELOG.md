@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Decrease inverse header mobile/tablet padding ([PR #5149](https://github.com/alphagov/govuk_publishing_components/pull/5149))
+* Add option to inverse header for HMRC manuals ([PR #5148](https://github.com/alphagov/govuk_publishing_components/pull/5148))
 
 ## 62.1.0
 

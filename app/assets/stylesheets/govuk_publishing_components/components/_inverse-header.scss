@@ -38,6 +38,10 @@
   color: govuk-colour("white");
 }
 
+.gem-c-inverse-header--hmrc-header {
+  background: govuk-organisation-colour("hm-revenue-customs");
+}
+
 @include govuk-media-query($media-type: print) {
   .gem-c-inverse-header {
     background: none;
