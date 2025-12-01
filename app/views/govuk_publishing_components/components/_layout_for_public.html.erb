@@ -73,6 +73,7 @@
     <% end %>
     <% I18n.with_locale(:en) do %>
       <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
+      <%= render "govuk_publishing_components/components/app_promo_banner" %>
       <%= render "govuk_publishing_components/components/skip_link", {
         href: "#content",
       } %>
