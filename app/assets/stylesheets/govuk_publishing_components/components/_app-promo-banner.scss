@@ -1,0 +1,64 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-app-promo-banner {
+  display: none;
+  padding: govuk-spacing(5) 0;
+  border-top: 4px solid $govuk-brand-colour;
+  background-color: $govuk-rebrand-template-background-colour;
+  @include govuk-text-colour;
+}
+
+.gem-c-app-promo-banner--visible {
+  display: block;
+}
+
+.gem-c-app-promo-banner__container {
+  display: flex;
+  gap: govuk-spacing(3);
+  align-items: center;
+}
+
+.gem-c-app-promo-banner__icon {
+  flex: 0 1 64px;
+  min-width: 60px;
+  height: auto;
+}
+
+.gem-c-app-promo-banner__content {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: govuk-spacing(1);
+  column-gap: govuk-spacing(3);
+
+  // Ensures the view link appears beneath the text content
+  // on larger screen sizes
+  @include govuk-media-query($from: tablet) {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.gem-c-app-promo-banner__text {
+  text-wrap-style: balance;
+}
+
+.gem-c-app-promo-banner__close-button {
+  border: 0;
+  padding: 0;
+  color: govuk-tint(govuk-colour("black"), 25%);
+  background: none;
+  flex: 0 0 24px;
+  height: 24px;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 4px govuk-colour("black");
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+  }
+}
