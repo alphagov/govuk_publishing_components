@@ -13,6 +13,12 @@ en:
       hide_all: Hide all sections
       show_all: Show all sections
       this_section_visually_hidden: " this section"
+    app_promo_banner:
+      aria_label: GOV.UK app
+      body_text: Government made easier
+      title_text: Get the GOV.UK app
+      close: Close app download banner
+      view: View
     article_schema:
       scoped_search_description: Search within %{title}
     attachment:

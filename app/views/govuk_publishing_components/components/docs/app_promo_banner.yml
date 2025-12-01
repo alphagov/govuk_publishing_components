@@ -1,0 +1,30 @@
+name: App Promo Banner
+description: Displays a banner on Android devices to promote the GOVUK Android App
+body: |
+  By default the app promo banner is hidden. The banner is only displayed if JavaScript is enabled and if the device is Android.
+
+  If the user has provided permission to use the settings cookie in their cookie preferences, then `app_promo_banner` cookie is set which is used to stop the banner reappearing once it has been closed.
+
+accessibility_criteria: |
+  - Adequate colour contrast between text, icons, and background meeting WCAG 2.2 AA as a minimum
+  - Text does not overlap, truncate, or disappear when zoomed
+  - “Skip to main” link precedes banner in DOM order and tab sequence
+  - Close button can be activated with Enter/Space keys
+  - Close button has an accessible name 
+  - View link is descriptive indicating where it goes to
+  - Banner is reachable via keyboard navigation
+  - Banner placement does not obscure other critical content or controls
+  - Banner can be dismissed without requiring precise pointer actions
+  - Banner content is understandable out of context
+  - No keyboard trap: focus moves smoothly past the banner once dismissed
+shared_accessibility_criteria:
+  - link
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data:
+  without_ga4_tracking:
+    description: |
+      Disables GA4 tracking on the app promo banner. Tracking is enabled by default. This adds a data module and data-attributes with JSONs to the accordion. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
+    data:
+      disable_ga4: true
