@@ -1,0 +1,55 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-app-promo-banner {
+  display: none;
+  flex-direction: column;
+  @include govuk-text-colour;
+  padding: govuk-spacing(5) 0;
+  background-color: $govuk-rebrand-template-background-colour;
+  border-top: 4px solid $govuk-brand-colour;
+}
+
+.gem-c-app-promo-banner--visible {
+  display: block;
+}
+
+.gem-c-app-promo-banner__container {
+  display: flex;
+  gap: 20px;
+}
+
+.gem-c-app-promo-banner__icon {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.gem-c-app-promo-banner__content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 25px;
+}
+
+.gem-c-app-promo-banner__text {
+  flex: 1 1 100%;
+}
+
+.gem-c-app-promo-banner__action-links {
+  flex: 1;
+  display: flex;
+  column-gap: 15px;
+  justify-content: end;
+  flex-direction: row;
+  align-items: baseline;
+
+  .gem-c-button--secondary-quiet {
+    display: inline-block;
+    width: auto;
+    padding: 8px 15px;
+  }
+}
+
+.gem-c-app-promo-banner__action-link {
+  margin-bottom: 0;
+  padding: 0 govuk-spacing(1);
+}

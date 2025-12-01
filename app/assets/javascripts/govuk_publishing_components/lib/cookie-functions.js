@@ -21,6 +21,7 @@
     licensing_session: 'essential',
     govuk_contact_referrer: 'essential',
     multivariatetest_cohort_coronavirus_extremely_vulnerable_rate_limit: 'essential',
+    app_promo_banner: 'settings',
     dgu_beta_banner_dismissed: 'settings',
     global_banner_seen: 'settings',
     user_nation: 'settings',

@@ -1,0 +1,64 @@
+<%
+  add_gem_component_stylesheet("app_promo_banner")
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-app-promo-banner")
+  component_helper.add_role("region")
+  component_helper.add_aria_attribute({ label: t("components.app_promo_banner.aria_label")})
+  component_helper.set_hidden("hidden")
+  component_helper.add_data_attribute({ module: "app-promo-banner" })
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" })
+
+  ga4_link = {
+    event_name: "navigation",
+    type: "tbc",
+    section: "tbc",
+  }.to_json,
+
+  ga4_event = {
+    event_name: "select_content",
+    type: "tbc - app promo banner",
+    action: "tbc - closed",
+    section: "tbc",
+  }.to_json
+%>
+
+<%= tag.div(**component_helper.all_attributes) do %>
+  <%= tag.div(class: "govuk-width-container") do %>
+    <%= tag.div(class: "gem-c-app-promo-banner__container") do %>
+      <%= image_tag((asset_path "govuk_publishing_components/app_promo_banner/govuk-app-icon.png"),
+        alt: "",
+        class: "gem-c-app-promo-banner__icon",
+        width: "64",
+        height: "64",
+      ) %>
+      <%= tag.div(class: "gem-c-app-promo-banner__content") do %>
+        <%= tag.div(class: "gem-c-app-promo-banner__text") do %>
+          <%= tag.h2 t("components.app_promo_banner.title_text"), class: "govuk-heading-s govuk-!-margin-bottom-0" %>
+          <%= tag.p t("components.app_promo_banner.body_text"), class: "govuk-body-s govuk-!-margin-bottom-0" %>
+        <% end %>
+        <%= tag.div(class: "gem-c-app-promo-banner__action-links") do %>
+          <%= render "govuk_publishing_components/components/button", {
+            text: t("components.app_promo_banner.close"),
+            aria_label: t("components.app_promo_banner.close_aria_label"),
+            secondary_quiet: true,
+            classes: "js-close-app-promo-banner",
+            margin_bottom: 0,
+            data_attributes: {
+              module: "ga4-event-tracker",
+              ga4_event: ga4_event,
+            },
+          } %>
+          <%= tag.a(
+            href: "https://play.google.com/store/apps/details?id=uk.gov.govuk&hl=en_GB",
+            class: "govuk-link govuk-body gem-c-app-promo-banner__action-link",
+            data: { ga4_link: ga4_link },
+          ) do %>
+            <%= t("components.app_promo_banner.view") %>
+            <%= tag.span("on Google Play", class: "govuk-visually-hidden") %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
