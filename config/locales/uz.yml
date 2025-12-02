@@ -4,7 +4,9 @@ uz:
     hide: Яшириш
     show: Кўрсатиш
     toggle_less: Камроқ кўрсатиш
+    toggle_less_html:
     toggle_more: "%{show} %{number} кўпроқ"
+    toggle_more_html:
     translations: Таржималар
   components:
     accordion:
@@ -193,6 +195,15 @@ uz:
       related_external_links: Интернет кенглигида исталган жойда
       related_guides: Батафсил қўлланма
       statistical_data_sets: Статистик маълумотлар жамланмаси
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Долзарб воқеа
       topics: Мавзуни тадқиқот қилиш
       ukraine:

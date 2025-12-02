@@ -4,7 +4,9 @@ fa:
     hide: مخفی کردن
     show: نمایش
     toggle_less: نمایش کمتر
+    toggle_less_html:
     toggle_more: "%{show} %{number} بیشتر"
+    toggle_more_html:
     translations: ترجمه
   components:
     accordion:
@@ -190,6 +192,15 @@ fa:
       related_external_links: هر جای دیگری در وب
       related_guides: راهنمای جزئی
       statistical_data_sets: مجموعه داده آماری
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: رویداد موضوعی
       topics: کاوش موضوع
       ukraine:

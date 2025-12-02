@@ -4,7 +4,9 @@ lv:
     hide: Paslēpt
     show: Rādīt
     toggle_less: Rādīt mazāk
+    toggle_less_html:
     toggle_more: "%{show} %{number} vairāk"
+    toggle_more_html:
     translations: Tulkojumi
   components:
     accordion:
@@ -195,6 +197,15 @@ lv:
       related_external_links: Citur tīmeklī
       related_guides: Detalizētas vadlīnijas
       statistical_data_sets: Statistikas datu kopa
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktuāls notikums
       topics: Izpētīt tēmu
       ukraine:

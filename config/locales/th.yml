@@ -4,7 +4,9 @@ th:
     hide: ซ่อน
     show: แสดง
     toggle_less: แสดงน้อยลง
+    toggle_less_html:
     toggle_more: เพิ่มเติม %{show} %{number} รายการ
+    toggle_more_html:
     translations: ข้อความแปล
   components:
     accordion:
@@ -189,6 +191,15 @@ th:
       related_external_links: ที่อื่นในเว็บ
       related_guides: คำแนะนำโดยละเอียด
       statistical_data_sets: ชุดข้อมูลสถิติ
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: เหตุการณ์เฉพาะที่
       topics: สำรวจหัวข้อ
       ukraine:

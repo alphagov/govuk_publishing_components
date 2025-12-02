@@ -4,7 +4,9 @@ ti:
     hide: ይተሓባእ
     show: ይረአ
     toggle_less: ውሑድ ኣርእይ
+    toggle_less_html:
     toggle_more: "%{show} %{number} ዝያዳ"
+    toggle_more_html:
     translations: ትርጉማት
   components:
     accordion:
@@ -27,19 +29,13 @@ ti:
       request_format_text: እዚ ፋይል እዚ ን ብሓገዝ ቴክኖሎጂ ተጠቀምቲ ንዝኾኑ ዘይምቹእ ክኸውን ይኽእል እዩ።
     back_link:
       back: ተመለስ
+    back_to_top_link:
+      contents:
     character_count:
       body: ክሳብ %{number} %{type} ከተእቱ ትኽእል ኢኻ።
       type:
         characters: ገጸ ባህርያት
         words: ቃላት
-    chart:
-      accessibility_heading: ሰንጠረዥ ዳታ ን "%{chart_heading}"።
-      accessibility_html: እዚ ቻርት እዚ ብዓይኒ ዝርአ ውክልና ናይቲ ኣብቲ ሰንጠረዥ ዘሎ ዳታ  እዩ።
-      accessibility_link: ናብ "%{chart_heading}" ዳታ ሰንጠረዥ
-      table_dropdown: ዳታ ብ ሰደቓ መልክዕ ርአ
-    chat_entry:
-      description: ንናይ ንግዲ ሕቶታትኩም ቅልጡፍን ዝተመጣጠነን መልሲ ብ ናይ ጎቭ.ዩኬ/GOV.UK  ሓድሽ ሰብ ሰርሖ ብልሒ AI ተጠቂምኩም መልሲ ርኸቡ።
-      heading: ጎቭ.ዩኬ/GOV.UK  ቻት ሕተቱ
     checkboxes:
       or: ወይ
     contents_list:
@@ -104,11 +100,14 @@ ti:
       what_doing: እንታይ ትገብር ነይርካ?
       what_wrong: ብጌጋ ዝኸደ እንታይ ነይሩ?
       'yes': እወ
+    figure:
+      image_credit:
     intervention:
       accessible_link_text_suffix: "(ኣብ ሓድሽ ታብ/ክፍሊ ይኽፈት)\n"
     layout_footer:
       copyright_html: ክራውን ኮፒ ራይት /መሰል ቅዳሕ ዘውዲ
       licence_html: 'ብዘይካ እቲ ካልእ ዝተገልጸኩሉ ትሕዝቶ ኣብ ትሕቲ "ክፉት መንግስታዊ ፍቓድ" ይርከብ፣ '
+      navigation_links:
       support_links: ናይ ደገፍ መላግቦታት/ሊንክ
     layout_for_public:
       account_layout:
@@ -122,21 +121,18 @@ ti:
             manage:
               link_text: ቅጥዕታት
     layout_header:
-      hide_button: መድለዪ ሕባእ
       menu: 'ዝርዝር '
-      search_button: ጎቭ.ዩኬ/GOV.UK ዝብል ድለ
-      show_button: መድለዪ ከም ዝርአ ግበር
       top_level: ላዕለዋይ ደረጃ
     layout_super_navigation_header:
       logo_link_title: ናብ መበገሲ ገጽ ጎቭ.ዩኬ/GOV.UK ኪድ
-      logo_text: ጎቭ.ዩኬ/GOV.UK
       menu_toggle_label:
         hide: "%{label} ዝርዝር ሕባእ"
         show: "%{label} ዝርዝር ኣርእይ"
       navigation_link:
+        href:
         label: ዝርዝር
+      navigation_links_columns:
       navigation_menu_heading: ናይ ምድህሳስ ዝርዝር
-      navigation_search_heading: ምድላይ ህቡባት ገጻትን
       navigation_search_subheading: ምድላይ / ሰርች ምግባር
       search_text: ጎቭ.ዩኬ/GOV.UK ዝብል ድለ
     metadata:
@@ -172,6 +168,13 @@ ti:
       previous: ዝሓለፈ
     print_link:
       text: ነዚ ገጽ ሕተሞ
+    published_dates:
+      hidden_heading:
+      hide_all_updates:
+      last_updated:
+      published:
+      see_all_updates:
+      show_all_updates:
     radio:
       or: ወይ
     related_footer_navigation:
@@ -189,9 +192,19 @@ ti:
       related_external_links: ኣብ ካልእ ቦታታት ኣብ መርበብ ሓበሬታ
       related_guides: ዝርዝር መምርሒ
       statistical_data_sets: ስታቲስቲካዊ  እኩብ ዳታ/ሓበሬታ
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: እዋናዊ ፍጻመ
       topics: ነቲ ኣርእስቲ ዳህሰሶ
       ukraine:
+        links:
         title: ወራር ዩክሬን
       world_locations: ናይ ዓለም ቦታታት
     search_box:

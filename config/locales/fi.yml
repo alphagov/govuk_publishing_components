@@ -4,7 +4,9 @@ fi:
     hide: Piilottaa
     show: Näytä
     toggle_less: Näytä vähemmän
+    toggle_less_html:
     toggle_more: "%{show} %{number} lisää"
+    toggle_more_html:
     translations: Käännökset
   components:
     accordion:
@@ -193,6 +195,15 @@ fi:
       related_external_links: Muualla verkossa
       related_guides: Yksityiskohtaiset ohjeet
       statistical_data_sets: Tilastollinen tietojoukko
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Ajankohtainen tapahtuma
       topics: Tutustu aiheeseen
       ukraine:

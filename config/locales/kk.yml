@@ -4,7 +4,9 @@ kk:
     hide: Жасыру
     show: Көрсету
     toggle_less: Азырақ көрсету
+    toggle_less_html:
     toggle_more: "%{show} %{number} көп"
+    toggle_more_html:
     translations: Аудармалар
   components:
     accordion:
@@ -191,6 +193,15 @@ kk:
       related_external_links: Желіде басқа жерде
       related_guides: Егжей-тегжейлі нұсқаулық
       statistical_data_sets: Статистикалық деректер жиыны
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Тақырыптық оқиға
       topics: Тақырыпты зерттеу
       ukraine:

@@ -4,7 +4,9 @@ ka:
     hide: დამალვა
     show: ჩვენება
     toggle_less: ნაკლების ჩვენება
+    toggle_less_html:
     toggle_more: "%{show} %{number} more"
+    toggle_more_html:
     translations: თარგმანები
   components:
     accordion:
@@ -194,6 +196,15 @@ ka:
       related_external_links: ნებისმიერ სხვა ადგილას ვებში
       related_guides: დეტალური სახელმძღვანელო
       statistical_data_sets: სტატისტიკური მონაცემების ნაკრები
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: ტოპ მოვლენები
       topics: თემის გამოკვლევა
       ukraine:

@@ -4,7 +4,9 @@ zh:
     hide: 隐藏
     show: 显示
     toggle_less: 显示更少
+    toggle_less_html:
     toggle_more: "%{show} %{number}更多"
+    toggle_more_html:
     translations: 翻译
   components:
     accordion:
@@ -189,6 +191,15 @@ zh:
       related_external_links: 网页上的其它地方
       related_guides: 详细指南
       statistical_data_sets: 统计数据集
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: 局部事件
       topics: 探索本主题
       ukraine:

@@ -4,7 +4,9 @@ be:
     hide: Схаваць
     show: Паказаць
     toggle_less: Паказаць меньш
+    toggle_less_html:
     toggle_more: "%{show} %{number} болей"
+    toggle_more_html:
     translations: Пераклады
   components:
     accordion:
@@ -197,6 +199,15 @@ be:
       related_external_links: У іншых месцах у Інтэрнэце
       related_guides: Падрабязнае кіраўніцтва
       statistical_data_sets: Статыстычныя дадзеныя
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Актуальная падзея
       topics: Вывучыць тэму
       ukraine:

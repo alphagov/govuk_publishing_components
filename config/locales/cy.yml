@@ -4,7 +4,9 @@ cy:
     hide: Cuddio
     show: Dangos
     toggle_less: Dangos llai
+    toggle_less_html:
     toggle_more: "%{show} %{number} arall"
+    toggle_more_html:
     translations: Cyfieithiadau
   components:
     accordion:
@@ -195,6 +197,15 @@ cy:
       related_external_links: O'r we yn ehangach
       related_guides: Canllawiau manwl
       statistical_data_sets: Set ddata ystadegol
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Digwyddiad amserol
       topics: Archwilio'r pwnc
       ukraine:

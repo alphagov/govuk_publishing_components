@@ -4,7 +4,9 @@ ky:
     hide: Жашыруу
     show: Көрсөтүү
     toggle_less: Азыраак көрсөтүү
+    toggle_less_html:
     toggle_more: "%{show} %{number} көбүрөөк"
+    toggle_more_html:
     translations: Которуулар
   components:
     accordion:
@@ -27,19 +29,13 @@ ky:
       request_format_text: Бул файл жардамчы технологияны колдонуучулар үчүн ылайыктуу эмес.
     back_link:
       back: Артка
+    back_to_top_link:
+      contents:
     character_count:
       body: "%{number} %{type} чейин киргизе аласыз"
       type:
         characters: белги
         words: сөз
-    chart:
-      accessibility_heading: '"%{chart_heading}" үчүн дайындар таблицасы'
-      accessibility_html: Бул диаграмма таблицада болгон дайындардын визуалдык көрүнүшү.
-      accessibility_link: '"%{chart_heading}" дайындар таблицасына өтүү'
-      table_dropdown: Дайындарды таблица катары көрүү
-    chat_entry:
-      description: GOV.UK жаңы AI куралы менен бизнес суроолоруңузга тез, ылайыкташтырылган жоопторду алыңыз
-      heading: GOV.UK чатынан сураңыз
     checkboxes:
       or: же
     contents_list:
@@ -61,6 +57,7 @@ ky:
       title: GOV.UK’де кукилер
     devolved_nations:
       applies_to: Буга колдонулат
+      aria_label:
       england:
         end: " жана Англия"
         middle: ", Англия"
@@ -100,11 +97,14 @@ ky:
       what_doing: Эмне кылып жаттыңыз эле?
       what_wrong: Эммне туура эмес кетти?
       'yes': Ооба
+    figure:
+      image_credit:
     intervention:
       accessible_link_text_suffix: " (жаңы таблицада ачат)"
     layout_footer:
       copyright_html: Crown copyright
       licence_html: Эгер башкачасы каралбаса, бардык мазмун "Ачык Өкмөт Лицензиясынын" алкагында жеткиликтүү.
+      navigation_links:
       support_links: Колдоо байланыштары
     layout_for_public:
       account_layout:
@@ -118,21 +118,18 @@ ky:
             manage:
               link_text: Жөндөөлөр
     layout_header:
-      hide_button: Издөөнү жашыруу
       menu: Меню
-      search_button: GOV.UK издөө
-      show_button: Издөөнү көрсөтүү
       top_level: Жогорку деңгээл
     layout_super_navigation_header:
       logo_link_title: GOV.UK башкы баракчасына барыңыз
-      logo_text: GOV.UK
       menu_toggle_label:
         hide: "%{label} менюсун жашыруу"
         show: "%{label} менюсун көрсөтүү"
       navigation_link:
+        href:
         label: Меню
+      navigation_links_columns:
       navigation_menu_heading: Навигация менюсу
-      navigation_search_heading: Издөө жана белгилүү баракчалар
       navigation_search_subheading: Издөө
       search_text: GOV.UK издөө
     metadata:
@@ -168,6 +165,13 @@ ky:
       previous: Мурунку
     print_link:
       text: Бул баракчаны басып чыгаруу
+    published_dates:
+      hidden_heading:
+      hide_all_updates:
+      last_updated:
+      published:
+      see_all_updates:
+      show_all_updates:
     radio:
       or: же
     related_footer_navigation:
@@ -185,9 +189,19 @@ ky:
       related_external_links: Интернетте башка жерде
       related_guides: Деталдуу жетекчилик
       statistical_data_sets: Статистикалык дайындардын топтому
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Актуалдуу окуя
       topics: Теманы изилдөө
       ukraine:
+        links:
         title: Украинага басып кирүү
       world_locations: Дүйнөдөгү жайгашкан жерлер
     search_box:

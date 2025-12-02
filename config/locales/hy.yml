@@ -4,7 +4,9 @@ hy:
     hide: Թաքցնել
     show: Ցուցադրել
     toggle_less: Ցույց տալ ավելի քիչ
+    toggle_less_html:
     toggle_more: "%{show} %{number} հատ ավել"
+    toggle_more_html:
     translations: Թարգմանություններ
   components:
     accordion:
@@ -195,6 +197,15 @@ hy:
       related_external_links: Վեբի այլ հատվածներում
       related_guides: Մանրամասն ուղեցույց
       statistical_data_sets: Վիճակագրական տվյալների ամբողջություն
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Հրատապ իրադարձություն
       topics: Ուսումնասիրել թեման՝
       ukraine:

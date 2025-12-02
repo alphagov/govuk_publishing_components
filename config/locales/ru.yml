@@ -4,7 +4,9 @@ ru:
     hide: Скрыть
     show: Показать
     toggle_less: Показать меньше
+    toggle_less_html:
     toggle_more: "%{show} %{number} больше"
+    toggle_more_html:
     translations: Переводы
   components:
     accordion:
@@ -195,6 +197,15 @@ ru:
       related_external_links: В другом месте в сети
       related_guides: Подробное руководство
       statistical_data_sets: Наборы статистических данных
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Актуальные события
       topics: Изучить событие
       ukraine:

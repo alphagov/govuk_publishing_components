@@ -4,7 +4,9 @@ de:
     hide: Ausblenden
     show: Anzeigen
     toggle_less: Weniger anzeigen
+    toggle_less_html:
     toggle_more: "%{show} %{number} weitere"
+    toggle_more_html:
     translations: Übersetzungen
   components:
     accordion:
@@ -195,6 +197,15 @@ de:
       related_external_links: Auf anderen Webseiten verfügbar
       related_guides: Detaillierte Anleitung
       statistical_data_sets: Statistischer Datensatz
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Themenbezogene Veranstaltung
       topics: Thema ansehen
       ukraine:

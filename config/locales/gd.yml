@@ -4,7 +4,9 @@ gd:
     hide: Cheilt
     show: Taispeántas
     toggle_less: Taispeáin níos lú
+    toggle_less_html:
     toggle_more: "%{show} %{number} níos mó"
+    toggle_more_html:
     translations: Aistriúchán
   components:
     accordion:
@@ -193,6 +195,15 @@ gd:
       related_external_links: Áit eile ar an ngréasán
       related_guides: Comhairle mhionsonraithe
       statistical_data_sets: Tacar sonraí staidrimh
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Imeacht reatha
       topics: Déan iniúchadh ar théamaí
       ukraine:

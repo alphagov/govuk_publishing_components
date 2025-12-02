@@ -4,7 +4,9 @@ tk:
     hide: Gizle
     show: görkez
     toggle_less: Azrak görkez
+    toggle_less_html:
     toggle_more: "%{show} %{number} köpeltmek üçin"
+    toggle_more_html:
     translations: Terjimeler
   components:
     accordion:
@@ -192,6 +194,15 @@ tk:
       related_external_links: Torda başga bir ýerde
       related_guides: Jikme-jik görkezme
       statistical_data_sets: Statistiki maglumat toplumy
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Möhüm waka
       topics: Mowzugy öwreniň
       ukraine:

@@ -4,7 +4,9 @@ sw:
     hide: Ficha
     show: Onyesha
     toggle_less: Onyesha chache
+    toggle_less_html:
     toggle_more: "%{show} %{number} zaidi"
+    toggle_more_html:
     translations: Tafsiri
   components:
     accordion:
@@ -191,6 +193,15 @@ sw:
       related_external_links: Mahali pengine kwenye wavuti
       related_guides: Mwongozo wa kina
       statistical_data_sets: Kikundi cha data ya takwimu
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Tukio linalohusiana na mada
       topics: Pitia mada
       ukraine:

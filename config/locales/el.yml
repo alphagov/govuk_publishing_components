@@ -4,7 +4,9 @@ el:
     hide: Απόκρυψη
     show: Εμφάνιση
     toggle_less: Εμφάνιση λιγότερων
+    toggle_less_html:
     toggle_more: "%{show} %{number} ακόμη"
+    toggle_more_html:
     translations: Μεταφράσεις
   components:
     accordion:
@@ -191,6 +193,15 @@ el:
       related_external_links: Αλλού στο διαδίκτυο
       related_guides: Αναλυτική καθοδήγηση
       statistical_data_sets: Σύνολο στατιστικών δεδομένων
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Θεματική εκδήλωση
       topics: Εξερευνήστε το θέμα
       ukraine:

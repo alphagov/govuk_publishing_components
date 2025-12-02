@@ -4,7 +4,9 @@ ro:
     hide: Ascundeți
     show: Afișați
     toggle_less: Afișați mai puține
+    toggle_less_html:
     toggle_more: "%{show} încă %{number}"
+    toggle_more_html:
     translations: Traduceri
   components:
     accordion:
@@ -192,6 +194,15 @@ ro:
       related_external_links: Altundeva pe web
       related_guides: Îndrumări detaliate
       statistical_data_sets: Set de date statistice
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Eveniment pe o temă dată
       topics: Explorați tema
       ukraine:

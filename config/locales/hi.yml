@@ -4,7 +4,9 @@ hi:
     hide: छिपाएं
     show: दिखाएं
     toggle_less: कम दिखाएं
+    toggle_less_html:
     toggle_more: "%{show} %{number} और"
+    toggle_more_html:
     translations: अनुवादन
   components:
     accordion:
@@ -191,6 +193,15 @@ hi:
       related_external_links: वेब पर कहीं और
       related_guides: विस्तृत मार्गदर्शन
       statistical_data_sets: सांख्यिकीय आंकड़े का समूह
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: सामयिक आयोजन
       topics: विषय खोजें
       ukraine:
