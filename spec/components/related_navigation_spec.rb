@@ -161,6 +161,23 @@ describe "Related navigation", type: :view do
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/brazil/news\"]", text: "Brazil"
   end
 
+  it "adds a show more toggle link to long external link sections" do
+    content_item = {}
+    links = []
+
+    7.times do
+      links << { "url" => "https://wikipedia.org", "title" => "Wikipedia" }
+    end
+
+    content_item["details"] = {
+      "external_related_links" => links,
+    }
+
+    render_component(content_item:)
+
+    assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more external links"
+  end
+
   it "does not use a Show More for only one link above the max per section" do
     content_item = { "links" => { "world_locations" => [] } }
     %w[USA Wales Fiji Iceland Sweden Mauritius].each do |country|
