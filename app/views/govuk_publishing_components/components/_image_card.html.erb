@@ -9,14 +9,11 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-image-card")
-  component_helper.add_class("govuk-grid-row") if card_helper.two_thirds
   component_helper.add_class("gem-c-image-card--large") if card_helper.large
   component_helper.add_class("gem-c-image-card--two-thirds") if card_helper.two_thirds
-  component_helper.add_class("gem-c-image-card--no-image") unless (card_helper.image_src || card_helper.youtube_video_id)
   component_helper.add_class(brand_helper.brand_class) if brand_helper.brand_class
 
   text_wrapper_classes = %w[gem-c-image-card__text-wrapper]
-  text_wrapper_classes << "gem-c-image-card__text-wrapper--two-thirds" if card_helper.two_thirds
 
   font_size ||= card_helper.large ? "m" : "s"
   heading_class = %w[gem-c-image-card__title]
@@ -42,19 +39,20 @@
 <% if card_helper.href || card_helper.extra_details.any? %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <%= content_tag(:div, class: text_wrapper_classes) do %>
-      <div class="gem-c-image-card__header-and-context-wrapper">
-        <% if card_helper.heading_text %>
-          <%= content_tag(shared_helper.get_heading_level, class: heading_class) do %>
-            <% if card_helper.href %>
-              <%= link_to card_helper.heading_text, card_helper.href, class: heading_link_classes %>
-            <% else %>
-              <%= card_helper.heading_text %>
-            <% end %>
+      <%= card_helper.context %>
+
+      <% if card_helper.heading_text %>
+        <%= content_tag(shared_helper.get_heading_level, class: heading_class) do %>
+          <% if card_helper.href %>
+            <%= link_to card_helper.heading_text, card_helper.href, class: heading_link_classes %>
+          <% else %>
+            <%= card_helper.heading_text %>
           <% end %>
         <% end %>
-        <%= card_helper.context %>
-      </div>
+      <% end %>
+
       <%= card_helper.description %>
+
       <% if card_helper.extra_details.any? %>
         <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not card_helper.extra_details_no_indent %>">
           <% card_helper.extra_details.each do |link| %>
