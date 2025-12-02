@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 62.2.0
 
 * Refactor image card CSS ([PR #5147](https://github.com/alphagov/govuk_publishing_components/pull/5147))
 * Decrease inverse header mobile/tablet padding ([PR #5149](https://github.com/alphagov/govuk_publishing_components/pull/5149))
