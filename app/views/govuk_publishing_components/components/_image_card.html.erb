@@ -33,7 +33,6 @@
   ]
   extra_link_classes << brand_helper.color_class
 
-  component_helper.add_data_attribute({ module: "image-card" }) if card_helper.youtube_video_id
   component_helper.set_lang(card_helper.lang)
 %>
 <% if card_helper.href || card_helper.extra_details.any? %>

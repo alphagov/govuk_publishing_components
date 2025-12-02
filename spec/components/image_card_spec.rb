@@ -5,7 +5,7 @@ describe "ImageCard", type: :view do
     "image_card"
   end
 
-  it "renders nothing when no link or youtube video id provided" do
+  it "renders nothing when no link is provided" do
     assert_empty render_component({})
   end
 
@@ -157,21 +157,5 @@ describe "ImageCard", type: :view do
       },
     )
     assert_select ".gem-c-image-card__image[srcset='/images/my-image.jpg 600w']"
-  end
-
-  it "adds the imagecard module if youtube video id added" do
-    render_component(youtube_video_id: "EXAMPLE", image_src: "/moo.jpg", image_alt: "some meaningful alt text", sizes: "100vw, 300vw")
-    assert_select ".gem-c-image-card[data-module='image-card']"
-  end
-
-  it "generates youtube fallback link if youtube video id supplied" do
-    render_component(youtube_video_id: "EXAMPLE", image_alt: "some meaningful alt text")
-    assert_select ".gem-c-image-card__youtube-thumbnail-container[href='https://www.youtube.com/watch?v=EXAMPLE']"
-    assert_select ".gem-c-image-card__youtube-thumbnail-image[src='https://img.youtube.com/vi/EXAMPLE/maxresdefault.jpg']"
-  end
-
-  it "adds brand__color to figcaption of youtube fallback link if brand" do
-    render_component(youtube_video_id: "EXAMPLE", image_alt: "some meaningful alt text", brand: "brand")
-    assert_select ".gem-c-image-card__youtube-thumbnail-container-text.brand__color"
   end
 end
