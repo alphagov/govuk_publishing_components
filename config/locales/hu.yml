@@ -4,7 +4,9 @@ hu:
     hide: Elrejtés
     show: Megmutatás
     toggle_less: Kevesebb mutatása
+    toggle_less_html:
     toggle_more: "%{show} %{number} több"
+    toggle_more_html:
     translations: Fordítások
   components:
     accordion:
@@ -194,6 +196,15 @@ hu:
       related_external_links: Máshol az interneten
       related_guides: Részletes útmutató
       statistical_data_sets: Statisztikai adatkészlet
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktuális esemény
       topics: Téma felfedezése
       ukraine:

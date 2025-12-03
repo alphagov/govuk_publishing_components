@@ -4,7 +4,9 @@ cs:
     hide: Skrýt
     show: Zobrazit
     toggle_less: Zobrazit méně
+    toggle_less_html:
     toggle_more: "%{show} %{number} více"
+    toggle_more_html:
     translations: Překlady
   components:
     accordion:
@@ -196,6 +198,15 @@ cs:
       related_external_links: Jinde na webu
       related_guides: Podrobné pokyny
       statistical_data_sets: Soubor statistických údajů.
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktuální událost
       topics: Prozkoumat téma
       ukraine:

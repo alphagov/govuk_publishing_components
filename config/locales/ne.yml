@@ -4,7 +4,9 @@ ne:
     hide:
     show:
     toggle_less:
+    toggle_less_html:
     toggle_more:
+    toggle_more_html:
     translations:
   components:
     accordion:
@@ -187,6 +189,15 @@ ne:
       related_external_links:
       related_guides:
       statistical_data_sets:
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events:
       topics:
       ukraine:

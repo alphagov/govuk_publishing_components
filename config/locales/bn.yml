@@ -4,7 +4,9 @@ bn:
     hide: লুকিয়ে রাখুন
     show: দেখান
     toggle_less: অল্প দেখান
+    toggle_less_html:
     toggle_more: আরও %{show} %{number}
+    toggle_more_html:
     translations: অনুবাদসমূহ
   components:
     accordion:
@@ -192,6 +194,15 @@ bn:
       related_external_links: ওয়েবে অন্য কোথায়ও
       related_guides: বিস্তারিত নির্দেশনা
       statistical_data_sets: পরিসংখ্যানগত তথ্য সংকলন
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: বিষয়ভিত্তিক ইভেন্ট
       topics: বিষয়টি অনুসন্ধান করুন
       ukraine:

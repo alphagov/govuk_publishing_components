@@ -4,7 +4,9 @@ en:
     hide: Hide
     show: Show
     toggle_less: Show fewer
+    toggle_less_html: Show fewer <span class='govuk-visually-hidden'>%{visually_hidden_text}</span>
     toggle_more: "%{show} %{number} more"
+    toggle_more_html: "%{show} %{number} more <span class='govuk-visually-hidden'>%{visually_hidden_text}</span>"
     translations: Translations
   components:
     accordion:
@@ -298,6 +300,15 @@ en:
       related_external_links: Elsewhere on the web
       related_guides: Detailed guidance
       statistical_data_sets: Statistical data set
+      toggle_visually_hidden_text:
+        collections: collections
+        related_external_links: external links
+        related_guides: detailed guidance links
+        related_items: related content links
+        statistical_data_sets: statistical data sets
+        topical_events: topical events
+        topics: topics
+        world_locations: world locations
       topical_events: Topical event
       topics: Explore the topic
       ukraine:

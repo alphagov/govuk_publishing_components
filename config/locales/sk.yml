@@ -4,7 +4,9 @@ sk:
     hide: Skryť
     show: Zobraziť
     toggle_less: Zobraziť menej
+    toggle_less_html:
     toggle_more: "%{show} %{number} viac"
+    toggle_more_html:
     translations: Preklady
   components:
     accordion:
@@ -196,6 +198,15 @@ sk:
       related_external_links: Na inom mieste na webe
       related_guides: Podrobné usmernenie
       statistical_data_sets: Súbor štatistických údajov
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktuálne podujatie
       topics: Preskúmať tému
       ukraine:

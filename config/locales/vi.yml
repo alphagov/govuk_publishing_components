@@ -4,7 +4,9 @@ vi:
     hide: Ẩn
     show: Hiển thị
     toggle_less: Ẩn bớt
+    toggle_less_html:
     toggle_more: "%{show} thêm %{number}"
+    toggle_more_html:
     translations: Bản dịch
   components:
     accordion:
@@ -190,6 +192,15 @@ vi:
       related_external_links: Ở vị trí khác trên web
       related_guides: Hướng dẫn chi tiết
       statistical_data_sets: Bộ dữ liệu thống kê
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Sự kiện chuyên đề
       topics: Khám phá chủ đề
       ukraine:

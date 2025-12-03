@@ -4,7 +4,9 @@ sv:
     hide: Dölj
     show: Visa
     toggle_less: Visa färre
+    toggle_less_html:
     toggle_more: "%{show} %{number} mer"
+    toggle_more_html:
     translations: Översättningar
   components:
     accordion:
@@ -191,6 +193,15 @@ sv:
       related_external_links: På andra ställen på webben
       related_guides: Detaljerad vägledning
       statistical_data_sets: Statistiska uppgifter
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktuell händelse
       topics: Utforska ämnet
       ukraine:

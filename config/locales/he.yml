@@ -4,7 +4,9 @@ he:
     hide: הסתר
     show: הצג
     toggle_less: הצג פחות
+    toggle_less_html:
     toggle_more: "%{show} %{number} עוד"
+    toggle_more_html:
     translations: תרגומים
   components:
     accordion:
@@ -191,6 +193,15 @@ he:
       related_external_links: במקומות אחרים ברשת
       related_guides: הדרכה מפורטת
       statistical_data_sets: מערך נתונים סטטיסטיים
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: אירוע אקטואלי
       topics: סייר את הנושא
       ukraine:

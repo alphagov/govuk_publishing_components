@@ -4,7 +4,9 @@ pa:
     hide: ਓਹਲੇ
     show: ਦਿਖਾਉ
     toggle_less: ਘੱਟ ਦਿਖਾਉ
+    toggle_less_html:
     toggle_more: "%{show} %{number} ਹੋਰ"
+    toggle_more_html:
     translations: ਅਨੁਵਾਦ
   components:
     accordion:
@@ -191,6 +193,15 @@ pa:
       related_external_links: ਵੈਬ ਤੇ ਹੋਰ ਕਿਤੇ
       related_guides: ਵਿਸਤ੍ਰਿਤ ਮਾਰਗਦਰਸ਼ਨ
       statistical_data_sets: ਅੰਕੜਾ ਡਾਟਾ ਸੈੱਟ
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: ਸਤਹੀ ਘਟਨਾ
       topics: ਵਿਸ਼ੇ ਦੀ ਪੜਚੋਲ ਕਰੋ
       ukraine:

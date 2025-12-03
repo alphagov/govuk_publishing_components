@@ -4,7 +4,9 @@ ta:
     hide: மறை
     show: காட்டு
     toggle_less: குறைவாகக் காட்டு
+    toggle_less_html:
     toggle_more: மேலும் %{show} %{number}
+    toggle_more_html:
     translations: மொழிபெயர்ப்புகள்
   components:
     accordion:
@@ -192,6 +194,15 @@ ta:
       related_external_links: இணையத்தில் வேறு எங்கும்
       related_guides: விரிவான வழிகாட்டுதல்
       statistical_data_sets: புள்ளியியல் தரவுத் தொகுதி
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: தலைப்புசார்ந்த நிகழ்வு
       topics: தலைப்பை அறிக
       ukraine:

@@ -91,10 +91,20 @@ examples:
       content_item:
         details:
           external_related_links:
-            - url: "http://media.slc.co.uk/sfe/1718/ft/sfe_terms_and_conditions_guide_1718_d.pdf"
-              title: "Student loans: terms and conditions 2017 to 2018 (PDF, 136KB)"
-            - url: "https://www.thestudentroom.co.uk/content.php?r=5967-Repaying-your-student-loan"
-              title: "The Student Room: repaying your student loan"
+            - url: "https://wikipedia.org"
+              title: "Wikipedia 1"
+            - url: "https://wikipedia.org"
+              title: "Wikipedia 2"
+            - url: "https://wikipedia.org"
+              title: "Wikipedia 3"
+            - url: "https://wikipedia.org"
+              title: "Wikipedia 4"
+            - url: "https://wikipedia.org"
+              title: "Wikipedia 5"
+            - url: "https://wikipedia.org"
+              title: "Wikipedia 6"
+            - url: "https://wikipedia.org"
+              title: "Wikipedia 7"
   with_extensive_world_locations:
     description: The component handles having a long list of content passed to it, by only showing the first few items and hiding the rest behind a Show More toggle.
     data:

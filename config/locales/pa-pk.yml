@@ -4,7 +4,9 @@ pa-pk:
     hide: چھپاؤ
     show: وکھاؤ
     toggle_less: کُج گھٹ دکھاؤ
+    toggle_less_html:
     toggle_more: ہور {number}% %{show}
+    toggle_more_html:
     translations: ترجمے
   components:
     accordion:
@@ -187,6 +189,15 @@ pa-pk:
       related_external_links: ویب تے کسے وی ہور تھاں تے
       related_guides: تفصیلی رہنمائی
       statistical_data_sets: حساب کتاب دے سیٹ
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: مضمون سے حساب نال وقوعے
       topics: مضمون دی کھوج کرو
       ukraine:

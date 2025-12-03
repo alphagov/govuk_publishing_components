@@ -4,7 +4,9 @@ mt:
     hide: Aħbi
     show: Uri
     toggle_less: Ara inqas
+    toggle_less_html:
     toggle_more: "%{show} %{number}"
+    toggle_more_html:
     translations: Traduzzjonijiet
   components:
     accordion:
@@ -193,6 +195,15 @@ mt:
       related_external_links: X'imkien ieħor fuq l-internet
       related_guides: Gwida dettaljata
       statistical_data_sets: Sett tad-dejta bl-istatistiċi
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Avveniment topiku
       topics: Esplora s-suġġett
       ukraine:

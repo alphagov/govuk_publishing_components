@@ -4,7 +4,9 @@ gu:
     hide: હાઇડ કરો
     show: દર્શાવો
     toggle_less: થોડા ઓછા દર્શાવો
+    toggle_less_html:
     toggle_more: "%{show} %{number} વધુ"
+    toggle_more_html:
     translations: અનુવાદ
   components:
     accordion:
@@ -191,6 +193,15 @@ gu:
       related_external_links: વેબ પર અન્ય સ્થાને
       related_guides: વિગતવાર માર્ગદર્શન
       statistical_data_sets: આંકડાકીય ડેટા સેટ
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: પ્રસંગોચિત ઘટના
       topics: વિષય એક્સ્પ્લોર કરો
       ukraine:

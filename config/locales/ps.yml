@@ -4,7 +4,9 @@ ps:
     hide: پټول
     show: ښودل
     toggle_less: لږ ښودل
+    toggle_less_html:
     toggle_more: "%{show} %{number} نور"
+    toggle_more_html:
     translations: ژباړې
   components:
     accordion:
@@ -188,6 +190,15 @@ ps:
       related_external_links: په ویب کې بل چیرې
       related_guides: تفصيلي لارښود
       statistical_data_sets: د احصایوي معلوماتو سیټ
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: موضوعي پیښه
       topics: موضوع وپلټئ
       ukraine:

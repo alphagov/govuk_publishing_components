@@ -4,7 +4,9 @@ et:
     hide: Peida
     show: Kuva
     toggle_less: Kuva vähem
+    toggle_less_html:
     toggle_more: "%{show} %{number} veel"
+    toggle_more_html:
     translations: Tõlked
   components:
     accordion:
@@ -194,6 +196,15 @@ et:
       related_external_links: Mujal võrgus
       related_guides: Üksikasjalikud juhised
       statistical_data_sets: Statistiline andmekogum
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Teemakohane sündmus
       topics: Uuri teemat
       ukraine:

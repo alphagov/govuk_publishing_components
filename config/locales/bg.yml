@@ -4,7 +4,9 @@ bg:
     hide: Скриване
     show: Показване
     toggle_less: Показване на по-малко
+    toggle_less_html:
     toggle_more: "%{show} %{number} повече"
+    toggle_more_html:
     translations: Translations
   components:
     accordion:
@@ -195,6 +197,15 @@ bg:
       related_external_links: На други места в интернет
       related_guides: Подробна насока
       statistical_data_sets: Набор от статистически данни
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Тематично събитие
       topics: Разглеждане на темата
       ukraine:

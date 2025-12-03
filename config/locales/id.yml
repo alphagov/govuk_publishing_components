@@ -4,7 +4,9 @@ id:
     hide: Sembunyikan
     show: Tampilkan
     toggle_less: Lihat lebih sedikit
+    toggle_less_html:
     toggle_more: "%{show} %{number} lagi"
+    toggle_more_html:
     translations: Terjemahan
   components:
     accordion:
@@ -191,6 +193,15 @@ id:
       related_external_links: Di tempat lain di web
       related_guides: Panduan terperinci
       statistical_data_sets: Set data statistik
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Acara berdasar topik
       topics: Jelajahi topik
       ukraine:

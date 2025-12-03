@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update related navigation toggle texts for improved accessibility ([PR #5145](https://github.com/alphagov/govuk_publishing_components/pull/5145))
+
 ## 62.2.0
 
 * Refactor image card CSS ([PR #5147](https://github.com/alphagov/govuk_publishing_components/pull/5147))

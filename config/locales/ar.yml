@@ -4,7 +4,9 @@ ar:
     hide: إخفاء
     show: إظهار
     toggle_less: عرض أقل
+    toggle_less_html:
     toggle_more: زيادة بمقدار %{show} %{number}
+    toggle_more_html:
     translations: الترجمات
   components:
     accordion:
@@ -194,6 +196,15 @@ ar:
       related_external_links: في مكان آخر على الويب
       related_guides: توجيهات تفصيلية
       statistical_data_sets: مجموعة بيانات إحصائية
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: حدث موضوعي
       topics: استكشف الموضوع
       ukraine:

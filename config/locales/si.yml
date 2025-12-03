@@ -4,7 +4,9 @@ si:
     hide: සඟවන්න
     show: පෙන්වන්න
     toggle_less: අඩුවෙන් පෙන්වන්න
+    toggle_less_html:
     toggle_more: තවත් %{show} %{number}
+    toggle_more_html:
     translations: පරිවර්තන
   components:
     accordion:
@@ -191,6 +193,15 @@ si:
       related_external_links: වෙබ් හි වෙනත් තැනක
       related_guides: විස්තරාත්මක මඟපෙන්වීම
       statistical_data_sets: සංඛ්යාලේඛන දත්ත කට්ටලය
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: කාලෝචිත සිදුවීම
       topics: මාතෘකාව ගවේෂණය කරන්න
       ukraine:

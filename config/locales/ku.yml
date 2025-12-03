@@ -4,7 +4,9 @@ ku:
     hide: شاردنەوە
     show: پیشاندان
     toggle_less: پیشاندانی کەمتر
+    toggle_less_html:
     toggle_more: "%{show} %{number}زیاتر"
+    toggle_more_html:
     translations: وەرگێڕانەکان
   components:
     accordion:
@@ -27,19 +29,13 @@ ku:
       request_format_text: لەوانەیە ئەم پەڕگەیە یان ئەم فایلە بۆ بەکارهێنەرانی تەکنەلۆژیای یارمەتیدەر گونجاو نەبێت.
     back_link:
       back: گەڕانەوە
+    back_to_top_link:
+      contents:
     character_count:
       body: دەتوانیت تا %{number} %{type} دابنێیت.
       type:
         characters: کارەکتەرەکان
         words: وشەکان
-    chart:
-      accessibility_heading: خشتەی داتا بۆ "%{chart_heading}"
-      accessibility_html: ئەم هێڵکارییە- چارتە- خوێندنەوەیەکی بینراوی ئەو زانیاریانەیە کە لە خشتەکەدا بەردەستن.
-      accessibility_link: بڕۆ بۆ خشتەی داتاکانی "%{chart_heading}".
-      table_dropdown: سەیری داتاکان بکە وەک خشتەیەک
-    chat_entry:
-      description: وەڵامی خێرا و تایبەتمەند بۆ پرسیارەکانی بازرگانیت بەدەستبهێنە بە ئامرازی نوێی زیرەکی دەستکرد واتە AI ی لە ماڵپەڕی GOV.UK
-      heading: پرسیار لە چاتی GOV.UK بکە
     checkboxes:
       or: یان
     contents_list:
@@ -64,6 +60,7 @@ ku:
       title: کووکی لە ماڵپەڕی GOV.UK
     devolved_nations:
       applies_to: 'پێشکەشی بکە بۆ '
+      aria_label:
       england:
         end: و ئینگلتەرا
         middle: "، ئینگلتەرا"
@@ -103,11 +100,14 @@ ku:
       what_doing: تۆ چیت دەکرد؟
       what_wrong: چی بە خراپی ڕۆیشتووە بەڕێوە ؟
       'yes': بەڵێ
+    figure:
+      image_credit:
     intervention:
       accessible_link_text_suffix: "(لە پەڕەیەکی نوێدا دەکرێتەوە)"
     layout_footer:
       copyright_html: مافی چاپکردنی تاج
       licence_html: هەموو ناوەڕۆکەکان بەپێی "مۆڵەتی حکومەتی کراوە" بەردەستە، تەنها لەو شوێنانە نەبێت کە بە پێچەوانەوە ئاماژەیان پێکراوە
+      navigation_links:
       support_links: بەستەرەکانی پشتگیری
     layout_for_public:
       account_layout:
@@ -121,21 +121,18 @@ ku:
             manage:
               link_text: ڕێکخستنەکان
     layout_header:
-      hide_button: بەدواگەڕان بشارەوە
       menu: مێنۆ
-      search_button: گەڕان بەدوای GOV.UK
-      show_button: بەدواگەڕان پیشان بدە
       top_level: ئاستی سەرەوە
     layout_super_navigation_header:
       logo_link_title: بڕۆ بۆ ماڵپەڕی GOV.UK
-      logo_text: GOV.UK
       menu_toggle_label:
         hide: مینیوی %{label} بشارەوە
         show: مێنۆی %{label} پیشان بدە
       navigation_link:
+        href:
         label: مێنۆ
+      navigation_links_columns:
       navigation_menu_heading: مێنۆی گەشتکردن
-      navigation_search_heading: گەڕان و لاپەڕی خواست لەسەر-  بەناوبانگەکان
       navigation_search_subheading: گەڕان
       search_text: گەڕان بەدوای GOV.UK
     metadata:
@@ -171,6 +168,13 @@ ku:
       previous: پێشووتر
     print_link:
       text: ئەم لاپەڕەیە پرنت بکە
+    published_dates:
+      hidden_heading:
+      hide_all_updates:
+      last_updated:
+      published:
+      see_all_updates:
+      show_all_updates:
     radio:
       or: یان
     related_footer_navigation:
@@ -188,9 +192,19 @@ ku:
       related_external_links: لە شوێنەکانی تری وێب
       related_guides: ڕێنمایی وردەکارییەکان
       statistical_data_sets: کۆمەڵە زانیارییە ئامارییەکان
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: ڕووداوێکی بابەتیی
       topics: بەدواداچوون بۆ بابەتەکە بکە
       ukraine:
+        links:
         title: داگیرکردنی ئۆکرانیا
       world_locations: شوێنەکانی جیهان
     search_box:

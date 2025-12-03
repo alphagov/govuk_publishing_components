@@ -4,7 +4,9 @@ sl:
     hide: Skrij
     show: Prikaži
     toggle_less: Pokaži manj
+    toggle_less_html:
     toggle_more: "%{show} %{number} več"
+    toggle_more_html:
     translations: Prevodi
   components:
     accordion:
@@ -198,6 +200,15 @@ sl:
       related_external_links: Drugje na internetu
       related_guides: Podrobne smernice
       statistical_data_sets: Statistični podatkovni niz
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktualen dogodek
       topics: Razišči to temo
       ukraine:

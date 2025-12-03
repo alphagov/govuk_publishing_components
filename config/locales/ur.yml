@@ -4,7 +4,9 @@ ur:
     hide: پوشیدہ کریں
     show: دکھائی
     toggle_less: کم دکھائیں
+    toggle_less_html:
     toggle_more: "%{show} %{number} مزید"
+    toggle_more_html:
     translations: تراجم
   components:
     accordion:
@@ -188,6 +190,15 @@ ur:
       related_external_links: ویب میں کہیں اور
       related_guides: حذف کردہ رہنمائی
       statistical_data_sets: شماریاتی ڈیٹا سیٹ
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: موضوعاتی ایونٹ
       topics: موضوع کے بارے میں مزید جانیں
       ukraine:

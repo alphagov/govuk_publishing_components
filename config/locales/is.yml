@@ -4,7 +4,9 @@ is:
     hide: Fela
     show: Sýna
     toggle_less: Sýna færri
+    toggle_less_html:
     toggle_more: "%{show} %{number} fleiri"
+    toggle_more_html:
     translations: Þýðingar
   components:
     accordion:
@@ -191,6 +193,15 @@ is:
       related_external_links: Annars staðar á vefnum
       related_guides: Nákvæmar leiðbeiningar
       statistical_data_sets: Tölfræðilegt gagnasett
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Efnislegur viðburður
       topics: Kanna efnið
       ukraine:

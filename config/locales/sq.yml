@@ -4,7 +4,9 @@ sq:
     hide: Fshih
     show: Shfaq
     toggle_less: Shfaq më pak
+    toggle_less_html:
     toggle_more: "%{show} %{number} më tepër"
+    toggle_more_html:
     translations: Përkthimet
   components:
     accordion:
@@ -191,6 +193,15 @@ sq:
       related_external_links: Diku tjetër në internet
       related_guides: Udhëzime të hollësishme
       statistical_data_sets: Grupi i të dhënave statistikore
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Ngjarje aktuale
       topics: Eksploroni temën
       ukraine:

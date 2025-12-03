@@ -4,7 +4,9 @@ ja:
     hide: 非表示
     show: 表示
     toggle_less: 一部を表示
+    toggle_less_html:
     toggle_more: さらに ％{number}
+    toggle_more_html:
     translations: 翻訳
   components:
     accordion:
@@ -187,6 +189,15 @@ ja:
       related_external_links: ウェブ上の他の場所
       related_guides: 詳細なガイダンス
       statistical_data_sets: 統計データセット
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: 話題のイベント
       topics: トピックを探索する
       ukraine:

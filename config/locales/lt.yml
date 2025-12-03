@@ -4,7 +4,9 @@ lt:
     hide: Slėpti
     show: Rodyti
     toggle_less: Rodyti mažiau
+    toggle_less_html:
     toggle_more: "%{show}% {number} daugiau"
+    toggle_more_html:
     translations: Vertimai
   components:
     accordion:
@@ -196,6 +198,15 @@ lt:
       related_external_links: Kitur internete
       related_guides: Detali informacija
       statistical_data_sets: Statistinių duomenų rinkinys
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktualus įvykis
       topics: Išnagrinėti temą
       ukraine:

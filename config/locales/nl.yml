@@ -4,7 +4,9 @@ nl:
     hide: Verberg
     show: Toon
     toggle_less: Toon minder
+    toggle_less_html:
     toggle_more: "%{show} %{number} meer"
+    toggle_more_html:
     translations: Vertalingen
   components:
     accordion:
@@ -191,6 +193,15 @@ nl:
       related_external_links: Elders op het web
       related_guides: Gedetailleerde richtsnoeren
       statistical_data_sets: Statistische gegevens
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Actueel evenement
       topics: Verken het onderwerp
       ukraine:

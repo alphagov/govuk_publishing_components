@@ -4,7 +4,9 @@ az:
     hide: Gizlət
     show: Göstər
     toggle_less: Daha azını göstər
+    toggle_less_html:
     toggle_more: "%{show} %{number} daha çox"
+    toggle_more_html:
     translations: Tərcümələr
   components:
     accordion:
@@ -191,6 +193,15 @@ az:
       related_external_links: İnternetdə başqa yerdə
       related_guides: Təfərrüatlı göstəriş
       statistical_data_sets: Statistik məlumat paketi
+      toggle_visually_hidden_text:
+        collections:
+        related_external_links:
+        related_guides:
+        related_items:
+        statistical_data_sets:
+        topical_events:
+        topics:
+        world_locations:
       topical_events: Aktual tədbir
       topics: Mövzunu araşdırın
       ukraine:
