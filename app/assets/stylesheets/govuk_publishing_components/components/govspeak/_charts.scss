@@ -31,7 +31,7 @@
   // https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5
 
   $gss-colour-dark-blue: #12436d;
-  $gss-colour-turquoise: #28a197;
+  $gss-colour-turquoise: #1bbbaf;
   $gss-colour-dark-pink: #801650;
   $gss-colour-orange: #f46a25;
   $gss-colour-dark-grey: #3d3d3d;
@@ -42,7 +42,7 @@
   $chart-border: govuk-colour("white"); // Chart border colour
   $key-border: govuk-colour("white"); // Key border colour
   $bar-colours: $gss-colour-dark-blue, $gss-colour-turquoise, $gss-colour-dark-pink, $gss-colour-orange, $gss-colour-dark-grey, $gss-colour-plum;
-  $bar-text-colours: govuk-colour("white"), govuk-colour("white"), govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("black");
+  $bar-text-colours: govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("black");
   $bar-cell-colour: govuk-colour("black");
   $bar-outdented-colour: govuk-colour("black");
 
