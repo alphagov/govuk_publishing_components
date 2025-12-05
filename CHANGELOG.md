@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 62.2.1
 
 * Update related navigation toggle texts for improved accessibility ([PR #5145](https://github.com/alphagov/govuk_publishing_components/pull/5145))
 * Make govspeak chart's turquoise colour AAA compliant ([PR #5153](https://github.com/alphagov/govuk_publishing_components/pull/5153))
