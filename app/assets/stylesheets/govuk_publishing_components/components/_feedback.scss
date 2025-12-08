@@ -95,7 +95,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
   }
 }
 
-.gem-c-feedback__prompt-link {
+.gem-c-feedback__prompt-link.govuk-button {
   background: transparent;
   color: govuk-colour("black");
   box-shadow: 0 3px 0 govuk-colour("black");
@@ -125,8 +125,8 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
   }
 }
 
-.gem-c-feedback__prompt-link:link,
-.gem-c-feedback__prompt-link:visited {
+.gem-c-feedback__prompt-link.govuk-button:link,
+.gem-c-feedback__prompt-link.govuk-button:visited {
   color: govuk-colour("black");
 
   &:focus,
