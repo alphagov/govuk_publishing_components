@@ -54,7 +54,7 @@ describe('GOVUK.Modules.AddAnother', function () {
             </fieldset>
           </div>
           <template class="js-add-another__empty-template">
-            <div class=".js-add-another__fieldset">
+            <div class="js-add-another__fieldset">
               <fieldset>
                 <legend>Thing 2</legend>
                 <input type="hidden" name="test[1][id]" value="test_id" />
@@ -136,7 +136,7 @@ describe('GOVUK.Modules.AddAnother', function () {
             </fieldset>
           </div>
           <template class="js-add-another__empty-template">
-            <div class=".js-add-another__fieldset">
+            <div class="js-add-another__fieldset">
               <fieldset>
                 <legend>Thing 2</legend>
                 <input type="hidden" name="test[1][id]" value="test_id" />
@@ -215,7 +215,7 @@ describe('GOVUK.Modules.AddAnother', function () {
             </fieldset>
           </div>
           <template class="js-add-another__empty-template">
-            <div class=".js-add-another__fieldset">
+            <div class="js-add-another__fieldset">
               <fieldset>
                 <legend>Thing 3</legend>
                 <input type="hidden" name="test[2][id]" value="test_id" />
