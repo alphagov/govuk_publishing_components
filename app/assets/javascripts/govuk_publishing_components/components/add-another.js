@@ -126,12 +126,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.addNewFieldset = function (event) {
-    var button = event.target
     var newFieldsetTemplate = this.module.querySelector('.js-add-another__empty-template')
     var newFieldset = newFieldsetTemplate.content.cloneNode(true).children[0]
     newFieldset.classList.add('js-add-another__fieldset')
     this.createRemoveButton(newFieldset, this.removeNewFieldset.bind(this))
-    button.before(newFieldset)
+    newFieldsetTemplate.before(newFieldset)
 
     this.incrementAttributes(newFieldsetTemplate.content)
     this.updateFieldsetsAndButtons()
