@@ -126,3 +126,9 @@ examples:
           cookie_preferences:
             text: How GOV.UK accounts use cookies
             href: https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement
+  with_title_lang_attribute:
+    data:
+      title: 'Example layout'
+      title_lang: 'cy'
+      block: |
+        <h1>Page content goes here</h1>

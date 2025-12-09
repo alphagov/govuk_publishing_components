@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add an option for title language to public layout ([PR #5169](https://github.com/alphagov/govuk_publishing_components/pull/5169))
+
 ## 62.2.1
 
 * Update related navigation toggle texts for improved accessibility ([PR #5145](https://github.com/alphagov/govuk_publishing_components/pull/5145))
