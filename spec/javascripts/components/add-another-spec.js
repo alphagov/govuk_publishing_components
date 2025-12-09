@@ -616,9 +616,9 @@ describe('GOVUK.Modules.AddAnother', function () {
               <legend>Thing 1</legend>
               <input type="hidden" name="test[0][id]" value="test_id" />
               <label for="test_0_foo">Foo</label>
-              <input type="text" id="test_0_foo" name="test[0][foo]" value="test foo" />
+              <input type="text" id="test_0_foo" name="test[0][foo]" value="ABC" />
               <label for="test_0_bar"></label>
-              <textarea id="test_0_bar" name="test[0][bar]">test bar</textarea>
+              <textarea id="test_0_bar" name="test[0][bar]">ABC</textarea>
               <label for="test_0__destroy">Delete</label>
               <div class="js-add-another__destroy-checkbox">
                 <input type="checkbox" id="test_0_destroy" name="test[0][_destroy]" />
@@ -628,14 +628,14 @@ describe('GOVUK.Modules.AddAnother', function () {
           <div class="js-add-another__fieldset">
             <fieldset>
               <legend>Thing 2</legend>
-              <input type="hidden" name="test[0][id]" value="test_id" />
-              <label for="test_0_foo">Foo</label>
-              <input type="text" id="test_0_foo" name="test[0][foo]" value="test baz" />
-              <label for="test_0_bar"></label>
-              <textarea id="test_0_bar" name="test[0][bar]">test boo</textarea>
-              <label for="test_0__destroy">Delete</label>
+              <input type="hidden" name="test[1][id]" value="test_id" />
+              <label for="test_1_foo">Foo</label>
+              <input type="text" id="test_1_foo" name="test[1][foo]" value="DEF" />
+              <label for="test_1_bar"></label>
+              <textarea id="test_1_bar" name="test[1][bar]">DEF</textarea>
+              <label for="test_1__destroy">Delete</label>
               <div class="js-add-another__destroy-checkbox">
-                <input type="checkbox" id="test_0_destroy" name="test[0][_destroy]" />
+                <input type="checkbox" id="test_1_destroy" name="test[1][_destroy]" />
               </div>
             </fieldset>
           </div>
@@ -686,40 +686,90 @@ describe('GOVUK.Modules.AddAnother', function () {
     })
 
     it('moves a fieldset down when move-down button is clicked', function () {
-      const firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+      let firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
       const moveDownButton = firstFieldset.querySelector('button[data-action="move-down"]')
       window.GOVUK.triggerEvent(moveDownButton, 'click')
 
-      const updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
-      expect(updatedOrder).toEqual(['Thing 2', 'Thing 1']) // First moved down
+      firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+
+      expect(firstFieldset.querySelector('legend').textContent).toEqual('Thing 1')
+      expect(firstFieldset.querySelector('input[name="test[0][foo]"]').value).toEqual('DEF')
+      expect(firstFieldset.querySelector('textarea[name="test[0][bar]"]').value).toEqual('DEF')
+
+      var secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+
+      expect(secondFieldset.querySelector('legend').textContent).toEqual('Thing 2')
+      expect(secondFieldset.querySelector('input[name="test[1][foo]"]').value).toEqual('ABC')
+      expect(secondFieldset.querySelector('textarea[name="test[1][bar]"]').value).toEqual('ABC')
     })
 
     it('moves a fieldset up when move-up button is clicked', function () {
-      const secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+      let secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
       const moveUpButton = secondFieldset.querySelector('button[data-action="move-up"]')
       window.GOVUK.triggerEvent(moveUpButton, 'click')
 
-      const updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
-      expect(updatedOrder).toEqual(['Thing 2', 'Thing 1']) // Second moved up
+      var firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+
+      expect(firstFieldset.querySelector('legend').textContent).toEqual('Thing 1')
+      expect(firstFieldset.querySelector('input[name="test[0][foo]"]').value).toEqual('DEF')
+      expect(firstFieldset.querySelector('textarea[name="test[0][bar]"]').value).toEqual('DEF')
+
+      secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+
+      expect(secondFieldset.querySelector('legend').textContent).toEqual('Thing 2')
+      expect(secondFieldset.querySelector('input[name="test[1][foo]"]').value).toEqual('ABC')
+      expect(secondFieldset.querySelector('textarea[name="test[1][bar]"]').value).toEqual('ABC')
     })
 
     it('allows moving a newly added fieldset when button is clicked', function () {
       window.GOVUK.triggerEvent(addButton, 'click')
 
-      const newFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[2]
+      var newFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[2]
+
+      newFieldset.querySelector('input[name="test[2][foo]"]').value = 'GHI'
+      newFieldset.querySelector('textarea[name="test[2][bar]"]').value = 'GHI'
 
       const moveUpButton = newFieldset.querySelector('button[data-action="move-up"]')
       window.GOVUK.triggerEvent(moveUpButton, 'click')
 
-      let updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
+      let firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
 
-      expect(updatedOrder).toEqual(['Thing 1', 'Thing 3', 'Thing 2'])
+      expect(firstFieldset.querySelector('legend').textContent).toEqual('Thing 1')
+      expect(firstFieldset.querySelector('input[name="test[0][foo]"]').value).toEqual('ABC')
+      expect(firstFieldset.querySelector('textarea[name="test[0][bar]"]').value).toEqual('ABC')
+
+      let secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+
+      expect(secondFieldset.querySelector('legend').textContent).toEqual('Thing 2')
+      expect(secondFieldset.querySelector('input[name="test[1][foo]"]').value).toEqual('GHI')
+      expect(secondFieldset.querySelector('textarea[name="test[1][bar]"]').value).toEqual('GHI')
+
+      let thirdFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[2]
+
+      expect(thirdFieldset.querySelector('legend').textContent).toEqual('Thing 3')
+      expect(thirdFieldset.querySelector('input[name="test[2][foo]"]').value).toEqual('DEF')
+      expect(thirdFieldset.querySelector('textarea[name="test[2][bar]"]').value).toEqual('DEF')
 
       const moveDownButton = newFieldset.querySelector('button[data-action="move-down"]')
       window.GOVUK.triggerEvent(moveDownButton, 'click')
 
-      updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
-      expect(updatedOrder).toEqual(['Thing 1', 'Thing 2', 'Thing 3'])
+      firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+
+      expect(firstFieldset.querySelector('legend').textContent).toEqual('Thing 1')
+      expect(firstFieldset.querySelector('input[name="test[0][foo]"]').value).toEqual('ABC')
+      expect(firstFieldset.querySelector('textarea[name="test[0][bar]"]').value).toEqual('ABC')
+
+      secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+
+      expect(secondFieldset.querySelector('legend').textContent).toEqual('Thing 2')
+      expect(secondFieldset.querySelector('input[name="test[1][foo]"]').value).toEqual('DEF')
+      expect(secondFieldset.querySelector('textarea[name="test[1][bar]"]').value).toEqual('DEF')
+
+      thirdFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[2]
+
+      expect(thirdFieldset.querySelector('legend').textContent).toEqual('Thing 3')
+      expect(thirdFieldset.querySelector('input[name="test[2][foo]"]').value).toEqual('GHI')
+      expect(thirdFieldset.querySelector('textarea[name="test[2][bar]"]').value).toEqual('GHI')
     })
 
     it('re-initializes sortable after adding a new fieldset', function () {
