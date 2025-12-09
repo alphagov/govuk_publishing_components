@@ -136,7 +136,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.createRemoveButton(newFieldset, this.removeNewFieldset.bind(this))
     newFieldsetTemplate.before(newFieldset)
 
-    this.incrementAttributes(newFieldsetTemplate.content)
+    this.updateAttributes(newFieldsetTemplate.content)
     this.updateFieldsetsAndButtons()
 
     // Initialise any modules included in new fieldset
@@ -167,7 +167,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   // Set attribute values for id, for and name of supplied fieldset
-  AddAnother.prototype.incrementAttributes = function (fieldset) {
+  AddAnother.prototype.updateAttributes = function (fieldset, newIndex = null) {
     var matcher = /(.*[_[])([0-9]+)([_\]].*?)$/
     fieldset
       .querySelectorAll('label, input, select, textarea')
@@ -176,7 +176,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           var value = element.getAttribute(attribute)
           var matched = matcher.exec(value)
           if (!matched) return
-          var index = parseInt(matched[2], 10) + 1
+          var index = newIndex == null ? (parseInt(matched[2], 10) + 1) : newIndex
           element.setAttribute(attribute, matched[1] + index + matched[3])
         })
       })
@@ -235,6 +235,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     this.sortableList.sort(order, true)
+    this.updateFieldsetsAndButtons()
+
+    var visibleFields = this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+    visibleFields.forEach(function (field, index) {
+      this.updateAttributes(field, index)
+    }.bind(this))
   }
 
   AddAnother.prototype.removeMoveButtons = function () {
