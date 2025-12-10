@@ -835,5 +835,52 @@ describe('GOVUK.Modules.AddAnother', function () {
         expect(fieldset.querySelector('.gem-c-add-another__move-button-wrapper')).not.toBeNull()
       })
     })
+
+    describe('setting focus', function () {
+      function triggerKeyboardEvent (element) {
+        var event = new window.Event('click')
+        event.detail = 0
+        element.dispatchEvent(event)
+      }
+
+      var firstFieldset
+      var secondFieldset
+
+      beforeEach(function () {
+        firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+        secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+      })
+
+      it('sets focus on the move down button when the target fieldset is at the top', function () {
+        var moveUpButton = secondFieldset.querySelector('button[data-action="move-up"]')
+
+        triggerKeyboardEvent(moveUpButton)
+
+        firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+        expect(document.activeElement === firstFieldset.querySelector('button[data-action="move-down"]')).toBeTruthy()
+      })
+
+      it('sets focus on the move up button when the target fieldset is at the bottom', function () {
+        var moveDownButton = firstFieldset.querySelector('button[data-action="move-down"]')
+
+        triggerKeyboardEvent(moveDownButton)
+
+        secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+        expect(document.activeElement === secondFieldset.querySelector('button[data-action="move-up"]')).toBeTruthy()
+      })
+
+      it('sets focus on the clicked button when the target fieldset is in the middle', function () {
+        var addButton = fixture.querySelector('.js-add-another__add-button')
+        addButton.click()
+
+        var moveDownButton = firstFieldset.querySelector('button[data-action="move-down"]')
+
+        triggerKeyboardEvent(moveDownButton)
+
+        var middleFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+
+        expect(document.activeElement === middleFieldset.querySelector('button[data-action="move-down"]')).toBeTruthy()
+      })
+    })
   })
 })

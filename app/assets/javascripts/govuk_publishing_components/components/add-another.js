@@ -247,6 +247,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     visibleFields.forEach(function (field, index) {
       this.updateAttributes(field, index)
     }.bind(this))
+
+    var triggeredByKeyboard = event.detail === 0
+    if (triggeredByKeyboard) {
+      this.preserveElementFocus(button, fieldset, action, visibleFields)
+    }
+  }
+
+  AddAnother.prototype.preserveElementFocus = function (button, fieldset, action, visibleFields) {
+    let target = button
+    if (action === 'move-up' && fieldset === visibleFields[0]) {
+      target = button.parentNode.querySelector('button[data-action="move-down"]')
+    } else if (action === 'move-down' && fieldset === visibleFields[visibleFields.length - 1]) {
+      target = button.parentNode.querySelector('button[data-action="move-up"]')
+    }
+    target.focus()
   }
 
   AddAnother.prototype.removeMoveButtons = function () {
