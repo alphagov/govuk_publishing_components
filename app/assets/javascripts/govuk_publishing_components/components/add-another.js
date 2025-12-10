@@ -28,10 +28,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.createAddAnotherButton()
     this.createRemoveButtons()
     this.removeEmptyFieldset()
-    this.updateFieldsetsAndButtons()
     if (this.module.dataset.sortable === 'true') {
       this.makeSortable()
     }
+    this.updateFieldsetsAndButtons()
   }
 
   AddAnother.prototype.createEventData = function (data) {
@@ -106,12 +106,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     visibleFields.forEach(function (field, index) {
       field.querySelector('legend').textContent = this.module.dataset.fieldsetLegend + ' ' + (index + 1)
 
-      var trackedRemoveButton = field.parentNode.querySelector('.js-add-another__remove-button[data-ga4-event]')
+      var trackedButtons = field.parentNode.querySelectorAll(
+        '.js-add-another__remove-button[data-ga4-event], .gem-c-add-another__move-button[data-ga4-event]'
+      )
 
-      if (trackedRemoveButton) {
-        trackedRemoveButton.dataset.indexSection = this.startIndex + index
-        trackedRemoveButton.dataset.indexSectionCount = this.indexSectionCount || visibleFields.length
-      }
+      trackedButtons.forEach(function (button) {
+        button.dataset.indexSection = this.startIndex + index
+        button.dataset.indexSectionCount = this.indexSectionCount || visibleFields.length
+      }.bind(this))
     }.bind(this))
 
     if (this.module.dataset.emptyFields === 'false') {
@@ -208,6 +210,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     button.className = 'govuk-button gem-c-button--secondary-quiet gem-c-add-another__move-button'
     button.innerText = action === 'move-up' ? 'Move up' : 'Move down'
     button.dataset.action = action
+    if (!this.disableGa4) {
+      button.dataset.ga4Event = this.createEventData({ action: action })
+    }
+
     button.addEventListener('click', this.moveFieldset.bind(this))
     wrapper.prepend(button)
   }
