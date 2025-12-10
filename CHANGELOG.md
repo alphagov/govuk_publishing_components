@@ -11,6 +11,7 @@
 
 * Add an option for title language to public layout ([PR #5169](https://github.com/alphagov/govuk_publishing_components/pull/5169))
 * Remove govspeak chart's hidden text and update button text ([PR #5165](https://github.com/alphagov/govuk_publishing_components/pull/5165))
+* Convert language symbols to strings before array inclusion check ([PR #5171](https://github.com/alphagov/govuk_publishing_components/pull/5171))
 
 ## 62.2.1
 
