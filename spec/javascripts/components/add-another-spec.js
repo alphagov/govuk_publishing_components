@@ -604,6 +604,34 @@ describe('GOVUK.Modules.AddAnother', function () {
     let fixture
     let addAnother
 
+    function checkMoveButtonsEventData (visibleFields, startIndex = 1, indexSectionCount = null) {
+      visibleFields.forEach(function (field, index) {
+        var trackedMoveUpButton = field.querySelector('.gem-c-add-another__move-button[data-ga4-event][data-action="move-up"]')
+        var trackedMoveDownButton = field.querySelector('.gem-c-add-another__move-button[data-ga4-event][data-action="move-down"]')
+
+        expect(trackedMoveUpButton).toBeTruthy()
+        expect(trackedMoveDownButton).toBeTruthy()
+
+        expect(trackedMoveUpButton.dataset.ga4Event).toBe(JSON.stringify({
+          event_name: 'select_content',
+          type: 'add another',
+          action: 'move-up'
+        }))
+
+        expect(trackedMoveDownButton.dataset.ga4Event).toBe(JSON.stringify({
+          event_name: 'select_content',
+          type: 'add another',
+          action: 'move-down'
+        }))
+
+        expect(trackedMoveUpButton.dataset.indexSection).toBe(String(startIndex + index))
+        expect(trackedMoveUpButton.dataset.indexSectionCount).toBe(String(indexSectionCount || visibleFields.length))
+
+        expect(trackedMoveDownButton.dataset.indexSection).toBe(String(startIndex + index))
+        expect(trackedMoveDownButton.dataset.indexSectionCount).toBe(String(indexSectionCount || visibleFields.length))
+      })
+    }
+
     beforeEach(function () {
       fixture = document.createElement('form')
       fixture.setAttribute('data-module', 'AddAnother')
@@ -719,6 +747,29 @@ describe('GOVUK.Modules.AddAnother', function () {
       expect(secondFieldset.querySelector('legend').textContent).toEqual('Thing 2')
       expect(secondFieldset.querySelector('input[name="test[1][foo]"]').value).toEqual('ABC')
       expect(secondFieldset.querySelector('textarea[name="test[1][bar]"]').value).toEqual('ABC')
+    })
+
+    it('adds GA4 data attributes to move buttons', function () {
+      const fieldsets = fixture.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+      checkMoveButtonsEventData(fieldsets)
+    })
+
+    it('updates GA4 data attributes on move buttons when move-up is clicked', function () {
+      const secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+      const moveUpButton = secondFieldset.querySelector('button[data-action="move-up"]')
+      window.GOVUK.triggerEvent(moveUpButton, 'click')
+
+      const fieldsets = fixture.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+      checkMoveButtonsEventData(fieldsets)
+    })
+
+    it('updates GA4 data attributes on move buttons when move-down is clicked', function () {
+      const firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+      const moveDownButton = firstFieldset.querySelector('button[data-action="move-down"]')
+      window.GOVUK.triggerEvent(moveDownButton, 'click')
+
+      const fieldsets = fixture.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+      checkMoveButtonsEventData(fieldsets)
     })
 
     it('allows moving a newly added fieldset when button is clicked', function () {
