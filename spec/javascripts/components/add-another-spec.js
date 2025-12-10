@@ -599,4 +599,140 @@ describe('GOVUK.Modules.AddAnother', function () {
       expect(newFieldset.dataset.testModuleModuleStarted).toBeDefined()
     })
   })
+
+  describe('AddAnother with sortable functionality', function () {
+    let fixture
+    let addAnother
+
+    beforeEach(function () {
+      fixture = document.createElement('form')
+      fixture.setAttribute('data-module', 'AddAnother')
+      fixture.setAttribute('data-fieldset-legend', 'Thing')
+      fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.setAttribute('data-sortable', 'true')
+      fixture.innerHTML = `
+          <div class="js-add-another__fieldset">
+            <fieldset>
+              <legend>Thing 1</legend>
+              <input type="hidden" name="test[0][id]" value="test_id" />
+              <label for="test_0_foo">Foo</label>
+              <input type="text" id="test_0_foo" name="test[0][foo]" value="test foo" />
+              <label for="test_0_bar"></label>
+              <textarea id="test_0_bar" name="test[0][bar]">test bar</textarea>
+              <label for="test_0__destroy">Delete</label>
+              <div class="js-add-another__destroy-checkbox">
+                <input type="checkbox" id="test_0_destroy" name="test[0][_destroy]" />
+              </div>
+            </fieldset>
+          </div>
+          <div class="js-add-another__fieldset">
+            <fieldset>
+              <legend>Thing 2</legend>
+              <input type="hidden" name="test[0][id]" value="test_id" />
+              <label for="test_0_foo">Foo</label>
+              <input type="text" id="test_0_foo" name="test[0][foo]" value="test baz" />
+              <label for="test_0_bar"></label>
+              <textarea id="test_0_bar" name="test[0][bar]">test boo</textarea>
+              <label for="test_0__destroy">Delete</label>
+              <div class="js-add-another__destroy-checkbox">
+                <input type="checkbox" id="test_0_destroy" name="test[0][_destroy]" />
+              </div>
+            </fieldset>
+          </div>
+          <div class="js-add-another__empty">
+            <fieldset>
+              <legend>Thing 3</legend>
+              <input type="hidden" name="test[2][id]" value="test_id" />
+              <label for="test_2_foo">Foo</label>
+              <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
+              <label for="test_2_bar"></label>
+              <textarea id="test_2_bar" name="test[2][bar]"></textarea>
+              <label for="test_2__destroy">Delete</label>
+            </fieldset>
+          </div>
+          <template class="js-add-another__empty-template">
+            <div class="js-add-another__fieldset">
+              <fieldset>
+                <legend>Thing 3</legend>
+                <input type="hidden" name="test[2][id]" value="test_id" />
+                <label for="test_2_foo">Foo</label>
+                <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
+                <label for="test_2_bar"></label>
+                <textarea id="test_2_bar" name="test[2][bar]"></textarea>
+                <label for="test_2__destroy">Delete</label>
+              </fieldset>
+            </div>
+          </template>
+`
+      document.body.append(fixture)
+
+      addAnother = new GOVUK.Modules.AddAnother(fixture)
+      addAnother.init()
+      addButton = document.querySelector('.js-add-another__add-button')
+    })
+
+    afterEach(function () {
+      document.body.removeChild(fixture)
+    })
+
+    it('adds move buttons to each visible fieldset', function () {
+      const fieldsets = fixture.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+      fieldsets.forEach(function (fieldset) {
+        const wrapper = fieldset.querySelector('.gem-c-add-another__move-button-wrapper')
+        expect(wrapper).not.toBeNull()
+        expect(wrapper.querySelector('button[data-action="move-up"]')).not.toBeNull()
+        expect(wrapper.querySelector('button[data-action="move-down"]')).not.toBeNull()
+      })
+    })
+
+    it('moves a fieldset down when move-down button is clicked', function () {
+      const firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+      const moveDownButton = firstFieldset.querySelector('button[data-action="move-down"]')
+      window.GOVUK.triggerEvent(moveDownButton, 'click')
+
+      const updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
+      expect(updatedOrder).toEqual(['Thing 2', 'Thing 1']) // First moved down
+    })
+
+    it('moves a fieldset up when move-up button is clicked', function () {
+      const secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+      const moveUpButton = secondFieldset.querySelector('button[data-action="move-up"]')
+      window.GOVUK.triggerEvent(moveUpButton, 'click')
+
+      const updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
+      expect(updatedOrder).toEqual(['Thing 2', 'Thing 1']) // Second moved up
+    })
+
+    it('allows moving a newly added fieldset when button is clicked', function () {
+      window.GOVUK.triggerEvent(addButton, 'click')
+
+      const newFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[2]
+
+      const moveUpButton = newFieldset.querySelector('button[data-action="move-up"]')
+      window.GOVUK.triggerEvent(moveUpButton, 'click')
+
+      let updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
+
+      expect(updatedOrder).toEqual(['Thing 1', 'Thing 3', 'Thing 2'])
+
+      const moveDownButton = newFieldset.querySelector('button[data-action="move-down"]')
+      window.GOVUK.triggerEvent(moveDownButton, 'click')
+
+      updatedOrder = Array.from(fixture.querySelectorAll('.js-add-another__fieldset')).map(fs => fs.querySelector('legend').textContent)
+      expect(updatedOrder).toEqual(['Thing 1', 'Thing 2', 'Thing 3'])
+    })
+
+    it('re-initializes sortable after adding a new fieldset', function () {
+      spyOn(addAnother, 'makeSortable').and.callThrough()
+      const addButton = fixture.querySelector('.js-add-another__add-button')
+      addButton.click()
+
+      expect(addAnother.makeSortable).toHaveBeenCalled()
+      const fieldsets = fixture.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+      expect(fieldsets.length).toBe(3)
+      fieldsets.forEach(function (fieldset) {
+        expect(fieldset.querySelector('.gem-c-add-another__move-button-wrapper')).not.toBeNull()
+      })
+    })
+  })
 })

@@ -11,4 +11,30 @@
   .js-add-another__remove-button--hidden {
     display: none;
   }
+
+  .gem-c-fieldset {
+    position: relative;
+  }
+
+  .gem-c-fieldset:first-of-type {
+    .gem-c-add-another__move-button[data-action="move-up"] {
+      display: none;
+    }
+  }
+
+  .gem-c-fieldset:last-of-type {
+    .gem-c-add-another__move-button[data-action="move-down"] {
+      display: none;
+    }
+  }
+
+  .gem-c-add-another__move-button-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .gem-c-add-another__move-button {
+    margin-left: govuk-spacing(2);
+  }
 }
