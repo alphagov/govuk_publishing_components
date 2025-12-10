@@ -124,14 +124,32 @@ module GovukPublishingComponents
       end
 
       def related_world_locations
-        content_item_links_for("world_locations").each do |link|
+        links = Array(@content_item.dig("links", "world_locations"))
+
+        links = links.each do |link|
           build_world_locations_path_for link
+        end
+
+        links.map do |link|
+          {
+            path: link["base_path"],
+            text: link["title"],
+            locale: link["locale"],
+          }
         end
       end
 
       def build_world_locations_path_for(link)
-        slug = link[:text].parameterize
-        link[:path] ||= "/world/#{slug}/news"
+        link["base_path"] = if link["document_type"] == "world_location_news"
+                              link["base_path"]
+                            elsif link["document_type"] == "world_location" && link.dig("links", "world_location_news").any?
+                              link.dig("links", "world_location_news", 0, "base_path")
+                            else
+                              slug = link["title"].parameterize
+                              path = "/world/#{slug}/news"
+                              Rails.logger.warn "Guessing this path from a world_location that does not link to a world_location_news document: #{path}"
+                              path
+                            end
       end
 
       def related_statistical_data_sets
