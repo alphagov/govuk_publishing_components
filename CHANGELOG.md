@@ -9,6 +9,7 @@
 
 ## 62.3.0
 
+* Allow add another fieldsets to be reordered ([PR #5170](https://github.com/alphagov/govuk_publishing_components/pull/5170))
 * Add an option for title language to public layout ([PR #5169](https://github.com/alphagov/govuk_publishing_components/pull/5169))
 * Remove govspeak chart's hidden text and update button text ([PR #5165](https://github.com/alphagov/govuk_publishing_components/pull/5165))
 
