@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Adjust pagination component ([PR #5176](https://github.com/alphagov/govuk_publishing_components/pull/5176))
+* Guess `world_location_news` paths by `document_type` ([PR #5177](https://github.com/alphagov/govuk_publishing_components/pull/5177))
 
 ## 63.0.0
 
