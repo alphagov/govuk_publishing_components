@@ -10,7 +10,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       applyOnInit: true,
       autoOutdent: false,
       outdentAll: false,
-      chartVisibleText: 'Change to table and accessible view',
+      chartVisibleText: 'Change to table view',
       tableVisibleText: 'Change to chart view',
       chartAlertText: 'Chart visible',
       tableAlertText: 'Table visible',
@@ -418,17 +418,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   MagnaCharta.prototype.insert = function () {
-    var label = document.createElement('span')
-    var labelId = 'mc-chart-not-accessible-' + this.chartId
-
-    label.innerHTML = 'This content is not accessible - switch to table'
-    label.className = 'mc-hidden'
-    label.id = labelId
-
-    this.$graphContainer.setAttribute('aria-labelledby', labelId)
     this.$graphContainer.appendChild(this.$graph)
-    this.$graphContainer.appendChild(label)
-
     this.$table.insertAdjacentElement('afterend', this.$graphContainer)
   }
 
