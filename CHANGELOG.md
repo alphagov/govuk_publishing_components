@@ -12,6 +12,7 @@
 * **BREAKING** Replace Previous and Next Navigation with Pagination ([PR #5121](https://github.com/alphagov/govuk_publishing_components/pull/5121))
 * **BREAKING** Remove youtube functionality from image card ([PR #5146](https://github.com/alphagov/govuk_publishing_components/pull/5146))
 * Convert language symbols to strings before array inclusion check ([PR #5171](https://github.com/alphagov/govuk_publishing_components/pull/5171))
+* Force en language on layout elements ([PR #5174](https://github.com/alphagov/govuk_publishing_components/pull/5174))
 
 ## 62.3.0
 
