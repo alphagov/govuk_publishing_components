@@ -1,3 +1,4 @@
+//= require sortablejs/Sortable.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
@@ -28,6 +29,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.createRemoveButtons()
     this.removeEmptyFieldset()
     this.updateFieldsetsAndButtons()
+    if (this.module.dataset.sortable === 'true') {
+      this.makeSortable()
+    }
   }
 
   AddAnother.prototype.createEventData = function (data) {
@@ -142,6 +146,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     newFieldset
       .querySelector('input:not([type="hidden"]), select, textarea')
       .focus()
+
+    if (this.module.dataset.sortable === 'true') {
+      this.makeSortable()
+    }
   }
 
   AddAnother.prototype.removeExistingFieldset = function (event) {
@@ -172,6 +180,68 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           element.setAttribute(attribute, matched[1] + index + matched[3])
         })
       })
+  }
+
+  AddAnother.prototype.makeSortable = function () {
+    this.removeMoveButtons()
+    this.addMoveButtons()
+    this.sortableList = window.Sortable.create(this.module, {
+      dataIdAttr: 'data-sortable-id',
+      disabled: true
+    })
+  }
+
+  AddAnother.prototype.addMoveButtons = function () {
+    var visibleFields = this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+    visibleFields.forEach(function (field, index) {
+      field.dataset.sortableId = 'js-add-another__sortable-' + index + '-fieldset'
+      var wrapper = document.createElement('div')
+      wrapper.className = 'gem-c-add-another__move-button-wrapper'
+      this.addButton(wrapper, 'move-up')
+      this.addButton(wrapper, 'move-down')
+      field.prepend(wrapper)
+    }.bind(this))
+  }
+
+  AddAnother.prototype.addButton = function (wrapper, action) {
+    var button = document.createElement('button')
+    button.className = 'govuk-button gem-c-button--secondary-quiet gem-c-add-another__move-button'
+    button.innerText = action === 'move-up' ? 'Move up' : 'Move down'
+    button.dataset.action = action
+    button.addEventListener('click', this.moveFieldset.bind(this))
+    wrapper.prepend(button)
+  }
+
+  AddAnother.prototype.moveFieldset = function (event) {
+    event.preventDefault()
+
+    var button = event.currentTarget
+    var action = button.dataset.action
+    var fieldset = button.closest('.js-add-another__fieldset')
+
+    var sortableId = fieldset.dataset.sortableId
+
+    var order = this.sortableList.toArray()
+    var index = order.indexOf(sortableId)
+
+    // pull the item we're moving out of the order
+    order.splice(index, 1)
+
+    // put it back in at the correct position
+    if (action === 'move-down') {
+      order.splice(index + 1, 0, sortableId)
+    } else if (action === 'move-up') {
+      order.splice(index - 1, 0, sortableId)
+    }
+
+    this.sortableList.sort(order, true)
+  }
+
+  AddAnother.prototype.removeMoveButtons = function () {
+    var wrappers = this.module.querySelectorAll('.gem-c-add-another__move-button-wrapper')
+    wrappers.forEach((button) => {
+      button.remove()
+    })
   }
 
   Modules.AddAnother = AddAnother
