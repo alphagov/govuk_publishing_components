@@ -29,6 +29,12 @@ describe "Layout for public", :capybara, type: :view do
     assert_select "title", visible: :hidden, text: "Custom GOV.UK Title"
   end
 
+  it "adds a <title> tag with a custom lang" do
+    render_component(title: "Custom GOV.UK Title", title_lang: "cy")
+
+    assert_select "title[lang=cy]", visible: :hidden, text: "Custom GOV.UK Title"
+  end
+
   it "displays as a restricted width layout when called with the for_static parameter" do
     render_component(for_static: true)
 

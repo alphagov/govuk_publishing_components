@@ -20,6 +20,7 @@
   show_cross_service_header ||= false
   draft_watermark ||= false
   title ||= "GOV.UK - The best place to find government services and information"
+  title_lang ||= nil
 
   show_account_layout ||= false
   account_nav_location ||= nil
@@ -34,7 +35,7 @@
 <html class="govuk-template govuk-template--rebranded" lang="<%= html_lang %>">
   <head>
     <meta charset="utf-8">
-    <title><%= title %></title>
+    <%= tag.title title, lang: title_lang %>
 
     <%= javascript_include_tag "govuk_publishing_components/vendor/lux/lux-measurer", { async: true } %>
     <%= javascript_include_tag "govuk_publishing_components/rum-custom-data", type: "module" %>
