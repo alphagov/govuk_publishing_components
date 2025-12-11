@@ -108,7 +108,7 @@ cy:
     figure:
       image_credit: 'Delwedd gan: %{credit}'
     intervention:
-      accessible_link_text_suffix:
+      accessible_link_text_suffix: " (yn agor tab newydd)"
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Hawlfraint y Goron</a>
       licence_html: Mae'r holl gynnwys ar gael o dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Drwydded Agored y Llywodraeth v3.0</a>, ac eithrio ble nodir yn wahanol

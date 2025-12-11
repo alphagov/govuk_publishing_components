@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add Welsh translation for "accessible_link_text_suffix" ([PR #5168](https://github.com/alphagov/govuk_publishing_components/pull/5168))
 * **BREAKING** Replace Previous and Next Navigation with Pagination ([PR #5121](https://github.com/alphagov/govuk_publishing_components/pull/5121))
 * **BREAKING** Remove youtube functionality from image card ([PR #5146](https://github.com/alphagov/govuk_publishing_components/pull/5146))
 * Convert language symbols to strings before array inclusion check ([PR #5171](https://github.com/alphagov/govuk_publishing_components/pull/5171))
