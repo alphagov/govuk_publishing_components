@@ -223,29 +223,6 @@ examples:
       <div class="govuk-!-width-full">
         <%= component %>
       </div>
-  youtube_video:
-    description: |
-      Given a Youtube video id, the image card will render a Youtube embed instead of an image. If Javascript fails to execute for any reason, then a fallback link to the Youtube video will be rendered instead.
-
-      Youtube does not support embeds on Internet Explorer versions lower than 10. In addition, Youtube's website will block any version of Internet Explorer using it. There is therefore no fallback for IE9 and lower.
-    data:
-      youtube_video_id: "XnP6jaK7ZAY"
-      href: "/still-not-a-page"
-      youtube_video_alt: "The vision for GOV.UK"
-      context:
-        date: 2017-06-14 11:30:00
-        text: "Announcement"
-      description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
-      extra_details: [
-        {
-          text: "Link to video transcript",
-          href: "/1"
-        }
-      ]
-    embed: |
-      <div class="govuk-!-width-full">
-        <%= component %>
-      </div>
   with_ga4_tracking:
     description: The component does not include an option for GA4 tracking, but data attributes to enable the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) can be passed as shown.
     data:

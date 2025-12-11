@@ -170,53 +170,6 @@
   }
 }
 
-// Ensure the YouTube video has a fluid width
-// https://alistapart.com/article/creating-intrinsic-ratios-for-video/
-.gem-c-image-card__youtube-video-embed {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-}
-
-.gem-c-image-card__youtube-video-embed iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.gem-c-image-card__youtube-thumbnail-image-container {
-  position: relative;
-
-  &::before {
-    background: url("govuk_publishing_components/youtube-play-icon.png");
-    background: url("govuk_publishing_components/youtube-play-icon.svg"), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: 75px auto;
-    content: "";
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-  }
-}
-
-.gem-c-image-card__youtube-thumbnail-image {
-  filter: brightness(.9);
-}
-
-.gem-c-image-card__youtube-thumbnail-container-text {
-  margin-top: 10px;
-}
-
-.gem-c-image-card__youtube-thumbnail-container:focus .gem-c-image-card__youtube-thumbnail-container-text {
-  @include govuk-focused-text;
-}
-
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-image-card__title[class*="govuk-heading-"] {
