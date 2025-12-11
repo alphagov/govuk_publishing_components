@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 63.0.0
 
 * Add Welsh translation for "accessible_link_text_suffix" ([PR #5168](https://github.com/alphagov/govuk_publishing_components/pull/5168))
 * **BREAKING** Replace Previous and Next Navigation with Pagination ([PR #5121](https://github.com/alphagov/govuk_publishing_components/pull/5121))
