@@ -162,7 +162,7 @@ ku:
       label: ووشەی نهێنی
       password_hidden_announcement: وشەی نهێنی تۆ شاراوەتەوە
       password_shown_announcement: وشەی نهێنی تۆ دیارە
-    previous_and_next_navigation:
+    pagination:
       next: داهاتوو
       pagination: لاپەڕەسازی
       previous: پێشووتر

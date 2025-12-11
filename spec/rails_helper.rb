@@ -14,4 +14,5 @@ RSpec.configure do |config|
   config.include Capybara::DSL, capybara: true, visual_regression: true
   config.include Helpers::Components, type: :view
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include ActionView::Helpers::TagHelper
 end

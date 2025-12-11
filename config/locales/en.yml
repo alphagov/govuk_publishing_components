@@ -270,7 +270,7 @@ en:
       label: Password
       password_hidden_announcement: Your password is hidden
       password_shown_announcement: Your password is visible
-    previous_and_next_navigation:
+    pagination:
       next: Next
       pagination: Pagination
       previous: Previous

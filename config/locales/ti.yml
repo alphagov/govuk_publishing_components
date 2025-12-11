@@ -162,7 +162,7 @@ ti:
       label: መሕለፊ ቓል/ፓስዎርድ
       password_hidden_announcement: መሕለፊ ቓል/ፓስዎርድካ ተሓቢኡ ኣሎ
       password_shown_announcement: መሕለፊ ቓል/ፓስዎርድካ ይርአ ኣሎ
-    previous_and_next_navigation:
+    pagination:
       next: ዝቅጽል
       pagination: ገጻት ምግባር
       previous: ዝሓለፈ

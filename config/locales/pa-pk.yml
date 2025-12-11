@@ -159,7 +159,7 @@ pa-pk:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    previous_and_next_navigation:
+    pagination:
       next:
       pagination: ورقہ بندی
       previous:

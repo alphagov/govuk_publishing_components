@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING** Replace Previous and Next Navigation with Pagination ([PR #5121](https://github.com/alphagov/govuk_publishing_components/pull/5121))
+
 ## 62.3.0
 
 * Add an option for title language to public layout ([PR #5169](https://github.com/alphagov/govuk_publishing_components/pull/5169))
