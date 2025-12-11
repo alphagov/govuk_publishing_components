@@ -71,10 +71,12 @@
     <%= javascript_tag nonce: true do -%>
       document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
     <% end %>
-    <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
-    <%= render "govuk_publishing_components/components/skip_link", {
-      href: "#content",
-    } %>
+    <% I18n.with_locale(:en) do %>
+      <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
+      <%= render "govuk_publishing_components/components/skip_link", {
+        href: "#content",
+      } %>
+    <% end %>
     <% unless omit_header %>
       <% if show_cross_service_header %>
         <%= render "govuk_publishing_components/components/cross_service_header", {
@@ -121,15 +123,19 @@
 
     <% unless omit_feedback_form %>
       <div class="govuk-width-container">
-        <%= render "govuk_publishing_components/components/feedback" %>
+        <% I18n.with_locale(:en) do %>
+          <%= render "govuk_publishing_components/components/feedback" %>
+        <% end %>
       </div>
     <% end %>
 
     <% unless local_assigns[:hide_footer_links] %>
-      <%= render "govuk_publishing_components/components/layout_footer", {
-        navigation: omit_footer_navigation ? nil : layout_helper.footer_navigation,
-        meta: layout_helper.footer_meta,
-      } %>
+      <% I18n.with_locale(:en) do %>
+        <%= render "govuk_publishing_components/components/layout_footer", {
+          navigation: omit_footer_navigation ? nil : layout_helper.footer_navigation,
+          meta: layout_helper.footer_meta,
+        } %>
+      <% end %>
     <% end %>
     <%= javascript_include_tag "application", type: "module" %>
     <% if GovukPublishingComponents::Config.use_es6_components %>
