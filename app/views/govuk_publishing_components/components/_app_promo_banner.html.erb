@@ -1,0 +1,50 @@
+<%
+  add_gem_component_stylesheet("app_promo_banner")
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-app-promo-banner")
+  component_helper.add_role("region")
+  component_helper.add_aria_attribute({ label: t("components.app_promo_banner.aria_label")})
+  component_helper.set_hidden("hidden")
+  component_helper.add_data_attribute({ module: "app-promo-banner" })
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" })
+
+  ga4_link = {
+    event_name: "navigation",
+    type: "tbc",
+    section: "tbc",
+  }.to_json,
+%>
+
+<%= tag.div(class: "gem-c-app-promo-banner__background") do %>
+  <%= tag.div(class: "govuk-width-container") do %>
+    <%= tag.div(**component_helper.all_attributes) do %>
+      <%= tag.div(class: "gem-c-app-promo-banner__container") do %>
+        <%= image_tag((asset_path "govuk_publishing_components/app_promo_banner/govuk-app-icon.png"),
+          alt: "",
+          class: "gem-c-app-promo-banner__icon",
+          width: "64",
+          height: "64",
+        ) %>
+        <%= tag.div(class: "gem-c-app-promo-banner__content") do %>
+          <%= tag.h2 t("components.app_promo_banner.title_text"), class: "gem-c-app-promo-banner__heading govuk-heading-s" %>
+          <%= tag.p t("components.app_promo_banner.body_text"), class: "gem-c-app-promo-banner__text govuk-body-s" %>
+        <% end %>
+      <% end %>
+      <%= tag.div(class: "gem-c-app-promo-banner__action-links") do %>
+        <%= render "govuk_publishing_components/components/button", {
+          text: t("components.app_promo_banner.close"),
+          secondary_quiet: true,
+          classes: "js-dismiss-link",
+          margin_bottom: 0,
+        } %>
+        <%=
+          link_to t("components.app_promo_banner.view"),
+          "https://play.google.com/store/apps/details?id=uk.gov.govuk&hl=en_GB",
+          class: "govuk-body govuk-link app-store-link",
+          data: { ga4_link: ga4_link }
+        %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
