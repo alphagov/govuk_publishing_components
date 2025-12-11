@@ -836,6 +836,28 @@ describe('GOVUK.Modules.AddAnother', function () {
       })
     })
 
+    it('makes the first move up and first down buttons disabled', function () {
+      const firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
+      const secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
+
+      // Correct top and bottom fieldsets are disabled
+      expect(firstFieldset.querySelector('button[data-action="move-up"]')).toBeDisabled()
+      expect(firstFieldset.querySelector('button[data-action="move-down"]')).not.toBeDisabled()
+
+      expect(secondFieldset.querySelector('button[data-action="move-up"]')).not.toBeDisabled()
+      expect(secondFieldset.querySelector('button[data-action="move-down"]')).toBeDisabled()
+
+      const addButton = fixture.querySelector('.js-add-another__add-button')
+      addButton.click()
+
+      // Newly added fieldset has the move down button disabled
+      const newFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[2]
+      expect(newFieldset.querySelector('button[data-action="move-down"]')).toBeDisabled()
+
+      // Fieldset that was previously at the bottom does not have the move down button disabled
+      expect(secondFieldset.querySelector('button[data-action="move-down"]')).not.toBeDisabled()
+    })
+
     describe('setting focus', function () {
       function triggerKeyboardEvent (element) {
         var event = new window.Event('click')

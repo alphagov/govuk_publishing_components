@@ -123,12 +123,29 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       )
     }
 
+    if (this.module.dataset.sortable === 'true') {
+      this.disableTopAndBottomButtons()
+    }
+
     var trackedAddAnotherButton = this.module.querySelector('.js-add-another__add-button[data-ga4-event]')
 
     if (trackedAddAnotherButton) {
       trackedAddAnotherButton.dataset.indexSection = this.indexSectionCount || visibleFields.length
       trackedAddAnotherButton.dataset.indexSectionCount = this.indexSectionCount || visibleFields.length
     }
+  }
+
+  // Disable the top "Move up" and bottom "Move down" buttons when the list is sortable.
+  AddAnother.prototype.disableTopAndBottomButtons = function () {
+    this.module.querySelectorAll('.gem-c-add-another__move-button').forEach(function (button) {
+      button.removeAttribute('disabled')
+    })
+
+    var topMoveUpButton = this.module.querySelector('.js-add-another__fieldset:first-of-type .gem-c-add-another__move-button[data-action="move-up"]')
+    topMoveUpButton.setAttribute('disabled', true)
+
+    var bottomMoveDownButton = this.module.querySelector('.js-add-another__fieldset:last-of-type .gem-c-add-another__move-button[data-action="move-down"]')
+    bottomMoveDownButton.setAttribute('disabled', true)
   }
 
   AddAnother.prototype.addNewFieldset = function (event) {
@@ -139,6 +156,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     newFieldsetTemplate.before(newFieldset)
 
     this.updateAttributes(newFieldsetTemplate.content)
+    if (this.module.dataset.sortable === 'true') {
+      this.makeSortable()
+    }
     this.updateFieldsetsAndButtons()
 
     // Initialise any modules included in new fieldset
@@ -148,10 +168,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     newFieldset
       .querySelector('input:not([type="hidden"]), select, textarea')
       .focus()
-
-    if (this.module.dataset.sortable === 'true') {
-      this.makeSortable()
-    }
   }
 
   AddAnother.prototype.removeExistingFieldset = function (event) {

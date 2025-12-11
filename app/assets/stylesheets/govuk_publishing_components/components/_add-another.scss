@@ -16,16 +16,8 @@
     position: relative;
   }
 
-  .gem-c-fieldset:first-of-type {
-    .gem-c-add-another__move-button[data-action="move-up"] {
-      display: none;
-    }
-  }
-
-  .gem-c-fieldset:last-of-type {
-    .gem-c-add-another__move-button[data-action="move-down"] {
-      display: none;
-    }
+  .gem-c-add-another__move-button[disabled] {
+    display: none;
   }
 
   .gem-c-add-another__move-button-wrapper {
