@@ -33,7 +33,7 @@ module GovukPublishingComponents
       end
 
       def has_links?
-        has_pages? || @prev_link || @next_link
+        has_pages? || @prev_link.present? || @next_link.present?
       end
 
       def has_pages?

@@ -4,6 +4,48 @@ require "rails_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
   describe "Pagination helper" do
+    describe "#has_links?" do
+      it "is false if nothing passed to the component" do
+        instance = described_class.new({})
+        expect(instance.has_links?).to be(false)
+      end
+
+      it "is true if there are page numbers" do
+        items = [
+          {
+            number: 6,
+            href: "#",
+          },
+          {
+            number: 7,
+            href: "#",
+          },
+        ]
+        instance = described_class.new({ items: items })
+        expect(instance.has_links?).to be(true)
+      end
+
+      it "is true if there is a valid previous link" do
+        previous_page = {
+          href: "previous-page",
+          title: "Previous page",
+          label: "1 of 3",
+        }
+        instance = described_class.new({ previous_page: previous_page })
+        expect(instance.has_links?).to be(true)
+      end
+
+      it "is true if there is a valid next link" do
+        next_page = {
+          href: "next-page",
+          title: "Next page",
+          label: "1 of 3",
+        }
+        instance = described_class.new({ next_page: next_page })
+        expect(instance.has_links?).to be(true)
+      end
+    end
+
     it "generates only previous arrow link if only previous_page defined" do
       instance = described_class.new({
         "previous_page": {
