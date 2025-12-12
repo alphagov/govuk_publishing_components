@@ -58,16 +58,48 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[href=\"/air-quality-statistics\"]", text: "Air quality statistics"
   end
 
-  it "renders world locations section when passed world location items with base path" do
+  it "renders world locations section when passed world location news items with base path" do
     content_item = {}
-    content_item["links"] = construct_links("world_locations", "/uk-mission-to-the-eu", "UK Mission to the European Union")
+    content_item["links"] = construct_links(
+      "world_locations",
+      "/uk-mission-to-the-eu",
+      "UK Mission to the European Union",
+      "world_location_news",
+    )
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
     assert_select ".gem-c-related-navigation__section-link[href=\"/uk-mission-to-the-eu\"]", text: "UK Mission to the European Union"
   end
 
-  it "renders world locations section when passed world location items without base path" do
+  it "renders world locations section when passed world location item with world_location_news link" do
+    content_item = {}
+    content_item["links"] =
+      {
+        "world_locations" => [
+          {
+            "title" => "Tajikistan",
+            "document_type" => "world_location",
+            "links" => {
+              "world_location_news" => [
+                {
+                  "base_path" => "/world/tajikistan/news",
+                  "document_type" => "world_location_news",
+                  "title" => "Tajikistan and the UK",
+                },
+              ],
+            },
+          },
+        ],
+      }
+
+    render_component(content_item:)
+
+    assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/tajikistan/news\"]", text: "Tajikistan"
+  end
+
+  it "renders world locations section when passed world location items without base path or world_location_news link" do
     content_item = {}
     content_item["links"] = construct_links("world_locations", nil, "USA")
     render_component(content_item:)
