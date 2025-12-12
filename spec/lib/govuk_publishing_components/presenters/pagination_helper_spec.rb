@@ -35,6 +35,14 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
         expect(instance.has_links?).to be(true)
       end
 
+      it "is false if there is an invalid previous link" do
+        previous_page = {
+          title: "Previous page",
+        }
+        instance = described_class.new({ previous_page: previous_page })
+        expect(instance.has_links?).to be(false)
+      end
+
       it "is true if there is a valid next link" do
         next_page = {
           href: "next-page",
@@ -43,6 +51,14 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
         }
         instance = described_class.new({ next_page: next_page })
         expect(instance.has_links?).to be(true)
+      end
+
+      it "is false if there is an invalid next link" do
+        next_page = {
+          title: "Next page",
+        }
+        instance = described_class.new({ next_page: next_page })
+        expect(instance.has_links?).to be(false)
       end
     end
 

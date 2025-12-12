@@ -73,7 +73,7 @@ module GovukPublishingComponents
       def arrow_link_helper(direction:)
         arrow_link_options = @arrow_links[direction.to_sym]
 
-        return if arrow_link_options.blank?
+        return if arrow_link_options.blank? || !valid_link?(arrow_link_options)
 
         { href: nil, label: nil, title: nil, icon: nil, **arrow_link_options.symbolize_keys } => { href:, label:, title:, icon: }
 
@@ -120,6 +120,10 @@ module GovukPublishingComponents
         '<svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
           <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
         </svg>'.squish.html_safe
+      end
+
+      def valid_link?(link)
+        link.key?(:href)
       end
     end
   end
