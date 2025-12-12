@@ -96,7 +96,7 @@
     } %>
   <% end %>
 
-  <% if has_error %>
+  <% if has_error && (error_message.present? || error_items.any?) %>
     <%= render "govuk_publishing_components/components/error_message", {
       id: error_id,
       text: error_message,

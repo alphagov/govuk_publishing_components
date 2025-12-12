@@ -65,6 +65,35 @@ describe "Date input", type: :view do
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
   end
 
+  it "renders with error items" do
+    render_component(
+      legend_text: "What is your date of birth?",
+      error_items: [{ text: "Error 1" }, { text: "Error 2" }],
+    )
+
+    assert_select(
+      ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message",
+      html: "<span class=\"govuk-visually-hidden\">Error:</span> Error 1<br>Error 2",
+    )
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+  end
+
+  it "renders with named error items" do
+    render_component(
+      legend_text: "What is your date of birth?",
+      error_items: [
+        { name: "day", text: "day-error" },
+        { name: "year", text: "year-error" },
+      ],
+    )
+
+    assert_select(
+      ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message",
+      html: "<span class=\"govuk-visually-hidden\">Error:</span> day-error<br>year-error",
+    )
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 2
+  end
+
   it "renders with custom items" do
     render_component(
       legend_text: "What is your date of birth?",
