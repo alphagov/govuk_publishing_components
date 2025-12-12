@@ -4,7 +4,7 @@
   items ||= nil
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.add_class("govuk-pagination")
+  component_helper.add_class("gem-c-pagination govuk-pagination")
   component_helper.add_class("govuk-pagination--block") if items.blank?
   component_helper.add_aria_attribute({ label: t("components.pagination.pagination") })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4

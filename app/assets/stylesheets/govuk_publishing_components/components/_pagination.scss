@@ -3,7 +3,7 @@
 
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
-  .govuk-pagination * {
+  .gem-c-pagination * {
     color: $govuk-print-text-colour !important;
   }
 }
