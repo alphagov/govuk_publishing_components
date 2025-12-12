@@ -11,6 +11,7 @@ module GovukPublishingComponents
           next: local_assigns[:next_page] || nil,
           prev: local_assigns[:previous_page] || nil,
         }
+
         @items = local_assigns[:items] || nil
 
         @disable_ga4 = local_assigns[:disable_ga4] || nil
@@ -32,7 +33,7 @@ module GovukPublishingComponents
       end
 
       def has_links?
-        has_pages? || @prev_link || @next_link
+        has_pages? || @prev_link.present? || @next_link.present?
       end
 
       def has_pages?
@@ -72,7 +73,7 @@ module GovukPublishingComponents
       def arrow_link_helper(direction:)
         arrow_link_options = @arrow_links[direction.to_sym]
 
-        return if arrow_link_options.blank?
+        return if arrow_link_options.blank? || !valid_link?(arrow_link_options)
 
         { href: nil, label: nil, title: nil, icon: nil, **arrow_link_options.symbolize_keys } => { href:, label:, title:, icon: }
 
@@ -84,6 +85,11 @@ module GovukPublishingComponents
         section = {
           prev: "Previous",
           next: "Next",
+        }[direction.to_sym]
+
+        icon = {
+          prev: previous_icon,
+          next: next_icon,
         }[direction.to_sym]
 
         ga4_link = ga4_link_event(text: label || title, section:)
@@ -100,6 +106,24 @@ module GovukPublishingComponents
             concat content_tag(:span, label, class: "govuk-pagination__link-label") if label.present?
           end
         end
+      end
+
+    private
+
+      def previous_icon
+        '<svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+          <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+        </svg>'.squish.html_safe
+      end
+
+      def next_icon
+        '<svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+          <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+        </svg>'.squish.html_safe
+      end
+
+      def valid_link?(link)
+        link.key?(:href)
       end
     end
   end

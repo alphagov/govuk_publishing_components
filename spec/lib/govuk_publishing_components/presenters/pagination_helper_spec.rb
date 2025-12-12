@@ -4,6 +4,64 @@ require "rails_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
   describe "Pagination helper" do
+    describe "#has_links?" do
+      it "is false if nothing passed to the component" do
+        instance = described_class.new({})
+        expect(instance.has_links?).to be(false)
+      end
+
+      it "is true if there are page numbers" do
+        items = [
+          {
+            number: 6,
+            href: "#",
+          },
+          {
+            number: 7,
+            href: "#",
+          },
+        ]
+        instance = described_class.new({ items: items })
+        expect(instance.has_links?).to be(true)
+      end
+
+      it "is true if there is a valid previous link" do
+        previous_page = {
+          href: "previous-page",
+          title: "Previous page",
+          label: "1 of 3",
+        }
+        instance = described_class.new({ previous_page: previous_page })
+        expect(instance.has_links?).to be(true)
+      end
+
+      it "is false if there is an invalid previous link" do
+        previous_page = {
+          title: "Previous page",
+        }
+        instance = described_class.new({ previous_page: previous_page })
+        expect(instance.has_links?).to be(false)
+      end
+
+      it "is true if there is a valid next link" do
+        next_page = {
+          href: "next-page",
+          title: "Next page",
+          label: "1 of 3",
+        }
+        instance = described_class.new({ next_page: next_page })
+        expect(instance.has_links?).to be(true)
+      end
+
+      it "is false if there is an invalid next link" do
+        next_page = {
+          title: "Next page",
+        }
+        instance = described_class.new({ next_page: next_page })
+        expect(instance.has_links?).to be(false)
+      end
+    end
+
     it "generates only previous arrow link if only previous_page defined" do
       instance = described_class.new({
         "previous_page": {
@@ -14,6 +72,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
       result = <<~HTML.strip
         <div class="govuk-pagination__prev">
         <a href="previous-page" class="govuk-link govuk-pagination__link" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;previous and next&quot;,&quot;text&quot;:&quot;Previous&quot;,&quot;section&quot;:&quot;Previous&quot;}">
+        <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13"> <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path> </svg>
         <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Previous</span>
         </a>
         </div>
@@ -33,6 +92,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
       result = <<~HTML.strip
         <div class="govuk-pagination__next">
         <a href="next-page" class="govuk-link govuk-pagination__link" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;previous and next&quot;,&quot;text&quot;:&quot;Next&quot;,&quot;section&quot;:&quot;Next&quot;}">
+        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13"> <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path> </svg>
         <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Next</span>
         </a>
         </div>
@@ -40,42 +100,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
 
       expect(instance.next_link.delete("\n")).to eq result.delete("\n")
       expect(instance.prev_link).to be_nil
-    end
-
-    it "generates arrow link with icon if defined for no pages" do
-      icon = content_tag(:span, "test icon")
-
-      instance = described_class.new({
-        "previous_page": {
-          "href": "previous-page",
-          "icon": icon,
-        },
-        "next_page": {
-          "href": "next-page",
-          "icon": icon,
-        },
-      })
-
-      prev_result = <<~HTML.strip
-        <div class="govuk-pagination__prev">
-        <a href="previous-page" class="govuk-link govuk-pagination__link" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;previous and next&quot;,&quot;text&quot;:&quot;Previous&quot;,&quot;section&quot;:&quot;Previous&quot;}">
-        <span>test icon</span>
-        <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Previous</span>
-        </a>
-        </div>
-      HTML
-
-      next_result = <<~HTML.strip
-        <div class="govuk-pagination__next">
-        <a href="next-page" class="govuk-link govuk-pagination__link" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;previous and next&quot;,&quot;text&quot;:&quot;Next&quot;,&quot;section&quot;:&quot;Next&quot;}">
-        <span>test icon</span>
-        <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Next</span>
-        </a>
-        </div>
-      HTML
-
-      expect(instance.next_link.delete("\n")).to eq next_result.delete("\n")
-      expect(instance.prev_link.delete("\n")).to eq prev_result.delete("\n")
     end
 
     it "generates link to page if defined" do
@@ -157,47 +181,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
       }.to raise_error("Number or ellipsis value required for item 0")
     end
 
-    it "generates arrow link with icon if defined for pages" do
-      icon = content_tag(:span, "test icon")
-
-      instance = described_class.new({
-        "previous_page": {
-          "href": "previous-page",
-          "icon": icon,
-        },
-        "next_page": {
-          "href": "next-page",
-          "icon": icon,
-        },
-        items: [
-          {
-            number: "1",
-          },
-        ],
-      })
-
-      prev_result = <<~HTML.strip
-        <div class="govuk-pagination__prev">
-        <a href="previous-page" class="govuk-link govuk-pagination__link" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;pagination&quot;,&quot;text&quot;:&quot;Previous&quot;,&quot;section&quot;:&quot;Previous&quot;}">
-        <span>test icon</span>
-        <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Previous</span>
-        </a>
-        </div>
-      HTML
-
-      next_result = <<~HTML.strip
-        <div class="govuk-pagination__next">
-        <a href="next-page" class="govuk-link govuk-pagination__link" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;type&quot;:&quot;pagination&quot;,&quot;text&quot;:&quot;Next&quot;,&quot;section&quot;:&quot;Next&quot;}">
-        <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Next</span>
-        <span>test icon</span>
-        </a>
-        </div>
-      HTML
-
-      expect(instance.next_link.delete("\n")).to eq next_result.delete("\n")
-      expect(instance.prev_link.delete("\n")).to eq prev_result.delete("\n")
-    end
-
     it "generates arrow link without data-ga4-link if disable_ga4 set to true" do
       instance = described_class.new({
         "disable_ga4": true,
@@ -212,6 +195,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
       previous_result = <<~HTML.strip
         <div class="govuk-pagination__prev">
         <a href="previous-page" class="govuk-link govuk-pagination__link">
+        <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13"> <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path> </svg>
         <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Previous</span>
         </a>
         </div>
@@ -220,6 +204,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PaginationHelper do
       next_result = <<~HTML.strip
         <div class="govuk-pagination__next">
         <a href="next-page" class="govuk-link govuk-pagination__link">
+        <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13"> <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path> </svg>
         <span class="govuk-pagination__link-title govuk-pagination__link-title--decorated">Next</span>
         </a>
         </div>
