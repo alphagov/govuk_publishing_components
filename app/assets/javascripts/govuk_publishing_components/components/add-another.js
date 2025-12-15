@@ -203,9 +203,20 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   AddAnother.prototype.makeSortable = function () {
     this.removeMoveButtons()
     this.addMoveButtons()
+    this.hideOrderInputs()
     this.sortableList = window.Sortable.create(this.module, {
       dataIdAttr: 'data-sortable-id',
       disabled: true
+    })
+  }
+
+  AddAnother.prototype.getOrderInputs = function () {
+    return this.module.querySelectorAll('.js-add-another__fieldset:not([hidden]) .js-add-another__order-input input')
+  }
+
+  AddAnother.prototype.hideOrderInputs = function () {
+    this.getOrderInputs().forEach(function (orderInput) {
+      orderInput.closest('.js-add-another__order-input').hidden = true
     })
   }
 
@@ -268,6 +279,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (triggeredByKeyboard) {
       this.preserveElementFocus(button, fieldset, action, visibleFields)
     }
+
+    this.updateOrderInputs()
   }
 
   AddAnother.prototype.preserveElementFocus = function (button, fieldset, action, visibleFields) {
@@ -284,6 +297,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var wrappers = this.module.querySelectorAll('.gem-c-add-another__move-button-wrapper')
     wrappers.forEach((button) => {
       button.remove()
+    })
+  }
+
+  AddAnother.prototype.updateOrderInputs = function () {
+    this.getOrderInputs().forEach(function (orderInput, index) {
+      orderInput.value = index + 1
     })
   }
 

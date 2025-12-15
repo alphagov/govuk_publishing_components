@@ -122,6 +122,13 @@ examples:
           </select>
         <div class="govuk-form-group">
   sortable:
+    description: | 
+      Adding `sortable` to the component will allow users to rearrange the items in the list.
+      
+      This component uses SortableJS. When JavaScript is disabled a set of inputs will be shown allowing users to 
+      provide an order index for each item.
+      
+      For this to work, each field must have an `order_index` input provided.
     data:
       fieldset_legend: "Person"
       add_button_text: "Add another person"
@@ -139,6 +146,8 @@ examples:
                 <label for="sortable_person_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
               </div>
             </div>
+          order_input: >
+            <input class="gem-c-input govuk-input govuk-input--width-2" id="sortable_person_0_order" name="person[0]order" value="1">
         - fields: >
             <div class="govuk-form-group">
               <label for="sortable_person_1_name" class="gem-c-label govuk-label">Full name</label>
@@ -151,8 +160,10 @@ examples:
                 <label for="sortable_person_1__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
               </div>
             </div>
+          order_input: >
+            <input class="gem-c-input govuk-input govuk-input--width-2" id="sortable_person_1_order" name="person[1]order" value="2">
       empty:
         <div class="govuk-form-group">
-        <label for="sortable_person_2_name" class="gem-c-label govuk-label">Full name</label>
-        <input class="gem-c-input govuk-input" id="sortable_person_2_name" name="person[2]name">
+          <label for="sortable_person_2_name" class="gem-c-label govuk-label">Full name</label>
+          <input class="gem-c-input govuk-input" id="sortable_person_2_name" name="person[2]name">
         </div>

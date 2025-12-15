@@ -642,6 +642,12 @@ describe('GOVUK.Modules.AddAnother', function () {
           <div class="js-add-another__fieldset">
             <fieldset>
               <legend>Thing 1</legend>
+              <div class="js-add-another__order-input">
+                <label class="gem-c-label govuk-label">
+                  Position<span class='govuk-visually-hidden'> for Thing 1</span>
+                  <input class="gem-c-input govuk-input govuk-input--width-2" id="test_0_order" name="test[0]order" value="1">
+                </label>
+              </div>
               <input type="hidden" name="test[0][id]" value="test_id" />
               <label for="test_0_foo">Foo</label>
               <input type="text" id="test_0_foo" name="test[0][foo]" value="ABC" />
@@ -656,6 +662,12 @@ describe('GOVUK.Modules.AddAnother', function () {
           <div class="js-add-another__fieldset">
             <fieldset>
               <legend>Thing 2</legend>
+              <div class="js-add-another__order-input">
+                <label class="gem-c-label govuk-label">
+                  Position<span class='govuk-visually-hidden'> for Thing 2</span>
+                  <input class="gem-c-input govuk-input govuk-input--width-2" id="test_1_order" name="test[1]order" value="2">
+                </label>
+              </div>
               <input type="hidden" name="test[1][id]" value="test_id" />
               <label for="test_1_foo">Foo</label>
               <input type="text" id="test_1_foo" name="test[1][foo]" value="DEF" />
@@ -713,6 +725,14 @@ describe('GOVUK.Modules.AddAnother', function () {
       })
     })
 
+    it('hides the order inputs', function () {
+      const fieldsets = fixture.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+      fieldsets.forEach(function (fieldset) {
+        const orderInput = fieldset.querySelector('.js-add-another__order-input')
+        expect(orderInput.hidden).toEqual(true)
+      })
+    })
+
     it('moves a fieldset down when move-down button is clicked', function () {
       let firstFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[0]
       const moveDownButton = firstFieldset.querySelector('button[data-action="move-down"]')
@@ -724,11 +744,15 @@ describe('GOVUK.Modules.AddAnother', function () {
       expect(firstFieldset.querySelector('input[name="test[0][foo]"]').value).toEqual('DEF')
       expect(firstFieldset.querySelector('textarea[name="test[0][bar]"]').value).toEqual('DEF')
 
+      expect(firstFieldset.querySelector('.js-add-another__order-input input').value).toEqual('1')
+
       var secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
 
       expect(secondFieldset.querySelector('legend').textContent).toEqual('Thing 2')
       expect(secondFieldset.querySelector('input[name="test[1][foo]"]').value).toEqual('ABC')
       expect(secondFieldset.querySelector('textarea[name="test[1][bar]"]').value).toEqual('ABC')
+
+      expect(secondFieldset.querySelector('.js-add-another__order-input input').value).toEqual('2')
     })
 
     it('moves a fieldset up when move-up button is clicked', function () {
@@ -742,11 +766,15 @@ describe('GOVUK.Modules.AddAnother', function () {
       expect(firstFieldset.querySelector('input[name="test[0][foo]"]').value).toEqual('DEF')
       expect(firstFieldset.querySelector('textarea[name="test[0][bar]"]').value).toEqual('DEF')
 
+      expect(firstFieldset.querySelector('.js-add-another__order-input input').value).toEqual('1')
+
       secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
 
       expect(secondFieldset.querySelector('legend').textContent).toEqual('Thing 2')
       expect(secondFieldset.querySelector('input[name="test[1][foo]"]').value).toEqual('ABC')
       expect(secondFieldset.querySelector('textarea[name="test[1][bar]"]').value).toEqual('ABC')
+
+      expect(secondFieldset.querySelector('.js-add-another__order-input input').value).toEqual('2')
     })
 
     it('adds GA4 data attributes to move buttons', function () {

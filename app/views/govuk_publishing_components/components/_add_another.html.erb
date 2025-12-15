@@ -28,6 +28,14 @@
         legend_text: "#{fieldset_legend} #{index + 1}",
         heading_size: "m",
       } do %>
+        <% if sortable %>
+          <div class="js-add-another__order-input">
+            <label class="gem-c-label govuk-label">
+              Position<span class='govuk-visually-hidden'> for <%= fieldset_legend %></span>
+              <%= item[:order_input] %>
+            </label>
+          </div>
+        <% end %>
         <div class="js-add-another__destroy-checkbox">
           <%= item[:destroy_checkbox] %>
         </div>
