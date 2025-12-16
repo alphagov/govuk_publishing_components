@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Adjust pagination component ([PR #5176](https://github.com/alphagov/govuk_publishing_components/pull/5176))
+
 ## 63.0.0
 
 * Add Welsh translation for "accessible_link_text_suffix" ([PR #5168](https://github.com/alphagov/govuk_publishing_components/pull/5168))
