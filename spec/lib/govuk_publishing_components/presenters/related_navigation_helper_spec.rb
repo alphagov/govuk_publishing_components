@@ -366,7 +366,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         }
       end
 
-      context "with no base path" do
+      context "with no base path and no world_location_news links" do
         let(:world_location_title) { "World !@' ~Location~" }
         let(:world_location) do
           {
@@ -400,19 +400,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
         it "errors due to schema violation" do
           expect { payload_for("speech", content_item) }.to raise_error(GovukSchemas::InvalidContentGenerated)
-        end
-      end
-
-      context "with base path provided" do
-        let(:base_path) { "/unique-base-path" }
-        let(:world_location_title) { "World !@' ~Location~" }
-
-        it "generates world news links based on base path" do
-          payload = payload_for("speech", content_item)
-          expected = {
-            "world_locations" => [{ locale: "en", path: "/unique-base-path", text: world_location_title }],
-          }
-          expect(payload).to include(expected)
         end
       end
     end
