@@ -5,7 +5,7 @@
   brand ||= false
 
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-  card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns, brand_helper)
+  card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-image-card")

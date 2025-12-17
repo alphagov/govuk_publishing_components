@@ -6,12 +6,11 @@ module GovukPublishingComponents
 
       attr_reader :href, :large, :extra_details, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading, :image_src, :two_thirds, :large_font_size_mobile
 
-      def initialize(local_assigns, brand_helper)
+      def initialize(local_assigns)
         @href = local_assigns[:href]
         @extra_details = local_assigns[:extra_details] || []
         @image_src = local_assigns[:image_src]
         @image_alt = local_assigns[:image_alt] || ""
-        @image_loading = local_assigns[:image_loading] || "auto"
         @srcset = local_assigns[:srcset] || nil
         @sizes = local_assigns[:sizes] || nil
         @image_loading = local_assigns[:image_loading] || "auto"
@@ -24,8 +23,6 @@ module GovukPublishingComponents
         @extra_details_no_indent = local_assigns[:extra_details_no_indent]
         @metadata = local_assigns[:metadata]
         @lang = local_assigns[:lang]
-
-        @brand_helper = brand_helper
       end
 
       def large_mobile_font_size?
@@ -36,18 +33,13 @@ module GovukPublishingComponents
       end
 
       def media
-        image
-      end
-
-      def image
-        classes = %w[gem-c-image-card__image-wrapper]
         height = 200
         width = 300
         height = 90 if @two_thirds
         width = 90 if @two_thirds
 
         if @image_src
-          content_tag(:figure, class: classes) do
+          content_tag(:figure, class: "gem-c-image-card__image-wrapper") do
             image_tag(
               @image_src,
               class: "gem-c-image-card__image",
@@ -67,6 +59,7 @@ module GovukPublishingComponents
 
         content_tag(:p, class: "gem-c-image-card__context") do
           if @context[:date]
+            @context[:date] = Date.parse(@context[:date]) if @context[:date].is_a? String
             date = content_tag(:time, l(@context[:date], format: "%e %B %Y"), datetime: @context[:date].iso8601, lang: "en")
             dash = content_tag(:span, " — ", 'aria-hidden': true)
 
@@ -82,9 +75,11 @@ module GovukPublishingComponents
       end
 
       def description
-        return content_tag(:div, @description, class: "gem-c-image-card__description gem-c-image-card__description--large-font-size-mobile") if @description && large_mobile_font_size?
+        return unless @description
 
-        content_tag(:div, @description, class: "gem-c-image-card__description") if @description
+        classes = %w[gem-c-image-card__description]
+        classes << "gem-c-image-card__description--large-font-size-mobile" if large_mobile_font_size?
+        content_tag(:div, @description, class: classes)
       end
     end
   end
