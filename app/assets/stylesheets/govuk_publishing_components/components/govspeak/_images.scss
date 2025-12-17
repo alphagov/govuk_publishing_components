@@ -13,21 +13,23 @@
   }
 
   figure {
-    width: 100%;
-    clear: both;
-    overflow: hidden;
     margin: 0 0 govuk-spacing(4) 0;
+    display: table;
 
     img {
-      display: inline;
-      text-align: center;
-      width: auto;
-      height: auto;
       max-width: 100%;
+      display: table-row;
     }
 
     figcaption {
-      @include govuk-font($size: 16);
+      display: table-caption;
+      caption-side: bottom;
+    }
+
+    figcaption p {
+      margin: govuk-spacing(2) 0 0 0;
+      color: $govuk-secondary-text-colour;
+      @include govuk-font(19);
     }
   }
 }

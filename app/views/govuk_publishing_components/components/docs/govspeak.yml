@@ -849,6 +849,7 @@ examples:
         <h5>This is a h5 title</h5>
         <h6>This is a h6 title</h6>
   image:
+    description: Govspeak images are styled to mimic the [figure component](/component-guide/figure).
     data:
       block: |
         <figure class="image embedded">
@@ -859,6 +860,7 @@ examples:
             <p>Deforested area. Credit: Blue Ventures-Garth Cripps</p>
           </figcaption>
         </figure>
+        <p>This is a regular paragraph of text to demonstrate the spacing between it and the image above.</p>
   lists:
     data:
       block: |
