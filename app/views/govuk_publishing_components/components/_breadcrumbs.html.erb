@@ -5,6 +5,8 @@
   breadcrumbs ||= []
   collapse_on_mobile ||= false
   inverse ||= false
+  local_assigns[:aria] ||= {}
+  local_assigns[:aria][:label] ||= "Breadcrumb"
 
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
 
@@ -15,7 +17,6 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class(classes.join(" "))
-  component_helper.add_aria_attribute({ label: "Breadcrumb" })
   component_helper.add_data_attribute({ module: "ga4-link-tracker" })
 %>
 
