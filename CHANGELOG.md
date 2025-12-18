@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix the breadcrumb aria label ([PR #5183](https://github.com/alphagov/govuk_publishing_components/pull/5183))
 * Change figure component design ([PR #5138](https://github.com/alphagov/govuk_publishing_components/pull/5138))
 * Adjust pagination component ([PR #5176](https://github.com/alphagov/govuk_publishing_components/pull/5176))
 * Guess `world_location_news` paths by `document_type` ([PR #5177](https://github.com/alphagov/govuk_publishing_components/pull/5177))

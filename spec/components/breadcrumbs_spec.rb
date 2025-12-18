@@ -20,6 +20,23 @@ describe "Breadcrumbs", type: :view do
     assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/section", "Section")
   end
 
+  describe "aria" do
+    it "has a default aria label" do
+      render_component(breadcrumbs: [{ title: "Section", url: "/section" }])
+      assert_select ".gem-c-breadcrumbs[aria-label='Breadcrumb']"
+    end
+
+    it "still has a default aria label when other aria attributes are passed" do
+      render_component(breadcrumbs: [{ title: "Section", url: "/section" }], aria: { labelledby: "a-thing" })
+      assert_select ".gem-c-breadcrumbs[aria-label='Breadcrumb'][aria-labelledby='a-thing']"
+    end
+
+    it "can override the default aria label" do
+      render_component(breadcrumbs: [{ title: "Section", url: "/section" }], aria: { labelledby: "a-thing", label: "new-label" })
+      assert_select ".gem-c-breadcrumbs[aria-label='new-label'][aria-labelledby='a-thing']"
+    end
+  end
+
   it "renders schema data" do
     breadcrumbs = [
       { title: "Section 1", url: "/section-1" },
