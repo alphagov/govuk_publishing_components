@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 63.1.0
 
 * Fix the breadcrumb aria label ([PR #5183](https://github.com/alphagov/govuk_publishing_components/pull/5183))
 * Change figure component design ([PR #5138](https://github.com/alphagov/govuk_publishing_components/pull/5138))
