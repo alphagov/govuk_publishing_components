@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix text wrap on notice component ([PR #5186](https://github.com/alphagov/govuk_publishing_components/pull/5186))
+
 ## 63.1.0
 
 * Fix the breadcrumb aria label ([PR #5183](https://github.com/alphagov/govuk_publishing_components/pull/5183))
