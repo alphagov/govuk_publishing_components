@@ -200,6 +200,11 @@ describe('GOVUK.Modules.AddAnother', function () {
               <input type="text" id="test_1_foo" name="test[1][foo]" value="test foo" />
               <label for="test_1_bar"></label>
               <textarea id="test_1_bar" name="test[1][bar]">test bar</textarea>
+              <label for="test_1_baz">Foo</label>
+              <input type="checkbox" id="test_1_baz" name="test[1][baz]" data-aria-controls="test_1_baz-hidden" />
+              <div id="test_1_baz-hidden">
+                HIDDEN
+              </div>
               <label for="test_1__destroy">Delete</label>
               <div class="js-add-another__destroy-checkbox">
                 <input type="checkbox" id="test_1_destroy" name="test[1][_destroy]" />
@@ -214,6 +219,10 @@ describe('GOVUK.Modules.AddAnother', function () {
               <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
               <label for="test_2_bar"></label>
               <textarea id="test_2_bar" name="test[2][bar]"></textarea>
+              <input type="checkbox" id="test_2_baz" name="test[2][baz]" data-aria-controls="test_2_baz-hidden" />
+              <div id="test_2_baz-hidden">
+                HIDDEN
+              </div>
               <label for="test_2__destroy">Delete</label>
             </fieldset>
           </div>
@@ -226,6 +235,10 @@ describe('GOVUK.Modules.AddAnother', function () {
                 <input type="text" id="test_2_foo" name="test[2][foo]" value="" />
                 <label for="test_2_bar"></label>
                 <textarea id="test_2_bar" name="test[2][bar]"></textarea>
+                <input type="checkbox" id="test_2_baz" name="test[2][baz]" data-aria-controls="test_2_baz-hidden" />
+                <div id="test_2_baz-hidden">
+                  HIDDEN
+                </div>
                 <label for="test_2__destroy">Delete</label>
               </fieldset>
             </div>
@@ -314,63 +327,32 @@ describe('GOVUK.Modules.AddAnother', function () {
       fieldset2 = document.querySelectorAll('.js-add-another__fieldset')[2]
       fieldset3 = document.querySelectorAll('.js-add-another__fieldset')[3]
 
-      expect(
-        fieldset1.querySelector('input[type="hidden"]').getAttribute('name')
-      ).toBe('test[1][id]')
-      expect(
-        fieldset2.querySelector('input[type="hidden"]').getAttribute('name')
-      ).toBe('test[2][id]')
-      expect(
-        fieldset3.querySelector('input[type="hidden"]').getAttribute('name')
-      ).toBe('test[3][id]')
-      expect(fieldset1.querySelectorAll('label')[0].getAttribute('for')).toBe(
-        'test_1_foo'
-      )
-      expect(fieldset2.querySelectorAll('label')[0].getAttribute('for')).toBe(
-        'test_2_foo'
-      )
-      expect(fieldset3.querySelectorAll('label')[0].getAttribute('for')).toBe(
-        'test_3_foo'
-      )
-      expect(fieldset1.querySelector('input[type="text"]').getAttribute('id')).toBe(
-        'test_1_foo'
-      )
-      expect(fieldset2.querySelector('input[type="text"]').getAttribute('id')).toBe(
-        'test_2_foo'
-      )
-      expect(fieldset3.querySelector('input[type="text"]').getAttribute('id')).toBe(
-        'test_3_foo'
-      )
-      expect(
-        fieldset1.querySelector('input[type="text"]').getAttribute('name')
-      ).toBe('test[1][foo]')
-      expect(
-        fieldset2.querySelector('input[type="text"]').getAttribute('name')
-      ).toBe('test[2][foo]')
-      expect(
-        fieldset3.querySelector('input[type="text"]').getAttribute('name')
-      ).toBe('test[3][foo]')
-      expect(fieldset1.querySelectorAll('label')[1].getAttribute('for')).toBe(
-        'test_1_bar'
-      )
-      expect(fieldset2.querySelectorAll('label')[1].getAttribute('for')).toBe(
-        'test_2_bar'
-      )
-      expect(fieldset3.querySelectorAll('label')[1].getAttribute('for')).toBe(
-        'test_3_bar'
-      )
-      expect(fieldset1.querySelector('textarea').getAttribute('id')).toBe('test_1_bar')
-      expect(fieldset2.querySelector('textarea').getAttribute('id')).toBe('test_2_bar')
-      expect(fieldset3.querySelector('textarea').getAttribute('id')).toBe('test_3_bar')
-      expect(fieldset1.querySelector('textarea').getAttribute('name')).toBe(
-        'test[1][bar]'
-      )
-      expect(fieldset2.querySelector('textarea').getAttribute('name')).toBe(
-        'test[2][bar]'
-      )
-      expect(fieldset3.querySelector('textarea').getAttribute('name')).toBe(
-        'test[3][bar]'
-      )
+      var fieldsets = [fieldset1, fieldset2, fieldset3]
+
+      fieldsets.forEach(function (fieldset, index) {
+        var labels = fieldset.querySelectorAll('label')
+        var hiddenInput = fieldset.querySelector('input[type="hidden"]')
+        var textInput = fieldset.querySelector('input[type="text"]')
+        var textarea = fieldset.querySelector('textarea')
+        var checkbox = fieldset.querySelector('input[type="checkbox"]')
+        var div = fieldset.querySelector('div')
+
+        expect(hiddenInput.getAttribute('name')).toBe(`test[${index + 1}][id]`)
+
+        expect(labels[0].getAttribute('for')).toBe(`test_${index + 1}_foo`)
+        expect(textInput.getAttribute('id')).toBe(`test_${index + 1}_foo`)
+        expect(textInput.getAttribute('name')).toBe(`test[${index + 1}][foo]`)
+
+        expect(labels[1].getAttribute('for')).toBe(`test_${index + 1}_bar`)
+        expect(textarea.getAttribute('id')).toBe(`test_${index + 1}_bar`)
+        expect(textarea.getAttribute('name')).toBe(`test[${index + 1}][bar]`)
+
+        expect(checkbox.getAttribute('id')).toBe(`test_${index + 1}_baz`)
+        expect(checkbox.getAttribute('name')).toBe(`test[${index + 1}][baz]`)
+        expect(checkbox.getAttribute('data-aria-controls')).toBe(`test_${index + 1}_baz-hidden`)
+
+        expect(div.getAttribute('id')).toBe(`test_${index + 1}_baz-hidden`)
+      })
     })
 
     it('should hide and check the destroy checkbox for an existing field when its "Remove" button is clicked', function () {
