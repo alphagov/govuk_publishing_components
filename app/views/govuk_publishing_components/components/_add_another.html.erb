@@ -7,6 +7,7 @@
   empty_fields ||= false
   disable_ga4 ||= nil
   sortable ||= false
+  component_id = SecureRandom.uuid
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-add-another")
@@ -17,6 +18,7 @@
     empty_fields:,
     disable_ga4:,
     sortable:,
+    component_id:,
   })
 %>
 
@@ -27,6 +29,9 @@
         classes: "js-add-another__fieldset",
         legend_text: "#{fieldset_legend} #{index + 1}",
         heading_size: "m",
+        data_attributes: {
+          parent_component_id: component_id,
+        }
       } do %>
         <% if sortable %>
           <div class="js-add-another__order-input">
@@ -47,14 +52,20 @@
     classes: "js-add-another__empty",
     legend_text: "#{fieldset_legend} #{items.length + 1}",
     heading_size: "m",
+    data_attributes: {
+      parent_component_id: component_id,
+    }
   } do %>
     <%= empty %>
   <% end %>
-  <template class="js-add-another__empty-template">
+  <template class="js-add-another__empty-template" data-parent-component-id="<%= component_id %>">
     <%= render "govuk_publishing_components/components/fieldset", {
       classes: "js-add-another__fieldset",
       legend_text: "#{fieldset_legend} #{items.length + 1}",
       heading_size: "m",
+      data_attributes: {
+        parent_component_id: component_id,
+      }
     } do %>
       <%= empty %>
     <% end %>

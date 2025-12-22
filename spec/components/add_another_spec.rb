@@ -5,6 +5,12 @@ describe "Add another", type: :view do
     "add_another"
   end
 
+  let(:uuid) { "some-uuid" }
+
+  before do
+    allow(SecureRandom).to receive(:uuid).and_return(uuid)
+  end
+
   describe "Default" do
     def default_items
       [
@@ -22,29 +28,29 @@ describe "Add another", type: :view do
     it "renders a wrapper element" do
       render_component(items: default_items)
 
-      assert_select "div.gem-c-add-another[data-module='add-another'][data-empty-fields='false']"
+      assert_select "div.gem-c-add-another[data-module='add-another'][data-empty-fields='false'][data-component-id='#{uuid}']"
     end
 
     it "renders the items provided" do
       empty = ""
       render_component({ items: default_items, empty: })
 
-      assert_select "div.js-add-another__fieldset .item1"
-      assert_select "div.js-add-another__fieldset .item2"
+      assert_select "div.js-add-another__fieldset[data-parent-component-id='#{uuid}'] .item1"
+      assert_select "div.js-add-another__fieldset[data-parent-component-id='#{uuid}'] .item2"
     end
 
     it "renders a destroy checkbox for each item" do
       empty = ""
       render_component({ items: default_items, empty: })
 
-      assert_select "div.js-add-another__fieldset .js-add-another__destroy-checkbox", count: 2
+      assert_select "div.js-add-another__fieldset[data-parent-component-id='#{uuid}'] .js-add-another__destroy-checkbox", count: 2
     end
 
     it "renders the empty item" do
       empty = sanitize("<div class=\"empty\">empty</div>")
       render_component({ items: default_items, empty: })
 
-      assert_select ".js-add-another__empty div.empty"
+      assert_select ".js-add-another__empty[data-parent-component-id='#{uuid}'] div.empty"
     end
   end
 
