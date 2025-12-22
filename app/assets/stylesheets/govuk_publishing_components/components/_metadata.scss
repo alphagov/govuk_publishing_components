@@ -1,4 +1,5 @@
 @import "govuk_publishing_components/individual_component_support";
+@import "govuk_publishing_components/components/mixins/margins";
 
 .gem-c-metadata {
   @include govuk-text-colour;
