@@ -26,9 +26,10 @@ describe('GOVUK.Modules.AddAnother', function () {
       fixture.setAttribute('data-module', 'AddAnother')
       fixture.setAttribute('data-fieldset-legend', 'Thing')
       fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.setAttribute('data-component-id', '123')
       fixture.innerHTML = `
         <div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 1</legend>
               <input type="hidden" name="test[0][id]" value="test_id" />
@@ -42,7 +43,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__empty">
+          <div class="js-add-another__empty" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 2</legend>
               <input type="hidden" name="test[1][id]" value="test_id" />
@@ -53,8 +54,8 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_1__destroy">Delete</label>
             </fieldset>
           </div>
-          <template class="js-add-another__empty-template">
-            <div class="js-add-another__fieldset">
+          <template class="js-add-another__empty-template" data-parent-component-id="123">
+            <div class="js-add-another__fieldset" data-parent-component-id="123">
               <fieldset>
                 <legend>Thing 2</legend>
                 <input type="hidden" name="test[1][id]" value="test_id" />
@@ -108,9 +109,10 @@ describe('GOVUK.Modules.AddAnother', function () {
       fixture.setAttribute('data-disable-ga4', 'true')
       fixture.setAttribute('data-fieldset-legend', 'Thing')
       fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.setAttribute('data-component-id', '123')
       fixture.innerHTML = `
         <div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 1</legend>
               <input type="hidden" name="test[0][id]" value="test_id" />
@@ -124,7 +126,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__empty">
+          <div class="js-add-another__empty" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 2</legend>
               <input type="hidden" name="test[1][id]" value="test_id" />
@@ -135,8 +137,8 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_1__destroy">Delete</label>
             </fieldset>
           </div>
-          <template class="js-add-another__empty-template">
-            <div class="js-add-another__fieldset">
+          <template class="js-add-another__empty-template" data-parent-component-id="123">
+            <div class="js-add-another__fieldset" data-parent-component-id="123">
               <fieldset>
                 <legend>Thing 2</legend>
                 <input type="hidden" name="test[1][id]" value="test_id" />
@@ -173,9 +175,10 @@ describe('GOVUK.Modules.AddAnother', function () {
       fixture.setAttribute('data-module', 'AddAnother')
       fixture.setAttribute('data-fieldset-legend', 'Thing')
       fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.setAttribute('data-component-id', '123')
       fixture.innerHTML = `
         <div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 1</legend>
               <input type="hidden" name="test[0][id]" value="test_id" />
@@ -189,7 +192,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 2</legend>
               <input type="hidden" name="test[1][id]" value="test_id" />
@@ -203,7 +206,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__empty">
+          <div class="js-add-another__empty" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 3</legend>
               <input type="hidden" name="test[2][id]" value="test_id" />
@@ -214,8 +217,8 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_2__destroy">Delete</label>
             </fieldset>
           </div>
-          <template class="js-add-another__empty-template">
-            <div class="js-add-another__fieldset">
+          <template class="js-add-another__empty-template" data-parent-component-id="123">
+            <div class="js-add-another__fieldset" data-parent-component-id="123">
               <fieldset>
                 <legend>Thing 3</legend>
                 <input type="hidden" name="test[2][id]" value="test_id" />
@@ -437,6 +440,25 @@ describe('GOVUK.Modules.AddAnother', function () {
         document.querySelector('.js-add-another__add-button')
       )
     })
+
+    it('should ignore fieldsets with a different data-parent-component-id', function () {
+      var foreignFieldset = document.createElement('div')
+      foreignFieldset.className = 'js-add-another__fieldset'
+      foreignFieldset.setAttribute('data-parent-component-id', '999')
+      foreignFieldset.innerHTML = '<fieldset><legend>Foreign Thing</legend></fieldset>'
+      fixture.appendChild(foreignFieldset)
+
+      // Trigger an update which recalculates legends/indices
+      window.GOVUK.triggerEvent(addButton, 'click')
+
+      // The foreign fieldset legend should remain unchanged and not be counted
+      expect(foreignFieldset.querySelector('legend').textContent).toBe('Foreign Thing')
+
+      // Check that our module only sees its own 3 fieldsets (2 original + 1 added)
+      var internalFieldsets = fixture.querySelectorAll('.js-add-another__fieldset[data-parent-component-id="123"]')
+      expect(internalFieldsets.length).toBe(3)
+      expect(internalFieldsets[2].querySelector('legend').textContent).toBe('Thing 3')
+    })
   })
 
   describe('One fieldset is rendered with additional GA4 attributes set', function () {
@@ -447,9 +469,10 @@ describe('GOVUK.Modules.AddAnother', function () {
       fixture.setAttribute('data-add-button-text', 'Add another thing')
       fixture.setAttribute('data-ga4-start-index', '2')
       fixture.setAttribute('data-ga4-index-section-count', '5')
+      fixture.setAttribute('data-component-id', '123')
       fixture.innerHTML = `
         <div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 1</legend>
               <input type="hidden" name="test[0][id]" value="test_id" />
@@ -463,7 +486,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 2</legend>
               <input type="hidden" name="test[1][id]" value="test_id" />
@@ -477,7 +500,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__empty">
+          <div class="js-add-another__empty" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 3</legend>
               <input type="hidden" name="test[2][id]" value="test_id" />
@@ -488,8 +511,8 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_2__destroy">Delete</label>
             </fieldset>
           </div>
-          <template class="js-add-another__empty-template">
-            <div class="js-add-another__fieldset">
+          <template class="js-add-another__empty-template" data-parent-component-id="123">
+            <div class="js-add-another__fieldset" data-parent-component-id="123">
               <fieldset>
                 <legend>Thing 3</legend>
                 <input type="hidden" name="test[2][id]" value="test_id" />
@@ -538,9 +561,10 @@ describe('GOVUK.Modules.AddAnother', function () {
       fixture.setAttribute('data-module', 'AddAnother')
       fixture.setAttribute('data-fieldset-legend', 'Thing')
       fixture.setAttribute('data-add-button-text', 'Add another thing')
+      fixture.setAttribute('data-component-id', '123')
       fixture.innerHTML = `
         <div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 1</legend>
               <input type="hidden" name="test[0][id]" value="test_id" />
@@ -554,7 +578,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__empty">
+          <div class="js-add-another__empty" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 2</legend>
               <input type="hidden" name="test[1][id]" value="test_id" />
@@ -565,8 +589,8 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_1__destroy">Delete</label>
             </fieldset>
           </div>
-          <template class="js-add-another__empty-template">
-            <div class="js-add-another__fieldset" data-module="test-module">
+          <template class="js-add-another__empty-template" data-parent-component-id="123">
+            <div class="js-add-another__fieldset" data-module="test-module" data-parent-component-id="123">
               <fieldset>
                 <legend>Thing 2</legend>
                 <input type="hidden" name="test[1][id]" value="test_id" />
@@ -638,8 +662,9 @@ describe('GOVUK.Modules.AddAnother', function () {
       fixture.setAttribute('data-fieldset-legend', 'Thing')
       fixture.setAttribute('data-add-button-text', 'Add another thing')
       fixture.setAttribute('data-sortable', 'true')
+      fixture.setAttribute('data-component-id', '123')
       fixture.innerHTML = `
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 1</legend>
               <div class="js-add-another__order-input">
@@ -659,7 +684,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__fieldset">
+          <div class="js-add-another__fieldset" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 2</legend>
               <div class="js-add-another__order-input">
@@ -679,7 +704,7 @@ describe('GOVUK.Modules.AddAnother', function () {
               </div>
             </fieldset>
           </div>
-          <div class="js-add-another__empty">
+          <div class="js-add-another__empty" data-parent-component-id="123">
             <fieldset>
               <legend>Thing 3</legend>
               <input type="hidden" name="test[2][id]" value="test_id" />
@@ -690,8 +715,8 @@ describe('GOVUK.Modules.AddAnother', function () {
               <label for="test_2__destroy">Delete</label>
             </fieldset>
           </div>
-          <template class="js-add-another__empty-template">
-            <div class="js-add-another__fieldset">
+          <template class="js-add-another__empty-template" data-parent-component-id="123">
+            <div class="js-add-another__fieldset" data-parent-component-id="123">
               <fieldset>
                 <legend>Thing 3</legend>
                 <input type="hidden" name="test[2][id]" value="test_id" />
