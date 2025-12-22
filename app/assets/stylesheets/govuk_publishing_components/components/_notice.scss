@@ -20,3 +20,7 @@
     @include govuk-link-print-friendly;
   }
 }
+
+.gem-c-notice__description {
+  word-wrap: break-word;
+}
