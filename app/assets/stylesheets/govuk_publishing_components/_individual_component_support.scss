@@ -1,8 +1,7 @@
-// This flag stops the font from being included in this components's
-// stylesheet - the font is being served by Static across all of GOV.UK, so is
-// not needed here.
-$govuk-include-default-font-face: false;
-
 // Each component needs access to the variables, functions, and mixins from
 // GOVUK Frontend.
-@import "govuk_frontend_support";
+@import "govuk-frontend/govuk-frontend-settings";
+@import "govuk/base";
+@import "govuk-frontend/govuk-frontend-vars";
+
+@import "components/mixins/margins";
