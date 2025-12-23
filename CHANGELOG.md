@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix text wrap on notice component ([PR #5186](https://github.com/alphagov/govuk_publishing_components/pull/5186))
+* Allow summary card to support a block ([PR #5193](https://github.com/alphagov/govuk_publishing_components/pull/5193))
 
 ## 63.1.0
 

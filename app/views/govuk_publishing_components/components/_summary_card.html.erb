@@ -5,6 +5,7 @@
   title ||= nil
   summary_card_actions ||= []
   rows ||=[]
+  block ||= yield
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-summary-card")
@@ -26,7 +27,7 @@
         <% end %>
       <% end %>
 
-      <% if rows.present? %>
+      <% if rows.present? || block.present? %>
         <%= tag.div class: "govuk-summary-card__content" do %>
           <%= tag.dl class: "govuk-summary-list" do %>
             <% rows.each do |row| %>
@@ -61,6 +62,7 @@
               <% end %>
             <% end %>
           <% end %>
+          <%= tag.div block, class: "gem-c-summary__block" if block %>
         <% end %>
       <% end %>
     <% end %>
