@@ -188,9 +188,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   AddAnother.prototype.updateAttributes = function (fieldset, newIndex = null) {
     var matcher = /(.*[_[])([0-9]+)([_\]].*?)$/
     fieldset
-      .querySelectorAll('label, input, select, textarea')
+      .querySelectorAll('label, input, select, textarea, div')
       .forEach(function (element) {
-        ['name', 'id', 'for'].forEach(function (attribute) {
+        ['name', 'id', 'for', 'data-aria-controls'].forEach(function (attribute) {
           var value = element.getAttribute(attribute)
           var matched = matcher.exec(value)
           if (!matched) return
