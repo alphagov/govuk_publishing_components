@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix some issues with the summary list ([PR #5191](https://github.com/alphagov/govuk_publishing_components/pull/5191))
 * Fix text wrap on notice component ([PR #5186](https://github.com/alphagov/govuk_publishing_components/pull/5186))
 
 ## 63.1.0
