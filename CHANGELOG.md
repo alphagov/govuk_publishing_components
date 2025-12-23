@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Support nested add another components ([PR #5190](https://github.com/alphagov/govuk_publishing_components/pull/5190))
 * Fix text wrap on notice component ([PR #5186](https://github.com/alphagov/govuk_publishing_components/pull/5186))
 
 ## 63.1.0
