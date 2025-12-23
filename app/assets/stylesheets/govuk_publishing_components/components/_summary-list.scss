@@ -4,10 +4,6 @@
 .gem-c-summary-list {
   margin-bottom: govuk-spacing(6);
   @include govuk-font(19);
-
-  .govuk-summary-list {
-    clear: both;
-  }
 }
 
 .gem-c-summary-list__group-title {
