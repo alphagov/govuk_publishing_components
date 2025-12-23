@@ -2,17 +2,11 @@
 @import "govuk/components/summary-list/summary-list";
 
 .gem-c-summary-list {
-  border-bottom: 1px solid $govuk-border-colour;
-
   @include govuk-font(19);
   @include govuk-responsive-margin(6, "top");
 
   &:nth-of-type(1) {
     margin-top: govuk-spacing(0);
-  }
-
-  &:nth-last-of-type(1) {
-    border-bottom: 0;
   }
 
   .govuk-summary-list {
