@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+*  Include divs and aria-controls attributes when updating Add Another components ([PR #5192](https://github.com/alphagov/govuk_publishing_components/pull/5192))
 * Fix text wrap on notice component ([PR #5186](https://github.com/alphagov/govuk_publishing_components/pull/5186))
 
 ## 63.1.0
