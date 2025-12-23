@@ -59,6 +59,12 @@ describe "Summary list", type: :view do
     assert_select ".gem-c-summary__block", text: "Some HTML"
   end
 
+  it "does not render a block if nothing is passed to the block" do
+    render_component(title: "Title, summary and body")
+    assert_select ".gem-c-summary-list .govuk-heading-m", text: "Title, summary and body"
+    assert_select ".gem-c-summary__block", false
+  end
+
   it "renders without borders" do
     render_component(
       title: "Title, summary and body",
