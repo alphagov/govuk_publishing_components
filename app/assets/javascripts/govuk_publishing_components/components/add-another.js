@@ -9,6 +9,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.addAnotherButton = undefined
     this.startIndex = Number(this.module.dataset.ga4StartIndex) || 1
     this.indexSectionCount = Number(this.module.dataset.ga4IndexSectionCount)
+    this.fieldsetSelector = `.js-add-another__fieldset[data-parent-component-id="${this.module.dataset.componentId}"]`
   }
 
   function createButton (textContent, additionalClass = '', dataAttributes = {}) {
@@ -89,7 +90,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   AddAnother.prototype.createRemoveButtons = function () {
     var fieldsets =
-      this.module.querySelectorAll('.js-add-another__fieldset')
+      this.module.querySelectorAll(this.fieldsetSelector)
     fieldsets.forEach(function (fieldset) {
       this.createRemoveButton(fieldset, this.removeExistingFieldset.bind(this))
       fieldset.querySelector('.js-add-another__destroy-checkbox').hidden = true
@@ -97,11 +98,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.removeEmptyFieldset = function () {
-    this.module.querySelector('.js-add-another__empty').remove()
+    this.module.querySelector(`.js-add-another__empty[data-parent-component-id="${this.module.dataset.componentId}"]`).remove()
   }
 
   AddAnother.prototype.updateFieldsetsAndButtons = function () {
-    var visibleFields = this.module.querySelectorAll('.js-add-another__fieldset:not([hidden]) > fieldset')
+    var visibleFields = this.module.querySelectorAll(`${this.fieldsetSelector}:not([hidden]) > fieldset`)
 
     visibleFields.forEach(function (field, index) {
       field.querySelector('legend').textContent = this.module.dataset.fieldsetLegend + ' ' + (index + 1)
@@ -117,9 +118,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }.bind(this))
 
     if (this.module.dataset.emptyFields === 'false') {
-      this.module.querySelector('.js-add-another__remove-button').classList.toggle(
+      this.module.querySelector(this.fieldsetSelector + ' .js-add-another__remove-button').classList.toggle(
         'js-add-another__remove-button--hidden',
-        this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])').length === 1
+        this.module.querySelectorAll(this.fieldsetSelector + ':not([hidden])').length === 1
       )
     }
 
@@ -127,7 +128,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.disableTopAndBottomButtons()
     }
 
-    var trackedAddAnotherButton = this.module.querySelector('.js-add-another__add-button[data-ga4-event]')
+    var trackedAddAnotherButton = this.module.querySelector(this.fieldsetSelector + ' .js-add-another__add-button[data-ga4-event]')
 
     if (trackedAddAnotherButton) {
       trackedAddAnotherButton.dataset.indexSection = this.indexSectionCount || visibleFields.length
@@ -137,19 +138,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   // Disable the top "Move up" and bottom "Move down" buttons when the list is sortable.
   AddAnother.prototype.disableTopAndBottomButtons = function () {
-    this.module.querySelectorAll('.gem-c-add-another__move-button').forEach(function (button) {
+    this.module.querySelectorAll(this.fieldsetSelector + ' .gem-c-add-another__move-button').forEach(function (button) {
       button.removeAttribute('disabled')
     })
 
-    var topMoveUpButton = this.module.querySelector('.js-add-another__fieldset:first-of-type .gem-c-add-another__move-button[data-action="move-up"]')
+    var topMoveUpButton = this.module.querySelector(this.fieldsetSelector + ':first-of-type .gem-c-add-another__move-button[data-action="move-up"]')
     topMoveUpButton.setAttribute('disabled', true)
 
-    var bottomMoveDownButton = this.module.querySelector('.js-add-another__fieldset:last-of-type .gem-c-add-another__move-button[data-action="move-down"]')
+    var bottomMoveDownButton = this.module.querySelector(this.fieldsetSelector + ':last-of-type .gem-c-add-another__move-button[data-action="move-down"]')
     bottomMoveDownButton.setAttribute('disabled', true)
   }
 
   AddAnother.prototype.addNewFieldset = function (event) {
-    var newFieldsetTemplate = this.module.querySelector('.js-add-another__empty-template')
+    var newFieldsetTemplate = this.module.querySelector(`.js-add-another__empty-template[data-parent-component-id="${this.module.dataset.componentId}"]`)
     var newFieldset = newFieldsetTemplate.content.cloneNode(true).children[0]
     newFieldset.classList.add('js-add-another__fieldset')
     this.createRemoveButton(newFieldset, this.removeNewFieldset.bind(this))
@@ -211,7 +212,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.getOrderInputs = function () {
-    return this.module.querySelectorAll('.js-add-another__fieldset:not([hidden]) .js-add-another__order-input input')
+    return this.module.querySelectorAll(this.fieldsetSelector + ':not([hidden]) .js-add-another__order-input input')
   }
 
   AddAnother.prototype.hideOrderInputs = function () {
@@ -221,7 +222,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.addMoveButtons = function () {
-    var visibleFields = this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+    var visibleFields = this.module.querySelectorAll(this.fieldsetSelector + ':not([hidden])')
     visibleFields.forEach(function (field, index) {
       field.dataset.sortableId = 'js-add-another__sortable-' + index + '-fieldset'
       var wrapper = document.createElement('div')
@@ -270,7 +271,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.sortableList.sort(order, true)
     this.updateFieldsetsAndButtons()
 
-    var visibleFields = this.module.querySelectorAll('.js-add-another__fieldset:not([hidden])')
+    var visibleFields = this.module.querySelectorAll(this.fieldsetSelector + ':not([hidden])')
     visibleFields.forEach(function (field, index) {
       this.updateAttributes(field, index)
     }.bind(this))
@@ -294,7 +295,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   AddAnother.prototype.removeMoveButtons = function () {
-    var wrappers = this.module.querySelectorAll('.gem-c-add-another__move-button-wrapper')
+    var wrappers = this.module.querySelectorAll(this.fieldsetSelector + ' .gem-c-add-another__move-button-wrapper')
     wrappers.forEach((button) => {
       button.remove()
     })

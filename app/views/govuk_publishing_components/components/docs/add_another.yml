@@ -167,3 +167,103 @@ examples:
           <label for="sortable_person_2_name" class="gem-c-label govuk-label">Full name</label>
           <input class="gem-c-input govuk-input" id="sortable_person_2_name" name="person[2]name">
         </div>
+  nested_components:
+    data:
+      fieldset_legend: "Class"
+      add_button_text: "Add another class"
+      items:
+        - fields: >
+            <div class="govuk-form-group">
+              <label for="class_0_name" class="gem-c-label govuk-label">Name</label>
+              <input class="gem-c-input govuk-input" id="class_0_name" name="class[][name]">
+            </div>
+            <div data-module="add-another" data-add-button-text="Add another person" data-fieldset-legend="Person" data-empty-fields="false" data-sortable="false" data-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="gem-c-add-another govuk-!-margin-left-6">
+              <div data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="js-add-another__fieldset gem-c-fieldset govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Person 1</legend>
+                  <div class="js-add-another__destroy-checkbox">
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                      <div class="govuk-checkboxes__item">
+                        <input type="checkbox" name="class[][person][_destroy]" id="class_0_person_0__destroy" class="govuk-checkboxes__input">
+                        <label for="class_0_person_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="govuk-form-group">
+                    <label for="class_0_person_0_name" class="gem-c-label govuk-label">Full name</label>
+                    <input class="gem-c-input govuk-input" id="class_0_person_0_name" name="class[][person][][name]">
+                  </div>
+                </fieldset>
+              </div>
+              <div data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="js-add-another__empty gem-c-fieldset govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Person 2</legend>
+                  <div class="govuk-form-group"> 
+                    <label for="class_0_person_1_name" class="gem-c-label govuk-label">Full name</label> 
+                    <input class="gem-c-input govuk-input" id="class_0_person_1_name" name="class[][person][][name]"> 
+                  </div>
+                </fieldset>
+              </div> 
+              <template class="js-add-another__empty-template" data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b">
+                <div data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="js-add-another__empty gem-c-fieldset govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Person 2</legend>
+                    <div class="govuk-form-group"> 
+                      <label for="class_0_person_1_name" class="gem-c-label govuk-label">Full name</label> 
+                      <input class="gem-c-input govuk-input" id="class_0_person_1_name" name="class[][person][][name]"> 
+                    </div>
+                  </fieldset>
+                </div> 
+              </template>
+            </div>
+          destroy_checkbox: >
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="class[][_destroy]" id="class_0__destroy" class="govuk-checkboxes__input">
+                <label for="person_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+              </div>
+            </div>
+      empty:
+        <div class="govuk-form-group">
+        <label for="class_1_name" class="gem-c-label govuk-label">Name</label>
+        <input class="gem-c-input govuk-input" id="class_1_name" name="class[][name]">
+        </div>
+        <div data-module="add-another" data-add-button-text="Add another person" data-fieldset-legend="Person" data-empty-fields="false" data-sortable="false" data-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="gem-c-add-another govuk-!-margin-left-6">
+        <div data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="js-add-another__fieldset gem-c-fieldset govuk-form-group">
+        <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Person 1</legend>
+        <div class="js-add-another__destroy-checkbox">
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+        <input type="checkbox" name="class[][person][_destroy]" id="class_1_person_0__destroy" class="govuk-checkboxes__input">
+        <label for="class_1_person_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+        </div>
+        </div>
+        </div>
+        <div class="govuk-form-group">
+        <label for="class_1_person_0_name" class="gem-c-label govuk-label">Full name</label>
+        <input class="gem-c-input govuk-input" id="class_1_person_0_name" name="class[][person][][name]">
+        </div>
+        </fieldset>
+        </div>
+        <div data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="js-add-another__empty gem-c-fieldset govuk-form-group">
+        <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Person 2</legend>
+        <div class="govuk-form-group">
+        <label for="class_1_person_1_name" class="gem-c-label govuk-label">Full name</label>
+        <input class="gem-c-input govuk-input" id="class_1_person_1_name" name="class[][person][][name]">
+        </div>
+        </fieldset>
+        </div>
+        <template class="js-add-another__empty-template" data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b">
+        <div data-parent-component-id="4075ea0e-4575-4951-a3e7-58b56dba981b" class="js-add-another__empty gem-c-fieldset govuk-form-group">
+        <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Person 2</legend>
+        <div class="govuk-form-group">
+        <label for="class_1_person_1_name" class="gem-c-label govuk-label">Full name</label>
+        <input class="gem-c-input govuk-input" id="class_1_person_1_name" name="class[][person][][name]">
+        </div>
+        </fieldset>
+        </div>
+        </template>
+        </div>
