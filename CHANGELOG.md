@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow summary card to support a block ([PR #5193](https://github.com/alphagov/govuk_publishing_components/pull/5193))
+
 ## 63.1.2
 
 * Fix figure component / govspeak images that contain SVGs ([PR #5203](https://github.com/alphagov/govuk_publishing_components/pull/5203))
