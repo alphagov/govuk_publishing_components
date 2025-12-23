@@ -102,3 +102,10 @@ examples:
           value: value1
           data:
             module: "something"
+
+  with_block:
+    description: Use the summary card with a block when you need to show an empty state message or load another component.
+    data:
+      title: "Topics"
+      block: |
+        <p class="govuk-body">No topics specified for this document.</p>
