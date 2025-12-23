@@ -2,12 +2,8 @@
 @import "govuk/components/summary-list/summary-list";
 
 .gem-c-summary-list {
+  margin-bottom: govuk-spacing(6);
   @include govuk-font(19);
-  @include govuk-responsive-margin(6, "top");
-
-  &:nth-of-type(1) {
-    margin-top: govuk-spacing(0);
-  }
 
   .govuk-summary-list {
     clear: both;
