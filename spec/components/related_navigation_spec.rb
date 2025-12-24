@@ -83,7 +83,7 @@ describe "Related navigation", type: :view do
             "links" => {
               "world_location_news" => [
                 {
-                  "base_path" => "/world/tajikistan/news",
+                  "base_path" => "/world/tajikistan-different-to-world-location/news",
                   "document_type" => "world_location_news",
                   "title" => "Tajikistan and the UK",
                 },
@@ -96,12 +96,12 @@ describe "Related navigation", type: :view do
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
-    assert_select ".gem-c-related-navigation__section-link[href=\"/world/tajikistan/news\"]", text: "Tajikistan"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/tajikistan-different-to-world-location/news\"]", text: "Tajikistan"
   end
 
   it "renders world locations section when passed world location items without base path or world_location_news link" do
     content_item = {}
-    content_item["links"] = construct_links("world_locations", nil, "USA")
+    content_item["links"] = construct_links("world_locations", nil, "USA", "world_location")
     render_component(content_item:)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
