@@ -101,8 +101,9 @@ describe "Related navigation", type: :view do
 
   it "renders world locations section when passed world location items without base path or world_location_news link" do
     content_item = {}
-    content_item["links"] = construct_links("world_locations", nil, "USA")
+    content_item["links"] = construct_links("world_locations", nil, "USA", "world_location")
     render_component(content_item:)
+    puts content_item["links"]
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/usa/news\"]", text: "USA"
