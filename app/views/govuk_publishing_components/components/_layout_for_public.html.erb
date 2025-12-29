@@ -17,6 +17,7 @@
   omit_header ||= false
   product_name ||= nil
   service_name ||= nil
+  show_app_promo_banner ||= false
   show_cross_service_header ||= false
   draft_watermark ||= false
   title ||= "GOV.UK - The best place to find government services and information"
@@ -76,6 +77,9 @@
       <%= render "govuk_publishing_components/components/skip_link", {
         href: "#content",
       } %>
+      <% if show_app_promo_banner %>
+        <%= render "govuk_publishing_components/components/app_promo_banner" %>
+      <% end %>
     <% end %>
     <% unless omit_header %>
       <% if show_cross_service_header %>
