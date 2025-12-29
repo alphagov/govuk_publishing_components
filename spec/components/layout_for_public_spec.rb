@@ -73,6 +73,20 @@ describe "Layout for public", :capybara, type: :view do
     assert_select ".gem-c-layout-for-public .govuk-footer__section-break", true
   end
 
+  it "does not display the app promo banner by default" do
+    render_component({})
+
+    assert_select ".gem-c-app-promo-banner", false
+  end
+
+  it "can display the app promo banner" do
+    render_component({
+      show_app_promo_banner: true,
+    })
+
+    assert_select ".gem-c-app-promo-banner"
+  end
+
   it "can add a emergency banner" do
     render_component({
       emergency_banner: "<div id='test-emergency-banner'>This is an emergency banner test</div>",
