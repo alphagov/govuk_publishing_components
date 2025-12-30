@@ -167,3 +167,61 @@ examples:
           <label for="sortable_person_2_name" class="gem-c-label govuk-label">Full name</label>
           <input class="gem-c-input govuk-input" id="sortable_person_2_name" name="person[2]name">
         </div>
+
+  with_conditional_checkbox:
+    description: Add another with a conditional checkbox.
+    data:
+      fieldset_legend: "Person"
+      add_button_text: "Add another person"
+      items:
+        - fields: >
+            <div class="govuk-form-group">
+              <label for="item_0_name" class="gem-c-label govuk-label">Full name</label>
+              <input class="gem-c-input govuk-input" id="item_0_name" name="item[0]name">
+            </div>
+            <div data-module="gem-checkboxes govuk-checkboxes" class="gem-c-checkboxes govuk-form-group">
+               <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-fieldset__legend--hidden">Add email?</legend>
+                  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                     <div class="govuk-checkboxes__item">
+                        <input type="checkbox" name="item[0][add_email]" id="item_0_add_email" value="true" class="govuk-checkboxes__input" data-aria-controls="item_0_add_email-conditional-0" />
+                        <label for="item_0_add_email" class="govuk-label govuk-checkboxes__label">Add email?</label>
+                     </div>
+                     <div id="item_0_add_email-conditional-0" class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="item_0_email">Email address</label>
+                          <input class="govuk-input govuk-!-width-one-third" id="item_0_email" name="item[0][email]" type="email">
+                        </div>
+                     </div>
+                  </div>
+               </fieldset>
+            </div>
+          destroy_checkbox: >
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input type="checkbox" name="item[0][_destroy]" id="item_0__destroy" class="govuk-checkboxes__input">
+                <label for="item_0__destroy" class="govuk-label govuk-checkboxes__label">Delete</label>
+              </div>
+            </div>
+      empty: >
+        <div class="govuk-form-group">
+           <label for="item_1_name" class="gem-c-label govuk-label">Full name</label>
+           <input class="gem-c-input govuk-input" id="item_1_name" name="item[1]name">
+         </div>
+         <div data-module="gem-checkboxes govuk-checkboxes" class="gem-c-checkboxes govuk-form-group">
+            <fieldset class="govuk-fieldset">
+               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-fieldset__legend--hidden">Add email?</legend>
+               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                     <input type="checkbox" name="item[1][add_email]" id="item_1_add_email" value="true" class="govuk-checkboxes__input" data-aria-controls="item_1_add_email-conditional-0" />
+                     <label for="item_1_add_email" class="govuk-label govuk-checkboxes__label">Add email?</label>
+                  </div>
+                  <div id="item_1_add_email-conditional-0" class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden">
+                     <div class="govuk-form-group">
+                       <label class="govuk-label" for="item_1_email">Email address</label>
+                       <input class="govuk-input govuk-!-width-one-third" id="item_1_email" name="item[1][email]" type="email">
+                     </div>
+                  </div>
+               </div>
+            </fieldset>
+         </div>
