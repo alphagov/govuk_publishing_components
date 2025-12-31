@@ -15,7 +15,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    action_text-trix (2.1.15)
+    action_text-trix (2.1.16)
       railties
     actioncable (8.1.1)
       actionpack (= 8.1.1)
@@ -116,7 +116,7 @@ GEM
       xpath (~> 3.2)
     climate_control (1.2.0)
     coderay (1.1.3)
-    concurrent-ruby (1.3.5)
+    concurrent-ruby (1.3.6)
     connection_pool (2.5.5)
     crack (1.0.1)
       bigdecimal
@@ -126,12 +126,12 @@ GEM
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
-    date (3.5.0)
+    date (3.5.1)
     diff-lcs (1.6.2)
     docile (1.4.1)
     domain_name (0.6.20240107)
     drb (2.2.3)
-    erb (6.0.0)
+    erb (6.0.1)
     erb_lint (0.9.0)
       activesupport
       better_html (>= 2.0.1)
@@ -186,7 +186,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.1.0)
       domain_name (~> 0.5)
-    i18n (1.14.7)
+    i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     i18n-coverage (0.2.0)
     i18n-tasks (1.0.14)
@@ -199,12 +199,12 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
-    io-console (0.8.1)
-    irb (1.15.3)
+    io-console (0.8.2)
+    irb (1.16.0)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.17.1)
+    json (2.18.0)
     json-schema (6.0.0)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
@@ -217,7 +217,7 @@ GEM
     logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
-    loofah (2.24.1)
+    loofah (2.25.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.9.0)
@@ -235,7 +235,8 @@ GEM
     mime-types-data (3.2025.0924)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.26.2)
+    minitest (6.0.1)
+      prism (~> 1.5)
     net-imap (0.6.2)
       date
       net-protocol
@@ -247,7 +248,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.5)
-    nokogiri (1.18.10)
+    nokogiri (1.19.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     null_logger (0.0.1)
@@ -434,7 +435,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.4.0)
+    prism (1.7.0)
     prometheus_exporter (2.3.1)
       webrick
     pry (0.15.2)
@@ -443,7 +444,7 @@ GEM
     pry-byebug (3.11.0)
       byebug (~> 12.0)
       pry (>= 0.13, < 0.16)
-    psych (5.2.6)
+    psych (5.3.1)
       date
       stringio
     public_suffix (7.0.0)
@@ -500,7 +501,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
-    rdoc (6.17.0)
+    rdoc (7.0.3)
       erb
       psych (>= 4.0.0)
       tsort
@@ -603,7 +604,7 @@ GEM
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     statsd-ruby (1.5.0)
-    stringio (3.1.9)
+    stringio (3.2.0)
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
     terser (1.2.6)
@@ -631,7 +632,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.38)
-    zeitwerk (2.7.3)
+    zeitwerk (2.7.4)
 
 PLATFORMS
   ruby
