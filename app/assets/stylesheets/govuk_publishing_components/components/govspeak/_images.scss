@@ -16,6 +16,10 @@
     margin: 0 0 govuk-spacing(4) 0;
     display: table;
 
+    &:has(img[src*=".svg"]) {
+      width: 100%;
+    }
+
     img {
       max-width: 100%;
       display: table-row;
