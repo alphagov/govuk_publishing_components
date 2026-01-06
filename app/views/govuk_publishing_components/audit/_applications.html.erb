@@ -43,12 +43,6 @@
             } %>
           <% end %>
 
-          <% if application[:uses_static] %>
-            <%= render "govuk_publishing_components/components/warning_text", {
-              text: raw("This application uses <a href=\"https://github.com/alphagov/static\" class=\"govuk-link\">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed."),
-            } %>
-          <% end %>
-
           <% application[:warnings].each do |warning| %>
             <p class="govuk-body">
               <strong class="govuk-tag">Warn</strong>

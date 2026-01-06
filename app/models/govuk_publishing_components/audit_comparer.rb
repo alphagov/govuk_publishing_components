@@ -4,15 +4,6 @@ module GovukPublishingComponents
 
     def initialize(gem_data, results)
       if gem_data[:gem_found]
-        @applications_using_static = %w[
-          collections
-          finder-frontend
-          government-frontend
-          service-manual-frontend
-          smart-answers
-        ]
-
-        @static_data = find_static(results)
         @gem_data = gem_data
         @applications_data = sort_results(results)
         @gem_data[:components_by_application] = get_components_by_application || []
@@ -22,23 +13,6 @@ module GovukPublishingComponents
     end
 
   private
-
-    # find static to check for global includes, reduce false warnings
-    def find_static(results)
-      results.each do |result|
-        if result[:name] == "static" && result[:application_found] == true
-          return clean_static(result)
-        end
-      end
-
-      false
-    end
-
-    # turn static data into an object so locations can be easily referenced
-    # should give object of form { "template" => [], "stylesheet" => [] }
-    def clean_static(data)
-      Hash[data[:components_found].map { |d| [d[:location], d[:components]] }]
-    end
 
     def prettify_key(key)
       key.to_s.gsub("_", " ").capitalize
@@ -50,7 +24,6 @@ module GovukPublishingComponents
       results.each do |result|
         if result[:application_found]
           @current_uses_individual_asset_model = result[:uses_individual_asset_model]
-          application_uses_static = @applications_using_static.include?(result[:name])
           templates = result[:components_found].find { |c| c[:location] == "template" }
           stylesheets = result[:components_found].find { |c| c[:location] == "stylesheet" }
           javascripts = result[:components_found].find { |c| c[:location] == "javascript" }
@@ -63,7 +36,6 @@ module GovukPublishingComponents
           warnings << warn_about_missing_assets(result[:components_found])
           warnings << warn_about_style_overrides(result[:gem_style_references])
           warnings << warn_about_jquery_references(result[:jquery_references])
-          warnings << check_for_assets_already_in_static(result[:components_found]) if @static_data && application_uses_static
           warnings = warnings.flatten
 
           summary = [
@@ -89,7 +61,6 @@ module GovukPublishingComponents
             name: result[:name],
             dir: result[:dir],
             application_found: result[:application_found],
-            uses_static: application_uses_static,
             summary:,
             warnings:,
             warning_count: warnings.length,
@@ -155,35 +126,12 @@ module GovukPublishingComponents
               asset_in_gem = false
             end
 
-            check_static = @static_data && second_location != "code"
-            asset_in_static = asset_already_in_static(second_location, component) if check_static
             suppress_warning = @current_uses_individual_asset_model && second_location == "stylesheet"
-            raise_warning = asset_in_gem && !asset_in_static && !suppress_warning
+            raise_warning = asset_in_gem && !suppress_warning
 
-            # this raises a warning if the asset exists and isn't included either in the application or static
+            # this raises a warning if the asset exists and isn't included in the application
             warnings << create_warning(component, "Included in #{first_location} but not #{second_location}") if raise_warning
           end
-        end
-      end
-
-      warnings
-    end
-
-    def asset_already_in_static(location, component)
-      return true if @static_data[location].include?(component)
-
-      false
-    end
-
-    def check_for_assets_already_in_static(locations)
-      warnings = []
-
-      locations.each do |location|
-        next if %w[template ruby].include?(location[:location])
-
-        location[:components].each do |component|
-          raise_warning = asset_already_in_static(location[:location], component)
-          warnings << create_warning(component, "Included in #{location[:location]} but already included in static") if raise_warning
         end
       end
 
