@@ -26,6 +26,18 @@ examples:
       src: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/54374/s630_the_lords_chamber.jpg
       alt: An image of the lords chamber
       caption: The Lords Chamber on the 14th of August. A large number of people are in attendance, filling the seats in the lower and upper areas. Several people are wearing hats.
+  figure_with_caption_and_svg:
+    description: SVGs should behave like normal images, but will have a caption wider than the SVG if the SVG does not fill the available width (see following example for explanation).
+    data:
+      src: https://www.gov.uk/assets/frontend/govuk-crest-9f82a3631d8ac5feb4660345a2b44ca98f077b48248f2cc139a0f412355bebef.svg
+      alt: An image of the lords chamber
+      caption: The Lords Chamber on the 14th of August. A large number of people are in attendance, filling the seats in the lower and upper areas. Several people are wearing hats.
+  figure_with_caption_and_bad_svg:
+    description: This example shows an SVG containing a base64 encoded PNG image, instead of correct SVG elements. This was taken from a live GOV.UK page. We use the CSS `has` selector to ensure the containing figure has a width of 100%, otherwise it collapses to zero, making the image invisible. We can't distinguish between these kinds of SVGs, so all SVGs will have a full width caption as a consequence (see previous example).
+    data:
+      src: https://assets.publishing.service.gov.uk/media/693163e15b5198836f304041/01-fig1.svg
+      alt: An image of the lords chamber
+      caption: The Lords Chamber on the 14th of August. A large number of people are in attendance, filling the seats in the lower and upper areas. Several people are wearing hats.
   right_to_left_with_caption:
     data:
       src: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/image_data/file/31637/s300_Visas_-_Website.jpg
