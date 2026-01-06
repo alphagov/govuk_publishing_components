@@ -4,9 +4,6 @@
 @import "govuk_publishing_components/govuk_frontend_support";
 @import "govuk_publishing_components/component_support";
 
-// Include all govuk frontend components
-@import "govuk/components/index";
-
 // components
 @import "components/accordion";
 @import "components/action-link";
@@ -94,3 +91,6 @@
 @import "components/textarea";
 @import "components/translation-nav";
 @import "components/warning-text";
+
+// Include all govuk frontend components
+@import "govuk/components/index";

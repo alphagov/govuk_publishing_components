@@ -17,7 +17,7 @@ $choices-z-index: 2 !default;
 $choices-button-dimension: 12px !default;
 
 @import "mixins/css3";
-@import "govuk/components/label/label";
+// @import "govuk/components/label/label";
 @import "choices.js/src/styles/choices";
 
 .gem-c-select-with-search {
