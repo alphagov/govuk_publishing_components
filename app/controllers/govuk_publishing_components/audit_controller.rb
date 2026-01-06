@@ -20,7 +20,6 @@ module GovukPublishingComponents
         govuk-developer-docs
         local-links-manager
         manuals-publisher
-        maslow
         places-manager
         publisher
         release
@@ -31,7 +30,6 @@ module GovukPublishingComponents
         signon
         smart-answers
         specialist-publisher
-        static
         support
         transition
         travel-advice-publisher
