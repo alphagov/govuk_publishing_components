@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix figure component / govspeak images that contain SVGs ([PR #5203](https://github.com/alphagov/govuk_publishing_components/pull/5203))
+
 ## 63.1.1
 
 * Fix text wrap on notice component ([PR #5186](https://github.com/alphagov/govuk_publishing_components/pull/5186))
