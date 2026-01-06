@@ -22,7 +22,7 @@
     &::before {
       content: "!";
       @include govuk-typography-weight-bold($important: false);
-      @extend .govuk-warning-text__icon; // stylelint-disable-line scss/at-extend-no-missing-placeholder
+      // @extend .govuk-warning-text__icon; // stylelint-disable-line scss/at-extend-no-missing-placeholder
     }
 
     p {
