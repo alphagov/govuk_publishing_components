@@ -199,7 +199,6 @@ describe "Comparing data from an application with the components" do
         name: "Dummy application",
         dir: "dummy-app",
         application_found: true,
-        uses_static: false,
         summary: [
           {
             name: "In templates",
@@ -292,7 +291,6 @@ describe "Comparing data from an application with the components" do
         name: "Dummy application",
         dir: "dummy-app",
         application_found: true,
-        uses_static: false,
         summary: [
           {
             name: "In templates",
@@ -322,161 +320,6 @@ describe "Comparing data from an application with the components" do
           },
         ],
         warning_count: 2,
-        gem_style_references: [],
-        jquery_references: [],
-        component_locations: {},
-        helper_references: nil,
-        uses_individual_asset_model: nil,
-        application_components: nil,
-      },
-    ]
-
-    expect(comparer.applications_data).to match(expected)
-  end
-
-  # if static contains an asset that an application needs, no warning should be raised
-  it "returns a comparison for an application using individual components and takes static into account" do
-    application = [
-      {
-        name: "collections",
-        dir: "collections-dir",
-        application_found: true,
-        components_found: [
-          {
-            location: "template",
-            components: [
-              "component one",
-              "component two",
-              "component four",
-            ],
-          },
-          {
-            location: "stylesheet",
-            components: [
-              "component one",
-            ],
-          },
-          {
-            location: "javascript",
-            components: [],
-          },
-          {
-            location: "ruby",
-            components: [],
-          },
-        ],
-        gem_style_references: [],
-        jquery_references: [],
-        component_locations: {},
-      },
-      {
-        name: "static",
-        dir: "static-dir",
-        application_found: true,
-        components_found: [
-          {
-            location: "template",
-            components: [
-              "component one",
-              "component two",
-            ],
-          },
-          {
-            location: "stylesheet",
-            components: [
-              "component one",
-              "component two",
-            ],
-          },
-          {
-            location: "javascript",
-            components: [
-              "component one",
-            ],
-          },
-          {
-            location: "ruby",
-            components: [],
-          },
-        ],
-        gem_style_references: [],
-        jquery_references: [],
-        component_locations: {},
-      },
-    ]
-    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
-
-    expected = [
-      {
-        name: "collections",
-        dir: "collections-dir",
-        application_found: true,
-        uses_static: true,
-        summary: [
-          {
-            name: "In templates",
-            value: ["component four", "component one", "component two"],
-          },
-          {
-            name: "In stylesheets",
-            value: ["component one"],
-          },
-          {
-            name: "In javascripts",
-            value: [],
-          },
-          {
-            name: "In ruby",
-            value: [],
-          },
-        ],
-        warnings: [
-          {
-            component: "component four",
-            message: "Included in code but not stylesheet",
-          },
-          {
-            component: "component four",
-            message: "Included in code but not javascript",
-          },
-          {
-            component: "component one",
-            message: "Included in stylesheet but already included in static",
-          },
-        ],
-        warning_count: 3,
-        gem_style_references: [],
-        jquery_references: [],
-        component_locations: {},
-        helper_references: nil,
-        uses_individual_asset_model: nil,
-        application_components: nil,
-      },
-      {
-        name: "static",
-        dir: "static-dir",
-        application_found: true,
-        uses_static: false,
-        summary: [
-          {
-            name: "In templates",
-            value: ["component one", "component two"],
-          },
-          {
-            name: "In stylesheets",
-            value: ["component one", "component two"],
-          },
-          {
-            name: "In javascripts",
-            value: ["component one"],
-          },
-          {
-            name: "In ruby",
-            value: [],
-          },
-        ],
-        warnings: [],
-        warning_count: 0,
         gem_style_references: [],
         jquery_references: [],
         component_locations: {},
@@ -530,7 +373,6 @@ describe "Comparing data from an application with the components" do
         name: "Dummy application",
         dir: "dummy-app",
         application_found: true,
-        uses_static: false,
         summary: [
           {
             name: "In templates",
@@ -616,7 +458,6 @@ describe "Comparing data from an application with the components" do
         name: "Dummy application",
         dir: "dummy-app",
         application_found: true,
-        uses_static: false,
         summary: [
           {
             name: "In templates",

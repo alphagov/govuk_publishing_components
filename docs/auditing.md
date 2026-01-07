@@ -11,8 +11,6 @@ The aim of the auditing is to provide information about our components and how t
 - where an application is using a component but has not included required assets
 - where an application is not using a component but has included unneeded assets
 
-In some cases an application may use a component but not include its assets. This is usually because the assets are already included globally in `static`. For example, at time of writing the action link component is being used in `collections` and also in the site header, so the Sass for the component is included only in `static`, to prevent duplication. The auditing checks this and suppresses any warnings for missing assets in applications where they are already included in `static`.
-
 The auditing also includes other warnings, such as:
 
 - where applications contain jQuery
