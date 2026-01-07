@@ -13,6 +13,12 @@ pt:
       hide_all: Ocultar todas as secções
       show_all: Mostrar todas as secções
       this_section_visually_hidden: " Esta secção"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Procurar em %{title}
     attachment:
@@ -154,6 +160,10 @@ pt:
       selected:
     organisation_schema:
       all_content_search_description: Encontrar todo o conteúdo de %{organisation}
+    pagination:
+      next:
+      pagination: Paginação
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ pt:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Paginação
-      previous:
     print_link:
       text: Imprimir esta página
     published_dates:

@@ -13,6 +13,12 @@ pl:
       hide_all: Ukryj wszystkie części
       show_all: Pokaż wszystkie części
       this_section_visually_hidden: " ta część"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Szukaj w %{title}
     attachment:
@@ -158,6 +164,10 @@ pl:
       selected:
     organisation_schema:
       all_content_search_description: Znajdź całą zawartość od %{organizacja}
+    pagination:
+      next:
+      pagination: Numeracja stron
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -167,10 +177,6 @@ pl:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Numeracja stron
-      previous:
     print_link:
       text: Wydrukuj tę stronę
     published_dates:

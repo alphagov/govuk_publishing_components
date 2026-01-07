@@ -13,6 +13,12 @@ zh-tw:
       hide_all: 隱藏所有區段
       show_all: 展開所有區段
       this_section_visually_hidden: " 這個區段"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: 在 %{title} 內搜索
     attachment:
@@ -152,6 +158,10 @@ zh-tw:
       selected:
     organisation_schema:
       all_content_search_description: 從 %{organisation} 找到所有內容
+    pagination:
+      next:
+      pagination: 分頁
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -161,10 +171,6 @@ zh-tw:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: 分頁
-      previous:
     print_link:
       text: 列印此頁面
     published_dates:

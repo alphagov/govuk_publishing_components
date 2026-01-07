@@ -13,6 +13,12 @@ tk:
       hide_all: Ähli bölümleri gizle
       show_all: Ähli bölümleri görkez
       this_section_visually_hidden: " Bu bölüm"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} bilen gözle"
     attachment:
@@ -155,6 +161,10 @@ tk:
       selected:
     organisation_schema:
       all_content_search_description: Ähli mazmunyny %{organisation}-dan tapyň
+    pagination:
+      next:
+      pagination: Sahypa
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -164,10 +174,6 @@ tk:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Sahypa
-      previous:
     print_link:
       text: Bu sahypany çap et
     published_dates:

@@ -13,6 +13,12 @@ zh-hk:
       hide_all: 隱藏所有部份
       show_all: 顯示所有部份
       this_section_visually_hidden: 此部份
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: 在 %{title} 搜尋
     attachment:
@@ -152,6 +158,10 @@ zh-hk:
       selected:
     organisation_schema:
       all_content_search_description: 從 %{organisation} 獲得更多內容
+    pagination:
+      next:
+      pagination: 分頁
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -161,10 +171,6 @@ zh-hk:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: 分頁
-      previous:
     print_link:
       text: 列印本頁面
     published_dates:

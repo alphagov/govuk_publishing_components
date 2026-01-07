@@ -13,6 +13,12 @@ da:
       hide_all: Skjul alle sektioner
       show_all: Vise alle sektioner
       this_section_visually_hidden: " denne sektion"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Søg i %{title}
     attachment:
@@ -155,6 +161,10 @@ da:
       selected:
     organisation_schema:
       all_content_search_description: Find alt indhold fra %{organisation}
+    pagination:
+      next:
+      pagination: Paginering
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -164,10 +174,6 @@ da:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Paginering
-      previous:
     print_link:
       text: Udskriv denne side
     published_dates:

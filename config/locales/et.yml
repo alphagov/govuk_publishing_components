@@ -13,6 +13,12 @@ et:
       hide_all: Peida kõik jaotised
       show_all: Kuva kõik jaotised
       this_section_visually_hidden: " see jaotis"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Otsi %{title} piires
     attachment:
@@ -157,6 +163,10 @@ et:
       selected:
     organisation_schema:
       all_content_search_description: Leidke kogu ettevõtte %{organization} sisu
+    pagination:
+      next:
+      pagination: Lehekülgede jaotus
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -166,10 +176,6 @@ et:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Lehekülgede jaotus
-      previous:
     print_link:
       text: Prindi see leht
     published_dates:
