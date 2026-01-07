@@ -13,6 +13,12 @@ cs:
       hide_all: Skrýt všechny sekce
       show_all: Zobrazit všechny sekce
       this_section_visually_hidden: " tento oddíl"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Hledat v %{title}
     attachment:
@@ -159,6 +165,10 @@ cs:
       selected:
     organisation_schema:
       all_content_search_description: Najít veškerý obsah z %{organisation}
+    pagination:
+      next:
+      pagination: Stránkování
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -168,10 +178,6 @@ cs:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Stránkování
-      previous:
     print_link:
       text: Vytisknout tuto stránku
     published_dates:

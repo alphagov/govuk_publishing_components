@@ -13,6 +13,12 @@ ti:
       hide_all: ኩሉ ክፍልታት ሕባእ
       show_all: ኩሉ ክፍልታት ኣርኢ
       this_section_visually_hidden: እዚ ክፍሊ እዚ
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: ኣብ ውሽጢ %{title} ድለ
     attachment:
@@ -153,6 +159,10 @@ ti:
       selected: ተመሪጹ
     organisation_schema:
       all_content_search_description: ኩሉ ትሕዝቶ ካብ %{organisation} ርኸብ
+    pagination:
+      next: ዝቅጽል
+      pagination: ገጻት ምግባር
+      previous: ዝሓለፈ
     password_input:
       button: ኣርኢ
       button_aria_hide_label: መሕለፊ ቓል/ፓስዎርድ ሕባእ
@@ -162,10 +172,6 @@ ti:
       label: መሕለፊ ቓል/ፓስዎርድ
       password_hidden_announcement: መሕለፊ ቓል/ፓስዎርድካ ተሓቢኡ ኣሎ
       password_shown_announcement: መሕለፊ ቓል/ፓስዎርድካ ይርአ ኣሎ
-    pagination:
-      next: ዝቅጽል
-      pagination: ገጻት ምግባር
-      previous: ዝሓለፈ
     print_link:
       text: ነዚ ገጽ ሕተሞ
     published_dates:

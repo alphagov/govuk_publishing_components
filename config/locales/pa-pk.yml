@@ -13,6 +13,12 @@ pa-pk:
       hide_all: سارے حصے چھپاؤ
       show_all: سارے حصے وکھاؤ
       this_section_visually_hidden: " اِک حصہ"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: ایندے وچ لَبو {title}%
     attachment:
@@ -150,6 +156,10 @@ pa-pk:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} توں سارا مواد تلاش کرو"
+    pagination:
+      next:
+      pagination: ورقہ بندی
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -159,10 +169,6 @@ pa-pk:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: ورقہ بندی
-      previous:
     print_link:
       text: ایس ورقے نوں پرنٹ کرو
     published_dates:

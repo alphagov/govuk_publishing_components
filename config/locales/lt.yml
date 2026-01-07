@@ -13,6 +13,12 @@ lt:
       hide_all: Slėpti visas skiltis
       show_all: Rodyti visas skiltis
       this_section_visually_hidden: " ši skiltis"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Ieškoti %{title}
     attachment:
@@ -159,6 +165,10 @@ lt:
       selected:
     organisation_schema:
       all_content_search_description: Rasti visą turinį iš %{organisation}
+    pagination:
+      next:
+      pagination: Suskirstymas puslapiais
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -168,10 +178,6 @@ lt:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Suskirstymas puslapiais
-      previous:
     print_link:
       text: Spausdinti šį puslapį
     published_dates:

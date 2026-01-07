@@ -13,6 +13,12 @@ pa:
       hide_all: ਸਾਰੇ ਭਾਗ ਲੁਕਾਓ
       show_all: ਸਾਰੇ ਭਾਗ ਦਿਖਾਓ
       this_section_visually_hidden: " ਇਹ ਭਾਗ"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} ਦੇ ਅੰਦਰ ਖੋਜ ਕਰੋ"
     attachment:
@@ -154,6 +160,10 @@ pa:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} ਤੋਂ ਸਾਰੀ ਸਮਗਰੀ ਲੱਭੋ"
+    pagination:
+      next:
+      pagination: ਪੰਨਾ
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ pa:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: ਪੰਨਾ
-      previous:
     print_link:
       text: ਇਸ ਪੰਨੇ ਨੂੰ ਛਾਪੋ
     published_dates:

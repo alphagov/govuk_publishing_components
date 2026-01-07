@@ -13,6 +13,12 @@ ku:
       hide_all: هەموو بەشەکان بشارەوە
       show_all: هەموو بەشەکان پیشان بدە
       this_section_visually_hidden: ئەم بەشە
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: لە ناوەوە بگەڕێ %{title}
     attachment:
@@ -153,6 +159,10 @@ ku:
       selected: هەڵبژێردراوە
     organisation_schema:
       all_content_search_description: هەموو ناوەڕۆکەکان لە %{organisation} بدۆزەرەوە
+    pagination:
+      next: داهاتوو
+      pagination: لاپەڕەسازی
+      previous: پێشووتر
     password_input:
       button: پیشاندان
       button_aria_hide_label: وشەی نهێنی بشارەوە
@@ -162,10 +172,6 @@ ku:
       label: ووشەی نهێنی
       password_hidden_announcement: وشەی نهێنی تۆ شاراوەتەوە
       password_shown_announcement: وشەی نهێنی تۆ دیارە
-    pagination:
-      next: داهاتوو
-      pagination: لاپەڕەسازی
-      previous: پێشووتر
     print_link:
       text: ئەم لاپەڕەیە پرنت بکە
     published_dates:

@@ -13,6 +13,12 @@ gd:
       hide_all: Scrios gach cuid
       show_all: Taispeáin gach cuid
       this_section_visually_hidden: " An chuid seo"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Cuardaigh %{title}
     attachment:
@@ -156,6 +162,10 @@ gd:
       selected:
     organisation_schema:
       all_content_search_description: Faigh gach rud ó %{organisation}
+    pagination:
+      next:
+      pagination: Leathanach
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -165,10 +175,6 @@ gd:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Leathanach
-      previous:
     print_link:
       text: priontáil an leathanach seo
     published_dates:

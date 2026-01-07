@@ -13,6 +13,12 @@ fa:
       hide_all: مخفی کردن تمام بخش‌ها
       show_all: نمایش تمام بخش‌ها
       this_section_visually_hidden: " این بخش"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: جستجو در %{title}
     attachment:
@@ -153,6 +159,10 @@ fa:
       selected:
     organisation_schema:
       all_content_search_description: یافتن تمام محتوا از %{organisation}
+    pagination:
+      next:
+      pagination: صفحه‌بندی
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -162,10 +172,6 @@ fa:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: صفحه‌بندی
-      previous:
     print_link:
       text: چاپ این صفحه
     published_dates:

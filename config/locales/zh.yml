@@ -13,6 +13,12 @@ zh:
       hide_all: 隐藏所有小节
       show_all: 显示所有小节
       this_section_visually_hidden: " 本小节"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: 在 %{title} 内搜索
     attachment:
@@ -152,6 +158,10 @@ zh:
       selected:
     organisation_schema:
       all_content_search_description: 查找 %{organisation} 的全部内容
+    pagination:
+      next:
+      pagination: 分页
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -161,10 +171,6 @@ zh:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: 分页
-      previous:
     print_link:
       text: 打印本页面
     published_dates:

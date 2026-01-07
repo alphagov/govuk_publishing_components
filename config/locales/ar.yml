@@ -13,6 +13,12 @@ ar:
       hide_all: إخفاء كل الأقسام
       show_all: إظهار كل الأقسام
       this_section_visually_hidden: " هذا القسم"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: البحث في %{title}
     attachment:
@@ -157,6 +163,10 @@ ar:
       selected:
     organisation_schema:
       all_content_search_description: العثور عن كل المحتوى من %{organisation}
+    pagination:
+      next:
+      pagination: ترقيم الصفحات
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -166,10 +176,6 @@ ar:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: ترقيم الصفحات
-      previous:
     print_link:
       text: طباعة هذه الصفحة
     published_dates:

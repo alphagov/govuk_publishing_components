@@ -13,6 +13,12 @@ hu:
       hide_all: Minden szekció elrejtése
       show_all: Minden szekció megmutatása
       this_section_visually_hidden: " a jelen szekció"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: 'Keresés a következőben: %{title}'
     attachment:
@@ -157,6 +163,10 @@ hu:
       selected:
     organisation_schema:
       all_content_search_description: Keresse meg a(z) %{organisation} szervezet minden tartalmát
+    pagination:
+      next:
+      pagination: Lapszámozás
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -166,10 +176,6 @@ hu:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Lapszámozás
-      previous:
     print_link:
       text: Oldal kinyomtatása
     published_dates:

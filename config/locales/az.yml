@@ -13,6 +13,12 @@ az:
       hide_all: Bütün bölmələri gizlət
       show_all: Bütün bölmələri göstər
       this_section_visually_hidden: " bu bölmə"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} üzrə axtar"
     attachment:
@@ -154,6 +160,10 @@ az:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-dan bütün məzmunu tap"
+    pagination:
+      next:
+      pagination: Səhifələrə bölmə
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ az:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Səhifələrə bölmə
-      previous:
     print_link:
       text: Bu səhifəni çap et
     published_dates:
