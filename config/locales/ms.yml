@@ -13,6 +13,12 @@ ms:
       hide_all: Sorok semua bahagian
       show_all: Tunjuk semua bahagian
       this_section_visually_hidden: " bahagian ini"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Cari dalam %{title}
     attachment:
@@ -153,6 +159,10 @@ ms:
       selected:
     organisation_schema:
       all_content_search_description: Cari semua kandungan dari %{organisation}
+    pagination:
+      next:
+      pagination: Penomboran
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -162,10 +172,6 @@ ms:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Penomboran
-      previous:
     print_link:
       text: Cetak halaman ini
     published_dates:

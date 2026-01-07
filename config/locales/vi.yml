@@ -13,6 +13,12 @@ vi:
       hide_all: Ẩn tất cả các phần
       show_all: Hiển thị tất cả các phần
       this_section_visually_hidden: " phần này"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Tìm kiếm trong %{title}
     attachment:
@@ -153,6 +159,10 @@ vi:
       selected:
     organisation_schema:
       all_content_search_description: Tìm tất cả nội dung từ %{organisation}
+    pagination:
+      next:
+      pagination: Phân trang
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -162,10 +172,6 @@ vi:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Phân trang
-      previous:
     print_link:
       text: In trang này
     published_dates:

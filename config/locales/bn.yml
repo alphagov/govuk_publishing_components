@@ -13,6 +13,12 @@ bn:
       hide_all: সকল অংশ লুকিয়ে রাখুন
       show_all: সকল অংশ দেখান
       this_section_visually_hidden: " এই অংশ"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title}-এর মধ্যে অনুসন্ধান করুন"
     attachment:
@@ -155,6 +161,10 @@ bn:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-এর সকল বিষয়বস্তু খুঁজে বের করুন"
+    pagination:
+      next:
+      pagination: পেজিনেশন
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -164,10 +174,6 @@ bn:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: পেজিনেশন
-      previous:
     print_link:
       text: এই পৃষ্ঠাটি প্রিন্ট করুন
     published_dates:

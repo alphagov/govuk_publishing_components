@@ -13,6 +13,12 @@ ja:
       hide_all: すべてのセクションを非表示
       show_all: すべてのセクションを表示
       this_section_visually_hidden: " このセクション"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "％{title}内で検索"
     attachment:
@@ -150,6 +156,10 @@ ja:
       selected:
     organisation_schema:
       all_content_search_description: "％{organisation} からすべてのコンテンツを検索"
+    pagination:
+      next:
+      pagination: ページ付け
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -159,10 +169,6 @@ ja:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: ページ付け
-      previous:
     print_link:
       text: このページを印刷する
     published_dates:

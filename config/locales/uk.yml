@@ -13,6 +13,12 @@ uk:
       hide_all: приховати всі розділи
       show_all: Показати всі розділи
       this_section_visually_hidden: " цей розділ"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Шукати в %{title}
     attachment:
@@ -161,6 +167,10 @@ uk:
       selected:
     organisation_schema:
       all_content_search_description: Знайти весь вміст від %{organization}
+    pagination:
+      next:
+      pagination: Поділ на сторінки
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -170,10 +180,6 @@ uk:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Поділ на сторінки
-      previous:
     print_link:
       text: Роздрукувати цю сторінку
     published_dates:

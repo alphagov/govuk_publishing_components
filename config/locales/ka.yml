@@ -13,6 +13,12 @@ ka:
       hide_all: ყველა სექციის დამალვა
       show_all: ყველა სექციის ჩვენება
       this_section_visually_hidden: " ეს სექცია"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: ძებნა %{title}
     attachment:
@@ -157,6 +163,10 @@ ka:
       selected:
     organisation_schema:
       all_content_search_description: ყველა მასალის ნახვა %{organisation}-დან
+    pagination:
+      next:
+      pagination: პაგინაცია
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -166,10 +176,6 @@ ka:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: პაგინაცია
-      previous:
     print_link:
       text: ამ გვერდის ბეჭდვა
     published_dates:

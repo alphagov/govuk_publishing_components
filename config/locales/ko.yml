@@ -13,6 +13,12 @@ ko:
       hide_all:
       show_all:
       this_section_visually_hidden:
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description:
     attachment:
@@ -149,6 +155,10 @@ ko:
       selected:
     organisation_schema:
       all_content_search_description:
+    pagination:
+      next:
+      pagination:
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -158,10 +168,6 @@ ko:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination:
-      previous:
     print_link:
       text:
     published_dates:

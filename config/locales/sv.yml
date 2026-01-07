@@ -13,6 +13,12 @@ sv:
       hide_all: Dölj alla avsnitt
       show_all: Visa alla avsnitt
       this_section_visually_hidden: " detta avsnitt"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Sök inom %{title}
     attachment:
@@ -154,6 +160,10 @@ sv:
       selected:
     organisation_schema:
       all_content_search_description: Hitta allt innehåll från %{organisation}
+    pagination:
+      next:
+      pagination: Paginering
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ sv:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Paginering
-      previous:
     print_link:
       text: Skriv ut den här sidan
     published_dates:

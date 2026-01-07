@@ -13,6 +13,12 @@ sk:
       hide_all: Skryť všetky sekcie
       show_all: Zobraziť všetky časti
       this_section_visually_hidden: " táto časť"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Vyhľadávanie v %{title}
     attachment:
@@ -159,6 +165,10 @@ sk:
       selected:
     organisation_schema:
       all_content_search_description: Nájsť všetok obsah z %{organisation}
+    pagination:
+      next:
+      pagination: Stránkovanie
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -168,10 +178,6 @@ sk:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Stránkovanie
-      previous:
     print_link:
       text: Vytlačiť túto stránku
     published_dates:

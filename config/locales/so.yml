@@ -13,6 +13,12 @@ so:
       hide_all: Qari dhamaan qaybaha
       show_all: Muuji dhamaan qaybaha
       this_section_visually_hidden: " Qaybtan"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Baadh waxyaabaha ku jira %{title}
     attachment:
@@ -154,6 +160,10 @@ so:
       selected:
     organisation_schema:
       all_content_search_description: Raadi dhamaan waxyaabaha uu ka koobanyahay %{organisation}
+    pagination:
+      next:
+      pagination: Lambar siinta boga
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ so:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Lambar siinta boga
-      previous:
     print_link:
       text: Daabac bogan
     published_dates:

@@ -13,6 +13,12 @@ uz:
       hide_all: Бўлимларни барчасини яшириш
       show_all: Бўлимларни барчасини кўрсатиш
       this_section_visually_hidden: " ушбу бўлим"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} да излаш"
     attachment:
@@ -156,6 +162,10 @@ uz:
       selected:
     organisation_schema:
       all_content_search_description: "%{organization}  дан бутун контентни топиш"
+    pagination:
+      next:
+      pagination: Саҳифаларнинг рақамланиши
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -165,10 +175,6 @@ uz:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Саҳифаларнинг рақамланиши
-      previous:
     print_link:
       text: Ушбу саҳифани чоп этиш
     published_dates:

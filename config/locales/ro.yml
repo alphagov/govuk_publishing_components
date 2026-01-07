@@ -13,6 +13,12 @@ ro:
       hide_all: Ascundeți toate secțiunile
       show_all: Afișați toate secțiunile
       this_section_visually_hidden: " această secțiune"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Căutați în %{title}
     attachment:
@@ -155,6 +161,10 @@ ro:
       selected:
     organisation_schema:
       all_content_search_description: Găsiți tot conținutul de la %{organisation}
+    pagination:
+      next:
+      pagination: Paginație
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -164,10 +174,6 @@ ro:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Paginație
-      previous:
     print_link:
       text: Imprimați această pagină
     published_dates:

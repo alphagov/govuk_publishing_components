@@ -13,6 +13,12 @@ ta:
       hide_all: அனைத்துப் பிரிவுகளையும் மறை
       show_all: அனைத்துப் பிரிவுகளையும் காட்டு
       this_section_visually_hidden: " இந்தப் பிரிவு"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title}-க்குள் தேடவும்"
     attachment:
@@ -155,6 +161,10 @@ ta:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation}-லிருந்து அனைத்து உள்ளடக்கத்தையும் கண்டறி"
+    pagination:
+      next:
+      pagination: பக்கமிடுதல்
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -164,10 +174,6 @@ ta:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: பக்கமிடுதல்
-      previous:
     print_link:
       text: இந்தப் பக்கத்தை அச்செடு
     published_dates:

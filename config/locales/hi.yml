@@ -13,6 +13,12 @@ hi:
       hide_all: सभी अनुभाग छुपाएं
       show_all: सभी अनुभाग दिखाएं
       this_section_visually_hidden: " यह अनुभाग"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} में खोजें"
     attachment:
@@ -154,6 +160,10 @@ hi:
       selected:
     organisation_schema:
       all_content_search_description: "%{organization} से सभी सामग्री खोजें"
+    pagination:
+      next:
+      pagination: पृष्ठांकन
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ hi:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: पृष्ठांकन
-      previous:
     print_link:
       text: यह पेज प्रिंट करें
     published_dates:
