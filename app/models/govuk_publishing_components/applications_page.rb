@@ -16,10 +16,6 @@ module GovukPublishingComponents
       parse_file(@gemfilelock, /govuk_publishing_components \(([^)>=~ ]+)\)/)
     end
 
-    def slimmer_version
-      parse_file(@gemfilelock, /slimmer \(([^)>=~ ]+)\)/)
-    end
-
     def sass_version
       parse_file(@gemfilelock, /sass-embedded \(([^)>=~ ]+)\)/)
     end
