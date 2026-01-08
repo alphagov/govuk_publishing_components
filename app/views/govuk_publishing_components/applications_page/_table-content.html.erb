@@ -22,13 +22,6 @@
       <% end %>
     </td>
     <td class="govuk-table__cell">
-      <% if app[:slimmer_version] %>
-        <%= render "govuk_publishing_components/components/tag", {
-          text: app[:slimmer_version],
-        } %>
-      <% end %>
-    </td>
-    <td class="govuk-table__cell">
       <% if app[:sass_version] %>
         <%= render "govuk_publishing_components/components/tag", {
           text: app[:sass_version],

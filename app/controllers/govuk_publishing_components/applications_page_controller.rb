@@ -39,7 +39,6 @@ module GovukPublishingComponents
             source: app.source,
             gem_version: app.gem_version,
             gem_version_status: app.gem_version == GovukPublishingComponents::VERSION ? "green" : "red",
-            slimmer_version: app.slimmer_version,
             sass_version: app.sass_version,
           }
         end
