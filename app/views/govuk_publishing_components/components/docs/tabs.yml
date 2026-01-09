@@ -2,7 +2,7 @@ name: "Tabs (experimental)"
 description: "The tabs component lets users toggle between related sections of content."
 body: |
   This component is based on the [GOV.UK Design System tabs component](https://design-system.service.gov.uk/components/tabs/)
-  and is currently experimental. If using this component, please feed back any research findings to the [GOV.UK Design System team](https://design-system.service.gov.uk/get-in-touch/).
+  and is currently experimental. If using this component, please feed back any research findings to the [GOV.UK Design System team](https://design-system.service.gov.uk/contact/).
 
   The tabs component lets users navigate between related sections of content on a single page,
   displaying one section at a time. Note that they are not intended to be used to navigate
