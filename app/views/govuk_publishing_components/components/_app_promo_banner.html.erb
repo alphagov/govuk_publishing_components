@@ -9,6 +9,7 @@
   component_helper.add_aria_attribute({ label: t("components.app_promo_banner.aria_label")})
   component_helper.set_hidden("hidden")
   component_helper.add_data_attribute({ module: "app-promo-banner", nosnippet: "" })
+  component_helper.add_data_attribute({ ga4_app_promo_banner: "" }) unless disable_ga4 # Added to the parent element for the GA4 pageview object to use
 
   ga4_event_attributes = {
     event_name: "select_content",

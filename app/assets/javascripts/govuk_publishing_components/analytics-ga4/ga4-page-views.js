@@ -59,6 +59,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             emergency_banner: document.querySelector('[data-ga4-emergency-banner]') ? 'true' : undefined,
             phase_banner: this.getElementAttribute('data-ga4-phase-banner') || undefined,
             devolved_nations_banner: this.getElementAttribute('data-ga4-devolved-nations-banner') || undefined,
+            app_promo_banner: this.getBannerPresence('[data-ga4-app-promo-banner]'),
             cookie_banner: this.getBannerPresence('[data-ga4-cookie-banner]'),
             intervention: this.getBannerPresence('[data-ga4-intervention-banner]'),
             global_bar: this.getBannerPresence('[data-ga4-global-banner]'),

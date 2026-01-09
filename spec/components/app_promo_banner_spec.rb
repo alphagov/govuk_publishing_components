@@ -9,6 +9,7 @@ describe "App promo banner", type: :view do
     render_component({})
 
     assert_select ".gem-c-app-promo-banner[aria-label='GOV.UK app']"
+    assert_select ".gem-c-app-promo-banner[data-ga4-app-promo-banner]", true
     assert_select ".gem-c-app-promo-banner__close-button[data-module='ga4-event-tracker']", true
     assert_select ".govuk-link[data-module='ga4-link-tracker']", true
     assert_select ".govuk-link", text: "View on Google Play"
@@ -18,7 +19,7 @@ describe "App promo banner", type: :view do
   it "allows tracking to be disabled" do
     render_component(disable_ga4: true)
 
-    assert_select ".gem-c-app-promo-banner"
+    assert_select ".gem-c-app-promo-banner[data-ga4-app-promo-banner]", false
     assert_select ".gem-c-app-promo-banner__close-button[data-module='ga4-event-tracker']", false
     assert_select ".govuk-link[data-module='ga4-link-tracker']", false
   end
