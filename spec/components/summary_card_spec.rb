@@ -209,4 +209,18 @@ describe "Summary card", type: :view do
     assert_select ".govuk-summary-list__row.govuk-summary-list__row--no-actions .govuk-summary-list__key", text: "Three"
     assert_select ".govuk-summary-list__row.govuk-summary-list__row--no-actions .govuk-summary-list__value", text: "Value 3"
   end
+
+  it "renders content within a block" do
+    render_component(title: "Title") do
+      "Some text goes here"
+    end
+
+    assert_select ".govuk-summary-card__content .gem-c-summary__block", text: "Some text goes here"
+  end
+
+  it "does not render a block wrapper if no content is provided" do
+    render_component(title: "Title")
+
+    assert_select ".govuk-summary-card__content .gem-c-summary__block", count: 0
+  end
 end
