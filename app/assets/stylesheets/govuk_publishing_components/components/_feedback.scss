@@ -248,16 +248,3 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
     color: $govuk-focus-text-colour;
   }
 }
-
-// static.css on GOV.UK overwrites the component styles using input[type="text"]
-// so we need to apply  govuk-input styles using a stronger selector
-.gem-c-feedback .gem-c-input[type="text"] {
-  margin: 0;
-  padding: govuk-spacing(1);
-  border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-  @include govuk-font($size: 19);
-
-  &:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-  }
-}
