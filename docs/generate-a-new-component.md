@@ -1,6 +1,6 @@
 # Generate a new component
 
-You can create a new component in the application (when you don't intend to use it in other places), the gem, or Static (deprecated).
+You can create a new component in the application (when you don't intend to use it in other places) or the components gem.
 
 ## Option 1: create a component in the application
 
@@ -29,7 +29,3 @@ Currently components in the gem must be manually created. File naming convention
 * Script test files go in `spec/javascripts/components`
 
 In addition, components in the gem can have helper files. Helper files go in `lib/govuk_publishing_components/components` and need to be required in `lib/govuk_publishing_components.rb`. Helper files should be structured as a class.
-
-## Option 3: create a component in Static (don't)
-
-This is deprecated, don't add any more components to Static.

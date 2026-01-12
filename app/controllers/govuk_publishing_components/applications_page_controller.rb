@@ -4,7 +4,7 @@ module GovukPublishingComponents
       applications = [
         {
           type: "public-facing",
-          apps: %w[collections email-alert-frontend feedback finder-frontend frontend government-frontend smart-answers static].sort,
+          apps: %w[collections email-alert-frontend feedback finder-frontend frontend government-frontend smart-answers].sort,
         },
         {
           type: "publishing",

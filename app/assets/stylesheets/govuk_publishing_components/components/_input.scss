@@ -14,17 +14,3 @@ $search-icon-size: 40px;
   height: govuk-px-to-rem($search-icon-size);
   background: url("govuk_publishing_components/icon-search.svg") no-repeat -3px center;
 }
-
-// this overrides styles from static that break the look of the component
-// unfortunately we then need to override the override for the search icon variant
-// TODO: remove these styles once static is made less aggressive
-.gem-c-input.govuk-input {
-  margin: 0;
-  min-width: 0;
-  padding: govuk-spacing(1);
-  box-sizing: border-box;
-
-  &.gem-c-input--with-search-icon {
-    padding-left: govuk-spacing(6);
-  }
-}

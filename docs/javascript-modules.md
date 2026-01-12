@@ -12,7 +12,7 @@ JavaScript modules can be specified in markup using `data-` attributes:
 </div>
 ```
 
-Modules are found and started in [dependencies.js](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/dependencies.js) by including `./modules.js` and running the following. This is called by [static](https://github.com/alphagov/static/blob/main/app/assets/javascripts/application.js#L1) once for all applications on GOV.UK.
+Modules are found and started in [dependencies.js](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/dependencies.js) by including `./modules.js` and running the following. This should only be called once for all applications on GOV.UK.
 
 ```javascript
 document.addEventListener('DOMContentLoaded', function () {

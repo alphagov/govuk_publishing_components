@@ -10,32 +10,6 @@ module GovukPublishingComponents
         "govuk_publishing_components/components/_#{component_name}.css"
       }.freeze
 
-      # This list includes components already included in Static; taken from
-      # https://github.com/alphagov/static/blob/198a598682df40ce4a2c3c286c06244297c18cf0/app/assets/stylesheets/application.scss
-
-      # This is used to dedupe stylesheets.
-      STATIC_STYLESHEET_LIST = %w[
-        breadcrumbs
-        button
-        error-message
-        heading
-        hint
-        input
-        label
-        search
-        search-with-autocomplete
-        skip-link
-        textarea
-        title
-        cookie-banner
-        cross-service-header
-        feedback
-        layout-footer
-        layout-for-public
-        layout-header
-        layout-super-navigation-header
-      ].freeze
-
       def add_stylesheet_path(component_path)
         unless is_already_used?(component_path)
           all_component_stylesheets_being_used << component_path
@@ -86,7 +60,6 @@ module GovukPublishingComponents
       def css_exclude_list
         return [] if viewing_component_guide?
         return GovukPublishingComponents::Config.custom_css_exclude_list if GovukPublishingComponents::Config.custom_css_exclude_list&.any?
-        return STATIC_STYLESHEET_LIST if GovukPublishingComponents::Config.exclude_css_from_static
 
         []
       end

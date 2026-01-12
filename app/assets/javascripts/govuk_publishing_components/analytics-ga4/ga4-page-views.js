@@ -172,8 +172,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       return this.PIIRemover.stripPIIWithOverride(document.title, false, true)
     },
 
-    // window.httpStatusCode is set in the source of the error page in static
-    // https://github.com/alphagov/static/blob/1c734451f2dd6fc0c7e80beccbdcbfa5aaffd0e4/app/views/root/_error_page.html.erb#L41-L43
+    // window.httpStatusCode is set in the source of the error page
+    // https://github.com/alphagov/frontend/blob/1d92fe5f0ada726d1c95dae645e1dc2195d9d3fe/app/views/static_error_pages/_error_page.html.erb#L26
     getStatusCode: function () {
       if (window.httpStatusCode) {
         return window.httpStatusCode.toString()

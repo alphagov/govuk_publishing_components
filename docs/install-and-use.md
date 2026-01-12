@@ -87,19 +87,9 @@ Rails.application.config.dartsass.builds = all_stylesheets
 
 ### Import JavaScript for individual components
 
-If your application doesn't use Slimmer/Static:
-
 ```ruby
 # application.js
 //= require govuk_publishing_components/dependencies
-//= require govuk_publishing_components/lib
-//= require govuk_publishing_components/components/button
-```
-
-If your application does use Slimmer/Static:
-
-```ruby
-# application.js
 //= require govuk_publishing_components/lib
 //= require govuk_publishing_components/components/button
 ```
@@ -144,17 +134,8 @@ Scripts that use type=”module” will run in strict mode and be deferred by de
 
 ### Import all JavaScript (deprecated, will be removed in a later version)
 
-If your application doesn't use Slimmer/Static:
-
 ```ruby
 # application.js
 //= require govuk_publishing_components/dependencies
-//= require govuk_publishing_components/all_components
-```
-
-If your application does use Slimmer/Static:
-
-```ruby
-# application.js
 //= require govuk_publishing_components/all_components
 ```
