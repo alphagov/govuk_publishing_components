@@ -104,23 +104,9 @@ Remove gem component imports from `app/assets/stylesheets/application.scss`:
   ...
 ```
 
-### Using the publishing components gem without the `static` rendering app
+### Excluding specific individual component stylesheets from loading
 
-The `static` rendering application already includes several components from the publishing components gem - [static application.scss](https://github.com/alphagov/static/blob/main/app/assets/stylesheets/application.scss)
-
-To avoid requesting the same stylesheet twice, we exclude any stylesheets included in `static` by default.
-
-If you are using the individual assets loading feature in an app that does not rely on `static`, we recommend adding the config file below in your application to ensure that the components render correctly.
-
-```rb
-# config/initializers/govuk_publishing_components.rb
-GovukPublishingComponents.configure do |c|
-  c.exclude_css_from_static = false
-end
-```
-
-If you are not using static but you want to provide your own application css which bundles component css includes, and you do not want them to also be included as individual component stylesheets, you can provide a custom list of components to exclude. These component should be ones that you have explicitly
-included in your application stylesheet:
+If you want to provide your own application css which bundles component css includes, and you do not want them to also be included as individual component stylesheets, you can provide a custom list of components to exclude. These component should be ones that you have explicitly included in your application stylesheet:
 
 ```rb
 # config/initializers/govuk_publishing_components.rb
