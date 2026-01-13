@@ -35,18 +35,6 @@ describe "Layout for public", :capybara, type: :view do
     assert_select "title[lang=cy]", visible: :hidden, text: "Custom GOV.UK Title"
   end
 
-  it "displays as a restricted width layout when called with the for_static parameter" do
-    render_component(for_static: true)
-
-    assert_select "#wrapper.govuk-width-container"
-  end
-
-  it "can support full width layouts when called with the for_static parameter" do
-    render_component(for_static: true, full_width: true)
-
-    assert_select "#wrapper.govuk-width-container", false, "Should not apply govuk-width-container class when full width"
-  end
-
   it "displays with search bar by default" do
     render_component({})
 
@@ -185,12 +173,6 @@ describe "Layout for public", :capybara, type: :view do
     expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "account layout renders with a main element if for_static is explicitly set to true" do
-    render_component({ show_account_layout: true, for_static: true })
-
-    assert_select ".gem-c-layout-for-public main#content"
-  end
-
   it "account layout renders with a phase banner by default" do
     render_component({ show_account_layout: true })
 
@@ -272,18 +254,5 @@ describe "Layout for public", :capybara, type: :view do
     render_component({})
 
     assert_select ".gem-c-cookie-banner + .gem-c-skip-link"
-  end
-
-  it "renders without the wrapper if for_static is not explictly set to true" do
-    render_component({})
-
-    assert_select "div#wrapper", false
-    assert_select "main.govuk-main-wrapper", false
-  end
-
-  it "account layout renders without the main element if for_static is not explicitly set to true" do
-    render_component({ show_account_layout: true })
-
-    assert_select ".gem-c-layout-for-public main#content", false
   end
 end
