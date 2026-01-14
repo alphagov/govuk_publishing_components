@@ -77,7 +77,7 @@ describe "Auditing the components in applications" do
         SharedHelper: ["lib/test_file_3.rb"],
         TableHelper: ["app/views/welcome/table.html.erb"],
       },
-      uses_individual_asset_model: true,
+      uses_individual_asset_model: false,
       application_components: {
         component_file_details: [
           {
