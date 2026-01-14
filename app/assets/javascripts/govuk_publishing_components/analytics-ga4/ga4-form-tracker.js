@@ -122,9 +122,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // don't include conditional field control in text
         inputs.splice(i, 1)
       } else if (elem.checked) {
-        input.answer = labelText
+        var fieldset = elem.closest('fieldset') || null
 
-        var fieldset = elem.closest('fieldset')
+        if (fieldset.dataset.ga4Redact && !elem.dataset.ga4RedactPermit) {
+          input.answer = '[REDACTED]'
+        } else {
+          input.answer = labelText
+        }
 
         if (fieldset) {
           var legend = fieldset.querySelector('legend')

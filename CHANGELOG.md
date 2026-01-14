@@ -13,6 +13,7 @@
 * Add organisation logo component helper spec file, with fixes ([PR #5233](https://github.com/alphagov/govuk_publishing_components/pull/5233))
 * Remove single consent API code ([PR #5223](https://github.com/alphagov/govuk_publishing_components/pull/5223))
 * Add file input tracking to `Ga4FormTracker` ([PR #5239](https://github.com/alphagov/govuk_publishing_components/pull/5239))
+* Add GA4 radio/checkbox redaction ([PR #5220](https://github.com/alphagov/govuk_publishing_components/pull/5220))
 
 ## 63.3.1
 

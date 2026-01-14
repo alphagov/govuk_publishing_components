@@ -78,6 +78,112 @@ describe('Ga4 Form Change Tracker', function () {
       })
     })
 
+    it('when a radio input within a redacted container with a non-permitted value is selected and changed', () => {
+      createFormAndSetup(container, 'radio')
+
+      const fieldset = container.querySelector('fieldset')
+      const input = container.querySelector('input')
+      const label = container.querySelector('label')
+
+      fieldset.setAttribute('data-ga4-redact', true)
+
+      mockGa4SendData.calls.reset()
+
+      input.value = '1234'
+      label.innerHTML = 'Test User'
+
+      input.click()
+
+      expect(mockGa4SendData).toHaveBeenCalledWith(
+        {
+          ...expectedAttributes,
+          text: '[REDACTED]',
+          action: 'select'
+        },
+        'event_data'
+      )
+    })
+
+    it('when a radio input within a redacted container with a permitted value is selected and changed', () => {
+      createFormAndSetup(container, 'radio')
+
+      const fieldset = container.querySelector('fieldset')
+      const input = container.querySelector('input')
+      const label = container.querySelector('label')
+
+      fieldset.setAttribute('data-ga4-redact', true)
+      input.setAttribute('data-ga4-redact-permit', true)
+
+      mockGa4SendData.calls.reset()
+
+      input.value = 'none'
+      label.innerHTML = 'None'
+
+      input.click()
+
+      expect(mockGa4SendData).toHaveBeenCalledWith(
+        {
+          ...expectedAttributes,
+          text: 'None',
+          action: 'select'
+        },
+        'event_data'
+      )
+    })
+
+    it('when a checkbox with a non-permitted value within a redacted container input is selected and changed', () => {
+      createFormAndSetup(container, 'checkbox')
+
+      const fieldset = container.querySelector('fieldset')
+      const input = container.querySelector('input')
+      const label = container.querySelector('label')
+
+      fieldset.setAttribute('data-ga4-redact', true)
+
+      mockGa4SendData.calls.reset()
+
+      input.value = '1234'
+      label.innerHTML = 'Test User'
+
+      input.click()
+
+      expect(mockGa4SendData).toHaveBeenCalledWith(
+        {
+          ...expectedAttributes,
+          text: '[REDACTED]',
+          action: 'select'
+        },
+        'event_data'
+      )
+    })
+
+    it('when a checkbox with a permitted value within a redacted container input is selected and changed', () => {
+      createFormAndSetup(container, 'checkbox')
+
+      const fieldset = container.querySelector('fieldset')
+      const input = container.querySelector('input')
+      const label = container.querySelector('label')
+
+      fieldset.setAttribute('data-ga4-redact', true)
+      input.setAttribute('data-ga4-redact-permit', true)
+
+      mockGa4SendData.calls.reset()
+
+      input.value = 'none'
+      label.innerHTML = 'None'
+
+      input.click()
+
+      expect(mockGa4SendData).toHaveBeenCalledWith(
+        {
+          ...expectedAttributes,
+          text: 'None',
+          action: 'select'
+        },
+        'event_data'
+      )
+    })
+
     it('when a labelled field within a fieldset is changed', () => {
       createFormAndSetup(container, 'addAnotherFieldSet')
 

@@ -53,6 +53,14 @@ There are several optional data attributes, which will enable different output f
 
 These can be used in combination as well as separately.
 
+## Options for `radio` and `checkbox` fields
+
+There is the optional `data-ga4-redact` data-attribute for the containing `fieldset` element, which will redact the output for the `radio` and `checkbox` fields unless the input has a `data-ga4-redact-permit` data-attribute.
+
+| Data attribute | Element apply to | Description | Before | After |
+| `data-ga4-redact` | `fieldset` | Redacts value for radio and checkbox inputs | `Value 1,Value 2` | `[REDACTED],[REDACTED]` |
+| `data-ga4-redact-permit` | `input` | Allows value for that radio/checkbox input | `Value 1,Value 2` | `[REDACTED],Value 2` |
+
 Additionally, there is a `data-ga4-form-split-response-text` attribute. If this is set on the form then the `text` value in the dataLayer will be split into 5 fields to overcome the GA4 500 character limit:
 
 ```
