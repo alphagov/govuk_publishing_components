@@ -36,13 +36,6 @@ module GovukPublishingComponents
         @all_component_stylesheets_being_used ||= []
       end
 
-      def render_component_stylesheets
-        list_of_stylesheets = all_component_stylesheets_being_used.map do |component|
-          stylesheet_link_tag(component, integrity: false)
-        end
-        raw(list_of_stylesheets.join(""))
-      end
-
       def get_component_css_paths
         COMPONENT_CSS_PATHS
       end
