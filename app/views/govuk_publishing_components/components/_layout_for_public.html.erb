@@ -1,9 +1,7 @@
 <%
   add_gem_component_stylesheet("layout-for-public")
 
-  for_static ||= false
   emergency_banner ||= nil
-  full_width ||= false
   global_banner ||= nil
   html_lang ||= "en"
   homepage ||= false
@@ -105,18 +103,10 @@
         omit_account_phase_banner: omit_account_phase_banner,
         omit_account_navigation: omit_account_navigation,
         account_nav_location: account_nav_location,
-        for_static: for_static,
       } do %>
         <%= yield :before_content %>
         <%= yield %>
       <% end %>
-    <% elsif for_static %>
-      <div id="wrapper" class="<%= "govuk-width-container" unless full_width %>">
-        <%= yield :before_content %>
-        <main class="govuk-main-wrapper" id="content">
-          <%= yield %>
-        </main>
-      </div>
     <% else %>
       <%= yield %>
     <% end %>
