@@ -1,6 +1,4 @@
 APP_STYLESHEETS = {
-  "components/_app-component.scss" => "components/_app-component.css",
-  "views/_app-view.scss" => "views/_app-view.css",
   "application.scss" => "application.css",
 }.freeze
 
