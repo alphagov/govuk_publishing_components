@@ -13,7 +13,7 @@ describe "Auditing the components in applications" do
       components_found: [
         {
           location: "template",
-          components: ["accordion", "back link", "contextual breadcrumbs", "contextual footer", "contextual sidebar", "details", "error summary", "feedback", "govspeak", "heading", "input", "layout footer", "layout for admin", "layout for public", "layout header", "notice", "skip link", "tabs"],
+          components: ["accordion", "back link", "contextual breadcrumbs", "contextual footer", "contextual sidebar", "error summary", "feedback", "govspeak", "heading", "input", "layout footer", "layout for admin", "layout for public", "layout header", "skip link", "tabs"],
         },
         {
           location: "stylesheet",
@@ -43,15 +43,11 @@ describe "Auditing the components in applications" do
         "contextual footer": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
         "contextual sidebar": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
         "error summary": ["app/views/welcome/error_summary.html.erb"],
-        details: ["app/views/welcome/asset_helper.html.erb"],
         feedback: ["app/views/layouts/application.html.erb"],
         govspeak: ["app/views/welcome/contextual_navigation.html.erb", "lib/1_test_file_1.rb"],
         input: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/error_summary.html.erb"],
         heading:
         [
-          "app/views/welcome/asset_helper.html.erb",
-          "app/views/welcome/asset_helper_with_app_component.html.erb",
-          "app/views/welcome/asset_helper_with_app_view.html.erb",
           "app/views/welcome/contextual_navigation.html.erb",
           "app/views/welcome/error_summary.html.erb",
           "app/views/welcome/table.html.erb",
@@ -62,12 +58,6 @@ describe "Auditing the components in applications" do
         "layout header": ["app/views/layouts/dummy_admin_layout.html.erb"],
         "print link": ["lib/test_file_2.erb"],
         "skip link": ["app/views/layouts/dummy_admin_layout.html.erb"],
-        notice:
-          [
-            "app/views/welcome/asset_helper.html.erb",
-            "app/views/welcome/asset_helper_with_app_component.html.erb",
-            "app/views/welcome/asset_helper_with_app_view.html.erb",
-          ],
         tabs: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/tabs_example.html.erb"],
       },
       helper_references: {
@@ -83,10 +73,6 @@ describe "Auditing the components in applications" do
           {
             name: "app component",
             application: "app-dir",
-            print_stylesheet_exists: false,
-            stylesheet_exists: true,
-            stylesheet_lines: 3,
-            stylesheet_link: "https://github.com/alphagov/app-dir/blob/main/app/assets/stylesheets/components/_app-component.scss",
             template_exists: true,
             template_lines: 3,
             template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_app_component.html.erb",
@@ -202,7 +188,7 @@ describe "Auditing the components in applications" do
           javascript: 0,
           javascript_test: 0,
           print_stylesheet: 0,
-          stylesheet: 1,
+          stylesheet: 0,
           template: 16,
           test: 0,
           uses_govuk_frontend_css: 0,
