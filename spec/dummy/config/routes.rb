@@ -18,9 +18,6 @@ Rails.application.routes.draw do
   get "public", to: "welcome#public"
   get "error-summary", to: "welcome#errorsummary"
   get "tabsexample", to: "welcome#tabsexample"
-  get "asset_helper", to: "welcome#asset_helper"
-  get "asset_helper_with_app_component", to: "welcome#asset_helper_with_app_component"
-  get "asset_helper_with_app_view", to: "welcome#asset_helper_with_app_view"
   get "accordionexample", to: "welcome#accordionexample"
   get "table", to: "welcome#table"
   # we fake this URL to prevent the Single Page notification button from causing an error in the component guide
