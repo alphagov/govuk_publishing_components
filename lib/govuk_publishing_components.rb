@@ -45,7 +45,6 @@ require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 require "govuk_publishing_components/app_helpers/table_helper"
 require "govuk_publishing_components/app_helpers/brand_helper"
 require "govuk_publishing_components/app_helpers/environment"
-require "govuk_publishing_components/app_helpers/asset_helper"
 
 # Add i18n paths and views for usage outside of a Rails app
 I18n.load_path.unshift(
@@ -56,10 +55,6 @@ ActiveSupport.on_load(:action_controller) do
   ActionController::Base.append_view_path(
     File.expand_path("app/views", GovukPublishingComponents::Config.gem_directory),
   )
-end
-
-ActiveSupport.on_load(:action_view) do
-  include GovukPublishingComponents::AppHelpers::AssetHelper
 end
 
 module GovukPublishingComponents
