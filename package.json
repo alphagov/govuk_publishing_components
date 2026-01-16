@@ -39,7 +39,6 @@
     "axe-core": "^4.11.1",
     "govuk-frontend": "5.13.0",
     "choices.js": "^11.1.0",
-    "govuk-single-consent": "^3.0.9",
     "sortablejs": "^1.15.6"
   },
   "devDependencies": {
