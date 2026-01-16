@@ -1,7 +1,4 @@
 <%
-  add_gem_component_stylesheet("button")
-  add_gem_component_stylesheet("feedback")
-
   email_regex = /[^\s=\/?&]+(?:@|%40)[^\s=\/?&]+/
   url_without_pii = request.original_url.gsub(email_regex, "[email]").encode
   path_without_pii = request.fullpath.gsub(email_regex, "[email]").encode

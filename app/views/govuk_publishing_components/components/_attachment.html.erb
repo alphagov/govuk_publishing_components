@@ -1,6 +1,4 @@
 <%
-  add_gem_component_stylesheet("attachment")
-
   attachment = GovukPublishingComponents::Presenters::AttachmentHelper.new(attachment)
   target ||= "_self"
   hide_opendocument_metadata ||= false

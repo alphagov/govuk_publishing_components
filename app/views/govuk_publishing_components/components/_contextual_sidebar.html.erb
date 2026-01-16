@@ -1,6 +1,4 @@
 <%
-  add_gem_component_stylesheet("contextual-sidebar")
-
   disable_ga4 ||= false
   request.query_parameters[:disable_ga4] = disable_ga4
   navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request)
