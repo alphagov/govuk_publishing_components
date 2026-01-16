@@ -1,6 +1,6 @@
 <% content_for :title, "#{@component_doc.name} component" %>
 <% content_for :application_stylesheet do %>
-  <% if @component_doc.source == "application" && application_stylesheet_in_use? %>
+  <% if @component_doc.source == "application" %>
     <%= render "application_stylesheet" %>
   <% end %>
 <% end %>
