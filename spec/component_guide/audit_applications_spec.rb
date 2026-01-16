@@ -67,14 +67,13 @@ describe "Auditing the components in applications" do
         SharedHelper: ["lib/test_file_3.rb"],
         TableHelper: ["app/views/welcome/table.html.erb"],
       },
-      uses_individual_asset_model: false,
       application_components: {
         component_file_details: [
           {
             name: "app component",
             application: "app-dir",
             template_exists: true,
-            template_lines: 3,
+            template_lines: 1,
             template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_app_component.html.erb",
           },
           {
