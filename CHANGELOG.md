@@ -7,10 +7,15 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Revert "Add organisation logo component helper spec file" ([PR #5229](https://github.com/alphagov/govuk_publishing_components/pull/5229))
+
 ## 63.3.0
 
 * Remove options from public layout ([PR #5214](https://github.com/alphagov/govuk_publishing_components/pull/5214))
 * Add a new app promo banner component ([PR #5166](https://github.com/alphagov/govuk_publishing_components/pull/5166))
+* Add organisation logo component helper spec file ([PR #5194](https://github.com/alphagov/govuk_publishing_components/pull/5194))
 
 ## 63.2.0
 
