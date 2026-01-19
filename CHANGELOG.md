@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 63.3.0
 
 * Remove options from public layout ([PR #5214](https://github.com/alphagov/govuk_publishing_components/pull/5214))
 * Add a new app promo banner component ([PR #5166](https://github.com/alphagov/govuk_publishing_components/pull/5166))
