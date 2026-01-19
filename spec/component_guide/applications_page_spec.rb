@@ -11,6 +11,8 @@ describe "The applications status page" do
       govuk_personalisation (>= 0.7.0)
     sass-embedded (1.93.2)
       google-protobuf (~> 4.31)
+    slimmer (18.7.0)
+      json
     terser (1.2.6)
       execjs (>= 0.3.0, < 3)"
   fake_gemfile_partial = "
@@ -29,6 +31,7 @@ describe "The applications status page" do
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
       expect(app.source).to eq("local")
       expect(app.gem_version).to eq("61.3.1")
+      expect(app.slimmer_version).to eq("18.7.0")
       expect(app.sass_version).to eq("1.93.2")
     end
 
@@ -37,6 +40,7 @@ describe "The applications status page" do
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
       expect(app.source).to eq("local")
       expect(app.gem_version).to eq("61.3.5")
+      expect(app.slimmer_version).to be_nil
       expect(app.sass_version).to be_nil
     end
   end
@@ -48,6 +52,7 @@ describe "The applications status page" do
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
       expect(app.source).to be_nil
       expect(app.gem_version).to be_nil
+      expect(app.slimmer_version).to be_nil
       expect(app.sass_version).to be_nil
     end
 
@@ -57,6 +62,7 @@ describe "The applications status page" do
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
       expect(app.source).to eq("remote")
       expect(app.gem_version).to eq("61.3.1")
+      expect(app.slimmer_version).to eq("18.7.0")
       expect(app.sass_version).to eq("1.93.2")
     end
   end

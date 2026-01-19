@@ -30,7 +30,6 @@ module GovukPublishingComponents
           ruby = result[:components_found].find { |c| c[:location] == "ruby" }
 
           templates[:components] = include_any_components_within_components(templates[:components])
-          ruby[:components] = include_any_components_within_components(ruby[:components])
 
           warnings = []
           warnings << warn_about_missing_components(result[:components_found])

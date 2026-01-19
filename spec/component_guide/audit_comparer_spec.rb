@@ -214,7 +214,7 @@ describe "Comparing data from an application with the components" do
           },
           {
             name: "In ruby",
-            value: ["component four", "component three"],
+            value: ["component three"],
           },
         ],
         warnings: [
