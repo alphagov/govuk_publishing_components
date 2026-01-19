@@ -21,10 +21,6 @@ examples:
     data:
       organisation:
         name: 'Organisation<br>Name'
-  with_a_link:
-    data:
-      organisation:
-        name: 'Organisation<br>Name'
         url: 'http://www.gov.uk'
   single_identity:
     data:
@@ -162,6 +158,12 @@ examples:
         image:
           url: 'https://assets.publishing.service.gov.uk/media/6850134301d3b0e7b62da740/hmps_25_gov_240x188.png'
           alt_text: 'HM Prison Service'
+  without_a_link:
+    data:
+      organisation:
+        name: Cabinet Office
+        brand: cabinet-office
+        crest: 'single-identity'
   as_a_heading:
     description: The `heading_level` option takes a number from 1 to 6.
     data:
