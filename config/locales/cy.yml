@@ -13,6 +13,12 @@ cy:
       hide_all: Cuddio pob adran
       show_all: Dangos pob adran
       this_section_visually_hidden: " yr adran hon"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Chwilio o fewn %{title}
     attachment:
@@ -158,6 +164,10 @@ cy:
       selected:
     organisation_schema:
       all_content_search_description: Dod o hyd i'r holl gynnwys gan %{organisation}
+    pagination:
+      next:
+      pagination: Tudalennu
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -167,10 +177,6 @@ cy:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Tudalennu
-      previous:
     print_link:
       text: Argraffu'r dudalen hon
     published_dates:

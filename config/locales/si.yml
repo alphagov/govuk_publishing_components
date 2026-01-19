@@ -13,6 +13,12 @@ si:
       hide_all: සියලුම කොටස් සඟවන්න
       show_all: සියලු කොටස් පෙන්වන්න
       this_section_visually_hidden: " මෙම කොටස"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} තුළ සොයන්න"
     attachment:
@@ -154,6 +160,10 @@ si:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} වෙතින් සියලුම අන්තර්ගතය සෝයන්න"
+    pagination:
+      next:
+      pagination: පිටු අංකය
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ si:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: පිටු අංකය
-      previous:
     print_link:
       text: මෙම පිටුව මුද්රණය කරන්න
     published_dates:

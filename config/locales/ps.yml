@@ -13,6 +13,12 @@ ps:
       hide_all: ټولې برخې پټې کړئ
       show_all: ټولې برخې وښایاست
       this_section_visually_hidden: " دا برخه"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: په%{title} کې لټون
     attachment:
@@ -151,6 +157,10 @@ ps:
       selected:
     organisation_schema:
       all_content_search_description: له%{organization} څخه ټوله مینځپانګه ومومئ
+    pagination:
+      next:
+      pagination: مخینه
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -160,10 +170,6 @@ ps:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: مخینه
-      previous:
     print_link:
       text: دا پاڼه چاپ کړئ
     published_dates:

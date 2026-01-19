@@ -13,6 +13,12 @@ sw:
       hide_all: Ficha sehemu zote
       show_all: Onyesha sehemu zote
       this_section_visually_hidden: " sehemu hii"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Tafuta ndani ya %{title}
     attachment:
@@ -154,6 +160,10 @@ sw:
       selected:
     organisation_schema:
       all_content_search_description: Tafuta maudhui yote kutoka %{organisation}
+    pagination:
+      next:
+      pagination: Nambari za kurasa
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ sw:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Nambari za kurasa
-      previous:
     print_link:
       text: Chapisha ukurasa huu
     published_dates:

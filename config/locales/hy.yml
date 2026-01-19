@@ -13,6 +13,12 @@ hy:
       hide_all: Թաքցնել բոլոր բաժինները
       show_all: Ցուցադրել բոլոր բաժինները
       this_section_visually_hidden: " այս բաժինը"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Որոնել %{title}-ի թեմայի շուրջ
     attachment:
@@ -158,6 +164,10 @@ hy:
       selected:
     organisation_schema:
       all_content_search_description: Գտնել %{organisation} ողջ բովանդակությունը
+    pagination:
+      next:
+      pagination: Էջադրում
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -167,10 +177,6 @@ hy:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Էջադրում
-      previous:
     print_link:
       text: Տպել այս էջը
     published_dates:

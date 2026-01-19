@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove options from public layout ([PR #5214](https://github.com/alphagov/govuk_publishing_components/pull/5214))
+* Add a new app promo banner component ([PR #5166](https://github.com/alphagov/govuk_publishing_components/pull/5166))
 
 ## 63.2.0
 

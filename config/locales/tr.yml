@@ -13,6 +13,12 @@ tr:
       hide_all: Tüm bölümleri gizle
       show_all: Tüm bölümleri göster
       this_section_visually_hidden: " Bu bölüm"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} içerisinde arama yap"
     attachment:
@@ -155,6 +161,10 @@ tr:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} kaynaklı tüm içeriği bul"
+    pagination:
+      next:
+      pagination: Sayfa
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -164,10 +174,6 @@ tr:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Sayfa
-      previous:
     print_link:
       text: Bu sayfayı yazdır
     published_dates:

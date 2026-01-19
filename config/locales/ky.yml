@@ -13,6 +13,12 @@ ky:
       hide_all: Бардык бөлүмдөрдү жашыруу
       show_all: Бардык бөлүмдөрдү көрсөтүү
       this_section_visually_hidden: " бул тандоо"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} ичинде издөө"
     attachment:
@@ -150,6 +156,10 @@ ky:
       selected: тандалган
     organisation_schema:
       all_content_search_description: "%{organisation} бардык мазмунду табыңыз"
+    pagination:
+      next: Кийинки
+      pagination: Барактоо
+      previous: Мурунку
     password_input:
       button: Көрсөтүү
       button_aria_hide_label: Сырсөздү жашыруу
@@ -159,10 +169,6 @@ ky:
       label: Сырсөз
       password_hidden_announcement: Сырсөзүңүз жашырылган
       password_shown_announcement: Сырсөзүңүз көрсөтүлгөн
-    pagination:
-      next: Кийинки
-      pagination: Барактоо
-      previous: Мурунку
     print_link:
       text: Бул баракчаны басып чыгаруу
     published_dates:

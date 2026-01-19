@@ -13,6 +13,12 @@ sr:
       hide_all: Sakrij sve odeljke
       show_all: Prikaži sve odeljke
       this_section_visually_hidden: " ovaj odeljak"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Pretražite u okviru %{title}
     attachment:
@@ -155,6 +161,10 @@ sr:
       selected:
     organisation_schema:
       all_content_search_description: Pronađite sav sadržaj organizacije %{organisation}
+    pagination:
+      next:
+      pagination: Broj stranice
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -164,10 +174,6 @@ sr:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Broj stranice
-      previous:
     print_link:
       text: Odštampaj ovu stranicu
     published_dates:

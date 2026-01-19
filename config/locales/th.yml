@@ -13,6 +13,12 @@ th:
       hide_all: ซ่อนทุกส่วน
       show_all: แสดงส่วนทั้งหมด
       this_section_visually_hidden: " ส่วนนี้"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: ค้นหาใน %{title}
     attachment:
@@ -152,6 +158,10 @@ th:
       selected:
     organisation_schema:
       all_content_search_description: ค้นหาเนื้อหาทั้งหมดจาก %{organisation}
+    pagination:
+      next:
+      pagination: การแบ่งหน้า
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -161,10 +171,6 @@ th:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: การแบ่งหน้า
-      previous:
     print_link:
       text: พิมพ์หน้านี้
     published_dates:

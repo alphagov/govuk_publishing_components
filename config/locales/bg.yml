@@ -13,6 +13,12 @@ bg:
       hide_all: Скриване на всички раздели
       show_all: Показване на всички раздели
       this_section_visually_hidden: " този раздел"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: Търсене в %{title}
     attachment:
@@ -158,6 +164,10 @@ bg:
       selected:
     organisation_schema:
       all_content_search_description: Намиране на цялото съдържание от %{organisation}
+    pagination:
+      next:
+      pagination: Страниране
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -167,10 +177,6 @@ bg:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Страниране
-      previous:
     print_link:
       text: Отпечатване на страницата
     published_dates:

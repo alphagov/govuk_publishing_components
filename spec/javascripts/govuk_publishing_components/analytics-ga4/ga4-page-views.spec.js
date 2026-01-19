@@ -53,6 +53,7 @@ describe('Google Tag Manager page view tracking', function () {
         world_locations: undefined,
 
         dynamic: 'false',
+        app_promo_banner: undefined,
         emergency_banner: undefined,
         phase_banner: undefined,
         devolved_nations_banner: undefined,
@@ -504,6 +505,16 @@ describe('Google Tag Manager page view tracking', function () {
     expected.page_view.step_navs = 'e01e924b-9c7c-4c71-8241-66a575c2f61f'
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('correctly sets the app_promo_banner parameter', function () {
+    var div = document.createElement('div')
+    div.setAttribute('data-ga4-app-promo-banner', '')
+    document.body.appendChild(div)
+    expected.page_view.app_promo_banner = 'true'
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+    document.body.removeChild(div)
   })
 
   it('correctly sets the emergency_banner parameter', function () {

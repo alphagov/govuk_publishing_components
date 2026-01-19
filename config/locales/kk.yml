@@ -13,6 +13,12 @@ kk:
       hide_all: Барлық бөлімдерді жасыру
       show_all: Барлық бөлімдерді көрсету
       this_section_visually_hidden: " бұл бөлім"
+    app_promo_banner:
+      aria_label:
+      body_text:
+      close:
+      title_text:
+      view:
     article_schema:
       scoped_search_description: "%{title} ішінен іздеу"
     attachment:
@@ -154,6 +160,10 @@ kk:
       selected:
     organisation_schema:
       all_content_search_description: "%{organisation} ішіндегі барлық мазмұнды табу"
+    pagination:
+      next:
+      pagination: Беттеу
+      previous:
     password_input:
       button:
       button_aria_hide_label:
@@ -163,10 +173,6 @@ kk:
       label:
       password_hidden_announcement:
       password_shown_announcement:
-    pagination:
-      next:
-      pagination: Беттеу
-      previous:
     print_link:
       text: Осы бетті басып шығару
     published_dates:
