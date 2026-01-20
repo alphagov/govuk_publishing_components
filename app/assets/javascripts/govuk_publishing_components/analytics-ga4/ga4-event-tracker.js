@@ -37,6 +37,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       console.error(error)
     }
 
+    // If the containing component has indexing data
+    // we need to use that in place of the index data in the target element
+    if (element.closest('[data-ga4-index]')) {
+      var index = JSON.parse(element.closest('[data-ga4-index]').getAttribute('data-ga4-index'))
+
+      targetDataset.indexSection = index.index_section
+      targetDataset.indexSectionCount = index.index_section_count
+    }
+
     var eventData = {}
 
     Object.keys(targetDataset).forEach(function (key) {
