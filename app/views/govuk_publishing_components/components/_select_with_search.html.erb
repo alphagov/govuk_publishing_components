@@ -4,6 +4,7 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_data_attribute({ module: "select-with-search" })
+  component_helper.add_data_attribute({ select_with_search_include_blank: select_helper.include_blank? })
 %>
 <%= render "govuk_publishing_components/components/select", {
   **local_assigns,

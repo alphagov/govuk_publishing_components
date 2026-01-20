@@ -14,11 +14,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
     }
 
     const ariaDescribedBy = this.module.getAttribute('aria-describedby') || ''
+    const includeBlank = this.module.getAttribute('data-select-with-search-include-blank')
+
     const labelId = this.module.id + '-label ' + ariaDescribedBy
 
     this.choices = new window.Choices(this.module, {
       allowHTML: true,
-      placeholderValue: this.module.multiple ? 'Select all that apply' : 'Select one',
       searchPlaceholderValue: 'Search in list',
       shouldSort: false, // show options and groups in the order they were given
       itemSelectText: '',
@@ -42,7 +43,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
       fuseOptions: {
         ignoreLocation: true, // matches any part of the string
         threshold: 0 // only matches when characters are sequential
-      }
+      },
+      ...(includeBlank
+        ? {
+            placeholderValue: this.module.multiple ? 'Select all that apply' : 'Select one'
+          }
+        : {})
     })
 
     this.module.choices = this.choices

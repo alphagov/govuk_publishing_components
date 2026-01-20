@@ -7,7 +7,7 @@ module GovukPublishingComponents
     class SelectWithSearchHelper
       include ActionView::Helpers::FormOptionsHelper
 
-      attr_reader :options, :selected_options, :aria, :options_markup
+      attr_reader :options, :selected_options, :aria, :options_markup, :include_blank
 
       delegate :describedby,
                :hint_id,
@@ -32,6 +32,10 @@ module GovukPublishingComponents
         classes = @select_helper.css_classes
         classes << "gem-c-select-with-search"
         classes
+      end
+
+      def include_blank?
+        @include_blank.present?
       end
 
     private
