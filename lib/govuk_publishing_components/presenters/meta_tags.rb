@@ -28,8 +28,6 @@ module GovukPublishingComponents
 
     private
 
-      # other meta tags are inserted by slimmer here:
-      # https://github.com/alphagov/slimmer/blob/82144be372aa4afc1f8ff30917c96c2ee3a47ed8/lib/slimmer/processors/metadata_inserter.rb#L15
       def add_core_tags(meta_tags)
         meta_tags["govuk:format"] = content_item[:document_type] if content_item[:document_type]
         meta_tags["govuk:publishing-app"] = content_item[:publishing_app] if content_item[:publishing_app]
