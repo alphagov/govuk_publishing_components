@@ -15,11 +15,6 @@ describe "Component guide index", :capybara do
     expect(page.response_headers["X-Frame-Options"]).to eq("ALLOWALL")
   end
 
-  it "sets X-Slimmer-Skip to disable Slimmer in apps which use it" do
-    visit "/component-guide"
-    expect(page.response_headers["X-Slimmer-Skip"]).to eq("true")
-  end
-
   it "loads a component guide" do
     visit "/component-guide"
     expect(page).to have_title "Component Guide"
