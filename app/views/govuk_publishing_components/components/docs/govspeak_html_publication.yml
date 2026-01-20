@@ -2,8 +2,6 @@ name: "Govspeak content (HTML Publications)"
 description: "To display long form text with numbered parts, which has been converted from Govspeak"
 body: |
   This component calls the standard [Govspeak component](/components/govspeak), and layers a set of overriding styles on top. Styles for numbered parts are added, and heading sizes are increased.
-
-  Requires Slimmer >= 9.1.0 for nested component support.
 accessibility_criteria: |
   - headings must be part of a correct heading structure for the page
   - text should have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
