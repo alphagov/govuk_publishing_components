@@ -424,6 +424,31 @@ describe('Google Analytics event tracker', function () {
     })
   })
 
+  describe('doing tracking on an Add another component', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'event-name'
+      }
+      var componentIndex = {
+        index_section: 2,
+        index_section_count: 3
+      }
+      element.innerHTML =
+        '<div data-module="add-another" data-ga4-index=\'' + JSON.stringify(componentIndex) + '\'>' +
+          '<button data-index-section="1" data-index-section-count="1" data-ga4-event=\'' + JSON.stringify(attributes) + '\'>Add another</button>' +
+        '</div>'
+      document.body.appendChild(element)
+      new GOVUK.Modules.Ga4EventTracker(element).init()
+    })
+
+    it('should track the correct index values when the "Add another" button is clicked', function () {
+      var clickOn = element.querySelector('button')
+      clickOn.click()
+      expect(window.dataLayer[0].event_data.index.index_section).toEqual('2')
+      expect(window.dataLayer[0].event_data.index.index_section_count).toEqual('3')
+    })
+  })
+
   describe('doing tracking on an clicked parent element containing a nested accordion', function () {
     beforeEach(function () {
       var attributes = {
