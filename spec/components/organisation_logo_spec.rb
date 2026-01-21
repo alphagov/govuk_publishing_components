@@ -53,7 +53,7 @@ describe "Organisation logo", type: :view do
   end
 
   it "renders an image when specified" do
-    render_component(organisation: { name: "Custom image", image: { url: "/url", alt_text: "alt" } })
+    render_component(organisation: { image: { url: "/url", alt_text: "alt" } })
     assert_select ".gem-c-organisation-logo__container img[src='/url'][alt='alt']"
   end
 

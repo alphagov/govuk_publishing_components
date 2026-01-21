@@ -1,16 +1,6 @@
 require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::OrganisationLogoHelper do
-  describe "#initialize" do
-    it "errors if nothing is passed" do
-      expect { described_class.new({}) }.to raise_error("Component requires an organisation including a name")
-    end
-
-    it "errors if an organisation is passed without a name" do
-      expect { described_class.new({ organisation: { url: "#" } }) }.to raise_error("Component requires an organisation including a name")
-    end
-  end
-
   describe "#logo_content" do
     it "returns a basic image" do
       logo = described_class.new({ organisation: { name: "org", image: { url: "img_url" } } })

@@ -146,7 +146,6 @@ examples:
   land_registry:
     data:
       organisation:
-        name: 'Land Registry'
         url: '/government/organisations/land-registry'
         brand: 'department-for-business-innovation-skills'
         crest: "custom"

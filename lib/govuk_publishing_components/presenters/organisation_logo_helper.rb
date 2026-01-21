@@ -5,8 +5,6 @@ module GovukPublishingComponents
       include ActionView::Context
 
       def initialize(local_assigns)
-        raise(ArgumentError, "Component requires an organisation including a name") unless minimum_for_component?(local_assigns)
-
         @name = local_assigns[:organisation][:name]
         @url = local_assigns[:organisation][:url]
         @crest = local_assigns[:organisation][:crest]
@@ -35,10 +33,6 @@ module GovukPublishingComponents
       end
 
     private
-
-      def minimum_for_component?(options)
-        true unless !options[:organisation] || options[:organisation] && !options[:organisation][:name]
-      end
 
       def crest_has_visual_identity?
         @crest.present? && !%w[no-identity custom].include?(@crest)
