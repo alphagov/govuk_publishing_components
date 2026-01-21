@@ -1,5 +1,4 @@
 @import "govuk_publishing_components/individual_component_support";
-@import "govuk/components/button/button";
 
 // Because govuk-frontend adds a responsive bottom margin by default for each component
 // we reset it to zero so we can set it separately using `gem-c-button--bottom-margin`
@@ -116,3 +115,5 @@
     }
   }
 }
+
+@import "govuk/components/button/button";
