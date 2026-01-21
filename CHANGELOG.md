@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add organisation logo component helper spec file, with fixes ([PR #5233](https://github.com/alphagov/govuk_publishing_components/pull/5233))
+
 ## 63.3.1
 
 * Revert "Add organisation logo component helper spec file" ([PR #5229](https://github.com/alphagov/govuk_publishing_components/pull/5229))
