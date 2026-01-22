@@ -18,12 +18,6 @@ module GovukPublishingComponents
     mattr_accessor :application_javascript
     self.application_javascript = "application"
 
-    mattr_accessor :custom_css_exclude_list
-    self.custom_css_exclude_list = []
-
-    mattr_accessor :exclude_css_from_static
-    self.exclude_css_from_static = true
-
     mattr_accessor :use_es6_components
     self.use_es6_components = false
 
