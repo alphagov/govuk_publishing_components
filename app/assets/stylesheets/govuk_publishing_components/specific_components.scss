@@ -7,8 +7,11 @@
 @import "govuk/utilities/index";
 @import "govuk/overrides/index";
 
-@import "govuk_publishing_components/components/mixins/margins";
 @import "govuk_publishing_components/components/mixins/css3";
+@import "govuk_publishing_components/components/mixins/grid-helper";
+@import "govuk_publishing_components/components/mixins/margins";
 @import "govuk_publishing_components/components/helpers/brand-colours";
+@import "govuk_publishing_components/components/helpers/contents-list-helper";
+@import "govuk_publishing_components/components/helpers/markdown-typography";
 @import "govuk_publishing_components/lib/link";
 @import "govuk_publishing_components/lib/print_support";
