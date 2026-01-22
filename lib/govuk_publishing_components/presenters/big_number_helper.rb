@@ -22,7 +22,7 @@ module GovukPublishingComponents
       # Currently the only small symbol used with big numbers are pluses so they are specifically targetted in the below code
       def number_has_plus_suffix?
         if @number.is_a? String
-          @number.ends_with?("+")
+          @number.end_with?("+")
         end
       end
     end
