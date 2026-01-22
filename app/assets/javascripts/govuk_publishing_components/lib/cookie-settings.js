@@ -12,18 +12,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     document.querySelector('form[data-module=cookie-settings]')
       .addEventListener('submit', this.$module.submitSettingsForm)
 
-    if (window.GOVUK.useSingleConsentApi) {
-      window.GOVUK.singleConsent.init(this.setInitialFormValues.bind(this))
-    } else {
-      this.setInitialFormValues()
-    }
+    this.setInitialFormValues()
   }
 
   CookieSettings.prototype.setInitialFormValues = function () {
     if (!window.GOVUK.cookie('cookies_policy')) {
-      if (!window.GOVUK.useSingleConsentApi) {
-        window.GOVUK.setDefaultConsentCookie()
-      }
+      window.GOVUK.setDefaultConsentCookie()
     }
 
     var currentConsentCookie = window.GOVUK.cookie('cookies_policy')
@@ -68,13 +62,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
     }
 
-    if (window.GOVUK.useSingleConsentApi) {
-      window.GOVUK.singleConsent.setPreferences(null, options)
-    } else {
-      window.GOVUK.setConsentCookie(options)
-      window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
-    }
-
+    window.GOVUK.setConsentCookie(options)
+    window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
     this.showConfirmationMessage()
     return false
   }

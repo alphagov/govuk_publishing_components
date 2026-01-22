@@ -13,8 +13,7 @@ window.GOVUK.vars.domains = [
     initialiseGA4: true,
     id: 'GTM-MG7HG5W',
     auth: 'bRiZ-jiEHtw6hHpGd6dF9w',
-    preview: 'env-3',
-    consentApiUrl: 'staging'
+    preview: 'env-3'
   },
   {
     name: 'production',
@@ -24,8 +23,7 @@ window.GOVUK.vars.domains = [
       'assets.publishing.service.gov.uk'
     ],
     initialiseGA4: true,
-    id: 'GTM-MG7HG5W',
-    consentApiUrl: 'production'
+    id: 'GTM-MG7HG5W'
   },
   {
     name: 'staging',
@@ -37,8 +35,7 @@ window.GOVUK.vars.domains = [
     initialiseGA4: true,
     id: 'GTM-MG7HG5W',
     auth: 'oJWs562CxSIjZKn_GlB5Bw',
-    preview: 'env-5',
-    consentApiUrl: 'staging'
+    preview: 'env-5'
   },
   {
     name: 'integration',
@@ -50,8 +47,7 @@ window.GOVUK.vars.domains = [
     initialiseGA4: true,
     id: 'GTM-MG7HG5W',
     auth: 'C7iYdcsOlYgGmiUJjZKrHQ',
-    preview: 'env-4',
-    consentApiUrl: 'staging'
+    preview: 'env-4'
   },
   {
     name: 'devdocs',
@@ -59,7 +55,6 @@ window.GOVUK.vars.domains = [
       'docs.publishing.service.gov.uk'
     ],
     initialiseGA4: true,
-    id: 'GTM-TNKCK97',
-    consentApiUrl: 'production'
+    id: 'GTM-TNKCK97'
   }
 ]
