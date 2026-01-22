@@ -159,6 +159,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
             this.redacted = true
           }
         }
+      } else if (inputType === 'file') {
+        input.answer = elem.files.length + ' files chosen'
       } else {
         // remove the input from those gathered as it has no value
         inputs.splice(i, 1)
