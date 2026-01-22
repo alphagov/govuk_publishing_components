@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* **BREAKING** Remove individual component CSS code ([PR #5210](https://github.com/alphagov/govuk_publishing_components/pull/5210))
 * Add organisation logo component helper spec file, with fixes ([PR #5233](https://github.com/alphagov/govuk_publishing_components/pull/5233))
 
 ## 63.3.1
