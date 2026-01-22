@@ -11,7 +11,7 @@
 
 * **BREAKING** Remove individual component CSS code ([PR #5210](https://github.com/alphagov/govuk_publishing_components/pull/5210))
 * Add organisation logo component helper spec file, with fixes ([PR #5233](https://github.com/alphagov/govuk_publishing_components/pull/5233))
-* Remove single consent API code ([PR #](https://github.com/alphagov/govuk_publishing_components/pull/5223))
+* Remove single consent API code ([PR #5223](https://github.com/alphagov/govuk_publishing_components/pull/5223))
 
 ## 63.3.1
 
