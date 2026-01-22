@@ -6,6 +6,7 @@
   hide_licence ||= false
   layout_footer_helper = GovukPublishingComponents::Presenters::LayoutFooterHelper.new(navigation, meta)
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-footer govuk-footer")
   component_helper.add_data_attribute({ module: "ga4-link-tracker" })

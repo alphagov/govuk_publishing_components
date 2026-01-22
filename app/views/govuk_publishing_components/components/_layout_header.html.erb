@@ -11,6 +11,7 @@
   width_class = full_width ? "govuk-header__container--full-width" : "govuk-width-container"
   logo_link ||= "/"
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-header govuk-header")
   component_helper.add_class("gem-c-layout-header--no-bottom-border") if remove_bottom_border || navigation_items

@@ -25,6 +25,7 @@
   description_classes = %w[gem-c-emergency-banner__description]
   description_classes << "gem-c-emergency-banner__description--homepage" if homepage
 
+  local_assigns[:suppress_output] = true
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-emergency-banner gem-c-emergency-banner--#{campaign_class}")
   component_helper.add_class("gem-c-emergency-banner--homepage") if homepage
