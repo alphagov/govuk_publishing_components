@@ -9,8 +9,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-related-navigation govuk-!-display-none-print")
   component_helper.add_data_attribute({ module: "ga4-link-tracker" }) unless disable_ga4
-
-  add_gem_component_stylesheet("related-navigation")
 %>
 <% if related_nav_helper.related_navigation? %>
   <% random = SecureRandom.hex(4) %>

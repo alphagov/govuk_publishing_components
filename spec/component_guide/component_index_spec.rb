@@ -49,7 +49,6 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/contextual-sidebar';
 @import 'govuk_publishing_components/components/cookie-banner';
 @import 'govuk_publishing_components/components/cross-service-header';
-@import 'govuk_publishing_components/components/details';
 @import 'govuk_publishing_components/components/error-message';
 @import 'govuk_publishing_components/components/error-summary';
 @import 'govuk_publishing_components/components/feedback';
@@ -63,7 +62,6 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/layout-for-public';
 @import 'govuk_publishing_components/components/layout-header';
 @import 'govuk_publishing_components/components/layout-super-navigation-header';
-@import 'govuk_publishing_components/components/notice';
 @import 'govuk_publishing_components/components/phase-banner';
 @import 'govuk_publishing_components/components/print-link';
 @import 'govuk_publishing_components/components/related-navigation';
@@ -78,7 +76,7 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/tag';
 @import 'govuk_publishing_components/components/textarea';"
 
-    expect(page).to have_selector(".govuk-heading-m", text: "Gem components used by this app (20)")
+    expect(page).to have_selector(".govuk-heading-m", text: "Gem components used by this app (18)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
 
     expect(page.find(:css, 'textarea[name="main-sass"]', visible: :hidden).value).to eq(expected_main_sass)

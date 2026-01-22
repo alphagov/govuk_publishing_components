@@ -1,7 +1,4 @@
 <%
-  add_gem_component_stylesheet("button")
-  add_gem_component_stylesheet("file-upload")
-
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   id ||= "file-upload-#{SecureRandom.hex(4)}"

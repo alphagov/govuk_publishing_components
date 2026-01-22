@@ -37,12 +37,6 @@
         <% github_link = "https://github.com/alphagov/" + application[:dir] + "/blob/main/" %>
 
         <% if @other_applications %>
-          <% if application[:uses_individual_asset_model] %>
-            <%= render "govuk_publishing_components/components/warning_text", {
-              text: raw("This application uses <a class=\"govuk-link\" href=\"https://github.com/alphagov/govuk_publishing_components/blob/main/docs/set-up-individual-component-css-loading.md\">per page asset loading</a> for components. Warnings about missing stylesheets have been suppressed."),
-            } %>
-          <% end %>
-
           <% application[:warnings].each do |warning| %>
             <p class="govuk-body">
               <strong class="govuk-tag">Warn</strong>
@@ -67,8 +61,6 @@
           <% content = capture do %>
             <% if item[:value].length > 0 %>
               <%= item[:value].join(", ") %>
-            <% elsif application[:uses_individual_asset_model] && item[:name] == "In stylesheets" %>
-              Uses per page component asset loading
             <% else %>
               None
             <% end %>

@@ -1,9 +1,4 @@
-<%
-  add_gem_component_stylesheet("table")
-  add_gem_component_stylesheet("select")
-  add_gem_component_stylesheet("summary-list")
-  content_for :title, "Component audit"
-%>
+<% content_for :title, "Component audit" %>
 
 <%= render "govuk_publishing_components/components/back_link", {
   href: "/component-guide",

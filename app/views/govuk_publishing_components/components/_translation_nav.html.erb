@@ -1,6 +1,4 @@
 <%
-  add_gem_component_stylesheet("translation-nav")
-
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   translation_helper = GovukPublishingComponents::Presenters::TranslationNavHelper.new(local_assigns)

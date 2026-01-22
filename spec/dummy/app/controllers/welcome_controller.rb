@@ -35,16 +35,4 @@ class WelcomeController < ApplicationController
   def errorsummary
     render "error_summary", layout: "dummy_admin_layout"
   end
-
-  def asset_helper
-    render "asset_helper", layout: "asset_helper_layout"
-  end
-
-  def asset_helper_with_app_component
-    render "asset_helper_with_app_component", layout: "asset_helper_layout"
-  end
-
-  def asset_helper_with_app_view
-    render "asset_helper_with_app_view", layout: "asset_helper_layout"
-  end
 end
