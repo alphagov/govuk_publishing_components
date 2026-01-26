@@ -285,6 +285,28 @@ describe('Google Analytics form tracking', function () {
 
       expect(window.dataLayer[0]).toEqual(expected)
     })
+
+    it('collects data from a file input', function () {
+      element.innerHTML =
+        '<label for="file-input">Label</label>' +
+        '<input type="file" id="file-input" name="test-file"/>'
+
+      var obj = { hello: 'world' }
+      var blob = new window.Blob([JSON.stringify(obj, null, 2)], {
+        type: 'application/json'
+      })
+      var file = new window.File([blob], 'name')
+      var dataTransfer = new window.DataTransfer()
+      dataTransfer.items.add(file)
+      var fileList = dataTransfer.files
+      var input = document.getElementById('file-input')
+      input.files = fileList
+
+      expected.event_data.text = '1 files chosen'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 
   describe('when tracking a form with JSON recording', function () {
