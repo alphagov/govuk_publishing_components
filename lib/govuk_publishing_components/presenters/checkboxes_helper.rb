@@ -17,6 +17,8 @@ module GovukPublishingComponents
 
       def initialize(options)
         @items = options[:items] || []
+        return unless @items.any?
+
         @name = options[:name]
         @css_classes = %w[gem-c-checkboxes govuk-form-group]
         @css_classes << "govuk-form-group--error" if options[:error]
@@ -24,8 +26,8 @@ module GovukPublishingComponents
         @error = true if options[:error]
 
         # check if any item is set as being conditional
-        @has_conditional = options[:items].any? { |item| item.is_a?(Hash) && item[:conditional] }
-        @has_nested = options[:items].any? { |item| item.is_a?(Hash) && item[:items] }
+        @has_conditional = @items.any? { |item| item.is_a?(Hash) && item[:conditional] }
+        @has_nested = @items.any? { |item| item.is_a?(Hash) && item[:items] }
 
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
         @heading = options[:heading] || nil
@@ -41,7 +43,7 @@ module GovukPublishingComponents
       # should have a fieldset if there's a heading, or if more than one checkbox
       # separate check is in the view for if more than one checkbox and no heading, in which case fail
       def should_have_fieldset
-        @items.length > 1 || @heading
+        @items.length > 1 || !@heading.nil?
       end
 
       def fieldset_describedby
@@ -91,6 +93,7 @@ module GovukPublishingComponents
         checked = true if checkbox[:checked].present?
         data = checkbox[:data_attributes] || {}
         data[:controls] = controls
+        # aria-controls is set as a data attribute then applied properly using JS
         data["aria-controls"] = aria_controls
         data[:behaviour] = "exclusive" if checkbox[:exclusive]
 
