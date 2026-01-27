@@ -37,6 +37,17 @@ For the following form:
       <input id="checkbox-3" type="checkbox" name="favourite-cake" value="battenburg">
     </div>
   </fieldset>
+  <fieldset data-ga4-redact>
+    <legend>What is your favourite biscuit?</label>
+    <div>
+      <label for="radio-1">Digestive</label>
+      <input id="radio-1" type="radio" name="favourite-biscuit" value="digestive" data-ga4-redact-permit>
+    </div>
+    <div>
+      <label for="radio-2">Bourbon</label>
+      <input id="radio-2" type="radio" name="favourite-biscuit" value="bourbon">
+    </div>
+  </fieldset>
 </form>
 ```
 
@@ -61,8 +72,11 @@ When an input is changed or a selection from a group is chosen:
 | `input[type=text]` | What is your favourite pudding? | `value="Pie"` | 3 | select
 | `select` | Choose your favourite ice cream flavour(s) | `<option value="chocolate" selected>` | Chocolate | select
 | `input[type=checkbox]/input[type=radio]` | What is your favourite cake? | `<input id="checkbox-1" selected>` | Victoria | select
+| `fieldset[data-ga4-redact] > input[type=checkbox]/input[type=radio]` | What is your favourite biscuit? | `<input id="radio-1" selected>` | REDACTED | select
 
 For `input[type=text]`, the character count is returned instead of the value. This is to prevent inclusion of PII and the size of the event being too large for GA4 to record (if the `text` is too large).
+
+For `input[type=radio]` and `input[type=checkbox]` within a container with a data-attribute of `data-ga4-redact` a value of "[REDACTED]" is returned in place of the label text unless the input includes a `data-ga4-redact-permit` data-attribute.
 
 When a previously selected choice from a group is deselected:
 

@@ -136,14 +136,14 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checked conditional fields', function () {
       element.innerHTML =
-        '<div>' +
-        '<label for="c1">checkbox1</label>' +
-        '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
-        '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
-          '<label for="c3">checkbox3</label>' +
-          '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
-        '</div>' +
-        '</div>'
+        '<fieldset>' +
+          '<label for="c1">checkbox1</label>' +
+          '<input type="checkbox" aria-controls="conditional-field" id="c1" name="checkbox[]" value="checkbox1"/>' +
+          '<div id="conditional-field" class="govuk-checkboxes__conditional">' +
+            '<label for="c3">checkbox3</label>' +
+            '<input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>' +
+          '</div>' +
+        '</fieldset>'
 
       document.getElementById('c1').checked = true
       document.getElementById('c3').checked = true
@@ -173,9 +173,11 @@ describe('Google Analytics form tracking', function () {
 
     it('collects data from checkboxes', function () {
       element.innerHTML =
-        '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
-        '<label><input type="checkbox" id="c2" name="checkbox[]" value="checkbox2"/>checkbox2</label>' +
-        '<label><input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>checkbox3</label>'
+        '<fieldset>' +
+          '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
+          '<label><input type="checkbox" id="c2" name="checkbox[]" value="checkbox2"/>checkbox2</label>' +
+          '<label><input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>checkbox3</label>' +
+        '</fieldset>'
       document.getElementById('c1').checked = true
       document.getElementById('c3').checked = true
       expected.event_data.text = 'checkbox1,checkbox3'
@@ -184,14 +186,76 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('redacts data from checkboxes within a "redact" container with a value other than a permitted one', function () {
+      element.innerHTML =
+        '<fieldset data-ga4-redact="true">' +
+          '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
+          '<label><input type="checkbox" id="c2" name="checkbox[]" value="checkbox2"/>checkbox2</label>' +
+          '<label><input type="checkbox" id="c3" name="checkbox[]" value="checkbox3"/>checkbox3</label>' +
+        '</fieldset>'
+      document.getElementById('c1').checked = true
+      document.getElementById('c3').checked = true
+      expected.event_data.text = '[REDACTED],[REDACTED]'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from checkboxes within a "redact" container with a permitted value', function () {
+      element.innerHTML =
+        '<fieldset data-ga4-redact="true">' +
+          '<label><input type="checkbox" id="c1" name="checkbox[]" value="checkbox1"/>checkbox1</label>' +
+          '<label><input type="checkbox" id="c2" name="checkbox[]" value="checkbox2"/>checkbox2</label>' +
+          '<label><input type="checkbox" id="c3" name="checkbox[]" value="none" data-ga4-redact-permit="true"/>None</label>' +
+        '</fieldset>'
+      document.getElementById('c1').checked = true
+      document.getElementById('c3').checked = true
+      expected.event_data.text = '[REDACTED],None'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('collects data from radio buttons', function () {
       element.innerHTML =
-        '<label><input type="radio" id="r1" name="radio[]" value="radio1"/>radio1</label>' +
-        '<label><input type="radio" id="r2" name="radio[]" value="radio2"/>radio2</label>' +
-        '<label><input type="radio" id="r3" name="radio[]" value="radio3"/>radio3</label>'
+        '<fieldset>' +
+          '<label><input type="radio" id="r1" name="radio[]" value="radio1"/>radio1</label>' +
+          '<label><input type="radio" id="r2" name="radio[]" value="radio2"/>radio2</label>' +
+          '<label><input type="radio" id="r3" name="radio[]" value="radio3"/>radio3</label>' +
+        '</fieldset>'
       document.getElementById('r1').checked = true
       document.getElementById('r2').checked = true
       expected.event_data.text = 'radio2'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('redacts data from radio buttons within a "redact" container with a value other than a permitted one', function () {
+      element.innerHTML =
+        '<fieldset data-ga4-redact="true">' +
+          '<label><input type="radio" id="r1" name="radio[]" value="radio1"/>radio1</label>' +
+          '<label><input type="radio" id="r2" name="radio[]" value="radio2"/>radio2</label>' +
+          '<label><input type="radio" id="r3" name="radio[]" value="radio3"/>radio3</label>' +
+        '</fieldset>'
+      document.getElementById('r1').checked = true
+      document.getElementById('r2').checked = true
+      expected.event_data.text = '[REDACTED]'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects data from radio buttons within a "redact" container with a value of "none"', function () {
+      element.innerHTML =
+        '<fieldset data-ga4-redact="true">' +
+          '<label><input type="radio" id="r1" name="radio[]" value="radio1"/>radio1</label>' +
+          '<label><input type="radio" id="r2" name="radio[]" value="none" data-ga4-redact-permit="true"/>None</label>' +
+          '<label><input type="radio" id="r3" name="radio[]" value="radio3"/>radio3</label>' +
+        '</fieldset>'
+      document.getElementById('r1').checked = true
+      document.getElementById('r2').checked = true
+      expected.event_data.text = 'None'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)

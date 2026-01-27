@@ -110,13 +110,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     let text
 
     if (checkableValue) {
+      const fieldset = checkableValue.closest('fieldset') || null
+      const redactedFieldset = fieldset && fieldset.dataset.ga4Redact
+
       // radio, check, option can have `:checked` pseudo-class
       if (!checkableValue.matches(':checked')) {
         action = 'remove'
       }
 
-      text = checkableValue.innerText ||
-        this.module.querySelector(`label[for='${window.CSS.escape(id)}']`).innerText
+      if (redactedFieldset && !checkableValue.dataset.ga4RedactPermit) {
+        text = '[REDACTED]'
+      } else {
+        text = checkableValue.innerText || this.module.querySelector(`label[for='${window.CSS.escape(id)}']`).innerText
+      }
 
       if (text) {
         text = text.replace(/\r?\n|\r/g, ' ')
