@@ -1,10 +1,3 @@
-// This file should be included in an application prior to specific components
-// It provides govuk-frontend but adds no weight to the compiled CSS
-@import "components/helpers/govuk-frontend-settings";
-@import "govuk/base";
-
-@import "components/mixins/margins";
-
 $govuk-suppressed-warnings: (
   organisation-colours
 );

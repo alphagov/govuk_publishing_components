@@ -1,13 +1,16 @@
-// This is the file that the application needs to include in order to use
-// the components.
+@import "vars_and_mixins";
 
-@import "govuk_publishing_components/govuk_frontend_support";
-@import "govuk_publishing_components/component_support";
+@import "govuk/core/index";
+@import "govuk/objects/index";
+@import "govuk/utilities/index";
+@import "govuk/overrides/index";
 
-// Include all govuk frontend components
-@import "govuk/components/index";
+@import "govuk_publishing_components/components/helpers/brand-colours";
+@import "govuk_publishing_components/components/helpers/contents-list-helper";
+@import "govuk_publishing_components/components/helpers/markdown-typography";
+@import "govuk_publishing_components/lib/link";
+@import "govuk_publishing_components/lib/print_support";
 
-// components
 @import "components/accordion";
 @import "components/action-link";
 @import "components/add-another";
