@@ -13,21 +13,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
       return
     }
 
-    const placeholderOption = this.module.querySelector(
-      'option[value=""]:first-child'
-    )
-
-    if (placeholderOption && placeholderOption.textContent === '') {
-      placeholderOption.textContent = this.module.multiple
-        ? 'Select all that apply'
-        : 'Select one'
-    }
-
     const ariaDescribedBy = this.module.getAttribute('aria-describedby') || ''
     const labelId = this.module.id + '-label ' + ariaDescribedBy
 
     this.choices = new window.Choices(this.module, {
       allowHTML: true,
+      placeholderValue: this.module.multiple ? 'Select all that apply' : 'Select one',
       searchPlaceholderValue: 'Search in list',
       shouldSort: false, // show options and groups in the order they were given
       itemSelectText: '',
