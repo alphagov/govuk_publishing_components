@@ -1,15 +1,10 @@
-@import "govuk-frontend/govuk-frontend-settings";
-@import "govuk/base";
-@import "govuk-frontend/govuk-frontend-vars";
+@import "vars_and_mixins";
 
 @import "govuk/core/index";
 @import "govuk/objects/index";
 @import "govuk/utilities/index";
 @import "govuk/overrides/index";
 
-@import "govuk_publishing_components/components/mixins/css3";
-@import "govuk_publishing_components/components/mixins/grid-helper";
-@import "govuk_publishing_components/components/mixins/margins";
 @import "govuk_publishing_components/components/helpers/brand-colours";
 @import "govuk_publishing_components/components/helpers/contents-list-helper";
 @import "govuk_publishing_components/components/helpers/markdown-typography";
