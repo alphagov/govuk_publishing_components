@@ -180,11 +180,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
   jasmine.StyleFixtures.prototype.set = function (css) {
     this.cleanUp()
-    this.createStyle_(css)
   }
 
   jasmine.StyleFixtures.prototype.appendSet = function (css) {
-    this.createStyle_(css)
   }
 
   jasmine.StyleFixtures.prototype.preload = function () {
@@ -193,25 +191,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
   jasmine.StyleFixtures.prototype.load = function () {
     this.cleanUp()
-    this.createStyle_(this.read_.apply(this, arguments))
   }
 
   jasmine.StyleFixtures.prototype.appendLoad = function () {
-    this.createStyle_(this.read_.apply(this, arguments))
   }
 
   jasmine.StyleFixtures.prototype.cleanUp = function () {
     while(this.fixturesNodes_.length) {
       this.fixturesNodes_.pop().remove()
     }
-  }
-
-  jasmine.StyleFixtures.prototype.createStyle_ = function (html) {
-    var styleText = $('<div></div>').html(html).text()
-      , style = $('<style>' + styleText + '</style>')
-
-    this.fixturesNodes_.push(style)
-    $('head').append(style)
   }
 
   jasmine.StyleFixtures.prototype.clearCache = jasmine.Fixtures.prototype.clearCache
