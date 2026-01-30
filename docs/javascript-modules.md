@@ -49,17 +49,9 @@ AnExampleModule.prototype.init = function ($module) {
   this.$module = $module
   var consentCookie = window.GOVUK.getConsentCookie()
 
-  if (consentCookie && consentCookie.usage) {
+  if (consentCookie?.usage.includes(true, 'aggregate')) {
     this.startModule()
-  } else {
-    this.start = this.startModule.bind(this)
-    window.addEventListener('cookie-consent', this.start)
   }
-}
-
-AnExampleModule.prototype.startModule = function () {
-  window.removeEventListener('cookie-consent', this.start)
-  // the rest of the module
 }
 ```
 
