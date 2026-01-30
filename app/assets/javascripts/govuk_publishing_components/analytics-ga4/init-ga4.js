@@ -2,13 +2,15 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
 
 var initFunction = function () {
-  window.removeEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
   var consentCookie = window.GOVUK.getConsentCookie()
 
-  if (consentCookie && consentCookie.usage) {
+  // TODO: Could move to a function in the future and update logic
+  if (consentCookie?.usage === true || consentCookie?.usage === 'aggregate') {
     window.GOVUK.analyticsGa4.vars.internalDomains = []
     window.GOVUK.analyticsGa4.vars.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
+    
+    // Load GA4
     window.GOVUK.analyticsGa4.core.load()
 
     var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
@@ -23,8 +25,6 @@ var initFunction = function () {
         }
       }
     }
-  } else {
-    window.addEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
   }
 }
 
