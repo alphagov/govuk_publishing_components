@@ -1,6 +1,10 @@
 /*!
 Jasmine-jQuery: a set of jQuery helpers for Jasmine tests.
 
+NOTE: this file has had custom modifications. Jasmine jquery is no longer supported
+and breaks with calls to jasmine.isDomNode(). These have been replaced with
+jasmine.private.isDomNode()
+
 Version 2.1.1
 
 https://github.com/velesin/jasmine-jquery
@@ -747,7 +751,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
     jasmine.getEnv().addCustomEqualityTester(function(a, b) {
      if (a && b) {
-       if (a instanceof $ || jasmine.isDomNode(a)) {
+       if (a instanceof $ || jasmine.private.isDomNode(a)) {
          var $a = $(a)
 
          if (b instanceof $)
@@ -756,7 +760,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
          return $a.is(b);
        }
 
-       if (b instanceof $ || jasmine.isDomNode(b)) {
+       if (b instanceof $ || jasmine.private.isDomNode(b)) {
          var $b = $(b)
 
          if (a instanceof $)
