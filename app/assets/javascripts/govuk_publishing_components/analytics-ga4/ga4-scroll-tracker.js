@@ -19,16 +19,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4ScrollTracker.prototype.init = function () {
     var consentCookie = window.GOVUK.getConsentCookie()
 
-    if (consentCookie && consentCookie.usage) {
+    if (consentCookie?.usage === true || consentCookie?.aggregate === true) {
       this.startModule()
-    } else {
-      this.start = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.start)
     }
   }
 
   Ga4ScrollTracker.prototype.startModule = function () {
-    window.removeEventListener('cookie-consent', this.start)
     if (window.GOVUK.analyticsGa4.vars.scrollTrackerStarted) {
       return
     }
