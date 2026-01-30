@@ -35,6 +35,7 @@
     marker.parentNode.insertBefore(script, marker)
   }
 
+  // TODO: confirm usage condition for speedcurve when "aggregate"
   if (parsedCookie.usage === true) {
     insertScript()
   } else {
