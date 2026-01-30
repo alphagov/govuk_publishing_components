@@ -4,11 +4,13 @@
   'use strict'
   window.GOVUK = window.GOVUK || {}
 
+  // TODO: possibly a good use for JS Doc, usage can be a boolean or a string
   var DEFAULT_COOKIE_CONSENT = {
     essential: true,
     settings: false,
     usage: false,
-    campaigns: false
+    campaigns: false,
+    aggregate: true
   }
 
   var COOKIE_CATEGORIES = {
@@ -100,17 +102,23 @@
     return consentCookieObj
   }
 
+  // TODO: Add docs
+  // options = DEFAULT_COOKIE_CONSENT
   window.GOVUK.setConsentCookie = function (options) {
+    // Get the default consent cookie
     var cookieConsent = window.GOVUK.getConsentCookie()
 
+    // If there is no consent cookie (`cookie_policy`), then set cookie consent to the default
     if (!cookieConsent) {
       cookieConsent = JSON.parse(JSON.stringify(DEFAULT_COOKIE_CONSENT))
     }
 
+    // Loop over the DEFAULT_COOKIE_CONSENT object
     for (var cookieType in options) {
       cookieConsent[cookieType] = options[cookieType]
 
       // Delete cookies of that type if consent being set to false
+      // This needs to be updated to cater for 'aggregate'
       if (!options[cookieType]) {
         for (var cookie in COOKIE_CATEGORIES) {
           if (COOKIE_CATEGORIES[cookie] === cookieType) {
