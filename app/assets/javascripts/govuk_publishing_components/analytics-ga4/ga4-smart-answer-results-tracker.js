@@ -12,20 +12,15 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
   Ga4SmartAnswerResultsTracker.prototype.init = function () {
     var consentCookie = window.GOVUK.getConsentCookie()
 
-    if (consentCookie && consentCookie.usage) {
+    if (consentCookie?.usage === true || consentCookie?.usage === 'aggregate') {
       this.startModule()
-    } else {
-      this.start = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.start)
     }
   }
 
-  // triggered by cookie-consent event, which happens when users consent to cookies
   Ga4SmartAnswerResultsTracker.prototype.startModule = function () {
     // only run this code if the dataLayer exists and an element with a data-ga4-ecommerce-path
     // attribute exists as this indicates that ecommerce tracking is required
     if (window.dataLayer && this.module.querySelector('[data-ga4-ecommerce-path]')) {
-      window.removeEventListener('cookie-consent', this.start)
       this.trackResults()
       this.module.addEventListener('click', this.handleClick.bind(this))
     }
