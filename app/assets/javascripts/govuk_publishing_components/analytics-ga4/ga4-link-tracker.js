@@ -15,18 +15,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4LinkTracker.prototype.init = function () {
     var consentCookie = window.GOVUK.getConsentCookie()
 
-    if (consentCookie && consentCookie.usage) {
+    if (consentCookie?.usage === true || consentCookie?.usage === 'aggregate') {
       this.startModule()
-    } else {
-      this.start = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.start)
     }
   }
 
-  // triggered by cookie-consent event, which happens when users consent to cookies
   Ga4LinkTracker.prototype.startModule = function () {
     if (window.dataLayer) {
-      window.removeEventListener('cookie-consent', this.start)
       this.handleClick = this.handleClick.bind(this)
       this.handleMousedown = this.handleMousedown.bind(this)
 
