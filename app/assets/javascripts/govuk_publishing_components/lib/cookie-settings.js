@@ -55,6 +55,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
         options[name] = value
 
+        // TODO: Test this on the settings page
         if (name === 'usage' && !value) {
           window.GOVUK.stopSendingAnalytics = true
           window.GOVUK.LUX = {}
