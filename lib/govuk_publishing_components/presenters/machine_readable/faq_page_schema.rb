@@ -24,8 +24,7 @@ module GovukPublishingComponents
       end
 
       def questions_and_answers_markup
-        question_and_answers.select { |_, value| value[:answer].present? }
-                            .map do |question, value|
+        question_and_answers.select { |_, value| value[:answer].present? }.map do |question, value|
           q_and_a_url = section_url(value[:anchor])
 
           {
