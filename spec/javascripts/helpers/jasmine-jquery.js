@@ -3,7 +3,7 @@ Jasmine-jQuery: a set of jQuery helpers for Jasmine tests.
 
 NOTE: this file has had custom modifications. Jasmine jquery is no longer supported
 and breaks with calls to jasmine.isDomNode(). These have been replaced with
-jasmine.private.isDomNode()
+jasmine.private.isDomNode(). Also replacing calls to argsToArray with Array.from(arguments).
 
 Version 2.1.1
 
@@ -296,7 +296,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       var handler = function (e) {
         var calls = (typeof data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] !== 'undefined') ? data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)].calls : 0
         data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] = {
-          args: jasmine.util.argsToArray(arguments),
+          args: Array.from(arguments),
           calls: ++calls
         }
       }
