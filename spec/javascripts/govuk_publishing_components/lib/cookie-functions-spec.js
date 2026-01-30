@@ -89,7 +89,7 @@ describe('Cookie helper functions', function () {
 
       GOVUK.setDefaultConsentCookie()
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false, aggregate: true}', Object({ days: 365 }))
       expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: false, usage: false, campaigns: false })
     })
 
@@ -120,6 +120,7 @@ describe('Cookie helper functions', function () {
       GOVUK.setDefaultConsentCookie()
 
       expect(GOVUK.getConsentCookie().usage).toBe(false)
+      expect(GOVUK.getConsentCookie().aggregate).toBe(true)
       expect(GOVUK.getCookie('JS-Detection')).toBeFalsy()
     })
 
