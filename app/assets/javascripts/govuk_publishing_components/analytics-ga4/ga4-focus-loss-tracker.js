@@ -12,18 +12,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4FocusLossTracker.prototype.init = function () {
     var consentCookie = window.GOVUK.getConsentCookie()
 
-    if (consentCookie && consentCookie.usage) {
+    if (consentCookie?.usage === true || consentCookie?.aggregate === true) {
       this.startModule()
-    } else {
-      this.start = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.start)
     }
   }
 
-  // triggered by cookie-consent event, which happens when users consent to cookies
   Ga4FocusLossTracker.prototype.startModule = function () {
     if (window.dataLayer) {
-      window.removeEventListener('cookie-consent', this.start)
       this.module.addEventListener('blur', this.trackFocusLoss.bind(this))
       this.module.piiRemover = new window.GOVUK.analyticsGa4.PIIRemover()
     }

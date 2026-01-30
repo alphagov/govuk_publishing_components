@@ -13,11 +13,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4AutoTracker.prototype.init = function () {
     var consentCookie = window.GOVUK.getConsentCookie()
 
-    if (consentCookie && consentCookie.usage) {
+    if (consentCookie?.usage === true || consentCookie?.aggregate === true) {
       this.startModule()
-    } else {
-      this.start = this.startModule.bind(this)
-      window.addEventListener('cookie-consent', this.start)
     }
   }
 
@@ -27,7 +24,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Ga4AutoTracker.prototype.sendEvent = function () {
     if (window.dataLayer) {
-      window.removeEventListener('cookie-consent', this.start)
       try {
         var data = this.module.getAttribute(this.trackingTrigger)
         data = JSON.parse(data) || {}
