@@ -21,22 +21,26 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     var currentConsentCookie = window.GOVUK.cookie('cookies_policy')
-    if (currentConsentCookie) {
-      var currentConsentCookieJSON = JSON.parse(currentConsentCookie)
-      if (currentConsentCookieJSON) {
-        // We don't need the essential value as this cannot be changed by the user
-        delete currentConsentCookieJSON.essential
-        for (var cookieType in currentConsentCookieJSON) {
-          var radioButton
-          if (currentConsentCookieJSON[cookieType]) {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
-          } else {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
-          }
-          if (radioButton) {
-            radioButton.checked = true
-          }
-        }
+    var currentConsentCookieJSON = JSON.parse(currentConsentCookie)
+
+    // If there is no cookie consent do not set initial form values
+    if (!currentConsentCookie) return
+
+    // If there is no cookie consent JSON do not set initial form values
+    if (!currentConsentCookieJSON) return
+
+    // We don't need the essential value as this cannot be changed by the user
+    delete currentConsentCookieJSON.essential
+
+    // Loop over the different cookie
+    for (var cookieType in currentConsentCookieJSON) {
+      var inputValue = this.getCookiePolicyValue(currentConsentCookieJSON[cookieType])
+
+      // Find the element and set checked to true
+      var radioButton = document.querySelector(`input[name=cookies-${cookieType}][value=${inputValue}]`)
+
+      if (radioButton) {
+        radioButton.checked = true
       }
     }
   }
@@ -51,9 +55,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var input = formInputs[i]
       if (input.checked) {
         var name = input.name.replace('cookies-', '')
-        var value = input.value === 'on'
 
-        options[name] = value
+        // Revisit
+        options[name] = this.setCookiePolicyValue(input.value)
 
         // TODO: Test this on the settings page
         if (name === 'usage' && !value) {
@@ -98,6 +102,29 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       console.warn('Error grabbing referrer for cookie settings', window.location, e)
     }
     return documentReferrer
+  }
+
+  CookieSettings.prototype.getCookiePolicyValue = function (cookieTypeValue) {
+    if (cookieTypeValue === 'aggregate') {
+      return 'aggregate'
+    }
+    if (cookieTypeValue === true) {
+      return 'on'
+    }
+
+    return 'off'
+  }
+
+  CookieSettings.prototype.setCookiePolicyValue = function (cookieInputValue) {
+    if (cookieInputValue === 'aggregate') {
+      return 'aggregate'
+    }
+
+    if (cookieInputValue === 'on') {
+      return true
+    }
+
+    return false
   }
 
   Modules.CookieSettings = CookieSettings
