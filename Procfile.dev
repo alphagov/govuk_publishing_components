@@ -1,2 +1,2 @@
-web: bundle exec rackup spec/dummy/config.ru --host 0.0.0.0 -p 3212
+web: bundle exec rackup spec/dummy/config.ru -p 3212
 css: bin/rake app:dartsass:watch
