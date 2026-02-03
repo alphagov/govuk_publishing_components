@@ -60,7 +60,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         options[name] = this.setCookiePolicyValue(input.value)
 
         // TODO: Test this on the settings page
-        if (name === 'usage' && !value) {
+        if (name === 'usage' && !this.setCookiePolicyValue(input.value)) {
           window.GOVUK.stopSendingAnalytics = true
           window.GOVUK.LUX = {}
         }
