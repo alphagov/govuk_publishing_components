@@ -145,7 +145,7 @@
 
     // Sometimes currentConsentCookie is malformed in some of the tests, so we need to handle these
     try {
-      return currentConsentCookie[cookieCategory]
+      return currentConsentCookie[cookieCategory] || currentConsentCookie.usage === cookieCategory
     } catch (e) {
       console.error(e)
       return false
