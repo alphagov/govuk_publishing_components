@@ -15,6 +15,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.setCookieConsent = this.setCookieConsent.bind(this)
     this.$module.rejectCookieConsent = this.rejectCookieConsent.bind(this)
     this.setupCookieMessage()
+    
+    window.GOVUK.cookie('a_usage_cookie', 'true', { days: 365 })
+    window.GOVUK.cookie('an_aggregate_cookie', 'true', { days: 365 })
   }
 
   CookieBanner.prototype.setupCookieMessage = function () {
