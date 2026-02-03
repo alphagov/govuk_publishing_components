@@ -60,8 +60,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         options[name] = this.setCookiePolicyValue(input.value)
 
         // TODO: Test this on the settings page
-        if (name === 'usage' && !value) {
+        if (name === 'usage' && options[name] === false) {
           window.GOVUK.stopSendingAnalytics = true
+          // TODO: confirm where this is used
           window.GOVUK.LUX = {}
         }
       }
@@ -99,6 +100,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     try {
       documentReferrer = document.referrer || new URL(document.referrer).pathname
     } catch (e) {
+      // TODO: Test
       console.warn('Error grabbing referrer for cookie settings', window.location, e)
     }
     return documentReferrer
