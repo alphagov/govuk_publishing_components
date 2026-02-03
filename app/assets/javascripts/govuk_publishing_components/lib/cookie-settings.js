@@ -34,7 +34,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // Loop over the different cookie
     for (var cookieType in currentConsentCookieJSON) {
-      var inputValue = this.getCookiePolicyValue(currentConsentCookieJSON[cookieType])
+      var inputValue = this.getCookiePolicyValue(currentConsentCookieJSON, cookieType)
 
       // Find the element and set checked to true
       var radioButton = document.querySelector(`input[name=cookies-${cookieType}][value=${inputValue}]`)
@@ -48,26 +48,49 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   CookieSettings.prototype.submitSettingsForm = function (event) {
     event.preventDefault()
 
-    var formInputs = event.target.getElementsByTagName('input')
-    var options = {}
+    var formInputs = Array.from(event.target.getElementsByTagName('input'))
+    var newCookiePolicy = {}
 
-    for (var i = 0; i < formInputs.length; i++) {
-      var input = formInputs[i]
-      if (input.checked) {
-        var name = input.name.replace('cookies-', '')
+    var checkedFormInputs = formInputs.filter((input) => {
+      return input.checked
+    })
+
+    console.log(checkedFormInputs);
+
+    for (var formInput of checkedFormInputs) {
+
+        var cookieCategory = formInput.name.replace('cookies-', '')
 
         // Revisit
-        options[name] = this.setCookiePolicyValue(input.value)
+        if (cookieCategory === 'usage') {
+          if (formInput.value === 'aggregate') {
+            newCookiePolicy.aggregate = true
+            newCookiePolicy.usage = false
+          } else if (formInput.value === 'on') {
+            newCookiePolicy.aggregate = false
+            newCookiePolicy.usage = true
+          } else {
+            newCookiePolicy.aggregate = false
+            newCookiePolicy.usage = false
+          }
+        } else {
+          if (formInput.value === 'on') {
+            newCookiePolicy[cookieCategory] = true
+          } else {
+            newCookiePolicy[cookieCategory] = false
+          }
+        }
 
         // TODO: Test this on the settings page
-        if (name === 'usage' && !value) {
+        if ((formInput.name === 'usage' && newCookiePolicy[formInput.name] === false) ||
+            (formInput.name === 'aggregate' && newCookiePolicy[formInput.name] === false)) {
           window.GOVUK.stopSendingAnalytics = true
+          // TODO: confirm where this is used
           window.GOVUK.LUX = {}
         }
-      }
     }
 
-    window.GOVUK.setConsentCookie(options)
+    window.GOVUK.setConsentCookie(newCookiePolicy)
     window.GOVUK.setCookie('cookies_preferences_set', true, { days: 365 })
     this.showConfirmationMessage()
     return false
@@ -99,16 +122,18 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     try {
       documentReferrer = document.referrer || new URL(document.referrer).pathname
     } catch (e) {
+      // TODO: Test
       console.warn('Error grabbing referrer for cookie settings', window.location, e)
     }
     return documentReferrer
   }
 
-  CookieSettings.prototype.getCookiePolicyValue = function (cookieTypeValue) {
-    if (cookieTypeValue === 'aggregate') {
+  CookieSettings.prototype.getCookiePolicyValue = function (currentConsentCookieJSON, cookieTypeValue) {
+    if (currentConsentCookieJSON.aggregate === true) {
       return 'aggregate'
     }
-    if (cookieTypeValue === true) {
+
+    if (currentConsentCookieJSON[cookieTypeValue] === true) {
       return 'on'
     }
 
@@ -117,7 +142,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   CookieSettings.prototype.setCookiePolicyValue = function (cookieInputValue) {
     if (cookieInputValue === 'aggregate') {
-      return 'aggregate'
+      return true
     }
 
     if (cookieInputValue === 'on') {
