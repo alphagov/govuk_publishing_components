@@ -31,7 +31,10 @@
     TLSversion: 'usage',
     _ga_VBLT2V3FZR: 'usage', // gtag cookie used to persist the session state, integration
     _ga_P1DGM6TVYF: 'usage', // staging
-    _ga_S5RQ7FTGVR: 'usage' // production
+    _ga_S5RQ7FTGVR: 'usage', // production
+    a_usage_cookie: 'usage',
+    an_aggregate_cookie: 'aggregate',
+    // an_aggregate_cookie: { cookieType: 'usage', value: 'aggregate' },
   }
 
   /*
@@ -159,7 +162,6 @@
     if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
       return window.GOVUK.checkConsentCookieCategory(cookieName, 'settings')
     }
-
     if (COOKIE_CATEGORIES[cookieName]) {
       var cookieCategory = COOKIE_CATEGORIES[cookieName]
 
@@ -222,15 +224,32 @@
   window.GOVUK.deleteUnconsentedCookies = function () {
     var currentConsent = window.GOVUK.getConsentCookie()
 
-    for (var cookieType in currentConsent) {
-      // Delete cookies of that type if consent being set to false
-      if (!currentConsent[cookieType]) {
-        for (var cookie in COOKIE_CATEGORIES) {
-          if (COOKIE_CATEGORIES[cookie] === cookieType) {
-            window.GOVUK.deleteCookie(cookie)
-          }
-        }
+    // Loop over cookie policy entries, then iterating 'cookie type' e.g. usage, and consent value
+    Object.entries(currentConsent).forEach(([cookieType, consent]) => {
+      // Delete usage cookies if usage=aggregate
+      if (cookieType === "usage" && consent === "aggregate") {
+        window.GOVUK.deleteCookiesByCategory("usage");
+        return;
       }
-    }
+
+      // Delete aggregate cookies if usage=true
+      if (cookieType === "usage" && consent) {
+        window.GOVUK.deleteCookiesByCategory("aggregate");
+        return;
+      }
+
+      // Delete category cookies if consent anywhere = false
+      if (!consent) {
+        window.GOVUK.deleteCookiesByCategory(cookieType);
+      }
+    });
   }
+
+    window.GOVUK.deleteCookiesByCategory = (category) => {
+      Object.keys(COOKIE_CATEGORIES).forEach((cookie) => {
+        if (COOKIE_CATEGORIES[cookie] === category) {
+          GOVUK.deleteCookie(cookie);
+        }
+      });
+    };
 }(window))
