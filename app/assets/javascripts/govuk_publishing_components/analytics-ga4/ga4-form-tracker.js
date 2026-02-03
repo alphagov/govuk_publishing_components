@@ -83,12 +83,17 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     for (var i = 0; i < labels.length; i++) {
       var label = labels[i]
       var labelFor = label.getAttribute('for')
+      var hiddenInput = label.getAttribute('data-ga4-hidden-input')
       var input = false
-      if (labelFor) {
+
+      if (hiddenInput) {
+        input = this.module.querySelector('[id="' + hiddenInput + '"]')
+      } else if (labelFor) {
         input = this.module.querySelector('[id="' + labelFor + '"]')
       } else {
         input = label.querySelector('input')
       }
+
       inputs.push({
         input: input,
         label: label

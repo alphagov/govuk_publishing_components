@@ -371,6 +371,28 @@ describe('Google Analytics form tracking', function () {
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })
+
+    it('collects data from a hidden input if `ga4-hidden-input` set', function () {
+      element.innerHTML =
+        '<label for="file-input" data-ga4-hidden-input="file-input-input">Label</label>' +
+        '<input type="file" id="file-input-input" name="test-file"/>'
+
+      var obj = { hello: 'world' }
+      var blob = new window.Blob([JSON.stringify(obj, null, 2)], {
+        type: 'application/json'
+      })
+      var file = new window.File([blob], 'name')
+      var dataTransfer = new window.DataTransfer()
+      dataTransfer.items.add(file)
+      var fileList = dataTransfer.files
+      var input = document.getElementById('file-input-input')
+      input.files = fileList
+
+      expected.event_data.text = '1 files chosen'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 
   describe('when tracking a form with JSON recording', function () {
