@@ -18,6 +18,10 @@
   heading_level ||= nil
   javascript ||= false
 
+  if javascript
+    label[:data_attributes] = { ga4_hidden_input: "#{id}-input" }
+  end
+
   css_classes = %w(gem-c-file-upload govuk-file-upload)
   css_classes << "govuk-file-upload--error" if has_error
   form_group_css_classes = %w(govuk-form-group)

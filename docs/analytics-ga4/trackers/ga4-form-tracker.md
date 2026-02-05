@@ -77,3 +77,7 @@ Additionally, there is a `data-ga4-form-split-response-text` attribute. If this 
   }
 }
 ```
+
+## Options for `label`
+
+In the case of a JS enhanced field (for example the JS enhanced File Upload component) which hides the actual `input` and changes its `id`, you can set `data-ga4-hidden-input` on the `label` to the `id` of that concealed `input`.
