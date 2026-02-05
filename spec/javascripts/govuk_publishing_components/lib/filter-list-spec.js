@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 
 describe('The filter list code', function () {
   const el = document.createElement('div')
@@ -38,25 +38,25 @@ describe('The filter list code', function () {
     it('shows one element based on user input', function () {
       input.value = 'united states'
       window.GOVUK.triggerEvent(input, 'input')
-      expect(el.querySelector('[data-filter-item="a"]')).toBeHidden()
-      expect(el.querySelector('[data-filter-item="b"]')).toBeVisible()
-      expect(el.querySelector('[data-filter-item="c"]')).toBeHidden()
+      expect(el.querySelector('[data-filter-item="a"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="b"]')).not.toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="c"]')).toHaveClass('govuk-!-display-none')
     })
 
     it('shows multiple elements based on user input', function () {
       input.value = 'united kingdom'
       window.GOVUK.triggerEvent(input, 'input')
-      expect(el.querySelector('[data-filter-item="a"]')).toBeVisible()
-      expect(el.querySelector('[data-filter-item="b"]')).toBeHidden()
-      expect(el.querySelector('[data-filter-item="c"]')).toBeVisible()
+      expect(el.querySelector('[data-filter-item="a"]')).not.toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="b"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="c"]')).not.toHaveClass('govuk-!-display-none')
     })
 
     it('resets if the input is cleared', function () {
       input.value = ''
       window.GOVUK.triggerEvent(input, 'input')
-      expect(el.querySelector('[data-filter-item="a"]')).toBeVisible()
-      expect(el.querySelector('[data-filter-item="b"]')).toBeVisible()
-      expect(el.querySelector('[data-filter-item="c"]')).toBeVisible()
+      expect(el.querySelector('[data-filter-item="a"]')).not.toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="b"]')).not.toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="c"]')).not.toHaveClass('govuk-!-display-none')
     })
   })
 
