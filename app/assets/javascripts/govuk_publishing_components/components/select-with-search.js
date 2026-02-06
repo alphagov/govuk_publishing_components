@@ -13,6 +13,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
       return
     }
 
+    const blankOptionText = "Select none"
     const placeholderOption = this.module.querySelector(
       'option[value=""]:first-child'
     )
@@ -42,6 +43,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
           const inner = this.containerInner.element
           const input = this.input.element
           inner.prepend(input)
+        } else {
+          /*** Update text for blank option in the hidden select ***/
+          const selectElement = this.passedElement.element
+          if (selectElement.id.search('blank') > 0) {
+              selectElement.firstChild.innerText = blankOptionText
+          }
+          /*** Update text for blank option in the choices dropdown ***/
+          // choices.js 'lastChild' in this context is the listbox of choices:
+          const listbox = this.dropdown.element.lastChild
+          // choices.js 'firstChild' in this context is the first option.
+          // This always displays "Select One" for selects with a blank option:
+          var blankOption = listbox.firstChild
+          if (blankOption && blankOption.id.search('blank') > 0) {
+            blankOption.innerText = blankOptionText
+          }
         }
         // Add aria-labelledby to the listbox as well as the combobox
         const listbox = this.itemList.element
@@ -53,6 +69,22 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
         threshold: 0 // only matches when characters are sequential
       }
     })
+
+    // Reset blank 'Select One' to 'Select None' on each change
+    // Not an ideal solution, but does work. Should revisit this
+    // to find a more robust, less 'hacky' solution.
+    const selectElement = this.choices.passedElement.element
+    const listbox = this.choices.dropdown.element.lastChild
+    selectElement.addEventListener(
+      'change',
+      function(event) {
+        var blankOption = listbox.firstChild
+        if (blankOption && blankOption.id.search('blank') > 0) {
+          blankOption.innerText = blankOptionText
+        }
+      },
+      false,
+    );
 
     this.module.choices = this.choices
   }
