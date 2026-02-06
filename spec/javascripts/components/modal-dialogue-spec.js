@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 function keyPress (element, key) {
@@ -50,7 +50,7 @@ describe('Modal dialogue component', function () {
 
     it('should show the modal dialogue', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
-      expect(modal).toBeVisible()
+      expect(modal.checkVisibility()).toBe(true)
     })
   })
 
@@ -60,7 +60,7 @@ describe('Modal dialogue component', function () {
       modal.open()
 
       keyPress(modal, 27)
-      expect(modal).toBeHidden()
+      expect(modal.checkVisibility()).toBe(false)
     })
   })
 
@@ -72,7 +72,7 @@ describe('Modal dialogue component', function () {
 
       var modal = document.querySelector('.gem-c-modal-dialogue')
       document.querySelector('.gem-c-modal-dialogue__close-button').click()
-      expect(modal).toBeHidden()
+      expect(modal.checkVisibility()).toBe(false)
     })
   })
 
@@ -108,7 +108,7 @@ describe('Modal dialogue component', function () {
 
     it('should show the modal dialogue', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
-      expect(modal).toBeVisible()
+      expect(modal.checkVisibility()).toBe(true)
     })
 
     it('should focus the modal dialogue', function () {
@@ -122,7 +122,7 @@ describe('Modal dialogue component', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
       modal.open()
       modal.close()
-      expect(modal).toBeHidden()
+      expect(modal.checkVisibility()).toBe(false)
     })
   })
 })

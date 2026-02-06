@@ -35,11 +35,11 @@ describe('Intervention banner component', function () {
     it('should hide intervention banner', function () {
       var banner = document.querySelector('.gem-c-intervention')
       var close = document.querySelector('.js-dismiss-link')
-      expect(banner).toBeVisible()
+      expect(banner.checkVisibility()).toBe(true)
 
       close.click()
 
-      expect(banner).toBeHidden()
+      expect(banner.checkVisibility()).toBe(false)
     })
 
     it('sets a cookie value', function () {
@@ -65,7 +65,7 @@ describe('Intervention banner component', function () {
 
       var banner = document.querySelector('.gem-c-intervention')
 
-      expect(banner).toBeHidden()
+      expect(banner.checkVisibility()).toBe(false)
     })
   })
 

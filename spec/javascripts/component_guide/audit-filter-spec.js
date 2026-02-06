@@ -45,7 +45,7 @@ describe('Audit component filtering', function () {
 
   it('creates expected elements', function () {
     var select = container.querySelector('.govuk-select')
-    expect(select).toBeVisible()
+    expect(select.checkVisibility()).toBe(true)
     expect(select.querySelectorAll('option').length).toBe(4)
   })
 
