@@ -1520,10 +1520,10 @@ gopd@^1.2.0:
   resolved "https://registry.yarnpkg.com/gopd/-/gopd-1.2.0.tgz#89f56b8217bdbc8802bd299df6d7f1081d7e51a1"
   integrity sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==
 
-govuk-frontend@5.13.0:
-  version "5.13.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.13.0.tgz#11126d32a9ef0db17b19276253746da1ade4338b"
-  integrity sha512-6N3pHelWN7wftdM6e4YEzZAfattapa1gnd+Al6d5PUbfTr9D+T2dnphpNpjX75CTEhihlQqlL0RDQ3WIfZ3PSg==
+govuk-frontend@5.14.0:
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.14.0.tgz#d93f1ffa88b0696114509cab86e4ea474006f8e0"
+  integrity sha512-MgfaXswIM6KpXS2T5gltEnzgVLgfM3UoE9+rYkhBiR0suaJ8Let31VZXQZqz9QhiPDbv28fW1nRjIyLujfZIBA==
 
 graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.2.6"
