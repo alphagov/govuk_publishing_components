@@ -1,12 +1,12 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('Checkboxes component', function () {
   function loadCheckboxesComponent () {
-    new GOVUK.Modules.GemCheckboxes($('.gem-c-checkboxes')[0]).init()
+    new GOVUK.Modules.GemCheckboxes(checkboxes).init()
   }
 
-  var FIXTURE =
+  var html =
   '<div id="checkboxes-1ac8e5cf" class="gem-c-checkboxes govuk-form-group " data-module="gem-checkboxes">' +
      '<fieldset class="govuk-fieldset" aria-describedby="checkboxes-1ac8e5cf-hint ">' +
         '<legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">' +
@@ -50,6 +50,8 @@ describe('Checkboxes component', function () {
      '</fieldset>' +
   '</div>'
 
+  var checkboxes
+  var container
   var $parentCheckboxWrapper
   var $parentCheckbox
   var $nestedChildren
@@ -58,57 +60,67 @@ describe('Checkboxes component', function () {
   var $nonExclusiveOptions
 
   beforeEach(function () {
-    window.setFixtures(FIXTURE)
+    container = document.createElement('div')
+    container.innerHTML = html
+    document.body.appendChild(container)
+    checkboxes = document.querySelector('.gem-c-checkboxes')
     loadCheckboxesComponent()
 
-    $parentCheckboxWrapper = $('.govuk-checkboxes--nested:eq(0)').closest('.govuk-checkboxes__item')
-    $parentCheckbox = $parentCheckboxWrapper.find('> .govuk-checkboxes__input')
-    $nestedChildren = $parentCheckboxWrapper.find('.govuk-checkboxes--nested .govuk-checkboxes__input')
-    $checkboxesWrapper = $('.gem-c-checkboxes')
-    $exclusiveOption = $checkboxesWrapper.find('input[type=checkbox][data-test-exclusive]')
-    $nonExclusiveOptions = $checkboxesWrapper.find('input[type=checkbox][data-behaviour="exclusive"]')
+    $parentCheckboxWrapper = document.querySelector('.govuk-checkboxes--nested').closest('.govuk-checkboxes__item')
+    $parentCheckbox = $parentCheckboxWrapper.querySelector('.govuk-checkboxes__input')
+    $nestedChildren = $parentCheckboxWrapper.querySelectorAll('.govuk-checkboxes--nested .govuk-checkboxes__input')
+    $checkboxesWrapper = document.querySelector('.gem-c-checkboxes')
+    $exclusiveOption = $checkboxesWrapper.querySelector('input[type=checkbox][data-test-exclusive]')
+    $nonExclusiveOptions = $checkboxesWrapper.querySelectorAll('input[type=checkbox][data-behaviour="exclusive"]')
+  })
+
+  afterEach(function () {
+    document.body.removeChild(container)
   })
 
   it('checking a parent checkbox checks all its children', function () {
     $parentCheckbox.click()
 
-    expect($nestedChildren.length).toEqual($nestedChildren.filter(':checked').length)
+    var nestedChildrenChecked = $parentCheckboxWrapper.querySelectorAll('.govuk-checkboxes--nested .govuk-checkboxes__input:checked')
+    expect($nestedChildren.length).toEqual(nestedChildrenChecked.length)
   })
 
   it('checks parent when all children are selected', function () {
-    $nestedChildren.each(function (idx, child) {
-      $(child).click()
+    $nestedChildren.forEach(child => {
+      child.click()
     })
 
-    expect($parentCheckbox.is(':checked')).toEqual(true)
+    expect($parentCheckbox.checked).toEqual(true)
   })
 
   it('unchecks parent when one or more children are deselected', function () {
     $parentCheckbox.click()
-    expect($nestedChildren.length).toEqual($nestedChildren.filter(':checked').length)
-    expect($parentCheckbox.is(':checked')).toEqual(true)
+    var nestedChildrenChecked = $parentCheckboxWrapper.querySelectorAll('.govuk-checkboxes--nested .govuk-checkboxes__input:checked')
+    expect($nestedChildren.length).toEqual(nestedChildrenChecked.length)
 
-    $nestedChildren.eq(0).click()
-    expect($parentCheckbox.is(':checked')).toEqual(false)
+    $nestedChildren[0].click()
+    expect($parentCheckbox.checked).toEqual(false)
   })
 
   it('applies aria-controls attributes if it finds data-controls attributes', function () {
-    expect($('#checkboxes-1ac8e5cf-0-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing')
-    expect($('#checkboxes-1ac8e5cf-1-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing2')
-    expect($('#checkboxes-1ac8e5cf-0.govuk-checkboxes__input').attr('aria-controls')).toBe(undefined)
+    expect(document.querySelector('#checkboxes-1ac8e5cf-0-0.govuk-checkboxes__input').getAttribute('aria-controls')).toBe('thing')
+    expect(document.querySelector('#checkboxes-1ac8e5cf-1-0.govuk-checkboxes__input').getAttribute('aria-controls')).toBe('thing2')
+    expect(document.querySelector('#checkboxes-1ac8e5cf-0.govuk-checkboxes__input').getAttribute('aria-controls')).toBe(null)
   })
 
   describe('with exclusive option', function () {
     it('unchecks non-exclusive options when exclusive option is checked', function () {
-      $nonExclusiveOptions.first().click()
+      $nonExclusiveOptions[0].click()
       $exclusiveOption.click()
-      expect($nonExclusiveOptions.length).toEqual($nonExclusiveOptions.filter(':not(checked)').length)
-      expect($exclusiveOption.is(':checked')).toEqual(true)
+      var nonExclusiveOptionsNotChecked = $checkboxesWrapper.querySelectorAll('input[type=checkbox][data-behaviour="exclusive"]:not(checked)')
+
+      expect($nonExclusiveOptions.length).toEqual(nonExclusiveOptionsNotChecked.length)
+      expect($exclusiveOption.checked).toEqual(true)
     })
 
     it('unchecks exclusive option when a non-exclusive option is checked', function () {
-      $nonExclusiveOptions.first().click()
-      expect($exclusiveOption.is(':checked')).toEqual(false)
+      $nonExclusiveOptions[0].click()
+      expect($exclusiveOption.checked).toEqual(false)
     })
   })
 })
