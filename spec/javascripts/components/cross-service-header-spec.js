@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('The _layout_header_one_login', function () {
@@ -151,15 +151,15 @@ describe('The _layout_header_one_login', function () {
 
     describe('has the correct ARIA attributes', function () {
       it('has `aria-controls` set to "one-login-header__nav"', function () {
-        expect($button).toHaveAttr('aria-controls', 'one-login-header__nav')
+        expect($button.getAttribute('aria-controls')).toBe('one-login-header__nav')
       })
 
       it('has `aria-label` set to "Show GOV.UK One Login menu"', function () {
-        expect($button).toHaveAttr('aria-label', 'Show GOV.UK One Login menu')
+        expect($button.getAttribute('aria-label')).toBe('Show GOV.UK One Login menu')
       })
 
       it('has `aria-expanded` set to false', function () {
-        expect($button).toHaveAttr('aria-expanded', 'false')
+        expect($button.getAttribute('aria-expanded')).toBe('false')
       })
     })
 
@@ -174,16 +174,16 @@ describe('The _layout_header_one_login', function () {
       })
 
       it('opens the menu', function () {
-        expect($menu).not.toHaveAttr('hidden')
+        expect($menu.hasAttribute('hidden')).toBe(false)
       })
 
       it('updates the button’s `aria-expanded` attribute to true', function () {
-        expect($button).toHaveAttr('aria-expanded', 'true')
+        expect($button.getAttribute('aria-expanded')).toBe('true')
       })
 
       it('updates the button’s `aria-label`', function () {
         var hideLabel = $button.getAttribute('data-label-for-hide')
-        expect($button).toHaveAttr('aria-label', hideLabel)
+        expect($button.getAttribute('aria-label')).toBe(hideLabel)
       })
     })
 
@@ -204,15 +204,15 @@ describe('The _layout_header_one_login', function () {
       })
 
       it('sets the button’s `aria-expanded` attribute to true, then false', function () {
-        expect($button).toHaveAttr('aria-expanded', 'true')
+        expect($button.getAttribute('aria-expanded')).toBe('true')
         $button.click()
-        expect($button).toHaveAttr('aria-expanded', 'false')
+        expect($button.getAttribute('aria-expanded')).toBe('false')
       })
 
       it('sets the button’s `aria-label` attribute to "Hide navigation menu", then "Show navigation menu"', function () {
-        expect($button).toHaveAttr('aria-label', 'Hide GOV.UK One Login menu')
+        expect($button.getAttribute('aria-label')).toBe('Hide GOV.UK One Login menu')
         $button.click()
-        expect($button).toHaveAttr('aria-label', 'Show GOV.UK One Login menu')
+        expect($button.getAttribute('aria-label')).toBe('Show GOV.UK One Login menu')
       })
     })
   })
@@ -227,15 +227,15 @@ describe('The _layout_header_one_login', function () {
 
     describe('has the correct ARIA attributes', function () {
       it('has `aria-controls` set to "service-header__nav"', function () {
-        expect($button).toHaveAttr('aria-controls', 'service-header__nav')
+        expect($button.getAttribute('aria-controls')).toBe('service-header__nav')
       })
 
       it('has `aria-label` set to "Show service navigation menu"', function () {
-        expect($button).toHaveAttr('aria-label', 'Show service navigation menu')
+        expect($button.getAttribute('aria-label')).toBe('Show service navigation menu')
       })
 
       it('has `aria-expanded` set to false', function () {
-        expect($button).toHaveAttr('aria-expanded', 'false')
+        expect($button.getAttribute('aria-expanded')).toBe('false')
       })
     })
 
@@ -250,16 +250,16 @@ describe('The _layout_header_one_login', function () {
       })
 
       it('opens the menu', function () {
-        expect($menu).not.toHaveAttr('hidden')
+        expect($menu.hasAttribute('hidden')).toBe(false)
       })
 
       it('updates the button’s `aria-expanded` attribute to true', function () {
-        expect($button).toHaveAttr('aria-expanded', 'true')
+        expect($button.getAttribute('aria-expanded')).toBe('true')
       })
 
       it('updates the button’s `aria-label`', function () {
         var hideLabel = $button.getAttribute('data-label-for-hide')
-        expect($button).toHaveAttr('aria-label', hideLabel)
+        expect($button.getAttribute('aria-label')).toBe(hideLabel)
       })
     })
 
@@ -286,15 +286,15 @@ describe('The _layout_header_one_login', function () {
       })
 
       it('sets the button’s `aria-expanded` attribute to true, then false', function () {
-        expect($button).toHaveAttr('aria-expanded', 'true')
+        expect($button.getAttribute('aria-expanded')).toBe('true')
         $button.click()
-        expect($button).toHaveAttr('aria-expanded', 'false')
+        expect($button.getAttribute('aria-expanded')).toBe('false')
       })
 
       it('sets the button’s `aria-label` attribute to "Hide service navigation menu", then "Show service navigation menu"', function () {
-        expect($button).toHaveAttr('aria-label', 'Hide service navigation menu')
+        expect($button.getAttribute('aria-label')).toBe('Hide service navigation menu')
         $button.click()
-        expect($button).toHaveAttr('aria-label', 'Show service navigation menu')
+        expect($button.getAttribute('aria-label')).toBe('Show service navigation menu')
       })
     })
   })
