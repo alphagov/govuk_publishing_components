@@ -1,5 +1,5 @@
-/* eslint-env jasmine, jquery */
-/* global GOVUK, spyOnEvent */
+/* eslint-env jasmine */
+/* global GOVUK */
 
 describe('Reorderable list component', function () {
   'use strict'
@@ -116,10 +116,12 @@ describe('Reorderable list component', function () {
   describe('when dragging the first element to the bottom', function () {
     var reorderableList
     var sortable
+    var reorderDragSpy
     beforeEach(function () {
+      reorderDragSpy = jasmine.createSpy('reorder-drag')
       reorderableList = new GOVUK.Modules.ReorderableList(element)
       reorderableList.init()
-      spyOnEvent(element, 'reorder-drag')
+      element.addEventListener('reorder-drag', reorderDragSpy)
       sortable = reorderableList.sortable
       sortable.sort(sortable.toArray().reverse())
       sortable.options.onSort() // not triggered by 'sort'
@@ -140,7 +142,7 @@ describe('Reorderable list component', function () {
     })
 
     it('should trigger a reorder-drag event', function () {
-      expect('reorder-drag').toHaveBeenTriggeredOn(element)
+      expect(reorderDragSpy).toHaveBeenCalled()
     })
 
     it('should update index section data attribute of button if tracked', function () {
@@ -160,11 +162,13 @@ describe('Reorderable list component', function () {
   describe('when clicking the Down button on first item', function () {
     var reorderableList
     var firstItemDownButton
+    var reorderMoveDownSpy
     beforeEach(function () {
+      reorderMoveDownSpy = jasmine.createSpy('reorder-move-down')
       reorderableList = new GOVUK.Modules.ReorderableList(element)
       reorderableList.init()
       firstItemDownButton = document.querySelector('li:nth-child(1) .js-reorderable-list-down')
-      spyOnEvent(firstItemDownButton, 'reorder-move-down')
+      firstItemDownButton.addEventListener('reorder-move-down', reorderMoveDownSpy)
       firstItemDownButton.click()
     })
 
@@ -183,7 +187,7 @@ describe('Reorderable list component', function () {
     })
 
     it('should trigger a reorder-move-down event', function () {
-      expect('reorder-move-down').toHaveBeenTriggeredOn(firstItemDownButton)
+      expect(reorderMoveDownSpy).toHaveBeenCalled()
     })
 
     it('should update index section data attribute of button if tracked', function () {
@@ -203,11 +207,13 @@ describe('Reorderable list component', function () {
   describe('when clicking the Up button on the second item', function () {
     var reorderableList
     var secondItemUpButton
+    var reorderMoveUpSpy
     beforeEach(function () {
+      reorderMoveUpSpy = jasmine.createSpy('reorder-move-up')
       reorderableList = new GOVUK.Modules.ReorderableList(element)
       reorderableList.init()
       secondItemUpButton = document.querySelector('li:nth-child(2) .js-reorderable-list-up')
-      spyOnEvent(secondItemUpButton, 'reorder-move-up')
+      secondItemUpButton.addEventListener('reorder-move-up', reorderMoveUpSpy)
       secondItemUpButton.click()
     })
 
@@ -226,7 +232,7 @@ describe('Reorderable list component', function () {
     })
 
     it('should trigger a reorder-move-up event', function () {
-      expect('reorder-move-up').toHaveBeenTriggeredOn(secondItemUpButton)
+      expect(reorderMoveUpSpy).toHaveBeenCalled()
     })
 
     it('should update index section data attribute of button if tracked', function () {
