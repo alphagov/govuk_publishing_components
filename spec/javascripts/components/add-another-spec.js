@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 describe('GOVUK.Modules.AddAnother', function () {
   var fixture, addAnother, addButton, fieldset, fieldset0, fieldset1, fieldset2, fieldset3
@@ -271,7 +271,7 @@ describe('GOVUK.Modules.AddAnother', function () {
     it('should hide the destroy checkbox for each repeated fieldset when the component is initialised', function () {
       var destroyCheckboxes = document.querySelectorAll('.js-add-another__destroy-checkbox')
       destroyCheckboxes.forEach(function (checkbox) {
-        expect(checkbox).toBeHidden()
+        expect(checkbox.checkVisibility()).toBe(false)
       })
     })
 
@@ -378,7 +378,7 @@ describe('GOVUK.Modules.AddAnother', function () {
 
       var destroyCheckbox = fieldset.querySelector('.js-add-another__destroy-checkbox input')
       expect(destroyCheckbox).toBeTruthy()
-      expect(fieldset).toBeHidden()
+      expect(fieldset.checkVisibility()).toBe(false)
     })
 
     it('should remove a new fieldset when its "Remove" button is clicked', function () {
@@ -869,21 +869,21 @@ describe('GOVUK.Modules.AddAnother', function () {
       const secondFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[1]
 
       // Correct top and bottom fieldsets are disabled
-      expect(firstFieldset.querySelector('button[data-action="move-up"]')).toBeDisabled()
-      expect(firstFieldset.querySelector('button[data-action="move-down"]')).not.toBeDisabled()
+      expect(firstFieldset.querySelector('button[data-action="move-up"]').disabled).toBe(true)
+      expect(firstFieldset.querySelector('button[data-action="move-down"]').disabled).toBe(false)
 
-      expect(secondFieldset.querySelector('button[data-action="move-up"]')).not.toBeDisabled()
-      expect(secondFieldset.querySelector('button[data-action="move-down"]')).toBeDisabled()
+      expect(secondFieldset.querySelector('button[data-action="move-up"]').disabled).toBe(false)
+      expect(secondFieldset.querySelector('button[data-action="move-down"]').disabled).toBe(true)
 
       const addButton = fixture.querySelector('.js-add-another__add-button')
       addButton.click()
 
       // Newly added fieldset has the move down button disabled
       const newFieldset = fixture.querySelectorAll('.js-add-another__fieldset')[2]
-      expect(newFieldset.querySelector('button[data-action="move-down"]')).toBeDisabled()
+      expect(newFieldset.querySelector('button[data-action="move-down"]').disabled).toBe(true)
 
       // Fieldset that was previously at the bottom does not have the move down button disabled
-      expect(secondFieldset.querySelector('button[data-action="move-down"]')).not.toBeDisabled()
+      expect(secondFieldset.querySelector('button[data-action="move-down"]').disabled).toBe(false)
     })
 
     describe('setting focus', function () {
