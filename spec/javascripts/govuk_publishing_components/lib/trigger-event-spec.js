@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 
 describe('The trigger event code', function () {
   var element
@@ -22,8 +22,8 @@ describe('The trigger event code', function () {
   }
 
   beforeEach(function () {
-    element = $('<div/>')
-    $('body').append(element)
+    element = document.createElement('div')
+    document.body.appendChild(element)
     spyOn(obj, 'calledFunction').and.callThrough()
     spyOn(obj, 'secondCalledFunction').and.callThrough()
   })
@@ -33,59 +33,61 @@ describe('The trigger event code', function () {
   })
 
   it('creates and triggers a custom event', function () {
-    element[0].addEventListener('click', obj.calledFunction)
-    window.GOVUK.triggerEvent(element[0], 'click')
+    element.addEventListener('click', obj.calledFunction)
+    window.GOVUK.triggerEvent(element, 'click')
     expect(obj.calledFunction).toHaveBeenCalled()
   })
 
   it('creates and triggers a custom event with parameters', function () {
-    element[0].addEventListener('click', obj.calledFunction)
-    window.GOVUK.triggerEvent(element[0], 'click', { detail: { test: true } })
+    element.addEventListener('click', obj.calledFunction)
+    window.GOVUK.triggerEvent(element, 'click', { detail: { test: true } })
     expect(obj.calledFunction).toHaveBeenCalled()
     expect(obj.secondCalledFunction).toHaveBeenCalled()
   })
 
   it('creates and triggers a custom event with a keyCode', function () {
-    element[0].addEventListener('keyup', obj.calledFunction)
-    window.GOVUK.triggerEvent(element[0], 'keyup', { keyCode: 13 })
+    element.addEventListener('keyup', obj.calledFunction)
+    window.GOVUK.triggerEvent(element, 'keyup', { keyCode: 13 })
     expect(obj.calledFunction).toHaveBeenCalled()
     expect(obj.secondCalledFunction).toHaveBeenCalled()
   })
 
   it('creates a custom event that bubbles by default', function () {
-    element = $('<div/>')
-    var child = $('<div/>')
-    element.append(child)
-    $('body').append(element)
-    element[0].addEventListener('click', obj.calledFunction)
-    window.GOVUK.triggerEvent(child[0], 'click')
+    element = document.createElement('div')
+    var child = document.createElement('div')
+    element.appendChild(child)
+    document.body.appendChild(element)
+    element.addEventListener('click', obj.calledFunction)
+    window.GOVUK.triggerEvent(child, 'click')
     expect(obj.calledFunction).toHaveBeenCalled()
   })
 
   it('creates a custom event that does not bubble', function () {
-    element = $('<div/>')
-    var child = $('<div/>')
-    element.append(child)
-    $('body').append(element)
-    element[0].addEventListener('click', obj.calledFunction)
-    window.GOVUK.triggerEvent(child[0], 'click', { bubbles: false })
+    element = document.createElement('div')
+    var child = document.createElement('div')
+    element.appendChild(child)
+    document.body.appendChild(element)
+    element.addEventListener('click', obj.calledFunction)
+    window.GOVUK.triggerEvent(child, 'click', { bubbles: false })
     expect(obj.calledFunction).not.toHaveBeenCalled()
   })
 
   it('creates a custom event that can be cancelled', function () {
-    element = $('<input type="text"/>')
-    $('body').append(element)
-    element[0].addEventListener('keypress', obj.calledFunction)
-    window.GOVUK.triggerEvent(element[0], 'keypress')
+    element = document.createElement('input')
+    element.setAttribute('type', 'text')
+    document.body.appendChild(element)
+    element.addEventListener('keypress', obj.calledFunction)
+    window.GOVUK.triggerEvent(element, 'keypress')
     expect(obj.calledFunction).toHaveBeenCalled()
     expect(obj.secondCalledFunction).toHaveBeenCalled()
   })
 
   it('creates a custom event that cannot be cancelled', function () {
-    element = $('<input type="text"/>')
-    $('body').append(element)
-    element[0].addEventListener('keypress', obj.calledFunction)
-    window.GOVUK.triggerEvent(element[0], 'keypress', { cancelable: false })
+    element = document.createElement('input')
+    element.setAttribute('type', 'text')
+    document.body.appendChild(element)
+    element.addEventListener('keypress', obj.calledFunction)
+    window.GOVUK.triggerEvent(element, 'keypress', { cancelable: false })
     expect(obj.calledFunction).toHaveBeenCalled()
     expect(obj.secondCalledFunction).not.toHaveBeenCalled()
   })
