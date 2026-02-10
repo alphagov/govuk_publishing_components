@@ -1,0 +1,10 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-filter-options {
+  background: govuk-colour("light-grey");
+  padding: govuk-spacing(5);
+
+  .choices__placeholder {
+    color: govuk-colour("black");
+  }
+}
