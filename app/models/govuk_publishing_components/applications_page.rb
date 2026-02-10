@@ -5,7 +5,7 @@ module GovukPublishingComponents
     def initialize(application)
       @application = application
       @dir = get_directory
-      @gemfilelock = get_gemfile
+      @gemfilelock = get_file("Gemfile.lock")
     end
 
     def readable_name
@@ -27,20 +27,20 @@ module GovukPublishingComponents
       Dir.exist?(app_dir) ? app_dir : false
     end
 
-    def get_gemfile
-      @dir ? get_gemfile_local : get_gemfile_remote
+    def get_file(name)
+      @dir ? get_local_file(name) : get_remote_file(name)
     end
 
-    def get_gemfile_local
-      lockfile = "#{@dir}/Gemfile.lock"
+    def get_local_file(name)
+      lockfile = "#{@dir}/#{name}"
       return unless File.file?(lockfile)
 
       @source = "local"
       File.read(lockfile)
     end
 
-    def get_gemfile_remote
-      uri = URI("https://raw.githubusercontent.com/alphagov/#{@application}/main/Gemfile.lock")
+    def get_remote_file(name)
+      uri = URI("https://raw.githubusercontent.com/alphagov/#{@application}/main/#{name}")
       result = Net::HTTP.get_response(uri)
       if result.is_a?(Net::HTTPSuccess)
         @source = "remote"
