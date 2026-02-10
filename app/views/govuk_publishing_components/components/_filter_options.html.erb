@@ -1,6 +1,4 @@
 <%
-  add_gem_component_stylesheet("filter-options")
-
   raise "filter action required" unless defined?(local_assigns[:filter_action])
 
   filter_options_helper = GovukPublishingComponents::Presenters::FilterOptionsHelper.new(local_assigns)
