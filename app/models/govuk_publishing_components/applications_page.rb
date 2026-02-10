@@ -6,6 +6,7 @@ module GovukPublishingComponents
       @application = application
       @dir = get_directory
       @gemfilelock = get_file("Gemfile.lock")
+      @rubyfile = get_file(".ruby-version")
     end
 
     def readable_name
@@ -18,6 +19,10 @@ module GovukPublishingComponents
 
     def sass_version
       parse_file(@gemfilelock, /sass-embedded \(([^)>=~ ]+)\)/)
+    end
+
+    def ruby_version
+      @rubyfile.strip if @rubyfile
     end
 
   private
