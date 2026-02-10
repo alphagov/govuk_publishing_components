@@ -28,5 +28,12 @@
         } %>
       <% end %>
     </td>
+    <td class="govuk-table__cell">
+      <% if app[:ruby_version] %>
+        <%= render "govuk_publishing_components/components/tag", {
+          text: app[:ruby_version],
+        } %>
+      <% end %>
+    </td>
   </tr>
 <% end %>

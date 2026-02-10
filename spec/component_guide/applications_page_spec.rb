@@ -18,18 +18,26 @@ describe "The applications status page" do
       govuk_personalisation (>= 0.7.0)
     terser (1.2.6)
       execjs (>= 0.3.0, < 3)"
+  fake_ruby_file = "3.2.1\n"
 
   describe "when the app is found locally" do
     before do
       allow(Dir).to receive(:exist?).and_return(true)
     end
 
-    it "returns all information" do
+    it "can read the gemfile.lock" do
       allow(File).to receive_messages(file?: true, read: fake_gemfile)
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
       expect(app.source).to eq("local")
       expect(app.gem_version).to eq("61.3.1")
       expect(app.sass_version).to eq("1.93.2")
+    end
+
+    it "can read the ruby version" do
+      allow(File).to receive_messages(file?: true, read: fake_ruby_file)
+      app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
+      expect(app.source).to eq("local")
+      expect(app.ruby_version).to eq("3.2.1")
     end
 
     it "returns incomplete information" do
@@ -44,20 +52,24 @@ describe "The applications status page" do
   describe "when the app is not found locally" do
     it "returns no information if the app is not available remotely" do
       stub_request(:get, "https://raw.githubusercontent.com:443/alphagov/#{fake_app}/main/Gemfile.lock").to_return(status: 404, body: "", headers: {})
+      stub_request(:get, "https://raw.githubusercontent.com:443/alphagov/#{fake_app}/main/.ruby-version").to_return(status: 404, body: "", headers: {})
 
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
       expect(app.source).to be_nil
       expect(app.gem_version).to be_nil
       expect(app.sass_version).to be_nil
+      expect(app.ruby_version).to be_nil
     end
 
     it "returns all information if the app is available remotely" do
       stub_request(:get, "https://raw.githubusercontent.com:443/alphagov/#{fake_app}/main/Gemfile.lock").to_return(status: 200, body: fake_gemfile, headers: {})
+      stub_request(:get, "https://raw.githubusercontent.com:443/alphagov/#{fake_app}/main/.ruby-version").to_return(status: 200, body: fake_ruby_file, headers: {})
 
       app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
       expect(app.source).to eq("remote")
       expect(app.gem_version).to eq("61.3.1")
       expect(app.sass_version).to eq("1.93.2")
+      expect(app.ruby_version).to eq("3.2.1")
     end
   end
 end
