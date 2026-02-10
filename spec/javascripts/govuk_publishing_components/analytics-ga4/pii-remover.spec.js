@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('GOVUK.analyticsGa4.PIIRemover', function () {
@@ -367,20 +367,34 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
   }
 
   function resetHead () {
-    $('head').find('meta[name="govuk:ga4-strip-postcodes"]').remove()
-    $('head').find('meta[name="govuk:ga4-strip-dates"]').remove()
-    $('head').find('meta[name="govuk:ga4-strip-query-string-parameters"]').remove()
+    var metaStripPostcodes = document.querySelector("head meta[name='govuk:ga4-strip-postcodes']")
+    if (metaStripPostcodes) metaStripPostcodes.remove()
+
+    var metaStripDates = document.querySelector("head meta[name='govuk:ga4-strip-dates']")
+    if (metaStripDates) metaStripDates.remove()
+
+    var metaStripQueryStringParams = document.querySelector("head meta[name='govuk:ga4-strip-query-string-parameters']")
+    if (metaStripQueryStringParams) metaStripQueryStringParams.remove()
   }
 
   function pageWantsDatesStripped () {
-    $('head').append('<meta name="govuk:ga4-strip-dates" value="does not matter" />')
+    var metaStripDates = document.createElement('meta')
+    metaStripDates.setAttribute('name', 'govuk:ga4-strip-dates')
+    metaStripDates.setAttribute('value', 'does not matter')
+    document.head.appendChild(metaStripDates)
   }
 
   function pageWantsPostcodesStripped () {
-    $('head').append('<meta name="govuk:ga4-strip-postcodes" value="does not matter" />')
+    var metaStripPostcodes = document.createElement('meta')
+    metaStripPostcodes.setAttribute('name', 'govuk:ga4-strip-postcodes')
+    metaStripPostcodes.setAttribute('value', 'does not matter')
+    document.head.appendChild(metaStripPostcodes)
   }
 
   function pageWantsQueryStringParametersStripped (parameters) {
-    $('head').append('<meta name="govuk:ga4-strip-query-string-parameters" content="' + parameters.join(', ') + '" />')
+    var metaStripQueryParameters = document.createElement('meta')
+    metaStripQueryParameters.setAttribute('name', 'govuk:ga4-strip-query-string-parameters')
+    metaStripQueryParameters.setAttribute('content', parameters.join(', '))
+    document.head.appendChild(metaStripQueryParameters)
   }
 })
