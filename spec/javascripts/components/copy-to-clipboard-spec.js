@@ -1,10 +1,10 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('Copy to clipboard component', function () {
   'use strict'
 
-  var FIXTURE
+  var container
 
   function loadCopyToClipboard () {
     var element = document.querySelector('[data-module=copy-to-clipboard]')
@@ -12,12 +12,17 @@ describe('Copy to clipboard component', function () {
   }
 
   beforeEach(function () {
-    FIXTURE =
+    container = document.createElement('div')
+    container.innerHTML =
       '<div class="gem-c-copy-to-clipboard" data-module="copy-to-clipboard">' +
         '<input value="https://www.gov.uk" class="gem-c-input govuk-input" type="text" readonly="readonly">' +
         '<button class="gem-c-button govuk-button" type="submit">Copy link</button>' +
       '</div>'
-    window.setFixtures(FIXTURE)
+    document.body.appendChild(container)
+  })
+
+  afterEach(function () {
+    document.body.removeChild(container)
   })
 
   it('calls the Web API when clicked', function () {
