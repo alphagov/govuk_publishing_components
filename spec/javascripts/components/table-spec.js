@@ -4,7 +4,7 @@
 describe('Table component', function () {
   'use strict'
 
-  var FIXTURE
+  var container
   var element
   var filter
   var filterCount
@@ -15,7 +15,8 @@ describe('Table component', function () {
   var hiddenClass
 
   beforeEach(function () {
-    FIXTURE =
+    container = document.createElement('div')
+    container.innerHTML =
       '<div data-module="table">' +
         '<div class="js-gem-c-table__filter govuk-!-display-none">' +
           '<input name="filter">' +
@@ -39,7 +40,7 @@ describe('Table component', function () {
         '<p class="js-gem-c-table__message govuk-!-display-none">That search returns no results.</p>' +
       '</div>'
 
-    window.setFixtures(FIXTURE)
+    document.body.appendChild(container)
 
     element = document.querySelector('[data-module="table"]')
     filter = document.querySelector('.js-gem-c-table__filter')
@@ -52,6 +53,10 @@ describe('Table component', function () {
 
     spyOn(table, 'updateRows').and.callThrough()
     table.init()
+  })
+
+  afterEach(function () {
+    document.body.removeChild(container)
   })
 
   describe('When the component is intialised', function () {
