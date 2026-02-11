@@ -6,60 +6,61 @@
   component_helper.add_class(cb_helper.css_classes.join(" ")) # cb_helper.css_classes generates "gem-c-checkboxes"
   component_helper.add_data_attribute({ module: "gem-checkboxes govuk-checkboxes" })
 %>
+<% if cb_helper.items.any? %>
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <% if cb_helper.should_have_fieldset %>
+      <% if cb_helper.heading_markup %>
+        <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": cb_helper.fieldset_describedby do %>
+          <%= cb_helper.heading_markup %>
 
-<%= tag.div(**component_helper.all_attributes) do %>
-  <% if cb_helper.should_have_fieldset %>
-    <% if cb_helper.heading_markup %>
-      <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": cb_helper.fieldset_describedby do %>
-        <%= cb_helper.heading_markup %>
+          <% if cb_helper.description %>
+            <%= tag.div cb_helper.description, class: "govuk-body" %>
+          <% end %>
 
-        <% if cb_helper.description %>
-          <%= tag.div cb_helper.description, class: "govuk-body" %>
-        <% end %>
+          <% if cb_helper.hint_text %>
+            <%= tag.div cb_helper.hint_text, id: "#{id}-hint", class: "govuk-hint" %>
+          <% end %>
 
-        <% if cb_helper.hint_text %>
-          <%= tag.div cb_helper.hint_text, id: "#{id}-hint", class: "govuk-hint" %>
-        <% end %>
+          <% if cb_helper.error %>
+            <%= tag.p error, id: "#{id}-error", class: "govuk-error-message" %>
+          <% end %>
 
-        <% if cb_helper.error %>
-          <%= tag.p error, id: "#{id}-error", class: "govuk-error-message" %>
-        <% end %>
+          <%= tag.div class: "govuk-checkboxes", data: {
+            module: ("govuk-checkboxes" if cb_helper.has_conditional),
+            nested: ("true" if cb_helper.has_nested),
+          } do %>
+            <% cb_helper.items.each_with_index do |item, index| %>
+              <% if item === :or %>
+                <%= tag.div t("components.checkboxes.or"), class: "govuk-checkboxes__divider" %>
+              <% else %>
+                <%= tag.div class: "govuk-checkboxes__item" do %>
+                  <%= cb_helper.checkbox_markup(item, index) %>
 
-        <%= tag.div class: "govuk-checkboxes", data: {
-          module: ("govuk-checkboxes" if cb_helper.has_conditional),
-          nested: ("true" if cb_helper.has_nested),
-        } do %>
-          <% cb_helper.items.each_with_index do |item, index| %>
-            <% if item === :or %>
-              <%= tag.div t("components.checkboxes.or"), class: "govuk-checkboxes__divider" %>
-            <% else %>
-              <%= tag.div class: "govuk-checkboxes__item" do %>
-                <%= cb_helper.checkbox_markup(item, index) %>
-
-                <% if item[:items].present? %>
-                  <%= tag.div id: "#{id}-nested-#{index}", class: "govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
-                    <% item[:items].each_with_index do |nested_item, nested_index| %>
-                      <%= tag.div class: "govuk-checkboxes__item" do %>
-                        <%= cb_helper.checkbox_markup(nested_item, "#{index}-#{nested_index}") %>
+                  <% if item[:items].present? %>
+                    <%= tag.div id: "#{id}-nested-#{index}", class: "govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
+                      <% item[:items].each_with_index do |nested_item, nested_index| %>
+                        <%= tag.div class: "govuk-checkboxes__item" do %>
+                          <%= cb_helper.checkbox_markup(nested_item, "#{index}-#{nested_index}") %>
+                        <% end %>
                       <% end %>
                     <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
 
-              <% if item[:conditional] %>
-                <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
-              <% end %>
+                <% if item[:conditional] %>
+                  <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
+                <% end %>
 
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
-  <% else %>
-    <div class="govuk-checkboxes__item">
-      <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
-    </div>
+    <% else %>
+      <div class="govuk-checkboxes__item">
+        <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
