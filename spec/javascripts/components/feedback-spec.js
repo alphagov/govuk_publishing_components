@@ -1,9 +1,13 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('Feedback component', function () {
   var feedbackComponent
-  var FIXTURE = `
+  var container
+
+  beforeEach(function () {
+    container = document.createElement('div')
+    container.innerHTML = `
     <div data-module="feedback ga4-event-tracker" class="gem-c-feedback govuk-!-display-none-print">
       <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
         <div class="gem-c-feedback__prompt-content">
@@ -113,21 +117,24 @@ describe('Feedback component', function () {
     </div>
   `
 
-  beforeEach(function () {
-    window.setFixtures(FIXTURE)
+    document.body.appendChild(container)
+  })
+
+  afterEach(function () {
+    document.body.removeChild(container)
   })
 
   it('hides the forms', function () {
     loadFeedbackComponent()
 
-    expect($('.gem-c-feedback .js-feedback-form').prop('hidden')).toBe(true)
+    expect(document.querySelector('.gem-c-feedback .js-feedback-form').hidden).toBe(true)
   })
 
   it('shows the prompt', function () {
     loadFeedbackComponent()
 
-    expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
-    expect($('.gem-c-feedback .js-prompt-questions').prop('hidden')).toBe(false)
+    expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(false)
+    expect(document.querySelector('.gem-c-feedback .js-prompt-questions').hidden).toBe(false)
   })
 
   // note that this test will fail in the browser 'run tests in random order' is disabled
@@ -136,41 +143,41 @@ describe('Feedback component', function () {
   it('should append a hidden "referrer" field to the form', function () {
     loadFeedbackComponent()
 
-    expect($('#something-is-wrong').find('[name=referrer]').val()).toBe('unknown')
+    expect(document.querySelector('#something-is-wrong [name=referrer]').value).toBe('unknown')
   })
 
   describe('clicking the "page was useful" link', function () {
     it('displays a success message', function () {
       loadFeedbackComponent()
-      $('.js-page-is-useful')[0].click()
+      document.querySelector('.js-page-is-useful').click()
 
-      var $success = $('.js-prompt-success')
+      var $success = document.querySelector('.js-prompt-success')
 
-      expect(($success).prop('hidden')).toBe(false)
-      expect($success).toHaveText('Thank you for your feedback')
+      expect($success.hidden).toBe(false)
+      expect($success.textContent).toContain('Thank you for your feedback')
     })
 
     it('hides the question links', function () {
       loadFeedbackComponent()
-      $('.js-page-is-useful')[0].click()
+      document.querySelector('.js-page-is-useful').click()
 
-      expect($('.js-prompt-questions').prop('hidden')).toBe(true)
+      expect(document.querySelector('.js-prompt-questions').hidden).toBe(true)
     })
   })
 
   describe('clicking the "page was not useful" link', function () {
     it('shows the feedback form', function () {
       loadFeedbackComponent()
-      $('.js-page-is-not-useful')[0].click()
+      document.querySelector('.js-page-is-not-useful').click()
 
-      expect($('.gem-c-feedback .js-feedback-form#page-is-not-useful').prop('hidden')).toBe(false)
+      expect(document.querySelector('.gem-c-feedback .js-feedback-form#page-is-not-useful').hidden).toBe(false)
     })
 
     it('hides the prompt', function () {
       loadFeedbackComponent()
-      $('.js-page-is-not-useful')[0].click()
+      document.querySelector('.js-page-is-not-useful').click()
 
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
+      expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(true)
     })
 
     it('has the page path in the survey', function () {
@@ -201,23 +208,23 @@ describe('Feedback component', function () {
   describe('Clicking the "is there anything wrong with this page" link', function () {
     it('shows the form', function () {
       loadFeedbackComponent()
-      $('.js-something-is-wrong')[0].click()
+      document.querySelector('.js-something-is-wrong').click()
 
-      expect($('.gem-c-feedback .js-feedback-form#something-is-wrong').prop('hidden')).toBe(false)
+      expect(document.querySelector('.gem-c-feedback .js-feedback-form#something-is-wrong').hidden).toBe(false)
     })
 
     it('hides the prompt', function () {
       loadFeedbackComponent()
-      $('.js-something-is-wrong')[0].click()
+      document.querySelector('.js-something-is-wrong').click()
 
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
+      expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(true)
     })
 
     it('focusses the first field in the form', function () {
       loadFeedbackComponent()
-      var $input = $('#something-is-wrong .govuk-textarea')[0]
+      var $input = document.querySelector('#something-is-wrong .govuk-textarea')
       spyOn($input, 'focus')
-      $('.js-something-is-wrong')[0].click()
+      document.querySelector('.js-something-is-wrong').click()
 
       expect($input.focus).toHaveBeenCalled()
     })
@@ -226,34 +233,34 @@ describe('Feedback component', function () {
   describe('Clicking the close link in the "something is wrong" form', function () {
     beforeEach(function () {
       loadFeedbackComponent()
-      $('.js-something-is-wrong')[0].click()
-      $('#something-is-wrong .js-close-form')[0].click()
+      document.querySelector('.js-something-is-wrong').click()
+      document.querySelector('#something-is-wrong .js-close-form').click()
     })
 
     it('hides the form', function () {
-      expect($('.gem-c-feedback #something-is-wrong').prop('hidden')).toBe(true)
+      expect(document.querySelector('.gem-c-feedback #something-is-wrong').hidden).toBe(true)
     })
 
     it('shows the prompt', function () {
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
-      expect(document.activeElement).toBe($('.js-something-is-wrong').get(0))
+      expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(false)
+      expect(document.activeElement).toBe(document.querySelector('.js-something-is-wrong'))
     })
   })
 
   describe('Clicking the close link in the "not useful" form', function () {
     beforeEach(function () {
       loadFeedbackComponent()
-      $('.js-page-is-not-useful')[0].click()
-      $('#page-is-not-useful .js-close-form')[0].click()
+      document.querySelector('.js-page-is-not-useful').click()
+      document.querySelector('#page-is-not-useful .js-close-form').click()
     })
 
     it('hides the form', function () {
-      expect($('.gem-c-feedback #page-is-not-useful').prop('hidden')).toBe(true)
+      expect(document.querySelector('.gem-c-feedback #page-is-not-useful').hidden).toBe(true)
     })
 
     it('shows the prompt', function () {
-      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
-      expect(document.activeElement).toBe($('.js-page-is-not-useful').get(0))
+      expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(false)
+      expect(document.activeElement).toBe(document.querySelector('.js-page-is-not-useful'))
     })
   })
 
@@ -298,10 +305,10 @@ describe('Feedback component', function () {
         responseText: '{}'
       })
 
-      var $success = $('.js-prompt-success')
+      var $success = document.querySelector('.js-prompt-success')
 
-      expect(($success).prop('hidden')).toBe(false)
-      expect($success).toHaveText('Thank you for your feedback')
+      expect($success.hidden).toBe(false)
+      expect($success.textContent).toContain('Thank you for your feedback')
     })
 
     it('focusses the success message', function () {
@@ -314,7 +321,7 @@ describe('Feedback component', function () {
         responseText: '{}'
       })
 
-      expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
+      expect(document.activeElement).toBe(document.querySelector('.gem-c-feedback .js-prompt'))
     })
 
     it('hides the form', function () {
@@ -327,7 +334,7 @@ describe('Feedback component', function () {
         responseText: '{}'
       })
 
-      expect($('#something-is-wrong').prop('hidden')).toBe(true)
+      expect(document.querySelector('#something-is-wrong').hidden).toBe(true)
     })
 
     it('hides the links to show the feedback form', function () {
@@ -340,7 +347,7 @@ describe('Feedback component', function () {
         responseText: '{}'
       })
 
-      expect($('.js-prompt-questions').prop('hidden')).toBe(true)
+      expect(document.querySelector('.js-prompt-questions').hidden).toBe(true)
     })
   })
 
@@ -357,7 +364,7 @@ describe('Feedback component', function () {
       loadFeedbackComponent()
       fillAndSubmitSomethingIsWrongForm()
 
-      expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
+      expect(document.querySelector('.gem-c-feedback form [type=submit]').disabled).toBe(true)
 
       jasmine.Ajax.requests.mostRecent().respondWith({
         status: 422,
@@ -365,7 +372,7 @@ describe('Feedback component', function () {
         responseText: '{"errors": {"description": ["can\'t be blank"]}}'
       })
 
-      expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
+      expect(document.querySelector('.gem-c-feedback form [type=submit]').disabled).toBe(false)
     })
 
     it('retains the feedback the user originally entered', function () {
@@ -378,8 +385,8 @@ describe('Feedback component', function () {
         responseText: '{"errors": {"description": ["can\'t be blank"]}}'
       })
 
-      expect($('[name=what_doing]').val()).toEqual('I was looking for some information about local government.')
-      expect($('[name=what_wrong]').val()).toEqual('The background should be green.')
+      expect(document.querySelector('[name=what_doing]').value).toEqual('I was looking for some information about local government.')
+      expect(document.querySelector('[name=what_wrong]').value).toEqual('The background should be green.')
     })
 
     it('displays a generic error if the field isn\'t a visible part of the form', function () {
@@ -392,7 +399,7 @@ describe('Feedback component', function () {
         responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
       })
 
-      expect($('#something-is-wrong .js-errors').html()).toContainText(
+      expect(document.querySelector('#something-is-wrong .js-errors').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
         'If the problem persists, we have other ways for you to provide ' +
         'feedback on the contact page.'
@@ -401,7 +408,7 @@ describe('Feedback component', function () {
 
     it('focusses the error message', function () {
       loadFeedbackComponent()
-      var $input = $('#something-is-wrong .js-errors')[0]
+      var $input = document.querySelector('#something-is-wrong .js-errors')
       spyOn($input, 'focus')
       fillAndSubmitSomethingIsWrongForm()
 
@@ -434,12 +441,12 @@ describe('Feedback component', function () {
     })
 
     it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
-      expect($('.gem-c-feedback__error-summary').html()).toContainText(
+      expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
         'If the problem persists, we have other ways for you to provide ' +
         'feedback on the contact page.'
       )
-      expect($('.gem-c-feedback__error-summary').html()).not.toContainText('email survey sign up failure')
+      expect(document.querySelector('.gem-c-feedback__error-summary').textContent).not.toContain('email survey sign up failure')
     })
   })
 
@@ -462,7 +469,7 @@ describe('Feedback component', function () {
     })
 
     it('displays a generic error message', function () {
-      expect($('.gem-c-feedback__error-summary').html()).toContainText(
+      expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
         'If the problem persists, we have other ways for you to provide ' +
         'feedback on the contact page.'
@@ -470,12 +477,12 @@ describe('Feedback component', function () {
     })
 
     it('retains the feedback the user originally entered', function () {
-      expect($('[name=what_doing]').val()).toEqual('I was looking for some information about local government.')
-      expect($('[name=what_wrong]').val()).toEqual('The background should be green.')
+      expect(document.querySelector('[name=what_doing]').value).toEqual('I was looking for some information about local government.')
+      expect(document.querySelector('[name=what_wrong]').value).toEqual('The background should be green.')
     })
 
     it('re-enables the submit button', function () {
-      expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
+      expect(document.querySelector('.gem-c-feedback form [type=submit]').disabled).toBe(false)
     })
   })
 
@@ -495,7 +502,7 @@ describe('Feedback component', function () {
     })
 
     it('displays a generic error message', function () {
-      expect($('.gem-c-feedback__error-summary').html()).toContainText(
+      expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
         'If the problem persists, we have other ways for you to provide ' +
         'feedback on the contact page.'
@@ -507,7 +514,7 @@ describe('Feedback component', function () {
     beforeEach(function () {
       jasmine.clock().install()
       loadFeedbackComponent()
-      $('.js-something-is-wrong')[0].click()
+      document.querySelector('.js-something-is-wrong').click()
     })
 
     afterEach(function () {
@@ -515,18 +522,18 @@ describe('Feedback component', function () {
     })
 
     it('has an incrementing timer field', function () {
-      var $form = $('.gem-c-feedback #something-is-wrong')
-      var $timer = $form.find('input[name=timer]')
-      expect($timer.val()).toBe('0')
+      var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
+      var $timer = $form.querySelector('input[name=timer]')
+      expect($timer.value).toBe('0')
       jasmine.clock().tick(1000)
-      expect($timer.val()).toBe('1')
+      expect($timer.value).toBe('1')
       jasmine.clock().tick(3000)
-      expect($timer.val()).toBe('4')
+      expect($timer.value).toBe('4')
     })
   })
 
   function loadFeedbackComponent (feedbackSpies) {
-    feedbackComponent = new GOVUK.Modules.Feedback($('.gem-c-feedback')[0])
+    feedbackComponent = new GOVUK.Modules.Feedback(document.querySelector('.gem-c-feedback'))
     // Allows spies to be added before .init() is run
     if (feedbackSpies) {
       feedbackSpies()
@@ -535,10 +542,10 @@ describe('Feedback component', function () {
   }
 
   function fillAndSubmitSomethingIsWrongForm () {
-    $('.js-something-is-wrong')[0].click()
-    var $form = $('.gem-c-feedback #something-is-wrong')
-    $form.find('[name=what_doing]').val('I was looking for some information about local government.')
-    $form.find('[name=what_wrong]').val('The background should be green.')
-    $form.find('[type=submit]')[0].click()
+    document.querySelector('.js-something-is-wrong').click()
+    var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
+    $form.querySelector('[name=what_doing]').value = 'I was looking for some information about local government.'
+    $form.querySelector('[name=what_wrong]').value = 'The background should be green.'
+    $form.querySelector('[type=submit]').click()
   }
 })
