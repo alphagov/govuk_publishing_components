@@ -1,24 +1,26 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('A toggle class module', function () {
   'use strict'
 
-  var element, toggle
+  var container
 
   afterEach(function () {
-    element.remove()
+    document.body.removeChild(container)
   })
 
   describe('when the search box is interacted with', function () {
     beforeEach(function () {
-      element = $(
-        '<div data-module="gem-toggle-input-class-on-focus">' +
-          '<input type="search" class="js-class-toggle"/>' +
-        '</div>')
-      $('body').append(element)
-      toggle = new GOVUK.Modules.GemToggleInputClassOnFocus(element[0])
-      toggle.init()
+      container = document.createElement('div')
+      container.innerHTML = `
+        <div data-module="gem-toggle-input-class-on-focus">
+          <input type="search" class="js-class-toggle"/>
+        </div>
+      `
+
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggleInputClassOnFocus(container).init()
     })
 
     it('applies the focus style on focus and removes it on blur', function () {
@@ -33,26 +35,27 @@ describe('A toggle class module', function () {
 
   describe('when the search box has a value', function () {
     beforeEach(function () {
-      element = $(
-        '<div data-module="gem-toggle-input-class-on-focus">' +
-          '<input type="search" value="My search query" class="js-class-toggle">' +
-        '</div>')
-      $('body').append(element)
-      toggle = new GOVUK.Modules.GemToggleInputClassOnFocus(element[0])
-      toggle.init()
+      container = document.createElement('div')
+      container.innerHTML = `
+        <div data-module="gem-toggle-input-class-on-focus">
+          <input type="search" value="My search query" class="js-class-toggle">
+        </div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggleInputClassOnFocus(container).init()
     })
 
     it('applies the focus style on load if the search box already has a value', function () {
-      var searchInput = element.find('.js-class-toggle')
-      expect(searchInput.is('.focus')).toBe(true)
+      var searchInput = container.querySelector('.js-class-toggle')
+      expect(searchInput).toHaveClass('focus')
     })
 
     it('does not remove the focus style on blur if the search box already has a value', function () {
-      var searchInput = element.find('.js-class-toggle')
-      searchInput.triggerHandler('focus')
-      expect(searchInput.is('.focus')).toBe(true)
-      searchInput.triggerHandler('blur')
-      expect(searchInput.is('.focus')).toBe(true)
+      var searchInput = container.querySelector('.js-class-toggle')
+      searchInput.focus()
+      expect(searchInput).toHaveClass('focus')
+      searchInput.blur()
+      expect(searchInput).toHaveClass('focus')
     })
   })
 })
