@@ -75,6 +75,8 @@
 * Decrease inverse header mobile/tablet padding ([PR #5149](https://github.com/alphagov/govuk_publishing_components/pull/5149))
 * Add option to inverse header for HMRC manuals ([PR #5148](https://github.com/alphagov/govuk_publishing_components/pull/5148))
 
+* Remove Content Block styles ([PR #5144](https://github.com/alphagov/govuk_publishing_components/pull/5144))
+
 ## 62.1.0
 
 * Adjust govspeak imports of component styles ([PR #5142](https://github.com/alphagov/govuk_publishing_components/pull/5142))
