@@ -1,0 +1,12 @@
+<%
+  filter ||= nil
+%>
+
+<%= tag.div(class: "gem-c-search-results govuk-grid-row") do %>
+  <% if filter.present? %>
+      <%= render "govuk_publishing_components/components/search_results/filters", **filter %>
+  <% end %>
+  <%= tag.div(class: filter.present? ? "govuk-grid-column-two-thirds" : nil) do %>
+      <%= render "govuk_publishing_components/components/search_results/results", **local_assigns %>
+  <% end %>
+<% end %>

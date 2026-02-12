@@ -1,0 +1,320 @@
+name: Search Results
+description: A component that presents search results.
+uses_component_wrapper_helper: true
+shared_accessibility_criteria:
+  - link
+  - table
+accessibility_excluded_rules:
+  - landmark-unique
+  - color-contrast
+  - duplicate-id-aria
+  - form-field-multiple-labels
+type: helper
+examples:
+  default:
+    data:
+      items:
+        count: 3
+      link:
+        text: text
+        href: "#"
+      pages:
+        previous_page:
+          href: previous-page
+        next_page:
+          href: next-page
+        items:
+        - number: 1
+          href: "#"
+        - ellipsis: true
+        - number: 6
+          href: "#"
+        - number: 7
+          href: "#"
+          current: true
+        - number: 8
+          href: "#"
+        - ellipsis: true
+        - number: 42
+          href: "#"
+      table:
+        head:
+          - text: Title
+          - text: Updated by
+          - text: State
+          - text: "<span class=\"govuk-visually-hidden\">View</span>"
+        rows:
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+      filter:
+        action: "/search"
+        options:
+        - fields:
+          - label:
+              text: "Title"
+              bold: true
+            name: "title"
+            id: "title_filter"
+            type: "search"
+            filter_type: "input"
+        - fields:
+          - label: "Author"
+            id: "author_filter"
+            name: "author"
+            heading_size: "s"
+            data_attributes:
+              ga4_section: "Author"
+              ga4_change_category: "update-filter select"
+              ga4_filter_parent: true
+            options:
+            - text: "Text"
+              value: "something"
+              selected: true
+            filter_type: "select_with_search"
+        - fields:
+          - legend_text: "From"
+            name: "from_date"
+            id: "from_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          - legend_text: "To"
+            name: "to_date"
+            id: "to_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          section: Last updated date
+        - fields:
+          - name: "only_invalid_editions"
+            small: true
+            items:
+            - label: "Only invalid editions"
+              value: "1"
+              bold: true
+            filter_type: "checkboxes"
+  no_results:
+    data:
+      items:
+        count: 0
+      filter:
+        action: "/search"
+        options:
+        - fields:
+          - label:
+              text: "Title"
+              bold: true
+            name: "title"
+            id: "title_filter"
+            type: "search"
+            filter_type: "input"
+        - fields:
+          - label: "Author"
+            id: "author_filter"
+            name: "author"
+            heading_size: "s"
+            data_attributes:
+              ga4_section: "Author"
+              ga4_change_category: "update-filter select"
+              ga4_filter_parent: true
+            options:
+            - text: "Text"
+              value: "something"
+              selected: true
+            filter_type: "select_with_search"
+        - fields:
+          - legend_text: "From"
+            name: "from_date"
+            id: "from_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          - legend_text: "To"
+            name: "to_date"
+            id: "to_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          section: Last updated date
+        - fields:
+          - name: "only_invalid_editions"
+            small: true
+            items:
+            - label: "Only invalid editions"
+              value: "1"
+              bold: true
+            filter_type: "checkboxes"
+  no_pages:
+    data:
+      items:
+        count: 3
+      link:
+        text: text
+        href: "#"
+      table:
+        head:
+          - text: Title
+          - text: Updated by
+          - text: State
+          - text: "<span class=\"govuk-visually-hidden\">View</span>"
+        rows:
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+      filter:
+        action: "/search"
+        options:
+        - fields:
+          - label:
+              text: "Title"
+              bold: true
+            name: "title"
+            id: "title_filter"
+            type: "search"
+            filter_type: "input"
+        - fields:
+          - label: "Author"
+            id: "author_filter"
+            name: "author"
+            heading_size: "s"
+            data_attributes:
+              ga4_section: "Author"
+              ga4_change_category: "update-filter select"
+              ga4_filter_parent: true
+            options:
+            - text: "Text"
+              value: "something"
+              selected: true
+            filter_type: "select_with_search"
+        - fields:
+          - legend_text: "From"
+            name: "from_date"
+            id: "from_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          - legend_text: "To"
+            name: "to_date"
+            id: "to_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          section: Last updated date
+        - fields:
+          - name: "only_invalid_editions"
+            small: true
+            items:
+            - label: "Only invalid editions"
+              value: "1"
+              bold: true
+            filter_type: "checkboxes"
+  no_link:
+    data:
+      items:
+        count: 3
+        name: result
+      pages:
+        previous_page:
+          href: previous-page
+        next_page:
+          href: next-page
+        items:
+        - number: 1
+          href: "#"
+        - ellipsis: true
+        - number: 6
+          href: "#"
+        - number: 7
+          href: "#"
+          current: true
+        - number: 8
+          href: "#"
+        - ellipsis: true
+        - number: 42
+          href: "#"
+      table:
+        head:
+          - text: Title
+          - text: Updated by
+          - text: State
+          - text: "<span class=\"govuk-visually-hidden\">View</span>"
+        rows:
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+      filter:
+        action: "/search"
+        options:
+        - fields:
+          - label:
+              text: "Title"
+              bold: true
+            name: "title"
+            id: "title_filter"
+            type: "search"
+            filter_type: "input"
+        - fields:
+          - label: "Author"
+            id: "author_filter"
+            name: "author"
+            heading_size: "s"
+            data_attributes:
+              ga4_section: "Author"
+              ga4_change_category: "update-filter select"
+              ga4_filter_parent: true
+            options:
+            - text: "Text"
+              value: "something"
+              selected: true
+            filter_type: "select_with_search"
+        - fields:
+          - legend_text: "From"
+            name: "from_date"
+            id: "from_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          - legend_text: "To"
+            name: "to_date"
+            id: "to_date"
+            hint: "For example, 23/07/2013"
+            filter_type: "date_input"
+          section: Last updated date
+        - fields:
+          - name: "only_invalid_editions"
+            small: true
+            items:
+            - label: "Only invalid editions"
+              value: "1"
+              bold: true
+            filter_type: "checkboxes"

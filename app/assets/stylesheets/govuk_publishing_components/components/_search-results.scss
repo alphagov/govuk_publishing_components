@@ -1,0 +1,20 @@
+@import "govuk_publishing_components/individual_component_support";
+
+.gem-c-search-results__link {
+  float: right;
+}
+
+.gem-c-search-results__results {
+  border-bottom: 2px solid govuk-colour("black");
+  padding-bottom: govuk-spacing(3);
+}
+
+.gem-c-search-results-no-results {
+  padding-top: govuk-spacing(4);
+  margin-bottom: govuk-spacing(3);
+}
+
+.gem-c-search-results__filter-options {
+  background: govuk-colour("light-grey");
+  padding: govuk-spacing(5);
+}
