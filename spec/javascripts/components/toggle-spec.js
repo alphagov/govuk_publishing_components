@@ -1,105 +1,114 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('A toggle module', function () {
   'use strict'
 
-  var element
+  var container
 
   describe('when starting', function () {
     beforeEach(function () {
-      var html =
-        '<div>' +
-          '<a href="#" class="my-toggle" data-expanded="false" data-controls="target">Toggle</a>' +
-          '<div id="target">Target</div>' +
-        '</div>'
-      element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      container = document.createElement('div')
+      container.innerHTML = `
+        <a href="#" class="my-toggle" data-expanded="false" data-controls="target">Toggle</a>
+        <div id="target">Target</div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggle(container).init()
+    })
+
+    afterEach(function () {
+      document.body.removeChild(container)
     })
 
     it('adds aria attributes to toggles', function () {
-      var trigger = element.find('.my-toggle')
-      expect(trigger.attr('role')).toBe('button')
-      expect(trigger.attr('aria-expanded')).toBe('false')
-      expect(trigger.attr('aria-controls')).toBe('target')
+      var trigger = container.querySelector('.my-toggle')
+      expect(trigger.getAttribute('role')).toBe('button')
+      expect(trigger.getAttribute('aria-expanded')).toBe('false')
+      expect(trigger.getAttribute('aria-controls')).toBe('target')
     })
   })
 
   describe('when clicking a toggle', function () {
     beforeEach(function () {
-      var html =
-        '<div>' +
-          '<a href="#" class="my-toggle" data-expanded="false" data-controls="target" data-toggled-text="Show fewer">Toggle</a>' +
-          '<div id="target" class="js-hidden">Target</div>' +
-        '</div>'
-      element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
-      element.find('.my-toggle')[0].click()
+      container = document.createElement('div')
+      container.innerHTML = `
+        <a href="#" class="my-toggle" data-expanded="false" data-controls="target" data-toggled-text="Show fewer">Toggle</a>
+        <div id="target" class="js-hidden">Target</div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggle(container).init()
+      container.querySelector('.my-toggle').click()
+    })
+
+    afterEach(function () {
+      document.body.removeChild(container)
     })
 
     it('toggles the display of a target', function () {
-      expect(element.find('#target').is('.js-hidden')).toBe(false)
-      element.find('.my-toggle')[0].click()
-      expect(element.find('#target').is('.js-hidden')).toBe(true)
+      expect(container.querySelector('#target')).not.toHaveClass('js-hidden')
+      container.querySelector('.my-toggle').click()
+      expect(container.querySelector('#target')).toHaveClass('js-hidden')
     })
 
     it('updates the aria-expanded attribute on the toggle', function () {
-      expect(element.find('.my-toggle').attr('aria-expanded')).toBe('true')
+      expect(container.querySelector('.my-toggle').getAttribute('aria-expanded')).toBe('true')
 
-      element.find('.my-toggle')[0].click()
-      expect(element.find('.my-toggle').attr('aria-expanded')).toBe('false')
+      container.querySelector('.my-toggle').click()
+      expect(container.querySelector('.my-toggle').getAttribute('aria-expanded')).toBe('false')
     })
 
     it('updates the text shown in the toggle link when expanded if such text is supplied', function () {
-      expect(element.find('.my-toggle').attr('data-toggled-text')).toBe('Toggle')
-      expect(element.find('.my-toggle').text()).toBe('Show fewer')
-      element.find('.my-toggle')[0].click()
-      expect(element.find('.my-toggle').attr('data-toggled-text')).toBe('Show fewer')
-      expect(element.find('.my-toggle').text()).toBe('Toggle')
+      expect(container.querySelector('.my-toggle').getAttribute('data-toggled-text')).toBe('Toggle')
+      expect(container.querySelector('.my-toggle').textContent).toBe('Show fewer')
+      container.querySelector('.my-toggle').click()
+      expect(container.querySelector('.my-toggle').getAttribute('data-toggled-text')).toBe('Show fewer')
+      expect(container.querySelector('.my-toggle').textContent).toBe('Toggle')
     })
   })
 
   describe('when clicking a toggle that controls multiple targets', function () {
     it('toggles the display of each target', function () {
-      var html =
-        '<div>' +
-          '<a href="#" class="my-toggle" data-expanded="false" data-controls="target another-target">Toggle</a>' +
-          '<div id="target" class="js-hidden">Target</div>' +
-          '<div id="another-target" class="js-hidden">Another target</div>' +
-        '</div>'
-      element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      container = document.createElement('div')
+      container.innerHTML = `
+        <a href="#" class="my-toggle" data-expanded="false" data-controls="target another-target">Toggle</a>
+        <div id="target" class="js-hidden">Target</div>
+        <div id="another-target" class="js-hidden">Another target</div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggle(container).init()
 
-      expect(element.find('#target').is('.js-hidden')).toBe(true)
-      expect(element.find('#another-target').is('.js-hidden')).toBe(true)
+      expect(container.querySelector('#target')).toHaveClass('js-hidden')
+      expect(container.querySelector('#another-target')).toHaveClass('js-hidden')
 
-      element.find('.my-toggle')[0].click()
-      expect(element.find('#target').is('.js-hidden')).toBe(false)
-      expect(element.find('#another-target').is('.js-hidden')).toBe(false)
+      container.querySelector('.my-toggle').click()
+      expect(container.querySelector('#target')).not.toHaveClass('js-hidden')
+      expect(container.querySelector('#another-target')).not.toHaveClass('js-hidden')
 
-      element.find('.my-toggle')[0].click()
-      expect(element.find('#target').is('.js-hidden')).toBe(true)
-      expect(element.find('#another-target').is('.js-hidden')).toBe(true)
+      container.querySelector('.my-toggle').click()
+      expect(container.querySelector('#target')).toHaveClass('js-hidden')
+      expect(container.querySelector('#another-target')).toHaveClass('js-hidden')
+
+      document.body.removeChild(container)
     })
   })
 
   describe('when a custom class is given', function () {
     it('toggles the given class', function () {
-      var html =
-        '<div data-toggle-class="myclass">' +
-          '<a href="#" class="my-toggle" data-expanded="true" data-controls="target">Toggle</a>' +
-          '<div id="target">Target</div>' +
-        '</div>'
-      element = $(html)
-      var toggle = new GOVUK.Modules.GemToggle(element[0])
-      toggle.init()
+      container = document.createElement('div')
+      container.dataset.toggleClass = 'myclass'
+      container.innerHTML = `
+        <a href="#" class="my-toggle" data-expanded="true" data-controls="target">Toggle</a>
+        <div id="target">Target</div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggle(container).init()
 
-      expect(element.find('#target').is('.myclass')).toBe(false)
-      element.find('.my-toggle')[0].click()
-      expect(element.find('#target').is('.myclass')).toBe(true)
+      expect(container.querySelector('#target')).not.toHaveClass('myclass')
+      container.querySelector('.my-toggle').click()
+      expect(container.querySelector('#target')).toHaveClass('myclass')
+
+      document.body.removeChild(container)
     })
   })
 })
