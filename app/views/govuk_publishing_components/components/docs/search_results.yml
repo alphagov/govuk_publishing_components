@@ -1,0 +1,137 @@
+name: Search Results
+description: A component that presents search results.
+shared_accessibility_criteria:
+  - link
+  - table
+accessibility_excluded_rules:
+  - landmark-unique
+  - color-contrast
+type: helper
+examples:
+  default:
+    data:
+      items:
+        count: 3
+      link:
+        text: text
+        href: "#"
+      pages:
+        previous_page:
+          href: previous-page
+        next_page:
+          href: next-page
+        items:
+        - number: 1
+          href: "#"
+        - ellipsis: true
+        - number: 6
+          href: "#"
+        - number: 7
+          href: "#"
+          current: true
+        - number: 8
+          href: "#"
+        - ellipsis: true
+        - number: 42
+          href: "#"
+      table:
+        head:
+          - text: Title
+          - text: Updated by
+          - text: State
+          - text: "<span class=\"govuk-visually-hidden\">View</span>"
+        rows:
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+  no_results:
+    data:
+      items:
+        count: 0
+  no_pages:
+    data:
+      items:
+        count: 3
+      link:
+        text: text
+        href: "#"
+      table:
+        head:
+          - text: Title
+          - text: Updated by
+          - text: State
+          - text: "<span class=\"govuk-visually-hidden\">View</span>"
+        rows:
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+  no_link:
+    data:
+      items:
+        count: 3
+        name: result
+      pages:
+        previous_page:
+          href: previous-page
+        next_page:
+          href: next-page
+        items:
+        - number: 1
+          href: "#"
+        - ellipsis: true
+        - number: 6
+          href: "#"
+        - number: 7
+          href: "#"
+          current: true
+        - number: 8
+          href: "#"
+        - ellipsis: true
+        - number: 42
+          href: "#"
+      table:
+        head:
+          - text: Title
+          - text: Updated by
+          - text: State
+          - text: "<span class=\"govuk-visually-hidden\">View</span>"
+        rows:
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"
+          -
+            - text: Document name
+            - text: Name of user
+            - text: "<span class=\"govuk-tag govuk-tag--s\">Published</span>"
+            - text: "<a href=\"#\" class=\"govuk-link\">View</span>"

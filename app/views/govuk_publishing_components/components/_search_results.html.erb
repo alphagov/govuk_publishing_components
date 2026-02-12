@@ -1,0 +1,35 @@
+<%
+  items ||= {}
+  items[:count] ||= 0
+  items[:name] ||= "result"
+  table ||= {}
+  table[:first_cell_is_header] = true
+  pages ||= {}
+  link ||= nil
+%>
+
+<%= tag.p("#{number_with_delimiter(items[:count])} " + "#{items[:name]}".pluralize(items[:count]), id:"js-result-count", class:"govuk-heading-s gem-c-search-results") %>
+
+<% if items[:count] == 0 %>
+  <%= tag.p("No #{items[:name]}".pluralize, class:"govuk-body gem-c-no-search-results") %>
+<% else %>
+
+  <%= tag.div(class:"govuk-table--with-actions") do %>
+    <%= render "govuk_publishing_components/components/table", **table %>
+  <% end %>
+
+  <%= tag.div(class:"govuk-grid-row") do %>
+    <% if pages.present? %>
+      <%= tag.div(class:link.present? ? "govuk-grid-column-three-quarters" : "govuk-grid-column-full" ) do %>
+        <%= render "govuk_publishing_components/components/pagination", **pages %>
+      <% end %>
+    <% end %>
+    <% if link.present? %>
+      <%= tag.div(class:pages.present? ? "govuk-grid-column-one-quarter" : "govuk-grid-column-full" ) do %>
+        <%= tag.p(class:"govuk-body gem-c-search-results__link") do %>
+          <%= link_to link[:text], link[:href], class: "govuk-link" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

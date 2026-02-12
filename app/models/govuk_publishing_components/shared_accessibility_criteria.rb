@@ -33,5 +33,13 @@ Buttons in the component must:
 - have meaningful text
       "
     end
+
+    def self.table
+      "
+Accessible tables need HTML markup that indicates header cells and data cells and defines their relationship. Assistive technologies use this information to provide context to users.
+Header cells must be marked up with `<th>`, and data cells with `<td>` to make tables accessible.
+For more complex tables, explicit associations is needed using scope attributes.
+      "
+    end
   end
 end

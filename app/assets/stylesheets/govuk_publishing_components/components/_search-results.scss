@@ -1,0 +1,13 @@
+.gem-c-search-results__link {
+  float: right;
+}
+
+.gem-c-search-results {
+  border-bottom: 2px solid govuk-colour("black");
+  padding-bottom: govuk-spacing(3);
+}
+
+.gem-c-search-results-no-results {
+  padding-top: govuk-spacing(4);
+  margin-bottom: govuk-spacing(3);
+}
