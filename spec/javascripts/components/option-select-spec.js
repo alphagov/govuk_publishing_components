@@ -1,10 +1,10 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('An option select component', function () {
   'use strict'
 
-  function optionSelectWithAttrs (attrs) {
+  function optionSelectWithAttrs (attrs = '') {
     return '<div class="gem-c-option-select" ' + attrs + '>' +
       '<h2 class="gem-c-option-select__heading js-container-heading">' +
         '<span class="gem-c-option-select__title js-container-button">Hello World</span>' +
@@ -22,7 +22,35 @@ describe('An option select component', function () {
     '</div>'
   }
 
-  var $element
+  function createFixture () {
+    container = document.createElement('div')
+    container.innerHTML = html
+    document.body.appendChild(container)
+  }
+
+  function createFixtureWithAttrs (attrs = '') {
+    container = document.createElement('div')
+    container.innerHTML = optionSelectWithAttrs(attrs)
+    document.body.appendChild(container)
+  }
+
+  function initModule () {
+    var optionSelect = document.querySelector('.gem-c-option-select')
+    new GOVUK.Modules.OptionSelect(optionSelect).init()
+    return optionSelect
+  }
+
+  function convertPxStringToNumber (pxString) {
+    return Number(pxString.split('px')[0])
+  }
+
+  function getCheckboxesNumber (checkboxInputs) {
+    var visibleCheckboxInputs = checkboxInputs.filter((checkbox) => checkbox.checkVisibility())
+    var checkedCheckboxes = checkboxInputs.filter((checkbox) => checkbox.checked)
+    return visibleCheckboxInputs.length + checkedCheckboxes.length
+  }
+
+  var container
   var optionSelect
   /* eslint-disable */
   var html = '\
@@ -96,66 +124,57 @@ describe('An option select component', function () {
   /* eslint-enable */
 
   afterEach(function () {
-    $('body').find('.gem-c-option-select').remove()
+    document.body.removeChild(container)
   })
 
   describe('on load', function () {
     it('instantiates a closed option-select if data-closed-on-load is true', function () {
-      var $closedOnLoadFixture = $(optionSelectWithAttrs('data-closed-on-load=true'))
-      $('body').append($closedOnLoadFixture)
+      createFixtureWithAttrs('data-closed-on-load=true')
+      var optionSelect = initModule()
 
-      new GOVUK.Modules.OptionSelect($closedOnLoadFixture[0]).init()
-
-      expect($closedOnLoadFixture.find('button').attr('aria-expanded')).toBe('false')
+      expect(optionSelect.querySelector('button').getAttribute('aria-expanded')).toBe('false')
     })
 
     it('instantiates an open option-select if data-closed-on-load is false', function () {
-      var $openOnLoadFixture = $(optionSelectWithAttrs('data-closed-on-load=false'))
-      $('body').append($openOnLoadFixture)
+      createFixtureWithAttrs('data-closed-on-load=false')
+      var optionSelect = initModule()
 
-      new GOVUK.Modules.OptionSelect($openOnLoadFixture[0]).init()
-
-      expect($openOnLoadFixture.find('button').attr('aria-expanded')).toBe('true')
-      expect($('body').find('.js-options-container').is(':visible')).toBe(true)
+      expect(optionSelect.querySelector('button').getAttribute('aria-expanded')).toBe('true')
+      expect(document.body.querySelector('.js-options-container').checkVisibility()).toBe(true)
     })
 
     it('instantiates an open option-select if data-closed-on-load is not present', function () {
-      var $openOnLoadFixture = $(optionSelectWithAttrs(''))
-      $('body').append($openOnLoadFixture)
+      createFixtureWithAttrs()
+      var optionSelect = initModule()
 
-      new GOVUK.Modules.OptionSelect($openOnLoadFixture[0]).init()
-
-      expect($openOnLoadFixture.find('button').attr('aria-expanded')).toBe('true')
-      expect($('body').find('.js-options-container').is(':visible')).toBe(true)
+      expect(optionSelect.querySelector('button').getAttribute('aria-expanded')).toBe('true')
+      expect(document.body.querySelector('.js-options-container').checkVisibility()).toBe(true)
     })
 
     it('sets the height of the options container as part of initialisation', function () {
-      $element = document.createElement('div')
-      $element.innerHTML = html
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      createFixture()
+      var optionSelect = initModule()
 
-      expect($($element).find('.js-options-container').attr('style')).toContain('height')
+      expect(optionSelect.querySelector('.js-options-container').style).toContain('height')
     })
 
     it('doesn\'t set the height of the options container as part of initialisation if closed-on-load is true', function () {
-      var $closedOnLoadFixture = $(optionSelectWithAttrs('data-closed-on-load=true'))
+      createFixtureWithAttrs('data-closed-on-load=true')
+      var optionSelect = initModule()
 
-      new GOVUK.Modules.OptionSelect($closedOnLoadFixture[0]).init()
-
-      expect($closedOnLoadFixture.find('.js-options-container').attr('style')).not.toContain('height')
+      expect(optionSelect.querySelector('.js-options-container').style).not.toContain('height')
     })
 
     it('replaces the `span.gem-c-option-select__title` with a button', function () {
-      $element = document.createElement('div')
-      $element.innerHTML = html
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      createFixture()
+      var optionSelect = initModule()
 
-      expect($($element).find('button')).toBeDefined()
+      expect(optionSelect.querySelector('button')).toBeDefined()
     })
 
     it('accepts data attributes to be applied to the button element', function () {
-      $element = document.createElement('div')
-      $element.innerHTML = html
+      createFixture()
+
       var buttonAttrs = {
         test_attribute_with_many_underscores: 'oh yes',
         ga4_event: {
@@ -163,73 +182,77 @@ describe('An option select component', function () {
           type: 'finder'
         }
       }
-      $element.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', JSON.stringify(buttonAttrs))
 
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
-      expect($($element).find('.gem-c-option-select__button').attr('data-test-attribute-with-many-underscores')).toBe('oh yes')
-      expect($($element).find('.gem-c-option-select__button').attr('data-ga4-event')).toBe(JSON.stringify(buttonAttrs.ga4_event))
+      container.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', JSON.stringify(buttonAttrs))
+
+      new GOVUK.Modules.OptionSelect(container.querySelector('.gem-c-option-select')).init()
+      expect(container.querySelector('.gem-c-option-select__button').getAttribute('data-test-attribute-with-many-underscores')).toBe('oh yes')
+      expect(container.querySelector('.gem-c-option-select__button').getAttribute('data-ga4-event')).toBe(JSON.stringify(buttonAttrs.ga4_event))
     })
 
     it('does not error if invalid data attributes are passed for the button element', function () {
-      $element = document.createElement('div')
-      $element.innerHTML = html
-      $element.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', 'not JSON')
+      createFixture()
 
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
-      expect($($element).find('.gem-c-option-select__button').attr('data-test-attribute-with-many-underscores')).toBe(undefined)
+      container.querySelector('.gem-c-option-select').setAttribute('data-button-data-attributes', 'not JSON')
+
+      new GOVUK.Modules.OptionSelect(container).init()
+
+      var optionSelectButton = container.querySelector('.gem-c-option-select__button')
+      var optionSelectButtonAttribute = optionSelectButton.getAttribute('data-test-attribute-with-many-underscores')
+
+      expect(optionSelectButtonAttribute).toBeNull()
     })
   })
 
   describe('toggleOptionSelect', function () {
     beforeEach(function () {
-      $element = document.createElement('div')
-      $element.innerHTML = html
-      $('body').append($element)
+      createFixture()
 
-      optionSelect = new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select'))
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
       optionSelect.init()
     })
 
     it('calls optionSelect.close() if the optionSelect is currently open', function () {
-      $($element).find('.gem-c-option-select').removeClass('js-closed')
+      container.querySelector('.gem-c-option-select').classList.remove('js-closed')
       spyOn(optionSelect, 'close')
-      optionSelect.toggleOptionSelect(jQuery.Event('click'))
+
+      var optionSelectButton = container.querySelector('.js-container-button')
+      optionSelectButton.click()
       expect(optionSelect.close.calls.count()).toBe(1)
     })
 
     it('calls optionSelect.open() if the optionSelect is currently closed', function () {
-      $($element).find('.gem-c-option-select').addClass('js-closed')
+      container.querySelector('.gem-c-option-select').classList.add('js-closed')
       spyOn(optionSelect, 'open')
-      optionSelect.toggleOptionSelect(jQuery.Event('click'))
+
+      var optionSelectButton = container.querySelector('.js-container-button')
+      optionSelectButton.click()
       expect(optionSelect.open.calls.count()).toBe(1)
     })
   })
 
   describe('when the open/close button is clicked', function () {
     beforeEach(function () {
-      $element = document.createElement('div')
-      $element.innerHTML = html
-      $('body').append($element)
+      createFixture()
 
-      new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
+      optionSelect.init()
     })
 
     it('closes and opens the option select', function () {
-      var $button = $($element).find('button')
-      $button.click()
-      expect($($element).find('.gem-c-option-select').hasClass('js-closed')).toBe(true)
-
-      $button.click()
-      expect($($element).find('.gem-c-option-select').hasClass('js-closed')).toBe(false)
+      var optionSelectButton = container.querySelector('button')
+      optionSelectButton.click()
+      expect(container.querySelector('.gem-c-option-select')).toHaveClass('js-closed')
+      optionSelectButton.click()
+      expect(container.querySelector('.gem-c-option-select')).not.toHaveClass('js-closed')
     })
 
     it('updates aria-expanded accordingly', function () {
-      var $button = $($element).find('button')
-      $button.click()
-      expect($($element).find('button').attr('aria-expanded')).toBe('false')
-
-      $button.click()
-      expect($($element).find('button').attr('aria-expanded')).toBe('true')
+      var optionSelectButton = container.querySelector('button')
+      optionSelectButton.click()
+      expect(container.querySelector('button').getAttribute('aria-expanded')).toBe('false')
+      optionSelectButton.click()
+      expect(container.querySelector('button').getAttribute('aria-expanded')).toBe('true')
     })
   })
 
@@ -237,10 +260,9 @@ describe('An option select component', function () {
     var firstCheckbox, lastCheckbox
 
     beforeEach(function () {
-      $element = $(html)
-      $('body').append($element)
+      createFixture()
 
-      optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
       optionSelect.init()
       optionSelect.setContainerHeight(100)
       firstCheckbox = optionSelect.$allCheckboxes[0]
@@ -260,9 +282,9 @@ describe('An option select component', function () {
     var lastLabelForAttribute, lastVisibleLabelForAttribute
 
     beforeEach(function () {
-      $element = $(html)
-      $('body').append($element)
-      optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
+      createFixture()
+
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
       optionSelect.init()
     })
 
@@ -279,116 +301,119 @@ describe('An option select component', function () {
   })
 
   describe('setupHeight', function () {
-    var $checkboxList, $checkboxListInner
+    var checkboxList, checkboxListInner
 
     beforeEach(function () {
-      $element = $(html)
-      $('body').append($element)
+      createFixture()
 
-      optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
 
       // Set some visual properties which are done in the CSS IRL
-      $checkboxList = $element.find('.js-options-container')
-      $checkboxList.css({
-        height: 180,
-        position: 'relative',
-        overflow: 'scroll'
-      })
-      $checkboxList.find('label').css({
-        display: 'block'
-      })
+      checkboxList = container.querySelector('.js-options-container')
+      checkboxList.style.cssText = "height: 180px; position: 'relative'; overflow: 'scroll'"
+      checkboxList.querySelector('label').style.display = 'block'
 
-      $checkboxListInner = $checkboxList.find(' > .js-auto-height-inner')
+      checkboxListInner = checkboxList.querySelector('.js-auto-height-inner')
       optionSelect.init()
     })
 
     it('expands the checkbox-container to fit checkbox list if the list is < 50px larger than the container', function () {
-      $checkboxListInner.height(181)
+      checkboxListInner.style.height = '181px'
       optionSelect.setupHeight()
 
+      var checkboxHeightNumber = convertPxStringToNumber(checkboxList.style.height)
+
       // Wrapping HTML should adjust to fit inner height
-      expect($checkboxList.height()).toBeGreaterThan($checkboxListInner.height())
-      expect($checkboxListInner.height()).toBeLessThan(230)
+      expect(checkboxHeightNumber).toBeGreaterThan(convertPxStringToNumber(checkboxListInner.style.height))
+      expect(checkboxHeightNumber).toBeLessThan(230)
     })
 
     it('expands the checkbox-container just enough to cut the last visible item in half horizontally, if there are many items', function () {
-      $checkboxList.css({
-        'max-height': 180,
-        width: 600
-      })
+      checkboxList.style.cssText = 'max-height: 180px; width: 600px'
       optionSelect.setupHeight()
 
+      var checkboxHeightNumber = convertPxStringToNumber(checkboxList.style.height)
+
       // Wrapping HTML should not stretch as 251px is too big.
-      expect($checkboxList.height()).toBeGreaterThan(100)
+      expect(checkboxHeightNumber).toBeGreaterThan(100)
     })
   })
 
   describe('initialising when the parent is hidden', function () {
     beforeEach(function () {
-      var $wrapper = $('<div/>').addClass('wrapper').html(html)
-      $('body').append($wrapper)
-      $wrapper.hide()
+      createFixture()
 
-      optionSelect = new GOVUK.Modules.OptionSelect($wrapper.find('.gem-c-option-select')[0])
+      var parentDivElement = document.querySelector('body div')
+      parentDivElement.style.display = 'none'
+
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
       optionSelect.init()
     })
 
-    afterEach(function () {
-      $('.wrapper').remove()
-    })
-
     it('sets the height of the container sensibly', function () {
-      var containerHeight = $('body').find('.js-options-container').height()
-      expect(containerHeight).toBe(181)
+      var optionSelectContainer = document.querySelector('.js-options-container')
+      var containerHeight = convertPxStringToNumber(optionSelectContainer.style.height)
+      expect(containerHeight).toBeGreaterThan(181)
+      expect(containerHeight).toBeLessThan(250)
     })
   })
 
   describe('initialising when the parent is hidden and data-closed-on-load is true', function () {
     beforeEach(function () {
-      $element = $(html)
-      $element.attr('data-closed-on-load', true)
-      var $wrapper = $('<div/>').addClass('wrapper').hide().html($element)
-      $('body').append($wrapper)
-      optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
+      createFixture()
+      container.setAttribute('data-closed-on-load', true)
+
+      var parentDivElement = document.querySelector('body div')
+      parentDivElement.style.display = 'none'
+
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
       optionSelect.init()
     })
 
-    afterEach(function () {
-      $('.wrapper').remove()
-    })
-
     it('sets the height of the container sensibly when the option select is opened', function () {
-      $('.wrapper').show()
-      $($element).find('button').click()
+      var parentDivElement = document.querySelector('body div')
+      parentDivElement.style.display = 'block'
+      container.querySelector('button').click()
 
-      var containerHeight = $('.js-options-container').height()
+      var optionSelectContainer = document.querySelector('.js-options-container')
+      var containerHeight = convertPxStringToNumber(optionSelectContainer.style.height)
       expect(containerHeight).toBeGreaterThan(180)
       expect(containerHeight).toBeLessThan(550)
     })
   })
 
   describe('filtering checkboxes', function () {
-    var $filterInput, $count
+    var filterInput
+    var count
+    var checkboxInputs
+    var visibleCheckboxes
 
     beforeEach(function () {
-      $element = $(html)
+      createFixture()
+
       var filterMarkup =
             '&lt;label for=&quot;input-b7f768b7&quot; class=&quot;gem-c-label govuk-label&quot;&gt;' +
               'Filter Countries' +
             '&lt;/label&gt;' +
             '&lt;input name=&quot;option-select-filter&quot; class=&quot;gem-c-input gem-c-option-select__filter-input govuk-input&quot; id=&quot;input-b7f768b7&quot; type=&quot;text&quot; aria-describedby=&quot;checkboxes-9b7ecc25-count&quot; aria-controls=&quot;checkboxes-9b7ecc25&quot;&gt;'
 
-      var filterSpan = '<span id="checkboxes-9b7ecc25-count" class="gem-c-option-select__count govuk-visually-hidden" aria-live="polite" data-single="option found" data-multiple="options found" data-selected="selected"></span>'
+      var filterSpan = document.createElement('span')
+      filterSpan.id = 'checkboxes-9b7ecc25-count'
+      filterSpan.classList.add('gem-c-option-select__count', 'govuk-visually-hidden')
+      filterSpan.setAttribute('aria-live', 'polite')
+      filterSpan.setAttribute('data-single', 'option found')
+      filterSpan.setAttribute('data-multiple', 'options found')
+      filterSpan.setAttribute('data-selected', 'selected')
 
-      $element.find('.gem-c-option-select').attr('data-filter-element', filterMarkup)
-      $element.find('.gem-c-checkboxes').prepend($(filterSpan))
-      $('body').append($element)
-      optionSelect = new GOVUK.Modules.OptionSelect($element.find('.gem-c-option-select')[0])
+      container.querySelector('.gem-c-option-select').setAttribute('data-filter-element', filterMarkup)
+      container.querySelector('.gem-c-checkboxes').prepend(filterSpan)
+
+      optionSelect = new GOVUK.Modules.OptionSelect(document.querySelector('.gem-c-option-select'))
       optionSelect.init()
 
       jasmine.clock().install()
-      $filterInput = document.querySelector('[name="option-select-filter"]')
-      $count = $('#checkboxes-9b7ecc25-count')
+      filterInput = document.querySelector('[name="option-select-filter"]')
+      count = document.querySelector('#checkboxes-9b7ecc25-count')
     })
 
     afterEach(function () {
@@ -396,154 +421,167 @@ describe('An option select component', function () {
     })
 
     it('filters the checkboxes and updates the filter count correctly', function () {
-      expect($('.govuk-checkboxes__item:visible').length).toBe(12)
+      var checkboxes = Array.from(document.querySelectorAll('.govuk-checkboxes__item'))
+      visibleCheckboxes = checkboxes.filter((checkbox) => checkbox.checkVisibility())
+      expect(visibleCheckboxes.length).toBe(12)
 
-      $filterInput.value = 'in'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
-
+      filterInput.value = 'in'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(5)
-      expect($count.text()).toBe('5 options found, 0 selected')
 
-      $filterInput.value = 'ind'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
-      jasmine.clock().tick(400)
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(2)
-      expect($count.html()).toBe('2 options found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(5)
+      expect(count.textContent).toBe('5 options found, 0 selected')
 
-      $filterInput.value = 'shouldnotmatchanything'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'ind'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(0)
-      expect($count.html()).toBe('0 options found, 0 selected')
+
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(2)
+      expect(count.textContent).toBe('2 options found, 0 selected')
+
+      filterInput.value = 'shouldnotmatchanything'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
+      jasmine.clock().tick(400)
+
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(0)
+      expect(count.textContent).toBe('0 options found, 0 selected')
     })
 
     it('prevents form submission if the key is Enter', function () {
-      $filterInput.addEventListener('keyup', function (event) {
+      filterInput.addEventListener('keyup', function (event) {
         expect(event.defaultPrevented).toBe(true)
       })
 
-      window.GOVUK.triggerEvent($filterInput, 'keyup', { keyCode: 13, cancelable: true })
+      window.GOVUK.triggerEvent(filterInput, 'keyup', { keyCode: 13, cancelable: true })
     })
 
     it('does not prevent keypresses other than Enter', function () {
-      $filterInput.addEventListener('keyup', function (event) {
+      filterInput.addEventListener('keyup', function (event) {
         expect(event.defaultPrevented).toBe(false)
       })
 
-      window.GOVUK.triggerEvent($filterInput, 'keyup', { keyCode: 65, cancelable: true }) // key is 'a'
+      window.GOVUK.triggerEvent(filterInput, 'keyup', { keyCode: 65, cancelable: true }) // key is 'a'
     })
 
     it('shows checked checkboxes regardless of whether they match the filter', function () {
-      $('#building-and-construction').prop('checked', true).change()
-      $('#chemicals').prop('checked', true).change()
+      document.querySelector('#building-and-construction').checked = true
+      document.querySelector('#chemicals').checked = true
       jasmine.clock().tick(100)
 
-      $filterInput.value = 'electronics'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'electronics'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(3)
-      expect($count.html()).toBe('3 options found, 2 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(3)
+      expect(count.textContent).toBe('3 options found, 2 selected')
 
-      $filterInput.value = 'shouldnotmatchanything'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'shouldnotmatchanything'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(2)
-      expect($count.html()).toBe('2 options found, 2 selected')
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(2)
+      expect(count.textContent).toBe('2 options found, 2 selected')
     })
 
     it('matches a filter regardless of text case', function () {
-      $filterInput.value = 'electroNICS industry'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'electroNICS industry'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
 
-      $filterInput.value = 'Building and construction'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'Building and construction'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
     })
 
     it('matches ampersands correctly', function () {
-      $filterInput.value = 'Distribution & Service Industries'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'Distribution & Service Industries'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
 
-      $filterInput.value = 'Distribution &amp; Service Industries'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'Distribution &amp; Service Industries'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(0)
-      expect($count.html()).toBe('0 options found, 0 selected')
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(0)
+      expect(count.textContent).toBe('0 options found, 0 selected')
     })
 
     it('ignores whitespace around the user input', function () {
-      $filterInput.value = '   Clothing, footwear and fashion    '
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = '   Clothing, footwear and fashion    '
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
     })
 
     it('ignores duplicate whitespace in the user input', function () {
-      $filterInput.value = 'Clothing,     footwear      and      fashion'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'Clothing,     footwear      and      fashion'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
     })
 
     it('ignores common punctuation characters', function () {
-      $filterInput.value = 'closed organisation department for Fisheries War Widows pay Farmers rights sheep and goats Farmers rights cows & llamas'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'closed organisation department for Fisheries War Widows pay Farmers rights sheep and goats Farmers rights cows & llamas'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
     })
 
     it('normalises & and and', function () {
-      $filterInput.value = 'cows & llamas'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'cows & llamas'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
 
-      $filterInput.value = 'cows and llamas'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'cows and llamas'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
     })
 
     // there was a bug in cleanString() where numbers were being ignored
     it('does not strip out numbers', function () {
-      $filterInput.value = '1st and 2nd Military Courts'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = '1st and 2nd Military Courts'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(1)
-      expect($count.html()).toBe('1 option found, 0 selected')
+      checkboxInputs = Array.from(document.querySelectorAll('.govuk-checkboxes__input'))
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(1)
+      expect(count.textContent).toBe('1 option found, 0 selected')
 
-      $filterInput.value = 'footwear and f23907234973204723094ashion'
-      window.GOVUK.triggerEvent($filterInput, 'keyup')
+      filterInput.value = 'footwear and f23907234973204723094ashion'
+      window.GOVUK.triggerEvent(filterInput, 'keyup')
       jasmine.clock().tick(400)
 
-      expect($('.govuk-checkboxes__input:visible').length + $('.govuk-checkboxes__input:checked').length).toBe(0)
-      expect($count.html()).toBe('0 options found, 0 selected')
+      expect(getCheckboxesNumber(checkboxInputs)).toBe(0)
+      expect(count.textContent).toBe('0 options found, 0 selected')
     })
   })
 })
