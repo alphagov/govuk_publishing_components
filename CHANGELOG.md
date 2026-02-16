@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add back search input spacing override ([PR #5280](https://github.com/alphagov/govuk_publishing_components/pull/5280))
+
 ## 64.1.0
 
 * Ga4FormTracker for enhanced JS components ([PR #5247](https://github.com/alphagov/govuk_publishing_components/pull/5247))
