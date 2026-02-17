@@ -15,8 +15,6 @@ $search-icon-size: 40px;
   background: url("govuk_publishing_components/icon-search.svg") no-repeat -3px center;
 }
 
-.gem-c-input.govuk-input {
-  &.gem-c-input--with-search-icon {
-    padding-left: govuk-spacing(6);
-  }
+.gem-c-input--with-search-icon {
+  padding-left: govuk-spacing(6);
 }
