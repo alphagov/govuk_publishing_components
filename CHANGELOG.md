@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Make input search styles less specific ([PR #5282](https://github.com/alphagov/govuk_publishing_components/pull/5282))
 * Add back search input spacing override ([PR #5280](https://github.com/alphagov/govuk_publishing_components/pull/5280))
 
 ## 64.1.0
