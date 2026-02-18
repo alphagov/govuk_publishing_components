@@ -299,10 +299,6 @@ describe('A stepnav module', function () {
       initialiseStepByStepModule()
     })
 
-    afterEach(function () {
-      window.sessionStorage.removeItem('unique-id')
-    })
-
     it('remembers individually opened steps', function () {
       var stepLink1 = element.querySelector('#topic-step-one .js-toggle-panel')
       var stepLink2 = element.querySelector('#topic-step-two .js-toggle-panel')
@@ -345,10 +341,6 @@ describe('A stepnav module', function () {
       initialiseStepByStepModule()
     })
 
-    afterEach(function () {
-      window.sessionStorage.removeItem('unique-id')
-    })
-
     it('opens the steps it has remembered', function () {
       var step1 = element.querySelector('#topic-step-one')
       expect(step1).toHaveClass('step-is-shown')
@@ -382,10 +374,6 @@ describe('A stepnav module', function () {
       initialiseStepByStepModule()
     })
 
-    afterEach(function () {
-      window.sessionStorage.removeItem('unique-id')
-    })
-
     it('sets the show all/hide all button text correctly', function () {
       var showHideAllButton = element.querySelector('.js-step-controls-button')
       expect(showHideAllButton.textContent).toBe('Hide all steps')
@@ -397,10 +385,6 @@ describe('A stepnav module', function () {
       createFixture('data-remember="true"')
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]')
       initialiseStepByStepModule()
-    })
-
-    afterEach(function () {
-      window.sessionStorage.removeItem('unique-id')
     })
 
     it('doesn\'t do anything', function () {
@@ -446,14 +430,6 @@ describe('A stepnav module', function () {
         link.classList.add('gem-c-step-nav__list-item--active')
       })
       initialiseStepByStepModule()
-    })
-
-    afterEach(function () {
-      var activeLinks = element.querySelectorAll('.js-will-be-an-active-link')
-      activeLinks.forEach((link) => {
-        link.classList.remove('gem-c-step-nav__list-item--active')
-      })
-      window.sessionStorage.removeItem('govuk-step-nav-active-link_unique-id')
     })
 
     it('puts a clicked link in session storage', function () {
@@ -510,11 +486,6 @@ describe('A stepnav module', function () {
       initialiseStepByStepModule()
     })
 
-    afterEach(function () {
-      element.querySelector('.js-will-be-an-active-link').classList.remove('gem-c-step-nav__list-item--active')
-      window.sessionStorage.removeItem('govuk-step-nav-active-link_unique-id')
-    })
-
     it('highlights only one link', function () {
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.5')
       expect(element.querySelectorAll('.gem-c-step-nav__list-item--active').length).toBe(1)
@@ -533,11 +504,6 @@ describe('A stepnav module', function () {
       initialiseStepByStepModule()
     })
 
-    afterEach(function () {
-      element.querySelector('.js-will-be-an-active-link').classList.remove('gem-c-step-nav__list-item--active')
-      window.sessionStorage.removeItem('govuk-step-nav-active-link_unique-id')
-    })
-
     it('highlights only one link', function () {
       expect(element.querySelectorAll('.gem-c-step-nav__list-item--active').length).toBe(1)
       expect(element.querySelectorAll('.gem-c-step-nav__step--active').length).toBe(1)
@@ -550,10 +516,6 @@ describe('A stepnav module', function () {
       container.querySelector('.js-will-be-an-active-link').classList.add('gem-c-step-nav__list-item--active')
       container.querySelector('.gem-c-step-nav__step').classList.remove('gem-c-step-nav__step--active')
       initialiseStepByStepModule()
-    })
-
-    afterEach(function () {
-      element.querySelector('.js-will-be-an-active-link').classList.remove('gem-c-step-nav__list-item--active')
     })
 
     it('highlights the first active link if no sessionStorage value is set', function () {
