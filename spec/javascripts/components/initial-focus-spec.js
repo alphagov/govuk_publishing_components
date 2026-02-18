@@ -1,29 +1,39 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('Initial focus script', function () {
   'use strict'
 
-  var FIXTURE
+  var container
+  var initialFocusElement
 
   function loadInitialFocusScript () {
-    var initialFocus = new GOVUK.Modules.InitialFocus($('[data-module=initial-focus]')[0])
+    initialFocusElement = document.querySelector('[data-module=initial-focus]')
+    var initialFocus = new GOVUK.Modules.InitialFocus(initialFocusElement)
     initialFocus.init()
   }
 
   beforeEach(function () {
-    FIXTURE =
-      '<div class="gem-c-success-alert" data-module="initial-focus">' +
-        '<h2 class="gem-c-success-summary__title">Message title</h2>' +
-        '<div class="gem-c-success-summary__body">A further description</div>' +
-      '</div>'
+    container = document.createElement('div')
+    container.innerHTML = `
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="event-name">
+          What is the name of the event?
+        </label>
+        <input data-module="initial-focus" class="govuk-input" id="event-name" name="eventName" type="text">
+      </div>
+    `
 
-    window.setFixtures(FIXTURE)
+    document.body.appendChild(container)
+  })
+
+  afterEach(function () {
+    document.body.removeChild(container)
   })
 
   it('focus', function () {
     loadInitialFocusScript()
 
-    expect($('[data-module=initial-focus]:focus')).toBeTruthy()
+    expect(document.activeElement).toEqual(initialFocusElement)
   })
 })
