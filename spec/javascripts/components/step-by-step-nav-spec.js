@@ -419,7 +419,7 @@ describe('A stepnav module', function () {
 
   describe('when a step is supposed to be shown by default', function () {
     beforeEach(function () {
-      createFixture('data-remember="true"')
+      createFixture()
       container.querySelector('#topic-step-two').setAttribute('data-show', '')
       initialiseStepByStepModule()
     })
