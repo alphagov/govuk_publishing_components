@@ -1,12 +1,12 @@
-<%
-  cb_helper = GovukPublishingComponents::Presenters::CheckboxesHelper.new(local_assigns)
-  id = cb_helper.id
-  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
-  component_helper.set_id(id)
-  component_helper.add_class(cb_helper.css_classes.join(" ")) # cb_helper.css_classes generates "gem-c-checkboxes"
-  component_helper.add_data_attribute({ module: "gem-checkboxes govuk-checkboxes" })
-%>
+<% cb_helper = GovukPublishingComponents::Presenters::CheckboxesHelper.new(local_assigns) %>
 <% if cb_helper.items.any? %>
+  <%
+    id = cb_helper.id
+    component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+    component_helper.set_id(id)
+    component_helper.add_class(cb_helper.css_classes.join(" ")) # cb_helper.css_classes generates "gem-c-checkboxes"
+    component_helper.add_data_attribute({ module: "gem-checkboxes govuk-checkboxes" })
+  %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if cb_helper.should_have_fieldset %>
       <% if cb_helper.heading_markup %>
