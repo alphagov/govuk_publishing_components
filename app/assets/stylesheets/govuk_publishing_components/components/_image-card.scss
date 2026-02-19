@@ -13,7 +13,7 @@
   @include govuk-text-colour;
 
   @include govuk-media-query($until: tablet) {
-    flex-direction: row-reverse;
+    flex-direction: column-reverse;
     gap: govuk-spacing(3);
   }
 }
@@ -142,7 +142,7 @@
     border-top: none;
   }
 
-  @include govuk-media-query($until: "mobile") {
+  @include govuk-media-query($until: mobile) {
     flex-direction: column-reverse;
   }
 }
