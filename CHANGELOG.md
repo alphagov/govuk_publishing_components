@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change blank repeated "Select One" option to "Select None" ([PR #5251](https://github.com/alphagov/govuk_publishing_components/pull/5251))
+
 ## 64.1.1
 
 * Make input search styles less specific ([PR #5282](https://github.com/alphagov/govuk_publishing_components/pull/5282))
