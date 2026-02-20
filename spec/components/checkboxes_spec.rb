@@ -66,6 +66,16 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-checkboxes", false
   end
 
+  it "renders nothing when no items are provided" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite skittle?",
+      items: [],
+    )
+
+    assert_select ".govuk-checkboxes", false
+  end
+
   it "shows a heading/legend if supplied with only one checkbox" do
     render_component(
       name: "favourite_colour",

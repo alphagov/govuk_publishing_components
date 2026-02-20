@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Don’t initialize the checkbox component helper if there are no items ([PR #5285](https://github.com/alphagov/govuk_publishing_components/pull/5285))
 * Change blank repeated "Select One" option to "Select None" ([PR #5251](https://github.com/alphagov/govuk_publishing_components/pull/5251))
 
 ## 64.1.1
