@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 /* global GOVUK */
 
 describe('Magna charta', function () {
@@ -127,22 +127,25 @@ describe('Magna charta', function () {
 
   describe('creating a graph of a single table', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(single)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#single')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = single
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#single'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      graphContainer = element.find('.mc-chart-container')
-      table = element.find('table')
-      toggle = element.find('.mc-toggle-button')
+      graph = element.querySelector('.mc-chart')
+      graphContainer = element.querySelector('.mc-chart-container')
+      table = element.querySelector('table')
+      toggle = element.querySelector('.mc-toggle-button')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('creates a new div containing the chart', function () {
-      expect(graph.length).toBe(1)
+      expect(graph).not.toBeNull()
     })
 
     it('the new chart copies over any other classes', function () {
@@ -150,28 +153,28 @@ describe('Magna charta', function () {
     })
 
     it('running toggle switches between chart and table', function () {
-      toggle[0].click()
+      toggle.click()
       expect(table).not.toHaveClass('mc-hidden')
       expect(graphContainer).toHaveClass('mc-hidden')
 
       // toggle it back
-      toggle[0].click()
+      toggle.click()
       expect(table).toHaveClass('mc-hidden')
       expect(graphContainer).not.toHaveClass('mc-hidden')
     })
 
     it('new chart div contains all table bits as divs', function () {
-      expect(graph.find('.mc-thead').length).toBe(1)
-      expect(graph.find('.mc-tr').length).toBe(4)
-      expect(graph.find('.mc-th').length).toBe(2)
-      expect(graph.find('.mc-td').length).toBe(6)
+      expect(graph.querySelectorAll('.mc-thead').length).toBe(1)
+      expect(graph.querySelectorAll('.mc-tr').length).toBe(4)
+      expect(graph.querySelectorAll('.mc-th').length).toBe(2)
+      expect(graph.querySelectorAll('.mc-td').length).toBe(6)
     })
 
     it('new chart divs contain the right values', function () {
-      var cells = graph.find('.mc-td')
-      expect(cells.eq(0).text()).toBe('Testing One')
-      expect(cells.eq(1).text()).toBe('5')
-      expect(graph.find('.mc-th').eq(0).text()).toBe('Some Data')
+      var cells = graph.querySelectorAll('.mc-td')
+      expect(cells[0].innerText).toBe('Testing One')
+      expect(cells[1].innerText).toBe('5')
+      expect(graph.querySelectorAll('.mc-th')[0].innerText).toBe('Some Data')
     })
 
     it('figures out the maximum graph value', function () {
@@ -181,46 +184,49 @@ describe('Magna charta', function () {
     })
 
     it('divs that are bars or keys are given correct classes', function () {
-      expect(graph.find('.mc-key-cell').length).toBe(3)
-      expect(graph.find('.mc-bar-cell').length).toBe(3)
+      expect(graph.querySelectorAll('.mc-key-cell').length).toBe(3)
+      expect(graph.querySelectorAll('.mc-bar-cell').length).toBe(3)
     })
 
     it('bar cells have their values wrapped in a span tag', function () {
-      expect(graph.find('.mc-bar-cell span').length).toBe(3)
+      expect(graph.querySelectorAll('.mc-bar-cell span').length).toBe(3)
     })
 
     it('bars are given the correct width', function () {
-      var bars = graph.find('.mc-bar-cell')
-      expect(bars.get(0).style.width).toBe(cW(5, 5))
-      expect(bars.get(1).style.width).toBe(cW(5, 4))
-      expect(bars.get(2).style.width).toBe(cW(5, 3))
+      var bars = graph.querySelectorAll('.mc-bar-cell')
+      expect(bars[0].style.width).toBe(cW(5, 5))
+      expect(bars[1].style.width).toBe(cW(5, 4))
+      expect(bars[2].style.width).toBe(cW(5, 3))
     })
 
     it('new chart is inserted into DOM after table', function () {
-      var chartContainer = table.next()
+      var chartContainer = table.nextElementSibling
       expect(chartContainer).toHaveClass('mc-chart-container')
-      expect(chartContainer.children(':first')).toHaveClass('mc-chart')
+      expect(chartContainer.firstChild).toHaveClass('mc-chart')
     })
 
     it('bars are given classes to track what number they are', function () {
-      graph.find('.mc-bar-cell').each(function (i, item) {
-        expect($(item)).toHaveClass('mc-bar-1')
+      graph.querySelectorAll('.mc-bar-cell').forEach((item) => {
+        expect(item).toHaveClass('mc-bar-1')
       })
     })
   })
 
   describe('creating a graph of a multiple table', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(multiple2)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#multiple2')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = multiple2
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#multiple2'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('the graph of a multiple table is given a class', function () {
@@ -231,16 +237,19 @@ describe('Magna charta', function () {
 
   describe('creating a graph of a multiple table with row headings', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(multiple3)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#multiple3')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = multiple3
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#multiple3'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('the graph of a multiple table is given a class', function () {
@@ -251,16 +260,19 @@ describe('Magna charta', function () {
 
   describe('creating a graph of a stacked table', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(multiple)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#multiple')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = multiple
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#multiple'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('having the class of mc-stacked sets stacked to true', function () {
@@ -268,34 +280,34 @@ describe('Magna charta', function () {
     })
 
     it('the cells that become bars are given the right classes', function () {
-      expect(graph.find('.mc-bar-cell').length).toBe(6) // bar cells
-      expect(graph.find('.mc-key-cell').length).toBe(3) // key cells
-      expect(graph.find('.mc-stacked-total').length).toBe(3) // total cells
+      expect(graph.querySelectorAll('.mc-bar-cell').length).toBe(6) // bar cells
+      expect(graph.querySelectorAll('.mc-key-cell').length).toBe(3) // key cells
+      expect(graph.querySelectorAll('.mc-stacked-total').length).toBe(3) // total cells
     })
 
     it('header cells get the right values', function () {
-      var head = graph.find('.mc-thead')
-      expect(head.find('.mc-stacked-header').length).toBe(1)
-      expect(head.find('.mc-th').eq(1)).toHaveClass('mc-key-1')
-      expect(head.find('.mc-key-header').length).toBe(2)
+      var head = graph.querySelector('.mc-thead')
+      expect(head.querySelectorAll('.mc-stacked-header').length).toBe(1)
+      expect(head.querySelectorAll('.mc-th')[1]).toHaveClass('mc-key-1')
+      expect(head.querySelectorAll('.mc-key-header').length).toBe(2)
     })
 
     it('the bar cells are given the right widths', function () {
-      var cells = graph.find('.mc-bar-cell')
-      expect(cells.get(0).style.width).toEqual(cW(12, 5))
-      expect(cells.get(1).style.width).toEqual(cW(12, 6))
-      expect(cells.get(2).style.width).toEqual(cW(12, 6))
-      expect(cells.get(3).style.width).toEqual(cW(12, 2))
-      expect(cells.get(4).style.width).toEqual(cW(12, 3))
-      expect(cells.get(5).style.width).toEqual(cW(12, 9))
+      var cells = graph.querySelectorAll('.mc-bar-cell')
+      expect(cells[0].style.width).toEqual(cW(12, 5))
+      expect(cells[1].style.width).toEqual(cW(12, 6))
+      expect(cells[2].style.width).toEqual(cW(12, 6))
+      expect(cells[3].style.width).toEqual(cW(12, 2))
+      expect(cells[4].style.width).toEqual(cW(12, 3))
+      expect(cells[5].style.width).toEqual(cW(12, 9))
     })
 
     it('the bar cells are given classes denoting their index', function () {
-      var rows = graph.find('.mc-tbody .mc-tr')
-      rows.each(function (_, row) {
-        var cells = $(row).find('.mc-bar-cell')
-        cells.each(function (i, cell) {
-          expect($(cell)).toHaveClass('mc-bar-' + (i + 1))
+      var rows = graph.querySelectorAll('.mc-tbody .mc-tr')
+      rows.forEach((row) => {
+        var cells = row.querySelectorAll('.mc-bar-cell')
+        cells.forEach((cell, i) => {
+          expect(cell).toHaveClass('mc-bar-' + (i + 1))
         })
       })
     })
@@ -309,20 +321,23 @@ describe('Magna charta', function () {
 
   describe('test applyOnInit', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(negative2)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#negative2')[0], {
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = negative2
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#negative2'), {
         applyOnInit: false,
         returnReference: true
       })
       magna.init()
-      graph = element.find('.mc-chart')
-      graphContainer = element.find('.mc-chart-container')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      graphContainer = element.querySelector('.mc-chart-container')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('doesnt show the chart initially', function () {
@@ -331,7 +346,7 @@ describe('Magna charta', function () {
     })
 
     it('graph is shown when toggle is called', function () {
-      element.find('.mc-toggle-button')[0].click()
+      element.querySelector('.mc-toggle-button').click()
       expect(table).toHaveClass('mc-hidden')
       expect(graphContainer).not.toHaveClass('mc-hidden')
     })
@@ -339,16 +354,19 @@ describe('Magna charta', function () {
 
   describe('test negative', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(negative)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#negative')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = negative
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#negative'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('class mc-negative sets negative option to true', function () {
@@ -356,21 +374,21 @@ describe('Magna charta', function () {
     })
 
     it('cells are given positive and negative classes', function () {
-      expect(graph.find('.mc-bar-negative').length).toBe(2)
-      expect(graph.find('.mc-bar-positive').length).toBe(2)
+      expect(graph.querySelectorAll('.mc-bar-negative').length).toBe(2)
+      expect(graph.querySelectorAll('.mc-bar-positive').length).toBe(2)
     })
 
     it('cells are given the right width', function () {
-      var cells = graph.find('.mc-bar-cell')
-      expect(cells.get(0).style.width).toEqual(cW(10, 5))
-      expect(cells.get(1).style.width).toEqual(cW(10, 10))
-      expect(cells.get(2).style.width).toEqual(cW(10, 10))
-      expect(cells.get(3).style.width).toEqual(cW(10, 5))
+      var cells = graph.querySelectorAll('.mc-bar-cell')
+      expect(cells[0].style.width).toEqual(cW(10, 5))
+      expect(cells[1].style.width).toEqual(cW(10, 10))
+      expect(cells[2].style.width).toEqual(cW(10, 10))
+      expect(cells[3].style.width).toEqual(cW(10, 5))
     })
 
     it('positive cells are given a left margin to align them with negative cells', function () {
-      var cells = graph.find('.mc-bar-positive')
-      expect(cells.get(0).style.marginLeft).toEqual(cW(10, 10))
+      var cells = graph.querySelectorAll('.mc-bar-positive')
+      expect(cells[0].style.marginLeft).toEqual(cW(10, 10))
     })
 
     it('calculateMaxWidth() returns extra info on negative chart', function () {
@@ -385,20 +403,23 @@ describe('Magna charta', function () {
 
   describe('test outdent all', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(outdentAll)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#outdent-all')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = outdentAll
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#outdent-all'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('all cell values are pushed left', function () {
-      graph.find('.mc-bar-cell span').each(function (i, item) {
+      graph.querySelectorAll('.mc-bar-cell span').forEach((item) => {
         expect(item.style.marginLeft).toBe('100%')
       })
     })
@@ -406,36 +427,42 @@ describe('Magna charta', function () {
 
   describe('creating a graph of a table missing header elements', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(noHeader)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#noHeader')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = noHeader
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#noHeader'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('marks a chart as not enabled and does not create a chart', function () {
       expect(magna.ENABLED).toBe(false)
-      expect(graph.length).toBe(0)
+      expect(graph).toBeNull()
     })
   })
 
   describe('test utils', function () {
     beforeEach(function () {
-      element = $('<div/>').attr('id', 'test-magna-charta').html(single)
-      $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta(element.find('#single')[0], { returnReference: true })
+      element = document.createElement('div')
+      element.setAttribute('id', 'test-magna-charta')
+      element.innerHTML = single
+      document.body.appendChild(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.querySelector('#single'), { returnReference: true })
       magna.init()
-      graph = element.find('.mc-chart')
-      table = element.find('table')
+      graph = element.querySelector('.mc-chart')
+      table = element.querySelector('table')
     })
 
     afterEach(function () {
-      $('body').find('#test-magna-charta').remove()
+      var testMagnaCharta = document.querySelector('#test-magna-charta')
+      testMagnaCharta.remove()
     })
 
     it('utils.isFloat', function () {
