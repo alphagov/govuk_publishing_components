@@ -30,7 +30,7 @@ examples:
 
       This option is not tied to the `heading_level` option in order to give flexibility.
     data:
-      text: 'One big heading'
+      text: 'One big heading containing a number of words'
       font_size: "xl"
   right_to_left:
     data:
