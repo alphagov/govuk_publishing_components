@@ -286,7 +286,9 @@
     return sinceNavigationStart;
   }
 
-  var version = "4.4.2";
+  var version = "4.4.3";
+  var pkg = {
+    version: version};
 
   function padStart(str, length$1, char) {
     while (str[length] < length$1) {
@@ -295,7 +297,8 @@
     return str;
   }
 
-  var VERSION = version;
+  var pkgVersion = pkg.version;
+  var VERSION = pkgVersion;
   /**
   * Returns the version of the script as a float to be stored in legacy systems that do not support
   * string versions.
@@ -458,7 +461,7 @@
           emit("beacon", payload);
         }
       }
-      catch (e) {
+      catch (_b) {
         // Intentionally empty; handled below
       }
       if (!this.isSent) {
@@ -636,7 +639,7 @@
         return currentSelector;
       }
     }
-    catch (error) {
+    catch (_a) {
       // Do nothing.
     }
     return selector;
@@ -1461,7 +1464,7 @@
         // Seeing "Permission denied" errors, so do a simple try-catch.
         bCancelable = evt.cancelable;
       }
-      catch (e) {
+      catch (_a) {
         // bail - no need to return anything
         logger.logEvent(52 /* LogEvent.InputEventPermissionError */);
         return;
@@ -2053,7 +2056,7 @@
         try {
           size += e.innerHTML[length];
         }
-        catch (e) {
+        catch (_a) {
           // It seems like IE throws an error when accessing the innerHTML property
           logger.logEvent(53 /* LogEvent.InnerHtmlAccessError */);
           return -1;
@@ -2359,7 +2362,7 @@
           curtop += el.offsetTop;
           el = el.offsetParent;
         }
-        catch (e) {
+        catch (_a) {
           // If we get an exception, just return the current values.
           return [curleft, curtop];
         }
@@ -2681,7 +2684,7 @@
             target = e.target;
           }
         }
-        catch (e) {
+        catch (_a) {
           logger.logEvent(54 /* LogEvent.EventTargetAccessError */);
         }
         if (target) {
@@ -2827,7 +2830,7 @@
           }
         }
       }
-      catch (e) {
+      catch (_a) {
         logger.logEvent(55 /* LogEvent.CookieReadError */);
       }
       return undefined;
@@ -2842,7 +2845,7 @@
         (globalConfig.cookieDomain ? "; domain=" + globalConfig.cookieDomain : "") +
         "; path=/; SameSite=Lax";
       }
-      catch (e) {
+      catch (_a) {
         logger.logEvent(56 /* LogEvent.CookieSetError */);
       }
     }
@@ -2994,9 +2997,9 @@
     */
     function _runCommand(_a) {
       var fn = _a[0], args = _a.slice(1);
-      if (typeof globalLux[fn] === "function") {
-        // eslint-disable-next-line @typescript-eslint/ban-types
-        globalLux[fn].apply(globalLux, args);
+      var method = globalLux[fn];
+      if (typeof method === "function") {
+        method.apply(globalLux, args);
       }
     }
     // Process the command queue
