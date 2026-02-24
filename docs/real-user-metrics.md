@@ -83,6 +83,8 @@ It's worth enabling your notifications for this repo in case the icinga alert fa
 
 ### Getting the new code
 
+First, leave a few days between the release and doing the update. All updates should be completed within two weeks of a new release, but sometimes a new release is followed by more new releases to correct bugs, so it is best to wait for a few days.
+
 Follow the steps below. You can also build the version of `lux.js` that's currently on GOV.UK by using the source code on their [releases page](https://github.com/SpeedCurve-Metrics/lux.js/releases/). You can then use this to run a diff check of our version against the new version. If the changes are small enough, you could decide to just manually copy and paste the changed lines to our `lux-reporter.js` file as a simple way to update LUX.
 
 - locally clone the lux.js repo from [the SpeedCurve github repo](https://github.com/SpeedCurve-Metrics/lux.js)
@@ -91,6 +93,7 @@ Follow the steps below. You can also build the version of `lux.js` that's curren
 - open the current file [lux-reporter.js](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-reporter.js)
 - copy the changes across, see below for what needs to be preserved (might be easiest to make a new file, copy the generated code into it, then update with the relevant bits from the current file, before overwriting it)
 - fix the indenting to match the current file (to minimise changes when reviewing)
+- do a minimal but reasonable security check on the code e.g. check there are no instances of `createElement` or redirects
 
 Make sure the new code has the following things from the current file:
 
