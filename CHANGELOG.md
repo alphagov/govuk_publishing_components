@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix modal dialogue component styles ([PR #5295](https://github.com/alphagov/govuk_publishing_components/pull/5295))
 * Update to LUX 4.4.3 ([PR #5293](https://github.com/alphagov/govuk_publishing_components/pull/5293))
 * Don’t initialize the checkbox component helper if there are no items ([PR #5285](https://github.com/alphagov/govuk_publishing_components/pull/5285))
 * Change blank repeated "Select One" option to "Select None" ([PR #5251](https://github.com/alphagov/govuk_publishing_components/pull/5251))

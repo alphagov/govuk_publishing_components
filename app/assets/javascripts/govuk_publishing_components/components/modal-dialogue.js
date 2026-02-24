@@ -49,7 +49,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.$html.classList.add('gem-o-template--modal')
     this.$body.classList.add('gem-o-template__body--modal')
-    this.$body.classList.add('gem-o-template__body--blur')
     this.$focusedElementBeforeOpen = document.activeElement
     this.$module.style.display = 'block'
     this.$dialogBox.focus()
@@ -64,7 +63,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.$html.classList.remove('gem-o-template--modal')
     this.$body.classList.remove('gem-o-template__body--modal')
-    this.$body.classList.remove('gem-o-template__body--blur')
     this.$module.style.display = 'none'
     this.$focusedElementBeforeOpen.focus()
 

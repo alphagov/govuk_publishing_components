@@ -71,10 +71,9 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: .8;
-  background: govuk-colour("black");
   pointer-events: none;
   touch-action: none;
+  backdrop-filter: blur(2px) brightness(0.4);
 }
 
 .gem-o-template--modal {
@@ -85,17 +84,6 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 
 .gem-o-template__body--modal {
   overflow: hidden;
-}
-
-.gem-o-template__body--blur {
-  .govuk-skip-link,
-  .govuk-header,
-  .govuk-phase-banner,
-  .govuk-width-container .govuk-back-link,
-  .govuk-footer,
-  .govuk-main-wrapper {
-    filter: blur(2px);
-  }
 }
 
 .gem-c-modal-dialogue__header {
