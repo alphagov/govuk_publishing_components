@@ -4,6 +4,10 @@
   // needs to be this specific to override govuk-heading
   .gem-c-heading__text {
     margin: 0;
+    // improve visual layout of headings
+    // set balance as a fallback for firefox, pretty for other browsers
+    text-wrap: balance;
+    text-wrap: pretty;
   }
 }
 
