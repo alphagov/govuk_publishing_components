@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 64.1.2
 
 * Improve layout of heading component text ([PR #5292](https://github.com/alphagov/govuk_publishing_components/pull/5292))
 * Fix modal dialogue component styles ([PR #5295](https://github.com/alphagov/govuk_publishing_components/pull/5295))
