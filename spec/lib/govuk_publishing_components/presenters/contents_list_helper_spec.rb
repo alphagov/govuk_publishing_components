@@ -26,8 +26,10 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
       expect(strip_tags(wrapped_html)).to eql(text)
     end
 
-    it "wraps a number and text in span elements if it's a number without a period" do
-      assert_split_number_and_text("1 Thing", "1", "Thing")
+    it "does nothing if the number has no period" do
+      cl = described_class.new({})
+      input = "1 Thing"
+      expect(cl.wrap_numbers_with_spans(input)).to eql(input)
     end
 
     it "wraps a number in the form X.Y" do
