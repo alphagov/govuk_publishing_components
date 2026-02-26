@@ -38,14 +38,6 @@ examples:
         <p class="govuk-body">Attorney General's office</p>
         <%= component %>
       </div>
-  with_GTM_tracking:
-    description: Applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
-    data:
-      title: Help with nationality
-      data_attributes:
-        tracking: GTM-123AB
-      block: |
-        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
   with_ga4_tracking:
     description: |
       GA4 tracking is mostly handled internally by the component, apart from the required attribute `index_section_count`. This records the number of details components on the page and must be passed by the hosting application. Other GA4 attributes can also be passed if required, including to override attributes set by the component (for some reason this doesn't work in the component guide but works in applications).

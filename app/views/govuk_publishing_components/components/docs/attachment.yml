@@ -4,8 +4,7 @@ body: |
   This component shows a link to a document that is attached to GOV.UK content
   along with a thumbnail and relevant file data.
 
-  It is intended to be rendered in Govspeak and as an attachment 'preview' in
-  Content Publisher.
+  It is intended to be rendered in Govspeak.
 
   It is not as rich in features as the [attachment rendering][Whitehall]
   provided by Whitehall, it lacks support for multiple languages, CSV previews

@@ -75,24 +75,20 @@ examples:
           content: |
             <p class="govuk-body-m">Here is a single piece of content, there should be no tabs.</p>
   with_data_attributes:
-    description: |
-      The example shown applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
-
-      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
       tabs:
         - id: "tab-with-data-attributes-1"
           label: "First section"
           title: "First section"
           tab_data_attributes:
-            tracking: GTM-123AB
+            hello: world
           content: |
             <p class="govuk-body-m">Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
         - id: "tab-with-data-attributes-2"
           label: "Second section"
           title: "Second section"
           tab_data_attributes:
-            tracking: GTM-123AB
+            hello: world
           content: |
             <p class="govuk-body-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
   without_ga4_tracking_on_tabs:

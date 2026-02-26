@@ -90,7 +90,7 @@ examples:
     description: |
       This option allows links to be added to the table headers for sorting. Sorting must be handled server side, it is not done by the component.
 
-      The example shown applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
+      The example shown applies a data attribute too.
 
       Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [GA4 link tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/trackers/ga4-link-tracker.md).
     data:
@@ -102,7 +102,7 @@ examples:
           sort_direction: descending
           href: /?sort_direction=desc
           data_attributes:
-            tracking: "UTM-123A"
+            hello: world
         - text: Rate for vehicles
           format: numeric
           href: /?sort_direction=desc
