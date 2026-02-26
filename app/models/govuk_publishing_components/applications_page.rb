@@ -1,12 +1,13 @@
 module GovukPublishingComponents
   class ApplicationsPage
-    attr_reader :source
+    attr_reader :source, :ruby_version
 
     def initialize(application)
       @application = application
       @dir = get_directory
       @gemfilelock = get_file("Gemfile.lock")
-      @rubyfile = get_file(".ruby-version")
+      rubyfile = get_file(".ruby-version")
+      @ruby_version = rubyfile.strip if rubyfile
     end
 
     def readable_name
@@ -21,8 +22,37 @@ module GovukPublishingComponents
       parse_file(@gemfilelock, /sass-embedded \(([^)>=~ ]+)\)/)
     end
 
-    def ruby_version
-      @rubyfile.strip if @rubyfile
+    def ruby_status(version)
+      version = version.to_f # to_f ignores non-numbers on the string end, so 3.3.1 becomes 3.1
+      versions = [
+        {
+          version: 3.3,
+          eol: "2027-03-31",
+        },
+        {
+          version: 3.2,
+          eol: "2026-03-31",
+        },
+        {
+          version: 3.1,
+          eol: "2024-04-23",
+        },
+      ]
+      today = Date.today # rubocop:disable Rails/Date
+      result = "not set"
+
+      versions.each do |v|
+        next unless version >= v[:version]
+
+        version_eol = Date.parse(v[:eol])
+        age = version_eol - today
+        result = "green"
+        result = "orange" if age < 100
+        result = "red" if age.negative?
+        break
+      end
+
+      result
     end
 
   private

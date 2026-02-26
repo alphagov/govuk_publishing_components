@@ -32,6 +32,7 @@
       <% if app[:ruby_version] %>
         <%= render "govuk_publishing_components/components/tag", {
           text: app[:ruby_version],
+          colour: app[:ruby_version_status],
         } %>
       <% end %>
     </td>

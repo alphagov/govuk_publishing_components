@@ -47,6 +47,52 @@ describe "The applications status page" do
       expect(app.gem_version).to eq("61.3.5")
       expect(app.sass_version).to be_nil
     end
+
+    describe "it checks the ruby version" do
+      it "when 3.2 is nearing end of life" do
+        allow(Date).to receive(:today).and_return(Date.parse("2026-02-20"))
+        app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
+        expect(app.ruby_status("3.1")).to eq("red")
+        expect(app.ruby_status("3.1.2")).to eq("red")
+        expect(app.ruby_status("3.2")).to eq("orange")
+        expect(app.ruby_status("3.2.9")).to eq("orange")
+        expect(app.ruby_status("3.3")).to eq("green")
+        expect(app.ruby_status("3.3.4")).to eq("green")
+      end
+
+      it "when 3.1 is nearing end of life" do
+        allow(Date).to receive(:today).and_return(Date.parse("2024-04-10"))
+        app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
+        expect(app.ruby_status("3.1")).to eq("orange")
+        expect(app.ruby_status("3.1.2")).to eq("orange")
+        expect(app.ruby_status("3.2")).to eq("green")
+        expect(app.ruby_status("3.2.9")).to eq("green")
+        expect(app.ruby_status("3.3")).to eq("green")
+        expect(app.ruby_status("3.3.4")).to eq("green")
+      end
+
+      it "when 3.3 is nearing end of life" do
+        allow(Date).to receive(:today).and_return(Date.parse("2027-03-10"))
+        app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
+        expect(app.ruby_status("3.1")).to eq("red")
+        expect(app.ruby_status("3.1.2")).to eq("red")
+        expect(app.ruby_status("3.2")).to eq("red")
+        expect(app.ruby_status("3.2.9")).to eq("red")
+        expect(app.ruby_status("3.3")).to eq("orange")
+        expect(app.ruby_status("3.3.4")).to eq("orange")
+      end
+
+      it "in the distant future" do
+        allow(Date).to receive(:today).and_return(Date.parse("2051-03-10"))
+        app = GovukPublishingComponents::ApplicationsPage.new(fake_app)
+        expect(app.ruby_status("3.1")).to eq("red")
+        expect(app.ruby_status("3.1.2")).to eq("red")
+        expect(app.ruby_status("3.2")).to eq("red")
+        expect(app.ruby_status("3.2.9")).to eq("red")
+        expect(app.ruby_status("3.3")).to eq("red")
+        expect(app.ruby_status("3.3.4")).to eq("red")
+      end
+    end
   end
 
   describe "when the app is not found locally" do
