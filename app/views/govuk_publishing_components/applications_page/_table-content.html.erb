@@ -36,5 +36,12 @@
         } %>
       <% end %>
     </td>
+    <td class="govuk-table__cell">
+      <% if app[:yarn_version] %>
+        <%= render "govuk_publishing_components/components/tag", {
+          text: app[:yarn_version],
+        } %>
+      <% end %>
+    </td>
   </tr>
 <% end %>

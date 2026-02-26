@@ -42,6 +42,7 @@ module GovukPublishingComponents
             sass_version: app.sass_version,
             ruby_version: app.ruby_version,
             ruby_version_status: app.ruby_status(app.ruby_version),
+            yarn_version: app.yarn_version,
           }
         end
       end

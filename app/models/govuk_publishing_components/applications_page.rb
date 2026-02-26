@@ -8,6 +8,7 @@ module GovukPublishingComponents
       @gemfilelock = get_file("Gemfile.lock")
       rubyfile = get_file(".ruby-version")
       @ruby_version = rubyfile.strip if rubyfile
+      @packagejson = get_file("package.json")
     end
 
     def readable_name
@@ -53,6 +54,10 @@ module GovukPublishingComponents
       end
 
       result
+    end
+
+    def yarn_version
+      parse_file(@packagejson, /"packageManager"\s*:\s*"yarn@(\d+(?:\.\d+)*)"/)
     end
 
   private
