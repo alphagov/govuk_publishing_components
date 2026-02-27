@@ -40,6 +40,7 @@
       <% if app[:yarn_version] %>
         <%= render "govuk_publishing_components/components/tag", {
           text: app[:yarn_version],
+          colour: app[:yarn_version_status],
         } %>
       <% end %>
     </td>

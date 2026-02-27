@@ -43,6 +43,7 @@ module GovukPublishingComponents
             ruby_version: app.ruby_version,
             ruby_version_status: app.ruby_status(app.ruby_version),
             yarn_version: app.yarn_version,
+            yarn_version_status: app.yarn_version.to_f >= 4 ? "green" : "red",
           }
         end
       end
