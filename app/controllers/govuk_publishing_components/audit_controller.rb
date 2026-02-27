@@ -5,10 +5,12 @@ module GovukPublishingComponents
         account-api
         collections
         collections-publisher
+        content-block-manager
         content-data-admin
         content-tagger
         datagovuk_find
         email-alert-frontend
+        fact-check-manager
         feedback
         finder-frontend
         frontend
@@ -17,6 +19,7 @@ module GovukPublishingComponents
         govspeak-preview
         govuk-chat
         govuk-developer-docs
+        govuk_web_banners
         local-links-manager
         manuals-publisher
         places-manager
