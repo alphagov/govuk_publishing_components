@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Improve govspeak chart button consistency ([PR #5305](https://github.com/alphagov/govuk_publishing_components/pull/5305))
+
 ## 64.1.2
 
 * Improve layout of heading component text ([PR #5292](https://github.com/alphagov/govuk_publishing_components/pull/5292))

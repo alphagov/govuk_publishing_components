@@ -193,13 +193,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var toggleText = document.createElement('span')
     var toggleStatus = document.createElement('span')
 
-    toggleText.classList.add('mc-toggle-text')
+    toggleText.classList.add('js-toggle-text')
     toggleText.innerHTML = chartVisibleText
 
     toggleStatus.classList.add('govuk-visually-hidden', 'mc-toggle-status')
     toggleStatus.setAttribute('role', 'alert')
 
-    link.classList.add('govuk-body-s', 'mc-toggle-button')
+    link.classList.add('gem-c-button', 'govuk-button', 'govuk-button--secondary')
     link.appendChild(toggleText)
     link.appendChild(toggleStatus)
 
@@ -213,7 +213,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.toggleLink.addEventListener('click', function (e) {
       e.preventDefault()
 
-      var toggleText = that.toggleLink.querySelector('.mc-toggle-text')
+      var toggleText = that.toggleLink.querySelector('.js-toggle-text')
       var toggleStatus = that.toggleLink.querySelector('.mc-toggle-status')
 
       that.$graphContainer.classList.toggle('mc-hidden')
