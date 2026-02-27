@@ -43,7 +43,7 @@ module GovukPublishingComponents
       def pages_link_helper
         return unless has_pages?
 
-        page_links = @items.each_with_index.map do |item, index|
+        page_links = @items.reject(&:blank?).each_with_index.map do |item, index|
           { href: nil, ellipsis: nil, current: nil, number: nil, visually_hidden_text: nil, **item.symbolize_keys } => { href:, ellipsis:, current:, number:, visually_hidden_text: }
 
           raise ArgumentError, "Number or ellipsis value required for item #{index}" if ellipsis.blank? && number.blank?

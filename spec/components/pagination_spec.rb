@@ -50,6 +50,28 @@ describe "Pagination", type: :view do
     assert_link("page-1")
   end
 
+  it "renders pagination container and page links when items are provided, but ignores items that are nil or empty" do
+    render_component(
+      items: [
+        {
+          number: "1",
+          href: "page-1",
+        },
+        nil,
+        {},
+        {
+          number: "4",
+          href: "page-4",
+        },
+      ],
+    )
+
+    assert_select ".govuk-pagination__item", count: 2
+    assert_select ".govuk-pagination__item:nth-child(1)", text: "1"
+    assert_select ".govuk-pagination__item:nth-child(2)", text: "4"
+    assert_link("page-1")
+  end
+
   it "renders page link as current page" do
     render_component(
       items: [
