@@ -10,7 +10,7 @@ body: |
 
   Modal components must be a direct descendant of the `<body>` element; we recommend placing it toward the end of the document for performance considerations.
 
-  This component is currently experimental. If you are using it, please feed back any research findings to the Content Publisher team.
+  This component is currently experimental. If you are using it, please feed back any research findings to #govuk-ruby-frontenders on Slack.
 accessibility_criteria: |
   The modal dialogue box must:
 

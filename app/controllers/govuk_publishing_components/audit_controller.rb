@@ -6,7 +6,6 @@ module GovukPublishingComponents
         collections
         collections-publisher
         content-data-admin
-        content-publisher
         content-tagger
         datagovuk_find
         email-alert-frontend
@@ -24,7 +23,6 @@ module GovukPublishingComponents
         publisher
         release
         search-admin
-        search-v2-evaluator
         service-manual-publisher
         short-url-manager
         signon
