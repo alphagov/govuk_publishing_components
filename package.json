@@ -38,7 +38,7 @@
     "accessible-autocomplete": "^3.0.1",
     "axe-core": "^4.11.1",
     "choices.js": "^11.1.0",
-    "govuk-frontend": "5.13.0",
+    "govuk-frontend": "5.14.0",
     "sortablejs": "^1.15.7"
   },
   "devDependencies": {
