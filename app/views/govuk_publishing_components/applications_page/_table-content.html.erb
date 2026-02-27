@@ -32,6 +32,15 @@
       <% if app[:ruby_version] %>
         <%= render "govuk_publishing_components/components/tag", {
           text: app[:ruby_version],
+          colour: app[:ruby_version_status],
+        } %>
+      <% end %>
+    </td>
+    <td class="govuk-table__cell">
+      <% if app[:yarn_version] %>
+        <%= render "govuk_publishing_components/components/tag", {
+          text: app[:yarn_version],
+          colour: app[:yarn_version_status],
         } %>
       <% end %>
     </td>
