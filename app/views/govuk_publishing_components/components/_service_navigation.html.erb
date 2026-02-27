@@ -31,7 +31,7 @@
         <% if navigation_items.present? %>
           <nav aria-label="<%= navigation_aria_label %>" class="govuk-service-navigation__wrapper">
             <% if collapse_navigation_on_mobile %>
-              <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
+              <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
                 Menu
               </button>
             <% end %>
