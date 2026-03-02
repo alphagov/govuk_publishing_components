@@ -130,7 +130,7 @@ describe('Magna charta', function () {
       graph = element.querySelector('.mc-chart')
       graphContainer = element.querySelector('.mc-chart-container')
       table = element.querySelector('table')
-      toggle = element.querySelector('.mc-toggle-button')
+      toggle = element.querySelector('.govuk-button--secondary')
     })
 
     afterEach(function () {
@@ -342,7 +342,7 @@ describe('Magna charta', function () {
     })
 
     it('graph is shown when toggle is called', function () {
-      element.querySelector('.mc-toggle-button').click()
+      element.querySelector('.govuk-button--secondary').click()
       expect(table).toHaveClass('mc-hidden')
       expect(graphContainer).not.toHaveClass('mc-hidden')
     })
