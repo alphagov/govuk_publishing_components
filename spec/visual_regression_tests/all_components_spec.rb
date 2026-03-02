@@ -8,18 +8,12 @@ describe "visual regression test runner Percy", :visual_regression do
     # Freeze time for consistency
     travel_to Time.zone.local(2020, 12, 1, 6, 0, 0)
 
-    skip_as_govspeak_times_out = %w[
-      /component-guide/govspeak/preview
-    ]
-
     skip_non_visible_components = %w[
       /component-guide/meta_tags/preview
       /component-guide/machine_readable_metadata/preview
       /component-guide/google_tag_manager_script/preview
       /component-guide/layout_for_admin/preview
     ]
-
-    all_components_to_skip = skip_as_govspeak_times_out + skip_non_visible_components
 
     visit("/component-guide")
 
@@ -34,7 +28,7 @@ describe "visual regression test runner Percy", :visual_regression do
     component_links << URI("/public")
 
     component_links.each do |link|
-      next if all_components_to_skip.include?(link.path)
+      next if skip_non_visible_components.include?(link.path)
 
       visit(link)
 
