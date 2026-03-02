@@ -684,7 +684,7 @@ $search-icon-height: 20px;
     border-top: 0;
     border-bottom: 2pt solid $govuk-print-text-colour;
     margin: 0 0 5mm;
-    background: none;
+    background: transparent;
 
     &:has(.gem-c-layout-super-navigation-header__header-logo .govuk-visually-hidden) {
       border: 0;
@@ -697,6 +697,10 @@ $search-icon-height: 20px;
 
     .govuk-width-container {
       margin: 0;
+    }
+
+    .gem-c-layout-super-navigation-header__container {
+      background: transparent;
     }
   }
 
