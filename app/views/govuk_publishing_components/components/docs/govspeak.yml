@@ -317,7 +317,7 @@ examples:
         </section>
         <section class="attachment embedded" id="attachment_1399344">
           <div class="attachment-thumb">
-            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/world-location-news/294043.es-419"><img alt="" src="https://assets.digital.cabinet-office.gov.uk/government/assets/pub-cover-doc-afe3b0a8a9511beeca890340170aee8b5649413f948e512c9b8ce432d8513d32.png"></a>
+            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/world-location-news/294043.es-419"><img alt="" src="#"></a>
           </div>
           <div class="attachment-details">
             <h2 class="title"><a href="https://www.gov.uk/government/world-location-news/294043.es-419">Document attachment</a></h2>
@@ -345,7 +345,7 @@ examples:
         </section>
         <section class="attachment embedded" id="attachment_1399348">
           <div class="attachment-thumb">
-            <img alt="" src="https://assets.digital.cabinet-office.gov.uk/government/assets/pub-cover-spreadsheet-471052e0d03e940bbc62528a05ac204a884b553e4943e63c8bffa6b8baef8967.png">
+            <img alt="" src="#">
           </div>
           <div class="attachment-details">
             <h2 class="title">Previewable online example</h2>
@@ -366,7 +366,7 @@ examples:
         </section>
         <section class="attachment embedded" id="attachment_1243761">
           <div class="attachment-thumb">
-            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/statistical-data-sets/env24-fly-tipping-incidents-and-actions-taken-in-england"><img alt="" src="https://assets.digital.cabinet-office.gov.uk/government/assets/pub-cover-spreadsheet-471052e0d03e940bbc62528a05ac204a884b553e4943e63c8bffa6b8baef8967.png"></a>
+            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/statistical-data-sets/env24-fly-tipping-incidents-and-actions-taken-in-england"><img alt="" src="#"></a>
           </div>
           <div class="attachment-details">
             <h2 class="title"><a aria-describedby="attachment-1243761-accessibility-help" href="https://www.gov.uk/government/statistical-data-sets/env24-fly-tipping-incidents-and-actions-taken-in-england">Fly-tipping incidents and actions reported by local authorities in 2014 to 2015</a></h2>
@@ -391,7 +391,7 @@ examples:
         </section>
         <section class="attachment embedded" id="attachment_1112527">
           <div class="attachment-thumb">
-            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/publications/summer-budget-2015/summer-budget-2015"><img alt="" src="https://assets.digital.cabinet-office.gov.uk/government/assets/pub-cover-html-b0465911e56983d98c70f0e25fba24bc206d37e8c83d4addf6421dcf6022c6cd.png"></a>
+            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/publications/summer-budget-2015/summer-budget-2015"><img alt="" src="#"></a>
           </div>
           <div class="attachment-details">
             <h2 class="title"><a href="https://www.gov.uk/government/publications/summer-budget-2015/summer-budget-2015">Summer Budget 2015</a></h2>
@@ -402,7 +402,7 @@ examples:
         </section>
         <section class="attachment hosted-externally" id="attachment_1425055">
           <div class="attachment-thumb">
-            <a aria-hidden="true" class="thumbnail" href="http://example.com"><img alt="" src="//www.gov.uk/government/assets/pub-cover-a380604bb953dc22ac9dcfbf3cc65598327f493c37b09ac497c45148cbaa21b1.png"></a>
+            <a aria-hidden="true" class="thumbnail" href="http://example.com"><img alt="" src="#"></a>
           </div>
           <div class="attachment-details">
             <h2 class="title"><a rel="external" href="https://www.arcgis.com/apps/opsdashboard/index.html#/f94c3c90da5b4e9f9a0b19484dd4bb14">Track coronavirus cases</a></h2>
@@ -413,7 +413,7 @@ examples:
         </section>
         <section class="attachment hosted-externally" id="attachment_1425056">
           <div class="attachment-thumb">
-            <a aria-hidden="true" class="thumbnail" href="http://example.com"><img alt="" src="//www.gov.uk/government/assets/pub-cover-a380604bb953dc22ac9dcfbf3cc65598327f493c37b09ac497c45148cbaa21b1.png"></a>
+            <a aria-hidden="true" class="thumbnail" href="http://example.com"><img alt="" src="#"></a>
           </div>
           <div class="attachment-details">
             <h2 class="title"><a rel="external" href="http://example.com">An external link (with all possible metadata)</a></h2>
@@ -431,7 +431,7 @@ examples:
         </section>
         <section class="attachment embedded" id="attachment_1398523">
           <div class="attachment-thumb">
-            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/consultations/environmental-permitting-updating-the-standards-for-petrol-vapour-recovery-at-service-stations"><img alt="" src="https://assets.digital.cabinet-office.gov.uk/government/uploads/system/uploads/attachment_data/file/498443/thumbnail_petrol-vapour-recovery-consult-sum-resp.pdf.png"></a>
+            <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/consultations/environmental-permitting-updating-the-standards-for-petrol-vapour-recovery-at-service-stations"><img alt="" src="#"></a>
           </div>
           <div class="attachment-details">
             <h2 class="title"><a href="https://www.gov.uk/government/consultations/environmental-permitting-updating-the-standards-for-petrol-vapour-recovery-at-service-stations">Consultation outcome with published date</a></h2>
