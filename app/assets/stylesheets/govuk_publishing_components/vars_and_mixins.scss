@@ -1,6 +1,8 @@
 // nothing in this file should add any CSS weight
 // so that it can be imported into any CSS file
 
+@import "settings/app-image-url";
+@import "settings/app-font-url";
 @import "settings/govuk-frontend-settings";
 @import "govuk/base";
 @import "settings/govuk-frontend-vars";
