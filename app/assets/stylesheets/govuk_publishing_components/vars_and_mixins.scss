@@ -5,6 +5,4 @@
 @import "govuk/base";
 @import "settings/govuk-frontend-vars";
 
-@import "govuk_publishing_components/components/mixins/css3";
-@import "govuk_publishing_components/components/mixins/grid-helper";
-@import "govuk_publishing_components/components/mixins/margins";
+@import "govuk_publishing_components/components/mixins/index";

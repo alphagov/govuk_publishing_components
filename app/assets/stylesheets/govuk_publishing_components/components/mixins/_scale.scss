@@ -1,0 +1,5 @@
+@mixin scale($size) {
+  -webkit-transform: scale($size);  // Chrome, Opera 15+, Safari 3.1+
+  -ms-transform: scale($size);  // IE 9
+  transform: scale($size);  // Firefox 16+, IE 10+, Opera
+}
