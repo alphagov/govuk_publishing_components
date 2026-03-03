@@ -1,2 +1,7 @@
 // Use new organisation colors
 $govuk-new-organisation-colours: true;
+
+// TODO: Could link to further documentation on how to use this
+$govuk-suppressed-warnings: (
+  organisation-colours
+);
