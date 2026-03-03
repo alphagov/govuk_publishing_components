@@ -1,0 +1,8 @@
+// Ensure the govuk-frontend settings we have set in the gem are used
+// and imported before importing govuk base
+
+@import "govuk-frontend-settings/index";
+@import "govuk/base";
+
+@import "govuk_publishing_components/components/helpers/gem-variables";
+@import "govuk_publishing_components/components/mixins/index";
