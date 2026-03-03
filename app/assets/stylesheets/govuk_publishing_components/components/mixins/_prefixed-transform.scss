@@ -1,9 +1,3 @@
-@mixin scale($size) {
-  -webkit-transform: scale($size);  // Chrome, Opera 15+, Safari 3.1+
-  -ms-transform: scale($size);  // IE 9
-  transform: scale($size);  // Firefox 16+, IE 10+, Opera
-}
-
 @mixin prefixed-transform($translateY: 0, $rotate: 0, $scale: 1) {
   -webkit-transform: translateY($translateY) rotate($rotate) scale($scale);
   -ms-transform: translateY($translateY) rotate($rotate) scale($scale);
