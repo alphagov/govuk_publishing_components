@@ -1,3 +1,5 @@
+@import "helpers/colours";
+
 .gem-c-subscription-links {
   @include govuk-text-colour;
   @include govuk-font(19, $weight: bold);
