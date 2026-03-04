@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 
 beforeAll(function () {
   window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}

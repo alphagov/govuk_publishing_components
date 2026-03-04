@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 
 describe('The extend object code', function () {
   it('returns the original object if no further arguments', function () {

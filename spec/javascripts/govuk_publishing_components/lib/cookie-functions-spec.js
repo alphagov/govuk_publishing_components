@@ -1,4 +1,4 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 
 var GOVUK = window.GOVUK || {}
 
