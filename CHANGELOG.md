@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING** Restructure Sass ([PR #5188](https://github.com/alphagov/govuk_publishing_components/pull/5188))
+
 ## 64.2.0
 
 * Improve govspeak chart button consistency ([PR #5305](https://github.com/alphagov/govuk_publishing_components/pull/5305))
