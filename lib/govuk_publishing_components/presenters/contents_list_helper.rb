@@ -26,10 +26,9 @@ module GovukPublishingComponents
         output = clean_string(link_text)
         # Must start with a number
         # Number must be between 1 and 999 (ie not 2014)
-        # Must be followed by a space
-        # May contain a period `1.`
+        # Must contain at least one period
         # May be a decimal `1.2`
-        number = /^\d{1,3}(\.?|\.\d{1,2})(?=\s)/.match(output)
+        number = /^\d{1,3}\.(\d{1,2})?(?=\s)/.match(output)
 
         if number
           words = output.sub(number.to_s, "").strip # remove the number from the text
