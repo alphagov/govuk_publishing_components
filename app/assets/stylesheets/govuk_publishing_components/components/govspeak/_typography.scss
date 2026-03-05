@@ -1,4 +1,3 @@
-@import "../helpers/markdown-typography";
 // Govspeak typography
 // https://components.publishing.service.gov.uk/component-guide/govspeak/heading_levels
 // https://components.publishing.service.gov.uk/component-guide/govspeak/lists
@@ -10,6 +9,7 @@
 // - alphagov/govspeak: ✔︎
 
 // stylelint-disable max-nesting-depth
+@import "../helpers/markdown-typography";
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
