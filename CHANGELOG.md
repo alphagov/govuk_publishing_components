@@ -11,6 +11,7 @@
 
 * Improve govspeak chart button consistency ([PR #5305](https://github.com/alphagov/govuk_publishing_components/pull/5305))
 * Bump govuk frontend from 5.13.0 to 5.14.0 ([PR #5307](https://github.com/alphagov/govuk_publishing_components/pull/5307))
+* Fix contents list splitting headings that start with bare numbers ([PR #5298](https://github.com/alphagov/govuk_publishing_components/pull/5298))
 
 ## 64.1.2
 
