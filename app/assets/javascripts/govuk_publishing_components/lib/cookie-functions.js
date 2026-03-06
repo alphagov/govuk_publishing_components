@@ -7,7 +7,8 @@
     essential: true,
     settings: false,
     usage: false,
-    campaigns: false
+    campaigns: false,
+    aggregate: true
   }
 
   var COOKIE_CATEGORIES = {
@@ -26,6 +27,9 @@
     _ga_VBLT2V3FZR: 'usage', // gtag cookie used to persist the session state, integration
     _ga_P1DGM6TVYF: 'usage', // staging
     _ga_S5RQ7FTGVR: 'usage', // production
+    _ga_E926VS6V96: 'aggregate', // integration aggregate
+    _ga_KQ77TQ2YXL: 'aggregate', // staging aggregate
+    _ga_57Z1E1V4D6: 'aggregate', // production aggregate
     lux_uid: 'usage'
   }
 
@@ -69,7 +73,8 @@
       essential: true,
       settings: true,
       usage: true,
-      campaigns: true
+      campaigns: true,
+      aggregate: false
     }
 
     window.GOVUK.setCookie('cookies_policy', JSON.stringify(approvedConsent), { days: 365 })
