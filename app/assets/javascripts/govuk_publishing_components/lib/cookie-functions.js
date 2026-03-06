@@ -8,7 +8,8 @@
     essential: true,
     settings: false,
     usage: false,
-    campaigns: false
+    campaigns: false,
+    aggregate: true
   }
 
   var COOKIE_CATEGORIES = {
@@ -73,7 +74,8 @@
       essential: true,
       settings: true,
       usage: true,
-      campaigns: true
+      campaigns: true,
+      aggregate: false
     }
 
     window.GOVUK.setCookie('cookies_policy', JSON.stringify(approvedConsent), { days: 365 })

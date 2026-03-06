@@ -61,7 +61,7 @@ describe('Cookie banner', function () {
 
   beforeEach(function () {
     // set and store consent for all as a basis of comparison
-    window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+    window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true,"aggregate":false}')
     ALL_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
 
     // set and store default cookie consent to use as basis of comparison
