@@ -25,10 +25,11 @@
         delete currentConsentCookieJSON.essential
         for (var cookieType in currentConsentCookieJSON) {
           var radioButton
-          if (currentConsentCookieJSON[cookieType]) {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
+          if (this.selectAggregateRadioButton(cookieType, currentConsentCookieJSON)) {
+            radioButton = document.querySelector('input[name=cookies-usage][value=aggregate]')
           } else {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
+            var inputValue = currentConsentCookieJSON[cookieType] === true ? 'on' : 'off'
+            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=' + inputValue + ']')
           }
           if (radioButton) {
             radioButton.checked = true
@@ -93,6 +94,10 @@
       console.warn('Error grabbing referrer for cookie settings', window.location, e)
     }
     return documentReferrer
+  }
+
+  CookieSettings.prototype.selectAggregateRadioButton = function (cookieType, currentConsentCookieJSON) {
+    return cookieType === 'aggregate' && (currentConsentCookieJSON.aggregate === true && currentConsentCookieJSON.usage !== true)
   }
 
   Modules.CookieSettings = CookieSettings
