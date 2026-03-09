@@ -27,12 +27,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // We don't need the essential value as this cannot be changed by the user
         delete currentConsentCookieJSON.essential
         for (var cookieType in currentConsentCookieJSON) {
-          var radioButton
-          if (currentConsentCookieJSON[cookieType]) {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
-          } else {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
-          }
+          var inputValue = this.getCookiePolicyValue(currentConsentCookieJSON, cookieType)
+          var radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=' + inputValue + ']')
           if (radioButton) {
             radioButton.checked = true
           }
@@ -97,6 +93,18 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       console.warn('Error grabbing referrer for cookie settings', window.location, e)
     }
     return documentReferrer
+  }
+
+  CookieSettings.prototype.getCookiePolicyValue = function (currentConsentCookieJSON, cookieTypeValue) {
+    if (currentConsentCookieJSON.aggregate === true) {
+      return 'aggregate'
+    }
+
+    if (currentConsentCookieJSON[cookieTypeValue] === true) {
+      return 'on'
+    }
+
+    return 'off'
   }
 
   Modules.CookieSettings = CookieSettings
