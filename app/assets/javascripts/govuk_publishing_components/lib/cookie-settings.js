@@ -28,10 +28,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         delete currentConsentCookieJSON.essential
         for (var cookieType in currentConsentCookieJSON) {
           var radioButton
-          if (currentConsentCookieJSON[cookieType]) {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=on]')
+          if (cookieType === 'aggregate' && (currentConsentCookieJSON.aggregate === true && currentConsentCookieJSON.usage !== true)) {
+            radioButton = document.querySelector('input[name=cookies-usage][value=aggregate]')
           } else {
-            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=off]')
+            var inputValue = currentConsentCookieJSON[cookieType] === true ? 'on' : 'off'
+            radioButton = document.querySelector('input[name=cookies-' + cookieType + '][value=' + inputValue + ']')
           }
           if (radioButton) {
             radioButton.checked = true
