@@ -49,9 +49,9 @@ end
 
 To make use of the components, you'll have to include the JS and CSS in your application.
 
-### Import Sass for individual components
+### Import Sass for specific components (recommended)
 
-The Sass for any components in use in an application should be imported. In order for this to work you must first import some generic Sass files that include `govuk-frontend` and some gem specific mixins and variables.
+This technique only includes the Sass for components used by an application. In order for this to work you must first import some generic Sass files that include `govuk-frontend` and some gem specific mixins and variables.
 
 **Note that you will need to keep this up to date if you add or remove components from your application.**
 
@@ -59,8 +59,7 @@ For example:
 
 ```scss
 // supporting sass
-@import "govuk_publishing_components/govuk_frontend_support";
-@import "govuk_publishing_components/component_support";
+@import "govuk_publishing_components/specific_components";
 // component specific sass
 @import "govuk_publishing_components/components/back-link";
 ```
@@ -78,7 +77,9 @@ all_stylesheets = APP_STYLESHEETS.merge(GovukPublishingComponents::Config.compon
 Rails.application.config.dartsass.builds = all_stylesheets
 ```
 
-### Import all Sass (deprecated, will be removed in a later version)
+### Import Sass for all components
+
+Alternatively, you can simply import the Sass for all of the components. This is easier to manage but results in a larger compiled CSS file size, so it is not recommended for public facing applications.
 
 ```scss
 // application.scss
