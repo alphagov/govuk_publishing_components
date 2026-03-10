@@ -49,12 +49,16 @@
       var input = formInputs[i]
       if (input.checked) {
         var name = input.name.replace('cookies-', '')
-        var value = input.value === 'on'
 
-        options[name] = value
+        if (name === 'usage') {
+          options.aggregate = input.value === 'aggregate'
+          options.usage = input.value === 'on'
 
-        if (name === 'usage' && !value) {
-          window.GOVUK.stopSendingAnalytics = true
+          if (!options.usage && !options.aggregate) {
+            window.GOVUK.stopSendingAnalytics = true
+          }
+        } else {
+          options[name] = input.value === 'on'
         }
       }
     }
