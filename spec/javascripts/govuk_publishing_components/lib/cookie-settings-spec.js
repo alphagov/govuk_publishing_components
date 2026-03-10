@@ -116,7 +116,7 @@ describe('cookieSettings', function () {
 
       var cookie = JSON.parse(GOVUK.cookie('cookies_policy'))
 
-      expect(window.GOVUK.setConsentCookie).toHaveBeenCalledWith({ settings: false, usage: false, campaigns: false })
+      expect(window.GOVUK.setConsentCookie).toHaveBeenCalledWith({ settings: false, usage: false, campaigns: false, aggregate: true })
       expect(cookie.settings).toBeFalsy()
     })
 
