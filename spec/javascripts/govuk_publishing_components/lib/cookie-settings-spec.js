@@ -14,15 +14,22 @@ describe('cookieSettings', function () {
 
     container = document.createElement('div')
     container.innerHTML =
-      '<form data-module="cookie-settings">' +
-        '<input type="radio" id="settings-on" name="cookies-settings" value="on">' +
-        '<input type="radio" id="settings-off" name="cookies-settings" value="off">' +
-        '<input type="radio" id="usage-on" name="cookies-usage" value="on">' +
-        '<input type="radio" id="usage-off" name="cookies-usage" value="off">' +
-        '<input type="radio" name="cookies-campaigns" value="on">' +
-        '<input type="radio" name="cookies-campaigns" value="off">' +
-        '<button id="submit-button" type="submit">Submit</button>' +
-      '</form>'
+      `<form data-module="cookie-settings">
+        <fieldset>
+          <input type="radio" id="settings-on" name="cookies-settings" value="on">
+          <input type="radio" id="settings-off" name="cookies-settings" value="off" checked>
+        </fieldset>
+        <fieldset>
+          <input type="radio" id="usage-on" name="cookies-usage" value="on">
+          <input type="radio" id="usage-aggregate" name="cookies-usage" value="aggregate" checked>
+          <input type="radio" id="usage-off" name="cookies-usage" value="off">
+        </fieldset>
+        <fieldset>
+          <input type="radio" name="cookies-campaigns" value="on">
+          <input type="radio" name="cookies-campaigns" value="off" checked>
+        <fieldset>
+        <button id="submit-button" type="submit">Submit</button>
+      </form>`
 
     document.body.appendChild(container)
 
