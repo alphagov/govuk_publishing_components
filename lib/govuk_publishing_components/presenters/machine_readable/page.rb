@@ -28,15 +28,15 @@ module GovukPublishingComponents
       end
 
       def has_image?
-        content_item.dig("details", "image").present?
+        header_area_image.present?
       end
 
       def image_url
-        content_item.dig("details", "image", "high_resolution_url") || content_item.dig("details", "image", "url")
+        header_area_image_url_from_sources || header_area_image&.dig("high_resolution_url") || header_area_image&.dig("url")
       end
 
       def image_alt_text
-        content_item.dig("details", "image", "alt_text")
+        header_area_image&.dig("alt_text")
       end
 
       def image_placeholders
@@ -69,6 +69,26 @@ module GovukPublishingComponents
 
       def withdrawn?
         content_item["withdrawn_notice"].present?
+      end
+
+    private
+
+      def header_area_image_url_from_sources
+        return if header_area_image.blank?
+
+        header_area_image.dig("sources", "s960") || header_area_image.dig("sources", "s300")
+      end
+
+      def header_area_image
+        get_image_in_priority_order || content_item.dig("details", "image")
+      end
+
+      def get_image_in_priority_order
+        images = content_item.dig("details", "images")
+
+        return unless images.present? && images.is_a?(Array)
+
+        images.find { |i| i["type"] == "lead" } || images.find { |i| i["type"].present? }
       end
     end
   end
