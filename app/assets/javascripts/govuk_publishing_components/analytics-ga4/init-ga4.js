@@ -1,5 +1,10 @@
 var initFunction = function () {
   window.removeEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
+  // Set the default consent cookie if it isn't already present
+  if (!window.GOVUK.cookie('cookies_policy')) {
+    window.GOVUK.setDefaultConsentCookie()
+  }
+
   var consentCookie = window.GOVUK.getConsentCookie()
 
   if (consentCookie && (consentCookie.usage || consentCookie.aggregate)) {
