@@ -15,7 +15,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4LinkTracker.prototype.init = function () {
     var consentCookie = window.GOVUK.getConsentCookie()
 
-    if (consentCookie && consentCookie.usage) {
+    if (consentCookie && (consentCookie.usage || consentCookie.aggregate)) {
       this.startModule()
     } else {
       this.start = this.startModule.bind(this)

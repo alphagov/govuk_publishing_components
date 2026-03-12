@@ -3,6 +3,11 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
 
 var initFunction = function () {
   window.removeEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
+  // Set the default consent cookie if it isn't already present
+  if (!window.GOVUK.cookie('cookies_policy')) {
+    window.GOVUK.setDefaultConsentCookie()
+  }
+
   var consentCookie = window.GOVUK.getConsentCookie()
 
   if (consentCookie && (consentCookie.usage || consentCookie.aggregate)) {
@@ -11,6 +16,7 @@ var initFunction = function () {
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
     window.GOVUK.analyticsGa4.core.load()
 
+    // Initialise analytics modules that start on page load
     var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
     for (var property in analyticsModules) {
       var module = analyticsModules[property]
