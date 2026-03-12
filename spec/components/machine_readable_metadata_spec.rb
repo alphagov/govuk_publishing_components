@@ -23,21 +23,68 @@ describe "Machine readable metadata", type: :view do
     expect { JSON.parse(json_linked_data) }.not_to raise_error
   end
 
-  it "uses images if available" do
+  it "uses the higher resolution version of a 'header area' image of type 'lead', if available" do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |item|
-      item["details"]["image"] = {
-        "url" => "https://example.org/low-res.jpg",
-      }
+      item["details"]["images"] = [
+        {
+          "content_type" => "image/jpeg",
+          "type" => "lead",
+          "sources" => {
+            "s300" => "https://example.org/lead-low-res.jpg",
+            "s960" => "https://example.org/lead-high-res.jpg",
+          },
+        },
+      ]
       item
     end
 
-    render_component(content_item: example, schema: :article)
+    render_component(content_item: example, schema: :news_article)
 
-    assert_meta_tag "twitter:image", "https://example.org/low-res.jpg"
+    assert_select "meta[name='twitter:image'][content='https://example.org/lead-high-res.jpg']"
+    assert_select "meta[property='og:image'][content='https://example.org/lead-high-res.jpg']"
   end
 
-  it "uses high resolution images if available" do
+  it "uses the lower resolution version of a 'header area' image of type 'lead', if higher resolution is missing" do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |item|
+      item["details"]["images"] = [
+        {
+          "type" => "lead",
+          "content_type" => "image/jpeg",
+          "sources" => {
+            "s300" => "https://example.org/lead-low-res.jpg",
+          },
+        },
+      ]
+      item
+    end
+    render_component(content_item: example, schema: :news_article)
+
+    assert_select "meta[name='twitter:image'][content='https://example.org/lead-low-res.jpg']"
+    assert_select "meta[property='og:image'][content='https://example.org/lead-low-res.jpg']"
+  end
+
+  it "uses the next available image type if 'lead' is missing" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "history") do |item|
+      item["details"]["images"] = [
+        {
+          "type" => "sidebar",
+          "content_type" => "image/jpeg",
+          "sources" => {
+            "s960" => "https://example.org/sidebar-high-res.jpg",
+            "s300" => "https://example.org/sidebar-low-res.jpg",
+          },
+        },
+      ]
+      item
+    end
+    render_component(content_item: example, schema: :article)
+
+    assert_select "meta[name='twitter:image'][content='https://example.org/sidebar-high-res.jpg']"
+    assert_select "meta[property='og:image'][content='https://example.org/sidebar-high-res.jpg']"
+  end
+
+  it "uses high resolution image with no type, if available" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "speech") do |item|
       item["details"]["image"] = {
         "url" => "https://example.org/low-res.jpg",
         "high_resolution_url" => "https://example.org/high-res.jpg",
@@ -45,9 +92,24 @@ describe "Machine readable metadata", type: :view do
       item
     end
 
-    render_component(content_item: example, schema: :article)
+    render_component(content_item: example, schema: :news_article)
 
-    assert_meta_tag "twitter:image", "https://example.org/high-res.jpg"
+    assert_select "meta[name='twitter:image'][content='https://example.org/high-res.jpg']"
+    assert_select "meta[property='og:image'][content='https://example.org/high-res.jpg']"
+  end
+
+  it "uses lower resolution image with no type, if higher resolution is missing" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "speech") do |item|
+      item["details"]["image"] = {
+        "url" => "https://example.org/low-res.jpg",
+      }
+      item
+    end
+
+    render_component(content_item: example, schema: :news_article)
+
+    assert_select "meta[name='twitter:image'][content='https://example.org/low-res.jpg']"
+    assert_select "meta[property='og:image'][content='https://example.org/low-res.jpg']"
   end
 
   it "generates machine readable JSON-LD for finders" do
@@ -104,10 +166,6 @@ describe "Machine readable metadata", type: :view do
 
     assert_select "meta[property='og:title']"
     assert_select "meta[property='og:title'][content='[Withdrawn] #{example['title']}']", false
-  end
-
-  def assert_meta_tag(name, content)
-    assert_select "meta[name='#{name}'][content='#{content}']"
   end
 
   def bad_html

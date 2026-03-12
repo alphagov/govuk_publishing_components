@@ -571,7 +571,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     end
 
     it "adds an image if it's available" do
-      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |random_item|
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "speech") do |random_item|
         random_item["details"]["image"] = { "url" => "/foo" }
         random_item
       end
@@ -585,7 +585,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     end
 
     it "adds placeholders if there's no image" do
-      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |random_item|
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "speech") do |random_item|
         random_item["details"].delete("image")
         random_item
       end
