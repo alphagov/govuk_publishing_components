@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 65.1.0
+* Update metadata component to use images array based payload for news articles and history pages ([PR #5327](https://github.com/alphagov/govuk_publishing_components/pull/5327))
+
 ## 65.0.0
 
 * **BREAKING** Restructure Sass ([PR #5188](https://github.com/alphagov/govuk_publishing_components/pull/5188))
