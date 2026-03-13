@@ -22,7 +22,7 @@ The [event tracker](trackers/ga4-event-tracker.md) handles tracking on buttons o
 
 ## Finder tracker
 
-The [finder tracker](trackers/ga4-finder-tracker.md) adds tracking to the GOVUK finders in `finder-frontend` such as <https://www.gov.uk/search/all>.
+The [finder tracker](trackers/ga4-finder-tracker.md) adds tracking to the GOVUK finders in `finder-frontend` such as <https://www.gov.uk/drug-device-alerts>.
 
 ## Focus loss tracker
 
