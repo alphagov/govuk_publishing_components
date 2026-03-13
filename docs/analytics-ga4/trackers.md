@@ -20,6 +20,10 @@ The [ecommerce tracker](trackers/ga4-ecommerce-tracker.md) is used to track thin
 
 The [event tracker](trackers/ga4-event-tracker.md) handles tracking on buttons or other interactive elements, such as tabs and details elements.
 
+## Finder tracker
+
+The [finder tracker](trackers/ga4-finder-tracker.md) adds tracking to the GOVUK finders in `finder-frontend` such as <https://www.gov.uk/search/all>.
+
 ## Focus loss tracker
 
 The [focus loss tracker](trackers/ga4-focus-loss-tracker.md) is designed to capture data about an element when it loses focus.
@@ -27,6 +31,10 @@ The [focus loss tracker](trackers/ga4-focus-loss-tracker.md) is designed to capt
 ## Form tracker
 
 The [form tracker](trackers/ga4-form-tracker.md) is designed to capture data about a form when it has been submitted.
+
+## Form change tracker
+
+The [form change tracker](trackers/ga4-form-change-tracker.md) is designed to capture data when the form changes.
 
 ## Link tracker
 
