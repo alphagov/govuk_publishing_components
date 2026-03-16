@@ -67,7 +67,7 @@ describe('Cookie banner', function () {
     window.GOVUK.deleteCookie('cookies_preferences_set')
   })
 
-  it('should show the cookie banner', function () {
+  it('should show the cookie banner when preferences have not been actively set', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner(element).init()
 
@@ -81,7 +81,7 @@ describe('Cookie banner', function () {
     expect(cookieBannerConfirmationReject.checkVisibility()).toBe(false)
   })
 
-  it('should show the cookie banner when preferences have not been actively set', function () {
+  it('should show the cookie banner when preferences have not been actively set and `cookies_policy` is set', function () {
     GOVUK.setDefaultConsentCookie() // Set default cookies, which are set whether there is any interaction or not.
 
     var element = document.querySelector('[data-module="cookie-banner"]')
