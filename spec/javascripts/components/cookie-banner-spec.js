@@ -5,8 +5,10 @@ describe('Cookie banner', function () {
   'use strict'
 
   var container
-  var DEFAULT_COOKIE_CONSENT
-  var ALL_COOKIE_CONSENT
+  // default cookie consent to use as basis of comparison
+  var DEFAULT_COOKIE_CONSENT = '{"essential":true,"settings":false,"usage":false,"campaigns":false}'
+  // all consent cookie to use as a basis of comparison
+  var ALL_COOKIE_CONSENT = '{"essential":true,"settings":true,"usage":true,"campaigns":true}'
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -59,18 +61,10 @@ describe('Cookie banner', function () {
     document.body.appendChild(container)
   })
 
-  beforeEach(function () {
-    // set and store consent for all as a basis of comparison
-    window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-    ALL_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
-
-    // set and store default cookie consent to use as basis of comparison
-    window.GOVUK.setDefaultConsentCookie()
-    DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
-  })
-
   afterEach(function () {
     document.body.removeChild(container)
+    window.GOVUK.deleteCookie('cookies_policy')
+    window.GOVUK.deleteCookie('cookies_preferences_set')
   })
 
   it('should show the cookie banner', function () {
