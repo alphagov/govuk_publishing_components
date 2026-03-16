@@ -125,12 +125,22 @@ describe('Cookie banner', function () {
     expect(element.hasAttribute('hidden')).toEqual(true)
   })
 
-  it('sets a default consent cookie', function () {
+  it('sets a default `cookie_policy` consent cookie if not previously set', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner(element).init()
 
     expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
     expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+  })
+
+  it('does not update the `cookie_policy` cookie to the default values if previously set', function () {
+    GOVUK.cookie('cookies_policy', ALL_COOKIE_CONSENT)
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    new GOVUK.Modules.CookieBanner(element).init()
+
+    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
+    expect(GOVUK.getCookie('cookies_policy')).not.toEqual(DEFAULT_COOKIE_CONSENT)
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
   })
 
   it('deletes unconsented cookies if cookie preferences not explicitly set', function () {
