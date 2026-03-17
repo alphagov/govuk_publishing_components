@@ -11,6 +11,7 @@
 
 * Change feedback component styles ([PR #5382](https://github.com/alphagov/govuk_publishing_components/pull/5382))
 * **BREAKING** Reduce calls to window.GOVUK ([PR #5360](https://github.com/alphagov/govuk_publishing_components/pull/5360))
+* Drop support for Ruby 3.2 ([PR #5296](https://github.com/alphagov/govuk_publishing_components/pull/5296))
 
 ## 65.2.2
 
@@ -29,6 +30,7 @@
 * Improve how we show excluded nations that have the same alternative url ([PR #5342](https://github.com/alphagov/govuk_publishing_components/pull/5342))
 
 ## 65.1.0
+
 * Update metadata component to use images array based payload for news articles and history pages ([PR #5327](https://github.com/alphagov/govuk_publishing_components/pull/5327))
 
 ## 65.0.0
