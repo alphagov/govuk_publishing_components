@@ -45,12 +45,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       if (shouldHaveCookieMessage) {
         this.$module.removeAttribute('hidden')
-
-        // Set the default consent cookie if it isn't already present
-        if (!window.GOVUK.cookie('cookies_policy')) {
-          window.GOVUK.setDefaultConsentCookie()
-        }
-
         window.GOVUK.deleteUnconsentedCookies()
       }
     }
