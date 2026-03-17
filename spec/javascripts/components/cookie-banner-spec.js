@@ -5,8 +5,10 @@ describe('Cookie banner', function () {
   'use strict'
 
   var container
-  var DEFAULT_COOKIE_CONSENT
-  var ALL_COOKIE_CONSENT
+  // default cookie consent to use as basis of comparison
+  var DEFAULT_COOKIE_CONSENT = '{"essential":true,"settings":false,"usage":false,"campaigns":false}'
+  // all consent cookie to use as a basis of comparison
+  var ALL_COOKIE_CONSENT = '{"essential":true,"settings":true,"usage":true,"campaigns":true}'
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -59,21 +61,13 @@ describe('Cookie banner', function () {
     document.body.appendChild(container)
   })
 
-  beforeEach(function () {
-    // set and store consent for all as a basis of comparison
-    window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-    ALL_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
-
-    // set and store default cookie consent to use as basis of comparison
-    window.GOVUK.setDefaultConsentCookie()
-    DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
-  })
-
   afterEach(function () {
     document.body.removeChild(container)
+    window.GOVUK.deleteCookie('cookies_policy')
+    window.GOVUK.deleteCookie('cookies_preferences_set')
   })
 
-  it('should show the cookie banner', function () {
+  it('should show the cookie banner when preferences have not been actively set', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner(element).init()
 
@@ -87,7 +81,7 @@ describe('Cookie banner', function () {
     expect(cookieBannerConfirmationReject.checkVisibility()).toBe(false)
   })
 
-  it('should show the cookie banner when preferences have not been actively set', function () {
+  it('should show the cookie banner when preferences have not been actively set and `cookies_policy` is set', function () {
     GOVUK.setDefaultConsentCookie() // Set default cookies, which are set whether there is any interaction or not.
 
     var element = document.querySelector('[data-module="cookie-banner"]')
@@ -131,12 +125,22 @@ describe('Cookie banner', function () {
     expect(element.hasAttribute('hidden')).toEqual(true)
   })
 
-  it('sets a default consent cookie', function () {
+  it('sets a default `cookie_policy` consent cookie if not previously set', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner(element).init()
 
     expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
     expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+  })
+
+  it('does not update the `cookie_policy` cookie to the default values if previously set', function () {
+    GOVUK.cookie('cookies_policy', ALL_COOKIE_CONSENT)
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    new GOVUK.Modules.CookieBanner(element).init()
+
+    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
+    expect(GOVUK.getCookie('cookies_policy')).not.toEqual(DEFAULT_COOKIE_CONSENT)
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
   })
 
   it('deletes unconsented cookies if cookie preferences not explicitly set', function () {
