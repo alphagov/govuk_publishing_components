@@ -54,7 +54,7 @@
 
         if (name === 'usage' && !value) {
           window.GOVUK.stopSendingAnalytics = true
-          window.GOVUK.LUX = {}
+          window.LUX = {}
         }
       }
     }
