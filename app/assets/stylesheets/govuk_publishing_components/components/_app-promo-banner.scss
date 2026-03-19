@@ -46,7 +46,7 @@
 .gem-c-app-promo-banner__close-button {
   border: 0;
   padding: 0;
-  color: govuk-tint(govuk-colour("black"), 25%);
+  color: govuk-colour('black', $variant: 'tint-25');
   background: none;
   flex: 0 0 24px;
   height: 24px;
