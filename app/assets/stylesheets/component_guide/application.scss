@@ -12,7 +12,7 @@ $gem-guide-border-width: 1px;
 }
 
 .component-violation {
-  border: 3px solid $govuk-error-colour;
+  border: 3px solid govuk-functional-colour(error);
   margin: 0 0 govuk-spacing(6);
   padding: govuk-spacing(6);
   @include govuk-text-colour;
@@ -24,7 +24,7 @@ $gem-guide-border-width: 1px;
 
   .component-violation__link {
     display: block;
-    color: $govuk-error-colour;
+    color: govuk-functional-colour(error);
     margin: govuk-spacing(3) 0;
     @include govuk-font($size: 19, $weight: bold);
   }

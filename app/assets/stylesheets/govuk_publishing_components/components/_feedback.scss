@@ -161,7 +161,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 .gem-c-feedback__error-summary {
   margin-bottom: govuk-spacing(3);
   padding: govuk-spacing(3);
-  border: solid $govuk-border-width-narrow $govuk-error-colour;
+  border: solid $govuk-border-width-narrow govuk-functional-colour(error);
   clear: both;
 
   &:focus {
@@ -195,7 +195,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 .gem-c-feedback__error-message {
   display: block;
   padding: 4px 0 0;
-  color: $govuk-error-colour;
+  color: govuk-functional-colour(error);
   @include govuk-font(19, $weight: bold);
 }
 
