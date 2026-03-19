@@ -33,16 +33,22 @@ module GovukPublishingComponents
       end
 
       def nations_with_urls
-        @national_applicability
-          .select do |_, v|
-            v[:alternative_url]
-            .present?
+        url_to_nation_keys = @national_applicability.each_with_object(Hash.new { |h, k| h[k] = [] }) do |(nation_key, nation_data), hash|
+          if nation_data[:alternative_url].present?
+            hash[nation_data[:alternative_url]] << nation_key
           end
+        end
+
+        url_to_nation_keys.transform_values do |nation_keys|
+          nations_text = nation_keys.each_with_index.map { |key, index|
+            name_for_position(key, index, nation_keys.count, true)
+          }.join
+
+          alternative_content_text(nations_text)
+        end
       end
 
-      def alternative_content_text(name)
-        nation = I18n.t("components.devolved_nations.#{name}.start")
-
+      def alternative_content_text(nation)
         if I18n.exists?("components.devolved_nations.type.#{@content_type}")
           I18n.t("components.devolved_nations.type.#{@content_type}", nation:)
         else
