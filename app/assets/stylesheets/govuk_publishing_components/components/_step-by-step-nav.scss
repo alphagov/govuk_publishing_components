@@ -530,7 +530,7 @@ $top-border: solid 1px govuk-colour("black", $variant: "tint-80");
 .gem-c-step-nav__context {
   display: inline-block;
   font-weight: normal;
-  color: govuk-colour("dark-grey");
+  color: govuk-colour("black", $variant: "tint-25");
 
   &::before {
     content: " \2013\00a0"; // dash followed by &nbsp;

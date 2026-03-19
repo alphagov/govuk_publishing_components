@@ -55,7 +55,7 @@
     }
 
     &-icon {
-      color: govuk-colour("dark-grey");
+      color: govuk-colour("black", $variant: "tint-25");
 
       @include govuk-media-query($until: mobile) {
         @include govuk-font(19);

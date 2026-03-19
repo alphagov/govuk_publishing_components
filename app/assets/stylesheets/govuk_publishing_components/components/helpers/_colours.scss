@@ -3,7 +3,7 @@ $gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
 $gem-secondary-button-background-colour: govuk-colour("white");
 $gem-secondary-button-hover-background-colour: govuk-colour("black", $variant: "tint-95");
 
-$gem-quiet-button-colour: govuk-colour("dark-grey");
+$gem-quiet-button-colour: govuk-colour("black", $variant: "tint-25");
 $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 
 // Brand refresh

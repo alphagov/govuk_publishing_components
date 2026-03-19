@@ -53,8 +53,8 @@ $choices-button-dimension: 12px !default;
 
     &:hover {
       background-color: govuk-colour("black", $variant: "tint-80");
-      border-color: govuk-colour("dark-grey");
-      box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("dark-grey");
+      border-color: govuk-colour("black", $variant: "tint-25");
+      box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("black", $variant: "tint-25");
     }
 
     &:focus {
