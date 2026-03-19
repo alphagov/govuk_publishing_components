@@ -26,16 +26,19 @@
     margin: 0;
     padding: 0;
     @include govuk-font($size: 19);
+    @include govuk-text-break-word;
   }
 
   h2 {
     margin: 0 0 govuk-spacing(4) 0;
     @include govuk-font($size: 24, $weight: bold);
+    @include govuk-text-break-word;
   }
 
   h3 {
     margin: 0 0 govuk-spacing(4) 0;
     @include govuk-font($size: 19, $weight: bold);
+    @include govuk-text-break-word;
   }
 
   // H4, H5 and H6 are discouraged and thus styled the same
@@ -45,6 +48,7 @@
   h6 {
     margin: 0;
     @include govuk-font($size: 19, $weight: bold);
+    @include govuk-text-break-word;
   }
 
   // Links
