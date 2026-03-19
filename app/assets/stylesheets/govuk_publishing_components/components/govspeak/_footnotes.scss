@@ -31,7 +31,7 @@
     }
 
     li:target {
-      background: govuk-colour("light-grey");
+      background: govuk-colour("black", $variant: "tint-95");
       border-bottom: solid 3px $govuk-border-colour;
     }
 

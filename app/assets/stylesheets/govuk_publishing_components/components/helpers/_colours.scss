@@ -1,7 +1,7 @@
 $gem-secondary-button-colour: #00823b;
 $gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
 $gem-secondary-button-background-colour: govuk-colour("white");
-$gem-secondary-button-hover-background-colour: govuk-colour("light-grey");
+$gem-secondary-button-hover-background-colour: govuk-colour("black", $variant: "tint-95");
 
 $gem-quiet-button-colour: govuk-colour("dark-grey");
 $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);

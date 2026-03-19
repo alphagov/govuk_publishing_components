@@ -67,7 +67,7 @@
       // and make all of thead and tfoot stand out
       thead,
       tfoot {
-        background-color: govuk-colour("light-grey");
+        background-color: govuk-colour("black", $variant: "tint-95");
       }
 
       thead th,
@@ -124,7 +124,7 @@
       // the total is usually in the tfoot, so already has that background colour
       // but when it's used inside the tbody, it should also be highlighted
       tr.total {
-        background-color: govuk-colour("light-grey");
+        background-color: govuk-colour("black", $variant: "tint-95");
       }
     }
     // stylelint-enable selector-no-qualifying-type

@@ -222,7 +222,7 @@ html {
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
-$code-00: color.scale(govuk-colour("light-grey"), $lightness: 50%); // Default Background
+$code-00: color.scale(govuk-colour("black", $variant: "tint-95"), $lightness: 50%); // Default Background
 $code-01: #f5f5f5; // Lighter Background (Unused)
 $code-02: #bfc1c3; // Selection Background
 $code-03: color.adjust($govuk-secondary-text-colour, $lightness: -2%); // Comments, Invisibles, Line Highlighting
