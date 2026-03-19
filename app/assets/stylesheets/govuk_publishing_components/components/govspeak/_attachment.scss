@@ -44,8 +44,8 @@
       }
 
       svg {
-        fill: govuk-colour("mid-grey");
-        stroke: govuk-colour("mid-grey");
+        fill: govuk-colour("black", $variant: "tint-80");
+        stroke: govuk-colour("black", $variant: "tint-80");
       }
 
       @include govuk-media-query($media-type: print) {

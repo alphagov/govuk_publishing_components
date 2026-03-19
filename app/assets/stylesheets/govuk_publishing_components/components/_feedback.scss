@@ -118,7 +118,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
   }
 
   &:hover {
-    background: govuk-colour("mid-grey");
+    background: govuk-colour("black", $variant: "tint-80");
     color: govuk-colour("black");
   }
 }

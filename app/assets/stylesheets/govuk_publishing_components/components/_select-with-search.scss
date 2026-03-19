@@ -46,13 +46,13 @@ $choices-button-dimension: 12px !default;
 
   .choices[data-type*="select-multiple"] .choices__button,
   .choices[data-type*="text"] .choices__button {
-    border-color: govuk-colour("mid-grey");
-    border-right: 1px solid govuk-colour("mid-grey");
+    border-color: govuk-colour("black", $variant: "tint-80");
+    border-right: 1px solid govuk-colour("black", $variant: "tint-80");
     padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) govuk-spacing(2);
     margin-right: 0;
 
     &:hover {
-      background-color: govuk-colour("mid-grey");
+      background-color: govuk-colour("black", $variant: "tint-80");
       border-color: govuk-colour("dark-grey");
       box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("dark-grey");
     }
@@ -125,7 +125,7 @@ $choices-button-dimension: 12px !default;
     padding: 0 0 0 govuk-spacing(2);
     margin: govuk-spacing(2) govuk-spacing(2) 0 0;
     background-color: govuk-colour("light-grey");
-    box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("mid-grey");
+    box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("black", $variant: "tint-80");
     line-height: 1;
     color: $govuk-text-colour;
 
@@ -149,7 +149,7 @@ $choices-button-dimension: 12px !default;
   .choices__list--dropdown .choices__item,
   .choices__list[aria-expanded] .choices__item {
     position: relative;
-    border-bottom: 1px solid govuk-colour("mid-grey");
+    border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
 
     &:last-child {
       border-bottom: 0;
@@ -168,7 +168,7 @@ $choices-button-dimension: 12px !default;
     @include govuk-typography-weight-bold;
     color: govuk-colour("black"); // Choices.js doesn't use a variable for this color for some reason :(
     padding: govuk-spacing(6) govuk-spacing(2) govuk-spacing(2);
-    border-bottom: 1px solid govuk-colour("mid-grey");
+    border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
     cursor: default;
   }
 }

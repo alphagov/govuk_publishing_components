@@ -561,7 +561,7 @@ $search-icon-height: 20px;
     bottom: 0;
     width: 100%;
     background: $govuk-rebrand-template-background-colour;
-    box-shadow: 0 1px govuk-colour("mid-grey");
+    box-shadow: 0 1px govuk-colour("black", $variant: "tint-80");
   }
 }
 
@@ -601,7 +601,7 @@ $search-icon-height: 20px;
 // JS available - styling for the "services-and-information" group of links
 .gem-c-layout-super-navigation-header__navigation-second-items--services-and-information {
   @include govuk-media-query($until: "desktop") {
-    border-bottom: 1px solid govuk-colour("mid-grey");
+    border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
   }
 
   @include govuk-media-query($from: "desktop") {
