@@ -6,6 +6,7 @@
     // set balance as a fallback for firefox, pretty for other browsers
     text-wrap: balance;
     text-wrap: pretty;
+    @include govuk-text-break-word;
   }
 }
 
