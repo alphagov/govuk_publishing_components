@@ -32,7 +32,7 @@
 
     figcaption p {
       margin: govuk-spacing(2) 0 0 0;
-      color: $govuk-secondary-text-colour;
+      color: govuk-functional-colour(secondary-text);
       @include govuk-font(19);
     }
   }

@@ -59,7 +59,7 @@ $thumbnail-icon-border-colour: govuk-colour("black", $variant: "tint-80");
 
 .gem-c-attachment__metadata {
   margin: 0 0 govuk-spacing(3);
-  color: $govuk-secondary-text-colour;
+  color: govuk-functional-colour(secondary-text);
   @include govuk-font($size: 19);
   @include govuk-text-break-word;
 
