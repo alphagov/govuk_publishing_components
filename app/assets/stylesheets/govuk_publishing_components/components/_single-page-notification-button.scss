@@ -17,8 +17,8 @@
     color: govuk-functional-colour(link-hover);
 
     &:focus {
-      color: $govuk-text-colour;
-      box-shadow: 0 $govuk-focus-width $govuk-text-colour;
+      color: govuk-functional-colour(text);
+      box-shadow: 0 $govuk-focus-width govuk-functional-colour(text);
     }
   }
 }

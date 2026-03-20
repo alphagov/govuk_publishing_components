@@ -227,7 +227,7 @@ $code-01: #f5f5f5; // Lighter Background (Unused)
 $code-02: #bfc1c3; // Selection Background
 $code-03: grey;
 $code-04: #e8e8e8; // Dark Foreground (Unused)
-$code-05: $govuk-text-colour; // Default Foreground, Caret, Delimiters, Operators
+$code-05: govuk-functional-colour(text); // Default Foreground, Caret, Delimiters, Operators
 $code-06: #ffffff; // Light Foreground (Unused)
 $code-07: #ffffff; // Light Background (Unused)
 

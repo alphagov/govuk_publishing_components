@@ -82,7 +82,7 @@ $large-input-size: 50px;
   @include govuk-link-hover-decoration;
 
   .gem-c-search-with-autocomplete__suggestion-icon {
-    background-color: $govuk-text-colour;
+    background-color: govuk-functional-colour(text);
   }
 }
 
