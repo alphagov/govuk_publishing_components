@@ -112,7 +112,7 @@
 
   &:hover {
     &::before {
-      border-color: $govuk-link-hover-colour;
+      border-color: govuk-functional-colour(link-hover);
     }
   }
 

@@ -14,7 +14,7 @@
 
   &:hover {
     background-color: govuk-colour("black", $variant: "tint-95");
-    color: $govuk-link-hover-colour;
+    color: govuk-functional-colour(link-hover);
 
     &:focus {
       color: $govuk-text-colour;
