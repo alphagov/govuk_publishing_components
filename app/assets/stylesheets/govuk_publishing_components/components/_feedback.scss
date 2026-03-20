@@ -53,7 +53,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 }
 
 .gem-c-feedback__prompt-questions--something-is-wrong {
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
   @include govuk-media-query($from: tablet) {
     border: 0;
   }
@@ -201,7 +201,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 
 .gem-c-feedback__form {
   padding: govuk-spacing(3);
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
 
   @include govuk-media-query($from: tablet) {
     padding: govuk-spacing(6);

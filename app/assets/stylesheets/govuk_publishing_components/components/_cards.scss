@@ -35,7 +35,7 @@
 }
 
 .gem-c-cards__heading--underline + .gem-c-cards__list {
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
 
   .gem-c-cards__list-item {
     &:first-child {
@@ -61,7 +61,7 @@
 }
 
 .gem-c-cards__list-item {
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
   padding: govuk-spacing(1) 0 govuk-spacing(4) 0;
 }
 

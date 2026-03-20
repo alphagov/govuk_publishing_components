@@ -113,7 +113,7 @@ $choices-button-dimension: 12px !default;
 
     &:not(:empty) {
       margin-block-start: 6px;
-      border-block-start: 1px solid $govuk-border-colour;
+      border-block-start: 1px solid govuk-functional-colour(border);
       padding-block-end: 5px;
     }
   }
