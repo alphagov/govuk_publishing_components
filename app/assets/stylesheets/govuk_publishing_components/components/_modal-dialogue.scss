@@ -47,7 +47,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
     max-width: calc($govuk-page-width * (2 / 3));
     height: auto;
     margin: $govuk-modal-margin auto;
-    border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+    border: $govuk-border-width-form-element solid govuk-functional-colour(input-border);
   }
 }
 
