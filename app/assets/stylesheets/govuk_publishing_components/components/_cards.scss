@@ -97,8 +97,8 @@
     $dimension: 7px;
     $width: 3px;
 
-    border-right: $width solid $govuk-brand-colour;
-    border-top: $width solid $govuk-brand-colour;
+    border-right: $width solid govuk-functional-colour(brand);
+    border-top: $width solid govuk-functional-colour(brand);
     content: "";
     display: block;
     height: $dimension;

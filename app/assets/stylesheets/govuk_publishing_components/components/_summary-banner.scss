@@ -1,6 +1,6 @@
 .gem-c-summary-banner {
   direction: ltr;
-  background: $govuk-brand-colour;
+  background: govuk-functional-colour(brand);
   color: govuk-colour("white");
   padding: govuk-spacing(6) govuk-spacing(3) govuk-spacing(3);
   clear: both;

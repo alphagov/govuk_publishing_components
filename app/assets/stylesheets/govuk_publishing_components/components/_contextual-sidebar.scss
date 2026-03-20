@@ -1,5 +1,5 @@
 .gem-c-contextual-sidebar__related-links {
-  border-top: 2px solid $govuk-brand-colour;
+  border-top: 2px solid govuk-functional-colour(brand);
 }
 
 .gem-c-contextual-sidebar__heading {
@@ -24,7 +24,7 @@
 }
 
 .gem-c-contextual-sidebar__cta {
-  border-top: 2px solid $govuk-brand-colour;
+  border-top: 2px solid govuk-functional-colour(brand);
   margin-bottom: govuk-spacing(6);
   background-color: govuk-colour("black", $variant: "tint-95");
   display: block;

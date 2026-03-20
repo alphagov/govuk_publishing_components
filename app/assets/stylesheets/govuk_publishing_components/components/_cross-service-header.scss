@@ -8,7 +8,7 @@ $toggle-border-height: 3px;
 .gem-c-rebranded-one-login-header {
   color: govuk-colour("white");
   position: relative;
-  background: $govuk-brand-colour;
+  background: govuk-functional-colour(brand);
   @include govuk-font($size: 16);
 }
 
@@ -122,7 +122,7 @@ $toggle-border-height: 3px;
   }
 
   &:not(:focus) {
-    background-color: $govuk-brand-colour;
+    background-color: govuk-functional-colour(brand);
   }
 }
 
@@ -188,7 +188,7 @@ $toggle-border-height: 3px;
     &:link:visited,
     &:visited:link,
     &:visited:visited {
-      color: $govuk-brand-colour;
+      color: govuk-functional-colour(brand);
 
       &:focus {
         color: govuk-functional-colour(focus-text);
@@ -222,7 +222,7 @@ $toggle-border-height: 3px;
 
   @include govuk-media-query($until: tablet) {
     background-color: govuk-colour("white");
-    color: $govuk-brand-colour;
+    color: govuk-functional-colour(brand);
     margin-right: -(govuk-spacing(3));
     margin-left: -(govuk-spacing(3));
     padding: 0 govuk-spacing(3);
@@ -313,7 +313,7 @@ $toggle-border-height: 3px;
 
   &.gem-c-rebranded-cross-service-header__toggle--open {
     background-color: govuk-colour("white");
-    color: $govuk-brand-colour;
+    color: govuk-functional-colour(brand);
   }
 }
 
@@ -364,7 +364,7 @@ $toggle-border-height: 3px;
 
     .gem-c-rebranded-cross-service-header__toggle--open &,
     .gem-c-rebranded-cross-service-header__toggle--open:hover & {
-      background-color: $govuk-brand-colour;
+      background-color: govuk-functional-colour(brand);
     }
 
     .gem-c-rebranded-cross-service-header__toggle:focus &,

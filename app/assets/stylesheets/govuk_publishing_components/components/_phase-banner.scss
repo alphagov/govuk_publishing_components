@@ -10,7 +10,7 @@
 .gem-c-phase-banner--inverse {
   .govuk-phase-banner__content__tag {
     background: govuk-colour("white");
-    color: $govuk-brand-colour;
+    color: govuk-functional-colour(brand);
   }
 
   .govuk-phase-banner__content__app-name,
