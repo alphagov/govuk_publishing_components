@@ -89,7 +89,7 @@ $large-input-size: 50px;
 // Styling specifically _only_ for keyboard focus
 .gem-c-search-with-autocomplete__option:focus-visible {
   .gem-c-search-with-autocomplete__suggestion-text {
-    background-color: $govuk-focus-colour;
+    background-color: govuk-functional-colour(focus);
   }
 }
 

@@ -58,7 +58,7 @@ $choices-button-dimension: 12px !default;
     }
 
     &:focus {
-      background-color: $govuk-focus-colour;
+      background-color: govuk-functional-colour(focus);
       box-shadow: 0 $govuk-border-width-form-element 0 govuk-functional-colour(focus-text);
     }
   }
@@ -99,7 +99,7 @@ $choices-button-dimension: 12px !default;
 
   .choices.is-focused .choices__inner,
   .choices.is-open .choices__inner {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
     // Ensure outline appears outside of the element
     outline-offset: 0;
     // Double the border by adding its width again. Use `box-shadow` to do

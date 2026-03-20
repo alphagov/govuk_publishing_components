@@ -44,7 +44,7 @@ $gem-guide-border-width: 1px;
   }
 
   &[contenteditable]:focus {
-    outline: 3px solid $govuk-focus-colour;
+    outline: 3px solid govuk-functional-colour(focus);
   }
 
   > pre {

@@ -165,7 +165,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
   clear: both;
 
   &:focus {
-    outline: solid 3px $govuk-focus-colour;
+    outline: solid 3px govuk-functional-colour(focus);
   }
 
   @include govuk-media-query($from: desktop) {

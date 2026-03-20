@@ -66,7 +66,7 @@ $toggle-border-height: 3px;
     &:focus {
       // Replicate the focus box shadow but without the -2px y-offset of the first yellow shadow
       // This is to stop the logo getting cut off by the box shadow when focused on above a product name
-      box-shadow: 0 0 $govuk-focus-colour;
+      box-shadow: 0 0 govuk-functional-colour(focus);
     }
   }
 
@@ -290,7 +290,7 @@ $toggle-border-height: 3px;
 
   @mixin toggle-button-focus {
     color: govuk-functional-colour(focus-text);
-    background-color: $govuk-focus-colour;
+    background-color: govuk-functional-colour(focus);
     outline: 3px solid transparent;
   }
 

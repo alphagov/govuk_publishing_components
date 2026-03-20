@@ -138,7 +138,7 @@ $column-width: 9.5em;
   }
 
   .gem-c-share-links__link:focus {
-    box-shadow: 0 0 $govuk-focus-colour, 0 4px govuk-colour("black");
+    box-shadow: 0 0 govuk-functional-colour(focus), 0 4px govuk-colour("black");
   }
 }
 
