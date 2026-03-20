@@ -679,7 +679,7 @@ $search-icon-height: 20px;
 @include govuk-media-query($media-type: print) {
   .gem-c-layout-super-navigation-header {
     border-top: 0;
-    border-bottom: 2pt solid $govuk-print-text-colour;
+    border-bottom: 2pt solid govuk-functional-colour(print-text);
     margin: 0 0 5mm;
     background: transparent;
 
@@ -689,7 +689,7 @@ $search-icon-height: 20px;
     }
 
     * {
-      color: $govuk-print-text-colour;
+      color: govuk-functional-colour(print-text);
     }
 
     .govuk-width-container {

@@ -41,7 +41,7 @@
   .gem-c-intervention {
     break-inside: avoid;
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk-functional-colour(print-text);
 
     .govuk-body {
       margin: 0;

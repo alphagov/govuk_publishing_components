@@ -59,11 +59,11 @@
     .govuk-breadcrumbs__list-item {
       .govuk-breadcrumbs__link:link,
       .govuk-breadcrumbs__link:visited {
-        color: $govuk-print-text-colour;
+        color: govuk-functional-colour(print-text);
       }
 
       &::before {
-        border-color: $govuk-print-text-colour;
+        border-color: govuk-functional-colour(print-text);
       }
     }
   }

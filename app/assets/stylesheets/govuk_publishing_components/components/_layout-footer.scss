@@ -21,7 +21,7 @@
     background: none;
     margin: 25mm 0 0;
     padding: 5mm 0 0;
-    border-top: 2pt solid $govuk-print-text-colour;
+    border-top: 2pt solid govuk-functional-colour(print-text);
 
     .govuk-width-container {
       margin: 0;

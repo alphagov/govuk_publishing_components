@@ -94,7 +94,7 @@
 
 @include govuk-media-query($media-type: print) {
   .gem-c-layout-header .govuk-header__container {
-    border-color: $govuk-print-text-colour;
+    border-color: govuk-functional-colour(print-text);
 
     .govuk-grid-column-two-thirds {
       width: auto;
@@ -107,7 +107,7 @@
     }
 
     .gem-c-header__product-name {
-      color: $govuk-print-text-colour;
+      color: govuk-functional-colour(print-text);
       background: none;
     }
   }

@@ -21,7 +21,7 @@
   .gem-c-step-nav-header {
     padding: 0 0 govuk-spacing(4) 0;
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk-functional-colour(print-text);
   }
 
   .gem-c-step-nav-header__part-of {

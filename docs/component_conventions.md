@@ -253,10 +253,10 @@ Print styles should be included in the main stylesheet for a component, using th
 
 ### Print style conventions
 
-Ensure that colours are reset to black using the print specific variable `$govuk-print-text-colour`, for example:
+Ensure that colours are reset to black using the print specific variable `govuk-functional-colour(print-text)`, for example:
 
-- Text: `color: $govuk-print-text-colour;`
-- Borders: `border-color: $govuk-print-text-colour;`
+- Text: `color: govuk-functional-colour(print-text);`
+- Borders: `border-color: govuk-functional-colour(print-text);`
 
 Some elements such as background images do not print by default in most browsers. To force these to print as intended, use the CSS property `print-color-adjust`, for example:
 ```
