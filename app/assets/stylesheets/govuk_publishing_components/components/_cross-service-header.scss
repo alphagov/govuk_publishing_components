@@ -177,7 +177,7 @@ $toggle-border-height: 3px;
 
         &::after {
           display: block;
-          background-color: $govuk-focus-text-colour;
+          background-color: govuk-functional-colour(focus-text);
         }
       }
     }
@@ -191,7 +191,7 @@ $toggle-border-height: 3px;
       color: $govuk-brand-colour;
 
       &:focus {
-        color: $govuk-focus-text-colour;
+        color: govuk-functional-colour(focus-text);
       }
     }
   }
@@ -289,7 +289,7 @@ $toggle-border-height: 3px;
   @include govuk-font($size: 16, $weight: bold);
 
   @mixin toggle-button-focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
     background-color: $govuk-focus-colour;
     outline: 3px solid transparent;
   }
@@ -369,10 +369,10 @@ $toggle-border-height: 3px;
 
     .gem-c-rebranded-cross-service-header__toggle:focus &,
     .gem-c-rebranded-cross-service-header__toggle:focus-visible & {
-      background-color: $govuk-focus-text-colour;
+      background-color: govuk-functional-colour(focus-text);
 
       &:hover {
-        background-color: $govuk-focus-text-colour;
+        background-color: govuk-functional-colour(focus-text);
       }
     }
   }

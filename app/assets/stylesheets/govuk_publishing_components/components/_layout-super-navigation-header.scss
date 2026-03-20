@@ -189,10 +189,10 @@ $search-icon-height: 20px;
 
     &:focus {
       box-shadow: none;
-      color: $govuk-focus-text-colour;
+      color: govuk-functional-colour(focus-text);
 
       &::after {
-        background: $govuk-focus-text-colour;
+        background: govuk-functional-colour(focus-text);
       }
     }
   }

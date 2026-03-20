@@ -80,7 +80,7 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
     border: 1px solid $govuk-focus-colour;
     outline: 3px solid transparent;
   }

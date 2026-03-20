@@ -129,7 +129,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 
   &:focus,
   &:active {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
   }
 }
 
@@ -243,6 +243,6 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 
   &:focus,
   &:active {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
   }
 }

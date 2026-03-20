@@ -59,7 +59,7 @@ $choices-button-dimension: 12px !default;
 
     &:focus {
       background-color: $govuk-focus-colour;
-      box-shadow: 0 $govuk-border-width-form-element 0 $govuk-focus-text-colour;
+      box-shadow: 0 $govuk-border-width-form-element 0 govuk-functional-colour(focus-text);
     }
   }
 
