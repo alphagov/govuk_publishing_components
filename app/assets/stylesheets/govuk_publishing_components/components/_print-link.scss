@@ -42,7 +42,7 @@ $gem-c-print-link-background-height: 18px;
 
 .gem-c-print-link__button {
   border: 1px solid govuk-colour("black", $variant: "tint-25");
-  color: $govuk-link-colour;
+  color: govuk-functional-colour(link);
   cursor: pointer;
   margin: govuk-spacing(0);
   @include govuk-font(16);

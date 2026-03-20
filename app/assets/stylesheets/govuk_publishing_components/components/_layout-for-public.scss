@@ -45,6 +45,6 @@ $current-indicator-width: 4px;
   @include govuk-font(19, $weight: "bold");
 
   &:not(:focus):hover {
-    color: $govuk-link-colour;
+    color: govuk-functional-colour(link);
   }
 }
