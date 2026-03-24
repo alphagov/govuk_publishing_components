@@ -1,4 +1,6 @@
 /* eslint-env jasmine */
+/* global LUX */
+
 var GOVUK = window.GOVUK || {}
 
 describe('cookieSettings', function () {
@@ -96,6 +98,10 @@ describe('cookieSettings', function () {
   })
 
   describe('submitSettingsForm', function () {
+    it('confirms that LUX object exists and contains data before running dependent tests', function () {
+      expect(Object.keys(LUX).length).toBeGreaterThan(0)
+    })
+
     it('updates consent cookie with any changes', function () {
       spyOn(window.GOVUK, 'setConsentCookie').and.callThrough()
 
@@ -111,6 +117,9 @@ describe('cookieSettings', function () {
 
       expect(window.GOVUK.setConsentCookie).toHaveBeenCalledWith({ settings: false, usage: false, campaigns: false })
       expect(cookie.settings).toBeFalsy()
+      expect(LUX.auto).toBeFalsy()
+
+      LUX.auto = true // Reset LUX.auto to true for other tests
     })
 
     it('sets cookies_preferences_set cookie on form submit', function () {
