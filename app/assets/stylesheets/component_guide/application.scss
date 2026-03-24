@@ -32,7 +32,7 @@ $gem-guide-border-width: 1px;
 
 .component-call {
   margin-top: -$gem-guide-border-width;
-  margin-bottom: govuk-spacing(3);
+  margin-bottom: govuk-spacing(8);
 
   font-family: Consolas, Monaco, "Andale Mono", monospace;
   font-size: 16px;
@@ -71,6 +71,7 @@ $gem-guide-border-width: 1px;
   padding: govuk-spacing(8) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
   border: $gem-guide-border-width solid $govuk-border-colour;
   position: relative;
+  margin-bottom: govuk-spacing(8);
 
   &.direction-rtl {
     direction: rtl;
@@ -96,6 +97,10 @@ $gem-guide-border-width: 1px;
       background: none;
     }
   }
+}
+
+.component-guide-preview--no-margin {
+  margin-bottom: 0;
 }
 
 .component-guide-preview--simple {
@@ -171,24 +176,17 @@ $gem-guide-border-width: 1px;
   }
 }
 
-.examples {
-  .component-example {
-    margin: 0 0 govuk-spacing(6) * 1.5;
-
-    .example-title {
-      margin: govuk-spacing(3) 0;
-      @include govuk-text-colour;
-      @include govuk-font($size: 24, $weight: bold);
-    }
-
-    .example-title small {
-      @include govuk-font($size: 16, $weight: bold);
-    }
-  }
+.component-example {
+  margin: 0 0 govuk-spacing(6) * 1.5;
 }
 
 .component-markdown {
+  margin-bottom: govuk-spacing(8);
   @include markdown-typography;
+}
+
+.component-markdown--no-margin {
+  margin-bottom: 0;
 }
 
 // Preview Page Styling

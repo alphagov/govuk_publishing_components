@@ -1,9 +1,11 @@
 module GovukPublishingComponents
   module ComponentWrapperHelperOptions
+    def self.intro
+      "This component uses the component wrapper helper. It accepts the following options and applies them to the parent element of the component. See the [component wrapper helper documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component-wrapper-helper.md) for more detail."
+    end
+
     def self.description
       "
-This component uses the component wrapper helper. It accepts the following options and applies them to the parent element of the component. See the [component wrapper helper documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component-wrapper-helper.md) for more detail.
-
 - `id` - accepts a string for the element ID attribute
 - `data_attributes` - accepts a hash of data attributes
 - `aria` - accepts a hash of aria attributes

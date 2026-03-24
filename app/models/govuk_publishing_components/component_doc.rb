@@ -34,7 +34,10 @@ module GovukPublishingComponents
 
     def component_wrapper_options
       if uses_component_wrapper_helper?
-        ComponentWrapperHelperOptions.description
+        {
+          intro: ComponentWrapperHelperOptions.intro,
+          description: ComponentWrapperHelperOptions.description,
+        }
       end
     end
 
@@ -74,8 +77,12 @@ module GovukPublishingComponents
       markdown_to_html(accessibility_criteria) if accessibility_criteria.present?
     end
 
-    def html_component_wrapper_options
-      markdown_to_html(component_wrapper_options) if component_wrapper_options.present?
+    def html_component_wrapper_options_intro
+      markdown_to_html(component_wrapper_options[:intro]) if component_wrapper_options.present?
+    end
+
+    def html_component_wrapper_options_description
+      markdown_to_html(component_wrapper_options[:description]) if component_wrapper_options.present?
     end
 
     def partial_path
