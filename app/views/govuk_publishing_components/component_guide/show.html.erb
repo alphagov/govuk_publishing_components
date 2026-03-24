@@ -56,7 +56,7 @@
             { href: "#how-to-call-this-component", text: "How to call this component" },
             ({ href: "#govuk-design-system", text: "GOV.UK Design System" } if @component_doc.govuk_frontend_components.any?),
             ({ href: "#accessibility-acceptance-criteria", text: "Accessibility acceptance criteria" } if @component_doc.accessibility_criteria.present?),
-          ].compact
+          ].compact,
         }),
         ({
           href: "#other-examples",
@@ -67,6 +67,7 @@
     %>
     <%= render "govuk_publishing_components/components/contents_list", {
       contents: content_items,
+      margin_bottom: 8,
     } %>
   </div>
 
@@ -106,39 +107,40 @@
   <% end %>
 
   <% if @component_doc.other_examples.any? or @component_doc.uses_component_wrapper_helper? %>
-    <div class="examples">
-      <h2 class="govuk-heading-l" id="other-examples">Other examples</h2>
+    <h2 class="govuk-heading-l" id="other-examples">Other examples</h2>
 
-      <% if @component_doc.uses_component_wrapper_helper? %>
-        <div class="component-example" id="standard-options">
-          <h3 class="example-title">Standard options</h3>
-          <div class="component-markdown">
-            <%= raw(@component_doc.html_component_wrapper_options_intro) %>
-            <%= render "govuk_publishing_components/components/details", {
-              title: "See all standard options"
-            } do %>
-              <%= raw(@component_doc.html_component_wrapper_options_description) %>
-            <% end %>
-          </div>
+    <% if @component_doc.uses_component_wrapper_helper? %>
+      <div class="component-example" id="standard-options">
+        <h3 class="govuk-heading-m">Standard options</h3>
+        <div class="component-markdown">
+          <%= raw(@component_doc.html_component_wrapper_options_intro) %>
+          <%= render "govuk_publishing_components/components/details", {
+            title: "See all standard options",
+            disable_ga4: true,
+          } do %>
+            <%= raw(@component_doc.html_component_wrapper_options_description) %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-      <% @component_doc.other_examples.each do |example| %>
-        <div class="component-example" id="<%= example.id %>">
-          <h3 class="example-title">
-            <a href="<%= component_example_path(@component_doc.id, example.id) %>" class="govuk-link"><%= example.name %></a>
-            <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>" class="govuk-link">preview</a>)</small>
-          </h3>
-          <div class="component-markdown">
+    <% @component_doc.other_examples.each do |example| %>
+      <div class="component-example" id="<%= example.id %>">
+        <h3 class="govuk-heading-m">
+          <a href="<%= component_example_path(@component_doc.id, example.id) %>" class="govuk-link"><%= example.name %></a>
+          <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>" class="govuk-link">preview</a>)</small>
+        </h3>
+        <% if example.html_description %>
+          <div class="component-markdown component-markdown--no-margin">
             <%= raw(example.html_description) %>
           </div>
-          <% code_example = capture do %>
-            <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
-          <% end %>
-          <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
-          <%= code_example %>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+        <% code_example = capture do %>
+          <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
+        <% end %>
+        <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
+        <%= code_example %>
+      </div>
+    <% end %>
   <% end %>
 </div>
