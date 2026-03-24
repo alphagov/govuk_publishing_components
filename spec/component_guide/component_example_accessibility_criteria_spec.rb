@@ -5,7 +5,7 @@ describe "Component examples with accessibility criteria", :capybara do
     visit "/component-guide/test_component"
 
     within ".component-accessibility-criteria" do
-      expect(page).to have_selector("h2", text: "Accessibility acceptance criteria")
+      expect(page).to have_selector("h3", text: "Accessibility acceptance criteria")
       expect(page).to have_content("This is some criteria in a list")
     end
   end
