@@ -31,6 +31,15 @@ describe('Google Analytics auto tracker', function () {
       expect(tracker.startModule).toHaveBeenCalled()
     })
 
+    it('starts the module if aggregate consent has already been given', function () {
+      GOVUK.setDefaultConsentCookie()
+      var tracker = new GOVUK.Modules.Ga4AutoTracker(element)
+      spyOn(tracker, 'startModule').and.callThrough()
+      tracker.init()
+
+      expect(tracker.startModule).toHaveBeenCalled()
+    })
+
     it('starts the module on the same page as cookie consent is given', function () {
       this.denyCookies()
       var tracker = new GOVUK.Modules.Ga4AutoTracker(element)
