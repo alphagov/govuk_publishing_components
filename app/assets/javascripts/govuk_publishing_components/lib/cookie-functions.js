@@ -2,7 +2,6 @@
 
 (function (root) {
   'use strict'
-  window.GOVUK = window.GOVUK || {}
 
   var DEFAULT_COOKIE_CONSENT = {
     essential: true,

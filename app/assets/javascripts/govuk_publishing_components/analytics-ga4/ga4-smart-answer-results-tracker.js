@@ -1,5 +1,3 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {}
 window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
 (function (Modules) {

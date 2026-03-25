@@ -1,6 +1,4 @@
 //= require govuk_publishing_components/lib/cookie-functions
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   function GlobalBanner ($module) {

@@ -1,7 +1,5 @@
 (function () {
   'use strict'
-  window.GOVUK = window.GOVUK || {}
-  var GOVUK = window.GOVUK || {}
 
   var YoutubeLinkEnhancement = function ($element, $classOverride) {
     this.$element = $element
@@ -262,5 +260,5 @@
     }
   }
 
-  GOVUK.GovspeakYoutubeLinkEnhancement = YoutubeLinkEnhancement
+  window.GOVUK.GovspeakYoutubeLinkEnhancement = YoutubeLinkEnhancement
 })()

@@ -1,6 +1,5 @@
 (function (root) {
   'use strict'
-  window.GOVUK = window.GOVUK || {}
 
   window.GOVUK.extendObject = function (obj) {
     obj = obj || {}

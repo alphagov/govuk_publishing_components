@@ -1,8 +1,6 @@
 ;(function (global) {
   'use strict'
 
-  var GOVUK = global.GOVUK || {}
-
   var Schemas = function () {
     this.undefined = undefined
   }
@@ -99,8 +97,5 @@
     return obj
   }
 
-  GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
-  GOVUK.analyticsGa4.Schemas = Schemas
-
-  global.GOVUK = GOVUK
+  window.GOVUK.analyticsGa4.Schemas = Schemas
 })(window)

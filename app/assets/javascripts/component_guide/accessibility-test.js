@@ -1,8 +1,6 @@
 //= require axe-core/axe.js
 
 (function (window, document, axe) {
-  window.GOVUK = window.GOVUK || {}
-
   function AccessibilityTest (selector, callback) {
     if (typeof callback !== 'function') {
       return

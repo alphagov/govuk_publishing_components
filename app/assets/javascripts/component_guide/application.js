@@ -1,3 +1,4 @@
+//= require ../govuk_publishing_components/initialise-vars
 //= require_tree ./vendor
 //= require_tree .
 //= require ../govuk_publishing_components/dependencies

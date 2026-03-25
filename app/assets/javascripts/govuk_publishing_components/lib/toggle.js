@@ -67,8 +67,6 @@
   `data-controls` can contain more than one element, space
   separated.
 */
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   function GemToggle ($module) {

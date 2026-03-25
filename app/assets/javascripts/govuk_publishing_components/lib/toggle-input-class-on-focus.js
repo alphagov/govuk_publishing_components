@@ -2,8 +2,6 @@
   Toggle the class 'focus' on input boxes on element focus/blur
   Used by the search component but generic enough for reuse
 */
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   function GemToggleInputClassOnFocus ($module) {

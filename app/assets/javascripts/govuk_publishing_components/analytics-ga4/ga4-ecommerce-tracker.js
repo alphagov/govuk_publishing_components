@@ -1,10 +1,7 @@
 ;(function (global) {
   'use strict'
 
-  var GOVUK = global.GOVUK || {}
-  GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
-
-  GOVUK.analyticsGa4.Ga4EcommerceTracker = {
+  window.GOVUK.analyticsGa4.Ga4EcommerceTracker = {
     init: function (referrer) {
       if (window.dataLayer) {
         /* The referrer parameter is only passed to the init() function as a result of an AJAX request
@@ -43,30 +40,28 @@
     },
 
     trackResults: function (searchResultsBlock) {
-      var ecommerceSchema = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
+      var ecommerceSchema = window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
         element: searchResultsBlock,
         resultsId: 'js-result-count'
       })
 
-      GOVUK.analyticsGa4.core.ecommerceHelperFunctions.clearEcommerceObject()
-      GOVUK.analyticsGa4.core.sendData(ecommerceSchema)
+      window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.clearEcommerceObject()
+      window.GOVUK.analyticsGa4.core.sendData(ecommerceSchema)
     },
 
     handleClick: function (event) {
       if (event.target.getAttribute('data-ga4-ecommerce-path')) {
         var searchResultsBlock = event.target.closest('[data-ga4-ecommerce]')
 
-        var ecommerceSchema = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
+        var ecommerceSchema = window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
           element: searchResultsBlock,
           resultsId: 'js-result-count',
           event: event
         })
 
-        GOVUK.analyticsGa4.core.ecommerceHelperFunctions.clearEcommerceObject()
-        GOVUK.analyticsGa4.core.sendData(ecommerceSchema)
+        window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.clearEcommerceObject()
+        window.GOVUK.analyticsGa4.core.sendData(ecommerceSchema)
       }
     }
   }
-
-  global.GOVUK = GOVUK
 })(window)

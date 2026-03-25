@@ -1,7 +1,6 @@
 // see https://github.com/alphagov/govuk_publishing_components/blob/main/docs/lib/trigger_event.md
 (function (root) {
   'use strict'
-  window.GOVUK = window.GOVUK || {}
 
   window.GOVUK.triggerEvent = function (element, eventName, parameters) {
     var params = parameters || {}
