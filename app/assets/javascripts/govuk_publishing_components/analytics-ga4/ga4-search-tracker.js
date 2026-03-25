@@ -34,7 +34,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var consentCookie = window.GOVUK.getConsentCookie()
 
-      if (consentCookie && consentCookie.usage) {
+      if (consentCookie && (consentCookie.usage || consentCookie.aggregate)) {
         this.startModule()
       } else {
         window.addEventListener('cookie-consent', () => this.startModule())
