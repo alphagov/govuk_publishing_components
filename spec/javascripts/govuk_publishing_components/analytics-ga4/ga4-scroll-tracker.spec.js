@@ -65,6 +65,16 @@ describe('GA4 scroll tracker', function () {
       expect(scrollTracker.startModule).toHaveBeenCalled()
     })
 
+    it('starts the module if aggregate consent has already been given', function () {
+      GOVUK.setDefaultConsentCookie()
+      var el = document.createElement('div')
+      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
+      spyOn(scrollTracker, 'startModule').and.callThrough()
+      scrollTracker.init()
+
+      expect(scrollTracker.startModule).toHaveBeenCalled()
+    })
+
     it('does not do anything if consent is not given', function () {
       this.denyCookies()
       var el = document.createElement('div')
