@@ -36,6 +36,17 @@ describe('Google Analytics event tracker', function () {
       expect(tracker.trackClick).toHaveBeenCalled()
     })
 
+    it('starts the module if aggregate consent has already been given', function () {
+      GOVUK.setDefaultConsentCookie()
+      document.body.appendChild(element)
+      var tracker = new GOVUK.Modules.Ga4EventTracker(element)
+      spyOn(tracker, 'trackClick')
+      tracker.init()
+
+      element.click()
+      expect(tracker.trackClick).toHaveBeenCalled()
+    })
+
     it('starts the module on the same page as cookie consent is given', function () {
       this.denyCookies()
       document.body.appendChild(element)
