@@ -41,6 +41,16 @@ describe('Google Analytics form tracking', function () {
       expect(tracker.trackFormSubmit).toHaveBeenCalled()
     })
 
+    it('starts the module if aggregate consent has already been given', function () {
+      GOVUK.setDefaultConsentCookie()
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      spyOn(tracker, 'trackFormSubmit')
+      tracker.init()
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(tracker.trackFormSubmit).toHaveBeenCalled()
+    })
+
     it('starts the module on the same page as cookie consent is given', function () {
       this.denyCookies()
       var tracker = new GOVUK.Modules.Ga4FormTracker(element)
