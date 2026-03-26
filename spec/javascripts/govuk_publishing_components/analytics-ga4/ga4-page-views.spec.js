@@ -130,7 +130,7 @@ describe('Google Tag Manager page view tracking', function () {
       {
         gtmName: 'rendering_app',
         tagName: 'rendering-app',
-        value: 'government-frontend'
+        value: 'finder-frontend'
       },
       {
         gtmName: 'schema_name',
