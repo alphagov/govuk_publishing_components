@@ -14,7 +14,6 @@ module GovukPublishingComponents
         feedback
         finder-frontend
         frontend
-        government-frontend
         govspeak
         govspeak-preview
         govuk-chat
