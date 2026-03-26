@@ -1,1 +1,35 @@
 @import "govuk/components/details/details";
+
+.gem-c-details--black {
+  .govuk-details__summary {
+    color: govuk-colour("black");
+  }
+
+  .govuk-details__text {
+    border-color: govuk-colour("black");
+  }
+
+  .govuk-link {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+  }
+}
+
+.gem-c-details--inverse {
+  .govuk-details__summary,
+  .govuk-details__text {
+    color: govuk-colour("white");
+
+    &:focus {
+      color: govuk-colour("black");
+    }
+  }
+
+  .govuk-details__text {
+    border-color: govuk-colour("white");
+  }
+
+  .govuk-link {
+    @include govuk-link-style-inverse;
+  }
+}
