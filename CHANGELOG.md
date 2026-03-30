@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 65.1.1
 
 * Improve how we show excluded nations that have the same alternative url ([PR #5342](https://github.com/alphagov/govuk_publishing_components/pull/5342))
 
