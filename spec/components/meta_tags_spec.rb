@@ -13,7 +13,7 @@ describe "Meta tags", type: :view do
     render_component(content_item: example_document_for("case_study", "case_study"))
     assert_meta_tag("govuk:format", "case_study")
     assert_meta_tag("govuk:publishing-app", "whitehall")
-    assert_meta_tag("govuk:rendering-app", "government-frontend")
+    assert_meta_tag("govuk:rendering-app", "frontend")
     assert_meta_tag("govuk:organisations", "<L2><W4>")
     assert_meta_tag("govuk:world-locations", "<WL3>")
     assert_meta_tag("govuk:first-published-at", "2012-12-17T15:45:44.000+00:00")
