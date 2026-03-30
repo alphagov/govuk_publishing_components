@@ -32,7 +32,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$module.addEventListener('change', event => this.setTriggeredAction(event))
       this.$module.addEventListener('input', event => this.setTriggeredAction(event))
 
-      if (window.GOVUK.getConsentCookie() && window.GOVUK.getConsentCookie().usage) {
+      var consentCookie = window.GOVUK.getConsentCookie()
+
+      if (consentCookie && consentCookie.usage) {
         this.startModule()
       } else {
         window.addEventListener('cookie-consent', () => this.startModule())
