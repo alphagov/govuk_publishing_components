@@ -24,6 +24,58 @@ describe('Ga4 Form Change Tracker', function () {
     container.remove()
   })
 
+  describe('when the user has a cookie consent choice', function () {
+    const createForm = (container, ...fields) => {
+      form = new Form(fields)
+
+      form.appendToParent(container)
+      form.setAttribute('data-ga4-form-change-tracker', true)
+    }
+
+    it('starts the module if consent has already been given', function () {
+      this.agreeToCookies()
+
+      trackedInputs = ['radio', 'checkbox', 'text', 'textarea', 'select']
+      createForm(container, ...trackedInputs)
+
+      const formChangeTracker = new GOVUK.Modules.Ga4FormChangeTracker(form.form)
+      spyOn(formChangeTracker, 'startModule')
+      formChangeTracker.init()
+
+      expect(formChangeTracker.startModule).toHaveBeenCalled()
+    })
+
+    it('starts the module on the same page as cookie consent is given', function () {
+      this.denyCookies()
+
+      trackedInputs = ['radio', 'checkbox', 'text', 'textarea', 'select']
+      createForm(container, ...trackedInputs)
+
+      const formChangeTracker = new GOVUK.Modules.Ga4FormChangeTracker(form.form)
+      spyOn(formChangeTracker, 'startModule')
+      formChangeTracker.init()
+
+      expect(formChangeTracker.startModule).not.toHaveBeenCalled()
+
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+
+      expect(formChangeTracker.startModule).toHaveBeenCalled()
+    })
+
+    it('does not do anything if consent is not given', function () {
+      this.denyCookies()
+
+      trackedInputs = ['radio', 'checkbox', 'text', 'textarea', 'select']
+      createForm(container, ...trackedInputs)
+
+      const formChangeTracker = new GOVUK.Modules.Ga4FormChangeTracker(form.form)
+      spyOn(formChangeTracker, 'startModule')
+      formChangeTracker.init()
+
+      expect(formChangeTracker.startModule).not.toHaveBeenCalled()
+    })
+  })
+
   describe('should fire correct event from a tracked form', () => {
     const createFormAndSetup = (container, ...fields) => {
       form = new Form(fields)
