@@ -22,13 +22,13 @@ Mount the component guide in your application:
 mount GovukPublishingComponents::Engine, at: "/component-guide" if Rails.env.development?
 ```
 
-If your application was `government-frontend` the component guide would be at:
+If your application was `frontend` the component guide would be at:
 
-http://government-frontend.dev.gov.uk/component-guide
+http://frontend.dev.gov.uk/component-guide
 
-An example guide this gem created for `government-frontend`:
+An example guide this gem created for `frontend`:
 
-https://government-frontend.herokuapp.com/component-guide
+https://govuk-frontend.herokuapp.com/component-guide
 
 You are encouraged to set up [Heroku review apps](https://docs.publishing.service.gov.uk/manual/review-apps.html) for your application, so that any changes to local components can be reviewed by looking at the component guide.
 
