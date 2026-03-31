@@ -1,6 +1,6 @@
 # Generate a new component
 
-You can create a new component in the application (when you don't intend to use it in other places) or the components gem.
+You can create a new component in the application (when you do not intend to use it in other places) or the components gem.
 
 ## Option 1: create a component in the application
 

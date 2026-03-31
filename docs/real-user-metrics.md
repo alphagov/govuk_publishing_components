@@ -2,7 +2,7 @@
 
 Real user metrics (RUM) allow a user's browser to report on how a page loaded using the [Performance API]. The tool that we use to do this is called [LUX] - short for Live User Experience - and is run by SpeedCurve.
 
-The benefit of RUM is that it shows how pages are performing in real situations, rather than on synthetic tests. This means that we don't have to guess at what conditions might be - RUM provides insight into what conditions actually are.
+The benefit of RUM is that it shows how pages are performing in real situations, rather than on synthetic tests. This means that we do not have to guess at what conditions might be - RUM provides insight into what conditions actually are.
 
 ## Loading
 
@@ -16,19 +16,19 @@ The scripts for the real user metrics are loaded from our servers - this allows 
 
 There are three scripts involved.
 
-- [the loader](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/rum-loader.js) is a script that we wrote. If cookies have been accepted, it [finds the LUX script](https://github.com/alphagov/govuk_publishing_components/commit/0edd70614589d5fbd2a619483d3a63272714b384#diff-68c3e9ad18ca1324acd992819b248cd5b0e3e336f923a972b98ab09e8a06bd9dR58), attaches it to the DOM and executes it. If cookies haven't been accepted, it sets a listener for the `cookie-consent` event.
-- [the measurer](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-measurer.js) measures performance from the start of page load, but doesn't report anything. This file shouldn't ever change. The source is from the RUM dashboard, in Settings, Edit RUM, at the end. We don't use this in the way SpeedCurve recommends, because we load the scripts ourselves.
-- [the reporter](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-reporter.js) is the script that the loader pulls down and attaches to the DOM. This file is [compiled as a separate asset](https://github.com/alphagov/govuk_publishing_components/blob/0a70273097ab4cc4abb9b81726c3fc84db880091/app/assets/config/govuk_publishing_components_manifest.js#L12-L13) and isn't included until users consent to cookies.
+- [the loader](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/rum-loader.js) is a script that we wrote. If cookies have been accepted, it [finds the LUX script](https://github.com/alphagov/govuk_publishing_components/commit/0edd70614589d5fbd2a619483d3a63272714b384#diff-68c3e9ad18ca1324acd992819b248cd5b0e3e336f923a972b98ab09e8a06bd9dR58), attaches it to the DOM and executes it. If cookies have not been accepted, it sets a listener for the `cookie-consent` event.
+- [the measurer](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-measurer.js) measures performance from the start of page load, but does not report anything. This file should not ever change. The source is from the RUM dashboard, in Settings, Edit RUM, at the end. We do not use this in the way SpeedCurve recommends, because we load the scripts ourselves.
+- [the reporter](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-reporter.js) is the script that the loader pulls down and attaches to the DOM. This file is [compiled as a separate asset](https://github.com/alphagov/govuk_publishing_components/blob/0a70273097ab4cc4abb9b81726c3fc84db880091/app/assets/config/govuk_publishing_components_manifest.js#L12-L13) and is not included until users consent to cookies.
 
 The reporter is the file that SpeedCurve occasionally changes (in SpeedCurve's repo it's called `lux.js`). Because we load our own modified copy of this script we currently have to manually download and update it. The script is audited before being updated and then two extra lines are added to make sure it works correctly. These two lines set the customer ID and set the sampling rate.
 
 ### Customer ID
 
-The customer ID is an identifier for the site using LUX, not for the user visiting the site. It won't change from page to page, or from visitor to visitor.
+The customer ID is an identifier for the site using LUX, not for the user visiting the site. It will not change from page to page, or from visitor to visitor.
 
 When loading `lux.js` from SpeedCurve's CDN, the customer ID is appended to the end of the URI as a query string. The script looks for a script in the DOM with a source of `lux.js`, and from that extracts the customer ID.
 
-Rails adds a fingerprint to the URI which means that `lux.js` becomes (for example) `lux.self-7137780d5344a93190a2c698cd660619d4197420b9b1ef963b639a825a6aa5ff.js` and the script can't find itself. Because of this that part of the script would fail. Instead, we modify the `getCustomerId()` function to simply return `LUX.customerid`.
+Rails adds a fingerprint to the URI which means that `lux.js` becomes (for example) `lux.self-7137780d5344a93190a2c698cd660619d4197420b9b1ef963b639a825a6aa5ff.js` and the script cannot find itself. Because of this that part of the script would fail. Instead, we modify the `getCustomerId()` function to simply return `LUX.customerid`.
 
 Because of this the customer ID needs to be set in the `lux.js` file:
 
@@ -119,7 +119,7 @@ It's worth checking the [SpeedCurve changelog](https://support.speedcurve.com/ch
 
 ## Protocol measuring
 
-We've added an extra bit to the end of the measurer script to [determine what protocol is in use](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-measurer.js#L161-L196) - HTTP 1, 2 or 3. This shouldn't need any updating as the measurer shouldn't change.
+We've added an extra bit to the end of the measurer script to [determine what protocol is in use](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/vendor/lux/lux-measurer.js#L161-L196) - HTTP 1, 2 or 3. This should not need any updating as the measurer should not change.
 
 [Performance API]: https://developer.mozilla.org/en-US/docs/Web/API/Performance_API
 

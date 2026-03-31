@@ -16,7 +16,7 @@ Additional values that can be redacted are:
 - Dates - `2022-02-22` becomes `[date]`
 - Postcodes - `sw1a 1aa` becomes `[postcode]`
 
-These aren't enabled by default due to the higher likelihood of producing false positives.
+These are not enabled by default due to the higher likelihood of producing false positives.
 
 ## Basic use
 ```JavaScript

@@ -346,7 +346,7 @@ Some [common JavaScript modules](https://github.com/alphagov/govuk_publishing_co
 
 ## Tests
 
-Component tests should include a check that the component doesn't fail if no data is passed.
+Component tests should include a check that the component does not fail if no data is passed.
 
 JavaScript tests should be included if the component has any JavaScript that is unique to it. Use of existing JavaScript modules should be covered by existing tests.
 

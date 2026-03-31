@@ -142,7 +142,7 @@ Operation:
 
 - Tracking events are only fired once i.e. if a user scrolls up and down a page, duplicate events are not tracked.
 - Tracking events are fired on page load for things that are immediately visible.
-- If the user has followed a jump link, e.g. `https://www.gov.uk/foreign-travel-advice/spain/coronavirus#finance` the tracker detects this and doesn't fire tracking events until after the browser jumps to the relevant section. It also checks that the hash matches a valid element on the page, and continues as normal if it doesn't.
+- If the user has followed a jump link, e.g. `https://www.gov.uk/foreign-travel-advice/spain/coronavirus#finance` the tracker detects this and does not fire tracking events until after the browser jumps to the relevant section. It also checks that the hash matches a valid element on the page, and continues as normal if it does not.
 - Headings are tracked only when the whole of the heading is visible in the viewport.
 - Headings are only tracked if they are inside the 'main' element, in order to avoid tracking headings in e.g. the cookie banner, the footer (this has been written to be extendable in future if other elements/classes are required)
 - Hidden headings are not tracked, unless they become visible (e.g. if inside an accordion that is opened).

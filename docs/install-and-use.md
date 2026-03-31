@@ -97,9 +97,9 @@ Alternatively, you can simply import the Sass for all of the components. This is
 
 #### Create a separate JS bundle for govuk-frontend components
 
-As of [govuk-frontend v5.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.0.0), the target for browser support has changed to browsers that support using the `type="module"` attribute on `script` tags. This means that govuk_publishing_components JavaScript files that include files from govuk-frontend will now error ungracefully and potentially function in an unpredictable way if a browser that doesn't support `type="module"`, tries to evaluate the Javascript in a script tag without the `type="module"` attribute.
+As of [govuk-frontend v5.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.0.0), the target for browser support has changed to browsers that support using the `type="module"` attribute on `script` tags. This means that govuk_publishing_components JavaScript files that include files from govuk-frontend will now error ungracefully and potentially function in an unpredictable way if a browser that does not support `type="module"`, tries to evaluate the Javascript in a script tag without the `type="module"` attribute.
 
-To ensure that [grade X browsers](https://frontend.design-system.service.gov.uk/browser-support/#grade-x) don't evaluate the JavaScript that they don't support, consider using a separate file called `es6-components.js` for these components, for example:
+To ensure that [grade X browsers](https://frontend.design-system.service.gov.uk/browser-support/#grade-x) do not evaluate the JavaScript that they do not support, consider using a separate file called `es6-components.js` for these components, for example:
 
 ```rb
 # es6-components.js
