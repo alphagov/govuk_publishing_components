@@ -225,7 +225,7 @@ examples:
         type: html
   external_attachment:
     description: |
-      The word break helper (`govuk-text-break-word`) is used from the design system to forcibly break URLs across multiple lines when they wouldn't otherwise fit.
+      The word break helper (`govuk-text-break-word`) is used from the design system to forcibly break URLs across multiple lines when they would not otherwise fit.
     data:
       attachment:
         title: "Architects Registration Board annual report 2021"

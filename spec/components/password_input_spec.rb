@@ -49,7 +49,7 @@ describe "Password Input", type: :view do
     render_component({
       label_text: "Secret number",
       error_text_prefix: "Incompatible",
-      error_text: "6 is scared of 7, so they can't be next to each other.",
+      error_text: "6 is scared of 7, so they cannot be next to each other.",
       button_show_password_aria_label: "View password",
       button_hide_password_aria_label: "Obscure password",
       button_show_password_text: "View",
@@ -58,7 +58,7 @@ describe "Password Input", type: :view do
       password_hidden_announcement: "Password is obscured",
     })
     assert_select "div.govuk-password-input label", "Secret number"
-    assert_select "p#1234-password-input-with-error-message-error", "Incompatible: 6 is scared of 7, so they can't be next to each other."
+    assert_select "p#1234-password-input-with-error-message-error", "Incompatible: 6 is scared of 7, so they cannot be next to each other."
     assert_select "div.govuk-password-input button", "View"
 
     # As the following data attributes contain period symbols, we must use an alternative to assert_select.

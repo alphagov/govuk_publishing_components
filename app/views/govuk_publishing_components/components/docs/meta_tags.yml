@@ -23,7 +23,7 @@ examples:
     description: |
       The tags in this object will generate the `content-has-history` tag, set to true. This tag is triggered when either, within `content_item`:
 
-      1. `public_updated_at` and `first_public_at` within `details` are both present and they aren't the same value
+      1. `public_updated_at` and `first_public_at` within `details` are both present and they are not the same value
       2. `change_history` within `details` is present and it has a value of more than 1
 
       See below example for specific details.

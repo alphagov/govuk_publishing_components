@@ -41,7 +41,7 @@ examples:
       </div>
   with_ga4_tracking:
     description: |
-      GA4 tracking is mostly handled internally by the component, apart from the required attribute `index_section_count`. This records the number of details components on the page and must be passed by the hosting application. Other GA4 attributes can also be passed if required, including to override attributes set by the component (for some reason this doesn't work in the component guide but works in applications).
+      GA4 tracking is mostly handled internally by the component, apart from the required attribute `index_section_count`. This records the number of details components on the page and must be passed by the hosting application. Other GA4 attributes can also be passed if required, including to override attributes set by the component (for some reason this does not work in the component guide but works in applications).
 
       The tracking automatically includes `index_section` as the index of the component on the page compared with other instances of the component that are also being tracked, e.g. the first details component on a page will be `index_section` 1, the second `index_section` 2, etc.
 

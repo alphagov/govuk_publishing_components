@@ -95,7 +95,7 @@ examples:
         },
       ]
   extra_details_without_indent:
-    description: Don't indent the extra links. Used for links to people pages.
+    description: Do not indent the extra links. Used for links to people pages.
     data:
       href: "/government/people/"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
@@ -274,7 +274,7 @@ examples:
 
       `srcset` strings typically pull from the `asset/images` directory of a repo so use this as a starting point when writing paths for your `srcset` image keys.
 
-      Note that the below example will appear to render incorrectly as we don't want to include `srcset` example images in our component guide as this will get served to frontend apps, adding weight to the user to download.
+      Note that the below example will appear to render incorrectly as we do not want to include `srcset` example images in our component guide as this will get served to frontend apps, adding weight to the user to download.
     data:
       href: "/not-a-page"
       image_src: "/assets/govuk_publishing_components/image-card-srcset/afghan-image-promo.jpg"

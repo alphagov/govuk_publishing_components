@@ -60,7 +60,7 @@ examples:
           <p class="publication-header__last-changed">Published 22 April 2016</p>
           <!-- end of example content -->
   html_publication_header_with_subtext:
-    description: "The white subtext can be used with the html publication header variant. We don't currently support black subtext to be used with the default variant as it's not in use on GOV.UK. If you need this please add it as a variant to the component."
+    description: "The white subtext can be used with the html publication header variant. We do not currently support black subtext to be used with the default variant as it's not in use on GOV.UK. If you need this please add it as a variant to the component."
     data:
       subtext: This is some text
       html_publication_header: true

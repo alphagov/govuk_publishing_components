@@ -41,7 +41,7 @@ examples:
       visible_counters: true
       <<: *default-example-data
   ordered_list_without_numbers:
-    description: "This is an ordered list where the numbers aren't visible."
+    description: "This is an ordered list where the numbers are not visible."
     data:
       list_type: "number"
       <<: *default-example-data
