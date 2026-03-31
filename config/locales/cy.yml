@@ -85,10 +85,10 @@ cy:
         middle: ", yr Alban"
         start: "'r Alban"
       type:
-        consultation:
-        detailed_guide:
-        guidance:
-        publication:
+        consultation: Ymgynghoriad ar gyfer %{nation}
+        detailed_guide: Canllawiau ar gyfer %{nation}
+        guidance: Canllawiau ar gyfer %{nation}
+        publication: Cyhoeddiad ar gyfer %{nation}
       wales:
         end: " a Chymru"
         middle: ", Cymru"
