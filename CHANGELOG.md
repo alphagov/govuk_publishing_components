@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 65.2.1
 
 * Change GTM config for dev docs ([PR #5380](https://github.com/alphagov/govuk_publishing_components/pull/5380))
 
