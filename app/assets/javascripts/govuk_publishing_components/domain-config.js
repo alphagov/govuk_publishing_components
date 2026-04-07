@@ -55,6 +55,6 @@ window.GOVUK.vars.domains = [
       'docs.publishing.service.gov.uk'
     ],
     initialiseGA4: true,
-    id: 'GTM-TNKCK97'
+    id: 'GTM-NQTG3X8K'
   }
 ]

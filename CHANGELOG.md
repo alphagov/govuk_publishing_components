@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change GTM config for dev docs ([PR #5380](https://github.com/alphagov/govuk_publishing_components/pull/5380))
+
 ## 65.2.0
 
 * Add black and white colour variants to details component ([PR #5364](https://github.com/alphagov/govuk_publishing_components/pull/5364))
