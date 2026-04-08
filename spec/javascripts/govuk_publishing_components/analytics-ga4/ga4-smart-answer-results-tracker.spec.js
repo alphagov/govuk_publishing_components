@@ -87,21 +87,41 @@ describe('GA4 smart answer results tracking', function () {
     document.body.removeChild(smartAnswerResultsParentEl)
   })
 
-  it('starts the module when consent is given', function () {
-    window.GOVUK.deleteCookie('cookies_policy')
-    var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)
-    spyOn(smartAnswerTracker, 'startModule').and.callThrough()
-    smartAnswerTracker.init()
-    expect(smartAnswerTracker.startModule).not.toHaveBeenCalled()
+  describe('when initialising', function () {
+    it('starts the module if consent has already been given', function () {
+      this.agreeToCookies()
+      var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)
+      spyOn(smartAnswerTracker, 'startModule').and.callThrough()
+      smartAnswerTracker.init()
 
-    // page has not been reloaded, user consents to cookies
-    window.GOVUK.triggerEvent(window, 'cookie-consent')
-    expect(smartAnswerTracker.startModule).toHaveBeenCalled()
+      expect(smartAnswerTracker.startModule).toHaveBeenCalled()
+    })
 
-    // consent listener should be removed after triggering
-    smartAnswerTracker.startModule.calls.reset()
-    window.GOVUK.triggerEvent(window, 'cookie-consent')
-    expect(smartAnswerTracker.startModule).not.toHaveBeenCalled()
+    it('does not do anything if consent is not given', function () {
+      this.denyCookies()
+      var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)
+      spyOn(smartAnswerTracker, 'startModule').and.callThrough()
+      smartAnswerTracker.init()
+
+      expect(smartAnswerTracker.startModule).not.toHaveBeenCalled()
+    })
+
+    it('starts the module on the same page as cookie consent is given', function () {
+      window.GOVUK.deleteCookie('cookies_policy')
+      var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)
+      spyOn(smartAnswerTracker, 'startModule').and.callThrough()
+      smartAnswerTracker.init()
+      expect(smartAnswerTracker.startModule).not.toHaveBeenCalled()
+
+      // page has not been reloaded, user consents to cookies
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      expect(smartAnswerTracker.startModule).toHaveBeenCalled()
+
+      // consent listener should be removed after triggering
+      smartAnswerTracker.startModule.calls.reset()
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      expect(smartAnswerTracker.startModule).not.toHaveBeenCalled()
+    })
   })
 
   describe('on page load', function () {

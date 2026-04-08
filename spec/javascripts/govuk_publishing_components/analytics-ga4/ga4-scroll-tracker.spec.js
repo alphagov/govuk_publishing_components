@@ -39,37 +39,59 @@ describe('GA4 scroll tracker', function () {
     clearInterval(tracker.interval)
   }
 
-  it('should only initialise once on a page', function () {
-    var el = document.createElement('div')
-    scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
-    spyOn(scrollTracker, 'getWindowDetails')
-    scrollTracker.init()
+  describe('when initialising', function () {
+    it('should only initialise once on a page', function () {
+      var el = document.createElement('div')
+      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
+      spyOn(scrollTracker, 'getWindowDetails')
+      scrollTracker.init()
 
-    var el2 = document.createElement('div')
-    scrollTracker2 = new GOVUK.Modules.Ga4ScrollTracker(el2)
-    spyOn(scrollTracker2, 'getWindowDetails')
-    scrollTracker2.init()
+      var el2 = document.createElement('div')
+      scrollTracker2 = new GOVUK.Modules.Ga4ScrollTracker(el2)
+      spyOn(scrollTracker2, 'getWindowDetails')
+      scrollTracker2.init()
 
-    expect(scrollTracker.getWindowDetails).toHaveBeenCalled()
-    expect(scrollTracker2.getWindowDetails).not.toHaveBeenCalled()
-  })
+      expect(scrollTracker.getWindowDetails).toHaveBeenCalled()
+      expect(scrollTracker2.getWindowDetails).not.toHaveBeenCalled()
+    })
 
-  it('starts the module when consent is given', function () {
-    window.GOVUK.deleteCookie('cookies_policy')
-    var el = document.createElement('div')
-    scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
-    spyOn(scrollTracker, 'startModule').and.callThrough()
-    scrollTracker.init()
-    expect(scrollTracker.startModule).not.toHaveBeenCalled()
+    it('starts the module if consent has already been given', function () {
+      this.agreeToCookies()
+      var el = document.createElement('div')
+      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
+      spyOn(scrollTracker, 'startModule')
+      scrollTracker.init()
 
-    // page has not been reloaded, user consents to cookies
-    window.GOVUK.triggerEvent(window, 'cookie-consent')
-    expect(scrollTracker.startModule).toHaveBeenCalled()
+      expect(scrollTracker.startModule).toHaveBeenCalled()
+    })
 
-    // consent listener should be removed after triggering
-    scrollTracker.startModule.calls.reset()
-    window.GOVUK.triggerEvent(window, 'cookie-consent')
-    expect(scrollTracker.startModule).not.toHaveBeenCalled()
+    it('does not do anything if consent is not given', function () {
+      this.denyCookies()
+      var el = document.createElement('div')
+      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
+      spyOn(scrollTracker, 'startModule')
+      scrollTracker.init()
+
+      expect(scrollTracker.startModule).not.toHaveBeenCalled()
+    })
+
+    it('starts the module on the same page as cookie consent is given', function () {
+      window.GOVUK.deleteCookie('cookies_policy')
+      var el = document.createElement('div')
+      scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
+      spyOn(scrollTracker, 'startModule').and.callThrough()
+      scrollTracker.init()
+      expect(scrollTracker.startModule).not.toHaveBeenCalled()
+
+      // page has not been reloaded, user consents to cookies
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      expect(scrollTracker.startModule).toHaveBeenCalled()
+
+      // consent listener should be removed after triggering
+      scrollTracker.startModule.calls.reset()
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      expect(scrollTracker.startModule).not.toHaveBeenCalled()
+    })
   })
 
   describe('when tracking headings', function () {

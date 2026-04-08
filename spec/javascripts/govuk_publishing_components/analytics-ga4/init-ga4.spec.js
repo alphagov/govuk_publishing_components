@@ -69,48 +69,4 @@ describe('Initialising GA4', function () {
       delete GOVUK.analyticsGa4.analyticsModules.TestNotError
     })
   })
-
-  describe('Modules depending on cookie consent to run', function () {
-    var testModule
-    var testObject = {
-      testFunction: function () {}
-    }
-
-    beforeEach(function () {
-      function TestModule () {}
-
-      TestModule.prototype.init = function () {
-        var consentCookie = window.GOVUK.getConsentCookie()
-
-        if (consentCookie && consentCookie.usage) {
-          this.startModule()
-        } else {
-          this.startModule = this.startModule.bind(this)
-          window.addEventListener('cookie-consent', this.startModule)
-        }
-      }
-      TestModule.prototype.startModule = function () {
-        testObject.testFunction()
-      }
-
-      testModule = new TestModule()
-      spyOn(testObject, 'testFunction')
-    })
-
-    it('do not run if consent is not given', function () {
-      GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
-      GOVUK.analyticsGa4.init()
-
-      testModule.init()
-      expect(testObject.testFunction).not.toHaveBeenCalled()
-    })
-
-    it('run if consent is given', function () {
-      GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":true,"campaigns":false}')
-      GOVUK.analyticsGa4.init()
-
-      testModule.init()
-      expect(testObject.testFunction).toHaveBeenCalled()
-    })
-  })
 })
