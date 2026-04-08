@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 65.2.2
+
+* Add missing Welsh translations for devolved nations content types ([PR #5371](https://github.com/alphagov/govuk_publishing_components/pull/5371))
+
 ## 65.2.1
 
 * Change GTM config for dev docs ([PR #5380](https://github.com/alphagov/govuk_publishing_components/pull/5380))
