@@ -207,7 +207,10 @@
 
   window.GOVUK.expireCookie = function (cookie, value = '') {
     // We need to handle deleting cookies on the domain and the .domain
-    var thePast = new Date(0) // 0 = 0 seconds since UTC started (1970/01/01)
+    var ThePastNoToUTCStringConversion = new Date(0) // 0 = 0 seconds since UTC started (1970/01/01)
+    var thePast = new Date(0).toUTCString() // 0 = 0 seconds since UTC started (1970/01/01)
+    console.log('ThePastNoToUTCStringConversion', ThePastNoToUTCStringConversion)
+    console.log('thePast', thePast)
     document.cookie = cookie + '=' + value + ';expires=' + thePast + ';'
     document.cookie = cookie + '=' + value + ';expires=' + thePast + ';domain=' + window.location.hostname + ';path=/'
   }
