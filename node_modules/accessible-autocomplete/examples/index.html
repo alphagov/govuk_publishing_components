@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accessible Autocomplete examples</title>
+    <style>
+      /* Example page specific styling. */
+      html {
+        color: #111;
+        background: #FFF;
+        font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      body {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        line-height: normal;
+      }
+
+      label {
+        display: block;
+        margin-bottom: .5rem;
+      }
+
+      code {
+        padding-left: .5em;
+        padding-right: .5em;
+        background: #EFEFEF;
+        font-weight: normal;
+        font-family: monospace;
+      }
+
+      main {
+        max-width: 40em;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .autocomplete-wrapper {
+        max-width: 20em;
+        margin-bottom: 4rem;
+      }
+
+      /* Custom classes for the `XYZClasses` props with visual changes to see their effect without inspecting */ 
+      .app-input {
+        /* Adjust the font to check that both hint and input get the class by default,
+           to ensure the hint suggestion exactly aligns with the typed input text */
+        font-family: serif;
+      }
+
+      .app-hint {
+        box-shadow: inset 0 0 0 5px #44952e;
+      }
+
+      .custom-menu-class {
+        box-shadow: 0 3px 0 0 #fd0, 3px 3px 0 0 #fd0, -3px 3px 0 0 #fd0;
+      }
+    </style>
+    <link rel="stylesheet" href="../dist/accessible-autocomplete.min.css">
+  </head>
+  <body>
+    <main>
+      <h1>Accessible Autocomplete examples</h1>
+
+      <p><a href="form.html">Example in a real HTML form that you can submit</a></p>
+
+      <h2>Options</h2>
+
+      <h3><code>{ element, id, source }</code></h3>
+      <p>This illustrates usage with only the required arguments.</p>
+      <label for="autocomplete-default">Country</label>
+      <div id="tt-default" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ minLength: 2 }</code></h3>
+      <p>
+        This option will prevent displaying suggestions if less than 2 characters are
+        typed in.
+      </p>
+      <label for="autocomplete-minLength">Country</label>
+      <div id="tt-minLength" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ displayMenu: 'overlay' }</code></h3>
+      <p>This option will display the menu as an absolutely positioned overlay.</p>
+      <label for="autocomplete-overlay">Country</label>
+      <div id="tt-overlay" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ autoselect: true }</code></h3>
+      <p>This option will automatically select the first suggestion.</p>
+      <label for="autocomplete-autoselect">Country</label>
+      <div id="tt-autoselect" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ defaultValue: 'Germany' }</code></h3>
+      <p>This option will prefill the input with a value.</p>
+      <label for="autocomplete-defaultValue">Country</label>
+      <div id="tt-defaultValue" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ confirmOnBlur: false }</code></h3>
+      <p>
+        This option will toggle automatically confirming a selection on blur. In the other
+        examples, if you select an option using the arrow keys and then click out, it will
+        confirm the selection.
+      </p>
+      <label for="autocomplete-confirmOnBlur">Country</label>
+      <div id="tt-confirmOnBlur" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ placeholder: 'Search for a country' }</code></h3>
+      <p>This option will populate the placeholder attribute on the input element.</p>
+      <label for="autocomplete-placeholder">Country</label>
+      <div id="tt-placeholder" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ showNoOptionsFound: false }</code></h3>
+      <p>This option will toggle displaying the "No results found" message.</p>
+      <label for="autocomplete-showNoOptionsFound">Country</label>
+      <div id="tt-showNoOptionsFound" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ showAllValues: true }</code></h3>
+      <p>
+        This option will toggle showing all values when the input is clicked, like a
+        default dropdown.
+      </p>
+      <label for="autocomplete-showAllValues">Country</label>
+      <div id="tt-showAllValues" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ showAllValues: true, dropdownArrow: () => '' }</code></h3>
+      <p>
+        When <code>showAllValues</code> is <code>true</code> a dropdown arrow
+        will be displayed. It can be customized using a function that receives a
+        `{ className: string }` object and returns a string or (P)React component.
+      </p>
+      <label for="autocomplete-customDropdownArrow">Country</label>
+      <div id="tt-customDropdownArrow" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ inputClasses: 'app-input'}</code></h3>
+      <p>
+        The classes provided in <code>inputClasses</code> are added to
+        the component's <code>&lt;input&gt;</code>.
+      </p>
+      <label for="autocomplete-inputClasses">Country</label>
+      <div id="tt-inputClasses" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ hintClasses: 'app-hint'}</code></h3>
+      <p>
+        The classes provided in <code>hintClasses</code> are added to
+        the component's hint that appears when the value matches the start of a suggestion.
+      </p>
+      <label for="autocomplete-hintClasses">Country</label>
+      <div id="tt-hintClasses" class="autocomplete-wrapper"></div>
+
+      <h3><code>{ menuClasses: 'custom-menu-class'}</code></h3>
+      <p>
+        The classes provided in <code>menuClasses</code> are added to
+        the menu displaying the suggestions.
+      </p>
+      <label for="autocomplete-menuClasses">Country</label>
+      <div id="tt-menuClasses" class="autocomplete-wrapper"></div>
+
+      <h2>Advanced features</h2>
+
+      <h3>Progressive enhancement</h3>
+      <p>
+        This example demonstrates how to turn a server-rendered <code>&lt;select&gt;</code> element
+        into a autocomplete. Turn off JavaScript to see the <code>&lt;select&gt;</code> element.
+      </p>
+      <p>Uses <code>accessibleAutocomplete.enhanceSelectElement</code>.</p>
+      <label for="autocomplete-progressiveEnhancement">Country</label>
+      <div class="autocomplete-wrapper">
+        <select id="autocomplete-progressiveEnhancement">
+          <option value="fr">France</option>
+          <option value="de">Germany</option>
+          <option value="gb" selected>United Kingdom</option>
+        </select>
+      </div>
+
+      <h3>Custom results</h3>
+      <p>
+        <p>This example demonstrates how to allow users to search for a country by either:</p>
+        <ul>
+            <li>its English name</li>
+            <li>the name by which a group of people refer to their country</li>
+        </ul>
+        <p>The suggestions are user-defined objects and they are displayed using a user-defined template. Confirming a suggestion will populate the input with the English country name.</p>
+      </p>
+      <p>Uses the <code>{ templates: { inputValue, suggestion } }</code> options.</p>
+      <label for="autocomplete-customTemplates">Country</label>
+      <div id="tt-customTemplates" class="autocomplete-wrapper"></div>
+
+      <h3>Translating texts</h3>
+      <p>
+        This example demonstrates how to translate the texts emitted by the component.
+      </p>
+      <p>Uses the <code>{ tStatusQueryTooShort: (minQueryLength) => '',
+        tStatusNoResults: () => '',
+        tStatusSelectedOption: (selectedOption, length) => '',
+        tStatusResults: () => '' }</code> options.</p>
+      <label for="autocomplete-i18n">Country</label>
+      <div id="tt-i18n" class="autocomplete-wrapper"></div>
+    </main>
+
+    <script type="text/javascript" src="../dist/accessible-autocomplete.min.js"></script>
+    <script type="text/javascript">
+      var countries = [
+        'Afghanistan',
+        'Akrotiri',
+        'Albania',
+        'Algeria',
+        'American Samoa',
+        'Andorra',
+        'Angola',
+        'Anguilla',
+        'Antarctica',
+        'Antigua and Barbuda',
+        'Argentina',
+        'Armenia',
+        'Aruba',
+        'Ashmore and Cartier Islands',
+        'Australia',
+        'Austria',
+        'Azerbaijan',
+        'Bahamas, The',
+        'Bahrain',
+        'Bangladesh',
+        'Barbados',
+        'Bassas da India',
+        'Belarus',
+        'Belgium',
+        'Belize',
+        'Benin',
+        'Bermuda',
+        'Bhutan',
+        'Bolivia',
+        'Bosnia and Herzegovina',
+        'Botswana',
+        'Bouvet Island',
+        'Brazil',
+        'British Indian Ocean Territory',
+        'British Virgin Islands',
+        'Brunei',
+        'Bulgaria',
+        'Burkina Faso',
+        'Burma',
+        'Burundi',
+        'Cambodia',
+        'Cameroon',
+        'Canada',
+        'Cape Verde',
+        'Cayman Islands',
+        'Central African Republic',
+        'Chad',
+        'Chile',
+        'China',
+        'Christmas Island',
+        'Clipperton Island',
+        'Cocos (Keeling) Islands',
+        'Colombia',
+        'Comoros',
+        'Congo',
+        'Cook Islands',
+        'Coral Sea Islands',
+        'Costa Rica',
+        'Cote d\'Ivoire',
+        'Croatia',
+        'Cuba',
+        'Cyprus',
+        'Czech Republic',
+        'Denmark',
+        'Dhekelia',
+        'Djibouti',
+        'Dominica',
+        'Dominican Republic',
+        'Ecuador',
+        'Egypt',
+        'El Salvador',
+        'Equatorial Guinea',
+        'Eritrea',
+        'Estonia',
+        'Ethiopia',
+        'Europa Island',
+        'Falkland Islands',
+        'Faroe Islands',
+        'Fiji',
+        'Finland',
+        'France',
+        'French Guiana',
+        'French Polynesia',
+        'French Southern and Antarctic Lands',
+        'Gabon',
+        'Gambia,',
+        'Gaza Strip',
+        'Georgia',
+        'Germany',
+        'Ghana',
+        'Gibraltar',
+        'Glorioso Islands',
+        'Greece',
+        'Greenland',
+        'Grenada',
+        'Guadeloupe',
+        'Guam',
+        'Guatemala',
+        'Guernsey',
+        'Guinea',
+        'Guinea-Bissau',
+        'Guyana',
+        'Haiti',
+        'Heard Island and McDonald Islands',
+        'Holy See (Vatican City)',
+        'Honduras',
+        'Hong Kong',
+        'Hungary',
+        'Iceland',
+        'India',
+        'Indonesia',
+        'Iran',
+        'Iraq',
+        'Ireland',
+        'Isle of Man',
+        'Israel',
+        'Italy',
+        'Jamaica',
+        'Jan Mayen',
+        'Japan',
+        'Jersey',
+        'Jordan',
+        'Juan de Nova Island',
+        'Kazakhstan',
+        'Kenya',
+        'Kiribati',
+        'Korea, North',
+        'Korea, South',
+        'Kuwait',
+        'Kyrgyzstan',
+        'Laos',
+        'Latvia',
+        'Lebanon',
+        'Lesotho',
+        'Liberia',
+        'Libya',
+        'Liechtenstein',
+        'Lithuania',
+        'Luxembourg',
+        'Macau',
+        'Macedonia',
+        'Madagascar',
+        'Malawi',
+        'Malaysia',
+        'Maldives',
+        'Mali',
+        'Malta',
+        'Marshall Islands',
+        'Martinique',
+        'Mauritania',
+        'Mauritius',
+        'Mayotte',
+        'Mexico',
+        'Micronesia, Federated States of',
+        'Moldova',
+        'Monaco',
+        'Mongolia',
+        'Montserrat',
+        'Morocco',
+        'Mozambique',
+        'Namibia',
+        'Nauru',
+        'Navassa Island',
+        'Nepal',
+        'Netherlands',
+        'Netherlands Antilles',
+        'New Caledonia',
+        'New Zealand',
+        'Nicaragua',
+        'Niger',
+        'Nigeria',
+        'Niue',
+        'Norfolk Island',
+        'Northern Mariana Islands',
+        'Norway',
+        'Oman',
+        'Pakistan',
+        'Palau',
+        'Panama',
+        'Papua New Guinea',
+        'Paracel Islands',
+        'Paraguay',
+        'Peru',
+        'Philippines',
+        'Pitcairn Islands',
+        'Poland',
+        'Portugal',
+        'Puerto Rico',
+        'Qatar',
+        'Reunion',
+        'Romania',
+        'Russia',
+        'Rwanda',
+        'Saint Helena',
+        'Saint Kitts and Nevis',
+        'Saint Lucia',
+        'Saint Pierre and Miquelon',
+        'Saint Vincent and the Grenadines',
+        'Samoa',
+        'San Marino',
+        'Sao Tome and Principe',
+        'Saudi Arabia',
+        'Senegal',
+        'Serbia and Montenegro',
+        'Seychelles',
+        'Sierra Leone',
+        'Singapore',
+        'Slovakia',
+        'Slovenia',
+        'Solomon Islands',
+        'Somalia',
+        'South Africa',
+        'South Georgia and the South Sandwich Islands',
+        'Spain',
+        'Spratly Islands',
+        'Sri Lanka',
+        'Sudan',
+        'Suriname',
+        'Svalbard',
+        'Swaziland',
+        'Sweden',
+        'Switzerland',
+        'Syria',
+        'Taiwan',
+        'Tajikistan',
+        'Tanzania',
+        'Thailand',
+        'Timor-Leste',
+        'Togo',
+        'Tokelau',
+        'Tonga',
+        'Trinidad and Tobago',
+        'Tromelin Island',
+        'Tunisia',
+        'Turkey',
+        'Turkmenistan',
+        'Turks and Caicos Islands',
+        'Tuvalu',
+        'Uganda',
+        'Ukraine',
+        'United Arab Emirates',
+        'United Kingdom',
+        'United States',
+        'Uruguay',
+        'Uzbekistan',
+        'Vanuatu',
+        'Venezuela',
+        'Vietnam',
+        'Virgin Islands',
+        'Wake Island',
+        'Wallis and Futuna',
+        'West Bank',
+        'Western Sahara',
+        'Yemen',
+        'Zambia',
+        'Zimbabwe'
+      ]
+    </script>
+
+    <script type="text/javascript">
+      var element = document.querySelector('#tt-default')
+      var id = 'autocomplete-default'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        source: countries
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-minLength')
+      id = 'autocomplete-minLength'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        minLength: 2,
+        source: countries
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-autoselect')
+      id = 'autocomplete-autoselect'
+      accessibleAutocomplete({
+        autoselect: true,
+        element: element,
+        id: id,
+        source: countries
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-overlay')
+      id = 'autocomplete-overlay'
+      accessibleAutocomplete({
+        displayMenu: 'overlay',
+        element: element,
+        id: id,
+        source: countries
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-defaultValue')
+      id = 'autocomplete-defaultValue'
+      accessibleAutocomplete({
+        defaultValue: 'Germany',
+        element: element,
+        id: id,
+        source: countries
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-inputClasses')
+      id = 'autocomplete-inputClasses'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        source: countries,
+        autoselect: true,
+        inputClasses: 'app-input'
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-hintClasses')
+      id = 'autocomplete-hintClasses'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        source: countries,
+        autoselect: true,
+        hintClasses: 'app-hint'
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-menuClasses')
+      id = 'autocomplete-menuClasses'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        source: countries,
+        autoselect: true,
+        menuClasses: 'custom-menu-class'
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#autocomplete-progressiveEnhancement')
+      accessibleAutocomplete.enhanceSelectElement({
+        selectElement: element
+      })
+    </script>
+
+    <script type="text/javascript">
+      function customSuggest (query, syncResults) {
+        var results = [
+          { endonymLang: 'fr', endonym: 'République Française', name: 'France' },
+          { endonymLang: 'de', endonym: 'Deutschland', name: 'Germany' },
+          { endonymLang: 'en', endonym: 'Great Britain', name: 'United Kingdom' }
+        ]
+        syncResults(query
+          ? results.filter(function (result) {
+              var resultContains = result.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+              var endonymContains = result.endonym.toLowerCase().indexOf(query.toLowerCase()) !== -1
+              return resultContains || endonymContains
+            })
+          : []
+        )
+      }
+
+      function inputValueTemplate (result) {
+        return result && result.name
+      }
+
+      function suggestionTemplate (result) {
+        return result && '<strong>' + result.name + '</strong>' +
+          ' (<span lang=' + result.endonymLang + '>' + result.endonym + '</span>)'
+      }
+
+      element = document.querySelector('#tt-customTemplates')
+      id = 'autocomplete-customTemplates'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        source: customSuggest,
+        templates: {
+          inputValue: inputValueTemplate,
+          suggestion: suggestionTemplate
+        }
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-confirmOnBlur')
+      id = 'autocomplete-confirmOnBlur'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        confirmOnBlur: false,
+        source: countries,
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-placeholder')
+      id = 'autocomplete-placeholder'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        placeholder: 'Search for a country',
+        source: countries,
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-showNoOptionsFound')
+      id = 'autocomplete-showNoOptionsFound'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        showNoOptionsFound: false,
+        source: countries
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-showAllValues')
+      id = 'autocomplete-showAllValues'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        showAllValues: true,
+        source: countries
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-i18n')
+      id = 'autocomplete-i18n'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        showAllValues: false,
+        source: countries,
+        tStatusQueryTooShort: function (minQueryLength) {
+          return 'Tippe mindestens ' + minQueryLength + ' Zeichen ein für Resultate.'
+        },
+        tStatusNoResults: function () {
+          return 'Keine Resultate.'
+        },
+        tStatusSelectedOption: function (selectedOption, length) {
+          return selectedOption + ' (1 von ' + length + ') ist ausgewählt.'
+        },
+        tStatusResults: function (length, contentSelectedOption) {
+          var words = {
+            result: (length === 1) ? 'Resultat' : 'Resultate',
+            is: (length === 1) ? 'ist' : 'sind'
+          }
+
+          return length + ' ' + words.result + ' ' + words.is + ' verfügbar. ' + contentSelectedOption
+        },
+        tNoResults: function () {
+          return 'Keine Resultate'
+        }
+      })
+    </script>
+
+    <script type="text/javascript">
+      element = document.querySelector('#tt-customDropdownArrow')
+      id = 'autocomplete-customDropdownArrow'
+      accessibleAutocomplete({
+        element: element,
+        id: id,
+        showAllValues: true,
+        source: countries,
+        dropdownArrow: function (config) {
+          return '<svg class="' + config.className + '" style="top: 8px;" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+        }
+      })
+    </script>
+
+  </body>
+</html>
