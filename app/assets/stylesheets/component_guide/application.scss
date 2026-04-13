@@ -477,6 +477,57 @@ $code-delete-bg: #fadddd;
   }
 }
 
+.table-container {
+  container-type: inline-size;
+  container-name: page;
+}
+
+@container page (width > 1040px) {
+  $w: 960px;
+
+  .table-wrapper {
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    margin-left: calc(((-100cqw + $w) / 2) - 1px);
+    margin-right: calc(((-100cqw + $w) / 2) - 1px);
+    background: #ffffff;
+    padding: 15px;
+  }
+}
+
+.govuk-tabs {
+  $w: 920px;
+
+  @container page (width > 1040px) {
+    .table-wrapper {
+      margin-left: calc(((-100cqw + $w) / 2) - 1px);
+      margin-right: calc(((-100cqw + $w) / 2) - 1px);
+
+      &::before,
+      &::after {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: -1px;
+        bottom: -1px;
+        width: calc((100cqw - 960px) / 2);
+        box-sizing: border-box;
+        border-top: solid 1px $govuk-border-colour;
+        border-bottom: solid 1px $govuk-border-colour;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+      }
+    }
+  }
+}
+
 // Note: This is a temporary override to ensure the background color on component preview
 // pages remains white, this can be removed once the --rebrand flag is removed from govuk-frontend
 .govuk-template--rebranded {
