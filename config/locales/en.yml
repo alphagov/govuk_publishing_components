@@ -90,7 +90,7 @@ en:
         start: Wales
     feedback:
       close: Cancel
-      dont_include_personal_info: Don’t include personal or financial information like your National Insurance number or credit card details.
+      dont_include_personal_info: Do not include personal or financial information like your National Insurance number or credit card details.
       email_address: Email address
       help_us_improve_govuk: Help us improve GOV.UK
       is_not_useful: this page is not useful

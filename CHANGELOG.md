@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change feedback component styles ([PR #5382](https://github.com/alphagov/govuk_publishing_components/pull/5382))
+
 ## 65.2.2
 
 * Add missing Welsh translations for devolved nations content types ([PR #5371](https://github.com/alphagov/govuk_publishing_components/pull/5371))

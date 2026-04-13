@@ -49,18 +49,23 @@
         end
       %>
 
-      <%= render "govuk_publishing_components/components/button", {
-        text: t("components.feedback.send"),
-        data_attributes: {
-          ga4_event: ga4_submit_button_event,
-        },
-      } %>
+      <div class="gem-c-feedback__button-wrapper">
+        <%= render "govuk_publishing_components/components/button", {
+          text: t("components.feedback.send"),
+          data_attributes: {
+            ga4_event: ga4_submit_button_event,
+          },
+          margin_bottom: 6,
+        } %>
 
-      <button
-        class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
-        aria-controls="something-is-wrong">
-        <%= t("components.feedback.close") %>
-      </button>
+        <%= render "govuk_publishing_components/components/button", {
+          text: t("components.feedback.close"),
+          classes: "js-close-form",
+          aria_controls: "something-is-wrong",
+          secondary_quiet: true,
+          margin_bottom: 0,
+        } %>
+      </div>
     </div>
   </div>
 </form>

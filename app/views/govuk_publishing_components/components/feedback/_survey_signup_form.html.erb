@@ -8,12 +8,14 @@
         <%= t("components.feedback.more_about_visit") %>
         <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js" class="govuk-link" target="_blank" rel="noopener noreferrer external">Please fill in this survey (opens in a new tab<noscript> and requires JavaScript</noscript>)</a>.
       </p>
-      <button
-        class="govuk-button govuk-button--secondary js-close-form"
-        aria-controls="page-is-not-useful"
-        hidden>
-        <%= t("components.feedback.close") %>
-      </button>
+
+      <%= render "govuk_publishing_components/components/button", {
+        text: t("components.feedback.close"),
+        classes: "js-close-form",
+        aria_controls: "page-is-not-useful",
+        secondary_quiet: true,
+        margin_bottom: 6,
+      } %>
     </div>
   </div>
 </div>
