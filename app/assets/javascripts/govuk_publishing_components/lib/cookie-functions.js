@@ -201,7 +201,7 @@
   }
 
   window.GOVUK.deleteCookie = function (cookie) {
-    window.GOVUK.cookie(cookie, null)
+    // window.GOVUK.cookie(cookie, null)
     window.GOVUK.expireCookie(cookie)
   }
 
