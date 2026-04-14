@@ -12,9 +12,24 @@
     border-spacing: 0;
     display: block;
     margin: 0 0 govuk-spacing(6) 0;
-    overflow-x: auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
     width: 100%;
+    max-height: 75vh;
     @include govuk-font($size: 19);
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 20px;
+      background-color: #fafafa;
+      border: solid 1px #e7e7e7;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+      background-color: #c2c2c2;
+      -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+    }
 
     caption {
       text-align: left;
@@ -101,8 +116,14 @@
 @include govuk-media-query($media-type: print) {
   .govspeak,
   .gem-c-govspeak {
-    table a::after {
-      display: none !important; // stylelint-disable-line declaration-no-important
+    table {
+      max-height: none;
+      overflow-x: auto;
+      overflow-y: auto;
+
+      a::after {
+        display: none !important; // stylelint-disable-line declaration-no-important
+      }
     }
   }
 }
