@@ -7,11 +7,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Govspeak.prototype.init = function () {
+    console.log('govspeak')
     if (this.$module.className.indexOf('js-disable-youtube') === -1) {
       this.embedYoutube()
     }
 
     this.createBarcharts()
+    this.enhanceTables()
   }
 
   Govspeak.prototype.embedYoutube = function () {
@@ -21,6 +23,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Govspeak.prototype.createBarcharts = function () {
     var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
+    enhancement.init()
+  }
+
+  Govspeak.prototype.enhanceTables = function () {
+    var enhancement = new window.GOVUK.GovspeakTableEnhancement(this.$module)
     enhancement.init()
   }
 
