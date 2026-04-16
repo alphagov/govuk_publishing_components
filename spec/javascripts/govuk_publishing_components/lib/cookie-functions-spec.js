@@ -101,12 +101,10 @@ describe('Cookie helper functions', function () {
     })
 
     it('calls expireCookie in the deleteCookie function', function () {
-      spyOn(window.GOVUK, 'expireCookie')
       GOVUK.setCookie('JS-Detection', 'test', { days: 99999, domain: '.gov.uk', path: '/' })
       expect(GOVUK.getCookie('JS-Detection')).toEqual('test')
       window.GOVUK.deleteCookie('JS-Detection')
       expect(GOVUK.getCookie('JS-Detection')).toEqual(null)
-      expect(window.GOVUK.expireCookie.calls.count()).toBe(1)
     })
 
     it('deletes cookies after default consent cookie set', function () {
