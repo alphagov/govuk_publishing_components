@@ -142,7 +142,7 @@ GEM
       smart_properties
     erubi (1.13.1)
     execjs (2.10.0)
-    faker (3.6.1)
+    faker (3.7.1)
       i18n (>= 1.8.11, < 2)
     gds-api-adapters (103.1.1)
       addressable
