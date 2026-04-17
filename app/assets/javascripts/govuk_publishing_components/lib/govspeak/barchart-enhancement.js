@@ -1,7 +1,5 @@
 // = require govuk_publishing_components/lib/govspeak/magna-charta
 
-window.GOVUK = window.GOVUK || {};
-
 (function (GOVUK) {
   'use strict'
 

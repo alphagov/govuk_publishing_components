@@ -1,7 +1,4 @@
 /* global XMLHttpRequest */
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
 (function (Modules) {
   function SinglePageNotificationButton ($module) {
     this.$module = $module

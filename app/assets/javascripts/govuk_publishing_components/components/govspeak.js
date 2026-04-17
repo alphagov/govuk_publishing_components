@@ -1,6 +1,3 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
 (function (Modules) {
   function Govspeak ($module) {
     this.$module = $module

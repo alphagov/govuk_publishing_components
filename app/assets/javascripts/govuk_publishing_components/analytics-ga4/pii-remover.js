@@ -1,7 +1,6 @@
 ;(function (global) {
   'use strict'
 
-  var GOVUK = global.GOVUK || {}
   var EMAIL_PATTERN = /[^\s=/?&#+]+(?:@|%40)[^\s=/?&+]+/g
   var POSTCODE_PATTERN = /\b[A-PR-UWYZ][A-HJ-Z]?[0-9][0-9A-HJKMNPR-Y]?(?:[\s+]|%20)*[0-9](?!refund)[ABD-HJLNPQ-Z]{2,3}\b/gi
 
@@ -160,8 +159,5 @@
     return string
   }
 
-  GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
-  GOVUK.analyticsGa4.PIIRemover = PIIRemover
-
-  global.GOVUK = GOVUK
+  window.GOVUK.analyticsGa4.PIIRemover = PIIRemover
 })(window)

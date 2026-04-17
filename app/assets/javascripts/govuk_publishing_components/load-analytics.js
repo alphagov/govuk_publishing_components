@@ -1,3 +1,4 @@
+//= require govuk_publishing_components/initialise-vars
 //= require govuk_publishing_components/analytics-ga4
 //= require govuk_publishing_components/domain-config
 

@@ -5,8 +5,6 @@
 // = require ./modules.js
 
 document.addEventListener('DOMContentLoaded', function () {
-  window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-
   // if statements ensure these functions don't execute during testing
   if (typeof window.GOVUK.loadAnalytics !== 'undefined') {
     window.GOVUK.loadAnalytics.loadExtraDomains()
@@ -14,6 +12,5 @@ document.addEventListener('DOMContentLoaded', function () {
       window.GOVUK.loadAnalytics.loadGa4()
     }
   }
-
   window.GOVUK.modules.start()
 })

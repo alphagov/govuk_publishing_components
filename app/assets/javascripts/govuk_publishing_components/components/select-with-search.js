@@ -1,7 +1,5 @@
 //= require choices.js/public/assets/scripts/choices.min.js
 'use strict'
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {}
 ;(function (Modules) {
   function SelectWithSearch (module) {
     this.module = module

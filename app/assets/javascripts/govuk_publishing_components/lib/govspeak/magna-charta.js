@@ -1,6 +1,4 @@
 // This is a non-jQuery version of Magna Charta: https://github.com/alphagov/magna-charta
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   function MagnaCharta ($module, options) {

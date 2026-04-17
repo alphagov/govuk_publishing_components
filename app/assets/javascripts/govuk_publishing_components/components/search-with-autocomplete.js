@@ -1,9 +1,5 @@
 /* global accessibleAutocomplete, fetch */
 //= require accessible-autocomplete/dist/accessible-autocomplete.min.js
-
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
 (function (Modules) {
   class GemSearchWithAutocomplete {
     constructor ($module) {

@@ -1,10 +1,11 @@
+// This initialises the window.GOVUK object for all GOVUK Modules in the gem.
+// Technically this isn't needed as our GA4 script loads first and initialises things for us, but we should keep this here so that our modules can work independently of GA4.
+//= require ./initialise-vars
+
 ;(function (global) {
   'use strict'
 
-  var GOVUK = global.GOVUK || {}
-  GOVUK.Modules = GOVUK.Modules || {}
-
-  GOVUK.modules = {
+  window.GOVUK.modules = {
     find: function (container) {
       container = container || document
 
@@ -35,16 +36,16 @@
         for (var j = 0, k = moduleNames.length; j < k; j++) {
           var moduleName = camelCaseAndCapitalise(moduleNames[j])
           var started = element.getAttribute('data-' + moduleNames[j] + '-module-started')
-          if (typeof GOVUK.Modules[moduleName] === 'function' && !started) {
+          if (typeof window.GOVUK.Modules[moduleName] === 'function' && !started) {
             try {
-              if (GOVUK.Modules[moduleName].prototype.init) {
+              if (window.GOVUK.Modules[moduleName].prototype.init) {
                 // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend V4 Modules
-                new GOVUK.Modules[moduleName](element).init()
+                new window.GOVUK.Modules[moduleName](element).init()
               } else {
                 // GOV.UK Frontend V5 Modules - removed component init() methods and initialise in constructor
                 // https://github.com/alphagov/govuk-design-system-architecture/blob/main/decision-records/010-remove-init-method.md
                 /* eslint-disable no-new */
-                new GOVUK.Modules[moduleName](element)
+                new window.GOVUK.Modules[moduleName](element)
               }
               element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
             } catch (e) {
@@ -73,6 +74,4 @@
       }
     }
   }
-
-  global.GOVUK = GOVUK
 })(window)

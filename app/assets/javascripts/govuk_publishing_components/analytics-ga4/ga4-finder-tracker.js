@@ -1,10 +1,7 @@
 ;(function (global) {
   'use strict'
 
-  const GOVUK = global.GOVUK || {}
-  GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
-
-  GOVUK.analyticsGa4.Ga4FinderTracker = {
+  window.GOVUK.analyticsGa4.Ga4FinderTracker = {
     // Called when the search results updates. Takes the event target, and a string containing the type of change and element type. Creates the GTM schema and pushes it.
     // changeEventMetadata is a string referring to the type of form change and the element type that triggered it. For example 'update-filter checkbox'.
     trackChangeEvent: function (event) {
@@ -79,7 +76,7 @@
           schema.url = window.location.pathname
           schema.section = 'Search'
           schema.action = 'search'
-          schema.text = GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(schema.text)
+          schema.text = window.GOVUK.analyticsGa4.core.trackFunctions.standardiseSearchTerm(schema.text)
           break
 
         case 'clear-all-filters':
@@ -158,6 +155,4 @@
       }
     }
   }
-
-  global.GOVUK = GOVUK
 })(window)

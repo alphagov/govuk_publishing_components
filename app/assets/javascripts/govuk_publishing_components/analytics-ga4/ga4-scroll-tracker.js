@@ -1,6 +1,3 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
 (function (Modules) {
   function Ga4ScrollTracker ($module) {
     this.$module = $module

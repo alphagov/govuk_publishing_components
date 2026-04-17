@@ -1,5 +1,3 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   'use strict'
   // Tracks interactions with search forms, including on the all content finder ("site search"),

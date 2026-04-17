@@ -8,9 +8,6 @@
   `[data-sticky-element]` to the child you want to position.
 */
 
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
 (function (Modules) {
   function ContentsListWithBody (element) {
     this.wrapper = element

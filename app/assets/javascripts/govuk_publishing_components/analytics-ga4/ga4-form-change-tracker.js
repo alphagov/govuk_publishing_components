@@ -1,6 +1,3 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
 // This does not meet Grade C browser support for Edge
 // as `CSS.escape` is not supported in Edge 12-18.
 //

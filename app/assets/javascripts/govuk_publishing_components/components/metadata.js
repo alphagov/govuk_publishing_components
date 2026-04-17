@@ -1,6 +1,3 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
 (function (Modules) {
   function Metadata ($module) {
     this.$module = $module

@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Change feedback component styles ([PR #5382](https://github.com/alphagov/govuk_publishing_components/pull/5382))
+* **BREAKING** Reduce calls to window.GOVUK ([PR #5360](https://github.com/alphagov/govuk_publishing_components/pull/5360))
 
 ## 65.2.2
 
