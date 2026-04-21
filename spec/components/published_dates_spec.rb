@@ -33,7 +33,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st November 2000",
       last_updated: "15th July 2015",
-      history: [display_time: "23 August 2013", note: "Updated with new data"],
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select ".gem-c-published-dates__change-history#full-history"
     assert_select ".gem-c-published-dates--history .gem-c-published-dates__change-date", text: "23 August 2013"
@@ -43,7 +43,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st November 2000",
       last_updated: "15th July 2015",
-      history: [display_time: "23 August 2013", note: "Updated with new data"],
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select ".gem-c-published-dates__change-history#full-history"
     assert_select ".gem-c-published-dates--history .gem-c-published-dates__change-note", text: /^\S/
@@ -56,7 +56,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st November 2000",
       last_updated: "15th July 2015",
-      history: [display_time: "23 August 2013", note: "Updated with new data"],
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select "#full-publication-update-history"
   end
@@ -65,7 +65,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st November 2000",
       last_updated: "15th July 2015",
-      history: [display_time: "23 August 2013", note: "Updated with new data"],
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select ".gem-c-published-dates__change-history.js-hidden"
   end
@@ -74,7 +74,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st November 2000",
       last_updated: "15th July 2015",
-      history: [display_time: "23 August 2013", note: "Updated with new data"],
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select ".gem-c-published-dates a[href=\"#full-history\"]"
   end
@@ -83,7 +83,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st November 2000",
       last_updated: "15th July 2015",
-      history: [display_time: "23 August 2013", note: "Updated with new data"],
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select ".gem-c-published-dates--history[data-module=\"gem-toggle\"]"
     assert_select ".gem-c-published-dates--history a[href=\"#full-history\"][data-controls=\"full-history\"]"
@@ -109,7 +109,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st November 2000",
       last_updated: "15th July 2015",
-      history: [display_time: "23 August 2013", note: "Updated with new data"],
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
 
     expected_ga4_json = {

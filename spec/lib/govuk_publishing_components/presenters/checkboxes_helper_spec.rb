@@ -65,8 +65,10 @@ RSpec.describe GovukPublishingComponents::Presenters::CheckboxesHelper do
           label: "Red",
           value: "red_value",
           items: [
-            label: "Orange",
-            value: "orange_value",
+            {
+              label: "Orange",
+              value: "orange_value",
+            },
           ],
         },
         {
