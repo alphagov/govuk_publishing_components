@@ -482,6 +482,13 @@ $code-delete-bg: #fadddd;
   container-name: page;
 }
 
+.table-wrapper {
+  .govuk-table {
+    display: block;
+    overflow-x: scroll;
+  }
+}
+
 @container page (width > 1040px) {
   $w: 960px;
 
@@ -493,6 +500,13 @@ $code-delete-bg: #fadddd;
     margin-right: calc(((-100cqw + $w) / 2) - 1px);
     background: #ffffff;
     padding: 15px;
+
+    .govuk-table {
+      width: auto;
+      display: table;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 
