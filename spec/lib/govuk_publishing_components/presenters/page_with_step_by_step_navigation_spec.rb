@@ -127,7 +127,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         "details" => {
           "step_by_step_nav" => {
             "steps" => [
-              "title": "Step one",
+              { "title": "Step one" },
             ],
           },
         },
@@ -485,7 +485,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         "details" => {
           "step_by_step_nav" => {
             "steps" => [
-              "title": "Step one",
+              { "title": "Step one" },
             ],
           },
         },
@@ -590,7 +590,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "details" => {
             "step_by_step_nav" => {
               "steps" => [
-                "title": "Step one",
+                { "title": "Step one" },
               ],
             },
           },
@@ -801,7 +801,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "details" => {
             "step_by_step_nav" => {
               "steps" => [
-                "title": "Step one",
+                { "title": "Step one" },
               ],
             },
           },

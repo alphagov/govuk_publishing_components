@@ -180,16 +180,18 @@ describe "Meta tags", type: :view do
             document_type: "taxon",
             links: {
               parent_taxons: [
-                title: "Parenting child taxon",
-                document_type: "taxon",
-                links: {
-                  parent_taxons: [
-                    {
-                      title: "Parenting root taxon",
-                      base_path: "/parenting-root-taxon",
-                      document_type: "taxon",
-                    },
-                  ],
+                {
+                  title: "Parenting child taxon",
+                  document_type: "taxon",
+                  links: {
+                    parent_taxons: [
+                      {
+                        title: "Parenting root taxon",
+                        base_path: "/parenting-root-taxon",
+                        document_type: "taxon",
+                      },
+                    ],
+                  },
                 },
               ],
             },
@@ -303,16 +305,18 @@ describe "Meta tags", type: :view do
             document_type: "taxon",
             links: {
               parent_taxons: [
-                title: "Parenting child taxon",
-                document_type: "taxon",
-                links: {
-                  parent_taxons: [
-                    {
-                      title: "Parenting root taxon",
-                      base_path: "/parenting-root-taxon",
-                      document_type: "taxon",
-                    },
-                  ],
+                {
+                  title: "Parenting child taxon",
+                  document_type: "taxon",
+                  links: {
+                    parent_taxons: [
+                      {
+                        title: "Parenting root taxon",
+                        base_path: "/parenting-root-taxon",
+                        document_type: "taxon",
+                      },
+                    ],
+                  },
                 },
               ],
             },
