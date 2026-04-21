@@ -4,11 +4,17 @@ updates:
     directory: "/"
     schedule:
       interval: daily
+    cooldown:
+      default-days: 3
   - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: daily
+    cooldown:
+      default-days: 3
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: daily
+    cooldown:
+      default-days: 3
