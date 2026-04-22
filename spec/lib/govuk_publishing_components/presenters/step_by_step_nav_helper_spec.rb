@@ -64,5 +64,13 @@ RSpec.describe GovukPublishingComponents::Presenters::StepByStepNavHelper do
 
       expect(list).to eql('<ol class="gem-c-step-nav__list " data-length="2"><li class="gem-c-step-nav__list-item js-list-item "><a data-position="1.1" class="gem-c-step-nav__link js-link" href="/link1?step-by-step-nav=this-is-an-id">Link 1 </a></li><li class="gem-c-step-nav__list-item js-list-item gem-c-step-nav__list-item--active"><a data-position="1.2" class="gem-c-step-nav__link js-link" href="#content"><span class="gem-c-step-nav__link-active-context visuallyhidden">You are currently viewing: </span>Link 2 </a></li></ol>')
     end
+
+    it "generates a basic list when there are already query params" do
+      contents = [{ text: "Link 1", href: "/link1?existing=url-param&another=one" }]
+      options = { link_index: 0, step_index: 0, step_nav_content_id: "this-is-an-id" }
+      list = step_helper.render_step_nav_element({ type: "list", contents: }, options)
+
+      expect(list).to eql('<ol class="gem-c-step-nav__list " data-length="1"><li class="gem-c-step-nav__list-item js-list-item "><a data-position="1.1" class="gem-c-step-nav__link js-link" href="/link1?another=one&amp;existing=url-param&amp;step-by-step-nav=this-is-an-id">Link 1 </a></li></ol>')
+    end
   end
 end
