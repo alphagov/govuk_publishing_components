@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: ${{ inputs.ref || github.ref }}
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1.302.0
         with:
           bundler-cache: true # Also runs `bundle install`
       - uses: actions/setup-node@v6.3.0
