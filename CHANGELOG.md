@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove reliance on CGI.parse ([PR #5424](https://github.com/alphagov/govuk_publishing_components/pull/5424))
+
 ## 66.0.0
 
 * Change feedback component styles ([PR #5382](https://github.com/alphagov/govuk_publishing_components/pull/5382))
