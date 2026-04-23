@@ -5,7 +5,7 @@ body: |
 
   This component is also [extended for use in govspeak](https://components.publishing.service.gov.uk/component-guide/govspeak/button).
 
-  These instances of buttons are added by Content Designers, ideally this duplication would not exist but we currently don't have shared markup
+  These instances of buttons are added by Content Designers, ideally this duplication would not exist but we currently do not have shared markup
   via our components within the generated [govspeak](https://github.com/alphagov/govspeak).
   (This is a challenge to the reader)
 accessibility_criteria: |

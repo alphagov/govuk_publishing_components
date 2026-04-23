@@ -28,7 +28,7 @@ accessibility_criteria: |
   Step headings must use a button element:
 
   - so that steps can be toggled with the space and enter keys
-  - so that steps can't be opened in a new tab or window
+  - so that steps cannot be opened in a new tab or window
 
   When JavaScript is unavailable the component must:
 
@@ -364,7 +364,7 @@ examples:
     description: |
       As shown, options can be passed to the component to highlight one step, expand one step by default, and highlight multiple links. These options should only be used when the component is in the sidebar. The step that is highlighted and expanded will be referred to as the active step (even though they are separate options, it is assumed that they will normally be applied to the same step).
 
-      If a link is in a step by step navigation more than once and the user is on that page, the backend doesn't know which link to highlight, so it highlights both of them.
+      If a link is in a step by step navigation more than once and the user is on that page, the backend does not know which link to highlight, so it highlights both of them.
 
       JavaScript is included in the component to solve this. It uses `sessionStorage` to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link to highlight after the new page loads. It uses the value of the `tracking_id` option to uniquely identify the current step nav in the session (if this is not passed to the component this may result in other step navs having the wrong link highlighted).
 
@@ -433,7 +433,7 @@ examples:
       ]
   tracking_the_user_journey_through_the_query_string:
     description: |
-      When the step by step pattern was first introduced, one of the problems we noticed was that if a content page is in more than one step by step journey, it wasn't practical to expand all of the step by steps, as the sidebar became very long.
+      When the step by step pattern was first introduced, one of the problems we noticed was that if a content page is in more than one step by step journey, it was not practical to expand all of the step by steps, as the sidebar became very long.
 
       We solved this problem in a few ways:
 
@@ -507,11 +507,11 @@ examples:
 
       4. Content item is part of multiple primary step by steps and a single secondary step by step
 
-          No change. Show "Part of" step by steps list. Secondary step by step won't be shown.
+          No change. Show "Part of" step by steps list. Secondary step by step will not be shown.
 
       5. Content item is part of multiple step by steps and multiple secondary step by steps
 
-          No change. Show "Part of" step by step list. Secondary step by step won't be shown.
+          No change. Show "Part of" step by step list. Secondary step by step will not be shown.
 
       6. Step by step is marked as "hidden" for the content page
 
@@ -710,7 +710,7 @@ examples:
                   contents: [
                     {
                       href: 'https://www.google.co.uk/',
-                      text: "Get annoyed when it doesn't work"
+                      text: "Get annoyed when it does not work"
                     },
                     {
                       href: 'http://www.google.com',
@@ -903,7 +903,7 @@ examples:
                   contents: [
                     {
                       href: 'https://www.google.co.uk/',
-                      text: "Get annoyed when it doesn't work"
+                      text: "Get annoyed when it does not work"
                     },
                     {
                       href: 'http://www.google.com',

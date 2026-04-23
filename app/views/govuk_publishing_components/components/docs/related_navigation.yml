@@ -187,7 +187,7 @@ examples:
     description: |
       Each link can have a `locale` parameter to set the correct `lang` attribute.
 
-      If the link locale is the same as the document locale, then the lang attribute won't be used. For example, `lang="en"` won't appear on a page written in English.
+      If the link locale is the same as the document locale, then the lang attribute will not be used. For example, `lang="en"` will not appear on a page written in English.
     data:
       content_item:
         links:

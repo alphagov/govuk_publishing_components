@@ -20,7 +20,7 @@ If similar things already exist, review them to find barriers. Test them with us
 
 For many patterns the hard work of defining what accessible means has been documented in guidelines like WCAG. Do the hard work to extract rules specific to what you’re building and link back to the guidelines to give context. Consider which rules are most easily broken and give them prominence.
 
-### Don't be too generic
+### Do not be too generic
 
 Criteria are useful if they are specific and testable.
 
@@ -28,7 +28,7 @@ When we began writing accessibility acceptance criteria for components we had di
 
 In this case it was helpful to create a shared definition of an accessible link that could be linked to. This avoided diluting the criteria while giving us a place to record more generic decisions.
 
-### Don't define the solution
+### Do not define the solution
 
 Accessibility acceptance criteria are similar to [acceptance criteria in user stories](https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria). Good acceptance criteria describe an outcome rather than the solution.
 

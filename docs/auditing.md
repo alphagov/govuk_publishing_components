@@ -15,7 +15,7 @@ The auditing also includes other warnings, such as:
 
 - where applications contain jQuery
 - where applications are overriding component styles
-- where applications are using components that don't exist
+- where applications are using components that do not exist
 
 ### How it works
 
@@ -36,4 +36,4 @@ The auditing knows what to show based on two values - `@in_application` and `@ot
 | Applications tab               | Shows info for this app  | Not shown            | Shows info for all apps |
 | Components by application      | Not shown                | Not shown            | Shown                   |
 
-Note that the combination of true/true for both `@in_application` and `@other_applications` shouldn't be possible - if the gem is inside an application, it can't access other applications.
+Note that the combination of true/true for both `@in_application` and `@other_applications` should not be possible - if the gem is inside an application, it cannot access other applications.

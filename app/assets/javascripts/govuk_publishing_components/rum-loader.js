@@ -23,7 +23,7 @@
     var marker = document.querySelector('script[data-lux-reporter-script]')
 
     if (!marker) {
-      console.error("Failed to configure real-user-monitoring because couldn't the lux-reporter script path wasn't available")
+      console.error('Failed to configure real-user-monitoring because the lux-reporter script path was not available')
       return
     }
 

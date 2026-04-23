@@ -49,7 +49,7 @@ All component text should be stored in a [locale file](https://github.com/alphag
 * so that other languages can be added
 * so that text can be easily found and updated
 
-The translation of text passed to a component should be handled by the passing application. For all other text in a component, text should be stored in a locale file, even if we don't have the text in another language.
+The translation of text passed to a component should be handled by the passing application. For all other text in a component, text should be stored in a locale file, even if we do not have the text in another language.
 
 This includes text that is created in JavaScript - for example, [show/hide text in an accordion](https://github.com/alphagov/govuk_publishing_components/blob/a715bc7ba66838ed0986427051280a000e7f0565/app/views/govuk_publishing_components/components/_accordion.html.erb#L14-L20). This should be supplied from a locale file and added to the component template in data attributes that can be read by the JavaScript, so that this text can be translated.
 

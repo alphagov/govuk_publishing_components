@@ -109,7 +109,7 @@ For example:
 - another event happens and JS pushes `{ b: 1 }` to the array
 - GTM adds this to the dataLayer object, which is now `{ a: 1, b: 1 }`
 
-If data shouldn't persist it can be erased in a following push, for example by sending `{ a: 1, b: false }`, but often this overall behaviour is desirable - for example, page view data will persist in events that happen on that page, providing more context for analysts.
+If data should not persist it can be erased in a following push, for example by sending `{ a: 1, b: false }`, but often this overall behaviour is desirable - for example, page view data will persist in events that happen on that page, providing more context for analysts.
 
 If the data given to GTM contains a recognised `event` attribute value, GTM then sends that data on to GA4.
 

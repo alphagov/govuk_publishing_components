@@ -1,7 +1,7 @@
 name: Machine readable metadata
 description: Generates schema.org JSON-LD for use by search engines
 body: |
-  This component doesn't output anything visible. It generates "structured data"
+  This component does not output anything visible. It generates "structured data"
   in JSON-LD format, with [schema.org](http://schema.org) schemas.
 accessibility_criteria: |
   The HTML should not be visible.

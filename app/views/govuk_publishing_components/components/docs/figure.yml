@@ -33,7 +33,7 @@ examples:
       alt: An image of the lords chamber
       caption: The Lords Chamber on the 14th of August. A large number of people are in attendance, filling the seats in the lower and upper areas. Several people are wearing hats.
   figure_with_caption_and_bad_svg:
-    description: This example shows an SVG containing a base64 encoded PNG image, instead of correct SVG elements. This was taken from a live GOV.UK page. We use the CSS `has` selector to ensure the containing figure has a width of 100%, otherwise it collapses to zero, making the image invisible. We can't distinguish between these kinds of SVGs, so all SVGs will have a full width caption as a consequence (see previous example).
+    description: This example shows an SVG containing a base64 encoded PNG image, instead of correct SVG elements. This was taken from a live GOV.UK page. We use the CSS `has` selector to ensure the containing figure has a width of 100%, otherwise it collapses to zero, making the image invisible. We cannot distinguish between these kinds of SVGs, so all SVGs will have a full width caption as a consequence (see previous example).
     data:
       src: https://assets.publishing.service.gov.uk/media/693163e15b5198836f304041/01-fig1.svg
       alt: An image of the lords chamber

@@ -87,9 +87,9 @@ examples:
   with_maxlength:
     data:
       label:
-        text: "A textarea that doesn't allow many characters"
+        text: "A textarea that does not allow many characters"
       name: "maxlength"
-      value: "You can't type more"
+      value: "You cannot type more"
       maxlength: 19
   with_aria_attributes:
     description: Use `describedby` when the textarea is described by an element outside the component; for example, when used in conjunction with a [contextual guidance](/component-guide/contextual_guidance).

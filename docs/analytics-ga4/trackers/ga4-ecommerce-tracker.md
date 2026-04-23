@@ -36,7 +36,7 @@ And whenever search results are updated (where a string parameter is passed) e.g
 this.Ga4EcommerceTracking(this.previousSearchUrl)
 ```
 
-Note: ecommerce tracking will only run if there is an element which has the `data-ga4-ecommerce` attribute. If the script can't find an element with this attribute, it will stop running.
+Note: ecommerce tracking will only run if there is an element which has the `data-ga4-ecommerce` attribute. If the script cannot find an element with this attribute, it will stop running.
 
 ## Ecommerce tracking
 

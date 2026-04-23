@@ -55,7 +55,7 @@ examples:
     description: |
       The component accepts two possible aria attributes: `aria-describedby` and `aria-controls`.
 
-      [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used to indicate the `ID` of the element that describes the input. This will be overridden in the event of an error, where the error will be used for the `describedby` attribute value. This example uses the `ID` of the main container for demonstration purposes as there aren't any useful elements with `IDs` in the component guide. In real use this would be passed the `ID` of an element that correctly described the input.
+      [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used to indicate the `ID` of the element that describes the input. This will be overridden in the event of an error, where the error will be used for the `describedby` attribute value. This example uses the `ID` of the main container for demonstration purposes as there are not any useful elements with `IDs` in the component guide. In real use this would be passed the `ID` of an element that correctly described the input.
 
       `aria-controls` allows the addition of an `aria-controls` attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
     data:
@@ -102,14 +102,14 @@ examples:
       label:
         text: "Readonly attribute"
       name: "readonly"
-      value: "You can't change me"
+      value: "You cannot change me"
       readonly: true
   with_maxlength:
     data:
       label:
-        text: "An input that doesn't allow many characters"
+        text: "An input that does not allow many characters"
       name: "name"
-      value: "You can't type more"
+      value: "You cannot type more"
       maxlength: 10
   with_custom_width:
     data:
@@ -189,7 +189,7 @@ examples:
 
       By default the input element and the label both display text in a left to right direction.
 
-      When the `right_to_left` parameter of the input component is set to `true` both the input and the label, hint and error message display their content in a right to left direction. 
+      When the `right_to_left` parameter of the input component is set to `true` both the input and the label, hint and error message display their content in a right to left direction.
     data:
       label:
         text: "Some input text to be displayed right to left with a label that displays in the same direction"

@@ -143,7 +143,7 @@ examples:
 
   without_licence_details:
     description: |
-      In some limited circumstances (for example, in backend-facing admin systems) it doesn't make
+      In some limited circumstances (for example, in backend-facing admin systems) it does not make
       sense to show the licence information. This can be hidden by setting `hide_licence` to `true`.
     data:
       hide_licence: true

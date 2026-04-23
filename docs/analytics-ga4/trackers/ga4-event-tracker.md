@@ -40,11 +40,11 @@ The value for `text` will be determined based on the text of the element, or a v
 
 ## Advanced use
 
-Sometimes it isn't possible to use the event tracker as shown above as the requirements are more complicated. For example when tracking dynamic elements like the 'Show/hide all sections' links on accordions. In this situation tracking has to be built into the component itself.
+Sometimes it is not possible to use the event tracker as shown above as the requirements are more complicated. For example when tracking dynamic elements like the 'Show/hide all sections' links on accordions. In this situation tracking has to be built into the component itself.
 
 This is because the element being tracked is created and updated dynamically using JavaScript, and the state of the element and the data to be recorded changes on interaction (i.e. whether it was opened or closed).
 
-This is further complicated as the JavaScript that creates this element is imported from `govuk-frontend` and therefore can't be modified directly. In order to get attributes onto this link, we have to do the following.
+This is further complicated as the JavaScript that creates this element is imported from `govuk-frontend` and therefore cannot be modified directly. In order to get attributes onto this link, we have to do the following.
 
 - the 'Show/hide all' link is created by `govuk-frontend` JavaScript
 - the accordion JavaScript checks for `ga4-event-tracker`
