@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove reliance on CGI.parse ([PR #5424](https://github.com/alphagov/govuk_publishing_components/pull/5424))
+* Reset `window.LUX` when user rejects cookies ([PR #5344](https://github.com/alphagov/govuk_publishing_components/pull/5344))
 
 ## 66.0.0
 
