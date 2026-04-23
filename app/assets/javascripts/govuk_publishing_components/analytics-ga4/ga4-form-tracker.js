@@ -126,13 +126,13 @@
       } else if (elem.checked) {
         var fieldset = elem.closest('fieldset') || null
 
-        if (fieldset.dataset.ga4Redact && !elem.dataset.ga4RedactPermit) {
-          input.answer = '[REDACTED]'
-        } else {
-          input.answer = labelText
-        }
-
         if (fieldset) {
+          if (fieldset.dataset.ga4Redact && !elem.dataset.ga4RedactPermit) {
+            input.answer = '[REDACTED]'
+          } else {
+            input.answer = labelText
+          }
+
           var legend = fieldset.querySelector('legend')
 
           if (legend) {
