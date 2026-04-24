@@ -31,6 +31,17 @@ examples:
     data:
       environment: production
       product_name: Product
+  with_signout_link:
+    description: Adds a "signout" link. For use across publishing apps.
+    data:
+      environment: production
+      signout_link: true
+  with_signout_link and product name:
+    description: Adds a "signout" link for use across publishing apps and a product name
+    data:
+      environment: production
+      signout_link: true
+      product_name: Component Guide 999.9.9
   with_navigation:
     description: Note that [remove_bottom_border](#no_bottom_border) automatically gets set to true on the header when navigation items are added.
     data:

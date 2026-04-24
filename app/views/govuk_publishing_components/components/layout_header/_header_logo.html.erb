@@ -9,6 +9,7 @@
 
   environment_exists = environment.present?
   deprecated_navigation ||= false
+  signout_link ||= false
 %>
 
 <% if environment_exists && deprecated_navigation %>
@@ -32,3 +33,11 @@
     </div>
   <% end %>
 </div>
+
+<% if signout_link %>
+  <div class="govuk-header__content gem-c-header__content">
+    <nav class="gem-c-header__nav govuk-header__navigation">
+      <a class="govuk-header__link govuk-!-font-weight-bold" href="/auth/gds/sign_out">Sign out</a>
+    </nav>
+  </div>
+<% end %>
