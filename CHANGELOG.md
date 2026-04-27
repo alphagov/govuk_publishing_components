@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove reliance on CGI.parse ([PR #5424](https://github.com/alphagov/govuk_publishing_components/pull/5424))
+* Remove the line that resets the LUX data ([PR #5427](https://github.com/alphagov/govuk_publishing_components/pull/5427))
 
 ## 66.0.0
 
