@@ -20,6 +20,10 @@ end
 WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
+  config.expect_with :rspec do |c|
+    c.max_formatted_output_length = nil
+  end
+
   config.example_status_persistence_file_path = "tmp/failures.txt"
 
   config.filter_run_excluding not_applicable: true, visual_regression: true
