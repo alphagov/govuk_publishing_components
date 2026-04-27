@@ -20,7 +20,6 @@
     app_promo_banner: 'settings',
     global_banner_seen: 'settings',
     govuk_chat_onboarding_complete: 'settings', // cookie details page to be updated when this is in use
-    'JS-Detection': 'usage',
     _ga_VBLT2V3FZR: 'usage', // gtag cookie used to persist the session state, integration
     _ga_P1DGM6TVYF: 'usage', // staging
     _ga_S5RQ7FTGVR: 'usage' // production
