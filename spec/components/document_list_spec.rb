@@ -530,7 +530,6 @@ describe "Document list", type: :view do
     )
 
     assert_select "ul[data-module=ga4-link-tracker]"
-    assert_select "ul[data-ga4-track-links-only]"
     assert_select "ul[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"document list\"}']"
   end
 
@@ -552,7 +551,6 @@ describe "Document list", type: :view do
     )
 
     assert_select "ul[data-module=ga4-link-tracker]"
-    assert_select "ul[data-ga4-track-links-only]"
     assert_select "ul[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"I have overwritten the default value\",\"section\":\"This is the section\"}']"
   end
 
@@ -571,7 +569,6 @@ describe "Document list", type: :view do
     )
 
     assert_select "ul[data-module=ga4-link-tracker]", false
-    assert_select "ul[data-ga4-track-links-only]", false
     assert_select "ul[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"document list\"}']", false
   end
 end

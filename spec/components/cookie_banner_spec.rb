@@ -81,7 +81,6 @@ describe "Cookie banner", type: :view do
     render_component({})
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-cookie-banner]"
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-module=ga4-link-tracker]"
-    assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-track-links-only]"
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-set-indexes]"
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"cookie banner\",\"section\":\"You have accepted additional cookies\"}']"
 
@@ -93,7 +92,6 @@ describe "Cookie banner", type: :view do
     render_component({ disable_ga4: true })
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-cookie-banner]", false
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-module]", false
-    assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-track-links-only]", false
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-set-indexes]", false
     assert_select ".gem-c-cookie-banner__confirmation-message--accepted[data-ga4-link]", false
 

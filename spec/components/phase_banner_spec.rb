@@ -45,7 +45,6 @@ describe "Phase banner", type: :view do
     render_component(phase: "beta")
     assert_select ".gem-c-phase-banner[data-ga4-phase-banner=beta]"
     assert_select ".gem-c-phase-banner[data-module=ga4-link-tracker]"
-    assert_select ".gem-c-phase-banner[data-ga4-track-links-only]"
     assert_select ".gem-c-phase-banner[data-ga4-set-indexes]"
     assert_select ".gem-c-phase-banner[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"phase banner\",\"section\":\"This part of GOV.UK is being rebuilt – find out what beta means\"}']"
   end
@@ -54,7 +53,6 @@ describe "Phase banner", type: :view do
     render_component(phase: "beta", disable_ga4: true)
     assert_select ".gem-c-phase-banner[data-ga4-phase-banner]", false
     assert_select ".gem-c-phase-banner[data-module=ga4-link-tracker]", false
-    assert_select ".gem-c-phase-banner[data-ga4-track-links-only]", false
     assert_select ".gem-c-phase-banner[data-ga4-set-indexes]", false
     assert_select ".gem-c-phase-banner[data-ga4-link]", false
   end

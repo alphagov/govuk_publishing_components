@@ -51,7 +51,6 @@ describe "Summary banner", type: :view do
     )
 
     assert_select ".gem-c-summary-banner[data-module=ga4-link-tracker]"
-    assert_select ".gem-c-summary-banner[data-ga4-track-links-only]"
     assert_select ".gem-c-summary-banner[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"callout\"}']"
   end
 end

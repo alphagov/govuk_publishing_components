@@ -310,7 +310,6 @@ describe "step nav", type: :view do
 
     assert_select "#step-panel-step-1-1" do |step_panel|
       expect(step_panel.attr("data-ga4-link").to_s).to eq expected
-      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
     end
 
@@ -324,7 +323,6 @@ describe "step nav", type: :view do
 
     assert_select "#step-panel-step-2-2" do |step_panel|
       expect(step_panel.attr("data-ga4-link").to_s).to eq expected
-      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
     end
   end
@@ -342,7 +340,6 @@ describe "step nav", type: :view do
 
     assert_select "#step-panel-step-1-1" do |step_panel|
       expect(step_panel.attr("data-ga4-link").to_s).to eq expected
-      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
     end
 
@@ -356,7 +353,6 @@ describe "step nav", type: :view do
 
     assert_select "#step-panel-step-1-and-2" do |step_panel|
       expect(step_panel.attr("data-ga4-link").to_s).to eq expected
-      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
     end
 
@@ -370,7 +366,6 @@ describe "step nav", type: :view do
 
     assert_select "#step-panel-step-2-3" do |step_panel|
       expect(step_panel.attr("data-ga4-link").to_s).to eq expected
-      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
     end
   end

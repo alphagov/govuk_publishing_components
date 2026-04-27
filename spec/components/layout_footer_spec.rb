@@ -276,7 +276,6 @@ describe "Layout footer", type: :view do
   it "adds ga4 tracking to the Open Government Licence link with no navigation or meta links" do
     render_component(navigation: [])
     assert_select ".govuk-footer__licence-description" do |link_parent|
-      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index_section":"1","index_link":"1","index_section_count":"2","text":"Open Government Licence v3.0","index_total":"1","type":"footer"}'
     end
   end
@@ -284,7 +283,6 @@ describe "Layout footer", type: :view do
   it "adds ga4 tracking to the Crown Copyright link with no navigation or meta links" do
     render_component(navigation: [])
     assert_select ".govuk-footer__meta-item[data-ga4-link]" do |link_parent|
-      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index_section":"2","index_link":"1","index_section_count":"2","text":"© Crown copyright","index_total":"1","type":"footer"}'
     end
   end
@@ -371,13 +369,11 @@ describe "Layout footer", type: :view do
 
     # OGL link
     assert_select ".govuk-footer__licence-description" do |link_parent|
-      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index_section":"4","index_link":"1","index_section_count":"5","text":"Open Government Licence v3.0","index_total":"1","type":"footer"}'
     end
 
     # Crown Copyright link
     assert_select ".govuk-footer__meta-item[data-ga4-link]" do |link_parent|
-      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index_section":"5","index_link":"1","index_section_count":"5","text":"© Crown copyright","index_total":"1","type":"footer"}'
     end
   end

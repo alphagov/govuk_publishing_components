@@ -84,7 +84,6 @@
               data-module="gem-toggle"
             <% else %>
               data-module="gem-toggle ga4-link-tracker"
-              data-ga4-track-links-only
               data-ga4-link="<%= ga4_object %>"
             <% end %>>
             <%= render "govuk_publishing_components/components/metadata/sentence", items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
