@@ -41,6 +41,7 @@ describe('GA4 link tracker', function () {
   describe('when the user has a cookie consent choice', function () {
     beforeEach(function () {
       element = document.createElement('a')
+      element.setAttribute('data-ga4-link', '{ event_name: "test" }')
     })
 
     it('starts the module if consent has already been given', function () {
@@ -299,7 +300,6 @@ describe('GA4 link tracker', function () {
         '<a href="#link3"><span class="third">Link 3</span></a>' +
         '<span class="nothing"></span>'
 
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
 
@@ -345,7 +345,6 @@ describe('GA4 link tracker', function () {
           '<span class="nothing"></span>' +
         '</div>'
 
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-limit-to-element-class', 'trackme')
       element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
@@ -389,7 +388,6 @@ describe('GA4 link tracker', function () {
           '<span class="nothing"></span>' +
         '</div>'
 
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-limit-to-element-class', 'trackme, trackmetwo, trackmethree')
       element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
@@ -425,12 +423,11 @@ describe('GA4 link tracker', function () {
       element.innerHTML =
         '<div class="trackme">' +
           '<a href="#link1" class="link1">Link 1</a>' +
-          '<section class="attachment" data-module="ga4-link-tracker" data-ga4-link=\'{ "event_name": "navigation", "type": "attachment" }\' data-ga4-track-links-only="">' +
+          '<section class="attachment" data-module="ga4-link-tracker" data-ga4-link=\'{ "event_name": "navigation", "type": "attachment" }\'>' +
             '<a href="#link2" class="link2">Attachment</a>' +
           '</section>' +
         '</div>'
 
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-limit-to-element-class', 'trackme')
       element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
@@ -514,7 +511,6 @@ describe('GA4 link tracker', function () {
   describe('when data-ga4-index exists on the target element and index exists on the parent', function () {
     it('combines both (when index is an object) into a single index object', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"index":{"index_section": 1, "index_section_count": 2}}')
       element.innerHTML = '<a class="link" href="#link1">Link 1</a>'
 
@@ -531,7 +527,6 @@ describe('GA4 link tracker', function () {
   describe('when data-ga4-index does not exist on the target element but index exists on the parent', function () {
     it('does not modify the index object', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"index":{"index_section": 1, "index_section_count": 2}}')
       element.innerHTML = '<a class="link" href="#link1">Link 1</a>'
 
@@ -547,7 +542,6 @@ describe('GA4 link tracker', function () {
   describe('if neither data-ga4-index or index exist', function () {
     it('sets the index property to undefined', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"someData": "blah"}')
       element.innerHTML = '<a class="link" href="#link1">Link 1</a>'
 
@@ -568,7 +562,6 @@ describe('GA4 link tracker', function () {
   describe('PII removal', function () {
     it('redacts dates, postcodes and emails', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"someData": "blah"}')
       element.innerHTML = '<a class="link" href="#/2022-02-02/SW10AA/email@example.com">2022-02-02 SW1 0AA email@example.com</a>'
 
@@ -583,7 +576,6 @@ describe('GA4 link tracker', function () {
 
     it('does not redact information when the \'data-ga4-do-not-redact\' attribute exists on a link', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"someData": "blah"}')
       element.innerHTML = '<a class="link" href="#/2022-02-02/SW10AA/email@example.com">2022-02-02 SW1 0AA email@example.com</a>'
 
@@ -599,7 +591,6 @@ describe('GA4 link tracker', function () {
 
     it('does not redact information when the \'data-ga4-do-not-redact\' attribute exists on a parent element', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"someData": "blah"}')
       element.setAttribute('data-ga4-do-not-redact', '')
       element.innerHTML = '<a class="link" href="#/2022-02-02/SW10AA/email@example.com">2022-02-02 SW1 0AA email@example.com</a>'
@@ -617,7 +608,6 @@ describe('GA4 link tracker', function () {
   describe('if the link is an on an image with no inner text', function () {
     it('sets the text property to image', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"someData": "blah"}')
       element.innerHTML = '<a class="link" href="#link1"><img src=""/></a>' +
       '<a class="link" href="#link1"><svg></svg></a>'
@@ -634,7 +624,6 @@ describe('GA4 link tracker', function () {
 
     it('sets the text property to image when the nested elements are clicked', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"someData": "blah"}')
       element.innerHTML = '<a href="#link1"><img class="link" src=""/></a>' +
       '<a href="#link1"><svg class="link"></svg></a>' +
@@ -658,7 +647,6 @@ describe('GA4 link tracker', function () {
 
     it('adds the page path to the url value', function () {
       element = document.createElement('div')
-      element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-link', '{"event_name": "navigation"}')
       element.innerHTML = '<a class="link1" href="#link1"><img src=""/></a>'
 
