@@ -140,11 +140,6 @@
       return true
     }
 
-    // Survey cookies are dynamically generated, so we need to check for these separately
-    if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
-      return window.GOVUK.checkConsentCookieCategory(cookieName, 'settings')
-    }
-
     if (COOKIE_CATEGORIES[cookieName]) {
       var cookieCategory = COOKIE_CATEGORIES[cookieName]
 
