@@ -94,18 +94,18 @@ describe('Cookie helper functions', function () {
     })
 
     it('deletes cookies by setting the expiration date to 1st January 1970', function () {
-      GOVUK.setCookie('JS-Detection', 'test', { days: 99999, domain: '.gov.uk', path: '/' })
-      expect(GOVUK.getCookie('JS-Detection')).toEqual('test')
-      window.GOVUK.expireCookie('JS-Detection', 1234568) // Should set the expiration date to 1970-01-01
-      expect(GOVUK.getCookie('JS-Detection')).toEqual(null)
+      GOVUK.setCookie('app_promo_banner', 'test', { days: 99999, domain: '.gov.uk', path: '/' })
+      expect(GOVUK.getCookie('app_promo_banner')).toEqual('test')
+      window.GOVUK.expireCookie('app_promo_banner', 1234568) // Should set the expiration date to 1970-01-01
+      expect(GOVUK.getCookie('app_promo_banner')).toEqual(null)
     })
 
     it('calls expireCookie in the deleteCookie function', function () {
       spyOn(window.GOVUK, 'expireCookie')
-      GOVUK.setCookie('JS-Detection', 'test', { days: 99999, domain: '.gov.uk', path: '/' })
-      expect(GOVUK.getCookie('JS-Detection')).toEqual('test')
-      window.GOVUK.deleteCookie('JS-Detection')
-      expect(GOVUK.getCookie('JS-Detection')).toEqual(null)
+      GOVUK.setCookie('app_promo_banner', 'test', { days: 99999, domain: '.gov.uk', path: '/' })
+      expect(GOVUK.getCookie('app_promo_banner')).toEqual('test')
+      window.GOVUK.deleteCookie('app_promo_banner')
+      expect(GOVUK.getCookie('app_promo_banner')).toEqual(null)
       expect(window.GOVUK.expireCookie.calls.count()).toBe(1)
     })
 
@@ -113,14 +113,14 @@ describe('Cookie helper functions', function () {
       var date = new Date()
       date.setTime(date.valueOf() + (365 * 24 * 60 * 60 * 1000))
 
-      GOVUK.setCookie('JS-Detection', 'test', { expires: date.toUTCString(), domain: window.location.hostname, path: '/' })
+      GOVUK.setCookie('app_promo_banner', 'test', { expires: date.toUTCString(), domain: window.location.hostname, path: '/' })
 
-      expect(GOVUK.getCookie('JS-Detection')).toBe('test')
+      expect(GOVUK.getCookie('app_promo_banner')).toBe('test')
 
       GOVUK.setDefaultConsentCookie()
 
-      expect(GOVUK.getConsentCookie().usage).toBe(false)
-      expect(GOVUK.getCookie('JS-Detection')).toBeFalsy()
+      expect(GOVUK.getConsentCookie().settings).toBe(false)
+      expect(GOVUK.getCookie('app_promo_banner')).toBeFalsy()
     })
 
     it('deletes cookies regardless of subdomains', function () {
@@ -168,18 +168,18 @@ describe('Cookie helper functions', function () {
     })
 
     it('deletes relevant cookies in that category if consent is set to false', function () {
-      GOVUK.setConsentCookie({ usage: true })
+      GOVUK.setConsentCookie({ settings: true })
 
-      GOVUK.setCookie('JS-Detection', 'this is a usage cookie')
+      GOVUK.setCookie('app_promo_banner', 'this is a usage cookie')
 
-      expect(GOVUK.cookie('JS-Detection')).toBe('this is a usage cookie')
+      expect(GOVUK.cookie('app_promo_banner')).toBe('this is a usage cookie')
 
       spyOn(GOVUK, 'setCookie').and.callThrough()
-      GOVUK.setConsentCookie({ usage: false })
+      GOVUK.setConsentCookie({ settings: false })
 
       expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
-      expect(GOVUK.getConsentCookie().usage).toBe(false)
-      expect(GOVUK.cookie('JS-Detection')).toBeFalsy()
+      expect(GOVUK.getConsentCookie().settings).toBe(false)
+      expect(GOVUK.cookie('app_promo_banner')).toBeFalsy()
     })
   })
 
@@ -214,13 +214,13 @@ describe('Cookie helper functions', function () {
     })
 
     it('returns the consent for a given cookie', function () {
-      GOVUK.setConsentCookie({ usage: false })
+      GOVUK.setConsentCookie({ settings: false })
 
-      expect(GOVUK.checkConsentCookie('JS-Detection', 'set a usage cookie')).toBeFalsy()
+      expect(GOVUK.checkConsentCookie('app_promo_banner', 'set a settings cookie')).toBeFalsy()
 
-      GOVUK.setConsentCookie({ usage: true })
+      GOVUK.setConsentCookie({ settings: true })
 
-      expect(GOVUK.checkConsentCookie('JS-Detection', 'set a usage cookie')).toBeTruthy()
+      expect(GOVUK.checkConsentCookie('app_promo_banner', 'set a settings cookie')).toBeTruthy()
     })
 
     it('denies consent for cookies not in our list of cookies', function () {

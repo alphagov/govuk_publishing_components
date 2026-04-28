@@ -12,21 +12,14 @@
 
   var COOKIE_CATEGORIES = {
     cookies_policy: 'essential',
-    seen_cookie_message: 'essential',
-    cookie_preferences_set: 'essential',
     cookies_preferences_set: 'essential',
     '_email-alert-frontend_session': 'essential',
     intervention_campaign: 'essential',
     licensing_session: 'essential',
     govuk_contact_referrer: 'essential',
-    multivariatetest_cohort_coronavirus_extremely_vulnerable_rate_limit: 'essential',
     app_promo_banner: 'settings',
-    dgu_beta_banner_dismissed: 'settings',
     global_banner_seen: 'settings',
-    user_nation: 'settings',
     govuk_chat_onboarding_complete: 'settings', // cookie details page to be updated when this is in use
-    'JS-Detection': 'usage',
-    TLSversion: 'usage',
     _ga_VBLT2V3FZR: 'usage', // gtag cookie used to persist the session state, integration
     _ga_P1DGM6TVYF: 'usage', // staging
     _ga_S5RQ7FTGVR: 'usage' // production
@@ -145,11 +138,6 @@
     // If we're setting the consent cookie OR deleting a cookie, allow by default
     if (cookieName === 'cookies_policy' || (cookieValue === null || cookieValue === false)) {
       return true
-    }
-
-    // Survey cookies are dynamically generated, so we need to check for these separately
-    if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
-      return window.GOVUK.checkConsentCookieCategory(cookieName, 'settings')
     }
 
     if (COOKIE_CATEGORIES[cookieName]) {
