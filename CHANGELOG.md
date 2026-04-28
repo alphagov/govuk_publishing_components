@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove unneeded cookies from category list ([PR #5432](https://github.com/alphagov/govuk_publishing_components/pull/5432))
+
 ## 66.0.1
 
 * Remove reliance on CGI.parse ([PR #5424](https://github.com/alphagov/govuk_publishing_components/pull/5424))
