@@ -4,7 +4,6 @@
   function Ga4LinkTracker (module) {
     this.module = module
     this.trackingTrigger = 'data-ga4-link' // elements with this attribute get tracked
-    this.trackLinksOnly = this.module.hasAttribute('data-ga4-track-links-only')
     this.limitToElementClass = this.module.getAttribute('data-ga4-limit-to-element-class')
     this.PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
   }
@@ -39,23 +38,21 @@
 
   Ga4LinkTracker.prototype.handleClick = function (event) {
     var target = event.target
-    if (!this.trackLinksOnly) {
-      this.trackClick(event)
-    } else if (this.trackLinksOnly && target.closest('a')) {
-      if (!this.limitToElementClass) {
-        this.trackClick(event)
-      } else {
-        var classes = this.limitToElementClass.split(',')
 
-        for (var i = 0; i < classes.length; i++) {
-          if (target.closest('.' + classes[i].trim())) {
-            // Stops the link tracker firing twice if the link itself has data-ga4-link, and the parent element does as well.
-            if (target.closest('[data-ga4-link]') !== target.closest('[data-ga4-limit-to-element-class]')) {
-              return
-            }
-            this.trackClick(event)
+    if (this.limitToElementClass) {
+      var classes = this.limitToElementClass.split(',')
+      for (var i = 0; i < classes.length; i++) {
+        if (target.closest('.' + classes[i].trim())) {
+          // Stops the link tracker firing twice if the link itself has data-ga4-link, and the parent element does as well.
+          if (target.closest('[data-ga4-link]') !== target.closest('[data-ga4-limit-to-element-class]')) {
+            return
           }
+          this.trackClick(event)
         }
+      }
+    } else if (target.closest('a') || target.closest('button')) {
+      if (target.closest('[data-ga4-link]')) {
+        this.trackClick(event)
       }
     }
   }

@@ -29,7 +29,7 @@ describe('Cookie banner', function () {
                   </p>
                 </div>
                 <p class="gem-c-cookie-banner__confirmation-message--accepted govuk-body" hidden data-ga4-cookie-banner
-                  data-module="ga4-link-tracker" data-ga4-track-links-only data-ga4-set-indexes
+                  data-module="ga4-link-tracker" data-ga4-set-indexes
                   data-ga4-link="{'event_name':'navigation','type':'cookie banner','section':'You have accepted additional cookies'}">
                   You have accepted additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a
                       class="govuk-link" href="/help/cookies">change your cookie settings</a> at any time.</span></p>

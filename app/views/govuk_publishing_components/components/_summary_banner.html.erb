@@ -10,7 +10,6 @@
   component_helper.add_aria_attribute({ labelledby: title_id })
   component_helper.set_lang("en")
   component_helper.add_data_attribute({ module: "ga4-link-tracker" })
-  component_helper.add_data_attribute({ ga4_track_links_only: "" })
   component_helper.add_data_attribute({ ga4_link: { event_name: "navigation", type: "callout" } })
 %>
 <% if title.present? && text.present? %>

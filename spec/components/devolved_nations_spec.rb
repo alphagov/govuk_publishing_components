@@ -238,7 +238,6 @@ describe "Devolved Nations", type: :view do
     )
     assert_select ".gem-c-devolved-nations[data-ga4-devolved-nations-banner='England, Scotland, Wales']"
     assert_select ".gem-c-devolved-nations[data-module=ga4-link-tracker]"
-    assert_select ".gem-c-devolved-nations[data-ga4-track-links-only]"
     assert_select ".gem-c-devolved-nations[data-ga4-set-indexes]"
     assert_select ".gem-c-devolved-nations[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"devolved nations banner\",\"section\":\"Applies to England, Scotland and Wales\"}']"
   end
@@ -255,7 +254,6 @@ describe "Devolved Nations", type: :view do
 
     assert_select ".gem-c-devolved-nations[data-ga4-devolved-nations-banner]", false
     assert_select ".gem-c-devolved-nations[data-module=ga4-link-tracker]", false
-    assert_select ".gem-c-devolved-nations[data-ga4-track-links-only]", false
     assert_select ".gem-c-devolved-nations[data-ga4-set-indexes]", false
     assert_select ".gem-c-devolved-nations[data-ga4-link]", false
   end

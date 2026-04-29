@@ -46,7 +46,6 @@
           <% unless disable_ga4 %>
             data-ga4-cookie-banner <%# GA4 pageview JS looks for data-ga4-cookie-banner %>
             data-module="ga4-link-tracker"
-            data-ga4-track-links-only
             data-ga4-set-indexes
             data-ga4-link="<%= { event_name: "navigation", type: "cookie banner", section: t("components.cookie_banner.confirmation_message.accepted", locale: :en) }.to_json %>"
           <% end %>><%= t("components.cookie_banner.confirmation_message.accepted") %>. <span class="gem-c-cookie-banner__confirmation-message"><%= confirmation_message %></span></p>

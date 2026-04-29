@@ -288,7 +288,6 @@ describe "Metadata", type: :view do
 
     assert_select ".gem-c-metadata__definition:nth-of-type(2)" do |alternate_see_all_updates_container|
       expect(alternate_see_all_updates_container.attr("data-module").to_s).to eq "gem-toggle ga4-link-tracker"
-      expect(alternate_see_all_updates_container.attr("data-ga4-track-links-only").to_s).to eq ""
       expect(alternate_see_all_updates_container.attr("data-ga4-link").to_s).to eq expected_ga4_json
     end
   end
@@ -298,7 +297,6 @@ describe "Metadata", type: :view do
 
     assert_select ".js-see-all-updates-link[data-module='ga4-link-tracker']", false
     assert_select ".gem-c-metadata__definition:nth-of-type(2)[data-module='ga4-link-tracker']", false
-    assert_select ".gem-c-metadata__definition:nth-of-type(2)[data-ga4-track-links-only]", false
   end
 
   it "renders the component with a title" do

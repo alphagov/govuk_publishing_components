@@ -750,7 +750,6 @@ describe('A specialist link tracker', function () {
       window.dataLayer = []
       links = document.createElement('div')
       links.setAttribute('data-module', 'ga4-link-tracker')
-      links.setAttribute('data-ga4-track-links-only', '')
       links.setAttribute('data-ga4-limit-to-element-class', 'hello')
       links.setAttribute('data-ga4-link', JSON.stringify({ event_name: 'navigation', type: 'something' }))
 
