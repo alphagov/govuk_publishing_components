@@ -45,9 +45,7 @@ GovukPublishingComponents.configure do |c|
 end
 ```
 
-## 4. Include the assets
-
-To make use of the components, you'll have to include the JS and CSS in your application.
+## 4. Include Sass
 
 ### Import Sass for specific components (recommended)
 
@@ -86,7 +84,9 @@ Alternatively, you can simply import the Sass for all of the components. This is
 @import "govuk_publishing_components/all_components";
 ```
 
-### Import JavaScript for individual components
+## 5. Include and configure JavaScript
+
+### Import JavaScript for individual components (recommended)
 
 ```ruby
 # application.js
@@ -95,7 +95,17 @@ Alternatively, you can simply import the Sass for all of the components. This is
 //= require govuk_publishing_components/components/button
 ```
 
-#### Create a separate JS bundle for govuk-frontend components
+### Import all JavaScript
+
+Alternatively, you can simply import the JavaScript for all of the components. This is easier to manage but results in a larger JS file size, so it is not recommended for public facing applications.
+
+```ruby
+# application.js
+//= require govuk_publishing_components/dependencies
+//= require govuk_publishing_components/all_components
+```
+
+### Create a separate JS bundle for govuk-frontend components (optional)
 
 As of [govuk-frontend v5.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.0.0), the target for browser support has changed to browsers that support using the `type="module"` attribute on `script` tags. This means that govuk_publishing_components JavaScript files that include files from govuk-frontend will now error ungracefully and potentially function in an unpredictable way if a browser that doesn't support `type="module"`, tries to evaluate the Javascript in a script tag without the `type="module"` attribute.
 
@@ -118,7 +128,7 @@ This will ensure that browsers will only be able to load the JavaScript that the
 
 **Note:** You can get an up-to-date list of components that use govuk-frontend JS using the [component auditing tools](./auditing.md), components that use JS from govuk-frontend will be marked as "Yes" under the "GF JS" column.
 
-### New `use_es6_components` config option
+### New `use_es6_components` config option (optional)
 
 If you are using the `layout_for_public` or `layout_for_admin` templates, you can use the new `use_es6_components` config option in your application to load the `es6-components.js` bundle you create. If this config is set to true and there is no `es6-components.js` file then an error will occur.
 
@@ -132,11 +142,3 @@ end
 ### Using the type="module" attribute
 
 Scripts that use type=”module” will run in strict mode and be deferred by default. Please refer to the "Stop Internet Explorer 11 and other older browsers running unsupported JavaScript" section of the [govuk-frontend v5.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v5.0.0) release notes further details and recommendations.
-
-### Import all JavaScript (deprecated, will be removed in a later version)
-
-```ruby
-# application.js
-//= require govuk_publishing_components/dependencies
-//= require govuk_publishing_components/all_components
-```
