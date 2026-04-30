@@ -55,6 +55,23 @@
       text-align: right;
     }
   }
+
+  .gem-c-govspeak-table--container {
+    box-sizing: border-box;
+    padding: 20px;
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background: #ffffff;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.1);
+
+    table {
+      max-height: 75vh;
+      width: auto;
+    }
+  }
 }
 
 // Add rtl table styling when `direction: "rtl"` is set
@@ -103,6 +120,10 @@
   .gem-c-govspeak {
     table a::after {
       display: none !important; // stylelint-disable-line declaration-no-important
+    }
+
+    .gem-c-govspeak-table--container table {
+      max-height: none;
     }
   }
 }
