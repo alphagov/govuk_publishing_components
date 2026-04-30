@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.2.0
 
 * Add "With signout link" variant to the "Layout header" component ([PR #5434](https://github.com/alphagov/govuk_publishing_components/pull/5434))
 
