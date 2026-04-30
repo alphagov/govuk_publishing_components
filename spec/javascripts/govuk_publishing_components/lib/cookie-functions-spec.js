@@ -89,8 +89,8 @@ describe('Cookie helper functions', function () {
 
       GOVUK.setDefaultConsentCookie()
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
-      expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: false, usage: false, campaigns: false })
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false,"aggregate":true}', Object({ days: 365 }))
+      expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: false, usage: false, campaigns: false, aggregate: true })
     })
 
     it('deletes cookies by setting the expiration date to 1st January 1970', function () {
@@ -120,6 +120,7 @@ describe('Cookie helper functions', function () {
       GOVUK.setDefaultConsentCookie()
 
       expect(GOVUK.getConsentCookie().settings).toBe(false)
+      expect(GOVUK.getConsentCookie().aggregate).toBe(true)
       expect(GOVUK.getCookie('app_promo_banner')).toBeFalsy()
     })
 
@@ -153,8 +154,8 @@ describe('Cookie helper functions', function () {
 
       GOVUK.approveAllCookieTypes()
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}', Object({ days: 365 }))
-      expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: true, usage: true, campaigns: true })
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true,"aggregate":false}', Object({ days: 365 }))
+      expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: true, usage: true, campaigns: true, aggregate: false })
     })
 
     it('returns null if the consent cookie does not exist', function () {
@@ -177,8 +178,8 @@ describe('Cookie helper functions', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
       GOVUK.setConsentCookie({ settings: false })
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
-      expect(GOVUK.getConsentCookie().settings).toBe(false)
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false,"aggregate":true}', Object({ days: 365 }))
+      expect(GOVUK.getConsentCookie().usage).toBe(false)
       expect(GOVUK.cookie('app_promo_banner')).toBeFalsy()
     })
   })
