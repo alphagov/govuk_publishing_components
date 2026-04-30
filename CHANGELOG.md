@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.1.0
 
 * Remove unneeded cookies from category list ([PR #5432](https://github.com/alphagov/govuk_publishing_components/pull/5432))
 * Remove data-ga4-track-links-only ([PR #5430](https://github.com/alphagov/govuk_publishing_components/pull/5430))
