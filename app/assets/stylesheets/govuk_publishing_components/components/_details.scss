@@ -33,3 +33,8 @@
     @include govuk-link-style-inverse;
   }
 }
+
+// fix for issue https://github.com/alphagov/govuk_publishing_components/issues/5436
+.govuk-details__summary {
+  box-shadow: 0 4px transparent;
+}
