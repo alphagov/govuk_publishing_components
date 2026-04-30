@@ -59,10 +59,19 @@
   display: flex;
   flex-wrap: wrap;
   row-gap: govuk-spacing(2);
+
+  &:has(+ .gem-c-header__content) {
+    @include govuk-grid-column(three-quarters);
+    padding: govuk-spacing(3) 0 govuk-spacing(2);
+  }
 }
 
 .gem-c-header__content.govuk-header__content {
   width: auto;
+
+  @include govuk-media-query($from: mobile) {
+    @include govuk-responsive-padding(3, "bottom");
+  }
 
   @include govuk-media-query($from: desktop) {
     float: right;

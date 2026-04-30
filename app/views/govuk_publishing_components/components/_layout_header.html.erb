@@ -1,6 +1,7 @@
 <%
   environment ||= nil
   full_width ||= false
+  signout_link ||= false
   navigation_aria_label ||= t("components.layout_header.top_level")
   navigation_items ||= []
   product_name ||= nil
@@ -22,6 +23,7 @@
         environment:,
         logo_link:,
         product_name:,
+        signout_link:,
       } %>
     </div>
     <% if navigation_items.any? %>

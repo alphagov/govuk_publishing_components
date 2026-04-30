@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add "With signout link" variant to the "Layout header" component ([PR #5434](https://github.com/alphagov/govuk_publishing_components/pull/5434))
+
 ## 66.1.0
 
 * Remove unneeded cookies from category list ([PR #5432](https://github.com/alphagov/govuk_publishing_components/pull/5432))
