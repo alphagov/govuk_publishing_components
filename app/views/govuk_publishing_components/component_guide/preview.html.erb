@@ -5,9 +5,17 @@
 <% end %>
 
 <% @component_examples.each do |example| %>
+  <%
+    if @component_doc.type == "component"
+      example_path = component_example_path(@component_doc.id, example.id)
+    else
+      example_path = flexible_section_example_path(@component_doc.id, example.id)
+    end
+  %>
+
   <div class="component-guide-preview-page">
     <% if @component_examples.length > 1 %>
-      <h2 class="preview-title"><a href="<%= component_example_path(@component_doc.id, example.id) %>"><%= example.name %></a></h2>
+      <h2 class="preview-title"><a href="<%= example_path %>"><%= example.name %></a></h2>
     <% end %>
     <div data-module="test-a11y" data-excluded-rules="<%= @component_doc.accessibility_excluded_rules %>">
       <%= render "govuk_publishing_components/component_guide/component_doc/component", component_doc: @component_doc, example: example, preview_page: true %>

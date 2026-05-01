@@ -26,6 +26,12 @@ describe "Component guide index", :capybara do
     expect(page).to have_selector('a[href="/component-guide/test_component"]', text: "Test component")
   end
 
+  it "loads a flexible section from the dummy app" do
+    visit "/component-guide"
+    expect(body).to include("A test flexible section for the dummy app")
+    expect(page).to have_selector('a[href="/component-guide/flexible-sections/test_flexible_section"]', text: "Test flexible section")
+  end
+
   it "includes component guide styles and scripts" do
     visit "/component-guide"
     expect(page).to have_selector('link[href*="/assets/component_guide/application"]', visible: :hidden)
@@ -107,5 +113,10 @@ describe "Component guide index", :capybara do
   it "creates a page for the component" do
     visit "/component-guide/test_component"
     expect(body).to include("A test component for the dummy app")
+  end
+
+  it "creates a page for the flexible section" do
+    visit "/component-guide/flexible-sections/test_flexible_section"
+    expect(body).to include("A test flexible section for the dummy app")
   end
 end

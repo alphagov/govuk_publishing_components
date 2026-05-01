@@ -8,6 +8,13 @@ describe "Component example", :capybara do
     expect(page).to have_content('<%= render "components/test_component", {} %>')
   end
 
+  it "illustrates how to use the flexible section" do
+    visit "/component-guide/flexible-sections/test_flexible_section"
+
+    expect(body).to include("Passing data to this flexible section")
+    expect(page).to have_content('<%= render "flexible_page/flexible_sections/test_flexible_section", { title: "Hello" } %>')
+  end
+
   it "includes the component partial" do
     visit "/component-guide/test_component"
 
@@ -16,6 +23,22 @@ describe "Component example", :capybara do
       expect(page).to have_selector(".some-test-component")
       expect(page).to have_selector("h1.something-inside-test-component", text: "Test component heading")
     end
+  end
+
+  it "includes the flexible section partial" do
+    visit "/component-guide/flexible-sections/test_flexible_section"
+
+    expect(body).to include("How it looks")
+    within ".flexible-section-preview", match: :first do
+      expect(page).to have_selector(".some-test-flexible-section")
+      expect(page).to have_selector("h1.something-inside-test-flexible-section", text: "Test flexible section heading")
+    end
+  end
+
+  it "does not include how it looks when not required" do
+    visit "/component-guide/test_component_with_no_preview"
+
+    expect(body).not_to include("How it looks")
   end
 
   it "includes the content list" do

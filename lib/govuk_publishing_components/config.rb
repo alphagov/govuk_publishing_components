@@ -25,6 +25,10 @@ module GovukPublishingComponents
       APP_COMPONENT_DIRECTORY
     end
 
+    def self.flexible_sections_directory_name
+      "flexible_page/flexible_sections"
+    end
+
     def self.gem_directory
       Gem::Specification.find_by_name("govuk_publishing_components").gem_dir
     end

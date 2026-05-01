@@ -1,7 +1,14 @@
-<div class="component-guide-preview component-guide-preview--no-margin
-            <% if example.right_to_left? %>direction-rtl<% end %>
-            <% if example.dark_background? %>dark-background<% end %>
-            <% if example.black_background? %>black-background<% end %>
-            <% if preview_page %>component-guide-preview--simple<% end %>">
+<%
+  classes = %w[flexible-section-preview table-wrapper]
+  if @component_doc.type == "component"
+    classes = %w[component-guide-preview component-guide-preview--no-margin]
+    classes << "direction-rtl" if example.right_to_left?
+    classes << "dark-background" if example.dark_background?
+    classes << "black-background" if example.black_background?
+    classes << "component-guide-preview--simple" if preview_page
+  end
+%>
+
+<%= tag.div class: classes do %>
   <%= render "govuk_publishing_components/component_guide/component_doc/component_output", example: example, component_doc: component_doc %>
-</div>
+<% end %>
