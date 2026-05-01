@@ -63,8 +63,8 @@ describe('Cookie banner', function () {
 
   afterEach(function () {
     document.body.removeChild(container)
-    window.GOVUK.deleteCookie('cookies_policy')
-    window.GOVUK.deleteCookie('cookies_preferences_set')
+    GOVUK.cookie('cookies_policy', null)
+    GOVUK.cookie('cookies_preferences_set', null)
   })
 
   it('should show the cookie banner when preferences have not been actively set', function () {

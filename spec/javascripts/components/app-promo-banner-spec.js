@@ -65,7 +65,8 @@ describe('App promo banner', function () {
   })
 
   afterAll(function () {
-    GOVUK.setCookie('cookies_policy', null)
+    GOVUK.cookie('cookies_policy', null)
+    GOVUK.cookie('cookies_preferences_set', null)
   })
 
   it('is displayed with the correct attibutes and does not set a cookie on load', function () {
