@@ -107,7 +107,8 @@ describe('GA4 smart answer results tracking', function () {
     })
 
     it('starts the module on the same page as cookie consent is given', function () {
-      window.GOVUK.deleteCookie('cookies_policy')
+      GOVUK.cookie('cookies_policy', null)
+      GOVUK.cookie('cookies_preferences_set', null)
       var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)
       spyOn(smartAnswerTracker, 'startModule').and.callThrough()
       smartAnswerTracker.init()

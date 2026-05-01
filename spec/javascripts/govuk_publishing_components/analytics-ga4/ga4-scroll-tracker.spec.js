@@ -26,7 +26,8 @@ describe('GA4 scroll tracker', function () {
     }
     jasmine.clock().uninstall()
 
-    window.GOVUK.deleteCookie('cookies_policy')
+    GOVUK.cookie('cookies_policy', null)
+    GOVUK.cookie('cookies_preferences_set', null)
     window.GOVUK.analyticsGa4.vars.scrollTrackerStarted = false
   })
 
@@ -76,7 +77,8 @@ describe('GA4 scroll tracker', function () {
     })
 
     it('starts the module on the same page as cookie consent is given', function () {
-      window.GOVUK.deleteCookie('cookies_policy')
+      GOVUK.cookie('cookies_policy', null)
+      GOVUK.cookie('cookies_preferences_set', null)
       var el = document.createElement('div')
       scrollTracker = new GOVUK.Modules.Ga4ScrollTracker(el)
       spyOn(scrollTracker, 'startModule').and.callThrough()

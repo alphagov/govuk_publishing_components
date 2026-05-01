@@ -18,7 +18,8 @@ describe('GA4 focus loss tracker', function () {
   })
 
   afterAll(function () {
-    GOVUK.setCookie('cookies_policy', null)
+    GOVUK.cookie('cookies_policy', null)
+    GOVUK.cookie('cookies_preferences_set', null)
     window.dataLayer = []
   })
 
