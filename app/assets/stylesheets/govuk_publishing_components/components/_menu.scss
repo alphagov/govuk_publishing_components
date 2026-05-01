@@ -1,0 +1,147 @@
+.govuk-block.govuk-block__main_navigation {
+  margin-bottom: govuk-spacing(0);
+}
+
+.main-nav {
+  border-bottom: 1px solid $govuk-border-colour;
+  @include govuk-font(19);
+}
+
+.main-nav__button-container {
+  background-color: govuk-colour("light-grey");
+  border-bottom: 1px solid govuk-colour("mid-grey");
+}
+
+.main-nav__button-container--collapsed {
+  border-bottom: 0;
+}
+
+.main-nav__button {
+  height: 70px;
+  color: govuk-colour("blue");
+  background: none;
+  border: 0;
+  padding-left: govuk-spacing(3);
+  padding-right: govuk-spacing(3);
+  // Invisible border so the width of the collapsed button is the same as the expanded one.
+  border-left: 1px solid rgba(0,0,0,0);
+  border-right: 1px solid govuk-colour("light-grey");
+  cursor: pointer;
+  position: relative;
+  @include govuk-font(19);
+}
+
+.main-nav__button--negative-margin-left {
+  margin-left: govuk-spacing(-3); // Ensures the button looks perfectly left-aligned with content.
+}
+
+// Shared styles for the expanded and collapsed arrow icon. Based off of the super navigation menu button.
+.main-nav__button::before {
+  border-bottom: 2px solid govuk-colour("blue");
+  border-right: 2px solid govuk-colour("blue");
+  content: "";
+  display: inline-block;
+  height: 8px;
+  margin: 0 10px 0 2px;
+  vertical-align: middle;
+  width: 8px;
+}
+
+.main-nav__button:focus {
+  border-color: $govuk-focus-colour;
+  box-shadow: 0 0, 0 4px govuk-colour("black");
+  z-index: 999; // Prevents focus style black bottom border being obscured
+
+  &.main-nav__button::before {
+    border-color: govuk-colour("black");
+  }
+}
+
+.main-nav__button[aria-expanded="false"]::before {
+  // Collapsed arrow icon
+  -webkit-transform: translateY(-35%) rotate(45deg) scale(1);
+  -ms-transform: translateY(-35%) rotate(45deg) scale(1);
+  transform: translateY(-35%) rotate(45deg) scale(1);
+}
+
+.main-nav__button[aria-expanded="true"] {
+  border-color: govuk-colour("mid-grey");
+  background-color: govuk-colour("white");
+
+  @include govuk-media-query($until: tablet) {
+    border-left: 1px solid govuk-colour("light-grey"); // Hide left border on mobile while preserving button width.
+  }
+
+  // Expanded arrow icon
+  &.main-nav__button::before {
+    -webkit-transform: translateY(1px) rotate(225deg) scale(1);
+    -ms-transform: translateY(1px) rotate(225deg) scale(1);
+    transform: translateY(1px) rotate(225deg) scale(1);
+  }
+}
+
+.main-nav__button[aria-expanded="true"]:focus {
+  background-color: $govuk-focus-colour;
+  border-color: $govuk-focus-colour;
+}
+
+// Adds a white border at the bottom of the button when the button is expanded. Used to make the button look like a tab that's seamlessly connected to element below it.
+.main-nav__button[aria-expanded="true"]::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid govuk-colour("white");
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+}
+
+// Removes the white border on bottom of button when focus styles are active.
+.main-nav__button[aria-expanded="true"]:focus::after {
+  border: 0;
+}
+
+.main-nav__button--no-js {
+  display: none;
+}
+
+.main-nav__button:hover::before {
+  border-color: govuk-colour("dark-blue");
+}
+
+.main-nav__nav-container {
+  margin-top: govuk-spacing(7);
+  margin-bottom: govuk-spacing(9);
+}
+
+.js-enabled {
+  .main-nav__nav-container--js-hidden {
+    display: none;
+  }
+}
+
+.main-nav__heading {
+  margin-bottom: govuk-spacing(2);
+}
+
+.main-nav__list {
+  padding-left: 0;
+  margin-top: 0;
+  display: grid;
+  column-gap: govuk-spacing(7);
+  row-gap: 12px;
+  grid-template-columns: 1fr;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.main-nav__list-item {
+  list-style: none;
+  @include govuk-media-query($until: mobile) {
+    margin-top: govuk-spacing(3);
+  }
+}
