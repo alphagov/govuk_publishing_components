@@ -26,9 +26,9 @@ var resetCookies = function () {
 
 beforeEach(function () {
   window.GOVUK.stopSendingAnalytics = false
+  GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.stopTracking()
 })
 
 afterEach(function () {
-  GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.stopTracking()
   resetCookies()
 })
