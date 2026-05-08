@@ -19,6 +19,7 @@ describe('Initialising GA4', function () {
       spyOn(test, 'functionThatShouldNotBeCalled')
       GOVUK.analyticsGa4.analyticsModules.Test = function () {}
       GOVUK.analyticsGa4.analyticsModules.Test.init = function () { test.functionThatMightBeCalled() }
+      GOVUK.analyticsGa4.analyticsModulesStarted = false
     })
 
     it('calls analytics modules successfully', function () {
@@ -37,6 +38,16 @@ describe('Initialising GA4', function () {
       GOVUK.analyticsGa4.init()
 
       expect(test.functionThatMightBeCalled).not.toHaveBeenCalled()
+    })
+
+    it('does not call analytics modules if the modules have already started', function () {
+      spyOn(GOVUK.analyticsGa4.analyticsModules.Test, 'init').and.callThrough()
+      GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+      GOVUK.analyticsGa4.init()
+      expect(test.functionThatMightBeCalled).toHaveBeenCalled()
+
+      GOVUK.analyticsGa4.init()
+      expect(test.functionThatMightBeCalled.calls.count()).toBe(1)
     })
 
     it('does not error if no init is found at all', function () {
