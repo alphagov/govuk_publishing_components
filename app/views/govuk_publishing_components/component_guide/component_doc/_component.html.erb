@@ -1,12 +1,10 @@
 <%
-  classes = %w[flexible-section-preview table-wrapper]
-  if @component_doc.type == "component"
-    classes = %w[component-guide-preview component-guide-preview--no-margin]
-    classes << "direction-rtl" if example.right_to_left?
-    classes << "dark-background" if example.dark_background?
-    classes << "black-background" if example.black_background?
-    classes << "component-guide-preview--simple" if preview_page
-  end
+  classes = %w[component-guide-preview component-guide-preview--no-margin]
+  classes << "direction-rtl" if example.right_to_left?
+  classes << "dark-background" if example.dark_background?
+  classes << "black-background" if example.black_background?
+  classes << "component-guide-preview--simple" if preview_page
+  classes << "gem-full-width__element" if example.full_width?
 %>
 
 <%= tag.div class: classes do %>

@@ -473,22 +473,42 @@ $code-delete-bg: #fadddd;
   }
 }
 
-.table-container {
+.gem-full-width__container {
   container-type: inline-size;
-  container-name: page;
+  container-name: gem_page;
 }
 
-.table-wrapper {
+.full-width__table-wrapper {
   .govuk-table {
     display: block;
     overflow-x: scroll;
   }
 }
 
-@container page (width > 1040px) {
+.gem-full-width__element {
+  padding: 0;
+  padding-bottom: 0.1px; // forces child margin inside
+  border: 0;
+  margin-left: -(govuk-spacing(3));
+  margin-right: -(govuk-spacing(3));
+  border-top: solid 1px $govuk-border-colour;
+  border-bottom: solid 1px $govuk-border-colour;
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: -(govuk-spacing(6));
+    margin-right: -(govuk-spacing(6));
+  }
+}
+
+@container gem_page (width > 1040px) {
   $w: 960px;
 
-  .table-wrapper {
+  .gem-full-width__element {
+    margin-left: calc((-100cqw + $w) / 2);
+    margin-right: calc((-100cqw + $w) / 2);
+  }
+
+  .full-width__table-wrapper {
     position: relative;
     z-index: 0;
     box-sizing: border-box;
@@ -509,8 +529,8 @@ $code-delete-bg: #fadddd;
 .govuk-tabs {
   $w: 920px;
 
-  @container page (width > 1040px) {
-    .table-wrapper {
+  @container gem_page (width > 1040px) {
+    .full-width__table-wrapper {
       margin-left: calc(((-100cqw + $w) / 2) - 1px);
       margin-right: calc(((-100cqw + $w) / 2) - 1px);
 

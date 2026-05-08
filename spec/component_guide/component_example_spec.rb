@@ -29,7 +29,7 @@ describe "Component example", :capybara do
     visit "/component-guide/flexible-sections/test_flexible_section"
 
     expect(body).to include("How it looks")
-    within ".flexible-section-preview", match: :first do
+    within ".component-guide-preview", match: :first do
       expect(page).to have_selector(".some-test-flexible-section")
       expect(page).to have_selector("h1.something-inside-test-flexible-section", text: "Test flexible section heading")
     end
