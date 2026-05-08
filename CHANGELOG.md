@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove unnecessary aria hidden attribute from maybe button ([PR #5449](https://github.com/alphagov/govuk_publishing_components/pull/5449))
 * Ensure cookie expiry dates are in UTCString format ([PR #5442](https://github.com/alphagov/govuk_publishing_components/pull/5442))
 
 ## 66.2.0
