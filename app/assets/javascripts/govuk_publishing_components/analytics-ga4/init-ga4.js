@@ -6,17 +6,23 @@ var initFunction = function () {
     window.GOVUK.analyticsGa4.vars.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
     window.GOVUK.analyticsGa4.core.load()
-    var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
-    for (var property in analyticsModules) {
-      var module = analyticsModules[property]
-      if (typeof module.init === 'function') {
-        try {
-          module.init()
-        } catch (e) {
-          // if there's a problem with the module, catch the error to allow other modules to start
-          console.warn('Error starting analytics module ' + property + ': ' + e.message, window.location)
+
+    if (!window.GOVUK.analyticsGa4.analyticsModulesStarted) {
+      // Initialise analytics modules that start on page load
+      // https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/analytics.md#code-structure
+      var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
+      for (var property in analyticsModules) {
+        var module = analyticsModules[property]
+        if (typeof module.init === 'function') {
+          try {
+            module.init()
+          } catch (e) {
+            // if there's a problem with the module, catch the error to allow other modules to start
+            console.warn('Error starting analytics module ' + property + ': ' + e.message, window.location)
+          }
         }
       }
+      window.GOVUK.analyticsGa4.analyticsModulesStarted = true
     }
   } else {
     window.addEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
