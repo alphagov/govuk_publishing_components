@@ -8,18 +8,14 @@
   font-size: 80px;
   font-size: govuk-px-to-rem(80px);
   @include govuk-font($size: false, $weight: bold);
+  // We need the value and label to stack vertically but also behave like inline elements to allow screen readers to read them as one item. Making the first item, value, a block level element with CSS, makes the focus outline in NVDA take over the whole viewport, perhaps because the element is breaking out of its container (this focus outline bug doesn't happen when using two divs, but they wouldn't be read out as one item by screen readers). 
+  // However, making the first item, value, an inline element and the second item, label, a block level element allows the items to stack vertically and be read as one item by screen readers whilst staying contained within the container.
+  display: inline-block;
 }
 
 .gem-c-big-number__label {
   @include govuk-font($size: 19, $weight: bold);
-
-  // This pseudo element is to bypass an issue with NVDA where block level elements are dictated separately.
-  // What's happening here is that the label and the number technically have an inline relationship
-  // but appear to have a block relationship thanks to this element
-  &::before {
-    content: "";
-    display: block;
-  }
+  display: block;
 }
 
 .gem-c-big-number__link {
