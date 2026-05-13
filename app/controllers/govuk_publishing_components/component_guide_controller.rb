@@ -45,9 +45,7 @@ module GovukPublishingComponents
     end
 
     def components_in_use_sass
-      additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
-      additional_files << "@import 'govuk_publishing_components/component_support';\n"
-
+      additional_files = "@import 'govuk_publishing_components/specific-components';\n"
       components = find_all_partials_in(get_used_component_names)
 
       components.map { |component|

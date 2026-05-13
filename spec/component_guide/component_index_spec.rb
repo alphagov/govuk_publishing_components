@@ -39,8 +39,7 @@ describe "Component guide index", :capybara do
 
   it "includes suggested sass for the application" do
     visit "/component-guide"
-    expected_main_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
-@import 'govuk_publishing_components/component_support';
+    expected_main_sass = "@import 'govuk_publishing_components/specific-components';
 @import 'govuk_publishing_components/components/accordion';
 @import 'govuk_publishing_components/components/app-promo-banner';
 @import 'govuk_publishing_components/components/back-link';
