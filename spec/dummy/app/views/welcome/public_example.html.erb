@@ -3,6 +3,17 @@
   <main class="govuk-main-wrapper" id="content">
     <h1 class="govuk-heading-xl">Hello! I am an example public GOV.UK page</h1>
 
+    <%= render "govuk_publishing_components/components/big_number", {
+      number: 19,
+      label: "Open consultations"
+    } %> 
+
+    <%= render "govuk_publishing_components/components/big_number", {
+    number: 23,
+    label: "Ministerial departments",
+    href: "/government/organisations#ministerial_departments"
+    } %> 
+   
     <p class="govuk-body">
       Pages with the public layout can use some GOV.UK styles. For example, the grid:
     </p>
