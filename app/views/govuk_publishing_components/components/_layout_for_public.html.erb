@@ -18,6 +18,7 @@
   draft_watermark ||= false
   title ||= "GOV.UK - The best place to find government services and information"
   title_lang ||= nil
+  body_classes ||= nil
 
   show_account_layout ||= false
   account_nav_location ||= nil
@@ -27,6 +28,7 @@
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "gem-c-layout-for-public--draft" if draft_watermark
   body_css_classes << "global-banner-present" if global_banner.present?
+  body_css_classes << body_classes if body_classes
 -%>
 <!DOCTYPE html>
 <html class="govuk-template govuk-template--rebranded" lang="<%= html_lang %>">

@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add body class option to layout for public ([PR #5455](https://github.com/alphagov/govuk_publishing_components/pull/5455))
 * Remove unnecessary aria hidden attribute from maybe button ([PR #5449](https://github.com/alphagov/govuk_publishing_components/pull/5449))
 * Ensure cookie expiry dates are in UTCString format ([PR #5442](https://github.com/alphagov/govuk_publishing_components/pull/5442))
 * Check if analytics modules already started before initialising ([PR #5451](https://github.com/alphagov/govuk_publishing_components/pull/5451))

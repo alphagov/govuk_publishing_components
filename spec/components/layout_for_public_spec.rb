@@ -269,4 +269,9 @@ describe "Layout for public", :capybara, type: :view do
 
     assert_select ".gem-c-cookie-banner + .gem-c-skip-link"
   end
+
+  it "can add a class to the body" do
+    render_component({ body_classes: "passed classes" })
+    assert_select "body.passed.classes"
+  end
 end

@@ -116,3 +116,10 @@ examples:
       title_lang: 'cy'
       block: |
         <h1>Page content goes here</h1>
+  with_body_classes:
+    description: Allows a class to be passed to the body element. Note that this does not work in preview in this guide.
+    data:
+      title: 'Example layout'
+      body_classes: 'example__class'
+      block: |
+        <h1>Page content goes here</h1>
