@@ -8,18 +8,13 @@
   font-size: 80px;
   font-size: govuk-px-to-rem(80px);
   @include govuk-font($size: false, $weight: bold);
+  // Make the value an inline element, and the label a block level element to make them stack vertically but be announced as one element by JAWS and NVDA.
+  display: inline-block;
 }
 
 .gem-c-big-number__label {
   @include govuk-font($size: 19, $weight: bold);
-
-  // This pseudo element is to bypass an issue with NVDA where block level elements are dictated separately.
-  // What's happening here is that the label and the number technically have an inline relationship
-  // but appear to have a block relationship thanks to this element
-  &::before {
-    content: "";
-    display: block;
-  }
+  display: block;
 }
 
 .gem-c-big-number__link {
