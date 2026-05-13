@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.3.0
 
 * Add body class option to layout for public ([PR #5455](https://github.com/alphagov/govuk_publishing_components/pull/5455))
 * Remove unnecessary aria hidden attribute from maybe button ([PR #5449](https://github.com/alphagov/govuk_publishing_components/pull/5449))
