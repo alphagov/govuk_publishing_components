@@ -8,7 +8,6 @@ module GovukPublishingComponents
         content-block-manager
         content-data-admin
         content-tagger
-        datagovuk_find
         email-alert-frontend
         fact-check-manager
         feedback
