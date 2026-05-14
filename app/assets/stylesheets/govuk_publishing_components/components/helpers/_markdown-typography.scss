@@ -61,6 +61,10 @@
     &:focus {
       @include govuk-focused-text;
     }
+
+    @include govuk-media-query($media-type: print) {
+      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    }
   }
 
   // Lists
