@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix govspeak inverse link styles ([PR #5461](https://github.com/alphagov/govuk_publishing_components/pull/5461))
+
 ## 66.3.0
 
 * Add body class option to layout for public ([PR #5455](https://github.com/alphagov/govuk_publishing_components/pull/5455))
