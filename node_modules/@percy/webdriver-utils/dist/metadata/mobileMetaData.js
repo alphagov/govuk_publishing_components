@@ -1,0 +1,72 @@
+import Cache from '../util/cache.js';
+// Todo: Implement a base metadata for the common functions.
+export default class MobileMetaData {
+  constructor(driver, opts) {
+    this.driver = driver;
+    this.capabilities = opts;
+  }
+  device() {
+    return true;
+  }
+  browserName() {
+    var _this$capabilities;
+    return (_this$capabilities = this.capabilities) === null || _this$capabilities === void 0 || (_this$capabilities = _this$capabilities.browserName) === null || _this$capabilities === void 0 ? void 0 : _this$capabilities.toLowerCase();
+  }
+  browserVersion() {
+    var _this$capabilities$br, _this$capabilities2;
+    const bsVersion = (_this$capabilities$br = this.capabilities.browserVersion) === null || _this$capabilities$br === void 0 ? void 0 : _this$capabilities$br.split('.');
+    if ((bsVersion === null || bsVersion === void 0 ? void 0 : bsVersion.length) > 0) {
+      return bsVersion[0];
+    }
+    return (_this$capabilities2 = this.capabilities) === null || _this$capabilities2 === void 0 || (_this$capabilities2 = _this$capabilities2.version) === null || _this$capabilities2 === void 0 ? void 0 : _this$capabilities2.split('.')[0];
+  }
+  osName() {
+    var _this$capabilities3;
+    let osName = (_this$capabilities3 = this.capabilities) === null || _this$capabilities3 === void 0 || (_this$capabilities3 = _this$capabilities3.os) === null || _this$capabilities3 === void 0 ? void 0 : _this$capabilities3.toLowerCase();
+    if (osName === 'mac' && this.browserName() === 'iphone') {
+      osName = 'ios';
+    }
+    return osName;
+  }
+  osVersion() {
+    var _this$capabilities4;
+    return (_this$capabilities4 = this.capabilities) === null || _this$capabilities4 === void 0 || (_this$capabilities4 = _this$capabilities4.osVersion) === null || _this$capabilities4 === void 0 ? void 0 : _this$capabilities4.split('.')[0];
+  }
+  deviceName() {
+    var _this$capabilities5;
+    return (_this$capabilities5 = this.capabilities) === null || _this$capabilities5 === void 0 || (_this$capabilities5 = _this$capabilities5.deviceName) === null || _this$capabilities5 === void 0 ? void 0 : _this$capabilities5.split('-')[0];
+  }
+  orientation() {
+    var _this$capabilities6;
+    return (_this$capabilities6 = this.capabilities) === null || _this$capabilities6 === void 0 ? void 0 : _this$capabilities6.orientation;
+  }
+  async windowSize() {
+    const dpr = await this.devicePixelRatio();
+    const data = await this.driver.getWindowSize();
+    const width = parseInt(data.value.width * dpr),
+      height = parseInt(data.value.height * dpr);
+    return {
+      width,
+      height
+    };
+  }
+  async screenResolution() {
+    return await Cache.withCache(Cache.resolution, this.driver.sessionId, async () => {
+      const data = await this.driver.executeScript({
+        script: 'return [parseInt(window.screen.width * window.devicePixelRatio).toString(), parseInt(window.screen.height * window.devicePixelRatio).toString()];',
+        args: []
+      });
+      const screenInfo = data.value;
+      return `${screenInfo[0]} x ${screenInfo[1]}`;
+    });
+  }
+  async devicePixelRatio() {
+    return await Cache.withCache(Cache.dpr, this.driver.sessionId, async () => {
+      const devicePixelRatio = await this.driver.executeScript({
+        script: 'return window.devicePixelRatio;',
+        args: []
+      });
+      return devicePixelRatio.value;
+    });
+  }
+}
