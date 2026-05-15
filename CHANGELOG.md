@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix govspeak inverse link styles ([PR #5461](https://github.com/alphagov/govuk_publishing_components/pull/5461))
+* Add missing cookies to COOKIE_CATEGORIES ([PR #5463](https://github.com/alphagov/govuk_publishing_components/pull/5463))
 
 ## 66.3.0
 
