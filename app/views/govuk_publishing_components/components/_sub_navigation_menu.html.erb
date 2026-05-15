@@ -1,0 +1,68 @@
+<%
+  button_text ||= "Menu"
+  links ||= []
+  negative_margin_left_on_button ||= false
+  button_classes = %w[gem-c-sub-navigation-menu__button gem-c-sub-navigation-menu__button--no-js govuk-link govuk-link--no-underline]
+  button_classes << "gem-c-sub-navigation-menu__button--negative-margin-left" if negative_margin_left_on_button
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-sub-navigation-menu")
+  component_helper.add_data_attribute({ module: "sub-navigation-menu" })
+
+  heading_id = "gem-c-sub-navigation-menu-heading-#{SecureRandom.hex(4)}"
+  container_id = "gem-c-sub-navigation-menu-container-#{SecureRandom.hex(4)}"
+%>
+<% unless links.empty? %>
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <h2 class="govuk-visually-hidden" id="<%= heading_id %>">Secondary navigation menu</h2>
+    <div class="gem-c-sub-navigation-menu__button-container gem-c-sub-navigation-menu__button-container--collapsed js-menu__button-container">
+      <div class="govuk-width-container">
+        <%= tag.button button_text,
+          type: "button",
+          class: button_classes.join(" "),
+          aria: { expanded: "false", controls: container_id },
+          data: {
+            module: "ga4-event-tracker",
+            ga4_expandable: "",
+            ga4_event: {
+              event_name: "select_content",
+              index_section: 1,
+              index_section_count: 1,
+              type: "secondary header",
+              section: button_text,
+            }.to_json,
+          } %>
+      </div>
+    </div>
+    <div class="gem-c-sub-navigation-menu__nav-container gem-c-sub-navigation-menu__nav-container--js-hidden govuk-width-container js-menu__nav-container" id="<%= container_id %>">
+      <nav aria-labelledby="<%= heading_id %>" data-module="ga4-link-tracker">
+        <% ga4_index_section_count = links.length %>
+        <% links.each_with_index do |link_group, nav_index| %>
+          <% nav_section_heading = link_group[:text] %>
+          <h3 class="gem-c-sub-navigation-menu__heading govuk-heading-s"><%= link_group[:text] %></h3>
+          <ul class="gem-c-sub-navigation-menu__list">
+            <% ga4_index_total = link_group[:links].length %>
+            <% link_group[:links].each_with_index do |link, link_index| %>
+            <li class="gem-c-sub-navigation-menu__list-item">
+              <%= link_to link[:text],
+                link[:href],
+                class: "govuk-link govuk-link--no-underline govuk-link--no-visited-state",
+                data: {
+                  ga4_link: {
+                    event_name: "navigation",
+                    type: "secondary header",
+                    index_link: link_index + 1,
+                    index_total: ga4_index_total,
+                    index_section: nav_index + 1,
+                    index_section_count: ga4_index_section_count,
+                    section: nav_section_heading,
+                  }.to_json,
+                } %>
+            </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </nav>
+    </div>
+  <% end %>
+<% end %>

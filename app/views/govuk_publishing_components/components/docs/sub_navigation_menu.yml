@@ -1,0 +1,67 @@
+name: Sub navigation menu (experimental)
+description: The sub navigation menu component helps users to navigate pages within a section of GOV.UK
+
+accessibility_criteria: |
+  The menu component must:
+
+    * be recognisable as navigation
+    * have the correct heading level structure
+    * indicate that any expandable content can be expanded or collapsed
+    * indicate the initial state of expandable content
+    * indicate where the state of expandable content has changed
+
+  When CSS and / or JavaScript is unavailable, the component must:
+
+  * fallback to an expanded menu
+shared_accessibility_criteria:
+  - link
+uses_component_wrapper_helper: true
+capture_full_width_screenshot: true
+examples:
+  default:
+    data:
+      links:
+      - text: "Example Heading"
+        links:
+          - text: "Hello world"
+            href: "/hello-world"
+      - text: "Another Heading"
+        links:
+          - text: "Example Link"
+            href: "/hello-world"
+          - text: "Example Link 2"
+            href: "/hello-world"
+          - text: "Example Link 3"
+            href: "/hello-world"
+          - text: "This is a very very very long link"
+            href: "/hello-world"
+          - text: "Another link that has a lot of characters"
+            href: "/hello-world"
+          - text: "Third link containing a lot of text"
+            href: "/hello-world"
+  custom_button_text:
+    data:
+      button_text: Open me
+      links:
+      - text: "Example Heading"
+        links:
+          - text: "Hello world"
+            href: "/hello-world"
+      - text: "Another Heading"
+        links:
+          - text: "Example Link"
+            href: "/hello-world"
+
+  negative_margin_left_on_button:
+    description: "The button does not look perfectly aligned with the content by default, so this negative margin aligns the button chevron with the content."
+    data:
+      negative_margin_left_on_button: true
+      links:
+      - text: "Example Heading"
+        links:
+          - text: "Hello world"
+            href: "/hello-world"
+      - text: "Another Heading"
+        links:
+          - text: "Example Link"
+            href: "/hello-world"

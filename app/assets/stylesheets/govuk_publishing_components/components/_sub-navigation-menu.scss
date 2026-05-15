@@ -1,0 +1,137 @@
+.gem-c-sub-navigation-menu {
+  border-bottom: 1px solid $govuk-border-colour;
+  @include govuk-font(19);
+}
+
+.gem-c-sub-navigation-menu__button-container {
+  background-color: govuk-colour("light-grey");
+  border-bottom: 1px solid govuk-colour("mid-grey");
+}
+
+.gem-c-sub-navigation-menu__button-container--collapsed {
+  border-bottom: 0;
+}
+
+.gem-c-sub-navigation-menu__button {
+  height: 3.684em;
+  color: govuk-colour("blue");
+  background: none;
+  border: 0;
+  padding-left: govuk-spacing(3);
+  padding-right: govuk-spacing(3);
+  // Invisible border so the width of the collapsed button is the same as the expanded one.
+  border-left: 1px solid rgba(0, 0, 0, 0);
+  border-right: 1px solid govuk-colour("light-grey");
+  cursor: pointer;
+  position: relative;
+  @include govuk-font(19);
+}
+
+.gem-c-sub-navigation-menu__button--negative-margin-left {
+  margin-left: govuk-spacing(-3); // Ensures the button looks perfectly left-aligned with content.
+}
+
+// Shared styles for the expanded and collapsed arrow icon. Based off of the super navigation menu button.
+.gem-c-sub-navigation-menu__button::before {
+  border-bottom: 2px solid govuk-colour("blue");
+  border-right: 2px solid govuk-colour("blue");
+  content: "";
+  display: inline-block;
+  height: 8px;
+  margin: 0 10px 0 2px;
+  vertical-align: middle;
+  width: 8px;
+}
+
+.gem-c-sub-navigation-menu__button:focus {
+  &.gem-c-sub-navigation-menu__button::before {
+    border-color: govuk-colour("black");
+  }
+  @include govuk-focused-text;
+}
+
+.gem-c-sub-navigation-menu__button[aria-expanded="false"]::before {
+  // Collapsed arrow icon
+  transform: translateY(-35%) rotate(45deg) scale(1);
+}
+
+.gem-c-sub-navigation-menu__button[aria-expanded="true"] {
+  border-color: govuk-colour("mid-grey");
+  background-color: govuk-colour("white");
+
+  @include govuk-media-query($until: tablet) {
+    border-left: 1px solid govuk-colour("light-grey"); // Hide left border on mobile while preserving button width.
+  }
+
+  // Expanded arrow icon
+  &.gem-c-sub-navigation-menu__button::before {
+    transform: translateY(1px) rotate(225deg) scale(1);
+  }
+}
+
+.gem-c-sub-navigation-menu__button[aria-expanded="true"]:focus {
+  background-color: $govuk-focus-colour;
+  border-color: $govuk-focus-colour;
+}
+
+// Adds a white border at the bottom of the button when the button is expanded.
+// Used to make the button look like a tab that's seamlessly connected to element below it.
+.gem-c-sub-navigation-menu__button[aria-expanded="true"]::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid govuk-colour("white");
+  width: 100%;
+  left: 0;
+  bottom: -1px;
+}
+
+// Removes the white border on bottom of button when focus styles are active.
+.gem-c-sub-navigation-menu__button[aria-expanded="true"]:focus::after {
+  border: 0;
+}
+
+.gem-c-sub-navigation-menu__button--no-js {
+  display: none;
+}
+
+.gem-c-sub-navigation-menu__button:hover::before {
+  border-color: govuk-colour("dark-blue");
+}
+
+.gem-c-sub-navigation-menu__nav-container {
+  margin-top: govuk-spacing(7);
+  margin-bottom: govuk-spacing(9);
+}
+
+.js-enabled {
+  .gem-c-sub-navigation-menu__nav-container--js-hidden {
+    display: none;
+  }
+}
+
+.gem-c-sub-navigation-menu__heading {
+  margin-bottom: govuk-spacing(2);
+}
+
+.gem-c-sub-navigation-menu__list {
+  padding-left: 0;
+  margin-top: 0;
+  display: grid;
+  column-gap: govuk-spacing(7);
+  row-gap: 12px;
+  grid-template-columns: 1fr;
+
+  @include govuk-media-query($from: tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include govuk-media-query($from: desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.gem-c-sub-navigation-menu__list-item {
+  list-style: none;
+  @include govuk-media-query($until: mobile) {
+    margin-top: govuk-spacing(3);
+  }
+}
