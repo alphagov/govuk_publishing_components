@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.4.0
 
 * Fix govspeak inverse link styles ([PR #5461](https://github.com/alphagov/govuk_publishing_components/pull/5461))
 * Add missing cookies to COOKIE_CATEGORIES ([PR #5463](https://github.com/alphagov/govuk_publishing_components/pull/5463))
