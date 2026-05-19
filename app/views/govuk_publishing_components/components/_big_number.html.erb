@@ -10,6 +10,7 @@
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-big-number")
+  component_helper.add_role("text")
 %>
 <% if number %>
   <% big_number_value = capture do %>
