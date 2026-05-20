@@ -44,6 +44,9 @@
 }
 
 .gem-c-sub-navigation-menu__button:focus {
+
+  z-index: 999;
+
   &.gem-c-sub-navigation-menu__button::before {
     border-color: govuk-colour("black");
   }

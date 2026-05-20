@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Reintroduce z-index on focus on sub navigation menu ([PR #5466](https://github.com/alphagov/govuk_publishing_components/pull/5466))
+
 ## 66.4.0
 
 * Fix govspeak inverse link styles ([PR #5461](https://github.com/alphagov/govuk_publishing_components/pull/5461))
