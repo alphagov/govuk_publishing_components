@@ -16,10 +16,21 @@
   FilterList.prototype.appendFilterInput = function () {
     const form = document.createElement('div')
     form.classList.add('govuk-form-group')
-    form.innerHTML = `
-      <label for="filterInput" class="gem-c-label govuk-label">${this.labelText}</label>
-      <input class="gem-c-input govuk-input" id="filterInput" name="name" spellcheck="false" type="text">
-    `
+
+    const formLabel = document.createElement('label')
+    formLabel.htmlFor = 'filterInput'
+    formLabel.classList.add('gem-c-label', 'govuk-label')
+    formLabel.textContent = this.labelText
+
+    const formInput = document.createElement('input')
+    formInput.classList.add('gem-c-input', 'govuk-input')
+    formInput.id = 'filterInput'
+    formInput.name = 'name'
+    formInput.spellcheck = false
+    formInput.type = 'text'
+
+    form.append(formLabel, formInput)
+
     this.module.prepend(form)
     const input = form.querySelector('.govuk-input')
     input.addEventListener('submit', function (e) { e.preventDefault() })
