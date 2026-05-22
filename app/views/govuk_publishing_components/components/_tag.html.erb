@@ -8,7 +8,7 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("govuk-tag gem-c-tag")
 
-  colours = %w[grey green turquoise blue light-blue purple pink red orange yellow]
+  colours = %w[grey green teal blue purple magenta red orange yellow]
   colour ||= nil
   component_helper.add_class("govuk-tag--#{colour}") if colours.include?(colour)
 %>
