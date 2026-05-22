@@ -128,7 +128,7 @@ $column-width: 9.5em;
 
 .gem-c-share-links--square-icons {
   .gem-c-share-links__link-icon {
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
     color: govuk-colour("black");
     padding: govuk-spacing(2);
   }
