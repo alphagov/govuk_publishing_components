@@ -5,6 +5,10 @@ describe "Date input", type: :view do
     "date_input"
   end
 
+  before do
+    allow(SecureRandom).to receive(:hex).and_return("1234")
+  end
+
   it "renders with default fields when no data is given" do
     render_component({})
 
@@ -42,8 +46,17 @@ describe "Date input", type: :view do
     )
 
     assert_select ".govuk-fieldset[role=group] .govuk-fieldset__legend", text: "What is your date of birth?"
-    assert_select ".govuk-fieldset[role=group] .govuk-date-input", 1
-    assert_select ".govuk-fieldset[role=group] .govuk-date-input__item", 3
+  end
+
+  it "renders with custom legend heading level and size" do
+    render_component(
+      legend_text: "What is your date of birth?",
+      legend_heading_level: 1,
+      legend_size: "l",
+    )
+
+    assert_select ".govuk-fieldset[role=group] .govuk-fieldset__legend.govuk-fieldset__legend--l"
+    assert_select ".govuk-fieldset[role=group] .govuk-fieldset__legend h1", text: "What is your date of birth?"
   end
 
   it "renders with hint" do
@@ -53,6 +66,9 @@ describe "Date input", type: :view do
     )
 
     assert_select ".govuk-fieldset[role=group] .govuk-hint", text: "For example, 31 3 1980"
+    assert_select "input[name='day'][aria-describedby='hint-1234']"
+    assert_select "input[name='month'][aria-describedby='hint-1234']"
+    assert_select "input[name='year'][aria-describedby='hint-1234']"
   end
 
   it "renders with error message" do
@@ -63,6 +79,51 @@ describe "Date input", type: :view do
 
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error: Error message goes here"
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+    assert_select "input[name='day'][aria-describedby='error-1234']"
+    assert_select "input[name='month'][aria-describedby='error-1234']"
+    assert_select "input[name='year'][aria-describedby='error-1234']"
+  end
+
+  it "renders with hint and error message" do
+    render_component(
+      legend_text: "What is your date of birth?",
+      hint: "For example, 31 3 1980",
+      error_message: "Error message goes here",
+    )
+
+    assert_select ".govuk-fieldset[role=group] .govuk-hint", text: "For example, 31 3 1980"
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error: Error message goes here"
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+    assert_select "input[name='day'][aria-describedby='error-1234']"
+    assert_select "input[name='month'][aria-describedby='error-1234']"
+    assert_select "input[name='year'][aria-describedby='error-1234']"
+  end
+
+  it "renders with an error id but no message" do
+    error_id = "error-id"
+
+    render_component(
+      legend_text: "What is your date of birth?",
+      hint: "For example, 31 3 1980",
+      error_id: error_id,
+    )
+
+    assert_select ".govuk-fieldset[role=group] .govuk-hint", text: "For example, 31 3 1980"
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+    assert_select "input[name='day'][aria-describedby='#{error_id}']"
+    assert_select "input[name='month'][aria-describedby='#{error_id}']"
+    assert_select "input[name='year'][aria-describedby='#{error_id}']"
+  end
+
+  it "renders with data attributes" do
+    render_component(
+      data_attributes: {
+        module: "not-a-real-module",
+        something_else: "i-just-thought-of",
+      },
+    )
+
+    assert_select ".govuk-form-group[data-module='not-a-real-module'][data-something-else='i-just-thought-of']"
   end
 
   it "renders with custom items" do
