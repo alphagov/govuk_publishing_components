@@ -3,7 +3,7 @@
 .gem-c-govspeak {
   .place {
     margin: 0 0 govuk-spacing(4) 0;
-    border-bottom: solid 1px govuk-colour("mid-grey");
+    border-bottom: solid 1px govuk-colour("black", $variant: "tint-80");
     padding-bottom: 1.5em;
 
     .address {
