@@ -98,7 +98,7 @@
 }
 
 .gem-c-sub-navigation-menu__button:hover::before {
-  border-color: govuk-colour("dark-blue");
+  border-color: govuk-colour("blue", $variant: "shade-50");
 }
 
 .gem-c-sub-navigation-menu__nav-container {
