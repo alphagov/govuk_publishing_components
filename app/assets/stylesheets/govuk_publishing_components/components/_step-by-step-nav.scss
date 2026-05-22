@@ -1,7 +1,7 @@
 $stroke-width: 1px;
 $number-circle-size: 30px;
 $number-circle-size-large: 35px;
-$top-border: solid 1px govuk-colour("mid-grey");
+$top-border: solid 1px govuk-colour("black", $variant: "tint-80");
 
 @mixin step-nav-vertical-line($line-style: solid) {
   content: "";
@@ -9,7 +9,7 @@ $top-border: solid 1px govuk-colour("mid-grey");
   z-index: 2;
   width: 0;
   height: 100%;
-  border-left: $line-style $stroke-width govuk-colour("mid-grey");
+  border-left: $line-style $stroke-width govuk-colour("black", $variant: "tint-80");
   background: govuk-colour("white");
 }
 
@@ -261,7 +261,7 @@ $top-border: solid 1px govuk-colour("mid-grey");
     margin-left: calc($number-circle-size / 4);
     width: calc($number-circle-size / 2);
     height: 0;
-    border-bottom: solid $stroke-width govuk-colour("mid-grey");
+    border-bottom: solid $stroke-width govuk-colour("black", $variant: "tint-80");
   }
 
   &::after {
@@ -319,7 +319,7 @@ $top-border: solid 1px govuk-colour("mid-grey");
 }
 
 .gem-c-step-nav__circle--number {
-  border: solid $stroke-width govuk-colour("mid-grey");
+  border: solid $stroke-width govuk-colour("black", $variant: "tint-80");
   @include step-nav-font(16, $weight: bold, $line-height: 29px);
 
   .gem-c-step-nav--large & {
