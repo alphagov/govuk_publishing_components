@@ -75,7 +75,7 @@ $large-input-size: 50px;
 .gem-c-search-with-autocomplete__option--focused,
 .gem-c-search-with-autocomplete__option:hover,
 .gem-c-search-with-autocomplete__option:focus-visible {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   outline: none;
 
   @include govuk-link-decoration;

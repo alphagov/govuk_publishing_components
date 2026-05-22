@@ -26,7 +26,7 @@
 .gem-c-contextual-sidebar__cta {
   border-top: 2px solid $govuk-brand-colour;
   margin-bottom: govuk-spacing(6);
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   display: block;
   padding: 0 govuk-spacing(3) govuk-spacing(3);
   text-decoration: none;
