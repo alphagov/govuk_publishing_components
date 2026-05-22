@@ -12,7 +12,7 @@
   // .address is used by the `$A` markdown pattern
   .address,
   .contact {
-    border-left: 1px solid govuk-colour("mid-grey");
+    border-left: 1px solid govuk-colour("black", $variant: "tint-80");
     padding-left: govuk-spacing(3);
     margin: 0 0 govuk-spacing(6) 0;
   }
