@@ -124,7 +124,7 @@ $choices-button-dimension: 12px !default;
     border: 0;
     padding: 0 0 0 govuk-spacing(2);
     margin: govuk-spacing(2) govuk-spacing(2) 0 0;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
     box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("black", $variant: "tint-80");
     line-height: 1;
     color: $govuk-text-colour;
