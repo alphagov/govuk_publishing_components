@@ -113,7 +113,7 @@
       // total and subtotal rows
       tr.subtotal > *,
       tr.total > * {
-        border-top: 3px solid govuk-colour("mid-grey");
+        border-top: 3px solid govuk-colour("black", $variant: "tint-80");
       }
 
       tr.total > *,
