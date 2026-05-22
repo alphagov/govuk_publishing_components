@@ -94,7 +94,7 @@
 .gem-c-subscription-links__feed-box {
   padding: govuk-spacing(3);
   margin-bottom: govuk-spacing(3);
-  background: govuk-colour("light-grey");
+  background: govuk-colour("black", $variant: "tint-95");
 
   .govuk-frontend-supported &.js-hidden {
     display: none;
