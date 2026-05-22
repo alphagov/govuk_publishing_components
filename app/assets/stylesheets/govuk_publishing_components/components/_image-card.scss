@@ -74,7 +74,7 @@
 .gem-c-image-card__metadata {
   font-size: govuk-px-to-rem(16px);
   margin: 0 0 calc(govuk-spacing(3) / 2);
-  color: govuk-colour("dark-grey");
+  color: govuk-colour("black", $variant: "tint-25");
   @include govuk-font($size: false);
 
   @include govuk-media-query($from: tablet) {
@@ -101,7 +101,7 @@
   }
 
   .gem-c-image-card__list-item--text {
-    color: govuk-colour("dark-grey");
+    color: govuk-colour("black", $variant: "tint-25");
   }
 
   .gem-c-image-card__list-item-link {
