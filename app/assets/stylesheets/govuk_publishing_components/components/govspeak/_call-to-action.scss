@@ -10,7 +10,7 @@
 .gem-c-govspeak {
   .call-to-action {
     margin: 0 0 govuk-spacing(4) 0;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
     padding: govuk-spacing(6);
     padding-bottom: govuk-spacing(2);
 
