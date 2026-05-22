@@ -36,6 +36,8 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-layout-super-navigation-header")
   component_helper.add_data_attribute({ module: "ga4-event-tracker ga4-link-tracker", ga4_expandable: "" })
+
+  phase_banner ||= false
 %>
 <%= tag.header(**component_helper.all_attributes) do %>
 <div class="gem-c-layout-super-navigation-header__container govuk-width-container">
@@ -275,4 +277,11 @@
     <% end %>
   </nav>
 </div>
+  <% if phase_banner %>
+  <div class="govuk-width-container">
+    <%= render "govuk_publishing_components/components/phase_banner", {
+      phase: "alpha"
+    } %>
+  </div>
+  <% end %>
 <% end %>

@@ -19,6 +19,7 @@
   title ||= "GOV.UK - The best place to find government services and information"
   title_lang ||= nil
   body_classes ||= nil
+  phase_banner = true
 
   show_account_layout ||= false
   account_nav_location ||= nil
@@ -91,6 +92,7 @@
           <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
             homepage:,
             logo_link: logo_link,
+            phase_banner:,
           } %>
         <% end %>
       <% end %>
