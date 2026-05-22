@@ -8,7 +8,7 @@
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .example {
-    border-left: 10px solid govuk-colour("mid-grey");
+    border-left: 10px solid govuk-colour("black", $variant: "tint-80");
     padding: govuk-spacing(4) 0 0.1234px govuk-spacing(4); // non-zero padding on bottom keeps margin of last element inside parent, simulating padding
     margin: 0 0 govuk-spacing(4) 0;
 
