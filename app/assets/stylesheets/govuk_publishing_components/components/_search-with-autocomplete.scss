@@ -98,7 +98,7 @@ $large-input-size: 50px;
   align-items: center;
   margin: 0 govuk-spacing(3);
   padding: govuk-spacing(1) 0;
-  border-bottom: 1px solid govuk-colour("mid-grey");
+  border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
 }
 
 .gem-c-search-with-autocomplete__option:last-child .gem-c-search-with-autocomplete__option-wrapper {
