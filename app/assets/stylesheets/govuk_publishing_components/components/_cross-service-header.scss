@@ -259,7 +259,7 @@ $toggle-border-height: 3px;
     padding: govuk-spacing(3) 0;
 
     &:not(:last-child) {
-      border-bottom: 1px solid govuk-colour("mid-grey");
+      border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
     }
   }
 }
