@@ -1,0 +1,133 @@
+name: Datetime fields (experimental)
+description: Use the datetime fields component to help users enter a datetime for a specific event.
+body: |
+  This differs from the [Date fields][] component in a few notable ways:
+
+  * In addition, to day, month and year, it also takes hour and minute
+  * It generates select fields in place of inputs
+  * As this uses the `ActionView::Helpers::DateHelper` helpers you must provide a prefix and field_name to construct the fields
+
+    - the prefix must be the downcased and underscored model name
+    - the field_name is the attribute for the model
+
+  [Date fields]: https://design-system.service.gov.uk/components/date-input/
+accessibility_criteria: |
+  Inputs in the component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when they have focus
+  * be recognisable as form input elements
+  * have correctly associated labels
+
+govuk_frontend_components:
+  - date-input
+examples:
+  default:
+    data:
+      prefix: edition
+      field_name: first_published_at
+
+  with_heading_level_and_size:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      heading_level: 1
+      heading_size: l
+  with_custom_heading_text:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      date_heading: "The date"
+      time_heading: "The time"
+  with_hint_text:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      date_hint: For example, 01 August 2022
+      time_hint: For example, 09:30 or 19:30
+  with_custom_ids:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      year:
+        id: edition_first_published_year
+        name: Year
+        width: 4
+      month:
+        id: edition_first_published_month
+        name: Month
+        width: 2
+      day:
+        id: edition_first_published_day
+        name: Day
+        width: 2
+      hour:
+        id: edition_first_published_hour
+      minute:
+        id: edition_first_published_minute
+  with_values:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      year:
+        name: Year
+        value: 2022
+        width: 4
+      month:
+        name: Month
+        value: 1
+        width: 2
+      day:
+        name: Day
+        value: 1
+        width: 2
+      hour:
+        value: 9
+      minute:
+        value: 30
+  with_a_prepopulated_time:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      hour:
+        value: 10
+        id: myhour
+      minute:
+        value: 51
+        id: myminute
+  with_error_items:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      error_items:
+      - text: Descriptive error 1
+      - text: Descriptive error 2
+  with_separate_date_time_error_items:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      error_items_date:
+      - text: Descriptive date error 1
+      - text: Descriptive date error 2
+      error_items_time:
+      - text: Descriptive time error 1
+      - text: Descriptive time error 2
+  with_data_attributes:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      data_attributes:
+        module: "some-module"
+        other_attribute: "something-else"
+
+  with_date_only_option:
+    description: |
+      This is used to render the component to display only the date input fields.
+    data:
+      prefix: edition
+      field_name: first_published_at
+      date_heading: "An optional heading for the date fields"
+      date_only: true

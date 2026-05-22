@@ -36,6 +36,11 @@ examples:
   with_legend:
     data:
       legend_text: "What is your date of birth?"
+  with_legend_level_and_size:
+    data:
+      legend_text: "What is your date of birth?"
+      legend_level: 2
+      legend_size: "l"
   with_hint:
     data:
       legend_text: "What is your date of birth?"
