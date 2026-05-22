@@ -7,8 +7,8 @@ $gem-quiet-button-colour: govuk-colour("black", $variant: "tint-25");
 $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 
 // Brand refresh
-$govuk-blue-tint-95: govuk-tint($govuk-brand-colour, 95%);
-$govuk-blue-tint-80: govuk-tint(govuk-colour("blue"), 80%);
-$govuk-blue-tint-50: govuk-tint(govuk-colour("blue"), 50%);
+$govuk-blue-tint-95: govuk-colour("blue", $variant: "tint-95");
+$govuk-blue-tint-80: govuk-colour("blue", $variant: "tint-80");
+$govuk-blue-tint-50: govuk-colour("blue", $variant: "tint-50");
 
 $govuk-rebrand-template-background-colour: $govuk-blue-tint-95;
