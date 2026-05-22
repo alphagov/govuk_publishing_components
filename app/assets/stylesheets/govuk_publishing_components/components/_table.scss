@@ -1,7 +1,7 @@
 @import "govuk/components/table/table";
 
 $table-border-width: 1px;
-$table-border-colour: govuk-colour("mid-grey");
+$table-border-colour: govuk-colour("black", $variant: "tint-80");
 $table-header-border-width: 2px;
 $table-header-background-colour: govuk-colour("light-grey");
 $sort-link-active-colour: govuk-colour("white");
