@@ -119,7 +119,7 @@ $top-border: solid 1px govuk-colour("black", $variant: "tint-80");
   margin: 0;
 
   &:hover {
-    background: govuk-colour("light-grey");
+    background: govuk-colour("black", $variant: "tint-95");
     // Chevron icon interaction states
     .gem-c-step-nav__chevron {
       color: govuk-colour("black");
@@ -127,7 +127,7 @@ $top-border: solid 1px govuk-colour("black", $variant: "tint-80");
     }
 
     .gem-c-step-nav__chevron::after {
-      color: govuk-colour("light-grey");
+      color: govuk-colour("black", $variant: "tint-95");
     }
 
     .gem-c-step-nav__button-text {
