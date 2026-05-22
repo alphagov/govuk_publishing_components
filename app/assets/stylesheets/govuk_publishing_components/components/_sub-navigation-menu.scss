@@ -4,7 +4,7 @@
 }
 
 .gem-c-sub-navigation-menu__button-container {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
 }
 
@@ -21,7 +21,7 @@
   padding-right: govuk-spacing(3);
   // Invisible border so the width of the collapsed button is the same as the expanded one.
   border-left: 1px solid rgba(0, 0, 0, 0);
-  border-right: 1px solid govuk-colour("light-grey");
+  border-right: 1px solid govuk-colour("black", $variant: "tint-95");
   cursor: pointer;
   position: relative;
   @include govuk-font(19);
@@ -63,7 +63,7 @@
   background-color: govuk-colour("white");
 
   @include govuk-media-query($until: tablet) {
-    border-left: 1px solid govuk-colour("light-grey"); // Hide left border on mobile while preserving button width.
+    border-left: 1px solid govuk-colour("black", $variant: "tint-95"); // Hide left border on mobile while preserving button width.
   }
 
   // Expanded arrow icon
