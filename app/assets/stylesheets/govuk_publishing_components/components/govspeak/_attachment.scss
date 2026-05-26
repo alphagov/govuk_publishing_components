@@ -39,7 +39,7 @@
         width: $thumbnail-width;
         height: 140px;
         background: govuk-colour("white");
-        outline: $govuk-border-width solid color.adjust(govuk-colour("black"), $alpha: -0.9);
+        outline: $govuk-border-width solid govuk-colour("black");
         box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4);
       }
 
