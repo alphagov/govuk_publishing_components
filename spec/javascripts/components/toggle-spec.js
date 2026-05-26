@@ -111,4 +111,46 @@ describe('A toggle module', function () {
       document.body.removeChild(container)
     })
   })
+
+  describe('when a forbidden tag in used in the toggled text', function () {
+    beforeEach(function () {
+      container = document.createElement('div')
+      container.innerHTML = `
+        <a href="#" class="my-toggle" data-expanded="false" data-controls="target" data-toggled-text="<script>alert('hi');</script>">Toggle</a>
+        <div id="target" class="js-hidden">Target</div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggle(container).init()
+      container.querySelector('.my-toggle').click()
+    })
+
+    afterEach(function () {
+      document.body.removeChild(container)
+    })
+
+    it('does not render the forbidden tag', function () {
+      expect(container.querySelector('script')).toBeNull()
+    })
+  })
+
+  describe('when a forbidden attributes in used in the toggled text', function () {
+    beforeEach(function () {
+      container = document.createElement('div')
+      container.innerHTML = `
+        <a href="#" class="my-toggle" data-expanded="false" data-controls="target" data-toggled-text="<span onerror='forbidden'>Hello</span>>">Toggle</a>
+        <div id="target" class="js-hidden">Target</div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggle(container).init()
+      container.querySelector('.my-toggle').click()
+    })
+
+    afterEach(function () {
+      document.body.removeChild(container)
+    })
+
+    it('does not render the forbidden attribute', function () {
+      expect(container.querySelector('span').hasAttribute('onerror')).toBe(false)
+    })
+  })
 })

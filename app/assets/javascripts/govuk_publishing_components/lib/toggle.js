@@ -124,13 +124,59 @@
         }
       }
 
-      var toggledText = this.getAttribute('data-toggled-text')
+      var rawToggledText = this.getAttribute('data-toggled-text')
+      var sanitisedText = sanitiseHTML(rawToggledText)
 
-      if (typeof toggledText === 'string') {
+      if (typeof rawToggledText === 'string') {
         this.setAttribute('data-toggled-text', this.innerHTML)
-        this.innerHTML = toggledText
+        this.innerHTML = sanitisedText
       }
     })
+  }
+
+  /*
+   * Sanitises a string representation of HTML so it can be safely rendered on the page
+   * @param {string} htmlString - HTML string, eg <span>hello</span>
+   * @returns {string} - the sanitised version of the string
+   */
+  const sanitiseHTML = function (htmlString) {
+    /* global DOMParser, Node */
+
+    const ALLOWED_TAGS = ['SPAN']
+    const ALLOWED_ATTRS = [/class/, /aria/]
+
+    const parser = new DOMParser()
+
+    // Suppressing alert here because this is the HTML that will be sanitised
+    // codeql[js/xss-through-dom]
+    var htmlDoc = parser.parseFromString(htmlString, 'text/html')
+
+    sanitiseNode(htmlDoc)
+    return htmlDoc.body.innerHTML
+
+    function sanitiseNode (node) {
+      const childNodes = Array.from(node.childNodes)
+      childNodes.forEach(childNode => {
+        // only sanitize element type nodes
+        if (childNode.nodeType === Node.ELEMENT_NODE) {
+          // forbidden nodes are replaced with their children (which might be nothing, ie they are removed)
+          if (!ALLOWED_TAGS.includes(childNode.tagName)) {
+            childNode.removeAttribute(childNode.children)
+          } else {
+            // allowed nodes have any forbidden attributes removed
+            const attributes = Array.from(childNode.attributes)
+            attributes.forEach(attribute => {
+              if (!ALLOWED_ATTRS.some(pattern => pattern.test(attribute.name))) {
+                childNode.removeAttribute(attribute.name)
+              }
+            })
+          }
+        }
+
+        // sanitize all this node's children too
+        sanitiseNode(childNode)
+      })
+    }
   }
 
   Modules.GemToggle = GemToggle
