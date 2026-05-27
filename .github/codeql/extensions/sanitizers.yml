@@ -1,0 +1,8 @@
+# See https://codeql.github.com/docs/codeql-language-guides/customizing-library-models-for-javascript/#example-adding-flow-through-decodeuricomponent
+extensions:
+  - addsTo:
+      pack: codeql/javascript-all
+      extensible: barrierModel
+    data:
+      # Format: [ type, path, kind ]
+      - [ "global", "Member[sanitiseHTML].ReturnValue", "html-injection" ]

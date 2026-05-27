@@ -1,0 +1,8 @@
+# See https://docs.github.com/en/code-security/tutorials/customize-code-scanning/creating-and-working-with-codeql-packs#creating-a-codeql-model-pack
+name: govuk_publishing_components/javascript-sanitizers
+version: 1.0.0
+library: true
+extensionTargets:
+  codeql/javascript-all: '*'
+dataExtensions:
+  - sanitizers.yml
