@@ -57,18 +57,23 @@ en:
     cookie_banner:
       buttons:
         accept_cookies: Accept additional cookies
-        reject_cookies: Reject additional cookies
-        view_cookies: View cookies
+        reject_cookies: Keep current settings
+        view_cookies: Change your cookie settings
       confirmation_message:
         accepted: You have accepted additional cookies
         html: You can %{link} at any time.
         link: change your cookie settings
-        rejected: You have rejected additional cookies
+        rejected: You have allowed cookies to help understand how the website is used
       hide: Hide cookie message
       text:
       - We use some essential cookies to make this website work.
       - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
       - We also use cookies set by other sites to help us deliver content from their services.
+      text_intro: "We use:"
+      text_list:
+      - essential cookies that make the website work - these are always on
+      - cookies to understand how the website is used - you can opt out of these
+      text_additional_cookies: We’d also like to use additional cookies to help make the website better and improve your experience using GOV.UK.
       title: Cookies on GOV.UK
     devolved_nations:
       applies_to: Applies to

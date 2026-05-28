@@ -1,18 +1,7 @@
 <%
   id ||= "global-cookie-message"
   title ||= t("components.cookie_banner.title")
-  text ||= t("components.cookie_banner.text")
-  if text.kind_of?(Array)
-    newtext = ""
-    text.each do |t|
-      newtext += "<p class='govuk-body'>#{t}</p>"
-    end
-    text = newtext
-  else
-    text = "<p class='govuk-body'>#{text}</p>"
-  end
-  text = raw(text)
-
+  text ||= nil
   cookie_preferences_href ||= "/help/cookies"
   confirmation_message ||= raw(t("components.cookie_banner.confirmation_message.html",
                                 link: link_to(
@@ -39,7 +28,25 @@
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-cookie-banner__heading govuk-heading-m"><%= title %></h2>
         <div tabindex="-1" class="govuk-cookie-banner__content gem-c-cookie-banner__confirmation">
-          <div class="gem-c-cookie-banner__content"><%= text %></div>
+          <div class="gem-c-cookie-banner__content">
+            <%# custom banner text %>
+            <% if text.present? %>
+              <% Array(text).each do |content| %>
+                <p class="govuk-body"><%= content %></p>
+              <% end %>
+            <% else %>
+              <p class="govuk-body"><%= t("components.cookie_banner.text_intro") %></p>
+              <ul class="govuk-list govuk-list--bullet">
+              <% t("components.cookie_banner.text_list").each do |item| %>
+                <li><%= item %></li>
+              <% end %>
+              </ul>
+              <p class="govuk-body"><%= t("components.cookie_banner.text_additional_cookies") %></p>
+            <% end %>
+            <p class="govuk-body govuk-!-static-margin-bottom-4">
+              <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
+            </p>
+          </div>
           <p class="gem-c-cookie-banner__confirmation-message--accepted govuk-body" hidden
           <% unless disable_ga4 %>
             data-ga4-cookie-banner <%# GA4 pageview JS looks for data-ga4-cookie-banner %>
@@ -53,21 +60,20 @@
     </div>
     <div class="js-confirmation-buttons govuk-button-group">
       <%= render "govuk_publishing_components/components/button", {
-          name: "cookies",
-          text: t("components.cookie_banner.buttons.accept_cookies"),
-          data_attributes: {
-            "accept-cookies": "true",
-            "cookie-types": "all",
-          },
+        name: "cookies",
+        text: t("components.cookie_banner.buttons.accept_cookies"),
+        data_attributes: {
+          "accept-cookies": "true",
+          "cookie-types": "all",
+        },
       } %>
       <%= render "govuk_publishing_components/components/button", {
-          name: "cookies",
-          text: t("components.cookie_banner.buttons.reject_cookies"),
-          data_attributes: {
-            "reject-cookies": "true",
-          },
+        name: "cookies",
+        text: t("components.cookie_banner.buttons.reject_cookies"),
+        data_attributes: {
+          "reject-cookies": "true",
+        },
       } %>
-      <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
     </div>
     <div hidden class="js-hide-button govuk-button-group">
       <%
