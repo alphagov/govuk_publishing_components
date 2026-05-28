@@ -166,7 +166,7 @@ describe "Layout for public", :capybara, type: :view do
   it "does not contain real user metrics scripts after usage cookies have not been allowed", :js do
     visit "/public"
 
-    click_button "Reject additional cookies"
+    click_button "Keep current settings"
 
     expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
     expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
@@ -177,7 +177,7 @@ describe "Layout for public", :capybara, type: :view do
   it "does not contain real user metrics scripts on page after usage cookies have not been allowed", :js do
     visit "/public"
 
-    click_button "Reject additional cookies"
+    click_button "Keep current settings"
 
     visit "/public"
 
