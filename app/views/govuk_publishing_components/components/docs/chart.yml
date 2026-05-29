@@ -1,0 +1,37 @@
+name: Chart (experimental)
+description: The chart component presents a data chart and a tabular version of the same data
+part_of_admin_layout: true
+body: |
+  This component takes a set of data and presents it as a column chart with one or more columns.
+  The chart relies upon chartkick and renders using JavaScript, so the table is provided as a fallback for a lack of JavaScript,
+  an accessible view on the data for screenreaders, and a simple view of the raw data for all users.
+
+  The `chart_overview` option can be used to provide an explanation for screen reader users of what the chart shows.
+accessibility_criteria: |
+  Charts must:
+
+    - use line colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+    - contain a `chart_heading` option if `minimal` is not set to true, so that skip links and visually hidden headings are accurate
+shared_accessibility_criteria:
+  - link
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data:
+      chart_heading: Hats owned
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      hide_legend: true
+      keys:
+        - Jon
+        - Ash
+        - James
+        - Phil
+      rows:
+        - label: Hats owned
+          values:
+            - 3
+            - 1
+            - 1
+            - 2
