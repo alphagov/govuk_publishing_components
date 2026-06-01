@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* LUX version 4.5.0 ([PR #5478](https://github.com/alphagov/govuk_publishing_components/pull/5478))
+
 ## 66.4.1
 
 * Reintroduce z-index on focus on sub navigation menu ([PR #5466](https://github.com/alphagov/govuk_publishing_components/pull/5466))

@@ -74,7 +74,7 @@
     if (performance.navigation && typeof performance.navigation.type !== "undefined") {
       return performance.navigation.type;
     }
-    return "";
+    return undefined;
   }
   /**
   * Returns the delivery type for the current document. To differentiate between the valid empty
@@ -286,7 +286,19 @@
     return sinceNavigationStart;
   }
 
-  var version = "4.4.3";
+  var sendBeaconFallback = function (url, data) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("content-type", "application/json");
+    xhr.send(data);
+    return true;
+  };
+  var sendBeaconImpl = "sendBeacon" in navigator ? navigator.sendBeacon.bind(navigator) : sendBeaconFallback;
+  function postJson(url, data) {
+    return sendBeaconImpl(url, data);
+  }
+
+  var version = "4.5.0";
   var pkg = {
     version: version};
 
@@ -309,14 +321,6 @@
     return parseFloat(parts[0] + "." + padStart(parts[1], 2, "0") + padStart(parts[2], 2, "0"));
   }
 
-  var sendBeaconFallback = function (url, data) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("content-type", "application/json");
-    xhr.send(String(data));
-    return true;
-  };
-  var sendBeacon = "sendBeacon" in navigator ? navigator.sendBeacon.bind(navigator) : sendBeaconFallback;
   /**
   * Some values should only be reported if they are non-zero. The exception to this is when the page
   * was prerendered or restored from BF cache
@@ -455,7 +459,7 @@
         startTime: this.startTime,
       }, metricData);
       try {
-        if (sendBeacon(beaconUrl, JSON.stringify(payload))) {
+        if (postJson(beaconUrl, JSON.stringify(payload))) {
           this.isSent = true;
           this.logger.logEvent(83 /* LogEvent.PostBeaconSent */, [beaconUrl, payload]);
           emit("beacon", payload);
@@ -501,20 +505,21 @@
     return {
       allowEmptyPostBeacon: getProperty(obj, "allowEmptyPostBeacon", false),
       auto: autoMode,
+      errorBeaconDelay: getProperty(obj, "errorBeaconDelay", 2000),
       beaconUrl: getProperty(obj, "beaconUrl", luxOrigin + "/lux/"),
       beaconUrlFallback: getProperty(obj, "beaconUrlFallback"),
       beaconUrlV2: getProperty(obj, "beaconUrlV2", "https://beacon.speedcurve.com/store"),
       conversions: getProperty(obj, "conversions"),
       cookieDomain: getProperty(obj, "cookieDomain"),
       customerid: getProperty(obj, "customerid"),
-      errorBeaconUrl: getProperty(obj, "errorBeaconUrl", luxOrigin + "/error/"),
+      errorBeaconUrl: getProperty(obj, "errorBeaconUrl", "https://beacon.speedcurve.com/store/error"),
       interactionBeaconDelay: getProperty(obj, "interactionBeaconDelay", 200),
       jspagelabel: getProperty(obj, "jspagelabel"),
       label: getProperty(obj, "label"),
       maxAttributionEntries: getProperty(obj, "maxAttributionEntries", 25),
       maxBeaconUrlLength: getProperty(obj, "maxBeaconUrlLength", 8190),
       maxBeaconUTEntries: getProperty(obj, "maxBeaconUTEntries", 20),
-      maxErrors: getProperty(obj, "maxErrors", 5),
+      maxErrors: getProperty(obj, "maxErrors", 64),
       maxMeasureTime: getProperty(obj, "maxMeasureTime", 60000),
       measureUntil: getProperty(obj, "measureUntil", spaMode ? "pagehidden" : "onload"),
       minMeasureTime: getProperty(obj, "minMeasureTime", 0),
@@ -643,6 +648,47 @@
       // Do nothing.
     }
     return selector;
+  }
+
+  // This is the same value as MAX_ERRORS_PER_BEACON in speedcurve-rum-beacons-edge-service
+  var MAX_ERRORS_PER_BEACON = 64;
+  var buffer = [];
+  var pendingContext = null;
+  var pendingConfig = null;
+  var flushTimer = null;
+  function queueErrorBeacon(config, error, errorTime, context) {
+    // If the page ID has changed since the last error (e.g. due to a SPA navigation), or if the
+    // buffer is full, flush the current beacon before adding the new error.
+    var pageChanged = pendingContext && pendingContext.pageId !== context.pageId;
+    var bufferFull = buffer.length >= MAX_ERRORS_PER_BEACON;
+    if (pageChanged || bufferFull) {
+      flushErrorBeacon();
+    }
+    pendingContext = context;
+    pendingConfig = config;
+    buffer.push({
+      errorTime: errorTime,
+      filename: error.filename,
+      lineno: error.lineno,
+      colno: error.colno,
+      message: error.message,
+    });
+    if (flushTimer === null) {
+      flushTimer = setTimeout(flushErrorBeacon, config.errorBeaconDelay);
+    }
+  }
+  function flushErrorBeacon() {
+    if (flushTimer !== null) {
+      clearTimeout(flushTimer);
+      flushTimer = null;
+    }
+    if (buffer.length === 0 || !pendingContext || !pendingConfig) {
+      return;
+    }
+    postJson(pendingConfig.errorBeaconUrl, JSON.stringify(Object.assign({}, pendingContext, { errors: buffer })));
+    buffer = [];
+    pendingContext = null;
+    pendingConfig = null;
   }
 
   var KNOWN_TRACKING_PARAMS = [
@@ -1268,28 +1314,21 @@
         var isLuxError = e.filename.indexOf("/lux.js?") > -1 || e.message.indexOf("LUX") > -1;
         if (isLuxError || (nErrors <= globalConfig.maxErrors && _sample())) {
           // Sample & limit other errors.
-          // Send the error beacon.
-          new Image().src =
-          globalConfig.errorBeaconUrl +
-          "?v=" +
-          versionAsFloat() +
-          "&id=" +
-          getCustomerId() +
-          "&fn=" +
-          encodeURIComponent(e.filename) +
-          "&ln=" +
-          e.lineno +
-          "&cn=" +
-          e.colno +
-          "&msg=" +
-          encodeURIComponent(e.message) +
-          "&l=" +
-          encodeURIComponent(_getPageLabel()) +
-          (connectionType() ? "&ct=" + connectionType() : "") +
-          "&HN=" +
-          encodeURIComponent(document.location.hostname) +
-          "&PN=" +
-          encodeURIComponent(document.location.pathname);
+          queueErrorBeacon(globalConfig, e, msSincePageInit(), {
+            customerId: getCustomerId(),
+            pageId: gSyncId,
+            sessionId: gUid,
+            scriptVersion: VERSION,
+            hostname: document.location.hostname,
+            pathname: document.location.pathname,
+            pageLabel: _getPageLabel(),
+            connectionType: connectionType(),
+            deliveryType: deliveryType(),
+            navigationType: navigationType(),
+            deviceMemory: typeof navigator.deviceMemory === "number" ? round(navigator.deviceMemory) : undefined,
+            flags: gFlags,
+            customData: getAllCustomData(),
+          });
         }
       }
     }
@@ -2272,23 +2311,16 @@
       return getNavigationEntry().encodedBodySize || 0;
     }
     // Return the connection type based on Network Information API.
-    // Note this API is in flux.
     function connectionType() {
       var c = navigator.connection;
-      var connType = "";
       if (c && c.effectiveType) {
-        connType = c.effectiveType;
+        var connType = c.effectiveType;
         if ("slow-2g" === connType) {
-          connType = "Slow 2G";
+          return "Slow 2G";
         }
-        else if ("2g" === connType || "3g" === connType || "4g" === connType || "5g" === connType) {
-          connType = connType.toUpperCase();
-        }
-        else {
-          connType = connType.charAt(0).toUpperCase() + connType.slice(1);
-        }
+        return connType.toUpperCase();
       }
-      return connType;
+      return undefined;
     }
     // Return an array of image elements that are in the top viewport.
     function imagesATF() {
@@ -2506,6 +2538,7 @@
       var ds = docSize();
       var ct = connectionType();
       var dt = deliveryType();
+      var navType = navigationType();
       // Note some page stat values (the `PS` query string) are non-numeric. To make extracting these
       // values easier, we append an underscore "_" to the value. Values this is used for include
       // connection type (ct) and delivery type (dt).
@@ -2547,7 +2580,7 @@
       "er" +
       nErrors +
       "nt" +
-      navigationType() +
+      (typeof navType !== "undefined" ? navType : "") +
       (navigator.deviceMemory ? "dm" + round(navigator.deviceMemory) : "") + // device memory (GB)
       (sIx ? "&IX=" + sIx : "") +
       (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
