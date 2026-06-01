@@ -10,6 +10,7 @@
 ## Unreleased
 
 * LUX version 4.5.0 ([PR #5478](https://github.com/alphagov/govuk_publishing_components/pull/5478))
+* Add flexible sections to the component guide ([PR #5450](https://github.com/alphagov/govuk_publishing_components/pull/5450))
 
 ## 66.4.1
 
