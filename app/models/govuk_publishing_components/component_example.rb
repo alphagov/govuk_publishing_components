@@ -83,6 +83,10 @@ module GovukPublishingComponents
       !!context["black_background"]
     end
 
+    def full_width?
+      context["full_width"].present?
+    end
+
     def html_description
       markdown_to_html(description) if description.present?
     end

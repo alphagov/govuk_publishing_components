@@ -24,7 +24,7 @@
     </div>
     <h2 class="govuk-heading-m">
       How it looks
-      <small class="govuk-!-font-size-16">(<a href="<%= component_preview_path(@component_doc.id, @component_example.id) %>" class="govuk-link">preview</a>)</small>
+      <small class="govuk-!-font-size-16">(<a href="<%= @preview_path %>" class="govuk-link">preview</a>)</small>
     </h2>
     <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, example: @component_example } %>
 

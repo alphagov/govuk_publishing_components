@@ -7,9 +7,10 @@ module GovukPublishingComponents
                 :component,
                 :accessibility_excluded_rules,
                 :source,
-                :embed
+                :embed,
+                :type
 
-    def initialize(component)
+    def initialize(component, type)
       @component = component
       @id = component[:id]
       @name = component[:name]
@@ -18,6 +19,7 @@ module GovukPublishingComponents
       @accessibility_excluded_rules = component[:accessibility_excluded_rules]
       @source = component[:source]
       @embed = component[:embed]
+      @type = type
     end
 
     def accessibility_criteria
@@ -88,6 +90,8 @@ module GovukPublishingComponents
     def partial_path
       if source == "gem"
         "govuk_publishing_components/components/#{id}"
+      elsif type == "flexible section"
+        "#{GovukPublishingComponents::Config.flexible_sections_directory_name}/#{id}"
       else
         "#{GovukPublishingComponents::Config.component_directory_name}/#{id}"
       end

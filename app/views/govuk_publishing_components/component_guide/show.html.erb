@@ -1,4 +1,5 @@
-<% content_for :title, "#{@component_doc.name} component" %>
+<% content_for :title, "#{@component_doc.name} #{@component_doc.type}" %>
+
 <% content_for :application_stylesheet do %>
   <% if @component_doc.source == "application" %>
     <%= render "application_stylesheet" %>
@@ -7,7 +8,7 @@
 
 <%= render "govuk_publishing_components/components/heading", {
     text: @component_doc.name,
-    context: "Component",
+    context: @component_doc.type.capitalize,
     heading_level: 1,
     font_size: "xl",
     margin_bottom: 8,
@@ -30,7 +31,9 @@
           </div>
         </div>
       <% end %>
-      <p class="govuk-body"><%= link_to "Search for usage of this component on GitHub", @component_doc.github_search_url, class: "govuk-link" %>.</p>
+      <% if @component_doc.type == "component" %>
+        <p class="govuk-body"><%= link_to "Search for usage of this component on GitHub", @component_doc.github_search_url, class: "govuk-link" %>.</p>
+      <% end %>
     </div>
   </div>
 
@@ -52,8 +55,8 @@
           href: "#overview",
           text: "Overview",
           items: [
-            { href: "#how-it-looks", text: "How it looks" },
-            { href: "#how-to-call-this-component", text: "How to call this component" },
+            ({ href: "#how-it-looks", text: "How it looks" } if @component_doc.display_preview? || @component_doc.display_html?),
+            { href: "#how-to-call-this-component", text: @component_doc.type == "component" ? "How to call this component" : "Passing data to this flexible section" },
             ({ href: "#govuk-design-system", text: "GOV.UK Design System" } if @component_doc.govuk_frontend_components.any?),
             ({ href: "#accessibility-acceptance-criteria", text: "Accessibility acceptance criteria" } if @component_doc.accessibility_criteria.present?),
           ].compact,
@@ -72,14 +75,23 @@
   </div>
 
   <h2 class="govuk-heading-l" id="overview">Overview</h2>
-  <h3 class="govuk-heading-m" id="how-it-looks">
-    <a href="<%= component_example_path(@component_doc.id, "default") %>" class="govuk-link">How it looks</a>
-    <small class="govuk-!-font-size-16">(<a href="<%= component_preview_path(@component_doc.id, "default") %>" class="govuk-link">preview</a>)</small>
-    <small class="govuk-!-font-size-16">(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
-  </h3>
-  <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
+  <% if @component_doc.display_preview? || @component_doc.display_html? %>
+    <h3 class="govuk-heading-m" id="how-it-looks">
+      <a href="<%= @example_path %>" class="govuk-link">How it looks</a>
+      <small class="govuk-!-font-size-16">(<a href="<%= @preview_path %>" class="govuk-link">preview</a>)</small>
+      <small class="govuk-!-font-size-16">(<a href="<%= @preview_all_path %>" class="govuk-link">preview all</a>)</small>
+    </h3>
+    <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
+  <% end %>
 
-  <h3 class="govuk-heading-m govuk-!-margin-top-4" id="how-to-call-this-component">How to call this component</h3>
+  <% if @component_doc.type == "component" %>
+    <h3 class="govuk-heading-m govuk-!-margin-top-4" id="how-to-call-this-component">How to call this component</h3>
+  <% else %>
+    <h3 class="govuk-heading-m govuk-!-margin-top-4" id="how-to-call-this-component">Passing data to this flexible section</h3>
+    <div class="component-markdown component-markdown--no-margin">
+      <p>Flexible sections are not called in the way shown below, however this information serves as a reference for the data required by this flexible section.</p>
+    </div>
+  <% end %>
   <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: @component_doc.example %>
 
   <% if @component_doc.govuk_frontend_components.any? %>
@@ -127,8 +139,17 @@
     <% @component_doc.other_examples.each do |example| %>
       <div class="component-example" id="<%= example.id %>">
         <h3 class="govuk-heading-m">
-          <a href="<%= component_example_path(@component_doc.id, example.id) %>" class="govuk-link"><%= example.name %></a>
-          <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>" class="govuk-link">preview</a>)</small>
+          <%
+            if @component_doc.type == "component"
+              example_path = component_example_path(@component_doc.id, example.id)
+              preview_path = component_preview_path(@component_doc.id, example.id)
+            else
+              example_path = flexible_section_example_path(@component_doc.id, example.id)
+              preview_path = flexible_section_preview_path(@component_doc.id, example.id)
+            end
+          %>
+          <a href="<%= example_path %>" class="govuk-link"><%= example.name %></a>
+          <small>(<a href="<%= preview_path %>" class="govuk-link">preview</a>)</small>
         </h3>
         <% if example.html_description %>
           <div class="component-markdown component-markdown--no-margin">

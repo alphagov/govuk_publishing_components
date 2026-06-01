@@ -1,10 +1,19 @@
+<% content_for :body_classes, "gem-full-width__container", flush: true %>
+<%
+  if @component_doc.type == "component"
+    data = example.html_safe_data
+  else
+    flexible_section_class = "FlexiblePage::FlexibleSection::#{@component_doc.id.titleize.gsub(" ", "")}".constantize
+    data = { flexible_section: flexible_section_class.new(**example.html_safe_data.deep_symbolize_keys)}
+  end
+%>
 <% component = capture do %>
   <% if example.has_block? %>
-    <%= render component_doc.partial_path, example.html_safe_data do %>
+    <%= render component_doc.partial_path, data do %>
       <%= render inline: example.block %>
     <% end %>
   <% else %>
-    <%= render component_doc.partial_path, example.html_safe_data %>
+    <%= render component_doc.partial_path, data %>
   <% end %>
 <% end %>
 

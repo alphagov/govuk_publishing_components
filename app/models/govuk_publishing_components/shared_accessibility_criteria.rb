@@ -2,7 +2,7 @@ module GovukPublishingComponents
   module SharedAccessibilityCriteria
     def self.link
       "
-Links in the component must:
+Links must:
 
 - accept focus
 - be focusable with a keyboard
@@ -19,7 +19,7 @@ Links in the component must:
 
     def self.button
       "
-Buttons in the component must:
+Buttons must:
 
 - accept focus
 - be focusable with a keyboard

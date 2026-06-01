@@ -1,9 +1,11 @@
 module GovukPublishingComponents
   # @private
   class ComponentDocs
-    def initialize(gem_components: false, limit_to: false)
+    def initialize(gem_components: false, limit_to: false, flexible_sections: false)
       @limit_to = limit_to
       @documentation_directory = gem_components ? gem_documentation_directory : app_documentation_directory
+      @documentation_directory = flexible_sections_documentation_directory if flexible_sections
+      @type = flexible_sections ? "flexible section" : "component"
     end
 
     def get(id)
@@ -22,7 +24,7 @@ module GovukPublishingComponents
   private
 
     def build(component)
-      ComponentDoc.new(component)
+      ComponentDoc.new(component, @type)
     end
 
     def fetch_component_doc_files
@@ -55,6 +57,10 @@ module GovukPublishingComponents
 
     def gem_documentation_directory
       Pathname.new(GovukPublishingComponents::Config.gem_directory).join("app", "views", "govuk_publishing_components", "components", "docs")
+    end
+
+    def flexible_sections_documentation_directory
+      Rails.root.join("app", "views", GovukPublishingComponents::Config.flexible_sections_directory_name, "docs")
     end
   end
 end

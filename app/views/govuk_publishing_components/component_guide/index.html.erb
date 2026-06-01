@@ -18,6 +18,13 @@
 <div data-module="filter-list" data-filter-label="Search components">
   <% if !ENV["MAIN_COMPONENT_GUIDE"] %>
     <%= render partial: "component_list", locals: {
+      heading: "Flexible sections in this application",
+      size: @flexible_section_docs.length,
+      components: @flexible_section_docs,
+      type: "flexible_section",
+    } %>
+
+    <%= render partial: "component_list", locals: {
       heading: "Components in this application",
       size: @component_docs.length,
       components: @component_docs,
