@@ -42,6 +42,11 @@ so:
       type:
         characters: dabeecadaha
         words: kalmadaha
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      table_dropdown:
     checkboxes:
       or: ama
     contents_list:
