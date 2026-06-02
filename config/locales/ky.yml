@@ -42,6 +42,11 @@ ky:
       type:
         characters: белги
         words: сөз
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      table_dropdown:
     checkboxes:
       or: же
     contents_list:

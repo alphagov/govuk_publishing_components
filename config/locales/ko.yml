@@ -41,6 +41,11 @@ ko:
       type:
         characters:
         words:
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      table_dropdown:
     checkboxes:
       or:
     contents_list:
