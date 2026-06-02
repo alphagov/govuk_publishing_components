@@ -6,17 +6,10 @@
   display: inline-block;
   margin-right: govuk-spacing(2);
   margin-top: govuk-spacing(2);
-}
 
-.govuk-select {
-  &.gem-c-datetime-fields__date-time-input {
+  .govuk-select {
     max-width: 4.5em;
     min-width: 4.5em;
-  }
-
-  &.gem-c-datetime-fields__date-time-input--large {
-    max-width: 7.5em;
-    min-width: 7.5em;
   }
 }
 
