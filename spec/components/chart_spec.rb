@@ -112,6 +112,13 @@ describe "Chart", type: :view do
     assert_select ".govuk-visually-hidden .gem-c-chart__a11y-note-1", false
   end
 
+  it "can include a source" do
+    source = "GOV.UK"
+    data[:source] = source
+    render_component(data)
+    assert_select "p.gem-c-chart__source.govuk-body", text: "Source: #{source}"
+  end
+
   it "includes an accessible caption for data tables" do
     render_component(data)
     assert_select "#data-table-caption-1234", text: "Data table for \"Page views chart\""

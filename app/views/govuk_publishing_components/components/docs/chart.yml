@@ -627,3 +627,32 @@ examples:
             - 1
             - 1
             - 3
+  with_source:
+    description: The chart can be rendered with the data source. Showing a source is recommended in the brand guidelines.
+    data:
+      source: Marvel and D.C. comics
+      subtitle: true
+      brand_colours: true
+      chart_heading: Comic book character stats
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows accessories owned by comic book characters.
+      chart_type: "column"
+      keys:
+        - Batman
+        - Superman
+        - Mad Hatter
+        - Iron Man
+      rows:
+        - label: Hats owned
+          values:
+            - 2
+            - 1
+            - 10
+            - 4
+        - label: Helmets owned
+          values:
+            - 1
+            - 1
+            - 1
+            - 3
