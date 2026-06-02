@@ -573,3 +573,29 @@ examples:
             - 118
             - 85
             - 80
+  with_brand_colours:
+    data:
+      brand_colours: true
+      chart_heading: Clothes owned
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January 2015.
+      chart_type: "column"
+      keys:
+        - Jon
+        - Ash
+        - James
+        - Phil
+      rows:
+        - label: Hats owned
+          values:
+            - 3
+            - 1
+            - 1
+            - 2
+        - label: Shoes owned
+          values:
+            - 2
+            - 3
+            - 4
+            - 5

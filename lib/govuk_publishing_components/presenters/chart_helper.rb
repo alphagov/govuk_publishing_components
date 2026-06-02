@@ -61,6 +61,10 @@ module GovukPublishingComponents
         }
       end
 
+      def brand_colours
+        ["#1D70B8", "#7F65B7", "#0F385C", "#50A1A5", "#CA357C", "#F7996A"]
+      end
+
       def chart_format_data
         if !@rows.empty? && !@keys.empty?
           @rows.map do |row|
