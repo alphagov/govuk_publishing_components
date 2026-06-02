@@ -1,6 +1,4 @@
 <%
-  prefix ||= nil
-  field_name ||= nil
   id = id
   date_id = "#{id}_date"
   date_only ||= false
@@ -135,6 +133,19 @@
   time_select_classes << "govuk-select--error" if (error_items.present? || error_items_time.present?)
 
   data_attributes ||= {}
+
+  hours = (0..23).to_a
+  hour_options = [{text: "", value: ""}]
+  minutes = (0..59).to_a
+  minute_options = [{text: "", value: ""}]
+
+  hours.each do |hour|
+    hour_options << {text: hour.to_s.rjust(2, "0"), value: hour.to_s.rjust(2, "0"), selected: hour == hour_value}
+  end
+
+  minutes.each do |minute|
+    minute_options << {text: minute.to_s.rjust(2, "0"), value: minute.to_s.rjust(2, "0"), selected: minute == minute_value}
+  end
 %>
 
 <%= tag.div id: do %>
@@ -186,70 +197,26 @@
           <div class="gem-c-datetime-fields__date-time-wrapper">
             <div class="gem-c-datetime-fields__date-time">
               <%= render "govuk_publishing_components/components/select", {
-                id: hour_id,
+                id: hour_id, # hour_select_id,
                 label: "Hour",
                 name: hour_name,
-                error_id: error_id_times,
+                error_id: error_items || error_items_time ? error_id_time : nil,
                 options: hour_options,
               } %>
-            <% end %>
+            </div>
 
             <p class="govuk-body gem-c-datetime-fields__time-separator">:</p>
 
             <div class="gem-c-datetime-fields__date-time">
               <%= render "govuk_publishing_components/components/select", {
-                id: minute_id,
+                id: minute_id, # minute_select_id,
                 label: "Minute",
                 name:  minute_name,
                 error_id: error_id_times,
                 options: minute_options,
               } %>
-            <% end %>
-
-            <div class="gem-c-datetime-fields__date-time-wrapper">
-              <div class="gem-c-datetime-fields__date-time">
-                <%= render "govuk_publishing_components/components/label", {
-                  text: "Hour",
-                  html_for: hour_select_id,
-                  id: hour_label_id,
-                } %>
-
-                <%= select_hour hour_value,
-                                {
-                                  include_blank: true,
-                                  prefix: prefix,
-                                  field_name: "#{field_name}(4i)",
-                                },
-                                {
-                                  id: hour_select_id,
-                                  class: time_select_classes,
-                                  "aria-describedby": "#{hour_label_id} #{time_hint_id if time_hint.present?}".strip,
-                                } %>
-              </div>
-
-              <p class="govuk-body gem-c-datetime-fields__time-separator">:</p>
-
-              <div class="gem-c-datetime-fields__date-time">
-                <%= render "govuk_publishing_components/components/label", {
-                  text: "Minute",
-                  html_for: minute_select_id,
-                  id: minute_label_id,
-                } %>
-
-                <%= select_minute minute_value,
-                                  {
-                                    include_blank: true,
-                                    prefix: prefix,
-                                    field_name: "#{field_name}(5i)",
-                                  },
-                                  {
-                                    id: minute_select_id,
-                                    class: time_select_classes,
-                                    "aria-describedby": "#{minute_label_id} #{time_hint_id if time_hint.present?}".strip,
-                                  } %>
-              </div>
             </div>
-          <% end %>
+          </div>
         <% end %>
       <% end %>
     <% end %>
