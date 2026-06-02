@@ -8,6 +8,8 @@
   ]
   autocomplete_date_of_birth ||= nil
   legend_text ||= nil
+  legend_level ||= nil
+  legend_size ||= nil
   hint ||= nil
   error_message ||= nil
   error_items ||= []
@@ -29,9 +31,11 @@
     aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
+
+  data_attributes ||= {}
 %>
 
-<%= content_tag :div, class: form_group_css_classes do %>
+<%= content_tag :div, class: form_group_css_classes, data: data_attributes do %>
   <% fieldset_content = capture do %>
     <% if hint %>
       <%= render "govuk_publishing_components/components/hint", {
@@ -75,6 +79,8 @@
     <%= render "govuk_publishing_components/components/fieldset", {
       describedby: aria_described_by,
       legend_text: legend_text,
+      heading_level: legend_level,
+      heading_size: legend_size,
       text: fieldset_content,
       role: "group",
     } %>

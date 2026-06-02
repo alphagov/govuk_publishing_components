@@ -46,6 +46,19 @@ describe "Date input", type: :view do
     assert_select ".govuk-fieldset[role=group] .govuk-date-input__item", 3
   end
 
+  it "renders with custom legend and fieldset level and size" do
+    render_component(
+      legend_text: "What is your date of birth?",
+      legend_level: 1,
+      legend_size: "l",
+    )
+
+    assert_select ".govuk-fieldset[role=group] .govuk-fieldset__legend.govuk-fieldset__legend--l"
+    assert_select ".govuk-fieldset[role=group] .govuk-fieldset__legend h1", text: "What is your date of birth?"
+    assert_select ".govuk-fieldset[role=group] .govuk-date-input", 1
+    assert_select ".govuk-fieldset[role=group] .govuk-date-input__item", 3
+  end
+
   it "renders with hint" do
     render_component(
       legend_text: "What is your date of birth?",
@@ -63,6 +76,17 @@ describe "Date input", type: :view do
 
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error: Error message goes here"
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+  end
+
+  it "renders with data attributes" do
+    render_component(
+      data_attributes: {
+        module: "not-a-real-module",
+        something_else: "i-just-thought-of",
+      },
+    )
+
+    assert_select ".govuk-form-group[data-module='not-a-real-module'][data-something-else='i-just-thought-of']"
   end
 
   it "renders with custom items" do
