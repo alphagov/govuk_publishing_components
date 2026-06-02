@@ -20,6 +20,8 @@
   brand_colours ||= false
   colours = brand_colours ? chart_helper.brand_colours : nil
 
+  subtitle ||= false
+
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-chart")
   component_helper.add_class("gem-c-chart--minimal") if minimal
@@ -42,6 +44,7 @@
             heading_level: chart_heading_level,
             margin_bottom: 2,
           } %>
+          <%= content_tag :p, chart_overview, class: "gem-c-chart__a11y-note-1 govuk-body" if chart_overview && subtitle %>
         </div>
       </div>
     <% end %>
@@ -50,7 +53,7 @@
     <%= content_tag :div, id: chart_id, class: "gem-c-chart__chart", aria: aria_attributes do %>
       <% unless minimal %>
         <div class="govuk-visually-hidden">
-          <%= content_tag :div, chart_overview, class: "gem-c-chart__a11y-note-1" if chart_overview %>
+          <%= content_tag :div, chart_overview, class: "gem-c-chart__a11y-note-1" if chart_overview && !subtitle %>
           <%= content_tag :div, t("components.chart.accessibility_html"), class: "gem-c-chart__a11y-note-2" %>
         </div>
         <span class="gem-c-chart__a11y-note-link">

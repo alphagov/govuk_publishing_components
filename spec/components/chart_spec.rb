@@ -98,8 +98,18 @@ describe "Chart", type: :view do
     data[:chart_overview] = overview
     render_component(data)
     assert_select ".gem-c-chart__a11y-note-1", text: overview
+    assert_select "p.gem-c-chart__a11y-note-1.govuk-body", false
     assert_select ".gem-c-chart__a11y-note-2", text: "This chart is a visual representation of the data available in the table."
     assert_select ".gem-c-chart__a11y-note-link a[href='#table-id-1234']", text: "Skip to \"Page views chart\" data table"
+  end
+
+  it "can include a subtitle" do
+    overview = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
+    data[:chart_overview] = overview
+    data[:subtitle] = true
+    render_component(data)
+    assert_select "p.gem-c-chart__a11y-note-1.govuk-body", text: overview
+    assert_select ".govuk-visually-hidden .gem-c-chart__a11y-note-1", false
   end
 
   it "includes an accessible caption for data tables" do
