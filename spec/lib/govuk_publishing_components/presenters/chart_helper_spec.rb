@@ -18,7 +18,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
           position: "top",
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
         },
-        pointSize: 10,
+        pointSize: 8,
         height: 400,
         tooltip: { isHtml: true },
         series: {},
@@ -26,14 +26,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           title: "Day",
           titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
-          textPosition: nil,
           format: nil,
         },
         vAxis: {
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           title: "Views",
           titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
-          textPosition: nil,
           format: nil,
           viewWindow: {
             min: 0,
@@ -48,19 +46,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
       expect(options).to eql(expected)
     end
 
-    it "returns expected chart options when minimal is true" do
-      required_params[:minimal] = true
-      expected[:enableInteractivity] = false
-      expected[:hAxis][:textPosition] = "none"
-      expected[:vAxis][:textPosition] = "none"
-      expected[:legend] = "none"
-      expected[:pointSize] = 0
-
-      chart_helper = described_class.new(required_params)
-      options = chart_helper.chart_options
-      expect(options).to eql(expected)
-    end
-
     it "returns expected options when hide_legend is true" do
       required_params[:hide_legend] = true
       expected[:legend] = "none"
@@ -70,9 +55,18 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
       expect(options).to eql(expected)
     end
 
-    it "returns expected options when point size is changed" do
-      required_params[:point_size] = 1
-      expected[:pointSize] = 1
+    it "does not hide the legend when hide_legend is true but there are multiple rows of data" do
+      required_params[:hide_legend] = true
+      required_params[:rows] = [
+        {
+          label: "January",
+          values: [1, 2, 3],
+        },
+        {
+          label: "February",
+          values: [3, 4, 5],
+        },
+      ]
 
       chart_helper = described_class.new(required_params)
       options = chart_helper.chart_options

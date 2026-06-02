@@ -45,8 +45,9 @@ en:
     chart:
       table_dropdown: View data as a table
       accessibility_html: This chart is a visual representation of the data available in the table.
-      accessibility_link: Skip to "%{chart_heading}" data table
-      accessibility_heading: Data table for "%{chart_heading}"
+      accessibility_link: Skip to "%{heading}" data table
+      accessibility_heading: Data table for "%{heading}"
+      source: "Source: %{source}"
     checkboxes:
       or: or
     contents_list:

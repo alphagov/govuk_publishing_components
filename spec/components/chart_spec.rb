@@ -9,7 +9,8 @@ describe "Chart", type: :view do
 
   let(:data) do
     {
-      chart_heading: "Page views chart",
+      heading: "Page views chart",
+      description: "This is a description",
       keys: (Date.new(2017, 12, 1)..Date.new(2017, 12, 12)).to_a,
       rows: [
         {
@@ -25,7 +26,7 @@ describe "Chart", type: :view do
   end
 
   it "does not render when no data is given" do
-    assert_empty render_component({ chart_heading: "" })
+    assert_empty render_component({ heading: "", description: "" })
   end
 
   it "does not render if keys are missing" do
@@ -72,43 +73,44 @@ describe "Chart", type: :view do
   end
 
   it "displays a heading" do
-    data[:chart_heading] = "hello"
+    data[:heading] = "hello"
     render_component(data)
 
     assert_select ".gem-c-heading h2.gem-c-heading__text", text: "hello"
   end
 
   it "displays a heading with a custom heading level" do
-    data[:chart_heading] = "hello"
-    data[:chart_heading_level] = 4
+    data[:heading] = "hello"
+    data[:heading_level] = 4
     render_component(data)
 
     assert_select ".gem-c-heading h4.gem-c-heading__text", text: "hello"
   end
 
-  it "can be rendered without a visible heading" do
-    data[:hide_heading] = true
-    render_component(data)
-
-    assert_select "h2.gem-c-heading", false
-  end
-
-  it "can include an overview" do
+  it "can include a description" do
     overview = "This chart shows a gradual decline in the numbers of hedgehogs using social media since 2008."
-    data[:chart_overview] = overview
+    data[:description] = overview
     render_component(data)
     assert_select ".gem-c-chart__a11y-note-1", text: overview
+    assert_select "p.gem-c-chart__a11y-note-1.govuk-body"
     assert_select ".gem-c-chart__a11y-note-2", text: "This chart is a visual representation of the data available in the table."
     assert_select ".gem-c-chart__a11y-note-link a[href='#table-id-1234']", text: "Skip to \"Page views chart\" data table"
   end
 
+  it "can include a source" do
+    source = "GOV.UK"
+    data[:source] = source
+    render_component(data)
+    assert_select "p.gem-c-chart__source.govuk-body", text: "Source: #{source}"
+  end
+
   it "includes an accessible caption for data tables" do
     render_component(data)
-    assert_select "#data-table-caption-1234", text: "Data table for \"Page views chart\""
+    assert_select "caption.govuk-visually-hidden", text: "Data table for \"Page views chart\"", visible: :hidden
   end
 
   it "can include a download link" do
-    data[:link] = "https://www.gov.uk"
+    data[:download_link] = "https://www.gov.uk"
     render_component(data)
 
     assert_select '.govuk-link[href="https://www.gov.uk"]', text: "Download chart data"
@@ -121,18 +123,6 @@ describe "Chart", type: :view do
     assert_select '.gem-c-chart.govuk-\!-margin-bottom-0'
   end
 
-  it "renders a minimal version" do
-    data[:minimal] = true
-    data[:link] = "https://should.not.be.shown"
-    data[:chart_overview] = "This is a chart showing a rise in sea levels in the last ten years"
-    render_component(data)
-
-    assert_select ".gem-c-chart.gem-c-chart--minimal"
-    assert_select ".gem-c-chart__chart[aria-hidden='true']"
-    assert_select '.gem-c-chart .govuk-link[href="https://should.not.be.shown"]', false
-    assert_select ".gem-c-chart__chart .govuk-visually-hidden", false
-  end
-
   it "only calls an external script once" do
     render_component(data)
     data[:classes] = "" # need to 'reset' this otherwise it carries from the first component and breaks shared_helper
@@ -142,17 +132,16 @@ describe "Chart", type: :view do
   end
 
   it "throws an error if a heading is not supplied" do
-    data[:chart_heading] = nil
+    data[:heading] = nil
     expect {
       render_component(data)
-    }.to raise_error("A chart heading must be provided for accessibility purposes.")
+    }.to raise_error("A heading and description must be provided for accessibility purposes.")
   end
 
-  it "does not throw an error if a heading is not supplied in minimal mode" do
-    data[:chart_heading] = nil
-    data[:minimal] = true
+  it "throws an error if a description is not supplied" do
+    data[:description] = nil
     expect {
       render_component(data)
-    }.not_to raise_error("A chart heading must be provided for accessibility purposes.")
+    }.to raise_error("A heading and description must be provided for accessibility purposes.")
   end
 end

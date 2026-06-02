@@ -1,6 +1,4 @@
 .gem-c-chart {
-  position: relative;
-
   // slight hack to hide the table automatically added by the charts JS
   // not needed as we already output the table manually in the component
   svg + div:has(table) {
@@ -42,6 +40,13 @@
 .gem-c-chart .gem-c-chart__a11y-note-link {
   display: none;
   margin-bottom: govuk-spacing(2);
+}
+
+.gem-c-chart__heading {
+  // Ensure heading content width is constrained to two thirds on desktop
+  @include govuk-media-query($from: "desktop") {
+    max-width: 66.6667%;
+  }
 }
 
 .js-enabled {

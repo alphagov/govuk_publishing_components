@@ -4,17 +4,15 @@ module GovukPublishingComponents
       def initialize(options)
         @rows = options[:rows]
         @keys = options[:keys]
-        @minimal = options[:minimal]
-        @enable_interactivity = false
-        @enable_interactivity = true unless @minimal
+        @enable_interactivity = true
         @hide_legend = options[:hide_legend]
-        @hide_legend = true if @minimal
-        @point_size = options[:point_size] ||= 10
-        @point_size = 0 if @minimal
+        if @rows && (@rows.length > 1)
+          @hide_legend = false
+        end
+        @point_size = 8
         @height = options[:height] || 400
         @h_axis_title = options[:h_axis_title]
         @v_axis_title = options[:v_axis_title]
-        @text_position = "none" if @minimal
         @y_axis_view_window_min = 0
         @y_axis_view_window_min = "auto" if options[:y_axis_auto_adjust]
         @line_colours = options[:line_colours]
@@ -45,20 +43,33 @@ module GovukPublishingComponents
             textStyle: set_font_16,
             title: @h_axis_title,
             titleTextStyle: set_font_19,
-            textPosition: @text_position,
             format: @h_axis_format,
           },
           vAxis: {
             textStyle: set_font_16,
             title: @v_axis_title,
             titleTextStyle: set_font_19,
-            textPosition: @text_position,
             format: @v_axis_format,
             viewWindow: {
               min: @y_axis_view_window_min,
             },
           },
         }
+      end
+
+      def brand_colours
+        # The following accessible colour palette has been developed to meet the colour contrast requirements for adjacent colours (as set out in WCAG 2.1)
+        # For charts, the palette should be used instead of the GOV.UK colour palette - https://design-system.service.gov.uk/styles/colour/
+        # https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5
+
+        gss_colour_dark_blue = "#12436d"
+        gss_colour_turquoise = "#1bbbaf"
+        gss_colour_dark_pink = "#801650"
+        gss_colour_orange = "#f46a25"
+        gss_colour_dark_grey = "#3d3d3d"
+        gss_colour_plum = "#a285d1"
+
+        [gss_colour_dark_blue, gss_colour_turquoise, gss_colour_dark_pink, gss_colour_orange, gss_colour_dark_grey, gss_colour_plum]
       end
 
       def chart_format_data

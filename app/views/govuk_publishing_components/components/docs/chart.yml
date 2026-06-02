@@ -1,27 +1,25 @@
 name: Chart (experimental)
 description: The chart component presents a data chart and a tabular version of the same data
-part_of_admin_layout: true
 body: |
   This component takes a set of data and presents it as a line graph and a table with one or more rows and lines.
   The chart relies upon chartkick and renders using JavaScript, so the table is provided as a fallback for a lack of JavaScript,
   an accessible view on the data for screenreaders, and a simple view of the raw data for all users.
-
-  The `chart_overview` option can be used to provide an explanation for screen reader users of what the chart shows.
 accessibility_criteria: |
   Charts must:
 
     - use line colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
-    - contain a `chart_heading` option if `minimal` is not set to true, so that skip links and visually hidden headings are accurate
+    - contain a `heading` and `description` so that skip links and semantics are accurate
 shared_accessibility_criteria:
   - link
 uses_component_wrapper_helper: true
 examples:
   default:
     data:
-      chart_heading: Chart showing page views on the website in January 2015
+      heading: Chart showing page views on the website in January 2015
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January 2015.
+      description: This chart shows page views for January 2015.
+      source: GOV.UK
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -46,13 +44,13 @@ examples:
             - 210
             - 670
             - 430
-  multiple rows of data:
-    description: Where more than one series is shown on a chart, do not hide the legend.
+  multiple_rows_of_data:
+    description: Where more than one series is shown on a chart, hide_legend will not work.
     data:
-      chart_heading: Page views chart
+      heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January in different years.
+      description: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -102,12 +100,13 @@ examples:
             - 18
             - 34
   hide_legend:
+    description: This will only work when there is only one row of data.
     data:
-      chart_heading: Page views chart
+      hide_legend: true
+      heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January 2015.
-      hide_legend: true
+      description: This chart shows page views for January 2015.
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -133,12 +132,8 @@ examples:
             - 670
             - 430
   with_line_colours_and_styles:
-    description: Note that line styles and colours currently only work on line charts.
+    description: Note that this only works on line charts. Supported line style options are solid or dotted. Supported colours are CSS colour names (e.g. red, turquoise) and CSS hex codes (e.g. "#FF0000").
     data:
-      chart_heading: Page views chart
-      h_axis_title: Day
-      v_axis_title: Views
-      chart_overview: This chart shows page views for January in different years.
       line_colours:
         - orange
         - blue
@@ -147,6 +142,10 @@ examples:
         - solid
         - dotted
         - solid
+      heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      description: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -169,11 +168,11 @@ examples:
             - 18
   bar_chart:
     data:
-      chart_heading: Hats owned
+      chart_type: "bar"
+      heading: Hats owned
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January 2015.
-      chart_type: "bar"
+      description: This chart shows page views for January 2015.
       hide_legend: true
       keys:
         - Jon
@@ -189,11 +188,11 @@ examples:
             - 2
   column_chart:
     data:
-      chart_heading: Hats owned
+      chart_type: "column"
+      heading: Hats owned
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January 2015.
-      chart_type: "column"
+      description: This chart shows page views for January 2015.
       hide_legend: true
       keys:
         - Jon
@@ -217,12 +216,12 @@ examples:
 
       'date' will force a standard date format of `YYYY-MM-DD` to the labels, where they are in an undesirable date format. This can be useful if there are a lot of labels on the axes because the chart can do strange truncation sometimes.
     data:
-      chart_heading: Cost per day
-      h_axis_title: Day
-      v_axis_title: Cost
-      chart_overview: This chart shows cost per day.
       v_axis_format: currency
       h_axis_format: date
+      heading: Cost per day
+      h_axis_title: Day
+      v_axis_title: Cost
+      description: This chart shows cost per day.
       keys:
         - 2024 Jan 1
         - 2024 Jan 2
@@ -239,14 +238,14 @@ examples:
             - 63
             - 54
             - 22
-  vertical table:
+  horizontal_table:
     description: Reorient the table to better suit the output of some data sets.
     data:
-      chart_heading: Page views chart
-      table_direction: vertical
+      table_direction: horizontal
+      heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January in different years.
+      description: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -274,50 +273,18 @@ examples:
             - 118
             - 85
             - 80
-  with_a_different_point_size:
-    description: For some charts it may be better to reduce the point size so that the line is clearer. However it is recommended that the point size is larger to make it easier for users to move the mouse over them.
-    data:
-      chart_heading: Page views chart
-      h_axis_title: Day
-      v_axis_title: Views
-      chart_overview: This chart shows page views for January 2015.
-      point_size: 0
-      keys:
-        - "2015-01-01"
-        - "2015-01-02"
-        - "2015-01-03"
-        - "2015-01-04"
-        - "2015-01-05"
-        - "2015-01-06"
-        - "2015-01-07"
-        - "2015-01-08"
-        - "2015-01-09"
-        - "2015-01-10"
-      rows:
-        - label: January 2015
-          values:
-            - 600
-            - 690
-            - 740
-            - 820
-            - 570
-            - 950
-            - 810
-            - 610
-            - 770
-            - 530
   scale_y_axis_based_on_data:
     description: |
       By default the Y-axis will always start at zero, but this may not always be required.
 
       If there are empty items in the data the chart line will either discontinue or leave a gap, as shown.
     data:
-      chart_heading: Page views chart
+      y_axis_auto_adjust: true
+      heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January 2015.
+      description: This chart shows page views for January 2015.
       hide_legend: true
-      y_axis_auto_adjust: true
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -351,11 +318,11 @@ examples:
   with_a_different_heading_level:
     description: Use a different heading level for the chart heading. It defaults to a H2.
     data:
-      chart_heading: Page views chart
-      chart_heading_level: 4
+      heading_level: 4
+      heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      chart_overview: This chart shows page views for January in different years.
+      description: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -386,91 +353,11 @@ examples:
   with_a_download_link:
     description: Add a download link to the original data. Doesn't do anything clever, just creates a link to the URL passed.
     data:
-      chart_heading: Page views chart
+      download_link: 'https://www.gov.uk'
+      heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      link: 'https://www.gov.uk'
-      chart_overview: This chart shows page views for January in different years.
-      keys:
-        - 1st
-        - 2nd
-        - 3rd
-        - 4th
-        - 5th
-        - 6th
-        - 7th
-      rows:
-        - label: January 2015
-          values:
-            - 5
-            - 119
-            - 74
-            - 117
-            - 33
-            - 89
-            - 79
-        - label: January 2016
-          values:
-            - 3
-            - 8
-            - 37
-            - 82
-            - 118
-            - 85
-            - 80
-  with_margin_bottom:
-    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a bottom margin of 15px.
-    data:
-      chart_heading: Page views chart
-      h_axis_title: Day
-      v_axis_title: Views
-      margin_bottom: 9
-      chart_overview: This chart shows page views for January in different years.
-      keys:
-        - 1st
-        - 2nd
-        - 3rd
-        - 4th
-        - 5th
-        - 6th
-        - 7th
-      rows:
-        - label: January 2015
-          values:
-            - 5
-            - 119
-            - 74
-            - 117
-            - 33
-            - 89
-            - 79
-        - label: January 2016
-          values:
-            - 3
-            - 8
-            - 37
-            - 82
-            - 118
-            - 85
-            - 80
-  minimal_version:
-    description: |
-      The minimal version presents a simplified version of the chart. This should only be used where there is not enough space to display a full chart, and the user is then given an option to see more information about the chart, for example by including a link next to the chart component. This must be part of the page, as this is not provided by the component itself.
-
-      Specifically, minimal mode:
-
-      - hides the chart heading
-      - removes the legend and X and Y axis values
-      - removes the data table and link to the data (if supplied) beneath the chart
-      - removes the part of the visually hidden accessibility message that links to the table
-      - removes the ability to interact with the chart (no hover popups or clicks)
-      - sets the size of the points on the chart to zero
-    data:
-      chart_heading: Page views
-      h_axis_title: Day
-      v_axis_title: Views
-      minimal: true
-      chart_overview: This is a graph of views per day
+      description: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -504,48 +391,11 @@ examples:
 
       The component is not currently responsive.
     data:
-      chart_heading: Page views
+      heading: Page views
       h_axis_title: Day
       v_axis_title: Views
-      minimal: true
-      chart_overview: This is a graph of views per day
+      description: This is a graph of views per day
       height: 200
-      keys:
-        - 1st
-        - 2nd
-        - 3rd
-        - 4th
-        - 5th
-        - 6th
-        - 7th
-      rows:
-        - label: January 2015
-          values:
-            - 5
-            - 119
-            - 74
-            - 117
-            - 33
-            - 89
-            - 79
-        - label: January 2016
-          values:
-            - 3
-            - 8
-            - 37
-            - 82
-            - 118
-            - 85
-            - 80
-  with_hidden_heading:
-    description: |
-      The heading element is optional, allowing a heading to be set outside the component. Hiding the heading doesn't remove the need to populate `chart_heading` with text, as `chart_heading` is needed for accessibility.
-    data:
-      chart_heading: Page views
-      hide_heading: true
-      h_axis_title: Day
-      v_axis_title: Views
-      chart_overview: This is a graph of views per day
       keys:
         - 1st
         - 2nd
