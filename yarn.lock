@@ -62,6 +62,11 @@
   resolved "https://registry.yarnpkg.com/@jasminejs/reporters/-/reporters-1.0.0.tgz#1d06099c11ff9793544e6d84ad8fb45c37630a60"
   integrity sha512-rM3GG4vx2H1Gp5kYCTr9aKlOEJFd43pzpiMAiy5b1+FUc2ub4e6bS6yCi/WQNDzAa5MVp9++dwcoEtcIfoEnhA==
 
+"@kurkle/color@^0.3.0":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.4.tgz#4d4ff677e1609214fc71c580125ddddd86abcabf"
+  integrity sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -584,6 +589,27 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+chart.js@4:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.5.1.tgz#19dd1a9a386a3f6397691672231cb5fc9c052c35"
+  integrity sha512-GIjfiT9dbmHRiYi6Nl2yFCq7kkwdkp1W/lp2J99rX0yo9tgJGn3lKQATztIjb5tVtevcBtIdICNWqlq5+E8/Pw==
+  dependencies:
+    "@kurkle/color" "^0.3.0"
+
+chartjs-adapter-date-fns@>=3:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/chartjs-adapter-date-fns/-/chartjs-adapter-date-fns-3.0.0.tgz#c25f63c7f317c1f96f9a7c44bd45eeedb8a478e5"
+  integrity sha512-Rs3iEB3Q5pJ973J93OBTpnP7qoGwvq3nUnoMdtxO+9aoJof7UFcRbWcIDteXuYd1fgAvct/32T9qaLyLuZVwCg==
+
+chartkick@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/chartkick/-/chartkick-5.0.1.tgz#f557ff8560f974343dc65c7fc34ce1e8326d8ee7"
+  integrity sha512-4F3tWI3eBQgnjCYZIZ+fHOaJuNyxeyhDE2Tm+voOWB19hDjSJceys/spzN52DOn8bWepNESGXvPVTGU1jeFsbA==
+  optionalDependencies:
+    chart.js "4"
+    chartjs-adapter-date-fns ">=3"
+    date-fns ">=2"
+
 choices.js@^11.2.3:
   version "11.2.3"
   resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-11.2.3.tgz#4b100c5354d44bce0045b5818ce672b8349cd7c5"
@@ -713,6 +739,11 @@ data-uri-to-buffer@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-6.0.2.tgz#8a58bb67384b261a38ef18bea1810cb01badd28b"
   integrity sha512-7hvf7/GW8e86rW0ptuwS3OcBGDjIi6SZva7hCyWC0yYry2cOPmLIjXAUHI6DK2HsnwJd9ifmt57i8eV2n4YNpw==
+
+date-fns@>=2:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-4.4.0.tgz#806539edf45c616b2b76b5f78b88c56ed3c7e036"
+  integrity sha512-+1UMbeh68lH1SegH83CGWwpb6OHHbpSgr3+s5Eww5M4CAgswBpoWS0AjTOfEJ33HiYKz1hdj/KTFprzXHmq/6w==
 
 debug@4:
   version "4.4.0"
