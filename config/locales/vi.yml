@@ -69,6 +69,9 @@ vi:
       - Chúng tôi muốn đặt các cookie bổ sung để hiểu cách bạn sử dụng GOV.UK
       - ghi nhớ cài đặt của bạn và cải thiện các dịch vụ của chính phủ.
       - Chúng tôi cũng sử dụng cookie do các trang web khác đặt để giúp chúng tôi cung cấp nội dung từ các dịch vụ của họ.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookie trên GOV.UK
     devolved_nations:
       applies_to:
