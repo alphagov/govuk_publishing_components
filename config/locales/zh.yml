@@ -68,6 +68,9 @@ zh:
       - 我们使用一些基本的cookie以使本网站运作。
       - 我们希望设置额外的cookie，以了解您如何使用GOV.UK，记住您的设置，并改善政府服务。
       - 我们也使用其他网站设置的cookie，以帮助我们提供其服务的内容。
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: GOV.UK上的Cookies
     devolved_nations:
       applies_to:
