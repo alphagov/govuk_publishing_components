@@ -67,6 +67,9 @@ hu:
       - megjegyezhetjük a beállításait és továbbfejleszthetjük az állami szolgálatásokat.
       - Más weboldalak sütijeit is használjuk
       - amelyek segítenek nekünk a sütitulajdonsok weboldalainak tartalmát megjeleníteni.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Sütik a GOV.UK weboldalon
     devolved_nations:
       applies_to:

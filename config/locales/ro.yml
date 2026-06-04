@@ -65,6 +65,9 @@ ro:
       - Dorim să setăm cookie-uri suplimentare ca să înțelegem cum utilizați GOV.UK
       - să ținem minte setările dvs. și să îmbunătățim serviciile guvernamentale.
       - Folosim și cookie-uri setate de alte site-uri pentru a ne ajuta să livrăm conținut din serviciile acestora.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookie-uri pe GOV.UK
     devolved_nations:
       applies_to:
