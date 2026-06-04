@@ -69,6 +69,9 @@ ms:
       - Kami ingin menetapkan kuki tambahan untuk memahami cara anda menggunakan GOV.UK
       - mengingati tetapan anda dan meningkatkan perkhidmatan kerajaan.
       - Kami juga menggunakan kuki yang ditetapkan oleh laman web lain untuk membantu kami menyampaikan kandungan daripada perkhidmatan mereka.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Kuki di GOV.UK
     devolved_nations:
       applies_to:
