@@ -16,8 +16,8 @@ en:
     app_promo_banner:
       aria_label: GOV.UK app
       body_text: Government made easier
-      title_text: Get the GOV.UK app
       close: Close app download banner
+      title_text: Get the GOV.UK app
       view: View
     article_schema:
       scoped_search_description: Search within %{title}
@@ -63,11 +63,11 @@ en:
       - We use some essential cookies to make this website work.
       - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
       - We also use cookies set by other sites to help us deliver content from their services.
-      text_intro: "We use:"
+      text_additional_cookies: We’d also like to use additional cookies to help make the website better and improve your experience using GOV.UK.
+      text_intro: 'We use:'
       text_list:
       - essential cookies that make the website work - these are always on
       - cookies to understand how the website is used - you can opt out of these
-      text_additional_cookies: We’d also like to use additional cookies to help make the website better and improve your experience using GOV.UK.
       title: Cookies on GOV.UK
     devolved_nations:
       applies_to: Applies to
@@ -272,6 +272,10 @@ en:
       selected: selected
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
+    pagination:
+      next: Next
+      pagination: Pagination
+      previous: Previous
     password_input:
       button: Show
       button_aria_hide_label: Hide password
@@ -281,10 +285,6 @@ en:
       label: Password
       password_hidden_announcement: Your password is hidden
       password_shown_announcement: Your password is visible
-    pagination:
-      next: Next
-      pagination: Pagination
-      previous: Previous
     print_link:
       text: Print this page
     published_dates:
