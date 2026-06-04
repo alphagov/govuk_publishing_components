@@ -70,6 +70,9 @@ it:
       - Vorremmo impostare cookie aggiuntivi per capire come usi GOV.UK
       - ricordare le tue impostazioni e migliorare i servizi governativi.
       - Inoltre utilizziamo cookie impostati da altri siti per aiutarci a fornire contenuti dai loro servizi.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookie su GOV.UK
     devolved_nations:
       applies_to:
