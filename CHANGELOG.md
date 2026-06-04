@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove unused 'services_cookies' option from cookie banner
+ ([PR #5488](https://github.com/alphagov/govuk_publishing_components/pull/5488))
+
 ## 66.4.2
 
 * LUX version 4.5.0 ([PR #5478](https://github.com/alphagov/govuk_publishing_components/pull/5478))
