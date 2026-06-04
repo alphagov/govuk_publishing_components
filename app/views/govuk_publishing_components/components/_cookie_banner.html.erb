@@ -20,12 +20,10 @@
                                   cookie_preferences_href,
                                   class: "govuk-link",
                                 )))
-  services_cookies ||= nil
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.set_id(id)
   component_helper.add_class("gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper")
-  component_helper.add_class("gem-c-cookie-banner--services") if services_cookies
 
   component_helper.add_data_attribute({ module: "cookie-banner", nosnippet: "" })
   component_helper.add_role("region")
@@ -54,38 +52,22 @@
       </div>
     </div>
     <div class="js-confirmation-buttons govuk-button-group">
-      <% if services_cookies %>
-        <%= render "govuk_publishing_components/components/button", {
+      <%= render "govuk_publishing_components/components/button", {
           name: "cookies",
-          text: services_cookies.dig(:yes, :text) || "Yes",
-          data_attributes: { "accept-cookies": "true" }.merge(services_cookies.dig(:yes, :data_attributes) || {}),
-        } %>
-        <%= render "govuk_publishing_components/components/button", {
+          text: t("components.cookie_banner.buttons.accept_cookies"),
+          data_attributes: {
+            "accept-cookies": "true",
+            "cookie-types": "all",
+          },
+      } %>
+      <%= render "govuk_publishing_components/components/button", {
           name: "cookies",
-          text: services_cookies.dig(:no, :text) || "No",
-          data_attributes: { "reject-cookies": "true" }.merge(services_cookies.dig(:no, :data_attributes) || {}),
-        } %>
-        <% if services_cookies[:cookie_preferences] %>
-          <%= link_to services_cookies.dig(:cookie_preferences, :text), services_cookies.dig(:cookie_preferences, :href), class: "govuk-link" %>
-        <% end %>
-      <% else %>
-        <%= render "govuk_publishing_components/components/button", {
-            name: "cookies",
-            text: t("components.cookie_banner.buttons.accept_cookies"),
-            data_attributes: {
-              "accept-cookies": "true",
-              "cookie-types": "all",
-            },
-        } %>
-        <%= render "govuk_publishing_components/components/button", {
-            name: "cookies",
-            text: t("components.cookie_banner.buttons.reject_cookies"),
-            data_attributes: {
-              "reject-cookies": "true",
-            },
-        } %>
-        <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
-      <% end %>
+          text: t("components.cookie_banner.buttons.reject_cookies"),
+          data_attributes: {
+            "reject-cookies": "true",
+          },
+      } %>
+      <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
     </div>
     <div hidden class="js-hide-button govuk-button-group">
       <%
