@@ -59,6 +59,9 @@ ko:
         rejected:
       hide:
       text:
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title:
     devolved_nations:
       applies_to:

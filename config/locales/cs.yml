@@ -69,6 +69,9 @@ cs:
       - zapamatovali si vaše nastavení a zlepšili vládní služby.
       - Používáme také soubory cookie nastavené jinými weby
       - které nám pomáhají poskytovat obsah z jejich služeb.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Soubory cookie na GOV.UK
     devolved_nations:
       applies_to:

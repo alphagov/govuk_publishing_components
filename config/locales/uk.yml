@@ -71,6 +71,9 @@ uk:
       - Ми також використовуємо файли cookie
       - налаштовані іншими вебсайтами
       - які допомагають нам доставляти вміст із їхніх служб.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Файли cookie на GOV.UK
     devolved_nations:
       applies_to:

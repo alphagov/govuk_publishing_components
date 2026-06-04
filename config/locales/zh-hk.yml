@@ -62,6 +62,9 @@ zh-hk:
       - 我們使用部份基本 cookies 讓此一網站運作。
       - 我們希望設定更多 cookies 了解您使用 GOV.UK 的方式，請記下您的設定並改善政府服務。
       - 我們亦使用其他網站設定之 cookies 協助我們提供來自他們的服務的內容。
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: 在 GOV.UK 的 Cookies
     devolved_nations:
       applies_to:

@@ -64,6 +64,9 @@ es-419:
       - Nos gustaría establecer cookies adicionales para entender cómo ud. utiliza GOV.UK
       - recordar su configuración y mejorar los servicios gubernamentales
       - También utilizamos cookies establecidas por otros sitios para ayudarnos a ofrecer el contenido de sus servicios].
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookies de GOV.UK
     devolved_nations:
       applies_to:

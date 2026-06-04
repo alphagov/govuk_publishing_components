@@ -64,6 +64,9 @@ sq:
       - Ne do të donim të vendosnim cookie shtesë për të kuptuar se si përdorni GOV.UK
       - mbani mend cilësimet tuaja dhe përmirësoni shërbimet qeveritare.
       - Ne gjithashtu përdorim cookie të vendosur nga faqe të tjera për të na ndihmuar të ofrojmë përmbajtje nga shërbimet e tyre.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookies në GOV.UK
     devolved_nations:
       applies_to:
