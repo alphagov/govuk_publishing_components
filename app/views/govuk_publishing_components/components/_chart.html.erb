@@ -11,8 +11,8 @@
 
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
-  @external_script ||= OpenStruct.new(loaded: 0)
-  @external_script[:loaded] += 1
+
+  @include_script ||= OpenStruct.new(script_included: false)
 
   chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(local_assigns)
 
@@ -34,7 +34,10 @@
   end
 %>
 <% if rows.length > 0 && keys.length > 0 %>
-  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" if @external_script[:loaded] == 1 %>
+  <% unless @include_script[:script_included] %>
+    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <% @include_script[:script_included] = true %>
+  <% end %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <% if chart_heading && !hide_heading %>
       <div class="govuk-grid-row">
