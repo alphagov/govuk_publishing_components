@@ -205,39 +205,6 @@ describe "Layout for public", :capybara, type: :view do
     assert_select ".gem-c-layout-for-public-account-nav li.gem-c-layout-for-public-account-menu__item.gem-c-layout-for-public-account-menu__item--current a[aria-current=page]", text: "Settings"
   end
 
-  it "can accept custom cookie banner content" do
-    render_component({
-      cookie_banner_data: {
-        title: "Can we use cookies to collect information about how you use GOV.UK?",
-        text: "Cookies help us see where we can make improvements to GOV.UK.",
-        confirmation_message: "You have accepted cookies.",
-        cookie_preferences_href: "https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement",
-        services_cookies: {
-          yes: {
-            text: "Yes",
-            data_attributes: {
-              "an_attribute": "some_value1",
-            },
-          },
-          no: {
-            text: "No",
-            data_attributes: {
-              "an_attribute": "some_value2",
-            },
-          },
-          cookie_preferences: {
-            text: "How GOV.UK accounts use cookies",
-            href: "https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement",
-          },
-        },
-      },
-    })
-
-    assert_select ".govuk-cookie-banner__heading.govuk-heading-m", text: "Can we use cookies to collect information about how you use GOV.UK?"
-    assert_select ".govuk-cookie-banner .gem-c-button[data-an-attribute='some_value1']", text: "Yes"
-    assert_select ".govuk-cookie-banner .gem-c-button[data-an-attribute='some_value2']", text: "No"
-  end
-
   it "displays as draft watermark" do
     render_component({ draft_watermark: true })
 

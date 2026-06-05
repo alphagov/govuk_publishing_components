@@ -30,25 +30,6 @@ examples:
   with_custom_cookie_preferences_href:
     data:
       cookie_preferences_href: "/cookies"
-  in_services_asking_for_analytics_only:
-    description: Use this type of banner in your service if it only uses cookies for analytics.
-    data:
-      title: Can we store analytics cookies on your device?
-      text: Analytics cookies help us understand how our website is being used.
-      confirmation_message: You’ve accepted all cookies. You can `<a class='govuk-link' href='/cookies'>change your cookie settings</a>` at any time.
-      services_cookies:
-        # yes and no must be quoted or are converted into booleans in the guide
-        "yes":
-          text: "Yes"
-          data_attributes:
-            an_attribute: some_value1
-        "no":
-          text: "No"
-          data_attributes:
-            an_attribute: some_value2
-        cookie_preferences:
-          text: How we use cookies
-          href: "/cookies"
   without_ga4_tracking:
     description: |
       Disables GA4 tracking on the banner. Tracking is enabled by default. This includes link tracking on the "You have accepted cookies" section, and allows the pageview event that is sent when GA4 initialises to record the presence of the cookie acceptance message.
