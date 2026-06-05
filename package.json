@@ -39,7 +39,7 @@
     "axe-core": "^4.12.1",
     "chartkick": "^5.0.1",
     "choices.js": "^11.2.3",
-    "govuk-frontend": "5.14.0",
+    "govuk-frontend": "^6.0.0",
     "sortablejs": "^1.15.7"
   },
   "devDependencies": {
