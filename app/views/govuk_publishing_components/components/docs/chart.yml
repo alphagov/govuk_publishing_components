@@ -48,7 +48,7 @@ examples:
             - 670
             - 430
   multiple rows of data:
-    description: Where more than one series is shown on a chart, do not hide the legend.
+    description: Where more than one series is shown on a chart, hide_legend will not work.
     data:
       chart_heading: Page views chart
       h_axis_title: Day
@@ -103,6 +103,7 @@ examples:
             - 18
             - 34
   hide_legend:
+    description: This will only work when there is only one row of data.
     data:
       hide_legend: true
       chart_heading: Page views chart

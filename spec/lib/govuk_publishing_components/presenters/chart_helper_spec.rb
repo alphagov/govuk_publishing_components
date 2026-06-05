@@ -55,6 +55,24 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
       expect(options).to eql(expected)
     end
 
+    it "does not hide the legend when hide_legend is true but there are multiple rows of data" do
+      required_params[:hide_legend] = true
+      required_params[:rows] = [
+        {
+          label: "January",
+          values: [1, 2, 3],
+        },
+        {
+          label: "February",
+          values: [3, 4, 5],
+        },
+      ]
+
+      chart_helper = described_class.new(required_params)
+      options = chart_helper.chart_options
+      expect(options).to eql(expected)
+    end
+
     it "returns expected options when height is changed" do
       required_params[:height] = 300
       expected[:height] = 300
