@@ -19,6 +19,7 @@ examples:
   default:
     data:
       chart_heading: Chart showing page views on the website in January 2015
+      subtitle: true
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
@@ -103,11 +104,11 @@ examples:
             - 34
   hide_legend:
     data:
+      hide_legend: true
       chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
-      hide_legend: true
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -135,10 +136,6 @@ examples:
   with_line_colours_and_styles:
     description: Note that this only works on line charts. Supported line style options are solid or dotted. Supported colours are CSS colour names (e.g. red, turquoise) and CSS hex codes (e.g. "#FF0000").
     data:
-      chart_heading: Page views chart
-      h_axis_title: Day
-      v_axis_title: Views
-      chart_overview: This chart shows page views for January in different years.
       line_colours:
         - orange
         - blue
@@ -147,6 +144,10 @@ examples:
         - solid
         - dotted
         - solid
+      chart_heading: Page views chart
+      h_axis_title: Day
+      v_axis_title: Views
+      chart_overview: This chart shows page views for January in different years.
       keys:
         - 1st
         - 2nd
@@ -169,11 +170,11 @@ examples:
             - 18
   bar_chart:
     data:
+      chart_type: "bar"
       chart_heading: Hats owned
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
-      chart_type: "bar"
       hide_legend: true
       keys:
         - Jon
@@ -189,11 +190,11 @@ examples:
             - 2
   column_chart:
     data:
+      chart_type: "column"
       chart_heading: Hats owned
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
-      chart_type: "column"
       hide_legend: true
       keys:
         - Jon
@@ -217,12 +218,12 @@ examples:
 
       'date' will force a standard date format of `YYYY-MM-DD` to the labels, where they are in an undesirable date format. This can be useful if there are a lot of labels on the axes because the chart can do strange truncation sometimes.
     data:
+      v_axis_format: currency
+      h_axis_format: date
       chart_heading: Cost per day
       h_axis_title: Day
       v_axis_title: Cost
       chart_overview: This chart shows cost per day.
-      v_axis_format: currency
-      h_axis_format: date
       keys:
         - 2024 Jan 1
         - 2024 Jan 2
@@ -242,8 +243,8 @@ examples:
   vertical table:
     description: Reorient the table to better suit the output of some data sets.
     data:
-      chart_heading: Page views chart
       table_direction: vertical
+      chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January in different years.
@@ -277,11 +278,11 @@ examples:
   with_a_different_point_size:
     description: For some charts it may be better to reduce the point size so that the line is clearer. However it is recommended that the point size is larger to make it easier for users to move the mouse over them.
     data:
+      point_size: 0
       chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
-      point_size: 0
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -312,12 +313,12 @@ examples:
 
       If there are empty items in the data the chart line will either discontinue or leave a gap, as shown.
     data:
+      y_axis_auto_adjust: true
       chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January 2015.
       hide_legend: true
-      y_axis_auto_adjust: true
       keys:
         - "2015-01-01"
         - "2015-01-02"
@@ -351,8 +352,8 @@ examples:
   with_a_different_heading_level:
     description: Use a different heading level for the chart heading. It defaults to a H2.
     data:
-      chart_heading: Page views chart
       chart_heading_level: 4
+      chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This chart shows page views for January in different years.
@@ -386,10 +387,10 @@ examples:
   with_a_download_link:
     description: Add a download link to the original data. Doesn't do anything clever, just creates a link to the URL passed.
     data:
+      link: 'https://www.gov.uk'
       chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
-      link: 'https://www.gov.uk'
       chart_overview: This chart shows page views for January in different years.
       keys:
         - 1st
@@ -541,8 +542,8 @@ examples:
     description: |
       The heading element is optional, allowing a heading to be set outside the component. Hiding the heading doesn't remove the need to populate `chart_heading` with text, as `chart_heading` is needed for accessibility.
     data:
-      chart_heading: Page views
       hide_heading: true
+      chart_heading: Page views
       h_axis_title: Day
       v_axis_title: Views
       chart_overview: This is a graph of views per day
