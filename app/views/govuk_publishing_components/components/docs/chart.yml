@@ -240,10 +240,10 @@ examples:
             - 63
             - 54
             - 22
-  vertical table:
+  horizontal table:
     description: Reorient the table to better suit the output of some data sets.
     data:
-      table_direction: vertical
+      table_direction: horizontal
       chart_heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
