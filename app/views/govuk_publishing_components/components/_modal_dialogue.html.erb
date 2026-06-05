@@ -1,9 +1,11 @@
 <%
   id ||= "modal-dialogue-#{SecureRandom.hex(4)}"
   wide ||= false
+  full_width ||= false
   aria_label ||= nil
   dialog_classes = ["gem-c-modal-dialogue__box"]
   dialog_classes << "gem-c-modal-dialogue__box--wide" if wide
+  dialog_classes << "gem-c-modal-dialogue__box--full-width" if full_width
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-modal-dialogue")
