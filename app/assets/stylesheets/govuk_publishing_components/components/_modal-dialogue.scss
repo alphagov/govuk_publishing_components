@@ -61,6 +61,14 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   }
 }
 
+.gem-c-modal-dialogue__box--full-width {
+  @include govuk-media-query($from: tablet) {
+    max-width: none;
+    margin-left: govuk-spacing(1);
+    margin-right: govuk-spacing(1);
+  }
+}
+
 .gem-c-modal-dialogue__overlay {
   position: fixed;
   top: 0;
