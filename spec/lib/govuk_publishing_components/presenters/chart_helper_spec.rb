@@ -18,7 +18,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
           position: "top",
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
         },
-        pointSize: 10,
+        pointSize: 8,
         height: 400,
         tooltip: { isHtml: true },
         series: {},
@@ -49,15 +49,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
     it "returns expected options when hide_legend is true" do
       required_params[:hide_legend] = true
       expected[:legend] = "none"
-
-      chart_helper = described_class.new(required_params)
-      options = chart_helper.chart_options
-      expect(options).to eql(expected)
-    end
-
-    it "returns expected options when point size is changed" do
-      required_params[:point_size] = 1
-      expected[:pointSize] = 1
 
       chart_helper = described_class.new(required_params)
       options = chart_helper.chart_options

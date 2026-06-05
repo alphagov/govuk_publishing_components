@@ -6,7 +6,7 @@ module GovukPublishingComponents
         @keys = options[:keys]
         @enable_interactivity = true
         @hide_legend = options[:hide_legend]
-        @point_size = options[:point_size] ||= 10
+        @point_size = 8
         @height = options[:height] || 400
         @h_axis_title = options[:h_axis_title]
         @v_axis_title = options[:v_axis_title]
