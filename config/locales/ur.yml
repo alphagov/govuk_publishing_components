@@ -42,6 +42,12 @@ ur:
       type:
         characters: حروف
         words: الفاظ
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: یا
     contents_list:

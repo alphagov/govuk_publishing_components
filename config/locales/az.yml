@@ -42,6 +42,12 @@ az:
       type:
         characters: simvol
         words: söz
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: və ya
     contents_list:

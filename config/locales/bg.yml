@@ -42,6 +42,12 @@ bg:
       type:
         characters: символа
         words: думи
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: или
     contents_list:

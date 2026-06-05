@@ -41,6 +41,12 @@ th:
       type:
         characters: ตัวอักษร
         words: คำ
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: หรือ
     contents_list:

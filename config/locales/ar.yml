@@ -46,6 +46,12 @@ ar:
       type:
         characters: أحرف
         words: كلمات
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: أو
     contents_list:
