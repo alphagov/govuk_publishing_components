@@ -11,6 +11,7 @@
 
 * Remove unused 'services_cookies' option from cookie banner
  ([PR #5488](https://github.com/alphagov/govuk_publishing_components/pull/5488))
+* Create new datetime fields component ([PR #5492](https://github.com/alphagov/govuk_publishing_components/pull/5492))
 
 ## 66.4.2
 
