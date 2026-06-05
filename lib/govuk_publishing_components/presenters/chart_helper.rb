@@ -4,17 +4,12 @@ module GovukPublishingComponents
       def initialize(options)
         @rows = options[:rows]
         @keys = options[:keys]
-        @minimal = options[:minimal]
-        @enable_interactivity = false
-        @enable_interactivity = true unless @minimal
+        @enable_interactivity = true
         @hide_legend = options[:hide_legend]
-        @hide_legend = true if @minimal
         @point_size = options[:point_size] ||= 10
-        @point_size = 0 if @minimal
         @height = options[:height] || 400
         @h_axis_title = options[:h_axis_title]
         @v_axis_title = options[:v_axis_title]
-        @text_position = "none" if @minimal
         @y_axis_view_window_min = 0
         @y_axis_view_window_min = "auto" if options[:y_axis_auto_adjust]
         @line_colours = options[:line_colours]
@@ -45,14 +40,12 @@ module GovukPublishingComponents
             textStyle: set_font_16,
             title: @h_axis_title,
             titleTextStyle: set_font_19,
-            textPosition: @text_position,
             format: @h_axis_format,
           },
           vAxis: {
             textStyle: set_font_16,
             title: @v_axis_title,
             titleTextStyle: set_font_19,
-            textPosition: @text_position,
             format: @v_axis_format,
             viewWindow: {
               min: @y_axis_view_window_min,

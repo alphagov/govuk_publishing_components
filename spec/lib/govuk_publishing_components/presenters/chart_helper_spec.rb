@@ -26,14 +26,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           title: "Day",
           titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
-          textPosition: nil,
           format: nil,
         },
         vAxis: {
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           title: "Views",
           titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
-          textPosition: nil,
           format: nil,
           viewWindow: {
             min: 0,
@@ -43,19 +41,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
     end
 
     it "returns default chart options" do
-      chart_helper = described_class.new(required_params)
-      options = chart_helper.chart_options
-      expect(options).to eql(expected)
-    end
-
-    it "returns expected chart options when minimal is true" do
-      required_params[:minimal] = true
-      expected[:enableInteractivity] = false
-      expected[:hAxis][:textPosition] = "none"
-      expected[:vAxis][:textPosition] = "none"
-      expected[:legend] = "none"
-      expected[:pointSize] = 0
-
       chart_helper = described_class.new(required_params)
       options = chart_helper.chart_options
       expect(options).to eql(expected)

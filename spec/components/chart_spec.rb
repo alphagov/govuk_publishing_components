@@ -138,18 +138,6 @@ describe "Chart", type: :view do
     assert_select '.gem-c-chart.govuk-\!-margin-bottom-0'
   end
 
-  it "renders a minimal version" do
-    data[:minimal] = true
-    data[:link] = "https://should.not.be.shown"
-    data[:chart_overview] = "This is a chart showing a rise in sea levels in the last ten years"
-    render_component(data)
-
-    assert_select ".gem-c-chart.gem-c-chart--minimal"
-    assert_select ".gem-c-chart__chart[aria-hidden='true']"
-    assert_select '.gem-c-chart .govuk-link[href="https://should.not.be.shown"]', false
-    assert_select ".gem-c-chart__chart .govuk-visually-hidden", false
-  end
-
   it "only calls an external script once" do
     render_component(data)
     data[:classes] = "" # need to 'reset' this otherwise it carries from the first component and breaks shared_helper
@@ -163,13 +151,5 @@ describe "Chart", type: :view do
     expect {
       render_component(data)
     }.to raise_error("A chart heading must be provided for accessibility purposes.")
-  end
-
-  it "does not throw an error if a heading is not supplied in minimal mode" do
-    data[:chart_heading] = nil
-    data[:minimal] = true
-    expect {
-      render_component(data)
-    }.not_to raise_error("A chart heading must be provided for accessibility purposes.")
   end
 end
