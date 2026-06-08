@@ -29,7 +29,7 @@ describe "Tag", type: :view do
   end
 
   it "adds a colour if a valid one is supplied" do
-    colours = %w[grey green turquoise blue light-blue purple pink red orange yellow]
+    colours = %w[grey green teal blue purple magenta red orange yellow]
     colours.each do |colour|
       render_component({ text: "Hello", colour: colour })
       assert_select "strong.govuk-tag.govuk-tag--#{colour}"

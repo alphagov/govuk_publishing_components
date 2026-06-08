@@ -23,26 +23,22 @@ examples:
     data:
       text: Hello world!
       colour: green
-  turquoise:
+  teal:
     data:
       text: Hello world!
-      colour: turquoise
+      colour: teal
   blue:
     data:
       text: Hello world!
       colour: blue
-  light_blue:
-    data:
-      text: Hello world!
-      colour: light-blue
   purple:
     data:
       text: Hello world!
       colour: purple
-  pink:
+  magenta:
     data:
       text: Hello world!
-      colour: pink
+      colour: magenta
   red:
     data:
       text: Hello world!
