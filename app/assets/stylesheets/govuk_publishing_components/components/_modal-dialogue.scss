@@ -141,3 +141,22 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
     @include govuk-focused-text;
   }
 }
+
+.gem-c-modal-dialogue--scroll-within {
+  .gem-c-modal-dialogue__box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gem-c-modal-dialogue__content {
+    overflow-y: scroll;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .gem-c-modal-dialogue__box {
+      max-height: 94vh;
+      margin-top: 3vh;
+      margin-bottom: 0;
+    }
+  }
+}

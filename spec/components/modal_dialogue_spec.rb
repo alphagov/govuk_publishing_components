@@ -36,4 +36,12 @@ describe "Modal dialogue", type: :view do
 
     assert_select '.gem-c-modal-dialogue__box[aria-label="My modal"]'
   end
+
+  it "applies modifier class to the scroll within modal" do
+    render_component(id: "my-modal", scroll_within: true) do
+      "Content"
+    end
+
+    assert_select ".gem-c-modal-dialogue.gem-c-modal-dialogue--scroll-within", count: 1
+  end
 end
