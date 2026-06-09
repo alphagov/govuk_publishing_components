@@ -20,12 +20,6 @@ examples:
     data:
       published: 1st January 1990
       last_updated: 20th October 2016
-  link_to_page_history:
-    description: This will set up a link to a '#history' anchor on the page. This can be used to link to another instance of this component, see [Display Page History example](/component-guide/published_dates/display_page_history)
-    data:
-      published: 1st January 1990
-      last_updated: 20th October 2016
-      link_to_history: true
   display_page_history:
     description: This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history.
     data:

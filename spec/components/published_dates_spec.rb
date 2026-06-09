@@ -24,11 +24,6 @@ describe "Published dates", type: :view do
     }
   end
 
-  it "links to full page history" do
-    render_component(published: "1st November 2000", last_updated: "15th July 2015", link_to_history: true)
-    assert_select ".gem-c-published-dates a[href=\"#history\"]"
-  end
-
   it "renders full page history" do
     render_component(
       published: "1st November 2000",
@@ -99,7 +94,7 @@ describe "Published dates", type: :view do
     render_component(
       published: "1st January 1990",
       last_updated: "20th October 2016",
-      link_to_history: true,
+      history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select "span", text: "—" # This is an em dash
     assert_select "span", text: "-", count: 0 # This is a hyphen
