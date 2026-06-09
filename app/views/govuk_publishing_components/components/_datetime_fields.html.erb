@@ -1,0 +1,144 @@
+<%
+  prefix ||= nil
+  field_name ||= nil
+  id = id
+  date_id = "#{id}_date"
+  date_only ||= false
+  date_heading ||= "Date (required)"
+  time_heading ||= "Time"
+
+  error_items ||= nil
+  error_items_date ||= nil
+  error_items_time ||= nil
+  error_id_time = "error-#{SecureRandom.hex(4)}"
+
+  heading_level ||= nil
+  heading_size ||= nil
+
+  date_hint ||= nil
+  time_hint ||= nil
+  time_hint_id = "time-hint-#{SecureRandom.hex(4)}"
+
+  year ||= nil
+  month ||= nil
+  day ||= nil
+  date_input_items = []
+  date_input_items << day if day
+  date_input_items << month if month
+  date_input_items << year if year
+  date_input_items = nil unless date_input_items.any?
+
+  hour ||= {}
+  hour_value = hour[:value]
+  hour_select_id = hour[:id] || "select-hour-#{SecureRandom.hex(4)}"
+  hour_label_id = "hour-#{SecureRandom.hex(4)}"
+
+  minute ||= {}
+  minute_value = minute[:value]
+  minute_select_id = minute[:id] || "select-minute-#{SecureRandom.hex(4)}"
+  minute_label_id = "minute-#{SecureRandom.hex(4)}"
+
+  date_ga4_form_section = date_heading
+  time_ga4_form_section = time_heading
+
+  root_classes = %w[gem-c-datetime-fields govuk-form-group]
+  root_classes << "govuk-form-group--error" if error_items.present?
+
+  time_group_classes = %w[govuk-form-group]
+  time_group_classes << "govuk-form-group--error" if error_items_time.present?
+
+  time_select_classes = %w[govuk-select gem-c-datetime-fields__date-time-input]
+  time_select_classes << "govuk-select--error" if (error_items.present? || error_items_time.present?)
+
+  data_attributes ||= {}
+%>
+
+<%= tag.div id: do %>
+  <% if prefix && field_name %>
+    <%= tag.div class: root_classes, data: data_attributes do %>
+      <%= render "govuk_publishing_components/components/date_input", {
+        id: date_id,
+        hint: date_hint,
+        error_items: (error_items.presence || error_items_date),
+        items: date_input_items,
+        legend_text: date_heading,
+        legend_level: heading_level,
+        legend_size: heading_size,
+        data_attributes: {
+          ga4_form_section: date_ga4_form_section,
+        },
+    } %>
+      <% unless date_only %>
+        <%= tag.div class: time_group_classes do %>
+          <%= render "govuk_publishing_components/components/fieldset", {
+            legend_text: time_heading,
+            heading_level: heading_level,
+            heading_size: heading_size,
+            classes: "govuk-date-input",
+            data_attributes: {
+              ga4_form_section: time_ga4_form_section,
+            },
+          } do %>
+            <% if time_hint %>
+              <%= render "govuk_publishing_components/components/hint", {
+                text: time_hint,
+                id: time_hint_id,
+              } %>
+            <% end %>
+
+            <% if error_items_time %>
+              <%= render "govuk_publishing_components/components/error_message", {
+                id:  error_id_time,
+                items: error_items_time,
+              } %>
+            <% end %>
+
+            <div class="gem-c-datetime-fields__date-time-wrapper">
+              <div class="gem-c-datetime-fields__date-time">
+                <%= render "govuk_publishing_components/components/label", {
+                  text: "Hour",
+                  html_for: hour_select_id,
+                  id: hour_label_id,
+                } %>
+
+                <%= select_hour hour_value,
+                                {
+                                  include_blank: true,
+                                  prefix: prefix,
+                                  field_name: "#{field_name}(4i)",
+                                },
+                                {
+                                  id: hour_select_id,
+                                  class: time_select_classes,
+                                  "aria-describedby": "#{hour_label_id} #{time_hint_id if time_hint.present?}".strip,
+                                } %>
+              </div>
+
+              <p class="govuk-body gem-c-datetime-fields__time-separator">:</p>
+
+              <div class="gem-c-datetime-fields__date-time">
+                <%= render "govuk_publishing_components/components/label", {
+                  text: "Minute",
+                  html_for: minute_select_id,
+                  id: minute_label_id,
+                } %>
+
+                <%= select_minute minute_value,
+                                  {
+                                    include_blank: true,
+                                    prefix: prefix,
+                                    field_name: "#{field_name}(5i)",
+                                  },
+                                  {
+                                    id: minute_select_id,
+                                    class: time_select_classes,
+                                    "aria-describedby": "#{minute_label_id} #{time_hint_id if time_hint.present?}".strip,
+                                  } %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
