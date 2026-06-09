@@ -1,9 +1,11 @@
 .gem-c-datetime-fields__date-time-wrapper {
-  display: inline-flex;
+  margin-top: govuk-spacing(-2);
 }
 
 .gem-c-datetime-fields__date-time {
+  display: inline-block;
   margin-right: govuk-spacing(2);
+  margin-top: govuk-spacing(2);
 }
 
 .govuk-select {
@@ -19,6 +21,7 @@
 }
 
 .gem-c-datetime-fields__time-separator {
+  display: inline-block;
   margin: govuk-spacing(6) + 5 govuk-spacing(2) 0 0;
   margin-bottom: 0;
 }
