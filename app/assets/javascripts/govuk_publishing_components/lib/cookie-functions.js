@@ -3,13 +3,16 @@
 (function (root) {
   'use strict'
 
-  var DEFAULT_COOKIE_CONSENT = {
+  var GOVUK_DEFAULT_COOKIE_CONSENT = {
     essential: true,
     settings: false,
     usage: false,
     campaigns: false
   }
 
+  var DEFAULT_COOKIE_CONSENT = GOVUK_DEFAULT_COOKIE_CONSENT
+
+  // GOVUK DEFAULT COOKIE CATEGORIES
   var COOKIE_CATEGORIES = {
     cookies_policy: 'essential',
     cookies_preferences_set: 'essential',
@@ -27,6 +30,11 @@
     _ga_P1DGM6TVYF: 'usage', // staging
     _ga_S5RQ7FTGVR: 'usage', // production
     lux_uid: 'usage'
+  }
+
+  // Override the default cookie categories
+  if (window.GOVUK.vars && window.GOVUK.vars.customCookieCategories) {
+    COOKIE_CATEGORIES = JSON.parse(JSON.stringify(window.GOVUK.vars.customCookieCategories))
   }
 
   /*
@@ -61,6 +69,12 @@
   }
 
   window.GOVUK.setDefaultConsentCookie = function () {
+    if (window.GOVUK.vars && window.GOVUK.vars.customDefaultCookieConsent) {
+      DEFAULT_COOKIE_CONSENT = JSON.parse(JSON.stringify(window.GOVUK.vars.customDefaultCookieConsent))
+    } else {
+      DEFAULT_COOKIE_CONSENT = GOVUK_DEFAULT_COOKIE_CONSENT
+    }
+
     window.GOVUK.setConsentCookie(DEFAULT_COOKIE_CONSENT)
   }
 

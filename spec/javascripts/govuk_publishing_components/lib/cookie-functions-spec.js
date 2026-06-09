@@ -177,9 +177,23 @@ describe('Cookie helper functions', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
       GOVUK.setConsentCookie({ settings: false })
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
       expect(GOVUK.getConsentCookie().settings).toBe(false)
       expect(GOVUK.cookie('app_promo_banner')).toBeFalsy()
+    })
+  })
+
+  describe('override default cookie settings', function () {
+    it('can set the consent cookie', function () {
+      GOVUK.vars.customDefaultCookieConsent = { custom: true }
+      spyOn(GOVUK, 'setCookie').and.callThrough()
+
+      expect(GOVUK.getCookie('cookies_policy')).toBeFalsy()
+
+      GOVUK.setDefaultConsentCookie()
+
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"custom":true}', Object({ days: 365 }))
+      expect(GOVUK.getConsentCookie()).toEqual({ custom: true })
+      GOVUK.vars.customDefaultCookieConsent = null
     })
   })
 
