@@ -553,7 +553,9 @@ $search-icon-height: 20px;
 
 // Ensure the dropdown menu background is offset from the menu height and
 // takes up the full screen width
-.govuk-frontend-supported .gem-c-layout-super-navigation-header {
+.govuk-frontend-supported .gem-c-layout-super-navigation-header__nav-wrapper {
+  position: relative;
+
   &::before {
     content: "";
     position: absolute;
@@ -563,6 +565,10 @@ $search-icon-height: 20px;
     background: $govuk-rebrand-template-background-colour;
     box-shadow: 0 1px govuk-colour("mid-grey");
   }
+}
+
+.gem-c-phase-banner-wrapper {
+  background: govuk-colour("white");
 }
 
 // JS available - styles the links in the dropdown menu

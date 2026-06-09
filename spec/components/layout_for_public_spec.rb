@@ -187,10 +187,74 @@ describe "Layout for public", :capybara, type: :view do
     expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
+  it "does not render a phase banner by default" do
+    render_component({})
+
+    assert_select "header.gem-c-layout-super-navigation-header .gem-c-phase-banner", false
+  end
+
   it "account layout renders with a phase banner by default" do
     render_component({ show_account_layout: true })
 
-    assert_select ".gem-c-layout-for-public .gem-c-phase-banner"
+    assert_select ".gem-c-layout-for-public :not(.gem-c-layout-super-navigation-header) > .gem-c-phase-banner"
+  end
+
+  it "does not render the phase banner if the header is omitted" do
+    render_component({
+      omit_header: true,
+      phase_banner: {
+        phase: "beta",
+        message: "This should not show",
+      },
+    })
+
+    assert_select ".gem-c-phase-banner", false
+  end
+
+  it "does not render the super navigation phase banner when the cross-service header is shown" do
+    render_component({
+      show_cross_service_header: true,
+      one_login_navigation_items: {
+        one_login_home: {
+          href: "/one-login-home",
+          data: {},
+        },
+        one_login_sign_out: {
+          href: "/sign-out",
+          data: {},
+        },
+      },
+      phase_banner: {
+        phase: "beta",
+        message: "This should not show",
+      },
+    })
+
+    assert_select "header.gem-c-layout-super-navigation-header", false
+    assert_select ".gem-c-phase-banner", false
+  end
+
+  it "renders the phase banner within the navigation header" do
+    render_component({
+      phase_banner: {
+        phase: "beta",
+        message: "This is a preview phase banner test",
+      },
+    })
+
+    assert_select "header.gem-c-layout-super-navigation-header .gem-c-phase-banner"
+  end
+
+  it "correctly passes the phase and message through to the phase banner markup" do
+    render_component({
+      phase_banner: {
+        phase: "beta",
+        message: "This is a custom beta layout test",
+      },
+    })
+
+    assert_select "header .gem-c-phase-banner .govuk-tag", text: "Beta"
+    assert_select "header .gem-c-phase-banner .govuk-phase-banner__text", text: "This is a custom beta layout test"
   end
 
   it "account layout renders with an account nav by default" do

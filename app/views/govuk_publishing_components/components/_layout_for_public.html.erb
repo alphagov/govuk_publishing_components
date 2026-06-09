@@ -1,6 +1,7 @@
 <%
   emergency_banner ||= nil
   global_banner ||= nil
+  phase_banner ||= nil
   html_lang ||= "en"
   homepage ||= false
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
@@ -90,7 +91,8 @@
         <% I18n.with_locale(:en) do %>
           <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
             homepage:,
-            logo_link: logo_link,
+            logo_link:,
+            phase_banner:,
           } %>
         <% end %>
       <% end %>
