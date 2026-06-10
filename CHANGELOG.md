@@ -11,6 +11,7 @@
 
 * Remove unused 'services_cookies' option from cookie banner ([PR #5488](https://github.com/alphagov/govuk_publishing_components/pull/5488))
 * Fix signup link having data='false' attribute ([PR #5356](https://github.com/alphagov/govuk_publishing_components/pull/5356))
+* Add em dash to show/hide updates and remove link to history ([PR #5475](https://github.com/alphagov/govuk_publishing_components/pull/5475))
 
 ## 66.4.2
 
