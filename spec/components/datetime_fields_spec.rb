@@ -43,8 +43,8 @@ describe "Date input", type: :view do
       time_heading: "The time",
     })
 
-    assert_select "legend.govuk-fieldset__legend", text: "The date"
-    assert_select "legend.govuk-fieldset__legend", text: "The time"
+    assert_select "[data-ga4-form-section='The date'] .govuk-fieldset__legend", text: "The date"
+    assert_select "[data-ga4-form-section='The time'] .govuk-fieldset__legend", text: "The time"
   end
 
   it "shows hint text" do
@@ -55,8 +55,8 @@ describe "Date input", type: :view do
       time_hint: "For example, 09:30 or 19:30",
     })
 
-    assert_select ".govuk-hint", text: "For example, 01 August 2022"
-    assert_select ".govuk-hint", text: "For example, 09:30 or 19:30"
+    assert_select "[data-ga4-form-section='Date (required)'] .govuk-hint", text: "For example, 01 August 2022"
+    assert_select "[data-ga4-form-section='Time'] .govuk-hint", text: "For example, 09:30 or 19:30"
   end
 
   it "accepts an id" do
@@ -157,9 +157,8 @@ describe "Date input", type: :view do
       ],
     })
 
-    assert_select ".gem-c-datetime-fields .govuk-form-group--error"
-    assert_select ".govuk-form-group--error .govuk-error-message", text: "Error: Descriptive date error 1Descriptive date error 2"
-    assert_select ".govuk-form-group--error .govuk-error-message", text: "Error: Descriptive time error 1Descriptive time error 2"
+    assert_select "[data-ga4-form-section='Date (required)'] .govuk-error-message", text: "Error: Descriptive date error 1Descriptive date error 2"
+    assert_select "[data-ga4-form-section='Time'] .govuk-error-message", text: "Error: Descriptive time error 1Descriptive time error 2"
   end
 
   it "accepts data attributes" do
