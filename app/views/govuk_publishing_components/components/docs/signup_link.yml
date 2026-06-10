@@ -31,3 +31,11 @@ examples:
       link_text: 'Click right here to sign up!!'
       link_href: '/this-signs-you-up'
       heading_level: 1
+  with_data_attributes_on_the_link:
+    data:
+      heading: 'Sign up for email notifications'
+      link_text: 'Click right here to sign up!!'
+      link_href: '/this-signs-you-up'
+      data:
+        hello: world
+
