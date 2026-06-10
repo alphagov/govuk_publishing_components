@@ -9,6 +9,26 @@ describe "Cards", type: :view do
     assert_empty render_component({})
   end
 
+  it "renders the default component with the correct default classes" do
+    test_data = {
+      heading: "Topics",
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "http://www.gov.uk",
+          },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select ".gem-c-cards"
+    assert_select "gem-c-cards__list--one-column", false
+    assert_select "gem-c-cards__list--two-column-desktop", false
+    assert_select "gem-c-cards__list--three-column-desktop", false
+    assert_select ".gem-c-cards--auto-layout", false
+  end
+
   it "renders list heading using default heading level" do
     test_data = {
       heading: "Topics",
@@ -119,6 +139,22 @@ describe "Cards", type: :view do
     }
     render_component(test_data)
     assert_select "ul.gem-c-cards__list.gem-c-cards__list--three-column-desktop", count: 1
+  end
+
+  it "renders the auto layout variant" do
+    test_data = {
+      columns: "auto",
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "http://www.gov.uk",
+          },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select ".gem-c-cards.gem-c-cards--auto-layout", count: 1
   end
 
   it "renders sub-heading using default heading level" do
