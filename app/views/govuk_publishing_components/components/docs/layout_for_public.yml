@@ -54,9 +54,18 @@ examples:
     description: This allows the HTML for the emergency banner to be added to the page in the correct place. This is only the slot for the emergency banner - the markup for the banner needs to be passed in.
     data:
       emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
-  with_global_and_emergency_banner:
-    description: Both global banner and emergency banner should be usable together.
+  with_phase_banner:
+    description: This allows the phase banner to be added to the page within the header.
     data:
+      phase_banner:
+        phase: "beta"
+        message: "This is a custom test message for the public layout phase banner."
+  with_all_banners:
+    description: The phase banner, global banner and emergency banner should be usable together.
+    data:
+      phase_banner:
+          phase: "beta"
+          message: "This is the phase banner banner"
       emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
       global_banner: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global banner slot</div>
   with_account_layout_enabled:
