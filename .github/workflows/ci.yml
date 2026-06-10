@@ -39,11 +39,11 @@ jobs:
         ruby: [3.3, 3.4]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6.0.2
+    - uses: actions/checkout@v6.0.3
       with:
         ref: ${{ inputs.ref || github.ref }}
     # Clone the publishing-api repo, a dependency of the govuk_schemas gem, for content schemas
-    - uses: actions/checkout@v6.0.2
+    - uses: actions/checkout@v6.0.3
       with:
         repository: alphagov/publishing-api
         ref: main
@@ -78,7 +78,7 @@ jobs:
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v6.0.2
+    - uses: actions/checkout@v6.0.3
     - uses: ruby/setup-ruby@v1.310.0
       with:
         rubygems: latest
