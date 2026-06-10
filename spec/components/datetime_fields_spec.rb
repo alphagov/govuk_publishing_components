@@ -35,7 +35,7 @@ describe "Date input", type: :view do
     assert_select "h1.govuk-fieldset__heading", text: "Time"
   end
 
-  it "allows custom test for the date and time headings" do
+  it "allows custom text for the date and time headings" do
     render_component({
       prefix: "prefix",
       field_name: "field_name",
