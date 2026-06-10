@@ -29,7 +29,9 @@ describe "Date input", type: :view do
       heading_size: "l",
     })
 
+    assert_select "legend.govuk-fieldset__legend--l", text: "Date (required)"
     assert_select "h1.govuk-fieldset__heading", text: "Date (required)"
+    assert_select "legend.govuk-fieldset__legend--l", text: "Time"
     assert_select "h1.govuk-fieldset__heading", text: "Time"
   end
 
