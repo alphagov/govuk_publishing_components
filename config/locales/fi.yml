@@ -66,6 +66,9 @@ fi:
       - muistaa asetuksesi ja parantaa valtion palveluita.
       - Käytämme myös muita sivustoja
       - 'jotka auttavat meitä toimittamaan sisältöä alkaen heidän palveluistaan. '
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Evästeet sivustolla GOV.UK
     devolved_nations:
       applies_to:

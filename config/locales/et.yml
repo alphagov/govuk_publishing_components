@@ -67,6 +67,9 @@ et:
       - sätete meeldejätmiseks ja riigiteenuste täiustamiseks.
       - kasutame ka teiste saitide seadistatud küpsiseid
       - mis aitavad meil nende teenuste sisu edastada.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Küpsised saidil GOV.UK
     devolved_nations:
       applies_to:
