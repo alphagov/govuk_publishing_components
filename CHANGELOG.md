@@ -9,8 +9,8 @@
 
 ## Unreleased
 
-* Remove unused 'services_cookies' option from cookie banner
- ([PR #5488](https://github.com/alphagov/govuk_publishing_components/pull/5488))
+* Remove unused 'services_cookies' option from cookie banner ([PR #5488](https://github.com/alphagov/govuk_publishing_components/pull/5488))
+* Fix signup link having data='false' attribute ([PR #5356](https://github.com/alphagov/govuk_publishing_components/pull/5356))
 
 ## 66.4.2
 
