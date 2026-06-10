@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.5.0
 
 * Remove unused 'services_cookies' option from cookie banner ([PR #5488](https://github.com/alphagov/govuk_publishing_components/pull/5488))
 * Fix signup link having data='false' attribute ([PR #5356](https://github.com/alphagov/govuk_publishing_components/pull/5356))
