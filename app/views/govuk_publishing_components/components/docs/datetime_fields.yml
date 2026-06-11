@@ -48,6 +48,11 @@ examples:
       field_name: first_published_at
       date_hint: For example, 01 August 2022
       time_hint: For example, 09:30 or 19:30
+  with_id_value:
+    data:
+      prefix: edition
+      field_name: first_published_at
+      id: edition_first_published_at
   with_custom_ids:
     data:
       prefix: edition
