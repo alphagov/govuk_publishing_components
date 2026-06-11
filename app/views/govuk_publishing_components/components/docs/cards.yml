@@ -114,6 +114,41 @@ examples:
             text: Citizenship and living in the&nbsp;UK
             path: http://www.gov.uk
           description: Voting, community participation, life in the UK, international projects
+  auto_layout:
+    description: |
+      Automatically adjusts the number of columns used by the component based on the container size, as well as the screen size. Based on the size of the govuk-grid. If the component is in a full width container, it will show three columns - in a two thirds container, two columns - in a one third, one column.
+
+      The example below shows how it appears in a two thirds column.
+    data:
+      columns: auto
+      heading: Services and information
+      items:
+        - link:
+            text: Benefits
+            path: http://www.gov.uk
+          description: Includes eligibility, appeals, tax credits and Universal Credit
+        - link:
+            text: Births, deaths, marriages and&nbsp;care
+            path: http://www.gov.uk
+          description: Parenting, civil partnerships, divorce and Lasting Power of Attorney
+        - link:
+            text: Business and self-employed
+            path: http://www.gov.uk
+          description: Tools and guidance for businesses
+        - link:
+            text: Childcare and parenting
+            path: http://www.gov.uk
+          description: Includes giving birth, fostering, adopting, benefits for children, childcare and schools
+        - link:
+            text: Citizenship and living in the&nbsp;UK
+            path: http://www.gov.uk
+          description: Voting, community participation, life in the UK, international projects
+    embed: |
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <%= component %>
+        </div>
+      </div>
   custom_heading_levels:
     description: |
       Override default heading level by passing through `heading_level` parameter (defaults to `<h2>`).
