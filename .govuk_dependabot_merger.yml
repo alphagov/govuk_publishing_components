@@ -1,0 +1,18 @@
+api_version: 2
+defaults:
+  update_external_dependencies: true
+  auto_merge: true
+  allowed_semver_bumps:
+    - patch
+    - minor
+overrides:
+  - dependency: rails
+    auto_merge: false
+  - dependency: accessible-autocomplete
+    auto_merge: false
+  - dependency: axe-core
+    auto_merge: false
+  - dependency: govuk-frontend
+    auto_merge: false
+  - dependency: govuk-single-consent
+    auto_merge: false
