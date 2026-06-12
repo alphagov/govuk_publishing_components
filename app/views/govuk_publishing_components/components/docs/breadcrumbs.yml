@@ -20,10 +20,12 @@ examples:
     data:
       collapse_on_mobile: true
       breadcrumbs:
-      - title: 'Section'
-        url: '/section'
-      - title: 'Sub-section'
-        url: '/section/sub-section'
+      - title: 'Home'
+        url: '/'
+      - title: 'Passports, travel and living abroad'
+        url: '/browse/abroad'
+      - title: 'Travel abroad'
+        url: '/browse/abroad/travel-abroad'
   inverse:
     description: On a dark background, such as the header of topic pages
     data:
@@ -67,16 +69,6 @@ examples:
         url: '/service-manual'
       - title: 'Agile Delivery'
         url: '/service-manual/agile-delivery'
-  real:
-    data:
-      collapse_on_mobile: true
-      breadcrumbs:
-      - title: 'Home'
-        url: '/'
-      - title: 'Passports, travel and living abroad'
-        url: '/browse/abroad'
-      - title: 'Travel abroad'
-        url: '/browse/abroad/travel-abroad'
   long_taxon:
     description: This is an example of a breadcrumb with long taxons to demonstrate the wrapping behaviour and touch target area on mobile
     data:
