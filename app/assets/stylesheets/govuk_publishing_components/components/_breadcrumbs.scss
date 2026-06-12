@@ -11,28 +11,6 @@
   }
 }
 
-.govuk-breadcrumbs--collapse-on-mobile {
-  @include govuk-media-query($until: tablet) {
-    .govuk-breadcrumbs__list-item {
-      padding-top: 14px;
-      padding-bottom: 14px;
-    }
-
-    .govuk-breadcrumbs__list-item::before {
-      top: 20px;
-    }
-
-    .govuk-breadcrumbs__link::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-    }
-  }
-}
-
 .gem-c-breadcrumbs[dir="rtl"] {
   text-align: start;
 
