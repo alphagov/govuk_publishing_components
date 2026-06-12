@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove extra breadcrumbs padding on mobile ([PR #5501](https://github.com/alphagov/govuk_publishing_components/pull/5501))
 * Add auto layout option to cards component ([PR #5499](https://github.com/alphagov/govuk_publishing_components/pull/5499))
 
 ## 66.5.0
