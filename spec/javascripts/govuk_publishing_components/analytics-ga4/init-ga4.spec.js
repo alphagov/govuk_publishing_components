@@ -80,4 +80,36 @@ describe('Initialising GA4', function () {
       delete GOVUK.analyticsGa4.analyticsModules.TestNotError
     })
   })
+
+  describe('cookie consent query strings', function () {
+    it('sets usage consent cookie to false when cookies[analytics] query string parameter has a value of "no"', function () {
+      var location = {
+        protocol: 'https:',
+        hostname: 'end-to-end-journeys-545890405086.europe-west2.run.app',
+        href: 'https://end-to-end-journeys-545890405086.europe-west2.run.app/a/path?cookies%5Banalytics%5D=no',
+        search: '?cookies%5Banalytics%5D=no',
+        origin: 'https://end-to-end-journeys-545890405086.europe-west2.run.app'
+      }
+
+      GOVUK.analyticsGa4.checkCookieConsentLinkDecoration(location)
+
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
+      expect(GOVUK.getConsentCookie().usage).toBe(false)
+    })
+
+    it('sets usage consent cookie to true when cookies[analytics] query string parameter has a value of "yes"', function () {
+      var location = {
+        protocol: 'https:',
+        hostname: 'end-to-end-journeys-545890405086.europe-west2.run.app',
+        href: 'https://end-to-end-journeys-545890405086.europe-west2.run.app/a/path?cookies%5Banalytics%5D=yes',
+        search: '?cookies%5Banalytics%5D=yes',
+        origin: 'https://end-to-end-journeys-545890405086.europe-west2.run.app'
+      }
+
+      GOVUK.analyticsGa4.checkCookieConsentLinkDecoration(location)
+
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
+      expect(GOVUK.getConsentCookie().usage).toBe(true)
+    })
+  })
 })
