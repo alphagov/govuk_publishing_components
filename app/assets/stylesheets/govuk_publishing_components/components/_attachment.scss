@@ -4,7 +4,6 @@ $thumbnail-border-width: 5px;
 $thumbnail-background: govuk-colour("white");
 $thumbnail-shadow-colour: rgba(11, 12, 12, .4);
 $thumbnail-shadow-width: 0 2px 2px;
-$thumbnail-icon-border-colour: govuk-colour("mid-grey");
 
 .gem-c-attachment {
   position: relative;
@@ -27,8 +26,8 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   outline: $govuk-border-width solid color.adjust(govuk-colour("black"), $alpha: -0.9);
   background: $thumbnail-background;
   box-shadow: $thumbnail-shadow-width $thumbnail-shadow-colour;
-  fill: $thumbnail-icon-border-colour;
-  stroke: $thumbnail-icon-border-colour;
+  fill: govuk-colour("mid-grey");
+  stroke: govuk-colour("mid-grey");
 
   @include govuk-media-query($from: tablet) {
     max-width: $thumbnail-width;
