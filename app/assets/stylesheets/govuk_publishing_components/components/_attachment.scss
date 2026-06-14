@@ -25,7 +25,6 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   width: auto; // for IE8
   max-width: calc($thumbnail-width / 1.5);
   height: calc($thumbnail-height / 1.5);
-  border: $thumbnail-border-colour; // for IE9 & IE10
   outline: $thumbnail-border-width solid $thumbnail-border-colour;
   background: $thumbnail-background;
   box-shadow: $thumbnail-shadow-width $thumbnail-shadow-colour;
