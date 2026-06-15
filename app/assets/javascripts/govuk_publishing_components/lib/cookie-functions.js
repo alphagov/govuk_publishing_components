@@ -3,12 +3,16 @@
 (function (root) {
   'use strict'
 
-  var DEFAULT_COOKIE_CONSENT = {
+  var GOVUK_DEFAULT_COOKIE_CONSENT = {
     essential: true,
     settings: false,
     usage: false,
     campaigns: false
   }
+
+  JSON.parse(JSON.stringify(CUSTOM_DEFAULT_COOKIE_CONSENT))
+
+  var DEFAULT_COOKIE_CONSENT = CUSTOM_DEFAULT_COOKIE_CONSENT || GOVUK_DEFAULT_COOKIE_CONSENT
 
   var COOKIE_CATEGORIES = {
     cookies_policy: 'essential',
