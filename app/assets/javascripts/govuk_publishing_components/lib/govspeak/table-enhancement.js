@@ -9,7 +9,8 @@ window.GOVUK = window.GOVUK || {};
 
   TableEnhancement.prototype.init = function () {
     window.GOVUK.vars = window.GOVUK.vars || {}
-    if (window.GOVUK.vars.govspeakTableEnhancement || !window.GOVUK.Modules.ModalDialogue) {
+    const modalComponent = document.getElementById('modal-for-tables')
+    if (window.GOVUK.vars.govspeakTableEnhancement || !modalComponent || !window.GOVUK.Modules.ModalDialogue) {
       return
     }
     this.allTables = document.querySelectorAll('.gem-c-govspeak table')

@@ -3,6 +3,7 @@
   local_assigns[:margin_bottom] ||= 0
   direction_class = "gem-c-govspeak--direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
+  omit_modal ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-govspeak govuk-govspeak")
@@ -35,7 +36,7 @@
   <% end %>
 <% end %>
 
-<% unless @include_modal[:modal_included] %>
+<% unless @include_modal[:modal_included] || omit_modal %>
   <%= render "govuk_publishing_components/components/modal_dialogue", {
     id: "modal-for-tables",
     full_width: true,
