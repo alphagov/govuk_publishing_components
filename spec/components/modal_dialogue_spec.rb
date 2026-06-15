@@ -10,6 +10,7 @@ describe "Modal dialogue", type: :view do
       "Content"
     end
 
+    assert_select ".gem-c-modal-dialogue[data-module='modal-dialogue']"
     assert_select ".gem-c-modal-dialogue__content", text: "Content"
   end
 
@@ -43,5 +44,14 @@ describe "Modal dialogue", type: :view do
     end
 
     assert_select ".gem-c-modal-dialogue.gem-c-modal-dialogue--scroll-within", count: 1
+  end
+
+  it "can disable the JavaScript module from starting" do
+    render_component(id: "my-modal", disable_module: true) do
+      "Content"
+    end
+
+    assert_select ".gem-c-modal-dialogue"
+    assert_select ".gem-c-modal-dialogue[data-module='modal-dialogue']", false
   end
 end
