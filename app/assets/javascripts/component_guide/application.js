@@ -1,4 +1,5 @@
 //= require ../govuk_publishing_components/initialise-vars
+//= require ../govuk_publishing_components/initialise-cookies
 //= require_tree ./vendor
 //= require_tree .
 //= require ../govuk_publishing_components/dependencies

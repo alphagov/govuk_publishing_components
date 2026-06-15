@@ -44,9 +44,9 @@
         this.$module.removeAttribute('hidden')
 
         // Set the default consent cookie if it isn't already present
-        if (!window.GOVUK.cookie('cookies_policy')) {
-          window.GOVUK.setDefaultConsentCookie()
-        }
+        // if (!window.GOVUK.cookie('cookies_policy')) {
+        //   window.GOVUK.setDefaultConsentCookie()
+        // }
 
         window.GOVUK.deleteUnconsentedCookies()
       }
@@ -79,8 +79,8 @@
     this.$module.querySelector('.gem-c-cookie-banner__confirmation-message--rejected').hidden = false
     this.$module.showConfirmationMessage()
     this.$module.cookieBannerConfirmationMessage.focus()
-    window.GOVUK.setDefaultConsentCookie()
     window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+    window.GOVUK.triggerEvent(window, 'cookie-reject')    
   }
 
   CookieBanner.prototype.showConfirmationMessage = function () {

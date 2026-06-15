@@ -60,10 +60,6 @@
     }
   }
 
-  window.GOVUK.setDefaultConsentCookie = function () {
-    window.GOVUK.setConsentCookie(DEFAULT_COOKIE_CONSENT)
-  }
-
   window.GOVUK.approveAllCookieTypes = function () {
     var approvedConsent = {
       essential: true,
