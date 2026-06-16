@@ -18,8 +18,30 @@ var initFunction = function () {
     }
   }
 
+  window.GOVUK.analyticsGa4.decorateLinks = function (consent) {
+    // Select all anchor tags with an href attribute
+    const links = document.querySelectorAll('a[href]')
+
+    links.forEach(link => {
+      try {
+        // Use the URL constructor to safely parse absolute or relative URLs
+        const url = new URL(link.href, window.location.origin)
+
+        // Should catch all subdomains like example.gov.uk but exclude the rest of gov.uk which is covered by the existing cookie implementation
+        if (url.hostname.endsWith('.gov.uk') && url.hostname !== 'gov.uk') {
+          url.searchParams.set('consent', consent)
+          link.href = url.toString()
+        }
+      } catch (e) {
+        // Silently skip invalid URLs
+      }
+    })
+  }
+
   var consentCookie = window.GOVUK.getConsentCookie()
   if (consentCookie && consentCookie.usage) {
+    window.GOVUK.analyticsGa4.decorateLinks(Object.values(consentCookie).includes(false).toString())
+
     window.GOVUK.analyticsGa4.vars.internalDomains = []
     window.GOVUK.analyticsGa4.vars.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
