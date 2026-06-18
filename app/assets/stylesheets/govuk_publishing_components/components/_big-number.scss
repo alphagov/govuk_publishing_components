@@ -1,6 +1,8 @@
 .gem-c-big-number {
   margin-bottom: govuk-spacing(3);
   @include govuk-text-colour;
+  display: flex;
+  flex-direction: column;
 }
 
 .gem-c-big-number__value {
