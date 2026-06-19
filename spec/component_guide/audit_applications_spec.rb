@@ -184,6 +184,7 @@ describe "Auditing the components in applications" do
         ],
         component_numbers: {
           helper: 0,
+          helper_test: 0,
           javascript: 0,
           javascript_test: 0,
           print_stylesheet: 0,

@@ -11,6 +11,7 @@ module GovukPublishingComponents
       @tests_path = options[:tests_path] || "spec/components"
       @javascript_tests_path = options[:javascript_tests_path] || "spec/javascripts/components"
       @helpers_path = options[:helpers_path] || "lib/govuk_publishing_components/presenters"
+      @helpers_tests_path = options[:helpers_tests_path] || "spec/lib/govuk_publishing_components/presenters"
 
       @application_name = options[:application_name] || "govuk_publishing_components"
       @application_dir = options[:application_dir] || "govuk_publishing_components"
@@ -27,6 +28,7 @@ module GovukPublishingComponents
         test: 0,
         javascript_test: 0,
         helper: 0,
+        helper_test: 0,
       }
 
       @data = {
@@ -90,6 +92,10 @@ module GovukPublishingComponents
           {
             type: "helper",
             file: "#{[path, @helpers_path].join('/')}/#{component.gsub(' ', '_')}_helper.rb",
+          },
+          {
+            type: "helper_test",
+            file: "#{[path, @helpers_tests_path].join('/')}/#{component.gsub(' ', '_')}_helper_spec.rb",
           },
         ]
         file_details.each do |detail|
@@ -162,6 +168,7 @@ module GovukPublishingComponents
         .gsub(".js", "")
         .gsub("spec", "")
         .gsub("helper.rb", "")
+        .gsub("helper_spec.rb", "")
         .gsub(".rb", "")
         .strip
     end
@@ -244,6 +251,7 @@ module GovukPublishingComponents
       link = "#{url}/#{repo}/#{blob}/#{@tests_path}/#{component.gsub(' ', '_')}_spec.rb" if a_thing == "test"
       link = "#{url}/#{repo}/#{blob}/#{@javascript_tests_path}/#{component.gsub(' ', '-')}-spec.js" if a_thing == "javascript_test"
       link = "#{url}/#{repo}/#{blob}/#{@helpers_path}/#{component.gsub(' ', '_')}_helper.rb" if a_thing == "helper"
+      link = "#{url}/#{repo}/#{blob}/#{@helpers_tests_path}/#{component.gsub(' ', '_')}_helper_spec.rb" if a_thing == "helper_test"
 
       link
     end

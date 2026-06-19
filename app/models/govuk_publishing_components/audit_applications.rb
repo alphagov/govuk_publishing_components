@@ -64,6 +64,7 @@ module GovukPublishingComponents
           tests_path: "spec/components/",
           javascript_tests_path: "spec/javascripts/components/",
           helpers_path: "app/helpers/",
+          helpers_tests_path: "spec/helpers/",
         }
         application_components = AuditComponents.new(path, options)
         application_components = application_components.data if application_components
