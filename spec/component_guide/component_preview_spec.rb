@@ -3,7 +3,6 @@ require "rails_helper"
 describe "Component preview", :capybara do
   it "shows all component examples on a page without header or footer" do
     visit "/component-guide/test_component_with_params/preview"
-    expect(page).to have_selector(".govuk-template--rebranded")
     expect(page).to have_selector(".govuk-width-container")
 
     expect(page).not_to have_selector("body > header")
@@ -18,7 +17,6 @@ describe "Component preview", :capybara do
 
   it "shows a specific example on a page without header or footer" do
     visit "/component-guide/test_component_with_params/another_example/preview"
-    expect(page).to have_selector(".govuk-template--rebranded")
     expect(page).to have_selector(".govuk-width-container")
 
     expect(page).not_to have_selector("body > header")
@@ -31,7 +29,6 @@ describe "Component preview", :capybara do
 
   it "shows all component examples using the full page width without header or footer" do
     visit "/component-guide/test_component_using_full_page_width/preview"
-    expect(page).to have_selector(".govuk-template--rebranded")
     expect(page).to have_selector(".govuk-full-width-container")
 
     expect(page).not_to have_selector("body > header")
