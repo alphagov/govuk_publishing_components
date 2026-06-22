@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add styles for cards in govspeak ([PR #5516](https://github.com/alphagov/govuk_publishing_components/pull/5516))
+
 ## 66.6.0
 
 * Remove extra breadcrumbs padding on mobile ([PR #5501](https://github.com/alphagov/govuk_publishing_components/pull/5501))
