@@ -56,6 +56,9 @@ describe "Auditing the components in the gem" do
           helper_exists: true,
           helper_lines: 6,
           helper_link: "https://github.com/alphagov/govuk_publishing_components/blob/main/lib/govuk_publishing_components/presenters/test_component_helper.rb",
+          helper_test_exists: true,
+          helper_test_lines: 4,
+          helper_test_link: "https://github.com/alphagov/govuk_publishing_components/blob/main/spec/lib/govuk_publishing_components/presenters/test_component_helper_spec.rb",
           uses_govuk_frontend_css: true,
         },
         {
@@ -83,6 +86,7 @@ describe "Auditing the components in the gem" do
         test: 1,
         javascript_test: 1,
         helper: 1,
+        helper_test: 1,
         uses_govuk_frontend_css: 1,
         uses_govuk_frontend_js: 1,
       },

@@ -60,6 +60,12 @@
             <span class="component__count"><%= passed_components[:component_numbers][:helper] %></span>
           <% end %>
         </th>
+        <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="helper_test" title="Component has a helper test file">
+          Helper test
+          <% unless show_application_name %>
+            <span class="component__count"><%= passed_components[:component_numbers][:helper_test] %></span>
+          <% end %>
+        </th>
       </tr>
     </thead>
     <tbody class="govuk-table__body" <% if show_application_name %> data-audit-list<% end %>>
@@ -145,6 +151,14 @@
               <a href="<%= component[:helper_link] %>" class="govuk-link" title="This file has <%= component[:helper_lines] %> lines">
                 <%= component[:helper_lines] %>
                 <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> helper</span>
+              </a>
+            <% end %>
+          </td>
+          <td class="govuk-table__cell" data-component-type="helper_test">
+            <% if component[:helper_test_exists] %>
+              <a href="<%= component[:helper_test_link] %>" class="govuk-link" title="This file has <%= component[:helper_test_lines] %> lines">
+                <%= component[:helper_test_lines] %>
+                <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> helper test</span>
               </a>
             <% end %>
           </td>
