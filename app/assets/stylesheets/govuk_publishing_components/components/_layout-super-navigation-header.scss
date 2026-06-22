@@ -381,7 +381,7 @@ $search-icon-height: 20px;
   }
 
   @include focus-not-focus-visible {
-    background: $govuk-rebrand-template-background-colour;
+    background: $govuk-blue-tint-95;
 
     &::after {
       background-color: $govuk-link-colour;
@@ -496,8 +496,8 @@ $search-icon-height: 20px;
     }
 
     @include focus-not-focus-visible {
-      background: $govuk-rebrand-template-background-colour;
-      outline: 1px solid $govuk-rebrand-template-background-colour; // overlap the border of the nav menu so it won't appear when menu open
+      background: $govuk-blue-tint-95;
+      outline: 1px solid $govuk-blue-tint-95; // overlap the border of the nav menu so it won't appear when menu open
 
       color: govuk-colour("blue");
 
@@ -543,7 +543,7 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__navigation-dropdown-menu {
   width: 100%;
   order: 1; // Ensure the dropdown menu appears after the super navigation buttons which have a default order of 0
-  background: $govuk-rebrand-template-background-colour;
+  background: $govuk-blue-tint-95;
   padding-top: govuk-spacing(6);
 
   @include govuk-media-query($from: "desktop") {
@@ -562,7 +562,7 @@ $search-icon-height: 20px;
     top: $navbar-height;
     bottom: 0;
     width: 100%;
-    background: $govuk-rebrand-template-background-colour;
+    background: $govuk-blue-tint-95;
     box-shadow: 0 1px govuk-colour("black", $variant: "tint-80");
   }
 }
