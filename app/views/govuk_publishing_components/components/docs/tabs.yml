@@ -10,13 +10,14 @@ body: |
 
   The content block MUST be passed as a block to avoid the risk of unsanitised HTML.
 accessibility_criteria: |
-  - Tabs must:
-    * accept focus
-    * be usable with a keyboard
-    * indicate when they have focus
-    * be usable with touch
-    * be usable with voice commands
-    * have visible text
+  Tabs must:
+
+  * accept focus
+  * be usable with a keyboard
+  * indicate when they have focus
+  * be usable with touch
+  * be usable with voice commands
+  * have visible text
 uses_component_wrapper_helper: true
 examples:
   default:
