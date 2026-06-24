@@ -51,7 +51,7 @@ Then a new class in `_brand_colours.scss` will need to be created, that is names
 
     &:hover,
     &:focus {
-      color: $govuk-focus-text-colour;
+      color: govuk-functional-colour(focus-text);
     }
   }
 

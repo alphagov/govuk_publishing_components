@@ -12,6 +12,6 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
   }
 }

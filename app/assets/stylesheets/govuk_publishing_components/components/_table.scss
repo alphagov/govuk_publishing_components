@@ -76,7 +76,7 @@ $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
       }
 
       &:focus {
-        color: $govuk-focus-text-colour;
+        color: govuk-functional-colour(focus-text);
       }
     }
 
