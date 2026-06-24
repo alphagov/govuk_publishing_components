@@ -75,7 +75,7 @@
   .gem-c-secondary-navigation__list-item-link:link,
   .gem-c-secondary-navigation__list-item-link:visited {
     border-color: govuk-colour("blue");
-    color: $govuk-text-colour;
+    color: govuk-functional-colour(text);
   }
 
   .gem-c-secondary-navigation__list-item-link:focus {

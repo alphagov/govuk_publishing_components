@@ -36,7 +36,7 @@
     }
 
     @include govuk-media-query($media-type: print) {
-      border-top: 1px solid $govuk-text-colour;
+      border-top: 1px solid govuk-functional-colour(text);
 
       a[role="doc-backlink"] {
         display: none;

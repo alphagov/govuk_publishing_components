@@ -156,7 +156,7 @@
 
 .gem-c-option-select__selected-counter {
   margin-left: 44px;
-  color: $govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font($size: 16, $line-height: 1);
 }
 

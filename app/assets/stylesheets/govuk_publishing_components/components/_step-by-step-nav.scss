@@ -131,7 +131,7 @@ $top-border: solid 1px govuk-colour("black", $variant: "tint-80");
     }
 
     .gem-c-step-nav__button-text {
-      color: $govuk-text-colour;
+      color: govuk-functional-colour(text);
     }
   }
 

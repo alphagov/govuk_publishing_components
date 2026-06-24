@@ -34,7 +34,7 @@
 
     th {
       text-align: left;
-      color: $govuk-text-colour;
+      color: govuk-functional-colour(text);
       @include govuk-font($size: 19, $weight: bold);
     }
 
