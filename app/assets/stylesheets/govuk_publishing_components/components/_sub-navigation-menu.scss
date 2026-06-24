@@ -73,8 +73,8 @@
 }
 
 .gem-c-sub-navigation-menu__button[aria-expanded="true"]:focus {
-  background-color: $govuk-focus-colour;
-  border-color: $govuk-focus-colour;
+  background-color: govuk-functional-colour(focus);
+  border-color: govuk-functional-colour(focus);
 }
 
 // Adds a white border at the bottom of the button when the button is expanded.
