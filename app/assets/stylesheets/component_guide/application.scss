@@ -37,7 +37,7 @@ $gem-guide-border-width: 1px;
   font-family: Consolas, Monaco, "Andale Mono", monospace;
   font-size: 16px;
   line-height: 1.5;
-  border: $gem-guide-border-width solid $govuk-border-colour;
+  border: $gem-guide-border-width solid govuk-functional-colour(border);
 
   &[contenteditable]:hover {
     cursor: text;
@@ -69,7 +69,7 @@ $gem-guide-border-width: 1px;
 
 .component-guide-preview {
   padding: govuk-spacing(8) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
-  border: $gem-guide-border-width solid $govuk-border-colour;
+  border: $gem-guide-border-width solid govuk-functional-colour(border);
   position: relative;
   margin-bottom: govuk-spacing(8);
 
@@ -491,8 +491,8 @@ $code-delete-bg: #fadddd;
   border: 0;
   margin-left: -(govuk-spacing(3));
   margin-right: -(govuk-spacing(3));
-  border-top: solid 1px $govuk-border-colour;
-  border-bottom: solid 1px $govuk-border-colour;
+  border-top: solid 1px govuk-functional-colour(border);
+  border-bottom: solid 1px govuk-functional-colour(border);
 
   @include govuk-media-query($from: tablet) {
     margin-left: -(govuk-spacing(6));
@@ -543,8 +543,8 @@ $code-delete-bg: #fadddd;
         bottom: -1px;
         width: calc((100cqw - 960px) / 2);
         box-sizing: border-box;
-        border-top: solid 1px $govuk-border-colour;
-        border-bottom: solid 1px $govuk-border-colour;
+        border-top: solid 1px govuk-functional-colour(border);
+        border-bottom: solid 1px govuk-functional-colour(border);
       }
 
       &::before {

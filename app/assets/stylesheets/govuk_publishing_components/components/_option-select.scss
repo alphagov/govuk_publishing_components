@@ -2,7 +2,7 @@
   position: relative;
   padding: 0 0 govuk-spacing(2);
   margin-bottom: govuk-spacing(2);
-  border-bottom: 1px solid $govuk-border-colour;
+  border-bottom: 1px solid govuk-functional-colour(border);
 
   @include govuk-media-query($from: desktop) {
     // Redefine scrollbars on desktop where these lists are scrollable
