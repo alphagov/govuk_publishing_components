@@ -384,16 +384,16 @@ $search-icon-height: 20px;
     background: $govuk-rebrand-template-background-colour;
 
     &::after {
-      background-color: $govuk-link-colour;
+      background-color: govuk-functional-colour(link);
     }
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      color: $govuk-link-colour;
+      color: govuk-functional-colour(link);
       border-right-color: $button-pipe-colour;
 
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
-          @include chevron($govuk-link-colour, true);
+          @include chevron(govuk-functional-colour(link), true);
           @include prefixed-transform($rotate: 225deg, $translateY: 1px);
         }
       }
