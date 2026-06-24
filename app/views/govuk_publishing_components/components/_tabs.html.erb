@@ -26,7 +26,7 @@
       <% tabs.each_with_index do |tab, index| %>
       <li class="govuk-tabs__list-item <%= "govuk-tabs__list-item--selected" if tab[:active] %>">
         <%
-          tab[:tab_data_attributes] ||= {}
+          data_attributes = tab[:tab_data_attributes] || {}
           unless disable_ga4
             ga4_attributes = {
               event_name: "select_content",
@@ -36,8 +36,8 @@
               index_section_count: tabs.length,
             }
             ga4_attributes[:event_name] = "navigation" if as_links
-            tab[:tab_data_attributes][:ga4_link] = ga4_attributes if as_links
-            tab[:tab_data_attributes][:ga4_event] = ga4_attributes unless as_links
+            data_attributes[:ga4_link] = ga4_attributes if as_links
+            data_attributes[:ga4_event] = ga4_attributes unless as_links
           end
 
           tab_link = "##{tab[:id]}"
@@ -46,7 +46,7 @@
         <%= link_to(tab[:label],
                     tab_link,
                     class: "govuk-tabs__tab",
-                    data: tab[:tab_data_attributes]) %>
+                    data: data_attributes) %>
       </li>
       <% end %>
     </ul>

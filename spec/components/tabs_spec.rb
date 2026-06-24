@@ -79,6 +79,31 @@ describe "Tabs", type: :view do
     assert_select ".govuk-tabs__tab[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"tabs\",\"text\":\"Third section\",\"index_section\":3,\"index_section_count\":3}']"
   end
 
+  it "renders data attributes on tabs" do
+    render_component(
+      tabs: [
+        {
+          id: "tab1",
+          label: "First section",
+          content: "<p>Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt.</p>",
+          tab_data_attributes: {
+            hello: "world",
+          },
+        },
+        {
+          id: "tab2",
+          label: "Second section",
+          content: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
+          tab_data_attributes: {
+            goodbye: "mr chips",
+          },
+        },
+      ],
+    )
+    assert_select ".govuk-tabs__tab[href='#tab1'][data-hello='world']"
+    assert_select ".govuk-tabs__tab[href='#tab2'][data-goodbye='mr chips']"
+  end
+
   it "renders without GA4 tracking on tabs" do
     render_component(
       disable_ga4: true,
