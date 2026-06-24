@@ -206,7 +206,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
     color: govuk-colour("white");
 
     &:hover {
-      background-color: color.adjust(govuk-colour("blue"), $lightness: 5%);
+      background-color: govuk-colour("blue", $variant: "shade-25");
     }
   }
 
