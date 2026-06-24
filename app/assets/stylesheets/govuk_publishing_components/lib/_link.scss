@@ -8,7 +8,7 @@
   &:visited,
   &:hover,
   &:active {
-    color: darken($govuk-error-colour, 5%);
+    color: govuk-colour("red", $variant: "shade-25");
   }
 
   &:focus {
