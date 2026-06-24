@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use multiple box shadows in attachment components in place of outline and box shadow ([PR #5503](https://github.com/alphagov/govuk_publishing_components/pull/5503))
+* Add X as an option to share_links component ([PR #5526](https://github.com/alphagov/govuk_publishing_components/pull/5526))
 
 ## 66.6.1
 
