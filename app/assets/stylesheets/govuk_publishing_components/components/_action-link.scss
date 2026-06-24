@@ -83,7 +83,7 @@
 @include govuk-media-query($media-type: print) {
   .gem-c-action-link {
     * {
-      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+      color: govuk-functional-colour(print-text) !important; // stylelint-disable-line declaration-no-important
     }
 
     .gem-c-action-link__icon {

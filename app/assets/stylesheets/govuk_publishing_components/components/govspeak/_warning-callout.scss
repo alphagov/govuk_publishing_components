@@ -34,7 +34,7 @@
 
       &::before {
         background-color: govuk-colour("white");
-        color: $govuk-print-text-colour;
+        color: govuk-functional-colour(print-text);
       }
     }
   }

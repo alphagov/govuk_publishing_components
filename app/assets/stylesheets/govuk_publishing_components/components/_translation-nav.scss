@@ -1,6 +1,6 @@
 .gem-c-translation-nav {
   margin-bottom: govuk-spacing(6);
-  border-bottom: 1px solid $govuk-border-colour;
+  border-bottom: 1px solid govuk-functional-colour(border);
   @include govuk-text-colour;
   @include govuk-font(16);
 }
@@ -17,14 +17,14 @@
   padding-left: govuk-spacing(2);
   padding-right: govuk-spacing(2);
   margin-bottom: govuk-spacing(2);
-  border-right: 1px solid $govuk-border-colour;
+  border-right: 1px solid govuk-functional-colour(border);
   height: 16px;
 
   .direction-rtl & {
     direction: rtl;
     float: right;
     text-align: start;
-    border-left: 1px solid $govuk-border-colour;
+    border-left: 1px solid govuk-functional-colour(border);
     border-right: 0;
   }
 }

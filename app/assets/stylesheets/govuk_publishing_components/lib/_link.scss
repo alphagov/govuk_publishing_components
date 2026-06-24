@@ -2,7 +2,7 @@
   @include govuk-font(19);
 
   &:link {
-    color: $govuk-error-colour;
+    color: govuk-functional-colour(error);
   }
 
   &:visited,
@@ -12,6 +12,6 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
   }
 }

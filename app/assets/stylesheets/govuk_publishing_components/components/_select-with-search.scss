@@ -58,8 +58,8 @@ $choices-button-dimension: 12px !default;
     }
 
     &:focus {
-      background-color: $govuk-focus-colour;
-      box-shadow: 0 $govuk-border-width-form-element 0 $govuk-focus-text-colour;
+      background-color: govuk-functional-colour(focus);
+      box-shadow: 0 $govuk-border-width-form-element 0 govuk-functional-colour(focus-text);
     }
   }
 
@@ -84,7 +84,7 @@ $choices-button-dimension: 12px !default;
   }
 
   &.govuk-form-group--error .choices:not(.is-active):not(.is-focused):not(.is-open) .choices__inner {
-    border-color: $govuk-error-colour;
+    border-color: govuk-functional-colour(error);
   }
 
   .choices.is-focused,
@@ -99,7 +99,7 @@ $choices-button-dimension: 12px !default;
 
   .choices.is-focused .choices__inner,
   .choices.is-open .choices__inner {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
     // Ensure outline appears outside of the element
     outline-offset: 0;
     // Double the border by adding its width again. Use `box-shadow` to do
@@ -113,7 +113,7 @@ $choices-button-dimension: 12px !default;
 
     &:not(:empty) {
       margin-block-start: 6px;
-      border-block-start: 1px solid $govuk-border-colour;
+      border-block-start: 1px solid govuk-functional-colour(border);
       padding-block-end: 5px;
     }
   }
@@ -127,7 +127,7 @@ $choices-button-dimension: 12px !default;
     background-color: govuk-colour("black", $variant: "tint-95");
     box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("black", $variant: "tint-80");
     line-height: 1;
-    color: $govuk-text-colour;
+    color: govuk-functional-colour(text);
 
     .is-disabled & {
       opacity: 0.5;
