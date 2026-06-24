@@ -31,6 +31,8 @@ $thumbnail-border-width: 5px;
     max-width: $thumbnail-width;
     height: $thumbnail-height;
   }
+
+  @include high-contrast-outline;
 }
 
 .gem-c-attachment__details {

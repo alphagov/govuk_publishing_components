@@ -1,0 +1,8 @@
+@mixin high-contrast-outline {
+  color-scheme: dark;
+
+  @media (forced-colors: active) {
+    outline: 5px solid currentcolor;
+    forced-color-adjust: auto;
+  }
+}
