@@ -36,18 +36,12 @@ RSpec.describe GovukPublishingComponents::Presenters::SelectHelper do
   describe "initialize" do
     it "sets default values correctly" do
       select = described_class.new({})
-      expect(select.options).to eq([])
       expect(select.error_items).to eq([])
       expect(select.error_id).to be_nil
       expect(select.hint).to be_nil
       expect(select.hint_id).to be_nil
       expect(select.options_markup).to eq("")
       expect(select.describedby).to eq(%w[])
-    end
-
-    it "accepts valid options" do
-      select = described_class.new({ options: })
-      expect(select.options).to eq(options)
     end
 
     it "accepts error items and an error id" do

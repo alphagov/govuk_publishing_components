@@ -3,7 +3,7 @@ module GovukPublishingComponents
     class SelectHelper
       include ActionView::Helpers::FormOptionsHelper
 
-      attr_reader :options, :options_markup, :error_items, :error_id, :hint, :hint_id, :describedby
+      attr_reader :options_markup, :error_items, :error_id, :hint, :hint_id, :describedby
 
       def initialize(local_assigns)
         @options = local_assigns[:options] || []
@@ -40,9 +40,9 @@ module GovukPublishingComponents
     private
 
       def get_options
-        return if options.nil?
+        return if @options.nil?
 
-        options.map do |option|
+        @options.map do |option|
           @selected_option = option[:value] if option[:selected]
           [
             option[:text],
