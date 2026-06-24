@@ -6,7 +6,7 @@
 
 @include govuk-media-query($media-type: print) {
   .gem-c-tag.govuk-tag {
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
     background: none;
     border: 2px solid govuk-colour("black");
   }

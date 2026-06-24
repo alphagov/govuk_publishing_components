@@ -139,13 +139,13 @@ $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
     outline: none;
 
     * {
-      color: $govuk-print-text-colour !important;
+      color: govuk-functional-colour(print-text) !important;
       background: none !important;
     }
 
     .govuk-table__header,
     .govuk-table__cell {
-      border-bottom: 1px solid $govuk-print-text-colour !important;
+      border-bottom: 1px solid govuk-functional-colour(print-text) !important;
     }
 
     .govuk-table__header {

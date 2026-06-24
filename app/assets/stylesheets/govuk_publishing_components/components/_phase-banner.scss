@@ -30,11 +30,11 @@
     &,
     & * {
       background: none !important;
-      color: $govuk-print-text-colour !important;
+      color: govuk-functional-colour(print-text) !important;
     }
 
     .govuk-tag {
-      border: 1pt solid $govuk-print-text-colour;
+      border: 1pt solid govuk-functional-colour(print-text);
     }
   }
 

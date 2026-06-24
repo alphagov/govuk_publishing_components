@@ -172,7 +172,7 @@
     break-inside: avoid;
 
     * {
-      color: $govuk-print-text-colour;
+      color: govuk-functional-colour(print-text);
     }
   }
 

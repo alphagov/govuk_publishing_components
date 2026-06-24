@@ -95,7 +95,7 @@ $thumbnail-icon-border-colour: govuk-colour("black", $variant: "tint-80");
   }
 
   .gem-c-attachment__metadata {
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
   }
 
   .gem-c-attachment__metadata,
