@@ -18,7 +18,7 @@
 }
 
 .gem-c-warning-text__text--highlight {
-  color: $govuk-error-colour;
+  color: govuk-functional-colour(error);
 }
 
 @include govuk-media-query($media-type: print) {

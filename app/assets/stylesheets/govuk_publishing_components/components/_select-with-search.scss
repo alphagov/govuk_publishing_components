@@ -84,7 +84,7 @@ $choices-button-dimension: 12px !default;
   }
 
   &.govuk-form-group--error .choices:not(.is-active):not(.is-focused):not(.is-open) .choices__inner {
-    border-color: $govuk-error-colour;
+    border-color: govuk-functional-colour(error);
   }
 
   .choices.is-focused,
