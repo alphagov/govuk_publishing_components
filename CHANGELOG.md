@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use multiple box shadows in attachment components in place of outline and box shadow ([PR #5503](https://github.com/alphagov/govuk_publishing_components/pull/5503))
+
 ## 66.6.1
 
 * Add styles for cards in govspeak ([PR #5516](https://github.com/alphagov/govuk_publishing_components/pull/5516))
@@ -15,7 +19,6 @@
 
 * Remove extra breadcrumbs padding on mobile ([PR #5501](https://github.com/alphagov/govuk_publishing_components/pull/5501))
 * Add auto layout option to cards component ([PR #5499](https://github.com/alphagov/govuk_publishing_components/pull/5499))
-* Use multiple box shadows in attachment components in place of outline and box shadow ([PR #5503](https://github.com/alphagov/govuk_publishing_components/pull/5503))
 
 ## 66.5.0
 
