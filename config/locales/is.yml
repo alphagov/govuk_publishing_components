@@ -64,6 +64,9 @@ is:
       - Við viljum setja fleiri vafrakökur til að átta okkur á hvernig þú notar GOV.UK
       - muna stillingarnar þínar og bæta opinbera þjónustu
       - Við notum líka vafrakökur af öðrum síðum til að auðvelda okkur að birta efni frá þeim.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Vafrakökur á GOV.UK
     devolved_nations:
       applies_to:

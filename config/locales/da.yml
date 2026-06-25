@@ -65,6 +65,9 @@ da:
       - hvordan du bruger GOV.UK
       - huske dine indstillinger og forbedre offentlige tjenester.
       - Vi bruger også cookies fra andre websteder for at hjælpe os med at levere indhold fra deres tjenester.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookies på GOV.UK
     devolved_nations:
       applies_to:

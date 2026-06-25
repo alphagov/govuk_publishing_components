@@ -9,9 +9,10 @@ describe "Cookie banner", type: :view do
     render_component({})
     assert_select '.gem-c-cookie-banner[id="global-cookie-message"][data-module="cookie-banner"]'
     assert_select ".govuk-cookie-banner__heading", text: "Cookies on GOV.UK"
-    assert_select ".govuk-cookie-banner__content p:nth-child(1)", text: "We use some essential cookies to make this website work."
-    assert_select ".govuk-cookie-banner__content p:nth-child(2)", text: "We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services."
-    assert_select ".govuk-cookie-banner__content p:nth-child(3)", text: "We also use cookies set by other sites to help us deliver content from their services."
+    assert_select ".govuk-cookie-banner__content p:nth-child(1)", text: "We use:"
+    assert_select ".govuk-cookie-banner__content ul > li:nth-child(1)", text: "essential cookies that make the website work - these are always on"
+    assert_select ".govuk-cookie-banner__content ul > li:nth-child(2)", text: "cookies to understand how the website is used - you can opt out of these"
+    assert_select ".govuk-cookie-banner__content p:nth-child(3)", text: "We’d also like to use additional cookies to help make the website better and improve your experience using GOV.UK."
     assert_select 'button[data-hide-cookie-banner="true"]'
   end
 
@@ -22,12 +23,12 @@ describe "Cookie banner", type: :view do
 
   it "renders a button for rejecting cookies" do
     render_component({})
-    assert_select ".govuk-button-group .gem-c-button", text: "Reject additional cookies"
+    assert_select ".govuk-button-group .gem-c-button", text: "Keep current settings"
   end
 
   it "renders a link for viewing cookie settings" do
     render_component({})
-    assert_select ".govuk-button-group .govuk-link", text: "View cookies"
+    assert_select ".govuk-link", text: "Change your cookie settings"
   end
 
   it "renders a confirmation message" do
@@ -54,7 +55,7 @@ describe "Cookie banner", type: :view do
       confirmation_message: "You’ve accepted all cookies.",
     )
     assert_select ".govuk-cookie-banner__heading.govuk-heading-m", text: "Can we store analytics cookies on your device?"
-    assert_select ".gem-c-cookie-banner__content", text: "This is some custom text with a link to the cookies page"
+    assert_select ".gem-c-cookie-banner__content p:nth-child(1)", text: "This is some custom text with a link to the cookies page"
     assert_select ".govuk-link[href='/cookies']", text: "cookies page"
     assert_select ".gem-c-cookie-banner__confirmation-message", text: /You’ve accepted all cookies./
   end
@@ -71,7 +72,7 @@ describe "Cookie banner", type: :view do
 
   it "renders with a custom preferences page link" do
     render_component(cookie_preferences_href: "/cookies")
-    assert_select ".govuk-button-group a[href='/cookies']", text: "View cookies"
+    assert_select "a[href='/cookies']", text: "Change your cookie settings"
 
     # Check that the confirmation message also includes the custom URL
     assert_select ".gem-c-cookie-banner__confirmation-message a[href='/cookies']", text: "change your cookie settings"
