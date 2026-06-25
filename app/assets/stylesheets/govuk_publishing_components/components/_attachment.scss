@@ -1,11 +1,8 @@
 $thumbnail-width: 99px;
 $thumbnail-height: 140px;
 $thumbnail-border-width: 5px;
-$thumbnail-background: govuk-colour("white");
-$thumbnail-border-colour: rgba(11, 12, 12, .1);
-$thumbnail-shadow-colour: rgba(11, 12, 12, .4);
-$thumbnail-shadow-width: 0 2px 2px;
-$thumbnail-icon-border-colour: govuk-colour("mid-grey");
+
+@use "sass:color";
 
 .gem-c-attachment {
   position: relative;
@@ -25,17 +22,17 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey");
   width: auto; // for IE8
   max-width: calc($thumbnail-width / 1.5);
   height: calc($thumbnail-height / 1.5);
-  border: $thumbnail-border-colour; // for IE9 & IE10
-  outline: $thumbnail-border-width solid $thumbnail-border-colour;
-  background: $thumbnail-background;
-  box-shadow: $thumbnail-shadow-width $thumbnail-shadow-colour;
-  fill: $thumbnail-icon-border-colour;
-  stroke: $thumbnail-icon-border-colour;
+  background: govuk-colour("white");
+  box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4), 0 0 0 5px color.adjust(govuk-colour("black"), $alpha: -0.9);
+  fill: govuk-colour("mid-grey");
+  stroke: govuk-colour("mid-grey");
 
   @include govuk-media-query($from: tablet) {
     max-width: $thumbnail-width;
     height: $thumbnail-height;
   }
+
+  @include high-contrast-outline;
 }
 
 .gem-c-attachment__details {
