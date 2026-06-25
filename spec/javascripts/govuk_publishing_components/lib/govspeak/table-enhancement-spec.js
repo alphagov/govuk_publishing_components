@@ -143,11 +143,15 @@ describe('Table enhancement', function () {
       expect(document.querySelector('.gem-c-modal-dialogue').style.display).toEqual('block')
 
       modalClose.click()
+      expect(document.activeElement).toEqual(buttons[0])
       expect(document.querySelector('.gem-c-modal-dialogue').style.display).toEqual('none')
 
       buttons[1].click()
       expect(modalContents.textContent).toContain('Neck')
       expect(document.querySelector('.gem-c-modal-dialogue').style.display).toEqual('block')
+
+      modalClose.click()
+      expect(document.activeElement).toEqual(buttons[1])
     })
   })
 })

@@ -28,7 +28,7 @@ window.GOVUK = window.GOVUK || {};
 
       var tableControls = document.createElement('div')
       tableControls.innerHTML = `
-        <button class="js-toggle-modal govuk-button govuk-button--secondary gem-c-govspeak__table-button" data-toggle="modal" data-target="${this.modalId}" data-button="${j}">Open ${tableCaption} in a popup</button>
+        <button class="js-toggle-modal govuk-button govuk-button--secondary gem-c-govspeak__table-button" data-toggle="modal" data-button="${j}">Open ${tableCaption} in a popup</button>
       `
       const parent = table.parentNode
       parent.insertBefore(tableControls, table)
