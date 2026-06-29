@@ -8,18 +8,11 @@
   }
 
   environment_exists = environment.present?
-  deprecated_navigation ||= false
   signout_link ||= false
 %>
 
-<% if environment_exists && deprecated_navigation %>
-  <div class="gem-c-header__environment">
-    <%= render "govuk_publishing_components/components/tag", { text: environment, colour: colour_map[environment.downcase] } %>
-  </div>
-<% end %>
-
 <div class="govuk-header__logo gem-c-header__logo">
-  <a href="<%= logo_link %>" class="govuk-header__link govuk-header__link--homepage">
+  <a href="<%= logo_link %>" class="govuk-header__homepage-link">
     <%= render "govuk_publishing_components/components/govuk_logo/govuk_logo" %>
     <% if product_name %>
       <span class="govuk-header__product-name gem-c-header__product-name">
@@ -27,7 +20,7 @@
       </span>
     <% end %>
   </a>
-  <% if environment_exists && !deprecated_navigation %>
+  <% if environment_exists %>
     <div class="gem-c-header__environment">
       <%= render "govuk_publishing_components/components/tag", { text: environment, colour: colour_map[environment.downcase] } %>
     </div>
@@ -35,9 +28,7 @@
 </div>
 
 <% if signout_link %>
-  <div class="govuk-header__content gem-c-header__content">
-    <nav class="gem-c-header__nav govuk-header__navigation">
-      <a class="govuk-header__link govuk-!-font-weight-bold" href="/auth/gds/sign_out">Sign out</a>
-    </nav>
+  <div class="gem-c-layout-header__signout">
+    <a class="gem-c-layout-header__signout-link govuk-!-font-weight-bold" href="/auth/gds/sign_out">Sign out</a>
   </div>
 <% end %>
