@@ -14,7 +14,7 @@ describe('The super header navigation', function () {
       <nav aria-labelledby="super-navigation-menu-heading" class="gem-c-layout-super-navigation-header__content"
         data-module="super-navigation-mega-menu">
         <div class="gem-c-layout-super-navigation-header__header-logo">
-          <a class="govuk-header__link govuk-header__link--homepage"
+          <a class="govuk-header__homepage-link"
             data-ga4-link="{'event_name':'navigation','type':'header menu bar','external':'false','text':'GOV.UK','section':'Logo','index_link':1,'index_section':0,'index_section_count':2,'index_total':1}"
             id="logo" aria-label="Go to the GOV.UK homepage" href="/">
             <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" viewBox="0 0 324 60" height="30" width="162"
