@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use multiple box shadows in attachment components in place of outline and box shadow ([PR #5503](https://github.com/alphagov/govuk_publishing_components/pull/5503))
+* Remove navigation functionality from the layout header component ([PR #5507](https://github.com/alphagov/govuk_publishing_components/pull/5507))
 
 ## 66.6.1
 
