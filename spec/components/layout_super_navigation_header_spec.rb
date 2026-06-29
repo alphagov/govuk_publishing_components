@@ -92,7 +92,7 @@ describe "Super navigation header", type: :view do
   it "has the correct default crown logo link" do
     render_component({})
 
-    assert_select "a.govuk-header__link--homepage[href='https://www.gov.uk/']", count: 1
+    assert_select "a.govuk-header__homepage-link[href='https://www.gov.uk/']", count: 1
   end
 
   it "allows a custom crown logo link" do
@@ -100,7 +100,7 @@ describe "Super navigation header", type: :view do
       logo_link: "https://www.example.com/",
     })
 
-    assert_select "a.govuk-header__link--homepage[href='https://www.example.com/']", count: 1
+    assert_select "a.govuk-header__homepage-link[href='https://www.example.com/']", count: 1
   end
 
   it "allows a custom crown logo link and custom title" do
@@ -109,8 +109,8 @@ describe "Super navigation header", type: :view do
       logo_link_title: "Go to example",
     })
 
-    assert_select "a.govuk-header__link--homepage[href='https://www.example.com/']", count: 1
-    assert_select "a.govuk-header__link--homepage[aria-label='Go to example']", count: 1
+    assert_select "a.govuk-header__homepage-link[href='https://www.example.com/']", count: 1
+    assert_select "a.govuk-header__homepage-link[aria-label='Go to example']", count: 1
   end
 
   it "renders homepage variant" do
