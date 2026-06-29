@@ -54,5 +54,6 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           # PERCY_TARGET_BRANCH: ${{ github.base_ref }}
-          PERCY_TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+          PERCY_TARGET_BRANCH: ${{ github.base_ref }}
+          PERCY_TARGET_COMMIT: ${{ github.sha }}
           MAIN_COMPONENT_GUIDE: true
