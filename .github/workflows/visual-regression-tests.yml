@@ -53,4 +53,9 @@ jobs:
       - run: yarn run percy exec -- bundle exec rspec --tag visual_regression
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          # PERCY_TARGET_BRANCH: ${{ github.base_ref }}
+          # PERCY_TARGET_BRANCH: ${{ github.base_ref }}
+          # PERCY_TARGET_COMMIT: ${{ github.sha }}
+          PERCY_TARGET_BRANCH: ${{ github.event.pull_request.base.ref }}
+          PERCY_TARGET_COMMIT: ${{ github.event.pull_request.base.sha }}
           MAIN_COMPONENT_GUIDE: true
