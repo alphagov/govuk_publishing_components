@@ -10,6 +10,7 @@ describe "Modal dialogue", type: :view do
       "Content"
     end
 
+    assert_select ".gem-c-modal-dialogue[data-module='modal-dialogue']"
     assert_select ".gem-c-modal-dialogue__content", text: "Content"
   end
 
@@ -21,11 +22,36 @@ describe "Modal dialogue", type: :view do
     assert_select ".gem-c-modal-dialogue__box.gem-c-modal-dialogue__box--wide", count: 1
   end
 
+  it "applies modifier class to the full width modal" do
+    render_component(id: "my-modal", full_width: true) do
+      "Content"
+    end
+
+    assert_select ".gem-c-modal-dialogue__box.gem-c-modal-dialogue__box--full-width", count: 1
+  end
+
   it "applies aria-label to the dialog element" do
     render_component(id: "my-modal", aria_label: "My modal") do
       "Content"
     end
 
     assert_select '.gem-c-modal-dialogue__box[aria-label="My modal"]'
+  end
+
+  it "applies modifier class to the scroll within modal" do
+    render_component(id: "my-modal", scroll_within: true) do
+      "Content"
+    end
+
+    assert_select ".gem-c-modal-dialogue.gem-c-modal-dialogue--scroll-within", count: 1
+  end
+
+  it "can disable the JavaScript module from starting" do
+    render_component(id: "my-modal", disable_module: true) do
+      "Content"
+    end
+
+    assert_select ".gem-c-modal-dialogue"
+    assert_select ".gem-c-modal-dialogue[data-module='modal-dialogue']", false
   end
 end

@@ -3,6 +3,7 @@
   local_assigns[:margin_bottom] ||= 0
   direction_class = "gem-c-govspeak--direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
+  omit_modal ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-govspeak govuk-govspeak")
@@ -10,6 +11,7 @@
   component_helper.add_class("js-disable-youtube") if disable_youtube_expansions
   component_helper.add_class("gem-c-govspeak--inverse") if inverse
   component_helper.add_data_attribute({ module: "govspeak" })
+  @include_modal ||= OpenStruct.new(modal_included: false)
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
   <% if local_assigns.include?(:content) %>
@@ -32,4 +34,16 @@
   <% elsif block_given? %>
     <%= yield %>
   <% end %>
+<% end %>
+
+<% unless @include_modal[:modal_included] || omit_modal %>
+  <%= render "govuk_publishing_components/components/modal_dialogue", {
+    id: "modal-for-tables",
+    full_width: true,
+    scroll_within: true,
+    disable_module: true,
+  } do %>
+    <div id="modal-content"></div>
+  <% end %>
+  <% @include_modal[:modal_included] = true %>
 <% end %>
