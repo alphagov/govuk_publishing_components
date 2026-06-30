@@ -42,6 +42,12 @@ ti:
       type:
         characters: ገጸ ባህርያት
         words: ቃላት
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: ወይ
     contents_list:

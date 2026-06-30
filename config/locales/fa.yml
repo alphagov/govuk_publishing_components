@@ -42,6 +42,12 @@ fa:
       type:
         characters: کاراکتر
         words: کلمه
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: یا
     contents_list:

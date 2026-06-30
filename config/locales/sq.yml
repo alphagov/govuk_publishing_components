@@ -42,6 +42,12 @@ sq:
       type:
         characters: karaktere
         words: fjalë
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: ose
     contents_list:

@@ -42,6 +42,12 @@ hi:
       type:
         characters: अक्षर
         words: शब्द
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: या
     contents_list:

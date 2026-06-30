@@ -46,6 +46,12 @@ cy:
       type:
         characters: nodau
         words: geiriau
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: neu
     contents_list:

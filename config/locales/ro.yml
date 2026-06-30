@@ -43,6 +43,12 @@ ro:
       type:
         characters: caractere
         words: cuvinte
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: sau
     contents_list:

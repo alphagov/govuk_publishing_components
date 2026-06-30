@@ -42,6 +42,12 @@ si:
       type:
         characters: අක්ෂර
         words: වචන
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: හෝ
     contents_list:

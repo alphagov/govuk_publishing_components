@@ -41,6 +41,12 @@ zh-hk:
       type:
         characters: 字元
         words: 字彙
+    chart:
+      accessibility_heading:
+      accessibility_html:
+      accessibility_link:
+      source:
+      table_dropdown:
     checkboxes:
       or: 或
     contents_list:
