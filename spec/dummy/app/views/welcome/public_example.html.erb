@@ -10,6 +10,18 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-m">Two-thirds column</h1>
+
+         <%= render "govuk_publishing_components/components/big_number", {
+          number: 119,
+          label: "Open consultations",
+        } %>
+
+        <%= render "govuk_publishing_components/components/big_number", {
+          number: 23,
+          label: "Ministerial departments",
+          href: "/government/organisations#ministerial_departments",
+        } %>
+
         <p class="govuk-body">This is a paragraph inside a two-thirds wide column</p>
       </div>
 
