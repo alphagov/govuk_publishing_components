@@ -10,10 +10,12 @@
   font-size: 80px;
   font-size: govuk-px-to-rem(80px);
   @include govuk-font($size: false, $weight: bold);
+  display: inline-block;
 }
 
 .gem-c-big-number__label {
   @include govuk-font($size: 19, $weight: bold);
+  display: block;
 
   // This pseudo element is to bypass an issue with NVDA where block level elements are dictated separately.
   // What's happening here is that the label and the number technically have an inline relationship
