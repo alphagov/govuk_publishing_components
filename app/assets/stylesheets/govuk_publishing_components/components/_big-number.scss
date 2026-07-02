@@ -3,6 +3,7 @@
   @include govuk-text-colour;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .gem-c-big-number__value {
