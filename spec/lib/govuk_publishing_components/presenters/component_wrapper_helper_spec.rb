@@ -1,3 +1,5 @@
+require "govuk_app_config"
+
 RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
   describe "Component helper" do
     it "accepts basic component attributes" do
@@ -18,6 +20,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: "submit",
         draggable: "true",
         title: "Hello",
+        suppress_output: true,
       }
       component_helper = described_class.new(args)
       expected = {
@@ -56,6 +59,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: nil,
         draggable: nil,
         title: nil,
+        suppress_output: true,
       )
       expect(component_helper.all_attributes).to eql({})
     end
@@ -74,13 +78,96 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         type: "",
         draggable: "",
         title: "",
+        suppress_output: true,
       )
       expect(component_helper.all_attributes).to eql({})
     end
 
+    describe "component options" do
+      it "outputs basic details" do
+        args = {
+          id: "this-is-my-id",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+        }.to_json
+        expect(component_helper.all_attributes[:data][:options]).to eql(expected)
+      end
+
+      it "outputs complex details and truncates them" do
+        args = {
+          id: "this-is-my-id",
+          data_attributes: {
+            module: "this-is-my-module",
+          },
+          title: "This is a very long title that should be shortened as it is too long.",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+          data: {
+            module: "this-is-my-module",
+            options: {
+              id: "this-is-my-id",
+              data_attributes: {
+                module: "this-is-my-module",
+              },
+              title: "This is a very long title that should be shortened",
+            }.to_json,
+          },
+          title: "This is a very long title that should be shortened as it is too long.",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+
+      it "outputs complex details and removes HTML" do
+        args = {
+          id: "this-is-my-id",
+          data_attributes: {
+            module: "this-is-my-module",
+          },
+          title: "<strong>This</strong> is a very long title that should be shortened as it is too long.",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+          data: {
+            module: "this-is-my-module",
+            options: {
+              id: "this-is-my-id",
+              data_attributes: {
+                module: "this-is-my-module",
+              },
+              title: "This is a very long title that should be shortened",
+            }.to_json,
+          },
+          title: "<strong>This</strong> is a very long title that should be shortened as it is too long.",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+    end
+
+    describe "when on production" do
+      before do
+        stub_const("ENV", { "GOVUK_ENVIRONMENT" => "production" })
+      end
+
+      it "does not include component options" do
+        args = {
+          id: "this-is-my-id",
+        }
+        component_helper = described_class.new(args)
+        expected = {
+          id: "this-is-my-id",
+        }
+        expect(component_helper.all_attributes).to eql(expected)
+      end
+    end
+
     describe "classes" do
       it "accepts valid class names" do
-        component_helper = described_class.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles")
+        component_helper = described_class.new(classes: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles", suppress_output: true)
         expected = {
           class: "gem-c-component govuk-component app-c-component brand--thing brand__thing direction-rtl gem-print-force-link-styles",
         }
@@ -159,7 +246,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       end
 
       it "can add data attributes to already passed data attributes" do
-        helper = described_class.new(data_attributes: { module: "original-module", other: "other" })
+        helper = described_class.new(data_attributes: { module: "original-module", other: "other" }, suppress_output: true)
         helper.add_data_attribute({ module: "extra-module", another: "another" })
         expect(helper.all_attributes[:data]).to eql({ module: "original-module extra-module", other: "other", another: "another" })
       end
