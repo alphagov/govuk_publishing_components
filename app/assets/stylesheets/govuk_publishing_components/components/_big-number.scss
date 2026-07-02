@@ -28,6 +28,8 @@
 .gem-c-big-number__link {
   display: inline-block;
   text-decoration: none;
+  display: flex;
+  flex-direction: column;
 
   // Add govuk-link hover decoration to main value if no label present but a href attribute is
   .gem-c-big-number__value--decorated {
