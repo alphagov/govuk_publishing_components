@@ -127,7 +127,7 @@ $choices-button-dimension: 12px !default;
     background-color: govuk-colour("black", $variant: "tint-95");
     box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("black", $variant: "tint-80");
     line-height: 1;
-    color: $govuk-text-colour;
+    color: govuk-functional-colour(text);
 
     .is-disabled & {
       opacity: 0.5;
