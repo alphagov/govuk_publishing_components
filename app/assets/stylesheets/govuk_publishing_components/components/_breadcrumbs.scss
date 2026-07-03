@@ -1,7 +1,7 @@
 @import "govuk/components/breadcrumbs/breadcrumbs";
 
 .gem-c-breadcrumbs--border-bottom {
-  border-bottom: 1px solid $govuk-border-colour;
+  border-bottom: 1px solid govuk-functional-colour(border);
   padding-bottom: govuk-spacing(1);
 
   &.govuk-breadcrumbs--collapse-on-mobile {

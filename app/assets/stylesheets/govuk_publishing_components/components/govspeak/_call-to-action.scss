@@ -16,7 +16,7 @@
 
     @include govuk-media-query($media-type: print) {
       background: none;
-      border: 1pt solid $govuk-border-colour;
+      border: 1pt solid govuk-functional-colour(border);
       padding: govuk-spacing(3);
       margin: govuk-spacing(3) 0;
     }
