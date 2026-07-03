@@ -32,7 +32,7 @@
 
     li:target {
       background: govuk-colour("black", $variant: "tint-95");
-      border-bottom: solid 3px $govuk-border-colour;
+      border-bottom: solid 3px govuk-functional-colour(border);
     }
 
     @include govuk-media-query($media-type: print) {
