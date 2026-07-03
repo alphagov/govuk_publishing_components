@@ -13,6 +13,6 @@
 
 @include govuk-media-query($media-type: print) {
   .gem-c-lead-paragraph {
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
   }
 }
