@@ -88,13 +88,13 @@
 @include govuk-media-query($media-type: print) {
   .gem-c-metadata {
     break-inside: avoid;
-    color: $govuk-print-text-colour !important;
+    color: govuk-functional-colour(print-text) !important;
     background: none;
     margin-bottom: 5mm;
 
     a,
     a:visited {
-      color: $govuk-print-text-colour !important;
+      color: govuk-functional-colour(print-text) !important;
     }
   }
 

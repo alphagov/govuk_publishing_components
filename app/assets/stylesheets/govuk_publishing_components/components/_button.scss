@@ -107,7 +107,7 @@
     display: inline-block;
     padding: govuk-spacing(1);
     border: solid 1px govuk-colour("black");
-    color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    color: govuk-functional-colour(print-text) !important; // stylelint-disable-line declaration-no-important
     text-decoration: none;
 
     &::after {
