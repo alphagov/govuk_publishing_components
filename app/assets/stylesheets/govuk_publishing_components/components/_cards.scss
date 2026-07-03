@@ -201,7 +201,7 @@
 
   &:focus {
     &::before {
-      border-color: $govuk-focus-text-colour;
+      border-color: govuk-functional-colour(focus-text);
     }
   }
 }

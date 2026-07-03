@@ -60,7 +60,7 @@
   }
 
   .gem-c-secondary-navigation__list-item-link:focus {
-    border-color: $govuk-focus-text-colour;
+    border-color: govuk-functional-colour(focus-text);
     border-left-color: transparent;
     position: relative;
     @include govuk-focused-text;
@@ -79,7 +79,7 @@
   }
 
   .gem-c-secondary-navigation__list-item-link:focus {
-    border-color: $govuk-focus-text-colour;
+    border-color: govuk-functional-colour(focus-text);
     border-left-color: transparent;
     @include govuk-focused-text;
 
