@@ -35,7 +35,7 @@ $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
       display: inline-block;
       position: relative;
       padding-right: $sort-link-arrow-size;
-      color: $govuk-link-colour;
+      color: govuk-functional-colour(link);
       text-decoration: none;
       @include govuk-link-style-no-visited-state;
     }
@@ -63,7 +63,7 @@ $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
 
   .govuk-table__header--active {
     color: $sort-link-active-colour;
-    background: $govuk-link-colour;
+    background: govuk-functional-colour(link);
 
     .app-table__sort-link {
       padding-right: govuk-spacing(4);
