@@ -46,6 +46,6 @@
 @include govuk-media-query($media-type: print) {
   .gem-c-step-nav-related {
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk-functional-colour(print-text);
   }
 }

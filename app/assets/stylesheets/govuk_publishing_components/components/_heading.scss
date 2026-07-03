@@ -43,8 +43,8 @@
   // Override margins and colors
   .gem-c-heading {
     margin: 0 !important;
-    color: $govuk-print-text-colour !important;
-    border-color: $govuk-print-text-colour !important;
+    color: govuk-functional-colour(print-text) !important;
+    border-color: govuk-functional-colour(print-text) !important;
     padding: 0;
   }
 
@@ -55,7 +55,7 @@
   .gem-c-heading--inverse {
     .gem-c-heading__context,
     .gem-c-heading__text {
-      color: $govuk-print-text-colour;
+      color: govuk-functional-colour(print-text);
     }
   }
 }
