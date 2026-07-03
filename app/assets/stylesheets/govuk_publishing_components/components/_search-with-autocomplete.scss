@@ -112,7 +112,7 @@ $large-input-size: 50px;
   flex: none;
   mask-image: url("govuk_publishing_components/icon-autocomplete-search-suggestion.svg");
   -webkit-mask-image: url("govuk_publishing_components/icon-autocomplete-search-suggestion.svg");
-  background-color: $govuk-secondary-text-colour;
+  background-color: govuk-functional-colour(secondary-text);
 }
 
 .gem-c-search-with-autocomplete__suggestion-text {
