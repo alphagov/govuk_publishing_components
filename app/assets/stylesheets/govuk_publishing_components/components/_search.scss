@@ -52,7 +52,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
     max-width: 68%;
     padding-left: govuk-spacing(3);
     z-index: 1;
-    color: $govuk-secondary-text-colour;
+    color: govuk-functional-colour(secondary-text);
     background: govuk-colour("white");
   }
 
@@ -195,7 +195,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
   .govuk-frontend-supported & {
     .gem-c-search__label {
-      color: $govuk-secondary-text-colour;
+      color: govuk-functional-colour(secondary-text);
     }
   }
 }
