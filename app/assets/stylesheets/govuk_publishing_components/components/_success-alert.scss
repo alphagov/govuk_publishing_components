@@ -5,14 +5,14 @@
   .gem-c-success-alert {
     break-inside: avoid;
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk-functional-colour(print-text);
 
     * {
-      color: $govuk-print-text-colour !important;
+      color: govuk-functional-colour(print-text) !important;
     }
 
     .govuk-notification-banner__header {
-      border-bottom: 1pt solid $govuk-print-text-colour;
+      border-bottom: 1pt solid govuk-functional-colour(print-text);
     }
 
     .govuk-notification-banner__title {
