@@ -36,7 +36,7 @@
   padding: govuk-spacing(6);
   padding-bottom: govuk-spacing(8);
   background: govuk-colour("black", $variant: "tint-95");
-  border: solid 2px $govuk-border-colour;
+  border: solid 2px govuk-functional-colour(border);
 }
 
 .gem-c-govspeak__youtube-placeholder-text {
