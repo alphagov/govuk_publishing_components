@@ -13,13 +13,13 @@
 
 .gem-c-reorderable-list__item {
   margin-bottom: govuk-spacing(3);
-  border: 1px solid $govuk-border-colour;
+  border: 1px solid govuk-functional-colour(border);
   padding: govuk-spacing(3);
 }
 
 .gem-c-reorderable-list__item--chosen {
   background-color: govuk-colour("black", $variant: "tint-95");
-  outline: 2px dotted $govuk-border-colour;
+  outline: 2px dotted govuk-functional-colour(border);
 }
 
 .gem-c-reorderable-list__item--drag {

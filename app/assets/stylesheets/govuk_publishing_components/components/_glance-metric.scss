@@ -1,5 +1,5 @@
 .gem-c-glance-metric {
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
   border-bottom: 0;
   @include govuk-responsive-margin(6, "bottom");
 
@@ -36,7 +36,7 @@
 
   &__context {
     min-height: 5em;
-    border-bottom: 1px solid $govuk-border-colour;
+    border-bottom: 1px solid govuk-functional-colour(border);
 
     @include govuk-media-query($until: mobile) {
       @include govuk-font(16);
