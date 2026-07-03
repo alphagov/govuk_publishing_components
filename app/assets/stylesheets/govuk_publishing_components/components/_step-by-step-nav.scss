@@ -112,7 +112,7 @@ $top-border: solid 1px govuk-colour("black", $variant: "tint-80");
 }
 
 .gem-c-step-nav__button {
-  color: $govuk-link-colour;
+  color: govuk-functional-colour(link);
   cursor: pointer;
   background: none;
   border: 0;
@@ -404,7 +404,7 @@ $top-border: solid 1px govuk-colour("black", $variant: "tint-80");
 
 .gem-c-step-nav__toggle-link {
   display: block;
-  color: $govuk-link-colour;
+  color: govuk-functional-colour(link);
   text-transform: capitalize;
   padding-bottom: govuk-spacing(6);
   @include step-nav-font(15, $line-height: 1.2);
