@@ -1,5 +1,5 @@
 .gem-c-sub-navigation-menu {
-  border-bottom: 1px solid $govuk-border-colour;
+  border-bottom: 1px solid govuk-functional-colour(border);
   @include govuk-font(19);
 }
 

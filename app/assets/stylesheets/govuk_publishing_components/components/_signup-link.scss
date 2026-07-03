@@ -22,7 +22,7 @@
 .gem-c-signup-link--with-background-and-border {
   padding: govuk-spacing(6);
   background-color: govuk-colour("black", $variant: "tint-95");
-  border: 1px solid $govuk-border-colour;
+  border: 1px solid govuk-functional-colour(border);
 }
 
 .gem-c-signup-link--link-only .gem-c-signup-link__link {
