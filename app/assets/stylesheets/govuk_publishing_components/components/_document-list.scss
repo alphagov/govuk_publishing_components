@@ -84,7 +84,7 @@
 
   & { // stylelint-disable-line no-duplicate-selectors
     // overriding govuk-text-colour mixin
-    color: $govuk-secondary-text-colour;
+    color: govuk-functional-colour(secondary-text);
   }
 
   .direction-rtl & {
