@@ -92,7 +92,7 @@ $thumbnail-border-width: 5px;
   }
 
   .gem-c-attachment__metadata {
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
   }
 
   .gem-c-attachment__metadata,
