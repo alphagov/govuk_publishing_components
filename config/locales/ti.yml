@@ -223,6 +223,8 @@ ti:
       input_title: ምድላይ / ሰርች ምግባር
       label: ኣብ ጎቭ.ዩኬ/GOV.UK ድለዩ።
       search_button: ምድላይ / ሰርች ምግባር
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab: እዞም ዝስዕቡ መላግቦታት ኣብ ሓድሽ ክፍሊ/ታብ ይኽፈቱ
       opens_in_new_tab: "(ኣብ ሓድሽ ክፍሊ/ታብ ይኽፈት)"

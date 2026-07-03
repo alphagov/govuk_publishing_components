@@ -224,6 +224,8 @@ so:
       input_title: Baadh
       label: Baadh GOV.UK
       search_button: Baadh
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

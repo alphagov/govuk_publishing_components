@@ -220,6 +220,8 @@ pa-pk:
       input_title: کھوج
       label: GOV.UK اُتے کھوج کرو
       search_button: کھوج
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

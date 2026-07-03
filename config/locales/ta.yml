@@ -225,6 +225,8 @@ ta:
       input_title: தேடு
       label: GOV.UK-யில் தேடுக
       search_button: தேடு
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

@@ -225,6 +225,8 @@ tr:
       input_title: Ara
       label: GOV.UK adresini ara
       search_button: Ara
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

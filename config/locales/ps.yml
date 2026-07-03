@@ -221,6 +221,8 @@ ps:
       input_title: لټون
       label: په GOV.UK کې لټون وکړئ
       search_button: لټون
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

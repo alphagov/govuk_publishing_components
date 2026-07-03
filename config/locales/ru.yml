@@ -228,6 +228,8 @@ ru:
       input_title: Поиск
       label: Поиск на GOV.UK
       search_button: Поиск
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

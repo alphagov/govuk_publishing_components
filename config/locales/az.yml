@@ -224,6 +224,8 @@ az:
       input_title: Axtar
       label: GOV.UK-də axtar
       search_button: Axtar
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

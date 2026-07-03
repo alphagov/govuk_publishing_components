@@ -224,6 +224,8 @@ id:
       input_title: Cari
       label: Cari di GOV.UK
       search_button: Cari
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

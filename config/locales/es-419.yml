@@ -224,6 +224,8 @@ es-419:
       input_title: Buscar
       label: Buscar en GOV.UK
       search_button: Buscar
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

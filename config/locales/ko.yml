@@ -219,6 +219,8 @@ ko:
       input_title:
       label:
       search_button:
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

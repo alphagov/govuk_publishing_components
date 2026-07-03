@@ -231,6 +231,8 @@ uk:
       input_title: Пошук
       label: Пошук на GOV.UK
       search_button: Пошук
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

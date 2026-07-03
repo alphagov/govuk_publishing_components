@@ -226,6 +226,8 @@ gd:
       input_title: Taighde
       label: Cuardaigh ar GOV.UK
       search_button: Taighde
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

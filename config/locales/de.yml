@@ -228,6 +228,8 @@ de:
       input_title: Suche
       label: Auf GOV.UK suchen
       search_button: Suche
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
