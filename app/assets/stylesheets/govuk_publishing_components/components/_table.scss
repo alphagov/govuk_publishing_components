@@ -13,7 +13,7 @@ $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
 
 .govuk-table__cell:empty,
 .govuk-table__cell--empty {
-  color: $govuk-secondary-text-colour;
+  color: govuk-functional-colour(secondary-text);
 }
 
 .govuk-table--sortable {
