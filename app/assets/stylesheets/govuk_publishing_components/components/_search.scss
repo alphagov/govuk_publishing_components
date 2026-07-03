@@ -64,7 +64,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 }
 
 @mixin gem-c-search-input-focus {
-  outline: $govuk-focus-width solid $govuk-focus-colour;
+  outline: $govuk-focus-width solid govuk-functional-colour(focus);
   // Ensure outline appears outside of the element
   outline-offset: 0;
   // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width`
@@ -137,7 +137,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
   &:focus {
     z-index: 2;
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
     // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width` - this is for consistency with
     // Also, `outline` cannot be utilised
     // here as it is already used for the yellow focus state.
