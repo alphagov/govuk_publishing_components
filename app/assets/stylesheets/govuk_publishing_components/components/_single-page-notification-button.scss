@@ -2,7 +2,7 @@
   padding: govuk-spacing(2);
   margin: govuk-spacing(0);
   border: 1px solid govuk-colour("black", $variant: "tint-25");
-  color: $govuk-link-colour;
+  color: govuk-functional-colour(link);
   cursor: pointer;
   background: none;
   @include govuk-font(16);
