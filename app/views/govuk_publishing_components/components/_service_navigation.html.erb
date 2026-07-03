@@ -3,7 +3,7 @@
   service_name_url ||= nil
   navigation_items ||= []
   navigation_aria_label ||= t("components.layout_header.menu")
-  toggle_text ||= "Menu"
+  toggle_text ||= t("components.service_navigation.menu_toggle")
   inverse ||= false
   collapse_navigation_on_mobile = local_assigns.fetch(:collapse_navigation_on_mobile, navigation_items.length > 1)
 
