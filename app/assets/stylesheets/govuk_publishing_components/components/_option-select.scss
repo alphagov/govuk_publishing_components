@@ -37,7 +37,7 @@
   text-align: left;
   padding: 0;
   cursor: pointer;
-  color: $govuk-link-colour;
+  color: govuk-functional-colour(link);
 
   &:hover {
     text-decoration: underline;
