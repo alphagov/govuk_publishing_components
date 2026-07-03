@@ -48,7 +48,7 @@ $gem-c-print-link-background-height: 18px;
   @include govuk-font(16);
 
   &:focus {
-    background-color: $govuk-focus-colour;
+    background-color: govuk-functional-colour(focus);
     border-color: transparent;
     @include govuk-focused-text;
   }

@@ -32,7 +32,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   border: 0;
 
   &:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
   }
 
   @include govuk-font($size: 19);
@@ -129,7 +129,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
     outline: none;
     box-shadow: none;
     color: govuk-colour("black");
-    background: $govuk-focus-colour;
+    background: govuk-functional-colour(focus);
     @include govuk-focused-text;
   }
 }
