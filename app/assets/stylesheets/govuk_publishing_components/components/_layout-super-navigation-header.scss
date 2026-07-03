@@ -211,7 +211,7 @@ $search-icon-height: 20px;
 
   &:focus {
     .gem-c-layout-super-navigation-header__navigation-item-link-inner {
-      border-right-color: $govuk-focus-colour;
+      border-right-color: govuk-functional-colour(focus);
     }
   }
 }
@@ -296,7 +296,7 @@ $search-icon-height: 20px;
     }
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      border-right-color: $govuk-focus-colour;
+      border-right-color: govuk-functional-colour(focus);
 
       &::before {
         @include chevron(govuk-colour("black"), true);
@@ -371,7 +371,7 @@ $search-icon-height: 20px;
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       color: govuk-colour("black");
-      border-right-color: $govuk-focus-colour;
+      border-right-color: govuk-functional-colour(focus);
 
       &::before {
         @include chevron(govuk-colour("black"), true);
@@ -433,7 +433,7 @@ $search-icon-height: 20px;
   @include focus-and-focus-visible {
     z-index: 11;
     // these declarations override govuk-focused-text because the compiler prefers @include to be last
-    border-color: $govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
+    border-color: govuk-functional-colour(focus) !important; // stylelint-disable-line declaration-no-important
     box-shadow: none !important; // stylelint-disable-line declaration-no-important
     @include govuk-focused-text;
 
@@ -478,7 +478,7 @@ $search-icon-height: 20px;
 
     @include focus-and-focus-visible {
       // these declarations override govuk-focused-text because the compiler prefers @include to be last
-      border-color: $govuk-focus-colour !important; // stylelint-disable-line declaration-no-important
+      border-color: govuk-functional-colour(focus) !important; // stylelint-disable-line declaration-no-important
       box-shadow: none !important; // stylelint-disable-line declaration-no-important
       @include govuk-focused-text;
 
