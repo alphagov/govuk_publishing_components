@@ -36,7 +36,7 @@ $gem-c-print-link-background-height: 18px;
 
   &:focus {
     border: 0;
-    box-shadow: 0 $govuk-focus-width $govuk-text-colour;
+    box-shadow: 0 $govuk-focus-width govuk-functional-colour(text);
   }
 }
 
