@@ -144,7 +144,7 @@ $top-border: solid 1px govuk-colour("black", $variant: "tint-80");
     }
 
     .gem-c-step-nav__chevron::after {
-      color: $govuk-focus-colour;
+      color: govuk-functional-colour(focus);
     }
 
     .gem-c-step-nav____title-text-focus,
