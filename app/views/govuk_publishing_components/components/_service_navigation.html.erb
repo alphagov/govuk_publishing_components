@@ -13,6 +13,7 @@
   component_helper.add_data_attribute({ module: "govuk-service-navigation" })
 
   full_width ||= false
+  nav_id = "navigation-#{SecureRandom.hex(4)}"
 %>
 <% if service_name.present? || navigation_items.present? %>
   <% service_navigation_content = capture do %>
@@ -31,11 +32,11 @@
         <% if navigation_items.present? %>
           <nav aria-label="<%= navigation_aria_label %>" class="govuk-service-navigation__wrapper">
             <% if collapse_navigation_on_mobile %>
-              <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+              <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="<%= nav_id %>" hidden aria-hidden="true">
                 Menu
               </button>
             <% end %>
-            <ul class="govuk-service-navigation__list" id="navigation">
+            <ul class="govuk-service-navigation__list" id="<%= nav_id %>">
               <% navigation_items.each do |nav| %>
                 <%
                   nav_classes = %w(govuk-service-navigation__item)
