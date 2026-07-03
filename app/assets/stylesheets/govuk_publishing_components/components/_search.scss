@@ -31,7 +31,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
 .gem-c-search__label {
   display: block;
-  color: $govuk-text-colour;
+  color: govuk-functional-colour(text);
   cursor: text;
   text-overflow: ellipsis;
   height: 90%;
@@ -59,7 +59,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
   // match label colour with the label component colour
   // when javascript is enabled and inline_label option  is set to false
   .govuk-frontend-supported .gem-c-search--separate-label & {
-    color: $govuk-text-colour;
+    color: govuk-functional-colour(text);
   }
 }
 
