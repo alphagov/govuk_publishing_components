@@ -223,6 +223,8 @@ ku:
       input_title: گەڕان
       label: گەڕان لە ماڵپەڕی GOV.UK
       search_button: گەڕان
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab: ئەم بەستەرانەی خوارەوە لە تابێکی نوێدا دەکرێنەوە
       opens_in_new_tab: "(لە تابی نوێدا دەکرێتەوە)"

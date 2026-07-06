@@ -220,6 +220,8 @@ ky:
       input_title: Издөө
       label: GOV.UK ичинен издөө
       search_button: Издөө
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab: Төмөнкү шилтемелер жаңы өтмөктө ачылат
       opens_in_new_tab: "(жаңы таблицада ачат)"

@@ -225,6 +225,8 @@ bn:
       input_title: খুঁজুন
       label: GOV.UK-এ অনুসন্ধান করুন
       search_button: খুঁজুন
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

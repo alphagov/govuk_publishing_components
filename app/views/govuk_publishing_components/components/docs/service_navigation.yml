@@ -24,6 +24,17 @@ examples:
         href: "#"
       - text: Navigation item 3
         href: "#"
+  with_custom_mobile_toggle_text:
+    data:
+      toggle_text: See the menu
+      navigation_items:
+      - text: Navigation item 1
+        href: "#"
+        active: true
+      - text: Navigation item 2
+        href: "#"
+      - text: Navigation item 3
+        href: "#"
   with_service_name:
     data:
       service_name: My service name

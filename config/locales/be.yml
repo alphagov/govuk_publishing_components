@@ -230,6 +230,8 @@ be:
       input_title: Пошук
       label: Шукаць на GOV.UK
       search_button: Пошук
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

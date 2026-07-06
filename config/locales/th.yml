@@ -222,6 +222,8 @@ th:
       input_title: ค้นหา
       label: ค้นหาใน GOV.UK
       search_button: ค้นหา
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

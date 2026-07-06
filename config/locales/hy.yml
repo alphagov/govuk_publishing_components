@@ -228,6 +228,8 @@ hy:
       input_title: Որոնում
       label: Որոնել GOV.UK կայքում
       search_button: Որոնում
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

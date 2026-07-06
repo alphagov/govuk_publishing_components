@@ -223,6 +223,8 @@ fa:
       input_title: جستجو
       label: جستجو در GOV.UK
       search_button: جستجو
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

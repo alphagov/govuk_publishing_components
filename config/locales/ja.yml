@@ -220,6 +220,8 @@ ja:
       input_title: 検索
       label: GOV.UKで検索
       search_button: 検索
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

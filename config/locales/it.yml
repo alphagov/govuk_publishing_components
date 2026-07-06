@@ -224,6 +224,8 @@ it:
       input_title: Cerca
       label: Cerca su GOV.UK
       search_button: Cerca
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

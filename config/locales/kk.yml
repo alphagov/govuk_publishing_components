@@ -224,6 +224,8 @@ kk:
       input_title: Іздеу
       label: GOV.UK веб-сайтында іздеу
       search_button: Іздеу
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

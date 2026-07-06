@@ -224,6 +224,8 @@ sq:
       input_title: Kërko
       label: Kërko në GOV.UK
       search_button: Kërko
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

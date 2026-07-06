@@ -224,6 +224,8 @@ si:
       input_title: සොයන්න
       label: GOV.UK මත සොයන්න
       search_button: සොයන්න
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

@@ -44,6 +44,11 @@ describe "Service navigation", type: :view do
     assert_select(".govuk-service-navigation__item:nth-child(3) .govuk-service-navigation__link", text: "Navigation item 3")
   end
 
+  it "renders custom toggle text" do
+    render_component({ navigation_items:, toggle_text: "Toggle me" })
+    assert_select(".govuk-service-navigation__toggle", text: "Toggle me")
+  end
+
   it "renders with data attributes on links" do
     render_component({ navigation_items: })
     assert_select("div.gem-c-service-navigation")

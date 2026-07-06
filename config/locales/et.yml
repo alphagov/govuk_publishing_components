@@ -227,6 +227,8 @@ et:
       input_title: Otsing
       label: Otsige saidilt GOV.UK
       search_button: Otsing
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:

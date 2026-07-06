@@ -223,6 +223,8 @@ vi:
       input_title: Tìm kiếm
       label: Tìm kiếm trên GOV.UK
       search_button: Tìm kiếm
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab:
       opens_in_new_tab:
