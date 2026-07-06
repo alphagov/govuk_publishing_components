@@ -2,7 +2,6 @@
   @include govuk-text-colour;
   @include govuk-font(16);
   @include responsive-bottom-margin;
-  @include govuk-clearfix;
 
   a {
     font-weight: bold;
@@ -31,6 +30,11 @@
 
 .gem-c-metadata__list {
   margin: 0;
+
+  @include govuk-media-query($from: tablet) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
 }
 
 .gem-c-metadata--inverse-padded {
@@ -58,10 +62,8 @@
   margin-top: .5em;
 
   @include govuk-media-query($from: tablet) {
-    box-sizing: border-box;
-    float: inline-start;
     padding-inline-start: 0;
-    padding-inline-end: govuk-spacing(1);
+    padding-inline-end: govuk-spacing(2);
     margin-top: 0;
   }
 }
@@ -71,7 +73,7 @@
 
   @include govuk-media-query($from: tablet) {
     &:not(:last-of-type) {
-      margin-bottom: govuk-spacing(1);
+      margin-bottom: govuk-spacing(2);
     }
   }
 }
