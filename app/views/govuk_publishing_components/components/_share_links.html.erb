@@ -33,13 +33,13 @@
     <ul class="gem-c-share-links__list">
       <% links.each_with_index do |link, index| %>
         <% link_text = capture do %>
-          <span class="govuk-visually-hidden">
-            <% if link[:hidden_text] %>
-              <%= link[:hidden_text] %>
-            <% else %>
-              Share on
+          <% if link.include?(:hidden_text) %>
+            <% if link[:hidden_text].present? %>
+              <span class="govuk-visually-hidden"><%= link[:hidden_text] %></span>
             <% end %>
-          </span>
+          <% else %>
+            <span class="govuk-visually-hidden">Share on</span>
+          <% end %>
           <%= link[:text] %>
           <span class="govuk-visually-hidden">
             <%= t("components.share_links.opens_in_new_tab") %>

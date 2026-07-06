@@ -140,6 +140,26 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: "Tweet to"
   end
 
+  it "displays without visually hidden text" do
+    links_with_no_hidden_text = [
+      {
+        href: "/facebook",
+        text: "Share on Facebook",
+        icon: "facebook",
+        hidden_text: "",
+      },
+      {
+        href: "/twitter",
+        text: "Share on Twitter",
+        icon: "twitter",
+        hidden_text: "",
+      },
+    ]
+    render_component(links: links_with_no_hidden_text)
+    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"] .govuk-visually-hidden", text: /\AShare on/, count: 0
+    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: /\AShare on/, count: 0
+  end
+
   it "adds the correct classes when flexbox is true" do
     render_component(links:, flexbox: true)
     assert_select ".gem-c-share-links--flexbox"
