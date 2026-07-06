@@ -44,7 +44,7 @@
     margin: govuk-spacing(2) 0;
 
     @include govuk-media-query($from: tablet) {
-      margin: govuk-spacing(3) 0;
+      margin: 0;
     }
   }
 }
