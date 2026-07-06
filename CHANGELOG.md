@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.7.0
 
 * Add option to change Service navigation toggle text ([PR #5549](https://github.com/alphagov/govuk_publishing_components/pull/5549))
 * Use multiple box shadows in attachment components in place of outline and box shadow ([PR #5503](https://github.com/alphagov/govuk_publishing_components/pull/5503))
