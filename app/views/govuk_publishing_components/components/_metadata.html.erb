@@ -64,11 +64,11 @@
       <dd class="gem-c-metadata__definition"><%= history %></dd>
     <% end %>
     <% if local_assigns.include?(:first_published) && first_published %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.published") %></dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.published") %>:</dt>
       <dd class="gem-c-metadata__definition"><%= first_published %></dd>
     <% end %>
     <% if local_assigns.include?(:last_updated) && last_updated %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %></dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %>:</dt>
       <dd class="gem-c-metadata__definition" data-module="gem-toggle">
         <%= last_updated %>
         <% if local_assigns.include?(:see_updates_link) %>
