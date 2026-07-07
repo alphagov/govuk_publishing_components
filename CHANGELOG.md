@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add chartkick to the gemspec ([PR #5558](https://github.com/alphagov/govuk_publishing_components/pull/5558))
+
 ## 66.7.0
 
 * Add option to change Service navigation toggle text ([PR #5549](https://github.com/alphagov/govuk_publishing_components/pull/5549))
