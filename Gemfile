@@ -16,5 +16,3 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
-
-gem "chartkick", "~> 5.2"
