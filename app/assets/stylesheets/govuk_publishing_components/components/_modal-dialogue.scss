@@ -14,6 +14,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   overflow-x: hidden;
   overflow-y: scroll;
   outline: 0;
+  max-width: none !important; // stylelint-disable-line declaration-no-important
 }
 
 .gem-c-modal-dialogue__box {
@@ -58,6 +59,14 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 
   @include govuk-media-query($from: tablet, $until: $govuk-modal-wide-breakpoint) {
     margin: $govuk-modal-margin;
+  }
+}
+
+.gem-c-modal-dialogue__box--full-width {
+  @include govuk-media-query($from: tablet) {
+    max-width: none;
+    margin-left: govuk-spacing(1);
+    margin-right: govuk-spacing(1);
   }
 }
 
@@ -131,5 +140,24 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
     color: govuk-colour("black");
     background: $govuk-focus-colour;
     @include govuk-focused-text;
+  }
+}
+
+.gem-c-modal-dialogue--scroll-within {
+  .gem-c-modal-dialogue__box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gem-c-modal-dialogue__content {
+    overflow-y: scroll;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    .gem-c-modal-dialogue__box {
+      max-height: 94vh;
+      margin-top: 3vh;
+      margin-bottom: 0;
+    }
   }
 }
