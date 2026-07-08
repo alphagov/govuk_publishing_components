@@ -10,7 +10,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
       }
 
       expected = {
-        chartArea: { width: "80%", height: "60%" },
+        chartArea: { width: "auto", height: "auto" },
         crosshair: { orientation: "vertical", trigger: "both", color: "#ccc" },
         curveType: "none",
         enableInteractivity: true,

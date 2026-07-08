@@ -30,7 +30,7 @@ module GovukPublishingComponents
       # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
       def chart_options
         {
-          chartArea: { width: "80%", height: "60%" },
+          chartArea: { width: "auto", height: "auto" },
           crosshair: { orientation: "vertical", trigger: "both", color: "#ccc" },
           curveType: "none",
           enableInteractivity: @enable_interactivity,
