@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.7.1
 
 * Set chart component's chartArea to auto ([PR #5561](https://github.com/alphagov/govuk_publishing_components/pull/5561))
 * Add chartkick to the gemspec ([PR #5558](https://github.com/alphagov/govuk_publishing_components/pull/5558))
