@@ -23,3 +23,12 @@
     margin-top: govuk-spacing(2);
   }
 }
+
+.gem-c-service-navigation--columns-layout {
+  .govuk-service-navigation__container {
+    @include govuk-media-query($from: tablet) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
+  }
+}

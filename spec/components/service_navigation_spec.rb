@@ -158,4 +158,18 @@ describe "Service navigation", type: :view do
     })
     assert_select(".gem-c-service-navigation--hide-service-name-on-mobile")
   end
+
+  it "renders the columns_layout option correctly" do
+    render_component({
+      navigation_items: [
+        {
+          text: "Navigation item 1",
+          href: "#",
+        },
+      ],
+      columns_layout: true,
+      service_name: "My service home",
+    })
+    assert_select(".gem-c-service-navigation--columns-layout")
+  end
 end
