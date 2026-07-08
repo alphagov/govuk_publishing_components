@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add chartkick to the gemspec ([PR #5558](https://github.com/alphagov/govuk_publishing_components/pull/5558))
+* Do not render hidden "share" text elements if no hidden text is provided ([PR #5554](https://github.com/alphagov/govuk_publishing_components/pull/5554))
 
 ## 66.7.0
 
