@@ -3,3 +3,23 @@
 .gem-c-service-navigation--full-width {
   padding-left: govuk-spacing(3);
 }
+
+.gem-c-service-navigation--hide-service-name-on-mobile {
+  .govuk-service-navigation__service-name {
+    display: none;
+
+    @include govuk-media-query($from: tablet) {
+      display: block;
+    }
+  }
+
+  .govuk-service-navigation__item:first-child {
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
+  }
+
+  .govuk-service-navigation__service-name + .govuk-service-navigation__wrapper .govuk-service-navigation__toggle {
+    margin-top: govuk-spacing(2);
+  }
+}

@@ -142,4 +142,20 @@ describe "Service navigation", type: :view do
                        collapse_navigation_on_mobile: true })
     assert_select(".govuk-service-navigation__toggle", text: "Menu")
   end
+
+  it "renders the hide_service_name_on_mobile option correctly" do
+    render_component({
+      navigation_items: [
+        {
+          text: "Navigation item 1",
+          href: "#",
+        },
+      ],
+      hide_service_name_on_mobile: true,
+      service_name: "My service home",
+      service_name_url: "/home",
+      toggle_text: "My service",
+    })
+    assert_select(".gem-c-service-navigation--hide-service-name-on-mobile")
+  end
 end
