@@ -12,7 +12,7 @@ module GovukPublishingComponents
         },
         {
           type: "utility",
-          apps: %w[account-api signon govspeak govspeak-preview release govuk-developer-docs govuk-chat govuk_web_banners].sort,
+          apps: %w[account-api signon govspeak govspeak-preview release govuk-developer-docs govuk_web_banners].sort,
         },
       ]
 
