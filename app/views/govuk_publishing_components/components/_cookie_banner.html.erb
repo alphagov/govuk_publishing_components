@@ -43,7 +43,13 @@
               </ul>
               <p class="govuk-body"><%= t("components.cookie_banner.text_additional_cookies") %></p>
             <% end %>
-            <p class="govuk-body govuk-!-static-margin-bottom-4">
+            <p class="govuk-body govuk-!-static-margin-bottom-4"
+            <% unless disable_ga4 %>
+                data-ga4-cookie-banner
+                data-module="ga4-link-tracker"
+                data-ga4-set-indexes
+                data-ga4-link="<%= { event_name: "navigation", type: "cookie banner", section: t("components.cookie_banner.title", locale: :en) }.to_json %>"
+              <% end %>>
               <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
             </p>
           </div>
@@ -54,24 +60,51 @@
             data-ga4-set-indexes
             data-ga4-link="<%= { event_name: "navigation", type: "cookie banner", section: t("components.cookie_banner.confirmation_message.accepted", locale: :en) }.to_json %>"
           <% end %>><%= t("components.cookie_banner.confirmation_message.accepted") %>. <span class="gem-c-cookie-banner__confirmation-message"><%= confirmation_message %></span></p>
-          <p class="gem-c-cookie-banner__confirmation-message--rejected govuk-body" hidden><%= t("components.cookie_banner.confirmation_message.rejected") %>. <span class="gem-c-cookie-banner__confirmation-message"><%= confirmation_message %></span></p>
+          <p class="gem-c-cookie-banner__confirmation-message--rejected govuk-body" hidden><%= t("components.cookie_banner.confirmation_message.rejected") %>.
+          <span class="gem-c-cookie-banner__confirmation-message"
+            <% unless disable_ga4 %>
+              data-ga4-cookie-banner
+              data-module="ga4-link-tracker"
+              data-ga4-set-indexes
+              data-ga4-link="<%= { event_name: "navigation", type: "cookie banner", section: t("components.cookie_banner.confirmation_message.rejected", locale: :en) }.to_json %>"
+            <% end %>><%= confirmation_message %></span></p>
         </div>
       </div>
     </div>
-    <div class="js-confirmation-buttons govuk-button-group">
+    <div class="js-confirmation-buttons govuk-button-group" <%= tag.attributes({ data: { module: "ga4-event-tracker" } }) unless disable_ga4 %>>
+      <%
+        ga4_event_accept = {
+          event_name: "select_content",
+          type: "cookie banner",
+          text: t("components.cookie_banner.buttons.accept_cookies", locale: :en),
+          action: "accept",
+          section: t("components.cookie_banner.title", locale: :en),
+        }.to_json unless disable_ga4
+      %>
       <%= render "govuk_publishing_components/components/button", {
         name: "cookies",
         text: t("components.cookie_banner.buttons.accept_cookies"),
         data_attributes: {
           "accept-cookies": "true",
           "cookie-types": "all",
+          "ga4-event": ga4_event_accept,
         },
       } %>
+      <%
+        ga4_event_keep = {
+          event_name: "select_content",
+          type: "cookie banner",
+          text: t("components.cookie_banner.buttons.reject_cookies", locale: :en),
+          action: "keep",
+          section: t("components.cookie_banner.title", locale: :en),
+        }.to_json unless disable_ga4
+      %>
       <%= render "govuk_publishing_components/components/button", {
         name: "cookies",
         text: t("components.cookie_banner.buttons.reject_cookies"),
         data_attributes: {
           "reject-cookies": "true",
+          "ga4-event": ga4_event_keep,
         },
       } %>
     </div>
