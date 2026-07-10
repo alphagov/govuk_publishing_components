@@ -7,6 +7,9 @@
   part_of ||= []
   part_of = Array(part_of)
 
+  page_history ||= []
+  page_history = Array(page_history)
+
   other ||= nil
   inverse ||= false
   inverse_compress ||= false
@@ -14,6 +17,9 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-metadata")
   component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)
+
+  component_helper.add_class("gem-c-metadata--history") if page_history.any?
+  component_helper.set_id("full-publication-update-history") if page_history.any?
 
   if inverse
     component_helper.add_class("gem-c-metadata--inverse")
@@ -61,13 +67,38 @@
     <% end %>
     <% if local_assigns.include?(:last_updated) && last_updated %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %></dt>
-      <dd class="gem-c-metadata__definition">
+      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
         <%= last_updated %>
         <% if local_assigns.include?(:see_updates_link) %>
           &#8212; <a href="#full-publication-update-history"
                     class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link">
             <%= t("components.metadata.see_all_updates") %>
           </a>
+        <% end %>
+        <% if page_history.any? %>
+          <span aria-hidden="true">&#8212; </span>
+          <% page_history_toggle_id = "page-history-#{SecureRandom.hex(4)}" %>
+          <a
+            href="#full-history"
+            class="gem-c-metadata__toggle govuk-link"
+            data-controls="<%= page_history_toggle_id %>"
+            data-expanded="false"
+            data-toggled-text='<%= t("components.metadata.hide_all_updates", locale: :en) %>'
+            data-module="ga4-event-tracker"
+            data-ga4-event='<%= { event_name: "select_content", type: "content history", section: "Footer" }.to_json %>'
+            data-ga4-expandable>
+            <%= t("components.metadata.show_all_updates", locale: :en) %>
+          </a>
+          <div class="gem-c-metadata__change-history js-hidden" id="<%= page_history_toggle_id %>">
+            <ol class="gem-c-metadata__list">
+              <% page_history.each do |change| %>
+                <li class="gem-c-metadata__change-item">
+                  <time class="gem-c-metadata__change-date timestamp" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
+                  <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
+                </li>
+              <% end %>
+            </ol>
+          </div>
         <% end %>
       </dd>
     <% end %>
