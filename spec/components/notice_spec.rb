@@ -72,8 +72,8 @@ describe "Notice", type: :view do
     assert_select ".gem-c-notice__title", text: 'Advisory Committee on Novel Foods and Processes has a <a href="http://www.food.gov.uk/acnfp">separate website</a>'
   end
 
-  it "adds an aria-live attribute when the aria-live flag is provided" do
-    render_component(title: "Your settings have been saved", aria_live: true)
+  it "adds an aria-live attribute when the aria value is provided" do
+    render_component(title: "Your settings have been saved", aria: { live: "polite" })
     assert_select ".gem-c-notice[aria-live=polite]"
   end
 

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** remove the aria_live option from the notice component ([PR #5568](https://github.com/alphagov/govuk_publishing_components/pull/5568))
+
 ## 66.9.0
 
 * Improve the look of the metadata component ([PR #5552](https://github.com/alphagov/govuk_publishing_components/pull/5552))
