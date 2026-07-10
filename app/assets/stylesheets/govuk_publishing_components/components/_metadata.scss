@@ -31,7 +31,6 @@
 
 .gem-c-metadata__list {
   margin: 0;
-  padding: 0;
 }
 
 .gem-c-metadata--inverse-padded {
@@ -94,10 +93,6 @@
   border-top: 1px solid $govuk-border-colour;
 }
 
-.gem-c-metadata__page-history {
-  display: inline-block;
-}
-
 .govuk-frontend-supported .gem-c-metadata .js-hidden {
   display: none;
   visibility: hidden;
@@ -113,20 +108,19 @@
 }
 
 .gem-c-metadata__change-history {
-  margin: govuk-spacing(4) 0;
-}
-
-.gem-c-metadata__change-item {
-  list-style-type: none;
-  margin-bottom: govuk-spacing(2);
+  margin: govuk-spacing(4) 0 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 .gem-c-metadata__change-date {
   display: block;
+  margin: govuk-spacing(3) 0;
   @include govuk-font(16, $weight: bold);
 }
 
 .gem-c-metadata__change-note {
+  margin: 0;
   white-space: pre-line;
 }
 

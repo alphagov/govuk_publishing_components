@@ -89,16 +89,14 @@
             data-ga4-expandable>
             <%= t("components.metadata.show_all_updates", locale: :en) %>
           </a>
-          <div class="gem-c-metadata__change-history js-hidden" id="<%= page_history_toggle_id %>">
-            <ol class="gem-c-metadata__list">
-              <% page_history.each do |change| %>
-                <li class="gem-c-metadata__change-item">
-                  <time class="gem-c-metadata__change-date timestamp" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
-                  <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
-                </li>
-              <% end %>
-            </ol>
-          </div>
+          <ol class="gem-c-metadata__change-history js-hidden" id="<%= page_history_toggle_id %>">
+            <% page_history.each do |change| %>
+              <li>
+                <time class="gem-c-metadata__change-date timestamp" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
+                <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
+              </li>
+            <% end %>
+          </ol>
         <% end %>
       </dd>
     <% end %>
