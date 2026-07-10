@@ -10,6 +10,8 @@
 ## Unreleased
 
 * Add options to the service navigation component ([PR #5562](https://github.com/alphagov/govuk_publishing_components/pull/5562))
+* Announce big number component as one element in JAWS and NVDA ([PR #5458](https://github.com/alphagov/govuk_publishing_components/pull/5458))
+
 
 ## 66.7.1
 
