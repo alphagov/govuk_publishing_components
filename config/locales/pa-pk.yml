@@ -152,6 +152,9 @@ pa-pk:
       part_of: ایندا حصہ
       published: شائع کیتا گیا
       see_all_updates: ساریاں نویاں چیزاں دیکھو
+      hidden_heading:
+      hide_all_updates: سارے تازہ ترین حالات نوں لُکا لوؤ
+      show_all_updates: ساری تازہ ترین صورتِ حال وکھاؤ
     modal_dialogue:
       close_modal: موڈیل ڈائیلاگ نوں بند کرو
     notice:

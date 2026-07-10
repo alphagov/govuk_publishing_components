@@ -159,6 +159,9 @@ et:
       part_of: Osa
       published: Avaldatud
       see_all_updates: Vt kõiki värskendusi
+      hidden_heading:
+      hide_all_updates: peida kõik värskendused
+      show_all_updates: kuva kõik värskendused
     modal_dialogue:
       close_modal: Sule modaalne dialoog
     notice:

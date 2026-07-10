@@ -156,6 +156,9 @@ sv:
       part_of: Del av
       published: Publicerad
       see_all_updates: Se alla uppdateringar
+      hidden_heading:
+      hide_all_updates: dölj alla uppdateringar
+      show_all_updates: Visa alla uppdateringar
     modal_dialogue:
       close_modal: Stäng den modala dialogen
     notice:

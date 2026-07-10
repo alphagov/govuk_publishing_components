@@ -155,6 +155,9 @@ vi:
       part_of: Một phần của
       published: Đã xuất bản
       see_all_updates: Xem tất cả nội dung cập nhật
+      hidden_heading:
+      hide_all_updates: ẩn tất cả các cập nhật
+      show_all_updates: hiển thị tất cả nội dung cập nhật
     modal_dialogue:
       close_modal: Đóng đối thoại phương thức
     notice:

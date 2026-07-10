@@ -152,6 +152,9 @@ ja:
       part_of: 一部の
       published: 公開済み
       see_all_updates: すべての更新を表示
+      hidden_heading:
+      hide_all_updates: すべての更新を非表示
+      show_all_updates: すべての更新を表示
     modal_dialogue:
       close_modal: 特殊ウインドウを閉じる
     notice:

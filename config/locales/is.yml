@@ -156,6 +156,9 @@ is:
       part_of: Hluti af
       published: Birt
       see_all_updates: Sjá allar uppfærslur
+      hidden_heading:
+      hide_all_updates: fela allar uppfærslur
+      show_all_updates: sýna allar uppfærslur
     modal_dialogue:
       close_modal: Loka glugga
     notice:

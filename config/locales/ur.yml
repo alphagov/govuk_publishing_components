@@ -153,6 +153,9 @@ ur:
       part_of: حصہ از
       published: شائع کردہ
       see_all_updates: تمام اپ ڈیٹس دیکھیں
+      hidden_heading:
+      hide_all_updates: تمام اپ ڈیٹس کو پوشیدہ کریں
+      show_all_updates: تمام اپ ڈیٹس دکھائیں
     modal_dialogue:
       close_modal: محدود موڈل ڈائیلاگ
     notice:

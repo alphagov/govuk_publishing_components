@@ -159,6 +159,9 @@ ka:
       part_of: ნაწილი
       published: პუბლიკაცია
       see_all_updates: ყველა განახლების ნახვა
+      hidden_heading:
+      hide_all_updates: ყველა ცვლილების დაფარვა
+      show_all_updates: ყველა ცვლილების ჩვენება
     modal_dialogue:
       close_modal: მოდალური დიალოგის გამორთვა
     notice:

@@ -158,6 +158,9 @@ gd:
       part_of: Chuid
       published: Arna chur suas
       see_all_updates: Féach gach nuashonrú
+      hidden_heading:
+      hide_all_updates: gach nuashonrú a cheilt
+      show_all_updates: Taispeáin gach nuashonrú
     modal_dialogue:
       close_modal: Dún an dialóg módúil
     notice:

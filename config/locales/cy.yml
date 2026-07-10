@@ -160,6 +160,9 @@ cy:
       part_of: Rhan o
       published: Cyhoeddwyd
       see_all_updates: Gweld pob diweddariad
+      hidden_heading:
+      hide_all_updates: cuddio pob diweddariad
+      show_all_updates: dangos pob diweddariad
     modal_dialogue:
       close_modal: Cau'r ddeialog foddol
     notice:

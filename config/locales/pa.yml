@@ -156,6 +156,9 @@ pa:
       part_of: ਦਾ ਹਿੱਸਾ
       published: ਪ੍ਰਕਾਸ਼ਿਤ
       see_all_updates: ਸਾਰੇ ਅਪਡੇਟਸ ਵੇਖੋ
+      hidden_heading:
+      hide_all_updates: ਸਾਰੇ ਅਪਡੇਟਾਂ ਨੂੰ ਲੁਕਾਓ
+      show_all_updates: ਸਾਰੇ ਅਪਡੇਟ ਦਿਖਾਉ
     modal_dialogue:
       close_modal: ਮਾਡਲ ਸੰਵਾਦ ਬੰਦ ਕਰੋ
     notice:

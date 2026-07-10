@@ -156,6 +156,9 @@ si:
       part_of: කොටසක්
       published: පළ කළේ
       see_all_updates: සියලුම යාවත්කාලීනයන් බලන්න
+      hidden_heading:
+      hide_all_updates: සියලු යාවත්කාලීන සඟවන්න
+      show_all_updates: සියලු යාවත්කාලීනයන් පෙන්වන්න
     modal_dialogue:
       close_modal: ආදර්ශ සංවාදය වසන්න
     notice:

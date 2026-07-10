@@ -147,10 +147,13 @@ ko:
       and:
       from:
       history:
-      last_updated:
+      last_updated: 최근 업데이트일
       part_of:
-      published:
-      see_all_updates:
+      published: 발행일
+      see_all_updates: 모든 업데이트 보기
+      hidden_heading:
+      hide_all_updates: 모든 업데이트 숨기기
+      show_all_updates: 모든 업데이트 보기
     modal_dialogue:
       close_modal:
     notice:

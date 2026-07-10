@@ -158,6 +158,9 @@ mt:
       part_of: Parti minn
       published: Ippubblikat
       see_all_updates: Ara l-aġġornamenti kollha
+      hidden_heading:
+      hide_all_updates: aħbi l-aġġornamenti kollha
+      show_all_updates: uri l-aġġornamenti kollha
     modal_dialogue:
       close_modal: Agħlaq id-djalogu modali
     notice:

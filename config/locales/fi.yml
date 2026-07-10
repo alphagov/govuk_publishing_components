@@ -158,6 +158,9 @@ fi:
       part_of: Osa
       published: Julkaistu
       see_all_updates: Katso kaikki palvelut
+      hidden_heading:
+      hide_all_updates: piilota kaikki päivitykset
+      show_all_updates: näytä kaikki päivitykset
     modal_dialogue:
       close_modal: Sulje modaalinen vuoropuhelu
     notice:

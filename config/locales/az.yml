@@ -156,6 +156,9 @@ az:
       part_of: Hissə
       published: Dərc edilib
       see_all_updates: Bütün yeniləmələrə baxın
+      hidden_heading:
+      hide_all_updates: bütün yenilmələri gizlət
+      show_all_updates: bütün yeniləmələri göstər
     modal_dialogue:
       close_modal: Modal dialoqu bağla
     notice:

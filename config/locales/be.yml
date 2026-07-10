@@ -162,6 +162,9 @@ be:
       part_of: Частка
       published: Апублікаваны
       see_all_updates: Паглядзець усе абнаўленні
+      hidden_heading:
+      hide_all_updates: схаваць усе абнаўленні
+      show_all_updates: паказаць усе абнаўленні
     modal_dialogue:
       close_modal: Зачыніць мадальны дыялог
     notice:

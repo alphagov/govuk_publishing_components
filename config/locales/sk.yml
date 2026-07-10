@@ -161,6 +161,9 @@ sk:
       part_of: Časť
       published: Zverejnené na
       see_all_updates: Zobraziť všetky aktualizácie
+      hidden_heading:
+      hide_all_updates: skryť všetky aktualizácie
+      show_all_updates: zobraziť všetky aktualizácie
     modal_dialogue:
       close_modal: Zavrieť modálny dialóg
     notice:

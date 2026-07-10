@@ -156,6 +156,9 @@ so:
       part_of: Ka qeyba
       published: Daabacaada
       see_all_updates: Eeg dhamaan cusboonaysiinaha
+      hidden_heading:
+      hide_all_updates: qari dhamaan waxa cusub
+      show_all_updates: muuji dhamaan cusboonaysiinaha
     modal_dialogue:
       close_modal: Kusoo dhawoow wada hadal dhex dhexaad ah
     notice:

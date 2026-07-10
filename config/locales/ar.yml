@@ -159,6 +159,9 @@ ar:
       part_of: جزء من
       published: تاريخ النشر
       see_all_updates: اطلع على كل التحديثات
+      hidden_heading:
+      hide_all_updates: إخفاء كافة التحديثات
+      show_all_updates: إظهار كل التحديثات
     modal_dialogue:
       close_modal: إغلاق مربع الحوار المشروط
     notice:

@@ -155,6 +155,9 @@ ti:
       part_of: ሓደ ክፋል ናይ
       published: ዝተሓትመ
       see_all_updates: ኩሉ ሓድሽ ሓበሬታ ርአ
+      hidden_heading:
+      hide_all_updates:
+      show_all_updates:
     modal_dialogue:
       close_modal: ሞዳል ዝርርብ ዕጸዎ።
     notice:

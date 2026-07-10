@@ -159,6 +159,9 @@ hu:
       part_of: 'Része a következőnek:'
       published: Közzététel időpontja
       see_all_updates: Minden frissítés megtekintése
+      hidden_heading:
+      hide_all_updates: minden frissítés elrejtése
+      show_all_updates: minden frissítés megjelenítése
     modal_dialogue:
       close_modal: Modális párbeszédpanel bezárása
     notice:

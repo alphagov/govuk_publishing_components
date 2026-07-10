@@ -157,6 +157,9 @@ sr:
       part_of: Deo
       published: Objavljeno
       see_all_updates: Pogledajte sva ažuriranja
+      hidden_heading:
+      hide_all_updates: sakrij sva ažuriranja
+      show_all_updates: prikaži sva ažuriranja
     modal_dialogue:
       close_modal: Zatvori modalni dijalog
     notice:

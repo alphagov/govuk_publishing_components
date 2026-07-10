@@ -156,6 +156,9 @@ kk:
       part_of: Бөлігі
       published: Жарияланды
       see_all_updates: Барлық жаңартуларды қарау
+      hidden_heading:
+      hide_all_updates: барлық жаңартуларды жасыру
+      show_all_updates: барлық жаңартуларды көрсету
     modal_dialogue:
       close_modal: Жабық модальды диалог
     notice:

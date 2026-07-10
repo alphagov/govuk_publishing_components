@@ -156,6 +156,9 @@ it:
       part_of: Parte di
       published: Pubblicato
       see_all_updates: Vedi tutti gli aggiornamenti
+      hidden_heading:
+      hide_all_updates: nascondi tutti gli aggiornamenti
+      show_all_updates: mostra tutti gli aggiornamenti
     modal_dialogue:
       close_modal: Chiudi dialogo modale
     notice:
