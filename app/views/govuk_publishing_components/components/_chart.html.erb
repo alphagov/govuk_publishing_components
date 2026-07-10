@@ -7,6 +7,9 @@
   download_link ||= false
   heading ||= nil
   description ||= nil
+  header_three_quarters ||= false
+  header_class = "gem-c-chart__header"
+  header_class << "--three-quarters" if header_three_quarters
   source ||= false
 
   if !heading || !description
@@ -33,7 +36,7 @@
     <% @include_script[:script_included] = true %>
   <% end %>
   <%= tag.div(**component_helper.all_attributes) do %>
-    <div class="gem-c-chart__heading">
+    <div class="<%= header_class %>">
         <%= render "govuk_publishing_components/components/heading", {
           text: heading,
           heading_level: heading_level,

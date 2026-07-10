@@ -42,10 +42,17 @@
   margin-bottom: govuk-spacing(2);
 }
 
-.gem-c-chart__heading {
-  // Ensure heading content width is constrained to two thirds on desktop
+.gem-c-chart__header {
+  // Ensure header content width is constrained to two thirds on desktop
   @include govuk-media-query($from: "desktop") {
-    max-width: 66.6667%;
+    max-width: 630px;
+  }
+}
+
+.gem-c-chart__header--three-quarters {
+  // Ensure header content width is constrained to three quarters on desktop
+  @include govuk-media-query($from: "desktop") {
+    max-width: 742.5px;
   }
 }
 
