@@ -39,7 +39,7 @@
         width: $thumbnail-width;
         height: 140px;
         background: govuk-colour("white");
-        box-shadow: 0 2px 2px govuk-colour("black", $variant: "tint-50"), 0 0 0 5px govuk-colour("black", $variant: "tint-80");
+        box-shadow: 0 2px 2px govuk-colour("black", $variant: "tint-50"), 0 0 0 5px govuk-functional-colour("border");
 
         @include high-contrast-outline;
       }

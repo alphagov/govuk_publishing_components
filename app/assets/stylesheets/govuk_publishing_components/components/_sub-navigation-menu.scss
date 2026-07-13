@@ -5,7 +5,7 @@
 
 .gem-c-sub-navigation-menu__button-container {
   background-color: govuk-colour("black", $variant: "tint-95");
-  border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
+  border-bottom: 1px solid govuk-functional-colour("border");
 }
 
 .gem-c-sub-navigation-menu__button-container--collapsed {
@@ -59,7 +59,7 @@
 }
 
 .gem-c-sub-navigation-menu__button[aria-expanded="true"] {
-  border-color: govuk-colour("black", $variant: "tint-80");
+  border-color: govuk-functional-colour("border");
   background-color: govuk-colour("white");
 
   @include govuk-media-query($until: tablet) {
