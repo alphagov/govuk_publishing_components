@@ -144,4 +144,19 @@ describe "Chart", type: :view do
       render_component(data)
     }.to raise_error("A heading and description must be provided for accessibility purposes.")
   end
+
+  it "has the gem-c-chart__header class by default" do
+    render_component(data)
+
+    assert_select ".gem-c-chart__header"
+    assert_select ".gem-c-chart__header--three-quarters", false
+  end
+
+  it "can replace the gem-c-chart__header class with the gem-c-chart__header--three-quarters class" do
+    data[:header_three_quarters] = true
+    render_component(data)
+
+    assert_select ".gem-c-chart__header", false
+    assert_select ".gem-c-chart__header--three-quarters"
+  end
 end
