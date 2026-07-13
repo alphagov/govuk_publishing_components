@@ -29,13 +29,6 @@ describe "Phase banner", type: :view do
     assert_select ".govuk-phase-banner__content__tag", text: "Beta"
   end
 
-  it "shows the app name" do
-    render_component(app_name: "Skittles Maker", phase: "beta")
-
-    assert_select ".govuk-phase-banner__content__app-name", text: "Skittles Maker"
-    assert_select ".govuk-phase-banner__content__tag", text: "Beta"
-  end
-
   it "correctly uses inverse mode" do
     render_component(phase: "beta", inverse: true)
     assert_select ".gem-c-phase-banner--inverse"

@@ -1,19 +1,11 @@
 @import "govuk/components/phase-banner/phase-banner";
 
-.gem-c-phase-banner {
-  .govuk-phase-banner__content__app-name {
-    display: inline-block;
-    margin-right: govuk-spacing(2);
-  }
-}
-
 .gem-c-phase-banner--inverse {
   .govuk-phase-banner__content__tag {
     background: govuk-colour("white");
     color: $govuk-brand-colour;
   }
 
-  .govuk-phase-banner__content__app-name,
   .govuk-phase-banner__text,
   .govuk-link {
     color: govuk-colour("white");
@@ -36,11 +28,6 @@
     .govuk-tag {
       border: 1pt solid $govuk-print-text-colour;
     }
-  }
-
-  .govuk-phase-banner__content__app-name {
-    margin-bottom: 1mm;
-    font-size: 12pt;
   }
 }
 // stylelint-enable declaration-no-important
