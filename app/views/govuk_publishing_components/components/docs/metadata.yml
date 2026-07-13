@@ -350,7 +350,7 @@ examples:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
   display_page_history:
     description: |
-      This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history.
+      This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history. It also includes a hidden H2 heading of 'Updates to this page'. This heading will not be included if one is passed to the component using the `title` option.
 
       This example includes an expandable 'part of' section to show both toggling elements working together in one component instance.
     data:

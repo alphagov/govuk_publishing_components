@@ -43,6 +43,8 @@
       inverse:,
       margin_bottom: 2,
     } %>
+  <% elsif page_history.any? %>
+    <h2 class="govuk-visually-hidden"><%= t("components.metadata.hidden_heading") %></h2>
   <% end %>
   <dl class="gem-c-metadata__list">
     <% if from.any? %>

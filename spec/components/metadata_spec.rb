@@ -320,6 +320,19 @@ describe "Metadata", type: :view do
     assert_select ".gem-c-metadata--history .gem-c-metadata__change-date", text: "23 August 2013"
   end
 
+  it "includes a hidden title if there is page history" do
+    render_component(page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }])
+
+    assert_select ".govuk-visually-hidden", text: "Updates to this page"
+  end
+
+  it "does not include a hidden title if there is page history and a title is passed" do
+    render_component(title: "my title", page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }])
+
+    assert_select ".gem-c-heading", text: "my title"
+    assert_select ".govuk-visually-hidden", false
+  end
+
   it "strips leading and trailing whitespace from note text" do
     render_component(
       first_published: "1st November 2000",
