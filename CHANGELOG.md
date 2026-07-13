@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 66.8.0
 
 * Remove columns layout from service nav component ([PR #5576](https://github.com/alphagov/govuk_publishing_components/pull/5576))
 * Add header_three_quarters option to the chart component ([PR #5567](https://github.com/alphagov/govuk_publishing_components/pull/5567))
