@@ -607,7 +607,7 @@ $search-icon-height: 20px;
 // JS available - styling for the "services-and-information" group of links
 .gem-c-layout-super-navigation-header__navigation-second-items--services-and-information {
   @include govuk-media-query($until: "desktop") {
-    border-bottom: 1px solid govuk-colour("black", $variant: "tint-80");
+    border-bottom: 1px solid govuk-functional-colour("border");
   }
 
   @include govuk-media-query($from: "desktop") {
