@@ -23,7 +23,7 @@ $thumbnail-border-width: 5px;
   max-width: calc($thumbnail-width / 1.5);
   height: calc($thumbnail-height / 1.5);
   background: govuk-colour("white");
-  box-shadow: 0 2px 2px govuk-colour("black", $variant: "tint-50"), 0 0 0 5px govuk-colour("black", $variant: "tint-80");
+  box-shadow: 0 2px 2px govuk-colour("black", $variant: "tint-50"), 0 0 0 5px govuk-functional-colour("border");
   fill: govuk-colour("black", $variant: "tint-50");
   stroke: govuk-colour("black", $variant: "tint-50");
 
