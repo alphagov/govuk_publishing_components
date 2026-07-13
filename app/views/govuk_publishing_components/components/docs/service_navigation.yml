@@ -70,25 +70,6 @@ examples:
         href: "#"
       - text: Navigation item 3
         href: "#"
-  columns_layout:
-    description: Separates the service name and the navigation items into two separate columns on desktop. Has no effect on mobile or when the service name is not present.
-    data:
-      service_name: My service home
-      service_name_url: "/home"
-      columns_layout: true
-      navigation_items:
-      - text: Introduction
-        href: "#"
-      - text: Help and guidance
-        href: "#"
-      - text: The application process
-        href: "#"
-      - text: Your first application
-        href: "#"
-      - text: Contact us
-        href: "#"
-      - text: Further reading
-        href: "#"
   with_data_attributes_on_items:
     data:
       navigation_items:
