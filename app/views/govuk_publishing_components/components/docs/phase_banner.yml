@@ -20,19 +20,8 @@ examples:
       phase: beta
       message: This is an optional different message to explain what the state means in this
         context which can take <a class="govuk-link" href='https://www.gov.uk'>HTML</a>
-  with_app_name:
-    data:
-      app_name: Skittles Maker
-      phase: beta
   inverse_for_blue_background:
     data:
-      phase: beta
-      inverse: true
-    context:
-      dark_background: true
-  inverse_for_blue_background_with_app_name:
-    data:
-      app_name: Skittles Maker
       phase: beta
       inverse: true
     context:
@@ -41,6 +30,5 @@ examples:
     description: |
       Disables GA4 tracking on the banner. Tracking is enabled by default. This includes link tracking on the component itself, and allows pageviews to record the presence of the banner on page load.
     data:
-      app_name: Skittles Maker
       phase: beta
       disable_ga4: true
