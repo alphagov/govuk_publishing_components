@@ -163,6 +163,9 @@ sl:
       part_of: Del
       published: Objavljeno
       see_all_updates: Poglej vse posodobitve
+      hidden_heading:
+      hide_all_updates: Skrij vse posodobitve
+      show_all_updates: prikaži vse posodobitve
     modal_dialogue:
       close_modal: Zapri modalno okno
     notice:

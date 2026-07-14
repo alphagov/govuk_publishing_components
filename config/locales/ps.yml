@@ -153,6 +153,9 @@ ps:
       part_of: برخه
       published: خپور شوی
       see_all_updates: ټول تازه معلومات وګورئ
+      hidden_heading:
+      hide_all_updates: ټول تازه معلومات پټ کړئ
+      show_all_updates: ټول تازه معلومات وښایاست
     modal_dialogue:
       close_modal: موډل ډیالوګ بند کړئ
     notice:

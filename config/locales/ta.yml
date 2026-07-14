@@ -157,6 +157,9 @@ ta:
       part_of: பகுதி
       published: வெளியிடப்பட்டது
       see_all_updates: அனைத்து புதுப்பித்தல்களையும் பார்
+      hidden_heading:
+      hide_all_updates: அனைத்து புதுப்பித்தல்களையும் மறை
+      show_all_updates: அனைத்து புதுப்பித்தல்களையும் காட்டு
     modal_dialogue:
       close_modal: மாதிரி உரையாடலை மூடு
     notice:

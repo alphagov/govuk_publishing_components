@@ -152,6 +152,9 @@ ky:
       part_of: Бөлүгү
       published: Жарыяланды
       see_all_updates: Бардык жаңыртууларды көрүү
+      hidden_heading:
+      hide_all_updates:
+      show_all_updates:
     modal_dialogue:
       close_modal: Модалдык диалогду жабуу
     notice:

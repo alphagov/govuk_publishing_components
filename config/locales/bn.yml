@@ -157,6 +157,9 @@ bn:
       part_of: এর অংশ
       published: প্রকাশিত হয়েছে
       see_all_updates: সকল আপডেট দেখুন
+      hidden_heading:
+      hide_all_updates: সকল আপডেট লুকান
+      show_all_updates: সকল আপডেট দেখান
     modal_dialogue:
       close_modal: ক্লোজ মোডাল ডায়ালগ
     notice:

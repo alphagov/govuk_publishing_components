@@ -161,6 +161,9 @@ lt:
       part_of: Dalis
       published: Publikuota
       see_all_updates: Matyti visą naujausią informaciją
+      hidden_heading:
+      hide_all_updates: slėpti visą naują informacij
+      show_all_updates: rodyti visą naują informaciją
     modal_dialogue:
       close_modal: Uždaryti modalinį dialogo langą
     notice:

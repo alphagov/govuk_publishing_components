@@ -5,6 +5,10 @@ describe "Metadata", type: :view do
     "metadata"
   end
 
+  before do
+    allow(SecureRandom).to receive(:hex).and_return("1234")
+  end
+
   it "renders metadata in a definition list" do
     render_component({})
     assert_select ".gem-c-metadata dl"
@@ -303,6 +307,81 @@ describe "Metadata", type: :view do
     render_component(from: "<a href='/link'>Department</a>", title: "my title")
 
     assert_select ".gem-c-heading", text: "my title"
+  end
+
+  it "renders full page history" do
+    render_component(
+      first_published: "1st November 2000",
+      last_updated: "15th July 2015",
+      page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
+    )
+    assert_select "#full-publication-update-history.gem-c-metadata"
+    assert_select ".gem-c-metadata__change-history#page-history-1234"
+    assert_select ".gem-c-metadata--history .gem-c-metadata__change-date", text: "23 August 2013"
+  end
+
+  it "includes a hidden title if there is page history" do
+    render_component(page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }])
+
+    assert_select ".govuk-visually-hidden", text: "Updates to this page"
+  end
+
+  it "does not include a hidden title if there is page history and a title is passed" do
+    render_component(title: "my title", page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }])
+
+    assert_select ".gem-c-heading", text: "my title"
+    assert_select ".govuk-visually-hidden", false
+  end
+
+  it "strips leading and trailing whitespace from note text" do
+    render_component(
+      first_published: "1st November 2000",
+      last_updated: "15th July 2015",
+      page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
+    )
+    assert_select ".gem-c-metadata__change-history#page-history-1234"
+    assert_select ".gem-c-metadata--history .gem-c-metadata__change-note", text: /^\S/
+  end
+
+  it "only adds history id when passed page history" do
+    render_component(published: "1st November 2000")
+    assert_select "#full-publication-update-history", false, "should only render history id if passed history item"
+
+    render_component(
+      first_published: "1st November 2000",
+      last_updated: "15th July 2015",
+      page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
+    )
+    assert_select "#full-publication-update-history"
+  end
+
+  it "full page history is hidden on page load" do
+    render_component(
+      first_published: "1st November 2000",
+      last_updated: "15th July 2015",
+      page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
+    )
+    assert_select ".gem-c-metadata__change-history.js-hidden"
+  end
+
+  it "renders link to full page history if history is provided" do
+    render_component(
+      first_published: "1st November 2000",
+      last_updated: "15th July 2015",
+      page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
+    )
+    assert_select ".gem-c-metadata a[href=\"#full-history\"]"
+  end
+
+  it "includes data attributes for toggle behaviour" do
+    render_component(
+      first_published: "1st November 2000",
+      last_updated: "15th July 2015",
+      page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
+    )
+    assert_select ".gem-c-metadata__definition[data-module=\"gem-toggle\"]"
+    assert_select ".gem-c-metadata--history a[href=\"#full-history\"][data-controls=\"page-history-1234\"]"
+    assert_select ".gem-c-metadata--history a[href=\"#full-history\"][data-expanded=\"false\"]"
   end
 
   def assert_truncation(length, limit)

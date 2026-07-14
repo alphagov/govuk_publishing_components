@@ -156,6 +156,9 @@ he:
       part_of: חלק של
       published: פורסם
       see_all_updates: ראה כל העדכונים
+      hidden_heading:
+      hide_all_updates: להסתיר כל עדכונים
+      show_all_updates: הצג כל עדכונים
     modal_dialogue:
       close_modal: סגור דיאלוג מודאלי
     notice:

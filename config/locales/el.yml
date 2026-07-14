@@ -156,6 +156,9 @@ el:
       part_of: Μέρος του
       published: Δημοσιεύθηκε
       see_all_updates: Δείτε όλες τις ενημερώσεις
+      hidden_heading:
+      hide_all_updates: απόκρυψη όλων των ενημερώσεων
+      show_all_updates: εμφάνιση όλων των ενημερώσεων
     modal_dialogue:
       close_modal: Κλείσιμο παράθυρου διαλόγου
     notice:

@@ -157,6 +157,9 @@ tk:
       part_of: Bir bölegi
       published: Çap edilen
       see_all_updates: Ähli täzelenmelere serediň
+      hidden_heading:
+      hide_all_updates: ähli täzelenmeleri gizle
+      show_all_updates: ähli täzelenmeleri görkez
     modal_dialogue:
       close_modal: Modal gepleşikleri tamamlamak
     notice:

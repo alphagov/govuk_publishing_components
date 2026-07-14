@@ -158,6 +158,9 @@ uz:
       part_of: Қисм
       published: Нашр қилинган
       see_all_updates: Барча янгиланишларни кўриш
+      hidden_heading:
+      hide_all_updates: Барча янгиланишларни яшириш
+      show_all_updates: янгиланишларни барчасини кўрсатиш
     modal_dialogue:
       close_modal: Модал мулоқотни ёпиш
     notice:

@@ -148,10 +148,13 @@ ne:
       and:
       from:
       history:
-      last_updated:
+      last_updated: पछिल्लो अद्यावधिक
       part_of:
-      published:
+      published: प्रकाशित
       see_all_updates:
+      hidden_heading:
+      hide_all_updates: सबै अद्यावधिक लुकाउनुहोस्
+      show_all_updates: सबै अद्यावधिक देखाउनुहोस्
     modal_dialogue:
       close_modal:
     notice:

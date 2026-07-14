@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Merge published dates component into metadata component ([PR #5572](https://github.com/alphagov/govuk_publishing_components/pull/5572))
+
 ## 66.8.0
 
 * Remove columns layout from service nav component ([PR #5576](https://github.com/alphagov/govuk_publishing_components/pull/5576))

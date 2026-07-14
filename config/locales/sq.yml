@@ -156,6 +156,9 @@ sq:
       part_of: Pjesë e
       published: Publikuar
       see_all_updates: Shih të gjitha përditësimet
+      hidden_heading:
+      hide_all_updates: fshih të gjitha përditësimet
+      show_all_updates: shfaq të gjitha përditësimet
     modal_dialogue:
       close_modal: Mbyll dialogun modal
     notice:

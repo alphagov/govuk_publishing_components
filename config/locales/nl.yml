@@ -156,6 +156,9 @@ nl:
       part_of: Deel van
       published: Gepubliceerd
       see_all_updates: Bekijk alle updates
+      hidden_heading:
+      hide_all_updates: verberg alle updates
+      show_all_updates: toon alle updates
     modal_dialogue:
       close_modal: Modale dialoog sluiten
     notice:

@@ -160,6 +160,9 @@ bg:
       part_of: Част от
       published: Публикуван
       see_all_updates: Вижте всички актуализации
+      hidden_heading:
+      hide_all_updates: скриване на всички актуализации
+      show_all_updates: показване на всички актуализации
     modal_dialogue:
       close_modal: Затваряне на модалния диалог
     notice:

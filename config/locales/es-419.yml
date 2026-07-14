@@ -156,6 +156,9 @@ es-419:
       part_of: Parte de
       published: Publicado
       see_all_updates: Ver todas las novedades
+      hidden_heading:
+      hide_all_updates: ocultar todas las novedades
+      show_all_updates: mostrar todas las actualizaciones
     modal_dialogue:
       close_modal: Cerrar diálogo modal
     notice:

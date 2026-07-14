@@ -158,6 +158,9 @@ dr:
       part_of: بخشی از
       published: منتشر شده است
       see_all_updates: تمام آپدیت ها را مشاهده نمایید
+      hidden_heading:
+      hide_all_updates: مخفی کردن تمام آپدیت ها
+      show_all_updates: تمام آپدیت ها را نمایش دهید
     modal_dialogue:
       close_modal: دیالوگ کیفی را بسته نمایید
     notice:

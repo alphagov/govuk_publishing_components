@@ -163,6 +163,9 @@ uk:
       part_of: Частина
       published: Опубліковано
       see_all_updates: Переглянути всі оновлення
+      hidden_heading:
+      hide_all_updates: приховати всі оновлення
+      show_all_updates: показати всі оновлення
     modal_dialogue:
       close_modal: Закрити модальний діалог
     notice:

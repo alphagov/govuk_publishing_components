@@ -156,6 +156,9 @@
       part_of: Del av
       published: Publisert
       see_all_updates: Se alle oppdateringer
+      hidden_heading:
+      hide_all_updates: skjul alle oppdateringer
+      show_all_updates: vis alle oppdateringer
     modal_dialogue:
       close_modal: Lukk modal dialog
     notice:

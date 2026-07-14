@@ -348,6 +348,36 @@ examples:
       first_published: 14 June 2014
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
+  display_page_history:
+    description: |
+      This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history. It also includes a hidden H2 heading of 'Updates to this page'. This heading will not be included if one is passed to the component using the `title` option.
+
+      This example includes an expandable 'part of' section to show both toggling elements working together in one component instance.
+    data:
+      part_of:
+        - <a href="/government/world/afghanistan">Afghanistan</a>
+        - <a href="/government/world/albania">Albania</a>
+        - <a href="/government/world/algeria">Algeria</a>
+        - <a href="/government/world/angola">Angola</a>
+        - <a href="/government/world/anguilla">Anguilla</a>
+        - <a href="/government/world/argentina">Argentina</a>
+        - <a href="/government/world/armenia">Armenia</a>
+        - <a href="/government/world/australia">Australia</a>
+        - <a href="/government/world/austria">Austria</a>
+        - <a href="/government/world/azerbaijan">Azerbaijan</a>
+        - <a href="/government/world/bahrain">Bahrain</a>
+      first_published: 1st January 1990
+      last_updated: 20th October 2016
+      page_history:
+      - display_time: 1st January 1990
+        note: First published
+        timestamp: 1990-01-01T15:42:37.000+00:00
+      - display_time: 20th July 1995
+        note: Updated to include information for 1994
+        timestamp: 1995-07-20T15:42:37.000+00:00
+      - display_time: 14th October 2000
+        note: Updated information on pupil premium reviews and what information schools need to publish on their websites.
+        timestamp: 2000-10-14T15:42:37.000+00:00
   with_title:
     data:
       last_updated: 10 September 2015
@@ -420,13 +450,6 @@ examples:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
       dark_background: true
-  with_custom_margin_bottom:
-    description: |
-      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to the `margin-bottom` values defined in the [responsive-bottom-margin mixin](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/mixins/_margins.scss#L1)
-    data:
-      first_published: 14 June 2014
-      last_updated: 10 September 2015
-      margin_bottom: 2
   without_ga4_tracking:
     description: |
       Disables the GA4 link tracker on the 'See all updates' link. Tracking is enabled by default.

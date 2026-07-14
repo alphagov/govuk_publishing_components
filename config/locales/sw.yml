@@ -156,6 +156,9 @@ sw:
       part_of: Sehemu ya
       published: Ilichapishwa
       see_all_updates: Angalia taarifa zote
+      hidden_heading:
+      hide_all_updates: ficha masasisho yote
+      show_all_updates: Onyesha taarifa zote
     modal_dialogue:
       close_modal: Funga dirisha ibukizi
     notice:

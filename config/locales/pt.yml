@@ -156,6 +156,9 @@ pt:
       part_of: Parte de
       published: Publicado em
       see_all_updates: Ver todas as atualizações
+      hidden_heading:
+      hide_all_updates: ocultar todas as atualizações
+      show_all_updates: mostrar todas as atualizações
     modal_dialogue:
       close_modal: Fechar diálogo modal
     notice:

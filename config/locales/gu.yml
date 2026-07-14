@@ -156,6 +156,9 @@ gu:
       part_of: નો ભાગ
       published: પ્રકાશિત
       see_all_updates: તમામ અપડેટ્સ જુઓ
+      hidden_heading:
+      hide_all_updates: બધા અપડેટ્સને હાઈડ કરો
+      show_all_updates: બધા અપડેટ્સ બતાવો
     modal_dialogue:
       close_modal: મોડલ ડાયલોગ બંધ કરો
     notice:

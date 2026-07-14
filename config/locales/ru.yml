@@ -160,6 +160,9 @@ ru:
       part_of: Является частью
       published: Опубликовано
       see_all_updates: Посмотреть все обновления
+      hidden_heading:
+      hide_all_updates: Скрыть всю последнюю информацию
+      show_all_updates: Показать всю поледнюю информацию
     modal_dialogue:
       close_modal: Закрыть модальное диалоговое окно
     notice:

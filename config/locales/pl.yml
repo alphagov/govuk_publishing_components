@@ -160,6 +160,9 @@ pl:
       part_of: Część
       published: Opublikowano
       see_all_updates: Zobacz wszystkie aktualizacje
+      hidden_heading:
+      hide_all_updates: ukryj wszystkie aktualizacje
+      show_all_updates: pokaż wszystkie aktualizacje
     modal_dialogue:
       close_modal: Zamknij okno modalne
     notice:

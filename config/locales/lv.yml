@@ -160,6 +160,9 @@ lv:
       part_of: Daļa no
       published: Publicēts
       see_all_updates: Skatīt visus atjauninājumus
+      hidden_heading:
+      hide_all_updates: paslēpt visus atjauninājumus
+      show_all_updates: rādīt visus atjauninājumus
     modal_dialogue:
       close_modal: Aizvērt modālo dialogu
     notice:

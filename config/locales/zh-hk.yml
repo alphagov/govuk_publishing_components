@@ -154,6 +154,9 @@ zh-hk:
       part_of: 部份
       published: 已發佈
       see_all_updates: 查閱所有更新項
+      hidden_heading:
+      hide_all_updates: 隱藏所有更新
+      show_all_updates: 顯示所有更新
     modal_dialogue:
       close_modal: 關閉互動視窗對話
     notice:

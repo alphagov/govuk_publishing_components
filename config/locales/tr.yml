@@ -157,6 +157,9 @@ tr:
       part_of: Şunun kısmı
       published: Yayınlanan
       see_all_updates: Tüm güncellemeleri görün
+      hidden_heading:
+      hide_all_updates: tüm güncellemeleri gizle
+      show_all_updates: tüm güncellemeleri göster
     modal_dialogue:
       close_modal: Model diyaloğu kapat
     notice:

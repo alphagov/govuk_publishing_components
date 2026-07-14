@@ -161,6 +161,9 @@ cs:
       part_of: Část
       published: Zveřejněno
       see_all_updates: Vidět všechny aktualizace
+      hidden_heading:
+      hide_all_updates: skrýt všechny aktualizace
+      show_all_updates: zobrazit všechny aktualizace
     modal_dialogue:
       close_modal: Zavření modálního dialogu
     notice:

@@ -157,6 +157,9 @@ da:
       part_of: del af
       published: offentliggjort
       see_all_updates: se alle opdateringer
+      hidden_heading:
+      hide_all_updates: skjule alle opdateringer
+      show_all_updates: vis alle opdateringer
     modal_dialogue:
       close_modal: Luk den modale dialog
     notice:

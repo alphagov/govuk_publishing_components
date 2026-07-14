@@ -155,6 +155,9 @@ fa:
       part_of: بخشی از
       published: منتشر شده
       see_all_updates: مشاهده تمام بروزرسانی‌ها
+      hidden_heading:
+      hide_all_updates: مخفی کردن تمام بروزرسانی‌ها
+      show_all_updates: نمایش تمام بروزرسانی‌ها
     modal_dialogue:
       close_modal: بستن گفتگوی مودال
     notice:
