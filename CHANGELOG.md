@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Improve the look of the metadata component ([PR #5552](https://github.com/alphagov/govuk_publishing_components/pull/5552))
 * Merge published dates component into metadata component ([PR #5572](https://github.com/alphagov/govuk_publishing_components/pull/5572))
 * Remove the unused "app name" option from the phase banner component ([PR #5579](https://github.com/alphagov/govuk_publishing_components/pull/5579))
 
