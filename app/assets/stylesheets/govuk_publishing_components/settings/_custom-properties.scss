@@ -1,0 +1,9 @@
+// Default the `govuk-output-custom-properties` flag to false to prevent custom properties
+// being output multiple times.
+// Entry points such as `all-components.scss` and `specific-components` override this
+// value when they need to include custom properties (for example, the component guide
+// or application stylesheets where there is only a single stylesheet).
+// Direct imports of base (e.g. secondary stylesheets) keep the default value of `false`,
+// rather than using the GOV.UK Frontend default of `true`.
+
+$govuk-output-custom-properties: false !default;
