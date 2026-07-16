@@ -3,7 +3,6 @@
   description_text ||= false
   description_govspeak ||= false
   description ||= yield || false
-  aria_live ||= false
   lang = local_assigns[:lang].presence
   local_assigns[:margin_bottom] ||= 8
   local_assigns[:margin_bottom] = 8 if local_assigns[:margin_bottom] > 9
@@ -17,7 +16,6 @@
   component_helper.add_class("govuk-notification-banner gem-c-notice")
 
   component_helper.add_aria_attribute({ label: "Notice" })
-  component_helper.add_aria_attribute({ live: "polite" }) if aria_live
   component_helper.add_aria_attribute({ labelledby: banner_title_id }) if show_banner_title
 
   component_helper.set_lang(lang)
