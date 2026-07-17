@@ -34,6 +34,21 @@
   }
 }
 
+.gem-c-details--small {
+  .govuk-details__summary {
+    padding-left: govuk-spacing(4);
+  }
+
+  .govuk-details__summary-text,
+  .govuk-details__text {
+    @include govuk-font(16);
+  }
+
+  .govuk-details__text {
+    padding-left: govuk-spacing(3);
+  }
+}
+
 // fix for issue https://github.com/alphagov/govuk_publishing_components/issues/5436
 .govuk-details__summary {
   box-shadow: 0 4px transparent;

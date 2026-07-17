@@ -82,3 +82,9 @@ examples:
       inverse: true
       block: |
         We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post. <a href="#" class="govuk-link">Example link</a>
+  small:
+    data:
+      small: true
+      title: Help with nationality
+      block: |
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.

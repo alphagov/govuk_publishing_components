@@ -7,6 +7,7 @@
   local_assigns[:margin_bottom] ||= 3
   theme ||= nil
   inverse ||= false
+  small ||= false
 
   unless disable_ga4
     ga4_event = {
@@ -25,6 +26,7 @@
   component_helper.add_class("gem-c-details govuk-details")
   component_helper.add_class("gem-c-details--black") if theme == "black"
   component_helper.add_class("gem-c-details--inverse") if inverse
+  component_helper.add_class("gem-c-details--small") if small
   component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
   component_helper.add_data_attribute({ ga4_event: ga4_event }) unless disable_ga4
   component_helper.set_open(open)
