@@ -48,7 +48,7 @@ jobs:
         repository: alphagov/publishing-api
         ref: main
         path: tmp/publishing-api
-    - uses: ruby/setup-ruby@v1.316.0
+    - uses: ruby/setup-ruby@v1.318.0
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
@@ -79,7 +79,7 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v7.0.0
-    - uses: ruby/setup-ruby@v1.316.0
+    - uses: ruby/setup-ruby@v1.318.0
       with:
         rubygems: latest
     - uses: actions/setup-node@v6.4.0
