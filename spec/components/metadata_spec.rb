@@ -265,22 +265,6 @@ describe "Metadata", type: :view do
     assert_select '.gem-c-metadata.govuk-\!-margin-bottom-2'
   end
 
-  it "renders the component with 3 toggle sections for 'part of', 'from' and 'other'" do
-    render_component(
-      part_of: "<a href='/link'>Department</a>",
-      from: [
-        "<a href='/from-1'>From 1</a>",
-      ],
-      other: {
-        "Related topics": [
-          "<a href='/government/topics/topic-1'>Topic 1</a>",
-        ],
-      },
-    )
-
-    assert_select "[data-module*=\"gem-toggle\"]", count: 3
-  end
-
   it "adds GA4 tracking to the 'see all updates' link" do
     render_component(last_updated: "Hello World", see_updates_link: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
 
@@ -385,15 +369,15 @@ describe "Metadata", type: :view do
   end
 
   def assert_truncation(length, limit)
-    assert_select ".gem-c-metadata__toggle-items", count: 1
+    assert_select ".gem-c-details", count: 1
     assert_select ".gem-c-metadata__definition > a", count: limit
-    assert_select ".gem-c-metadata__definition .gem-c-metadata__toggle-items a", count: length - limit
-    assert_select "a[href=\"#\"]", text: t("common.toggle_more", show: t("common.show"), number: length - limit)
+    assert_select ".gem-c-details .govuk-details__text a", count: length - limit
+    assert_select ".govuk-details__summary-text", text: t("common.toggle_more", show: t("common.show"), number: length - limit)
   end
 
   def assert_no_truncation(length)
     assert_select ".gem-c-metadata__definition > a", count: length
-    assert_select ".gem-c-metadata__toggle-items", count: 0
+    assert_select ".gem-c-details", count: 0
   end
 
   def assert_definition(term, definition)

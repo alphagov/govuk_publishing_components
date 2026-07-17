@@ -49,13 +49,13 @@
   <dl class="gem-c-metadata__list">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
-      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
+      <dd class="gem-c-metadata__definition">
         <%= render "govuk_publishing_components/components/metadata/sentence", items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
     <% if part_of.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of") %>:</dt>
-      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
+      <dd class="gem-c-metadata__definition">
         <%= render "govuk_publishing_components/components/metadata/sentence", items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>

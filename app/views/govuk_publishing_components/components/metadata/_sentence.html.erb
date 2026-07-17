@@ -9,16 +9,10 @@
 %>
 <%= items.to_sentence(two_words_connector: connector, last_word_connector: connector).html_safe %>
 <% if remaining.any? %>
-  <div class="gem-c-metadata__toggle-wrap govuk-!-display-none-print">
-    <a href="#"
-       class="gem-c-metadata__definition-link govuk-!-display-none-print"
-       data-controls="toggle-<%= toggle_id %>"
-       data-expanded="false"
-       data-toggled-text="<%= t("common.toggle_less") %>">
-        <%= t("common.toggle_more",
-          show: t("common.show"),
-          number: remaining.length) %>
-    </a>
-  </div>
-  <span id="toggle-<%= toggle_id %>" class="gem-c-metadata__toggle-items js-hidden"><%= remaining.to_sentence.html_safe %></span>
+  <%= render "govuk_publishing_components/components/details", {
+    title: t("common.toggle_more", show: t("common.show"), number: remaining.length),
+    small: true,
+  } do %>
+    <%= remaining.to_sentence.html_safe %>
+  <% end %>
 <% end %>
