@@ -437,7 +437,7 @@ GEM
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
-    percy-capybara (5.0.0)
+    percy-capybara (5.0.1)
       capybara (>= 3)
     plek (5.3.1)
     pp (0.6.4)
