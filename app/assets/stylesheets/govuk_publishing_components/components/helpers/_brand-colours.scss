@@ -13,40 +13,6 @@
 
 @include organisation-brand-colour;
 
-// in the past we used the-office-of-the-leader-of-the-house-of-commons before
-// the "the" prefix was dropped, this is maintained here for backwards
-// compatibility
-.brand--the-office-of-the-leader-of-the-house-of-commons {
-  &.brand__border-color,
-  .brand__border-color {
-    border-color: govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons", $contrast-safe: false);
-  }
-}
-// colours for the prime ministers office are not included in the toolkit
-// so are written out here for our use
-
-.brand--prime-ministers-office-10-downing-street {
-  .brand__color {
-    color: govuk-colour("black");
-
-    &:link,
-    &:visited,
-    &:active {
-      color: govuk-colour("black");
-    }
-
-    &:hover,
-    &:focus {
-      color: $govuk-focus-text-colour;
-    }
-  }
-
-  &.brand__border-color,
-  .brand__border-color {
-    border-color: govuk-colour("black");
-  }
-}
-
 // in the toolkit, civil service has red for the text and borders
 // but the required border colour is black, ideally would fix this in
 // the toolkit but other things are using it
@@ -55,15 +21,6 @@
   &.brand__border-color,
   .brand__border-color {
     border-color: govuk-colour("black");
-  }
-}
-
-// Temp colour overrides
-
-.brand--department-for-science-innovation-and-technology {
-  &.brand__border-color,
-  .brand__border-color {
-    border-color: govuk-organisation-colour("department-for-science-innovation-technology", $contrast-safe: false);
   }
 }
 
