@@ -13,12 +13,12 @@
   other ||= nil
   inverse ||= false
   inverse_compress ||= false
+  border_top ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-metadata")
   component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)
-
-  component_helper.add_class("gem-c-metadata--history") if page_history.any?
+  component_helper.add_class("gem-c-metadata--border-top") if border_top
   component_helper.set_id("full-publication-update-history") if page_history.any?
 
   if inverse
