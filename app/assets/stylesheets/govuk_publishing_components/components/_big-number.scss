@@ -5,7 +5,6 @@
 
 .gem-c-big-number__value {
   line-height: 1;
-  font-size: 80px;
   font-size: govuk-px-to-rem(80px);
   @include govuk-font($size: false, $weight: bold);
   // Make the value an inline element, and the label a block level element to make them stack vertically but be announced as one element by JAWS and NVDA.
