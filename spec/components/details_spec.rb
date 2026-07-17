@@ -97,4 +97,12 @@ describe "Details", type: :view do
 
     assert_select ".gem-c-details.gem-c-details--small"
   end
+
+  it "renders right to left" do
+    render_component(title: "Some title", direction: "rtl") do
+      "This is more info"
+    end
+
+    assert_select ".gem-c-details.direction-rtl"
+  end
 end

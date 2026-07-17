@@ -1,5 +1,46 @@
 @import "govuk/components/details/details";
 
+[dir="rtl"] .gem-c-details,
+.direction-rtl .gem-c-details,
+.gem-c-details.direction-rtl {
+  direction: rtl;
+  text-align: start;
+
+  .govuk-details__summary {
+    padding-left: 0;
+    padding-right: govuk-spacing(5);
+
+    &::before {
+      left: auto;
+      right: 0;
+      transform: rotate(180deg);
+    }
+  }
+
+  &[open] {
+    .govuk-details__summary::before {
+      transform: none;
+    }
+  }
+
+  .govuk-details__text {
+    border: 0;
+    border-right: 5px solid $govuk-border-colour;
+    padding-left: 0;
+    padding-right: govuk-spacing(4);
+  }
+
+  &.gem-c-details--small {
+    .govuk-details__summary {
+      padding-right: govuk-spacing(4);
+    }
+
+    .govuk-details__text {
+      padding-right: govuk-spacing(3);
+    }
+  }
+}
+
 .gem-c-details--black {
   .govuk-details__summary {
     color: govuk-colour("black");
