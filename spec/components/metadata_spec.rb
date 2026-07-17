@@ -300,8 +300,7 @@ describe "Metadata", type: :view do
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select "#full-publication-update-history.gem-c-metadata"
-    assert_select ".gem-c-metadata__change-history"
-    assert_select ".gem-c-metadata--history .gem-c-metadata__change-date", text: "23 August 2013"
+    assert_select ".gem-c-metadata__change-history .gem-c-metadata__change-date", text: "23 August 2013"
   end
 
   it "includes a hidden title if there is page history" do
@@ -323,8 +322,7 @@ describe "Metadata", type: :view do
       last_updated: "15th July 2015",
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
-    assert_select ".gem-c-metadata__change-history"
-    assert_select ".gem-c-metadata--history .gem-c-metadata__change-note", text: /^\S/
+    assert_select ".gem-c-metadata__change-history .gem-c-metadata__change-note", text: /^\S/
   end
 
   it "only adds history id when passed page history" do
@@ -356,6 +354,11 @@ describe "Metadata", type: :view do
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select ".gem-c-metadata .gem-c-details .govuk-details__summary-text"
+  end
+
+  it "renders with a top border" do
+    render_component({ border_top: true })
+    assert_select ".gem-c-metadata.gem-c-metadata--border-top"
   end
 
   def assert_truncation(length, limit)
