@@ -99,7 +99,7 @@ examples:
       organisation:
         name: 'Office of the <br>Leader of the <br>House of Commons'
         url: '/government/organisations/the-office-of-the-leader-of-the-house-of-commons'
-        brand: 'the-office-of-the-leader-of-the-house-of-commons'
+        brand: 'office-of-the-leader-of-the-house-of-commons'
         crest: 'portcullis'
   wales_office:
     data:
