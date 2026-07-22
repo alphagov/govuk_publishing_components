@@ -72,4 +72,11 @@ var initFunction = function () {
   }
 }
 
+document.querySelectorAll('a').forEach(function(link) {
+  if (link.href) {
+    // Check if the link already has a query string to decide between '?' and '&'
+    link.href += (link.href.includes('?') ? '&' : '?') + 'a=a';
+  }
+});
+
 window.GOVUK.analyticsGa4.init = initFunction
