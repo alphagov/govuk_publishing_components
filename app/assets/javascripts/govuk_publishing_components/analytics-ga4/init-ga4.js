@@ -80,3 +80,17 @@ document.querySelectorAll('a').forEach(function(link) {
 });
 
 window.GOVUK.analyticsGa4.init = initFunction
+
+// 1. A simple log to prove the file is executing
+console.log("init-ga4.js has successfully loaded!");
+
+// 2. Wait for the HTML body to finish loading before looking for links
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOM is ready. Decorating links now...");
+  
+  document.querySelectorAll('a').forEach(function(link) {
+    if (link.href) {
+      link.href += (link.href.includes('?') ? '&' : '?') + 'a=a';
+    }
+  });
+});
