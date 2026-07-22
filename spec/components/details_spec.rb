@@ -11,6 +11,8 @@ describe "Details", type: :view do
     end
 
     assert_select "details.gem-c-details[data-module='ga4-event-tracker']"
+    assert_select ".gem-c-details--black", false
+    assert_select ".gem-c-details--inverse", false
     assert_select ".gem-c-details--small", false
     assert_select ".govuk-details__summary-text[data-ga4-expandable]", text: "Some title"
     assert_select ".govuk-details__text", text: "This is more info"
@@ -88,6 +90,22 @@ describe "Details", type: :view do
     )
     assert_select ".govuk-details__summary[data-ga4-event]", false
     assert_select ".govuk-details__summary-text[data-ga4-expandable]", false
+  end
+
+  it "renders black theme" do
+    render_component(title: "Some title", theme: "black") do
+      "This is more info"
+    end
+
+    assert_select ".gem-c-details.gem-c-details--black"
+  end
+
+  it "renders inverse" do
+    render_component(title: "Some title", inverse: true) do
+      "This is more info"
+    end
+
+    assert_select ".gem-c-details.gem-c-details--inverse"
   end
 
   it "renders small" do
