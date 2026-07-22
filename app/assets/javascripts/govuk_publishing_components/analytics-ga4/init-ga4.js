@@ -1,4 +1,16 @@
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOM is ready. Decorating cross-domain links...");
+  
+  document.querySelectorAll('a').forEach(function(link) {
+    // Only decorate links that have an href AND don't contain a hash/anchor
+    if (link.href && !link.href.includes('#')) {
+      link.href += (link.href.includes('?') ? '&' : '?') + 'a=a';
+    }
+  });
+});
+
 var initFunction = function () {
+  
   window.removeEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
 
   window.GOVUK.analyticsGa4.checkCookieConsentLinkDecoration = function (location) {
@@ -72,25 +84,5 @@ var initFunction = function () {
   }
 }
 
-document.querySelectorAll('a').forEach(function(link) {
-  if (link.href) {
-    // Check if the link already has a query string to decide between '?' and '&'
-    link.href += (link.href.includes('?') ? '&' : '?') + 'b=b';
-  }
-});
-
 window.GOVUK.analyticsGa4.init = initFunction
 
-// 1. A simple log to prove the file is executing
-console.log("init-ga4.js has successfully loaded!");
-
-// 2. Wait for the HTML body to finish loading before looking for links
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("DOM is ready. Decorating links now...");
-  
-  document.querySelectorAll('a').forEach(function(link) {
-    if (link.href) {
-      link.href += (link.href.includes('?') ? '&' : '?') + 'a=a';
-    }
-  });
-});
