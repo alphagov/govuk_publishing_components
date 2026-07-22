@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Accept and provide link decoration to/from government links ([PR #5511](https://github.com/alphagov/govuk_publishing_components/pull/5511))
+
 * **BREAKING:** remove the aria_live option from the notice component ([PR #5568](https://github.com/alphagov/govuk_publishing_components/pull/5568))
 * Tidy up organisation colours stylesheet ([PR #5578](https://github.com/alphagov/govuk_publishing_components/pull/5578))
 

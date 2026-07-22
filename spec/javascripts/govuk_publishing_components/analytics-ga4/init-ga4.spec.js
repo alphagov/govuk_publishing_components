@@ -80,4 +80,32 @@ describe('Initialising GA4', function () {
       delete GOVUK.analyticsGa4.analyticsModules.TestNotError
     })
   })
+
+  describe('cookie consent query strings', function () {
+    it('sets usage consent cookie to false when cookie_consent query string parameter has a value of "reject"', function () {
+      var location = {
+        protocol: 'https:',
+        hostname: 'site.example.com',
+        href: 'https://site.example.com/a/path?cookie_consent=reject',
+        search: '?cookie_consent=reject',
+        origin: 'https://site.example.com'
+      }
+      GOVUK.analyticsGa4.checkCookieConsentLinkDecoration(location)
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
+      expect(GOVUK.getConsentCookie().usage).toBe(false)
+    })
+
+    it('sets usage consent cookie to true when cookie_consent query string parameter has a value of "accept"', function () {
+      var location = {
+        protocol: 'https:',
+        hostname: 'site.example.com',
+        href: 'https://site.example.com/a/path?cookie_consent=accept',
+        search: '?cookie_consent=accept',
+        origin: 'https://site.example.com'
+      }
+      GOVUK.analyticsGa4.checkCookieConsentLinkDecoration(location)
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
+      expect(GOVUK.getConsentCookie().usage).toBe(true)
+    })
+  })
 })

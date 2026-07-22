@@ -187,6 +187,40 @@ describe "Layout for public", :capybara, type: :view do
     expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
+  it "doesn't append link decoration before cookies are selected" do
+    render_component({
+      test_links: "
+        <a href='www.gov.uk' id='link_1'>link 1</a>
+        <a href='www.example.gov.uk' id='link_2'>link 2</a>
+        <a href='www.notgov.uk' id='link_3'>link 3</a>",
+    })
+
+    visit "/public"
+
+    assert_select("#link_1", href: "www.gov.uk")
+    assert_select("#link_2", href: "www.example.gov.uk")
+    assert_select("#link_3", href: "www.notgov.uk")
+  end
+
+  it "appends link decoration to non gov.uk government sites after cookies are selected", :js do
+    render_component({
+      test_links: "
+        <a href='www.gov.uk' id='link_1'>link 1</a>
+        <a href='www.example.service.gov.uk' id='link_2'>link 2</a>
+        <a href='www.notgov.uk' id='link_3'>link 3</a>",
+    })
+
+    visit "/public"
+
+    click_button "Accept additional cookies"
+
+    visit "/public"
+
+    assert_select("#link_1", href: "www.gov.uk")
+    assert_select("#link_2", href: "www.example.service.gov.uk?cookie_consent=true")
+    assert_select("#link_3", href: "www.notgov.uk")
+  end
+
   it "does not render a phase banner by default" do
     render_component({})
 
