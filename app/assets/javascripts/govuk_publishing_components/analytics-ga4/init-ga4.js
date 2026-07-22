@@ -29,7 +29,7 @@ var initFunction = function () {
         const url = new URL(link.href, window.location.origin)
 
         if (allowedDomains.includes(url.hostname)) {
-          url.searchParams.set('consent', consent)
+          url.searchParams.set('cookies[analytics]', consentValue)
           link.href = url.toString()
         }
       } catch (e) {
@@ -38,35 +38,37 @@ var initFunction = function () {
     })
   }
 
+  window.GOVUK.analyticsGa4.checkCookieConsentLinkDecoration(window.location)
+
   var consentCookie = window.GOVUK.getConsentCookie()
-  if (consentCookie && consentCookie.usage) {
-    window.GOVUK.analyticsGa4.decorateLinks(Object.values(consentCookie).includes(false).toString())
 
-    window.GOVUK.analyticsGa4.vars.internalDomains = []
-    window.GOVUK.analyticsGa4.vars.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
-    window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
-    window.GOVUK.analyticsGa4.core.load()
+  if (consentCookie) {
+    var consentValue = consentCookie.usage ? 'yes' : 'no'
+    window.GOVUK.analyticsGa4.decorateLinks(consentValue)
 
-    if (!window.GOVUK.analyticsGa4.analyticsModulesStarted) {
-      // Initialise analytics modules that start on page load
-      // https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/analytics.md#code-structure
-      var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
-      for (var property in analyticsModules) {
-        var module = analyticsModules[property]
-        if (typeof module.init === 'function') {
-          try {
-            module.init()
-          } catch (e) {
-            // if there's a problem with the module, catch the error to allow other modules to start
-            console.warn('Error starting analytics module ' + property + ': ' + e.message, window.location)
+    if (consentCookie.usage) {
+      window.GOVUK.analyticsGa4.vars.internalDomains = []
+      window.GOVUK.analyticsGa4.vars.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
+      window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
+      window.GOVUK.analyticsGa4.core.load()
+
+      if (!window.GOVUK.analyticsGa4.analyticsModulesStarted) {
+        var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
+        for (var property in analyticsModules) {
+          var module = analyticsModules[property]
+          if (typeof module.init === 'function') {
+            try {
+              module.init()
+            } catch (e) {
+              console.warn('Error starting analytics module ' + property + ': ' + e.message, window.location)
+            }
           }
         }
+        window.GOVUK.analyticsGa4.analyticsModulesStarted = true
       }
-      window.GOVUK.analyticsGa4.analyticsModulesStarted = true
     }
   } else {
     window.addEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
-    window.GOVUK.analyticsGa4.checkCookieConsentLinkDecoration(window.location)
   }
 }
 
