@@ -8,7 +8,7 @@ $sort-link-active-colour: govuk-colour("white");
 $sort-link-arrow-size: 14px;
 $sort-link-arrow-size-small: 8px;
 $sort-link-arrow-spacing: calc($sort-link-arrow-size / 2);
-$table-row-hover-background-colour: rgba(43, 140, 196, .2);
+$table-row-hover-background-colour: govuk-colour("blue", $variant: "tint-80");
 $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
 
 .govuk-table__cell:empty,
@@ -109,6 +109,11 @@ $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
   .govuk-table__row {
     &:hover {
       background-color: $table-row-hover-background-colour;
+      
+      .govuk-table__cell:empty,
+      .govuk-table__cell--empty {
+        color: govuk-functional-colour(text);
+      }
     }
 
     &:nth-child(even) {
@@ -116,6 +121,11 @@ $table-row-even-background-colour: govuk-colour("black", $variant: "tint-95");
 
       &:hover {
         background-color: $table-row-hover-background-colour;
+
+        .govuk-table__cell:empty,
+        .govuk-table__cell--empty {
+          color: govuk-functional-colour(text);
+        }
       }
     }
   }
