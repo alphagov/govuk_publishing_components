@@ -61,4 +61,14 @@ describe "Govspeak", type: :view do
 
     expect(rendered).to include("content-via-block")
   end
+
+  it "parses govspeak into HTML" do
+    render "govuk_publishing_components/components/#{component_name}" do
+      "
+        # heading
+      "
+    end
+
+    expect(rendered).to include("<h1 id=\"heading\">heading</h1>")
+  end
 end

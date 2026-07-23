@@ -10,6 +10,8 @@
   component_helper.add_class("js-disable-youtube") if disable_youtube_expansions
   component_helper.add_class("gem-c-govspeak--inverse") if inverse
   component_helper.add_data_attribute({ module: "govspeak" })
+
+  govspeak_helper = GovukPublishingComponents::Presenters::GovspeakHelper.new
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
   <% if local_assigns.include?(:content) %>
@@ -30,6 +32,9 @@
         " %>
     <% end %>
   <% elsif block_given? %>
-    <%= yield %>
+    <% content = capture do %>
+      <%= yield %>
+    <% end %>
+    <%= govspeak_helper.parse_govspeak(content) %>
   <% end %>
 <% end %>

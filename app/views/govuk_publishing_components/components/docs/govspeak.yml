@@ -1150,3 +1150,13 @@ examples:
       block: |
         <p>This content has a YouTube livestream link, converted to an accessible embedded player by component JavaScript. Bear in mind that the link will not convert if the paragraph it is in contains other content.</p>
         <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream video</a></p>
+  parses_govspeak:
+    data:
+      block: |
+        ##Some govspeak
+
+        This is a paragraph. See how it looks.
+
+        * This is a list item
+        * This is another list item
+        * One more list item
