@@ -9,6 +9,7 @@ require "govuk_schemas"
 require_relative "support/components_helper"
 require "gds_api/test_helpers/content_store"
 require "faker"
+require "govspeak"
 
 if ENV["USE_I18N_COVERAGE"]
   require "i18n/coverage"
