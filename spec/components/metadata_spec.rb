@@ -265,22 +265,6 @@ describe "Metadata", type: :view do
     assert_select '.gem-c-metadata.govuk-\!-margin-bottom-2'
   end
 
-  it "renders the component with 3 toggle sections for 'part of', 'from' and 'other'" do
-    render_component(
-      part_of: "<a href='/link'>Department</a>",
-      from: [
-        "<a href='/from-1'>From 1</a>",
-      ],
-      other: {
-        "Related topics": [
-          "<a href='/government/topics/topic-1'>Topic 1</a>",
-        ],
-      },
-    )
-
-    assert_select "[data-module*=\"gem-toggle\"]", count: 3
-  end
-
   it "adds GA4 tracking to the 'see all updates' link" do
     render_component(last_updated: "Hello World", see_updates_link: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
 
@@ -291,7 +275,7 @@ describe "Metadata", type: :view do
     }.to_json
 
     assert_select ".gem-c-metadata__definition:nth-of-type(2)" do |alternate_see_all_updates_container|
-      expect(alternate_see_all_updates_container.attr("data-module").to_s).to eq "gem-toggle ga4-link-tracker"
+      expect(alternate_see_all_updates_container.attr("data-module").to_s).to eq "ga4-link-tracker"
       expect(alternate_see_all_updates_container.attr("data-ga4-link").to_s).to eq expected_ga4_json
     end
   end
@@ -316,8 +300,7 @@ describe "Metadata", type: :view do
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
     assert_select "#full-publication-update-history.gem-c-metadata"
-    assert_select ".gem-c-metadata__change-history#page-history-1234"
-    assert_select ".gem-c-metadata--history .gem-c-metadata__change-date", text: "23 August 2013"
+    assert_select ".gem-c-metadata__change-history .gem-c-metadata__change-date", text: "23 August 2013"
   end
 
   it "includes a hidden title if there is page history" do
@@ -339,8 +322,7 @@ describe "Metadata", type: :view do
       last_updated: "15th July 2015",
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
-    assert_select ".gem-c-metadata__change-history#page-history-1234"
-    assert_select ".gem-c-metadata--history .gem-c-metadata__change-note", text: /^\S/
+    assert_select ".gem-c-metadata__change-history .gem-c-metadata__change-note", text: /^\S/
   end
 
   it "only adds history id when passed page history" do
@@ -361,39 +343,34 @@ describe "Metadata", type: :view do
       last_updated: "15th July 2015",
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
-    assert_select ".gem-c-metadata__change-history.js-hidden"
+    assert_select ".gem-c-details .gem-c-metadata__change-history"
+    assert_select ".gem-c-details[open] .gem-c-metadata__change-history", false
   end
 
-  it "renders link to full page history if history is provided" do
+  it "renders full page history in a details component if history is provided" do
     render_component(
       first_published: "1st November 2000",
       last_updated: "15th July 2015",
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
-    assert_select ".gem-c-metadata a[href=\"#full-history\"]"
+    assert_select ".gem-c-metadata .gem-c-details .govuk-details__summary-text"
   end
 
-  it "includes data attributes for toggle behaviour" do
-    render_component(
-      first_published: "1st November 2000",
-      last_updated: "15th July 2015",
-      page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
-    )
-    assert_select ".gem-c-metadata__definition[data-module=\"gem-toggle\"]"
-    assert_select ".gem-c-metadata--history a[href=\"#full-history\"][data-controls=\"page-history-1234\"]"
-    assert_select ".gem-c-metadata--history a[href=\"#full-history\"][data-expanded=\"false\"]"
+  it "renders with a top border" do
+    render_component({ border_top: true })
+    assert_select ".gem-c-metadata.gem-c-metadata--border-top"
   end
 
   def assert_truncation(length, limit)
-    assert_select ".gem-c-metadata__toggle-items", count: 1
+    assert_select ".gem-c-details", count: 1
     assert_select ".gem-c-metadata__definition > a", count: limit
-    assert_select ".gem-c-metadata__definition .gem-c-metadata__toggle-items a", count: length - limit
-    assert_select "a[href=\"#\"]", text: t("common.toggle_more", show: t("common.show"), number: length - limit)
+    assert_select ".gem-c-details .govuk-details__text a", count: length - limit
+    assert_select ".govuk-details__summary-text", text: t("common.toggle_more", show: t("common.show"), number: length - limit)
   end
 
   def assert_no_truncation(length)
     assert_select ".gem-c-metadata__definition > a", count: length
-    assert_select ".gem-c-metadata__toggle-items", count: 0
+    assert_select ".gem-c-details", count: 0
   end
 
   def assert_definition(term, definition)

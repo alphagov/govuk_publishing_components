@@ -13,12 +13,12 @@
   other ||= nil
   inverse ||= false
   inverse_compress ||= false
+  border_top ||= false
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-metadata")
   component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)
-
-  component_helper.add_class("gem-c-metadata--history") if page_history.any?
+  component_helper.add_class("gem-c-metadata--border-top") if border_top
   component_helper.set_id("full-publication-update-history") if page_history.any?
 
   if inverse
@@ -49,13 +49,13 @@
   <dl class="gem-c-metadata__list">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
-      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
+      <dd class="gem-c-metadata__definition">
         <%= render "govuk_publishing_components/components/metadata/sentence", items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
     <% if part_of.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of") %>:</dt>
-      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
+      <dd class="gem-c-metadata__definition">
         <%= render "govuk_publishing_components/components/metadata/sentence", items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
@@ -69,7 +69,7 @@
     <% end %>
     <% if local_assigns.include?(:last_updated) && last_updated %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %>:</dt>
-      <dd class="gem-c-metadata__definition" data-module="gem-toggle">
+      <dd class="gem-c-metadata__definition">
         <%= last_updated %>
         <% if local_assigns.include?(:see_updates_link) %>
           &#8212; <a href="#full-publication-update-history"
@@ -78,27 +78,19 @@
           </a>
         <% end %>
         <% if page_history.any? %>
-          <span aria-hidden="true">&#8212; </span>
-          <% page_history_toggle_id = "page-history-#{SecureRandom.hex(4)}" %>
-          <a
-            href="#full-history"
-            class="gem-c-metadata__toggle govuk-link"
-            data-controls="<%= page_history_toggle_id %>"
-            data-expanded="false"
-            data-toggled-text='<%= t("components.metadata.hide_all_updates", locale: :en) %>'
-            data-module="ga4-event-tracker"
-            data-ga4-event='<%= { event_name: "select_content", type: "content history", section: "Footer" }.to_json %>'
-            data-ga4-expandable>
-            <%= t("components.metadata.show_all_updates", locale: :en) %>
-          </a>
-          <ol class="gem-c-metadata__change-history js-hidden" id="<%= page_history_toggle_id %>">
-            <% page_history.each do |change| %>
-              <li>
-                <time class="gem-c-metadata__change-date timestamp" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
-                <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
-              </li>
-            <% end %>
-          </ol>
+          <%= render "govuk_publishing_components/components/details", {
+            title: t("components.metadata.show_all_updates", locale: :en),
+            small: true,
+          } do %>
+            <ol class="gem-c-metadata__change-history">
+              <% page_history.each do |change| %>
+                <li class="gem-c-metadata__change-history-item">
+                  <time class="gem-c-metadata__change-date" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
+                  <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
+                </li>
+              <% end %>
+            </ol>
+          <% end %>
         <% end %>
       </dd>
     <% end %>
@@ -111,10 +103,8 @@
         <% if definition.any? %>
           <dt class="gem-c-metadata__term"><%= title %>:</dt>
           <dd class="gem-c-metadata__definition"
-            <% if disable_ga4 %>
-              data-module="gem-toggle"
-            <% else %>
-              data-module="gem-toggle ga4-link-tracker"
+            <% unless disable_ga4 %>
+              data-module="ga4-link-tracker"
               data-ga4-link="<%= ga4_object %>"
             <% end %>>
             <%= render "govuk_publishing_components/components/metadata/sentence", items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
