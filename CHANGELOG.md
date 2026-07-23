@@ -12,6 +12,7 @@
 * Add options to the details component ([PR #5594](https://github.com/alphagov/govuk_publishing_components/pull/5594))
 * **BREAKING:** remove the aria_live option from the notice component ([PR #5568](https://github.com/alphagov/govuk_publishing_components/pull/5568))
 * Tidy up organisation colours stylesheet ([PR #5578](https://github.com/alphagov/govuk_publishing_components/pull/5578))
+* Update breadcrumb font size print styles ([PR #5570](https://github.com/alphagov/govuk_publishing_components/pull/5570))
 
 ## 66.9.0
 

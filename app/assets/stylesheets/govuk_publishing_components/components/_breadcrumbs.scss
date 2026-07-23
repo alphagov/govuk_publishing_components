@@ -28,10 +28,6 @@
 }
 
 @include govuk-media-query($media-type: print) {
-  .gem-c-breadcrumbs {
-    font-size: 12pt;
-  }
-
   .gem-c-breadcrumbs,
   .govuk-breadcrumbs {
     .govuk-breadcrumbs__list-item {
