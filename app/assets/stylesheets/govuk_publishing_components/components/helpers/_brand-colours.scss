@@ -13,17 +13,6 @@
 
 @include organisation-brand-colour;
 
-// in the toolkit, civil service has red for the text and borders
-// but the required border colour is black, ideally would fix this in
-// the toolkit but other things are using it
-
-.brand--civil-service {
-  &.brand__border-color,
-  .brand__border-color {
-    border-color: govuk-colour("black");
-  }
-}
-
 .brand--government-digital-service {
   &.brand__border-color,
   .brand__border-color {
