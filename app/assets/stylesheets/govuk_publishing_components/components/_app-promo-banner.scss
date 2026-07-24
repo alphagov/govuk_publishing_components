@@ -1,8 +1,8 @@
 .gem-c-app-promo-banner {
   display: none;
   padding: govuk-spacing(5) 0;
-  border-top: 4px solid $govuk-brand-colour;
-  background-color: $govuk-rebrand-template-background-colour;
+  border-top: 4px solid govuk-functional-colour(brand);
+  background-color: $govuk-blue-tint-95;
   @include govuk-text-colour;
 }
 
@@ -46,7 +46,7 @@
 .gem-c-app-promo-banner__close-button {
   border: 0;
   padding: 0;
-  color: govuk-tint(govuk-colour("black"), 25%);
+  color: govuk-functional-colour("secondary-text");
   background: none;
   flex: 0 0 24px;
   height: 24px;

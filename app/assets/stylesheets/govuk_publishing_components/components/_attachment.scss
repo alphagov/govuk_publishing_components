@@ -23,9 +23,9 @@ $thumbnail-border-width: 5px;
   max-width: calc($thumbnail-width / 1.5);
   height: calc($thumbnail-height / 1.5);
   background: govuk-colour("white");
-  box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4), 0 0 0 5px color.adjust(govuk-colour("black"), $alpha: -0.9);
-  fill: govuk-colour("mid-grey");
-  stroke: govuk-colour("mid-grey");
+  box-shadow: 0 2px 2px govuk-colour("black", $variant: "tint-50"), 0 0 0 5px govuk-functional-colour("border");
+  fill: govuk-colour("black", $variant: "tint-50");
+  stroke: govuk-colour("black", $variant: "tint-50");
 
   @include govuk-media-query($from: tablet) {
     max-width: $thumbnail-width;
@@ -56,7 +56,7 @@ $thumbnail-border-width: 5px;
 
 .gem-c-attachment__metadata {
   margin: 0 0 govuk-spacing(3);
-  color: $govuk-secondary-text-colour;
+  color: govuk-functional-colour(secondary-text);
   @include govuk-font($size: 19);
   @include govuk-text-break-word;
 
@@ -92,7 +92,7 @@ $thumbnail-border-width: 5px;
   }
 
   .gem-c-attachment__metadata {
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
   }
 
   .gem-c-attachment__metadata,

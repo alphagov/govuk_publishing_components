@@ -1,5 +1,5 @@
 .gem-c-emergency-banner {
-  background-color: govuk-colour("mid-grey");
+  background-color: govuk-colour("black", $variant: "tint-80");
   color: govuk-colour("white");
   margin-top: 2px;
   padding: govuk-spacing(3) 0;
@@ -52,14 +52,11 @@
 }
 
 .gem-c-emergency-banner--national-emergency {
-  // Not using govuk-colour("red") aka #d4351c as that's a slightly different red.
-  background-color: #b10e1e;
+  background-color: govuk-colour("red", $variant: "shade-25");
 }
 
 .gem-c-emergency-banner--local-emergency {
-  // Not using govuk-colour("turquoise") for background colour as
-  // the contrast was too low with white text
-  background-color: #00847d;
+  background-color: govuk-colour("teal", $variant: "shade-25");
 }
 
 @include govuk-media-query($media-type: print) {

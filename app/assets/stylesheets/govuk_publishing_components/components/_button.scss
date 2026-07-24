@@ -92,7 +92,7 @@
   &:hover {
     border-color: $gem-quiet-button-hover-colour;
     color: $gem-quiet-button-hover-colour;
-    background-color: $gem-secondary-button-hover-background-colour;
+    background-color: $gem-quiet-button-hover-background-colour;
     text-decoration: none;
   }
 
@@ -107,7 +107,7 @@
     display: inline-block;
     padding: govuk-spacing(1);
     border: solid 1px govuk-colour("black");
-    color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+    color: govuk-functional-colour(print-text) !important; // stylelint-disable-line declaration-no-important
     text-decoration: none;
 
     &::after {

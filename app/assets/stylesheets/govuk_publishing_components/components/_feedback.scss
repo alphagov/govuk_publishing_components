@@ -54,7 +54,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 }
 
 .gem-c-feedback__prompt-questions--something-is-wrong {
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
   @include govuk-media-query($from: tablet) {
     border: 0;
   }
@@ -119,7 +119,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
   }
 
   &:hover {
-    background: govuk-colour("mid-grey");
+    background: govuk-colour("black", $variant: "tint-80");
     color: govuk-colour("black");
   }
 }
@@ -130,7 +130,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 
   &:focus,
   &:active {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
   }
 }
 
@@ -162,11 +162,11 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 .gem-c-feedback__error-summary {
   margin-bottom: govuk-spacing(3);
   padding: govuk-spacing(3);
-  border: solid $govuk-border-width-narrow $govuk-error-colour;
+  border: solid $govuk-border-width-narrow govuk-functional-colour(error);
   clear: both;
 
   &:focus {
-    outline: solid 3px $govuk-focus-colour;
+    outline: solid 3px govuk-functional-colour(focus);
   }
 
   @include govuk-media-query($from: desktop) {
@@ -196,7 +196,7 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 .gem-c-feedback__error-message {
   display: block;
   padding: 4px 0 0;
-  color: $govuk-error-colour;
+  color: govuk-functional-colour(error);
   @include govuk-font(19, $weight: bold);
 }
 
@@ -253,6 +253,6 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 
   &:focus,
   &:active {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
   }
 }

@@ -14,7 +14,7 @@
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .footnotes {
-    border-top: 1px solid govuk-colour("mid-grey");
+    border-top: 1px solid govuk-functional-colour("border");
     margin: 0 0 govuk-spacing(4) 0;
     padding-top: govuk-spacing(4);
 
@@ -31,12 +31,12 @@
     }
 
     li:target {
-      background: govuk-colour("light-grey");
-      border-bottom: solid 3px $govuk-border-colour;
+      background: govuk-colour("black", $variant: "tint-95");
+      border-bottom: solid 3px govuk-functional-colour(border);
     }
 
     @include govuk-media-query($media-type: print) {
-      border-top: 1px solid $govuk-text-colour;
+      border-top: 1px solid govuk-functional-colour(text);
 
       a[role="doc-backlink"] {
         display: none;

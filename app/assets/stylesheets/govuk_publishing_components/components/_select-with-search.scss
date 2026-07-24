@@ -46,20 +46,20 @@ $choices-button-dimension: 12px !default;
 
   .choices[data-type*="select-multiple"] .choices__button,
   .choices[data-type*="text"] .choices__button {
-    border-color: govuk-colour("mid-grey");
-    border-right: 1px solid govuk-colour("mid-grey");
+    border-color: govuk-functional-colour("border");
+    border-right: 1px solid govuk-functional-colour("border");
     padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) govuk-spacing(2);
     margin-right: 0;
 
     &:hover {
-      background-color: govuk-colour("mid-grey");
-      border-color: govuk-colour("dark-grey");
-      box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("dark-grey");
+      background-color: govuk-colour("black", $variant: "tint-80");
+      border-color: govuk-colour("black", $variant: "tint-25");
+      box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("black", $variant: "tint-25");
     }
 
     &:focus {
-      background-color: $govuk-focus-colour;
-      box-shadow: 0 $govuk-border-width-form-element 0 $govuk-focus-text-colour;
+      background-color: govuk-functional-colour(focus);
+      box-shadow: 0 $govuk-border-width-form-element 0 govuk-functional-colour(focus-text);
     }
   }
 
@@ -84,7 +84,7 @@ $choices-button-dimension: 12px !default;
   }
 
   &.govuk-form-group--error .choices:not(.is-active):not(.is-focused):not(.is-open) .choices__inner {
-    border-color: $govuk-error-colour;
+    border-color: govuk-functional-colour(error);
   }
 
   .choices.is-focused,
@@ -99,7 +99,7 @@ $choices-button-dimension: 12px !default;
 
   .choices.is-focused .choices__inner,
   .choices.is-open .choices__inner {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
     // Ensure outline appears outside of the element
     outline-offset: 0;
     // Double the border by adding its width again. Use `box-shadow` to do
@@ -113,7 +113,7 @@ $choices-button-dimension: 12px !default;
 
     &:not(:empty) {
       margin-block-start: 6px;
-      border-block-start: 1px solid $govuk-border-colour;
+      border-block-start: 1px solid govuk-functional-colour(border);
       padding-block-end: 5px;
     }
   }
@@ -124,10 +124,10 @@ $choices-button-dimension: 12px !default;
     border: 0;
     padding: 0 0 0 govuk-spacing(2);
     margin: govuk-spacing(2) govuk-spacing(2) 0 0;
-    background-color: govuk-colour("light-grey");
-    box-shadow: 0 $govuk-border-width-form-element 0 govuk-colour("mid-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
+    box-shadow: 0 $govuk-border-width-form-element 0 govuk-functional-colour("border");
     line-height: 1;
-    color: $govuk-text-colour;
+    color: govuk-functional-colour(text);
 
     .is-disabled & {
       opacity: 0.5;
@@ -149,7 +149,7 @@ $choices-button-dimension: 12px !default;
   .choices__list--dropdown .choices__item,
   .choices__list[aria-expanded] .choices__item {
     position: relative;
-    border-bottom: 1px solid govuk-colour("mid-grey");
+    border-bottom: 1px solid govuk-functional-colour("border");
 
     &:last-child {
       border-bottom: 0;
@@ -168,7 +168,7 @@ $choices-button-dimension: 12px !default;
     @include govuk-typography-weight-bold;
     color: govuk-colour("black"); // Choices.js doesn't use a variable for this color for some reason :(
     padding: govuk-spacing(6) govuk-spacing(2) govuk-spacing(2);
-    border-bottom: 1px solid govuk-colour("mid-grey");
+    border-bottom: 1px solid govuk-functional-colour("border");
     cursor: default;
   }
 }

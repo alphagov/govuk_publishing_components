@@ -1,11 +1,11 @@
 .gem-c-sub-navigation-menu {
-  border-bottom: 1px solid $govuk-border-colour;
+  border-bottom: 1px solid govuk-functional-colour(border);
   @include govuk-font(19);
 }
 
 .gem-c-sub-navigation-menu__button-container {
-  background-color: govuk-colour("light-grey");
-  border-bottom: 1px solid govuk-colour("mid-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
+  border-bottom: 1px solid govuk-functional-colour("border");
 }
 
 .gem-c-sub-navigation-menu__button-container--collapsed {
@@ -21,7 +21,7 @@
   padding-right: govuk-spacing(3);
   // Invisible border so the width of the collapsed button is the same as the expanded one.
   border-left: 1px solid rgba(0, 0, 0, 0);
-  border-right: 1px solid govuk-colour("light-grey");
+  border-right: 1px solid govuk-colour("black", $variant: "tint-95");
   cursor: pointer;
   position: relative;
   @include govuk-font(19);
@@ -59,11 +59,11 @@
 }
 
 .gem-c-sub-navigation-menu__button[aria-expanded="true"] {
-  border-color: govuk-colour("mid-grey");
+  border-color: govuk-functional-colour("border");
   background-color: govuk-colour("white");
 
   @include govuk-media-query($until: tablet) {
-    border-left: 1px solid govuk-colour("light-grey"); // Hide left border on mobile while preserving button width.
+    border-left: 1px solid govuk-colour("black", $variant: "tint-95"); // Hide left border on mobile while preserving button width.
   }
 
   // Expanded arrow icon
@@ -73,8 +73,8 @@
 }
 
 .gem-c-sub-navigation-menu__button[aria-expanded="true"]:focus {
-  background-color: $govuk-focus-colour;
-  border-color: $govuk-focus-colour;
+  background-color: govuk-functional-colour(focus);
+  border-color: govuk-functional-colour(focus);
 }
 
 // Adds a white border at the bottom of the button when the button is expanded.
@@ -98,7 +98,7 @@
 }
 
 .gem-c-sub-navigation-menu__button:hover::before {
-  border-color: govuk-colour("dark-blue");
+  border-color: govuk-colour("blue", $variant: "shade-50");
 }
 
 .gem-c-sub-navigation-menu__nav-container {

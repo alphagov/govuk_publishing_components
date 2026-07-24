@@ -27,28 +27,28 @@ $gem-c-print-link-background-height: 18px;
   }
 
   &:hover {
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
   }
 }
 
 .gem-c-print-link__link {
-  box-shadow: inset 0 0 0 1px govuk-colour("dark-grey");
+  box-shadow: inset 0 0 0 1px govuk-colour("black", $variant: "tint-25");
 
   &:focus {
     border: 0;
-    box-shadow: 0 $govuk-focus-width $govuk-text-colour;
+    box-shadow: 0 $govuk-focus-width govuk-functional-colour(text);
   }
 }
 
 .gem-c-print-link__button {
-  border: 1px solid govuk-colour("dark-grey");
-  color: $govuk-link-colour;
+  border: 1px solid govuk-colour("black", $variant: "tint-25");
+  color: govuk-functional-colour(link);
   cursor: pointer;
   margin: govuk-spacing(0);
   @include govuk-font(16);
 
   &:focus {
-    background-color: $govuk-focus-colour;
+    background-color: govuk-functional-colour(focus);
     border-color: transparent;
     @include govuk-focused-text;
   }

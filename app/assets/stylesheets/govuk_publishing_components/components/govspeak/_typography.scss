@@ -94,10 +94,10 @@
   }
 
   @include govuk-media-query($media-type: print) {
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
 
     a:link {
-      color: $govuk-print-text-colour;
+      color: govuk-functional-colour(print-text);
     }
   }
 }

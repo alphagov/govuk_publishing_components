@@ -1,6 +1,6 @@
 .gem-c-intervention {
-  background-color: govuk-colour("light-grey");
-  border-left: 10px solid $govuk-success-colour;
+  background-color: govuk-colour("black", $variant: "tint-95");
+  border-left: 10px solid govuk-functional-colour(success);
   @include govuk-text-colour;
   @include govuk-responsive-padding(3);
   @include govuk-responsive-margin(6, "bottom");
@@ -41,7 +41,7 @@
   .gem-c-intervention {
     break-inside: avoid;
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk-functional-colour(print-text);
 
     .govuk-body {
       margin: 0;
