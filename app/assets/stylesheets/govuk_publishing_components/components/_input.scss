@@ -6,10 +6,8 @@ $search-icon-size: 40px;
   display: block;
   position: relative;
   z-index: 1;
-  margin-bottom: -$search-icon-size;
   margin-bottom: -(govuk-px-to-rem($search-icon-size));
   width: $search-icon-size;
-  height: $search-icon-size;
   height: govuk-px-to-rem($search-icon-size);
   background: url("govuk_publishing_components/icon-search.svg") no-repeat -3px center;
 }

@@ -38,10 +38,10 @@ jobs:
   visual-regression-test-components:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           ref: ${{ inputs.ref || github.ref }}
-      - uses: ruby/setup-ruby@v1.318.0
+      - uses: ruby/setup-ruby@v1.319.0
         with:
           bundler-cache: true # Also runs `bundle install`
       - uses: actions/setup-node@v7.0.0

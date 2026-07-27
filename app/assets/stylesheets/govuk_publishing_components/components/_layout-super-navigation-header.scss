@@ -158,7 +158,6 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__search-item-link {
   color: govuk-colour("white");
   display: inline-block;
-  font-size: 19px;
   font-size: govuk-px-to-rem(19px);
   font-weight: bold;
   padding: govuk-spacing(4) 0;
@@ -182,7 +181,6 @@ $search-icon-height: 20px;
   &:link,
   &:visited {
     color: govuk-colour("white");
-    font-size: 16px;
     font-size: govuk-px-to-rem(16px);
     height: govuk-spacing(4);
     text-decoration: none;
@@ -238,7 +236,6 @@ $search-icon-height: 20px;
 
 // JS available - target the "Menu" toggle button
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
-  font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   font-weight: 700;
   background: none;
@@ -519,7 +516,7 @@ $search-icon-height: 20px;
 // JS available - styles the close icon, used when the search menu is in the open state
 .gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon {
   display: none;
-  font-size: 36px;
+  font-size: govuk-px-to-rem(36px);
   font-weight: normal;
   left: 0;
   line-height: 22px;
@@ -616,7 +613,6 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link {
-  font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   font-weight: bold;
 
@@ -634,7 +630,6 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
-  font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   font-weight: bold;
 
@@ -645,7 +640,6 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
-  font-size: 16px;
   font-size: govuk-px-to-rem(16px);
   font-weight: normal;
   margin: govuk-spacing(1) 0 0 0;
@@ -661,7 +655,7 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__column-header {
-  font-size: 24px;
+  font-size: govuk-px-to-rem(24px);
 }
 
 // Ensure the total space to the left of the logo for mobile screen sizes is 24px (margin is 15px)
@@ -677,7 +671,6 @@ $search-icon-height: 20px;
   // custom class to the label of the search component to turn off
   // the responsive font size
   .gem-c-layout-super-navigation-header__search-label--large-navbar {
-    font-size: 24px;
     font-size: govuk-px-to-rem(24px);
   }
 }
