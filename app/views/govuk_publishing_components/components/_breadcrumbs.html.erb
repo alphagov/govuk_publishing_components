@@ -8,7 +8,7 @@
 
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
 
-  classes = %w[gem-c-breadcrumbs govuk-breadcrumbs]
+  classes = %w[gem-c-breadcrumbs govuk-breadcrumbs govuk-!-display-none-print]
   classes << "govuk-breadcrumbs--collapse-on-mobile" if collapse_on_mobile
   classes << "govuk-breadcrumbs--inverse" if inverse
   classes << "gem-c-breadcrumbs--border-bottom" if border == "bottom"
