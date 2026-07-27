@@ -10,7 +10,9 @@
   component_helper.add_class("gem-c-contextual-sidebar govuk-!-display-none-print")
 %>
 
-<%= tag.div(**component_helper.all_attributes) do %>
+<% contextual_sidebar_content = nil %>
+
+<% contextual_sidebar_content = capture do %>
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
     <%# Rendering step by step related items because there are a few but not too many of them %>
     <%= render "govuk_publishing_components/components/step_by_step_nav_related", links: navigation.step_nav_helper.related_links, disable_ga4: disable_ga4 %>
@@ -38,3 +40,16 @@
     <%= render "govuk_publishing_components/components/contextual_sidebar/ukraine_cta", content_item: content_item, disable_ga4: disable_ga4, ga4_tracking_counts: ga4_tracking_counts %>
   <% end %>
 <% end %>
+
+<% if !contextual_sidebar_content.empty? && !contextual_sidebar_content.blank? && !contextual_sidebar_content.nil? && contextual_sidebar_content.strip != "" && contextual_sidebar_content.present? %>
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <%= contextual_sidebar_content %>
+  <% end %>
+<% end %>
+
+<%= puts contextual_sidebar_content.inspect %>
+
+
+
+
+
