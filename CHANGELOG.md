@@ -15,6 +15,7 @@
 * Update breadcrumb font size print styles ([PR #5570](https://github.com/alphagov/govuk_publishing_components/pull/5570))
 * Update the Civil Service organisation page to use its official brand colour ([PR #5610](https://github.com/alphagov/govuk_publishing_components/pull/5610))
 * Remove px values in font-size styles ([PR #5595](https://github.com/alphagov/govuk_publishing_components/pull/5595))
+* Hide breadcrumbs when printed ([PR #5617](https://github.com/alphagov/govuk_publishing_components/pull/5617))
 
 ## 66.9.0
 
