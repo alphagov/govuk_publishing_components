@@ -1,0 +1,46 @@
+name: Test
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Build & basic tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.0.3
+        with:
+          cache: npm
+          node-version-file: .nvmrc
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Functional tests (Chromium)
+        run: npm run karma
+
+      # Run linter after tests to prevent failure due to code formatting error
+      - name: Lint
+        run: npm run standard
+
+      # Run check for `npm run build` unstaged changes
+      - name: Check for unstaged changes
+        run: node scripts/check-staged.mjs
