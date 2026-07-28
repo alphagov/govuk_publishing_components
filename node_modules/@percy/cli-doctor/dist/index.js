@@ -1,0 +1,6 @@
+export { default, doctor } from './doctor.js';
+export { ConnectivityChecker, REQUIRED_DOMAINS } from './checks/connectivity.js';
+export { ProxyDetector } from './checks/proxy.js';
+export { PACDetector, runPacScript, findInObject } from './checks/pac.js';
+export { BrowserChecker, NetworkCapture, analyseCapture, sanitizeExecutablePath, safeEnvPath, safeHostname } from './checks/browser.js';
+export { runDiagnostics, redactProxyUrl, captureProxyEnv, PERCY_DOMAINS } from './utils/helpers.js';
