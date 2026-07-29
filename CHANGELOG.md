@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 67.0.0
 
 * Add options to the details component ([PR #5594](https://github.com/alphagov/govuk_publishing_components/pull/5594))
 * **BREAKING:** remove the aria_live option from the notice component ([PR #5568](https://github.com/alphagov/govuk_publishing_components/pull/5568))
