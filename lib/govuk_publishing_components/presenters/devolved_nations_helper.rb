@@ -15,9 +15,9 @@ module GovukPublishingComponents
         nation_keys.each_with_index.map { |k, i| name_for_position(k, i, nation_keys.count, use_english_translation) }.join
       end
 
-      def name_for_position(nation, position, total, use_english_translation)
+      def name_for_position(nation, position, total, use_english_translation, cy_initial_mutation: true)
         key = if position.zero?
-                :start
+                cy_initial_mutation ? :start : :middle
               elsif position == (total - 1)
                 :end
               else
@@ -42,7 +42,7 @@ module GovukPublishingComponents
 
         url_to_nation_keys.transform_values do |nation_keys|
           nations_text = nation_keys.each_with_index.map { |key, index|
-            name_for_position(key, index, nation_keys.count, false)
+            name_for_position(key, index, nation_keys.count, false, cy_initial_mutation: false)
           }.join
 
           alternative_content_text(nations_text)
