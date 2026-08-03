@@ -23,7 +23,8 @@ module GovukPublishingComponents
               else
                 :middle
               end
-        I18n.t("components.devolved_nations.#{nation}.#{key}", locale: use_english_translation ? :en : nil)
+        name = I18n.t("components.devolved_nations.#{nation}.#{key}", locale: use_english_translation ? :en : nil)
+        position.zero? || position == (total - 1) ? name : ", #{name}"
       end
 
       def ga4_applicable_nations_title_text(remove_connector_word = nil)
@@ -41,7 +42,7 @@ module GovukPublishingComponents
 
         url_to_nation_keys.transform_values do |nation_keys|
           nations_text = nation_keys.each_with_index.map { |key, index|
-            name_for_position(key, index, nation_keys.count, true)
+            name_for_position(key, index, nation_keys.count, false)
           }.join
 
           alternative_content_text(nations_text)

@@ -75,15 +75,15 @@ en:
       aria_label: Nation
       england:
         end: " and England"
-        middle: ", England"
+        middle: "England"
         start: England
       northern_ireland:
         end: " and Northern Ireland"
-        middle: ", Northern Ireland"
+        middle: "Northern Ireland"
         start: Northern Ireland
       scotland:
         end: " and Scotland"
-        middle: ", Scotland"
+        middle: "Scotland"
         start: Scotland
       type:
         consultation: Consultation for %{nation}
@@ -92,7 +92,7 @@ en:
         publication: Publication for %{nation}
       wales:
         end: " and Wales"
-        middle: ", Wales"
+        middle: "Wales"
         start: Wales
     feedback:
       close: Cancel
