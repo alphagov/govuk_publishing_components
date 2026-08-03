@@ -17,7 +17,7 @@ describe('Youtube link enhancement', function () {
 
     it('replaces a link and its container with a media-player embed', function () {
       container.innerHTML =
-        '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
         '<div>'
       document.body.appendChild(container)
@@ -32,7 +32,7 @@ describe('Youtube link enhancement', function () {
 
     it('supports overriding the default class with a custom class', function () {
       container.innerHTML =
-        '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
         '<div>'
       document.body.appendChild(container)
@@ -46,7 +46,7 @@ describe('Youtube link enhancement', function () {
 
     it('doesn\'t replace non Youtube links', function () {
       container.innerHTML =
-        '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.gov.uk">GOV.UK</a></p>' +
         '<div>'
       document.body.appendChild(container)
@@ -355,7 +355,7 @@ describe('Youtube link enhancement', function () {
 
     it('replaces a livestream link and its container with a media-player embed', function () {
       container.innerHTML =
-        '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
+        '<div class="gem-c-govspeak" data-module="govspeak">' +
           '<p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream</a></p>' +
         '<div>'
       document.body.appendChild(container)

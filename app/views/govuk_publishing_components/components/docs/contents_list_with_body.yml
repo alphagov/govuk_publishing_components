@@ -29,7 +29,7 @@ examples:
         - href: "#launch-of-merger-inquiry"
           text: Launch of merger inquiry
       block: |
-        <div class="govuk-govspeak direction-ltr">
+        <div class="gem-c-govspeak direction-ltr">
             <h2 id="statutory-timetable">Statutory timetable</h2>
             <table>
               <thead>
