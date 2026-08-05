@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix text wrapping in govspeak footnotes ([PR #5637](https://github.com/alphagov/govuk_publishing_components/pull/5637))
+
 ## 67.0.0
 
 * Add options to the details component ([PR #5594](https://github.com/alphagov/govuk_publishing_components/pull/5594))
