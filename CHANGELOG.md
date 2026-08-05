@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 67.0.1
 
 * Fix text wrapping in govspeak footnotes ([PR #5637](https://github.com/alphagov/govuk_publishing_components/pull/5637))
 
