@@ -81,27 +81,29 @@
       <% end %>
     <% end %>
     <% unless omit_header %>
-      <% if show_cross_service_header %>
-        <%= render "govuk_publishing_components/components/cross_service_header", {
-          one_login_navigation_items: one_login_navigation_items,
-          service_navigation_items: service_navigation_items,
-          service_name: service_name,
-        } %>
-      <% else %>
-        <% I18n.with_locale(:en) do %>
-          <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
-            homepage:,
-            logo_link:,
-            phase_banner:,
+      <%= tag.header do %>
+        <% if show_cross_service_header %>
+          <%= render "govuk_publishing_components/components/cross_service_header", {
+            one_login_navigation_items: one_login_navigation_items,
+            service_navigation_items: service_navigation_items,
+            service_name: service_name,
           } %>
+        <% else %>
+          <% I18n.with_locale(:en) do %>
+            <%= render "govuk_publishing_components/components/layout_super_navigation_header", {
+              homepage:,
+              logo_link:,
+              phase_banner:,
+            } %>
+          <% end %>
+        <% end %>
+
+        <%= raw(emergency_banner) %>
+
+        <% if global_banner.present? %>
+          <%= raw(global_banner) %>
         <% end %>
       <% end %>
-    <% end %>
-
-    <%= raw(emergency_banner) %>
-
-    <% if global_banner.present? %>
-      <%= raw(global_banner) %>
     <% end %>
 
     <% if show_account_layout %>
