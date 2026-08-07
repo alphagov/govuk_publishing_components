@@ -10,7 +10,15 @@
   error_items_time ||= nil
   error_id = "error-#{SecureRandom.hex(4)}"
   error_id_time = "error-time-#{SecureRandom.hex(4)}"
-  error_id_date = "error-date-#{SecureRandom.hex(4)}"
+  # error_id_date = "error-date-#{SecureRandom.hex(4)}"
+
+  if error_items
+    error_id_times = error_id
+  elsif error_items_time
+    error_id_times = error_id_time
+  else
+    error_id_times = nil
+  end
 
   heading_level ||= nil
   heading_size ||= nil
@@ -22,60 +30,95 @@
   year ||= nil
   month ||= nil
   day ||= nil
-  hour ||= nil
-  minute ||= nil
 
-  year_name = year ? year[:name] : "year"
-  year_id = year ? year[:id] : nil
-  year_value = year ? year[:value] : nil
-  month_name = month ? month[:name] : "month"
-  month_id = month ? month[:id] : nil
-  month_value = month ? month[:value] : nil
-  day_name = day ? day[:name] : "day"
-  day_id = day ? day[:id] : nil
-  day_value = day ? day[:value] : nil
-  hour_name = hour ? hour[:name] : "hour"
-  hour_id = if hour && hour[:id].present?
-              hour[:id]
-            else
-              "select-hour-#{SecureRandom.hex(4)}"
-            end
-  minute_name = minute ? minute[:name] : "minute"
-  minute_id = if minute && minute[:id].present?
-              minute[:id]
-            else
-              "select-minute-#{SecureRandom.hex(4)}"
-            end
+  # year_name = year ? year[:name] : "year"
+  # year_id = year ? year[:id] : nil
+  # year_value = year ? year[:value] : nil
 
+  # month_name = month ? month[:name] : "month"
+  # month_id = month ? month[:id] : nil
+  # month_value = month ? month[:value] : nil
+
+  # day_name = day ? day[:name] : "day"
+  # day_id = day ? day[:id] : nil
+  # day_value = day ? day[:value] : nil
+  
   date_input_items = [
-    { :label => "Day", :name => day_name, :width => 2, :id => day_id, :value => day_value },
-    { :label => "Month", :name => month_name, :width => 2, :id => month_id, :value => month_value },
-    { :label => "Year", :name => year_name, :width => 4, :id => year_id, :value => year_value },
+    {
+      :label => "Day", 
+      :name => day ? day[:name] : "day", # day_name, 
+      :width => 2, 
+      :id => day ? day[:id] : nil, # day_id, 
+      :value => day ? day[:value] : nil # day_value
+    },
+    {
+      :label => "Month", 
+      :name => month ? month[:name] : "month", # month_name, 
+      :width => 2, 
+      :id => month ? month[:id] : nil, # month_id, 
+      :value => month_value = month ? month[:value] : nil # month_value 
+    },
+    {
+      :label => "Year", 
+      :name => year ? year[:name] : "year", # year_name, 
+      :width => 4, 
+      :id => year ? year[:id] : nil, # year_id, 
+      :value => year ? year[:value] : nil # year_value 
+    },
   ]
   # date_input_items << day # if day
   # date_input_items << month # if month
   # date_input_items << year # if year
   # date_input_items = nil unless date_input_items.any?
 
-  # hour ||= {}
-  hour_value =  # hour[:value]
-                if hour && hour[:value].present?
-                  hour[:value]
-                else
-                  ""
-                end
+  hour ||= {}
+  # hour ||= nil
+  minute ||= {}
+  # minute ||= nil
+
+  hour_name = hour ? hour[:name] : "hour"  
+  hour_id = (hour && hour[:id].present?) ? hour[:id] : "select-hour-#{SecureRandom.hex(4)}"
+  # hour_id = if hour && hour[:id].present?
+  #             hour[:id]
+  #           else
+  #             "select-hour-#{SecureRandom.hex(4)}"
+  #           end
+  hour_value =  (hour && hour[:value].present?) ? hour[:value] : ""
+  # hour_value =  if hour && hour[:value].present?
+  #                 hour[:value]
+  #               else
+  #                 ""
+  #               end
+  minute_name = minute ? minute[:name] : "minute"
+  minute_id = (minute && minute[:id].present?) ? minute[:id] : "select-minute-#{SecureRandom.hex(4)}"
+  # minute_id = if minute && minute[:id].present?
+  #             minute[:id]
+  #           else
+  #             "select-minute-#{SecureRandom.hex(4)}"
+  #           end
   # hour_select_id = hour[:id] || "select-hour-#{SecureRandom.hex(4)}"
   # hour_label_id = "hour-#{SecureRandom.hex(4)}"
-
-  # minute ||= {}
-  minute_value =  # minute[:value]
-                  if minute && minute[:value].present?
-                    minute[:value]
-                  else
-                    ""
-                  end
+  minute_value =  (minute && minute[:value].present?) ? minute[:value] : ""
+  # minute_value =  if minute && minute[:value].present?
+  #                   minute[:value]
+  #                 else
+  #                   ""
+  #                 end
   # minute_select_id = minute[:id] || "select-minute-#{SecureRandom.hex(4)}"
   # minute_label_id = "minute-#{SecureRandom.hex(4)}"
+
+  hours = (0..23).to_a
+  hour_options = [{text: "", value: ""}]
+  minutes = (0..59).to_a
+  minute_options = [{text: "", value: ""}]
+
+  hours.each do |hour|
+    hour_options << {text: hour.to_s.rjust(2, "0"), value: hour.to_s.rjust(2, "0"), selected: hour == hour_value}
+  end
+
+  minutes.each do |minute|
+    minute_options << {text: minute.to_s.rjust(2, "0"), value: minute.to_s.rjust(2, "0"), selected: minute == minute_value}
+  end
 
   date_ga4_form_section = date_heading
   time_ga4_form_section = time_heading
@@ -90,19 +133,6 @@
   time_select_classes << "govuk-select--error" if (error_items.present? || error_items_time.present?)
 
   data_attributes ||= {}
-
-  hours = (0..23).to_a
-  hour_options = [{text: "", value: ""}]
-  minutes = (0..59).to_a
-  minute_options = [{text: "", value: ""}]
-
-  hours.each do |hour|
-    hour_options << {text: hour.to_s.rjust(2, "0"), value: hour.to_s.rjust(2, "0"), selected: hour == hour_value}
-  end
-
-  minutes.each do |minute|
-    minute_options << {text: minute.to_s.rjust(2, "0"), value: minute.to_s.rjust(2, "0"), selected: minute == minute_value}
-  end
 %>
 
 <%= tag.div id: do %>
@@ -150,16 +180,6 @@
               items: error_items_time,
             } %>
           <% end %>
-
-          <%
-            if error_items
-              error_id_times = error_id
-            elsif error_items_time
-              error_id_times = error_id_time
-            else
-              error_id_times = nil
-            end
-          %>
 
           <div class="gem-c-datetime-fields__date-time-wrapper">
             <div class="gem-c-datetime-fields__date-time">
