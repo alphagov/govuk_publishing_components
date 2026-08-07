@@ -11,6 +11,7 @@
 
 * Set attachment SVG sizes ([PR #5639](https://github.com/alphagov/govuk_publishing_components/pull/5639))
 * Add Cross service header to component guide ([PR #5640](https://github.com/alphagov/govuk_publishing_components/pull/5640))
+* Separate the header element from the super navigation header component ([PR #5627](https://github.com/alphagov/govuk_publishing_components/pull/5627))
 
 ## 67.0.1
 
