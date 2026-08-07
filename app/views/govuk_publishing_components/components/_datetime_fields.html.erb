@@ -8,7 +8,9 @@
   error_items ||= nil
   error_items_date ||= nil
   error_items_time ||= nil
-  error_id_time = "error-#{SecureRandom.hex(4)}"
+  error_id = "error-#{SecureRandom.hex(4)}"
+  error_id_time = "error-time-#{SecureRandom.hex(4)}"
+  error_id_date = "error-date-#{SecureRandom.hex(4)}"
 
   heading_level ||= nil
   heading_size ||= nil
@@ -36,14 +38,13 @@
   hour_id = if hour && hour[:id].present?
               hour[:id]
             else
-              "hour"
+              "select-hour-#{SecureRandom.hex(4)}"
             end
   minute_name = minute ? minute[:name] : "minute"
-  # minute_id = minute ? minute[:id] : "minute"
   minute_id = if minute && minute[:id].present?
               minute[:id]
             else
-              "minute"
+              "select-minute-#{SecureRandom.hex(4)}"
             end
 
   date_input_items = [
@@ -106,10 +107,17 @@
 
 <%= tag.div id: do %>
   <%= tag.div class: root_classes, data: data_attributes do %>
+    <% if error_items %>
+      <%= render "govuk_publishing_components/components/error_message", {
+        id:  error_id,
+        items: error_items,
+      } %>
+    <% end %>
+
     <%= render "govuk_publishing_components/components/date_input", {
       id: date_id,
       hint: date_hint,
-      error_items: (error_items.presence || error_items_date),
+      error_items: error_items_date,
       items: date_input_items,
       legend_text: date_heading,
       legend_level: heading_level,
@@ -143,13 +151,23 @@
             } %>
           <% end %>
 
+          <%
+            if error_items
+              error_id_times = error_id
+            elsif error_items_time
+              error_id_times = error_id_time
+            else
+              error_id_times = nil
+            end
+          %>
+
           <div class="gem-c-datetime-fields__date-time-wrapper">
             <div class="gem-c-datetime-fields__date-time">
               <%= render "govuk_publishing_components/components/select", {
-                id: hour_id, # hour_select_id,
+                id: hour_id,
                 label: "Hour",
                 name: hour_name,
-                error_id: error_items || error_items_time ? error_id_time : nil,
+                error_id: error_id_times,
                 options: hour_options,
               } %>
             </div>
@@ -158,7 +176,7 @@
 
             <div class="gem-c-datetime-fields__date-time">
               <%= render "govuk_publishing_components/components/select", {
-                id: minute_id, # minute_select_id,
+                id: minute_id,
                 label: "Minute",
                 name:  minute_name,
                 error_id: error_id_times,
