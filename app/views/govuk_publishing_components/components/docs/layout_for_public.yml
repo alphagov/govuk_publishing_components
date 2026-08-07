@@ -68,6 +68,26 @@ examples:
           message: "This is the phase banner banner"
       emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
       global_banner: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global banner slot</div>
+  with_cross_service_header:
+    description: Passes the navigation through to the [cross service header](/component-guide/cross_service_header/).
+    data:
+      show_cross_service_header: true
+      service_name: "My Service Name"
+      one_login_navigation_items:
+        one_login_home:
+          href: "#"
+        one_login_sign_out:
+          href: "#"
+        navigation_items: []
+      service_navigation_items:
+        - text: Navigation item 1
+          href: "item-1"
+          active: true
+        - text: Navigation item 2
+          href: "item-2"
+        - text: Hidden on desktop
+          href: "item-3"
+          show_only_in_collapsed_menu: true
   with_account_layout_enabled:
     description: Adds account layout wrapper around the content passed in to the component
     data:
