@@ -74,6 +74,17 @@ describe "Date input", type: :view do
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
   end
 
+  it "renders with data attributes" do
+    render_component(
+      data_attributes: {
+        module: "not-a-real-module",
+        something_else: "i-just-thought-of",
+      },
+    )
+
+    assert_select ".govuk-form-group[data-module='not-a-real-module'][data-something-else='i-just-thought-of']"
+  end
+
   it "renders with custom items" do
     render_component(
       legend_text: "What is your date of birth?",
