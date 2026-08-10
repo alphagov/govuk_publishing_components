@@ -42,18 +42,23 @@ examples:
       legend_level: 2
       legend_size: "l"
   with_hint:
+    description: When hint text is rendered each input field takes the value of `hint_id` as a value for the `aria-describedby` attribute
     data:
       legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
   with_error:
+    description: When an error message is rendered each input field takes the value of `error_id` as a value for the `aria-describedby` attribute. Note that error_id is optional, if it is not passed one will be generated automatically.
     data:
       legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
+      error_id: error_id
       error_message: "Error message goes here"
   with_error_items:
+    description: When error messages are rendered each input field takes the value of `error_id` as a value for the `aria-describedby` attribute. Note that error_id is optional, if it is not passed one will be generated automatically.
     data:
       legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
+      error_id: error_id
       error_items:
         - text: "Error 1"
         - text: "Error 2"

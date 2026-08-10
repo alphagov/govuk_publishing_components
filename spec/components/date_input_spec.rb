@@ -61,7 +61,12 @@ describe "Date input", type: :view do
       hint: "For example, 31 3 1980",
     )
 
+    hint_id = css_select(".govuk-hint").attr("id")
+
     assert_select ".govuk-fieldset[role=group] .govuk-hint", text: "For example, 31 3 1980"
+    assert_select "input[name='day'][aria-describedby='#{hint_id}']"
+    assert_select "input[name='month'][aria-describedby='#{hint_id}']"
+    assert_select "input[name='year'][aria-describedby='#{hint_id}']"
   end
 
   it "renders with error message" do
@@ -70,8 +75,30 @@ describe "Date input", type: :view do
       error_message: "Error message goes here",
     )
 
+    error_id = css_select(".govuk-error-message").attr("id")
+
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error: Error message goes here"
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+    assert_select "input[name='day'][aria-describedby='#{error_id}']"
+    assert_select "input[name='month'][aria-describedby='#{error_id}']"
+    assert_select "input[name='year'][aria-describedby='#{error_id}']"
+  end
+
+  it "renders with hint and error message" do
+    render_component(
+      legend_text: "What is your date of birth?",
+      hint: "For example, 31 3 1980",
+      error_message: "Error message goes here",
+    )
+
+    error_id = css_select(".govuk-error-message").attr("id")
+
+    assert_select ".govuk-fieldset[role=group] .govuk-hint", text: "For example, 31 3 1980"
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error: Error message goes here"
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+    assert_select "input[name='day'][aria-describedby='#{error_id}']"
+    assert_select "input[name='month'][aria-describedby='#{error_id}']"
+    assert_select "input[name='year'][aria-describedby='#{error_id}']"
   end
 
   it "renders with data attributes" do
