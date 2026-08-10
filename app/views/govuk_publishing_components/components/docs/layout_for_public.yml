@@ -12,6 +12,7 @@ accessibility_criteria: |
     * have a `lang` attribute
     * contain a [skip link](/component-guide/skip_link)
     * have a sensible page `<title>`
+    * contain a `<header>` element
 examples:
   default:
     data:
@@ -47,11 +48,11 @@ examples:
         href: "item-3"
         show_only_in_collapsed_menu: true
   with_global_banner:
-    description: This allows the HTML for the global banner to be added to the page. This is only the slot for the global banner - the markup for the banner needs to be passed in.
+    description: This allows the HTML for the global banner to be added to the page within the header element. This is only the slot for the global banner - the markup for the banner needs to be passed in.
     data:
       global_banner: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global banner slot</div>
   with_emergency_banner:
-    description: This allows the HTML for the emergency banner to be added to the page in the correct place. This is only the slot for the emergency banner - the markup for the banner needs to be passed in.
+    description: This allows the HTML for the emergency banner to be added to the page within the header element. This is only the slot for the emergency banner - the markup for the banner needs to be passed in.
     data:
       emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
   with_phase_banner:
@@ -61,7 +62,7 @@ examples:
         phase: "beta"
         message: "This is a custom test message for the public layout phase banner."
   with_all_banners:
-    description: The phase banner, global banner and emergency banner should be usable together.
+    description: The phase banner, global banner and emergency banner should be usable together within the header element.
     data:
       phase_banner:
           phase: "beta"

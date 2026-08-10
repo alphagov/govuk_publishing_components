@@ -27,6 +27,15 @@ describe "Cross service header", type: :view do
     end
   end
 
+  it "renders the Cross service header as a div" do
+    render_component({ show_account_layout: true,
+                       one_login_navigation_items:,
+                       service_name: "GOV.UK email subscriptions" })
+
+    assert_select "div.gem-c-cross-service-header"
+    assert_select "header", count: 0
+  end
+
   it "renders the One Login service header" do
     render_component({ show_account_layout: true,
                        one_login_navigation_items:,

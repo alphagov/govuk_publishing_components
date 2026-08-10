@@ -87,30 +87,50 @@ describe "Layout for public", :capybara, type: :view do
     assert_select ".gem-c-app-promo-banner"
   end
 
-  it "can add a emergency banner" do
+  it "can add an emergency banner inside the header element" do
     render_component({
       emergency_banner: "<div id='test-emergency-banner'>This is an emergency banner test</div>",
     })
 
-    assert_select "#test-emergency-banner", text: "This is an emergency banner test"
+    assert_select "header #test-emergency-banner", text: "This is an emergency banner test"
   end
 
-  it "can add a global banner" do
+  it "can add a global banner inside the header element" do
     render_component({
       global_banner: "<div id='test-global-banner'>This is a global banner test</div>",
     })
 
-    assert_select "#test-global-banner", text: "This is a global banner test"
+    assert_select "header #test-global-banner", text: "This is a global banner test"
   end
 
-  it "can add both an emergency banner and a global banner" do
+  it "can add both an emergency banner and a global banner inside the header element" do
     render_component({
       emergency_banner: "<div id='test-emergency-banner'>This is an emergency banner test</div>",
       global_banner: "<div id='test-global-banner'>This is a global banner test</div>",
     })
 
-    assert_select "#test-emergency-banner", text: "This is an emergency banner test"
-    assert_select "#test-global-banner", text: "This is a global banner test"
+    assert_select "header #test-emergency-banner", text: "This is an emergency banner test"
+    assert_select "header #test-global-banner", text: "This is a global banner test"
+  end
+
+  it "renders the super navigation header inside a header element" do
+    render_component({})
+
+    assert_select "header div.gem-c-layout-super-navigation-header"
+    assert_select "header header", false
+  end
+
+  it "renders the cross-service header inside a header element" do
+    render_component({
+      show_cross_service_header: true,
+      one_login_navigation_items: {
+        one_login_home: { href: "/one-login-home" },
+        one_login_sign_out: { href: "/sign-out" },
+      },
+    })
+
+    assert_select "header div.gem-c-cross-service-header"
+    assert_select "header header", false
   end
 
   it "has the default logo link when no logo_link is specified" do
@@ -190,7 +210,7 @@ describe "Layout for public", :capybara, type: :view do
   it "does not render a phase banner by default" do
     render_component({})
 
-    assert_select "header.gem-c-layout-super-navigation-header .gem-c-phase-banner", false
+    assert_select ".gem-c-layout-super-navigation-header .gem-c-phase-banner", false
   end
 
   it "account layout renders with a phase banner by default" do
@@ -230,7 +250,7 @@ describe "Layout for public", :capybara, type: :view do
       },
     })
 
-    assert_select "header.gem-c-layout-super-navigation-header", false
+    assert_select ".gem-c-layout-super-navigation-header", false
     assert_select ".gem-c-phase-banner", false
   end
 
@@ -242,7 +262,7 @@ describe "Layout for public", :capybara, type: :view do
       },
     })
 
-    assert_select "header.gem-c-layout-super-navigation-header .gem-c-phase-banner"
+    assert_select ".gem-c-layout-super-navigation-header .gem-c-phase-banner"
   end
 
   it "correctly passes the phase and message through to the phase banner markup" do

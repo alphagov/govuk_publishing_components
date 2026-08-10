@@ -16,10 +16,8 @@ accessibility_criteria: |
 
   Landmarks and Roles in the super navigation header should:
 
-  * have a role of banner at the root of the component (<header>) (ARIA 1.1)
+  * sit within the primary header element (<header>) provided by the page layout
 accessibility_excluded_rules:
-   # The header element can not be top level in the examples.
-  - landmark-banner-is-top-level
   # Banners will be duplicated in component examples list.
   - duplicate-id
   - duplicate-id-active

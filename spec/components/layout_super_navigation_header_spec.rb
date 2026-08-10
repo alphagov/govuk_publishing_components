@@ -5,10 +5,11 @@ describe "Super navigation header", type: :view do
     "layout_super_navigation_header"
   end
 
-  it "renders the super navigation header" do
+  it "renders the super navigation header as a div" do
     render_component({})
 
-    assert_select ".gem-c-layout-super-navigation-header", count: 1
+    assert_select "div.gem-c-layout-super-navigation-header", count: 1
+    assert_select "header", count: 0
   end
 
   it "has a nav element that is labelled by a heading that exists" do
@@ -130,7 +131,7 @@ describe "Super navigation header", type: :view do
   it "adds GA4 tracking" do
     render_component({})
 
-    assert_select "header[data-module='ga4-event-tracker ga4-link-tracker']"
+    assert_select "div[data-module='ga4-event-tracker ga4-link-tracker']"
     assert_select "a[data-ga4-link]", count: 23
     assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","external":"false","text":"GOV.UK","section":"Logo","index_link":1,"index_section":0,"index_section_count":2,"index_total":1}\']'
     assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index_section":1,"index_link":1,"index_section_count":3,"index_total":16,"section":"Services and information"}\']'
