@@ -5,11 +5,15 @@
     this.module = module
     this.items = this.module.querySelectorAll('[data-filter-item]')
     this.labelText = this.module.getAttribute('data-filter-label') || 'Filter list'
+    this.resultsFound = this.items.length
+    this.resultsId = 'filter-results-count'
   }
 
   FilterList.prototype.init = function () {
-    if (this.items.length) {
+    if (this.resultsFound) {
       this.appendFilterInput()
+      this.resultsElement = document.getElementById(this.resultsId)
+      this.updateResultsCount()
     }
   }
 
@@ -23,13 +27,17 @@
     formLabel.textContent = this.labelText
 
     const formInput = document.createElement('input')
-    formInput.classList.add('gem-c-input', 'govuk-input')
+    formInput.classList.add('gem-c-input', 'govuk-input', 'govuk-!-margin-bottom-1')
     formInput.id = 'filterInput'
     formInput.name = 'name'
     formInput.spellcheck = false
     formInput.type = 'text'
 
-    form.append(formLabel, formInput)
+    const results = document.createElement('div')
+    results.classList.add('govuk-hint')
+    results.id = this.resultsId
+
+    form.append(formLabel, formInput, results)
 
     this.module.prepend(form)
     const input = form.querySelector('.govuk-input')
@@ -50,6 +58,12 @@
         item.classList.add('govuk-!-display-none')
       }
     }
+    this.updateResultsCount()
+  }
+
+  FilterList.prototype.updateResultsCount = function () {
+    const count = Array.from(this.items).filter((item) => !item.classList.contains('govuk-!-display-none')).length
+    this.resultsElement.innerHTML = count === 1 ? `${count} result found` : `${count === 0 ? 'No' : count} results found`
   }
 
   Modules.FilterList = FilterList

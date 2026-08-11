@@ -33,6 +33,8 @@ describe('The filter list code', function () {
     it('creates an input if there is something to filter', function () {
       expect(el.querySelectorAll('label.gem-c-label')).toHaveSize(1)
       expect(el.querySelectorAll('input.gem-c-input')).toHaveSize(1)
+      expect(el.querySelectorAll('.govuk-hint')).toHaveSize(1)
+      expect(el.querySelector('.govuk-hint').textContent).toBe('3 results found')
     })
 
     it('shows one element based on user input', function () {
@@ -41,6 +43,7 @@ describe('The filter list code', function () {
       expect(el.querySelector('[data-filter-item="a"]')).toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="b"]')).not.toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="c"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('.govuk-hint').textContent).toBe('1 result found')
     })
 
     it('shows multiple elements based on user input', function () {
@@ -49,6 +52,16 @@ describe('The filter list code', function () {
       expect(el.querySelector('[data-filter-item="a"]')).not.toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="b"]')).toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="c"]')).not.toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('.govuk-hint').textContent).toBe('2 results found')
+    })
+
+    it('shows no results if the input does not match', function () {
+      input.value = 'france'
+      window.GOVUK.triggerEvent(input, 'input')
+      expect(el.querySelector('[data-filter-item="a"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="b"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="c"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('.govuk-hint').textContent).toBe('No results found')
     })
 
     it('resets if the input is cleared', function () {
@@ -57,6 +70,7 @@ describe('The filter list code', function () {
       expect(el.querySelector('[data-filter-item="a"]')).not.toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="b"]')).not.toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="c"]')).not.toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('.govuk-hint').textContent).toBe('3 results found')
     })
   })
 
