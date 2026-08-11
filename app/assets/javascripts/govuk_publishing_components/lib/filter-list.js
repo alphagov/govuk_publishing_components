@@ -32,10 +32,12 @@
     formInput.name = 'name'
     formInput.spellcheck = false
     formInput.type = 'text'
+    formInput.setAttribute('aria-describedby', this.resultsId)
 
     const results = document.createElement('div')
     results.classList.add('govuk-hint')
     results.id = this.resultsId
+    results.setAttribute('aria-live', 'polite')
 
     form.append(formLabel, formInput, results)
 
@@ -63,7 +65,9 @@
 
   FilterList.prototype.updateResultsCount = function () {
     const count = Array.from(this.items).filter((item) => !item.classList.contains('govuk-!-display-none')).length
-    this.resultsElement.innerHTML = count === 1 ? `${count} result found` : `${count === 0 ? 'No' : count} results found`
+    const text = count === 1 ? `${count} result found` : `${count === 0 ? 'No' : count} results found`
+
+    this.resultsElement.innerHTML = count !== this.resultsFound ? text : ''
   }
 
   Modules.FilterList = FilterList

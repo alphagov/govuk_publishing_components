@@ -33,8 +33,10 @@ describe('The filter list code', function () {
     it('creates an input if there is something to filter', function () {
       expect(el.querySelectorAll('label.gem-c-label')).toHaveSize(1)
       expect(el.querySelectorAll('input.gem-c-input')).toHaveSize(1)
+      expect(el.querySelector('input.gem-c-input').getAttribute('aria-describedby')).toBe('filter-results-count')
       expect(el.querySelectorAll('.govuk-hint')).toHaveSize(1)
-      expect(el.querySelector('.govuk-hint').textContent).toBe('3 results found')
+      expect(el.querySelector('.govuk-hint').textContent).toBe('')
+      expect(el.querySelector('.govuk-hint').getAttribute('aria-live')).toBe('polite')
     })
 
     it('shows one element based on user input', function () {
@@ -70,7 +72,7 @@ describe('The filter list code', function () {
       expect(el.querySelector('[data-filter-item="a"]')).not.toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="b"]')).not.toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="c"]')).not.toHaveClass('govuk-!-display-none')
-      expect(el.querySelector('.govuk-hint').textContent).toBe('3 results found')
+      expect(el.querySelector('.govuk-hint').textContent).toBe('')
     })
   })
 
