@@ -13,14 +13,15 @@
   hint ||= nil
   error_message ||= nil
   error_items ||= []
-  has_error ||= error_message || error_items.any?
+  error_id ||= nil
+  has_error ||= error_message || error_items.any? || error_id
 
   css_classes = %w(gem-c-date-input govuk-date-input)
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
 
   hint_id = "hint-#{SecureRandom.hex(4)}"
-  error_id = "error-#{SecureRandom.hex(4)}"
+  error_id = error_id || "error-#{SecureRandom.hex(4)}"
 
   aria_described_by = nil
   if hint || has_error

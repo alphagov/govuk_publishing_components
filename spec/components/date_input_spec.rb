@@ -101,6 +101,22 @@ describe "Date input", type: :view do
     assert_select "input[name='year'][aria-describedby='#{error_id}']"
   end
 
+  it "renders with an error id but no message" do
+    error_id = "error-id"
+
+    render_component(
+      legend_text: "What is your date of birth?",
+      hint: "For example, 31 3 1980",
+      error_id: error_id,
+    )
+
+    assert_select ".govuk-fieldset[role=group] .govuk-hint", text: "For example, 31 3 1980"
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
+    assert_select "input[name='day'][aria-describedby='#{error_id}']"
+    assert_select "input[name='month'][aria-describedby='#{error_id}']"
+    assert_select "input[name='year'][aria-describedby='#{error_id}']"
+  end
+
   it "renders with data attributes" do
     render_component(
       data_attributes: {
