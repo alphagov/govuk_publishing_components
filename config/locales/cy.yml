@@ -80,15 +80,15 @@ cy:
       aria_label:
       england:
         end: " a Lloegr"
-        middle: ", Lloegr"
+        middle: "Lloegr"
         start: Loegr
       northern_ireland:
         end: " a Gogledd Iwerddon"
-        middle: ", Gogledd Iwerddon"
+        middle: "Gogledd Iwerddon"
         start: Ogledd Iwerddon
       scotland:
         end: " a'r Alban"
-        middle: ", yr Alban"
+        middle: "yr Alban"
         start: "'r Alban"
       type:
         consultation: Ymgynghoriad ar gyfer %{nation}
@@ -97,7 +97,7 @@ cy:
         publication: Cyhoeddiad ar gyfer %{nation}
       wales:
         end: " a Chymru"
-        middle: ", Cymru"
+        middle: "Cymru"
         start: Gymru
     feedback:
       close: Cau
