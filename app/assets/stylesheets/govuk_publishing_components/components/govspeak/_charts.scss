@@ -30,31 +30,31 @@
   // For charts, the palette should be used instead of the GOV.UK colour palette - https://design-system.service.gov.uk/styles/colour/
   // https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5
 
-  // $gss-colour-dark-blue: #12436d;
-  // $gss-colour-turquoise: #1bbbaf;
-  // $gss-colour-dark-pink: #801650;
-  // $gss-colour-orange: #f46a25;
-  // $gss-colour-dark-grey: #3d3d3d;
-  // $gss-colour-plum: #a285d1;
+  $gss-colour-dark-blue: #12436d;
+  $gss-colour-turquoise: #1bbbaf;
+  $gss-colour-dark-pink: #801650;
+  $gss-colour-orange: #f46a25;
+  $gss-colour-dark-grey: #3d3d3d;
+  $gss-colour-plum: #a285d1;
 
-  $chart-primary-blue: #1d70b8;
-  $chart-accent-purple: #ba4aff;
   $chart-blue-shade-50: #0f385c;
-  $chart-orange-shade-25: #B7592A;
+  $chart-teal-tint-25:#50A1A5;
   $chart-magenta-shade-25: #98285D;
+  $chart-primary-orange: #f47738;
   $chart-green-shade-50: #083D29;
-  $chart-accent-red: #FF5E5E;
-  $chart-primary-teal:#158187;
-
-  $chart-black-tint:#858686;
+  $chart-accent-purple: #ba4aff;
 
   // CHART COLOUR SCHEME
 
   $chart-border: govuk-colour("white"); // Chart border colour
   $key-border: govuk-colour("white"); // Key border colour
-  // $bar-colours: $gss-colour-dark-blue, $gss-colour-turquoise, $gss-colour-dark-pink, $gss-colour-orange, $gss-colour-dark-grey, $gss-colour-plum;
-  $bar-colours: $chart-primary-blue, $chart-accent-purple, $chart-blue-shade-50, $chart-orange-shade-25, $chart-magenta-shade-25, $chart-green-shade-50;
+
+  $bar-colours: $gss-colour-dark-blue, $gss-colour-turquoise, $gss-colour-dark-pink, $gss-colour-orange, $gss-colour-dark-grey, $gss-colour-plum;
   $bar-text-colours: govuk-colour("white"), govuk-colour("white"), govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("white");
+
+  $bar-colours-10: $chart-blue-shade-50, $chart-teal-tint-25, $chart-magenta-shade-25, $chart-primary-orange, $chart-green-shade-50, $chart-accent-purple;
+  $bar-text-colours-10: govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("black");
+ 
   $bar-cell-colour: govuk-colour("black");
   $bar-outdented-colour: govuk-colour("black");
 
@@ -105,9 +105,9 @@
       }
 
       // Key colours
-      @for $i from 0 to list.length($bar-colours) {
+      @for $i from 0 to list.length($bar-colours-10) {
         .mc-key-#{$i + 1} {
-          border-left-color: list.nth($bar-colours, $i + 1);
+          border-left-color: list.nth($bar-colours-10, $i + 1);
         }
       }
     }
@@ -160,13 +160,14 @@
           margin-bottom: 1px;
           color: govuk-colour("white");
           text-indent: $bar-padding;
+          font-weight: bold;
         }
 
         // Bar colours
-        @for $i from 0 to list.length($bar-colours) {
+        @for $i from 0 to list.length($bar-colours-10) {
           .mc-bar-#{$i + 1} {
-            background-color: list.nth($bar-colours, $i + 1);
-            color: list.nth($bar-text-colours, $i + 1);
+            background-color: list.nth($bar-colours-10, $i + 1);
+            color: list.nth($bar-text-colours-10, $i + 1);
           }
         }
 
@@ -187,6 +188,7 @@
           text-align: $label-align;
           display: table-cell;
           vertical-align: middle;
+          font-weight: bold;
         }
       }
     }
@@ -224,15 +226,15 @@
     }
 
     // Charts with multiple columns get different coloured bars
-    $len: list.length($bar-colours);
+    $len: list.length($bar-colours-10);
 
     @for $i from 0 to $len {
       .mc-tr .mc-td.mc-bar-cell.mc-bar-#{$i + 1} {
-        background-color: list.nth($bar-colours, $i + 1);
+        background-color: list.nth($bar-colours-10, $i + 1);
       }
 
       .mc-tr .mc-th.mc-key-#{$i + 1} {
-        border-left-color: list.nth($bar-colours, $i + 1);
+        border-left-color: list.nth($bar-colours-10, $i + 1);
       }
     }
 
