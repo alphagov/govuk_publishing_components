@@ -3,7 +3,7 @@
 
   function FilterList (module) {
     this.module = module
-    this.items = this.module.querySelectorAll('[data-filter-item]')
+    this.items = document.querySelectorAll('[data-filter-item]')
     this.labelText = this.module.getAttribute('data-filter-label') || 'Filter list'
     this.resultsFound = this.items.length
     this.resultsId = 'filter-results-count'

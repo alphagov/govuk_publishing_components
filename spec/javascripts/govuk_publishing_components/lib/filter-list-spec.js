@@ -4,9 +4,12 @@ describe('The filter list code', function () {
   const el = document.createElement('div')
   let input
   const markup = `
-    <p data-filter-item="a">United Kingdom</p>
-    <p data-filter-item="b">United States</p>
-    <p data-filter-item="c">United Kingdom of Smaller Countries</p>
+    <div id="separate"></div>
+    <div>
+      <p data-filter-item="a">United Kingdom</p>
+      <p data-filter-item="b">United States</p>
+      <p data-filter-item="c">United Kingdom of Smaller Countries</p>
+    </div>
   `
 
   beforeEach(function () {
@@ -27,7 +30,7 @@ describe('The filter list code', function () {
   describe('filtering', function () {
     beforeEach(function () {
       el.innerHTML = markup
-      new window.GOVUK.Modules.FilterList(el).init()
+      new window.GOVUK.Modules.FilterList(document.getElementById('separate')).init()
       input = el.querySelector('input')
     })
 
