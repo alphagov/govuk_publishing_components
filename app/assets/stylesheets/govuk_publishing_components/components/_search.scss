@@ -31,7 +31,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
 .gem-c-search__label {
   display: block;
-  color: $govuk-text-colour;
+  color: govuk-functional-colour(text);
   cursor: text;
   text-overflow: ellipsis;
   height: 90%;
@@ -52,19 +52,19 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
     max-width: 68%;
     padding-left: govuk-spacing(3);
     z-index: 1;
-    color: $govuk-secondary-text-colour;
+    color: govuk-functional-colour(secondary-text);
     background: govuk-colour("white");
   }
 
   // match label colour with the label component colour
   // when javascript is enabled and inline_label option  is set to false
   .govuk-frontend-supported .gem-c-search--separate-label & {
-    color: $govuk-text-colour;
+    color: govuk-functional-colour(text);
   }
 }
 
 @mixin gem-c-search-input-focus {
-  outline: $govuk-focus-width solid $govuk-focus-colour;
+  outline: $govuk-focus-width solid govuk-functional-colour(focus);
   // Ensure outline appears outside of the element
   outline-offset: 0;
   // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width`
@@ -77,7 +77,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
   width: 100%;
   height: govuk-em(40, 19);
   padding: govuk-em(6, 19);
-  border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+  border: $govuk-border-width-form-element solid govuk-functional-colour(input-border);
   background: govuk-colour("white");
   border-radius: 0; // otherwise iphones apply an automatic border radius
   box-sizing: border-box;
@@ -137,7 +137,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
   &:focus {
     z-index: 2;
-    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
     // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width` - this is for consistency with
     // Also, `outline` cannot be utilised
     // here as it is already used for the yellow focus state.
@@ -195,7 +195,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
 
   .govuk-frontend-supported & {
     .gem-c-search__label {
-      color: $govuk-secondary-text-colour;
+      color: govuk-functional-colour(secondary-text);
     }
   }
 }
@@ -206,7 +206,7 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
     color: govuk-colour("white");
 
     &:hover {
-      background-color: color.adjust(govuk-colour("blue"), $lightness: 5%);
+      background-color: govuk-colour("blue", $variant: "shade-25");
     }
   }
 

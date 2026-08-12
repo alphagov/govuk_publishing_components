@@ -63,7 +63,7 @@
     }
 
     @include govuk-media-query($media-type: print) {
-      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+      color: govuk-functional-colour(print-text) !important; // stylelint-disable-line declaration-no-important
     }
   }
 
@@ -115,12 +115,12 @@
   hr {
     margin-top: govuk-spacing(6) - 1px;
     margin-bottom: govuk-spacing(6);
-    border-top: 1px solid $govuk-border-colour;
+    border-top: 1px solid govuk-functional-colour(border);
   }
 
   code {
     padding: 0 5px;
     color: #d13118;
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("black", $variant: "tint-95");
   }
 }

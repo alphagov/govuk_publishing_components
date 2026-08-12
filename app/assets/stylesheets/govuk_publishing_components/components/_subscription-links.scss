@@ -66,11 +66,11 @@
   }
 
   &:not(.brand__color) {
-    color: $govuk-link-colour;
+    color: govuk-functional-colour(link);
   }
 
   &:hover {
-    color: $govuk-link-hover-colour;
+    color: govuk-functional-colour(link-hover);
   }
 
   &:visited,
@@ -80,8 +80,8 @@
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
-    border: 1px solid $govuk-focus-colour;
+    color: govuk-functional-colour(focus-text);
+    border: 1px solid govuk-functional-colour(focus);
     outline: 3px solid transparent;
   }
 
@@ -94,7 +94,7 @@
 .gem-c-subscription-links__feed-box {
   padding: govuk-spacing(3);
   margin-bottom: govuk-spacing(3);
-  background: govuk-colour("light-grey");
+  background: govuk-colour("black", $variant: "tint-95");
 
   .govuk-frontend-supported &.js-hidden {
     display: none;

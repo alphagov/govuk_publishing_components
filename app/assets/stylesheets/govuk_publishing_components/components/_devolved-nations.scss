@@ -1,5 +1,5 @@
 .gem-c-devolved-nations {
-  background: govuk-colour("light-grey");
+  background: govuk-colour("black", $variant: "tint-95");
   margin-bottom: govuk-spacing(3);
   padding: govuk-spacing(3);
 
@@ -11,11 +11,11 @@
 
 @include govuk-media-query($media-type: print) {
   .gem-c-devolved-nations {
-    border: 2pt solid $govuk-print-text-colour;
+    border: 2pt solid govuk-functional-colour(print-text);
     margin: 0 0 5mm;
 
     * {
-      color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+      color: govuk-functional-colour(print-text) !important; // stylelint-disable-line declaration-no-important
     }
 
     .govuk-list li {

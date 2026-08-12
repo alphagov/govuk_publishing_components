@@ -48,7 +48,7 @@ $highlight-answer-color: govuk-colour("white");
 
       &,
       & * {
-        color: $govuk-print-text-colour !important; // stylelint-disable-line declaration-no-important
+        color: govuk-functional-colour(print-text) !important; // stylelint-disable-line declaration-no-important
       }
     }
   }

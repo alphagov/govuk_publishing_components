@@ -26,7 +26,7 @@ $large-input-size: 50px;
   padding: 0;
   overflow-x: hidden;
   background-color: govuk-colour("white");
-  border: 1px solid $govuk-border-colour;
+  border: 1px solid govuk-functional-colour(border);
   border-top: 0;
 
   @include enhance-autocomplete-menu-width($input-size);
@@ -75,21 +75,21 @@ $large-input-size: 50px;
 .gem-c-search-with-autocomplete__option--focused,
 .gem-c-search-with-autocomplete__option:hover,
 .gem-c-search-with-autocomplete__option:focus-visible {
-  background-color: govuk-colour("light-grey");
+  background-color: govuk-colour("black", $variant: "tint-95");
   outline: none;
 
   @include govuk-link-decoration;
   @include govuk-link-hover-decoration;
 
   .gem-c-search-with-autocomplete__suggestion-icon {
-    background-color: $govuk-text-colour;
+    background-color: govuk-functional-colour(text);
   }
 }
 
 // Styling specifically _only_ for keyboard focus
 .gem-c-search-with-autocomplete__option:focus-visible {
   .gem-c-search-with-autocomplete__suggestion-text {
-    background-color: $govuk-focus-colour;
+    background-color: govuk-functional-colour(focus);
   }
 }
 
@@ -98,7 +98,7 @@ $large-input-size: 50px;
   align-items: center;
   margin: 0 govuk-spacing(3);
   padding: govuk-spacing(1) 0;
-  border-bottom: 1px solid govuk-colour("mid-grey");
+  border-bottom: 1px solid govuk-functional-colour("border");
 }
 
 .gem-c-search-with-autocomplete__option:last-child .gem-c-search-with-autocomplete__option-wrapper {
@@ -112,7 +112,7 @@ $large-input-size: 50px;
   flex: none;
   mask-image: url("govuk_publishing_components/icon-autocomplete-search-suggestion.svg");
   -webkit-mask-image: url("govuk_publishing_components/icon-autocomplete-search-suggestion.svg");
-  background-color: $govuk-secondary-text-colour;
+  background-color: govuk-functional-colour(secondary-text);
 }
 
 .gem-c-search-with-autocomplete__suggestion-text {
@@ -138,7 +138,7 @@ $large-input-size: 50px;
 // Fix top border styling on "borderless" search input when rendered on a GOV.UK blue background
 .gem-c-search-with-autocomplete.gem-c-search-with-autocomplete--on-govuk-blue {
   .gem-c-search-with-autocomplete__menu {
-    border-top: 1px solid $govuk-border-colour;
+    border-top: 1px solid govuk-functional-colour(border);
   }
 }
 

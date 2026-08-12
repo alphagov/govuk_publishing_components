@@ -6,7 +6,7 @@
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {
   .gem-c-attachment-link .govuk-link {
-    color: $govuk-print-text-colour !important;
+    color: govuk-functional-colour(print-text) !important;
 
     &::after {
       font-size: inherit;

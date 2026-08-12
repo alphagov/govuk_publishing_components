@@ -18,16 +18,16 @@
 }
 
 .gem-c-warning-text__text--highlight {
-  color: $govuk-error-colour;
+  color: govuk-functional-colour(error);
 }
 
 @include govuk-media-query($media-type: print) {
   .gem-c-warning-text * {
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
   }
 
   .govuk-warning-text__icon {
     background: none;
-    color: $govuk-print-text-colour;
+    color: govuk-functional-colour(print-text);
   }
 }

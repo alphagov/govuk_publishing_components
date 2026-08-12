@@ -1,7 +1,7 @@
 .gem-c-step-nav-header {
   position: relative;
   padding: 10px;
-  background: govuk-colour("light-grey");
+  background: govuk-colour("black", $variant: "tint-95");
   border-bottom: solid 1px govuk-colour("blue");
   margin-top: govuk-spacing(3);
   @include govuk-font(24, $weight: bold);
@@ -21,7 +21,7 @@
   .gem-c-step-nav-header {
     padding: 0 0 govuk-spacing(4) 0;
     background: none;
-    border-color: $govuk-print-text-colour;
+    border-color: govuk-functional-colour(print-text);
   }
 
   .gem-c-step-nav-header__part-of {

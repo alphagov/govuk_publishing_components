@@ -2,16 +2,16 @@
   @include govuk-font(19);
 
   &:link {
-    color: $govuk-error-colour;
+    color: govuk-functional-colour(error);
   }
 
   &:visited,
   &:hover,
   &:active {
-    color: darken($govuk-error-colour, 5%);
+    color: govuk-colour("red", $variant: "shade-25");
   }
 
   &:focus {
-    color: $govuk-focus-text-colour;
+    color: govuk-functional-colour(focus-text);
   }
 }

@@ -12,7 +12,7 @@ $gem-guide-border-width: 1px;
 }
 
 .component-violation {
-  border: 3px solid $govuk-error-colour;
+  border: 3px solid govuk-functional-colour(error);
   margin: 0 0 govuk-spacing(6);
   padding: govuk-spacing(6);
   @include govuk-text-colour;
@@ -24,7 +24,7 @@ $gem-guide-border-width: 1px;
 
   .component-violation__link {
     display: block;
-    color: $govuk-error-colour;
+    color: govuk-functional-colour(error);
     margin: govuk-spacing(3) 0;
     @include govuk-font($size: 19, $weight: bold);
   }
@@ -37,14 +37,14 @@ $gem-guide-border-width: 1px;
   font-family: Consolas, Monaco, "Andale Mono", monospace;
   font-size: 16px;
   line-height: 1.5;
-  border: $gem-guide-border-width solid $govuk-border-colour;
+  border: $gem-guide-border-width solid govuk-functional-colour(border);
 
   &[contenteditable]:hover {
     cursor: text;
   }
 
   &[contenteditable]:focus {
-    outline: 3px solid $govuk-focus-colour;
+    outline: 3px solid govuk-functional-colour(focus);
   }
 
   > pre {
@@ -69,7 +69,7 @@ $gem-guide-border-width: 1px;
 
 .component-guide-preview {
   padding: govuk-spacing(8) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
-  border: $gem-guide-border-width solid $govuk-border-colour;
+  border: $gem-guide-border-width solid govuk-functional-colour(border);
   position: relative;
   margin-bottom: govuk-spacing(8);
 
@@ -222,12 +222,12 @@ html {
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
-$code-00: color.scale(govuk-colour("light-grey"), $lightness: 50%); // Default Background
+$code-00: color.scale(govuk-colour("black", $variant: "tint-95"), $lightness: 50%); // Default Background
 $code-01: #f5f5f5; // Lighter Background (Unused)
 $code-02: #bfc1c3; // Selection Background
-$code-03: color.adjust($govuk-secondary-text-colour, $lightness: -2%); // Comments, Invisibles, Line Highlighting
+$code-03: govuk-functional-colour(secondary-text); // Comments, Invisibles, Line Highlighting
 $code-04: #e8e8e8; // Dark Foreground (Unused)
-$code-05: $govuk-text-colour; // Default Foreground, Caret, Delimiters, Operators
+$code-05: govuk-functional-colour(text); // Default Foreground, Caret, Delimiters, Operators
 $code-06: #ffffff; // Light Foreground (Unused)
 $code-07: #ffffff; // Light Background (Unused)
 
@@ -491,8 +491,8 @@ $code-delete-bg: #fadddd;
   border: 0;
   margin-left: -(govuk-spacing(3));
   margin-right: -(govuk-spacing(3));
-  border-top: solid 1px $govuk-border-colour;
-  border-bottom: solid 1px $govuk-border-colour;
+  border-top: solid 1px govuk-functional-colour(border);
+  border-bottom: solid 1px govuk-functional-colour(border);
 
   @include govuk-media-query($from: tablet) {
     margin-left: -(govuk-spacing(6));
@@ -543,8 +543,8 @@ $code-delete-bg: #fadddd;
         bottom: -1px;
         width: calc((100cqw - 960px) / 2);
         box-sizing: border-box;
-        border-top: solid 1px $govuk-border-colour;
-        border-bottom: solid 1px $govuk-border-colour;
+        border-top: solid 1px govuk-functional-colour(border);
+        border-bottom: solid 1px govuk-functional-colour(border);
       }
 
       &::before {
@@ -556,10 +556,4 @@ $code-delete-bg: #fadddd;
       }
     }
   }
-}
-
-// Note: This is a temporary override to ensure the background color on component preview
-// pages remains white, this can be removed once the --rebrand flag is removed from govuk-frontend
-.govuk-template--rebranded {
-  background: #ffffff;
 }

@@ -8,7 +8,7 @@
 .gem-c-document-list__item {
   margin-top: govuk-spacing(5);
   padding-top: govuk-spacing(2);
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
   list-style: none;
 
   &:first-child {
@@ -50,7 +50,7 @@
 }
 
 .gem-c-document-list__item-context {
-  color: govuk-colour("dark-grey");
+  color: govuk-functional-colour("secondary-text");
 }
 
 .gem-c-document-list__item-description {
@@ -84,7 +84,7 @@
 
   & { // stylelint-disable-line no-duplicate-selectors
     // overriding govuk-text-colour mixin
-    color: $govuk-secondary-text-colour;
+    color: govuk-functional-colour(secondary-text);
   }
 
   .direction-rtl & {
@@ -94,7 +94,7 @@
 }
 
 .gem-c-document-list__item--highlight {
-  border: 1px solid govuk-colour("mid-grey");
+  border: 1px solid govuk-functional-colour("border");
   padding: govuk-spacing(6);
   margin-bottom: govuk-spacing(6);
 
@@ -137,7 +137,7 @@
     left: 0;
     width: govuk-spacing(3);
     overflow: hidden;
-    border-top: solid 1px $govuk-text-colour;
+    border-top: solid 1px govuk-functional-colour(text);
     transform: translate(0, 0.5em);
   }
 
@@ -172,7 +172,7 @@
     break-inside: avoid;
 
     * {
-      color: $govuk-print-text-colour;
+      color: govuk-functional-colour(print-text);
     }
   }
 

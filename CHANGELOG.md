@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Bump govuk frontend to 6 ([PR #5550](https://github.com/alphagov/govuk_publishing_components/pull/5550))
+
 ## 67.1.0
 
 * Improve Devolved Nations Component Welsh Support ([PR #5633](https://github.com/alphagov/govuk_publishing_components/pull/5633))

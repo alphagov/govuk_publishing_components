@@ -36,7 +36,7 @@
   height: auto;
   width: 100%;
   border: 0;
-  border-top: 1px solid $govuk-border-colour;
+  border-top: 1px solid govuk-functional-colour(border);
 }
 
 .gem-c-image-card__title {
@@ -74,7 +74,7 @@
 .gem-c-image-card__metadata {
   font-size: govuk-px-to-rem(16px);
   margin: 0 0 calc(govuk-spacing(3) / 2);
-  color: govuk-colour("dark-grey");
+  color: govuk-functional-colour("secondary-text");
   @include govuk-font($size: false);
 
   @include govuk-media-query($from: tablet) {
@@ -101,7 +101,7 @@
   }
 
   .gem-c-image-card__list-item--text {
-    color: govuk-colour("dark-grey");
+    color: govuk-functional-colour("secondary-text");
   }
 
   .gem-c-image-card__list-item-link {
