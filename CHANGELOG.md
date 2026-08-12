@@ -9,7 +9,7 @@
 
 ## 68.0.0
 
-* **BREAKING:** Bump govuk frontend to 6 ([PR #5550](https://github.com/alphagov/govuk_publishing_components/pull/5550))
+* **BREAKING:** Bump govuk frontend to v6 ([PR #5550](https://github.com/alphagov/govuk_publishing_components/pull/5550))
 
 ## 67.1.0
 
