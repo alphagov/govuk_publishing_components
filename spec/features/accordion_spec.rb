@@ -17,7 +17,9 @@ describe "Accordion", :capybara, :js do
   def then_the_accordion_loads
     expect(page).to have_css(".gem-c-accordion", visible: :visible)
     expect(page).to have_css(".govuk-accordion__show-all", visible: :visible)
-    expect(page).to have_css(".govuk-accordion__section-content[hidden='until-found']", text: "This is the content for Writing well for the web.")
+    # rubocop:disable Capybara/VisibilityMatcher
+    expect(page).to have_css(".govuk-accordion__section-content[hidden='until-found']", text: "This is the content for Writing well for the web.", visible: false)
+    # rubocop:enable Capybara/VisibilityMatcher
   end
 
   def when_i_click_the_first_accordion_section
@@ -26,8 +28,10 @@ describe "Accordion", :capybara, :js do
 
   def then_the_accordion_opens
     expect(page).to have_selector(".govuk-accordion__section.govuk-accordion__section--expanded", visible: :visible)
-    expect(page).to have_css(".govuk-accordion__section-content", text: "This is the content for Writing well for the web.")
-    expect(page).not_to have_css(".govuk-accordion__section-content[hidden='until-found']", text: "This is the content for Writing well for the web.")
+    expect(page).to have_css(".govuk-accordion__section-content", text: "This is the content for Writing well for the web.", visible: :visible)
+    # rubocop:disable Capybara/VisibilityMatcher
+    expect(page).not_to have_css(".govuk-accordion__section-content[hidden='until-found']", text: "This is the content for Writing well for the web.", visible: false)
+    # rubocop:enable Capybara/VisibilityMatcher
   end
 
   def then_the_accordion_has_data_attributes
