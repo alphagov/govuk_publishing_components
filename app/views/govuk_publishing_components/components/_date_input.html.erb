@@ -8,30 +8,33 @@
   ]
   autocomplete_date_of_birth ||= nil
   legend_text ||= nil
+  legend_level ||= nil
+  legend_size ||= nil
   hint ||= nil
   error_message ||= nil
   error_items ||= []
-  describedby ||= nil
-  has_error ||= error_message || error_items.any?
+  error_id ||= nil
+  has_error ||= error_message || error_items.any? || error_id
 
   css_classes = %w(gem-c-date-input govuk-date-input)
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
 
   hint_id = "hint-#{SecureRandom.hex(4)}"
-  error_id = "error-#{SecureRandom.hex(4)}"
+  error_id = error_id || "error-#{SecureRandom.hex(4)}"
 
-  aria_described_by ||= nil
-  if hint || has_error || describedby
+  aria_described_by = nil
+  if hint || has_error
     aria_described_by = []
-    aria_described_by << hint_id if hint
+    aria_described_by << hint_id if hint && !has_error
     aria_described_by << error_id if has_error
-    aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
+
+  data_attributes ||= {}
 %>
 
-<%= content_tag :div, class: form_group_css_classes do %>
+<%= content_tag :div, class: form_group_css_classes, data: data_attributes do %>
   <% fieldset_content = capture do %>
     <% if hint %>
       <%= render "govuk_publishing_components/components/hint", {
@@ -41,7 +44,7 @@
       } %>
     <% end %>
 
-    <% if has_error %>
+    <% if error_message || error_items.any? %>
       <%= render "govuk_publishing_components/components/error_message", {
         id:  error_id,
         text: error_message,
@@ -62,6 +65,7 @@
             value: item[:value],
             width: item[:width],
             id: item[:id],
+            describedby: aria_described_by,
             type: "number",
             data: item[:data],
             autocomplete: autocomplete_date_of_birth ? "bday-#{item[:name]}" : nil,
@@ -73,8 +77,9 @@
 
   <% if legend_text %>
     <%= render "govuk_publishing_components/components/fieldset", {
-      describedby: aria_described_by,
       legend_text: legend_text,
+      heading_level: legend_level,
+      heading_size: legend_size,
       text: fieldset_content,
       role: "group",
     } %>
