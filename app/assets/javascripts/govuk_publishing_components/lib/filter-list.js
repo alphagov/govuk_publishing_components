@@ -7,13 +7,20 @@
     this.labelText = this.module.getAttribute('data-filter-label') || 'Filter list'
     this.resultsFound = this.items.length
     this.resultsId = 'filter-results-count'
+
+    window.GOVUK.vars = window.GOVUK.vars || {}
   }
 
   FilterList.prototype.init = function () {
+    if (window.GOVUK.vars.filterStarted) {
+      return
+    }
+
     if (this.resultsFound) {
       this.appendFilterInput()
       this.resultsElement = document.getElementById(this.resultsId)
       this.updateResultsCount()
+      window.GOVUK.vars.filterStarted = true
     }
   }
 

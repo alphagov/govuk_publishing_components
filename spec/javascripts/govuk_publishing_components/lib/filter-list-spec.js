@@ -14,6 +14,7 @@ describe('The filter list code', function () {
   })
 
   afterEach(function () {
+    delete window.GOVUK.vars.filterStarted
     document.body.removeChild(el)
   })
 
@@ -28,6 +29,19 @@ describe('The filter list code', function () {
       el.innerHTML = markup
       new window.GOVUK.Modules.FilterList(el).init()
       input = el.querySelector('input')
+    })
+
+    it('only creates one instance of itself', function () {
+      const markup2 = `
+        <p data-filter-item="a">United Kingdom</p>
+        <p data-filter-item="b">United States</p>
+      `
+      const el2 = document.createElement('div')
+      el2.innerHTML = markup2
+      document.body.appendChild(el2)
+      new window.GOVUK.Modules.FilterList(el2).init()
+      expect(document.querySelectorAll('input.gem-c-input')).toHaveSize(1)
+      document.body.removeChild(el2)
     })
 
     it('creates an input if there is something to filter', function () {
