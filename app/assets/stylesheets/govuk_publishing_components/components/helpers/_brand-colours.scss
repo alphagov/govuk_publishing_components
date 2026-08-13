@@ -19,3 +19,11 @@
     border-color: #16eeee;
   }
 }
+
+// This can be removed once the organisation is added to govuk-frontend
+.brand--department-for-business-innovation-science-trade {
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #ff4328;
+  }
+}
