@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add new brand colour for BIST ([PR #5652](https://github.com/alphagov/govuk_publishing_components/pull/5652))
+
 ## 68.0.0
 
 * **BREAKING:** Bump govuk frontend to v6 ([PR #5550](https://github.com/alphagov/govuk_publishing_components/pull/5550))
