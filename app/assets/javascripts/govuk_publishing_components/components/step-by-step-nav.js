@@ -171,16 +171,15 @@
       var titleText = title.textContent || title.innerText // IE8 fallback
 
       title.outerHTML =
-        '<span class="js-step-title">' +
-          '<button ' +
-            'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
-            'aria-expanded="false" aria-controls="' + contentId + '"' + '>' +
-              '<span class="gem-c-step-nav____title-text-focus">' +
-                  '<span class="gem-c-step-nav__title-text js-step-title-text">' + titleText + '</span>' +
-                  '<span class="govuk-visually-hidden gem-c-step-nav__section-heading-divider">, </span>' +
-              '</span>' +
-          '</button>' +
-        '</span>'
+        `<span class="js-step-title">
+          <button class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button"
+            aria-expanded="false" aria-controls="${contentId}">
+              <span class="gem-c-step-nav____title-text-focus">
+                <span class="gem-c-step-nav__title-text js-step-title-text">${titleText}</span>
+                <span class="govuk-visually-hidden gem-c-step-nav__section-heading-divider">, </span>
+              </span>
+          </button>
+        </span>`
 
       if (this.$module.isGa4Enabled) {
         var ga4JSON = {
