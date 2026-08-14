@@ -70,7 +70,7 @@
 
       .url {
         word-break: break-word;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
 
       .changed,
@@ -104,7 +104,7 @@
 
       .accessibility-warning {
         word-break: break-word;
-        word-wrap: break-word;
+        overflow-wrap: break-word;
 
         h2 {
           margin: 0;

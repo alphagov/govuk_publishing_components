@@ -45,7 +45,7 @@ $thumbnail-border-width: 5px;
   .gem-c-details {
     margin-top: govuk-spacing(3);
     word-break: break-word;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 
