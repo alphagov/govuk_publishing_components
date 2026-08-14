@@ -475,7 +475,7 @@ $code-delete-bg: #fadddd;
 
 .gem-full-width__container {
   container-type: inline-size;
-  container-name: gem_page;
+  container-name: gem-page;
 }
 
 .full-width__table-wrapper {
@@ -500,7 +500,7 @@ $code-delete-bg: #fadddd;
   }
 }
 
-@container gem_page (width > 1040px) {
+@container gem-page (width > 1040px) {
   $w: 960px;
 
   .gem-full-width__element {
@@ -529,7 +529,7 @@ $code-delete-bg: #fadddd;
 .govuk-tabs {
   $w: 920px;
 
-  @container gem_page (width > 1040px) {
+  @container gem-page (width > 1040px) {
     .full-width__table-wrapper {
       margin-left: calc(((-100cqw + $w) / 2) - 1px);
       margin-right: calc(((-100cqw + $w) / 2) - 1px);
