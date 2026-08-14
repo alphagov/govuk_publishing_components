@@ -168,7 +168,7 @@
       var thisel = this.$module.steps[i]
       var title = thisel.querySelectorAll('.js-step-title')[0]
       var contentId = thisel.querySelectorAll('.js-panel')[0].getAttribute('id')
-      var titleText = title.textContent || title.innerText // IE8 fallback
+      var titleText = title.textContent
 
       title.outerHTML =
         `<span class="js-step-title">
