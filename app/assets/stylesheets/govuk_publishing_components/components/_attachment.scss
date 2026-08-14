@@ -44,7 +44,7 @@ $thumbnail-border-width: 5px;
 
   .gem-c-details {
     margin-top: govuk-spacing(3);
-    word-break: break-word;
+    word-break: break-word; // stylelint-disable-line declaration-property-value-keyword-no-deprecated
     overflow-wrap: break-word;
   }
 }
@@ -101,7 +101,7 @@ $thumbnail-border-width: 5px;
   }
 
   .gem-c-attachment__link.govuk-link {
-    word-break: break-word;
+    word-break: break-word;  // stylelint-disable-line declaration-property-value-keyword-no-deprecated
 
     &::after {
       font-size: 12pt;

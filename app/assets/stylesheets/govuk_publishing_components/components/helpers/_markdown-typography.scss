@@ -53,6 +53,7 @@
 
   // Links
 
+  // stylelint-disable-next-line selector-no-qualifying-type
   a:not(.govuk-button) {
     @include govuk-link-common;
     @include govuk-link-style-default;

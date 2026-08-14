@@ -81,6 +81,7 @@ $search-icon-height: 20px;
 // Undoes the :focus styles *only* for browsers that support :focus-visible.
 // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
 @mixin focus-not-focus-visible {
+  // stylelint-disable-next-line block-no-redundant-nested-style-rules
   & {
     @content;
   }

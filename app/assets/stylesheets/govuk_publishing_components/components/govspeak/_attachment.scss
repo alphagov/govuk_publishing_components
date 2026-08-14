@@ -69,7 +69,7 @@
       }
 
       .url {
-        word-break: break-word;
+        word-break: break-word; // stylelint-disable-line declaration-property-value-keyword-no-deprecated
         overflow-wrap: break-word;
       }
 
@@ -103,7 +103,7 @@
       }
 
       .accessibility-warning {
-        word-break: break-word;
+        word-break: break-word; // stylelint-disable-line declaration-property-value-keyword-no-deprecated
         overflow-wrap: break-word;
 
         h2 {

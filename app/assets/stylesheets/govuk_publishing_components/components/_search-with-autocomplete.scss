@@ -60,7 +60,7 @@ $large-input-size: 50px;
   // for everyone. This span is added dynamically only on iOS and not given a class, so we need to
   // target it in a roundabout way and make it invisible to non-screenreader users.
   & > span {
-    clip: rect(0 0 0 0);
+    clip: rect(0 0 0 0); // stylelint-disable-line property-no-deprecated
     clip-path: inset(50%);
     height: 1px;
     overflow: hidden;
