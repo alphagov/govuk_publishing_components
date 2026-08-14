@@ -2,7 +2,7 @@
   width: 100%;
   background-color: $govuk-blue-tint-80;
   margin-bottom: govuk-spacing(6);
-  padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6) govuk-spacing(6);
+  padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6);
   box-sizing: border-box;
 
   @include govuk-media-query($until: desktop) {

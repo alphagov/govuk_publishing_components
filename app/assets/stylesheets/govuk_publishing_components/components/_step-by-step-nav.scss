@@ -185,7 +185,7 @@ $top-border: solid 1px govuk-functional-colour("border");
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
   margin: .5em 0 14px;
-  padding: govuk-spacing(1) 0 govuk-spacing(1);
+  padding: govuk-spacing(1) 0;
   @include step-nav-font(15);
 
   .gem-c-step-nav--large & {

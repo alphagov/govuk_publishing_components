@@ -130,7 +130,7 @@
 
 .gem-c-metadata__change-date {
   display: block;
-  margin: 0 0 govuk-spacing(3) 0;
+  margin: 0 0 govuk-spacing(3);
   @include govuk-font(16, $weight: bold);
 }
 

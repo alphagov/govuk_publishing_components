@@ -11,7 +11,7 @@
     border-collapse: collapse;
     border-spacing: 0;
     display: block;
-    margin: 0 0 govuk-spacing(6) 0;
+    margin: 0 0 govuk-spacing(6);
     overflow-x: auto;
     width: 100%;
     @include govuk-font($size: 19);
@@ -28,7 +28,7 @@
       border-bottom: 1px solid govuk-functional-colour("border");
 
       &:last-child {
-        padding: govuk-spacing(2) 0 govuk-spacing(2) 0;
+        padding: govuk-spacing(2) 0;
       }
     }
 

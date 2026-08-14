@@ -5,7 +5,7 @@
   ol,
   ul,
   p {
-    margin: 0 0 govuk-spacing(4) 0;
+    margin: 0 0 govuk-spacing(4);
     @include govuk-font($size: 19);
   }
 
@@ -30,13 +30,13 @@
   }
 
   h2 {
-    margin: 0 0 govuk-spacing(4) 0;
+    margin: 0 0 govuk-spacing(4);
     @include govuk-font($size: 24, $weight: bold);
     @include govuk-text-break-word;
   }
 
   h3 {
-    margin: 0 0 govuk-spacing(4) 0;
+    margin: 0 0 govuk-spacing(4);
     @include govuk-font($size: 19, $weight: bold);
     @include govuk-text-break-word;
   }
