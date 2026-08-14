@@ -50,7 +50,7 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: bundle exec rake app:dartsass:build
-      - run: yarn install @percy/cli
+      - run: yarn add @percy/cli
       - run: yarn run percy exec -- bundle exec rspec --tag visual_regression
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
