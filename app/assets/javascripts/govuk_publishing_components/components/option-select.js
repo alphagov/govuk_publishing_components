@@ -1,8 +1,4 @@
 (function (Modules) {
-  /* This JavaScript provides two functional enhancements to option-select components:
-    1) A count that shows how many results have been checked in the option-container
-    2) Open/closing of the list of checkboxes
-  */
   function OptionSelect ($module) {
     this.$optionSelect = $module
     this.$options = this.$optionSelect.querySelectorAll("input[type='checkbox']")
