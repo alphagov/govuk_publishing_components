@@ -9,7 +9,7 @@
     this.$optionsContainer = this.$optionSelect.querySelector('.js-options-container')
     this.$optionList = this.$optionsContainer.querySelector('.js-auto-height-inner')
     this.$allCheckboxes = this.$optionsContainer.querySelectorAll('.govuk-checkboxes__item')
-    this.hasFilter = this.$optionSelect.getAttribute('data-filter-element') || ''
+    this.filterAttributes = this.$optionSelect.getAttribute('data-filter-attributes')
 
     this.checkedCheckboxes = []
 
@@ -19,15 +19,9 @@
   }
 
   OptionSelect.prototype.init = function () {
-    if (this.hasFilter.length) {
-      var filterEl = document.createElement('div')
-      filterEl.innerHTML = this.hasFilter
-
-      var optionSelectFilter = document.createElement('div')
-      optionSelectFilter.classList.add('gem-c-option-select__filter')
-      optionSelectFilter.innerHTML = filterEl.childNodes[0].nodeValue
-
-      this.$optionsContainer.parentNode.insertBefore(optionSelectFilter, this.$optionsContainer)
+    if (this.filterAttributes) {
+      this.filterAttributes = JSON.parse(this.filterAttributes)
+      this.$optionsContainer.parentNode.insertBefore(this.createFilter(), this.$optionsContainer)
 
       this.$filter = this.$optionSelect.querySelector('input[name="option-select-filter"]')
       this.$filterCount = document.getElementById(this.$filter.getAttribute('aria-describedby'))
@@ -71,6 +65,26 @@
     if (checkedString) {
       this.attachCheckedCounter(checkedString)
     }
+  }
+
+  OptionSelect.prototype.createFilter = function () {
+    const filter = document.createElement('div')
+    filter.classList.add('gem-c-option-select__filter')
+
+    const label = document.createElement('label')
+    label.classList.add('govuk-label', 'govuk-visually-hidden')
+    label.setAttribute('for', this.filterAttributes.id)
+    label.textContent = this.filterAttributes.title
+
+    const input = document.createElement('input')
+    input.classList.add('gem-c-option-select__filter-input', 'govuk-input')
+    input.name = 'option-select-filter'
+    input.id = this.filterAttributes.id
+    input.setAttribute('aria-describedby', this.filterAttributes.describedby)
+    input.setAttribute('aria-controls', this.filterAttributes.controls)
+
+    filter.append(label, input)
+    return filter
   }
 
   OptionSelect.prototype.toggleVisibility = function (isTabletOrLarger) {
