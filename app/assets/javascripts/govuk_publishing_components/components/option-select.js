@@ -152,8 +152,8 @@
 
     var lenChecked = obj.$optionsContainer.querySelectorAll('.govuk-checkboxes__input:checked').length
     var len = showCheckboxes.length + lenChecked
-    var html = len + (len === 1 ? obj.filterTextSingle : obj.filterTextMultiple) + ', ' + lenChecked + obj.filterTextSelected
-    obj.$filterCount.innerHTML = html
+    var hiddenText = len + (len === 1 ? obj.filterTextSingle : obj.filterTextMultiple) + ', ' + lenChecked + obj.filterTextSelected
+    obj.$filterCount.textContent = hiddenText
   }
 
   OptionSelect.prototype.replaceHeadingSpanWithButton = function replaceHeadingSpanWithButton () {
