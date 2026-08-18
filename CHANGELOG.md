@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Adjust cards content elements widths ([PR #](https://github.com/alphagov/govuk_publishing_components/pull/5665))
+* Use the details component for toggling element visibility in the metadata component ([PR #5592](https://github.com/alphagov/govuk_publishing_components/pull/5592))
 
 ## 68.1.0
 
