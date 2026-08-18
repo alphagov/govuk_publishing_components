@@ -158,10 +158,11 @@
 
 .gem-c-cards__sub-heading {
   margin: 0 govuk-spacing(6) govuk-spacing(2) 0;
+  text-wrap: pretty;
 
   // Ensure card content width is constrained to two thirds on desktop
   @include govuk-media-query($from: "desktop") {
-    max-width: 66.6667%;
+    max-width: 640px;
   }
 }
 
@@ -208,10 +209,11 @@
 
 .gem-c-cards__description {
   margin: 0 govuk-spacing(6) 0 0;
+  text-wrap: pretty;
 
   // Ensure card content width is constrained to two thirds on desktop
   @include govuk-media-query($from: "desktop") {
-    max-width: 66.6667%;
+    max-width: 640px;
   }
 }
 

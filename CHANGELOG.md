@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Adjust cards content elements widths ([PR #](https://github.com/alphagov/govuk_publishing_components/pull/5665))
+
 ## 68.1.0
 
 * Improve filter Javascript ([PR #5646](https://github.com/alphagov/govuk_publishing_components/pull/5646))
