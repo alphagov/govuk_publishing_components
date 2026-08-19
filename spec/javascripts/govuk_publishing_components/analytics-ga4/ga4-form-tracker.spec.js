@@ -676,6 +676,28 @@ describe('Google Analytics form tracking', function () {
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })
+
+    it('collects text value when force-report-value attr is present', function () {
+      element.innerHTML =
+          '<label for="text">Text label</label>' +
+          '<input type="text" id="text" name="test-text" value="Some text" data-ga4-force-report-value-in-form-tracker/>'
+
+      expected.event_data.text = 'Some text'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects text value and redacts PII when force-report-value attr is present', function () {
+      element.innerHTML =
+          '<label for="text">Text label</label>' +
+          '<input type="text" id="text" name="test-text" value="this is an email: my-email-address@example.com" data-ga4-force-report-value-in-form-tracker/>'
+
+      expected.event_data.text = 'this is an email: [email]'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 
   describe('when tracking a form with undefined instead of no answer given', function () {

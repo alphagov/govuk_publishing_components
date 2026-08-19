@@ -151,7 +151,7 @@
           input.answer = this.getInputAnswerFromSelect(selectedOptions, forceReportValue)
         }
       } else if (isTextField && elem.value) {
-        input.answer = this.getInputAnswerFromText(elem, isDateField)
+        input.answer = this.getInputAnswerFromText(elem, isDateField, forceReportValue)
       } else if (inputType === 'file') {
         input.answer = elem.files.length + ' files chosen'
       } else {
@@ -202,22 +202,29 @@
     return joinedSelections
   }
 
-  Ga4FormTracker.prototype.getInputAnswerFromText = function (inputElement, isDateField) {
-    if (this.includeTextInputValues || inputElement.hasAttribute('data-ga4-form-include-input')) {
-      if (this.useTextCount && !isDateField) {
+  Ga4FormTracker.prototype.getInputAnswerFromText = function (inputElement, isDateField, forceReportValue) {
+    var willRecordInputValue = this.includeTextInputValues || inputElement.hasAttribute('data-ga4-form-include-input')
+    var willReplaceInputValueWithLength = this.useTextCount && !isDateField
+
+    if (forceReportValue) {
+      willReplaceInputValueWithLength = false
+    }
+
+    if (willRecordInputValue) {
+      if (willReplaceInputValueWithLength) {
         return inputElement.value.length
-      } else {
-        var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-        return PIIRemover.stripPIIWithOverride(inputElement.value, true, true)
       }
+
+      var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+      return PIIRemover.stripPIIWithOverride(inputElement.value, true, true)
+    }
+
+    // if recording JSON when recording text input not allowed
+    // set the specific answer to '[REDACTED]'
+    if (this.recordJson) {
+      return '[REDACTED]'
     } else {
-      // if recording JSON when text input not allowed
-      // set the specific answer to '[REDACTED]'
-      if (this.recordJson) {
-        return '[REDACTED]'
-      } else {
-        this.redacted = true
-      }
+      this.redacted = true
     }
   }
 
