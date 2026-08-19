@@ -1,13 +1,18 @@
 <%
   id ||= "modal-dialogue-#{SecureRandom.hex(4)}"
   wide ||= false
+  full_width ||= false
+  scroll_within ||= false
   aria_label ||= nil
+  disable_module ||= false
   dialog_classes = ["gem-c-modal-dialogue__box"]
   dialog_classes << "gem-c-modal-dialogue__box--wide" if wide
+  dialog_classes << "gem-c-modal-dialogue__box--full-width" if full_width
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-modal-dialogue")
-  component_helper.add_data_attribute({ module: "modal-dialogue" })
+  component_helper.add_class("gem-c-modal-dialogue--scroll-within") if scroll_within
+  component_helper.add_data_attribute({ module: "modal-dialogue" }) unless disable_module
   component_helper.set_id(id)
 %>
 

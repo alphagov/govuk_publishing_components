@@ -9,6 +9,7 @@
     }
 
     this.createBarcharts()
+    this.enhanceTables()
   }
 
   Govspeak.prototype.embedYoutube = function () {
@@ -18,6 +19,11 @@
 
   Govspeak.prototype.createBarcharts = function () {
     var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
+    enhancement.init()
+  }
+
+  Govspeak.prototype.enhanceTables = function () {
+    var enhancement = new window.GOVUK.GovspeakTableEnhancement(this.$module)
     enhancement.init()
   }
 
