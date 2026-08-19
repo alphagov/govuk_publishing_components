@@ -44,8 +44,8 @@ $thumbnail-border-width: 5px;
 
   .gem-c-details {
     margin-top: govuk-spacing(3);
-    word-break: break-word;
-    word-wrap: break-word;
+    word-break: break-word; // stylelint-disable-line declaration-property-value-keyword-no-deprecated
+    overflow-wrap: break-word;
   }
 }
 
@@ -68,12 +68,12 @@ $thumbnail-border-width: 5px;
 .govspeak,
 .gem-c-govspeak {
   .gem-c-attachment__title {
-    margin: 0 0 govuk-spacing(3) 0;
+    margin: 0 0 govuk-spacing(3);
     @include govuk-font($size: 27, $weight: regular);
   }
 
   .gem-c-attachment__metadata {
-    margin: 0 0 govuk-spacing(3) 0;
+    margin: 0 0 govuk-spacing(3);
   }
 }
 
@@ -101,7 +101,7 @@ $thumbnail-border-width: 5px;
   }
 
   .gem-c-attachment__link.govuk-link {
-    word-break: break-word;
+    word-break: break-word;  // stylelint-disable-line declaration-property-value-keyword-no-deprecated
 
     &::after {
       font-size: 12pt;

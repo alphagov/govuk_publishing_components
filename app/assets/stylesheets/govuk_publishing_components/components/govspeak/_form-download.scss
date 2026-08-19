@@ -1,7 +1,7 @@
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
   .form-download {
-    margin: 0 0 govuk-spacing(4) 0;
+    margin: 0 0 govuk-spacing(4);
 
     p {
       padding-right: 3em;

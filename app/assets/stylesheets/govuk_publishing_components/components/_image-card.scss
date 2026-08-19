@@ -83,14 +83,14 @@
 
 .gem-c-image-card__description {
   padding-top: govuk-spacing(2);
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   @include govuk-font($size: 19);
 }
 
 .gem-c-image-card__list {
   position: relative;
   z-index: 2;
-  padding: govuk-spacing(2) 0 0 0;
+  padding: govuk-spacing(2) 0 0;
   margin: 0;
   list-style: none;
   @include govuk-font($size: 19);

@@ -81,6 +81,7 @@ $search-icon-height: 20px;
 // Undoes the :focus styles *only* for browsers that support :focus-visible.
 // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
 @mixin focus-not-focus-visible {
+  // stylelint-disable-next-line block-no-redundant-nested-style-rules
   & {
     @content;
   }
@@ -571,12 +572,12 @@ $search-icon-height: 20px;
 // JS available - styles the links in the dropdown menu
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
-  padding: 0 0 govuk-spacing(3) 0;
+  padding: 0 0 govuk-spacing(3);
   position: relative;
-  margin: 0 0 govuk-spacing(2) 0;
+  margin: 0 0 govuk-spacing(2);
   @include govuk-media-query($from: "desktop") {
-    padding: 0 0 govuk-spacing(3) 0;
-    margin: 0 govuk-spacing(3) govuk-spacing(1) govuk-spacing(3);
+    padding: 0 0 govuk-spacing(3);
+    margin: 0 govuk-spacing(3) govuk-spacing(1);
   }
 }
 
@@ -588,7 +589,7 @@ $search-icon-height: 20px;
 
   @include govuk-media-query($from: "desktop") {
     margin: 0 (0 - govuk-spacing(3)) govuk-spacing(9);
-    padding: govuk-spacing(2) 0 0 0;
+    padding: govuk-spacing(2) 0 0;
   }
 }
 
@@ -642,7 +643,7 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
   font-size: govuk-px-to-rem(16px);
   font-weight: normal;
-  margin: govuk-spacing(1) 0 0 0;
+  margin: govuk-spacing(1) 0 0;
   @include govuk-typography-common;
 }
 

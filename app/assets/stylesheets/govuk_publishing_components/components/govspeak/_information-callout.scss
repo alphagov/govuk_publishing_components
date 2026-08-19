@@ -11,7 +11,7 @@
   .info-notice {
     border-left: 10px solid govuk-functional-colour("border");
     padding: govuk-spacing(4) 0 0.1234px govuk-spacing(4); // non-zero padding on bottom keeps margin of last element inside parent, simulating padding
-    margin: 0 0 govuk-spacing(4) 0;
+    margin: 0 0 govuk-spacing(4);
 
     @include govuk-media-query($media-type: print) {
       margin: govuk-spacing(3) 0;

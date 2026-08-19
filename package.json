@@ -24,15 +24,7 @@
     }
   },
   "stylelint": {
-    "extends": [
-      "stylelint-config-gds/scss",
-      "stylelint-stylistic/config"
-    ],
-    "rules": {
-      "stylistic/number-leading-zero": null,
-      "stylistic/max-line-length": 160,
-      "stylistic/block-closing-brace-newline-after": "never-single-line"
-    }
+    "extends": "stylelint-config-gds/scss"
   },
   "dependencies": {
     "accessible-autocomplete": "^3.0.1",
@@ -48,12 +40,7 @@
     "jasmine-core": "^6.3.0",
     "postcss": "^8.5.26",
     "standardx": "^7.0.0",
-    "stylelint": "^15.11.0",
-    "stylelint-config-gds": "^1.1.1",
-    "stylelint-stylistic": "^0.4.5"
-  },
-  "resolutions": {
-    "stylelint/strip-ansi": "6.0.1",
-    "stylelint/string-width": "4.2.3"
+    "stylelint": "^17.14.1",
+    "stylelint-config-gds": "^3.0.0"
   }
 }

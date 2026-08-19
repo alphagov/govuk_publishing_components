@@ -7,6 +7,7 @@
   padding: 0;
   margin: 0;
   display: grid;
+  // stylelint-disable-next-line property-no-deprecated
   grid-column-gap: govuk-spacing(6); // Use deprecated grid-column-gap for Grade C browser support
   column-gap: govuk-spacing(6);
 
@@ -145,7 +146,7 @@
 
 .gem-c-cards__list-item {
   border-top: 1px solid govuk-functional-colour(border);
-  padding: govuk-spacing(1) 0 govuk-spacing(4) 0;
+  padding: govuk-spacing(1) 0 govuk-spacing(4);
 }
 
 .gem-c-cards__list-item-wrapper {

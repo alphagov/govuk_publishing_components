@@ -305,6 +305,7 @@ $toggle-border-height: 3px;
     &-visible {
       @include toggle-button-focus;
 
+      // stylelint-disable-next-line selector-no-qualifying-type
       &.gem-c-rebranded-cross-service-header__toggle--open {
         @include toggle-button-focus;
       }

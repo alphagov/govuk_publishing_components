@@ -53,7 +53,7 @@
   @include govuk-link-common;
   @include govuk-link-style-text;
 
-  & { // stylelint-disable-line no-duplicate-selectors
+  & { // stylelint-disable-line no-duplicate-selectors, block-no-redundant-nested-style-rules
     // overriding the govuk-link font
     font-family: HelveticaNeue, "Helvetica Neue", Arial, Helvetica, sans-serif;
   }

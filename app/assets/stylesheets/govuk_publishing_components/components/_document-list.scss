@@ -82,7 +82,7 @@
   @include govuk-text-colour;
   @include govuk-font(16);
 
-  & { // stylelint-disable-line no-duplicate-selectors
+  & { // stylelint-disable-line no-duplicate-selectors, block-no-redundant-nested-style-rules
     // overriding govuk-text-colour mixin
     color: govuk-functional-colour(secondary-text);
   }
@@ -104,7 +104,7 @@
 }
 
 .gem-c-document-list__highlight-text {
-  margin: 0 0 govuk-spacing(3) 0;
+  margin: 0 0 govuk-spacing(3);
   @include govuk-font(16, bold);
 }
 
