@@ -151,22 +151,7 @@
           input.answer = this.getInputAnswerFromSelect(selectedOptions, forceReportValue)
         }
       } else if (isTextField && elem.value) {
-        if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
-          if (this.useTextCount && !isDateField) {
-            input.answer = elem.value.length
-          } else {
-            var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-            input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
-          }
-        } else {
-          // if recording JSON and text input not allowed
-          // set the specific answer to '[REDACTED]'
-          if (this.recordJson) {
-            input.answer = '[REDACTED]'
-          } else {
-            this.redacted = true
-          }
-        }
+        input.answer = this.getInputAnswerFromText(elem, isDateField)
       } else if (inputType === 'file') {
         input.answer = elem.files.length + ' files chosen'
       } else {
@@ -215,6 +200,25 @@
     }
 
     return joinedSelections
+  }
+
+  Ga4FormTracker.prototype.getInputAnswerFromText = function (inputElement, isDateField) {
+    if (this.includeTextInputValues || inputElement.hasAttribute('data-ga4-form-include-input')) {
+      if (this.useTextCount && !isDateField) {
+        return inputElement.value.length
+      } else {
+        var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+        return PIIRemover.stripPIIWithOverride(inputElement.value, true, true)
+      }
+    } else {
+      // if recording JSON when text input not allowed
+      // set the specific answer to '[REDACTED]'
+      if (this.recordJson) {
+        return '[REDACTED]'
+      } else {
+        this.redacted = true
+      }
+    }
   }
 
   Ga4FormTracker.prototype.combineGivenAnswers = function (data) {
