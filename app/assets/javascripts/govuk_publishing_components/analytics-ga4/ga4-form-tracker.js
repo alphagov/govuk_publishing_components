@@ -11,6 +11,7 @@
     this.useSelectCount = this.module.hasAttribute('data-ga4-form-use-select-count')
     this.redacted = false
     this.useFallbackValue = this.module.hasAttribute('data-ga4-form-no-answer-undefined') ? undefined : 'No answer given'
+    this.piiRemover = new window.GOVUK.analyticsGa4.PIIRemover()
   }
 
   Ga4FormTracker.prototype.init = function () {
@@ -215,8 +216,7 @@
         return inputElement.value.length
       }
 
-      var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-      return PIIRemover.stripPIIWithOverride(inputElement.value, true, true)
+      return this.piiRemover.stripPIIWithOverride(inputElement.value, true, true)
     }
 
     // if recording JSON when recording text input not allowed
