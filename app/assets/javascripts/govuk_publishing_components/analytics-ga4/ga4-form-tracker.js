@@ -117,6 +117,8 @@
 
       var isDateField = elem.closest('.govuk-date-input')
 
+      var forceReportValue = elem.hasAttribute('data-ga4-force-report-value-in-form-tracker')
+
       if (conditionalCheckbox && !conditionalCheckboxChecked) {
         // don't include conditional field if condition not checked
         inputs.splice(i, 1)
@@ -146,7 +148,7 @@
           // if placeholder value in select, do not include as not filled in
           inputs.splice(i, 1)
         } else {
-          input.answer = this.useSelectCount && selectedOptions.length > 1 ? selectedOptions.length : selectedOptions.join(',')
+          input.answer = this.getInputAnswerFromSelect(selectedOptions, forceReportValue)
         }
       } else if (isTextField && elem.value) {
         if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
@@ -199,6 +201,20 @@
       }
     }
     return inputs
+  }
+
+  Ga4FormTracker.prototype.getInputAnswerFromSelect = function (selectedOptions, forceReportValue) {
+    var joinedSelections = selectedOptions.join(',')
+
+    if (forceReportValue) {
+      return joinedSelections
+    }
+
+    if (this.useSelectCount && selectedOptions.length > 1) {
+      return selectedOptions.length
+    }
+
+    return joinedSelections
   }
 
   Ga4FormTracker.prototype.combineGivenAnswers = function (data) {
