@@ -11,6 +11,7 @@
 
 * Review and fix image card spacing ([PR #5661](https://github.com/alphagov/govuk_publishing_components/pull/5661))  
 * Upgrade Stylelint to v17 ([PR #5654](https://github.com/alphagov/govuk_publishing_components/pull/5654))
+* Remove Grade X browser support from the super navigation header ([PR #5649](https://github.com/alphagov/govuk_publishing_components/pull/5649))
 
 ## 68.2.0
 
