@@ -609,7 +609,10 @@ $search-icon-height: 20px;
   }
 
   @include govuk-media-query($from: "desktop") {
-    @include columns($items: 16, $columns: 2, $selector: "li", $flow: column);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, auto);
   }
 }
 
