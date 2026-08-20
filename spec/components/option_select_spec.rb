@@ -52,6 +52,7 @@ describe "option select", type: :view do
   it "renders a heading for the option select box containing the title" do
     render_component(option_select_arguments)
     expect(rendered).to have_selector(".gem-c-option-select__title", text: "Market sector")
+    expect(rendered).not_to have_selector(".gem-c-option-select[data-filter-attributes]")
   end
 
   it "renders a container with the id passed in" do
@@ -88,7 +89,7 @@ describe "option select", type: :view do
     arguments[:show_filter] = true
     render_component(arguments)
 
-    expect(rendered).to have_selector(".gem-c-option-select[data-filter-element]")
+    expect(rendered).to have_selector(".gem-c-option-select[data-filter-attributes]")
     expect(rendered).to have_selector(".gem-c-option-select__count")
   end
 

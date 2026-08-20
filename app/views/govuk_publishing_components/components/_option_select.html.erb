@@ -4,35 +4,24 @@
   checkboxes_count_id = checkboxes_id + "-count"
   show_filter ||= false
   large ||= false
-%>
 
-<% if show_filter %>
-  <% filter_id ||= "input-#{SecureRandom.hex(4)}" %>
-  <% filter = capture do %>
-    <%= tag.label for: filter_id, class: "govuk-label govuk-visually-hidden" do %>
-      Filter <%= title %>
-    <% end %>
-
-    <%= tag.input name: "option-select-filter",
+  if show_filter
+    filter_id ||= "input-#{SecureRandom.hex(4)}"
+    filter_attributes = {
       id: filter_id,
-      class: "gem-c-option-select__filter-input govuk-input",
-      type: "text",
-      aria: {
-        describedby: checkboxes_count_id,
-        controls: checkboxes_id,
-      } %>
-  <% end %>
-  <% filter_element = CGI::escapeHTML(filter) %>
-<% end %>
+      title: "Filter #{title}",
+      describedby: checkboxes_count_id,
+      controls: checkboxes_id,
+    }
+  end
 
-<%
   helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   helper.add_class("gem-c-option-select")
   helper.add_data_attribute({ module: "option-select" })
   helper.add_data_attribute({ "closed-on-load": true }) if local_assigns.include?(:closed_on_load) && closed_on_load
   helper.add_data_attribute({ "closed-on-load-mobile": "true" }) if local_assigns.include?(:closed_on_load_mobile) && closed_on_load_mobile
   helper.add_data_attribute({ "input-aria-controls": aria_controls_id }) if local_assigns.include?(:aria_controls_id)
-  helper.add_data_attribute({ "filter-element": filter_element }) if show_filter
+  helper.add_data_attribute({ "filter-attributes": filter_attributes }) if filter_attributes
   helper.add_data_attribute({ "button-data-attributes": button_data_attributes }) if local_assigns.include?(:button_data_attributes)
 
   options_container_classes = %w[gem-c-option-select__container js-options-container]

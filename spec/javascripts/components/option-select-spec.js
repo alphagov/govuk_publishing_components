@@ -377,11 +377,13 @@ describe('An option select component', function () {
     beforeEach(function () {
       createFixture()
 
-      var filterMarkup =
-            '&lt;label for=&quot;input-b7f768b7&quot; class=&quot;gem-c-label govuk-label&quot;&gt;' +
-              'Filter Countries' +
-            '&lt;/label&gt;' +
-            '&lt;input name=&quot;option-select-filter&quot; class=&quot;gem-c-input gem-c-option-select__filter-input govuk-input&quot; id=&quot;input-b7f768b7&quot; type=&quot;text&quot; aria-describedby=&quot;checkboxes-9b7ecc25-count&quot; aria-controls=&quot;checkboxes-9b7ecc25&quot;&gt;'
+      const filterAttributes = {
+        id: 'input-b7f768b7',
+        title: 'Filter Countries',
+        describedby: 'checkboxes-9b7ecc25-count',
+        controls: 'checkboxes-9b7ecc25'
+      }
+      container.querySelector('.gem-c-option-select').setAttribute('data-filter-attributes', JSON.stringify(filterAttributes))
 
       var filterSpan = document.createElement('span')
       filterSpan.id = 'checkboxes-9b7ecc25-count'
@@ -391,7 +393,6 @@ describe('An option select component', function () {
       filterSpan.setAttribute('data-multiple', 'options found')
       filterSpan.setAttribute('data-selected', 'selected')
 
-      container.querySelector('.gem-c-option-select').setAttribute('data-filter-element', filterMarkup)
       container.querySelector('.gem-c-checkboxes').prepend(filterSpan)
 
       initModule()
