@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 68.3.0
 
 * Review and fix image card spacing ([PR #5661](https://github.com/alphagov/govuk_publishing_components/pull/5661))  
 * Upgrade Stylelint to v17 ([PR #5654](https://github.com/alphagov/govuk_publishing_components/pull/5654))
