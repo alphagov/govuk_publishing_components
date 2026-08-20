@@ -1,9 +1,9 @@
 /* eslint-env jasmine */
 
 describe('The trigger event code', function () {
-  var element
+  let element
 
-  var obj = {
+  const obj = {
     calledFunction: function (event) {
       if (typeof event.cancelable !== 'boolean' || event.cancelable === true) {
         event.preventDefault()
@@ -15,6 +15,9 @@ describe('The trigger event code', function () {
         obj.secondCalledFunction()
       }
       if (event.keyCode === 13) {
+        obj.secondCalledFunction()
+      }
+      if (event.key === 'Enter') {
         obj.secondCalledFunction()
       }
     },
@@ -45,6 +48,13 @@ describe('The trigger event code', function () {
     expect(obj.secondCalledFunction).toHaveBeenCalled()
   })
 
+  it('creates and triggers a custom event with a key', function () {
+    element.addEventListener('keyup', obj.calledFunction)
+    window.GOVUK.triggerEvent(element, 'keyup', { key: 'Enter' })
+    expect(obj.calledFunction).toHaveBeenCalled()
+    expect(obj.secondCalledFunction).toHaveBeenCalled()
+  })
+
   it('creates and triggers a custom event with a keyCode', function () {
     element.addEventListener('keyup', obj.calledFunction)
     window.GOVUK.triggerEvent(element, 'keyup', { keyCode: 13 })
@@ -54,7 +64,7 @@ describe('The trigger event code', function () {
 
   it('creates a custom event that bubbles by default', function () {
     element = document.createElement('div')
-    var child = document.createElement('div')
+    const child = document.createElement('div')
     element.appendChild(child)
     document.body.appendChild(element)
     element.addEventListener('click', obj.calledFunction)
@@ -64,7 +74,7 @@ describe('The trigger event code', function () {
 
   it('creates a custom event that does not bubble', function () {
     element = document.createElement('div')
-    var child = document.createElement('div')
+    const child = document.createElement('div')
     element.appendChild(child)
     document.body.appendChild(element)
     element.addEventListener('click', obj.calledFunction)
