@@ -70,6 +70,9 @@ az:
       - Biz GOV.UK-dən necə istifadə etdiyinizi anlamaq
       - parametrlərinizi yadda saxlamaq və hökumət xidmətlərini təkmilləşdirmək üçün əlavə kukilər yerləşdirmək istərdik.
       - Biz həmçinin digər saytların xidmətlərindən məzmun göndərməyimizə kömək etmək üçün həmin saytlar tərəfindən yerləşdirilmiş kukilərdən istifadə edirik.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: GOV.UK-dəki kukilər
     devolved_nations:
       applies_to:
