@@ -1,11 +1,13 @@
 // see https://github.com/alphagov/govuk_publishing_components/blob/main/docs/lib/trigger_event.md
-(function (root) {
+(function () {
   'use strict'
 
+  window.GOVUK = window.GOVUK || {}
+
   window.GOVUK.triggerEvent = function (element, eventName, parameters) {
-    var params = parameters || {}
-    var event
-    var keyCode = params.keyCode
+    const params = parameters || {}
+    const keyCode = params.keyCode
+    const key = params.key
 
     if (!Object.prototype.hasOwnProperty.call(params, 'bubbles')) {
       params.bubbles = true
@@ -15,11 +17,10 @@
       params.cancelable = true
     }
 
-    if (typeof window.CustomEvent === 'function') {
-      event = new window.CustomEvent(eventName, params)
-    } else {
-      event = document.createEvent('CustomEvent')
-      event.initCustomEvent(eventName, params.bubbles, params.cancelable, params.detail)
+    const event = new window.CustomEvent(eventName, params)
+
+    if (key) {
+      event.key = key
     }
 
     if (keyCode) {
@@ -30,6 +31,8 @@
       event.shiftKey = true
     }
 
-    element.dispatchEvent(event)
+    if (element && typeof element.dispatchEvent === 'function') {
+      element.dispatchEvent(event)
+    }
   }
-}(window))
+}())

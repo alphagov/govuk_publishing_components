@@ -22,6 +22,7 @@
 
 * Improve filter Javascript ([PR #5646](https://github.com/alphagov/govuk_publishing_components/pull/5646))
 * Add new brand colour for BIST ([PR #5652](https://github.com/alphagov/govuk_publishing_components/pull/5652))
+* Remove Grade X browser support from the super navigation header ([PR #5649](https://github.com/alphagov/govuk_publishing_components/pull/5649))
 
 ## 68.0.0
 
