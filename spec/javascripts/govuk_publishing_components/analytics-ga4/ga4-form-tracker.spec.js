@@ -676,6 +676,28 @@ describe('Google Analytics form tracking', function () {
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)
     })
+
+    it('collects text value when force-report-value attr is present', function () {
+      element.innerHTML =
+          '<label for="text">Text label</label>' +
+          '<input type="text" id="text" name="test-text" value="Some text" data-ga4-force-report-value-in-form-tracker/>'
+
+      expected.event_data.text = 'Some text'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects text value and redacts PII when force-report-value attr is present', function () {
+      element.innerHTML =
+          '<label for="text">Text label</label>' +
+          '<input type="text" id="text" name="test-text" value="this is an email: my-email-address@example.com" data-ga4-force-report-value-in-form-tracker/>'
+
+      expected.event_data.text = 'this is an email: [email]'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
   })
 
   describe('when tracking a form with undefined instead of no answer given', function () {
@@ -850,6 +872,21 @@ describe('Google Analytics form tracking', function () {
         '</select>'
 
       expected.event_data.text = 'Option 1'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('collects all selected options when force-report-value attr is present', function () {
+      element.innerHTML =
+          '<label for="s1">Label</label>' +
+          '<select multiple name="select" id="s1" data-ga4-force-report-value-in-form-tracker>' +
+          '<option selected value="option1">Option 1</option>' +
+          '<option selected value="option2">Option 2</option>' +
+          '<option value="option3">Option 3</option>' +
+          '</select>'
+
+      expected.event_data.text = 'Option 1,Option 2'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)

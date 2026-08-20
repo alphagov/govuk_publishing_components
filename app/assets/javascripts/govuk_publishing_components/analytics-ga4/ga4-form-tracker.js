@@ -11,6 +11,7 @@
     this.useSelectCount = this.module.hasAttribute('data-ga4-form-use-select-count')
     this.redacted = false
     this.useFallbackValue = this.module.hasAttribute('data-ga4-form-no-answer-undefined') ? undefined : 'No answer given'
+    this.piiRemover = new window.GOVUK.analyticsGa4.PIIRemover()
   }
 
   Ga4FormTracker.prototype.init = function () {
@@ -117,6 +118,8 @@
 
       var isDateField = elem.closest('.govuk-date-input')
 
+      var forceReportValue = elem.hasAttribute('data-ga4-force-report-value-in-form-tracker')
+
       if (conditionalCheckbox && !conditionalCheckboxChecked) {
         // don't include conditional field if condition not checked
         inputs.splice(i, 1)
@@ -146,25 +149,10 @@
           // if placeholder value in select, do not include as not filled in
           inputs.splice(i, 1)
         } else {
-          input.answer = this.useSelectCount && selectedOptions.length > 1 ? selectedOptions.length : selectedOptions.join(',')
+          input.answer = this.getInputAnswerFromSelect(selectedOptions, forceReportValue)
         }
       } else if (isTextField && elem.value) {
-        if (this.includeTextInputValues || elem.hasAttribute('data-ga4-form-include-input')) {
-          if (this.useTextCount && !isDateField) {
-            input.answer = elem.value.length
-          } else {
-            var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-            input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
-          }
-        } else {
-          // if recording JSON and text input not allowed
-          // set the specific answer to '[REDACTED]'
-          if (this.recordJson) {
-            input.answer = '[REDACTED]'
-          } else {
-            this.redacted = true
-          }
-        }
+        input.answer = this.getInputAnswerFromText(elem, isDateField, forceReportValue)
       } else if (inputType === 'file') {
         input.answer = elem.files.length + ' files chosen'
       } else {
@@ -199,6 +187,45 @@
       }
     }
     return inputs
+  }
+
+  Ga4FormTracker.prototype.getInputAnswerFromSelect = function (selectedOptions, forceReportValue) {
+    var joinedSelections = selectedOptions.join(',')
+
+    if (forceReportValue) {
+      return joinedSelections
+    }
+
+    if (this.useSelectCount && selectedOptions.length > 1) {
+      return selectedOptions.length
+    }
+
+    return joinedSelections
+  }
+
+  Ga4FormTracker.prototype.getInputAnswerFromText = function (inputElement, isDateField, forceReportValue) {
+    var willRecordInputValue = this.includeTextInputValues || inputElement.hasAttribute('data-ga4-form-include-input')
+    var willReplaceInputValueWithLength = this.useTextCount && !isDateField
+
+    if (forceReportValue) {
+      willReplaceInputValueWithLength = false
+    }
+
+    if (willRecordInputValue) {
+      if (willReplaceInputValueWithLength) {
+        return inputElement.value.length
+      }
+
+      return this.piiRemover.stripPIIWithOverride(inputElement.value, true, true)
+    }
+
+    // if recording JSON when recording text input not allowed
+    // set the specific answer to '[REDACTED]'
+    if (this.recordJson) {
+      return '[REDACTED]'
+    } else {
+      this.redacted = true
+    }
   }
 
   Ga4FormTracker.prototype.combineGivenAnswers = function (data) {

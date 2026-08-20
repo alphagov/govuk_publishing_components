@@ -42,14 +42,16 @@ The script will automatically collect the answer submitted in the `text` field. 
 There are several optional data attributes, which will enable different output for the `text` field.
 
 
-| Data attribute | Element apply to | Description | Before | After |
-| -------- | ------- | -------- | ------- | ------- |
-| `data-ga4-form-include-text`  | `form` | Prevents redaction of text inputs  | `[REDACTED],[REDACTED]` | `Text input value,Another text input value` |
-| `data-ga4-form-include-input`  | `input[type=text]` | Prevents redaction of specific text input  | `[REDACTED],[REDACTED]` | `[REDACTED],Specific text input value` |
-| `data-ga4-form-use-text-count`  | `form` | Uses character count instead of text input value | `[REDACTED]` | `24` |
-| `data-ga4-form-use-select-count`  | `form` | Uses number of selected options instead of selected options values  | `yoghurt,pie,trifle` | `3` |
-| `data-ga4-form-record-json`  | `form` | Uses JSON format with label of input as key | `yoghurt,ice cream,trifle` | `{ "What are your favourite cold puddings?": "yoghurt,ice cream,trifle" }` |
-| `data-ga4-form-no-answer-undefined` | `form` | Use `undefined` instead of `No answer given` for empty inputs | `"No answer given"` | `undefined` |
+| Data attribute                                | Element apply to   | Description                                                                                                                                      | Before                     | After                                                                      |
+|-----------------------------------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|----------------------------------------------------------------------------|
+| `data-ga4-form-include-text`                  | `form`             | Prevents redaction of text inputs                                                                                                                | `[REDACTED],[REDACTED]`    | `Text input value,Another text input value`                                |
+| `data-ga4-form-include-input`                 | `input[type=text]` | Prevents redaction of specific text input                                                                                                        | `[REDACTED],[REDACTED]`    | `[REDACTED],Specific text input value`                                     |
+| `data-ga4-form-use-text-count`                | `form`             | Uses character count instead of text input value                                                                                                 | `[REDACTED]`               | `24`                                                                       |
+| `data-ga4-form-use-select-count`              | `form`             | Uses number of selected options instead of selected options values                                                                               | `yoghurt,pie,trifle`       | `3`                                                                        |
+| `data-ga4-form-record-json`                   | `form`             | Uses JSON format with label of input as key                                                                                                      | `yoghurt,ice cream,trifle` | `{ "What are your favourite cold puddings?": "yoghurt,ice cream,trifle" }` |
+| `data-ga4-form-no-answer-undefined`           | `form`             | Use `undefined` instead of `No answer given` for empty inputs                                                                                    | `"No answer given"`        | `undefined`                                                                |
+| `data-ga4-force-report-value-in-form-tracker` | `select`, `input`  | Ignore the presence of `data-ga4-form-use-select-count` and/or `data-ga4-form-use-text-count` when determining the reported value for this field | `2` / `18`                 | `Option 1, Option2` / `Example text input`                                 |
+
 
 These can be used in combination as well as separately.
 
