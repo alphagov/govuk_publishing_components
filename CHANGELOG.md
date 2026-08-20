@@ -11,6 +11,7 @@
 
 * Review and fix image card spacing ([PR #5661](https://github.com/alphagov/govuk_publishing_components/pull/5661))  
 * Upgrade Stylelint to v17 ([PR #5654](https://github.com/alphagov/govuk_publishing_components/pull/5654))
+* Remove grid helper and update Cards to native CSS Grid ([PR #5658](https://github.com/alphagov/govuk_publishing_components/pull/5658))
 
 ## 68.2.0
 

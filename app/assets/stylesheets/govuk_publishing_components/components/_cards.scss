@@ -49,15 +49,15 @@
 
 .gem-c-cards__list--two-column-desktop {
   @include govuk-media-query($from: "tablet") {
-    grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
-    grid-template-columns: fractions(2); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .gem-c-cards__list--three-column-desktop {
   @include govuk-media-query($from: "desktop") {
-    grid-auto-rows: fractions(1); // Set all rows to same fractional height of the complete grid
-    grid-template-columns: fractions(3); // Note that browsers that don't support CSS grid display the component as one column on all breakpoints
+    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
