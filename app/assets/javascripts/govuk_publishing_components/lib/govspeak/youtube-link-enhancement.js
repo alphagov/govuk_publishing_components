@@ -45,9 +45,12 @@
         <span class="govuk-heading-s">How to watch this YouTube video</span>
         <span class="gem-c-govspeak__youtube-placeholder-text">There's a YouTube video on this page. You can't access it because of your cookie settings.</span>
         <span class="gem-c-govspeak__youtube-placeholder-text">You can <a href="/help/cookies" class="govuk-link">change your cookie settings</a> or watch the video on YouTube instead:</span>
-        <a href="${href}" class="govuk-link">${text}</a>
+        <a href="#" class="govuk-link js-youtube-link"></a>
       `
       placeholder.innerHTML = markup
+      const link = placeholder.querySelector('.js-youtube-link')
+      link.setAttribute('href', href)
+      link.textContent = text
       $linkParent.after(placeholder)
       $linkParent.classList.add('gem-c-govspeak__youtube-placeholder-link')
     }
