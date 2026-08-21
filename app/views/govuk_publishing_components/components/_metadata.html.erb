@@ -10,6 +10,9 @@
   page_history ||= []
   page_history = Array(page_history)
 
+  history ||= nil
+  first_published ||= nil
+  last_updated ||= nil
   other ||= nil
   inverse ||= false
   inverse_compress ||= false
@@ -34,83 +37,87 @@
     type: "content history",
     section: "Top",
   }.to_json unless disable_ga4
+
+  render_component = true if from.any? || part_of.any? || history || first_published || last_updated || page_history.any? || other
 %>
-<%= tag.div(**component_helper.all_attributes) do %>
-  <% if title.present? %>
-    <%= render "govuk_publishing_components/components/heading", {
-      text: sanitize(title),
-      font_size: "m",
-      inverse:,
-      margin_bottom: 2,
-    } %>
-  <% elsif page_history.any? %>
-    <h2 class="govuk-visually-hidden"><%= t("components.metadata.hidden_heading") %></h2>
-  <% end %>
-  <dl class="gem-c-metadata__list">
-    <% if from.any? %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
-      <dd class="gem-c-metadata__definition">
-        <%= render "govuk_publishing_components/components/metadata/sentence", items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
-      </dd>
+<% if render_component %>
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <% if title.present? %>
+      <%= render "govuk_publishing_components/components/heading", {
+        text: sanitize(title),
+        font_size: "m",
+        inverse:,
+        margin_bottom: 2,
+      } %>
+    <% elsif page_history.any? %>
+      <h2 class="govuk-visually-hidden"><%= t("components.metadata.hidden_heading") %></h2>
     <% end %>
-    <% if part_of.any? %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of") %>:</dt>
-      <dd class="gem-c-metadata__definition">
-        <%= render "govuk_publishing_components/components/metadata/sentence", items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
-      </dd>
-    <% end %>
-    <% if local_assigns.include?(:history) %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.history") %>:</dt>
-      <dd class="gem-c-metadata__definition"><%= history %></dd>
-    <% end %>
-    <% if local_assigns.include?(:first_published) && first_published %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.published") %>:</dt>
-      <dd class="gem-c-metadata__definition"><%= first_published %></dd>
-    <% end %>
-    <% if local_assigns.include?(:last_updated) && last_updated %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %>:</dt>
-      <dd class="gem-c-metadata__definition">
-        <%= last_updated %>
-        <% if local_assigns.include?(:see_updates_link) %>
-          &#8212; <a href="#full-publication-update-history"
-                    class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link">
-            <%= t("components.metadata.see_all_updates") %>
-          </a>
-        <% end %>
-        <% if page_history.any? %>
-          <%= render "govuk_publishing_components/components/details", {
-            title: t("components.metadata.show_all_updates", locale: :en),
-            small: true,
-          } do %>
-            <ol class="gem-c-metadata__change-history">
-              <% page_history.each do |change| %>
-                <li class="gem-c-metadata__change-history-item">
-                  <time class="gem-c-metadata__change-date" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
-                  <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
-                </li>
-              <% end %>
-            </ol>
+    <dl class="gem-c-metadata__list">
+      <% if from.any? %>
+        <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
+        <dd class="gem-c-metadata__definition">
+          <%= render "govuk_publishing_components/components/metadata/sentence", items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
+        </dd>
+      <% end %>
+      <% if part_of.any? %>
+        <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of") %>:</dt>
+        <dd class="gem-c-metadata__definition">
+          <%= render "govuk_publishing_components/components/metadata/sentence", items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
+        </dd>
+      <% end %>
+      <% if local_assigns.include?(:history) %>
+        <dt class="gem-c-metadata__term"><%= t("components.metadata.history") %>:</dt>
+        <dd class="gem-c-metadata__definition"><%= history %></dd>
+      <% end %>
+      <% if local_assigns.include?(:first_published) && first_published %>
+        <dt class="gem-c-metadata__term"><%= t("components.metadata.published") %>:</dt>
+        <dd class="gem-c-metadata__definition"><%= first_published %></dd>
+      <% end %>
+      <% if local_assigns.include?(:last_updated) && last_updated %>
+        <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %>:</dt>
+        <dd class="gem-c-metadata__definition">
+          <%= last_updated %>
+          <% if local_assigns.include?(:see_updates_link) %>
+            &#8212; <a href="#full-publication-update-history"
+                      class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link">
+              <%= t("components.metadata.see_all_updates") %>
+            </a>
+          <% end %>
+          <% if page_history.any? %>
+            <%= render "govuk_publishing_components/components/details", {
+              title: t("components.metadata.show_all_updates", locale: :en),
+              small: true,
+            } do %>
+              <ol class="gem-c-metadata__change-history">
+                <% page_history.each do |change| %>
+                  <li class="gem-c-metadata__change-history-item">
+                    <time class="gem-c-metadata__change-date" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
+                    <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
+                  </li>
+                <% end %>
+              </ol>
+            <% end %>
+          <% end %>
+        </dd>
+      <% end %>
+      <% if other.present? %>
+        <% other.each_with_index do |(title, definition), index| %>
+          <%
+            definition ||= []
+            definition = Array(definition)
+          %>
+          <% if definition.any? %>
+            <dt class="gem-c-metadata__term"><%= title %>:</dt>
+            <dd class="gem-c-metadata__definition"
+              <% unless disable_ga4 %>
+                data-module="ga4-link-tracker"
+                data-ga4-link="<%= ga4_object %>"
+              <% end %>>
+              <%= render "govuk_publishing_components/components/metadata/sentence", items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
+            </dd>
           <% end %>
         <% end %>
-      </dd>
-    <% end %>
-    <% if other.present? %>
-      <% other.each_with_index do |(title, definition), index| %>
-        <%
-          definition ||= []
-          definition = Array(definition)
-        %>
-        <% if definition.any? %>
-          <dt class="gem-c-metadata__term"><%= title %>:</dt>
-          <dd class="gem-c-metadata__definition"
-            <% unless disable_ga4 %>
-              data-module="ga4-link-tracker"
-              data-ga4-link="<%= ga4_object %>"
-            <% end %>>
-            <%= render "govuk_publishing_components/components/metadata/sentence", items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
-          </dd>
-        <% end %>
       <% end %>
-    <% end %>
-  </dl>
+    </dl>
+  <% end %>
 <% end %>

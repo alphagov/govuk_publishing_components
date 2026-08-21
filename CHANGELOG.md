@@ -7,9 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Prevent metadata component rendering when no data ([PR #5672](https://github.com/alphagov/govuk_publishing_components/pull/5672))
+
 ## 68.3.0
 
-* Review and fix image card spacing ([PR #5661](https://github.com/alphagov/govuk_publishing_components/pull/5661))  
+* Review and fix image card spacing ([PR #5661](https://github.com/alphagov/govuk_publishing_components/pull/5661))
 * Upgrade Stylelint to v17 ([PR #5654](https://github.com/alphagov/govuk_publishing_components/pull/5654))
 * Remove grid helper and update Cards to native CSS Grid ([PR #5658](https://github.com/alphagov/govuk_publishing_components/pull/5658))
 * Allow individual fields to report their values to GA4 even when `data-ga4-use-[select|text]-count` attr is present on the form ([PR #5669](https://github.com/alphagov/govuk_publishing_components/pull/5669))
