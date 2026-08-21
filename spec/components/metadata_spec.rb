@@ -9,12 +9,16 @@ describe "Metadata", type: :view do
     allow(SecureRandom).to receive(:hex).and_return("1234")
   end
 
+  it "renders nothing when no data is given" do
+    assert_empty render_component({})
+  end
+
   it "renders metadata in a definition list" do
-    render_component({})
+    render_component(from: "<a href='/link'>Department</a>")
     assert_select ".gem-c-metadata dl"
 
-    assert_select "dd", false
-    assert_select "dt", false
+    assert_select "dd", true
+    assert_select "dt", true
   end
 
   it "renders from metadata" do
@@ -35,6 +39,18 @@ describe "Metadata", type: :view do
     render_component(history: "Updated 2 weeks ago")
 
     assert_definition("History:", "Updated 2 weeks ago")
+  end
+
+  it "renders first_published metadata" do
+    render_component(first_published: "Updated 2 weeks ago")
+
+    assert_definition("Published:", "Updated 2 weeks ago")
+  end
+
+  it "renders last_updated metadata" do
+    render_component(last_updated: "Updated 2 weeks ago")
+
+    assert_definition("Last updated:", "Updated 2 weeks ago")
   end
 
   it "renders custom metadata" do
@@ -357,7 +373,7 @@ describe "Metadata", type: :view do
   end
 
   it "renders with a top border" do
-    render_component({ border_top: true })
+    render_component({ first_published: "1st November 2000", border_top: true })
     assert_select ".gem-c-metadata.gem-c-metadata--border-top"
   end
 
