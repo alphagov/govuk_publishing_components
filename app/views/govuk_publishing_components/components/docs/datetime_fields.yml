@@ -1,0 +1,106 @@
+name: Datetime fields (experimental)
+description: Use the datetime fields component to help users enter a datetime for a specific event.
+body: |
+  This differs from the [Date fields][] component in a few notable ways:
+
+  * In addition, to day, month and year, it also takes hour and minute
+  * It generates select fields in place of inputs
+
+  [Date fields]: https://design-system.service.gov.uk/components/date-input/
+accessibility_criteria: |
+  Inputs in the component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when they have focus
+  * be recognisable as form input elements
+  * have correctly associated labels
+
+govuk_frontend_components:
+  - date-input
+examples:
+  default:
+    data: {}
+  with_field_names:
+    data:
+      year:
+        name: year_field_name
+      month:
+        name: month_field_name
+      day:
+        name: day_field_name
+      hour:
+        name: hour_field_name
+      minute:
+        name: minute_field_name
+  with_heading_level_and_size:
+    data:
+      heading_level: 1
+      heading_size: l
+  with_custom_heading_text:
+    data:
+      date_heading: "The date"
+      time_heading: "The time"
+  with_hint_text:
+    data:
+      date_hint: For example, 01 August 2022
+      time_hint: For example, 09:30 or 19:30
+  with_id_value:
+    data:
+      id: date_time_id
+  with_custom_ids:
+    data:
+      year:
+        id: year_id
+      month:
+        id: month_id
+      day:
+        id: day_id
+      hour:
+        id: hour_id
+      minute:
+        id: minute_id
+  with_values:
+    data:
+      year:
+        value: 2022
+      month:
+        value: 1
+      day:
+        value: 2
+      hour:
+        value: 9
+      minute:
+        value: 30
+  with_a_prepopulated_time:
+    data:
+      hour:
+        value: 10
+      minute:
+        value: 51
+  with_error_items:
+    data:
+      error_items:
+      - text: Descriptive error 1
+      - text: Descriptive error 2
+  with_separate_date_time_error_items:
+    data:
+      error_items_date:
+      - text: Descriptive date error 1
+      - text: Descriptive date error 2
+      error_items_time:
+      - text: Descriptive time error 1
+      - text: Descriptive time error 2
+  with_data_attributes:
+    data:
+      data_attributes:
+        module: "some-module"
+        other_attribute: "something-else"
+  with_date_only_option:
+    description: |
+      This is used to render the component to display only the date input fields.
+    data:
+      date_heading: "An optional heading for the date fields"
+      date_only: true
