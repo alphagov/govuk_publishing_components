@@ -27,6 +27,7 @@
 
 * Improve filter Javascript ([PR #5646](https://github.com/alphagov/govuk_publishing_components/pull/5646))
 * Add new brand colour for BIST ([PR #5652](https://github.com/alphagov/govuk_publishing_components/pull/5652))
+* Accept and provide link decoration to/from specific links ([PR #5511](https://github.com/alphagov/govuk_publishing_components/pull/5511))
 
 ## 68.0.0
 
