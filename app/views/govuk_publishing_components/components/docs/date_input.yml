@@ -36,6 +36,11 @@ examples:
   with_legend:
     data:
       legend_text: "What is your date of birth?"
+  with_legend_level_and_size:
+    data:
+      legend_text: "What is your date of birth?"
+      legend_level: 2
+      legend_size: "l"
   with_hint:
     data:
       legend_text: "What is your date of birth?"
@@ -52,6 +57,11 @@ examples:
       error_items:
         - text: "Error 1"
         - text: "Error 2"
+  with_data_attributes:
+    data:
+      data_attributes:
+        module: "some-module"
+        other_attribute: "something-else"
   with_custom_items:
     data:
       legend_text: "Beth yw eich dyddiad geni?"
