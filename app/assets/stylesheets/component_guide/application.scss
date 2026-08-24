@@ -15,7 +15,7 @@ $gem-guide-border-width: 1px;
   border: 3px solid govuk-functional-colour(error);
   margin: 0 0 govuk-spacing(6);
   padding: govuk-spacing(6);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
 
   .component-violation__title {
     margin: 0;
@@ -115,8 +115,8 @@ $gem-guide-border-width: 1px;
 .component-guide-preview--violation,
 .component-guide-preview--warning {
   margin-top: -$gem-guide-border-width;
-
-  @include govuk-text-colour;
+  
+  color: govuk-functional-colour(text);
   @include govuk-font($size: 19);
 
   &:empty {
