@@ -14,7 +14,7 @@ $choices-border-radius-item: 0 !default;
 $choices-z-index: 2 !default;
 $choices-button-dimension: 12px !default;
 
-@import "govuk/components/label/label";
+@import "govuk/components/label";
 @import "choices.js/src/styles/choices";
 
 .gem-c-select-with-search {
