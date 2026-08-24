@@ -1,7 +1,7 @@
 .gem-c-document-list {
   margin: 0;
   padding: 0;
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font(19);
 }
 
@@ -55,7 +55,7 @@
 
 .gem-c-document-list__item-description {
   margin: govuk-spacing(1) 0;
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
 }
 
 .gem-c-document-list__subtext {
@@ -79,7 +79,7 @@
   display: inline-block;
   list-style: none;
   padding-right: govuk-spacing(4);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font(16);
 
   & { // stylelint-disable-line no-duplicate-selectors, block-no-redundant-nested-style-rules
@@ -160,7 +160,7 @@
 .gem-c-document-list-child__description {
   margin-top: govuk-spacing(1);
   margin-bottom: govuk-spacing(1);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
 
   @include govuk-media-query($until: tablet) {
     display: none;

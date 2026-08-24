@@ -33,7 +33,7 @@
   display: block;
   max-width: 14em;
   margin-top: .5em;
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font($size: 16);
 }
 

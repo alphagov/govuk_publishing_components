@@ -176,13 +176,13 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
   // this comes from the backend so we can't put a class on it
   h2 {
     margin: 0 0 govuk-spacing(3);
-    @include govuk-text-colour;
+    color: govuk-functional-colour(text);
     @include govuk-font($size: 24, $weight: bold);
   }
 
   p {
     margin: 0 0 govuk-spacing(3);
-    @include govuk-text-colour;
+    color: govuk-functional-colour(text);
     @include govuk-font($size: 19);
   }
 
@@ -211,13 +211,13 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 
 .gem-c-feedback__form-heading {
   margin: 0 0 govuk-spacing(3);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font(24, $weight: bold);
 }
 
 .gem-c-feedback__form-paragraph {
   margin: 0 0 govuk-spacing(6);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font(19);
 }
 
