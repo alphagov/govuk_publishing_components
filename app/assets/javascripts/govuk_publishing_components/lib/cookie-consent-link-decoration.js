@@ -5,6 +5,7 @@
 
   CookieConsentLinkDecoration.prototype.init = function () {
     this.checkCookieConsentLinkDecoration(window.location)
+    this.decorateLinks()
   }
 
   CookieConsentLinkDecoration.prototype.checkCookieConsentLinkDecoration = function (location) {
@@ -20,6 +21,30 @@
       } else if (cookieConsent === 'no') {
         window.GOVUK.declineNonEssentialCookieTypes()
         window.GOVUK.cookie('cookies_preferences_set', 'true')
+      }
+    }
+  }
+
+  CookieConsentLinkDecoration.prototype.decorateLinks = function () {
+    var consentCookie = window.GOVUK.getConsentCookie ? window.GOVUK.getConsentCookie() : null
+    var consentValue = (consentCookie && consentCookie.usage) ? 'yes' : 'no'
+    var links = document.querySelectorAll('a[href]')
+    var allowedDomains = [
+      'end-to-end-journeys-545890405086.europe-west2.run.app',
+      'x-domain-prototype-2-545890405086.europe-west2.run.app',
+      'x-domain-prototype-3-545890405086.europe-west2.run.app'
+    ]
+
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i]
+      try {
+        var url = new URL(link.href, window.location.origin)
+
+        if (allowedDomains.includes(url.hostname)) {
+          url.searchParams.set('cookies[analytics]', consentValue)
+          link.href = url.toString()
+        }
+      } catch (e) {
       }
     }
   }
