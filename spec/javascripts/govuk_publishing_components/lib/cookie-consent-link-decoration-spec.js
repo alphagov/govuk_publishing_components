@@ -37,3 +37,46 @@ describe('Decorating links', function () {
     })
   })
 })
+
+describe('Link decoration on the DOM', function () {
+  var link1, link2
+
+  beforeEach(function () {
+    link1 = document.createElement('a')
+    link1.id = 'link_1'
+    link1.href = 'https://end-to-end-journeys-545890405086.europe-west2.run.app'
+    document.body.appendChild(link1)
+
+    link2 = document.createElement('a')
+    link2.id = 'link_2'
+    link2.href = 'https://www.example.gov.uk'
+    document.body.appendChild(link2)
+  })
+
+  afterEach(function () {
+    document.body.removeChild(link1)
+    document.body.removeChild(link2)
+
+    GOVUK.setCookie('cookies_policy', null)
+  })
+
+  it('appends negative cookie decoration to relevant links before cookies are accepted', function () {
+    expect(link1.href).not.toContain('cookies=no')
+    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}')
+
+    window.GOVUK.decorateLinks()
+
+    expect(link1.href).toContain('cookies=no')
+    expect(link2.href).toEqual('https://www.example.gov.uk/')
+  })
+
+  it('appends positive cookie decoration to relevant links after cookies are accepted', function () {
+    expect(link1.href).not.toContain('cookies=yes')
+    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+
+    window.GOVUK.decorateLinks()
+
+    expect(link1.href).toContain('cookies=yes')
+    expect(link2.href).toEqual('https://www.example.gov.uk/')
+  })
+})
