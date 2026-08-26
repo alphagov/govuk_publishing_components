@@ -51,3 +51,10 @@
 
   Modules.CookieConsentLinkDecoration = CookieConsentLinkDecoration
 })(window.GOVUK.Modules)
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.GOVUK && window.GOVUK.Modules && window.GOVUK.Modules.CookieConsentLinkDecoration) {
+    var linkDecoration = new window.GOVUK.Modules.CookieConsentLinkDecoration(document)
+    linkDecoration.init()
+  }
+})
