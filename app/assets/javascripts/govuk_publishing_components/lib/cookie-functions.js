@@ -75,6 +75,17 @@
     window.GOVUK.setCookie('cookies_policy', JSON.stringify(approvedConsent), { days: 365 })
   }
 
+  window.GOVUK.declineNonEssentialCookieTypes = function () {
+    var declinedConsent = {
+      essential: true,
+      settings: false,
+      usage: false,
+      campaigns: false
+    }
+
+    window.GOVUK.setCookie('cookies_policy', JSON.stringify(declinedConsent), { days: 365 })
+  }
+
   window.GOVUK.getConsentCookie = function () {
     var consentCookie = window.GOVUK.cookie('cookies_policy')
     var consentCookieObj
