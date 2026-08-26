@@ -157,6 +157,20 @@ describe('Cookie helper functions', function () {
       expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: true, usage: true, campaigns: true })
     })
 
+    it('can set the consent cookie to decline all non essential cookie categories', function () {
+      spyOn(GOVUK, 'setCookie').and.callThrough()
+
+      GOVUK.setConsentCookie({ usage: false, essential: false })
+
+      expect(GOVUK.getConsentCookie().essential).toBe(false)
+      expect(GOVUK.getConsentCookie().usage).toBe(false)
+
+      GOVUK.declineNonEssentialCookieTypes()
+
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
+      expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: false, usage: false, campaigns: false })
+    })
+
     it('returns null if the consent cookie does not exist', function () {
       expect(GOVUK.getConsentCookie()).toEqual(null)
     })
