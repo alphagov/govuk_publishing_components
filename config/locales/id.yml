@@ -70,6 +70,9 @@ id:
       - mengingat pengaturan Anda
       - dan meningkatkan layanan pemerintah.
       - Kami juga menggunakan cookie yang diatur oleh situs lain untuk membantu kami memberi konten dari layanan mereka.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookie di situs GOV.UK
     devolved_nations:
       applies_to:

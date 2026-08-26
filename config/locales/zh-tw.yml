@@ -68,6 +68,9 @@ zh-tw:
       - 我們使用一些必要的 cookie 來正常運作本網站。
       - 我們想設置額外的 cookie 以了解你如何使用英國政府網站、記憶你的設置並改進當局服務
       - 我們還使用由其他機構設置的 cookie以藉其服務來幫助我們提供內容。
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: 英國政府網站的cookie
     devolved_nations:
       applies_to:
