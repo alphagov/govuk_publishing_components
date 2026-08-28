@@ -634,7 +634,7 @@ examples:
               <td>row 3</td><td>2</td>
             </tr>
             <tr>
-              <td>row 4</td><td>48</td>
+              <td>row 4</td><td>No data</td>
             </tr>
           </tbody>
         </table>
@@ -686,9 +686,9 @@ examples:
             <tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>
           </thead>
           <tbody>
-            <tr><th>Testing One</th><td>5</td><td>6</td><td>11</td></tr>
-            <tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>
-            <tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>
+            <tr><th>Testing One</th><td>No data</td><td>7</td><td>6</td></tr>
+            <tr><th>Testing Two</th><td>6</td><td>2</td><td>No data</td></tr>
+            <tr><th>Testing Three</th><td>3</td><td>No data</td><td>9</td></tr>
           </tbody>
         </table>
   chart_stacked:
@@ -700,6 +700,7 @@ examples:
               <th scope="col">Colours</th>
               <th scope="col">Fruits</th>
               <th scope="col">Vegetables</th>
+              <th scope="col">Chocolates</th>
               <th scope="col">Beans</th>
               <th scope="col">Nuts</th>
               <th scope="col">Total</th>
@@ -709,6 +710,7 @@ examples:
             <tr>
               <td>Red</td>
               <td>23</td>
+              <td> No data</td>
               <td>9</td>
               <td>2</td>
               <td>1</td>
@@ -717,6 +719,7 @@ examples:
             <tr>
               <td>Green</td>
               <td>5</td>
+              <td>No data</td>
               <td>33</td>
               <td>8</td>
               <td>0</td>
@@ -727,6 +730,7 @@ examples:
               <td>2</td>
               <td>10</td>
               <td>0</td>
+              <td>No data</td>
               <td>15</td>
               <td>27</td>
             </tr>

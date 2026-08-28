@@ -28,6 +28,7 @@ describe('Magna charta', function () {
         '<tr><td>Testing One</td><td>5</td></tr>' +
         '<tr><td>Testing Two</td><td>4</td></tr>' +
         '<tr><td>Testing Three</td><td>3</td></tr>' +
+        '<tr><td>Testing Four</td><td>Not A Number</td></tr>' +
       '</tbody>' +
     '</table>'
 
@@ -39,8 +40,9 @@ describe('Magna charta', function () {
       '</thead>' +
       '<tbody>' +
         '<tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>' +
-        '<tr><td>Testing Two</td><td>6</td><td>2</td><td>8</td></tr>' +
+        '<tr><td>Testing Two</td><td>6</td><td>No Data</td><td>8</td></tr>' +
         '<tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>' +
+        '<tr><td>Testing Four</td><td>3</td><td>No Data</td><td>12</td></tr>' +
       '</tbody>' +
     '</table>'
 
@@ -52,7 +54,7 @@ describe('Magna charta', function () {
       '</thead>' +
       '<tbody>' +
         '<tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>' +
-        '<tr><td>Testing Two</td><td>6</td><td>2</td><td>8</td></tr>' +
+        '<tr><td>Testing Two</td><td>6</td><td>No Data</td><td>8</td></tr>' +
         '<tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>' +
       '</tbody>' +
     '</table>'
@@ -64,7 +66,7 @@ describe('Magna charta', function () {
         '<tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>' +
       '</thead>' +
       '<tbody>' +
-        '<tr><th>Testing One</th><td>5</td><td>6</td><td>11</td></tr>' +
+        '<tr><th>Testing One</th><td>5</td><td>No Data</td><td>11</td></tr>' +
         '<tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>' +
         '<tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>' +
       '</tbody>' +
@@ -80,6 +82,7 @@ describe('Magna charta', function () {
         '<tr><td>Something Positive</td><td>10</td></tr>' +
         '<tr><td>Something More Negative</td><td>-10</td></tr>' +
         '<tr><td>Something Less Positive</td><td>5</td></tr>' +
+        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
       '</tbody>' +
     '</table>'
 
@@ -93,6 +96,7 @@ describe('Magna charta', function () {
         '<tr><td>Something Positive</td><td>10</td></tr>' +
         '<tr><td>Something More Negative</td><td>-10</td></tr>' +
         '<tr><td>Something Less Positive</td><td>5</td></tr>' +
+        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
       '</tbody>' +
     '</table>'
 
@@ -106,6 +110,7 @@ describe('Magna charta', function () {
         '<tr><td>Something Positive</td><td>10</td></tr>' +
         '<tr><td>Something More Negative</td><td>-10</td></tr>' +
         '<tr><td>Something Less Positive</td><td>5</td></tr>' +
+        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
       '</tbody>' +
     '</table>'
 
@@ -116,6 +121,7 @@ describe('Magna charta', function () {
         '<tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>' +
         '<tr><td>Testing Two</td><td>6</td><td>2</td><td>8</td></tr>' +
         '<tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>' +
+        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
       '</tbody>' +
     '</table>'
 
@@ -159,9 +165,9 @@ describe('Magna charta', function () {
 
     it('new chart div contains all table bits as divs', function () {
       expect(graph.querySelectorAll('.mc-thead').length).toBe(1)
-      expect(graph.querySelectorAll('.mc-tr').length).toBe(4)
+      expect(graph.querySelectorAll('.mc-tr').length).toBe(5)
       expect(graph.querySelectorAll('.mc-th').length).toBe(2)
-      expect(graph.querySelectorAll('.mc-td').length).toBe(6)
+      expect(graph.querySelectorAll('.mc-td').length).toBe(8)
     })
 
     it('new chart divs contain the right values', function () {
@@ -178,12 +184,12 @@ describe('Magna charta', function () {
     })
 
     it('divs that are bars or keys are given correct classes', function () {
-      expect(graph.querySelectorAll('.mc-key-cell').length).toBe(3)
-      expect(graph.querySelectorAll('.mc-bar-cell').length).toBe(3)
+      expect(graph.querySelectorAll('.mc-key-cell').length).toBe(4)
+      expect(graph.querySelectorAll('.mc-bar-cell').length).toBe(4)
     })
 
     it('bar cells have their values wrapped in a span tag', function () {
-      expect(graph.querySelectorAll('.mc-bar-cell span').length).toBe(3)
+      expect(graph.querySelectorAll('.mc-bar-cell span').length).toBe(4)
     })
 
     it('bars are given the correct width', function () {
@@ -191,6 +197,8 @@ describe('Magna charta', function () {
       expect(bars[0].style.width).toBe(cW(5, 5))
       expect(bars[1].style.width).toBe(cW(5, 4))
       expect(bars[2].style.width).toBe(cW(5, 3))
+      expect(bars[3].classList.contains('mc-no-data')).toBe(true)
+      expect(bars[3].offsetWidth).toBe(0)
     })
 
     it('new chart is inserted into DOM after table', function () {
@@ -274,9 +282,9 @@ describe('Magna charta', function () {
     })
 
     it('the cells that become bars are given the right classes', function () {
-      expect(graph.querySelectorAll('.mc-bar-cell').length).toBe(6) // bar cells
-      expect(graph.querySelectorAll('.mc-key-cell').length).toBe(3) // key cells
-      expect(graph.querySelectorAll('.mc-stacked-total').length).toBe(3) // total cells
+      expect(graph.querySelectorAll('.mc-bar-cell').length).toBe(8) // bar cells
+      expect(graph.querySelectorAll('.mc-key-cell').length).toBe(4) // key cells
+      expect(graph.querySelectorAll('.mc-stacked-total').length).toBe(4) // total cells
     })
 
     it('header cells get the right values', function () {
@@ -286,8 +294,9 @@ describe('Magna charta', function () {
       expect(head.querySelectorAll('.mc-key-header').length).toBe(2)
     })
 
-    it('the bar cells are given the right widths', function () {
-      var cells = graph.querySelectorAll('.mc-bar-cell')
+    it('the bar cells are given the right widths when they have data', function () {
+      var cells = graph.querySelectorAll('.mc-bar-cell:not(.govuk-visually-hidden)')
+
       for (var cell of cells) {
         var cellText = cell.textContent
         var cellWidth = cell.style.width
@@ -295,6 +304,14 @@ describe('Magna charta', function () {
 
         expect(cellWidth).toContain('%')
         expect(parseFloat(cellWidth)).toBeCloseTo(calculatedWidth, 4)
+      }
+    })
+
+    it('the bar cells are given the right widths when they have no data', function () {
+      var cells = graph.querySelectorAll('.mc-bar-cell.govuk-visually-hidden')
+
+      for (var cell of cells) {
+        expect(cell.clientWidth).toBe(1)
       }
     })
 
@@ -380,6 +397,8 @@ describe('Magna charta', function () {
       expect(cells[1].style.width).toEqual(cW(10, 10))
       expect(cells[2].style.width).toEqual(cW(10, 10))
       expect(cells[3].style.width).toEqual(cW(10, 5))
+      expect(cells[4].classList.contains('mc-no-data')).toBe(true)
+      expect(cells[4].offsetWidth).toBe(0)
     })
 
     it('positive cells are given a left margin to align them with negative cells', function () {
