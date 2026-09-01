@@ -12,7 +12,7 @@
     if (!location || !location.search) return
 
     var params = new URLSearchParams(location.search)
-    var cookieConsent = params.get('cookies[analytics]')
+    var cookieConsent = params.get('cookies')
 
     if (cookieConsent) {
       if (cookieConsent === 'yes') {
@@ -42,7 +42,7 @@
         var url = new URL(link.href, window.location.origin)
 
         if (allowedDomains.includes(url.hostname)) {
-          url.searchParams.set('cookies[analytics]', consentValue)
+          url.searchParams.set('cookies', consentValue)
           link.href = url.toString()
         }
       } catch (e) {
