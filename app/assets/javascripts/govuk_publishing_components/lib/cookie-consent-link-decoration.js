@@ -27,7 +27,8 @@
 
   CookieConsentLinkDecoration.prototype.decorateLinks = function () {
     var consentCookie = window.GOVUK.getConsentCookie ? window.GOVUK.getConsentCookie() : null
-    var consentValue = (consentCookie && consentCookie.usage) ? 'yes' : 'no'
+    var consentCount = Object.values(consentCookie || {}).filter(val => val === true).length
+    var consentValue = consentCount === 4 ? 'yes' : 'no'
     var links = document.querySelectorAll('a[href]')
     var allowedDomains = [
       'end-to-end-journeys-545890405086.europe-west2.run.app',
