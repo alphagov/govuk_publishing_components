@@ -15,7 +15,7 @@ describe('Decorating links', function () {
     })
 
     it('sets usage consent cookie to false when cookies[analytics] query string parameter has a value of "no"', function () {
-      window.history.replaceState(null, null, '?cookies%5Banalytics%5D=no')
+      window.history.replaceState(null, null, '?cookies=no')
 
       var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
       consentModule.init()
@@ -25,7 +25,7 @@ describe('Decorating links', function () {
     })
 
     it('sets usage consent cookie to true when cookies[analytics] query string parameter has a value of "yes"', function () {
-      window.history.replaceState(null, null, '?cookies%5Banalytics%5D=yes')
+      window.history.replaceState(null, null, '?cookies=yes')
 
       var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
       consentModule.init()
@@ -64,7 +64,7 @@ describe('Link decoration on the DOM', function () {
     var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
     consentModule.decorateLinks()
 
-    expect(link1.href).toContain('cookies%5Banalytics%5D=no')
+    expect(link1.href).toContain('cookies=no')
     expect(link2.href).toEqual('https://www.example.gov.uk/')
   })
 
@@ -74,7 +74,7 @@ describe('Link decoration on the DOM', function () {
     var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
     consentModule.decorateLinks()
 
-    expect(link1.href).toContain('cookies%5Banalytics%5D=yes')
+    expect(link1.href).toContain('cookies=yes')
     expect(link2.href).toEqual('https://www.example.gov.uk/')
   })
 })
