@@ -1,5 +1,6 @@
 name: Form date input
 description: Use the date input component to help users enter a memorable date or one they can easily look up.
+uses_component_wrapper_helper: true
 accessibility_criteria: |
   Inputs in the component must:
 
@@ -36,22 +37,44 @@ examples:
   with_legend:
     data:
       legend_text: "What is your date of birth?"
+  with_legend_level_and_size:
+    description: Valid options for level are 1 to 6. Valid options for size are s, m, l and xl.
+    data:
+      legend_text: "What is your date of birth?"
+      legend_heading_level: 2
+      legend_size: "l"
   with_hint:
+    description: When hint text is rendered each input field takes the value of `hint_id` as a value for the `aria-describedby` attribute
     data:
       legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
   with_error:
+    description: When an error message is rendered each input field takes the value of `error_id` as a value for the `aria-describedby` attribute. Note that error_id is optional, if it is not passed one will be generated automatically.
     data:
       legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
+      error_id: error_item_id
       error_message: "Error message goes here"
   with_error_items:
+    description: When error messages are rendered each input field takes the value of `error_id` as a value for the `aria-describedby` attribute. Note that error_id is optional, if it is not passed one will be generated automatically.
     data:
       legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
+      error_id: error_id
       error_items:
         - text: "Error 1"
         - text: "Error 2"
+  with_error_id_but_no_message:
+    description: For some instances of this component the error message should be rendered separately but an error state is still required. In this scenario an `error_id` can be passed without an `error_message` to highlight the component and set `aria-describedby` correctly.
+    data:
+      legend_text: "What is your date of birth?"
+      hint: "For example, 31 3 1980"
+      error_id: error_id
+  with_data_attributes:
+    data:
+      data_attributes:
+        module: "some-module"
+        other_attribute: "something-else"
   with_custom_items:
     data:
       legend_text: "Beth yw eich dyddiad geni?"
