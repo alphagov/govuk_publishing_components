@@ -664,10 +664,10 @@ chartkick@^5.0.1:
     chartjs-adapter-date-fns ">=3"
     date-fns ">=2"
 
-choices.js@^11.2.3:
-  version "11.2.3"
-  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-11.2.3.tgz#4b100c5354d44bce0045b5818ce672b8349cd7c5"
-  integrity sha512-K+HA8ShsWWNOVs4ahahjIOtzsvcC/cOFGTdU1BZgMZRhGi/uCQARlFd/80B0hlVVdRIjnrsW7QLDUnpJaW6N7A==
+choices.js@^11.2.4:
+  version "11.2.4"
+  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-11.2.4.tgz#b2db3870ffb35c80b96cfaf420f684d32246f9d8"
+  integrity sha512-3ESJ42LC1cFPIK2sRxa+Y1zEM5vpeOL/FrZHh6dqqqTHf23FStbjKhxP+eMC0F3O0xRUkhQmOOtUxIi83RxhTg==
   dependencies:
     fuse.js "^7.0.0"
 
