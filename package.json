@@ -37,7 +37,7 @@
   "devDependencies": {
     "@percy/cli": "^1.32.4",
     "jasmine-browser-runner": "^5.0.0",
-    "jasmine-core": "^7.0.1",
+    "jasmine-core": "^7.0.2",
     "postcss": "^8.5.26",
     "standardx": "^7.0.0",
     "stylelint": "^17.14.1",
