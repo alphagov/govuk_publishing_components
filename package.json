@@ -42,5 +42,9 @@
     "standardx": "^7.0.0",
     "stylelint": "^17.14.1",
     "stylelint-config-gds": "^3.0.0"
+  },
+  "resolutions": {
+    "standardx/**/js-yaml": "^3.15.1",
+    "stylelint/**/js-yaml": "^4.3.0"
   }
 }
