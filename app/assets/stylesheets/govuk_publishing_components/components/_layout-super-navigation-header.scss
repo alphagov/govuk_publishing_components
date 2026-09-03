@@ -26,13 +26,13 @@ $search-icon-height: 20px;
     border-bottom-color: $colour;
     border-right-color: $colour;
   } @else {
-    @include prefixed-transform($rotate: 45deg, $translateY: -35%);
     border-bottom: 2px solid $colour;
     border-right: 2px solid $colour;
     content: "";
     display: inline-block;
     height: 8px;
     margin: 0 10px 0 2px;
+    transform: translateY(-35%) rotate(45deg) scale(1);
     vertical-align: middle;
     width: 8px;
   }
@@ -373,7 +373,7 @@ $search-icon-height: 20px;
 
       &::before {
         @include chevron(govuk-colour("black"), true);
-        @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+        transform: translateY(1px) rotate(225deg) scale(1);
       }
     }
   }
@@ -392,7 +392,7 @@ $search-icon-height: 20px;
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
           @include chevron(govuk-functional-colour(link), true);
-          @include prefixed-transform($rotate: 225deg, $translateY: 1px);
+          transform: translateY(1px) rotate(225deg) scale(1);
         }
       }
     }
@@ -609,7 +609,10 @@ $search-icon-height: 20px;
   }
 
   @include govuk-media-query($from: "desktop") {
-    @include columns($items: 16, $columns: 2, $selector: "li", $flow: column);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, auto);
   }
 }
 
