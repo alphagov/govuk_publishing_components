@@ -4,8 +4,8 @@
 describe('The super header navigation', function () {
   'use strict'
 
-  var container
-  var thisModule
+  let container
+  let thisModule
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -282,7 +282,7 @@ describe('The super header navigation', function () {
 
     document.body.appendChild(container)
 
-    var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
+    const $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
     thisModule = new GOVUK.Modules.SuperNavigationMegaMenu($element)
   })
 
@@ -296,14 +296,14 @@ describe('The super header navigation', function () {
     })
 
     it('has the initialised class once the JavaScript has run', function () {
-      var $module = document.querySelector('[data-module="super-navigation-mega-menu"]')
+      const $module = document.querySelector('[data-module="super-navigation-mega-menu"]')
 
       expect($module).toHaveClass('js-module-initialised')
     })
   })
 
   describe('navigation toggle button', function () {
-    var $button
+    let $button
 
     beforeEach(function () {
       thisModule.init()
@@ -329,8 +329,8 @@ describe('The super header navigation', function () {
     })
 
     describe('updates correctly when clicked once', function () {
-      var $button
-      var $menu
+      let $button
+      let $menu
 
       beforeEach(function () {
         $button = document.querySelector('#super-navigation-menu-toggle')
@@ -348,14 +348,14 @@ describe('The super header navigation', function () {
       })
 
       it('updates the button’s `aria-label`', function () {
-        var hideLabel = $button.getAttribute('data-text-for-hide')
+        const hideLabel = $button.getAttribute('data-text-for-hide')
         expect($button.getAttribute('aria-label')).toBe(hideLabel)
       })
     })
 
     describe('updates correctly when clicked twice', function () {
-      var $button
-      var $menu
+      let $button
+      let $menu
 
       beforeEach(function () {
         $button = document.querySelector('#super-navigation-menu-toggle')
@@ -384,8 +384,8 @@ describe('The super header navigation', function () {
     })
 
     it('toggles the other menus in its group', function () {
-      var $searchButton = document.querySelector('#super-search-menu-toggle')
-      var $searchMenu = document.querySelector('#super-search-menu')
+      const $searchButton = document.querySelector('#super-search-menu-toggle')
+      const $searchMenu = document.querySelector('#super-search-menu')
 
       $button.click()
 
@@ -408,15 +408,15 @@ describe('The super header navigation', function () {
   })
 
   describe('tab key', function () {
-    var $navMenuButton
-    var $searchMenuButton
-    var $navMenu
-    var $navLinks
-    var $firstNavLink
-    var $lastNavLink
-    var $searchMenu
-    var $searchMenuTabbable
-    var $lastSearchMenuTabbable
+    let $navMenuButton
+    let $searchMenuButton
+    let $navMenu
+    let $navLinks
+    let $firstNavLink
+    let $lastNavLink
+    let $searchMenu
+    let $searchMenuTabbable
+    let $lastSearchMenuTabbable
 
     beforeEach(function () {
       thisModule.init()
@@ -434,7 +434,7 @@ describe('The super header navigation', function () {
     it('when the Menu button is focussed, the nav menu is open and the tab key is pressed focus moves to the first nav menu link', function () {
       $navMenu.removeAttribute('hidden')
       $navMenuButton.focus()
-      window.GOVUK.triggerEvent($navMenuButton, 'keydown', { keyCode: 9, cancelable: true })
+      window.GOVUK.triggerEvent($navMenuButton, 'keydown', { key: 'Tab', cancelable: true })
 
       expect(document.activeElement).toEqual($navLinks[0])
     })
@@ -442,7 +442,7 @@ describe('The super header navigation', function () {
     it('when the last nav menu link is focussed and the tab key is pressed focus moves to the search button and the nav menu is closed', function () {
       $navMenu.removeAttribute('hidden')
       $lastNavLink.focus()
-      window.GOVUK.triggerEvent($lastNavLink, 'keydown', { keyCode: 9, cancelable: true })
+      window.GOVUK.triggerEvent($lastNavLink, 'keydown', { key: 'Tab', cancelable: true })
 
       expect(document.activeElement).toEqual($searchMenuButton)
       expect($navMenu.hasAttribute('hidden')).toEqual(true)
@@ -454,7 +454,7 @@ describe('The super header navigation', function () {
     it('when the first nav menu link is focussed, the nav menu is open and the shift and tab keys are pressed focus moves to the Menu button', function () {
       $navMenu.removeAttribute('hidden')
       $firstNavLink.focus()
-      window.GOVUK.triggerEvent($firstNavLink, 'keydown', { keyCode: 9, cancelable: true, shiftKey: true })
+      window.GOVUK.triggerEvent($firstNavLink, 'keydown', { key: 'Tab', shiftKey: true, cancelable: true })
 
       expect(document.activeElement).toEqual($navMenuButton)
     })
@@ -462,7 +462,7 @@ describe('The super header navigation', function () {
     it('when the search button is focussed, the nav menu is open and the shift and tab keys are pressed focus moves to the last nav menu link', function () {
       $navMenu.removeAttribute('hidden')
       $searchMenuButton.focus()
-      window.GOVUK.triggerEvent($searchMenuButton, 'keydown', { keyCode: 9, cancelable: true, shiftKey: true })
+      window.GOVUK.triggerEvent($searchMenuButton, 'keydown', { key: 'Tab', shiftKey: true, cancelable: true })
 
       expect(document.activeElement).toEqual($lastNavLink)
     })
@@ -470,7 +470,7 @@ describe('The super header navigation', function () {
     it('when the last tabbable element in the search menu is focussed and the tab key is pressed the search menu is closed', function () {
       $searchMenu.removeAttribute('hidden')
       $lastSearchMenuTabbable.focus()
-      window.GOVUK.triggerEvent($lastSearchMenuTabbable, 'keydown', { keyCode: 9, cancelable: true })
+      window.GOVUK.triggerEvent($lastSearchMenuTabbable, 'keydown', { key: 'Tab', cancelable: true })
 
       expect($searchMenu.hasAttribute('hidden')).toEqual(true)
       expect($searchMenuButton.getAttribute('aria-expanded')).toEqual('false')
@@ -480,10 +480,10 @@ describe('The super header navigation', function () {
   })
 
   describe('escape key', function () {
-    var $navMenu
-    var $navMenuButton
-    var $searchMenu
-    var $searchMenuButton
+    let $navMenu
+    let $navMenuButton
+    let $searchMenu
+    let $searchMenuButton
 
     beforeEach(function () {
       thisModule.init()
@@ -496,7 +496,7 @@ describe('The super header navigation', function () {
     it('when the user presses the escape key and the nav menu is open the menu is closed and focus moves back to the Menu button', function () {
       $navMenu.removeAttribute('hidden')
       $navMenuButton.setAttribute('aria-expanded', 'true')
-      window.GOVUK.triggerEvent($navMenu, 'keydown', { keyCode: 27, cancelable: true })
+      window.GOVUK.triggerEvent($navMenu, 'keydown', { key: 'Escape', cancelable: true })
 
       expect($navMenu.hasAttribute('hidden')).toEqual(true)
       expect(document.activeElement).toEqual($navMenuButton)
@@ -509,7 +509,7 @@ describe('The super header navigation', function () {
       $searchMenu.removeAttribute('hidden')
       $searchMenuButton.setAttribute('aria-expanded', 'true')
       $searchMenuButton.classList.add('gem-c-layout-super-navigation-header__open-button')
-      window.GOVUK.triggerEvent($searchMenu, 'keydown', { keyCode: 27, cancelable: true })
+      window.GOVUK.triggerEvent($searchMenu, 'keydown', { key: 'Escape', cancelable: true })
 
       expect($searchMenu.hasAttribute('hidden')).toEqual(true)
       expect(document.activeElement).toEqual($searchMenuButton)
@@ -520,7 +520,7 @@ describe('The super header navigation', function () {
   })
 
   describe('search toggle button', function () {
-    var $button
+    let $button
 
     beforeEach(function () {
       thisModule.init()
@@ -546,8 +546,8 @@ describe('The super header navigation', function () {
     })
 
     describe('updates correctly when clicked once', function () {
-      var $button
-      var $menu
+      let $button
+      let $menu
 
       beforeEach(function () {
         $button = document.querySelector('#super-search-menu-toggle')
@@ -565,14 +565,14 @@ describe('The super header navigation', function () {
       })
 
       it('updates the button’s `aria-label`', function () {
-        var hideLabel = $button.getAttribute('data-text-for-hide')
+        const hideLabel = $button.getAttribute('data-text-for-hide')
         expect($button.getAttribute('aria-label')).toBe(hideLabel)
       })
     })
 
     describe('updates correctly when clicked twice', function () {
-      var $button
-      var $menu
+      let $button
+      let $menu
 
       beforeEach(function () {
         $button = document.querySelector('#super-search-menu-toggle')
@@ -601,8 +601,8 @@ describe('The super header navigation', function () {
     })
 
     it('toggles the other menus in its group', function () {
-      var $navigationButton = document.querySelector('#super-navigation-menu-toggle')
-      var $navigationMenu = document.querySelector('#super-navigation-menu')
+      const $navigationButton = document.querySelector('#super-navigation-menu-toggle')
+      const $navigationMenu = document.querySelector('#super-navigation-menu')
 
       $button.click()
 
