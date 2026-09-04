@@ -18,6 +18,7 @@
 
     var params = new URLSearchParams(location.search)
     var cookieConsent = params.get('cookies')
+    var complicatedCookieConsent = params.get('essential')
 
     if (cookieConsent) {
       if (cookieConsent === 'yes') {
@@ -27,6 +28,16 @@
         window.GOVUK.declineNonEssentialCookieTypes()
         window.GOVUK.cookie('cookies_preferences_set', 'true')
       }
+    } else if (complicatedCookieConsent) {
+      var consentObj = {
+        essential: true,
+        settings: params.get('settings') === 'true',
+        usage: params.get('usage') === 'true',
+        campaigns: params.get('campaigns') === 'true'
+      }
+
+      window.GOVUK.setCookie('cookies_policy', JSON.stringify(consentObj), { days: 365 })
+      window.GOVUK.cookie('cookies_preferences_set', 'true')
     }
   }
 
