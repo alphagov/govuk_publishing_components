@@ -15,6 +15,7 @@
     overflow-x: auto;
     width: 100%;
     @include govuk-font($size: 19);
+    @include govuk-font-tabular-numbers($important: false);
 
     caption {
       text-align: left;
