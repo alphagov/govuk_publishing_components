@@ -1,5 +1,5 @@
 .gem-c-subscription-links {
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font(19, $weight: bold);
 }
 

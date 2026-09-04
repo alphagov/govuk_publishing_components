@@ -2,7 +2,7 @@
   margin-top: 0;
   // Ensure the text has a line-length of around 60 characters
   max-width: 30em;
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include responsive-bottom-margin;
   @include govuk-font(24);
 }

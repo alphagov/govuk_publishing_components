@@ -1,4 +1,4 @@
-@import "govuk/components/notification-banner/notification-banner";
+@import "govuk/components/notification-banner";
 
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {

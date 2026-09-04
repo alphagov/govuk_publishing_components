@@ -36,7 +36,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   }
 
   @include govuk-font($size: 19);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-media-query($from: tablet) {
     position: relative;
     top: inherit;
