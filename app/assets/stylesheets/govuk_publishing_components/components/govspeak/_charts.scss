@@ -21,7 +21,7 @@
   $base-unit: 16px; // For font sizes and related spacing
   $compact-font-size: 12px; // For the 'compact' bar style
   $bar-padding: 8px; // The padding between the bar values and the edge of the bar
-  $bar-spacing: 5px; // The spacing around the bars
+  $bar-spacing: 10px; // The spacing around the bars
   $stack-spacing: 1px; // For stacked bars, the spacing between each stack in a bar
   $caption-side: top; // Caption alignment. Top or bottom.
 
@@ -52,7 +52,6 @@
     width: 100%;
     border-spacing: 0 $bar-spacing;
     border: 1px solid $chart-border;
-    padding: $base-unit 0;
     position: relative;
     margin-bottom: $base-unit;
 
@@ -156,6 +155,18 @@
             background-color: list.nth($bar-colours, $i + 1);
             color: list.nth($bar-text-colours, $i + 1);
           }
+
+          .mc-bar-#{$i + 1}.mc-no-data {
+              color: govuk-colour("black");
+              border-width: 2px;
+              border-style: solid;
+              border-color: list.nth($bar-colours, $i + 1);
+          }
+        }
+
+        .mc-no-data span {
+          display: inline-block;
+          min-width: 75px;
         }
 
         // Negative bars

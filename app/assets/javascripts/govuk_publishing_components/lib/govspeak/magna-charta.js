@@ -389,6 +389,17 @@
       for (var j = 0; j < cells.length; j++) {
         var $cell = cells[j]
         var parsedCellVal = parseFloat(this.utils.stripValue($cell.innerText), 10)
+
+        if (isNaN(parsedCellVal)) {
+          parsedCellVal = 0
+
+          if (this.options.stacked) {
+            $cell.classList.add('govuk-visually-hidden')
+          } else {
+            $cell.classList.add('mc-no-data')
+          }
+        }
+
         var parsedVal = parsedCellVal * this.dimensions.single
         var absParsedCellVal = Math.abs(parsedCellVal)
         var absParsedVal = Math.abs(parsedVal)
