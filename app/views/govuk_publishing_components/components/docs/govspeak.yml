@@ -638,6 +638,31 @@ examples:
             </tr>
           </tbody>
         </table>
+  negative_charts:
+    description: |
+      Charts can contain positive and negative values if the 'mc-negative' class is added to the table.
+    data:
+      block: |
+        <table class='js-barchart-table mc-auto-outdent mc-negative'>
+          <caption>Calorie Gain/Loss by Superhero</caption>
+          <tbody>
+            <tr>
+              <td>Hulk</td><td>6000</td>
+            </tr>
+            <tr>
+              <td>Thor</td><td>5000</td>
+            </tr>
+            <tr>
+              <td>Spiderman</td><td>-2000</td>
+            </tr>
+            <tr>
+              <td>Iron Man</td><td>No data</td>
+            </tr>
+            <tr>
+              <td>Black Widow</td><td>-1500</td>
+            </tr>
+          </tbody>
+        </table>
   chart_with_colours:
     data:
       block: |
