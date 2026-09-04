@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Support more complicated link decoration ([PR #5689](https://github.com/alphagov/govuk_publishing_components/pull/5689))
 * Accept and provide link decoration to/from specific links ([PR #5511](https://github.com/alphagov/govuk_publishing_components/pull/5511))
 * Prevent metadata component rendering when no data ([PR #5672](https://github.com/alphagov/govuk_publishing_components/pull/5672))
 * Update form date input component ([PR #5644](https://github.com/alphagov/govuk_publishing_components/pull/5644))
