@@ -77,4 +77,14 @@ describe('Link decoration on the DOM', function () {
     expect(link1.href).toContain('cookies=yes')
     expect(link2.href).toEqual('https://www.example.gov.uk/')
   })
+
+  it('appends complicated cookie decoration to relevant links after cookies are partially accepted', function () {
+    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":true,"campaigns":false}')
+
+    var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
+    consentModule.decorateLinks()
+
+    expect(link1.href).toContain('essential=true&settings=false&usage=true&campaigns=false')
+    expect(link2.href).toEqual('https://www.example.gov.uk/')
+  })
 })
