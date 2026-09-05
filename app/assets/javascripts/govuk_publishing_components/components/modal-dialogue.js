@@ -42,11 +42,13 @@
   ModalDialogue.prototype.handleOpen = function (event) {
     if (event) {
       event.preventDefault()
+      this.$focusedElementBeforeOpen = event.target
+    } else {
+      this.$focusedElementBeforeOpen = document.activeElement
     }
 
     this.$html.classList.add('gem-o-template--modal')
     this.$body.classList.add('gem-o-template__body--modal')
-    this.$focusedElementBeforeOpen = document.activeElement
     this.$module.style.display = 'block'
     this.$dialogBox.focus()
 
