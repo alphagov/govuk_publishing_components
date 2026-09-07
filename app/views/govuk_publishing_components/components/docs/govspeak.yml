@@ -1065,8 +1065,31 @@ examples:
           </ol>
         </div>
   tables:
+    description: Govspeak includes the modal component, which is used with some JS in the component to display tables in a modal. The option `omit_modal` can be applied to prevent this from occurring, if required.
     data:
       block: |
+        <table>
+          <caption>Examples of words</caption>
+          <thead>
+            <tr>
+              <th>Short</th>
+              <th>Medium</th>
+              <th>Long</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>of</td>
+              <td>basket</td>
+              <td>unintelligable</td>
+            </tr>
+            <tr>
+              <td>in</td>
+              <td>splendid</td>
+              <td>utterances</td>
+            </tr>
+          </tbody>
+        </table>
         <table>
           <caption>A table with data</caption>
           <thead>
