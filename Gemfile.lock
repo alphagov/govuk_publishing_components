@@ -133,7 +133,7 @@ GEM
     diff-lcs (1.6.2)
     domain_name (0.6.20260829)
     drb (2.2.3)
-    erb (6.0.6)
+    erb (6.0.7)
     erb_lint (0.9.0)
       activesupport
       better_html (>= 2.0.1)
@@ -154,14 +154,14 @@ GEM
       rest-client (~> 2.0)
     globalid (1.4.0)
       activesupport (>= 6.1)
-    google-protobuf (4.35.1)
+    google-protobuf (4.36.1)
       bigdecimal
       rake (~> 13.3)
     googleapis-common-protos-types (1.23.0)
       google-protobuf (~> 4.26)
-    govuk_app_config (9.25.1)
+    govuk_app_config (9.25.2)
       connection_pool (< 4)
-      logstasher (~> 2.1)
+      logstasher (>= 2.1, < 4.0)
       opentelemetry-exporter-otlp (>= 0.25, < 0.35)
       opentelemetry-instrumentation-all (>= 0.39.1, < 0.95.0)
       opentelemetry-sdk (~> 1.2)
@@ -201,7 +201,7 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
-    io-console (0.8.2)
+    io-console (0.9.2)
     irb (1.18.0)
       pp (>= 0.6.0)
       prism (>= 1.3.0)
@@ -217,8 +217,8 @@ GEM
     link_header (0.0.8)
     lint_roller (1.1.0)
     logger (1.7.0)
-    logstasher (2.1.5)
-      activesupport (>= 5.2)
+    logstasher (3.0.0)
+      activesupport (>= 7.0)
       request_store
     loofah (2.25.2)
       crass (~> 1.0.2)
@@ -506,7 +506,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
-    rbs (4.1.2)
+    rbs (4.2.0)
       logger
       prism (>= 1.6.0)
       tsort
@@ -516,7 +516,7 @@ GEM
       rbs (>= 4.0.0)
       tsort
     regexp_parser (2.12.0)
-    reline (0.6.3)
+    reline (0.7.0)
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
