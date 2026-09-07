@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make 'No data' more logical on bar charts ([PR #5686](https://github.com/alphagov/govuk_publishing_components/pull/5686))
+
 ## 69.0.0
 
 * Prevent metadata component rendering when no data ([PR #5672](https://github.com/alphagov/govuk_publishing_components/pull/5672))
