@@ -13,6 +13,7 @@
 * Update form date input component ([PR #5644](https://github.com/alphagov/govuk_publishing_components/pull/5644))
 * Remove Grade X browser support from the super navigation header ([PR #5649](https://github.com/alphagov/govuk_publishing_components/pull/5649))
 * Update chart colours to align with the brand update ([PR #5685](https://github.com/alphagov/govuk_publishing_components/pull/5685))
+* Bump govuk-frontend to v6.1.0 ([PR #5674](https://github.com/alphagov/govuk_publishing_components/pull/5674))
 
 ## 68.3.0
 
