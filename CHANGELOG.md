@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 69.0.0
 
 * Prevent metadata component rendering when no data ([PR #5672](https://github.com/alphagov/govuk_publishing_components/pull/5672))
 * Update form date input component ([PR #5644](https://github.com/alphagov/govuk_publishing_components/pull/5644))
