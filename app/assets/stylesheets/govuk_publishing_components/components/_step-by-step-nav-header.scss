@@ -5,7 +5,7 @@
   border-bottom: solid 1px govuk-colour("blue");
   margin-top: govuk-spacing(3);
   @include govuk-font(24, $weight: bold);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
 
   @include govuk-media-query($from: tablet) {
     padding: govuk-spacing(5);

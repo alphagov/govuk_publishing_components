@@ -1,7 +1,7 @@
 .gem-c-related-navigation {
   border-top: 2px solid govuk-colour("blue");
   margin-bottom: govuk-spacing(9);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
 }
 
 .gem-c-related-navigation__main-heading {

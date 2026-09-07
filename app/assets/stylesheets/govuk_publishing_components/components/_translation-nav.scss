@@ -1,7 +1,7 @@
 .gem-c-translation-nav {
   margin-bottom: govuk-spacing(6);
   border-bottom: 1px solid govuk-functional-colour(border);
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font(16);
 }
 

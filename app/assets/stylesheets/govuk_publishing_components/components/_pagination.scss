@@ -1,4 +1,4 @@
-@import "govuk/components/pagination/pagination";
+@import "govuk/components/pagination";
 
 // stylelint-disable declaration-no-important
 @include govuk-media-query($media-type: print) {

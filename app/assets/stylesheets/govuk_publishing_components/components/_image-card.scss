@@ -8,7 +8,7 @@
   gap: govuk-spacing(2);
   justify-content: space-between;
   align-items: stretch;
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
 
   @include govuk-media-query($until: tablet) {
     gap: govuk-spacing(3);

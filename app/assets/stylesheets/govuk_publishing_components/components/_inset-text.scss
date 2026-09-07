@@ -1,4 +1,4 @@
-@import "govuk/components/inset-text/inset-text";
+@import "govuk/components/inset-text";
 
 @include govuk-media-query($media-type: print) {
   .gem-c-inset-text {

@@ -1,5 +1,5 @@
 .gem-c-metadata {
-  @include govuk-text-colour;
+  color: govuk-functional-colour(text);
   @include govuk-font(16);
   @include responsive-bottom-margin;
 
