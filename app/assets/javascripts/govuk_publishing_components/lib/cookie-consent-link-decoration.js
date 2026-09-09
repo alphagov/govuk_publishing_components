@@ -1,14 +1,7 @@
-(function (Modules) {
-  function CookieConsentLinkDecoration ($module) {
-    this.$module = $module
-  }
+(function (root) {
+  'use strict'
 
-  CookieConsentLinkDecoration.prototype.init = function () {
-    this.checkCookieConsentLinkDecoration(window.location)
-    this.decorateLinks()
-  }
-
-  CookieConsentLinkDecoration.prototype.checkCookieConsentLinkDecoration = function (location) {
+  window.GOVUK.checkCookieConsentLinkDecoration = function (location) {
     if (!location || !location.search) return
 
     var params = new URLSearchParams(location.search)
@@ -25,7 +18,7 @@
     }
   }
 
-  CookieConsentLinkDecoration.prototype.decorateLinks = function () {
+  window.GOVUK.decorateLinks = function () {
     var consentCookie = window.GOVUK.getConsentCookie ? window.GOVUK.getConsentCookie() : null
     var consentCount = Object.values(consentCookie || {}).filter(val => val === true).length
     var consentValue = consentCount === 4 ? 'yes' : 'no'
@@ -49,13 +42,4 @@
       }
     })
   }
-
-  Modules.CookieConsentLinkDecoration = CookieConsentLinkDecoration
-})(window.GOVUK.Modules)
-
-document.addEventListener('DOMContentLoaded', function () {
-  if (window.GOVUK && window.GOVUK.Modules && window.GOVUK.Modules.CookieConsentLinkDecoration) {
-    var linkDecoration = new window.GOVUK.Modules.CookieConsentLinkDecoration(document)
-    linkDecoration.init()
-  }
-})
+})(window)

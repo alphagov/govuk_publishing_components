@@ -3,6 +3,8 @@
 var GOVUK = window.GOVUK || {}
 
 describe('Decorating links', function () {
+  'use strict'
+
   describe('cookie consent query strings', function () {
     var originalUrl
 
@@ -17,8 +19,8 @@ describe('Decorating links', function () {
     it('sets usage consent cookie to false when cookies[analytics] query string parameter has a value of "no"', function () {
       window.history.replaceState(null, null, '?cookies=no')
 
-      var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
-      consentModule.init()
+      window.GOVUK.checkCookieConsentLinkDecoration(window.location)
+      // consentModule.init()
 
       expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
       expect(GOVUK.getConsentCookie().usage).toBe(false)
@@ -27,8 +29,8 @@ describe('Decorating links', function () {
     it('sets usage consent cookie to true when cookies[analytics] query string parameter has a value of "yes"', function () {
       window.history.replaceState(null, null, '?cookies=yes')
 
-      var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
-      consentModule.init()
+      window.GOVUK.checkCookieConsentLinkDecoration(window.location)
+      // consentModule.init()
 
       expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
       expect(GOVUK.getConsentCookie().usage).toBe(true)
@@ -61,8 +63,7 @@ describe('Link decoration on the DOM', function () {
   it('appends negative cookie decoration to relevant links before cookies are accepted', function () {
     GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}')
 
-    var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
-    consentModule.decorateLinks()
+    window.GOVUK.decorateLinks()
 
     expect(link1.href).toContain('cookies=no')
     expect(link2.href).toEqual('https://www.example.gov.uk/')
@@ -71,8 +72,7 @@ describe('Link decoration on the DOM', function () {
   it('appends positive cookie decoration to relevant links after cookies are accepted', function () {
     GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
 
-    var consentModule = new window.GOVUK.Modules.CookieConsentLinkDecoration()
-    consentModule.decorateLinks()
+    window.GOVUK.decorateLinks()
 
     expect(link1.href).toContain('cookies=yes')
     expect(link2.href).toEqual('https://www.example.gov.uk/')
