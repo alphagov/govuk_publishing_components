@@ -70,6 +70,9 @@ fr:
       - Nous aimerions définir des cookies supplémentaires pour comprendre votre utilisation de GOV.UK
       - mémoriser vos paramètres et améliorer les services gouvernementaux.
       - Nous utilisons également des cookies mis en place par d'autres sites pour nous aider à proposer le contenu de leurs services.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookies sur GOV.UK
     devolved_nations:
       applies_to:

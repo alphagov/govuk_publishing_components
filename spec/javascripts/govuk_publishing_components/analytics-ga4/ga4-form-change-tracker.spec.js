@@ -45,6 +45,19 @@ describe('Ga4 Form Change Tracker', function () {
       expect(formChangeTracker.startModule).toHaveBeenCalled()
     })
 
+    it('starts the module if aggregate consent has already been given', function () {
+      GOVUK.setDefaultConsentCookie()
+
+      trackedInputs = ['radio', 'checkbox', 'text', 'textarea', 'select']
+      createForm(container, ...trackedInputs)
+
+      const formChangeTracker = new GOVUK.Modules.Ga4FormChangeTracker(form.form)
+      spyOn(formChangeTracker, 'startModule')
+      formChangeTracker.init()
+
+      expect(formChangeTracker.startModule).toHaveBeenCalled()
+    })
+
     it('starts the module on the same page as cookie consent is given', function () {
       this.denyCookies()
 

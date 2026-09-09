@@ -66,6 +66,9 @@ ja:
       hide:
       text:
       - "「このウェブサイトを機能させるためにいくつかの重要なCookieを使用しています。」、「GOV.UKの使用方法を理解し、設定を記憶し、政府サービスを改善するために、追加のCookieを設定したいと思います。」、「他のサイトは、サービスからコンテンツを配信するのに役立ちます。」"
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: GOV.UKのCookie
     devolved_nations:
       applies_to:
