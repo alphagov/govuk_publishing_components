@@ -2,7 +2,15 @@
 
 GOV.UK Publishing Components uses [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend), the frontend library built and maintained by the [GOV.UK Design System team](https://design-system.service.gov.uk/), to ensure consistency in styles and components with other services across the government.
 
-This gem consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) via [Yarn](https://classic.yarnpkg.com/).  [Dependabot](https://github.com/marketplace/dependabot-preview) will let us know when [a new version of `govuk-frontend` is available](https://github.com/alphagov/govuk_publishing_components/pulls?q=is%3Apr+is%3Aopen+label%3Adependencies+bump+govuk-frontend). There are a few checks to be done before merging in a 'Bump `govuk-frontend`' pull request.
+This gem consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) via [Yarn](https://classic.yarnpkg.com/).  
+
+## Using Dependabot to install a new version
+[Dependabot](https://github.com/marketplace/dependabot-preview) will let us know when [a new version of `govuk-frontend` is available](https://github.com/alphagov/govuk_publishing_components/pulls?q=is%3Apr+is%3Aopen+label%3Adependencies+bump+govuk-frontend).
+
+## Installing a new version manually
+Run `npm install govuk-frontend@[VERSION] --save-exact` eg. `npm install govuk-frontend@6.1.0 --save-exact`, to make sure that the intended (instead of the latest available) version of govuk-frontend is installed. Or you can edit `/package.json` manually eg. `"govuk-frontend": "6.1.0"` and then run `npm install`.
+
+There are a few checks to be done before merging any pull request to install a new version of GOV.UK Frontend.
 
 ## 1. Read the release notes
 
