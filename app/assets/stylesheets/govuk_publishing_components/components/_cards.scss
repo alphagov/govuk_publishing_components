@@ -191,7 +191,7 @@
     right: govuk-spacing(1);
     top: 50%;
     margin-top: 5px;
-    @include prefixed-transform($rotate: 45deg);
+    transform: rotate(45deg);
     width: $dimension;
   }
 
