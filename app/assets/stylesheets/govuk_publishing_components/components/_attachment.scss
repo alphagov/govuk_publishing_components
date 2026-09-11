@@ -19,7 +19,7 @@ $thumbnail-border-width: 5px;
 
 .gem-c-attachment__thumbnail-image {
   display: block;
-  width: auto; // for IE8
+  width: auto;
   max-width: calc($thumbnail-width / 1.5);
   height: calc($thumbnail-height / 1.5);
   background: govuk-colour("white");
