@@ -5,7 +5,6 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
     described_class.new(
       content_item,
       request,
-      prioritise_taxon_breadcrumbs,
       disable_ga4,
     )
   end
@@ -15,7 +14,6 @@ RSpec.describe GovukPublishingComponents::Presenters::BreadcrumbSelector do
   let(:path) { content_item["base_path"] }
   let(:query_parameters) { {} }
   let(:request) { instance_double(ActionDispatch::Request, path:, query_parameters:) }
-  let(:prioritise_taxon_breadcrumbs) { false }
   let(:disable_ga4) { false }
 
   def example_document_for(schema_name, example_name)
