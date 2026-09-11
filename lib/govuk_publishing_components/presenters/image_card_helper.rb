@@ -13,7 +13,7 @@ module GovukPublishingComponents
         @image_alt = local_assigns[:image_alt] || ""
         @srcset = local_assigns[:srcset] || nil
         @sizes = local_assigns[:sizes] || nil
-        @image_loading = local_assigns[:image_loading] || "auto"
+        @image_loading = local_assigns[:image_loading] || "eager"
         @context = local_assigns[:context]
         @description = local_assigns[:description]
         @large = local_assigns[:large]
