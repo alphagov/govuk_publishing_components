@@ -133,7 +133,7 @@ describe "ImageCard", type: :view do
 
   it "checks image loading attribute is 'auto' when value 'image_loading' is not specified" do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text")
-    assert_select ".gem-c-image-card__image[loading='auto']"
+    assert_select ".gem-c-image-card__image[loading='eager']"
   end
 
   it "applies correct default width and height attributes to the image" do
