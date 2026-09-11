@@ -34,14 +34,14 @@ $choices-button-dimension: 12px !default;
 
   .choices[data-type*="select-one"]::after {
     @include govuk-shape-arrow($direction: down, $base: 10px, $display: inline-block);
-    @include prefixed-transform($translateY: -50%);
+    transform: translateY(-50%);
     margin: 0;
   }
 
   .choices.is-open[data-type*="select-one"]::after {
     margin: 0;
     bottom: govuk-em(1px, $font-size);
-    @include prefixed-transform($translateY: -50%, $rotate: 180deg);
+    transform: translateY(-50%) rotate(180deg);
   }
 
   .choices[data-type*="select-multiple"] .choices__button,
