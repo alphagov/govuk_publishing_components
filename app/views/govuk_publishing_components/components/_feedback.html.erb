@@ -12,7 +12,7 @@
 %>
 
 <%= tag.div(**component_helper.all_attributes) do %>
-  <%= render "govuk_publishing_components/components/feedback/yes_no_banner", disable_ga4: %>
-  <%= render "govuk_publishing_components/components/feedback/problem_form", url_without_pii: url_without_pii, disable_ga4: %>
-  <%= render "govuk_publishing_components/components/feedback/survey_signup_form", path_without_pii: path_without_pii, disable_ga4: %>
+  <%= render "govuk_publishing_components/components/feedback/yes_no_banner", disable_ga4: disable_ga4 %>
+  <%= render "govuk_publishing_components/components/feedback/problem_form", url_without_pii: url_without_pii, disable_ga4: disable_ga4 %>
+  <%= render "govuk_publishing_components/components/feedback/survey_signup_form", path_without_pii: path_without_pii, disable_ga4: disable_ga4 %>
 <% end %>
