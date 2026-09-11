@@ -96,8 +96,6 @@ $top-border: solid 1px govuk-functional-colour("border");
     left: govuk-px-to-rem(6px);
     width: govuk-px-to-rem(6px);
     height: govuk-px-to-rem(6px);
-    -webkit-transform: rotate(-45deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
-    -ms-transform: rotate(-45deg); /* IE 9 */
     transform: rotate(-45deg);
     border-top: govuk-px-to-rem(2px) solid;
     border-right: govuk-px-to-rem(2px) solid;
@@ -106,8 +104,6 @@ $top-border: solid 1px govuk-functional-colour("border");
 
 // Rotate icon to create "Down" version
 .gem-c-step-nav__chevron--down {
-  -webkit-transform: rotate(180deg); /* Ch <36, Saf 5.1+, iOS < 9.2, An =<4.4.4 */
-  -ms-transform: rotate(180deg); /* IE 9 */
   transform: rotate(180deg);
 }
 
