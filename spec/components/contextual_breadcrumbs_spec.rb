@@ -158,17 +158,9 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "EU Withdrawal Act 2018 statutory instruments"
   end
 
-  it "renders parent finder breadcrumb if content has a finder linked and taxon is prioritised" do
-    content_item = example_document_for("guide", "guide-with-facet-groups")
-    render_component(content_item:, prioritise_taxon_breadcrumbs: true)
-
-    assert_select "a", text: "Home"
-    assert_select "a", text: "EU Withdrawal Act 2018 statutory instruments"
-  end
-
   it "renders inverse parent finder breadcrumb" do
     content_item = example_document_for("guide", "guide-with-facet-groups")
-    render_component(content_item:, prioritise_taxon_breadcrumbs: true, inverse: true)
+    render_component(content_item:, inverse: true)
     assert_select ".gem-c-breadcrumbs.govuk-breadcrumbs--inverse"
   end
 
@@ -181,38 +173,14 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select(".gem-c-breadcrumbs", false)
   end
 
-  it "renders taxon breadcrumbs even if there are mainstream browse pages if prioritise_taxon_breadcrumbs is true" do
-    content_item = example_document_for("guide", "guide")
-    content_item = set_parent_titles_to_businesses(content_item)
-    content_item = set_live_taxons(content_item)
-    render_component(content_item:, prioritise_taxon_breadcrumbs: true)
-    assert_select "a", text: "Home"
-    assert_select "a", text: "Business and self-employed", count: 0
-    assert_select "a", text: "Licences and licence applications", count: 0
-    assert_select "a", text: "School curriculum"
-    assert_select "a", text: "Education, training and skills"
-  end
-
-  it "renders mainstream browse pages if prioritise_taxon_breadcrumbs is false and there are live taxons" do
-    content_item = example_document_for("guide", "guide")
-    content_item = set_parent_titles_to_businesses(content_item)
-    content_item = set_live_taxons(content_item)
-    render_component(content_item:, prioritise_taxon_breadcrumbs: false)
-    assert_select "a", text: "Home"
-    assert_select "a", text: "Business and self-employed"
-    assert_select "a", text: "Licences and licence applications"
-    assert_select "a", text: "School curriculum", count: 0
-    assert_select "a", text: "Education, training and skills", count: 0
-  end
-
-  it "renders mainstream browse pages if prioritise_taxon_breadcrumbs is not passed and are live taxons" do
+  it "doesn't render taxon breadcrumbs even if there are live taxons" do
     content_item = example_document_for("guide", "guide")
     content_item = set_parent_titles_to_businesses(content_item)
     content_item = set_live_taxons(content_item)
     render_component(content_item:)
     assert_select "a", text: "Home"
-    assert_select "a", text: "Business and self-employed"
-    assert_select "a", text: "Licences and licence applications"
+    assert_select "a", text: "Business and self-employed", count: 1
+    assert_select "a", text: "Licences and licence applications", count: 1
     assert_select "a", text: "School curriculum", count: 0
     assert_select "a", text: "Education, training and skills", count: 0
   end

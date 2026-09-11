@@ -1,7 +1,6 @@
 <%
   disable_ga4 ||= false
-  prioritise_taxon_breadcrumbs ||= false
-  breadcrumb_selector = GovukPublishingComponents::Presenters::BreadcrumbSelector.new(content_item, request, prioritise_taxon_breadcrumbs, disable_ga4)
+  breadcrumb_selector = GovukPublishingComponents::Presenters::BreadcrumbSelector.new(content_item, request, disable_ga4)
   inverse ||= false
   collapse_on_mobile ||= true unless local_assigns[:collapse_on_mobile].eql?(false)
 
