@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Replace prefixed-transform usages with standard CSS transform ([PR #5686](https://github.com/alphagov/govuk_publishing_components/pull/5704))  
+
 ## 69.0.1
 
 * Make 'No data' more logical on bar charts ([PR #5686](https://github.com/alphagov/govuk_publishing_components/pull/5686))
