@@ -113,7 +113,7 @@
 }
 
 .gem-c-subscription-links__list-item--small .gem-c-subscription-links__icon {
-  @include scale(.9);
+  transform: scale(.9);
   transform-origin: bottom left;
 }
 
