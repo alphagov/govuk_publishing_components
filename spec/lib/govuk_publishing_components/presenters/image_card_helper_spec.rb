@@ -19,7 +19,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ImageCardHelper do
     it "sets defaults if some options are not passed" do
       image = described_class.new({})
       expect(image.extra_details).to eq([])
-      expect(image.image_loading).to eq("auto")
+      expect(image.image_loading).to eq("eager")
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ImageCardHelper do
 
     it "creates an image" do
       image = described_class.new({ image_src: "moo.jpg" })
-      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="auto" height="200" width="300" src="/images/moo.jpg" /></figure>')
+      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="eager" height="200" width="300" src="/images/moo.jpg" /></figure>')
     end
 
     it "creates an image with basic passed options" do
@@ -53,7 +53,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ImageCardHelper do
 
     it "creates an image with passed sizes" do
       image = described_class.new({ image_src: "moo.jpg", sizes: "(max-width: 640px) 100vw, (max-width: 1020px) 33vw, 300px" })
-      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="auto" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 33vw, 300px" height="200" width="300" src="/images/moo.jpg" /></figure>')
+      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="eager" sizes="(max-width: 640px) 100vw, (max-width: 1020px) 33vw, 300px" height="200" width="300" src="/images/moo.jpg" /></figure>')
     end
 
     it "creates an image with a srcset" do
@@ -65,12 +65,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ImageCardHelper do
         "/moo-170.jpg": "170w",
       }
       image = described_class.new({ image_src: "moo.jpg", srcset: srcset })
-      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="auto" srcset="/moo.jpg 610w, /moo-480.jpg 480w, /moo-320.jpg 320w, /moo-240.jpg 240w, /moo-170.jpg 170w" height="200" width="300" src="/images/moo.jpg" /></figure>')
+      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="eager" srcset="/moo.jpg 610w, /moo-480.jpg 480w, /moo-320.jpg 320w, /moo-240.jpg 240w, /moo-170.jpg 170w" height="200" width="300" src="/images/moo.jpg" /></figure>')
     end
 
     it "sets a different width and height when two_thirds is given" do
       image = described_class.new({ image_src: "moo.jpg", two_thirds: true })
-      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="auto" height="90" width="90" src="/images/moo.jpg" /></figure>')
+      expect(image.media).to eq('<figure class="gem-c-image-card__image-wrapper"><img class="gem-c-image-card__image" alt="" loading="eager" height="90" width="90" src="/images/moo.jpg" /></figure>')
     end
   end
 
