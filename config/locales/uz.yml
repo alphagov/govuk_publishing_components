@@ -72,6 +72,9 @@ uz:
       - биз cookieнинг қўшимча файлларини ўрнатиш истагидамиз.
       - Биз бошқа сайтлар томонидан ўрнатилган cookie файлларидан ҳам фойдаланамиз
       - улар уларнинг сервисларидан контентни олишда ёрдам беради.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: GOV.UKда cookie файллари
     devolved_nations:
       applies_to:

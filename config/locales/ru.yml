@@ -74,6 +74,9 @@ ru:
       - запоминать ваш настройки и улучшать государственные услуги. Мы также используем файлы cookie
       - установленные другими сайтами
       - чтобы поставлять контент из их услуг.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Файлы "cookie" на GOV.UK
     devolved_nations:
       applies_to:
