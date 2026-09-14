@@ -14,7 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   window.GOVUK.modules.start()
   window.GOVUK.checkCookieConsentLinkDecoration(window.location)
-  if (window.GOVUK.cookie('cookies_policy')) {
+
+  var consentCookie = window.GOVUK.getConsentCookie()
+
+  if (consentCookie && consentCookie.usage) {
     window.GOVUK.decorateLinks()
+  } else {
+    window.addEventListener('cookie-consent', window.GOVUK.decorateLinks)
   }
 })
