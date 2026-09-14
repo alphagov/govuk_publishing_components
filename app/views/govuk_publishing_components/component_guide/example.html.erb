@@ -20,7 +20,7 @@
 <div class="component-show">
   <div class="component-doc">
     <div class="component-markdown">
-      <%= raw(@component_example.html_description) %>
+      <%= sanitize @component_example.html_description %>
     </div>
     <h2 class="govuk-heading-m">
       How it looks
