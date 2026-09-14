@@ -27,7 +27,7 @@
       <% if @component_doc.body.present? %>
         <div class="component-body">
           <div class="component-markdown">
-            <%= raw(@component_doc.html_body) %>
+            <%= sanitize @component_doc.html_body %>
           </div>
         </div>
       <% end %>
@@ -112,7 +112,7 @@
       <div class="govuk-grid-column-two-thirds">
         <h3 class="govuk-heading-m">Accessibility acceptance criteria</h3>
         <div class="component-markdown">
-          <%= raw(@component_doc.html_accessibility_criteria) %>
+          <%= sanitize @component_doc.html_accessibility_criteria %>
         </div>
       </div>
     </div>
@@ -125,12 +125,12 @@
       <div class="component-example" id="standard-options">
         <h3 class="govuk-heading-m">Standard options</h3>
         <div class="component-markdown">
-          <%= raw(@component_doc.html_component_wrapper_options_intro) %>
+          <%= sanitize @component_doc.html_component_wrapper_options_intro %>
           <%= render "govuk_publishing_components/components/details", {
             title: "See all standard options",
             disable_ga4: true,
           } do %>
-            <%= raw(@component_doc.html_component_wrapper_options_description) %>
+            <%= sanitize @component_doc.html_component_wrapper_options_description %>
           <% end %>
         </div>
       </div>
@@ -153,7 +153,7 @@
         </h3>
         <% if example.html_description %>
           <div class="component-markdown component-markdown--no-margin">
-            <%= raw(example.html_description) %>
+            <%= sanitize example.html_description %>
           </div>
         <% end %>
         <% code_example = capture do %>
