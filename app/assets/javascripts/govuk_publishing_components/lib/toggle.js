@@ -108,29 +108,40 @@
   GemToggle.prototype.toggleOnClick = function () {
     var that = this
 
-    this.$module.toggleTrigger.addEventListener('click', function (event) {
-      event.preventDefault()
-      var expanded = this.getAttribute('aria-expanded') === 'true'
-
-      if (expanded) {
-        this.setAttribute('aria-expanded', false)
-        for (var i = 0; i < that.$module.targets.length; i++) {
-          that.$module.targets[i].classList.add(that.$module.toggleClass)
-        }
-      } else {
-        this.setAttribute('aria-expanded', true)
-        for (var j = 0; j < that.$module.targets.length; j++) {
-          that.$module.targets[j].classList.remove(that.$module.toggleClass)
-        }
-      }
-
-      var toggledText = this.getAttribute('data-toggled-text')
-
-      if (typeof toggledText === 'string') {
-        this.setAttribute('data-toggled-text', this.innerHTML)
-        this.innerHTML = toggledText
+    this.$module.toggleTrigger.addEventListener('keydown', function (event) {
+      if (event.key === ' ') {
+        event.preventDefault()
+        that.toggle(this)
       }
     })
+
+    this.$module.toggleTrigger.addEventListener('click', function (event) {
+      event.preventDefault()
+      that.toggle(this)
+    })
+  }
+
+  GemToggle.prototype.toggle = function ($trigger) {
+    var expanded = $trigger.getAttribute('aria-expanded') === 'true'
+
+    if (expanded) {
+      $trigger.setAttribute('aria-expanded', false)
+      for (var i = 0; i < this.$module.targets.length; i++) {
+        this.$module.targets[i].classList.add(this.$module.toggleClass)
+      }
+    } else {
+      $trigger.setAttribute('aria-expanded', true)
+      for (var j = 0; j < this.$module.targets.length; j++) {
+        this.$module.targets[j].classList.remove(this.$module.toggleClass)
+      }
+    }
+
+    var toggledText = $trigger.getAttribute('data-toggled-text')
+
+    if (typeof toggledText === 'string') {
+      $trigger.setAttribute('data-toggled-text', $trigger.innerHTML)
+      $trigger.innerHTML = toggledText
+    }
   }
 
   Modules.GemToggle = GemToggle
