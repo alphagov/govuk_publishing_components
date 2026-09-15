@@ -31,7 +31,7 @@ hr:
       preview_aria_label:
       preview_link:
       reference: 'Referenca: %{reference}'
-      request_format_cta: Zatražite pristupačan format.
+      request_format_cta: Zatražite pristupačan format
       request_format_details_html: Ako koristite pomoćnu tehnologiju (poput čitača zaslona) i trebate verziju ovog dokumenta u pristupačnijem formatu, pošaljite e-poruku na <a href = 'mailto:%{alternative_format_contact_email}' target = '_ blank' class = 'govuk-link '>%{alternative_format_contact_email} </a>. Recite nam koji format vam je potreban. Pomoći će nam ako kažete koju pomoćnu tehnologiju koristite.
       request_format_text: Ova datoteka možda nije prikladna za korisnike pomoćne tehnologije.
     back_link:

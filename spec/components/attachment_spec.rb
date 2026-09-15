@@ -106,8 +106,8 @@ describe "Attachment", type: :view do
     attributes = {
       event_name: "select_content",
       type: "detail",
-      text: "Request an accessible format.",
-      section: "Request an accessible format.",
+      text: "Request an accessible format",
+      section: "Request an accessible format",
       index_section: 1,
       index_section_count: 4,
       another_attribute: "here",

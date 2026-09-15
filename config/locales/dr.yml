@@ -30,7 +30,7 @@ dr:
       preview_aria_label:
       preview_link:
       reference: "%{reference}:مرجع"
-      request_format_cta: یک فارمت قابل دسترس را درخواست کنید.
+      request_format_cta: یک فارمت قابل دسترس را درخواست کنید
       request_format_details_html: |-
         اگر از تکنالوژی کمکی(مانند صفحه خوان) استفاده مینمایید و به نسخهء از این سند در یک فارمت که بیشتر قابل دسترس باشد ضرورت دارید، لطفاً ایمل نمایید<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
         لطفاً بگویید به چه فارمتی نیاز دارید.
