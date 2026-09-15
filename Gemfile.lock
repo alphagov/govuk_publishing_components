@@ -600,7 +600,7 @@ GEM
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
       logger
-    simplecov (1.1.1)
+    simplecov (1.2.0)
     smart_properties (1.17.0)
     sprockets (4.4.1)
       concurrent-ruby (~> 1.1)
