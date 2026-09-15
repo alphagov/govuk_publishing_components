@@ -30,7 +30,7 @@ ky:
       preview_aria_label: "%{title} онлайн көрүү"
       preview_link: Онлайн көрүү
       reference: 'Маал.: %{reference}'
-      request_format_cta: Жеткиликтүү форматты сураңыз.
+      request_format_cta: Жеткиликтүү форматты сураңыз
       request_format_details_html: Эгер сиз жардамчы технологияны (мисалы, экранды окугуч) колдонсоңуз жана бул документтин жеткиликтүү форматтагы версиясы керек болсо, <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> электрондук кат жөнөтүңүз. Сизге кандай формат керек экенин айтыңыз. Кандай жардамчы технологияны колдонуп жатканыңызды айтсаңыз, бул бизге жардам берет.
       request_format_text: Бул файл жардамчы технологияны колдонуучулар үчүн ылайыктуу эмес.
     back_link:
