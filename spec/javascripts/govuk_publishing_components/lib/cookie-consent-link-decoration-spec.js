@@ -17,20 +17,20 @@ describe('Decorating links', function () {
     })
 
     it('sets usage consent cookie to false when cookies[analytics] query string parameter has a value of "no"', function () {
+      expect(GOVUK.getConsentCookie()).toBe(null)
       window.history.replaceState(null, null, '?cookies=no')
 
       window.GOVUK.checkCookieConsentLinkDecoration(window.location)
-      // consentModule.init()
 
       expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
       expect(GOVUK.getConsentCookie().usage).toBe(false)
     })
 
     it('sets usage consent cookie to true when cookies[analytics] query string parameter has a value of "yes"', function () {
+      expect(GOVUK.getConsentCookie()).toBe(null)
       window.history.replaceState(null, null, '?cookies=yes')
 
       window.GOVUK.checkCookieConsentLinkDecoration(window.location)
-      // consentModule.init()
 
       expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
       expect(GOVUK.getConsentCookie().usage).toBe(true)
@@ -61,6 +61,7 @@ describe('Link decoration on the DOM', function () {
   })
 
   it('appends negative cookie decoration to relevant links before cookies are accepted', function () {
+    expect(link1.href).not.toContain('cookies=no')
     GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}')
 
     window.GOVUK.decorateLinks()
@@ -70,6 +71,7 @@ describe('Link decoration on the DOM', function () {
   })
 
   it('appends positive cookie decoration to relevant links after cookies are accepted', function () {
+    expect(link1.href).not.toContain('cookies=yes')
     GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
 
     window.GOVUK.decorateLinks()
