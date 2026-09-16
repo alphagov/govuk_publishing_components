@@ -6,6 +6,10 @@
   margin: 0;
   @include govuk-typography-common;
   @include govuk-font-size(19);
+
+  @media (forced-colors: active) {
+    background-color: CanvasText;
+  }
 }
 
 .gem-c-organisation-logo__container {
