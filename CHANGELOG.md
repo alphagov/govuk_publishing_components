@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Adjust details component analytics ([PR #5727](https://github.com/alphagov/govuk_publishing_components/pull/5727))
 * Hide feedback cancel button when JS is disabled ([PR #5725](https://github.com/alphagov/govuk_publishing_components/pull/5725))
 * **BREAKING:** Replace prefixed-transform usages with standard CSS transform ([PR #5686](https://github.com/alphagov/govuk_publishing_components/pull/5704))
 * Replace and remove scale mixin ([PR #5686](https://github.com/alphagov/govuk_publishing_components/pull/5709))
