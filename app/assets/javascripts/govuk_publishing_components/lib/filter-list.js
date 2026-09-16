@@ -57,11 +57,12 @@
   FilterList.prototype.filterList = function (e) {
     const searchTerm = e.srcElement.value
 
-    for (var i = 0; i < this.items.length; i++) {
-      const item = this.items[i]
-      const text = item.innerText.toLowerCase()
+    for (const item of this.items) {
+      const itemText = item.innerText
+      const searchTerms = item.getAttribute('data-filter-item-search-terms')
+      const text = searchTerms ? `${itemText} ${searchTerms}` : itemText
 
-      if (text.includes(searchTerm.toLowerCase())) {
+      if (text.toLowerCase().includes(searchTerm.toLowerCase())) {
         item.classList.remove('govuk-!-display-none')
       } else {
         item.classList.add('govuk-!-display-none')

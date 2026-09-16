@@ -6,8 +6,8 @@ describe('The filter list code', function () {
   const markup = `
     <div id="separate"></div>
     <div>
-      <p data-filter-item="a">United Kingdom</p>
-      <p data-filter-item="b">United States</p>
+      <p data-filter-item="a" data-filter-item-search-terms="UK">United Kingdom</p>
+      <p data-filter-item="b" data-filter-item-search-terms="USA America">United States</p>
       <p data-filter-item="c">United Kingdom of Smaller Countries</p>
     </div>
   `
@@ -72,6 +72,15 @@ describe('The filter list code', function () {
       expect(el.querySelector('[data-filter-item="b"]')).toHaveClass('govuk-!-display-none')
       expect(el.querySelector('[data-filter-item="c"]')).not.toHaveClass('govuk-!-display-none')
       expect(el.querySelector('.govuk-hint').textContent).toBe('2 results found')
+    })
+
+    it('shows elements that match the filter-item-search-terms data attribute', function () {
+      input.value = 'America'
+      window.GOVUK.triggerEvent(input, 'input')
+      expect(el.querySelector('[data-filter-item="a"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="b"]')).not.toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('[data-filter-item="c"]')).toHaveClass('govuk-!-display-none')
+      expect(el.querySelector('.govuk-hint').textContent).toBe('1 result found')
     })
 
     it('shows no results if the input does not match', function () {
