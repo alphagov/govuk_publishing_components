@@ -15,7 +15,6 @@
     this.promptQuestions = this.$module.querySelectorAll('.js-prompt-questions')
     this.promptSuccessMessage = this.$module.querySelector('.js-prompt-success')
     this.surveyWrapper = this.$module.querySelector('#survey-wrapper')
-    this.jshiddenClass = 'js-hidden'
     this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
     this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
   }
