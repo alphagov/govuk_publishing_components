@@ -28,15 +28,18 @@
   component_helper.add_class("gem-c-details--inverse") if inverse
   component_helper.add_class("gem-c-details--small") if small
   component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)
-  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) unless disable_ga4
-  component_helper.add_data_attribute({ ga4_event: ga4_event }) unless disable_ga4
   component_helper.set_open(open)
+
+  summary_attributes = {}
+  summary_attributes[:module] = "ga4-event-tracker" unless disable_ga4
+  summary_attributes[:ga4_event] = ga4_event unless disable_ga4
+  summary_attributes[:ga4_expandable] = true unless disable_ga4
 %>
 <%= tag.details(**component_helper.all_attributes) do %>
-  <%= tag.summary class: "govuk-details__summary", aria: summary_aria_attributes do %>
-    <span class="govuk-details__summary-text" <% unless disable_ga4 %> data-ga4-expandable<% end %>>
+  <%= tag.summary class: "govuk-details__summary", aria: summary_aria_attributes, data: summary_attributes do %>
+    <%= tag.span class: "govuk-details__summary-text" do %>
       <%= title %>
-    </span>
+    <% end %>
   <% end %>
   <div class="govuk-details__text">
     <%= yield %>
