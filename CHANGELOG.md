@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 70.0.0
 
 * Adjust details component analytics ([PR #5727](https://github.com/alphagov/govuk_publishing_components/pull/5727))
 * Hide feedback cancel button when JS is disabled ([PR #5725](https://github.com/alphagov/govuk_publishing_components/pull/5725))
