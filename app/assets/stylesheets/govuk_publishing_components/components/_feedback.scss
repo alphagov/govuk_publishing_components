@@ -227,6 +227,14 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
   @include govuk-font(16);
 }
 
+.gem-c-feedback__close {
+  display: none;
+
+  .govuk-frontend-supported & {
+    display: block;
+  }
+}
+
 .gem-c-feedback__button-wrapper {
   @include govuk-media-query($from: tablet) {
     display: flex;
