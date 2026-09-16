@@ -9,13 +9,15 @@
         <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=no-js" class="govuk-link" target="_blank" rel="noopener noreferrer external">Please fill in this survey (opens in a new tab<noscript> and requires JavaScript</noscript>)</a>.
       </p>
 
-      <%= render "govuk_publishing_components/components/button", {
-        text: t("components.feedback.close"),
-        classes: "js-close-form",
-        aria_controls: "page-is-not-useful",
-        secondary_quiet: true,
-        margin_bottom: 6,
-      } %>
+      <div class="gem-c-feedback__close">
+        <%= render "govuk_publishing_components/components/button", {
+          text: t("components.feedback.close"),
+          classes: "js-close-form",
+          aria_controls: "page-is-not-useful",
+          secondary_quiet: true,
+          margin_bottom: 6,
+        } %>
+      </div>
     </div>
   </div>
 </div>

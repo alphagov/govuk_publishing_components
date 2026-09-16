@@ -87,7 +87,7 @@ describe('Feedback component', function () {
               data-ga4-event="{'event_name':'form_submit','type':'feedback','text':'Send','section':'Help us improve GOV.UK','tool_name':'Help us improve GOV.UK'}">
               Send
             </button>
-            <button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
+            <button class="govuk-button govuk-button--secondary gem-c-feedback__js-show js-close-form"
               aria-controls="something-is-wrong">
               Cancel
             </button>

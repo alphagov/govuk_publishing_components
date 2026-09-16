@@ -228,9 +228,10 @@ $feedback-prompt-border-top-colour: $govuk-blue-tint-50;
 }
 
 .gem-c-feedback__close {
-  margin: 0 govuk-spacing(2);
-  @include govuk-media-query($until: tablet) {
-    margin: govuk-spacing(4) 0 0;
+  display: none;
+
+  .govuk-frontend-supported & {
+    display: block;
   }
 }
 

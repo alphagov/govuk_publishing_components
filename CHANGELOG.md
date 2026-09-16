@@ -9,10 +9,11 @@
 
 ## Unreleased
 
+* Hide feedback cancel button when JS is disabled ([PR #5725](https://github.com/alphagov/govuk_publishing_components/pull/5725))
 * **BREAKING:** Replace prefixed-transform usages with standard CSS transform ([PR #5686](https://github.com/alphagov/govuk_publishing_components/pull/5704))
 * Replace and remove scale mixin ([PR #5686](https://github.com/alphagov/govuk_publishing_components/pull/5709))
 * Remove prioritise_taxon_breadcrumbs ([PR #5708](https://github.com/alphagov/govuk_publishing_components/pull/5708))
-* Remove CSS prefixes and redundant fallbacks ([PR #5711](https://github.com/alphagov/govuk_publishing_components/pull/5711))  
+* Remove CSS prefixes and redundant fallbacks ([PR #5711](https://github.com/alphagov/govuk_publishing_components/pull/5711))
 
 ## 69.0.1
 
