@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Upgrade to LUX 4.5.2 ([PR #5728](https://github.com/alphagov/govuk_publishing_components/pull/5728))
+* Allow GemToggle to be activated with the space key ([PR #5719](https://github.com/alphagov/govuk_publishing_components/pull/5719))
 
 ## 70.0.0
 

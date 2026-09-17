@@ -4,7 +4,7 @@
 describe('A toggle module', function () {
   'use strict'
 
-  var container
+  let container, event
 
   describe('when starting', function () {
     beforeEach(function () {
@@ -64,6 +64,41 @@ describe('A toggle module', function () {
       container.querySelector('.my-toggle').click()
       expect(container.querySelector('.my-toggle').getAttribute('data-toggled-text')).toBe('Show fewer')
       expect(container.querySelector('.my-toggle').textContent).toBe('Toggle')
+    })
+  })
+
+  describe('when pressing Space on a toggle', function () {
+    beforeEach(function () {
+      container = document.createElement('div')
+      container.innerHTML = `
+        <a href="#" class="my-toggle" data-expanded="false" data-controls="target">Toggle</a>
+        <div id="target" class="js-hidden">Target</div>
+      `
+      document.body.appendChild(container)
+      new GOVUK.Modules.GemToggle(container).init()
+
+      event = new window.KeyboardEvent('keydown', {
+        key: ' ',
+        cancelable: true
+      })
+
+      container.querySelector('.my-toggle').dispatchEvent(event)
+    })
+
+    afterEach(function () {
+      document.body.removeChild(container)
+    })
+
+    it('toggles the display of the target', function () {
+      expect(container.querySelector('#target')).not.toHaveClass('js-hidden')
+      container.querySelector('.my-toggle').dispatchEvent(event)
+      expect(container.querySelector('#target')).toHaveClass('js-hidden')
+    })
+
+    it('updates the aria-expanded attribute on the toggle', function () {
+      expect(container.querySelector('.my-toggle').getAttribute('aria-expanded')).toBe('true')
+      container.querySelector('.my-toggle').dispatchEvent(event)
+      expect(container.querySelector('.my-toggle').getAttribute('aria-expanded')).toBe('false')
     })
   })
 
