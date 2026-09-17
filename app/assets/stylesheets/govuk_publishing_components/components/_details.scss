@@ -80,6 +80,14 @@
     padding-left: govuk-spacing(4);
   }
 
+  .govuk-details__summary::before {
+    @include govuk-shape-arrow($direction: right, $base: 12px);
+  }
+
+  &[open] .govuk-details__summary::before {
+    @include govuk-shape-arrow($direction: down, $base: 12px);
+  }
+
   .govuk-details__summary-text,
   .govuk-details__text {
     @include govuk-font(16);
