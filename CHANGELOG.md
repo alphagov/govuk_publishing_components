@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Improve details component appearance in metadata component ([PR #5729](https://github.com/alphagov/govuk_publishing_components/pull/5729))
 * Upgrade to LUX 4.5.2 ([PR #5728](https://github.com/alphagov/govuk_publishing_components/pull/5728))
 * Allow GemToggle to be activated with the space key ([PR #5719](https://github.com/alphagov/govuk_publishing_components/pull/5719))
 
