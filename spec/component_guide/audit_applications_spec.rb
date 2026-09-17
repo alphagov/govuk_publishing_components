@@ -119,13 +119,6 @@ describe "Auditing the components in applications" do
             template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_test_component_with_block.html.erb",
           },
           {
-            name: "test component with duplicate ids",
-            application: "app-dir",
-            template_exists: true,
-            template_lines: 5,
-            template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_test_component_with_duplicate_ids.html.erb",
-          },
-          {
             name: "test component with embed",
             application: "app-dir",
             template_exists: true,
@@ -159,6 +152,13 @@ describe "Auditing the components in applications" do
             template_exists: true,
             template_lines: 3,
             template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_test_component_with_no_accessibility_criteria.html.erb",
+          },
+          {
+            name: "test component with no image alt",
+            application: "app-dir",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_test_component_with_no_image_alt.html.erb",
           },
           {
             name: "test component with params",

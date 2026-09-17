@@ -25,7 +25,6 @@ accessibility_criteria:
 govuk_frontend_components:
   - service-navigation
 accessibility_excluded_rules:
-  - duplicate-id-aria
   - landmark-no-duplicate-banner
   - landmark-unique
 examples:

@@ -19,8 +19,6 @@ accessibility_criteria: |
   * sit within the primary header element (<header>) provided by the page layout
 accessibility_excluded_rules:
   # Banners will be duplicated in component examples list.
-  - duplicate-id
-  - duplicate-id-active
   - duplicate-id-aria
   - landmark-no-duplicate-banner
   - landmark-unique
