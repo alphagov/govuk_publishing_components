@@ -298,7 +298,7 @@
     return sendBeaconImpl(url, data);
   }
 
-  var version = "4.5.0";
+  var version = "4.5.2";
   var pkg = {
     version: version};
 
@@ -1377,10 +1377,8 @@
       observe("element", processAndLogEntry);
       observe("paint", processAndLogEntry);
       if (observe("largest-contentful-paint", function (entry) {
-        // Process the LCP entry for the legacy beacon
-        processAndLogEntry(entry);
-        // Process the LCP entry for the new beacon
         processEntry(entry);
+        logEntry(entry);
       })) {
         beaconCollectors[push]([BeaconMetricKey.LCP, getData$2]);
       }
@@ -2129,7 +2127,6 @@
         var navEntry_1 = getNavigationEntry();
         var startRender = getStartRender();
         var fcp = getFcp();
-        var lcp = getLcp();
         var prefixNTValue = function (key, prefix, ignoreZero) {
           if (typeof navEntry_1[key] === "number") {
             var value = navEntry_1[key];
@@ -2178,7 +2175,6 @@
           loadEventEndStr,
           typeof startRender !== "undefined" ? "sr" + startRender : "",
           typeof fcp !== "undefined" ? "fc" + fcp : "",
-          typeof lcp !== "undefined" ? "lc" + lcp : "",
         ].join("");
       }
       else if (endMark) {
@@ -2210,19 +2206,6 @@
       }
       return undefined;
     }
-    // Return Largest Contentful Paint or undefined if not supported.
-    function getLcp() {
-      var lcpEntries = getEntries("largest-contentful-paint");
-      if (lcpEntries[length]) {
-        var lastEntry = lcpEntries[lcpEntries[length] - 1];
-        var value = processTimeMetric(lastEntry[startTime$1]);
-        if (shouldReportValue(value)) {
-          logger.logEvent(43 /* LogEvent.PerformanceEntryProcessed */, [lastEntry]);
-          return value;
-        }
-      }
-      return undefined;
-    }
     // Return best guess at Start Render time (in ms).
     // Mostly works on just Chrome and IE.
     // Return undefined if not supported.
@@ -2246,33 +2229,6 @@
       }
       logger.logEvent(72 /* LogEvent.PaintTimingNotSupported */);
       return undefined;
-    }
-    function getINPDetails() {
-      if (!("PerformanceEventTiming" in self)) {
-        return undefined;
-      }
-      return getHighPercentileInteraction();
-    }
-    /**
-    * Build the query string for the INP parameters:
-    *
-    * - INP: The duration of the P98 interaction
-    * - INPs: The selector of the P98 interaction element
-    * - INPt: The timestamp of the P98 interaction start time
-    * - INPi: The input delay subpart of the P98 interaction
-    * - INPp: The processing time subpart of the P98 interaction
-    * - INPd: The presentation delay subpart of the P98 interaction
-    */
-    function getINPString(details) {
-      return [
-        "&INP=" + details[duration],
-        details[selector] ? "&INPs=" + encodeURIComponent(details[selector]) : "",
-        "&INPt=" + floor(details[startTime$1]),
-        "&INPi=" + clamp(floor(details[processingStart] - details[startTime$1])),
-        "&INPp=" + clamp(floor(details[processingTime])),
-        "&INPd=" +
-        clamp(floor(details[startTime$1] + details[duration] - details[processingEnd])),
-      ].join("");
     }
     function getCustomerId() {
       return String(_thisCustomerId);
@@ -2493,20 +2449,13 @@
         addCustomDataValue("_" + key, trackingParams[key]);
       }
       var sIx = "";
-      var INP = getINPDetails();
       // If we haven't already sent an interaction beacon, check for interaction metrics and include
       // them in the main beacon.
       if (!gbIxSent) {
         sIx = ixValues();
-        if (sIx === "") {
-          // If there are no interaction metrics, we wait to send INP with the IX beacon to increase
-          // the chance that we capture a valid INP.
-          INP = undefined;
-        }
       }
       var sET = elementTimingValues(); // Element Timing data
       var sCPU = cpuTimes();
-      var clsData = getData$5(globalConfig);
       var sLuxjs = selfLoading();
       if (!isVisible()) {
         gFlags = addFlag(gFlags, 8 /* Flags.VisibilityStateNotVisible */);
@@ -2585,10 +2534,7 @@
       (sIx ? "&IX=" + sIx : "") +
       (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
       (sCPU ? "&CPU=" + sCPU : "") +
-      (sET ? "&ET=" + sET : "") + // element timing
-      (clsData ? "&CLS=" + clsData.value.toFixed(6) : "") +
-      // INP and sub-parts
-      (INP ? getINPString(INP) : "");
+      (sET ? "&ET=" + sET : ""); // element timing
       // We add the user timing entries last so that we can split them to reduce the URL size if necessary.
       var utValues = userTimingValues();
       var _b = fitUserTimingEntries(utValues, globalConfig, baseUrl + metricsQueryString), beaconUtValues = _b[0], remainingUtValues = _b[1];
@@ -2627,13 +2573,11 @@
         return;
       }
       var sIx = ixValues(); // Interaction Metrics
-      var INP = getINPDetails();
       if (sIx) {
         var beaconUrl = _getBeaconUrl(getUpdatedCustomData()) +
         "&IX=" +
         sIx +
-        (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
-        (typeof INP !== "undefined" ? getINPString(INP) : "");
+        (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "");
         logger.logEvent(25 /* LogEvent.InteractionBeaconSent */, [beaconUrl]);
         _sendBeacon(beaconUrl);
         gbIxSent = 1;
