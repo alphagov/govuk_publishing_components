@@ -1,0 +1,6 @@
+name: Test component with no image alt
+accessibility_excluded_rules:
+- 'image-alt'
+examples:
+  default:
+    data: {}

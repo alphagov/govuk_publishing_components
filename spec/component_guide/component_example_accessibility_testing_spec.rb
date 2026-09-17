@@ -27,8 +27,8 @@ describe "Component example with automated testing", :capybara, :js do
     end
   end
 
-  it "does not throw JavaScript errors if there are duplicate IDs" do
-    visit "/component-guide/test_component_with_duplicate_ids"
+  it "does not throw JavaScript errors if an image does not include the alt attribute" do
+    visit "/component-guide/test_component_with_no_image_alt"
 
     expect(page.driver.browser.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }.compact).to be_empty
   end

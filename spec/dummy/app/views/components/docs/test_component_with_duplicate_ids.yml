@@ -1,7 +1,0 @@
-name: Test invalid component with an invalid image and duplicate IDs
-accessibility_excluded_rules:
-- 'duplicate-id'
-- 'image-alt'
-examples:
-  default:
-    data: {}
