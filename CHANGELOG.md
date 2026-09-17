@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Upgrade to LUX 4.5.2 ([PR #5728](https://github.com/alphagov/govuk_publishing_components/pull/5728))
+
 ## 70.0.0
 
 * Adjust details component analytics ([PR #5727](https://github.com/alphagov/govuk_publishing_components/pull/5727))
