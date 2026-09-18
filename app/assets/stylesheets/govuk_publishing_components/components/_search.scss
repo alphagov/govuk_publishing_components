@@ -234,5 +234,9 @@ $search-submit-button-hover-colour: $govuk-blue-tint-95;
     top: auto;
     left: auto;
     padding-left: 0;
+    max-width: unset;
+    height: auto;
+    overflow: visible;
+    white-space: normal;
   }
 }

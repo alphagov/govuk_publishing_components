@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix search label clipping ([PR #5730](https://github.com/alphagov/govuk_publishing_components/pull/5730))
+
 ## 70.0.1
 
 * Fix details component when metadata is inverse ([PR #5735](https://github.com/alphagov/govuk_publishing_components/pull/5735))
