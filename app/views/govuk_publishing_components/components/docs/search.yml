@@ -98,6 +98,14 @@ examples:
     data:
       label_margin_bottom: 9
       inline_label: false
+  with_long_label_text:
+    description: |
+      Demonstrates how long label text wraps across multiple lines without being clipped.
+
+      Requires `inline_label` to be false.
+    data:
+      inline_label: false
+      label_text: Search for a licence, permit, or regulation by entering keywords, document title, or reference number
   with_custom_label_class:
     description: |
       Allows adding a custom class to the label of the component.
