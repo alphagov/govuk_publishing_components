@@ -1,3 +1,6 @@
+@use "govuk" as *;
+@use "govuk_publishing_components/components/helpers/colours" as *;
+
 .gem-c-action-link {
   display: table;
 
