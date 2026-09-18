@@ -84,19 +84,21 @@
             </a>
           <% end %>
           <% if page_history.any? %>
-            <%= render "govuk_publishing_components/components/details", {
-              title: t("components.metadata.show_all_updates", locale: :en),
-              small: true,
-            } do %>
-              <ol class="gem-c-metadata__change-history">
-                <% page_history.each do |change| %>
-                  <li class="gem-c-metadata__change-history-item">
-                    <time class="gem-c-metadata__change-date" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
-                    <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
-                  </li>
-                <% end %>
-              </ol>
-            <% end %>
+            <div class="gem-c-metadata__details-wrapper">
+              <%= render "govuk_publishing_components/components/details", {
+                title: t("components.metadata.show_all_updates", locale: :en),
+                small: true,
+              } do %>
+                <ol class="gem-c-metadata__change-history">
+                  <% page_history.each do |change| %>
+                    <li class="gem-c-metadata__change-history-item">
+                      <time class="gem-c-metadata__change-date" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
+                      <p class="gem-c-metadata__change-note"><%= change[:note].strip %></p>
+                    </li>
+                  <% end %>
+                </ol>
+              <% end %>
+            </div>
           <% end %>
         </dd>
       <% end %>

@@ -9,10 +9,12 @@
 %>
 <%= items.to_sentence(two_words_connector: connector, last_word_connector: connector).html_safe %>
 <% if remaining.any? %>
-  <%= render "govuk_publishing_components/components/details", {
-    title: t("common.toggle_more", show: t("common.show"), number: remaining.length),
-    small: true,
-  } do %>
-    <%= remaining.to_sentence.html_safe %>
-  <% end %>
+  <div class="gem-c-metadata__details-wrapper">
+    <%= render "govuk_publishing_components/components/details", {
+      title: t("common.toggle_more", show: t("common.show"), number: remaining.length),
+      small: true,
+    } do %>
+      <%= remaining.to_sentence.html_safe %>
+    <% end %>
+  </div>
 <% end %>
