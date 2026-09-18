@@ -54,11 +54,11 @@
         }
       })
     } else {
-      this.decorateLinksComplicatedly(links, consentCookie)
+      window.GOVUK.decorateLinksComplicatedly(links, consentCookie)
     }
   }
 
-  this.decorateLinksComplicatedly = function (links, consentCookie) {
+  window.GOVUK.decorateLinksComplicatedly = function (links, consentCookie) {
     links.forEach((link) => {
       try {
         var url = new URL(link.href, window.location.origin)
