@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 70.0.1
 
 * Fix details component when metadata is inverse ([PR #5735](https://github.com/alphagov/govuk_publishing_components/pull/5735))
 * Improve details component appearance in metadata component ([PR #5729](https://github.com/alphagov/govuk_publishing_components/pull/5729))
