@@ -1971,10 +1971,10 @@ got@^11.7.0:
     p-cancelable "^2.0.0"
     responselike "^2.0.0"
 
-govuk-frontend@6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-6.1.0.tgz#7022bede1d72f6c63f6bf43f16f3d207c6f1214e"
-  integrity sha512-sqivexZFa82LiDIDVMItsUlqEXE/wEUWWBqzEoxHvUFLBH7bY0C8lVrj1qsDThSnj5JEUMS7isBAbKnfQ5Qp6g==
+govuk-frontend@6.2:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-6.2.0.tgz#51ce06aa0e6d2c214749621fd12cedd77d4b1e33"
+  integrity sha512-PCRyQT+7kiV2dUz0Ku6Co+Nx4anOwJ7mAduXYbTQHK2krppBSynv9dBXtOYha/8j+LIzK7FqesTbJl9HD6ekHg==
 
 graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.2.11"
