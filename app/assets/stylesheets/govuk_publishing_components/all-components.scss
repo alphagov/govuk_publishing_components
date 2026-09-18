@@ -2,6 +2,7 @@
   $govuk-output-custom-properties: true
 );
 
+// Possible refactor to replace with @use 'govuk
 @use "govuk/core/index" as *;
 @use "govuk/objects/index" as *;
 @use "govuk/utilities/index" as *;

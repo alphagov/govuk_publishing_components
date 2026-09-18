@@ -1,4 +1,4 @@
-@use "govuk/base" as *;
+@use "govuk" as *;
 
 .gem-link--destructive {
   @include govuk-font(19);
