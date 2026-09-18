@@ -8,7 +8,7 @@
 // their existing column layout. Use the class again on these
 // nested grids to apply fullwidth column printing if required.
 
-@use "govuk/base" as *;
+@use "govuk" as *;
 
 @include govuk-media-query($media-type: print) {
   .gem-print-columns-none {
