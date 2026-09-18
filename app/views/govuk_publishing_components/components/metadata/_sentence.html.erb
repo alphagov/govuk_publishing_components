@@ -13,6 +13,7 @@
     <%= render "govuk_publishing_components/components/details", {
       title: t("common.toggle_more", show: t("common.show"), number: remaining.length),
       small: true,
+      inverse: inverse,
     } do %>
       <%= remaining.to_sentence.html_safe %>
     <% end %>

@@ -56,13 +56,13 @@
       <% if from.any? %>
         <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
         <dd class="gem-c-metadata__definition">
-          <%= render "govuk_publishing_components/components/metadata/sentence", items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
+          <%= render "govuk_publishing_components/components/metadata/sentence", items: from, toggle_id: "from-#{SecureRandom.hex(4)}", inverse: inverse %>
         </dd>
       <% end %>
       <% if part_of.any? %>
         <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of") %>:</dt>
         <dd class="gem-c-metadata__definition">
-          <%= render "govuk_publishing_components/components/metadata/sentence", items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
+          <%= render "govuk_publishing_components/components/metadata/sentence", items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}", inverse: inverse %>
         </dd>
       <% end %>
       <% if local_assigns.include?(:history) %>
@@ -88,6 +88,7 @@
               <%= render "govuk_publishing_components/components/details", {
                 title: t("components.metadata.show_all_updates", locale: :en),
                 small: true,
+                inverse: inverse,
               } do %>
                 <ol class="gem-c-metadata__change-history">
                   <% page_history.each do |change| %>
@@ -115,7 +116,7 @@
                 data-module="ga4-link-tracker"
                 data-ga4-link="<%= ga4_object %>"
               <% end %>>
-              <%= render "govuk_publishing_components/components/metadata/sentence", items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
+              <%= render "govuk_publishing_components/components/metadata/sentence", items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}", inverse: inverse %>
             </dd>
           <% end %>
         <% end %>
