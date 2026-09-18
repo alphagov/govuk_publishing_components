@@ -1,3 +1,5 @@
+@use "govuk" as *;
+
 @mixin markdown-typography {
   color: govuk-functional-colour(text);
   @include govuk-font($size: 16);
