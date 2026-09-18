@@ -1,9 +1,10 @@
 // @use "base" as * with (
 //   $govuk-output-custom-properties: true
 // );
+// @use "base" as *;
 
 // Possible refactor to replace with @use 'govuk
-@use "govuk" as *;
+// @use "govuk" as *;
 
 @use "govuk_publishing_components/components/helpers/brand-colours";
 @use "govuk_publishing_components/lib/link";
@@ -20,7 +21,7 @@
 @use "components/big-number";
 @use "components/breadcrumbs";
 @use "components/button";
-// @use "components/cards";
+@use "components/cards";
 // @use "components/character-count";
 // @use "components/chart";
 // @use "components/checkboxes";
