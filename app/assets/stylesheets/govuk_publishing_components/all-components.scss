@@ -7,9 +7,9 @@
 @use "govuk/utilities/index" as *;
 @use "govuk/overrides/index" as *;
 
-@use "govuk_publishing_components/components/helpers/brand-colours" as *;
-@use "govuk_publishing_components/lib/link" as *;
-@use "govuk_publishing_components/lib/print_support" as *;
+@use "govuk_publishing_components/components/helpers/brand-colours";
+@use "govuk_publishing_components/lib/link";
+@use "govuk_publishing_components/lib/print_support";
 
 @use "components/accordion";
 // @import "components/action-link";
