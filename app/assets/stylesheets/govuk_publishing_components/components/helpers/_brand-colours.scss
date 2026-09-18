@@ -1,4 +1,4 @@
-@use "govuk/base" as *;
+@use "govuk" as *;
 
 @mixin organisation-brand-colour {
   @each $organisation in map-keys($govuk-colours-organisations) {
