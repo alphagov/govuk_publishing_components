@@ -1,6 +1,7 @@
-@forward "govuk/components/button";
-@use "govuk" as *;
-@use "govuk_publishing_components/components/mixins/margins" as *;
+@use "govuk/components/button";
+// @use "govuk" as *;
+@use "../base" as *;
+// @use "govuk_publishing_components/components/mixins/margins" as *;
 @use "govuk_publishing_components/components/helpers/colours" as *;
 
 // Because govuk-frontend adds a responsive bottom margin by default for each component
