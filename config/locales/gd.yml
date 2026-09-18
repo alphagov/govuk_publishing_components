@@ -72,6 +72,9 @@ gd:
       - Ba mhaith linn fianáin bhreise a shocrú chun tuiscint a fháil ar an gcaoi a n-úsáideann tú GOV.UK
       - cuimhnigh ar do chuid socruithe agus seirbhísí rialtais a fheabhsú
       - Úsáidimid láithreáin ghréasáin eile freisin Na fianáin a leagtar síos cabhrú linn ábhar a sholáthar óna gcuid seirbhísí.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Fianáin ar GOV.UK
     devolved_nations:
       applies_to:
