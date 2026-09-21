@@ -3,9 +3,7 @@ $thumbnail-height: 140px;
 $thumbnail-border-width: 5px;
 
 @use "sass:color";
-@use "govuk" as *;
-@use "govuk_publishing_components/components/mixins/high-contrast-outline" as *;
-
+@use "../base" as *;
 
 .gem-c-attachment {
   position: relative;
