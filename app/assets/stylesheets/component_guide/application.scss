@@ -1,6 +1,9 @@
 // This file contains the styles for the Component Guide.
 @use "sass:color";
-@use "govuk" as *;
+@use "govuk" as * with (
+  $govuk-output-custom-properties: true
+);
+
 @use "govuk_publishing_components/all-components";
 
 // Include required helpers
