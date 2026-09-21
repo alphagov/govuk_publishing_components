@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add option to remove translation nav border ([PR #5741](https://github.com/alphagov/govuk_publishing_components/pull/5741))
 * Fix search label clipping ([PR #5730](https://github.com/alphagov/govuk_publishing_components/pull/5730))
 
 ## 70.0.1

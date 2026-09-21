@@ -1,8 +1,11 @@
 .gem-c-translation-nav {
   margin-bottom: govuk-spacing(6);
-  border-bottom: 1px solid govuk-functional-colour(border);
   color: govuk-functional-colour(text);
   @include govuk-font(16);
+}
+
+.gem-c-translation-nav--border {
+  border-bottom: 1px solid govuk-functional-colour(border);
 }
 
 .gem-c-translation-nav__list {
