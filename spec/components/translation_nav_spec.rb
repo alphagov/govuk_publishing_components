@@ -38,6 +38,17 @@ describe "Translation nav", type: :view do
     )
   end
 
+  it "renders the basic component" do
+    render_component(translations: multiple_translations)
+    assert_select ".gem-c-translation-nav.gem-c-translation-nav--border"
+  end
+
+  it "renders without a border" do
+    render_component(translations: multiple_translations, omit_border: true)
+    assert_select ".gem-c-translation-nav"
+    assert_select ".gem-c-translation-nav--border", false
+  end
+
   it "renders all items in a list" do
     render_component(translations: multiple_translations)
     assert_select ".gem-c-translation-nav__list-item", count: multiple_translations.length
