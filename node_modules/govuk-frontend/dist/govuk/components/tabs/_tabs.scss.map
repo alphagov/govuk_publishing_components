@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/tabs/_tabs.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,6CAA6C;;AAE7C,iBAAiB","file":"_tabs.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"tabs\");\n\n@import \"./index\";\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/notification-banner/_notification-banner.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,4DAA4D;;AAE5D,iBAAiB","file":"_notification-banner.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"notification-banner\");\n\n@import \"./index\";\n"]}
