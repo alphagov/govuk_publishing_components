@@ -59,14 +59,11 @@
   padding: govuk-spacing(2);
   border: 1px solid $gem-quiet-button-colour;
   background-color: $gem-secondary-button-background-colour;
+  color: govuk-functional-colour(link);
   @include govuk-font(19, $weight: bold);
 
   .govuk-frontend-supported & {
     display: inline-block;
-  }
-
-  &:not(.brand__color) {
-    color: govuk-functional-colour(link);
   }
 
   &:hover {
