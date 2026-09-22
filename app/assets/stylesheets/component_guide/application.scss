@@ -1,7 +1,9 @@
 // This file contains the styles for the Component Guide.
 @use "sass:color";
 @use "govuk" as * with (
-  $govuk-output-custom-properties: true
+  $govuk-output-custom-properties: true,
+  $govuk-fonts-path: "/assets/",
+  $govuk-images-path: "/assets/",
 );
 
 @use "govuk_publishing_components/all-components";
