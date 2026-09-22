@@ -1,0 +1,1 @@
+{"version":3,"file":"tree-size-limit-error.js","sourceRoot":"","sources":["../../lib/errors/tree-size-limit-error.ts"],"names":[],"mappings":";;;AAAA,MAAa,kBAAmB,SAAQ,KAAK;IAK3C;QACE,KAAK,CAAC,sCAAsC,CAAC,CAAC;QALzC,SAAI,GAAG,GAAG,CAAC;QACX,SAAI,GAAG,oBAAoB,CAAC;QAKjC,KAAK,CAAC,iBAAiB,CAAC,IAAI,EAAE,kBAAkB,CAAC,CAAC;IACpD,CAAC;CACF;AATD,gDASC"}

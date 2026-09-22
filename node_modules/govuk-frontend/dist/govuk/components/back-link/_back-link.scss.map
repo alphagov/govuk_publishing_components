@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/back-link/_back-link.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,kDAAkD;;AAElD,iBAAiB","file":"_back-link.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"back-link\");\n\n@import \"./index\";\n"]}

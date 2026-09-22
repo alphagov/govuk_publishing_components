@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/textarea/_textarea.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,iDAAiD;;AAEjD,iBAAiB","file":"_textarea.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"textarea\");\n\n@import \"./index\";\n"]}

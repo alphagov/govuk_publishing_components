@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/character-count/_character-count.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,wDAAwD;;AAExD,iBAAiB","file":"_character-count.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"character-count\");\n\n@import \"./index\";\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/breadcrumbs/_breadcrumbs.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,oDAAoD;;AAEpD,iBAAiB","file":"_breadcrumbs.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"breadcrumbs\");\n\n@import \"./index\";\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/error-summary/_error-summary.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,sDAAsD;;AAEtD,iBAAiB","file":"_error-summary.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"error-summary\");\n\n@import \"./index\";\n"]}

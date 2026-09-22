@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/accordion/_accordion.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,kDAAkD;;AAElD,iBAAiB","file":"_accordion.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"accordion\");\n\n@import \"./index\";\n"]}

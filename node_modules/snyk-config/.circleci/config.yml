@@ -1,0 +1,75 @@
+version: 2.1
+orbs:
+  node: circleci/node@5.0.2
+
+commands:
+  setup_snyk_user:
+    steps:
+      - run:
+          name: Use snyk-main npmjs user
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+
+jobs:
+  test:
+    parameters:
+      node_version:
+        type: string
+    resource_class: small
+    docker:
+      - image: cimg/node:<< parameters.node_version >>
+    steps:
+      - checkout
+      - setup_snyk_user
+      - node/install-packages:
+          override-ci-command: npm install
+          cache-only-lockfile: false
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Run tests with JUnit as reporter
+          command: ./node_modules/jest/bin/jest.js --coverage --ci
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+      - store_test_results:
+          path: ./reports/junit/
+      - store_artifacts:
+          path: ./reports/junit
+
+  release:
+    resource_class: small
+    docker:
+      - image: cimg/node:16.14
+    steps:
+      - checkout
+      - setup_snyk_user
+      - node/install-packages:
+          override-ci-command: npm install
+          cache-only-lockfile: false
+      - run:
+          name: Release on GitHub
+          command: npx semantic-release@16 --branches main
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test:
+          name: Test on node << matrix.node_version >>
+          context: nodejs-install
+          matrix:
+            parameters:
+              # https://github.com/snyk/cli/blob/b0b1344e1ab3c9ef9c6ff88edd3580017ca80c1e/.circleci/config.yml#L404
+              node_version: ['12.22.11', '14.19.1', '16.14.2']
+          filters:
+            branches:
+              ignore:
+                - main
+
+      - release:
+          name: Release
+          context: nodejs-lib-release
+          filters:
+            branches:
+              only:
+                - main

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/inset-text/_inset-text.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,mDAAmD;;AAEnD,iBAAiB","file":"_inset-text.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"inset-text\");\n\n@import \"./index\";\n"]}

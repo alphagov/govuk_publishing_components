@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/footer/_footer.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,+CAA+C;;AAE/C,iBAAiB","file":"_footer.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"footer\");\n\n@import \"./index\";\n"]}

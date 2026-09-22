@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/exit-this-page/_exit-this-page.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,uDAAuD;;AAEvD,iBAAiB","file":"_exit-this-page.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"exit-this-page\");\n\n@import \"./index\";\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/select/_select.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,+CAA+C;;AAE/C,iBAAiB","file":"_select.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"select\");\n\n@import \"./index\";\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/summary-list/_summary-list.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,qDAAqD;;AAErD,iBAAiB","file":"_summary-list.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"summary-list\");\n\n@import \"./index\";\n"]}

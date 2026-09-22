@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/govuk/custom-properties/_index.scss"],"names":[],"mappings":"AAAA,qBAAqB;AACrB,0BAA0B;AAC1B,4BAA4B","file":"_index.scss","sourcesContent":["@import \"breakpoints\";\n@import \"frontend-version\";\n@import \"functional-colours\";\n"]}
