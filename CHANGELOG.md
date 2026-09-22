@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove branding from subscription links component ([PR #5743](https://github.com/alphagov/govuk_publishing_components/pull/5743))
+
 ## 70.1.0
 
 * Add option to remove translation nav border ([PR #5741](https://github.com/alphagov/govuk_publishing_components/pull/5741))
