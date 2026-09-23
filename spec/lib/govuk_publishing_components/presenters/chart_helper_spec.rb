@@ -16,7 +16,15 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
         enableInteractivity: true,
         legend: {
           position: "top",
-          textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
+          textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
+          scrollArrows: {
+            activeColor: "#000",
+            inactiveColor: "#000",
+          },
+          pagingTextStyle: {
+            color: "#000",
+          },
+
         },
         pointSize: 8,
         height: 400,
