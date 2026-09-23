@@ -64,6 +64,10 @@ examples:
     data:
       text: Secondary solid button
       secondary_solid: true
+  print_button:
+    data:
+      text: Print this page
+      print_button: true
   destructive_button:
     data:
       text: Destructive button

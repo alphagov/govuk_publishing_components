@@ -75,6 +75,11 @@ describe "Button", type: :view do
     assert_select ".govuk-button--secondary"
   end
 
+  it "renders print button" do
+    render_component(text: "Print this page", print_button: true)
+    assert_select "button.gem-c-button--print", text: "Print this page"
+  end
+
   it "renders destructive button" do
     render_component(text: "Warning", href: "#", destructive: true)
     assert_select ".govuk-button--warning[href='#']", text: "Warning"
