@@ -8,7 +8,7 @@ describe('Print link', function () {
 
   beforeEach(function () {
     container = document.createElement('div')
-    container.innerHTML = '<button class="gem-c-print-link__button govuk-link" data-module="print-link">Print this page</button>'
+    container.innerHTML = '<button data-module="print-link">Print this page</button>'
 
     document.body.appendChild(container)
   })
