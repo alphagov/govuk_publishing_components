@@ -11,6 +11,7 @@
 
 * Remove subscription links feed link button ([PR #5745](https://github.com/alphagov/govuk_publishing_components/pull/5745))
 * Remove branding from subscription links component ([PR #5743](https://github.com/alphagov/govuk_publishing_components/pull/5743))
+* Update experimental chart design ([PR #5747](https://github.com/alphagov/govuk_publishing_components/pull/5747))
 
 ## 70.1.0
 
