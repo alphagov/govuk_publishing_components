@@ -32,14 +32,6 @@ examples:
       email_signup_link_text: 'Get notifications'
       feed_link: '/foreign-travel-advice/singapore.atom'
       feed_link_text: 'View feed'
-  with_copyable_feed_link:
-    description: |
-      This option changes the feed link to a toggle control, which opens a hidden element containing an input prepopulated with the value passed to the component, usually a URL to an atom feed. This uses the [form input](/component-guide/input) component.
-
-      Note that this option overrides the feed_link option, so if both are passed feed_link is ignored. Note that a value for email_signup_link can also be passed as normal.
-    data:
-      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
-      feed_link_box_value: 'https://www.gov.uk/government/organisations/attorney-generals-office.atom'
   with_data_attributes_on_links:
     description: Data attributes can be passed for each link as shown.
     data:
@@ -47,9 +39,9 @@ examples:
       email_signup_link_data_attributes: {
         an_attribute: some_value
       }
-      feed_link_box_value: 'https://www.gov.uk/government/organisations/attorney-generals-office.atom'
+      feed_link: '/foreign-travel-advice/singapore.atom'
       feed_link_data_attributes: {
-        an_attribute: some_value
+        an_attribute: some_other_value
       }
   as_small_form:
     data:

@@ -43,13 +43,6 @@ describe "subscription links", type: :view do
     assert_select ".gem-c-subscription-links__item[href=\"singapore.atom\"]", text: "View feed!"
   end
 
-  it "renders with a feed link box" do
-    render_component(feed_link_box_value: "http://www.gov.uk", feed_link: "singapore.atom")
-    assert_select ".gem-c-subscription-links[data-module=\"gem-toggle\"]"
-    assert_select ".gem-c-subscription-links__item[href=\"singapore.atom\"]", false
-    assert_select ".gem-c-subscription-links__feed-box input[name='feed-reader-box'][value='http://www.gov.uk']"
-  end
-
   it "adds small form modifier to the list of links" do
     render_component(email_signup_link: "email-signup", feed_link: "singapore.atom", small_form: true)
     assert_select ".gem-c-subscription-links__list--small"
