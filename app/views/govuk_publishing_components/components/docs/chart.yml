@@ -186,6 +186,72 @@ examples:
             - 1
             - 1
             - 2
+  bar_chart_with_lots_of_data:
+    data:
+      header_three_quarters: true
+      chart_type: column
+      heading: "Chart 6: Vehicle miles travelled by vehicle type in Great Britain, 2019 to 2025"
+      h_axis_title: Vehicle Type
+      v_axis_title: Billion Vehicle Miles
+      description: Chart 6 is a bar chart that shows that car traffic levels in 2025 increased by 2.5% from 2024, and were similar to pre-pandemic (2019) levels.
+      hide_legend: true
+      source: Department for Transport
+      keys:
+        - Cars
+        - Vans
+        - Lorries
+        - Motorcycles
+        - Buses
+      rows:
+        - label: 2019
+          values:
+            - 250
+            - 51
+            - 15
+            - 3
+            - 5
+        - label: 2020
+          values:
+            - 200
+            - 45
+            - 13
+            - 1
+            - 1
+        - label: 2021
+          values:
+            - 220
+            - 50
+            - 13
+            - 1
+            - 1
+        - label: 2022
+          values:
+            - 240
+            - 50
+            - 15
+            - 1
+            - 1
+        - label: 2023
+          values:
+            - 245
+            - 50
+            - 13
+            - 1
+            - 1
+        - label: 2024
+          values:
+            - 247
+            - 50
+            - 11
+            - 1
+            - 1
+        - label: 2025
+          values:
+            - 250
+            - 50
+            - 10
+            - 1
+            - 1
   column_chart:
     data:
       chart_type: "column"

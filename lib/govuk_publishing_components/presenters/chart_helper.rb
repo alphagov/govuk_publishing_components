@@ -62,14 +62,14 @@ module GovukPublishingComponents
         # For charts, the palette should be used instead of the GOV.UK colour palette - https://design-system.service.gov.uk/styles/colour/
         # https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5
 
-        gss_colour_dark_blue = "#12436d"
-        gss_colour_turquoise = "#1bbbaf"
-        gss_colour_dark_pink = "#801650"
-        gss_colour_orange = "#f46a25"
-        gss_colour_dark_grey = "#3d3d3d"
-        gss_colour_plum = "#a285d1"
+        chart_blue_shade_50 = "#0f385c"
+        chart_teal_tint_25 = "#50a1a5"
+        chart_magenta_shade_25 = "#98285d"
+        chart_primary_orange = "#f47738"
+        chart_green_shade_50 = "#083d29"
+        chart_accent_purple = "#ba4aff"
 
-        [gss_colour_dark_blue, gss_colour_turquoise, gss_colour_dark_pink, gss_colour_orange, gss_colour_dark_grey, gss_colour_plum]
+        [chart_blue_shade_50, chart_teal_tint_25, chart_magenta_shade_25, chart_primary_orange, chart_green_shade_50, chart_accent_purple]
       end
 
       def chart_format_data
@@ -86,7 +86,19 @@ module GovukPublishingComponents
     private
 
       def legend_options
-        return { position: "top", textStyle: set_font_16 } unless @hide_legend
+        unless @hide_legend
+          return {
+            position: "top",
+            textStyle: set_font_19,
+            scrollArrows: {
+              activeColor: "#000",
+              inactiveColor: "#000",
+            },
+            pagingTextStyle: {
+              color: "#000",
+            },
+          }
+        end
 
         "none"
       end
