@@ -80,13 +80,13 @@
                 <td class="govuk-table__cell"></td>
                 <% if table_direction == "horizontal" %>
                   <% keys.each do |key| %>
-                    <th class="govuk-table__header" scope="col">
+                    <th class="govuk-table__header govuk-table__cell--numeric" scope="col">
                       <%= key %>
                     </th>
                   <% end %>
                 <% else %>
                   <% rows.each do |row| %>
-                    <th class="govuk-table__header govuk-table__header--stacked" scope="row">
+                    <th class="govuk-table__header govuk-table__header--stacked govuk-table__cell--numeric" scope="row">
                       <%= row[:label] %>
                     </th>
                   <% end %>

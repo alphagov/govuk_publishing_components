@@ -15,8 +15,17 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
         curveType: "none",
         enableInteractivity: true,
         legend: {
+          alignment: "start",
           position: "top",
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
+          scrollArrows: {
+            activeColor: "#000",
+            inactiveColor: "#000",
+          },
+          pagingTextStyle: {
+            color: "#000",
+          },
+          maxLines: 4,
         },
         pointSize: 8,
         height: 400,
@@ -25,13 +34,13 @@ RSpec.describe GovukPublishingComponents::Presenters::ChartHelper do
         hAxis: {
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           title: "Day",
-          titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
+          titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           format: nil,
         },
         vAxis: {
           textStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           title: "Views",
-          titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "19", italic: false },
+          titleTextStyle: { color: "#000", fontName: "GDS Transport", fontSize: "16", italic: false },
           format: nil,
           viewWindow: {
             min: 0,
