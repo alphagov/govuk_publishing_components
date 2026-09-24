@@ -1,8 +1,13 @@
 // This file contains the styles for the Component Guide.
 @use "sass:color";
+@use "sass:meta";
+
+@use "../govuk_publishing_components/settings/app-font-url" as *;
+
 @use "govuk" as * with (
   $govuk-output-custom-properties: true,
-  $govuk-fonts-path: "/assets/",
+  // $govuk-fonts-path: "/assets/",
+  $govuk-font-url-function: meta.get-function("app-font-url"),
   $govuk-images-path: "/assets/",
 );
 
