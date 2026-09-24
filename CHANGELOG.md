@@ -11,6 +11,7 @@
 
 * Remove subscription links feed link button ([PR #5745](https://github.com/alphagov/govuk_publishing_components/pull/5745))
 * Remove branding from subscription links component ([PR #5743](https://github.com/alphagov/govuk_publishing_components/pull/5743))
+* Remove extra underline on dismiss link text ([PR #5749](https://github.com/alphagov/govuk_publishing_components/pull/5749))
 
 ## 70.1.0
 

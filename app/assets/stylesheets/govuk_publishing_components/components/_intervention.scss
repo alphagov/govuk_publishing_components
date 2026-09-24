@@ -10,6 +10,18 @@
   }
 }
 
+.gem-c-intervention__dismiss-link-text {
+  text-decoration: underline;
+}
+
+.gem-c-intervention__dismiss-link-text:hover {
+  text-decoration-thickness: max(3px, .1875rem, .12em); // Same as .govuk-link
+}
+
+.gem-c-intervention__dismiss-link:focus .gem-c-intervention__dismiss-link-text, .gem-c-intervention__dismiss-link:hover {
+  text-decoration: none;
+}
+
 .gem-c-intervention--image {
   border-left: 0;
   display: flex;
