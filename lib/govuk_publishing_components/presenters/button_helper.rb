@@ -20,6 +20,7 @@ module GovukPublishingComponents
                   :secondary_quiet,
                   :secondary_solid,
                   :print_button,
+                  :notification_button,
                   :destructive,
                   :name,
                   :value,
@@ -53,6 +54,7 @@ module GovukPublishingComponents
         @secondary_quiet = local_assigns[:secondary_quiet]
         @secondary_solid = local_assigns[:secondary_solid]
         @print_button = local_assigns[:print_button]
+        @notification_button = local_assigns[:notification_button]
         @destructive = local_assigns[:destructive]
         @name = local_assigns[:name]
         @value = local_assigns[:value]
@@ -128,7 +130,8 @@ module GovukPublishingComponents
         css_classes << "govuk-button--secondary" if secondary_solid
         css_classes << "govuk-button--warning" if destructive
 
-        css_classes = %w[gem-c-button--print] if print_button
+        css_classes = %w[gem-c-button__outline gem-c-button__outline--print] if print_button
+        css_classes = %w[gem-c-button__outline gem-c-button__outline--notification] if notification_button
 
         if margin_bottom && !info_text
           margin_class = get_margin_bottom(margin_bottom, false)

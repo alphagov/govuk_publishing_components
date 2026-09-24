@@ -101,24 +101,20 @@
   }
 }
 
-.gem-c-button--print {
+.gem-c-button__outline {
   $gem-c-button-icon-background-width: 16px;
   $gem-c-button-icon-background-height: 18px;
 
   border: 1px solid govuk-colour("black", $variant: "tint-25");
   color: govuk-functional-colour(link);
   cursor: pointer;
-  background: url("govuk_publishing_components/icon-print.png") no-repeat govuk-spacing(2) 50%;
+  background: no-repeat govuk-spacing(2) 50%;
   background-size: $gem-c-button-icon-background-width $gem-c-button-icon-background-height;
   margin: govuk-spacing(0);
   padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) (govuk-spacing(4) + $gem-c-button-icon-background-width);
   text-decoration: none;
   box-shadow: none;
   @include govuk-font(16);
-
-  @include govuk-device-pixel-ratio($ratio: 2) {
-    background-image: url("govuk_publishing_components/icon-print-2x.png");
-  }
 
   &:hover {
     color: govuk-colour("black");
@@ -131,6 +127,19 @@
     border-color: transparent;
     @include govuk-focused-text;
   }
+}
+
+.gem-c-button__outline--print {
+  background-image: url("govuk_publishing_components/icon-print.png");
+
+  @include govuk-device-pixel-ratio($ratio: 2) {
+    background-image: url("govuk_publishing_components/icon-print-2x.png");
+  }
+}
+
+.gem-c-button__outline--notification {
+  background-image: url("govuk_publishing_components/icon-notification.svg");
+  background-size: 18px 20px;
 }
 
 @include govuk-media-query($media-type: print) {
