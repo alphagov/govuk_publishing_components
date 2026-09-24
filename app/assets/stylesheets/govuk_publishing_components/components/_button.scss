@@ -102,7 +102,7 @@
 }
 
 .gem-c-button__outline {
-  $gem-c-button-icon-background-width: 16px;
+  $gem-c-button-icon-background-width: 18px;
   $gem-c-button-icon-background-height: 18px;
 
   border: 1px solid govuk-colour("black", $variant: "tint-25");
@@ -130,16 +130,11 @@
 }
 
 .gem-c-button__outline--print {
-  background-image: url("govuk_publishing_components/icon-print.png");
-
-  @include govuk-device-pixel-ratio($ratio: 2) {
-    background-image: url("govuk_publishing_components/icon-print-2x.png");
-  }
+  background-image: url("govuk_publishing_components/icon-print.svg");
 }
 
 .gem-c-button__outline--notification {
   background-image: url("govuk_publishing_components/icon-notification.svg");
-  background-size: 18px 20px;
 }
 
 @include govuk-media-query($media-type: print) {
