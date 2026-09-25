@@ -1,7 +1,6 @@
 module GovukPublishingComponents
   class ComponentGuideController < GovukPublishingComponents::ApplicationController
     append_view_path Rails.root.join("app", "views", GovukPublishingComponents::Config.component_directory_name).to_s
-    append_view_path Rails.root.join("app", "views", GovukPublishingComponents::Config.flexible_sections_directory_name).to_s
 
     MATCH_COMPONENTS = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
 
@@ -14,45 +13,29 @@ module GovukPublishingComponents
       @unused_components = unused_components_names.get_component_docs
       @components_in_use_sass = components_in_use_sass
       @components_in_use_js = components_in_use_js
-      @flexible_section_docs = flexible_section_docs.all
     end
 
     def show
-      if params[:flexible_section]
-        @component_doc = flexible_section_docs.get(params[:flexible_section])
-        @example_path = flexible_section_example_path(@component_doc.id, "default")
-        @preview_path = flexible_section_preview_path(@component_doc.id, "default")
-        @preview_all_path = flexible_section_preview_all_path(@component_doc.id)
-
-        @guide_breadcrumbs = [index_breadcrumb, flexible_section_breadcrumb(@component_doc)]
-      else
-        @component_doc = component_docs.get(params[:component])
-        @example_path = component_example_path(@component_doc.id, "default")
-        @preview_path = component_preview_path(@component_doc.id, "default")
-        @preview_all_path = component_preview_all_path(@component_doc.id)
-
-        @guide_breadcrumbs = [index_breadcrumb, component_breadcrumb(@component_doc)]
-      end
+      @component_doc = component_docs.get(params[:component])
+      @guide_breadcrumbs = [index_breadcrumb, component_breadcrumb(@component_doc)]
     end
 
     def example
-      @component_doc = params[:flexible_section] ? flexible_section_docs.get(params[:flexible_section]) : component_docs.get(params[:component])
+      @component_doc = component_docs.get(params[:component])
       @component_example = @component_doc.examples.find { |f| f.id == params[:example] }
 
-      @guide_breadcrumbs = [index_breadcrumb]
-      if params[:flexible_section]
-        @preview_path = flexible_section_preview_path(@component_doc.id, @component_example.id)
-        @guide_breadcrumbs << flexible_section_breadcrumb(@component_doc, @component_example)
-      else
-        @preview_path = component_preview_path(@component_doc.id, @component_example.id)
-        @guide_breadcrumbs << component_breadcrumb(@component_doc, @component_example)
-      end
-      @guide_breadcrumbs << { title: @component_example.name }
+      @guide_breadcrumbs = [
+        index_breadcrumb,
+        component_breadcrumb(@component_doc, @component_example),
+        {
+          title: @component_example.name,
+        },
+      ]
     end
 
     def preview
       @component_examples = []
-      @component_doc = params[:flexible_section] ? flexible_section_docs.get(params[:flexible_section]) : component_docs.get(params[:component])
+      @component_doc = component_docs.get(params[:component])
       @preview = true
 
       if params[:example].present?
@@ -89,10 +72,6 @@ module GovukPublishingComponents
 
     def gem_component_docs
       @gem_component_docs ||= ComponentDocs.new(gem_components: true)
-    end
-
-    def flexible_section_docs
-      @flexible_section_docs ||= ComponentDocs.new(flexible_sections: true)
     end
 
     def used_components_names
@@ -186,13 +165,6 @@ module GovukPublishingComponents
       {}.tap do |h|
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
-      end
-    end
-
-    def flexible_section_breadcrumb(component_doc, component_example = nil)
-      {}.tap do |h|
-        h[:title] = "#{component_doc.name} (flexible section)"
-        h[:url] = flexible_section_doc_path(component_doc.id) if component_example
       end
     end
   end
