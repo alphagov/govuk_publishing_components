@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Improve GA4's date and NI number PII redaction ([PR #5754](https://github.com/alphagov/govuk_publishing_components/pull/5754))
+
 ## 70.2.0
 
 * Add tracking to metadata details ([PR #5751](https://github.com/alphagov/govuk_publishing_components/pull/5751))

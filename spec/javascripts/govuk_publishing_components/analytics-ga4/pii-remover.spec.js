@@ -275,6 +275,16 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
     }
   })
 
+  it('does not count certain 8 digit combinations as dates', function () {
+    var digits = ['01011776', '01011000', '12345678', '11223333', '00000000', '11111111', '22222222', '33333333', '44444444', '55555555', '66666666', '77777777', '88888888', '99999999']
+
+    for (var i = 0; i < digits.length; i++) {
+      const date = digits[i]
+      const string = pii.stripPIIWithOverride(date, true, true)
+      expect(string).toEqual(string)
+    }
+  })
+
   describe('national insurance numbers', function () {
     it('are stripped if they are valid NI numbers', function () {
       // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
@@ -301,12 +311,21 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
       }
     })
 
-    it('are stripped even if they are surrounded by other text', function () {
+    it('are stripped even if they are surrounded by query strings', function () {
       // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
       for (var i = 0; i < 50; i++) {
         var testNumber = '?query_string=' + generateNINumber(true, false) + '&other_value=hello'
         var redacted = pii.stripPIIWithOverride(testNumber, false, false)
         expect(redacted).toEqual('?query_string=[ni number]&other_value=hello')
+      }
+    })
+
+    it('are not stripped if they are surrounded by adjacent text', function () {
+      // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
+      for (var i = 0; i < 50; i++) {
+        var testNumber = 'SomeRandomIDCharacters' + generateNINumber(true, false) + 'SomeMoreRandomIDCharacters'
+        var redacted = pii.stripPIIWithOverride(testNumber, false, false)
+        expect(redacted).toEqual(testNumber)
       }
     })
 
