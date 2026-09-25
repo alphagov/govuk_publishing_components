@@ -7,22 +7,37 @@ describe('cookieSettings', function () {
     confirmationContainer,
     fakePreviousURL
 
+  // default cookie consent to use as basis of comparison
+  var DEFAULT_COOKIE_CONSENT = '{"essential":true,"settings":false,"usage":false,"campaigns":false,"aggregate":true}'
+  // all consent cookie to use as a basis of comparison
+  var ALL_COOKIE_CONSENT = '{"essential":true,"settings":true,"usage":true,"campaigns":true,"aggregate":false}'
+  // previous version of the all consent cookie to use as a basis of comparison
+  var ALL_COOKIE_CONSENT_USAGE_NO_AGGREGATE = '{"essential":true,"settings":true,"usage":true,"campaigns":true}'
+
   beforeEach(function () {
     GOVUK.Modules.CookieSettings.prototype.getReferrerLink = function () {
       return fakePreviousURL
     }
 
     container = document.createElement('div')
-    container.innerHTML =
-      '<form data-module="cookie-settings">' +
-        '<input type="radio" id="settings-on" name="cookies-settings" value="on">' +
-        '<input type="radio" id="settings-off" name="cookies-settings" value="off">' +
-        '<input type="radio" id="usage-on" name="cookies-usage" value="on">' +
-        '<input type="radio" id="usage-off" name="cookies-usage" value="off">' +
-        '<input type="radio" name="cookies-campaigns" value="on">' +
-        '<input type="radio" name="cookies-campaigns" value="off">' +
-        '<button id="submit-button" type="submit">Submit</button>' +
-      '</form>'
+    container.innerHTML = `
+      <form data-module="cookie-settings">
+        <fieldset>
+          <input type="radio" id="settings-on" name="cookies-settings" value="on">
+          <input type="radio" id="settings-off" name="cookies-settings" value="off" checked>
+        </fieldset>
+        <fieldset>
+          <input type="radio" id="usage-on" name="cookies-usage" value="on">
+          <input type="radio" id="usage-aggregate" name="cookies-usage" value="aggregate" checked>
+          <input type="radio" id="usage-off" name="cookies-usage" value="off">
+        </fieldset>
+        <fieldset>
+          <input type="radio" id="campaigns-on" name="cookies-campaigns" value="on">
+          <input type="radio" id="campaigns-off" name="cookies-campaigns" value="off" checked>
+        <fieldset>
+        <button id="submit-button" type="submit">Submit</button>
+      </form>
+    `
 
     document.body.appendChild(container)
 
@@ -40,19 +55,77 @@ describe('cookieSettings', function () {
   afterEach(function () {
     document.body.removeChild(container)
     document.body.removeChild(confirmationContainer)
+    window.GOVUK.deleteCookie('cookies_policy')
   })
 
   describe('setInitialFormValues', function () {
-    it('sets a consent cookie by default', function () {
+    it('sets a default `cookie_policy` consent cookie if not previously set', function () {
       GOVUK.cookie('cookies_policy', null)
       spyOn(window.GOVUK, 'setDefaultConsentCookie').and.callThrough()
 
       new GOVUK.Modules.CookieSettings(element).init()
 
       expect(window.GOVUK.setDefaultConsentCookie).toHaveBeenCalled()
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+    })
+
+    it('does not update the `cookie_policy` cookie to the default values if previously set', function () {
+      GOVUK.cookie('cookies_policy', ALL_COOKIE_CONSENT)
+      spyOn(window.GOVUK, 'setDefaultConsentCookie').and.callThrough()
+
+      new GOVUK.Modules.CookieSettings(element).init()
+
+      expect(window.GOVUK.setDefaultConsentCookie).not.toHaveBeenCalled()
+      expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
     })
 
     it('sets all radio buttons to the default values', function () {
+      new GOVUK.Modules.CookieSettings(element).init()
+
+      var checkedRadioButtons = element.querySelectorAll('input[type=radio]:checked')
+      var consentCookieJSON = window.GOVUK.getConsentCookie()
+
+      for (var radioButton of checkedRadioButtons) {
+        var name = radioButton.name.replace('cookies-', '')
+
+        if (radioButton.value === 'aggregate') {
+          expect(consentCookieJSON.aggregate).toEqual(true)
+          expect(consentCookieJSON.usage).toEqual(false)
+        } else {
+          expect(consentCookieJSON[name]).toEqual(radioButton.value === 'on')
+        }
+      }
+    })
+
+    it('sets all radio buttons to the all cookie consent values', function () {
+      GOVUK.cookie('cookies_policy', ALL_COOKIE_CONSENT)
+      new GOVUK.Modules.CookieSettings(element).init()
+
+      var checkedRadioButtons = element.querySelectorAll('input[type=radio]:checked')
+      var consentCookieJSON = window.GOVUK.getConsentCookie()
+
+      for (var radioButton of checkedRadioButtons) {
+        var name = radioButton.name.replace('cookies-', '')
+
+        if (radioButton.value === 'aggregate') {
+          expect(consentCookieJSON.aggregate).toEqual(true)
+          expect(consentCookieJSON.usage).toEqual(false)
+        } else {
+          expect(consentCookieJSON[name]).toEqual(radioButton.value === 'on')
+        }
+      }
+    })
+
+    it('does not error if not all form options are present', function () {
+      window.GOVUK.setDefaultConsentCookie()
+      element.innerHTML = `
+        <form data-module="cookie-settings">
+          <input type="radio" id="settings-on" name="cookies-settings" value="on">
+          <input type="radio" id="settings-off" name="cookies-settings" value="off">
+          <button id="submit-button" type="submit">Submit</button>
+        </form>
+      `
+
       new GOVUK.Modules.CookieSettings(element).init()
 
       var radioButtons = element.querySelectorAll('input[value=on]')
@@ -69,28 +142,16 @@ describe('cookieSettings', function () {
       }
     })
 
-    it('does not error if not all options are present', function () {
-      window.GOVUK.setDefaultConsentCookie()
-      element.innerHTML =
-      '<form data-module="cookie-settings">' +
-        '<input type="radio" id="settings-on" name="cookies-settings" value="on">' +
-        '<input type="radio" id="settings-off" name="cookies-settings" value="off">' +
-        '<button id="submit-button" type="submit">Submit</button>' +
-      '</form>'
-
+    it('sets usage radio options correctly when the aggregate key is missing from the policy', function () {
+      GOVUK.cookie('cookies_policy', ALL_COOKIE_CONSENT_USAGE_NO_AGGREGATE)
       new GOVUK.Modules.CookieSettings(element).init()
 
-      var radioButtons = element.querySelectorAll('input[value=on]')
-      var consentCookieJSON = JSON.parse(window.GOVUK.cookie('cookies_policy'))
+      var checkedRadioButtons = element.querySelectorAll('input[type=radio]:checked')
+      var consentCookieJSON = window.GOVUK.getConsentCookie()
 
-      for (var i = 0; i < radioButtons.length; i++) {
-        var name = radioButtons[i].name.replace('cookies-', '')
-
-        if (consentCookieJSON[name]) {
-          expect(radioButtons[i].checked).toBeTruthy()
-        } else {
-          expect(radioButtons[i].checked).not.toBeTruthy()
-        }
+      for (var radioButton of checkedRadioButtons) {
+        var name = radioButton.name.replace('cookies-', '')
+        expect(consentCookieJSON[name]).toEqual(radioButton.value === 'on')
       }
     })
   })
@@ -109,7 +170,7 @@ describe('cookieSettings', function () {
 
       var cookie = JSON.parse(GOVUK.cookie('cookies_policy'))
 
-      expect(window.GOVUK.setConsentCookie).toHaveBeenCalledWith({ settings: false, usage: false, campaigns: false })
+      expect(window.GOVUK.setConsentCookie).toHaveBeenCalledWith({ settings: false, usage: false, campaigns: false, aggregate: true })
       expect(cookie.settings).toBeFalsy()
     })
 
@@ -180,6 +241,22 @@ describe('cookieSettings', function () {
       button.click()
 
       expect(confirmationMessage.style.display).toEqual('block')
+    })
+  })
+
+  describe('selectAggregateRadioButton', function () {
+    var cookieSettingsModule = new GOVUK.Modules.CookieSettings()
+
+    it('returns false when the cookie type is not aggregate', function () {
+      expect(cookieSettingsModule.selectAggregateRadioButton('notaggregate', { aggregate: true, usage: false })).toBe(false)
+    })
+
+    it('returns true when the cookie type is aggregate and only aggregate permission is true', function () {
+      expect(cookieSettingsModule.selectAggregateRadioButton('aggregate', { aggregate: true, usage: false })).toBe(true)
+    })
+
+    it('returns false when the cookie type is aggregate and usage permission is true', function () {
+      expect(cookieSettingsModule.selectAggregateRadioButton('aggregate', { aggregate: true, usage: true })).toBe(false)
     })
   })
 })
