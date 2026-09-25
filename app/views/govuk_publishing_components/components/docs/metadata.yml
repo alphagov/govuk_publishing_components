@@ -42,6 +42,8 @@ examples:
       This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history. It also includes a hidden H2 heading of 'Updates to this page'. This heading will not be included if one is passed to the component using the `title` option.
 
       This example includes an expandable 'part of' section to show both toggling elements working together in one component instance.
+
+      GA4 attributes can also be passed to the 'Show all updates' details component to override the default tracking attributes on that component using `page_history_details_ga4`.
     data:
       border_top: true
       part_of:
@@ -68,6 +70,8 @@ examples:
       - display_time: 14th October 2000
         note: Updated information on pupil premium reviews and what information schools need to publish on their websites.
         timestamp: 2000-10-14T15:42:37.000+00:00
+      page_history_details_ga4:
+        section: Footer
   extensive:
     data:
       from:

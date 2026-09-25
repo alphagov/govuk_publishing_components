@@ -296,11 +296,19 @@ describe "Metadata", type: :view do
     end
   end
 
+  it "allows GA4 tracking to be passed to the page history details component" do
+    render_component(last_updated: "Hello World", page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }], page_history_details_ga4: { section: "Footer", type: "content history" })
+
+    assert_select ".govuk-details__summary[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"content history\",\"text\":\"Show all updates\",\"section\":\"Footer\",\"index_section\":1}']"
+  end
+
   it "allows GA4 tracking to be disabled" do
-    render_component(last_updated: "Hello World", see_updates_link: true, disable_ga4: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
+    render_component(last_updated: "Hello World", see_updates_link: true, disable_ga4: true, page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }], other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
 
     assert_select ".js-see-all-updates-link[data-module='ga4-link-tracker']", false
     assert_select ".gem-c-metadata__definition:nth-of-type(2)[data-module='ga4-link-tracker']", false
+    assert_select ".govuk-details__summary"
+    assert_select ".govuk-details__summary[data-module='ga4-event-tracker']", false
   end
 
   it "renders the component with a title" do

@@ -9,6 +9,7 @@
 
   page_history ||= []
   page_history = Array(page_history)
+  page_history_details_ga4 ||= {}
 
   history ||= nil
   first_published ||= nil
@@ -89,6 +90,8 @@
                 title: t("components.metadata.show_all_updates", locale: :en),
                 small: true,
                 inverse: inverse,
+                ga4_attributes: page_history_details_ga4,
+                disable_ga4: disable_ga4,
               } do %>
                 <ol class="gem-c-metadata__change-history">
                   <% page_history.each do |change| %>
