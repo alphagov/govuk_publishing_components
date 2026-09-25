@@ -1,3 +1,8 @@
+// @use "govuk" as *;
+// @use "govuk_publishing_components/components/helpers/colours" as *;
+
+@use "../base" as *;
+
 .gem-c-app-promo-banner {
   display: none;
   padding: govuk-spacing(5) 0;

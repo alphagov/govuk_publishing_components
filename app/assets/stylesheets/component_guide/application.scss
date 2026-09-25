@@ -1,9 +1,22 @@
 // This file contains the styles for the Component Guide.
 @use "sass:color";
-@import "govuk_publishing_components/all-components";
+@use "sass:meta";
+
+@use "../govuk_publishing_components/settings/app-font-url" as *;
+@use "../govuk_publishing_components/settings/app-image-url" as *;
+
+@use "govuk" as * with (
+  $govuk-output-custom-properties: true,
+  // $govuk-fonts-path: "/assets/",
+  $govuk-font-url-function: meta.get-function("app-font-url"),
+  $govuk-image-url-function: meta.get-function("app-image-url"),
+  // $govuk-images-path: "/assets/",
+);
+
+@use "govuk_publishing_components/all-components";
 
 // Include required helpers
-@import "../../stylesheets/govuk_publishing_components/components/helpers/markdown-typography";
+@use "../../stylesheets/govuk_publishing_components/components/helpers/markdown-typography" as *;
 
 $gem-guide-border-width: 1px;
 

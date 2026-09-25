@@ -1,5 +1,8 @@
 // overload the choices.js variables
 
+@use "../base" as *;
+@use "govuk/components/label";
+
 $font-size: 19px;
 
 $choices-bg-color: govuk-colour("white") !default;
@@ -14,7 +17,8 @@ $choices-border-radius-item: 0 !default;
 $choices-z-index: 2 !default;
 $choices-button-dimension: 12px !default;
 
-@import "govuk/components/label";
+// Choices can't be loaded as a Sass module, so it needs to be imported instead.
+// https://github.com/Choices-js/Choices#cssscss
 @import "choices.js/src/styles/choices";
 
 .gem-c-select-with-search {
