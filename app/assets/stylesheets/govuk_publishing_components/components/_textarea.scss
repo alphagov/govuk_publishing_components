@@ -1,4 +1,4 @@
-@import "govuk/components/textarea";
+@use "../base" as *;@use "govuk/components/textarea";
 
 .gem-c-textarea {
   .govuk-textarea {

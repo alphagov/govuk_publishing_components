@@ -2,6 +2,6 @@
 // so that it can be imported into any CSS file
 
 @forward "settings/index"; // forwards nothing at the moment
-@forward "govuk";
+@forward "govuk/base";
 @forward "govuk_publishing_components/components/helpers/colours";
 @forward "govuk_publishing_components/components/mixins/index";

@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 $govuk-modal-margin: govuk-spacing(6);
 $govuk-modal-close-button-size: 44px;
 $govuk-modal-z-index: 1000;
