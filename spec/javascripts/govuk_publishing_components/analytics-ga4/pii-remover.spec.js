@@ -311,12 +311,21 @@ describe('GOVUK.analyticsGa4.PIIRemover', function () {
       }
     })
 
-    it('are stripped even if they are surrounded by other text', function () {
+    it('are stripped even if they are surrounded by query strings', function () {
       // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
       for (var i = 0; i < 50; i++) {
         var testNumber = '?query_string=' + generateNINumber(true, false) + '&other_value=hello'
         var redacted = pii.stripPIIWithOverride(testNumber, false, false)
         expect(redacted).toEqual('?query_string=[ni number]&other_value=hello')
+      }
+    })
+
+    it('are not stripped if they are surrounded by adjacent text', function () {
+      // Generate 50 random NI numbers so we aren't storing any actual ones in the code.
+      for (var i = 0; i < 50; i++) {
+        var testNumber = 'SomeRandomIDCharacters' + generateNINumber(true, false) + 'SomeMoreRandomIDCharacters'
+        var redacted = pii.stripPIIWithOverride(testNumber, false, false)
+        expect(redacted).toEqual(testNumber)
       }
     })
 
