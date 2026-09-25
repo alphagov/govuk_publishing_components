@@ -10,8 +10,8 @@
   // e.g. 1990/01/01 or 1990-01-01 or 1990-1-1 or 1990/1/1 or 1990\1\1 or 1990\01\01
   var DATE_PATTERN_NUMERIC_2 = /\d{4}([-\/\\])\d{1,2}([-\/\\])\d{1,2}/g // eslint-disable-line no-useless-escape
 
-  // e.g. 12345678 (This originated from the UA PII Remover)
-  var DATE_PATTERN_NUMERIC_3 = /[0-9]{8}/g
+  // e.g. Matches 8 digit date strings in either DDMMYYYY or YYYYMMDD format, constrained to years between 1900 and 2099.
+  const DATE_PATTERN_NUMERIC_3 = /\b(?:(?:0[1-9]|[12]\d|3[01])(?:0[1-9]|1[0-2])(?:19|20)\d{2}|(?:19|20)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01]))\b/g
 
   // e.g. 1(st) (of) Jan(uary) 1990 (or 90 or '90) - where the bracketed characters are optional parts that can be matched
   var DATE_PATTERN_STRING_1 = /\d{1,2}(?:st|nd|rd|th)?\s(?:of\s)?(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t)?(?:ember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s(?:')?(\d{4}|\d{2})/gi
