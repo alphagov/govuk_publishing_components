@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-related-navigation {
   border-top: 2px solid govuk-colour("blue");
   margin-bottom: govuk-spacing(9);

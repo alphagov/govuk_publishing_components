@@ -6,7 +6,8 @@
 // - alphagov/whitehall: ✔︎
 // - alphagov/govspeak: ✔︎
 
-@import "govuk/components/warning-text";
+@use "../../base" as *;
+@use "govuk/components/warning-text";
 
 // stylelint-disable max-nesting-depth
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
