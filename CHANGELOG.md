@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 70.2.0
 
 * Add tracking to metadata details ([PR #5751](https://github.com/alphagov/govuk_publishing_components/pull/5751))
 * Rework button styles ([PR #5748](https://github.com/alphagov/govuk_publishing_components/pull/5748))
