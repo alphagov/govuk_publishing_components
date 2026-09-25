@@ -3,12 +3,14 @@
 @use "sass:meta";
 
 @use "../govuk_publishing_components/settings/app-font-url" as *;
+@use "../govuk_publishing_components/settings/app-image-url" as *;
 
 @use "govuk" as * with (
   $govuk-output-custom-properties: true,
   // $govuk-fonts-path: "/assets/",
   $govuk-font-url-function: meta.get-function("app-font-url"),
-  $govuk-images-path: "/assets/",
+  $govuk-image-url-function: meta.get-function("app-image-url"),
+  // $govuk-images-path: "/assets/",
 );
 
 @use "govuk_publishing_components/all-components";
