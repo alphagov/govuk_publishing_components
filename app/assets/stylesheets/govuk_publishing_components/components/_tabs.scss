@@ -1,4 +1,5 @@
-@import "govuk/components/tabs";
+@use "../base" as *;
+@use "govuk/components/tabs";
 
 .govuk-frontend-supported {
   .gem-c-tabs__panel--no-border {

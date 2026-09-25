@@ -1,4 +1,5 @@
-@import "govuk/components/summary-list";
+@use "../base" as *;
+@use "govuk/components/summary-list";
 
 .gem-c-summary-list {
   margin-bottom: govuk-spacing(6);
