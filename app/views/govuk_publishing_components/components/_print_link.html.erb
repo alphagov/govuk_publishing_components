@@ -2,7 +2,7 @@
   text ||= t("components.print_link.text")
   href ||= nil
   child_data_attributes ||= {}
-  require_js ||= href.nil?
+  require_js = href.nil?
   local_assigns[:margin_bottom] ||= 3
 
   ((child_data_attributes[:module] ||= "") << " " << (require_js ? "print-link" : "button")).strip!
@@ -16,19 +16,13 @@
   component_helper.add_class("gem-c-print-link--show-without-js") unless require_js
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
-  <% if require_js %>
-    <%= content_tag(:button, text, {
-        class: child_classes,
-        data: child_data_attributes,
-    }) %>
-  <% else %>
-    <%= link_to(
-      text,
-      href,
-      class: child_classes,
-      rel: "alternate",
-      data: child_data_attributes,
-      role: "button",
-    ) %>
-  <% end %>
+  <%= render "govuk_publishing_components/components/button", {
+    text: text,
+    href: href,
+    type: "button",
+    print_button: true,
+    data_attributes: child_data_attributes,
+    rel: "alternate",
+    margin_bottom: 0,
+  } %>
 <% end %>

@@ -37,11 +37,11 @@
             // If response returns active, user has subscribed to notifications
             if (active === true) {
               if (customText) {
-                this.$module.querySelector('.gem-c-single-page-notication-button__text').textContent = customUnsubscribeText
+                this.$module.querySelector('.gem-c-button__outline--notification').textContent = customUnsubscribeText
               }
             } else {
               if (customText) {
-                this.$module.querySelector('.gem-c-single-page-notication-button__text').textContent = customSubscribeText
+                this.$module.querySelector('.gem-c-button__outline--notification').textContent = customSubscribeText
               }
             }
           }

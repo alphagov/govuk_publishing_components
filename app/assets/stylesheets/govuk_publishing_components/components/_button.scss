@@ -101,6 +101,42 @@
   }
 }
 
+.gem-c-button__outline {
+  $gem-c-button-icon-background-width: 18px;
+  $gem-c-button-icon-background-height: 18px;
+
+  border: 1px solid govuk-colour("black", $variant: "tint-25");
+  color: govuk-functional-colour(link);
+  cursor: pointer;
+  background: no-repeat govuk-spacing(2) 50%;
+  background-size: $gem-c-button-icon-background-width $gem-c-button-icon-background-height;
+  margin: govuk-spacing(0);
+  padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) (govuk-spacing(4) + $gem-c-button-icon-background-width);
+  text-decoration: none;
+  box-shadow: none;
+  @include govuk-font(16);
+
+  &:hover {
+    color: govuk-colour("black");
+    background-color: govuk-colour("black", $variant: "tint-95");
+  }
+
+  &:focus,
+  &:active {
+    background-color: govuk-functional-colour(focus);
+    border-color: transparent;
+    @include govuk-focused-text;
+  }
+}
+
+.gem-c-button__outline--print {
+  background-image: url("govuk_publishing_components/icon-print.svg");
+}
+
+.gem-c-button__outline--notification {
+  background-image: url("govuk_publishing_components/icon-notification.svg");
+}
+
 @include govuk-media-query($media-type: print) {
   .gem-c-button {
     @include govuk-font(16);

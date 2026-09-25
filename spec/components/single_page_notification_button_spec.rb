@@ -13,7 +13,7 @@ describe "Single page notification button", type: :view do
     render_component({ base_path: "/the-current-page" })
     assert_select ".gem-c-single-page-notification-button form"
     assert_select "input[type='hidden']", value: "/the-current-page"
-    assert_select ".gem-c-single-page-notification-button button.gem-c-single-page-notification-button__submit[type='submit']"
+    assert_select ".gem-c-single-page-notification-button button.gem-c-button__outline.gem-c-button__outline--notification[type='submit']"
   end
 
   it "shows 'Get emails about this page' by default" do
@@ -126,7 +126,7 @@ describe "Single page notification button", type: :view do
     render_component(local_assigns)
 
     assert_select "[data-module='ga4-link-tracker']"
-    assert_select ".gem-c-single-page-notification-button__submit" do |button|
+    assert_select ".gem-c-button__outline.gem-c-button__outline--notification" do |button|
       expect(button.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"subscribe","index_link":1,"index_total":2,"section":"Top","url":"/email/subscriptions/single-page/new"}'
     end
   end
@@ -135,7 +135,7 @@ describe "Single page notification button", type: :view do
     render_component({ base_path: "/the-current-page" })
 
     assert_select "[data-module='ga4-link-tracker']", false
-    assert_select ".gem-c-single-page-notification-button__submit" do |button|
+    assert_select ".gem-c-button__outline.gem-c-button__outline--notification" do |button|
       expect(button.attr("data-ga4-link")).to be_nil
     end
   end

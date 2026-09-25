@@ -5,13 +5,13 @@ describe "Print link", type: :view do
     "print_link"
   end
 
-  it "renders with default text no data is given" do
+  it "renders with default text when no data is given" do
     render_component({})
 
-    assert_select ".gem-c-print-link"
-    assert_select ".gem-c-print-link.govuk-\\!-margin-bottom-3"
+    assert_select ".gem-c-button__outline.gem-c-button__outline--print"
+    assert_select ".gem-c-button__outline.gem-c-button__outline--print.govuk-\\!-margin-bottom-0"
     assert_select(
-      "button.gem-c-print-link__button[data-module='print-link']",
+      "button.gem-c-button__outline.gem-c-button__outline--print[data-module='print-link']",
       text: "Print this page",
     )
   end
@@ -21,9 +21,9 @@ describe "Print link", type: :view do
       text: "Print this manual",
     })
 
-    assert_select ".gem-c-print-link"
+    assert_select ".gem-c-button__outline.gem-c-button__outline--print"
     assert_select(
-      "button.gem-c-print-link__button",
+      "button.gem-c-button__outline.gem-c-button__outline--print",
       text: "Print this manual",
     )
   end
@@ -33,9 +33,9 @@ describe "Print link", type: :view do
       href: "/print",
     })
 
-    assert_select ".gem-c-print-link"
+    assert_select ".gem-c-button__outline.gem-c-button__outline--print"
     assert_select(
-      'a.gem-c-print-link__link[href="/print"][data-module="button"]',
+      'a.gem-c-button__outline.gem-c-button__outline--print[href="/print"][data-module="govuk-button button"]',
       text: "Print this page",
     )
   end
@@ -47,7 +47,7 @@ describe "Print link", type: :view do
       },
     })
 
-    assert_select ".gem-c-print-link button[data-snow='patrol']"
+    assert_select "button.gem-c-button__outline.gem-c-button__outline--print[data-snow='patrol']"
   end
 
   it "accepts an additional passed data module when rendering as a button" do
@@ -57,7 +57,7 @@ describe "Print link", type: :view do
       },
     })
 
-    assert_select ".gem-c-print-link button[data-module='ga4-link-tracker print-link']"
+    assert_select "button.gem-c-button__outline.gem-c-button__outline--print[data-module='ga4-link-tracker print-link']"
   end
 
   it "accepts an additional passed data module when rendering as a link" do
@@ -68,6 +68,6 @@ describe "Print link", type: :view do
       },
     })
 
-    assert_select ".gem-c-print-link a[data-module='ga4-link-tracker button']"
+    assert_select "a.gem-c-button__outline.gem-c-button__outline--print[data-module='govuk-button ga4-link-tracker button']"
   end
 end

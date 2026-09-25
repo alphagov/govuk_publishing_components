@@ -10,9 +10,9 @@ describe('Single page notification component', function () {
       <div data-button-text-subscribe="Get emails about this page" data-button-text-unsubscribe="Stop getting emails about this page" class="gem-c-single-page-notification-button govuk-!-display-none-print govuk-!-margin-bottom-3" data-module="single-page-notification-button">
         <form action="/email/subscriptions/single-page/new" method="POST">
           <input type="hidden" name="base_path" value="/current-page-path">
-          <button class="govuk-body-s gem-c-single-page-notification-button__submit" type="submit">
-            <span class="gem-c-single-page-notication-button__text">Get emails about this page</span>
-        </button>
+          <button class="gem-c-button__outline gem-c-button__outline--notification" type="submit">
+            Get emails about this page
+          </button>
         </form>
       </div>
     `
@@ -37,7 +37,7 @@ describe('Single page notification component', function () {
     container.innerHTML = `
       <form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/single-page/new" method="POST" data-module="single-page-notification-button" data-button-location="top">
         <input type="hidden" name="base_path" value="/current-page-path">
-        <button class="gem-c-single-page-notification-button__submit" type="submit">Get emails about this page</button>
+        <button class="gem-c-button__outline gem-c-button__outline--notification" type="submit">Get emails about this page</button>
       </form>
     `
     document.body.appendChild(container)
@@ -66,7 +66,7 @@ describe('Single page notification component', function () {
     container.innerHTML = `
       <form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/  single-page/new" method="POST" data-module="single-page-notification-button" data-button-text-subscribe="Start getting emails about this stuff" data-button-text-unsubscribe="Stop getting emails about this stuff">
         <input type="hidden" name="base_path" value="/current-page-path">
-        <button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>
+        <button class="gem-c-button__outline gem-c-button__outline--notification" type="submit">Get emails about this page</button>
       </form>
     `
     document.body.appendChild(container)
@@ -88,7 +88,7 @@ describe('Single page notification component', function () {
     container.innerHTML = `
       <form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/  single-page/new" method="POST" data-module="single-page-notification-button" data-button-text-subscribe="Start getting emails about this stuff" data-button-text-unsubscribe="Stop getting emails about this stuff">
         <input type="hidden" name="base_path" value="/current-page-path">
-        <button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>
+        <button class="gem-c-button__outline gem-c-button__outline--notification" type="submit">Get emails about this page</button>
       </form>
     `
     document.body.appendChild(container)
@@ -115,7 +115,7 @@ describe('Single page notification component', function () {
       responseText: responseText
     })
 
-    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-button__outline--notification')
     expect(button.textContent).toContain('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
@@ -130,7 +130,7 @@ describe('Single page notification component', function () {
       responseText: responseText
     })
 
-    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-button__outline--notification')
     expect(button.textContent).toContain('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
@@ -144,7 +144,7 @@ describe('Single page notification component', function () {
       responseText: ''
     })
 
-    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-button__outline--notification')
     expect(button.textContent).toContain('Get emails about this page')
   })
 
@@ -153,7 +153,7 @@ describe('Single page notification component', function () {
     initButton()
     jasmine.Ajax.requests.mostRecent().responseTimeout()
 
-    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-single-page-notification-button__submit')
+    var button = document.querySelector('.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible .gem-c-button__outline--notification')
     expect(button.textContent).toContain('Get emails about this page')
     jasmine.clock().uninstall()
   })
