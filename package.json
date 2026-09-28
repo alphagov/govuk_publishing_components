@@ -27,7 +27,7 @@
     "extends": "stylelint-config-gds/scss"
   },
   "dependencies": {
-    "accessible-autocomplete": "^3.0.1",
+    "accessible-autocomplete": "^3.0.2",
     "axe-core": "^4.13.0",
     "chartkick": "^5.0.1",
     "choices.js": "^11.2.4",
