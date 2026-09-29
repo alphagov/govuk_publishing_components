@@ -18646,8 +18646,7 @@
   .gem-c-warning-text * {
     color: var(--govuk-print-text-colour, #000000);
   }
-  .govuk-warning-text__icon, .govspeak .help-notice::before,
-  .gem-c-govspeak .help-notice::before {
+  .govuk-warning-text__icon {
     background: none;
     color: var(--govuk-print-text-colour, #000000);
   }
