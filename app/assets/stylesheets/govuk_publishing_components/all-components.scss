@@ -6,6 +6,11 @@
 // Possible refactor to replace with @use 'govuk
 // @use "govuk" as *;
 
+@use "govuk/core";
+@use "govuk/objects";
+@use "govuk/utilities";
+@use "govuk/overrides";
+
 @use "govuk_publishing_components/components/helpers/brand-colours";
 @use "govuk_publishing_components/lib/link";
 @use "govuk_publishing_components/lib/print_support";
