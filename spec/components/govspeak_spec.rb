@@ -10,6 +10,7 @@ describe "Govspeak", type: :view do
       content: "<h1>content</h1>".html_safe,
     )
     assert_select ".gem-c-govspeak h1", text: "content"
+    assert_select ".gem-c-modal-dialogue"
   end
 
   it "renders inverse content correctly" do
@@ -60,5 +61,14 @@ describe "Govspeak", type: :view do
     end
 
     expect(rendered).to include("content-via-block")
+  end
+
+  it "does not include the modal" do
+    render_component(
+      content: "<h1>content</h1>".html_safe,
+      omit_modal: true,
+    )
+
+    assert_select ".gem-c-modal-dialogue", false
   end
 end
