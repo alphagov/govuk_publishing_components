@@ -1,4 +1,4 @@
-@use "govuk" as *;
+@use "govuk/base" as *;
 
 @mixin markdown-typography {
   color: govuk-functional-colour(text);
