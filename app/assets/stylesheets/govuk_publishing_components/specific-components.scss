@@ -5,12 +5,17 @@
 
 @use "../govuk_publishing_components/settings/app-font-url" as *;
 
-@use "govuk" as * with (
+@use "govuk/base" as * with (
   $govuk-output-custom-properties: true,
   // $govuk-fonts-path: "/assets/",
   $govuk-font-url-function: meta.get-function("app-font-url"),
   $govuk-images-path: "/assets/",
 );
+
+// @use "govuk/core";
+// @use "govuk/objects";
+// @use "govuk/utilities";
+// @use "govuk/overrides";
 
 @use "govuk_publishing_components/components/helpers/brand-colours";
 @use "govuk_publishing_components/lib/link";

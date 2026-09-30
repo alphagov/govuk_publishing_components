@@ -1,4 +1,4 @@
-@use "govuk" as *;
+@use "govuk/base" as *;
 
 @mixin responsive-bottom-margin {
   margin-bottom: govuk-spacing(3);
