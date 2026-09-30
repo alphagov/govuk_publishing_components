@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 70.2.1
 
 * Remove display of flexible sections ([PR #5744](https://github.com/alphagov/govuk_publishing_components/pull/5744))
 * Improve GA4's date and NI number PII redaction ([PR #5754](https://github.com/alphagov/govuk_publishing_components/pull/5754))
