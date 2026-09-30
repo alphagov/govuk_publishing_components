@@ -9,7 +9,8 @@
 // - alphagov/govspeak: ✔︎
 
 // stylelint-disable max-nesting-depth
-@import "../helpers/markdown-typography";
+@use "../../base" as *;
+@use "../helpers/markdown-typography" as *;
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {

@@ -4,4 +4,4 @@
 @function app-font-url($filename) {
   @return url("#{$filename}");
 }
-$govuk-font-url-function: "app-font-url";
+// $govuk-font-url-function: "app-font-url";
