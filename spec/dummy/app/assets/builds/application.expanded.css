@@ -21373,3 +21373,7 @@ only screen and (min-resolution: 2dppx) {
         color: var(--govuk-print-text-colour, #000000)
     }
 }
+
+body {
+    background: red
+}

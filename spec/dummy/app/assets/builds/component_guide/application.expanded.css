@@ -21402,6 +21402,10 @@ only screen and (min-resolution: 2dppx) {
     }
 }
 
+body {
+    background: red
+}
+
 .component-doc {
     font-family: "GDS Transport", arial, sans-serif;
     -webkit-font-smoothing: antialiased;
