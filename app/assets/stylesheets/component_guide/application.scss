@@ -115,7 +115,7 @@ $gem-guide-border-width: 1px;
 .component-guide-preview--violation,
 .component-guide-preview--warning {
   margin-top: -$gem-guide-border-width;
-  
+
   color: govuk-functional-colour(text);
   @include govuk-font($size: 19);
 
@@ -216,6 +216,11 @@ html {
 .govuk-full-width-container {
   .preview-title {
     padding-left: govuk-spacing(3);
+  }
+
+  .gem-full-width__element {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -489,10 +494,9 @@ $code-delete-bg: #fadddd;
   padding: 0;
   padding-bottom: 0.1px; // forces child margin inside
   border: 0;
+  border-top: solid 1px govuk-functional-colour(border);
   margin-left: -(govuk-spacing(3));
   margin-right: -(govuk-spacing(3));
-  border-top: solid 1px govuk-functional-colour(border);
-  border-bottom: solid 1px govuk-functional-colour(border);
 
   @include govuk-media-query($from: tablet) {
     margin-left: -(govuk-spacing(6));
