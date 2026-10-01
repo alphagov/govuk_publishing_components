@@ -22,6 +22,8 @@ examples:
         href: "#"
       - text: Navigation item 3
         href: "#"
+    context:
+      full_width: true
   with_custom_mobile_toggle_text:
     data:
       toggle_text: See the menu
@@ -33,13 +35,19 @@ examples:
         href: "#"
       - text: Navigation item 3
         href: "#"
+    context:
+      full_width: true
   with_service_name:
     data:
       service_name: My service name
+    context:
+      full_width: true
   with_service_name_and_service_name_url:
     data:
       service_name: My service name
       service_name_url: "#"
+    context:
+      full_width: true
   with_service_name_and_navigation_links:
     data:
       service_name: My service name
@@ -50,15 +58,20 @@ examples:
         href: "#"
       - text: Navigation item 3
         href: "#"
+    context:
+      full_width: true
   hide_service_name_on_mobile:
     description: |
-      On desktop, use the `service_name` link to show the name of the main page and allow users to navigate to it.
+      Hides the first item in `navigation_items` on desktop. The first item should be replaced on desktop with the `service_name` link. This link is then hidden on mobile.
 
       On mobile, use the `toggle_text` to show the name of the main page, but allow users to navigate to it with the first link in the `navigation_items`, which is hidden on desktop.
+
+      This is intended to prevent the repetition of 'Menu' options within the Service navigation component and the site header, and the duplication of the service name on mobile.
     data:
       service_name: My service home
       service_name_url: "/home"
       hide_service_name_on_mobile: true
+      toggle_text: My service
       navigation_items:
       - text: My service home
         href: "/home"
@@ -68,6 +81,8 @@ examples:
         href: "#"
       - text: Navigation item 3
         href: "#"
+    context:
+      full_width: true
   with_data_attributes_on_items:
     data:
       navigation_items:
@@ -83,6 +98,8 @@ examples:
         data:
           module: "example-2"
           something_else: "hello 2"
+    context:
+      full_width: true
   with_custom_aria_label_on_the_nav_element:
     data:
       navigation_items:
@@ -92,14 +109,25 @@ examples:
       - text: Navigation item 2
         href: "#"
       navigation_aria_label: "Custom label"
+    context:
+      full_width: true
   full_width:
+    description: Normally the width of the component is constrained by a `govuk-width-container` element, to make it fit within the boundaries of a normal GOV.UK page. If the component is required to be full width, this option removes that class, allowing the component to stretch as wide as possible. This is used in the layout header component in the [Content data app](https://content-data.publishing.service.gov.uk/content).
     data:
+      full_width: true
       navigation_items:
       - text: Navigation item 1
         href: "#"
         active: true
       - text: Navigation item 2
         href: "#"
+      - text: Navigation item 3
+        href: "#"
+      - text: Navigation item 4
+        href: "#"
+      - text: Navigation item 5
+        href: "#"
+    context:
       full_width: true
   inverse:
     data:
@@ -110,6 +138,8 @@ examples:
       - text: Navigation item 2
         href: "#"
       inverse: true
+    context:
+      full_width: true
   with_navigation_links_and_collapse_navigation_on_mobile_set_to_false:
     data:
       navigation_items:
@@ -119,14 +149,20 @@ examples:
       - text: Navigation item 2
         href: "#"
       collapse_navigation_on_mobile: false
+    context:
+      full_width: true
   with_a_single_navigation_item:
     data:
       navigation_items:
       - text: Navigation item 1
         href: "#"
+    context:
+      full_width: true
   with_a_single_navigation_item_and_collapse_navigation_on_mobile:
     data:
       navigation_items:
       - text: Navigation item 1
         href: "#"
       collapse_navigation_on_mobile: true
+    context:
+      full_width: true
