@@ -75,6 +75,9 @@ sk:
       - zapamätali si vaše nastavenia a zlepšili vládne služby.“
       - "„Používame aj súbory cookie nastavené inými stránkami"
       - aby sme mohli poskytovať obsah z ich služieb.“
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Súbory cookie na GOV.UK
     devolved_nations:
       applies_to:
