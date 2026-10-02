@@ -7,20 +7,7 @@
   padding: 0;
   margin: 0;
   display: grid;
-  // stylelint-disable-next-line property-no-deprecated
-  grid-column-gap: govuk-spacing(6); // Use deprecated grid-column-gap for Grade C browser support
   column-gap: govuk-spacing(6);
-
-  @include govuk-media-query($from: "desktop") {
-    // For browsers that don't support CSS grid, constrain the width to 50% to improve usability
-    // especially for screen magnifier users
-    width: 50%;
-
-    // Reset the width for browsers that support CSS grid
-    @supports (display: grid) {
-      width: initial;
-    }
-  }
 }
 
 .gem-c-cards__list--one-column {

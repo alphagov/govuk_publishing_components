@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove non-CSS Grid fallback rules from cards list component ([PR #5766](https://github.com/alphagov/govuk_publishing_components/pull/5766))
+
 ## 70.2.1
 
 * Remove display of flexible sections ([PR #5744](https://github.com/alphagov/govuk_publishing_components/pull/5744))
