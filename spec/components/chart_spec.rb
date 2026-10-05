@@ -5,7 +5,10 @@ describe "Chart", type: :view do
     "chart"
   end
 
-  before { allow(SecureRandom).to receive(:hex).and_return("1234") }
+  before do
+    allow(SecureRandom).to receive(:hex).and_return("1234")
+    @include_chart_script = nil
+  end
 
   let(:data) do
     {
