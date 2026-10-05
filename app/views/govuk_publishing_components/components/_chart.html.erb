@@ -21,7 +21,7 @@
   chart_id = "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
 
-  @include_script ||= OpenStruct.new(script_included: false)
+  @include_chart_script ||= OpenStruct.new(script_included: false)
 
   chart_helper = GovukPublishingComponents::Presenters::ChartHelper.new(local_assigns)
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
@@ -31,9 +31,9 @@
   Chartkick.options[:html] = '<div id="%{id}"><noscript><p class="govuk-body">This chart uses JavaScript to work. To view the chart, turn on JavaScript in your browser’s settings.</p></noscript></div>'
 %>
 <% if rows.length > 0 && keys.length > 0 %>
-  <% unless @include_script[:script_included] %>
+  <% unless @include_chart_script[:script_included] %>
     <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-    <% @include_script[:script_included] = true %>
+    <% @include_chart_script[:script_included] = true %>
   <% end %>
   <%= tag.div(**component_helper.all_attributes) do %>
     <div class="<%= header_class %>">
