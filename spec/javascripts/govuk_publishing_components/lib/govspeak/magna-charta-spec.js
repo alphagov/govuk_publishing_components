@@ -18,112 +18,120 @@ describe('Magna charta', function () {
     return `${width}%`
   }
 
-  var single =
-    '<table id="single" class="some-table no-key mc-outdented">' +
-      '<caption>Single Table</caption>' +
-      '<thead>' +
-        '<tr><th>Some Data</th><th>Values</th></tr>' +
-      '</thead>' +
-      '<tbody>' +
-        '<tr><td>Testing One</td><td>5</td></tr>' +
-        '<tr><td>Testing Two</td><td>4</td></tr>' +
-        '<tr><td>Testing Three</td><td>3</td></tr>' +
-        '<tr><td>Testing Four</td><td>Not A Number</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var single = `
+    <table id="single" class="some-table no-key mc-outdented">
+      <caption>Single Table</caption>
+      <thead>
+        <tr><th>Some Data</th><th>Values</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Testing One</td><td>5</td></tr>
+        <tr><td>Testing Two</td><td>4</td></tr>
+        <tr><td>Testing Three</td><td>3</td></tr>
+        <tr><td>Testing Four</td><td>Not A Number</td></tr>
+      </tbody>
+    </table>
+  `
 
-  var multiple =
-    '<table id="multiple" class="mc-stacked">' +
-      '<caption>Multiple Table</caption>' +
-      '<thead>' +
-        '<tr><th>Some Data</th><th>YES</th><th>NO</th><th>Total</th></tr>' +
-      '</thead>' +
-      '<tbody>' +
-        '<tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>' +
-        '<tr><td>Testing Two</td><td>6</td><td>No Data</td><td>8</td></tr>' +
-        '<tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>' +
-        '<tr><td>Testing Four</td><td>3</td><td>No Data</td><td>12</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var multiple = `
+    <table id="multiple" class="mc-stacked">
+      <caption>Multiple Table</caption>
+      <thead>
+        <tr><th>Some Data</th><th>YES</th><th>NO</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>
+        <tr><td>Testing Two</td><td>6</td><td>No Data</td><td>8</td></tr>
+        <tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>
+        <tr><td>Testing Four</td><td>3</td><td>No Data</td><td>12</td></tr>
+      </tbody>
+    </table>
+  `
 
-  var multiple2 =
-    '<table id="multiple2" class="">' +
-      '<caption>Multiple Table</caption>' +
-      '<thead>' +
-        '<tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>' +
-      '</thead>' +
-      '<tbody>' +
-        '<tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>' +
-        '<tr><td>Testing Two</td><td>6</td><td>No Data</td><td>8</td></tr>' +
-        '<tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var multiple2 = `
+    <table id="multiple2" class="">
+      <caption>Multiple Table</caption>
+      <thead>
+        <tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>
+        <tr><td>Testing Two</td><td>6</td><td>No Data</td><td>8</td></tr>
+        <tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>
+      </tbody>
+    </table>
+  `
 
-  var multiple3 =
-    '<table id="multiple3" class="">' +
-      '<caption>Multiple Table</caption>' +
-      '<thead>' +
-        '<tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>' +
-      '</thead>' +
-      '<tbody>' +
-        '<tr><th>Testing One</th><td>5</td><td>No Data</td><td>11</td></tr>' +
-        '<tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>' +
-        '<tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var multiple3 = `
+    <table id="multiple3" class="">
+      <caption>Multiple Table</caption>
+      <thead>
+        <tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>
+      </thead>
+      <tbody>
+        <tr><th>Testing One</th><td>5</td><td>No Data</td><td>11</td></tr>
+        <tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>
+        <tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>
+      </tbody>
+    </table>
+  `
 
-  var negative =
-    '<table id="negative" class="mc-negative">' +
-      '<thead>' +
-        '<tr><th>Some Data</th><th></tr>' +
-      '</thead>' +
-      '<tbody>' +
-        '<tr><td>Something Negative</td><td>-5</td></tr>' +
-        '<tr><td>Something Positive</td><td>10</td></tr>' +
-        '<tr><td>Something More Negative</td><td>-10</td></tr>' +
-        '<tr><td>Something Less Positive</td><td>5</td></tr>' +
-        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var negative = `
+    <table id="negative" class="mc-negative">
+      <thead>
+        <tr><th>Some Data</th><th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Something Negative</td><td>-5</td></tr>
+        <tr><td>Something Positive</td><td>10</td></tr>
+        <tr><td>Something More Negative</td><td>-10</td></tr>
+        <tr><td>Something Less Positive</td><td>5</td></tr>
+        <tr><td>Not A Number</td><td>No Data</td></tr>
+      </tbody>
+    </table>
+  `
 
-  var negative2 =
-    '<table id="negative2" class="mc-negative">' +
-      '<thead>' +
-        '<tr><th>Some Data</th><th></tr>' +
-      '</thead>' +
-      '<tbody>' +
-        '<tr><td>Something Negative</td><td>-5</td></tr>' +
-        '<tr><td>Something Positive</td><td>10</td></tr>' +
-        '<tr><td>Something More Negative</td><td>-10</td></tr>' +
-        '<tr><td>Something Less Positive</td><td>5</td></tr>' +
-        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var negative2 = `
+    <table id="negative2" class="mc-negative">
+      <thead>
+        <tr><th>Some Data</th><th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Something Negative</td><td>-5</td></tr>
+        <tr><td>Something Positive</td><td>10</td></tr>
+        <tr><td>Something More Negative</td><td>-10</td></tr>
+        <tr><td>Something Less Positive</td><td>5</td></tr>
+        <tr><td>Not A Number</td><td>No Data</td></tr>
+      </tbody>
+    </table>
+  `
 
-  var outdentAll =
-    '<table id="outdent-all" class="mc-outdented">' +
-      '<thead>' +
-        '<tr><th>Some Data</th><th></tr>' +
-      '</thead>' +
-      '<tbody>' +
-        '<tr><td>Something Negative</td><td>-5</td></tr>' +
-        '<tr><td>Something Positive</td><td>10</td></tr>' +
-        '<tr><td>Something More Negative</td><td>-10</td></tr>' +
-        '<tr><td>Something Less Positive</td><td>5</td></tr>' +
-        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var outdentAll = `
+    <table id="outdent-all" class="mc-outdented">
+      <thead>
+        <tr><th>Some Data</th><th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Something Negative</td><td>-5</td></tr>
+        <tr><td>Something Positive</td><td>10</td></tr>
+        <tr><td>Something More Negative</td><td>-10</td></tr>
+        <tr><td>Something Less Positive</td><td>5</td></tr>
+        <tr><td>Not A Number</td><td>No Data</td></tr>
+      </tbody>
+    </table>
+  `
 
-  var noHeader =
-    '<table id="noHeader" class="mc-stacked">' +
-      '<caption>No Table Header</caption>' +
-      '<tbody>' +
-        '<tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>' +
-        '<tr><td>Testing Two</td><td>6</td><td>2</td><td>8</td></tr>' +
-        '<tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>' +
-        '<tr><td>Not A Number</td><td>No Data</td></tr>' +
-      '</tbody>' +
-    '</table>'
+  var noHeader = `
+    <table id="noHeader" class="mc-stacked">
+      <caption>No Table Header</caption>
+      <tbody>
+        <tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>
+        <tr><td>Testing Two</td><td>6</td><td>2</td><td>8</td></tr>
+        <tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>
+        <tr><td>Not A Number</td><td>No Data</td></tr>
+      </tbody>
+    </table>
+  `
 
   describe('creating a graph of a single table', function () {
     beforeEach(function () {
