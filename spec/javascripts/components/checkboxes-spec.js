@@ -6,49 +6,50 @@ describe('Checkboxes component', function () {
     new GOVUK.Modules.GemCheckboxes(checkboxes).init()
   }
 
-  var html =
-  '<div id="checkboxes-1ac8e5cf" class="gem-c-checkboxes govuk-form-group " data-module="gem-checkboxes">' +
-     '<fieldset class="govuk-fieldset" aria-describedby="checkboxes-1ac8e5cf-hint ">' +
-        '<legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">' +
-           '<h1 class="govuk-fieldset__heading">What is your favourite colour?</h1>' +
-        '</legend>' +
-        '<span id="checkboxes-1ac8e5cf-hint" class="govuk-hint">Select all that apply.</span>' +
-        '<div class="govuk-checkboxes" data-nested="true">' +
-           '<div class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-test-exclusive>' +
-              '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0">Red</label>' +
-              '<div id="checkboxes-1ac8e5cf-nested-0" class="govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-0">' +
-                '<div class="govuk-checkboxes__item">' +
-                   '<input id="checkboxes-1ac8e5cf-0-0" name="favourite_colour" type="checkbox" value="light_red" class="govuk-checkboxes__input" data-controls="thing">' +
-                   '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0-0">Light Red</label>' +
-                '</div>' +
-                '<div class="govuk-checkboxes__item">' +
-                   '<input id="checkboxes-1ac8e5cf-0-1" name="favourite_colour" type="checkbox" value="dark_red" class="govuk-checkboxes__input">' +
-                   '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0-1">Dark Red</label>' +
-                '</div>' +
-              '</div>' +
-           '</div>' +
-           '<div class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-test-exclusive>' +
-              '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1">Blue</label>' +
-              '<div id="checkboxes-1ac8e5cf-nested-1" class="govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-1">' +
-                '<div class="govuk-checkboxes__item">' +
-                   '<input id="checkboxes-1ac8e5cf-1-0" name="favourite_colour" type="checkbox" value="light_blue" class="govuk-checkboxes__input" data-controls="thing2">' +
-                   '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1-0">Light blue</label>' +
-                '</div>' +
-                '<div class="govuk-checkboxes__item">' +
-                   '<input id="checkboxes-1ac8e5cf-1-1" name="favourite_colour" type="checkbox" value="dark_blue" class="govuk-checkboxes__input">' +
-                   '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1-1">Dark blue</label>' +
-                '</div>' +
-              '</div>' +
-           '</div>' +
-           '<div class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-2" name="favourite_colour" type="checkbox" value="other" class="govuk-checkboxes__input" data-behaviour="exclusive">' +
-              '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-2">Other</label>' +
-           '</div>' +
-        '</div>' +
-     '</fieldset>' +
-  '</div>'
+  var html = `
+    <div id="checkboxes-1ac8e5cf" class="gem-c-checkboxes govuk-form-group" data-module="gem-checkboxes">
+      <fieldset class="govuk-fieldset" aria-describedby="checkboxes-1ac8e5cf-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">What is your favourite colour?</h1>
+          </legend>
+          <span id="checkboxes-1ac8e5cf-hint" class="govuk-hint">Select all that apply.</span>
+          <div class="govuk-checkboxes" data-nested="true">
+            <div class="govuk-checkboxes__item">
+                <input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-test-exclusive>
+                <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0">Red</label>
+                <div id="checkboxes-1ac8e5cf-nested-0" class="govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-0">
+                  <div class="govuk-checkboxes__item">
+                    <input id="checkboxes-1ac8e5cf-0-0" name="favourite_colour" type="checkbox" value="light_red" class="govuk-checkboxes__input" data-controls="thing">
+                    <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0-0">Light Red</label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input id="checkboxes-1ac8e5cf-0-1" name="favourite_colour" type="checkbox" value="dark_red" class="govuk-checkboxes__input">
+                    <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0-1">Dark Red</label>
+                  </div>
+                </div>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-test-exclusive>
+                <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1">Blue</label>
+                <div id="checkboxes-1ac8e5cf-nested-1" class="govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-1">
+                  <div class="govuk-checkboxes__item">
+                    <input id="checkboxes-1ac8e5cf-1-0" name="favourite_colour" type="checkbox" value="light_blue" class="govuk-checkboxes__input" data-controls="thing2">
+                    <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1-0">Light blue</label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input id="checkboxes-1ac8e5cf-1-1" name="favourite_colour" type="checkbox" value="dark_blue" class="govuk-checkboxes__input">
+                    <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1-1">Dark blue</label>
+                  </div>
+                </div>
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input id="checkboxes-1ac8e5cf-2" name="favourite_colour" type="checkbox" value="other" class="govuk-checkboxes__input" data-behaviour="exclusive">
+                <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-2">Other</label>
+            </div>
+          </div>
+      </fieldset>
+    </div>
+  `
 
   var checkboxes
   var container
