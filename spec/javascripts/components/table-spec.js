@@ -16,29 +16,30 @@ describe('Table component', function () {
 
   beforeEach(function () {
     container = document.createElement('div')
-    container.innerHTML =
-      '<div data-module="table">' +
-        '<div class="js-gem-c-table__filter govuk-!-display-none">' +
-          '<input name="filter">' +
-          '<p id="filterCount" class="js-filter-count" data-count-text="results for the term entered"></p>' +
-        '</div>' +
-        '<table>' +
-          '<thead></thead>' +
-          '<tbody class="govuk-table__body">' +
-            '<tr class="js-govuk-table__row">' +
-              '<td>bcd</td>' +
-              '<td>efg</td>' +
-              '<td>hio</td>' +
-            '</tr>' +
-            '<tr class="js-govuk-table__row">' +
-              '<td>klm</td>' +
-              '<td>nop</td>' +
-              '<td>£35</td>' +
-            '</tr>' +
-          '</tbody>' +
-        '</table>' +
-        '<p class="js-gem-c-table__message govuk-!-display-none">That search returns no results.</p>' +
-      '</div>'
+    container.innerHTML = `
+      <div data-module="table">
+        <div class="js-gem-c-table__filter govuk-!-display-none">
+          <input name="filter">
+          <p id="filterCount" class="js-filter-count" data-count-text="results for the term entered"></p>
+        </div>
+        <table>
+          <thead></thead>
+          <tbody class="govuk-table__body">
+            <tr class="js-govuk-table__row">
+              <td>bcd</td>
+              <td>efg</td>
+              <td>hio</td>
+            </tr>
+            <tr class="js-govuk-table__row">
+              <td>klm</td>
+              <td>nop</td>
+              <td>£35</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="js-gem-c-table__message govuk-!-display-none">That search returns no results.</p>
+      </div>
+    `
 
     document.body.appendChild(container)
 

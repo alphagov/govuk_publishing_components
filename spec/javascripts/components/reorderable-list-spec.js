@@ -9,33 +9,34 @@ describe('Reorderable list component', function () {
 
   beforeEach(function () {
     container = document.createElement('div')
-    container.innerHTML =
-    '<ol class="gem-c-reorderable-list" data-module="reorderable-list">' +
-      '<li class="gem-c-reorderable-list__item">' +
-        '<div class="gem-c-reorderable-list__wrapper">' +
-          '<div class="gem-c-reorderable-list__content">' +
-            '<p class="gem-c-reorderable-list__title">First attachment</p>' +
-          '</div>' +
-          '<div class="gem-c-reorderable-list__actions">' +
-            '<input name="new_order[]" value="1" class="gem-c-input govuk-input govuk-input--width-2" id="input-278a8924" type="text">' +
-            '<button type="button" data-ga4-event="" class="js-reorderable-list-up">Up</button>' +
-            '<button type="button" data-ga4-event="" class="js-reorderable-list-down">Down</button>' +
-          '</div>' +
-        '</div>' +
-      '</li>' +
-      '<li class="gem-c-reorderable-list__item">' +
-        '<div class="gem-c-reorderable-list__wrapper">' +
-          '<div class="gem-c-reorderable-list__content">' +
-            '<p class="gem-c-reorderable-list__title">Second attachment</p>' +
-          '</div>' +
-          '<div class="gem-c-reorderable-list__actions">' +
-            '<input name="new_order[]" value="2" class="gem-c-input govuk-input govuk-input--width-2" id="input-278a8924" type="text">' +
-            '<button type="button" class="js-reorderable-list-up">Up</button>' +
-            '<button type="button" class="js-reorderable-list-down">Down</button>' +
-          '</div>' +
-        '</div>' +
-      '</li>' +
-    '</ol>'
+    container.innerHTML = `
+      <ol class="gem-c-reorderable-list" data-module="reorderable-list">
+        <li class="gem-c-reorderable-list__item">
+          <div class="gem-c-reorderable-list__wrapper">
+            <div class="gem-c-reorderable-list__content">
+              <p class="gem-c-reorderable-list__title">First attachment</p>
+            </div>
+            <div class="gem-c-reorderable-list__actions">
+              <input name="new_order[]" value="1" class="gem-c-input govuk-input govuk-input--width-2" id="input-278a8924" type="text">
+              <button type="button" data-ga4-event="" class="js-reorderable-list-up">Up</button>
+              <button type="button" data-ga4-event="" class="js-reorderable-list-down">Down</button>
+            </div>
+          </div>
+        </li>
+        <li class="gem-c-reorderable-list__item">
+          <div class="gem-c-reorderable-list__wrapper">
+            <div class="gem-c-reorderable-list__content">
+              <p class="gem-c-reorderable-list__title">Second attachment</p>
+            </div>
+            <div class="gem-c-reorderable-list__actions">
+              <input name="new_order[]" value="2" class="gem-c-input govuk-input govuk-input--width-2" id="input-278a8924" type="text">
+              <button type="button" class="js-reorderable-list-up">Up</button>
+              <button type="button" class="js-reorderable-list-down">Down</button>
+            </div>
+          </div>
+        </li>
+      </ol>
+    `
 
     document.body.classList.add('govuk-frontend-supported')
     document.body.appendChild(container)

@@ -3,34 +3,35 @@
 
 describe('Audit component filtering', function () {
   var container
-  var html =
-    '<div data-audit-headings>' +
-      '<div id="big" data-component-type="big">Big</div>' +
-      '<div id="small" data-component-type="small">Small</div>' +
-      '<div id="middling" data-component-type="middling">Middling</div>' +
-    '</div>' +
-    '<div data-audit-list>' +
-      '<div data-application="content-data-admin">' +
-        '<div data-component-type="big">yes</div>' +
-        '<div data-component-type="small">yes</div>' +
-        '<div data-component-type="middling">yes</div>' +
-      '</div>' +
-      '<div data-application="govuk_publishing_components">' +
-        '<div data-component-type="big">yes</div>' +
-        '<div data-component-type="small">yes</div>' +
-        '<div data-component-type="middling"></div>' +
-      '</div>' +
-      '<div data-application="collections">' +
-        '<div data-component-type="big">yes</div>' +
-        '<div data-component-type="small"></div>' +
-        '<div data-component-type="middling"></div>' +
-      '</div>' +
-      '<div data-application="govuk_publishing_components">' +
-        '<div data-component-type="big"></div>' +
-        '<div data-component-type="small"></div>' +
-        '<div data-component-type="middling"></div>' +
-      '</div>' +
-    '</div>'
+  var html = `
+    <div data-audit-headings>
+      <div id="big" data-component-type="big">Big</div>
+      <div id="small" data-component-type="small">Small</div>
+      <div id="middling" data-component-type="middling">Middling</div>
+    </div>
+    <div data-audit-list>
+      <div data-application="content-data-admin">
+        <div data-component-type="big">yes</div>
+        <div data-component-type="small">yes</div>
+        <div data-component-type="middling">yes</div>
+      </div>
+      <div data-application="govuk_publishing_components">
+        <div data-component-type="big">yes</div>
+        <div data-component-type="small">yes</div>
+        <div data-component-type="middling"></div>
+      </div>
+      <div data-application="collections">
+        <div data-component-type="big">yes</div>
+        <div data-component-type="small"></div>
+        <div data-component-type="middling"></div>
+      </div>
+      <div data-application="govuk_publishing_components">
+        <div data-component-type="big"></div>
+        <div data-component-type="small"></div>
+        <div data-component-type="middling"></div>
+      </div>
+    </div>
+  `
 
   beforeEach(function () {
     container = document.createElement('div')
