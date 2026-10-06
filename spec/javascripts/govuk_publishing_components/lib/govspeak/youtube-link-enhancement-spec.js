@@ -16,10 +16,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('replaces a link and its container with a media-player embed', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
-        '<div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>
+        <div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -31,10 +33,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('supports overriding the default class with a custom class', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
-        '<div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>
+        <div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -45,10 +49,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('doesn\'t replace non Youtube links', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><a href="https://www.gov.uk">GOV.UK</a></p>' +
-        '<div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><a href="https://www.gov.uk">GOV.UK</a></p>
+        <div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -60,10 +66,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('doesn\'t replace links marked not to embed', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak">' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ" data-youtube-player="off">Agile at GDS</a></p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ" data-youtube-player="off">Agile at GDS</a></p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -75,10 +83,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('doesn\'t replace links when other content is in the paragraph (cookies enabled)', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p>We use <a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a> instead of waterfall.</p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p>We use <a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a> instead of waterfall.</p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -90,15 +100,17 @@ describe('Youtube link enhancement', function () {
     })
 
     it('does replace links when other punctuation is in the paragraph (cookies enabled)', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>
           '\n       \n<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>\n\n' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
-          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
-          '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
-          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>' +
-        '</div>'
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>
+          <p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>
+          <p>'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>'</p>
+          <p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -111,15 +123,17 @@ describe('Youtube link enhancement', function () {
     it('does replace links when other punctuation is in the paragraph (cookies disabled)', function () {
       window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
 
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>' +
-          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>' +
-          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>' +
-          '<p>\'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>\'</p>' +
-          '<p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.</p>
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>!</p>
+          <p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>?</p>
+          <p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>"</p>
+          <p>'<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>'</p>
+          <p>"<a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a>.?!"</p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -141,10 +155,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('doesn\'t replace links when other HTML is in the paragraph (cookies enabled)', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><img src="agile-gds.png" alt="A sprint board"><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a></p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><img src="agile-gds.png" alt="A sprint board"><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a></p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -158,10 +174,12 @@ describe('Youtube link enhancement', function () {
 
     it('doesn\'t replace links when other content is in the paragraph (cookies disabled)', function () {
       window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p>We use <a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a> instead of waterfall.</p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p>We use <a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a> instead of waterfall.</p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -176,10 +194,12 @@ describe('Youtube link enhancement', function () {
 
     it('doesn\'t replace links when other HTML is in the paragraph (cookies disabled)', function () {
       window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><img src="agile-gds.png" alt="A sprint board"><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a></p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><img src="agile-gds.png" alt="A sprint board"><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">agile at GDS</a></p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -202,6 +222,7 @@ describe('Youtube link enhancement', function () {
           <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
         </div>
       `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -226,6 +247,7 @@ describe('Youtube link enhancement', function () {
           <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t" data-youtube-player="off">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
         </div>
       `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -253,6 +275,7 @@ describe('Youtube link enhancement', function () {
           <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
         </div>
       `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -284,6 +307,7 @@ describe('Youtube link enhancement', function () {
           <p><a href="https://youtu.be/_cyI7DMhgYc?si=A3Z-BiCIDRtOu27t">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
         </div>
       `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -354,10 +378,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('replaces a livestream link and its container with a media-player embed', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak" data-module="govspeak">' +
-          '<p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream</a></p>' +
-        '<div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak" data-module="govspeak">
+          <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ">Livestream</a></p>
+        <div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -369,10 +395,12 @@ describe('Youtube link enhancement', function () {
     })
 
     it('doesn\'t replace livestream links marked not to embed', function () {
-      container.innerHTML =
-        '<div class="gem-c-govspeak">' +
-          '<p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ" data-youtube-player="off">Agile at GDS</a></p>' +
-        '</div>'
+      container.innerHTML = `
+        <div class="gem-c-govspeak">
+          <p><a href="https://www.youtube.com/embed/live_stream?channel=UCoMdktPbSTixAyNGwb-UYkQ" data-youtube-player="off">Agile at GDS</a></p>
+        </div>
+      `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
@@ -392,6 +420,7 @@ describe('Youtube link enhancement', function () {
           <p><a href="https://www.youtube.com/embed/live_stream?channel=notarealchannel">What are the Discovery, Alpha, Beta and Live stages in developing a service?</a></p>
         </div>
       `
+
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
