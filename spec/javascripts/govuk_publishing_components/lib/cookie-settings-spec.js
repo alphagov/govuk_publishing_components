@@ -13,24 +13,26 @@ describe('cookieSettings', function () {
     }
 
     container = document.createElement('div')
-    container.innerHTML =
-      '<form data-module="cookie-settings">' +
-        '<input type="radio" id="settings-on" name="cookies-settings" value="on">' +
-        '<input type="radio" id="settings-off" name="cookies-settings" value="off">' +
-        '<input type="radio" id="usage-on" name="cookies-usage" value="on">' +
-        '<input type="radio" id="usage-off" name="cookies-usage" value="off">' +
-        '<input type="radio" name="cookies-campaigns" value="on">' +
-        '<input type="radio" name="cookies-campaigns" value="off">' +
-        '<button id="submit-button" type="submit">Submit</button>' +
-      '</form>'
+    container.innerHTML = `
+      <form data-module="cookie-settings">
+        <input type="radio" id="settings-on" name="cookies-settings" value="on">
+        <input type="radio" id="settings-off" name="cookies-settings" value="off">
+        <input type="radio" id="usage-on" name="cookies-usage" value="on">
+        <input type="radio" id="usage-off" name="cookies-usage" value="off">
+        <input type="radio" name="cookies-campaigns" value="on">
+        <input type="radio" name="cookies-campaigns" value="off">
+        <button id="submit-button" type="submit">Submit</button>
+      </form>
+    `
 
     document.body.appendChild(container)
 
     confirmationContainer = document.createElement('div')
     confirmationContainer.style.display = 'none'
     confirmationContainer.setAttribute('data-cookie-confirmation', 'true')
-    confirmationContainer.innerHTML =
-      '<a class="cookie-settings__prev-page" href="#">View previous page</a>'
+    confirmationContainer.innerHTML = `
+      <a class="cookie-settings__prev-page" href="#">View previous page</a>
+    `
 
     document.body.appendChild(confirmationContainer)
 
@@ -71,12 +73,13 @@ describe('cookieSettings', function () {
 
     it('does not error if not all options are present', function () {
       window.GOVUK.setDefaultConsentCookie()
-      element.innerHTML =
-      '<form data-module="cookie-settings">' +
-        '<input type="radio" id="settings-on" name="cookies-settings" value="on">' +
-        '<input type="radio" id="settings-off" name="cookies-settings" value="off">' +
-        '<button id="submit-button" type="submit">Submit</button>' +
-      '</form>'
+      element.innerHTML = `
+        <form data-module="cookie-settings">
+          <input type="radio" id="settings-on" name="cookies-settings" value="on">
+          <input type="radio" id="settings-off" name="cookies-settings" value="off">
+          <button id="submit-button" type="submit">Submit</button>
+        </form>
+      `
 
       new GOVUK.Modules.CookieSettings(element).init()
 
