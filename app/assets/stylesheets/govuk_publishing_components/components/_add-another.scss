@@ -1,5 +1,6 @@
-@import "govuk/components/button";
-@import "govuk/components/fieldset";
+@use "../base" as *;
+@use "govuk/components/button";
+@use "govuk/components/fieldset";
 
 .gem-c-add-another {
   .gem-c-add-another__remove-button {
