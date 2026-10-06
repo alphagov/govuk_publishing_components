@@ -287,7 +287,7 @@
 
     var loaded = this.loadFromSessionStorage(this.$module.sessionStoreLink)
     var activeParent = this.$module.querySelectorAll('.' + this.$module.activeLinkClass)[0]
-    var activeChild = activeParent.firstChild
+    var activeChild = activeParent.firstElementChild
     var foundLink = activeChild.getAttribute('data-position')
     var lastClicked = loaded || foundLink // the value saved has priority
 

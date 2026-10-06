@@ -13,91 +13,93 @@ describe('A stepnav module', function () {
 
   function createFixture (attr = '', css = '') {
     container = document.createElement('div')
-    container.innerHTML = '<div data-module="gemstepnav" class="gem-c-step-nav js-hidden ' + css + '" data-id="unique-id" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps" data-hide-all-text="Hide all steps"' + attr + '>' +
-      '<ol class="gem-c-step-nav__steps">' +
-        '<li class="gem-c-step-nav__step js-step" id="topic-step-one">' +
-          '<div class="gem-c-step-nav__header js-toggle-panel" data-position="1">' +
-            '<h2 class="gem-c-step-nav__title">' +
-              '<div class="gem-c-step-nav__circle">' +
-                '<span class="gem-c-step-nav__circle-inner">' +
-                  '<span class="gem-c-step-nav__circle-background">' +
-                    '<span class="visuallyhidden">Step</span> 1' +
-                  '</span>' +
-                '</span>' +
-              '</div>' +
-              '<span class="js-step-title">Topic Step One</span>' +
-            '</h2>' +
-          '</div>' +
-          '<div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-one-1">' +
-            '<ol class="gem-c-step-nav__list" data-length="1">' +
-              '<li class="gem-c-step-nav__list-item js-list-item">' +
-                '<a href="#link1" class="gem-c-step-nav__link js-link" data-position="1.1">Link 1</a>' +
-              '</li>' +
-            '</ol>' +
-          '</div>' +
-        '</li>' +
-        '<li class="gem-c-step-nav__step js-step" id="topic-step-two">' +
-          '<div class="gem-c-step-nav__header js-toggle-panel" data-position="2">' +
-            '<h2 class="gem-c-step-nav__title">' +
-              '<div class="gem-c-step-nav__circle">' +
-                '<span class="gem-c-step-nav__circle-inner">' +
-                  '<span class="gem-c-step-nav__circle-background">' +
-                    '<span class="visuallyhidden">Step</span> 2' +
-                  '</span>' +
-                '</span>' +
-              '</div>' +
-              '<span class="js-step-title">Topic Step Two</span>' +
-            '</h2>' +
-          '</div>' +
-          '<div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-two-1">' +
-            '<ol class="gem-c-step-nav__list" data-length="2">' +
-              '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="#link2" class="gem-c-step-nav__link js-link" data-position="2.1"><span class="visuallyhidden">You are currently viewing: </span>Link 2</a>' +
-              '</li>' +
-              '<li class="gem-c-step-nav__list-item js-list-item">' +
-                '<a href="#link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>' +
-              '</li>' +
-              '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="#content" class="gem-c-step-nav__link js-link" data-position="2.3"><span class="visuallyhidden">You are currently viewing: </span>Link 4</a>' +
-              '</li>' +
-            '</ol>' +
-          '</div>' +
-        '</li>' +
-        '<li class="gem-c-step-nav__step gem-c-step-nav__step--active js-step" id="topic-step-three" data-optional>' +
-          '<div class="gem-c-step-nav__header js-toggle-panel" data-position="3">' +
-            '<h2 class="gem-c-step-nav__title">' +
-              '<div class="gem-c-step-nav__circle">' +
-                '<span class="gem-c-step-nav__circle-inner">' +
-                  '<span class="gem-c-step-nav__circle-background">' +
-                    '<span class="visuallyhidden">Step</span> 3' +
-                  '</span>' +
-                '</span>' +
-              '</div>' +
-              '<span class="js-step-title">Topic Step Three</span>' +
-            '</h2>' +
-          '</div>' +
-          '<div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-three-1">' +
-            '<ol class="gem-c-step-nav__list" data-length="5">' +
-              '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="#link4" class="gem-c-step-nav__link js-link" data-position="3.1"><span class="visuallyhidden">You are currently viewing: </span>Link 5</a>' +
-              '</li>' +
-              '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="#link5" class="gem-c-step-nav__link js-link" data-position="3.2"><span class="visuallyhidden">You are currently viewing: </span>Link 6</a>' +
-              '</li>' +
-              '<li class="gem-c-step-nav__list-item js-list-item">' +
-                '<a href="#www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 7</a>' +
-              '</li>' +
-              '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4"><span class="visuallyhidden">You are currently viewing: </span>Link 8</a>' +
-              '</li>' +
-              '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="#content" class="gem-c-step-nav__link js-link" data-position="3.5"><span class="visuallyhidden">You are currently viewing: </span>Link 9</a>' +
-              '</li>' +
-            '</ol>' +
-          '</div>' +
-        '</li>' +
-      '</ol>' +
-    '</div>'
+    container.innerHTML = `
+      <div data-module="gemstepnav" class="gem-c-step-nav js-hidden ${css}" data-id="unique-id" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps" data-hide-all-text="Hide all steps" ${attr}>
+        <ol class="gem-c-step-nav__steps">
+          <li class="gem-c-step-nav__step js-step" id="topic-step-one">
+            <div class="gem-c-step-nav__header js-toggle-panel" data-position="1">
+              <h2 class="gem-c-step-nav__title">
+                <div class="gem-c-step-nav__circle">
+                  <span class="gem-c-step-nav__circle-inner">
+                    <span class="gem-c-step-nav__circle-background">
+                      <span class="visuallyhidden">Step</span> 1
+                    </span>
+                  </span>
+                </div>
+                <span class="js-step-title">Topic Step One</span>
+              </h2>
+            </div>
+            <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-one-1">
+              <ol class="gem-c-step-nav__list" data-length="1">
+                <li class="gem-c-step-nav__list-item js-list-item">
+                  <a href="#link1" class="gem-c-step-nav__link js-link" data-position="1.1">Link 1</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <li class="gem-c-step-nav__step js-step" id="topic-step-two">
+            <div class="gem-c-step-nav__header js-toggle-panel" data-position="2">
+              <h2 class="gem-c-step-nav__title">
+                <div class="gem-c-step-nav__circle">
+                  <span class="gem-c-step-nav__circle-inner">
+                    <span class="gem-c-step-nav__circle-background">
+                      <span class="visuallyhidden">Step</span> 2
+                    </span>
+                  </span>
+                </div>
+                <span class="js-step-title">Topic Step Two</span>
+              </h2>
+            </div>
+            <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-two-1">
+              <ol class="gem-c-step-nav__list" data-length="2">
+                <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">
+                  <a href="#link2" class="gem-c-step-nav__link js-link" data-position="2.1"><span class="visuallyhidden">You are currently viewing: </span>Link 2</a>
+                </li>
+                <li class="gem-c-step-nav__list-item js-list-item">
+                  <a href="#link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>
+                </li>
+                <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">
+                  <a href="#content" class="gem-c-step-nav__link js-link" data-position="2.3"><span class="visuallyhidden">You are currently viewing: </span>Link 4</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <li class="gem-c-step-nav__step gem-c-step-nav__step--active js-step" id="topic-step-three" data-optional>
+            <div class="gem-c-step-nav__header js-toggle-panel" data-position="3">
+              <h2 class="gem-c-step-nav__title">
+                <div class="gem-c-step-nav__circle">
+                  <span class="gem-c-step-nav__circle-inner">
+                    <span class="gem-c-step-nav__circle-background">
+                      <span class="visuallyhidden">Step</span> 3
+                    </span>
+                  </span>
+                </div>
+                <span class="js-step-title">Topic Step Three</span>
+              </h2>
+            </div>
+            <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-three-1">
+              <ol class="gem-c-step-nav__list" data-length="5">
+                <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">
+                  <a href="#link4" class="gem-c-step-nav__link js-link" data-position="3.1"><span class="visuallyhidden">You are currently viewing: </span>Link 5</a>
+                </li>
+                <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">
+                  <a href="#link5" class="gem-c-step-nav__link js-link" data-position="3.2"><span class="visuallyhidden">You are currently viewing: </span>Link 6</a>
+                </li>
+                <li class="gem-c-step-nav__list-item js-list-item">
+                  <a href="#www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 7</a>
+                </li>
+                <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">
+                  <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4"><span class="visuallyhidden">You are currently viewing: </span>Link 8</a>
+                </li>
+                <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">
+                  <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.5"><span class="visuallyhidden">You are currently viewing: </span>Link 9</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+        </ol>
+      </div>
+    `
 
     document.body.appendChild(container)
   }
