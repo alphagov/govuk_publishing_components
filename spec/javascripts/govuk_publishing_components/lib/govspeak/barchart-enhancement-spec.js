@@ -2,16 +2,18 @@
 /* global GOVUK */
 
 describe('Barchart enhancement', function () {
-  var chartHtml = '<table class="js-barchart-table mc-auto-outdent">' +
-                    '<tbody>' +
-                      '<tr>' +
-                        '<td>row 1</td><td>10</td>' +
-                      '</tr>' +
-                      '<tr>' +
-                        '<td>row 2</td><td>15</td>' +
-                      '</tr>' +
-                    '</tbody>' +
-                  '</table>'
+  var chartHtml = `
+    <table class="js-barchart-table mc-auto-outdent">
+      <tbody>
+        <tr>
+          <td>row 1</td><td>10</td>
+        </tr>
+        <tr>
+          <td>row 2</td><td>15</td>
+        </tr>
+      </tbody>
+    </table>
+  `
 
   it('creates a barchart from a table', function () {
     var $element = document.createElement('div')

@@ -16,19 +16,20 @@ describe('Modal dialogue component', function () {
 
   beforeEach(function () {
     container = document.createElement('div')
-    container.innerHTML =
-    '<button class="govuk-button" data-toggle="modal" data-target="my-modal">Launch modal dialogue</button>' +
-    '<div class="gem-c-modal-dialogue" data-module="modal-dialogue" id="my-modal">' +
-      '<dialog class="gem-c-modal-dialogue__box" aria-modal="true" role="dialogue" aria-labelledby="my-modal-title">' +
-        '<div class="gem-c-modal-dialogue__container">' +
-          '<div class="gem-c-modal-dialogue__content">' +
-            '<h2 id="my-modal-title">Modal title</h2>' +
-          '</div>' +
-          '<button class="gem-c-modal-dialogue__close-button" aria-label="Close modal dialogue">&times;</button>' +
-        '</div>' +
-      '</dialog>' +
-      '<div class="gem-c-modal-dialogue__overlay"></div>' +
-    '</div>' +
+    container.innerHTML = `
+      <button class="govuk-button" data-toggle="modal" data-target="my-modal">Launch modal dialogue</button>
+      <div class="gem-c-modal-dialogue" data-module="modal-dialogue" id="my-modal">
+        <dialog class="gem-c-modal-dialogue__box" aria-modal="true" role="dialogue" aria-labelledby="my-modal-title">
+          <div class="gem-c-modal-dialogue__container">
+            <div class="gem-c-modal-dialogue__content">
+              <h2 id="my-modal-title">Modal title</h2>
+            </div>
+            <button class="gem-c-modal-dialogue__close-button" aria-label="Close modal dialogue">&times;</button>
+          </div>
+        </dialog>
+        <div class="gem-c-modal-dialogue__overlay"></div>
+      </div>
+    `
 
     document.body.appendChild(container)
     var element = document.querySelector('[data-module="modal-dialogue"]')
