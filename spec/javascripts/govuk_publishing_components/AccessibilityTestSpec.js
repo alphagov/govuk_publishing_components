@@ -9,14 +9,16 @@ var AccessibilityTest = window.GOVUK.AccessibilityTest
 
 function addToDom (html, style) {
   var div = document.createElement('div')
-  var htmlToInject = ''
-  htmlToInject += '<div class="' + TEST_SELECTOR.replace('.', '') + '">'
+  div.classList.add(TEST_SELECTOR.replace('.', ''))
+  div.innerHTML = html
+
   if (style) {
-    htmlToInject += '<style>' + style + '</style>'
+    var styleElement = document.createElement('style')
+    styleElement.innerHTML = style
+    div.prepend(styleElement)
   }
-  htmlToInject += html + '</div>'
-  div.innerHTML = htmlToInject
-  document.getElementsByTagName('body')[0].appendChild(div)
+
+  document.querySelector('body').append(div)
 }
 
 function removeFromDom (selector) {
@@ -29,21 +31,25 @@ function removeFromDom (selector) {
 function renderErrorMessage (option) {
   var url = window.location.href
   var message = ''
+
   if (!option.skipHeader) {
-    message += '\nAccessibility issues at ' + url + '\n\n'
+    message += `
+Accessibility issues at ${url}
+
+`
   }
-  message += (
-    'Problem: ' + option.problem + ' (' + option.id + ')' + '\n' +
-    '\n' +
-    '\n' +
-    ' Check the HTML:\n' +
-    ' `' + option.html + '`\n' +
-    ' found with the selector:\n' +
-    ' "' + option.selector + '"\n' +
-    '\n' +
-    '\n' +
-    'Try fixing it with this help: ' + option.helpUrl
-  )
+
+  message += `\
+Problem: ${option.problem} (${option.id})
+
+
+ Check the HTML:
+ \`${option.html}\`
+ found with the selector:
+ "${option.selector}"
+
+
+Try fixing it with this help: ${option.helpUrl}`
   return message
 }
 
