@@ -1,4 +1,3 @@
-/* global XMLHttpRequest */
 (function (Modules) {
   function SinglePageNotificationButton ($module) {
     this.$module = $module
@@ -11,45 +10,35 @@
     if (this.buttonLocation) this.personalisationEndpoint += '&button_location=' + this.buttonLocation
   }
 
-  SinglePageNotificationButton.prototype.init = function () {
-    var xhr = new XMLHttpRequest()
-    xhr.open('GET', this.personalisationEndpoint, true)
-    // if XHR to the personalisation endpoint is taking an incredibly long time to complete, we are better off leaving the button in its default unpersonalised state. Content changing before the user's eyes while they are browsing can be jarring and should be avoided.
-    xhr.timeout = 10000
+  SinglePageNotificationButton.prototype.init = async function () {
+    try {
+      const response = await fetch(this.personalisationEndpoint, { headers: { Accept: 'application/json' }})
+      // if (!response.ok) {
+      //   throw new Error(`Response status: ${response.status}`)
+      // }
 
-    xhr.ontimeout = function () {
-      this.makeVisible(this.$module)
-    }.bind(this)
+      const result = await response.json()
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          var responseText = xhr.responseText
-          // if response text exists and is JSON parse-able, parse the response and update the button html
-          if (responseText && this.responseIsJSON(responseText)) {
-            var active = JSON.parse(responseText).active
+      var customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
+      var customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
+      // Only set custom button text if both text items are provided
+      var customText = customSubscribeText && customUnsubscribeText
 
-            var customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
-            var customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
-            // Only set custom button text if both text items are provided
-            var customText = customSubscribeText && customUnsubscribeText
-
-            // If response returns active, user has subscribed to notifications
-            if (active === true) {
-              if (customText) {
-                this.$module.querySelector('.gem-c-button__outline--notification').textContent = customUnsubscribeText
-              }
-            } else {
-              if (customText) {
-                this.$module.querySelector('.gem-c-button__outline--notification').textContent = customSubscribeText
-              }
-            }
-          }
+      // If response returns active, user has subscribed to notifications
+      if (result.active === true) {
+        if (customText) {
+          this.$module.querySelector('.gem-c-button__outline--notification').textContent = customUnsubscribeText
         }
-        this.makeVisible(this.$module)
+      } else {
+        if (customText) {
+          this.$module.querySelector('.gem-c-button__outline--notification').textContent = customSubscribeText
+        }
       }
-    }.bind(this)
-    xhr.send()
+
+      this.makeVisible(this.$module)
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
   SinglePageNotificationButton.prototype.responseIsJSON = function (string) {
