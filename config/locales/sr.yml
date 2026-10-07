@@ -71,6 +71,9 @@ sr:
       - Želimo da podesimo dodatne kolačiće da bismo razumeli način na koji koristite GOV.UK
       - upamtili vaša podešavanja i poboljšali usluge vlade.
       - Koristimo i kolačiće koje postavljaju drugi sajtovi kako bismo mogli da pružamo sadržaj iz njihovih usluga.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Kolačići na sajtu GOV.UK
     devolved_nations:
       applies_to:

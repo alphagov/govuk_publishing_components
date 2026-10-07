@@ -6,9 +6,9 @@ describe('Cookie banner', function () {
 
   var container
   // default cookie consent to use as basis of comparison
-  var DEFAULT_COOKIE_CONSENT = '{"essential":true,"settings":false,"usage":false,"campaigns":false}'
+  var DEFAULT_COOKIE_CONSENT = '{"essential":true,"settings":false,"usage":false,"campaigns":false,"aggregate":true}'
   // all consent cookie to use as a basis of comparison
-  var ALL_COOKIE_CONSENT = '{"essential":true,"settings":true,"usage":true,"campaigns":true}'
+  var ALL_COOKIE_CONSENT = '{"essential":true,"settings":true,"usage":true,"campaigns":true,"aggregate":false}'
 
   beforeEach(function () {
     container = document.createElement('div')
