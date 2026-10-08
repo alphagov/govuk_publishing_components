@@ -1,61 +1,64 @@
+/* global fetch */
+
 (function (Modules) {
-  function SinglePageNotificationButton ($module) {
-    this.$module = $module
-    this.basePath = this.$module.querySelector('input[name="base_path"]').value
-    this.button = this.$module.querySelector('.gem-c-button__outline--notification')
-    this.buttonLocation = this.$module.getAttribute('data-button-location')
-    this.buttonVisibleClass = 'gem-c-single-page-notification-button--visible'
-    this.customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
-    this.customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
+  class SinglePageNotificationButton {
+    constructor ($module) {
+      this.$module = $module
+      this.basePath = this.$module.querySelector('input[name="base_path"]').value
+      this.button = this.$module.querySelector('.gem-c-button__outline--notification')
+      this.buttonLocation = this.$module.getAttribute('data-button-location')
+      this.buttonVisibleClass = 'gem-c-single-page-notification-button--visible'
+      this.customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
+      this.customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
 
-    this.personalisationEndpoint = `/api/personalisation/check-email-subscription?base_path=${this.basePath}`
+      this.personalisationEndpoint = `/api/personalisation/check-email-subscription?base_path=${this.basePath}`
 
-    // This attribute is passed through to the personalisation API to ensure the updated button has the same button_location for analytics
-    if (this.buttonLocation) {
-      this.personalisationEndpoint += `&button_location=${this.buttonLocation}`
-    }
-  }
-
-  SinglePageNotificationButton.prototype.init = async function () {
-    try {
-      const personalisationData = await this.getPersonalisationData()
-
-      // Only set custom button text if both text items are provided
-      if (this.customSubscribeText && this.customUnsubscribeText) {
-        this.setCustomButtonText(personalisationData.active)
+      // This attribute is passed through to the personalisation API to ensure the updated button has the same button_location for analytics
+      if (this.buttonLocation) {
+        this.personalisationEndpoint += `&button_location=${this.buttonLocation}`
       }
-
-      this.makeVisible(this.$module)
-    } catch (error) {
-      console.error(error.message)
     }
-  }
 
-  SinglePageNotificationButton.prototype.responseIsJSON = function (string) {
-    try {
-      JSON.parse(string)
-    } catch (e) {
-      return false
+    async init () {
+      try {
+        const personalisationData = await this.getPersonalisationData()
+
+        // Only set custom button text if both text items are provided
+        if (this.customSubscribeText && this.customUnsubscribeText) {
+          this.setCustomButtonText(personalisationData.active)
+        }
+
+        this.makeVisible(this.$module)
+      } catch (error) {
+        console.error(error.message)
+      }
     }
-    return true
-  }
 
-  SinglePageNotificationButton.prototype.makeVisible = function (target) {
-    target.classList.add(this.buttonVisibleClass)
-  }
+    responseIsJSON (string) {
+      try {
+        JSON.parse(string)
+      } catch (e) {
+        return false
+      }
+      return true
+    }
 
-  SinglePageNotificationButton.prototype.getPersonalisationData = async function () {
-      const response = await fetch(this.personalisationEndpoint, { headers: { Accept: 'application/json' }})
+    makeVisible (target) {
+      target.classList.add(this.buttonVisibleClass)
+    }
+
+    async getPersonalisationData () {
+      const response = await fetch(this.personalisationEndpoint, { headers: { Accept: 'application/json' } })
       // if (!response.ok) {
       //   throw new Error(`Response status: ${response.status}`)
       // }
-
       const result = await response.json()
       return result
-  }
+    }
 
-  SinglePageNotificationButton.prototype.setCustomButtonText = function (activeState) {
-    this.button.textContent = activeState === true ? this.customUnsubscribeText : this.customSubscribeText
+    setCustomButtonText (activeState) {
+      this.button.textContent = activeState === true ? this.customUnsubscribeText : this.customSubscribeText
+    }
   }
 
   Modules.SinglePageNotificationButton = SinglePageNotificationButton
