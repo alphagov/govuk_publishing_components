@@ -61,6 +61,7 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/layout-for-public';
 @import 'govuk_publishing_components/components/layout-header';
 @import 'govuk_publishing_components/components/layout-super-navigation-header';
+@import 'govuk_publishing_components/components/modal-dialogue';
 @import 'govuk_publishing_components/components/phase-banner';
 @import 'govuk_publishing_components/components/print-link';
 @import 'govuk_publishing_components/components/related-navigation';
@@ -93,6 +94,7 @@ describe "Component guide index", :capybara do
 //= require govuk_publishing_components/components/feedback
 //= require govuk_publishing_components/components/govspeak
 //= require govuk_publishing_components/components/layout-super-navigation-header
+//= require govuk_publishing_components/components/modal-dialogue
 //= require govuk_publishing_components/components/print-link
 //= require govuk_publishing_components/components/search-with-autocomplete
 //= require govuk_publishing_components/components/service-navigation

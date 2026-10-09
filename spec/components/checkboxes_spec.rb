@@ -479,6 +479,7 @@ describe "Checkboxes", type: :view do
       description: render(
         "govuk_publishing_components/components/govspeak",
         content: "<p>This is a description about skittles.</p>".html_safe,
+        omit_modal: true,
       ),
       items: [
         { label: "Red", value: "red" },
