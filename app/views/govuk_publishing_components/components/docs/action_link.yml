@@ -8,11 +8,6 @@ examples:
     data:
       text: Go to NHS 111 online
       href: "/page"
-  with_bottom_margin:
-    data:
-      text: Look at this margin
-      href: "/page"
-      margin_bottom: 9
   inverse:
     data:
       text: "Coronavirus (COVID-19)"
@@ -31,4 +26,10 @@ examples:
       text: This way for cookies
       href: "/cookies"
       large: true
+  right_to_left:
+    data:
+      text: Go to NHS 111 online
+      href: "/page"
+    context:
+      right_to_left: true
 
