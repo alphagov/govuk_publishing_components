@@ -1100,10 +1100,10 @@ examples:
           <caption>A table with data</caption>
           <thead>
             <tr>
-              <th>Group</th>
-              <th>Explanation</th>
-              <th>Current and continuing guidance</th>
-              <th>Government support</th>
+              <th>Group longwordtocausescrollingandoverflowandthat</th>
+              <th>Explanation longwordtocausescrollingandoverflowandthat</th>
+              <th>Current and continuing guidance longwordtocausescrollingandoverflowandthat</th>
+              <th>Government support longwordtocausescrollingandoverflowandthat</th>
             </tr>
           </thead>
           <tbody>

@@ -9,6 +9,10 @@
     }
 
     this.createBarcharts()
+
+    if (this.$module.querySelectorAll('table').length) {
+      this.tableScroll()
+    }
   }
 
   Govspeak.prototype.embedYoutube = function () {
@@ -18,6 +22,11 @@
 
   Govspeak.prototype.createBarcharts = function () {
     var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
+    enhancement.init()
+  }
+
+  Govspeak.prototype.tableScroll = function () {
+    var enhancement = new window.GOVUK.GovspeakTableScroll(this.$module)
     enhancement.init()
   }
 
