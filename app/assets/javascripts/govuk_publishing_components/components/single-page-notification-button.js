@@ -48,14 +48,24 @@
     }
 
     async getPersonalisationData () {
-      const response = await fetch(this.personalisationEndpoint, { headers: { Accept: 'application/json' } })
+      try {
+        const abortController = new AbortController()
+        setTimeout(() => abortController.abort(), 1)
 
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`)
+        const response = await fetch(this.personalisationEndpoint, {
+          headers: { Accept: 'application/json'},
+          signal: abortController.signal
+        })
+
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`)
+        }
+
+        const result = await response.json()
+        return result
+      } catch (error) {
+        console.error(error.message)
       }
-
-      const result = await response.json()
-      return result
     }
 
     setCustomButtonText (activeState) {
