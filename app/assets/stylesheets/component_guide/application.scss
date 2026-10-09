@@ -561,3 +561,13 @@ $code-delete-bg: #fadddd;
     }
   }
 }
+
+.rtl-trigger {
+  &::before {
+    content: "(";
+  }
+
+  &::after {
+    content: ")";
+  }
+}
