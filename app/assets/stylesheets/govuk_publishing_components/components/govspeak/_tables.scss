@@ -54,6 +54,16 @@
       text-align: right;
     }
   }
+
+  .govspeak-table-scrollbar {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 20px;
+  }
+
+  .govspeak-table-scrollbar__child {
+    height: 20px;
+  }
 }
 
 // Add rtl table styling when `direction: "rtl"` is set
