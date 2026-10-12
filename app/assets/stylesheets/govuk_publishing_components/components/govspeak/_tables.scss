@@ -100,10 +100,25 @@
     overflow-x: scroll;
     overflow-y: hidden;
     height: 20px;
+    margin-bottom: 5px;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .govspeak-table-scrollbar__child {
     height: 20px;
+  }
+
+  .govspeak-table-scrollbar + table:focus {
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
+    box-shadow: 0 0 0 6px govuk-functional-colour("focus-text");
+
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 }
 
