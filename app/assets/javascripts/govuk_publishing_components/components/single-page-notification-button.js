@@ -22,10 +22,11 @@
     async init () {
       try {
         const personalisationData = await this.getPersonalisationData(10000)
+        const customTextSet = this.customSubscribeText && this.customUnsubscribeText
 
         // Only set custom button text if both text items are provided
-        if (this.customSubscribeText && this.customUnsubscribeText) {
-          this.setCustomButtonText(personalisationData.active)
+        if (personalisationData && customTextSet) {
+            this.setCustomButtonText(personalisationData.active)
         }
       } catch (error) {
         if (error.name === "AbortError") {
