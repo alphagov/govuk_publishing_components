@@ -1,4 +1,4 @@
-/* global fetch */
+/* global fetch, DOMException, AbortController */
 
 (function (Modules) {
   class SinglePageNotificationButton {
@@ -26,11 +26,11 @@
 
         // Only set custom button text if both text items are provided
         if (personalisationData && customTextSet) {
-            this.setCustomButtonText(personalisationData.active)
+          this.setCustomButtonText(personalisationData.active)
         }
       } catch (error) {
-        if (error.name === "AbortError") {
-          console.error("Timeout");
+        if (error.name === 'AbortError') {
+          console.error('Timeout')
         }
       }
 
@@ -55,7 +55,7 @@
       setTimeout(() => abortController.abort(new DOMException('Timeout', 'AbortError')), timer)
 
       const response = await fetch(this.personalisationEndpoint, {
-        headers: { Accept: 'application/json'},
+        headers: { Accept: 'application/json' },
         signal: abortController.signal
       })
 
