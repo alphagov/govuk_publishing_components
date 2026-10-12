@@ -1,5 +1,5 @@
 /* eslint-env jasmine */
-/* global GOVUK */
+/* global GOVUK, DOMException, AbortController */
 
 describe('Single page notification component', function () {
   var container
@@ -26,9 +26,12 @@ describe('Single page notification component', function () {
     stubSuccessfulFetch()
     initButton()
 
-    // expect(window.fetch).toHaveBeenCalledWith(
-    //   '/api/personalisation/check-email-subscription?base_path=/current-page-path', { headers: { Accept: 'application/json' }, signal: abortController.signal }
-    // )
+    expect(window.fetch).toHaveBeenCalledWith(
+      '/api/personalisation/check-email-subscription?base_path=/current-page-path', {
+        headers: { Accept: 'application/json' },
+        signal: new AbortController().signal
+      }
+    )
   })
 
   it('includes button_location in the call to the personalisation API when button_location is specified', function () {
@@ -36,9 +39,12 @@ describe('Single page notification component', function () {
     stubSuccessfulFetch()
     initButton()
 
-    // expect(window.fetch).toHaveBeenCalledWith(
-    //   '/api/personalisation/check-email-subscription?base_path=/current-page-path&button_location=top', { headers: { Accept: 'application/json' }, signal: abortController.signal }
-    // )
+    expect(window.fetch).toHaveBeenCalledWith(
+      '/api/personalisation/check-email-subscription?base_path=/current-page-path&button_location=top', {
+        headers: { Accept: 'application/json' },
+        signal: new AbortController().signal
+      }
+    )
   })
 
   it('renders the button visible when API response is received', async function () {
@@ -99,7 +105,10 @@ describe('Single page notification component', function () {
   })
 
   it('should remain unchanged if the endpoint fails', async function () {
-    createFixture()
+    createFixture(`
+      data-button-text-subscribe="Start getting emails about this stuff"
+      data-button-text-unsubscribe="Stop getting emails about this stuff"
+    `)
     stubServerErrorFetch()
     await initButton()
 
@@ -112,12 +121,10 @@ describe('Single page notification component', function () {
       data-button-text-subscribe="Start getting emails about this stuff"
       data-button-text-unsubscribe="Stop getting emails about this stuff"
     `)
-    stubServerTimeout()
-    await initButton()
 
-    var button = document.querySelector('button.gem-c-button__outline--notification')
-    expect(button.textContent).toContain('Get emails about this page')
-    // expect(initButton).toThrowError()
+    var element = document.querySelector('[data-module=single-page-notification-button]')
+    const singlePageButton = new GOVUK.Modules.SinglePageNotificationButton(element)
+    await expectAsync(singlePageButton.getPersonalisationData(0)).toBeRejectedWith(new DOMException('Timeout', 'AbortError'))
   })
 
   const stubSuccessfulFetch = (personalisationData) => {
@@ -134,10 +141,6 @@ describe('Single page notification component', function () {
       status: 500,
       json: () => Promise.resolve({ error: 'Internal server error' })
     }))
-  }
-
-  const stubServerTimeout = () => {
-    spyOn(window, 'fetch').and.callFake(() => setTimeout(() => 1))
   }
 
   async function initButton () {
