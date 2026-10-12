@@ -70,7 +70,13 @@ describe('Google Tag Manager page view tracking', function () {
         user_created_at: undefined,
         user_organisation_name: undefined,
         user_role: undefined,
-        user_id: undefined
+        user_id: undefined,
+
+        utm_source: undefined,
+        utm_medium: undefined,
+        utm_campaign: undefined,
+        utm_term: undefined,
+        utm_content: undefined
       }
     }
     if (window.location.search) {
