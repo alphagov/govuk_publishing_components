@@ -48,6 +48,7 @@
       wrapper.appendChild(table)
 
       const scrollBar = document.createElement('div')
+      scrollBar.setAttribute('tabindex', '-1')
       scrollBar.classList.add('govspeak-table-scrollbar')
 
       const scrollBarChild = document.createElement('div')
