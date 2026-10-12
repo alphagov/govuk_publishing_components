@@ -41,6 +41,12 @@
         return
       }
 
+      // wrap the table in a div
+      var wrapper = document.createElement('div')
+      wrapper.classList.add('tablewrapper')
+      table.parentNode.insertBefore(wrapper, table)
+      wrapper.appendChild(table)
+
       const scrollBar = document.createElement('div')
       scrollBar.classList.add('govspeak-table-scrollbar')
 
