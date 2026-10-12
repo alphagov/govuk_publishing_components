@@ -12,7 +12,10 @@
       return
     }
 
-    this.windowResized()
+    // a small timeout ensures scrollWidth is accurate
+    setTimeout(() => {
+      this.windowResized(true)
+    }, 10)
 
     window.onresize = () => {
       if (this.windowResizeTimeout) {
@@ -25,27 +28,29 @@
     }
   }
 
-  TableScroll.prototype.windowResized = function () {
+  TableScroll.prototype.windowResized = function (createWrapper) {
     this.destroyElements()
 
     if (window.innerWidth < 769) {
       return
     }
 
-    this.setupElements()
+    this.setupElements(createWrapper)
   }
 
-  TableScroll.prototype.setupElements = function () {
+  TableScroll.prototype.setupElements = function (createWrapper) {
     this.tables.forEach(table => {
       if (!(table.scrollWidth > table.clientWidth)) {
         return
       }
 
-      // wrap the table in a div
-      var wrapper = document.createElement('div')
-      wrapper.classList.add('tablewrapper')
-      table.parentNode.insertBefore(wrapper, table)
-      wrapper.appendChild(table)
+      // wrap the table in a div, but only the first time
+      if (createWrapper) {
+        var wrapper = document.createElement('div')
+        wrapper.classList.add('tablewrapper')
+        table.parentNode.insertBefore(wrapper, table)
+        wrapper.appendChild(table)
+      }
 
       const scrollBar = document.createElement('div')
       scrollBar.setAttribute('tabindex', '-1')
@@ -58,11 +63,11 @@
       scrollBar.append(scrollBarChild)
       table.before(scrollBar)
 
-      scrollBar.onscroll = (event) => {
+      scrollBar.onscroll = () => {
         table.scrollLeft = scrollBar.scrollLeft
       }
 
-      table.onscroll = (event) => {
+      table.onscroll = () => {
         scrollBar.scrollLeft = table.scrollLeft
       }
     })
