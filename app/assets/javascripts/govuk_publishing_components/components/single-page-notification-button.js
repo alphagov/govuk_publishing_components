@@ -21,17 +21,19 @@
 
     async init () {
       try {
-        const personalisationData = await this.getPersonalisationData()
+        const personalisationData = await this.getPersonalisationData(10000)
 
         // Only set custom button text if both text items are provided
         if (this.customSubscribeText && this.customUnsubscribeText) {
           this.setCustomButtonText(personalisationData.active)
         }
-
-        this.makeVisible(this.$module)
       } catch (error) {
-        console.error(error.message)
+        if (error.name === "AbortError") {
+          console.error("Timeout");
+        }
       }
+
+      this.makeVisible(this.$module)
     }
 
     responseIsJSON (string) {
@@ -47,25 +49,20 @@
       target.classList.add(this.buttonVisibleClass)
     }
 
-    async getPersonalisationData () {
-      try {
-        const abortController = new AbortController()
-        setTimeout(() => abortController.abort(), 1)
+    async getPersonalisationData (timer) {
+      const abortController = new AbortController()
+      setTimeout(() => abortController.abort(new DOMException('Timeout', 'AbortError')), timer)
 
-        const response = await fetch(this.personalisationEndpoint, {
-          headers: { Accept: 'application/json'},
-          signal: abortController.signal
-        })
+      const response = await fetch(this.personalisationEndpoint, {
+        headers: { Accept: 'application/json'},
+        signal: abortController.signal
+      })
 
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`)
-        }
-
-        const result = await response.json()
-        return result
-      } catch (error) {
-        console.error(error.message)
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
       }
+
+      return await response.json()
     }
 
     setCustomButtonText (activeState) {
