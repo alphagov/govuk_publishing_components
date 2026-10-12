@@ -7,7 +7,18 @@
 
     init: function (referrer) {
       if (window.dataLayer) {
+        var link_params = this.getLocation().split('?')[1].split('&')
+        var params = {}
+
         this.stripDates = !this.getSearchTerm()
+
+        // This can be more elegant
+        // Also check how it plays with search terms in the query string
+        link_params.forEach(function(param){
+          var items = param.split('=')
+          params[items[0]] = items[1]
+        })
+
         var data = {
           event: 'page_view',
           page_view: {
@@ -69,7 +80,13 @@
             user_created_at: this.getMetaContent('user-created-at'),
             user_organisation_name: this.getMetaContent('user-organisation-name'),
             user_role: this.getMetaContent('user-role'),
-            user_id: this.getMetaContent('user-id')
+            user_id: this.getMetaContent('user-id'),
+
+            link_source: params.link_source, // undefined,
+            link_medium: params.link_medium, // undefined,
+            link_campaign: params.link_campaign, // undefined,
+            link_term: params.link_term, // undefined,
+            link_content: params.link_content, // undefined
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
