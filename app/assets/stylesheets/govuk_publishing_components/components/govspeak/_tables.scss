@@ -7,10 +7,6 @@
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
-  .tablewrapper {
-    position: relative;
-  }
-
   table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -18,46 +14,7 @@
     margin: 0 0 govuk-spacing(6);
     overflow-x: auto;
     width: 100%;
-    container-type: scroll-state;
-    container-name: scroller;
     @include govuk-font($size: 19);
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      top: 24px;
-      width: 10px;
-      bottom: 20px;
-      background: rgb(0, 0, 0, 0.1);
-      border-color: $govuk-border-colour;
-      border-width: 5px;
-      display: none;
-    }
-
-    &::before {
-      left: 0;
-      border-left-style: solid;
-      border-radius: 0 15px 15px 0;
-    }
-
-    &::after {
-      right: 0;
-      border-right-style: solid;
-      border-radius: 15px 0 0 15px;
-    }
-
-    @container scroller scroll-state(scrollable: right) {
-      &::after {
-        display: block;
-      }
-    }
-
-    @container scroller scroll-state(scrollable: left) {
-      &::before {
-        display: block;
-      }
-    }
 
     caption {
       text-align: left;
@@ -95,6 +52,48 @@
 
     .cell-text-right {
       text-align: right;
+    }
+  }
+
+  .tablewrapper {
+    position: relative;
+  }
+
+  .tablewrapper--active {
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 24px;
+      width: 10px;
+      bottom: 20px;
+      background: rgb(0, 0, 0, 0.1);
+      border-color: $govuk-border-colour;
+      border-width: 5px;
+    }
+
+    &::before {
+      left: 0;
+      border-left-style: solid;
+      border-radius: 0 15px 15px 0;
+    }
+
+    &::after {
+      right: 0;
+      border-right-style: solid;
+      border-radius: 15px 0 0 15px;
+    }
+  }
+
+  .tablewrapper--start {
+    &::before {
+      display: none;
+    }
+  }
+
+  .tablewrapper--end {
+    &::after {
+      display: none;
     }
   }
 
