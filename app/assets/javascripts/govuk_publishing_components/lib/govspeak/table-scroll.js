@@ -57,6 +57,7 @@
 
       scrollBar.append(scrollBarChild)
       table.before(scrollBar)
+      scrollBar.scrollLeft = table.scrollLeft
 
       scrollBar.onscroll = () => {
         table.scrollLeft = scrollBar.scrollLeft
