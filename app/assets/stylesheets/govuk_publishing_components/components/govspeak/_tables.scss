@@ -26,9 +26,9 @@
     &::after {
       content: "";
       position: absolute;
-      top: 0;
+      top: 24px;
       width: 10px;
-      height: 100%;
+      bottom: 20px;
       background: rgb(0, 0, 0, 0.1);
       border-color: $govuk-border-colour;
       border-width: 5px;
@@ -38,11 +38,13 @@
     &::before {
       left: 0;
       border-left-style: solid;
+      border-radius: 0 15px 15px 0;
     }
 
     &::after {
       right: 0;
       border-right-style: solid;
+      border-radius: 15px 0 0 15px;
     }
 
     @container scroller scroll-state(scrollable: right) {
