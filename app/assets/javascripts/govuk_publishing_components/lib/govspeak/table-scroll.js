@@ -14,7 +14,7 @@
 
     // a small timeout ensures scrollWidth is accurate
     setTimeout(() => {
-      this.windowResized(true)
+      this.windowResized()
     }, 10)
 
     window.onresize = () => {
@@ -28,19 +28,24 @@
     }
   }
 
-  TableScroll.prototype.windowResized = function (createWrapper) {
+  TableScroll.prototype.windowResized = function () {
     this.destroyElements()
-    this.setupElements(createWrapper)
+    this.setupElements()
   }
 
-  TableScroll.prototype.setupElements = function (createWrapper) {
+  TableScroll.prototype.setupElements = function () {
     this.tables.forEach(table => {
+      const tablewrapper = table.closest('.tablewrapper')
+
       if (!(table.scrollWidth > table.clientWidth)) {
+        if (tablewrapper) {
+          tablewrapper.className = 'tablewrapper'
+        }
         return
       }
 
       // wrap the table in a div, but only the first time
-      if (createWrapper) {
+      if (!tablewrapper) {
         var wrapper = document.createElement('div')
         wrapper.classList.add('tablewrapper')
         table.parentNode.insertBefore(wrapper, table)
@@ -58,15 +63,38 @@
       scrollBar.append(scrollBarChild)
       table.before(scrollBar)
       scrollBar.scrollLeft = table.scrollLeft
+      this.updateLeftRight(table)
 
       scrollBar.onscroll = () => {
+        if (this.preventScrolling) {
+          this.preventScrolling = false
+          return
+        }
+        this.preventScrolling = true
         table.scrollLeft = scrollBar.scrollLeft
+        this.updateLeftRight(table)
       }
 
       table.onscroll = () => {
+        if (this.preventScrolling) {
+          this.preventScrolling = false
+          return
+        }
+        this.preventScrolling = true
         scrollBar.scrollLeft = table.scrollLeft
+        this.updateLeftRight(table)
       }
     })
+  }
+
+  TableScroll.prototype.updateLeftRight = function (table) {
+    if ((table.scrollWidth - table.scrollLeft) < (table.offsetWidth + 1)) {
+      table.parentElement.className = 'tablewrapper tablewrapper--active tablewrapper--end'
+    } else if (table.scrollLeft < 1) {
+      table.parentElement.className = 'tablewrapper tablewrapper--active tablewrapper--start'
+    } else {
+      table.parentElement.className = 'tablewrapper tablewrapper--active'
+    }
   }
 
   TableScroll.prototype.destroyElements = function () {

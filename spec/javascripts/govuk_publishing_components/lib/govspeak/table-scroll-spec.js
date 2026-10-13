@@ -74,12 +74,14 @@ describe('Table scrolling enhancement', function () {
       const tables = document.querySelectorAll('.gem-c-govspeak table')
       const dummyScrollBarWrapper = document.querySelector('.govspeak-table-scrollbar')
 
-      tables[1].scrollLeft += 200
+      tables[1].scrollLeft += 40
       tables[1].dispatchEvent(new Event('scroll'))
+      dummyScrollBarWrapper.dispatchEvent(new Event('scroll'))
       expect(dummyScrollBarWrapper.scrollLeft).toEqual(tables[1].scrollLeft)
 
-      dummyScrollBarWrapper.scrollLeft -= 27
+      dummyScrollBarWrapper.scrollLeft -= 14
       dummyScrollBarWrapper.dispatchEvent(new Event('scroll'))
+      tables[1].dispatchEvent(new Event('scroll'))
       expect(dummyScrollBarWrapper.scrollLeft).toEqual(tables[1].scrollLeft)
     })
   })
