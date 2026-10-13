@@ -30,11 +30,6 @@
 
   TableScroll.prototype.windowResized = function (createWrapper) {
     this.destroyElements()
-
-    if (window.innerWidth < 769) {
-      return
-    }
-
     this.setupElements(createWrapper)
   }
 
