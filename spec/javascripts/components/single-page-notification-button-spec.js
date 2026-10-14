@@ -80,26 +80,17 @@ describe('Single page notification component', function () {
     expect(button.textContent).toBe('Stop getting emails about this stuff')
   })
 
-  it('should remain unchanged if the response is not JSON', async function () {
-    var responseText = 'I am not JSON, actually'
-    createFixture()
-    stubSuccessfulFetch(responseText)
+  it('should remain unchanged if the active state is not a boolean value', async function () {
+    createFixture(`
+      data-button-text-subscribe="Start getting emails about this stuff"
+      data-button-text-unsubscribe="Stop getting emails about this stuff"
+    `)
+    stubSuccessfulFetch({ base_path: '/current-page-path', active: 'inactive' })
     await initButton()
 
     var button = document.querySelector('button.gem-c-button__outline--notification')
     expect(button.textContent).toBe('Get emails about this page')
-    expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
-  })
-
-  it('should remain unchanged if response text is empty', async function () {
-    var responseText = ''
-    createFixture()
-    stubSuccessfulFetch(responseText)
-    await initButton()
-
-    var button = document.querySelector('button.gem-c-button__outline--notification')
-    expect(button.textContent).toBe('Get emails about this page')
-    expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
+    expect(GOVUK.Modules.SinglePageNotificationButton.prototype.getCustomButtonText('inactive', 'Start getting emails about this stuff', 'Stop getting emails about this stuff')).toBeUndefined()
   })
 
   it('button should use default text and be visible if the endpoint fails', async function () {
