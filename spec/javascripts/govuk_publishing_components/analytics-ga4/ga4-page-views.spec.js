@@ -468,6 +468,34 @@ describe('Google Tag Manager page view tracking', function () {
     linkForURLMock.click()
   })
 
+  it('correctly sets the link tracking properties', function () {
+    // We can't spy on location, so instead we use an anchor link to change the URL temporarily
+    // Reset the URL so we can build the expected link string
+    var location
+    var linkForURLMock = document.createElement('a')
+
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+    location = document.location.href
+
+    linkForURLMock.href = location + '&link_source=notify&link_medium=email&link_campaign=fact_check&link_term=sme&link_content=view_the_fact_check'
+    linkForURLMock.click()
+
+    expected.page_view.location = location + '&link_source=notify&link_medium=email&link_campaign=fact_check&link_term=sme&link_content=view_the_fact_check'
+    expected.page_view.link_source = 'notify'
+    expected.page_view.link_medium = 'email'
+    expected.page_view.link_campaign = 'fact_check'
+    expected.page_view.link_term = 'sme'
+    expected.page_view.link_content = 'view_the_fact_check'
+
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+
+    // Reset the page location for other tests
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+  })
+
   describe('correctly sets the referrer and dynamic properties', function () {
     it('when not passed a parameter', function () {
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
