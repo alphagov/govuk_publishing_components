@@ -93,11 +93,6 @@ $search-icon-height: 20px;
 
 // stylelint-disable max-nesting-depth
 .gem-c-layout-super-navigation-header {
-  background: govuk-functional-colour(brand);
-  border-top: 1px solid govuk-functional-colour(brand);
-  margin-top: -1px;
-  position: relative;
-
   [hidden] {
     display: none;
   }
@@ -117,10 +112,6 @@ $search-icon-height: 20px;
 }
 
 .gem-c-layout-super-navigation-header__header-logo {
-  display: inline-block;
-  line-height: 1;
-  padding-bottom: 12px;
-  padding-top: 16px;
   flex-grow: 1;
   flex-shrink: 0;
 

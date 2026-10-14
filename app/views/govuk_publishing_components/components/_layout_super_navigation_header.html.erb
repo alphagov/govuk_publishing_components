@@ -27,7 +27,7 @@
 
   search_item_link_classes = %w(gem-c-layout-super-navigation-header__search-item-link)
 
-  header_logo_classes = %w(gem-c-layout-super-navigation-header__header-logo)
+  header_logo_classes = %w(govuk-header__logo gem-c-layout-super-navigation-header__header-logo)
   header_logo_classes << "gem-c-layout-super-navigation-header__header-logo--homepage" if homepage
 
   header_link_classes = %w(govuk-header__homepage-link)
@@ -35,12 +35,14 @@
   dropdown_menu_classes = %w(gem-c-layout-super-navigation-header__navigation-dropdown-menu)
 
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("govuk-header")
+  # Don't remove below class yet, it's tied to JS functionality. We will remove it when we have a plan to update the JS to a JS specific class
   component_helper.add_class("gem-c-layout-super-navigation-header")
   component_helper.add_data_attribute({ module: "ga4-event-tracker ga4-link-tracker", ga4_expandable: "" })
 %>
 <%= tag.div(**component_helper.all_attributes) do %>
 <div class="gem-c-layout-super-navigation-header__nav-wrapper">
-  <div class="gem-c-layout-super-navigation-header__container govuk-width-container">
+  <div class="govuk-header__container govuk-width-container">
     <nav
       aria-labelledby="super-navigation-menu-heading"
       class="gem-c-layout-super-navigation-header__content"
