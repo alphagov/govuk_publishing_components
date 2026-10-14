@@ -1,4 +1,4 @@
-/* global XMLHttpRequest */
+/* global fetch, DOMException, AbortController */
 (function (Modules) {
   class SinglePageNotificationButton {
     constructor ($module) {
@@ -7,10 +7,6 @@
       this.button = this.$module.querySelector('.gem-c-button__outline--notification')
       this.buttonLocation = this.$module.getAttribute('data-button-location')
       this.buttonVisibleClass = 'gem-c-single-page-notification-button--visible'
-
-      this.personalisationEndpoint = '/api/personalisation/check-email-subscription?base_path=' + this.basePath
-      // This attribute is passed through to the personalisation API to ensure the updated button has the same button_location for analytics
-      if (this.buttonLocation) this.personalisationEndpoint += '&button_location=' + this.buttonLocation
     }
 
     async init () {
@@ -19,7 +15,8 @@
           return
         }
 
-        const personalisationData = await this.getPersonalisationData(this.personalisationEndpoint, 10000)
+        const personalisationEndpoint = this.getPersonalisationEndpoint(this.basePathInput.value, this.buttonLocation)
+        const personalisationData = await this.getPersonalisationData(personalisationEndpoint, 10000)
 
         var customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
         var customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
@@ -50,6 +47,16 @@
         return false
       }
       return true
+    }
+
+    getPersonalisationEndpoint (basePath, buttonLocation) {
+      const checkEmailSubscriptionEndpoint = '/api/personalisation/check-email-subscription'
+
+      if (buttonLocation) {
+        return `${checkEmailSubscriptionEndpoint}?base_path=${basePath}&button_location=${buttonLocation}`
+      }
+
+      return `${checkEmailSubscriptionEndpoint}?base_path=${basePath}`
     }
 
     async getPersonalisationData (personalisationEndpoint, timer) {
