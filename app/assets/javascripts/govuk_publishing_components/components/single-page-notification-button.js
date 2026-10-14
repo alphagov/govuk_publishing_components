@@ -6,6 +6,8 @@
       this.basePathInput = this.$module.querySelector('input[name="base_path"]')
       this.button = this.$module.querySelector('.gem-c-button__outline--notification')
       this.buttonLocation = this.$module.getAttribute('data-button-location')
+      this.customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
+      this.customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
       this.buttonVisibleClass = 'gem-c-single-page-notification-button--visible'
     }
 
@@ -17,36 +19,16 @@
 
         const personalisationEndpoint = this.getPersonalisationEndpoint(this.basePathInput.value, this.buttonLocation)
         const personalisationData = await this.getPersonalisationData(personalisationEndpoint, 10000)
+        const customButtonText = this.getCustomButtonText(personalisationData.active, this.customSubscribeText, this.customUnsubscribeText)
 
-        var customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
-        var customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
-        // Only set custom button text if both text items are provided
-        var customText = customSubscribeText && customUnsubscribeText
-
-        // If response returns active, user has subscribed to notifications
-        if (personalisationData.active === true) {
-          if (customText) {
-            this.$module.querySelector('.gem-c-button__outline--notification').textContent = customUnsubscribeText
-          }
-        } else {
-          if (customText) {
-            this.$module.querySelector('.gem-c-button__outline--notification').textContent = customSubscribeText
-          }
+        if (customButtonText) {
+          this.button.textContent = customButtonText
         }
       } catch (error) {
         this.makeVisible(this.$module)
         console.error(error)
       }
       this.makeVisible(this.$module)
-    }
-
-    responseIsJSON (string) {
-      try {
-        JSON.parse(string)
-      } catch (e) {
-        return false
-      }
-      return true
     }
 
     getPersonalisationEndpoint (basePath, buttonLocation) {
@@ -77,6 +59,17 @@
 
     makeVisible (target) {
       target.classList.add(this.buttonVisibleClass)
+    }
+
+    getCustomButtonText (activeState, customSubscribeText, customUnsubscribeText) {
+      if (typeof activeState !== 'boolean') return
+      // Only set custom button text if both text items are provided
+      if (!customSubscribeText || !customUnsubscribeText) {
+        return
+      }
+
+      if (activeState === true) return customUnsubscribeText
+      if (activeState === false) return customSubscribeText
     }
   }
 
