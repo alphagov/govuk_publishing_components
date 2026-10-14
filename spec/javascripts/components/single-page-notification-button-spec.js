@@ -1,5 +1,5 @@
 /* eslint-env jasmine */
-/* global GOVUK */
+/* global GOVUK, DOMException, AbortController */
 
 describe('Single page notification component', function () {
   var container
@@ -15,151 +15,136 @@ describe('Single page notification component', function () {
       </div>
     `
     document.body.appendChild(container)
-    jasmine.Ajax.install()
   }
 
   afterEach(function () {
     document.body.removeChild(container)
-    jasmine.Ajax.uninstall()
   })
 
-  it('calls the personalisation API on load', function () {
+  it('calls the personalisation API on load', async function () {
     createFixture()
-    initButton()
-    var request = jasmine.Ajax.requests.mostRecent()
-    expect(request.url).toBe('/api/personalisation/check-email-subscription?base_path=/current-page-path')
-    expect(request.method).toBe('GET')
+    stubSuccessfulFetch()
+    await initButton()
+
+    expect(window.fetch).toHaveBeenCalledWith(
+      '/api/personalisation/check-email-subscription?base_path=/current-page-path', {
+        headers: { Accept: 'application/json' },
+        signal: new AbortController().signal
+      }
+    )
   })
 
-  it('includes button_location in the call to the personalisation API when button_location is specified', function () {
+  it('includes button_location in the call to the personalisation API when button_location is specified', async function () {
     createFixture('data-button-location="top"')
+    stubSuccessfulFetch()
+    await initButton()
 
-    initButton()
-    var request = jasmine.Ajax.requests.mostRecent()
-    expect(request.url).toBe('/api/personalisation/check-email-subscription?base_path=/current-page-path&button_location=top')
-    expect(request.method).toBe('GET')
+    expect(window.fetch).toHaveBeenCalledWith(
+      '/api/personalisation/check-email-subscription?base_path=/current-page-path&button_location=top', {
+        headers: { Accept: 'application/json' },
+        signal: new AbortController().signal
+      }
+    )
   })
 
-  it('renders the button visible when API response is received', function () {
+  it('renders the button visible when API response is received', async function () {
     createFixture()
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: '{\n    "base_path": "/current-page-path",\n    "active": false\n }'
-    })
+    stubSuccessfulFetch({ base_path: '/current-page-path', active: false })
+    await initButton()
 
     var button = document.querySelector('.gem-c-single-page-notification-button')
     expect(button).toHaveClass('gem-c-single-page-notification-button--visible')
   })
 
-  it('renders custom subscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', function () {
+  it('renders custom subscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', async function () {
     createFixture(`
       data-button-text-subscribe="Start getting emails about this stuff"
       data-button-text-unsubscribe="Stop getting emails about this stuff"
     `)
-
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: '{\n    "base_path": "/current-page-path",\n    "active": false\n }'
-    })
+    stubSuccessfulFetch({ base_path: '/current-page-path', active: false })
+    await initButton()
 
     var button = document.querySelector('button.gem-c-button__outline--notification')
     expect(button.textContent).toBe('Start getting emails about this stuff')
   })
 
-  it('renders custom unsubscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', function () {
+  it('renders custom unsubscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', async function () {
     createFixture(`
       data-button-text-subscribe="Start getting emails about this stuff"
       data-button-text-unsubscribe="Stop getting emails about this stuff"
     `)
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: '{\n    "base_path": "/current-page-path",\n    "active": true\n }'
-    })
+    stubSuccessfulFetch({ base_path: '/current-page-path', active: true })
+    await initButton()
 
     var button = document.querySelector('button.gem-c-button__outline--notification')
     expect(button.textContent).toBe('Stop getting emails about this stuff')
   })
 
-  it('should remain unchanged if the response is not JSON', function () {
+  it('should remain unchanged if the response is not JSON', async function () {
     var responseText = 'I am not JSON, actually'
-    createFixture(`
-      data-button-text-subscribe="Start getting emails about this stuff"
-      data-button-text-unsubscribe="Stop getting emails about this stuff"
-    `)
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: responseText
-    })
+    createFixture()
+    stubSuccessfulFetch(responseText)
+    await initButton()
 
     var button = document.querySelector('button.gem-c-button__outline--notification')
     expect(button.textContent).toBe('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
 
-  it('should remain unchanged if response text is empty', function () {
+  it('should remain unchanged if response text is empty', async function () {
     var responseText = ''
-    createFixture(`
-      data-button-text-subscribe="Start getting emails about this stuff"
-      data-button-text-unsubscribe="Stop getting emails about this stuff"
-    `)
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 200,
-      contentType: 'application/json',
-      responseText: responseText
-    })
+    createFixture()
+    stubSuccessfulFetch(responseText)
+    await initButton()
 
     var button = document.querySelector('button.gem-c-button__outline--notification')
     expect(button.textContent).toBe('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
 
-  it('should remain unchanged if the endpoint fails', function () {
+  it('button should use default text and be visible if the endpoint fails', async function () {
     createFixture(`
       data-button-text-subscribe="Start getting emails about this stuff"
       data-button-text-unsubscribe="Stop getting emails about this stuff"
     `)
-    initButton()
-
-    jasmine.Ajax.requests.mostRecent().respondWith({
-      status: 500,
-      contentType: 'text/plain',
-      responseText: ''
-    })
+    stubServerErrorFetch()
+    await initButton()
 
     var button = document.querySelector('button.gem-c-button__outline--notification')
     expect(button.textContent).toBe('Get emails about this page')
+    var buttonWrapper = document.querySelector('.gem-c-single-page-notification-button')
+    expect(buttonWrapper).toHaveClass('gem-c-single-page-notification-button--visible')
   })
 
-  it('should remain unchanged if xhr times out', function () {
-    jasmine.clock().install()
+  it('should throw an error if the fetch request times out', async function () {
     createFixture(`
       data-button-text-subscribe="Start getting emails about this stuff"
       data-button-text-unsubscribe="Stop getting emails about this stuff"
     `)
-    initButton()
-    jasmine.Ajax.requests.mostRecent().responseTimeout()
 
-    var button = document.querySelector('button.gem-c-button__outline--notification')
-    expect(button.textContent).toBe('Get emails about this page')
-    jasmine.clock().uninstall()
-  })
-
-  function initButton () {
     var element = document.querySelector('[data-module=single-page-notification-button]')
-    new GOVUK.Modules.SinglePageNotificationButton(element).init()
+    const singlePageButton = new GOVUK.Modules.SinglePageNotificationButton(element)
+    await expectAsync(singlePageButton.getPersonalisationData(0)).toBeRejectedWith(new DOMException('Timeout', 'AbortError'))
+  })
+
+  const stubSuccessfulFetch = (personalisationData) => {
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
+      ok: true,
+      status: 200,
+      json: () => Promise.resolve(personalisationData)
+    }))
+  }
+
+  const stubServerErrorFetch = () => {
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
+      ok: false,
+      status: 500,
+      json: () => Promise.resolve({ error: 'Internal server error' })
+    }))
+  }
+
+  async function initButton () {
+    var element = document.querySelector('[data-module=single-page-notification-button]')
+    return await new GOVUK.Modules.SinglePageNotificationButton(element).init()
   }
 })
