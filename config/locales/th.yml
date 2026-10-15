@@ -155,7 +155,6 @@ th:
       last_updated: อัปเดตล่าสุด
       part_of: ส่วนหนึ่งของ
       published: เผยแพร่แล้ว
-      see_all_updates: ดูอัปเดตทั้งหมด
       show_all_updates: แสดงอัปเดตทั้งหมด
     modal_dialogue:
       close_modal: ปิดการสนทนาโมดอล
