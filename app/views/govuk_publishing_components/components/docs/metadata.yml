@@ -400,6 +400,10 @@ examples:
       ]
       first_published: 14 June 2014
       last_updated: 10 September 2015
+      page_history:
+      - display_time: 1st January 1990
+        note: First published
+        timestamp: 1990-01-01T15:42:37.000+00:00
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
@@ -421,6 +425,10 @@ examples:
       ]
       first_published: 14 June 2014
       last_updated: 10 September 2015
+      page_history:
+      - display_time: 1st January 1990
+        note: First published
+        timestamp: 1990-01-01T15:42:37.000+00:00
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
@@ -444,6 +452,10 @@ examples:
       ]
       first_published: 14 June 2014
       last_updated: 10 September 2015
+      page_history:
+      - display_time: 1st January 1990
+        note: First published
+        timestamp: 1990-01-01T15:42:37.000+00:00
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
