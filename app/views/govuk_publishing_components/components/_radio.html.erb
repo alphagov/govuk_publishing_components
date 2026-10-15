@@ -42,7 +42,7 @@
   radio_classes << "govuk-radios--inline" if inline
 
   legend_classes = %w(govuk-fieldset__legend)
-  legend_classes << "govuk-fieldset__legend--#{size}"
+  legend_classes << "govuk-fieldset__legend--#{size}" unless heading_level == "span" # `span` is returned by the shared helper if heading_level is set to 0 in the local assigns
   legend_classes << "govuk-visually-hidden" if visually_hidden_heading
 
   aria = "#{hint_id} #{"#{error_id}" if has_error}".strip if hint or has_error
