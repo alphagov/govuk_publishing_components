@@ -7,17 +7,18 @@
 
     init: function (referrer) {
       if (window.dataLayer) {
-        var link_params = this.getLocation().split('?')[1].split('&')
-        var params = {}
+        var queryStringParams = this.getLocation().split('?')[1].split('&')
+        var utmParams = {}
+
+        queryStringParams.forEach(function(param){
+          var items = param.split('=')
+
+          if (items[0].startsWith('utm_') ) {
+            utmParams[items[0]] = items[1]
+          }
+        })
 
         this.stripDates = !this.getSearchTerm()
-
-        // This can be more elegant
-        // Also check how it plays with search terms in the query string
-        link_params.forEach(function(param){
-          var items = param.split('=')
-          params[items[0]] = items[1]
-        })
 
         var data = {
           event: 'page_view',
@@ -82,11 +83,11 @@
             user_role: this.getMetaContent('user-role'),
             user_id: this.getMetaContent('user-id'),
 
-            link_source: params.link_source, // undefined,
-            link_medium: params.link_medium, // undefined,
-            link_campaign: params.link_campaign, // undefined,
-            link_term: params.link_term, // undefined,
-            link_content: params.link_content, // undefined
+            utm_source: utmParams.utm_source || undefined,
+            utm_medium: utmParams.utm_medium || undefined,
+            utm_campaign: utmParams.utm_campaign || undefined,
+            utm_term: utmParams.utm_term || undefined,
+            utm_content: utmParams.utm_content || undefined
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
