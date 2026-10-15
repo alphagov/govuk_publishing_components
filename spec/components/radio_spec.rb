@@ -162,6 +162,8 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios"
     assert_select "legend", "What is your favourite smartie?"
     assert_select "legend span.govuk-fieldset__heading", true
+    assert_select "legend.govuk-fieldset__legend"
+    assert_select "legend[class*='govuk-fieldset__legend--']", false
     assert_select "legend h2", false
   end
 
