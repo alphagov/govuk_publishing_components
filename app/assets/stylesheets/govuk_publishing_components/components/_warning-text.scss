@@ -1,4 +1,5 @@
-@import "govuk/components/warning-text";
+@use "../base" as *;
+@use "govuk/components/warning-text";
 
 .gem-c-warning-text .govuk-warning-text__text {
   margin: 0;

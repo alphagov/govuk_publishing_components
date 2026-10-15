@@ -4,4 +4,4 @@
 @function app-image-url($filename) {
   @return url("#{$filename}");
 }
-$govuk-image-url-function: "app-image-url";
+// $govuk-image-url-function: "app-image-url";

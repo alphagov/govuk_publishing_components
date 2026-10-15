@@ -1,3 +1,6 @@
+// @use "govuk/base" as *;
+@use "../base" as *;
+
 @use "sass:color";
 
 $input-size: 40px;

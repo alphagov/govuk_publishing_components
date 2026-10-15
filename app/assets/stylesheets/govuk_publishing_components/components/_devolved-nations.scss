@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-devolved-nations {
   background: govuk-colour("black", $variant: "tint-95");
   margin-bottom: govuk-spacing(3);
