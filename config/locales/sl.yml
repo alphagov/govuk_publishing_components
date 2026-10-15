@@ -158,13 +158,13 @@ sl:
     metadata:
       and:
       from: Od
+      hidden_heading:
+      hide_all_updates: Skrij vse posodobitve
       history: Zgodovina
       last_updated: Nazadnje posodobljeno
       part_of: Del
       published: Objavljeno
       see_all_updates: Poglej vse posodobitve
-      hidden_heading:
-      hide_all_updates: Skrij vse posodobitve
       show_all_updates: prikaži vse posodobitve
     modal_dialogue:
       close_modal: Zapri modalno okno
@@ -191,13 +191,6 @@ sl:
       password_shown_announcement:
     print_link:
       text: Natisni to stran
-    published_dates:
-      hidden_heading:
-      hide_all_updates: Skrij vse posodobitve
-      last_updated: Zadnjič posodobljeno %{date}
-      published: Objavljeno %{date}
-      see_all_updates: poglej vse posodobitve
-      show_all_updates: prikaži vse posodobitve
     radio:
       or: ali
     related_footer_navigation:

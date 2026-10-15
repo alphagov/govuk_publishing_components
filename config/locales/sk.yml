@@ -156,13 +156,13 @@ sk:
     metadata:
       and:
       from: Od
+      hidden_heading:
+      hide_all_updates: skryť všetky aktualizácie
       history: História
       last_updated: Posledná aktualizácia
       part_of: Časť
       published: Zverejnené na
       see_all_updates: Zobraziť všetky aktualizácie
-      hidden_heading:
-      hide_all_updates: skryť všetky aktualizácie
       show_all_updates: zobraziť všetky aktualizácie
     modal_dialogue:
       close_modal: Zavrieť modálny dialóg
@@ -189,13 +189,6 @@ sk:
       password_shown_announcement:
     print_link:
       text: Vytlačiť túto stránku
-    published_dates:
-      hidden_heading:
-      hide_all_updates: skryť všetky aktualizácie
-      last_updated: Posledná aktualizácia %{date}
-      published: Zverejnené %{date}
-      see_all_updates: pozrite si všetky aktualizácie
-      show_all_updates: zobraziť všetky aktualizácie
     radio:
       or: alebo
     related_footer_navigation:

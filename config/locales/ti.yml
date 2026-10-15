@@ -150,13 +150,13 @@ ti:
     metadata:
       and: ከምኡ ውን
       from: ካብ
+      hidden_heading:
+      hide_all_updates:
       history: ሕሉፍ ታሪኽ
       last_updated: ናይ መወዳእታ ዝተሓደሰ
       part_of: ሓደ ክፋል ናይ
       published: ዝተሓትመ
       see_all_updates: ኩሉ ሓድሽ ሓበሬታ ርአ
-      hidden_heading:
-      hide_all_updates:
       show_all_updates:
     modal_dialogue:
       close_modal: ሞዳል ዝርርብ ዕጸዎ።
@@ -183,13 +183,6 @@ ti:
       password_shown_announcement: መሕለፊ ቓል/ፓስዎርድካ ይርአ ኣሎ
     print_link:
       text: ነዚ ገጽ ሕተሞ
-    published_dates:
-      hidden_heading:
-      hide_all_updates:
-      last_updated:
-      published:
-      see_all_updates:
-      show_all_updates:
     radio:
       or: ወይ
     related_footer_navigation:

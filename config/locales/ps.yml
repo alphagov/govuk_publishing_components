@@ -148,13 +148,13 @@ ps:
     metadata:
       and:
       from: له
+      hidden_heading:
+      hide_all_updates: ټول تازه معلومات پټ کړئ
       history: تاریخ
       last_updated: وروستی تازه شوی
       part_of: برخه
       published: خپور شوی
       see_all_updates: ټول تازه معلومات وګورئ
-      hidden_heading:
-      hide_all_updates: ټول تازه معلومات پټ کړئ
       show_all_updates: ټول تازه معلومات وښایاست
     modal_dialogue:
       close_modal: موډل ډیالوګ بند کړئ
@@ -181,13 +181,6 @@ ps:
       password_shown_announcement:
     print_link:
       text: دا پاڼه چاپ کړئ
-    published_dates:
-      hidden_heading:
-      hide_all_updates: ټول تازه معلومات پټ کړئ
-      last_updated: وروستی تازه شوی%{date}
-      published: خپور شوی%{date}
-      see_all_updates: ټول تازه معلومات وګورئ
-      show_all_updates: ټول تازه معلومات وښایاست
     radio:
       or: یا
     related_footer_navigation:

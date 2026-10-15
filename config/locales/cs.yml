@@ -156,13 +156,13 @@ cs:
     metadata:
       and:
       from: 'Komu I:'
+      hidden_heading:
+      hide_all_updates: skrýt všechny aktualizace
       history: Historie
       last_updated: 'Poslední aktualizace:'
       part_of: Část
       published: Zveřejněno
       see_all_updates: Vidět všechny aktualizace
-      hidden_heading:
-      hide_all_updates: skrýt všechny aktualizace
       show_all_updates: zobrazit všechny aktualizace
     modal_dialogue:
       close_modal: Zavření modálního dialogu
@@ -189,13 +189,6 @@ cs:
       password_shown_announcement:
     print_link:
       text: Vytisknout tuto stránku
-    published_dates:
-      hidden_heading:
-      hide_all_updates: skrýt všechny aktualizace
-      last_updated: Poslední aktualizace %{date}
-      published: Zveřejněno %{date}
-      see_all_updates: vidět všechny aktualizace
-      show_all_updates: zobrazit všechny aktualizace
     radio:
       or: nebo
     related_footer_navigation:

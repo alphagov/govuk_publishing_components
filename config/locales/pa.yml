@@ -151,13 +151,13 @@ pa:
     metadata:
       and:
       from: ਤੋਂ
+      hidden_heading:
+      hide_all_updates: ਸਾਰੇ ਅਪਡੇਟਾਂ ਨੂੰ ਲੁਕਾਓ
       history: ਇਤਿਹਾਸ
       last_updated: ਪਿਛਲੀ ਵਾਰ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ
       part_of: ਦਾ ਹਿੱਸਾ
       published: ਪ੍ਰਕਾਸ਼ਿਤ
       see_all_updates: ਸਾਰੇ ਅਪਡੇਟਸ ਵੇਖੋ
-      hidden_heading:
-      hide_all_updates: ਸਾਰੇ ਅਪਡੇਟਾਂ ਨੂੰ ਲੁਕਾਓ
       show_all_updates: ਸਾਰੇ ਅਪਡੇਟ ਦਿਖਾਉ
     modal_dialogue:
       close_modal: ਮਾਡਲ ਸੰਵਾਦ ਬੰਦ ਕਰੋ
@@ -184,13 +184,6 @@ pa:
       password_shown_announcement:
     print_link:
       text: ਇਸ ਪੰਨੇ ਨੂੰ ਛਾਪੋ
-    published_dates:
-      hidden_heading:
-      hide_all_updates: ਸਾਰੇ ਅਪਡੇਟਾਂ ਨੂੰ ਲੁਕਾਓ
-      last_updated: ਪਿਛਲੀ ਵਾਰ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ %{date}
-      published: ਪ੍ਰਕਾਸ਼ਿਤ %{date}
-      see_all_updates: ਸਾਰੇ ਅਪਡੇਟਸ ਵੇਖੋ
-      show_all_updates: ਸਾਰੇ ਅਪਡੇਟ ਦਿਖਾਉ
     radio:
       or: ਜਾਂ
     related_footer_navigation:

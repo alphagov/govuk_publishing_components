@@ -154,13 +154,13 @@ hu:
     metadata:
       and:
       from: Feladó
+      hidden_heading:
+      hide_all_updates: minden frissítés elrejtése
       history: Előzmények
       last_updated: Utolsó frissítés
       part_of: 'Része a következőnek:'
       published: Közzététel időpontja
       see_all_updates: Minden frissítés megtekintése
-      hidden_heading:
-      hide_all_updates: minden frissítés elrejtése
       show_all_updates: minden frissítés megjelenítése
     modal_dialogue:
       close_modal: Modális párbeszédpanel bezárása
@@ -187,13 +187,6 @@ hu:
       password_shown_announcement:
     print_link:
       text: Oldal kinyomtatása
-    published_dates:
-      hidden_heading:
-      hide_all_updates: minden frissítés elrejtése
-      last_updated: 'Utolsó frissítés: %{date}'
-      published: 'közzététel dátuma: %{date}'
-      see_all_updates: minden frissítés megtekintése
-      show_all_updates: minden frissítés megjelenítése
     radio:
       or: vagy
     related_footer_navigation:

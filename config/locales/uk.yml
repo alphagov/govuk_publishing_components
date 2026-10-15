@@ -158,13 +158,13 @@ uk:
     metadata:
       and:
       from: Від
+      hidden_heading:
+      hide_all_updates: приховати всі оновлення
       history: Історія
       last_updated: Останнє оновлення
       part_of: Частина
       published: Опубліковано
       see_all_updates: Переглянути всі оновлення
-      hidden_heading:
-      hide_all_updates: приховати всі оновлення
       show_all_updates: показати всі оновлення
     modal_dialogue:
       close_modal: Закрити модальний діалог
@@ -191,13 +191,6 @@ uk:
       password_shown_announcement:
     print_link:
       text: Роздрукувати цю сторінку
-    published_dates:
-      hidden_heading:
-      hide_all_updates: приховати всі оновлення
-      last_updated: Останнє оновлення %{date}
-      published: Опубліковано %{date}
-      see_all_updates: переглянути всі оновлення
-      show_all_updates: показати всі оновлення
     radio:
       or: або
     related_footer_navigation:

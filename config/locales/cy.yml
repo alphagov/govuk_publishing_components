@@ -80,15 +80,15 @@ cy:
       aria_label:
       england:
         end: " a Lloegr"
-        middle: "Lloegr"
+        middle: Lloegr
         start: Loegr
       northern_ireland:
         end: " a Gogledd Iwerddon"
-        middle: "Gogledd Iwerddon"
+        middle: Gogledd Iwerddon
         start: Ogledd Iwerddon
       scotland:
         end: " a'r Alban"
-        middle: "yr Alban"
+        middle: yr Alban
         start: "'r Alban"
       type:
         consultation: Ymgynghoriad ar gyfer %{nation}
@@ -97,7 +97,7 @@ cy:
         publication: Cyhoeddiad ar gyfer %{nation}
       wales:
         end: " a Chymru"
-        middle: "Cymru"
+        middle: Cymru
         start: Gymru
     feedback:
       close: Cau
@@ -155,13 +155,13 @@ cy:
     metadata:
       and:
       from: Gan
+      hidden_heading:
+      hide_all_updates: cuddio pob diweddariad
       history: Hanes
       last_updated: Diweddarwyd ddiwethaf
       part_of: Rhan o
       published: Cyhoeddwyd
       see_all_updates: Gweld pob diweddariad
-      hidden_heading:
-      hide_all_updates: cuddio pob diweddariad
       show_all_updates: dangos pob diweddariad
     modal_dialogue:
       close_modal: Cau'r ddeialog foddol
@@ -188,13 +188,6 @@ cy:
       password_shown_announcement:
     print_link:
       text: Argraffu'r dudalen hon
-    published_dates:
-      hidden_heading:
-      hide_all_updates: cuddio pob diweddariad
-      last_updated: Diweddarwyd ddiwethaf ar %{date}
-      published: Cyhoeddwyd ar %{date}
-      see_all_updates: gweld pob diweddariad
-      show_all_updates: dangos pob diweddariad
     radio:
       or: neu
     related_footer_navigation:

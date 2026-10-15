@@ -151,13 +151,13 @@ it:
     metadata:
       and:
       from: Da
+      hidden_heading:
+      hide_all_updates: nascondi tutti gli aggiornamenti
       history: Cronologia
       last_updated: Ultimo aggiornamento
       part_of: Parte di
       published: Pubblicato
       see_all_updates: Vedi tutti gli aggiornamenti
-      hidden_heading:
-      hide_all_updates: nascondi tutti gli aggiornamenti
       show_all_updates: mostra tutti gli aggiornamenti
     modal_dialogue:
       close_modal: Chiudi dialogo modale
@@ -184,13 +184,6 @@ it:
       password_shown_announcement:
     print_link:
       text: Stampa questa pagina
-    published_dates:
-      hidden_heading:
-      hide_all_updates: nascondi tutti gli aggiornamenti
-      last_updated: Ultimo aggiornamento %{date}
-      published: Pubblicato %{date}
-      see_all_updates: vedi tutti gli aggiornamenti
-      show_all_updates: mostra tutti gli aggiornamenti
     radio:
       or: o
     related_footer_navigation:

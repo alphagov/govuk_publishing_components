@@ -151,13 +151,13 @@ he:
     metadata:
       and:
       from: מ-
+      hidden_heading:
+      hide_all_updates: להסתיר כל עדכונים
       history: היסטוריה
       last_updated: עדכון אחרון
       part_of: חלק של
       published: פורסם
       see_all_updates: ראה כל העדכונים
-      hidden_heading:
-      hide_all_updates: להסתיר כל עדכונים
       show_all_updates: הצג כל עדכונים
     modal_dialogue:
       close_modal: סגור דיאלוג מודאלי
@@ -184,13 +184,6 @@ he:
       password_shown_announcement:
     print_link:
       text: הדפס עמוד זה
-    published_dates:
-      hidden_heading:
-      hide_all_updates: להסתיר כל עדכונים
-      last_updated: עדכון אחרון %{date}
-      published: פורסם %{date}
-      see_all_updates: ראה כל העדכונים
-      show_all_updates: הצג כל עדכונים
     radio:
       or: או
     related_footer_navigation:

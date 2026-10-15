@@ -151,13 +151,13 @@ sq:
     metadata:
       and:
       from: Nga
+      hidden_heading:
+      hide_all_updates: fshih të gjitha përditësimet
       history: Historia
       last_updated: Përditësuar së fundmi
       part_of: Pjesë e
       published: Publikuar
       see_all_updates: Shih të gjitha përditësimet
-      hidden_heading:
-      hide_all_updates: fshih të gjitha përditësimet
       show_all_updates: shfaq të gjitha përditësimet
     modal_dialogue:
       close_modal: Mbyll dialogun modal
@@ -184,13 +184,6 @@ sq:
       password_shown_announcement:
     print_link:
       text: Printo këtë faqe
-    published_dates:
-      hidden_heading:
-      hide_all_updates: fshih të gjitha përditësimet
-      last_updated: Përditësuar së fundi %{date}
-      published: Publikuar %{date}
-      see_all_updates: shih të gjitha përditësimet
-      show_all_updates: shfaq të gjitha përditësimet
     radio:
       or: ose
     related_footer_navigation:

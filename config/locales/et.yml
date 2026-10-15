@@ -154,13 +154,13 @@ et:
     metadata:
       and:
       from: Alates
+      hidden_heading:
+      hide_all_updates: peida kõik värskendused
       history: Ajalugu
       last_updated: Viimati värskendatud
       part_of: Osa
       published: Avaldatud
       see_all_updates: Vt kõiki värskendusi
-      hidden_heading:
-      hide_all_updates: peida kõik värskendused
       show_all_updates: kuva kõik värskendused
     modal_dialogue:
       close_modal: Sule modaalne dialoog
@@ -187,13 +187,6 @@ et:
       password_shown_announcement:
     print_link:
       text: Prindi see leht
-    published_dates:
-      hidden_heading:
-      hide_all_updates: peida kõik värskendused
-      last_updated: Viimati värskendatud %{date}
-      published: Avaldatud %{date}
-      see_all_updates: vt kõiki värskendusi
-      show_all_updates: kuva kõik värskendused
     radio:
       or: või
     related_footer_navigation:

@@ -147,13 +147,13 @@ pa-pk:
     metadata:
       and:
       from: ایتھوں
+      hidden_heading:
+      hide_all_updates: سارے تازہ ترین حالات نوں لُکا لوؤ
       history: پچھلا کم
       last_updated: آخری دفعہ کدوں نویں گل دسی سی
       part_of: ایندا حصہ
       published: شائع کیتا گیا
       see_all_updates: ساریاں نویاں چیزاں دیکھو
-      hidden_heading:
-      hide_all_updates: سارے تازہ ترین حالات نوں لُکا لوؤ
       show_all_updates: ساری تازہ ترین صورتِ حال وکھاؤ
     modal_dialogue:
       close_modal: موڈیل ڈائیلاگ نوں بند کرو
@@ -180,13 +180,6 @@ pa-pk:
       password_shown_announcement:
     print_link:
       text: ایس ورقے نوں پرنٹ کرو
-    published_dates:
-      hidden_heading:
-      hide_all_updates: سارے تازہ ترین حالات نوں لُکا لوؤ
-      last_updated: اخری وار تازہ ترین بنایا %{date}
-      published: شائع ہویا %{date}
-      see_all_updates: ساری تازہ ترین صورتِ حال
-      show_all_updates: ساری تازہ ترین صورتِ حال وکھاؤ
     radio:
       or: یا
     related_footer_navigation:
