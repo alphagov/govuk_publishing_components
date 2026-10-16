@@ -170,8 +170,8 @@ examples:
     data:
       chart_type: "bar"
       heading: Hats owned
-      h_axis_title: Day
-      v_axis_title: Views
+      h_axis_title: Hats owned
+      v_axis_title: Person
       description: This chart shows page views for January 2015.
       hide_legend: true
       keys:
