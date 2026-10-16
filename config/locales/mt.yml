@@ -72,6 +72,9 @@ mt:
       - Nixtiequ nżidu cookies addizzjonali biex nifhmu kif inti tuża'  GOV.UK
       - niftakru s- settings tiegħek u ntejbu s-servizzi tal-gvern.
       - Aħna nużaw ukoll cookies li jiġu ssettjati minn websajts oħrajn biex jgħinuna nxandru kontenut mis-servizzi tagħhom.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookies fuq GOV.UK
     devolved_nations:
       applies_to:
