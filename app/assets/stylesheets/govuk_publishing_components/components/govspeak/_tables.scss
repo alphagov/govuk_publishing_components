@@ -54,6 +54,73 @@
       text-align: right;
     }
   }
+
+  .tablewrapper {
+    position: relative;
+  }
+
+  .tablewrapper--active {
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 24px;
+      width: 10px;
+      bottom: 20px;
+      background: rgb(0, 0, 0, 0.1);
+      border-color: $govuk-border-colour;
+      border-width: 5px;
+    }
+
+    &::before {
+      left: 0;
+      border-left-style: solid;
+      border-radius: 0 15px 15px 0;
+    }
+
+    &::after {
+      right: 0;
+      border-right-style: solid;
+      border-radius: 15px 0 0 15px;
+    }
+  }
+
+  .tablewrapper--start {
+    &::before {
+      display: none;
+    }
+  }
+
+  .tablewrapper--end {
+    &::after {
+      display: none;
+    }
+  }
+
+  .govspeak-table-scrollbar {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 20px;
+    margin-bottom: 5px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .govspeak-table-scrollbar__child {
+    height: 20px;
+  }
+
+  .govspeak-table-scrollbar + table:focus {
+    outline: $govuk-focus-width solid govuk-functional-colour(focus);
+    box-shadow: 0 0 0 6px govuk-functional-colour("focus-text");
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
 }
 
 // Add rtl table styling when `direction: "rtl"` is set
