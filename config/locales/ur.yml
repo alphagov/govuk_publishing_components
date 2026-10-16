@@ -148,13 +148,12 @@ ur:
     metadata:
       and:
       from: از
+      hidden_heading:
+      hide_all_updates: تمام اپ ڈیٹس کو پوشیدہ کریں
       history: ہسٹری
       last_updated: آخری بار اپ ڈیٹ کردہ
       part_of: حصہ از
       published: شائع کردہ
-      see_all_updates: تمام اپ ڈیٹس دیکھیں
-      hidden_heading:
-      hide_all_updates: تمام اپ ڈیٹس کو پوشیدہ کریں
       show_all_updates: تمام اپ ڈیٹس دکھائیں
     modal_dialogue:
       close_modal: محدود موڈل ڈائیلاگ
@@ -181,13 +180,6 @@ ur:
       password_shown_announcement:
     print_link:
       text: اس صفحے کا پرنٹ لیں
-    published_dates:
-      hidden_heading:
-      hide_all_updates: تمام اپ ڈیٹس کو پوشیدہ کریں
-      last_updated: آخری اپ ڈیٹ کردہ %{date}
-      published: شائع کردہ %{date}
-      see_all_updates: تمام اپ ڈیٹس دیکھیں
-      show_all_updates: تمام اپ ڈیٹس دکھائیں
     radio:
       or: یا
     related_footer_navigation:

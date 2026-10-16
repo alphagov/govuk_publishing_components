@@ -147,13 +147,12 @@ ja:
     metadata:
       and:
       from: から
+      hidden_heading:
+      hide_all_updates: すべての更新を非表示
       history: 歴史
       last_updated: 最終更新
       part_of: 一部の
       published: 公開済み
-      see_all_updates: すべての更新を表示
-      hidden_heading:
-      hide_all_updates: すべての更新を非表示
       show_all_updates: すべての更新を表示
     modal_dialogue:
       close_modal: 特殊ウインドウを閉じる
@@ -180,13 +179,6 @@ ja:
       password_shown_announcement:
     print_link:
       text: このページを印刷する
-    published_dates:
-      hidden_heading:
-      hide_all_updates: すべての更新を非表示
-      last_updated: 最終更新日：%{date}
-      published: 公開日：%{date}
-      see_all_updates: すべての更新を見る
-      show_all_updates: すべての更新を表示
     radio:
       or: また
     related_footer_navigation:

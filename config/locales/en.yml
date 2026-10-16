@@ -16,8 +16,8 @@ en:
     app_promo_banner:
       aria_label: GOV.UK app
       body_text: Government made easier
-      title_text: Get the GOV.UK app
       close: Close app download banner
+      title_text: Get the GOV.UK app
       view: View
     article_schema:
       scoped_search_description: Search within %{title}
@@ -43,11 +43,11 @@ en:
         characters: characters
         words: words
     chart:
-      table_dropdown: View data as a table
+      accessibility_heading: Data table for "%{heading}"
       accessibility_html: This chart is a visual representation of the data available in the table.
       accessibility_link: Skip to "%{heading}" data table
-      accessibility_heading: Data table for "%{heading}"
-      source: "Source: %{source}"
+      source: 'Source: %{source}'
+      table_dropdown: View data as a table
     checkboxes:
       or: or
     contents_list:
@@ -75,15 +75,15 @@ en:
       aria_label: Nation
       england:
         end: " and England"
-        middle: "England"
+        middle: England
         start: England
       northern_ireland:
         end: " and Northern Ireland"
-        middle: "Northern Ireland"
+        middle: Northern Ireland
         start: Northern Ireland
       scotland:
         end: " and Scotland"
-        middle: "Scotland"
+        middle: Scotland
         start: Scotland
       type:
         consultation: Consultation for %{nation}
@@ -92,7 +92,7 @@ en:
         publication: Publication for %{nation}
       wales:
         end: " and Wales"
-        middle: "Wales"
+        middle: Wales
         start: Wales
     feedback:
       close: Cancel
@@ -258,13 +258,12 @@ en:
     metadata:
       and: and
       from: From
+      hidden_heading: Updates to this page
+      hide_all_updates: Hide all updates
       history: History
       last_updated: Last updated
       part_of: Part of
       published: Published
-      see_all_updates: See all updates
-      hidden_heading: Updates to this page
-      hide_all_updates: Hide all updates
       show_all_updates: Show all updates
     modal_dialogue:
       close_modal: Close modal dialogue
@@ -276,6 +275,10 @@ en:
       selected: selected
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
+    pagination:
+      next: Next
+      pagination: Pagination
+      previous: Previous
     password_input:
       button: Show
       button_aria_hide_label: Hide password
@@ -285,19 +288,8 @@ en:
       label: Password
       password_hidden_announcement: Your password is hidden
       password_shown_announcement: Your password is visible
-    pagination:
-      next: Next
-      pagination: Pagination
-      previous: Previous
     print_link:
       text: Print this page
-    published_dates:
-      hidden_heading: Updates to this page
-      hide_all_updates: Hide all updates
-      last_updated: Last updated %{date}
-      published: Published %{date}
-      see_all_updates: See all updates
-      show_all_updates: Show all updates
     radio:
       or: or
     related_footer_navigation:

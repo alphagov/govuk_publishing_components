@@ -152,13 +152,12 @@ bn:
     metadata:
       and:
       from: থেকে
+      hidden_heading:
+      hide_all_updates: সকল আপডেট লুকান
       history: ইতিহাস
       last_updated: সর্বশেষ আপডেট করা হয়েছে
       part_of: এর অংশ
       published: প্রকাশিত হয়েছে
-      see_all_updates: সকল আপডেট দেখুন
-      hidden_heading:
-      hide_all_updates: সকল আপডেট লুকান
       show_all_updates: সকল আপডেট দেখান
     modal_dialogue:
       close_modal: ক্লোজ মোডাল ডায়ালগ
@@ -185,13 +184,6 @@ bn:
       password_shown_announcement:
     print_link:
       text: এই পৃষ্ঠাটি প্রিন্ট করুন
-    published_dates:
-      hidden_heading:
-      hide_all_updates: সকল আপডেট লুকান
-      last_updated: সর্বশেষ হালনাগাদ হয়েছে %{date}
-      published: প্রকাশিত হওয়ার তারিখ %{date}
-      see_all_updates: সকল আপডেট দেখুন
-      show_all_updates: সকল আপডেট দেখান
     radio:
       or: অথবা
     related_footer_navigation:
