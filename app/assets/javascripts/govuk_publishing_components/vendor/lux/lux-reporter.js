@@ -298,7 +298,7 @@
     return sendBeaconImpl(url, data);
   }
 
-  var version = "4.5.2";
+  var version = "4.5.3";
   var pkg = {
     version: version};
 
@@ -1191,7 +1191,7 @@
       var po = new PerformanceObserver(function (list) {
         list.getEntries().forEach(function (entry) { return callback(entry); });
       });
-      po.observe(Object.assign({ type: type, buffered: true }, { options: options }));
+      po.observe(Object.assign({ type: type, buffered: true }, options));
       return po;
     }
     return undefined;

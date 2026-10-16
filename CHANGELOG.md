@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update to LUX 4.5.3 ([PR #5812](https://github.com/alphagov/govuk_publishing_components/pull/5812))
 * **BREAKING** Remove the published dates component ([PR #5807](https://github.com/alphagov/govuk_publishing_components/pull/5807))
 * Remove non-CSS Grid fallback rules from cards list component ([PR #5766](https://github.com/alphagov/govuk_publishing_components/pull/5766))
 
