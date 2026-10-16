@@ -41,13 +41,13 @@ module GovukPublishingComponents
           series: series_options,
           hAxis: {
             textStyle: set_font_16,
-            title: @h_axis_title.capitalize,
+            title: @h_axis_title&.capitalize,
             titleTextStyle: set_font_16,
             format: @h_axis_format,
           },
           vAxis: {
             textStyle: set_font_16,
-            title: @v_axis_title.capitalize,
+            title: @v_axis_title&.capitalize,
             titleTextStyle: set_font_16,
             format: @v_axis_format,
             viewWindow: {
