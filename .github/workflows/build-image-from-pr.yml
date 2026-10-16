@@ -1,0 +1,29 @@
+name: Build image from PR
+
+# Lets govuk-preview-app preview any branch, not just main: ImageResolver
+# looks up ghcr.io/alphagov/govuk/govuk_publishing_components (the repo's
+# own name - not the preview manifest's hyphenated "govuk-publishing-
+# components" key) tagged with a branch's own HEAD commit SHA, and waits
+# for it to appear. github.event.pull_request.head.sha is that same SHA
+# (the PR branch's real tip, not GitHub's synthetic merge commit).
+#
+# Depends on a Dockerfile at the repo root for spec/dummy (the component
+# guide) - this gem has never had one before, since it isn't a deployed
+# app; see Dockerfile's own comment for details.
+on:
+  pull_request:
+
+concurrency:
+  group: build-image-from-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish-image:
+    name: Build and publish image
+    uses: alphagov/govuk-infrastructure/.github/workflows/build-push-arm-image.yml@main
+    with:
+      gitRef: ${{ github.event.pull_request.head.sha }}
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
