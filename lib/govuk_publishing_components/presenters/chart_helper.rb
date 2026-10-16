@@ -41,14 +41,14 @@ module GovukPublishingComponents
           series: series_options,
           hAxis: {
             textStyle: set_font_16,
-            title: @h_axis_title,
-            titleTextStyle: set_font_19,
+            title: @h_axis_title.capitalize,
+            titleTextStyle: set_font_16,
             format: @h_axis_format,
           },
           vAxis: {
             textStyle: set_font_16,
-            title: @v_axis_title,
-            titleTextStyle: set_font_19,
+            title: @v_axis_title.capitalize,
+            titleTextStyle: set_font_16,
             format: @v_axis_format,
             viewWindow: {
               min: @y_axis_view_window_min,
@@ -68,8 +68,14 @@ module GovukPublishingComponents
         chart_primary_orange = "#f47738"
         chart_green_shade_50 = "#083d29"
         chart_accent_purple = "#ba4aff"
+        chart_black = "#0b0c0c"
+        colours = [chart_blue_shade_50, chart_teal_tint_25, chart_magenta_shade_25, chart_primary_orange, chart_green_shade_50, chart_accent_purple]
 
-        [chart_blue_shade_50, chart_teal_tint_25, chart_magenta_shade_25, chart_primary_orange, chart_green_shade_50, chart_accent_purple]
+        10.times do
+          colours.push(chart_black)
+        end
+
+        colours
       end
 
       def chart_format_data
@@ -88,8 +94,9 @@ module GovukPublishingComponents
       def legend_options
         unless @hide_legend
           return {
+            alignment: "start",
             position: "top",
-            textStyle: set_font_19,
+            textStyle: set_font_16,
             scrollArrows: {
               activeColor: "#000",
               inactiveColor: "#000",
@@ -97,6 +104,7 @@ module GovukPublishingComponents
             pagingTextStyle: {
               color: "#000",
             },
+            maxLines: 4,
           }
         end
 
