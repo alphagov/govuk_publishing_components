@@ -152,12 +152,13 @@ ro:
     metadata:
       and:
       from: De la
-      hidden_heading:
-      hide_all_updates: ascundeți toate actualizările
       history: Istoric
       last_updated: Ultima actualizare
       part_of: Parte din
       published: Publicat
+      see_all_updates: Vedeți toate actualizările
+      hidden_heading:
+      hide_all_updates: ascundeți toate actualizările
       show_all_updates: afișați toate actualizările
     modal_dialogue:
       close_modal: Închideți dialogul modal
@@ -184,6 +185,13 @@ ro:
       password_shown_announcement:
     print_link:
       text: Imprimați această pagină
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ascundeți toate actualizările
+      last_updated: Ultima actualizare %{date}
+      published: Publicat pe %{date}
+      see_all_updates: vedeți toate actualizările
+      show_all_updates: afișați toate actualizările
     radio:
       or: sau
     related_footer_navigation:

@@ -151,12 +151,13 @@ so:
     metadata:
       and:
       from: Laga bilaabo
-      hidden_heading:
-      hide_all_updates: qari dhamaan waxa cusub
       history: Taariikhda
       last_updated: Cusboonaysiintii ugu dambaysay
       part_of: Ka qeyba
       published: Daabacaada
+      see_all_updates: Eeg dhamaan cusboonaysiinaha
+      hidden_heading:
+      hide_all_updates: qari dhamaan waxa cusub
       show_all_updates: muuji dhamaan cusboonaysiinaha
     modal_dialogue:
       close_modal: Kusoo dhawoow wada hadal dhex dhexaad ah
@@ -183,6 +184,13 @@ so:
       password_shown_announcement:
     print_link:
       text: Daabac bogan
+    published_dates:
+      hidden_heading:
+      hide_all_updates: qari dhamaan waxa cusub
+      last_updated: Markii ugu dambaysay ee la cusboonaysiiyay %{date}
+      published: La daabacay %{date}
+      see_all_updates: eeg dhamaan cusboonaysiinaha
+      show_all_updates: muuji dhamaan cusboonaysiinaha
     radio:
       or: ama
     related_footer_navigation:

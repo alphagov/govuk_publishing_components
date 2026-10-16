@@ -152,12 +152,13 @@ tk:
     metadata:
       and:
       from: "-dan"
-      hidden_heading:
-      hide_all_updates: ähli täzelenmeleri gizle
       history: Taryh
       last_updated: Iň soňky täzelenme
       part_of: Bir bölegi
       published: Çap edilen
+      see_all_updates: Ähli täzelenmelere serediň
+      hidden_heading:
+      hide_all_updates: ähli täzelenmeleri gizle
       show_all_updates: ähli täzelenmeleri görkez
     modal_dialogue:
       close_modal: Modal gepleşikleri tamamlamak
@@ -184,6 +185,13 @@ tk:
       password_shown_announcement:
     print_link:
       text: Bu sahypany çap et
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ähli täzelenmeleri gizle
+      last_updated: Soňky gezek täzelenme %{date}
+      published: Çap edilen %{date}
+      see_all_updates: ähli täzelenmelere serediň
+      show_all_updates: ähli täzelenmeleri görkez
     radio:
       or: ýa-da
     related_footer_navigation:

@@ -149,12 +149,13 @@ zh-hk:
     metadata:
       and:
       from: 來自
-      hidden_heading:
-      hide_all_updates: 隱藏所有更新
       history: 過往記錄
       last_updated: 最近更新
       part_of: 部份
       published: 已發佈
+      see_all_updates: 查閱所有更新項
+      hidden_heading:
+      hide_all_updates: 隱藏所有更新
       show_all_updates: 顯示所有更新
     modal_dialogue:
       close_modal: 關閉互動視窗對話
@@ -181,6 +182,13 @@ zh-hk:
       password_shown_announcement:
     print_link:
       text: 列印本頁面
+    published_dates:
+      hidden_heading:
+      hide_all_updates: 隱藏所有更新
+      last_updated: 最近更新 %{date}
+      published: 已發佈 %{date}
+      see_all_updates: 查看所有更新
+      show_all_updates: 顯示所有更新
     radio:
       or: 或
     related_footer_navigation:

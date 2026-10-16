@@ -78,6 +78,12 @@
         <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %>:</dt>
         <dd class="gem-c-metadata__definition">
           <%= last_updated %>
+          <% if local_assigns.include?(:see_updates_link) %>
+            &#8212; <a href="#full-publication-update-history"
+                      class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link">
+              <%= t("components.metadata.see_all_updates") %>
+            </a>
+          <% end %>
           <% if page_history.any? %>
             <div class="gem-c-metadata__details-wrapper">
               <%= render "govuk_publishing_components/components/details", {

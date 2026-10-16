@@ -30,6 +30,13 @@ examples:
     data:
       first_published: 14 June 2014
       last_updated: 10 September 2015
+  updated_with_links_to_see_details:
+    description: If a `last_updated` value exists and `see_updates_link` is set to true,
+      a "See all updates" link will be shown. The link's href will be set to `#full-publication-update-history`,
+      taking users to the change history on the same page and expanding the section, if expandable, for example, [changes to the rates of capital gains tax](https://www.gov.uk/government/publications/changes-to-the-rates-of-capital-gains-tax)
+    data:
+      last_updated: 10 September 2015
+      see_updates_link: true
   display_page_history:
     description: |
       This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history. It also includes a hidden H2 heading of 'Updates to this page'. This heading will not be included if one is passed to the component using the `title` option.
@@ -383,6 +390,7 @@ examples:
   with_title:
     data:
       last_updated: 10 September 2015
+      see_updates_link: true
       title: Title
   on_a_dark_background:
     data:
@@ -400,10 +408,7 @@ examples:
       ]
       first_published: 14 June 2014
       last_updated: 10 September 2015
-      page_history:
-      - display_time: 1st January 1990
-        note: First published
-        timestamp: 1990-01-01T15:42:37.000+00:00
+      see_updates_link: true
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
@@ -425,10 +430,7 @@ examples:
       ]
       first_published: 14 June 2014
       last_updated: 10 September 2015
-      page_history:
-      - display_time: 1st January 1990
-        note: First published
-        timestamp: 1990-01-01T15:42:37.000+00:00
+      see_updates_link: true
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
@@ -452,10 +454,7 @@ examples:
       ]
       first_published: 14 June 2014
       last_updated: 10 September 2015
-      page_history:
-      - display_time: 1st January 1990
-        note: First published
-        timestamp: 1990-01-01T15:42:37.000+00:00
+      see_updates_link: true
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
@@ -465,4 +464,5 @@ examples:
       Disables the GA4 link tracker on the 'See all updates' link. Tracking is enabled by default.
     data:
       last_updated: 10 September 2015
+      see_updates_link: true
       disable_ga4: true
