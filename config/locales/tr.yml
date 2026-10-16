@@ -152,13 +152,12 @@ tr:
     metadata:
       and:
       from: Şuradan
+      hidden_heading:
+      hide_all_updates: tüm güncellemeleri gizle
       history: Geçmiş
       last_updated: Son güncelleme
       part_of: Şunun kısmı
       published: Yayınlanan
-      see_all_updates: Tüm güncellemeleri görün
-      hidden_heading:
-      hide_all_updates: tüm güncellemeleri gizle
       show_all_updates: tüm güncellemeleri göster
     modal_dialogue:
       close_modal: Model diyaloğu kapat
@@ -185,13 +184,6 @@ tr:
       password_shown_announcement:
     print_link:
       text: Bu sayfayı yazdır
-    published_dates:
-      hidden_heading:
-      hide_all_updates: tüm güncellemeleri gizle
-      last_updated: Son güncelleme %{date}
-      published: Yayınlama %{date}
-      see_all_updates: tüm güncellemeleri görün
-      show_all_updates: tüm güncellemeleri göster
     radio:
       or: veya
     related_footer_navigation:

@@ -149,13 +149,12 @@ zh:
     metadata:
       and: 和
       from: 发自
+      hidden_heading:
+      hide_all_updates: 隐藏全部更新
       history: 历史
       last_updated: 上次更新
       part_of: 一部分
       published: 已发布
-      see_all_updates: 查看全部更新
-      hidden_heading:
-      hide_all_updates: 隐藏全部更新
       show_all_updates: 显示全部更新
     modal_dialogue:
       close_modal: 关闭模态对话
@@ -182,13 +181,6 @@ zh:
       password_shown_announcement:
     print_link:
       text: 打印本页面
-    published_dates:
-      hidden_heading:
-      hide_all_updates: 隐藏全部更新
-      last_updated: 上次更新 %{date}
-      published: 发布 %{date}
-      see_all_updates: 查看全部更新
-      show_all_updates: 显示全部更新
     radio:
       or: 或
     related_footer_navigation:

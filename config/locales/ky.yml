@@ -147,13 +147,12 @@ ky:
     metadata:
       and: жана
       from: Мурун
+      hidden_heading:
+      hide_all_updates:
       history: Тарых
       last_updated: Акыркы жолу жаңыртылды
       part_of: Бөлүгү
       published: Жарыяланды
-      see_all_updates: Бардык жаңыртууларды көрүү
-      hidden_heading:
-      hide_all_updates:
       show_all_updates:
     modal_dialogue:
       close_modal: Модалдык диалогду жабуу
@@ -180,13 +179,6 @@ ky:
       password_shown_announcement: Сырсөзүңүз көрсөтүлгөн
     print_link:
       text: Бул баракчаны басып чыгаруу
-    published_dates:
-      hidden_heading:
-      hide_all_updates:
-      last_updated:
-      published:
-      see_all_updates:
-      show_all_updates:
     radio:
       or: же
     related_footer_navigation:

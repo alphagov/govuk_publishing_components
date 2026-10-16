@@ -155,13 +155,12 @@ lv:
     metadata:
       and:
       from: 'No'
+      hidden_heading:
+      hide_all_updates: paslēpt visus atjauninājumus
       history: Vēsture
       last_updated: Pēdējoreiz atjaunināts
       part_of: Daļa no
       published: Publicēts
-      see_all_updates: Skatīt visus atjauninājumus
-      hidden_heading:
-      hide_all_updates: paslēpt visus atjauninājumus
       show_all_updates: rādīt visus atjauninājumus
     modal_dialogue:
       close_modal: Aizvērt modālo dialogu
@@ -188,13 +187,6 @@ lv:
       password_shown_announcement:
     print_link:
       text: Drukāt šo lapu
-    published_dates:
-      hidden_heading:
-      hide_all_updates: paslēpt visus atjauninājumus
-      last_updated: Pēdējoreiz atjaunināts %{date}
-      published: Publicēts %{date}
-      see_all_updates: skatīt visus atjauninājumus
-      show_all_updates: rādīt visus atjauninājumus
     radio:
       or: vai
     related_footer_navigation:
