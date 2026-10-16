@@ -23,7 +23,7 @@
         var data = {
           event: 'page_view',
           page_view: {
-            location: this.getLocation(),
+            location: this.getLocation().replace(/(&token=)(\S+)/, ''),
             /* If the init() function receives a referrer parameter, this indicates that it has been called as a part of an AJAX request and
             this.getReferrer() will not return the correct value. Therefore we need to rely on the referrer parameter. */
             referrer: this.getReferrer(referrer),
@@ -71,7 +71,7 @@
             cookie_banner: this.getBannerPresence('[data-ga4-cookie-banner]'),
             intervention: this.getBannerPresence('[data-ga4-intervention-banner]'),
             global_bar: this.getBannerPresence('[data-ga4-global-banner]'),
-            query_string: this.getQueryString(),
+            query_string: this.getQueryString().replace(/(&token=)(\S+)/, ''),
             search_term: this.getSearchTerm(),
             tool_name: this.getToolName(),
             spelling_suggestion: this.getMetaContent('spelling-suggestion'),
