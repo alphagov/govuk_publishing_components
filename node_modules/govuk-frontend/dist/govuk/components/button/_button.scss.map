@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/button/_button.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,+CAA+C;;AAE/C,iBAAiB","file":"_button.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"button\");\n\n@import \"./index\";\n"]}

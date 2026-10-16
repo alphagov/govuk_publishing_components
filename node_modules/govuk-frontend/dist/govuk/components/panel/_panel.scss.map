@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/govuk/components/panel/_panel.scss"],"names":[],"mappings":"AAAA,iCAAiC;;AAEjC,8CAA8C;;AAE9C,iBAAiB","file":"_panel.scss","sourcesContent":["@import \"../../settings/warnings\";\n\n@include _component-scss-file-warning(\"panel\");\n\n@import \"./index\";\n"]}
