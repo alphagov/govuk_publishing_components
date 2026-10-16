@@ -7,8 +7,16 @@
 
     init: function (referrer) {
       if (window.dataLayer) {
-        var queryStringParams = this.getLocation().split('?')[1].split('&')
+        var queryStringParams = []
         var utmParams = {}
+        var location = this.getLocation()
+        var query_string = this.getQueryString()
+
+        if (location.indexOf('?') > -1) {
+          location = location.replace(/(&token=)(\S+)/, '')
+          query_string = query_string.replace(/(&token=)(\S+)/, '')
+          queryStringParams = location.split('?')[1].split('&')
+        }
 
         queryStringParams.forEach(function(param){
           var items = param.split('=')
@@ -23,7 +31,7 @@
         var data = {
           event: 'page_view',
           page_view: {
-            location: this.getLocation().replace(/(&token=)(\S+)/, ''),
+            location: location,
             /* If the init() function receives a referrer parameter, this indicates that it has been called as a part of an AJAX request and
             this.getReferrer() will not return the correct value. Therefore we need to rely on the referrer parameter. */
             referrer: this.getReferrer(referrer),
@@ -71,7 +79,7 @@
             cookie_banner: this.getBannerPresence('[data-ga4-cookie-banner]'),
             intervention: this.getBannerPresence('[data-ga4-intervention-banner]'),
             global_bar: this.getBannerPresence('[data-ga4-global-banner]'),
-            query_string: this.getQueryString().replace(/(&token=)(\S+)/, ''),
+            query_string: query_string,
             search_term: this.getSearchTerm(),
             tool_name: this.getToolName(),
             spelling_suggestion: this.getMetaContent('spelling-suggestion'),
