@@ -151,12 +151,13 @@ id:
     metadata:
       and:
       from: Dari
-      hidden_heading:
-      hide_all_updates: sembunyikan semua pembaruan
       history: Riwayat
       last_updated: Terakhir diperbarui
       part_of: Bagian dari
       published: Diterbitkan
+      see_all_updates: Lihat semua pembaruan
+      hidden_heading:
+      hide_all_updates: sembunyikan semua pembaruan
       show_all_updates: Tampilkan semua pembaruan
     modal_dialogue:
       close_modal: Tutup dialog
@@ -183,6 +184,13 @@ id:
       password_shown_announcement:
     print_link:
       text: Cetak halaman ini
+    published_dates:
+      hidden_heading:
+      hide_all_updates: sembunyikan semua pembaruan
+      last_updated: Terakhir diperbarui %{date}
+      published: Diterbitkan %{date}
+      see_all_updates: lihat semua pembaruan
+      show_all_updates: Tampilkan semua pembaruan
     radio:
       or: atau
     related_footer_navigation:

@@ -151,12 +151,13 @@ si:
     metadata:
       and:
       from: සිට
-      hidden_heading:
-      hide_all_updates: සියලු යාවත්කාලීන සඟවන්න
       history: ඉතිහාසය
       last_updated: අවසන් වරට යාවත්කාලීන කළේ
       part_of: කොටසක්
       published: පළ කළේ
+      see_all_updates: සියලුම යාවත්කාලීනයන් බලන්න
+      hidden_heading:
+      hide_all_updates: සියලු යාවත්කාලීන සඟවන්න
       show_all_updates: සියලු යාවත්කාලීනයන් පෙන්වන්න
     modal_dialogue:
       close_modal: ආදර්ශ සංවාදය වසන්න
@@ -183,6 +184,13 @@ si:
       password_shown_announcement:
     print_link:
       text: මෙම පිටුව මුද්රණය කරන්න
+    published_dates:
+      hidden_heading:
+      hide_all_updates: සියලු යාවත්කාලීන සඟවන්න
+      last_updated: අවසන් වරට යාවත්කාලීන කළේ %{date}
+      published: පළ කළේ %{date}
+      see_all_updates: සියලුම යාවත්කාලීනයන් බලන්න
+      show_all_updates: සියලු යාවත්කාලීනයන් පෙන්වන්න
     radio:
       or: හෝ
     related_footer_navigation:

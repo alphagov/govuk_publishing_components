@@ -151,12 +151,13 @@ sw:
     metadata:
       and:
       from: Kuanzia
-      hidden_heading:
-      hide_all_updates: ficha masasisho yote
       history: Kumbukumbu
       last_updated: Ilisasishwa mara ya mwisho
       part_of: Sehemu ya
       published: Ilichapishwa
+      see_all_updates: Angalia taarifa zote
+      hidden_heading:
+      hide_all_updates: ficha masasisho yote
       show_all_updates: Onyesha taarifa zote
     modal_dialogue:
       close_modal: Funga dirisha ibukizi
@@ -183,6 +184,13 @@ sw:
       password_shown_announcement:
     print_link:
       text: Chapisha ukurasa huu
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ficha masasisho yote
+      last_updated: Ulisasishwa mara ya mwisho tarehe %{date}
+      published: Ulichapishwa tarehe %{date}
+      see_all_updates: angalia taarifa zote
+      show_all_updates: Onyesha taarifa zote
     radio:
       or: au
     related_footer_navigation:

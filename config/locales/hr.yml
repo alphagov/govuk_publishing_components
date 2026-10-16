@@ -152,12 +152,13 @@ hr:
     metadata:
       and:
       from: Iz
-      hidden_heading:
-      hide_all_updates: sakriti sva ažuriranja
       history: Istorija
       last_updated: Posljednji put ažurirano
       part_of: Dio
       published: Objavljeno
+      see_all_updates: Pogledajte sva ažuriranja
+      hidden_heading:
+      hide_all_updates: sakriti sva ažuriranja
       show_all_updates: prikaži sva ažuriranja
     modal_dialogue:
       close_modal: Zatvorite modalni dijalog
@@ -184,6 +185,13 @@ hr:
       password_shown_announcement:
     print_link:
       text: Ispišite ovu stranicu
+    published_dates:
+      hidden_heading:
+      hide_all_updates: sakriti sva ažuriranja
+      last_updated: Zadnje ažurirano %{date}
+      published: Objavljeno %{date}
+      see_all_updates: pogledajte sva ažuriranja
+      show_all_updates: prikaži sva ažuriranja
     radio:
       or: ili
     related_footer_navigation:

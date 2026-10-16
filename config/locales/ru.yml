@@ -155,12 +155,13 @@ ru:
     metadata:
       and: и
       from: Из
-      hidden_heading:
-      hide_all_updates: Скрыть всю последнюю информацию
       history: История
       last_updated: Последнее обновление
       part_of: Является частью
       published: Опубликовано
+      see_all_updates: Посмотреть все обновления
+      hidden_heading:
+      hide_all_updates: Скрыть всю последнюю информацию
       show_all_updates: Показать всю поледнюю информацию
     modal_dialogue:
       close_modal: Закрыть модальное диалоговое окно
@@ -187,6 +188,13 @@ ru:
       password_shown_announcement:
     print_link:
       text: Распечатать эту страницу
+    published_dates:
+      hidden_heading:
+      hide_all_updates: Скрыть всю последнюю информацию
+      last_updated: Последние изменения %{date}
+      published: Опубликовано %{date}
+      see_all_updates: Посмотреть всю поледнюю информацию
+      show_all_updates: Показать всю поледнюю информацию
     radio:
       or: или
     related_footer_navigation:

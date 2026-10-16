@@ -153,12 +153,13 @@ gd:
     metadata:
       and:
       from: De
-      hidden_heading:
-      hide_all_updates: gach nuashonrú a cheilt
       history: Stairiúil
       last_updated: Nuashonrú deireanach
       part_of: Chuid
       published: Arna chur suas
+      see_all_updates: Féach gach nuashonrú
+      hidden_heading:
+      hide_all_updates: gach nuashonrú a cheilt
       show_all_updates: Taispeáin gach nuashonrú
     modal_dialogue:
       close_modal: Dún an dialóg módúil
@@ -185,6 +186,13 @@ gd:
       password_shown_announcement:
     print_link:
       text: priontáil an leathanach seo
+    published_dates:
+      hidden_heading:
+      hide_all_updates: gach nuashonrú a cheilt
+      last_updated: Nuashonrú deireanach %{date}
+      published: Arna chur suas ar %{date}
+      see_all_updates: féach gach nuashonrú
+      show_all_updates: Taispeáin gach nuashonrú
     radio:
       or: Cá háit
     related_footer_navigation:

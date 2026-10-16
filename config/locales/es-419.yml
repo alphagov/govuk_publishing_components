@@ -151,12 +151,13 @@ es-419:
     metadata:
       and: "y"
       from: Desde
-      hidden_heading:
-      hide_all_updates: ocultar todas las novedades
       history: Historial
       last_updated: Última actualización
       part_of: Parte de
       published: Publicado
+      see_all_updates: Ver todas las novedades
+      hidden_heading:
+      hide_all_updates: ocultar todas las novedades
       show_all_updates: mostrar todas las actualizaciones
     modal_dialogue:
       close_modal: Cerrar diálogo modal
@@ -183,6 +184,13 @@ es-419:
       password_shown_announcement:
     print_link:
       text: Imprimir esta página
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ocultar todas las novedades
+      last_updated: Última actualización %{date}
+      published: Publicado %{date}
+      see_all_updates: ver todas las novedades
+      show_all_updates: mostrar todas las actualizaciones
     radio:
       or: o
     related_footer_navigation:

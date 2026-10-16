@@ -150,12 +150,13 @@ vi:
     metadata:
       and:
       from: Từ
-      hidden_heading:
-      hide_all_updates: ẩn tất cả các cập nhật
       history: Lịch sử
       last_updated: Lần cập nhật gần đây nhất
       part_of: Một phần của
       published: Đã xuất bản
+      see_all_updates: Xem tất cả nội dung cập nhật
+      hidden_heading:
+      hide_all_updates: ẩn tất cả các cập nhật
       show_all_updates: hiển thị tất cả nội dung cập nhật
     modal_dialogue:
       close_modal: Đóng đối thoại phương thức
@@ -182,6 +183,13 @@ vi:
       password_shown_announcement:
     print_link:
       text: In trang này
+    published_dates:
+      hidden_heading:
+      hide_all_updates: ẩn tất cả các cập nhật
+      last_updated: Lần cập nhật gần đây nhất %{date}
+      published: Ngày xuất bản %{date}
+      see_all_updates: xem tất cả nội dung cập nhật
+      show_all_updates: hiển thị tất cả nội dung cập nhật
     radio:
       or: hoặc
     related_footer_navigation:
