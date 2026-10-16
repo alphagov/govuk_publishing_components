@@ -155,13 +155,12 @@ hy:
     metadata:
       and:
       from: Ումից՝
+      hidden_heading:
+      hide_all_updates: թաքցնել բոլոր թարմացումները
       history: Պատմություն
       last_updated: Վերջին անգամ թարմացվել է
       part_of: Մաս է՝
       published: Հրապարակված
-      see_all_updates: Դիտել բոլոր թարմացումները
-      hidden_heading:
-      hide_all_updates: թաքցնել բոլոր թարմացումները
       show_all_updates: ցույց տալ բոլոր թարմացումները
     modal_dialogue:
       close_modal: Փակել մոդալ պատուհանը
@@ -188,13 +187,6 @@ hy:
       password_shown_announcement:
     print_link:
       text: Տպել այս էջը
-    published_dates:
-      hidden_heading:
-      hide_all_updates: թաքցնել բոլոր թարմացումները
-      last_updated: Վերջին թարմացումը՝ %{date}
-      published: Հրապարակվել է՝ %{date}
-      see_all_updates: դիտել բոլոր թարմացումները
-      show_all_updates: ցույց տալ բոլոր թարմացումները
     radio:
       or: կամ
     related_footer_navigation:

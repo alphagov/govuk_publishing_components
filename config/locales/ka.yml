@@ -154,13 +154,12 @@ ka:
     metadata:
       and:
       from: დან
+      hidden_heading:
+      hide_all_updates: ყველა ცვლილების დაფარვა
       history: ისტორია
       last_updated: ბოლო განახლება
       part_of: ნაწილი
       published: პუბლიკაცია
-      see_all_updates: ყველა განახლების ნახვა
-      hidden_heading:
-      hide_all_updates: ყველა ცვლილების დაფარვა
       show_all_updates: ყველა ცვლილების ჩვენება
     modal_dialogue:
       close_modal: მოდალური დიალოგის გამორთვა
@@ -187,13 +186,6 @@ ka:
       password_shown_announcement:
     print_link:
       text: ამ გვერდის ბეჭდვა
-    published_dates:
-      hidden_heading:
-      hide_all_updates: ყველა ცვლილების დაფარვა
-      last_updated: ბოლოს განახლდა %{date}
-      published: გამოქვეყნდა %{date}
-      see_all_updates: ყველა ცვლილების ნახვა
-      show_all_updates: ყველა ცვლილების ჩვენება
     radio:
       or: ან
     related_footer_navigation:

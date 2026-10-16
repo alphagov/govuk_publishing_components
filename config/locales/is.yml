@@ -151,13 +151,12 @@ is:
     metadata:
       and:
       from: Frá
+      hidden_heading:
+      hide_all_updates: fela allar uppfærslur
       history: Saga
       last_updated: Síðast uppfært
       part_of: Hluti af
       published: Birt
-      see_all_updates: Sjá allar uppfærslur
-      hidden_heading:
-      hide_all_updates: fela allar uppfærslur
       show_all_updates: sýna allar uppfærslur
     modal_dialogue:
       close_modal: Loka glugga
@@ -184,13 +183,6 @@ is:
       password_shown_announcement:
     print_link:
       text: Prenta þessa síðu
-    published_dates:
-      hidden_heading:
-      hide_all_updates: fela allar uppfærslur
-      last_updated: Síðast uppfært %{date}
-      published: Birt %{date}
-      see_all_updates: sjá allar uppfærslur
-      show_all_updates: sýna allar uppfærslur
     radio:
       or: eða
     related_footer_navigation:

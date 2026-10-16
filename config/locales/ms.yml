@@ -150,13 +150,12 @@ ms:
     metadata:
       and:
       from: Daripada
+      hidden_heading:
+      hide_all_updates: sorok semua kemas kini
       history: Sejarah
       last_updated: Kali terakhir dikemas kini
       part_of: Sebahagian daripada
       published: Diterbitkan
-      see_all_updates: Lihat semua kemas kini
-      hidden_heading:
-      hide_all_updates: sorok semua kemas kini
       show_all_updates: tunjuk semua kemas kini
     modal_dialogue:
       close_modal: Tutup dialog mod
@@ -183,13 +182,6 @@ ms:
       password_shown_announcement:
     print_link:
       text: Cetak halaman ini
-    published_dates:
-      hidden_heading:
-      hide_all_updates: sorok semua kemas kini
-      last_updated: Kali terakhir dikemas kini %{date}
-      published: Diterbitkan %{date}
-      see_all_updates: lihat semua kemas kini
-      show_all_updates: tunjuk semua kemas kini
     radio:
       or: atau
     related_footer_navigation:

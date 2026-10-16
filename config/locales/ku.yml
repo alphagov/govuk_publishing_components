@@ -150,13 +150,12 @@ ku:
     metadata:
       and: و
       from: لە
+      hidden_heading:
+      hide_all_updates:
       history: مێژوو
       last_updated: دوایین نوێکردنەوە
       part_of: بەشێک لە
       published: بڵاوکراوەتەوە
-      see_all_updates: هەموو نوێکارییەکان ببینە
-      hidden_heading:
-      hide_all_updates:
       show_all_updates:
     modal_dialogue:
       close_modal: گفتوگۆی مۆداڵی دابخە
@@ -183,13 +182,6 @@ ku:
       password_shown_announcement: وشەی نهێنی تۆ دیارە
     print_link:
       text: ئەم لاپەڕەیە پرنت بکە
-    published_dates:
-      hidden_heading:
-      hide_all_updates:
-      last_updated:
-      published:
-      see_all_updates:
-      show_all_updates:
     radio:
       or: یان
     related_footer_navigation:
