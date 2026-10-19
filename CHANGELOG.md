@@ -13,6 +13,7 @@
 * **BREAKING** Remove the published dates component ([PR #5807](https://github.com/alphagov/govuk_publishing_components/pull/5807))
 * Remove non-CSS Grid fallback rules from cards list component ([PR #5766](https://github.com/alphagov/govuk_publishing_components/pull/5766))
 * Update experimental chart design ([PR #5747](https://github.com/alphagov/govuk_publishing_components/pull/5747))
+* Add utm email tracking parameters to the ga4-page-views tracker ([PR #5819](https://github.com/alphagov/govuk_publishing_components/pull/5819/))
 
 ## 70.2.1
 
