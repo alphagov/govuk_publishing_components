@@ -1,82 +1,60 @@
 /* eslint-env jasmine */
 
-describe('A contents list with body module', function () {
-  'use strict'
+describe('ContentsListWithBody module', () => {
+  let $element
+  let $stickyElement
+  let instance
+  let container
 
-  describe('on desktop', function () {
-    var $element
-    var $footer
-    var instance
-    var container
-
-    beforeEach(function () {
-      container = document.createElement('div')
-      container.innerHTML = `
-        <div data-module="contents-list-with-body" style="height: 9001px; margin-bottom: 1000px">
-          <div data-sticky-element>
-            <span>Content</span>
-          </div>
+  beforeEach(() => {
+    container = document.createElement('div')
+    container.innerHTML = `
+      <div data-module="contents-list-with-body">
+        <div class="gem-c-contents-list-with-body__list-container">
+          <h2>Contents</h2>
         </div>
-      `
+        <div class="gem-c-contents-list-with-body__body">
+          <p>Body content</p>
+        </div>
+        <div data-sticky-element>
+          <span>Up to contents</span>
+        </div>
+      </div>
+    `
 
-      document.body.appendChild(container)
-      $element = document.querySelector('[data-module="contents-list-with-body"]')
+    document.body.appendChild(container)
+    $element = document.querySelector('[data-module="contents-list-with-body"]')
+    $stickyElement =$element.querySelector('[data-sticky-element]')
 
-      instance = new window.GOVUK.Modules.ContentsListWithBody($element)
-      $footer = $element.querySelector('[data-sticky-element]')
+    instance = new window.GOVUK.Modules.ContentsListWithBody($element)
+  })
 
-      instance.getWindowDimensions = function () {
-        return {
-          height: 768,
-          width: 1024
-        }
-      }
+  afterEach(() => {
+    container.remove()
+  })
+
+  describe('when IntersectionObserver is not supported', () => {
+    let originalIntersectionObserver
+
+    beforeEach(() => {
+      originalIntersectionObserver = window.IntersectionObserver
+      delete window.IntersectionObserver
     })
 
-    afterEach(function () {
-      document.body.removeChild(container)
+    afterEach(() => {
+      window.IntersectionObserver = originalIntersectionObserver
     })
 
-    it('hides the element, when scrolled at the top', function () {
-      instance.getWindowPositions = function () {
-        return {
-          scrollTop: 0
-        }
-      }
+    it('remains hidden and does not create sentinels or enable sticky behavior', () => {
+      instance.init()
 
-      instance.checkResize()
-      instance.checkScroll()
+      const topSentinel = $element.querySelector('.gem-c-contents-list-with-body__top-sentinel')
+      const bottomSentinel = $element.querySelector('.gem-c-contents-list-with-body__bottom-sentinel')
 
-      expect($footer).toHaveClass('gem-c-contents-list-with-body__sticky-element--hidden')
-      expect($footer).toHaveClass('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
-    })
-
-    it('shows the element, stuck to the window, when scrolled in the middle', function () {
-      instance.getWindowPositions = function () {
-        return {
-          scrollTop: 5000
-        }
-      }
-
-      instance.checkResize()
-      instance.checkScroll()
-
-      expect($footer).not.toHaveClass('gem-c-contents-list-with-body__sticky-element--hidden')
-      expect($footer).toHaveClass('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
-    })
-
-    it('shows the element, stuck to the parent, when scrolled at the bottom', function () {
-      instance.getWindowPositions = function () {
-        return {
-          scrollTop: 9800
-        }
-      }
-
-      instance.checkResize()
-      instance.checkScroll()
-
-      expect($footer).not.toHaveClass('gem-c-contents-list-with-body__sticky-element--hidden')
-      expect($footer).not.toHaveClass('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
+      expect(topSentinel).toBeNull()
+      expect(bottomSentinel).toBeNull()
+      expect($stickyElement).toHaveClass('gem-c-contents-list-with-body__sticky-element--hidden')
+      expect($stickyElement).not.toHaveClass('gem-c-contents-list-with-body__sticky-element--enabled')
     })
   })
 })
