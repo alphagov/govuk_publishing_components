@@ -9,105 +9,112 @@
 */
 
 (function (Modules) {
-  function ContentsListWithBody (element) {
-    this.wrapper = element
-    this.stickyElement = this.wrapper.querySelector('[data-sticky-element]')
-    this.hasResized = true
-    this.hasScrolled = true
-    this.interval = 50
-    this.windowVerticalPosition = 1
-    this.startPosition = 0
-    this.stopPosition = 0
-  }
+  class ContentsListWithBody {
+    constructor ($module) {
+      this.$module =$module
+      this.stickyElement = this.$module.querySelector('[data-sticky-element]')
 
-  ContentsListWithBody.prototype.init = function () {
-    if (!this.stickyElement) return
+      this.enabledClass = 'gem-c-contents-list-with-body__sticky-element--enabled'
+      this.stuckToWindowClass = 'gem-c-contents-list-with-body__sticky-element--stuck-to-window'
+      this.hiddenClass = 'gem-c-contents-list-with-body__sticky-element--hidden'
 
-    window.onresize = this.onResize.bind(this)
-    window.onscroll = this.onScroll.bind(this)
-    setInterval(this.checkResize.bind(this), this.interval)
-    setInterval(this.checkScroll.bind(this), this.interval)
-    this.checkResize()
-    this.checkScroll()
-    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--enabled')
-  }
-
-  ContentsListWithBody.prototype.getWindowDimensions = function () {
-    return {
-      height: window.innerHeight,
-      width: window.innerWidth
-    }
-  }
-
-  ContentsListWithBody.prototype.getWindowPositions = function () {
-    return {
-      scrollTop: window.scrollY
-    }
-  }
-
-  ContentsListWithBody.prototype.onResize = function () {
-    this.hasResized = true
-  }
-
-  ContentsListWithBody.prototype.onScroll = function () {
-    this.hasScrolled = true
-  }
-
-  ContentsListWithBody.prototype.checkResize = function () {
-    if (this.hasResized) {
-      this.hasResized = false
+      this.hasResized = true
       this.hasScrolled = true
-
-      var windowDimensions = this.getWindowDimensions()
-      var elementHeight = this.wrapper.offsetHeight || parseFloat(this.wrapper.style.height.replace('px', ''))
-      this.startPosition = this.wrapper.offsetTop
-      this.stopPosition = this.wrapper.offsetTop + elementHeight - windowDimensions.height
+      this.interval = 50
+      this.windowVerticalPosition = 1
+      this.startPosition = 0
+      this.stopPosition = 0
     }
-  }
 
-  ContentsListWithBody.prototype.checkScroll = function () {
-    if (this.hasScrolled) {
-      this.hasScrolled = false
+    init () {
+      if (!this.stickyElement) return
 
-      this.windowVerticalPosition = this.getWindowPositions().scrollTop
-
-      this.updateVisibility()
-      this.updatePosition()
+      window.onresize = this.onResize.bind(this)
+      window.onscroll = this.onScroll.bind(this)
+      setInterval(this.checkResize.bind(this), this.interval)
+      setInterval(this.checkScroll.bind(this), this.interval)
+      this.checkResize()
+      this.checkScroll()
+      this.stickyElement.classList.add(this.enabledClass)
     }
-  }
 
-  ContentsListWithBody.prototype.updateVisibility = function () {
-    var isPastStart = this.startPosition < this.windowVerticalPosition
-    if (isPastStart) {
-      this.show()
-    } else {
-      this.hide()
+    getWindowDimensions () {
+      return {
+        height: window.innerHeight,
+        width: window.innerWidth
+      }
     }
-  }
 
-  ContentsListWithBody.prototype.updatePosition = function () {
-    var isPastEnd = this.stopPosition < this.windowVerticalPosition
-    if (isPastEnd) {
-      this.stickToParent()
-    } else {
-      this.stickToWindow()
+    getWindowPositions () {
+      return {
+        scrollTop: window.scrollY
+      }
     }
-  }
 
-  ContentsListWithBody.prototype.stickToWindow = function () {
-    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
-  }
+    onResize () {
+      this.hasResized = true
+    }
 
-  ContentsListWithBody.prototype.stickToParent = function () {
-    this.stickyElement.classList.remove('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
-  }
+    onScroll () {
+      this.hasScrolled = true
+    }
 
-  ContentsListWithBody.prototype.show = function () {
-    this.stickyElement.classList.remove('gem-c-contents-list-with-body__sticky-element--hidden')
-  }
+    checkResize () {
+      if (this.hasResized) {
+        this.hasResized = false
+        this.hasScrolled = true
 
-  ContentsListWithBody.prototype.hide = function () {
-    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--hidden')
+        const windowDimensions = this.getWindowDimensions()
+        const elementHeight = this.wrapper.offsetHeight || parseFloat(this.wrapper.style.height.replace('px', ''))
+        this.startPosition = this.$module.offsetTop
+        this.stopPosition = this.$module.offsetTop + elementHeight - windowDimensions.height
+      }
+    }
+
+    checkScroll () {
+      if (this.hasScrolled) {
+        this.hasScrolled = false
+
+        this.windowVerticalPosition = this.getWindowPositions().scrollTop
+
+        this.updateVisibility()
+        this.updatePosition()
+      }
+    }
+
+    updateVisibility () {
+      const isPastStart = this.startPosition < this.windowVerticalPosition
+      if (isPastStart) {
+        this.show()
+      } else {
+        this.hide()
+      }
+    }
+
+    updatePosition () {
+      const isPastEnd = this.stopPosition < this.windowVerticalPosition
+      if (isPastEnd) {
+        this.stickToParent()
+      } else {
+        this.stickToWindow()
+      }
+    }
+
+    stickToWindow () {
+      this.stickyElement.classList.add(this.stuckToWindowClass)
+    }
+
+    stickToParent () {
+      this.stickyElement.classList.remove(this.stuckToWindowClass)
+    }
+
+    show () {
+      this.stickyElement.classList.remove(this.hiddenClass)
+    }
+
+    hide () {
+      this.stickyElement.classList.add(this.hiddenClass)
+    }
   }
 
   Modules.ContentsListWithBody = ContentsListWithBody
