@@ -140,3 +140,7 @@
 
   Modules.ContentsListWithBody = ContentsListWithBody
 })(window.GOVUK.Modules)
+
+/**
+ * @see {@link https://components.publishing.service.gov.uk/component-guide/contents_list_with_body}
+ */
