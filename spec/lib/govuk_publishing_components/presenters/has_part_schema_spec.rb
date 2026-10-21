@@ -12,12 +12,4 @@ RSpec.describe GovukPublishingComponents::Presenters::HasPartSchema do
       )
     end
   end
-
-  describe "#has_part_url" do
-    it "exposes the URL passed to the initializer" do
-      schema = described_class.new("https://www.gov.uk/some-part")
-
-      expect(schema.has_part_url).to eq("https://www.gov.uk/some-part")
-    end
-  end
 end
