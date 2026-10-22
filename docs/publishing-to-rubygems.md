@@ -21,7 +21,7 @@ You should also post a message to `#govuk-frontenders` on slack to ask if anyone
 
 4. Update [`lib/govuk_publishing_components/version.rb`](/lib/govuk_publishing_components/version.rb) version with the new version number.
 
-5. Run `bundle install && yarn install` to ensure you have the latest dependencies installed.
+5. Update [`Gemfile.lock`](Gemfile.lock) line 4 (`govuk_publishing_components`) to have the new version number.
 
 6. Commit changes. These should include updates in the following files:
   - [`CHANGELOG.md`](/CHANGELOG.md)
