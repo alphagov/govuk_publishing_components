@@ -69,10 +69,25 @@
             user_created_at: this.getMetaContent('user-created-at'),
             user_organisation_name: this.getMetaContent('user-organisation-name'),
             user_role: this.getMetaContent('user-role'),
-            user_id: this.getMetaContent('user-id')
+            user_id: this.getMetaContent('user-id'),
+
+            utm_source: this.getUtmParams('utm_source'),
+            utm_medium: this.getUtmParams('utm_medium'),
+            utm_campaign: this.getUtmParams('utm_campaign'),
+            utm_term: this.getUtmParams('utm_term'),
+            utm_content: this.getUtmParams('utm_content')
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
+      }
+    },
+
+    getUtmParams: function (key) {
+      if (this.getLocation().indexOf('?') > -1) {
+        var queryStringParams = new URLSearchParams(this.getLocation().split('?')[1])
+        return queryStringParams.get(key) || undefined
+      } else {
+        return undefined
       }
     },
 
@@ -102,7 +117,8 @@
 
     getLocation: function () {
       // We don't want to remove dates on search pages.
-      return this.PIIRemover.stripPIIWithOverride(this.stripGaParam(document.location.href), this.stripDates, true)
+      // Where a token is present this should be redacted
+      return this.PIIRemover.stripPIIWithOverride(this.stripGaParam(document.location.href.replace(/(&token=)(\S+)/, '')), this.stripDates, true)
     },
 
     getSearchTerm: function () {
@@ -149,6 +165,7 @@
         queryString = this.stripGaParam(queryString)
         queryString = this.PIIRemover.stripPIIWithOverride(queryString, this.stripDates, true)
         queryString = queryString.substring(1) // removes the '?' character from the start.
+        queryString = queryString.replace(/(&token=)(\S+)/, '') // where a token is present this should be redacted
         return queryString
       }
     },

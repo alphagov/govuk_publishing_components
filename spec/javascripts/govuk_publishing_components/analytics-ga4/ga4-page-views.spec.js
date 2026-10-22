@@ -70,7 +70,13 @@ describe('Google Tag Manager page view tracking', function () {
         user_created_at: undefined,
         user_organisation_name: undefined,
         user_role: undefined,
-        user_id: undefined
+        user_id: undefined,
+
+        utm_source: undefined,
+        utm_medium: undefined,
+        utm_campaign: undefined,
+        utm_term: undefined,
+        utm_content: undefined
       }
     }
     if (window.location.search) {
@@ -457,6 +463,35 @@ describe('Google Tag Manager page view tracking', function () {
 
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
+    // Reset the page location for other tests
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+  })
+
+  it('correctly sets the link tracking properties', function () {
+    // We can't spy on location, so instead we use an anchor link to change the URL temporarily
+    // Reset the URL so we can build the expected link string
+    var location
+    var linkForURLMock = document.createElement('a')
+
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+    location = document.location.href
+
+    // Add utm parameters to the current page location
+    linkForURLMock.href = location + '&utm_source=notify&utm_medium=email&utm_campaign=fact_check&utm_term=sme&utm_content=view_the_fact_check'
+    linkForURLMock.click()
+
+    expected.page_view.location = location + '&utm_source=notify&utm_medium=email&utm_campaign=fact_check&utm_term=sme&utm_content=view_the_fact_check'
+    expected.page_view.utm_source = 'notify'
+    expected.page_view.utm_medium = 'email'
+    expected.page_view.utm_campaign = 'fact_check'
+    expected.page_view.utm_term = 'sme'
+    expected.page_view.utm_content = 'view_the_fact_check'
+
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+
     // Reset the page location for other tests
     linkForURLMock.href = '#'
     linkForURLMock.click()
