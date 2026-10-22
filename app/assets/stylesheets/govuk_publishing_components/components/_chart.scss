@@ -28,14 +28,35 @@
     margin: 0;
   }
 
-  .govuk-table .govuk-table__header {
-    text-align: center;
-  }
-
-  .govuk-table .govuk-table__cell {
-    text-align: center;
-  }
 }
+
+.gem-c-chart div svg g[clip-path] rect,
+.gem-c-chart div svg g[clip-path] circle {
+  cursor: pointer;
+}
+
+// Legend
+.gem-c-chart div svg g:has(text[text-anchor="start"]) * {
+  cursor: pointer;
+}
+
+// For line chart points
+.gem-c-chart svg circle {
+  cursor: pointer;
+}
+
+// Prevent line chart lines having cursor: pointer
+.gem-c-chart svg g[clip-path] path[fill="none"] {
+  cursor: default;
+}
+
+// Force grid lines back to default
+.gem-c-chart div svg g[clip-path] rect[height="1"],
+.gem-c-chart div svg g[clip-path] rect[width="1"] {
+  cursor: default;
+  pointer-events: none;
+}
+
 
 .gem-c-chart .gem-c-chart__a11y-note-link {
   display: none;
@@ -54,6 +75,10 @@
   @include govuk-media-query($from: "desktop") {
     max-width: 742.5px;
   }
+}
+
+.gem-c-chart__source {
+  color: govuk-functional-colour(secondary-text);
 }
 
 .js-enabled {
