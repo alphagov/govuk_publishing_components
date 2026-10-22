@@ -83,9 +83,12 @@
     },
 
     getUtmParams: function (key) {
-      var queryStringParams = new URLSearchParams(this.getLocation().split('?')[1])
-
-      return queryStringParams.get(key) || undefined
+      if (this.getLocation().indexOf('?') > -1) {
+        var queryStringParams = new URLSearchParams(this.getLocation().split('?')[1])
+        return queryStringParams.get(key) || undefined
+      } else {
+        return undefined
+      }
     },
 
     removeHyphensAndDowncase: function (text) {
