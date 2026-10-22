@@ -22,6 +22,9 @@
 
       /** @type {string} */
       this.buttonVisibleClass = 'gem-c-single-page-notification-button--visible'
+
+      /** @type {number | null} */
+      this.fetchRequestTimeoutId = null
     }
 
     /**
@@ -49,6 +52,7 @@
         console.error(error)
       } finally {
         this.makeVisible(this.$module)
+        clearTimeout(this.fetchRequestTimeoutId)
       }
     }
 
@@ -80,7 +84,7 @@
      */
     async getPersonalisationData (personalisationEndpoint, timer) {
       const abortController = new AbortController()
-      setTimeout(() => abortController.abort(new DOMException('Timeout', 'AbortError')), timer)
+      this.fetchRequestTimeoutId = setTimeout(() => abortController.abort(new DOMException('Timeout', 'AbortError')), timer)
 
       const response = await fetch(personalisationEndpoint, {
         headers: { Accept: 'application/json' },
