@@ -1127,6 +1127,34 @@ examples:
             </tr>
           </tbody>
         </table>
+  wide_table:
+    data:
+      block: |
+        <table>
+          <caption>Long place names, courtesy of Wikipedia</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Language</th>
+              <th>Translation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu</td>
+              <td>Hill in North Island, New Zealand</td>
+              <td>Māori</td>
+              <td>"The summit where Tamatea, the man with the big knees, the climber of mountains, the land-swallower who travelled about, played his kōauau (flute) to his loved one".</td>
+            </tr>
+            <tr>
+              <td>Azpilikuetagaraikosaroiarenberekolarrea</td>
+              <td>Place in Azpilkueta, Navarre, Spain</td>
+              <td>Basque language</td>
+              <td>"The low meadow of the sheep pen in upper Azpilikueta".</td>
+            </tr>
+          </tbody>
+        </table>
   tables_with_alignments:
     data:
       block: |
