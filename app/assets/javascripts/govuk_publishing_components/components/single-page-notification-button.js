@@ -1,68 +1,139 @@
-/* global XMLHttpRequest */
+/* global fetch, DOMException, AbortController */
 (function (Modules) {
-  function SinglePageNotificationButton ($module) {
-    this.$module = $module
-    this.basePath = this.$module.querySelector('input[name="base_path"]').value
-    this.buttonLocation = this.$module.getAttribute('data-button-location')
-    this.buttonVisibleClass = 'gem-c-single-page-notification-button--visible'
+  class SinglePageNotificationButton {
+    constructor ($module) {
+      /** @type {HTMLDivElement} */
+      this.$module = $module
 
-    this.personalisationEndpoint = '/api/personalisation/check-email-subscription?base_path=' + this.basePath
-    // This attribute is passed through to the personalisation API to ensure the updated button has the same button_location for analytics
-    if (this.buttonLocation) this.personalisationEndpoint += '&button_location=' + this.buttonLocation
-  }
+      /** @type {HTMLInputElement | null} */
+      this.basePathInput = this.$module.querySelector('input[name="base_path"]')
 
-  SinglePageNotificationButton.prototype.init = function () {
-    var xhr = new XMLHttpRequest()
-    xhr.open('GET', this.personalisationEndpoint, true)
-    // if XHR to the personalisation endpoint is taking an incredibly long time to complete, we are better off leaving the button in its default unpersonalised state. Content changing before the user's eyes while they are browsing can be jarring and should be avoided.
-    xhr.timeout = 10000
+      /** @type {HTMLButtonElement | null} */
+      this.button = this.$module.querySelector('.gem-c-button__outline--notification')
 
-    xhr.ontimeout = function () {
-      this.makeVisible(this.$module)
-    }.bind(this)
+      /** @type {string | null} */
+      this.buttonLocation = this.$module.getAttribute('data-button-location')
 
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          var responseText = xhr.responseText
-          // if response text exists and is JSON parse-able, parse the response and update the button html
-          if (responseText && this.responseIsJSON(responseText)) {
-            var active = JSON.parse(responseText).active
+      /** @type {string | null} */
+      this.customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
 
-            var customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
-            var customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
-            // Only set custom button text if both text items are provided
-            var customText = customSubscribeText && customUnsubscribeText
+      /** @type {string | null} */
+      this.customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
 
-            // If response returns active, user has subscribed to notifications
-            if (active === true) {
-              if (customText) {
-                this.$module.querySelector('.gem-c-button__outline--notification').textContent = customUnsubscribeText
-              }
-            } else {
-              if (customText) {
-                this.$module.querySelector('.gem-c-button__outline--notification').textContent = customSubscribeText
-              }
-            }
-          }
-        }
-        this.makeVisible(this.$module)
-      }
-    }.bind(this)
-    xhr.send()
-  }
+      /** @type {string} */
+      this.buttonVisibleClass = 'gem-c-single-page-notification-button--visible'
 
-  SinglePageNotificationButton.prototype.responseIsJSON = function (string) {
-    try {
-      JSON.parse(string)
-    } catch (e) {
-      return false
+      /** @type {number | null} */
+      this.fetchRequestTimeoutId = null
     }
-    return true
+
+    /**
+     * Initialise the single page notification button
+     *
+     */
+    async init () {
+      try {
+        if (this.button === null) {
+          throw new Error('Button required')
+        }
+
+        if (this.basePathInput === null) {
+          throw new Error('Base path required')
+        }
+
+        const personalisationEndpoint = this.getPersonalisationEndpoint(this.basePathInput.value, this.buttonLocation)
+        const personalisationData = await this.getPersonalisationData(personalisationEndpoint, 10000)
+        const customButtonText = this.getCustomButtonText(personalisationData.active, this.customSubscribeText, this.customUnsubscribeText)
+
+        if (customButtonText) {
+          this.button.textContent = customButtonText
+        }
+      } catch (error) {
+        console.error(error)
+      } finally {
+        this.makeVisible(this.$module)
+        clearTimeout(this.fetchRequestTimeoutId)
+      }
+    }
+
+    /**
+     * Get the personalisation data endpoint
+     *
+     * @param {string} basePath The base path to use
+     * @param {string | null} buttonLocation This attribute is passed through to the personalisation API to ensure the updated button has the same button_location for analytics
+     * @returns {string} The personalisation endpoint to use
+     */
+    getPersonalisationEndpoint (basePath, buttonLocation) {
+      const checkEmailSubscriptionEndpoint = '/api/personalisation/check-email-subscription'
+
+      if (buttonLocation) {
+        return `${checkEmailSubscriptionEndpoint}?base_path=${basePath}&button_location=${buttonLocation}`
+      }
+
+      return `${checkEmailSubscriptionEndpoint}?base_path=${basePath}`
+    }
+
+    /**
+     * Fetch data from the personalisation endpoint for checking if an email subscription is active
+     *
+     * @param {string} personalisationEndpoint The personalisation URL to fetch data from
+     * @param {number} timer Set the time in milliseconds when the fetch request should abort
+     * @returns {Promise<EmailSubscriptionData>}
+     * @throws {DOMException} if the request times out
+     * @throws {Error} if the request response is not ok
+     */
+    async getPersonalisationData (personalisationEndpoint, timer) {
+      const abortController = new AbortController()
+      this.fetchRequestTimeoutId = setTimeout(() => abortController.abort(new DOMException('Timeout', 'AbortError')), timer)
+
+      const response = await fetch(personalisationEndpoint, {
+        headers: { Accept: 'application/json' },
+        signal: abortController.signal
+      })
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
+      }
+
+      return await response.json()
+    }
+
+    /**
+     * Make the single page notification button visible
+     *
+     * @param {HTMLDivElement} module The element to add the visible class to
+     */
+    makeVisible (module) {
+      module.classList.add(this.buttonVisibleClass)
+    }
+
+    /**
+     * Get custom button text depending on whether the email subscription is active
+     *
+     * @param {boolean} activeState If the user has an email subscription to the page
+     * @param {string} customSubscribeText The custom subscribe text used when the activeState is false
+     * @param {string} customUnsubscribeText The custom subscribe text used when the activeState is true
+     * @returns {string | undefined} Returns the custom button text to use or `undefined` if the custom button text cannot be determined
+     */
+    getCustomButtonText (activeState, customSubscribeText, customUnsubscribeText) {
+      if (typeof activeState !== 'boolean') return
+      // Only set custom button text if both text items are provided
+      if (!customSubscribeText || !customUnsubscribeText) {
+        return
+      }
+
+      if (activeState === true) return customUnsubscribeText
+      if (activeState === false) return customSubscribeText
+    }
   }
 
-  SinglePageNotificationButton.prototype.makeVisible = function (target) {
-    target.classList.add(this.buttonVisibleClass)
-  }
   Modules.SinglePageNotificationButton = SinglePageNotificationButton
 })(window.GOVUK.Modules)
+
+/**
+ * @typedef {object} EmailSubscriptionData
+ * @property {string} base_path the base_path parameter
+ * @property {boolean} active whether the email subscription is active
+ *
+ * @see {@link https://docs.publishing.service.gov.uk/repos/account-api/api.html#get-apipersonalisationcheck-email-subscription}
+ */
