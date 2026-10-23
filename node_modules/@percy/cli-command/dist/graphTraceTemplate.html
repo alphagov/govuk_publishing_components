@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IntelliStory Graph</title>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/drawflow@0.0.60/dist/drawflow.min.css"
+        integrity="sha384-IFh+Q6zh+LRcTjqVmAKetdGY59dT485vtvWT5DAKQy8iv5+fYWHXisHP7mFKcFqV"
+        crossorigin="anonymous">
+    <script
+        src="https://cdn.jsdelivr.net/npm/drawflow@0.0.60/dist/drawflow.min.js"
+        integrity="sha384-JsnM4f1X8b5e9VbQCj6Bt6840HQNDYVKohzbXJnqOetMno8i6cmKNLVkyK3snqSw"
+        crossorigin="anonymous"></script>
+    <style>
+        html, body {
+            margin: 0; padding: 0;
+            font-family: sans-serif; background: #fafafa;
+            width: 100%; height: 100%; overflow: hidden;
+        }
+        #drawflow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #fafafa;
+        }
+        #legend {
+            position: fixed; top: 8px; right: 8px;
+            background: rgba(255,255,255,0.95);
+            padding: 8px 12px; border: 1px solid #999;
+            font-size: 12px; z-index: 100;
+        }
+        #legend span {
+            display: inline-block; width: 12px; height: 12px;
+            vertical-align: middle; margin-right: 4px; border: 1px solid #333;
+        }
+        #controls {
+            position: fixed; top: 8px; left: 8px;
+            background: rgba(255,255,255,0.95);
+            border: 1px solid #999; z-index: 100;
+            display: flex; gap: 2px;
+        }
+        #controls button {
+            border: 0; background: transparent;
+            padding: 6px 10px; cursor: pointer;
+            font-size: 14px; font-family: inherit;
+        }
+        #controls button:hover { background: #eee; }
+
+        .drawflow .drawflow-node {
+            width: max-content;
+            min-width: 0; max-width: none;
+            height: auto; min-height: 0;
+            padding: 8px 14px;
+            white-space: nowrap;
+            font-size: 12px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 150ms;
+        }
+        .drawflow .drawflow-node .drawflow_content_node {
+            width: max-content;
+            white-space: nowrap;
+        }
+        .drawflow .drawflow-node.package    { background: #d4e5f7; border-color: #2a6db5; }
+        .drawflow .drawflow-node.component  { background: #daf0c1; border-color: #4a8e1f; }
+        .drawflow .drawflow-node.story      { background: #fce4b6; border-color: #b07310; }
+        .drawflow .drawflow-node.is-relevant { background: #d9b3ff; border-color: #6f30b0; }
+
+        .drawflow .drawflow-node .input,
+        .drawflow .drawflow-node .output {
+            width: 10px !important;
+            height: 10px !important;
+            border-width: 1px !important;
+        }
+
+        .drawflow .connection,
+        .drawflow .connection *,
+        .drawflow svg.connection,
+        .drawflow svg.connection * { pointer-events: none !important; }
+
+        .drawflow .drawflow-node.is-dim { opacity: 0.25; }
+        .drawflow .connection.is-dim { visibility: hidden; }
+
+        .drawflow .drawflow-node.is-selected {
+            box-shadow: 0 0 0 3px #2a6db5, 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .measure-node {
+            position: absolute;
+            top: -9999px; left: -9999px;
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            border: 2px solid transparent;
+        }
+    </style>
+</head>
+<body>
+<div id="controls">
+    <button id="zoom-in" title="Zoom in">+</button>
+    <button id="zoom-out" title="Zoom out">-</button>
+    <button id="zoom-reset" title="Reset">reset</button>
+</div>
+<div id="legend">
+    <div><span style="background:#d4e5f7"></span>Package Dependency</div>
+    <div><span style="background:#daf0c1"></span>Component</div>
+    <div><span style="background:#fce4b6"></span>Story</div>
+    <div><span style="background:#d9b3ff"></span>Changed file</div>
+</div>
+<div id="drawflow"></div>
+<script type="module">
+const vertices = __VERTICES_JSON__;
+const edges = __EDGES_JSON__;
+const transitive_closure_matrix_sparse = __TRANSITIVE_CLOSURE_JSON__;
+const n = vertices.length;
+
+function measureWidth(text) {
+    const el = document.createElement('div');
+    el.className = 'measure-node';
+    el.textContent = text;
+    document.body.appendChild(el);
+    const w = el.offsetWidth;
+    el.remove();
+    return w;
+}
+
+const PORT_PAD = 60;
+const nodeWidth = vertices.map(v => measureWidth(v.name) + PORT_PAD);
+
+const PAD_X = 60, PAD_Y = 60, COL_GAP = 140, ROW_HEIGHT = 70;
+
+const colMaxWidth = {};
+for (let i = 0; i < n; i++) {
+    const c = vertices[i].col;
+    if (!colMaxWidth[c] || nodeWidth[i] > colMaxWidth[c]) colMaxWidth[c] = nodeWidth[i];
+}
+const sortedCols = Object.keys(colMaxWidth).map(Number).sort((a, b) => a - b);
+const colX = {};
+let cursor = PAD_X;
+for (const c of sortedCols) {
+    colX[c] = cursor;
+    cursor += colMaxWidth[c] + COL_GAP;
+}
+
+const container = document.getElementById('drawflow');
+const editor = new Drawflow(container);
+editor.reroute = false;
+editor.start();
+
+function escapeHtml(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function cssClassFor(kind) {
+    if (kind === 'is_relevant') return 'is-relevant';
+    return kind;
+}
+
+const nodeIds = new Array(n);
+for (let i = 0; i < n; i++) {
+    const v = vertices[i];
+    const id = editor.addNode(
+        'node',
+        1, 1,
+        colX[v.col],
+        PAD_Y + v.row * ROW_HEIGHT,
+        cssClassFor(v.kind),
+        { index: v.index, kind: v.kind, name: v.name },
+        escapeHtml(v.name),
+    );
+    nodeIds[i] = id;
+}
+
+for (const e of edges) {
+    editor.addConnection(nodeIds[e[0]], nodeIds[e[1]], 'output_1', 'input_1');
+}
+
+editor.editor_mode = 'fixed';
+
+const SVG_NS = 'http://www.w3.org/2000/svg';
+function addArrowhead(svg) {
+    if (svg.querySelector('marker')) return;
+    let defs = svg.querySelector('defs');
+    if (!defs) {
+        defs = document.createElementNS(SVG_NS, 'defs');
+        svg.insertBefore(defs, svg.firstChild);
+    }
+    const marker = document.createElementNS(SVG_NS, 'marker');
+    marker.setAttribute('id', 'arrowhead');
+    marker.setAttribute('viewBox', '0 0 10 10');
+    marker.setAttribute('refX', '9');
+    marker.setAttribute('refY', '5');
+    marker.setAttribute('markerWidth', '5');
+    marker.setAttribute('markerHeight', '5');
+    marker.setAttribute('orient', 'auto');
+    const tip = document.createElementNS(SVG_NS, 'path');
+    tip.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
+    tip.setAttribute('fill', '#4ea9ff');
+    marker.appendChild(tip);
+    defs.appendChild(marker);
+    const path = svg.querySelector('path.main-path') || svg.querySelector('path');
+    if (path) path.setAttribute('marker-end', 'url(#arrowhead)');
+}
+container.querySelectorAll('svg.connection').forEach(addArrowhead);
+
+new MutationObserver((muts) => {
+    for (const m of muts) {
+        for (const node of m.addedNodes) {
+            if (node.nodeType !== 1) continue;
+            if (node.matches && node.matches('svg.connection')) addArrowhead(node);
+            if (node.querySelectorAll) {
+                node.querySelectorAll('svg.connection').forEach(addArrowhead);
+            }
+        }
+    }
+}).observe(container, { subtree: true, childList: true });
+
+const idxByDfId = new Map();
+for (let i = 0; i < n; i++) {
+    if (nodeIds[i] !== undefined) idxByDfId.set(nodeIds[i], i);
+}
+
+function connectedTo(start) {
+    const seen = new Set([start]);
+    for (const transitive_edge of transitive_closure_matrix_sparse) {
+        if (transitive_edge[0] === start) seen.add(transitive_edge[1]);
+        else if (transitive_edge[1] === start) seen.add(transitive_edge[0]);
+    }
+    return seen;
+}
+
+function parseEndpointIds(svg) {
+    let outId = null, inId = null;
+    for (const cls of svg.classList) {
+        if (cls.startsWith('node_out_node-')) outId = parseInt(cls.slice('node_out_node-'.length), 10);
+        else if (cls.startsWith('node_in_node-')) inId = parseInt(cls.slice('node_in_node-'.length), 10);
+    }
+    return { outId, inId };
+}
+
+let currentSelected = null;
+
+function clearSelection() {
+    container.querySelectorAll('.drawflow-node.is-dim, .drawflow-node.is-selected')
+        .forEach(el => el.classList.remove('is-dim', 'is-selected'));
+    container.querySelectorAll('svg.connection.is-dim')
+        .forEach(el => el.classList.remove('is-dim'));
+}
+
+function applySelection(startIdx) {
+    const connected = connectedTo(startIdx);
+
+    for (let i = 0; i < n; i++) {
+        const el = document.getElementById('node-' + nodeIds[i]);
+        if (!el) continue;
+        el.classList.toggle('is-dim', !connected.has(i));
+        el.classList.toggle('is-selected', i === startIdx);
+    }
+
+    container.querySelectorAll('svg.connection').forEach((svg) => {
+        const { outId, inId } = parseEndpointIds(svg);
+        const s = idxByDfId.get(outId);
+        const t = idxByDfId.get(inId);
+        const keep = (s !== undefined && t !== undefined
+                      && connected.has(s) && connected.has(t));
+        svg.classList.toggle('is-dim', !keep);
+    });
+}
+
+container.addEventListener('click', (evt) => {
+    const nodeEl = evt.target.closest('.drawflow-node');
+    if (!nodeEl) return;
+    const m = nodeEl.id.match(/^node-(\d+)$/);
+    if (!m) return;
+    const dfId = parseInt(m[1], 10);
+    const idx = idxByDfId.get(dfId);
+    if (idx === undefined) return;
+
+    if (currentSelected === idx) {
+        currentSelected = null;
+        clearSelection();
+    } else {
+        currentSelected = idx;
+        applySelection(idx);
+    }
+});
+
+document.getElementById('zoom-in').onclick    = () => editor.zoom_in();
+document.getElementById('zoom-out').onclick   = () => editor.zoom_out();
+document.getElementById('zoom-reset').onclick = () => { editor.zoom_reset(); currentSelected = null; clearSelection(); };
+</script>
+</body>
+</html>
