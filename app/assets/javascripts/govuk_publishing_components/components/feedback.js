@@ -92,7 +92,9 @@
 
               if (this.activeForm) {
                 this.activeForm.hidden = true
+                this.activeForm = false
               }
+
               clearInterval(this.timerInterval)
               return
             }
@@ -202,10 +204,14 @@
         formattedError = this.activeForm.invalidInfoError || genericError
       }
 
-      const $errors = this.activeForm.querySelector('.js-errors')
-      $errors.innerHTML = formattedError
-      $errors.hidden = false
-      $errors.focus()
+      const targetForm = this.activeForm || this.$module
+      const $errors = targetForm ? targetForm.querySelector('.js-errors') : null
+
+      if ($errors) {
+        $errors.innerHTML = formattedError
+        $errors.hidden = false
+        $errors.focus()
+      }
     }
 
     showFormSuccess() {
