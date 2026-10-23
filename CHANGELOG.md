@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Refactor single page notification button component ([PR #5820](https://github.com/alphagov/govuk_publishing_components/pull/5820))
+
 ## 71.0.0
 
 * Improve tables in govspeak that have a horizontal scroll ([PR #5802](https://github.com/alphagov/govuk_publishing_components/pull/5802))
