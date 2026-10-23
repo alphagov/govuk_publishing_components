@@ -1,8 +1,6 @@
 module GovukPublishingComponents
   module Presenters
     class HasPartSchema
-      attr_reader :has_part_url
-
       def initialize(has_part_url)
         @has_part_url = has_part_url
       end
@@ -12,7 +10,7 @@ module GovukPublishingComponents
         {
           "@context" => "http://schema.org",
           "@type" => "CreativeWork",
-          "sameAs" => has_part_url,
+          "sameAs" => @has_part_url,
         }
       end
     end
