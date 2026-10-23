@@ -1,4 +1,4 @@
-/* global XMLHttpRequest, FormData */
+/* global FormData */
 
 ((Modules) => {
   class Feedback {
@@ -68,31 +68,49 @@
       })
 
       for (const form of this.forms) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
           e.preventDefault()
-          const $form = e.target
-          const xhr = new XMLHttpRequest()
+          const $form = e.currentTarget
           const url = $form.getAttribute('action')
-          const params = new URLSearchParams(new FormData($form)).toString()
-
-          const handleLoadEnd = () => {
-            if (xhr.status === 200) {
-              this.showFormSuccess(xhr.message)
-              this.revealInitialPrompt()
-              this.activeForm.hidden = true
-              clearInterval(this.timerInterval)
-            } else {
-              this.showError(xhr)
-              this.enableSubmitFormButton($form)
-            }
-          }
-
-          xhr.addEventListener('loadend', handleLoadEnd)
-          xhr.open('POST', url, true)
-          xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+          const body = new URLSearchParams(new FormData($form)).toString()
+          const abortController = new AbortController()
+          const fetchRequestTimeoutId = setTimeout(() => { abortController.abort(new DOMException('Request timed out', 'AbortError'))}, 10000)
 
           this.disableSubmitFormButton($form)
-          xhr.send(params)
+
+          try {
+            const response = await fetch(url, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+              signal: abortController.signal,
+              body
+            })
+
+            if (response.ok) {
+              this.showFormSuccess()
+              this.revealInitialPrompt()
+
+              if (this.activeForm) {
+                this.activeForm.hidden = true
+              }
+              clearInterval(this.timerInterval)
+              return
+            }
+
+            // If the server returns a 422 with an Nginx HTML error page responseData is null
+            const responseData = await response.json().catch(() => null)
+
+            this.showError({
+              status: response.status,
+              ...(responseData && { response: responseData })
+            })
+            this.enableSubmitFormButton($form)
+          } catch (networkError) {
+            this.showError(networkError)
+            this.enableSubmitFormButton($form)
+          } finally {
+            clearTimeout(fetchRequestTimeoutId)
+          }
         })
       }
     }
@@ -133,7 +151,7 @@
       this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
     }
 
-    // This getter is needed for spyOn in tests
+     // This getter is needed for spyOn in tests
     getPagePath() {
       return window.location.pathname
     }
