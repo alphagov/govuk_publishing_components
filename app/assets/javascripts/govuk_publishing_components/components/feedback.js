@@ -27,6 +27,11 @@
     init() {
       this.setHiddenValues()
       this.setSurveyPath()
+      this.resetVisibility()
+      this.addEvents()
+    }
+
+    resetVisibility() {
       this.prompt.hidden = false
 
       for (const question of this.promptQuestions) {
@@ -34,7 +39,9 @@
       }
 
       this.surveyForm.hidden = true
+    }
 
+    addEvents() {
       for (const toggle of this.toggleForms) {
         toggle.addEventListener('click', (e) => {
           e.preventDefault()
@@ -47,7 +54,8 @@
         closeBtn.hidden = false
         closeBtn.addEventListener('click', (e) => {
           e.preventDefault()
-          const formToToggle = e.target.getAttribute('aria-controls')
+          const button = e.target.closest('button') || e.currentTarget
+          const formToToggle = button.getAttribute('aria-controls')
           this.toggleForm(formToToggle)
           this.revealInitialPrompt()
           this.$module.querySelector(`.js-${formToToggle}`).focus()
@@ -61,6 +69,8 @@
       })
 
       this.somethingIsWrongButton.addEventListener('click', () => {
+        if (this.timerInterval) return
+
         this.timerInterval = setInterval(() => {
           this.timer += 1
           this.timerHoneyPot.setAttribute('value', this.timer)
@@ -68,52 +78,57 @@
       })
 
       for (const form of this.forms) {
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault()
-          const $form = e.currentTarget
-          const url = $form.getAttribute('action')
-          const body = new URLSearchParams(new FormData($form)).toString()
-          const abortController = new AbortController()
-          const fetchRequestTimeoutId = setTimeout(() => { abortController.abort(new DOMException('Request timed out', 'AbortError'))}, 10000)
+        form.addEventListener('submit', (e) => this.handleFormSubmit(e))
+      }
+    }
 
-          this.disableSubmitFormButton($form)
+    async handleFormSubmit(e) {
+      e.preventDefault()
+      const $form = e.currentTarget
+      const url = $form.getAttribute('action')
+      const body = new URLSearchParams(new FormData($form)).toString()
+      const abortController = new AbortController()
+      const fetchRequestTimeoutId = setTimeout(() => {
+        abortController.abort(new DOMException('Request timed out', 'AbortError'))
+      }, 10000)
 
-          try {
-            const response = await fetch(url, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              signal: abortController.signal,
-              body
-            })
+      this.disableSubmitFormButton($form)
 
-            if (response.ok) {
-              this.showFormSuccess()
-              this.revealInitialPrompt()
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          signal: abortController.signal,
+          body
+        })
 
-              if (this.activeForm) {
-                this.activeForm.hidden = true
-                this.activeForm = false
-              }
+        if (response.ok) {
+          this.showFormSuccess()
+          this.revealInitialPrompt()
 
-              clearInterval(this.timerInterval)
-              return
-            }
+          if (this.activeForm) {
+            this.activeForm.hidden = true
+            this.activeForm = false
+          }
+
+          clearInterval(this.timerInterval)
+          this.timerInterval = null
+          return
+        }
 
             // If the server returns a 422 with an Nginx HTML error page responseData is null
-            const responseData = await response.json().catch(() => null)
+        const responseData = await response.json().catch(() => null)
 
-            this.showError({
-              status: response.status,
-              ...(responseData && { response: responseData })
-            })
-            this.enableSubmitFormButton($form)
-          } catch (networkError) {
-            this.showError(networkError)
-            this.enableSubmitFormButton($form)
-          } finally {
-            clearTimeout(fetchRequestTimeoutId)
-          }
+        this.showError({
+          status: response.status,
+          ...(responseData && { response: responseData })
         })
+        this.enableSubmitFormButton($form)
+      } catch (networkError) {
+        this.showError(networkError)
+        this.enableSubmitFormButton($form)
+      } finally {
+        clearTimeout(fetchRequestTimeoutId)
       }
     }
 
@@ -181,6 +196,7 @@
       } else {
         this.activeForm = false
         clearInterval(this.timerInterval)
+        this.timerInterval = null
       }
     }
 
@@ -201,7 +217,8 @@
       } else if (error.status === 422) {
         // there's clobbering by nginx on all 422 requests, which is why the response returns a rendered html page instead of the expected JSON
         // this is a temporary workaround to ensure that we are displaying relevant error messages to the users
-        formattedError = this.activeForm.invalidInfoError || genericError
+        const targetForm = this.activeForm || this.somethingIsWrongForm
+        formattedError = (targetForm && targetForm.invalidInfoError) || genericError
       }
 
       const targetForm = this.activeForm || this.$module
