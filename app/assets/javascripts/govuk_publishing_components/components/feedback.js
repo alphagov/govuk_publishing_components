@@ -3,27 +3,66 @@
 ((Modules) => {
   class Feedback {
     constructor($module) {
+      /** @type {HTMLElement} */
       this.$module = $module
+
+      /** @type {HTMLFormElement|null} */
       this.somethingIsWrongForm = this.$module.querySelector('#something-is-wrong')
+
+      /** @type {HTMLFormElement|null} */
       this.surveyForm = this.$module.querySelector('#page-is-not-useful')
+
+      /** @type {HTMLElement|null} */
       this.prompt = this.$module.querySelector('.js-prompt')
+
+      /** @type {NodeListOf<HTMLFormElement>} */
       this.forms = this.$module.querySelectorAll('.js-feedback-form')
+
+      /** @type {NodeListOf<HTMLElement>} */
       this.toggleForms = this.$module.querySelectorAll('.js-toggle-form')
+
+      /** @type {NodeListOf<HTMLElement>} */
       this.closeForms = this.$module.querySelectorAll('.js-close-form')
+
+      /** @type {HTMLFormElement|false} */
       this.activeForm = false
+
+      /** @type {HTMLElement|null} */
       this.pageIsUsefulButton = this.$module.querySelector('.js-page-is-useful')
+
+      /** @type {HTMLElement|null} */
       this.somethingIsWrongButton = this.$module.querySelector('.js-something-is-wrong')
+
+      /** @type {NodeListOf<HTMLElement>} */
       this.promptQuestions = this.$module.querySelectorAll('.js-prompt-questions')
+
+      /** @type {HTMLElement|null} */
       this.promptSuccessMessage = this.$module.querySelector('.js-prompt-success')
+
+      /** @type {HTMLElement|null} */
       this.surveyWrapper = this.$module.querySelector('#survey-wrapper')
+
+      /** @type {HTMLInputElement|null} */
       this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
+
+      /** @type {HTMLInputElement|null} */
       this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
 
+      /** @type {number} */
       this.timer = 0
+
+      /** @type {number|null} */
       this.timerInterval = null
+
+      /** @type {HTMLInputElement|null} */
       this.timerHoneyPot = null
     }
 
+    /**
+     * Initialise the feedback component
+     *
+     * @returns {void}
+     */
     init() {
       this.setHiddenValues()
       this.setSurveyPath()
@@ -31,6 +70,11 @@
       this.addEvents()
     }
 
+    /**
+     * Resets initial DOM visibility states for prompt questions and feedback forms
+     *
+     * @returns {void}
+     */
     resetVisibility() {
       this.prompt.hidden = false
 
@@ -41,6 +85,11 @@
       this.surveyForm.hidden = true
     }
 
+    /**
+     * Adds DOM event listeners for toggles, dismissals, and asynchronous form submissions
+     *
+     * @returns {void}
+     */
     addEvents() {
       for (const toggle of this.toggleForms) {
         toggle.addEventListener('click', (e) => {
@@ -82,6 +131,12 @@
       }
     }
 
+    /**
+     * Handles form submission with fetch, timeout abort, and error routing
+     *
+     * @param {SubmitEvent} e The native submit event
+     * @returns {Promise<void>}
+     */
     async handleFormSubmit(e) {
       e.preventDefault()
       const $form = e.currentTarget
@@ -116,7 +171,7 @@
           return
         }
 
-            // If the server returns a 422 with an Nginx HTML error page responseData is null
+        // If the server returns a 422 with an Nginx HTML error page, responseData resolves to null
         const responseData = await response.json().catch(() => null)
 
         this.showError({
@@ -132,16 +187,34 @@
       }
     }
 
+    /**
+     * Disables the primary submit button on a form to prevent duplicate submissions
+     *
+     * @param {HTMLFormElement} $form Form with submit button to disable
+     * @returns {void}
+     */
     disableSubmitFormButton($form) {
       const formButton = $form.querySelector('[type="submit"]')
       formButton.setAttribute('disabled', 'true')
     }
 
+    /**
+     * Re-enables the primary submit button on a form after an error or retry
+     *
+     * @param {HTMLFormElement} $form Form with submit button to re-enable
+     * @returns {void}
+     */
     enableSubmitFormButton($form) {
       const formButton = $form.querySelector('[type="submit"]')
       formButton.removeAttribute('disabled')
     }
 
+    /**
+     * Adds hidden tracking and bot mitigation fields to the problem report form,
+     * including JavaScript detection, document referrer and a timer honeypot
+     *
+     * @returns {void}
+     */
     setHiddenValues() {
       const javascriptEnabled = document.createElement('input')
       javascriptEnabled.setAttribute('type', 'hidden')
@@ -168,11 +241,22 @@
       this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
     }
 
-     // This getter is needed for spyOn in tests
+    /**
+     * Gets the current window pathname.
+     * Kept as a separate method to allow spyOn / mocking in test suites.
+     *
+     * @returns {string} The current location pathname
+     */
     getPagePath() {
       return window.location.pathname
     }
 
+    /**
+     * Sanitises the current page path by stripping email patterns to protect
+     * Personally Identifiable Information (PII) before updating the external survey URL
+     *
+     * @returns {void}
+     */
     setSurveyPath() {
       const surveyLink = this.$module.querySelector('#survey_explanation a')
 
@@ -183,6 +267,13 @@
       }
     }
 
+    /**
+     * Toggles visibility between the initial prompt questions and the specified form container,
+     * managing focus and resetting honeypot timers when forms are dismissed
+     *
+     * @param {string} formId HTML `id` attribute of the form to display or hide.
+     * @returns {void}
+     */
     toggleForm(formId) {
       this.activeForm = this.$module.querySelector(`#${formId}`)
       this.activeForm.hidden = !this.activeForm.hidden
@@ -200,6 +291,16 @@
       }
     }
 
+    /**
+     * Renders an error message in the active form's error container, handles Nginx 422
+     * overrides, custom API error messages, and generic network error fallbacks
+     *
+     * @param {Object|Error} error An error object from an API response, status wrapper, or caught exception
+     * @param {number} [error.status] The HTTP status code of the response
+     * @param {Object} [error.response] The parsed JSON error payload, if available
+     * @param {string} [error.response.message] Specific error description from the server
+     * @returns {void}
+     */
     showError(error) {
       const genericError = `
         <h2>Sorry, we’re unable to receive your message right now.</h2>
@@ -215,8 +316,8 @@
             : error.response.message
         }
       } else if (error.status === 422) {
-        // there's clobbering by nginx on all 422 requests, which is why the response returns a rendered html page instead of the expected JSON
-        // this is a temporary workaround to ensure that we are displaying relevant error messages to the users
+        // Nginx clobbers upstream JSON on 422 errors and serves an HTML error page
+        // Fall back to the form's custom client-side error message if present
         const targetForm = this.activeForm || this.somethingIsWrongForm
         formattedError = (targetForm && targetForm.invalidInfoError) || genericError
       }
@@ -231,6 +332,11 @@
       }
     }
 
+    /**
+     * Hides the prompt question controls and reveals the prompt success banner
+     *
+     * @returns {void}
+     */
     showFormSuccess() {
       for (const question of this.promptQuestions) {
         question.hidden = true
@@ -239,6 +345,11 @@
       this.promptSuccessMessage.focus()
     }
 
+    /**
+     * Reveals the initial prompt question bar
+     *
+     * @returns {void}
+     */
     revealInitialPrompt() {
       this.prompt.hidden = false
       this.prompt.focus()
@@ -247,3 +358,7 @@
 
   Modules.Feedback = Feedback
 })(window.GOVUK.Modules)
+
+ /**
+   * @see {@link https://components.publishing.service.gov.uk/component-guide/feedback}
+   */
