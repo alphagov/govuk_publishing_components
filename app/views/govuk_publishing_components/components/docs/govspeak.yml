@@ -1128,6 +1128,7 @@ examples:
           </tbody>
         </table>
   wide_table:
+    description: Wide tables are enhanced with two features to help users navigate. Left/right indicators are added to show that more content is available to the sides, and a secondary scrollbar is added at the top of the table, that remains at the top of the page as the table is scrolled downwards. This allows users to scroll left/right at any point, which is useful where tables are taller than their browser.
     data:
       block: |
         <table>
