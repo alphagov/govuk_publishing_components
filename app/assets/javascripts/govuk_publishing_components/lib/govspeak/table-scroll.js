@@ -1,3 +1,4 @@
+/* global ResizeObserver */
 (function (GOVUK) {
   'use strict'
 
@@ -17,15 +18,26 @@
       this.windowResized()
     }, 10)
 
+    // for all browsers
     window.onresize = () => {
-      if (this.windowResizeTimeout) {
-        clearTimeout(this.windowResizeTimeout)
-      }
-
-      this.windowResizeTimeout = setTimeout(function () {
-        this.windowResized()
-      }.bind(this), 500)
+      this.detectSizeChange()
     }
+
+    // for Firefox with 'zoom text only' (does not trigger onresize)
+    const resizeObserver = new ResizeObserver(() => {
+      this.detectSizeChange()
+    })
+    resizeObserver.observe(this.tables[0])
+  }
+
+  TableScroll.prototype.detectSizeChange = function () {
+    if (this.windowResizeTimeout) {
+      clearTimeout(this.windowResizeTimeout)
+    }
+
+    this.windowResizeTimeout = setTimeout(function () {
+      this.windowResized()
+    }.bind(this), 300)
   }
 
   TableScroll.prototype.windowResized = function () {
