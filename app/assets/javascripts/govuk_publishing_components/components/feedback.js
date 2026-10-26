@@ -1,8 +1,8 @@
-/* global FormData */
+/* global FormData, fetch, AbortController, DOMException */
 
 ((Modules) => {
   class Feedback {
-    constructor($module) {
+    constructor ($module) {
       /** @type {HTMLElement} */
       this.$module = $module
 
@@ -63,7 +63,7 @@
      *
      * @returns {void}
      */
-    init() {
+    init () {
       this.setHiddenValues()
       this.setSurveyPath()
       this.resetVisibility()
@@ -75,7 +75,7 @@
      *
      * @returns {void}
      */
-    resetVisibility() {
+    resetVisibility () {
       this.prompt.hidden = false
 
       for (const question of this.promptQuestions) {
@@ -90,7 +90,7 @@
      *
      * @returns {void}
      */
-    addEvents() {
+    addEvents () {
       for (const toggle of this.toggleForms) {
         toggle.addEventListener('click', (e) => {
           e.preventDefault()
@@ -137,7 +137,7 @@
      * @param {SubmitEvent} e The native submit event
      * @returns {Promise<void>}
      */
-    async handleFormSubmit(e) {
+    async handleFormSubmit (e) {
       e.preventDefault()
       const $form = e.currentTarget
       const url = $form.getAttribute('action')
@@ -193,7 +193,7 @@
      * @param {HTMLFormElement} $form Form with submit button to disable
      * @returns {void}
      */
-    disableSubmitFormButton($form) {
+    disableSubmitFormButton ($form) {
       const formButton = $form.querySelector('[type="submit"]')
       formButton.setAttribute('disabled', 'true')
     }
@@ -204,7 +204,7 @@
      * @param {HTMLFormElement} $form Form with submit button to re-enable
      * @returns {void}
      */
-    enableSubmitFormButton($form) {
+    enableSubmitFormButton ($form) {
       const formButton = $form.querySelector('[type="submit"]')
       formButton.removeAttribute('disabled')
     }
@@ -215,7 +215,7 @@
      *
      * @returns {void}
      */
-    setHiddenValues() {
+    setHiddenValues () {
       const javascriptEnabled = document.createElement('input')
       javascriptEnabled.setAttribute('type', 'hidden')
       javascriptEnabled.setAttribute('name', 'javascript_enabled')
@@ -228,10 +228,9 @@
       referrer.setAttribute('value', document.referrer || 'unknown')
       this.somethingIsWrongForm.appendChild(referrer)
 
-      this.somethingIsWrongForm.invalidInfoError = `
-        <h2>Sorry, we’re unable to send your message as you haven’t given us any information.</h2>
-        <p>Please tell us what you were doing or what went wrong</p>
-      `
+      this.somethingIsWrongForm.invalidInfoError =
+        '<h2>Sorry, we’re unable to send your message as you haven’t given us any information.</h2> ' +
+        '<p>Please tell us what you were doing or what went wrong</p>'
 
       this.timer = 0
       this.timerHoneyPot = document.createElement('input')
@@ -247,7 +246,7 @@
      *
      * @returns {string} The current location pathname
      */
-    getPagePath() {
+    getPagePath () {
       return window.location.pathname
     }
 
@@ -257,7 +256,7 @@
      *
      * @returns {void}
      */
-    setSurveyPath() {
+    setSurveyPath () {
       const surveyLink = this.$module.querySelector('#survey_explanation a')
 
       if (surveyLink) {
@@ -274,7 +273,7 @@
      * @param {string} formId HTML `id` attribute of the form to display or hide.
      * @returns {void}
      */
-    toggleForm(formId) {
+    toggleForm (formId) {
       this.activeForm = this.$module.querySelector(`#${formId}`)
       this.activeForm.hidden = !this.activeForm.hidden
       this.prompt.hidden = !this.prompt.hidden
@@ -301,23 +300,20 @@
      * @param {string} [error.response.message] Specific error description from the server
      * @returns {void}
      */
-    showError(error) {
-      const genericError = `
-        <h2>Sorry, we’re unable to receive your message right now.</h2>
-        <p>If the problem persists, we have other ways for you to provide
-        feedback on the <a href="/contact/govuk">contact page</a>.</p>
-      `
+    showError (error) {
+      const genericError =
+        '<h2>Sorry, we’re unable to receive your message right now.</h2> ' +
+        '<p>If the problem persists, we have other ways for you to provide ' +
+        'feedback on the <a href="/contact/govuk">contact page</a>.</p>'
       let formattedError = genericError
 
-      if ('response' in error) {
-        if (typeof error.response === 'object' && error.response !== null) {
-          formattedError = error.response.message === 'email survey sign up failure'
-            ? genericError
-            : error.response.message
-        }
-      } else if (error.status === 422) {
-        // Nginx clobbers upstream JSON on 422 errors and serves an HTML error page
-        // Fall back to the form's custom client-side error message if present
+      if (error && error.response && typeof error.response === 'object' && error.response.message) {
+        formattedError = error.response.message === 'email survey sign up failure'
+          ? genericError
+          : error.response.message
+      } else if (error && error.status === 422 && !error.response) {
+        // Nginx clobbers upstream JSON on 422 errors and serves an HTML error page.
+        // Fall back to the form's custom client-side error message if present.
         const targetForm = this.activeForm || this.somethingIsWrongForm
         formattedError = (targetForm && targetForm.invalidInfoError) || genericError
       }
@@ -337,7 +333,7 @@
      *
      * @returns {void}
      */
-    showFormSuccess() {
+    showFormSuccess () {
       for (const question of this.promptQuestions) {
         question.hidden = true
       }
@@ -350,7 +346,7 @@
      *
      * @returns {void}
      */
-    revealInitialPrompt() {
+    revealInitialPrompt () {
       this.prompt.hidden = false
       this.prompt.focus()
     }
@@ -359,6 +355,6 @@
   Modules.Feedback = Feedback
 })(window.GOVUK.Modules)
 
- /**
-   * @see {@link https://components.publishing.service.gov.uk/component-guide/feedback}
-   */
+/**
+ * @see {@link https://components.publishing.service.gov.uk/component-guide/feedback}
+ */
