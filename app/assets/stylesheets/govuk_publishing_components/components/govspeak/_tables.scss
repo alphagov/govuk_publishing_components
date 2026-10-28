@@ -98,6 +98,10 @@
   }
 
   .govspeak-table-scrollbar {
+    position: sticky;
+    background: #FFFFFF;
+    z-index: 1;
+    top: 0;
     overflow-x: scroll;
     overflow-y: hidden;
     height: 20px;

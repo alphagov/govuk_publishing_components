@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Make scrollbar stick to top of table when scrolled ([PR #5835](https://github.com/alphagov/govuk_publishing_components/pull/5835))
 * Refactor single page notification button component ([PR #5820](https://github.com/alphagov/govuk_publishing_components/pull/5820))
 * Improve wide table JS resize detection ([PR #5832](https://github.com/alphagov/govuk_publishing_components/pull/5832))
 
