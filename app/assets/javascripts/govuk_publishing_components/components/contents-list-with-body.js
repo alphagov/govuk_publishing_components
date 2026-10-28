@@ -1,6 +1,9 @@
 /* global IntersectionObserver */
 (function (Modules) {
   class ContentsListWithBody {
+    /**
+     * @param {HTMLElement} $module
+     */
     constructor ($module) {
       /** @type {HTMLElement} */
       this.$module = $module
@@ -9,10 +12,7 @@
       this.stickyElement = this.$module.querySelector('[data-sticky-element]')
 
       /** @type {HTMLElement | null} */
-      this.listContainer = this.$module.querySelector('.gem-c-contents-list-with-body__list-container')
-
-      /** @type {HTMLDivElement | null} */
-      this.topSentinel = null
+      this.topSentinel = this.$module.querySelector('.gem-c-contents-list-with-body__list-container')
 
       /** @type {HTMLDivElement | null} */
       this.bottomSentinel = null
@@ -37,104 +37,80 @@
      * Initialise the contents list with body component
      */
     init () {
-      if (!this.stickyElement || !this.listContainer) return
+      if (!this.stickyElement || !this.topSentinel) return
 
       // Ensure the sticky element starts hidden before we check for intersection observer support
-      this.hide()
+      this.stickyElement.classList.add(this.hiddenClass)
 
       if (!('IntersectionObserver' in window)) {
         return
       }
 
       this.stickyElement.classList.add(this.enabledClass)
-      this.createSentinels()
-      this.setupObservers()
+      this.createBottomSentinel(this.stickyElement)
+      this.setupObservers(this.stickyElement)
     }
 
     /**
-     * Create an invisible sentinel element for intersection tracking
+     * Create and insert a bottom sentinel tripwire onto the page before the sticky element.
+     * This is used to determine when the sticky element should be docked to the bottom of
+     * the parent container instead of sticking to the window.
      *
-     * @param {string} className
-     * @returns {HTMLDivElement} The sentinel element
+     * @param {HTMLElement} stickyElement
      */
-    createSentinel (className) {
-      const sentinel = document.createElement('div')
-      sentinel.className = className
-      sentinel.setAttribute('aria-hidden', 'true')
-      sentinel.style.cssText = 'height: 1px; width: 100%; pointer-events: none; visibility: hidden;'
-      return sentinel
-    }
+    createBottomSentinel (stickyElement) {
+      const stickyElementParent = stickyElement.parentElement
+      if (!stickyElementParent) return
 
-    /**
-     * Create and insert top and bottom sentinels into the page
-     * Position topSentinel just before the contents list container and bottomSentinel at the bottom of the content
-     */
-    createSentinels () {
-      this.topSentinel = this.createSentinel('gem-c-contents-list-with-body__top-sentinel')
-      this.$module.insertBefore(this.topSentinel, this.listContainer)
+      this.bottomSentinel = document.createElement('div')
+      this.bottomSentinel.className = 'gem-c-contents-list-with-body__bottom-sentinel'
+      this.bottomSentinel.setAttribute('aria-hidden', 'true')
+      this.bottomSentinel.style.height = '1px'
+      this.bottomSentinel.style.width = '100%'
+      this.bottomSentinel.style.pointerEvents = 'none'
+      this.bottomSentinel.style.visibility = 'hidden'
 
-      this.bottomSentinel = this.createSentinel('gem-c-contents-list-with-body__bottom-sentinel')
-      this.$module.insertBefore(this.bottomSentinel, this.stickyElement)
+      stickyElementParent.insertBefore(this.bottomSentinel, stickyElement)
     }
 
     /**
      * Set up IntersectionObservers to monitor top and bottom boundaries
+     *
+     * @param {HTMLElement} stickyElement
      */
-    setupObservers () {
-      // Top Observer: Show when top sentinel has scrolled off the top, hide when in view or below
+    setupObservers (stickyElement) {
+      if (!this.topSentinel || !this.bottomSentinel) return
+
       this.topObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.hide()
-          } else if (entry.boundingClientRect.top < 0) {
-            this.show()
-          } else {
-            this.hide()
-          }
+          // Handle showing/hiding the sticky element based on the contents block position.
+          // !entry.isIntersecting: Element is completely outside the viewport
+          // entry.boundingClientRect.top < 0: Coordinates become negative when scrolled off the top of the screen
+          // Required for initial load (e.g. mobile with tall header content) where isIntersecting is false
+          // because the contents have not yet entered the viewport from below
+          const isPastContents = !entry.isIntersecting && entry.boundingClientRect.top < 0
+
+          isPastContents
+            ? stickyElement.classList.remove(this.hiddenClass)
+            : stickyElement.classList.add(this.hiddenClass)
         })
       })
 
-      // Bottom Observer: Switch between sticking to window vs parent container
       this.bottomObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight) {
-            this.stickToParent()
-          } else {
-            this.stickToWindow()
-          }
+          // Handle sticking to the viewport or docking to the bottom of the parent container based on the bottom sentinel position.
+          // entry.boundingClientRect.top <= window.innerHeight: True when the sentinel has reached the bottom of the screen
+          // or scrolled past above it (e.g. deep into in the footer)
+          const isAtBottom = entry.boundingClientRect.top <= window.innerHeight
+
+          isAtBottom
+            ? stickyElement.classList.remove(this.stuckToWindowClass)
+            : stickyElement.classList.add(this.stuckToWindowClass)
         })
       })
 
       this.topObserver.observe(this.topSentinel)
       this.bottomObserver.observe(this.bottomSentinel)
-    }
-
-    /**
-     * Stick the element to the bottom of the viewport
-     */
-    stickToWindow () {
-      this.stickyElement.classList.add(this.stuckToWindowClass)
-    }
-
-    /**
-     * Dock the element to the bottom of the parent container
-     */
-    stickToParent () {
-      this.stickyElement.classList.remove(this.stuckToWindowClass)
-    }
-
-    /**
-     * Reveal the sticky element
-     */
-    show () {
-      this.stickyElement.classList.remove(this.hiddenClass)
-    }
-
-    /**
-     * Hide the sticky element
-     */
-    hide () {
-      this.stickyElement.classList.add(this.hiddenClass)
     }
   }
 
