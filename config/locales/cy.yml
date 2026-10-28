@@ -74,6 +74,9 @@ cy:
       - Fe hoffen ni osod cwcis ychwanegol i ddeall sut rydych chi'n defnyddio GOV.UK
       - i gofio'ch gosodiadau ac i wella gwasanaethau'r llywodraeth.
       - Rydyn ni hefyd yn defnyddio cwcis sy'n cael eu gosod gan wefannau eraill i'n helpu i gyflwyno cynnwys o'u gwasanaethau nhw.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cwcis ar GOV.UK
     devolved_nations:
       applies_to: Yn berthnasol i
