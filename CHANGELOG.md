@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Implement snapshot state testing for homepage navigation ([PR #5842](https://github.com/alphagov/govuk_publishing_components/pull/5842))
+
 ## 71.0.1
 
 * Make scrollbar stick to top of table when scrolled ([PR #5835](https://github.com/alphagov/govuk_publishing_components/pull/5835))
