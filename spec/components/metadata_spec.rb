@@ -53,6 +53,13 @@ describe "Metadata", type: :view do
     assert_definition("Last updated:", "Updated 2 weeks ago")
   end
 
+  it "renders last_updated with the see_all_updates link" do
+    render_component(last_updated: "Updated 2 weeks ago", see_updates_link: true)
+
+    assert_definition("Last updated:", "Updated 2 weeks ago — See all updates")
+    assert_select ".gem-c-metadata__definition a[href='#full-publication-update-history']", text: "See all updates"
+  end
+
   it "renders custom metadata" do
     render_component(other: {
       "Related topics": [
@@ -282,7 +289,7 @@ describe "Metadata", type: :view do
   end
 
   it "adds GA4 tracking to the 'see all updates' link" do
-    render_component(last_updated: "Hello World", other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
+    render_component(last_updated: "Hello World", see_all_updates: true, other: { "Updated" => "13 April 2023, <a href=\"/hmrc-internal-manuals/self-assessment-claims-manual/updates\">see all updates</a>" })
 
     expected_ga4_json = {
       "event_name": "navigation",
@@ -322,7 +329,7 @@ describe "Metadata", type: :view do
       last_updated: "15th July 2015",
       page_history: [{ display_time: "23 August 2013", note: "Updated with new data" }],
     )
-    assert_select "#full-publication-update-history.gem-c-metadata"
+    assert_select ".gem-c-metadata__details-wrapper #full-publication-update-history.gem-c-metadata__change-history"
     assert_select ".gem-c-metadata__change-history .gem-c-metadata__change-date", text: "23 August 2013"
   end
 
