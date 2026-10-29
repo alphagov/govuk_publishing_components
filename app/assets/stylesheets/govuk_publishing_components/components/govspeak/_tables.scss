@@ -56,44 +56,16 @@
   }
 
   .tablewrapper {
-    position: relative;
-  }
-
-  .tablewrapper--active {
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      top: 24px;
-      width: 10px;
-      bottom: 20px;
-      background: rgb(0, 0, 0, 0.1);
-      border-color: $govuk-border-colour;
-      border-width: 5px;
-    }
-
-    &::before {
-      left: 0;
-      border-left-style: solid;
-      border-radius: 0 15px 15px 0;
-    }
-
-    &::after {
-      right: 0;
-      border-right-style: solid;
-      border-radius: 15px 0 0 15px;
-    }
-  }
-
-  .tablewrapper--start {
-    &::before {
-      display: none;
-    }
-  }
-
-  .tablewrapper--end {
-    &::after {
-      display: none;
+    table {
+      background:
+        linear-gradient(90deg, #FFFFFF, rgb(255, 255, 255, 0.5)), // this covers the left
+        linear-gradient(90deg, rgb(255,255,255,0.5), #FFFFFF) 100% 100%, // this covers the right
+        linear-gradient(90deg, rgb(0, 0, 0, 0.2), rgb(255, 255, 255, 0)), // this should show when you can scroll left
+        linear-gradient(90deg, rgb(255, 255, 255, 0), rgb(0, 0, 0, 0.2)) 100% 0; // this should show when you can scroll right
+      background-repeat: no-repeat;
+      background-color: #FFFFFF;
+      background-size: 60px 100%, 60px 100%, 14px 100%, 14px 100%;
+      background-attachment: local, local, scroll, scroll;
     }
   }
 

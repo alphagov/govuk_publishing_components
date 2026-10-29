@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Implement wide table left/right indicators in CSS ([PR #5843](https://github.com/alphagov/govuk_publishing_components/pull/5843))
+
 ## 71.0.1
 
 * Make scrollbar stick to top of table when scrolled ([PR #5835](https://github.com/alphagov/govuk_publishing_components/pull/5835))
