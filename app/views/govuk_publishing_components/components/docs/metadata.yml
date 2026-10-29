@@ -26,10 +26,22 @@ examples:
     data:
       border_top: true
       from: <a href='/government/organisations/ministry-of-defence'>Ministry of Defence</a>
-  published_and_updated:
+  published_and_last_updated:
     data:
       first_published: 14 June 2014
       last_updated: 10 September 2015
+  last_updated_and_link_to_see_details:
+    description: |
+      If a `last_updated` value exists and `see_updates_link` is set to true, a "See all updates" link will be shown.
+
+      The link's href will be set to `#full-publication-update-history` to match the ID of the page history displayed in a second metadata component at the bottom of the page (for example on [Set up a Driver CPC training centre](https://www.gov.uk/guidance/set-up-a-driver-cpc-training-centre)).
+
+      Clicking on this link will jump to the page history at the bottom of the page. Because the ID is contained within a details element, it will also automatically open that element so that the page history is visible.
+
+      On this component guide page, clicking the link will jump to the example below, and open the details element there.
+    data:
+      last_updated: 10 September 2015
+      see_updates_link: true
   display_page_history:
     description: |
       This will set up an expandable section on the page, with a top border, to let users toggle the display of the page history. It also includes a hidden H2 heading of 'Updates to this page'. This heading will not be included if one is passed to the component using the `title` option.
