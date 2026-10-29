@@ -35,6 +35,34 @@ describe('Decorating links', function () {
       expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
       expect(GOVUK.getConsentCookie().usage).toBe(true)
     })
+
+    it('sets cookies appropriately when complicated query string parameters are present', function () {
+      expect(GOVUK.getConsentCookie()).toBe(null)
+      window.history.replaceState(null, null, '?essential=true&settings=false&usage=true&campaigns=false')
+
+      window.GOVUK.checkCookieConsentLinkDecoration(window.location)
+
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
+      var cookie = GOVUK.getConsentCookie()
+      expect(cookie.essential).toBe(true)
+      expect(cookie.settings).toBe(false)
+      expect(cookie.usage).toBe(true)
+      expect(cookie.campaigns).toBe(false)
+    })
+
+    it('prevents ne\'er-do-wells from declining essential cookies by manipulating the link decoration', function () {
+      expect(GOVUK.getConsentCookie()).toBe(null)
+      window.history.replaceState(null, null, '?essential=false&settings=false&usage=false&campaigns=false')
+
+      window.GOVUK.checkCookieConsentLinkDecoration(window.location)
+
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('true')
+      var cookie = GOVUK.getConsentCookie()
+      expect(cookie.essential).toBe(true)
+      expect(cookie.settings).toBe(false)
+      expect(cookie.usage).toBe(false)
+      expect(cookie.campaigns).toBe(false)
+    })
   })
 })
 
@@ -77,6 +105,15 @@ describe('Link decoration on the DOM', function () {
     window.GOVUK.decorateLinks()
 
     expect(link1.href).toContain('cookies=yes')
+    expect(link2.href).toEqual('https://www.example.gov.uk/')
+  })
+
+  it('appends complicated cookie decoration to relevant links after cookies are partially accepted', function () {
+    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":false,"usage":true,"campaigns":false}')
+
+    window.GOVUK.decorateLinks()
+
+    expect(link1.href).toContain('essential=true&settings=false&usage=true&campaigns=false')
     expect(link2.href).toEqual('https://www.example.gov.uk/')
   })
 })
