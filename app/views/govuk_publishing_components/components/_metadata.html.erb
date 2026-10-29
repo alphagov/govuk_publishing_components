@@ -37,6 +37,12 @@
     type: "content history",
     section: "Top",
   }.to_json unless disable_ga4
+  see_all_link_ga4_object = {
+    event_name: "navigation",
+    type: "content history",
+    section: "Top",
+    index_section: 1,
+  }.to_json unless disable_ga4
 
   render_component = true if from.any? || part_of.any? || history || first_published || last_updated || page_history.any? || other
 %>
@@ -79,7 +85,11 @@
           <%= last_updated %>
           <% if local_assigns.include?(:see_updates_link) %>
             &#8212;
-            <a href="#full-publication-update-history" class="govuk-!-display-none-print">
+            <a href="#full-publication-update-history" class="govuk-!-display-none-print"
+              <% unless disable_ga4 %>
+                data-module="ga4-link-tracker"
+                data-ga4-link="<%= see_all_link_ga4_object %>"
+              <% end %>>
               <%= t("components.metadata.see_all_updates") %>
             </a>
           <% end %>
