@@ -1,113 +1,117 @@
-/*
-  This module will cause a child in the target element to:
-  - hide when the top of the target element is visible;
-  - stick to the bottom of the window while the parent element is in view;
-  - stick to the bottom of the target when the user scrolls past the bottom.
-
-  Use 'data-module="contents-list-with-body"' to instantiate, and add
-  `[data-sticky-element]` to the child you want to position.
-*/
-
+/* global IntersectionObserver */
 (function (Modules) {
-  function ContentsListWithBody (element) {
-    this.wrapper = element
-    this.stickyElement = this.wrapper.querySelector('[data-sticky-element]')
-    this.hasResized = true
-    this.hasScrolled = true
-    this.interval = 50
-    this.windowVerticalPosition = 1
-    this.startPosition = 0
-    this.stopPosition = 0
-  }
+  class ContentsListWithBody {
+    /**
+     * @param {HTMLElement} $module
+     */
+    constructor ($module) {
+      /** @type {HTMLElement} */
+      this.$module = $module
 
-  ContentsListWithBody.prototype.init = function () {
-    if (!this.stickyElement) return
+      /** @type {HTMLElement | null} */
+      this.stickyElement = this.$module.querySelector('[data-sticky-element]')
 
-    window.onresize = this.onResize.bind(this)
-    window.onscroll = this.onScroll.bind(this)
-    setInterval(this.checkResize.bind(this), this.interval)
-    setInterval(this.checkScroll.bind(this), this.interval)
-    this.checkResize()
-    this.checkScroll()
-    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--enabled')
-  }
+      /** @type {HTMLElement | null} */
+      this.topSentinel = this.$module.querySelector('.gem-c-contents-list-with-body__list-container')
 
-  ContentsListWithBody.prototype.getWindowDimensions = function () {
-    return {
-      height: window.innerHeight,
-      width: window.innerWidth
+      /** @type {HTMLDivElement | null} */
+      this.bottomSentinel = null
+
+      /** @type {IntersectionObserver | null} */
+      this.topObserver = null
+
+      /** @type {IntersectionObserver | null} */
+      this.bottomObserver = null
+
+      /** @type {string} */
+      this.enabledClass = 'gem-c-contents-list-with-body__sticky-element--enabled'
+
+      /** @type {string} */
+      this.stuckToWindowClass = 'gem-c-contents-list-with-body__sticky-element--stuck-to-window'
+
+      /** @type {string} */
+      this.hiddenClass = 'gem-c-contents-list-with-body__sticky-element--hidden'
     }
-  }
 
-  ContentsListWithBody.prototype.getWindowPositions = function () {
-    return {
-      scrollTop: window.scrollY
+    /**
+     * Initialise the contents list with body component
+     */
+    init () {
+      if (!this.stickyElement || !this.topSentinel) return
+
+      // Ensure the sticky element starts hidden before we check for intersection observer support
+      this.stickyElement.classList.add(this.hiddenClass)
+
+      if (!('IntersectionObserver' in window)) {
+        return
+      }
+
+      this.stickyElement.classList.add(this.enabledClass)
+      this.createBottomSentinel(this.stickyElement)
+      this.setupObservers(this.stickyElement)
     }
-  }
 
-  ContentsListWithBody.prototype.onResize = function () {
-    this.hasResized = true
-  }
+    /**
+     * Create and insert a bottom sentinel tripwire onto the page before the sticky element.
+     * This is used to determine when the sticky element should be docked to the bottom of
+     * the parent container instead of sticking to the window.
+     *
+     * @param {HTMLElement} stickyElement
+     */
+    createBottomSentinel (stickyElement) {
+      const stickyElementParent = stickyElement.parentElement
+      if (!stickyElementParent) return
 
-  ContentsListWithBody.prototype.onScroll = function () {
-    this.hasScrolled = true
-  }
+      this.bottomSentinel = document.createElement('div')
+      this.bottomSentinel.className = 'gem-c-contents-list-with-body__bottom-sentinel'
+      this.bottomSentinel.setAttribute('aria-hidden', 'true')
+      this.bottomSentinel.style.height = '1px'
+      this.bottomSentinel.style.width = '100%'
+      this.bottomSentinel.style.pointerEvents = 'none'
+      this.bottomSentinel.style.visibility = 'hidden'
 
-  ContentsListWithBody.prototype.checkResize = function () {
-    if (this.hasResized) {
-      this.hasResized = false
-      this.hasScrolled = true
-
-      var windowDimensions = this.getWindowDimensions()
-      var elementHeight = this.wrapper.offsetHeight || parseFloat(this.wrapper.style.height.replace('px', ''))
-      this.startPosition = this.wrapper.offsetTop
-      this.stopPosition = this.wrapper.offsetTop + elementHeight - windowDimensions.height
+      stickyElementParent.insertBefore(this.bottomSentinel, stickyElement)
     }
-  }
 
-  ContentsListWithBody.prototype.checkScroll = function () {
-    if (this.hasScrolled) {
-      this.hasScrolled = false
+    /**
+     * Set up IntersectionObservers to monitor top and bottom boundaries
+     *
+     * @param {HTMLElement} stickyElement
+     */
+    setupObservers (stickyElement) {
+      if (!this.topSentinel || !this.bottomSentinel) return
 
-      this.windowVerticalPosition = this.getWindowPositions().scrollTop
+      this.topObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          // Handle showing/hiding the sticky element based on the contents block position.
+          // !entry.isIntersecting: Element is completely outside the viewport
+          // entry.boundingClientRect.top < 0: Coordinates become negative when scrolled off the top of the screen
+          // Required for initial load (e.g. mobile with tall header content) where isIntersecting is false
+          // because the contents have not yet entered the viewport from below
+          const isPastContents = !entry.isIntersecting && entry.boundingClientRect.top < 0
 
-      this.updateVisibility()
-      this.updatePosition()
+          isPastContents
+            ? stickyElement.classList.remove(this.hiddenClass)
+            : stickyElement.classList.add(this.hiddenClass)
+        })
+      })
+
+      this.bottomObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          // Handle sticking to the viewport or docking to the bottom of the parent container based on the bottom sentinel position.
+          // entry.boundingClientRect.top <= window.innerHeight: True when the sentinel has reached the bottom of the screen
+          // or scrolled past above it (e.g. deep into in the footer)
+          const isAtBottom = entry.boundingClientRect.top <= window.innerHeight
+
+          isAtBottom
+            ? stickyElement.classList.remove(this.stuckToWindowClass)
+            : stickyElement.classList.add(this.stuckToWindowClass)
+        })
+      })
+
+      this.topObserver.observe(this.topSentinel)
+      this.bottomObserver.observe(this.bottomSentinel)
     }
-  }
-
-  ContentsListWithBody.prototype.updateVisibility = function () {
-    var isPastStart = this.startPosition < this.windowVerticalPosition
-    if (isPastStart) {
-      this.show()
-    } else {
-      this.hide()
-    }
-  }
-
-  ContentsListWithBody.prototype.updatePosition = function () {
-    var isPastEnd = this.stopPosition < this.windowVerticalPosition
-    if (isPastEnd) {
-      this.stickToParent()
-    } else {
-      this.stickToWindow()
-    }
-  }
-
-  ContentsListWithBody.prototype.stickToWindow = function () {
-    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
-  }
-
-  ContentsListWithBody.prototype.stickToParent = function () {
-    this.stickyElement.classList.remove('gem-c-contents-list-with-body__sticky-element--stuck-to-window')
-  }
-
-  ContentsListWithBody.prototype.show = function () {
-    this.stickyElement.classList.remove('gem-c-contents-list-with-body__sticky-element--hidden')
-  }
-
-  ContentsListWithBody.prototype.hide = function () {
-    this.stickyElement.classList.add('gem-c-contents-list-with-body__sticky-element--hidden')
   }
 
   Modules.ContentsListWithBody = ContentsListWithBody
