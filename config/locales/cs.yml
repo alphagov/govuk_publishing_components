@@ -162,6 +162,7 @@ cs:
       last_updated: 'Poslední aktualizace:'
       part_of: Část
       published: Zveřejněno
+      see_all_updates: Vidět všechny aktualizace
       show_all_updates: zobrazit všechny aktualizace
     modal_dialogue:
       close_modal: Zavření modálního dialogu

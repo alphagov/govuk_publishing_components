@@ -23,7 +23,6 @@
   component_helper.add_class("gem-c-metadata")
   component_helper.add_class("direction-#{direction}") if local_assigns.include?(:direction)
   component_helper.add_class("gem-c-metadata--border-top") if border_top
-  component_helper.set_id("full-publication-update-history") if page_history.any?
 
   if inverse
     component_helper.add_class("gem-c-metadata--inverse")
@@ -37,6 +36,12 @@
     event_name: "navigation",
     type: "content history",
     section: "Top",
+  }.to_json unless disable_ga4
+  see_all_link_ga4_object = {
+    event_name: "navigation",
+    type: "content history",
+    section: "Top",
+    index_section: 1,
   }.to_json unless disable_ga4
 
   render_component = true if from.any? || part_of.any? || history || first_published || last_updated || page_history.any? || other
@@ -78,6 +83,16 @@
         <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %>:</dt>
         <dd class="gem-c-metadata__definition">
           <%= last_updated %>
+          <% if local_assigns.include?(:see_updates_link) %>
+            &#8212;
+            <a href="#full-publication-update-history" class="govuk-!-display-none-print"
+              <% unless disable_ga4 %>
+                data-module="ga4-link-tracker"
+                data-ga4-link="<%= see_all_link_ga4_object %>"
+              <% end %>>
+              <%= t("components.metadata.see_all_updates") %>
+            </a>
+          <% end %>
           <% if page_history.any? %>
             <div class="gem-c-metadata__details-wrapper">
               <%= render "govuk_publishing_components/components/details", {
@@ -87,7 +102,7 @@
                 ga4_attributes: page_history_details_ga4,
                 disable_ga4: disable_ga4,
               } do %>
-                <ol class="gem-c-metadata__change-history">
+                <ol class="gem-c-metadata__change-history" id="full-publication-update-history">
                   <% page_history.each do |change| %>
                     <li class="gem-c-metadata__change-history-item">
                       <time class="gem-c-metadata__change-date" datetime="<%= change[:timestamp] %>"><%= change[:display_time] %></time>
