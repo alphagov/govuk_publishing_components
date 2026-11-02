@@ -75,7 +75,6 @@
       scrollBar.append(scrollBarChild)
       table.before(scrollBar)
       scrollBar.scrollLeft = table.scrollLeft
-      this.updateLeftRight(table)
 
       scrollBar.onscroll = () => {
         if (this.preventScrolling) {
@@ -84,7 +83,6 @@
         }
         this.preventScrolling = true
         table.scrollLeft = scrollBar.scrollLeft
-        this.updateLeftRight(table)
       }
 
       table.onscroll = () => {
@@ -94,19 +92,8 @@
         }
         this.preventScrolling = true
         scrollBar.scrollLeft = table.scrollLeft
-        this.updateLeftRight(table)
       }
     })
-  }
-
-  TableScroll.prototype.updateLeftRight = function (table) {
-    if ((table.scrollWidth - table.scrollLeft) < (table.offsetWidth + 1)) {
-      table.parentElement.className = 'tablewrapper tablewrapper--active tablewrapper--end'
-    } else if (table.scrollLeft < 1) {
-      table.parentElement.className = 'tablewrapper tablewrapper--active tablewrapper--start'
-    } else {
-      table.parentElement.className = 'tablewrapper tablewrapper--active'
-    }
   }
 
   TableScroll.prototype.destroyElements = function () {

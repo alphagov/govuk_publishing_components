@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Restore the metadata component see_updates_link option ([PR #5844](https://github.com/alphagov/govuk_publishing_components/pull/5844))
+* Implement wide table left/right indicators in CSS ([PR #5843](https://github.com/alphagov/govuk_publishing_components/pull/5843))
 
 ## 71.0.1
 
