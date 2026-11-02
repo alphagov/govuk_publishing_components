@@ -1,6 +1,12 @@
 // nothing in this file should add any CSS weight
 // so that it can be imported into any CSS file
 
-@import "settings/index";
-@import "govuk/base";
-@import "govuk_publishing_components/mixins/index";
+@use "sass:meta";
+
+@use "./settings/app-font-url" as *;
+@use "./settings/app-image-url" as *;
+
+@forward "govuk/base" with (
+  $govuk-font-url-function: meta.get-function("app-font-url"),
+  $govuk-image-url-function: meta.get-function("app-image-url"),
+);
