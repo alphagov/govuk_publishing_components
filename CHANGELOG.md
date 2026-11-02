@@ -11,6 +11,7 @@
 
 * Restore the metadata component see_updates_link option ([PR #5844](https://github.com/alphagov/govuk_publishing_components/pull/5844))
 * Implement wide table left/right indicators in CSS ([PR #5843](https://github.com/alphagov/govuk_publishing_components/pull/5843))
+* Refactor contents list with body component ([PR #5822](https://github.com/alphagov/govuk_publishing_components/pull/5822))
 
 ## 71.0.1
 
