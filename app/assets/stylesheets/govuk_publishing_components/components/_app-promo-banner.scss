@@ -2,7 +2,7 @@
   display: none;
   padding: govuk-spacing(5) 0;
   border-top: 4px solid govuk-functional-colour(brand);
-  background-color: $govuk-blue-tint-95;
+  background-color: govuk-colour("blue", $variant: "tint-95");
   color: govuk-functional-colour(text);
 }
 

@@ -3,8 +3,8 @@
 $input-size: 40px;
 $large-input-size: 50px;
 
-$search-submit-button-colour: $govuk-blue-tint-80;
-$search-submit-button-hover-colour: $govuk-blue-tint-95;
+$search-submit-button-colour: govuk-colour("blue", $variant: "tint-80");
+$search-submit-button-hover-colour: govuk-colour("blue", $variant: "tint-95");
 
 @mixin large-mode {
   .gem-c-search__label {
