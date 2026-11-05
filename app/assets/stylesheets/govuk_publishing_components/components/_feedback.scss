@@ -1,12 +1,9 @@
-$feedback-prompt-background-colour: govuk-colour("blue", $variant: "tint-95");
-$feedback-prompt-border-top-colour: govuk-colour("blue", $variant: "tint-50");
-
 .gem-c-feedback {
   background: govuk-colour("white");
   margin-top: govuk-spacing(6);
-  background-color: $feedback-prompt-background-colour;
+  background-color: govuk-colour("blue", $variant: "tint-95");
   color: govuk-colour("black");
-  border-top: 1px solid $feedback-prompt-border-top-colour;
+  border-top: 1px solid govuk-colour("blue", $variant: "tint-50");
 
   @include govuk-media-query($from: desktop) {
     margin-top: govuk-spacing(9);

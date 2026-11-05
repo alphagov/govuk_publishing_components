@@ -7,8 +7,6 @@ $pseudo-underline-height: 3px;
 
 $navbar-height: 61px;
 
-$button-pipe-colour: govuk-colour("blue", $variant: "tint-95");
-
 $nav-button-horizontal-padding: govuk-spacing(3);
 $nav-button-horizontal-padding-chevron-breakpoint: govuk-spacing(4);
 
@@ -201,7 +199,7 @@ $search-icon-height: 20px;
 .gem-c-layout-super-navigation-header__navigation-item-link {
   .gem-c-layout-super-navigation-header__navigation-item-link-inner {
     padding: $menu-button-padding;
-    border-right: 1px solid $button-pipe-colour;
+    border-right: 1px solid govuk-colour("blue", $variant: "tint-95");
 
     @include govuk-media-query($from: $chevron-breakpoint) {
       padding: $menu-button-padding-chevron-breakpoint;
@@ -257,7 +255,7 @@ $search-icon-height: 20px;
 
   .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
     display: inline-block;
-    border-right: 1px solid $button-pipe-colour;
+    border-right: 1px solid govuk-colour("blue", $variant: "tint-95");
     margin: 0;
     padding: $menu-button-padding;
 
@@ -328,7 +326,7 @@ $search-icon-height: 20px;
     }
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      border-right-color: $button-pipe-colour;
+      border-right-color: govuk-colour("blue", $variant: "tint-95");
 
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
@@ -387,7 +385,7 @@ $search-icon-height: 20px;
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
       color: govuk-functional-colour(link);
-      border-right-color: $button-pipe-colour;
+      border-right-color: govuk-colour("blue", $variant: "tint-95");
 
       @include govuk-media-query($from: $chevron-breakpoint) {
         &::before {
