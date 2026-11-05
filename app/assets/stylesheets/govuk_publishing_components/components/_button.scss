@@ -45,28 +45,28 @@
 
 .gem-c-button--secondary {
   padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
-  border-color: $gem-secondary-button-colour;
-  color: $gem-secondary-button-colour;
-  background-color: $gem-secondary-button-background-colour;
+  border-color: govuk-colour("green", $variant: "shade-25");
+  color: govuk-colour("green", $variant: "shade-25");
+  background-color: govuk-colour("white");
   box-shadow: none;
 
   &:link,
   &:visited,
   &:active,
   &:focus {
-    color: $gem-secondary-button-colour;
-    background-color: $gem-secondary-button-background-colour;
+    color: govuk-colour("green", $variant: "shade-25");
+    background-color: govuk-colour("white");
     text-decoration: none;
   }
 
   &:link:focus {
-    color: $gem-secondary-button-colour;
+    color: govuk-colour("green", $variant: "shade-25");
   }
 
   &:hover {
-    border-color: $gem-secondary-button-hover-colour;
-    color: $gem-secondary-button-hover-colour;
-    background-color: $gem-secondary-button-hover-background-colour;
+    border-color: govuk-colour("green", $variant: "shade-50");
+    color: govuk-colour("green", $variant: "shade-50");
+    background-color: govuk-colour("black", $variant: "tint-95");
     text-decoration: none;
   }
 
@@ -79,7 +79,7 @@
   padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
   border-color: govuk-functional-colour("secondary-text");
   color: govuk-functional-colour("secondary-text");
-  background-color: $gem-secondary-button-background-colour;
+  background-color: govuk-colour("white");
   box-shadow: none;
 
   &:link,
@@ -87,7 +87,7 @@
   &:active,
   &:focus {
     color: govuk-functional-colour("secondary-text");
-    background-color: $gem-secondary-button-background-colour;
+    background-color: govuk-colour("white");
     text-decoration: none;
   }
 
