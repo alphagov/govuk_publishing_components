@@ -4,7 +4,7 @@
 
 Organisation pages in `collections` have some department-specific branding on them. Custom border colours are used on all organisation pages ([example](https://www.gov.uk/government/organisations/attorney-generals-office)), and custom colours for links are used on [Prime Minister's Office, 10 Downing Street](https://www.gov.uk/government/organisations/prime-ministers-office-10-downing-street).
 
-[Most colours now come from govuk-frontend](https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/govuk/settings/_colours-organisations.scss), however custom colours can be added to [_brand_colours.scss](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/helpers/_brand-colours.scss) if required.
+[Most colours now come from govuk-frontend](https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/govuk/settings/_colours-organisations.scss), however custom colours can be added to [_brand_colours.scss](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/lib/_brand-colours.scss) if required.
 
 This work follows [this RFC](https://github.com/alphagov/govuk_publishing_components/pull/287) to discuss the approach taken.
 

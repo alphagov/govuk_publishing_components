@@ -1,0 +1,28 @@
+// Loop over all of the organisation colours provided by govuk-frontend and add a `brand--` prefix
+// https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/govuk/settings/_colours-organisations.scss#L22
+@each $organisation in map-keys($govuk-colours-organisations) {
+  .brand--#{$organisation} {
+    // the & declaration allows border-color to also be applied to the parent
+    // element as required by the heading component, adds 2KB to the CSS
+    &.brand__border-color,
+    .brand__border-color {
+      border-color: govuk-organisation-colour($organisation, $contrast-safe: false);
+    }
+  }
+}
+
+// Brand colour overrides
+.brand--government-digital-service {
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #16eeee;
+  }
+}
+
+// This can be removed once the organisation is added to govuk-frontend
+.brand--department-for-business-innovation-science-trade {
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #ff4328;
+  }
+}
