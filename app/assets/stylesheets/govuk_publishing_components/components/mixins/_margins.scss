@@ -1,7 +1,0 @@
-@mixin responsive-bottom-margin {
-  margin-bottom: govuk-spacing(3);
-
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(7);
-  }
-}
