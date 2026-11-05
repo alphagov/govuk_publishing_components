@@ -2,9 +2,6 @@
 @use "sass:color";
 @import "govuk_publishing_components/all-components";
 
-// Include required helpers
-@import "../../stylesheets/govuk_publishing_components/components/helpers/markdown-typography";
-
 $gem-guide-border-width: 1px;
 
 .component-doc {
@@ -182,7 +179,28 @@ $gem-guide-border-width: 1px;
 
 .component-markdown {
   margin-bottom: govuk-spacing(8);
-  @include markdown-typography;
+
+  p {
+    @include govuk-typography-common;
+    @include govuk-font-size(19);
+  }
+
+  a {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+  }
+
+  ol,
+  ul {
+    @extend %govuk-list;
+    @extend %govuk-list--bullet;
+  }
+
+  code {
+    padding: 0 govuk-spacing(1);
+    color: govuk-colour("red");
+    background-color: govuk-colour("black", $variant: "tint-95");
+  }
 }
 
 .component-markdown--no-margin {
