@@ -1,6 +1,6 @@
 .gem-c-inverse-header {
   width: 100%;
-  background-color: $govuk-blue-tint-80;
+  background-color: govuk-colour("blue", $variant: "tint-80");
   margin-bottom: govuk-spacing(6);
   padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(6);
   box-sizing: border-box;

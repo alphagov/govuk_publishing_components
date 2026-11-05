@@ -23,7 +23,7 @@
   width: 28px;
 
   .gem-c-action-link__icon__circle {
-    fill: $govuk-blue-tint-80;
+    fill: govuk-colour("blue", $variant: "tint-80");
 
     .gem-c-action-link--inverse & {
       fill: govuk-colour("white");
