@@ -77,8 +77,8 @@
 
 .gem-c-button--secondary-quiet {
   padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
-  border-color: $gem-quiet-button-colour;
-  color: $gem-quiet-button-colour;
+  border-color: govuk-functional-colour("secondary-text");
+  color: govuk-functional-colour("secondary-text");
   background-color: $gem-secondary-button-background-colour;
   box-shadow: none;
 
@@ -86,19 +86,19 @@
   &:visited,
   &:active,
   &:focus {
-    color: $gem-quiet-button-colour;
+    color: govuk-functional-colour("secondary-text");
     background-color: $gem-secondary-button-background-colour;
     text-decoration: none;
   }
 
   &:link:focus {
-    color: $gem-quiet-button-colour;
+    color: govuk-functional-colour("secondary-text");
   }
 
   &:hover {
-    border-color: $gem-quiet-button-hover-colour;
-    color: $gem-quiet-button-hover-colour;
-    background-color: $gem-quiet-button-hover-background-colour;
+    border-color: govuk-colour("black");
+    color: govuk-colour("black");
+    background-color: govuk-colour("black", $variant: "tint-80");
     text-decoration: none;
   }
 
