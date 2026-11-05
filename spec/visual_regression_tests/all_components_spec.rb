@@ -1,19 +1,22 @@
 require "rails_helper"
 require "percy/capybara"
 require "uri"
+require_relative "all_components_config"
 
 # rubocop:disable RSpec/NoExpectationExample
 describe "visual regression test runner Percy", :visual_regression do
+  def visit_component(path)
+    visit(path)
+    page.find(:css, "body", wait: 10)
+  end
+
+  def component_name
+    title.gsub(/(: Default|) preview - Component Guide/, "")
+  end
+
   it "takes a screenshot of each component" do
     # Freeze time for consistency
     travel_to Time.zone.local(2020, 12, 1, 6, 0, 0)
-
-    skip_non_visible_components = %w[
-      /component-guide/meta_tags/preview
-      /component-guide/machine_readable_metadata/preview
-      /component-guide/google_tag_manager_script/preview
-      /component-guide/layout_for_admin/preview
-    ]
 
     visit("/component-guide")
 
@@ -27,16 +30,31 @@ describe "visual regression test runner Percy", :visual_regression do
     # as part of the component guide, and another one at `/public`.
     component_links << URI("/public")
 
+    # Baseline Snapshots (All Variants)
     component_links.each do |link|
-      next if skip_non_visible_components.include?(link.path)
+      next if VisualRegressionConfig::SKIP_COMPONENTS.include?(link.path)
 
-      visit(link)
+      visit_component(link)
+      page.percy_snapshot(component_name)
+    end
 
-      name = title.gsub(/(: Default|) preview - Component Guide/, "")
+    # Interactive Snapshots (Selected Components)
+    VisualRegressionConfig::INTERACTIVE_COMPONENTS.each do |path, interactions|
+      interactions.each do |interaction|
+        # Visit a fresh path for each action
+        visit_component(path)
 
-      page.find(:css, "body", wait: 10)
+        next unless page.has_css?(interaction[:toggle_selector], wait: 0)
 
-      page.percy_snapshot(name)
+        toggle_button = page.find(interaction[:toggle_selector])
+        toggle_button.click
+
+        # Wait for the element to become visible
+        page.has_css?(interaction[:wait_selector], visible: true, wait: 5)
+
+        # Snapshot the active state
+        page.percy_snapshot("#{component_name} - #{interaction[:state_name]}")
+      end
     end
 
     travel_back
