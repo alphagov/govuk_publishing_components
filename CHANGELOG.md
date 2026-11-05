@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move brand-colours stylesheet to lib folder ([PR #5851](https://github.com/alphagov/govuk_publishing_components/pull/5851))
+
 ## 71.1.0
 
 * Restore the metadata component see_updates_link option ([PR #5844](https://github.com/alphagov/govuk_publishing_components/pull/5844))
