@@ -12,7 +12,13 @@
 // https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components
 .gem-c-button--bottom-margin,
 .gem-c-button__info-text--bottom-margin {
-  @include responsive-bottom-margin;
+  // TODO: review this spacing with a designer to see if the custom
+  // margin can be replaced with standard GOV.UK Frontend spacing.
+  margin-bottom: govuk-spacing(3);
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(7);
+  }
 }
 
 .gem-c-button--inline {
