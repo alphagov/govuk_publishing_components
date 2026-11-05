@@ -94,7 +94,7 @@ describe('AccessibilityTest', function () {
   })
 
   it('should throw if there\'s a contrast issue', function (done) {
-    addToDom('<a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
+    addToDom('<a href="#" style="background: white; color: #ddd">Low contrast</a>')
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
       if (err) {
@@ -104,7 +104,7 @@ describe('AccessibilityTest', function () {
       var errorMessage = renderErrorMessage({
         id: 'color-contrast',
         problem: 'Elements must meet minimum color contrast ratio thresholds',
-        html: '<a href="#">Low contrast</a>',
+        html: '<a href="#" style="background: white; color: #ddd">Low contrast</a>',
         selector: '.js-test-a11y > a[href="#"]',
         helpUrl: `https://dequeuniversity.com/rules/axe/${axeVersion}/color-contrast?application=axeAPI`
       })
@@ -151,7 +151,7 @@ describe('AccessibilityTest', function () {
   })
 
   it('process violations into object for rendering in guide', function (done) {
-    addToDom('<img src=""><a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
+    addToDom('<img src=""><a href="#" style="background: white; color: #ddd">Low contrast</a>')
 
     AccessibilityTest(TEST_SELECTOR, function (_err, _violations, pageResults) {
       expect(pageResults.violations[0].summary).toBe('Elements must meet minimum color contrast ratio thresholds')
@@ -163,7 +163,7 @@ describe('AccessibilityTest', function () {
   })
 
   it('should throw on multiple issues', function (done) {
-    addToDom('<img src=""><a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
+    addToDom('<img src=""><a href="#" style="background: white; color: #ddd">Low contrast</a>')
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
       if (err) {
@@ -174,7 +174,7 @@ describe('AccessibilityTest', function () {
         renderErrorMessage({
           id: 'color-contrast',
           problem: 'Elements must meet minimum color contrast ratio thresholds',
-          html: '<a href="#">Low contrast</a>',
+          html: '<a href="#" style="background: white; color: #ddd">Low contrast</a>',
           selector: '.js-test-a11y > a[href="#"]',
           helpUrl: `https://dequeuniversity.com/rules/axe/${axeVersion}/color-contrast?application=axeAPI`
         }) +
