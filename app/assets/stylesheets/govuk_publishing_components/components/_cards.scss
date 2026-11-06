@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-cards__heading {
   @include govuk-responsive-margin(6, "bottom");
 }

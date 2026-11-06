@@ -1,4 +1,5 @@
 // stylelint-disable max-nesting-depth
+@use "../base" as *;
 
 // Override govspeak styles with HTML publication specific ones
 .gem-c-govspeak-html-publication {

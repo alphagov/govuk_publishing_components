@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-error-alert {
   color: govuk-functional-colour(text);
   padding: govuk-spacing(3);
