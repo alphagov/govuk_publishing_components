@@ -153,7 +153,7 @@ module GovukPublishingComponents
     end
 
     def uses_govuk_frontend_css?(file)
-      File.read(file).match(/@import "govuk\/components/)
+      File.read(file).match(/@use "govuk\/components/)
     end
 
     def clean_files(files, replace)
