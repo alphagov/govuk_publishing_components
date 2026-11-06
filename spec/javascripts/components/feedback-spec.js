@@ -1,11 +1,11 @@
 /* eslint-env jasmine */
-/* global GOVUK */
+/* global GOVUK, DOMException, AbortSignal */
 
-describe('Feedback component', function () {
-  var feedbackComponent
-  var container
+describe('Feedback component', () => {
+  let feedbackComponent
+  let container
 
-  beforeEach(function () {
+  beforeEach(() => {
     container = document.createElement('div')
     container.innerHTML = `
     <div data-module="feedback ga4-event-tracker" class="gem-c-feedback govuk-!-display-none-print">
@@ -119,44 +119,41 @@ describe('Feedback component', function () {
     document.body.appendChild(container)
   })
 
-  afterEach(function () {
+  afterEach(() => {
     document.body.removeChild(container)
   })
 
-  it('hides the forms', function () {
+  it('hides the forms', () => {
     loadFeedbackComponent()
 
     expect(document.querySelector('.gem-c-feedback .js-feedback-form').hidden).toBe(true)
   })
 
-  it('shows the prompt', function () {
+  it('shows the prompt', () => {
     loadFeedbackComponent()
 
     expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(false)
     expect(document.querySelector('.gem-c-feedback .js-prompt-questions').hidden).toBe(false)
   })
 
-  // note that this test will fail in the browser 'run tests in random order' is disabled
-  // or any link in the jasmine window is clicked e.g. a specific test suite
-  // because the referrer will be localhost, not 'unknown'
-  it('should append a hidden "referrer" field to the form', function () {
+  it('should append a hidden "referrer" field to the form', () => {
     loadFeedbackComponent()
 
     expect(document.querySelector('#something-is-wrong [name=referrer]').value).toBe('unknown')
   })
 
-  describe('clicking the "page was useful" link', function () {
-    it('displays a success message', function () {
+  describe('clicking the "page was useful" link', () => {
+    it('displays a success message', () => {
       loadFeedbackComponent()
       document.querySelector('.js-page-is-useful').click()
 
-      var $success = document.querySelector('.js-prompt-success')
+      const $success = document.querySelector('.js-prompt-success')
 
       expect($success.hidden).toBe(false)
       expect($success.textContent).toContain('Thank you for your feedback')
     })
 
-    it('hides the question links', function () {
+    it('hides the question links', () => {
       loadFeedbackComponent()
       document.querySelector('.js-page-is-useful').click()
 
@@ -164,26 +161,26 @@ describe('Feedback component', function () {
     })
   })
 
-  describe('clicking the "page was not useful" link', function () {
-    it('shows the feedback form', function () {
+  describe('clicking the "page was not useful" link', () => {
+    it('shows the feedback form', () => {
       loadFeedbackComponent()
       document.querySelector('.js-page-is-not-useful').click()
 
       expect(document.querySelector('.gem-c-feedback .js-feedback-form#page-is-not-useful').hidden).toBe(false)
     })
 
-    it('hides the prompt', function () {
+    it('hides the prompt', () => {
       loadFeedbackComponent()
       document.querySelector('.js-page-is-not-useful').click()
 
       expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(true)
     })
 
-    it('has the page path in the survey', function () {
-      var testPath = '/government/organisations/government-digital-service'
-      var expectedUrl = 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + testPath
+    it('has the page path in the survey', () => {
+      const testPath = '/government/organisations/government-digital-service'
+      const expectedUrl = `https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=${testPath}`
 
-      loadFeedbackComponent(function () {
+      loadFeedbackComponent(() => {
         spyOn(feedbackComponent, 'getPagePath').and.returnValue(testPath)
       })
 
@@ -191,11 +188,11 @@ describe('Feedback component', function () {
       expect(document.querySelector('#survey_explanation a').getAttribute('href')).toBe(expectedUrl)
     })
 
-    it('hides the path in the survey link if it contains an @ symbol', function () {
-      var testPath = '/contact/email@example.com'
-      var expectedUrl = 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + '%5Bemail%5D'
+    it('hides the path in the survey link if it contains an @ symbol', () => {
+      const testPath = '/contact/email@example.com'
+      const expectedUrl = 'https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=%5Bemail%5D'
 
-      loadFeedbackComponent(function () {
+      loadFeedbackComponent(() => {
         spyOn(feedbackComponent, 'getPagePath').and.returnValue(testPath)
       })
 
@@ -204,24 +201,24 @@ describe('Feedback component', function () {
     })
   })
 
-  describe('Clicking the "is there anything wrong with this page" link', function () {
-    it('shows the form', function () {
+  describe('Clicking the "is there anything wrong with this page" link', () => {
+    it('shows the form', () => {
       loadFeedbackComponent()
       document.querySelector('.js-something-is-wrong').click()
 
       expect(document.querySelector('.gem-c-feedback .js-feedback-form#something-is-wrong').hidden).toBe(false)
     })
 
-    it('hides the prompt', function () {
+    it('hides the prompt', () => {
       loadFeedbackComponent()
       document.querySelector('.js-something-is-wrong').click()
 
       expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(true)
     })
 
-    it('focusses the first field in the form', function () {
+    it('focusses the first field in the form', () => {
       loadFeedbackComponent()
-      var $input = document.querySelector('#something-is-wrong .govuk-textarea')
+      const $input = document.querySelector('#something-is-wrong .govuk-textarea')
       spyOn($input, 'focus')
       document.querySelector('.js-something-is-wrong').click()
 
@@ -229,174 +226,142 @@ describe('Feedback component', function () {
     })
   })
 
-  describe('Clicking the close link in the "something is wrong" form', function () {
-    beforeEach(function () {
+  describe('Clicking the close link in the "something is wrong" form', () => {
+    beforeEach(() => {
       loadFeedbackComponent()
       document.querySelector('.js-something-is-wrong').click()
       document.querySelector('#something-is-wrong .js-close-form').click()
     })
 
-    it('hides the form', function () {
+    it('hides the form', () => {
       expect(document.querySelector('.gem-c-feedback #something-is-wrong').hidden).toBe(true)
     })
 
-    it('shows the prompt', function () {
+    it('shows the prompt', () => {
       expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(false)
       expect(document.activeElement).toBe(document.querySelector('.js-something-is-wrong'))
     })
   })
 
-  describe('Clicking the close link in the "not useful" form', function () {
-    beforeEach(function () {
+  describe('Clicking the close link in the "not useful" form', () => {
+    beforeEach(() => {
       loadFeedbackComponent()
       document.querySelector('.js-page-is-not-useful').click()
       document.querySelector('#page-is-not-useful .js-close-form').click()
     })
 
-    it('hides the form', function () {
+    it('hides the form', () => {
       expect(document.querySelector('.gem-c-feedback #page-is-not-useful').hidden).toBe(true)
     })
 
-    it('shows the prompt', function () {
+    it('shows the prompt', () => {
       expect(document.querySelector('.gem-c-feedback .js-prompt').hidden).toBe(false)
       expect(document.activeElement).toBe(document.querySelector('.js-page-is-not-useful'))
     })
   })
 
-  describe('successfully submitting the "is there anything wrong with this page" form', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
+  describe('successfully submitting the "is there anything wrong with this page" form', () => {
+    beforeEach(() => {
+      stubSuccessfulFetch({})
     })
 
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    // note that this test will fail if the jasmine:browser
-    // 'run tests in random order' is disabled or any link in
-    // the jasmine window is clicked e.g. a specific test
-    // suite because the referrer will be localhost, not 'unknown'
-    it('submits the feedback to the feedback frontend', function () {
+    it('submits the feedback to the feedback frontend', async () => {
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
+      await fillAndSubmitSomethingIsWrongForm()
 
-      var request = jasmine.Ajax.requests.mostRecent()
-      expect(request.url).toBe('/contact/govuk/problem_reports')
-      expect(request.method).toBe('POST')
-      expect(request.data()).toEqual({
-        url: ['http://example.com/path/to/page'],
-        what_doing: ['I was looking for some information about local government.'],
-        what_wrong: ['The background should be green.'],
-        referrer: ['unknown'],
-        javascript_enabled: ['true'],
-        timer: ['0'],
-        giraffe: ['']
-      })
+      expect(window.fetch).toHaveBeenCalledWith(
+        '/contact/govuk/problem_reports',
+        jasmine.objectContaining({
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          signal: jasmine.any(AbortSignal),
+          body: jasmine.any(String)
+        })
+      )
+
+      const fetchArgs = window.fetch.calls.mostRecent().args
+      const requestBody = new URLSearchParams(fetchArgs[1].body)
+      expect(requestBody.get('url')).toBe('http://example.com/path/to/page')
+      expect(requestBody.get('what_doing')).toBe('I was looking for some information about local government.')
+      expect(requestBody.get('what_wrong')).toBe('The background should be green.')
+      expect(requestBody.get('referrer')).toBe('unknown')
+      expect(requestBody.get('javascript_enabled')).toBe('true')
+      expect(requestBody.get('timer')).toBe('0')
+      expect(requestBody.get('giraffe')).toBe('')
     })
 
-    it('displays a success message', function () {
+    it('displays a success message', async () => {
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
+      await fillAndSubmitSomethingIsWrongForm()
 
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
-
-      var $success = document.querySelector('.js-prompt-success')
+      const $success = document.querySelector('.js-prompt-success')
 
       expect($success.hidden).toBe(false)
       expect($success.textContent).toContain('Thank you for your feedback')
     })
 
-    it('focusses the success message', function () {
+    it('focusses the success message', async () => {
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
+      await fillAndSubmitSomethingIsWrongForm()
 
       expect(document.activeElement).toBe(document.querySelector('.gem-c-feedback .js-prompt'))
     })
 
-    it('hides the form', function () {
+    it('hides the form', async () => {
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
+      await fillAndSubmitSomethingIsWrongForm()
 
       expect(document.querySelector('#something-is-wrong').hidden).toBe(true)
     })
 
-    it('hides the links to show the feedback form', function () {
+    it('hides the links to show the feedback form', async () => {
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 200,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
+      await fillAndSubmitSomethingIsWrongForm()
 
       expect(document.querySelector('.js-prompt-questions').hidden).toBe(true)
     })
   })
 
-  describe('submitting the "is something wrong with this page" form with invalid data', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
-    })
+  describe('submitting the "is something wrong with this page" form with invalid data', () => {
+    it('disables the submit button until the server responds', async () => {
+      let resolveFetch
+      spyOn(window, 'fetch').and.returnValue(new Promise((resolve) => {
+        resolveFetch = resolve
+      }))
 
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    it('disables the submit button until the server responds', function () {
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
+      document.querySelector('.js-something-is-wrong').click()
+      const $form = document.querySelector('.gem-c-feedback #something-is-wrong')
+      $form.querySelector('[name=what_doing]').value = 'I was looking for some information about local government.'
+      $form.querySelector('[name=what_wrong]').value = 'The background should be green.'
+      $form.querySelector('[type=submit]').click()
 
       expect(document.querySelector('.gem-c-feedback form [type=submit]').disabled).toBe(true)
 
-      jasmine.Ajax.requests.mostRecent().respondWith({
+      resolveFetch({
+        ok: false,
         status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
+        json: () => Promise.resolve({ errors: { description: ["can't be blank"] } })
       })
+
+      await new Promise((resolve) => setTimeout(resolve, 0))
 
       expect(document.querySelector('.gem-c-feedback form [type=submit]').disabled).toBe(false)
     })
 
-    it('retains the feedback the user originally entered', function () {
+    it('retains the feedback the user originally entered', async () => {
+      stubServerErrorFetch(422, { errors: { description: ["can't be blank"] } })
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"description": ["can\'t be blank"]}}'
-      })
+      await fillAndSubmitSomethingIsWrongForm()
 
       expect(document.querySelector('[name=what_doing]').value).toEqual('I was looking for some information about local government.')
       expect(document.querySelector('[name=what_wrong]').value).toEqual('The background should be green.')
     })
 
-    it('displays a generic error if the field isn\'t a visible part of the form', function () {
+    it('displays a generic error if the field isn\'t a visible part of the form', async () => {
+      stubServerErrorFetch(422, { errors: { path: ["can't be blank"], another: ['weird error'] } })
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
-      })
+      await fillAndSubmitSomethingIsWrongForm()
 
       expect(document.querySelector('#something-is-wrong .js-errors').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
@@ -405,41 +370,29 @@ describe('Feedback component', function () {
       )
     })
 
-    it('focusses the error message', function () {
+    it('focusses the error message', async () => {
+      stubServerErrorFetch(422, {})
       loadFeedbackComponent()
-      var $input = document.querySelector('#something-is-wrong .js-errors')
+      const $input = document.querySelector('#something-is-wrong .js-errors')
       spyOn($input, 'focus')
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{}'
-      })
+      await fillAndSubmitSomethingIsWrongForm()
 
       expect($input.focus).toHaveBeenCalled()
     })
   })
 
-  describe('submitting a form that fails because email_survey_signup[survey_source] is missing', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
+  describe('submitting a form that fails because email_survey_signup[survey_source] is missing', () => {
+    beforeEach(async () => {
+      stubServerErrorFetch(422, {
+        message: 'email survey sign up failure',
+        errors: { survey_source: ["can't be blank"] }
+      })
 
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 422,
-        contentType: 'application/json',
-        responseText: '{"message":"email survey sign up failure","errors":{"survey_source":["can\'t be blank"]}}'
-      })
+      await fillAndSubmitSomethingIsWrongForm()
     })
 
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
+    it('displays the generic error message in place of the less helpful "email survey sign up failure"', () => {
       expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
         'If the problem persists, we have other ways for you to provide ' +
@@ -449,25 +402,14 @@ describe('Feedback component', function () {
     })
   })
 
-  describe('submitting a form that fails for some reason', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
-
+  describe('submitting a form that fails for some reason', () => {
+    beforeEach(async () => {
+      stubServerErrorFetch(500, {})
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-
-      jasmine.Ajax.requests.mostRecent().respondWith({
-        status: 500,
-        contentType: 'text/plain',
-        responseText: ''
-      })
+      await fillAndSubmitSomethingIsWrongForm()
     })
 
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-    })
-
-    it('displays a generic error message', function () {
+    it('displays a generic error message', () => {
       expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
         'If the problem persists, we have other ways for you to provide ' +
@@ -475,54 +417,51 @@ describe('Feedback component', function () {
       )
     })
 
-    it('retains the feedback the user originally entered', function () {
+    it('retains the feedback the user originally entered', () => {
       expect(document.querySelector('[name=what_doing]').value).toEqual('I was looking for some information about local government.')
       expect(document.querySelector('[name=what_wrong]').value).toEqual('The background should be green.')
     })
 
-    it('re-enables the submit button', function () {
+    it('re-enables the submit button', () => {
       expect(document.querySelector('.gem-c-feedback form [type=submit]').disabled).toBe(false)
     })
   })
 
-  describe('submitting a form that times out', function () {
-    beforeEach(function () {
-      jasmine.Ajax.install()
-      jasmine.clock().install()
+  describe('submitting a form that times out', () => {
+    beforeEach(async () => {
+      stubTimeoutFetch()
 
       loadFeedbackComponent()
-      fillAndSubmitSomethingIsWrongForm()
-      jasmine.Ajax.requests.mostRecent().responseTimeout()
+      await fillAndSubmitSomethingIsWrongForm()
     })
 
-    afterEach(function () {
-      jasmine.Ajax.uninstall()
-      jasmine.clock().uninstall()
-    })
-
-    it('displays a generic error message', function () {
+    it('displays a generic error message', () => {
       expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toContain(
         'Sorry, we’re unable to receive your message right now. ' +
         'If the problem persists, we have other ways for you to provide ' +
         'feedback on the contact page.'
       )
     })
+
+    it('re-enables the submit button', () => {
+      expect(document.querySelector('.gem-c-feedback form [type=submit]').disabled).toBe(false)
+    })
   })
 
-  describe('testing honeypot metadata on the "report a problem" form', function () {
-    beforeEach(function () {
+  describe('testing honeypot metadata on the "report a problem" form', () => {
+    beforeEach(() => {
       jasmine.clock().install()
       loadFeedbackComponent()
       document.querySelector('.js-something-is-wrong').click()
     })
 
-    afterEach(function () {
+    afterEach(() => {
       jasmine.clock().uninstall()
     })
 
-    it('has an incrementing timer field', function () {
-      var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
-      var $timer = $form.querySelector('input[name=timer]')
+    it('has an incrementing timer field', () => {
+      const $form = document.querySelector('.gem-c-feedback #something-is-wrong')
+      const $timer = $form.querySelector('input[name=timer]')
       expect($timer.value).toBe('0')
       jasmine.clock().tick(1000)
       expect($timer.value).toBe('1')
@@ -531,20 +470,42 @@ describe('Feedback component', function () {
     })
   })
 
-  function loadFeedbackComponent (feedbackSpies) {
+  const stubSuccessfulFetch = (responseData = {}) => {
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
+      ok: true,
+      status: 200,
+      json: () => Promise.resolve(responseData)
+    }))
+  }
+
+  const stubServerErrorFetch = (status = 500, responseData = {}) => {
+    spyOn(window, 'fetch').and.returnValue(Promise.resolve({
+      ok: false,
+      status,
+      json: () => Promise.resolve(responseData)
+    }))
+  }
+
+  const stubTimeoutFetch = () => {
+    spyOn(window, 'fetch').and.returnValue(
+      Promise.reject(new DOMException('Request timed out', 'AbortError'))
+    )
+  }
+
+  const loadFeedbackComponent = (feedbackSpies) => {
     feedbackComponent = new GOVUK.Modules.Feedback(document.querySelector('.gem-c-feedback'))
-    // Allows spies to be added before .init() is run
     if (feedbackSpies) {
       feedbackSpies()
     }
     feedbackComponent.init()
   }
 
-  function fillAndSubmitSomethingIsWrongForm () {
+  const fillAndSubmitSomethingIsWrongForm = async () => {
     document.querySelector('.js-something-is-wrong').click()
-    var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
+    const $form = document.querySelector('.gem-c-feedback #something-is-wrong')
     $form.querySelector('[name=what_doing]').value = 'I was looking for some information about local government.'
     $form.querySelector('[name=what_wrong]').value = 'The background should be green.'
     $form.querySelector('[type=submit]').click()
+    await new Promise((resolve) => setTimeout(resolve, 0))
   }
 })
