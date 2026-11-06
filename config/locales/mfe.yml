@@ -1,43 +1,55 @@
 ---
 mfe:
+  common:
+    hide: Maske
+    show: Montre
+    toggle_less: Montre mwins
+    toggle_less_html: Montre mwins <span class='govuk-visually-hidden'>%{visually_hidden_text}</span>
+    toggle_more: '%{show} %{number} plis'
+    toggle_more_html: "%{show} %{number} plis <span class='govuk-visually-hidden'>%{visually_hidden_text}</span>"
+    translations: Tradiksion
   components:
+    accordion:
+      hide_all: Maske tou seksion
+      show_all: Montre tou seksion
+      this_section_visually_hidden: " sa seksion-la"
+    app_promo_banner:
+      aria_label: 
+      body_text: 
+      close: 
+      title_text: 
+      view: 
+    article_schema:
+      scoped_search_description: Rod dan  %{title}
     attachment:
       page:
         one: 1 paz
         other: '%{count} paz'
-      opendocument_html: Sa fisie-la dan format  "OpenDocument"
+      opendocument_html: Sa fisie-la dan format <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>"OpenDocument"</a>
       order_a_copy: Komann enn exanpler
       preview_aria_label: Konsilte  %{title} online
       preview_link: Konsilte online
       reference: 'Ref: %{reference}'
       request_format_cta: Demann enn format aksesib
-      request_format_details_html: Si ou servi asistans teknolozik (kouma enn lekter lekran) ek bizin enn version
-        sa dokiman-la dan enn format plis aksesib, avoy enn email lor <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Dir nou ki format ou pe bizin.
-        Li pou ed nou kone ki teknolozi asistans ou pe servi.
+      request_format_details_html: Si ou servi asistans teknolozik (kouma enn lekter lekran) ek bizin enn version sa dokiman-la dan enn format plis aksesib, avoy enn email lor <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Dir nou ki format ou pe bizin. Li pou ed nou kone ki teknolozi asistans ou pe servi.
       request_format_text: Sa fisie -la kapav pa adapte pou bann itilizater ki servi teknolozi asistans
-    accordion:
-      hide_all: Maske tou seksion
-      show_all: Montre tou seksion
-      this_section_visually_hidden: sa seksion-la
-    article_schema:
-      scoped_search_description: Rod dan  %{title}
     back_link:
       back: Retour
+    back_to_top_link:
+      contents: Konteni
     character_count:
       body: Ou kapav met ziska %{number} %{type}
       type:
         characters: karakter
         words: bann mo
     chart:
-      accessibility_heading: Tablo linformasion pou "%{chart_heading}"
+      accessibility_heading: Tablo linformasion pou "%{heading}"
       accessibility_html: Sa grafik-la li enn reprezantasion viziel bann linformasion ki disponib dan tablo
-      accessibility_link: Pas ziska "%{chart_heading}" tablo linformasion
+      accessibility_link: Pas ziska "%{heading}" tablo linformasion
+      source:
       table_dropdown: Afis bann linformasion dan enn tablo
-    chat_entry:
-      description: Gagn bann repons rapid, personalize a ou bann kestion lor ou biznes avek zouti Intelizans Artifisiel
-        (IA) GOV.UK
-      heading: Demann chat GOV.UK
+    checkboxes:
+      or: ouswa
     contents_list:
       contents: Konteni
     contextual_sidebar:
@@ -61,19 +73,30 @@ mfe:
       title: Cookies lor GOV.UK
     devolved_nations:
       applies_to: Aplikab a
-      connectors:
-        last_word: ek
-        two_words: ek
-      england: Langleter
-      northern_ireland: Irland-di-Nor
-      scotland: Lekos
+      aria_label: 
+      england: 
+        end: " ek Langleter"
+        middle: Langleter
+        start: Langleter
+      northern_ireland:
+        end: " ek Irland-di-Nor"
+        middle: Irland-di-Nor
+        start: Irland-di-Nor
+      scotland: 
+        end: " ek Lekos"
+        middle: Lekos
+        start: Lekos
       type:
         consultation: Konsiltasion pou %{nation}
         detailed_guide: Gid pou %{nation}
         guidance: Gid pou %{nation}
         publication: Piblikasion pou %{nation}
-      wales: Wales
+      wales: 
+        end: " ek Wales"
+        middle: Wales
+        start: Wales
     feedback:
+      close:
       dont_include_personal_info: Napa kominik okenn informasion personel ouswa finansie kouma ou Nimero Lasirans
         Nasional ouswa ou kordone ou kart kredi
       email_address: Ladres email
@@ -83,23 +106,28 @@ mfe:
       is_useful: Sa paz-la itil
       maybe: Petet
       more_about_visit: Pou ed nou amelior GOV.UK, nou anvi konn inpe plis lor ou vizit zordi
+      'no': Non
       send: Avoye
       send_me_survey: Avoy mwa sondaz-la
       something_wrong: Signal enn problem konsernan sa paz-la
       thank_you_for_feedback: Mersi pou ou feedback
       what_doing: Ki ou ti pe rod fer?
       what_wrong: Ki problem ou finn rankontre?
+      'yes': Wi
+    figure:
+      image_credit:
     intervention:
-      accessible_link_text_suffix: (ouver dan enn nouvo tab)
+      accessible_link_text_suffix: " (ouver dan enn nouvo tab)"
     layout_footer:
-      copyright_html: Crown copyright
-      licence_html: Tou konteni disponib anba "Open Government Licence", sof indikasion kontrer"
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
+      licence_html: Tou konteni disponib anba <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">"Open Government Licence v3.0"</a>, sof indikasion kontrer
+      navigation_links:
       support_links: Lien asistans
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            phase_banner_html: Se enn nouvo servis. Ou feedback pou ed nou amelior li.
+            phase_banner_html: Se enn nouvo servis. Ou <a class="govuk-link" href="https://signin.account.gov.uk/contact-us?supportType=PUBLIC">feedback</a> pou ed nou amelior li.
         navigation:
           menu_bar:
             account:
@@ -107,31 +135,31 @@ mfe:
             manage:
               link_text: Paramet
     layout_header:
-      hide_button: Maske resers
       menu: Meni
-      search_button: Fer resers lor GOV.UK
-      show_button: Afis resers
       top_level: Navigasion prinsipal
     layout_super_navigation_header:
       logo_link_title: Al lor paz-dakey GOV.UK
-      logo_text: '[GOV.UK](http://gov.uk/)'
       menu_toggle_label:
         hide: Maske %{label} meni
         show: Montre %{label} meni
       navigation_link:
+        href: "/browse"
         label: Meni
+      navigation_links_columns:
       navigation_menu_heading: Meni navigasion
-      navigation_search_heading: Resers ek paz popiler
       navigation_search_subheading: Resers
       search_text: Fer resers lor GOV.UK
     metadata:
       and: ek
       from: Depi
+      hidden_heading:
+      hide_all_updates:
       history: Listwar
       last_updated: Dernie miz-a-zour
       part_of: Inklir dan
       published: Pibliye
       see_all_updates: Get tou bann miz-a-zour
+      show_all_updates: 
     modal_dialogue:
       close_modal: Ferm bwat dialog modal
     notice:
@@ -151,7 +179,7 @@ mfe:
       label: Mo-de-pas
       password_hidden_announcement: Ou mo-de-pas maske
       password_shown_announcement: Ou mo-de-pas vizib
-    previous_and_next_navigation:
+    pagination:
       next: Prosin
       pagination: Pazinasion
       previous: Presedan
@@ -174,15 +202,27 @@ mfe:
       related_external_links: Ayer lor internet
       related_guides: Gid detaye
       statistical_data_sets: Lansanb bann done statistik
+      toggle_visually_hidden_text:
+        collections: 
+        related_external_links:
+        related_guides:
+        related_items: 
+        statistical_data_sets: 
+        topical_events: 
+        topics: 
+        world_locations:
       topical_events: Evennman aktialite
       topics: Explor sa tem-la
       ukraine:
+        links:
         title: Invazion Ukraine
       world_locations: Lokalizasion mondial
     search_box:
       input_title: Resers
       label: Fer resers lor GOV.UK
       search_button: Resers
+    service_navigation:
+      menu_toggle:
     share_links:
       all_opens_in_new_tab: Bann lien swivan ouver dan enn nouvo tab
       opens_in_new_tab: (ouver dan enn nouvo tab)
@@ -198,6 +238,8 @@ mfe:
       show_all: Montre tou bann letap
     step_by_step_nav_related:
       part_of: Enn parti depi
+      this_page_is:
+      this_page_is_part_of_html:
     subscription_links:
       email_signup_link_text: Resevwar bann email
       feed_link_label: Kopie-kol sa URL-la dan ou feed reader
@@ -214,9 +256,3 @@ mfe:
       filter_message: Okenn rezilta korespondan
     tabs:
       contents: Konteni
-  common:
-    hide: Maske
-    show: Montre
-    toggle_less: Montre mwins
-    toggle_more: '%{show} %{number} plis'
-    translations: Tradiksion
