@@ -1,6 +1,6 @@
 @use "sass:color";
 @use "../base" as *;
-@use "../mixins/high-contrast-outline" as *;
+@use "../mixins" as *;
 
 $thumbnail-width: 99px;
 $thumbnail-height: 140px;
@@ -34,7 +34,7 @@ $thumbnail-border-width: 5px;
     height: $thumbnail-height;
   }
 
-  @include high-contrast-outline;
+  @include gem-c-high-contrast-outline;
 }
 
 .gem-c-attachment__details {
