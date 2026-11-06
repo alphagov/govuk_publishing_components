@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 // Loop over all of the organisation colours provided by govuk-frontend and add a `brand--` prefix
 // https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/govuk/settings/_colours-organisations.scss#L22
 @each $organisation in map-keys($govuk-colours-organisations) {
