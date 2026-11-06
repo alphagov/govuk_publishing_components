@@ -268,7 +268,7 @@ Some elements such as background images do not print by default in most browsers
 
 ### Print styles helpers
 
-There are currently three helper classes available for controlling print output in [`_print_support.scss`](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/lib/_print_support.scss). These helper classes should be added to a component's view template in the appropriate places.
+There are currently three helper classes available for controlling print output in [`_print-support.scss`](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/lib/_print-support.scss). These helper classes should be added to a component's view template in the appropriate places.
 
 #### Full page width columns
 
