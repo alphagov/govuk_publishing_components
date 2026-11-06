@@ -1,7 +1,8 @@
 // This file contains the styles for the Component Guide.
 @use "sass:color";
 @use "../govuk_publishing_components/base" as *;
-
+@use "../govuk_publishing_components/govuk-core";
+@use "../govuk_publishing_components/lib";
 @use "../govuk_publishing_components/all-components";
 
 $gem-guide-border-width: 1px;
