@@ -70,6 +70,9 @@ sw:
       - Tungependa kuweka vidakuzi vya ziada ili kuelewa jinsi unavyotumia tovuti ya GOV.UK
       - kumbuka mipangilio yako na uboreshe huduma za serikali.
       - Tunatumia pia vidakuzi vilivyowekwa na tovuti zingine ili kutusaidia kutoa maudhui kutoka kwenye huduma zao.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Vidakuzi kwenye tovuti ya GOV.UK
     devolved_nations:
       applies_to:

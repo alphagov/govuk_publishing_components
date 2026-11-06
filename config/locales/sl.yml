@@ -77,6 +77,9 @@ sl:
       - Uporabljamo tudi piškotke
       - ki so jih nastavila druga spletna mesta
       - kar nam pomagajo pri zagotavljanju vsebine iz njihovih storitev.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Piškotki na GOV.UK
     devolved_nations:
       applies_to:

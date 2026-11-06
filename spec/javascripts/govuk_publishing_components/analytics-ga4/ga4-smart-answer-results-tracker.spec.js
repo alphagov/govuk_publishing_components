@@ -97,6 +97,15 @@ describe('GA4 smart answer results tracking', function () {
       expect(smartAnswerTracker.startModule).toHaveBeenCalled()
     })
 
+    it('starts the module if aggregate consent has already been given', function () {
+      GOVUK.setDefaultConsentCookie()
+      var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)
+      spyOn(smartAnswerTracker, 'startModule').and.callThrough()
+      smartAnswerTracker.init()
+
+      expect(smartAnswerTracker.startModule).toHaveBeenCalled()
+    })
+
     it('does not do anything if consent is not given', function () {
       this.denyCookies()
       var smartAnswerTracker = new GOVUK.Modules.Ga4SmartAnswerResultsTracker(smartAnswerResultsParentEl)

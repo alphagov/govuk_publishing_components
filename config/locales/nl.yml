@@ -70,6 +70,9 @@ nl:
       - We willen graag extra cookies plaatsen om te begrijpen hoe u GOV.UK gebruikt
       - uw instellingen te onthouden en overheidsdiensten te verbeteren.
       - We gebruiken ook cookies die door andere sites worden geplaatst om ons te helpen inhoud van hun diensten te leveren.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookies op GOV.UK
     devolved_nations:
       applies_to:
