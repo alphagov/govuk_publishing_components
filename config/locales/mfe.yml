@@ -1,0 +1,222 @@
+---
+mfe:
+  components:
+    attachment:
+      page:
+        one: 1 paz
+        other: '%{count} paz'
+      opendocument_html: Sa fisie-la dan format  "OpenDocument"
+      order_a_copy: Komann enn exanpler
+      preview_aria_label: Konsilte  %{title} online
+      preview_link: Konsilte online
+      reference: 'Ref: %{reference}'
+      request_format_cta: Demann enn format aksesib
+      request_format_details_html: Si ou servi asistans teknolozik (kouma enn lekter lekran) ek bizin enn version
+        sa dokiman-la dan enn format plis aksesib, avoy enn email lor <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Dir nou ki format ou pe bizin.
+        Li pou ed nou kone ki teknolozi asistans ou pe servi.
+      request_format_text: Sa fisie -la kapav pa adapte pou bann itilizater ki servi teknolozi asistans
+    accordion:
+      hide_all: Maske tou seksion
+      show_all: Montre tou seksion
+      this_section_visually_hidden: sa seksion-la
+    article_schema:
+      scoped_search_description: Rod dan  %{title}
+    back_link:
+      back: Retour
+    character_count:
+      body: Ou kapav met ziska %{number} %{type}
+      type:
+        characters: karakter
+        words: bann mo
+    chart:
+      accessibility_heading: Tablo linformasion pou "%{chart_heading}"
+      accessibility_html: Sa grafik-la li enn reprezantasion viziel bann linformasion ki disponib dan tablo
+      accessibility_link: Pas ziska "%{chart_heading}" tablo linformasion
+      table_dropdown: Afis bann linformasion dan enn tablo
+    chat_entry:
+      description: Gagn bann repons rapid, personalize a ou bann kestion lor ou biznes avek zouti Intelizans Artifisiel
+        (IA) GOV.UK
+      heading: Demann chat GOV.UK
+    contents_list:
+      contents: Konteni
+    contextual_sidebar:
+      pretitle: Egalman inklir dan
+    cookie_banner:
+      buttons:
+        accept_cookies: Aksepte bann cookies siplemanter
+        reject_cookies: Refiz bann cookies siplemanter
+        view_cookies: Afis bann cookies
+      confirmation_message:
+        accepted: Ou finn aksepte bann cookies siplemanter
+        html: Ou kapav %{link} a ninport ki moman
+        link: Sanz paramet ou bann cookies
+        rejected: Ou finn refiz bann cookies siplemanter
+      hide: Maske sa mesaz-la
+      text:
+      - Nou itiliz sertin cookies esansiel pou fonksionnman sa sitweb-la
+      - Nou swete itiliz bann cookies siplemanter pou konpran kouma ou servi GOV.UK; rapel ou bann paramet ek amelior
+        servis piblik
+      - Nou ousi itiliz cookies depoze par lezot sitweb pou propoz konteni depi zot servis
+      title: Cookies lor GOV.UK
+    devolved_nations:
+      applies_to: Aplikab a
+      connectors:
+        last_word: ek
+        two_words: ek
+      england: Langleter
+      northern_ireland: Irland-di-Nor
+      scotland: Lekos
+      type:
+        consultation: Konsiltasion pou %{nation}
+        detailed_guide: Gid pou %{nation}
+        guidance: Gid pou %{nation}
+        publication: Piblikasion pou %{nation}
+      wales: Wales
+    feedback:
+      dont_include_personal_info: Napa kominik okenn informasion personel ouswa finansie kouma ou Nimero Lasirans
+        Nasional ouswa ou kordone ou kart kredi
+      email_address: Ladres email
+      help_us_improve_govuk: Ed nou amelior GOV.UK
+      is_not_useful: sa paz-la pa itil
+      is_this_page_useful: Eski sa paz-la itil?
+      is_useful: Sa paz-la itil
+      maybe: Petet
+      more_about_visit: Pou ed nou amelior GOV.UK, nou anvi konn inpe plis lor ou vizit zordi
+      send: Avoye
+      send_me_survey: Avoy mwa sondaz-la
+      something_wrong: Signal enn problem konsernan sa paz-la
+      thank_you_for_feedback: Mersi pou ou feedback
+      what_doing: Ki ou ti pe rod fer?
+      what_wrong: Ki problem ou finn rankontre?
+    intervention:
+      accessible_link_text_suffix: (ouver dan enn nouvo tab)
+    layout_footer:
+      copyright_html: Crown copyright
+      licence_html: Tou konteni disponib anba "Open Government Licence", sof indikasion kontrer"
+      support_links: Lien asistans
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html: Se enn nouvo servis. Ou feedback pou ed nou amelior li.
+        navigation:
+          menu_bar:
+            account:
+              link_text: Ou GOV.UK One Login
+            manage:
+              link_text: Paramet
+    layout_header:
+      hide_button: Maske resers
+      menu: Meni
+      search_button: Fer resers lor GOV.UK
+      show_button: Afis resers
+      top_level: Navigasion prinsipal
+    layout_super_navigation_header:
+      logo_link_title: Al lor paz-dakey GOV.UK
+      logo_text: '[GOV.UK](http://gov.uk/)'
+      menu_toggle_label:
+        hide: Maske %{label} meni
+        show: Montre %{label} meni
+      navigation_link:
+        label: Meni
+      navigation_menu_heading: Meni navigasion
+      navigation_search_heading: Resers ek paz popiler
+      navigation_search_subheading: Resers
+      search_text: Fer resers lor GOV.UK
+    metadata:
+      and: ek
+      from: Depi
+      history: Listwar
+      last_updated: Dernie miz-a-zour
+      part_of: Inklir dan
+      published: Pibliye
+      see_all_updates: Get tou bann miz-a-zour
+    modal_dialogue:
+      close_modal: Ferm bwat dialog modal
+    notice:
+      banner_title: Inportan
+    option_select:
+      found_multiple: Bann opsion trouve
+      found_single: Opsion trouve
+      selected: Seleksione
+    organisation_schema:
+      all_content_search_description: Dekouver tou konteni depi %{organisation}
+    password_input:
+      button: Montre
+      button_aria_hide_label: Maske mo-de-pas
+      button_aria_label: Montre mo-de-pas
+      button_hide: Maske
+      error_text_prefix: Erer
+      label: Mo-de-pas
+      password_hidden_announcement: Ou mo-de-pas maske
+      password_shown_announcement: Ou mo-de-pas vizib
+    previous_and_next_navigation:
+      next: Prosin
+      pagination: Pazinasion
+      previous: Presedan
+    print_link:
+      text: Imprim sa paz-la
+    radio:
+      or: ouswa
+    related_footer_navigation:
+      collections: Bann koleksion
+      policies: Bann politik
+      statistical_data_sets: Lansanb bann done statistik
+      topical_events: Bann evennman aktialite
+    related_navigation:
+      collections: Koleksion
+      external_links: Ayer lor internet
+      policies: Politik
+      publishers: Pibliye par
+      related_contacts: Lezot kontak
+      related_content: Konteni asosie
+      related_external_links: Ayer lor internet
+      related_guides: Gid detaye
+      statistical_data_sets: Lansanb bann done statistik
+      topical_events: Evennman aktialite
+      topics: Explor sa tem-la
+      ukraine:
+        title: Invazion Ukraine
+      world_locations: Lokalizasion mondial
+    search_box:
+      input_title: Resers
+      label: Fer resers lor GOV.UK
+      search_button: Resers
+    share_links:
+      all_opens_in_new_tab: Bann lien swivan ouver dan enn nouvo tab
+      opens_in_new_tab: (ouver dan enn nouvo tab)
+    single_page_notification_button:
+      subscribe_text: Resevwar bann email konsernan sa paz-la
+      unsubscribe_text: Aret resevwar bann email konsernan sa paz-la
+    skip_link:
+      text: Al direkteman lor konteni prinsipal
+    step_by_step_nav:
+      hide: Maske
+      hide_all: Maske tou bann letap
+      show: Montre
+      show_all: Montre tou bann letap
+    step_by_step_nav_related:
+      part_of: Enn parti depi
+    subscription_links:
+      email_signup_link_text: Resevwar bann email
+      feed_link_label: Kopie-kol sa URL-la dan ou feed reader
+      feed_link_text: Abonn avek feed
+      subscriptions: Abonnman
+    success_alert:
+      success: Reisi
+    summary_list:
+      delete: Delete
+      edit: Sanze
+    table:
+      filter_count: Rezilta pou term-la ki finn mete
+      filter_label: Filtre
+      filter_message: Okenn rezilta korespondan
+    tabs:
+      contents: Konteni
+  common:
+    hide: Maske
+    show: Montre
+    toggle_less: Montre mwins
+    toggle_more: '%{show} %{number} plis'
+    translations: Tradiksion
