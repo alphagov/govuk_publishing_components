@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add Mauritian Creole translations ([PR #5856](https://github.com/alphagov/govuk_publishing_components/pull/5856))
 * Move brand-colours stylesheet to lib folder ([PR #5851](https://github.com/alphagov/govuk_publishing_components/pull/5851))
 * Move markdown-typography mixin styles directly to govspeak typography ([PR #5850](https://github.com/alphagov/govuk_publishing_components/pull/5850))
 

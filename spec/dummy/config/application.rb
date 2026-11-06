@@ -59,6 +59,7 @@ module Dummy
       ko
       lt
       lv
+      mfe
       ms
       mt
       nl
