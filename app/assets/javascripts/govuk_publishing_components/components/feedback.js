@@ -73,7 +73,7 @@
 
         this.done = function () {
           if (xhr.status === 200) {
-            this.showFormSuccess(xhr.message)
+            this.showFormSuccess()
             this.revealInitialPrompt()
             this.activeForm.hidden = true
             clearInterval(this.timerInterval)
