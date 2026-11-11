@@ -7,8 +7,19 @@ body: |
 accessibility_criteria: |
   Charts must:
 
-    - use line colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
-    - contain a `heading` and `description` so that skip links and semantics are accurate
+    - use colours with a contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+    - use colours with an adjacent colour ratio of 3:1 to meet WCAG AA
+    - provide an alternative way of interpreting the data, so it can be understood without relying on visual interpretation alone (e.g. a table)
+    - contain a heading and description which should explain:
+      - the highest and lowest values
+      - overall trends or changes
+      - significant differences between categories
+      - notable peaks, drops or exceptions
+      - the period, group or category to which those findings relate
+    - have axes, units, legends and data labels with meaningful accessible names or text equivalents
+    - have an appropriate table caption or heading
+    - not use colour as the sole method of distinguishing data series
+    - remain usable when text is resized and the page is zoomed to 200% and 400%
 shared_accessibility_criteria:
   - link
 uses_component_wrapper_helper: true
