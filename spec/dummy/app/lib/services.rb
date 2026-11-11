@@ -1,4 +1,5 @@
 require "gds_api/content_store"
+require "gds_api/validators/base_path_validator"
 
 module Services
   def self.content_store
