@@ -18,13 +18,13 @@
 <% end %>
 
 <div class="component-show">
-  <div class="component-doc">
+  <div class="component-doc" data-module="rtl-toggle">
     <div class="component-markdown">
       <%= sanitize @component_example.html_description %>
     </div>
-    <h2 class="govuk-heading-m">
+    <h2 class="govuk-heading-m js-toggle-heading">
       How it looks
-      <small class="govuk-!-font-size-16">(<a href="<%= component_preview_path(@component_doc.id, @component_example.id) %>" class="govuk-link">preview</a>)</small>
+      <small>(<a href="<%= component_preview_path(@component_doc.id, @component_example.id) %>" class="govuk-link">preview</a>)</small>
     </h2>
     <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, example: @component_example } %>
 
