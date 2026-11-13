@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 $stroke-width: 1px;
 $number-circle-size: 30px;
 $number-circle-size-large: 35px;
@@ -390,8 +392,8 @@ $top-border: solid 1px govuk-functional-colour("border");
 
 .gem-c-step-nav__title {
   margin: 0;
-  @include step-nav-font(19, $weight: bold, $line-height: 1.4);
   color: govuk-functional-colour(text);
+  @include step-nav-font(19, $weight: bold, $line-height: 1.4);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold, $line-height: 1.4);
@@ -412,8 +414,8 @@ $top-border: solid 1px govuk-functional-colour("border");
 
 .gem-c-step-nav__panel {
   padding-bottom: govuk-spacing(5);
-  @include step-nav-font(16);
   color: govuk-functional-colour(text);
+  @include step-nav-font(16);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(16, $tablet-size: 19);

@@ -1,3 +1,6 @@
+@use "sass:list";
+@use "../../base" as *;
+
 // Govspeak charts
 // https://components.publishing.service.gov.uk/component-guide/govspeak/charts
 // Uses Magna Charta (https://github.com/alphagov/magna-charta)
@@ -10,7 +13,6 @@
 // https://github.com/alphagov/magna-charta/blob/master/demo/stylesheets/magna-charta.css
 
 // stylelint-disable max-nesting-depth
-@use "sass:list";
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {

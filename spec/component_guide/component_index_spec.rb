@@ -39,41 +39,41 @@ describe "Component guide index", :capybara do
 
   it "includes suggested sass for the application" do
     visit "/component-guide"
-    expected_main_sass = "@import 'govuk_publishing_components/specific-components';
-@import 'govuk_publishing_components/components/accordion';
-@import 'govuk_publishing_components/components/app-promo-banner';
-@import 'govuk_publishing_components/components/back-link';
-@import 'govuk_publishing_components/components/breadcrumbs';
-@import 'govuk_publishing_components/components/button';
-@import 'govuk_publishing_components/components/contextual-sidebar';
-@import 'govuk_publishing_components/components/cookie-banner';
-@import 'govuk_publishing_components/components/cross-service-header';
-@import 'govuk_publishing_components/components/error-message';
-@import 'govuk_publishing_components/components/error-summary';
-@import 'govuk_publishing_components/components/feedback';
-@import 'govuk_publishing_components/components/govspeak';
-@import 'govuk_publishing_components/components/heading';
-@import 'govuk_publishing_components/components/hint';
-@import 'govuk_publishing_components/components/input';
-@import 'govuk_publishing_components/components/label';
-@import 'govuk_publishing_components/components/layout-footer';
-@import 'govuk_publishing_components/components/layout-for-admin';
-@import 'govuk_publishing_components/components/layout-for-public';
-@import 'govuk_publishing_components/components/layout-header';
-@import 'govuk_publishing_components/components/layout-super-navigation-header';
-@import 'govuk_publishing_components/components/phase-banner';
-@import 'govuk_publishing_components/components/print-link';
-@import 'govuk_publishing_components/components/related-navigation';
-@import 'govuk_publishing_components/components/search';
-@import 'govuk_publishing_components/components/search-with-autocomplete';
-@import 'govuk_publishing_components/components/service-navigation';
-@import 'govuk_publishing_components/components/skip-link';
-@import 'govuk_publishing_components/components/step-by-step-nav';
-@import 'govuk_publishing_components/components/step-by-step-nav-header';
-@import 'govuk_publishing_components/components/step-by-step-nav-related';
-@import 'govuk_publishing_components/components/tabs';
-@import 'govuk_publishing_components/components/tag';
-@import 'govuk_publishing_components/components/textarea';"
+    expected_main_sass = "@use 'govuk_publishing_components/specific-components';
+@use 'govuk_publishing_components/components/accordion';
+@use 'govuk_publishing_components/components/app-promo-banner';
+@use 'govuk_publishing_components/components/back-link';
+@use 'govuk_publishing_components/components/breadcrumbs';
+@use 'govuk_publishing_components/components/button';
+@use 'govuk_publishing_components/components/contextual-sidebar';
+@use 'govuk_publishing_components/components/cookie-banner';
+@use 'govuk_publishing_components/components/cross-service-header';
+@use 'govuk_publishing_components/components/error-message';
+@use 'govuk_publishing_components/components/error-summary';
+@use 'govuk_publishing_components/components/feedback';
+@use 'govuk_publishing_components/components/govspeak';
+@use 'govuk_publishing_components/components/heading';
+@use 'govuk_publishing_components/components/hint';
+@use 'govuk_publishing_components/components/input';
+@use 'govuk_publishing_components/components/label';
+@use 'govuk_publishing_components/components/layout-footer';
+@use 'govuk_publishing_components/components/layout-for-admin';
+@use 'govuk_publishing_components/components/layout-for-public';
+@use 'govuk_publishing_components/components/layout-header';
+@use 'govuk_publishing_components/components/layout-super-navigation-header';
+@use 'govuk_publishing_components/components/phase-banner';
+@use 'govuk_publishing_components/components/print-link';
+@use 'govuk_publishing_components/components/related-navigation';
+@use 'govuk_publishing_components/components/search';
+@use 'govuk_publishing_components/components/search-with-autocomplete';
+@use 'govuk_publishing_components/components/service-navigation';
+@use 'govuk_publishing_components/components/skip-link';
+@use 'govuk_publishing_components/components/step-by-step-nav';
+@use 'govuk_publishing_components/components/step-by-step-nav-header';
+@use 'govuk_publishing_components/components/step-by-step-nav-related';
+@use 'govuk_publishing_components/components/tabs';
+@use 'govuk_publishing_components/components/tag';
+@use 'govuk_publishing_components/components/textarea';"
 
     expect(page).to have_selector(".govuk-heading-m", text: "Gem components used by this app (18)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")

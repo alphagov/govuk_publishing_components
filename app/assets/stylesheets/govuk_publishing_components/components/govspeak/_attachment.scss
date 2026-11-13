@@ -7,6 +7,8 @@
 
 // stylelint-disable max-nesting-depth
 @use "sass:color";
+@use "../../base" as *;
+@use "../../mixins" as *;
 
 .govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
 .gem-c-govspeak {
@@ -41,7 +43,7 @@
         background: govuk-colour("white");
         box-shadow: 0 2px 2px govuk-colour("black", $variant: "tint-50"), 0 0 0 5px govuk-functional-colour("border");
 
-        @include high-contrast-outline;
+        @include gem-c-high-contrast-outline;
       }
 
       svg {

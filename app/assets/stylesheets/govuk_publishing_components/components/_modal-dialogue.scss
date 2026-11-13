@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 $govuk-modal-margin: govuk-spacing(6);
 $govuk-modal-close-button-size: 44px;
 $govuk-modal-z-index: 1000;
@@ -35,8 +37,8 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
     outline: $govuk-focus-width solid govuk-functional-colour(focus);
   }
 
-  @include govuk-font($size: 19);
   color: govuk-functional-colour(text);
+  @include govuk-font($size: 19);
   @include govuk-media-query($from: tablet) {
     position: relative;
     top: inherit;
