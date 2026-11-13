@@ -1,0 +1,44 @@
+.gem-c-datetime-fields__date-time-wrapper {
+  margin-top: govuk-spacing(-2);
+}
+
+.gem-c-datetime-fields__date-time {
+  display: inline-block;
+  margin-right: govuk-spacing(2);
+  margin-top: govuk-spacing(2);
+
+  // For using the select component
+  .govuk-select {
+    max-width: 4.5em;
+    min-width: 4.5em;
+  }
+}
+
+// This is not needed when using the select component
+.govuk-select {
+  &.gem-c-datetime-fields__date-time-input {
+    max-width: 4.5em;
+    min-width: 4.5em;
+  }
+
+  // Is this ever used? Pretty sure it isn't
+  &.gem-c-datetime-fields__date-time-input--large {
+    max-width: 7.5em;
+    min-width: 7.5em;
+  }
+}
+
+// Probably better to do this as generated text rather than a <p> element
+.gem-c-datetime-fields__time-separator {
+  display: inline-block;
+  margin: govuk-spacing(6) + 5 govuk-spacing(2) 0 0;
+  margin-bottom: 0;
+}
+
+// Don't think this is ever used but if it is will need to be restored
+// .gem-c-datetime-fields__date-time-input--large {
+//   .govuk-select {
+//     max-width: 7.5em;
+//     min-width: 7.5em;
+//   }
+// }
