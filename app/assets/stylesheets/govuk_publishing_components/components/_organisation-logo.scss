@@ -7,9 +7,7 @@
   @include govuk-typography-common;
   @include govuk-font-size(19);
 
-  @media (forced-colors: active) {
-    background-color: CanvasText;
-  }
+  
 }
 
 .gem-c-organisation-logo__container {
@@ -41,6 +39,24 @@
   border-left: 2px solid govuk-colour("black");
   padding-top: 35px;
   padding-left: 8px;
+
+  @media (forced-colors: active) {
+    background-image: none ! important;
+
+    // Render the PNG as a mask filled with the system LinkText colour instead of its original
+    // colour, so that all colours come from the system palette which automatically has good contrast.
+    &::before {
+      content: "";
+      mask-image: var(--icon-url);
+      mask-size: auto 32px;
+      mask-repeat: no-repeat;
+      background-color: LinkText;
+      position: absolute;
+      height: 32px;
+      width: 100%;
+      top: 0;
+    }
+  }
 
   .brand--executive-office & {
     border-left-width: 0;
@@ -100,7 +116,8 @@
 }
 
 @mixin crest($crest, $xpos:0, $ypos:0) {
-  background: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png") no-repeat $xpos $ypos;
+  --icon-url: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png");
+  background: var(--icon-url) no-repeat $xpos $ypos;
   background-size: auto 32px;
 }
 
