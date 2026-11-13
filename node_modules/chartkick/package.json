@@ -1,0 +1,50 @@
+{
+  "name": "chartkick",
+  "version": "5.0.1",
+  "homepage": "https://github.com/ankane/chartkick.js",
+  "description": "Create beautiful charts with one line of JavaScript",
+  "type": "module",
+  "main": "./dist/chartkick.js",
+  "module": "./dist/chartkick.esm.js",
+  "exports": {
+    ".": {
+      "require": "./dist/chartkick.js",
+      "import": "./dist/chartkick.esm.js"
+    },
+    "./chart.js": "./chart.js/chart.esm.js",
+    "./highcharts": "./highcharts/highcharts.esm.js"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint src"
+  },
+  "keywords": [
+    "charts"
+  ],
+  "authors": [
+    "ankane"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ankane/chartkick.js"
+  },
+  "files": [
+    "dist",
+    "chart.js",
+    "highcharts"
+  ],
+  "devDependencies": {
+    "@rollup/plugin-buble": "^1.0.1",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.3.0",
+    "eslint": "^8.8.0",
+    "rollup": "^3.9.1"
+  },
+  "optionalDependencies": {
+    "chart.js": "4",
+    "chartjs-adapter-date-fns": ">=3",
+    "date-fns": ">=2"
+  }
+}

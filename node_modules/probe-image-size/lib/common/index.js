@@ -1,0 +1,82 @@
+'use strict'
+
+
+var Transform = require('stream').Transform
+var streamParser = require('stream-parser')
+var readLeBe = require('./read_le_be')
+
+
+function ParserStream () {
+  Transform.call(this, { readableObjectMode: true })
+}
+
+// Inherit from Transform
+ParserStream.prototype = Object.create(Transform.prototype)
+ParserStream.prototype.constructor = ParserStream
+
+streamParser(ParserStream.prototype)
+
+
+exports.ParserStream = ParserStream
+
+
+exports.sliceEq = function (src, start, dest) {
+  for (var i = start, j = 0; j < dest.length;) {
+    if (src[i++] !== dest[j++]) return false
+  }
+  return true
+}
+
+exports.str2arr = function (str, format) {
+  var arr = []
+  var i = 0
+
+  if (format && format === 'hex') {
+    while (i < str.length) {
+      arr.push(parseInt(str.slice(i, i + 2), 16))
+      i += 2
+    }
+  } else {
+    for (; i < str.length; i++) {
+      arr.push(str.charCodeAt(i) & 0xFF)
+    }
+  }
+
+  return arr
+}
+
+function ProbeError (message, code, statusCode) {
+  Error.call(this)
+
+  // Include stack trace in error object
+  if (Error.captureStackTrace) {
+    // Chrome and NodeJS
+    Error.captureStackTrace(this, this.constructor)
+  } else {
+    // FF, IE 10+ and Safari 6+. Fallback for others
+    this.stack = (new Error()).stack || ''
+  }
+
+  this.name = this.constructor.name
+
+  this.message = message
+  if (code) this.code = code
+  if (statusCode) this.statusCode = statusCode
+}
+
+// Inherit from Error
+ProbeError.prototype = Object.create(Error.prototype)
+ProbeError.prototype.constructor = ProbeError
+
+
+exports.ProbeError = ProbeError
+
+// Re-export buffer readers
+exports.readUInt16LE = readLeBe.readUInt16LE
+exports.readUInt16BE = readLeBe.readUInt16BE
+exports.readInt16LE = readLeBe.readInt16LE
+exports.readInt16BE = readLeBe.readInt16BE
+exports.readUInt32LE = readLeBe.readUInt32LE
+exports.readUInt32BE = readLeBe.readUInt32BE
+exports.readInt32LE = readLeBe.readInt32LE
+exports.readInt32BE = readLeBe.readInt32BE
