@@ -72,7 +72,7 @@
         data_attributes_link[:ga4_event] = { "event_name": "select_content", "type": "related content" } unless disable_ga4
       %>
       <%= tag.li(class: classes, data: data_attributes_li) do %>
-        <%= link_to("#", class: "gem-c-related-navigation__toggle", data: data_attributes_link) do %>
+        <%= link_to("#", class: "gem-c-related-navigation__toggle", id: "toggle-more-links", data: data_attributes_link) do %>
           <%= t("common.toggle_more_html",
             show: t("common.show"),
             number: related_nav_helper.remaining_link_count(links),
