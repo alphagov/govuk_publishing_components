@@ -40,5 +40,17 @@ module VisualRegressionConfig
         wait_selector: "#toggle_world_locations",
       },
     ],
+    "/component-guide/step_by_step_nav/default/preview" => [
+      {
+        state_name: "Show do a thing step",
+        toggle_selector: "#do-a-thing button[aria-expanded='false']",
+        wait_selector: "#step-panel-do-a-thing-1",
+      },
+      {
+        state_name: "Show all steps",
+        toggle_selector: ".js-step-controls-button",
+        wait_selector: "#step-panel-do-something-else-3",
+      },
+    ],
   }.freeze
 end
