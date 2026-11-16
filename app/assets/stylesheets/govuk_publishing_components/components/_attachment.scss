@@ -10,6 +10,10 @@ $thumbnail-border-width: 5px;
   @include govuk-clearfix;
 }
 
+.gem-c-attachment .govuk-link {
+  color: red
+}
+
 .gem-c-attachment__thumbnail {
   position: relative;
   width: auto;
