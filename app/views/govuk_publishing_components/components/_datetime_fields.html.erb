@@ -1,7 +1,4 @@
 <%
-  id = id
-  date_id = "#{id}_date"
-  date_only ||= false
   date_heading ||= "Date"
   time_heading ||= "Time"
 
@@ -88,82 +85,75 @@
 
   time_select_classes = %w[govuk-select gem-c-datetime-fields__date-time-input]
   time_select_classes << "govuk-select--error" if (error_items.present? || error_items_time.present?)
-
-  data_attributes ||= {}
 %>
 
-<%= tag.div id: do %>
-  <%= tag.div class: root_classes, data: data_attributes do %>
-    <% if error_items %>
-      <%= render "govuk_publishing_components/components/error_message", {
-        id:  error_id,
-        items: error_items,
-      } %>
-    <% end %>
+<%= tag.div class: root_classes do %>
+  <% if error_items %>
+    <%= render "govuk_publishing_components/components/error_message", {
+      id:  error_id,
+      items: error_items,
+    } %>
+  <% end %>
 
-    <%= render "govuk_publishing_components/components/date_input", {
-      id: date_id,
-      hint: date_hint,
-      error_items: error_items_date,
-      error_id: error_items.present? ? error_id : nil,
-      items: date_input_items,
-      legend_text: date_heading,
-      legend_heading_level: heading_level,
-      legend_size: heading_size,
+  <%= render "govuk_publishing_components/components/date_input", {
+    hint: date_hint,
+    error_items: error_items_date,
+    error_id: error_items.present? ? error_id : nil,
+    items: date_input_items,
+    legend_text: date_heading,
+    legend_heading_level: heading_level,
+    legend_size: heading_size,
+    data_attributes: {
+      ga4_form_section: date_ga4_form_section,
+    },
+} %>
+  <%= tag.div class: time_group_classes do %>
+    <%= render "govuk_publishing_components/components/fieldset", {
+      legend_text: time_heading,
+      heading_level: heading_level,
+      heading_size: heading_size,
+      classes: "govuk-date-input",
       data_attributes: {
-        ga4_form_section: date_ga4_form_section,
+        ga4_form_section: time_ga4_form_section,
       },
-  } %>
-    <% unless date_only %>
-      <%= tag.div class: time_group_classes do %>
-        <%= render "govuk_publishing_components/components/fieldset", {
-          legend_text: time_heading,
-          heading_level: heading_level,
-          heading_size: heading_size,
-          classes: "govuk-date-input",
-          data_attributes: {
-            ga4_form_section: time_ga4_form_section,
-          },
-        } do %>
-          <% if time_hint %>
-            <%= render "govuk_publishing_components/components/hint", {
-              text: time_hint,
-              id: time_hint_id,
-            } %>
-          <% end %>
-
-          <% if error_items_time %>
-            <%= render "govuk_publishing_components/components/error_message", {
-              id:  error_id_time,
-              items: error_items_time,
-            } %>
-          <% end %>
-
-          <div class="gem-c-datetime-fields__date-time-wrapper">
-            <div class="gem-c-datetime-fields__date-time">
-              <%= render "govuk_publishing_components/components/select", {
-                id: hour_id,
-                label: "Hour",
-                name: hour_name,
-                error_id: error_id_times,
-                options: hour_options,
-              } %>
-            </div>
-
-            <p class="govuk-body gem-c-datetime-fields__time-separator">:</p>
-
-            <div class="gem-c-datetime-fields__date-time">
-              <%= render "govuk_publishing_components/components/select", {
-                id: minute_id,
-                label: "Minute",
-                name:  minute_name,
-                error_id: error_id_times,
-                options: minute_options,
-              } %>
-            </div>
-          </div>
-        <% end %>
+    } do %>
+      <% if time_hint %>
+        <%= render "govuk_publishing_components/components/hint", {
+          text: time_hint,
+          id: time_hint_id,
+        } %>
       <% end %>
+
+      <% if error_items_time %>
+        <%= render "govuk_publishing_components/components/error_message", {
+          id:  error_id_time,
+          items: error_items_time,
+        } %>
+      <% end %>
+
+      <div class="gem-c-datetime-fields__date-time-wrapper">
+        <div class="gem-c-datetime-fields__date-time">
+          <%= render "govuk_publishing_components/components/select", {
+            id: hour_id,
+            label: "Hour",
+            name: hour_name,
+            error_id: error_id_times,
+            options: hour_options,
+          } %>
+        </div>
+
+        <p class="govuk-body gem-c-datetime-fields__time-separator">:</p>
+
+        <div class="gem-c-datetime-fields__date-time">
+          <%= render "govuk_publishing_components/components/select", {
+            id: minute_id,
+            label: "Minute",
+            name:  minute_name,
+            error_id: error_id_times,
+            options: minute_options,
+          } %>
+        </div>
+      </div>
     <% end %>
   <% end %>
 <% end %>
