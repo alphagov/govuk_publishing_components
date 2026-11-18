@@ -1,5 +1,6 @@
 // Default logo corresponds with the "medium stacked" Whitehall equivalent
 .gem-c-organisation-logo {
+  position: relative;
   font-weight: 400;
   // When this is a heading the margin needs to be set to stop it from
   // inheriting the browser's default margin:
@@ -37,6 +38,24 @@
   border-left: 2px solid govuk-colour("black");
   padding-top: 35px;
   padding-left: 8px;
+
+  // Render the PNG as a mask filled with the system LinkText colour instead of its original
+  // colour, so that all colours come from the system palette which automatically has good contrast.
+  @media (forced-colors: active) {
+    background-image: none !important; // stylelint-disable-line 
+
+    &::before {
+      content: "";
+      mask-image: var(--icon-url);
+      mask-size: var(--icon-size);
+      mask-repeat: no-repeat;
+      background-color: LinkText;
+      position: absolute;
+      height: var(--icon-height);
+      width: 100%;
+      top: 0;
+    }
+  }
 
   .brand--executive-office & {
     border-left-width: 0;
@@ -96,13 +115,17 @@
 }
 
 @mixin crest($crest, $xpos:0, $ypos:0) {
-  background: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png") no-repeat $xpos $ypos;
-  background-size: auto 32px;
+  --icon-url: url("govuk_publishing_components/crests/#{$crest}_18px_x2.png");
+  --icon-height: 32px;
+  --icon-size: auto var(--icon-height);
+
+  background: var(--icon-url) no-repeat $xpos $ypos;
+  background-size: var(--icon-size);
 }
 
 @mixin tall-crest {
+  --icon-height: 34px; // This sets background-size: auto var(--icon-height)
   padding-top: 39px;
-  background-size: auto 34px;
 }
 
 .gem-c-organisation-logo__crest--dbt {
