@@ -8,6 +8,7 @@
   of the commit log.
 
 ## Unreleased
+* Make organisation logos accessible in Windows High Contrast mode ([PR #5876](https://github.com/alphagov/govuk_publishing_components/pull/5876))
 
 ## 71.2.0
 
