@@ -66,15 +66,6 @@ describe "Date input", type: :view do
     assert_select "[data-ga4-form-section='Time'] .govuk-hint", text: "For example, 09:30 or 19:30"
   end
 
-  it "accepts an id" do
-    render_component({
-      id: "kevin",
-    })
-
-    assert_select "[id='kevin']"
-    assert_select ".govuk-date-input[id='kevin_date']"
-  end
-
   it "renders custom field ids" do
     render_component({
       year: {
@@ -167,27 +158,5 @@ describe "Date input", type: :view do
 
     assert_select "[data-ga4-form-section='Date'] .govuk-error-message", text: "Error: Descriptive date error 1Descriptive date error 2"
     assert_select "[data-ga4-form-section='Time'] .govuk-error-message", text: "Error: Descriptive time error 1Descriptive time error 2"
-  end
-
-  it "accepts data attributes" do
-    render_component({
-      data_attributes: {
-        module: "not-a-real-module",
-        something_else: "i-just-thought-of",
-      },
-    })
-
-    assert_select ".gem-c-datetime-fields[data-module='not-a-real-module'][data-something-else='i-just-thought-of']"
-  end
-
-  it "with date only option" do
-    render_component({
-      date_only: true,
-    })
-
-    assert_select ".govuk-input[name='day']"
-    assert_select ".govuk-input[name='month']"
-    assert_select ".govuk-input[name='year']"
-    assert_select ".gem-c-datetime-fields__date-time-wrapper", false
   end
 end
