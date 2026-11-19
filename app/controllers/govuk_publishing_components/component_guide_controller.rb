@@ -46,11 +46,11 @@ module GovukPublishingComponents
     end
 
     def components_in_use_sass
-      additional_files = "@import 'govuk_publishing_components/specific-components';\n"
+      additional_files = "@use 'govuk_publishing_components/specific-components';\n"
       components = find_all_partials_in(get_used_component_names)
 
       components.map { |component|
-        "@import 'govuk_publishing_components/components/#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"))
+        "@use 'govuk_publishing_components/components/#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"))
       }.compact.uniq.sort.join("\n").squeeze("\n").prepend(additional_files)
     end
 

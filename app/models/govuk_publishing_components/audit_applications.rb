@@ -18,8 +18,8 @@ module GovukPublishingComponents
 
         find_components = /(?<=govuk_publishing_components\/components\/)[a-zA-Z_-]+(?=['"])/
 
-        @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all-components/ # if using the all stylesheets option
-        find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
+        @find_all_stylesheets = /@use ["']{1}govuk_publishing_components\/all-components/ # if using the all stylesheets option
+        find_stylesheets = /(?<=@use ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
 
         @find_all_javascripts = /\/\/ *= require govuk_publishing_components\/all_components/
         find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/

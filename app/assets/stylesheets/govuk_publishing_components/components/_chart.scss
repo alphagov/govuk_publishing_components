@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-chart {
   // slight hack to hide the table automatically added by the charts JS
   // not needed as we already output the table manually in the component
