@@ -57,6 +57,7 @@
             { href: "#how-to-call-this-component", text: "How to call this component" },
             ({ href: "#govuk-design-system", text: "GOV.UK Design System" } if @component_doc.govuk_frontend_components.any?),
             ({ href: "#accessibility-acceptance-criteria", text: "Accessibility acceptance criteria" } if @component_doc.accessibility_criteria.present?),
+            ({ href: "#children", text: "Child components" } if @component_doc.children.any?),
           ].compact,
         }),
         ({
@@ -107,6 +108,16 @@
         </div>
       </div>
     </div>
+  <% end %>
+
+  <% if @component_doc.children.any? %>
+    <h3 class="govuk-heading-m" id="children">Child components</h3>
+    <p class="govuk-body">This component contains the following components. Note that these components may also contain child components.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <% @component_doc.children.each do |child| %>
+        <li><a href="/component-guide/<%= child %>" class="govuk-link"><%= child.gsub("_", " ") %></a></li>
+      <% end %>
+    </ul>
   <% end %>
 
   <% if @component_doc.other_examples.any? or @component_doc.uses_component_wrapper_helper? %>

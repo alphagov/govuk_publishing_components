@@ -7,7 +7,8 @@ module GovukPublishingComponents
                 :component,
                 :accessibility_excluded_rules,
                 :source,
-                :embed
+                :embed,
+                :children
 
     def initialize(component)
       @component = component
@@ -18,6 +19,7 @@ module GovukPublishingComponents
       @accessibility_excluded_rules = component[:accessibility_excluded_rules]
       @source = component[:source]
       @embed = component[:embed]
+      @children = find_children
     end
 
     def accessibility_criteria
@@ -107,6 +109,19 @@ module GovukPublishingComponents
         example_data ||= {}
         example_data["embed"] ||= embed
         ComponentExample.new(id.to_s, example_data)
+      end
+    end
+
+    def find_children
+      filename = "_#{@id.downcase.gsub(' ', '_')}.html.erb"
+      file = "#{Dir.pwd}/app/views/govuk_publishing_components/#{GovukPublishingComponents::Config.component_directory_name}/#{filename}"
+      file = Rails.root.join("app", "views", GovukPublishingComponents::Config.component_directory_name, filename) if Rails.env.test?
+      return [] unless File.exist?(file)
+
+      src = File.read(file)
+      match = src.scan(/["']{1}(govuk_publishing_components\/components\/[a-z_-]+["']{1})/)
+      match.flatten.uniq.map(&:to_s).sort.map do |m|
+        m.gsub("govuk_publishing_components/components/", "").tr('\"\'', "")
       end
     end
 
