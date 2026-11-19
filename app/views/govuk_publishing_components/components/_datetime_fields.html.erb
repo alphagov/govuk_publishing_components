@@ -2,92 +2,44 @@
   date_heading ||= "Date"
   time_heading ||= "Time"
 
-  error_items ||= nil
   error_items_date ||= nil
+  error_items ||= nil
   error_items_time ||= nil
-  error_id = "error-#{SecureRandom.hex(4)}"
-  error_id_time = "error-time-#{SecureRandom.hex(4)}"
 
-  if error_items
-    error_id_times = error_id
-  elsif error_items_time
-    error_id_times = error_id_time
-  else
-    error_id_times = nil
-  end
+  datetime_fields_helper = GovukPublishingComponents::Presenters::DatetimeFieldsHelper.new(local_assigns)
+
+  error_id = datetime_fields_helper.error_id()
 
   heading_level ||= nil
   heading_size ||= nil
 
   date_hint ||= nil
   time_hint ||= nil
-  time_hint_id = "time-hint-#{SecureRandom.hex(4)}"
 
   year ||= nil
   month ||= nil
   day ||= nil
 
-  date_input_items = [
-    {
-      :label => "Day",
-      :name => day ? day[:name] : "day",
-      :width => 2,
-      :id => day ? day[:id] : nil,
-      :value => day ? day[:value] : nil,
-    },
-    {
-      :label => "Month",
-      :name => month ? month[:name] : "month",
-      :width => 2,
-      :id => month ? month[:id] : nil,
-      :value => month_value = month ? month[:value] : nil,
-    },
-    {
-      :label => "Year",
-      :name => year ? year[:name] : "year",
-      :width => 4,
-      :id => year ? year[:id] : nil,
-      :value => year ? year[:value] : nil,
-    },
-  ]
-
   hour ||= {}
-  hour_name = hour ? hour[:name] : "hour"
+  hour_name = hour[:name] || "hour"
   hour_id = (hour && hour[:id].present?) ? hour[:id] : "select-hour-#{SecureRandom.hex(4)}"
-  hour_value =  (hour && hour[:value].present?) ? hour[:value] : ""
 
   minute ||= {}
-  minute_name = minute ? minute[:name] : "minute"
+  minute_name = minute[:name] || "minute"
   minute_id = (minute && minute[:id].present?) ? minute[:id] : "select-minute-#{SecureRandom.hex(4)}"
-  minute_value =  (minute && minute[:value].present?) ? minute[:value] : ""
 
-  hours = (0..23).to_a
-  hour_options = [{text: "", value: ""}]
-  minutes = (0..59).to_a
-  minute_options = [{text: "", value: ""}]
-
-  hours.each do |hour|
-    hour_options << {text: hour.to_s.rjust(2, "0"), value: hour.to_s.rjust(2, "0"), selected: hour == hour_value}
-  end
-
-  minutes.each do |minute|
-    minute_options << {text: minute.to_s.rjust(2, "0"), value: minute.to_s.rjust(2, "0"), selected: minute == minute_value}
-  end
-
-  date_ga4_form_section = date_heading
-  time_ga4_form_section = time_heading
-
-  root_classes = %w[gem-c-datetime-fields govuk-form-group]
-  root_classes << "govuk-form-group--error" if error_items.present?
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-datetime-fields govuk-form-group")
+  component_helper.add_class("govuk-form-group--error") if error_items.present?
 
   time_group_classes = %w[govuk-form-group]
   time_group_classes << "govuk-form-group--error" if error_items_time.present?
 
   time_select_classes = %w[govuk-select gem-c-datetime-fields__date-time-input]
-  time_select_classes << "govuk-select--error" if (error_items.present? || error_items_time.present?)
+  time_select_classes << "govuk-select--error" if (@error_items.present? || error_items_time.present?)
 %>
 
-<%= tag.div class: root_classes do %>
+<%= tag.div(**component_helper.all_attributes) do %>
   <% if error_items %>
     <%= render "govuk_publishing_components/components/error_message", {
       id:  error_id,
@@ -99,14 +51,15 @@
     hint: date_hint,
     error_items: error_items_date,
     error_id: error_items.present? ? error_id : nil,
-    items: date_input_items,
+    items: datetime_fields_helper.date_input_items(day, month, year),
     legend_text: date_heading,
     legend_heading_level: heading_level,
     legend_size: heading_size,
     data_attributes: {
-      ga4_form_section: date_ga4_form_section,
+      ga4_form_section: date_heading,
     },
-} %>
+  } %>
+
   <%= tag.div class: time_group_classes do %>
     <%= render "govuk_publishing_components/components/fieldset", {
       legend_text: time_heading,
@@ -114,19 +67,19 @@
       heading_size: heading_size,
       classes: "govuk-date-input",
       data_attributes: {
-        ga4_form_section: time_ga4_form_section,
+        ga4_form_section: time_heading,
       },
     } do %>
       <% if time_hint %>
         <%= render "govuk_publishing_components/components/hint", {
           text: time_hint,
-          id: time_hint_id,
+          id: "time-hint-#{SecureRandom.hex(4)}",
         } %>
       <% end %>
 
       <% if error_items_time %>
         <%= render "govuk_publishing_components/components/error_message", {
-          id:  error_id_time,
+          id: error_id,
           items: error_items_time,
         } %>
       <% end %>
@@ -137,8 +90,8 @@
             id: hour_id,
             label: "Hour",
             name: hour_name,
-            error_id: error_id_times,
-            options: hour_options,
+            error_id: error_id,
+            options: datetime_fields_helper.hour_options(hour),
           } %>
         </div>
 
@@ -149,8 +102,8 @@
             id: minute_id,
             label: "Minute",
             name:  minute_name,
-            error_id: error_id_times,
-            options: minute_options,
+            error_id: error_id,
+            options: datetime_fields_helper.minute_options(minute),
           } %>
         </div>
       </div>
