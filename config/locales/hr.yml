@@ -71,6 +71,9 @@ hr:
       - Željeli bismo postaviti dodatne kolačiće kako bismo razumjeli kako koristite GOV.UK
       - zapamtili vaše postavke i poboljšali državne usluge.
       - 'Također koristimo kolačiće koje postavlja druge web stranice koje će nam pomoći isporučiti sadržaj s njihovih usluga. '
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Kolačići na GOV.UK
     devolved_nations:
       applies_to:

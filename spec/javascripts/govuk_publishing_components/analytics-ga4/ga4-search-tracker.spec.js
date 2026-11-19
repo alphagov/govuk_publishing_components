@@ -122,9 +122,9 @@ describe('Google Analytics search tracking', () => {
     })
   })
 
-  describe('when usage tracking is declined', () => {
+  describe('when usage and aggregate tracking is declined', () => {
     beforeEach(() => {
-      GOVUK.setConsentCookie({ usage: false })
+      GOVUK.setConsentCookie({ usage: false, aggregate: false })
       ga4SearchTracker.init()
     })
 
@@ -137,7 +137,106 @@ describe('Google Analytics search tracking', () => {
 
   describe('when usage tracking is accepted', () => {
     beforeEach(() => {
-      GOVUK.setConsentCookie({ usage: true })
+      GOVUK.setConsentCookie({ usage: true, aggregate: false })
+      ga4SearchTracker.init()
+    })
+
+    it('tracks search events as `search` action when the keyword input changes', () => {
+      searchInput.value = 'new value'
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'search',
+          text: 'new value',
+          ...commonEventProps
+        },
+        'event_data'
+      )
+    })
+
+    it('tracks search events as `filter` action when non-keyword input changes', () => {
+      filterInput.value = 'new value'
+      GOVUK.triggerEvent(filterInput, 'input', { target: filterInput })
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'filter',
+          text: 'initial value',
+          ...commonEventProps
+        },
+        'event_data'
+      )
+    })
+
+    it('tracks search events as `unchanged` action when nothing changes', () => {
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'unchanged',
+          text: 'initial value',
+          ...commonEventProps
+        },
+        'event_data'
+      )
+    })
+
+    it('includes autocomplete information if present', () => {
+      searchInput.dataset.autocompleteTriggerInput = 'i want to'
+      searchInput.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
+      searchInput.dataset.autocompleteSuggestionsCount = '3'
+      searchInput.dataset.autocompleteAccepted = 'true'
+
+      searchInput.value = 'i want to fish'
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy).toHaveBeenCalledWith(
+        {
+          event_name: 'search',
+          action: 'search',
+          text: 'i want to fish',
+          tool_name: 'autocomplete',
+          length: 3,
+          autocomplete_input: 'i want to',
+          autocomplete_suggestions: 'i want to fish|i want to dance|i want to sleep',
+          ...commonEventProps
+        },
+        'event_data'
+      )
+    })
+
+    it('persists usage of autocomplete so that the next page knows it was used', () => {
+      searchInput.dataset.autocompleteTriggerInput = 'i want to remember'
+      searchInput.dataset.autocompleteAccepted = 'true'
+      searchInput.value = 'i want to remember'
+
+      GOVUK.triggerEvent(form, 'submit')
+      expect(setItemSpy).toHaveBeenCalledWith('searchAutocompleteAccepted', 'true')
+    })
+
+    it('sets tool_name to null if the user has not accepted a suggestion', () => {
+      searchInput.dataset.autocompleteTriggerInput = 'i want to'
+      searchInput.dataset.autocompleteSuggestions = 'i want to fish|i want to dance|i want to sleep'
+      searchInput.dataset.autocompleteSuggestionsCount = '3'
+
+      searchInput.value = 'i want to fish'
+      GOVUK.triggerEvent(searchInput, 'input', { target: searchInput })
+      GOVUK.triggerEvent(form, 'submit')
+
+      expect(sendSpy.calls.mostRecent().args[0].tool_name).toBeNull()
+    })
+  })
+
+  describe('when aggregate tracking is accepted', () => {
+    beforeEach(() => {
+      GOVUK.setConsentCookie({ usage: false, aggregate: true })
       ga4SearchTracker.init()
     })
 
