@@ -43,9 +43,7 @@ describe "visual regression test runner Percy", :visual_regression do
       interactions.each do |interaction|
         # Visit a fresh path for each action
         visit_component(path)
-
         next unless page.has_css?(interaction[:toggle_selector], wait: 0)
-
         toggle_button = page.find(interaction[:toggle_selector])
         toggle_button.click
 
