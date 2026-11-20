@@ -21,5 +21,36 @@ module VisualRegressionConfig
         wait_selector: "#super-search-menu",
       },
     ],
+    "/component-guide/feedback/default/preview" => [
+      {
+        state_name: "Is this page useful? - Yes",
+        toggle_selector: "#page-is-useful-btn",
+        wait_selector: "#feedback-success",
+      },
+      {
+        state_name: "Is this page useful? - No",
+        toggle_selector: "#page-is-not-useful-btn",
+        wait_selector: "#page-is-not-useful #survey-wrapper",
+      },
+    ],
+    "/component-guide/related_navigation/with_extensive_world_locations/preview" => [
+      {
+        state_name: "Show more links",
+        toggle_selector: "#toggle-more-links[aria-expanded='false']",
+        wait_selector: "#toggle_world_locations",
+      },
+    ],
+    "/component-guide/step_by_step_nav/default/preview" => [
+      {
+        state_name: "Show do a thing step",
+        toggle_selector: "#do-a-thing button[aria-expanded='false']",
+        wait_selector: "#step-panel-do-a-thing-1",
+      },
+      {
+        state_name: "Show all steps",
+        toggle_selector: ".js-step-controls-button",
+        wait_selector: "#step-panel-do-something-else-3",
+      },
+    ],
   }.freeze
 end
