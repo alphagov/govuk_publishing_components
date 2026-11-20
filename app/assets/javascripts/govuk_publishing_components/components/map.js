@@ -37,8 +37,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
             style: {
               symbol: 'pin',
               symbolBackgroundColor: '#ca3535',
-              symbolForegroundColor: '#ca3535',
-              symbolHaloWidth: 3
+              symbolForegroundColor: '#ca3535'
             }
           }]
         })
@@ -48,7 +47,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         deselectOnClickOutside: true,
         interactionModes: ['selectFeature'],
         layers: [
-          { layerId: 'features', idProperty: 'id', labelProperty: 'name' }
+          { layerId: 'features', labelProperty: 'name' }
         ]
       })
 
@@ -72,7 +71,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         behaviour: 'inline',
         mapStyle: {
           url: window.GOVUK.mapComponentStyles,
-          backgroundColor: '#f5f5f0',
+          selectedColor: '#000000',
+          haloColor: '#FFFFFF',
           attribution: ''
         },
         plugins: [this.interactPlugin, datasetsPlugin],
