@@ -9,7 +9,8 @@
     "govuk_publishing_components/vendor/lux/lux-measurer-*.js",
     "govuk_publishing_components/rum-custom-data-*.js",
     "component_guide/accessibility-test-*.js",
-    "component_guide/audit-filter-*.js"
+    "component_guide/audit-filter-*.js",
+    "component_guide/rtl-toggle-*.js"
   ],
   "cssFiles": [
     "component_guide/application-*.css"

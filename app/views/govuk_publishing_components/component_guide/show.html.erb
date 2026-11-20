@@ -74,12 +74,14 @@
 
   <h2 class="govuk-heading-l" id="overview">Overview</h2>
   <% if @component_doc.display_preview? || @component_doc.display_html? %>
-    <h3 class="govuk-heading-m" id="how-it-looks">
-      <a href="<%= component_example_path(@component_doc.id, "default") %>" class="govuk-link">How it looks</a>
-      <small class="govuk-!-font-size-16">(<a href="<%= component_preview_path(@component_doc.id, "default") %>" class="govuk-link">preview</a>)</small>
-      <small class="govuk-!-font-size-16">(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
-    </h3>
-    <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
+    <div data-module="rtl-toggle">
+      <h3 class="govuk-heading-m js-toggle-heading" id="how-it-looks">
+        <a href="<%= component_example_path(@component_doc.id, "default") %>" class="govuk-link">How it looks</a>
+        <small>(<a href="<%= component_preview_path(@component_doc.id, "default") %>" class="govuk-link">preview</a>)</small>
+        <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
+      </h3>
+      <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
+    </div>
   <% end %>
 
   <h3 class="govuk-heading-m govuk-!-margin-top-4" id="how-to-call-this-component">How to call this component</h3>
@@ -128,8 +130,8 @@
     <% end %>
 
     <% @component_doc.other_examples.each do |example| %>
-      <div class="component-example" id="<%= example.id %>">
-        <h3 class="govuk-heading-m">
+      <div class="component-example" id="<%= example.id %>" data-module="rtl-toggle">
+        <h3 class="govuk-heading-m js-toggle-heading">
           <a href="<%= component_example_path(@component_doc.id, example.id) %>" class="govuk-link"><%= example.name %></a>
           <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>" class="govuk-link">preview</a>)</small>
         </h3>
