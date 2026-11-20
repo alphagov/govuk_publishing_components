@@ -7,17 +7,17 @@ RSpec.describe "MapComponent", type: :view do
 
   it "renders nothing without config" do
     render_component({})
-    expect(rendered).not_to have_css(".app-c-map")
+    expect(rendered).not_to have_css(".gem-c-map")
   end
 
   it "does not render without a heading" do
     render_component(centre: [0, 1], zoom: 8)
-    expect(rendered).not_to have_css(".app-c-map")
+    expect(rendered).not_to have_css(".gem-c-map")
   end
 
   it "renders the basic component" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading")
-    expect(rendered).to have_css("[data-tracking-enabled] .app-c-map")
+    expect(rendered).to have_css("[data-tracking-enabled] .gem-c-map")
     expect(rendered).to have_css("[data-module='map'] [data-module='ga4-link-tracker']")
     expect(rendered).to have_css(".gem-c-heading h2", text: "heading")
     expect(rendered).to have_selector("[data-config*='\"center\":[0,1],\"zoom\":8,\"mapLabel\":\"Interactive map: heading\"']")
@@ -36,7 +36,7 @@ RSpec.describe "MapComponent", type: :view do
   it "can show a copyright message" do
     copyright = "This is copyright somebody, somewhere"
     render_component(centre: [0, 1], zoom: 8, copyright: copyright, heading_text: "heading")
-    expect(rendered).to have_css(".app-c-map__copyright", text: copyright)
+    expect(rendered).to have_css(".gem-c-map__copyright", text: copyright)
   end
 
   it "only includes the JavaScript tag once even if multiple component instances" do
@@ -79,7 +79,7 @@ RSpec.describe "MapComponent", type: :view do
 
   it "can disable GA4 tracking" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading", disable_ga4: true)
-    expect(rendered).not_to have_css("[data-tracking-enabled] .app-c-map")
+    expect(rendered).not_to have_css("[data-tracking-enabled] .gem-c-map")
     expect(rendered).not_to have_css("[data-module='map'] [data-module='ga4-link-tracker']")
   end
 end

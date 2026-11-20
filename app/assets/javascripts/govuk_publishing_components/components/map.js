@@ -8,7 +8,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   class Map {
     constructor ($module) {
       this.$module = $module
-      this.map_element = this.$module.querySelector('.app-c-map')
+      this.map_element = this.$module.querySelector('.gem-c-map')
       this.map_id = this.$module.getAttribute('id')
       this.trackingEnabled = this.$module.getAttribute('data-tracking-enabled') === 'true'
       this.headingLevel = parseInt(this.$module.getAttribute('data-heading-level')) || 2
@@ -90,7 +90,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       const id = this.$module.getAttribute('id')
       this.$module.setAttribute('id', '')
       this.map_element.setAttribute('id', id)
-      this.map_element.classList.add('app-c-map--enabled')
+      this.map_element.classList.add('gem-c-map--enabled')
       this.map = new defra.InteractiveMap(this.map_id, this.config)
 
       /* istanbul ignore next */
@@ -177,9 +177,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       const keys = Object.keys(feat.properties)
       keys.forEach((key) => {
         if (key === 'url') {
-          markup = `${markup} ${para(`<a href="${feat.properties[key]}" class="app-c-map__link">${feat.properties[key]}</a>`)}`
+          markup = `${markup} ${para(`<a href="${feat.properties[key]}" class="gem-c-map__link">${feat.properties[key]}</a>`)}`
         } else if (key === 'email') {
-          markup = `${markup} ${para(`<a href="mailto:${feat.properties[key]}" class="app-c-map__link">${feat.properties[key]}</a>`)}`
+          markup = `${markup} ${para(`<a href="mailto:${feat.properties[key]}" class="gem-c-map__link">${feat.properties[key]}</a>`)}`
         } else if (key !== 'name') {
           markup = `${markup} ${para(feat.properties[key])}`
         }

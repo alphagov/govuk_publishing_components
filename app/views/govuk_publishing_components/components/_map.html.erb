@@ -63,15 +63,15 @@
       end
     %>
     <%= tag.div(data: panel_link_tracking) do %>
-      <%= tag.div(class: "app-c-map") do %>
-        <span class="app-c-map__js-on">Loading map...</span>
-        <span class="app-c-map__no-js">This map uses JavaScript to work. To view the map, turn on JavaScript in your browser&apos;s settings.</span>
+      <%= tag.div(class: "gem-c-map") do %>
+        <span class="gem-c-map__js-on">Loading map...</span>
+        <span class="gem-c-map__no-js">This map uses JavaScript to work. To view the map, turn on JavaScript in your browser&apos;s settings.</span>
       <% end %>
     <% end %>
     <% if copyright %>
-      <div class="govuk-grid-row app-c-map__copyright">
+      <div class="govuk-grid-row gem-c-map__copyright">
         <div class="govuk-grid-column-two-thirds">
-          <p class="govuk-body-s app-c-map__copyright-text">
+          <p class="govuk-body-s gem-c-map__copyright-text">
             <%= copyright %>
           </p>
         </div>

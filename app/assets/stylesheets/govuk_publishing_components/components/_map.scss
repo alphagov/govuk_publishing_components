@@ -1,6 +1,6 @@
 @import "@defra/interactive-map/dist/css/index";
 
-.app-c-map--enabled {
+.gem-c-map--enabled {
   padding: 0;
   background-color: #d7e0e5;
 
@@ -13,29 +13,29 @@
   }
 }
 
-.app-c-map__copyright {
+.gem-c-map__copyright {
   margin-top: govuk-spacing(1);
 }
 
-.app-c-map__copyright-text {
+.gem-c-map__copyright-text {
   margin: 0;
 }
 
-.app-c-map__js-on {
+.gem-c-map__js-on {
   display: none;
 }
 
 .js-enabled {
-  .app-c-map__js-on {
+  .gem-c-map__js-on {
     display: block;
   }
 
-  .app-c-map__no-js {
+  .gem-c-map__no-js {
     display: none;
   }
 }
 
-.app-c-map__link {
+.gem-c-map__link {
   @include govuk-link-common;
   @include govuk-link-style-default;
 }
