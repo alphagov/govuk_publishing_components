@@ -48,7 +48,7 @@ examples:
     description: |
       Given a URL to a GeoJSON file, the map will draw markers and apply popups as specified in the file.
     data:
-      geojson: "/assets/frontend/components/map/map-test.geojson"
+      geojson: "/assets/govuk_publishing_components/components/map/map-test.geojson"
       heading_text: Birmingham and surrounding places
       zoom: 9
       centre:
