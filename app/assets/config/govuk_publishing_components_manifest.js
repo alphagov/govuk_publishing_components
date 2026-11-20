@@ -10,3 +10,9 @@
 // Pre-compile these specific files
 //= link govuk_publishing_components/vendor/lux/lux-reporter.js
 //= link govuk_publishing_components/vendor/lux/lux-measurer.js
+
+//= link govuk_publishing_components/components/map.js
+//= link govuk_publishing_components/components/map/defra-map.js
+//= link govuk_publishing_components/components/map/im-maplibre-worker.js
+//= link govuk_publishing_components/components/map/map-styles.js
+//= link govuk_publishing_components/components/map/map-test.geojson
