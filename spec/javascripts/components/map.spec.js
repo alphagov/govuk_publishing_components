@@ -11,7 +11,7 @@ describe('Map component', function () {
     if (config) { el.setAttribute('data-config', JSON.stringify(config)) }
     if (url) { el.setAttribute('data-geojson', url) }
     if (enableGa4) { el.setAttribute('data-tracking-enabled', true) }
-    el.innerHTML = '<div class="app-c-map"></div>'
+    el.innerHTML = '<div class="gem-c-map"></div>'
     document.body.appendChild(el)
     module = new GOVUK.Modules.Map(el)
   }
@@ -52,8 +52,8 @@ describe('Map component', function () {
 
     it('configures the map element', function () {
       expect(el.getAttribute('id')).toEqual('')
-      expect(el.querySelector('.app-c-map').getAttribute('id')).toEqual('map-1234')
-      expect(el.querySelector('.app-c-map')).toHaveClass('app-c-map--enabled')
+      expect(el.querySelector('.gem-c-map').getAttribute('id')).toEqual('map-1234')
+      expect(el.querySelector('.gem-c-map')).toHaveClass('gem-c-map--enabled')
     })
   })
 
@@ -149,7 +149,7 @@ describe('Map component', function () {
 
     it('transforms the url and email fields appropriately', function () {
       const result = module.createPopupContent(feature3)
-      expect(result).toEqual('<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Name</h2> <p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.gov.uk" class="app-c-map__link">https://www.gov.uk</a></p> <p class="govuk-body govuk-!-margin-bottom-2"><a href="mailto:test@test.com" class="app-c-map__link">test@test.com</a></p>')
+      expect(result).toEqual('<h2 class="govuk-heading-s govuk-!-margin-bottom-2">Name</h2> <p class="govuk-body govuk-!-margin-bottom-2"><a href="https://www.gov.uk" class="gem-c-map__link">https://www.gov.uk</a></p> <p class="govuk-body govuk-!-margin-bottom-2"><a href="mailto:test@test.com" class="gem-c-map__link">test@test.com</a></p>')
     })
   })
 
