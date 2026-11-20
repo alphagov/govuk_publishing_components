@@ -1,4 +1,5 @@
-/* global defra */
+/* eslint-env jasmine */
+/* global GOVUK, defra */
 describe('Map component', function () {
   'use strict'
 
