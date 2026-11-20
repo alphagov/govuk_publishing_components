@@ -27,11 +27,13 @@
     "extends": "stylelint-config-gds/scss"
   },
   "dependencies": {
+    "@defra/interactive-map": "0.0.59-alpha",
     "accessible-autocomplete": "^3.0.1",
     "axe-core": "^4.14.0",
     "chartkick": "^5.0.1",
     "choices.js": "^11.2.4",
     "govuk-frontend": "6.1.0",
+    "maplibre-gl": "^6.18.0",
     "sortablejs": "^1.15.7"
   },
   "devDependencies": {
