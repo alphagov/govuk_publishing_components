@@ -1,0 +1,82 @@
+<%
+  centre ||= nil
+  zoom ||= nil
+  heading_text ||= nil
+  heading_level ||= 2
+  description ||= nil
+  height ||= nil
+  copyright ||= nil
+  geojson ||= nil
+  bounds ||= nil
+  max_bounds ||= nil
+  disable_ga4 ||= false
+
+  heading_obj = { text: heading_text, heading_level: heading_level, margin_bottom: 4, font_size: "m"}
+  heading_obj[:font_size] = "s" if heading_level > 2
+
+  map_config = {}
+  map_config[:center] = centre if centre.kind_of?(Array) && centre.length == 2
+  map_config[:zoom] = zoom if zoom
+  map_config[:mapLabel] = "Interactive map: #{heading_text}"
+  map_config[:containerHeight] = "#{height}px" if height
+  map_config[:bounds] = bounds if bounds.kind_of?(Array) && bounds.length == 4
+  map_config[:maxBounds] = max_bounds if max_bounds.kind_of?(Array) && max_bounds.length == 4
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_id("map-#{SecureRandom.hex(4)}")
+  component_helper.add_data_attribute({ module: "map" })
+  component_helper.add_data_attribute({ config: map_config })
+  component_helper.add_data_attribute({ geojson: geojson }) if geojson
+  component_helper.add_data_attribute({ csp_worker: ActionController::Base.helpers.asset_path("govuk_publishing_components/components/map/im-maplibre-worker.js") })
+  component_helper.add_data_attribute({ tracking_enabled: true }) unless disable_ga4
+  component_helper.add_data_attribute({ font_light: ActionController::Base.helpers.asset_path("light-94a07e06a1-v2.woff2") })
+  component_helper.add_data_attribute({ font_bold: ActionController::Base.helpers.asset_path("bold-b542beb274-v2.woff2") })
+  skip_link_id = "skip-#{SecureRandom.hex(4)}"
+  @include_map_script ||= OpenStruct.new(script_included: false)
+%>
+<% if heading_text && ((map_config[:center] && map_config[:zoom]) || !geojson.nil? || bounds) %>
+  <%= render "govuk_publishing_components/components/heading", heading_obj %>
+  <% if description %>
+    <%= render "govuk_publishing_components/components/govspeak", {} do %>
+      <%= description %>
+    <% end %>
+  <% end %>
+
+  <%= render "govuk_publishing_components/components/skip_link", {
+    text: "Skip map",
+    href: "##{skip_link_id}",
+  } %>
+
+  <% unless @include_map_script[:script_included] %>
+    <%= javascript_include_tag "govuk_publishing_components/components/map/defra-map.js", integrity: false %>
+    <%= javascript_include_tag "govuk_publishing_components/components/map.js", integrity: false, type: "module" %>
+    <%= javascript_include_tag "govuk_publishing_components/components/map/map-styles.js", integrity: false %>
+    <% @include_map_script[:script_included] = true %>
+  <% end %>
+
+  <%= tag.div(**component_helper.all_attributes) do %>
+    <%
+      panel_link_tracking = {}
+      unless disable_ga4
+        panel_link_tracking[:module] = "ga4-link-tracker"
+        panel_link_tracking[:ga4_link] = { "event_name": "information_click", "type": "map" }.to_json
+      end
+    %>
+    <%= tag.div(data: panel_link_tracking) do %>
+      <%= tag.div(class: "app-c-map") do %>
+        <span class="app-c-map__js-on">Loading map...</span>
+        <span class="app-c-map__no-js">This map uses JavaScript to work. To view the map, turn on JavaScript in your browser&apos;s settings.</span>
+      <% end %>
+    <% end %>
+    <% if copyright %>
+      <div class="govuk-grid-row app-c-map__copyright">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body-s app-c-map__copyright-text">
+            <%= copyright %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+    <div id="<%= skip_link_id %>"></div>
+  <% end %>
+<% end %>

@@ -673,7 +673,7 @@ DEPENDENCIES
   yard
 
 RUBY VERSION
-   ruby 3.3.11p205
+   ruby 3.3.14p208
 
 BUNDLED WITH
    2.3.14
