@@ -1,7 +1,7 @@
 name: Datetime fields (experimental)
 description: Use the datetime fields component to help users enter a datetime for a specific event.
 body: |
-  This differs from the [Form date input](https://components.publishing.service.gov.uk/component-guide/date_input) component in a few notable ways. It builds upon that component by adding time fields. Times are chosen using select elements.
+  This differs from the [Form date input](/component-guide/date_input) component in a few notable ways. It builds upon that component by adding time fields. Times are chosen using select elements.
 
 accessibility_criteria: |
   Inputs in the component must:
