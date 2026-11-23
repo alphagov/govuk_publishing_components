@@ -79,10 +79,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/selector-specificity/-/selector-specificity-6.0.0.tgz#ef28e27c1ded1d8e5c54879a9399e7055aed1920"
   integrity sha512-4sSgl78OtOXEX/2d++8A83zHNTgwCJMaR24FvsYL7Uf/VS8HZk9PTwR51elTbGqMuwH3szLvvOXEaVnqn0Z3zA==
 
-"@defra/interactive-map@0.0.59-alpha":
-  version "0.0.59-alpha"
-  resolved "https://registry.yarnpkg.com/@defra/interactive-map/-/interactive-map-0.0.59-alpha.tgz#68b1c7c5b37ddf7fa97ab6a0bc39528f9ec9ca4d"
-  integrity sha512-GrDd5Kz7JeA90ajfWItS9gdEvXHWLH7gZHnExCi4GT5dMHdPeqxC1r1Tf00MLIfQGmYE0kjwB0fv1JOI+3cLaw==
+"@defra/interactive-map@0.0.63-alpha":
+  version "0.0.63-alpha"
+  resolved "https://registry.yarnpkg.com/@defra/interactive-map/-/interactive-map-0.0.63-alpha.tgz#72dbb60b14a329faa434f84c68687d9d9d6c15ff"
+  integrity sha512-bM31g/L8rPcMKbta2zEBuGo6+VeoHZwNYq77+8vZJAfiX0BzPXeeYYx6Qt2snkBBtFG2jYxtO6FX0r24VOYtMQ==
   dependencies:
     "@babel/runtime" "^7.28.6"
     "@turf/area" "^7.2.0"
