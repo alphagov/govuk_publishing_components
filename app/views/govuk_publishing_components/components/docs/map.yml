@@ -29,7 +29,7 @@ examples:
       centre:
       - -3.1883
       - 55.9533
-  custom_heading_description_and_copyright:
+  custom_heading_description_and_attribution:
     description: |
       All maps should have a heading, but the heading level may need to be different depending on the context.
 
@@ -39,7 +39,7 @@ examples:
       heading_level: 3
       description: |
         <p>The Malvern Hills has been designated an area of outstanding natural beauty.</p>
-      copyright: Contains OS data &copy; Crown copyright and database rights 2026
+      attribution: Copyright someone else
       centre:
       - -2.325062
       - 52.107919

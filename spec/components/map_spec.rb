@@ -33,10 +33,10 @@ RSpec.describe "MapComponent", type: :view do
     expect(rendered).to have_css(".gem-c-govspeak", text: "what a map")
   end
 
-  it "can show a copyright message" do
-    copyright = "This is copyright somebody, somewhere"
-    render_component(centre: [0, 1], zoom: 8, copyright: copyright, heading_text: "heading")
-    expect(rendered).to have_css(".gem-c-map__copyright", text: copyright)
+  it "can show a custom attribution" do
+    attribution = "This is attribution somebody, somewhere"
+    render_component(centre: [0, 1], zoom: 8, attribution: attribution, heading_text: "heading")
+    expect(rendered).to have_css(".gem-c-map__attribution", text: attribution)
   end
 
   it "only includes the JavaScript tag once even if multiple component instances" do

@@ -5,7 +5,7 @@
   heading_level ||= 2
   description ||= nil
   height ||= nil
-  copyright ||= nil
+  attribution ||= nil
   geojson ||= nil
   bounds ||= nil
   max_bounds ||= nil
@@ -68,13 +68,15 @@
         <span class="gem-c-map__no-js">This map uses JavaScript to work. To view the map, turn on JavaScript in your browser&apos;s settings.</span>
       <% end %>
     <% end %>
-    <% if copyright %>
-      <div class="gem-c-map__copyright">
-        <p class="govuk-body-s gem-c-map__copyright-text">
-          <%= copyright %>
-        </p>
-      </div>
-    <% end %>
+    <div class="gem-c-map__attribution">
+      <p class="govuk-body-s gem-c-map__attribution-text">
+        <% if attribution %>
+          <%= attribution %>
+        <% else %>
+          <a href="https://openfreemap.org" target="_blank" class="govuk-link" rel="noopener noreferrer external">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank" class="govuk-link" rel="noopener noreferrer external">&copy; OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank" class="govuk-link" rel="noopener noreferrer external">OpenStreetMap</a>
+        <% end %>
+      </p>
+    </div>
     <div id="<%= skip_link_id %>"></div>
   <% end %>
 <% end %>
