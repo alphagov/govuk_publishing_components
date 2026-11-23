@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Add map component from frontend ([PR #5882](https://github.com/alphagov/govuk_publishing_components/pull/5882))
+
 ## 71.2.0
 
 * Add Mauritian Creole translations ([PR #5856](https://github.com/alphagov/govuk_publishing_components/pull/5856))
