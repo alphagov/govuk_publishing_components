@@ -155,6 +155,7 @@ describe "Layout for public", :capybara, type: :view do
   it "does not contain LUX submission script when the page loads", :js do
     visit "/public"
 
+    expect(page).to have_css("h1", text: "Hello! I am an example public GOV.UK page")
     expect(page).to have_no_css("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 

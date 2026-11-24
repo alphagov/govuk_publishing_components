@@ -43,6 +43,7 @@ describe "Component example", :capybara do
   it "doesn't include the application stylesheet for a gem component" do
     visit "/component-guide/button"
 
+    expect(page).to have_css("h1", text: "Button")
     expect(page).to have_no_css('link[href^="/assets/application-"][rel="stylesheet"]', visible: :hidden)
   end
 
