@@ -33,5 +33,12 @@ module VisualRegressionConfig
         wait_selector: "#survey-wrapper",
       },
     ],
+    "/component-guide/related_navigation/with_extensive_world_locations/preview" => [
+      {
+        state_name: "Show more links",
+        toggle_selector: "[aria-expanded='false']",
+        wait_selector: "[aria-expanded='true']",
+      },
+    ],
   }.freeze
 end
