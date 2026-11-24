@@ -19,15 +19,15 @@ describe "Tabs component", :capybara, :js do
 
   def only_the_first_tab_is_selected
     expect(page).to have_css("#tab_tab1[aria-selected=true]")
-    expect(page).not_to have_css("#tab_tab2[aria-selected=true]")
+    expect(page).to have_no_css("#tab_tab2[aria-selected=true]")
   end
 
   def when_i_click_the_second_tab
-    find("#tab_tab2").click
+    find_by_id("tab_tab2").click
   end
 
   def then_only_the_second_tab_is_selected
     expect(page).to have_css("#tab_tab2[aria-selected=true]")
-    expect(page).not_to have_css("#tab_tab1[aria-selected=true]")
+    expect(page).to have_no_css("#tab_tab1[aria-selected=true]")
   end
 end

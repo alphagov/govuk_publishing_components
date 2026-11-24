@@ -23,18 +23,18 @@ describe "Component guide index", :capybara do
   it "loads a component from the dummy app" do
     visit "/component-guide"
     expect(body).to include("A test component for the dummy app")
-    expect(page).to have_selector('a[href="/component-guide/test_component"]', text: "Test component")
+    expect(page).to have_css('a[href="/component-guide/test_component"]', text: "Test component")
   end
 
   it "includes component guide styles and scripts" do
     visit "/component-guide"
-    expect(page).to have_selector('link[href*="/assets/component_guide/application"]', visible: :hidden)
-    expect(page).to have_selector('script[src*="/assets/component_guide/application"]', visible: :hidden)
+    expect(page).to have_css('link[href*="/assets/component_guide/application"]', visible: :hidden)
+    expect(page).to have_css('script[src*="/assets/component_guide/application"]', visible: :hidden)
   end
 
   it "includes the application’s scripts" do
     visit "/component-guide"
-    expect(page).to have_selector('script[src*="/assets/application"]', visible: :hidden)
+    expect(page).to have_css('script[src*="/assets/application"]', visible: :hidden)
   end
 
   it "includes suggested sass for the application" do
@@ -75,8 +75,8 @@ describe "Component guide index", :capybara do
 @import 'govuk_publishing_components/components/tag';
 @import 'govuk_publishing_components/components/textarea';"
 
-    expect(page).to have_selector(".govuk-heading-m", text: "Gem components used by this app (18)")
-    expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
+    expect(page).to have_css(".govuk-heading-m", text: "Gem components used by this app (18)")
+    expect(page).to have_css(".govuk-details__summary-text", text: "Suggested imports for this application")
 
     expect(page.find(:css, 'textarea[name="main-sass"]', visible: :hidden).value).to eq(expected_main_sass)
   end

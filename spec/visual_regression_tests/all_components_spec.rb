@@ -20,7 +20,7 @@ describe "visual regression test runner Percy", :visual_regression do
 
     visit("/component-guide")
 
-    component_links = find("#list-all-components-in-the-gem")
+    component_links = find_by_id("list-all-components-in-the-gem")
       .all("a")
       .map do |link|
         URI("#{link[:href]}/preview")

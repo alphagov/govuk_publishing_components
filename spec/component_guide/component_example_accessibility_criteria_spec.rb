@@ -5,8 +5,8 @@ describe "Component examples with accessibility criteria", :capybara do
     visit "/component-guide/test_component"
 
     within ".component-accessibility-criteria" do
-      expect(page).to have_selector("h3", text: "Accessibility acceptance criteria")
-      expect(page).to have_content("This is some criteria in a list")
+      expect(page).to have_css("h3", text: "Accessibility acceptance criteria")
+      expect(page).to have_text("This is some criteria in a list")
     end
   end
 
@@ -14,7 +14,7 @@ describe "Component examples with accessibility criteria", :capybara do
     visit "/component-guide/test_component_with_shared_accessibility_criteria"
 
     within ".component-accessibility-criteria" do
-      expect(page).to have_content("indicate when they have focus")
+      expect(page).to have_text("indicate when they have focus")
     end
   end
 
@@ -22,7 +22,7 @@ describe "Component examples with accessibility criteria", :capybara do
     visit "/component-guide/test_component_with_shared_accessibility_criteria_only"
 
     within ".component-accessibility-criteria" do
-      expect(page).to have_content("indicate when they have focus")
+      expect(page).to have_text("indicate when they have focus")
     end
   end
 end
