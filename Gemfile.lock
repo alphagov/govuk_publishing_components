@@ -90,7 +90,7 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.9.1)
+    addressable (2.10.0)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     base64 (0.3.0)
@@ -131,7 +131,7 @@ GEM
       sass-embedded (~> 1.63)
     date (3.5.1)
     diff-lcs (1.6.2)
-    domain_name (0.6.20260921)
+    domain_name (0.7.20261117)
     drb (2.2.3)
     erb (6.0.7)
     erb_lint (0.9.0)
@@ -145,7 +145,7 @@ GEM
     execjs (2.10.1)
     faker (3.8.0)
       i18n (>= 1.8.11, < 2)
-    gds-api-adapters (103.5.0)
+    gds-api-adapters (104.0.0)
       addressable
       link_header
       null_logger
@@ -159,14 +159,14 @@ GEM
       rake (~> 13.3)
     googleapis-common-protos-types (1.25.0)
       google-protobuf (~> 4.26)
-    govuk_app_config (10.0.0)
+    govuk_app_config (10.1.0)
       connection_pool (< 4)
       logstasher (>= 2.1, < 4.0)
       opentelemetry-exporter-otlp (>= 0.25, < 0.35)
       opentelemetry-instrumentation-all (>= 0.39.1, < 0.98.0)
       opentelemetry-sdk (~> 1.2)
       ostruct (~> 0.6)
-      plek (>= 4, < 6)
+      plek (>= 4, < 7)
       prometheus_exporter (~> 2.3)
       puma (>= 5.6, < 9.0)
       rack-proxy (>= 0.7, < 2.0)
@@ -236,7 +236,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2026.0922)
+    mime-types-data (3.2026.1103)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (6.1.0)
@@ -445,7 +445,7 @@ GEM
       racc
     percy-capybara (5.0.1)
       capybara (>= 3)
-    plek (5.3.2)
+    plek (6.0.0)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.1)
