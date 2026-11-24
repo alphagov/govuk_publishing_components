@@ -21,5 +21,17 @@ module VisualRegressionConfig
         wait_selector: "#super-search-menu",
       },
     ],
+    "/component-guide/feedback/default/preview" => [
+      {
+        state_name: "Is this page useful? - Yes",
+        toggle_selector: ".js-page-is-useful",
+        wait_selector: ".js-prompt-success",
+      },
+      {
+        state_name: "Is this page useful? - No",
+        toggle_selector: ".js-page-is-not-useful",
+        wait_selector: "#survey-wrapper",
+      },
+    ],
   }.freeze
 end
