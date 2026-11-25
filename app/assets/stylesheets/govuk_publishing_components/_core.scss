@@ -4,3 +4,4 @@
 @use "govuk/objects";
 @use "govuk/utilities";
 @use "govuk/overrides";
+@forward "./settings/component-config";

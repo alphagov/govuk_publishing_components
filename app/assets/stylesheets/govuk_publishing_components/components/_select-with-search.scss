@@ -1,25 +1,20 @@
 @use "../base" as *;
 @use "govuk/components/label";
+@use "../settings/component-config" as *;
 
-// overload the choices.js variables
-
-$font-size: 19px;
-
-$choices-bg-color: govuk-colour("white") !default;
-$choices-font-size-lg: $font-size !default;
-$choices-font-size-md: $font-size !default;
-$choices-font-size-sm: $font-size !default;
-$choices-primary-color: #ffffff !default; // can't use mixin here because of Choices.js Sass functions
-$choices-text-color: govuk-colour("black");
-$choices-icon-cross: url("select-with-search/cross-icon.svg");
-$choices-border-radius: 0 !default;
-$choices-border-radius-item: 0 !default;
-$choices-z-index: 2 !default;
-$choices-button-dimension: 12px !default;
-
-// Choices can't be loaded as a Sass module, so it needs to be imported instead.
-// https://github.com/Choices-js/Choices#cssscss
-@import "choices.js/src/styles/choices";
+@use "choices.js/src/styles/choices" with (
+  $choices-bg-color: $select-with-search-bg-color,
+  $choices-font-size-lg: $select-with-search-font-size-lg,
+  $choices-font-size-md: $select-with-search-font-size-md,
+  $choices-font-size-sm: $select-with-search-font-size-sm,
+  $choices-primary-color: $select-with-search-primary-color,
+  $choices-text-color: $select-with-search-text-color,
+  $choices-icon-cross: $select-with-search-icon-cross,
+  $choices-border-radius: $select-with-search-border-radius,
+  $choices-border-radius-item: $select-with-search-border-radius-item,
+  $choices-z-index: $select-with-search-z-index,
+  $choices-button-dimension: $select-with-search-button-dimension,
+);
 
 .gem-c-select-with-search {
   .choices * {
@@ -44,7 +39,7 @@ $choices-button-dimension: 12px !default;
 
   .choices.is-open[data-type*="select-one"]::after {
     margin: 0;
-    bottom: govuk-em(1px, $font-size);
+    bottom: govuk-em(1px, $select-with-search-font-size);
     transform: translateY(-50%) rotate(180deg);
   }
 
