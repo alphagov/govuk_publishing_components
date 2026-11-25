@@ -39,7 +39,7 @@ module GovukPublishingComponents
           legend: legend_options,
           pointSize: @point_size,
           height: @height,
-          tooltip: { isHtml: true },
+          tooltip: { isHtml: true, textStyle: { color: "#FFFFFF", fontName: "GDS Transport", fontSize: "16" } },
           series: series_options,
           hAxis: {
             textStyle: set_font_16,
