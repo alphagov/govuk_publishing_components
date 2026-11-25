@@ -51,13 +51,13 @@ describe "option select", type: :view do
 
   it "renders a heading for the option select box containing the title" do
     render_component(option_select_arguments)
-    expect(rendered).to have_selector(".gem-c-option-select__title", text: "Market sector")
-    expect(rendered).not_to have_selector(".gem-c-option-select[data-filter-attributes]")
+    expect(rendered).to have_css(".gem-c-option-select__title", text: "Market sector")
+    expect(rendered).to have_no_css(".gem-c-option-select[data-filter-attributes]")
   end
 
   it "renders a container with the id passed in" do
     render_component(option_select_arguments)
-    expect(rendered).to have_selector("\#list-of-sectors.gem-c-option-select__container")
+    expect(rendered).to have_css("\#list-of-sectors.gem-c-option-select__container")
   end
 
   it "renders the large version of the component" do
@@ -65,7 +65,7 @@ describe "option select", type: :view do
     arguments[:large] = true
     render_component(arguments)
 
-    expect(rendered).to have_selector(".gem-c-option-select__container--large")
+    expect(rendered).to have_css(".gem-c-option-select__container--large")
   end
 
   it "can begin with the options box closed on load" do
@@ -73,7 +73,7 @@ describe "option select", type: :view do
     arguments[:closed_on_load] = true
     render_component(arguments)
 
-    expect(rendered).to have_selector('.gem-c-option-select[data-closed-on-load="true"]')
+    expect(rendered).to have_css('.gem-c-option-select[data-closed-on-load="true"]')
   end
 
   it "can begin with the options box closed on load for mobile devices" do
@@ -81,7 +81,7 @@ describe "option select", type: :view do
     arguments[:closed_on_load_mobile] = true
     render_component(arguments)
 
-    expect(rendered).to have_selector('.gem-c-option-select[data-closed-on-load-mobile="true"]')
+    expect(rendered).to have_css('.gem-c-option-select[data-closed-on-load-mobile="true"]')
   end
 
   it "can show a filter control" do
@@ -89,8 +89,8 @@ describe "option select", type: :view do
     arguments[:show_filter] = true
     render_component(arguments)
 
-    expect(rendered).to have_selector(".gem-c-option-select[data-filter-attributes]")
-    expect(rendered).to have_selector(".gem-c-option-select__count")
+    expect(rendered).to have_css(".gem-c-option-select[data-filter-attributes]")
+    expect(rendered).to have_css(".gem-c-option-select__count")
   end
 
   it "does not show a filter control" do
@@ -98,8 +98,8 @@ describe "option select", type: :view do
     arguments[:show_filter] = false
     render_component(arguments)
 
-    expect(rendered).to have_no_selector('.gem-c-option-select .gem-c-input[name="option-select-filter"]')
-    expect(rendered).to have_no_selector(".gem-c-option-select__count")
+    expect(rendered).to have_no_css('.gem-c-option-select .gem-c-input[name="option-select-filter"]')
+    expect(rendered).to have_no_css(".gem-c-option-select__count")
   end
 
   it "accepts button data attributes" do
@@ -113,7 +113,7 @@ describe "option select", type: :view do
     }
     options[:button_data_attributes] = button_attrs
     render_component(options)
-    expect(rendered).to have_selector(".gem-c-option-select[data-button-data-attributes='#{button_attrs.to_json}']")
+    expect(rendered).to have_css(".gem-c-option-select[data-button-data-attributes='#{button_attrs.to_json}']")
   end
 
   def expect_label_and_checked_checkbox(label, id, value)
@@ -130,7 +130,7 @@ describe "option select", type: :view do
     expect(rendered).to have_selector expected_id
     expect(rendered).to have_selector expected_value
 
-    expect(rendered).to have_selector "label[for='#{option_key}-#{id}']", text: label
-    expect(rendered).to have_selector "input[type='checkbox']#{expected_name}#{expected_id}#{expected_value}#{expected_checked}"
+    expect(rendered).to have_css "label[for='#{option_key}-#{id}']", text: label
+    expect(rendered).to have_css "input[type='checkbox']#{expected_name}#{expected_id}#{expected_value}#{expected_checked}"
   end
 end

@@ -11,9 +11,9 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
 
     it "does not show step nav related components" do
-      expect(page).not_to have_selector(".gem-c-step-nav-header")
-      expect(page).not_to have_selector(".gem-c-step-nav-related")
-      expect(page).not_to have_selector(".gem-c-step-nav")
+      expect(page).to have_no_css(".gem-c-step-nav-header")
+      expect(page).to have_no_css(".gem-c-step-nav-related")
+      expect(page).to have_no_css(".gem-c-step-nav")
     end
   end
 
@@ -25,10 +25,10 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
 
     it "shows step nav related links" do
-      expect(page).to have_selector(".gem-c-step-nav-related")
+      expect(page).to have_css(".gem-c-step-nav-related")
 
       within(".gem-c-step-nav-related") do
-        expect(page).to have_selector(".govuk-link", count: 1)
+        expect(page).to have_css(".govuk-link", count: 1)
         expect(page).to have_link("Learn to spacewalk: small step by giant leap", href: "/learn-to-spacewalk")
       end
     end
@@ -55,16 +55,16 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
 
     it "shows step nav related links" do
-      expect(page).to have_selector(".gem-c-step-nav-related")
+      expect(page).to have_css(".gem-c-step-nav-related")
 
       within(".gem-c-step-nav-related") do
-        expect(page).to have_selector(".govuk-link", count: 1)
+        expect(page).to have_css(".govuk-link", count: 1)
         expect(page).to have_link("Learn to spacewalk: small step by giant leap", href: "/learn-to-spacewalk")
       end
     end
 
     it "does not show the full step nav sidebar" do
-      expect(page).not_to have_css(".gem-c-step-nav")
+      expect(page).to have_no_css(".gem-c-step-nav")
     end
 
     it "shows the step nav header" do
@@ -99,18 +99,18 @@ describe "Specimen usage of step by step navigation helpers", :capybara do
     end
 
     it "shows step nav related links" do
-      expect(page).to have_selector(".gem-c-step-nav-related")
+      expect(page).to have_css(".gem-c-step-nav-related")
 
       within(".gem-c-step-nav-related") do
-        expect(page).to have_selector(".gem-c-step-nav-related__link-item", count: 2)
+        expect(page).to have_css(".gem-c-step-nav-related__link-item", count: 2)
         expect(page).to have_link("Learn to spacewalk: small step by giant leap", href: "/learn-to-spacewalk")
         expect(page).to have_link("Lose your lunch: lurch by lurch", href: "/lose-your-lunch")
       end
     end
 
     it "doesn't show the full step nav sidebar or header" do
-      expect(page).not_to have_selector(".gem-c-step-nav-header")
-      expect(page).not_to have_selector(".gem-c-step-nav")
+      expect(page).to have_no_css(".gem-c-step-nav-header")
+      expect(page).to have_no_css(".gem-c-step-nav")
     end
   end
 

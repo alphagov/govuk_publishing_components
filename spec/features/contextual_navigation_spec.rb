@@ -157,7 +157,7 @@ describe "Contextual navigation", :capybara do
 
   def then_i_see_the_ukraine_call_to_action
     within ".gem-c-contextual-sidebar__cta" do
-      expect(page).to have_content("Invasion of Ukraine")
+      expect(page).to have_text("Invasion of Ukraine")
       within ".gem-c-contextual-sidebar__list" do
         expect(page).to have_link(href: /.+/)
       end
@@ -341,82 +341,82 @@ describe "Contextual navigation", :capybara do
   end
 
   def then_i_see_the_step_by_step
-    expect(page).to have_selector(".gem-c-step-nav-related")
-    expect(page).to have_selector(".gem-c-step-nav__header")
+    expect(page).to have_css(".gem-c-step-nav-related")
+    expect(page).to have_css(".gem-c-step-nav__header")
   end
 
   def then_i_see_the_step_by_step_that_i_am_interacting_with
-    expect(page).to have_selector(".gem-c-step-nav-related")
-    expect(page).to have_selector(".gem-c-step-nav__header")
+    expect(page).to have_css(".gem-c-step-nav-related")
+    expect(page).to have_css(".gem-c-step-nav__header")
     within ".gem-c-step-nav-header" do
-      expect(page).to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
-      expect(page).not_to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
+      expect(page).to have_text("PRIMARY STEP BY STEP - INTERACTING WITH")
+      expect(page).to have_no_text("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
     end
   end
 
   def and_the_step_by_step_header
-    expect(page).to have_selector(".gem-c-step-nav-header")
+    expect(page).to have_css(".gem-c-step-nav-header")
   end
 
   def then_i_just_see_the_step_by_step_related_links
-    expect(page).to have_selector(".gem-c-step-nav-related")
-    expect(page).not_to have_selector(".gem-c-step-nav__header")
+    expect(page).to have_css(".gem-c-step-nav-related")
+    expect(page).to have_no_css(".gem-c-step-nav__header")
   end
 
   def then_i_just_see_the_step_by_step_related_links_with_just_two_links
-    expect(page).to have_selector(".gem-c-step-nav-related")
-    expect(page).not_to have_selector(".gem-c-step-nav__header")
+    expect(page).to have_css(".gem-c-step-nav-related")
+    expect(page).to have_no_css(".gem-c-step-nav__header")
     within(".gem-c-step-nav-related") do
       expect(page).to have_xpath(".//li", count: 2)
     end
   end
 
   def and_no_step_by_step_header
-    expect(page).not_to have_selector(".gem-c-step-nav-header")
+    expect(page).to have_no_css(".gem-c-step-nav-header")
   end
 
   def then_theres_no_step_by_step_at_all
-    expect(page).not_to have_selector(".gem-c-step-nav-related")
-    expect(page).not_to have_selector(".gem-c-step-nav__header")
+    expect(page).to have_no_css(".gem-c-step-nav-related")
+    expect(page).to have_no_css(".gem-c-step-nav__header")
   end
 
   def and_i_dont_see_the_secondary_step_by_step_related_links
     within ".gem-c-step-nav-related" do
-      expect(page).not_to have_content("SECONDARY STEP BY STEP")
+      expect(page).to have_no_text("SECONDARY STEP BY STEP")
     end
   end
 
   def and_i_see_the_other_step_by_step_as_an_also_part_of_list
     within ".gem-c-step-nav-related:last-of-type" do
-      expect(page).to have_content("Also part of")
-      expect(page).to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
-      expect(page).not_to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
+      expect(page).to have_text("Also part of")
+      expect(page).to have_text("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
+      expect(page).to have_no_text("PRIMARY STEP BY STEP - INTERACTING WITH")
     end
   end
 
   def and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
     within ".gem-c-step-nav-related:last-of-type" do
-      expect(page).not_to have_content("SECONDARY STEP BY STEP")
+      expect(page).to have_no_text("SECONDARY STEP BY STEP")
     end
   end
 
   def then_i_see_the_browse_page_in_the_footer
     within ".gem-c-contextual-footer" do
-      expect(page).to have_selector(".gem-c-related-navigation")
-      expect(page).to have_content("Browse")
+      expect(page).to have_css(".gem-c-related-navigation")
+      expect(page).to have_text("Browse")
     end
   end
 
   def then_i_see_the_related_links_sidebar
     within ".gem-c-contextual-sidebar" do
-      expect(page).to have_selector(".gem-c-related-navigation")
-      expect(page).to have_content("The national curriculum")
+      expect(page).to have_css(".gem-c-related-navigation")
+      expect(page).to have_text("The national curriculum")
     end
   end
 
   def then_i_see_the_primary_step_by_step
     within ".gem-c-step-nav-header" do
-      expect(page).to have_content("PRIMARY STEP BY STEP")
+      expect(page).to have_text("PRIMARY STEP BY STEP")
     end
   end
 
@@ -477,12 +477,12 @@ describe "Contextual navigation", :capybara do
 
   def then_i_see_four_breadcrumb_links
     within(".gem-c-breadcrumbs") do
-      expect(page).to have_selector(".govuk-breadcrumbs__list-item", count: 4)
+      expect(page).to have_css(".govuk-breadcrumbs__list-item", count: 4)
     end
   end
 
   def then_i_do_not_see_home_and_parent_breadcrumbs
-    expect(page).not_to have_selector(".gem-c-breadcrumbs")
+    expect(page).to have_no_css(".gem-c-breadcrumbs")
   end
 
   def content_store_has_random_item(schema: "guide", links: {})

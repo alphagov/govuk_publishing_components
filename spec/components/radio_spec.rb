@@ -663,12 +663,12 @@ describe "Radio", type: :view do
         assert_text "Use GOV.UK Verify"
         assert_text "Use Government Gateway"
 
-        expect(page).not_to have_selector("[@class='govuk-radios__input'][@checked='checked']", visible: input_visible)
+        expect(page).to have_no_css("[@class='govuk-radios__input'][@checked='checked']", visible: input_visible)
 
         page.choose(option: "govuk-verify", allow_label_click: true)
 
-        expect(page).not_to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
-        expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+        expect(page).to have_no_css("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+        expect(page).to have_css("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
       end
     end
 
@@ -679,13 +679,13 @@ describe "Radio", type: :view do
         assert_text "Use Government Gateway"
         assert_text "Use GOV.UK Verify"
 
-        expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
-        expect(page).not_to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+        expect(page).to have_css("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+        expect(page).to have_no_css("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
 
         page.choose(option: "government-gateway", allow_label_click: true)
 
-        expect(page).to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
-        expect(page).not_to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+        expect(page).to have_css("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+        expect(page).to have_no_css("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
       end
     end
   end

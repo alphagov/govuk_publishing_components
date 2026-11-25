@@ -27,24 +27,24 @@ describe "Signup link", type: :view do
 
   it "renders optional heading" do
     render_signup_link
-    expect(rendered).to have_selector(".gem-c-signup-link__title", text: attributes[:heading])
+    expect(rendered).to have_css(".gem-c-signup-link__title", text: attributes[:heading])
   end
 
   it "renders component with custom heading level" do
     attributes[:heading_level] = 1
     render_signup_link
-    expect(rendered).to have_selector("h1.gem-c-signup-link__title", text: attributes[:heading])
+    expect(rendered).to have_css("h1.gem-c-signup-link__title", text: attributes[:heading])
   end
 
   it "renders component with background and border when background is true" do
     attributes[:background] = true
     render_signup_link
-    expect(rendered).to have_selector(".gem-c-signup-link--with-background-and-border")
+    expect(rendered).to have_css(".gem-c-signup-link--with-background-and-border")
   end
 
   it "adds data attributes when data attributes are passed" do
     attributes[:data] = { "custom-data-attr": "customVal" }
     render_signup_link
-    expect(rendered).to have_selector(".gem-c-signup-link .gem-c-signup-link__link[data-custom-data-attr='customVal']")
+    expect(rendered).to have_css(".gem-c-signup-link .gem-c-signup-link__link[data-custom-data-attr='customVal']")
   end
 end

@@ -148,27 +148,28 @@ describe "Layout for public", :capybara, type: :view do
   it "contains real user metrics loader script and LUX measurer script" do
     visit "/public"
 
-    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
-    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='rum-loader']", visible: :hidden)
   end
 
   it "does not contain LUX submission script when the page loads", :js do
     visit "/public"
 
-    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_css("h1", text: "Hello! I am an example public GOV.UK page")
+    expect(page).to have_no_css("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "only contains LUX submission script after usage cookies have been allowed", :js do
     visit "/public"
 
-    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
-    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_no_css("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
 
     click_button "Accept additional cookies"
 
-    expect(page).to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "contains real user metrics scripts on the page after usage cookies have been allowed", :js do
@@ -178,9 +179,9 @@ describe "Layout for public", :capybara, type: :view do
 
     visit "/public"
 
-    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
-    expect(page).to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
-    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
   end
 
   it "does not contain real user metrics scripts after usage cookies have not been allowed", :js do
@@ -188,10 +189,10 @@ describe "Layout for public", :capybara, type: :view do
 
     click_button "Reject additional cookies"
 
-    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
-    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_no_css("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "does not contain real user metrics scripts on page after usage cookies have not been allowed", :js do
@@ -201,10 +202,10 @@ describe "Layout for public", :capybara, type: :view do
 
     visit "/public"
 
-    expect(page).to have_selector("html > head > script[src*='rum-loader']", visible: :hidden)
-    expect(page).to have_selector("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='rum-loader']", visible: :hidden)
+    expect(page).to have_css("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    expect(page).not_to have_selector("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    expect(page).to have_no_css("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "does not render a phase banner by default" do
