@@ -402,7 +402,6 @@ $top-border: solid 1px govuk-functional-colour("border");
   display: block;
   color: govuk-functional-colour(link);
   text-transform: capitalize;
-  padding-bottom: govuk-spacing(6);
   @include step-nav-font(15, $line-height: 1.2);
 
   .gem-c-step-nav--large & {
