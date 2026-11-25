@@ -18,7 +18,7 @@
 
   local_assigns[:margin_bottom] ||= 3
 
-  chart_id = "chart-id-#{SecureRandom.hex(4)}"
+  chart_id ||= "chart-id-#{SecureRandom.hex(4)}"
   table_id = "table-id-#{SecureRandom.hex(4)}"
 
   @include_chart_script ||= OpenStruct.new(script_included: false)
@@ -45,7 +45,7 @@
         <%= content_tag :p, description, class: "gem-c-chart__a11y-note-1 govuk-body" %>
     </div>
 
-    <%= content_tag :div, id: chart_id, class: "gem-c-chart__chart" do %>
+    <%= content_tag :div, class: "gem-c-chart__chart" do %>
       <div class="govuk-visually-hidden">
         <%= content_tag :div, t("components.chart.accessibility_html"), class: "gem-c-chart__a11y-note-2" %>
       </div>
@@ -57,11 +57,11 @@
       </span>
 
       <% if chart_type == "column" %>
-        <%= column_chart(chart_helper.chart_format_data, colors: chart_helper.brand_colours, library: chart_helper.chart_options) %>
+        <%= column_chart(chart_helper.chart_format_data, colors: chart_helper.brand_colours, library: chart_helper.chart_options, id: chart_id) %>
       <% elsif chart_type == "bar" %>
-        <%= bar_chart(chart_helper.chart_format_data, colors: chart_helper.brand_colours, library: chart_helper.chart_options) %>
+        <%= bar_chart(chart_helper.chart_format_data, colors: chart_helper.brand_colours, library: chart_helper.chart_options, id: chart_id) %>
       <% else %>
-        <%= line_chart(chart_helper.chart_format_data, colors: chart_helper.brand_colours, library: chart_helper.chart_options) %>
+        <%= line_chart(chart_helper.chart_format_data, colors: chart_helper.brand_colours, library: chart_helper.chart_options, id: chart_id) %>
       <% end %>
     <% end %>
 
