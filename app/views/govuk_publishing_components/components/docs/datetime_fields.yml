@@ -1,0 +1,74 @@
+name: Datetime fields (experimental)
+description: Use the datetime fields component to help users enter a datetime for a specific event.
+body: |
+  This differs from the [Form date input](/component-guide/date_input) component in a few notable ways. It builds upon that component by adding time fields. Times are chosen using select elements.
+
+accessibility_criteria: |
+  Inputs in the component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when they have focus
+  * be recognisable as form input elements
+  * have correctly associated labels
+
+govuk_frontend_components:
+  - date-input
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data: {}
+  with_custom_field_names_and_ids:
+    data:
+      year:
+        name: year_field_name
+        id: year_id
+      month:
+        name: month_field_name
+        id: month_id
+      day:
+        name: day_field_name
+        id: day_id
+      hour:
+        name: hour_field_name
+        id: hour_id
+      minute:
+        name: minute_field_name
+        id: minute_id
+  with_custom_heading_options:
+    data:
+      heading_level: 2
+      heading_size: l
+      date_heading: "The date"
+      time_heading: "The time"
+  with_hint_text:
+    data:
+      date_hint: For example, 01 August 2022
+      time_hint: For example, 09:30 or 19:30
+  with_values:
+    data:
+      year:
+        value: 2022
+      month:
+        value: 1
+      day:
+        value: 2
+      hour:
+        value: 9
+      minute:
+        value: 30
+  with_error_items:
+    data:
+      error_items:
+      - text: Descriptive error 1
+      - text: Descriptive error 2
+  with_separate_date_time_error_items:
+    data:
+      error_items_date:
+      - text: Descriptive date error 1
+      - text: Descriptive date error 2
+      error_items_time:
+      - text: Descriptive time error 1
+      - text: Descriptive time error 2
