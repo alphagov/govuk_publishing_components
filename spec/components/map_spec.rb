@@ -7,12 +7,12 @@ RSpec.describe "MapComponent", type: :view do
 
   it "renders nothing without config" do
     render_component({})
-    expect(rendered).not_to have_css(".gem-c-map")
+    expect(rendered).to have_no_css(".gem-c-map")
   end
 
   it "does not render without a heading" do
     render_component(centre: [0, 1], zoom: 8)
-    expect(rendered).not_to have_css(".gem-c-map")
+    expect(rendered).to have_no_css(".gem-c-map")
   end
 
   it "renders the basic component" do
@@ -20,7 +20,7 @@ RSpec.describe "MapComponent", type: :view do
     expect(rendered).to have_css("[data-tracking-enabled] .gem-c-map")
     expect(rendered).to have_css("[data-module='map'] [data-module='ga4-link-tracker']")
     expect(rendered).to have_css(".gem-c-heading h2", text: "heading")
-    expect(rendered).to have_selector("[data-config*='\"center\":[0,1],\"zoom\":8,\"mapLabel\":\"Interactive map: heading\"']")
+    expect(rendered).to have_css("[data-config*='\"center\":[0,1],\"zoom\":8,\"mapLabel\":\"Interactive map: heading\"']")
   end
 
   it "can have a custom heading level" do
@@ -42,7 +42,7 @@ RSpec.describe "MapComponent", type: :view do
   it "only includes the JavaScript tag once even if multiple component instances" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading")
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading")
-    expect(rendered).to have_selector(:css, "script", visible: :hidden, count: 3)
+    expect(rendered).to have_css("script", visible: :hidden, count: 3)
   end
 
   it "accepts a geojson url" do
@@ -59,27 +59,27 @@ RSpec.describe "MapComponent", type: :view do
 
   it "allows bounds to be passed" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading", bounds: [1, 2, 3, 4])
-    expect(rendered).to have_selector("[data-config*='[1,2,3,4]']")
+    expect(rendered).to have_css("[data-config*='[1,2,3,4]']")
   end
 
   it "does not allow invalid bounds" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading", bounds: [1, 2, 3])
-    expect(rendered).not_to have_selector("[data-config*='[1,2,3]']")
+    expect(rendered).to have_no_css("[data-config*='[1,2,3]']")
   end
 
   it "allows max_bounds to be passed" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading", max_bounds: [11, 12, 13, 14])
-    expect(rendered).to have_selector("[data-config*='[11,12,13,14]']")
+    expect(rendered).to have_css("[data-config*='[11,12,13,14]']")
   end
 
   it "does not allow invalid max_bounds" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading", max_bounds: [11, 12, 13])
-    expect(rendered).not_to have_selector("[data-config*='[11,12,13]']")
+    expect(rendered).to have_no_css("[data-config*='[11,12,13]']")
   end
 
   it "can disable GA4 tracking" do
     render_component(centre: [0, 1], zoom: 8, heading_text: "heading", disable_ga4: true)
-    expect(rendered).not_to have_css("[data-tracking-enabled] .gem-c-map")
-    expect(rendered).not_to have_css("[data-module='map'] [data-module='ga4-link-tracker']")
+    expect(rendered).to have_no_css("[data-tracking-enabled] .gem-c-map")
+    expect(rendered).to have_no_css("[data-module='map'] [data-module='ga4-link-tracker']")
   end
 end
