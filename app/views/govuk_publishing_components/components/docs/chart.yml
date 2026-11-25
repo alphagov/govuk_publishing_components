@@ -197,7 +197,7 @@ examples:
             - 1
             - 1
             - 2
-  bar_chart_with_all_colours:
+  column_chart_with_all_colours:
     description: There are six colours. After that, charts should show black bars. Not that charts like this one are not recommended to be used in production, as GSS recommended a maximum of four categories. This is just to demonstrate all the available colours.
     data:
       header_three_quarters: true
@@ -358,13 +358,14 @@ examples:
             - 118
             - 85
             - 80
-  scale_y_axis_based_on_data:
+  scale_v_axis_based_on_data:
     description: |
-      By default the Y-axis will always start at zero, but this may not always be required.
+      By default the vertical axis will always start at zero, but this may not always be required.
 
       If there are empty items in the data the chart line will either discontinue or leave a gap, as shown.
     data:
-      y_axis_auto_adjust: true
+      v_axis_view_window_min: 1000
+      v_axis_view_window_max: 2000
       heading: Page views chart
       h_axis_title: Day
       v_axis_title: Views
@@ -400,6 +401,30 @@ examples:
             - 1670
             - 1430
             - 1352
+  scale_h_axis_based_on_data:
+    description: |
+      By default the horizontal axis will decide the lowest and highest values to show, but this may not always be ideal so it can be adjusted as needed.
+    data:
+      h_axis_view_window_min: -20
+      h_axis_view_window_max: 25
+      chart_type: "bar"
+      heading: Hats owned
+      h_axis_title: Hats owned
+      v_axis_title: Person
+      description: This chart shows page views for January 2015.
+      hide_legend: true
+      keys:
+        - Jon
+        - Ash
+        - James
+        - Phil
+      rows:
+        - label: Hats owned
+          values:
+            - -18
+            - 5
+            - 10
+            - 23
   with_a_different_heading_level:
     description: Use a different heading level for the chart heading. It defaults to a H2.
     data:

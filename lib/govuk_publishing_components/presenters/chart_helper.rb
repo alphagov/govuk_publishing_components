@@ -13,8 +13,10 @@ module GovukPublishingComponents
         @height = options[:height] || 400
         @h_axis_title = options[:h_axis_title]
         @v_axis_title = options[:v_axis_title]
-        @y_axis_view_window_min = 0
-        @y_axis_view_window_min = "auto" if options[:y_axis_auto_adjust]
+        @v_axis_view_window_min = options[:v_axis_view_window_min]
+        @v_axis_view_window_max = options[:v_axis_view_window_max]
+        @h_axis_view_window_min = options[:h_axis_view_window_min]
+        @h_axis_view_window_max = options[:h_axis_view_window_max]
         @line_colours = options[:line_colours]
         @line_styles = options[:line_styles]
 
@@ -44,6 +46,10 @@ module GovukPublishingComponents
             title: @h_axis_title&.capitalize,
             titleTextStyle: set_font_16,
             format: @h_axis_format,
+            viewWindow: {
+              min: @h_axis_view_window_min,
+              max: @h_axis_view_window_max,
+            },
           },
           vAxis: {
             textStyle: set_font_16,
@@ -52,6 +58,7 @@ module GovukPublishingComponents
             format: @v_axis_format,
             viewWindow: {
               min: @y_axis_view_window_min,
+              max: @y_axis_view_window_max,
             },
           },
         }
