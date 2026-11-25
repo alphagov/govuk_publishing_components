@@ -84,6 +84,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
       if (window.location.search.includes('percy_tests')) {
         config.canvasContextAttributes = { preserveDrawingBuffer: true }
+        this.$module.style.maxWidth = '700px'
       }
       const passedConfig = JSON.parse(this.$module.getAttribute('data-config')) || {}
       this.config = Object.assign(config, passedConfig)
