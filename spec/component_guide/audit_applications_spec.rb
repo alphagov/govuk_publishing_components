@@ -37,9 +37,9 @@ describe "Auditing the components in applications" do
       ],
       component_locations: {
         accordion: ["app/views/welcome/accordion_example.html.erb"],
-        "back link": ["app/views/welcome/public_example.html.erb"],
+        "back link": ["app/views/components/_test_component.html.erb", "app/views/welcome/public_example.html.erb"],
         button: ["lib/test_file_2.erb"],
-        "contextual breadcrumbs": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
+        "contextual breadcrumbs": ["app/views/components/_test_component.html.erb", "app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
         "contextual footer": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
         "contextual sidebar": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
         "error summary": ["app/views/welcome/error_summary.html.erb"],
@@ -80,7 +80,7 @@ describe "Auditing the components in applications" do
             name: "test component",
             application: "app-dir",
             template_exists: true,
-            template_lines: 3,
+            template_lines: 13,
             template_link: "https://github.com/alphagov/app-dir/blob/main/app/views/components/_test_component.html.erb",
           },
           {

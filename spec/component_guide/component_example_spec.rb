@@ -163,4 +163,22 @@ describe "Component example", :capybara do
     expect(page).to have_css(".js-test[data-test='attribute-test']")
     expect(page).to have_css(".js-test[aria-label='aria-test']")
   end
+
+  it "shows child components when they are present" do
+    visit "/component-guide/test_component"
+    expect(body).to include("Child components")
+    expect(page).to have_selector(".govuk-link[href='/component-guide/back_link']", text: "back link")
+    expect(page).to have_selector(".govuk-link[href='/component-guide/contextual_breadcrumbs']", text: "contextual breadcrumbs")
+    within ".gem-c-contents-list" do
+      expect(page).to have_selector("[href='#children']", text: "Child components")
+    end
+  end
+
+  it "does not show child components when none exist" do
+    visit "/component-guide/test_component_using_wrapper"
+    expect(body).not_to include("Child components")
+    within ".gem-c-contents-list" do
+      expect(page).not_to have_selector("[href='#children']", text: "Child components")
+    end
+  end
 end

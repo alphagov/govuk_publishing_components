@@ -1,3 +1,13 @@
 <div class="some-test-component">
   <h1 class="something-inside-test-component">Test component heading</h1>
 </div>
+
+<%= render "govuk_publishing_components/components/contextual_breadcrumbs", {
+  content_item: {
+    title: "A content item",
+  },
+} %>
+
+<%= render "govuk_publishing_components/components/back_link", {
+  href: "#",
+} %>
