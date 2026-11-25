@@ -9,7 +9,7 @@
     background-color: govuk-colour("black");
     box-shadow: none;
     border: 0;
-
+    padding: 5px;
     span {
       color: govuk-colour("white");
       @include govuk-font($size: 16, $weight: bold);
