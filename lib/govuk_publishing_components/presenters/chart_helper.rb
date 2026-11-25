@@ -27,12 +27,14 @@ module GovukPublishingComponents
         @v_axis_format = "YYYY-MM-dd" if options[:v_axis_format] == "date"
         @v_axis_format = "£#" if options[:v_axis_format] == "currency"
         @v_axis_format = "#'\%'" if options[:v_axis_format] == "percent"
+
+        @chart_area_width = options[:chart_area_width] || "auto"
       end
 
       # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
       def chart_options
         {
-          chartArea: { width: "auto", height: "auto" },
+          chartArea: { width: @chart_area_width, height: "auto" },
           crosshair: { orientation: "vertical", trigger: "both", color: "#ccc" },
           curveType: "none",
           enableInteractivity: @enable_interactivity,

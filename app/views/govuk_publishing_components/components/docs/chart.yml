@@ -572,3 +572,25 @@ examples:
             - 118
             - 85
             - 80
+  custom_chart_area_width:
+    description: Sometimes vertical axis labels are long and therefore get truncated, especially when the chart is rendered in a 2/3rds column. This can be solved by making the chart area width narrower. CSS values (px, %, etc.) are supported.
+    data:
+      chart_area_width: 20%
+      chart_type: "bar"
+      heading: Hats owned
+      h_axis_title: Hats owned
+      v_axis_title: Person
+      description: This chart shows page views for January 2015.
+      hide_legend: true
+      keys:
+        - This is a longer label than usual
+        - Short Label
+        - This is a very very very very very long label
+        - This is another label
+      rows:
+        - label: Hats owned
+          values:
+            - 3
+            - 1
+            - 1
+            - 2
