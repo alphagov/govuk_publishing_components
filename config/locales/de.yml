@@ -74,6 +74,9 @@ de:
       - Wir verwenden außerdem Cookies
       - die von anderen Webseiten gesetzt werden
       - um uns bei der Bereitstellung von Inhalten aus deren Diensten zu unterstützen.
+      text_additional_cookies:
+      text_intro:
+      text_list:
       title: Cookies auf GOV.UK
     devolved_nations:
       applies_to:
