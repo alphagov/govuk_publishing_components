@@ -68,18 +68,57 @@ For an example of this check [test-component-with-no-image-alt.yml](../spec/dumm
 
 ## Visual regression testing
 
-Visual regression tests are run on each pull request using a third-party tool called [Percy](https://percy.io) using a [GitHub Action workflow][1]. This isn't a mandatory check, so any changes that are highlighted by Percy won't prevent a pull request from being merged in.
+Visual regression tests are run on each pull request using a third-party tool called [Percy](https://percy.io) through a [GitHub Action workflow][1].
 
-The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
+Percy captures screenshots of our components at defined viewport widths and compares them against the previously approved baseline. This helps identify unintended visual changes before they are merged.
 
-If you want to capture full width screenshots for a component, add the flag below to the component documentation YAML file.
+Visual regression tests run against Safari to better represent our users and increase coverage of WebKit-specific rendering behaviour. As of December 2025, [61% (622 million)](https://insidegovuk.blog.gov.uk/2026/01/28/how-people-used-gov-uk-in-2025/) of monthly GOV.UK visits were on mobile, with Safari and Chrome accounting for around [90% of browser usage](https://gs.statcounter.com/browser-market-share/mobile/united-kingdom).
+
+### Reviewing visual changes
+
+Percy screenshots are public and can be viewed without logging in. A BrowserStack account is required to approve or reject changes.
+
+Percy is a required status check. If visual differences are detected, the check will remain unapproved and prevent the pull request from being merged until the changes have been reviewed and approved.
+
+The person reviewing the pull request is responsible for reviewing any differences highlighted by Percy, clarifying with a designer if necessary, and approving the changes when they are expected.
+
+### Viewport widths
+
+Component screenshots are captured at the following viewport widths:
+
+- Mobile: 320px
+- Tablet: 641px
+- Desktop: 1280px
+
+These sizes have been chosen to best align our visual regression tests with the breakpoints used by [GOV.UK Frontend](https://frontend.design-system.service.gov.uk/sass-api-reference/#govuk-breakpoints).
+
+### Full-width component screenshots
+
+By default, Percy captures the component itself rather than the full available viewport width.
+
+For components that need to be tested at the full viewport width, add the following option to the component's documentation YAML file:
 
 ```yml
 capture_full_width_screenshot: true
 ```
 
-Relevant Percy setup documentation:
+This is useful for components whose layout or behaviour depends on the available page width.
 
+### Testing interactive component states
+
+Percy can capture interactive component states by taking a snapshot before and after an interaction, such as a click. This allows visual changes in both states to be tested for regressions.
+
+This is useful for components where important content or layout changes are only visible following a user interaction.
+
+To add a new component state check, add the component to the `INTERACTIVE_COMPONENTS` list in the [visual regression test config file](https://github.com/alphagov/govuk_publishing_components/blob/d0fa804bb1a468b6a80122e48988470ecbef878a/spec/visual_regression_tests/all_components_config.rb). Each entry should include: 
+
+- `state_name` - the name of the state being tested
+- `toggle_selector` - selector for the target element to click
+- `wait_selector` – the selector for the element expected to be visible after the interaction
+
+### Relevant Percy setup documentation
+
+- [Visual Testing with Percy](https://www.browserstack.com/docs/percy)
 - [Using Percy with Rails and Capybara](https://docs.percy.io/docs/capybara)
 - [Running Percy in a GitHub Action](https://docs.percy.io/docs/github-actions)
 
