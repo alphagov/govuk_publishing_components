@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-big-number {
   margin-bottom: govuk-spacing(3);
   color: govuk-functional-colour(text);
@@ -6,14 +8,14 @@
 .gem-c-big-number__value {
   line-height: 1;
   font-size: govuk-px-to-rem(80px);
-  @include govuk-font($size: false, $weight: bold);
   // Make the value an inline element, and the label a block level element to make them stack vertically but be announced as one element by JAWS and NVDA.
   display: inline-block;
+  @include govuk-font($size: false, $weight: bold);
 }
 
 .gem-c-big-number__label {
-  @include govuk-font($size: 19, $weight: bold);
   display: block;
+  @include govuk-font($size: 19, $weight: bold);
 }
 
 .gem-c-big-number__link {

@@ -1,0 +1,6 @@
+// load all of the styles from the govuk design system, with the exception of components
+// https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/README.md#the-src-directory
+@use "govuk/core";
+@use "govuk/objects";
+@use "govuk/utilities";
+@use "govuk/overrides";

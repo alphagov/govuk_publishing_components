@@ -1,9 +1,11 @@
+@use "../base" as *;
+
 .gem-c-metadata {
   color: govuk-functional-colour(text);
-  @include govuk-font(16);
   // TODO: review this spacing with a designer to see if the custom
   // margin can be replaced with standard GOV.UK Frontend spacing.
   margin-bottom: govuk-spacing(3);
+  @include govuk-font(16);
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: govuk-spacing(7);

@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-reorderable-list {
   list-style-type: none;
   margin-bottom: govuk-spacing(6);

@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 // These styles are adapted from the original Accessible Autocomplete component stylesheet, mostly
 // to remove superfluous styles that are already provided by the GOV.UK Design System, and to adapt
 // the styling to match the new GOV.UK search box designs (e.g. to remove the zebra striping on

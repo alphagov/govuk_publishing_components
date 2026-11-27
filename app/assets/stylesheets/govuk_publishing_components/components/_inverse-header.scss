@@ -1,3 +1,5 @@
+@use "../base" as *;
+
 .gem-c-inverse-header {
   width: 100%;
   background-color: govuk-colour("blue", $variant: "tint-80");
