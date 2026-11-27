@@ -29,11 +29,6 @@ RSpec.describe GovukPublishingComponents::Presenters::OrganisationLogoHelper do
       expect(logo.logo_container_class).to eq("gem-c-organisation-logo__container gem-c-organisation-logo__link")
     end
 
-    it "detects hide_underline" do
-      logo = described_class.new({ organisation: { name: "org" }, hide_underline: true })
-      expect(logo.logo_container_class).to eq("gem-c-organisation-logo__container gem-c-organisation-logo__link-hide-underline")
-    end
-
     it "responds to a crest without visual identity" do
       logo = described_class.new({ organisation: { name: "org", crest: "toothpaste" } })
       expect(logo.logo_container_class).to eq("gem-c-organisation-logo__container gem-c-organisation-logo__crest gem-c-organisation-logo__crest--toothpaste")

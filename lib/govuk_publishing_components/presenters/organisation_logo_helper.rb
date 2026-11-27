@@ -13,7 +13,6 @@ module GovukPublishingComponents
           @logo_image_src = local_assigns[:organisation][:image][:url] || nil
           @logo_image_alt = local_assigns[:organisation][:image][:alt_text] || nil
         end
-        @hide_underline = local_assigns[:hide_underline] || false
       end
 
       def logo_content
@@ -27,7 +26,6 @@ module GovukPublishingComponents
       def logo_container_class
         logo_class = %w[gem-c-organisation-logo__container]
         logo_class << "gem-c-organisation-logo__link" if @url
-        logo_class << "gem-c-organisation-logo__link-hide-underline" if @hide_underline
         logo_class << "gem-c-organisation-logo__crest gem-c-organisation-logo__crest--#{@crest}" if crest_has_visual_identity?
         logo_class.join(" ")
       end

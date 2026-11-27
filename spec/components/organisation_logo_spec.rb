@@ -86,9 +86,4 @@ describe "Organisation logo", type: :view do
     render_component(organisation: { name: "Name", url: "/some-link" }, inline: true)
     assert_select "a.gem-c-organisation-logo__container--inline"
   end
-
-  it "renders without a text underline when set" do
-    render_component(organisation: { name: "Name", url: "/some-link" }, hide_underline: true)
-    assert_select "a.gem-c-organisation-logo__link-hide-underline"
-  end
 end
