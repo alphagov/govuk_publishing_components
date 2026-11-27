@@ -4,3 +4,10 @@ snapshot:
     - 320
     - 641
     - 1280
+  readiness:
+    preset: strict # Waits for network quiet, visible images/fonts, and idle scripts (up to 30s)
+    timeout-ms: 20000
+discovery:
+  allowedHostnames: ["*.openfreemap.org"]
+  networkIdleTimeout: 750
+  scrollToBottom: true

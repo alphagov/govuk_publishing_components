@@ -45,6 +45,17 @@ GovukPublishingComponents.configure do |c|
 end
 ```
 
+Extend the application content security policy to include the rules from the gem as shown. This is currently only required when using the gem's map component in an application.
+
+```ruby
+# config/initializers/content_security_policy.rb
+require "govuk_app_config"
+
+GovukContentSecurityPolicy.configure do |policy|
+  GovukPublishingComponents::AppHelpers::ContentSecurityPolicy.configure_policy_for_map(policy)
+end
+```
+
 ## 4. Include Sass
 
 ### Import Sass for specific components (recommended)

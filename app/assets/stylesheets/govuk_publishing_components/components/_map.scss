@@ -1,0 +1,53 @@
+@import "@defra/interactive-map/dist/css/index";
+
+.gem-c-map--enabled {
+  padding: 0;
+  background-color: #d7e0e5;
+
+  @include govuk-media-query($from: tablet) {
+    border: solid 1px govuk-functional-colour(border);
+  }
+
+  @include govuk-media-query($until: desktop) {
+    max-height: 80vh;
+  }
+}
+
+.gem-c-map__attribution {
+  margin-top: govuk-spacing(2);
+}
+
+.gem-c-map__attribution-text {
+  margin: 0;
+}
+
+.gem-c-map__js-on {
+  display: none;
+}
+
+.js-enabled {
+  .gem-c-map__js-on {
+    display: block;
+  }
+
+  .gem-c-map__no-js {
+    display: none;
+  }
+}
+
+.gem-c-map__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+}
+
+// defra map override styles
+.im-c-open-map-button {
+  margin-bottom: govuk-spacing(2);
+}
+
+.im-c-error {
+  margin: 0;
+  background: #FFFFFF;
+  border-color: govuk-colour("red");
+  @include govuk-font(19)
+}

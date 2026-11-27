@@ -1,6 +1,7 @@
 require "rails_helper"
 require "percy/capybara"
 require "uri"
+require "yaml"
 require_relative "all_components_config"
 
 # rubocop:disable RSpec/NoExpectationExample
@@ -34,7 +35,14 @@ describe "visual regression test runner Percy", :visual_regression do
     component_links.each do |link|
       next if VisualRegressionConfig::SKIP_COMPONENTS.include?(link.path)
 
-      visit_component(link)
+      if link.to_s.end_with? "/component-guide/map/preview"
+        map = YAML.load_file(Pathname.new("app/views/govuk_publishing_components/components/docs/map.yml"))
+        map_example_count = map["examples"].count
+        visit_component("/component-guide/map/preview?percy_tests=true")
+        page.assert_selector("[data-map-loaded]", minimum: map_example_count)
+      else
+        visit_component(link)
+      end
       page.percy_snapshot(component_name)
     end
 

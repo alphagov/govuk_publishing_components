@@ -1,0 +1,110 @@
+name: Map (experimental)
+description: A simple map component.
+body: |
+  Displays a map, given a location and a zoom level. Maps can also display markers with popups, if the correct geoJSON is supplied. The map can be scrolled and zoomed.
+
+  This component uses the [DEFRA map component](https://defra.github.io/interactive-map/).
+
+  Maps are inaccessible to many users. If you are using this component to display information, you must also display this information in an accessible way separately from the map.
+
+  The order of positional co-ordinates for this map and its contents is longitude followed by latitude.
+
+  The JavaScript required for the component is relatively large and should not be included in the main `application.js` - instead the component template includes the required JavaScript files.
+shared_accessibility_criteria:
+- link
+
+accessibility_criteria: |
+  The map must:
+
+  - have an accessible alternative, including a list of map markers separate to the map itself
+  - be usable with a keyboard
+  - provide a skip link to bypass the map for keyboard users
+  - have a heading
+uses_component_wrapper_helper: true
+examples:
+  default:
+    data:
+      heading_text: An example map
+      zoom: 12
+      centre:
+      - -3.1883
+      - 55.9533
+  custom_heading_description_and_attribution:
+    description: |
+      All maps should have a heading, but the heading level may need to be different depending on the context.
+
+      Descriptions are rendered inside a govspeak block, so can include govspeak formatting. Descriptions are not required but are recommended, to help users with screen readers understand the purpose of the map.
+    data:
+      heading_text: Malvern, Worcestershire
+      heading_level: 3
+      description: |
+        <p>The Malvern Hills has been designated an area of outstanding natural beauty.</p>
+      attribution: Copyright someone else
+      centre:
+      - -2.325062
+      - 52.107919
+      zoom: 12
+  with_geojson_url:
+    description: |
+      Given a URL to a GeoJSON file, the map will draw markers and apply popups as specified in the file.
+    data:
+      geojson: "/assets/govuk_publishing_components/components/map/map-test.geojson"
+      heading_text: Birmingham and surrounding places
+      zoom: 9
+      centre:
+      - -1.89032729180704
+      - 52.485470314900795
+  with_geojson_string:
+    description: |
+      GeoJSON can also be passed as a base64 encoded string, as shown.
+    data:
+      geojson: data:application/geo+json;base64,ewogICJ0eXBlIjogIkZlYXR1cmVDb2xsZWN0aW9uIiwKICAiZmVhdHVyZXMiOiBbCiAgICB7CiAgICAgICJpZCI6IDEsCiAgICAgICJ0eXBlIjogIkZlYXR1cmUiLAogICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAiZGVzY3JpcHRpb24iOiAiQSBsYXJnZSBjaXR5LiIsCiAgICAgICAgImFkZHJlc3MiOiAiQjEgMUFBIiwKICAgICAgICAibmFtZSI6ICJCaXJtaW5naGFtIgogICAgICB9LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgImNvb3JkaW5hdGVzIjogWwogICAgICAgICAgLTEuODkwMzI3MjkxODA3MDQsCiAgICAgICAgICA1Mi40ODU0NzAzMTQ5MDA3OTUKICAgICAgICBdLAogICAgICAgICJ0eXBlIjogIlBvaW50IgogICAgICB9CiAgICB9LAogICAgewogICAgICAiaWQiOiAyLAogICAgICAidHlwZSI6ICJGZWF0dXJlIiwKICAgICAgInByb3BlcnRpZXMiOiB7CiAgICAgICAgIm5hbWUiOiAiQ292ZW50cnkiLAogICAgICAgICJkZXNjcmlwdGlvbiI6ICJBbm90aGVyIGxhcmdlIGNpdHkiCiAgICAgIH0sCiAgICAgICJnZW9tZXRyeSI6IHsKICAgICAgICAiY29vcmRpbmF0ZXMiOiBbCiAgICAgICAgICAtMS40OTE1NDQyNjYxNTk0NTExLAogICAgICAgICAgNTIuNDAyOTI2ODgzNzk3MjgKICAgICAgICBdLAogICAgICAgICJ0eXBlIjogIlBvaW50IgogICAgICB9CiAgICB9CiAgXQp9Cg==
+      heading_text: Birmingham and Coventry
+      zoom: 10
+      centre:
+      - -1.69032729180704
+      - 52.445470314900795
+  custom_bounds:
+    description: This allows the initial position of the map to be set.
+    data:
+      heading_text: Places with Ham in their name
+      description: |
+        <p>There's another one over in the east, look.</p>
+      bounds:
+      - -3.203169743770889
+      - 51.643668495828116
+      - -0.8983602517140259
+      - 50.68105666989489
+      geojson: data:application/geo+json;base64,ewogICJ0eXBlIjogIkZlYXR1cmVDb2xsZWN0aW9uIiwKICAiZmVhdHVyZXMiOiBbCiAgICB7CiAgICAgICJpZCI6IDEsCiAgICAgICJ0eXBlIjogIkZlYXR1cmUiLAogICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAibmFtZSI6ICJIYW1icmlkZ2UsIFNvbWVyc2V0IgogICAgICB9LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgImNvb3JkaW5hdGVzIjogWwogICAgICAgICAgLTIuODcsCiAgICAgICAgICA1MC45OAogICAgICAgIF0sCiAgICAgICAgInR5cGUiOiAiUG9pbnQiCiAgICAgIH0KICAgIH0sCiAgICB7CiAgICAgICJpZCI6IDIsCiAgICAgICJ0eXBlIjogIkZlYXR1cmUiLAogICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAibmFtZSI6ICJIYW1icm9vaywgU291dGggR2xvdWNlc3RlcnNoaXJlIgogICAgICB9LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgImNvb3JkaW5hdGVzIjogWwogICAgICAgICAgLTIuNTIsCiAgICAgICAgICA1MS40OQogICAgICAgIF0sCiAgICAgICAgInR5cGUiOiAiUG9pbnQiCiAgICAgIH0KICAgIH0sICAgIAogICAgewogICAgICAiaWQiOiAzLAogICAgICAidHlwZSI6ICJGZWF0dXJlIiwKICAgICAgInByb3BlcnRpZXMiOiB7CiAgICAgICAgIm5hbWUiOiAiSGFtYmxlLWxlLVJpY2UsIEhhbXBzaGlyZSIKICAgICAgfSwKICAgICAgImdlb21ldHJ5IjogewogICAgICAgICJjb29yZGluYXRlcyI6IFsKICAgICAgICAgIC0xLjMzLAogICAgICAgICAgNTAuODUKICAgICAgICBdLAogICAgICAgICJ0eXBlIjogIlBvaW50IgogICAgICB9CiAgICB9LCAgICAgICAgCiAgICB7CiAgICAgICJpZCI6IDQsCiAgICAgICJ0eXBlIjogIkZlYXR1cmUiLAogICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAibmFtZSI6ICJIYW0sIEtlbnQiCiAgICAgIH0sCiAgICAgICJnZW9tZXRyeSI6IHsKICAgICAgICAiY29vcmRpbmF0ZXMiOiBbCiAgICAgICAgICAxLjMyNiwKICAgICAgICAgIDUxLjIzMwogICAgICAgIF0sCiAgICAgICAgInR5cGUiOiAiUG9pbnQiCiAgICAgIH0KICAgIH0gICAgCiAgXQp9Cg==
+  max_bounds:
+    description: Limits the map to a particular area. Numbers represent West, South, East, and North. Note that if the numbers are wrong or contradict this will have adverse effects on the map.
+    data:
+      heading_text: A map of only the area around London
+      zoom: 9
+      centre:
+      - -0.12
+      - 51.5
+      max_bounds:
+      - -1
+      - 51.1
+      - 1
+      - 51.9
+  custom_height:
+    description: The map defaults to a height of 500px on desktop but this can be overridden if required. The height on tablet and mobile is set to be no taller than the window.
+    data:
+      height: 200
+      heading_text: Kings Cross station
+      geojson: data:application/geo+json;base64,ewogICJ0eXBlIjogIkZlYXR1cmVDb2xsZWN0aW9uIiwKICAiZmVhdHVyZXMiOiBbCiAgICB7CiAgICAgICJpZCI6IDEsCiAgICAgICJ0eXBlIjogIkZlYXR1cmUiLAogICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAiZGVzY3JpcHRpb24iOiAiT3BlbmVkIGluIDE4NTIgYW5kIGJ1aWx0IG9uIHRoZSBzaXRlIG9mIGEgc21hbGxwb3ggYW5kIGZldmVyIGhvc3BpdGFsLiIsCiAgICAgICAgIm5hbWUiOiAiS2luZ3MgQ3Jvc3Mgc3RhdGlvbiIKICAgICAgfSwKICAgICAgImdlb21ldHJ5IjogewogICAgICAgICJjb29yZGluYXRlcyI6IFsKICAgICAgICAgIC0wLjEyMzYsCiAgICAgICAgICA1MS41MzE2CiAgICAgICAgXSwKICAgICAgICAidHlwZSI6ICJQb2ludCIKICAgICAgfQogICAgfQogIF0KfQo=
+      zoom: 12
+      centre:
+      - -0.1236
+      - 51.5316
+  without_ga4_tracking:
+    data:
+      disable_ga4: true
+      heading_text: London stations
+      geojson: data:application/geo+json;base64,ewogICJ0eXBlIjogIkZlYXR1cmVDb2xsZWN0aW9uIiwKICAiZmVhdHVyZXMiOiBbCiAgICB7CiAgICAgICJpZCI6IDEsCiAgICAgICJ0eXBlIjogIkZlYXR1cmUiLAogICAgICAicHJvcGVydGllcyI6IHsKICAgICAgICAiZGVzY3JpcHRpb24iOiAiRGVzaWduZWQgYnkgSXNhbWJhcmQgS2luZ2RvbSBCcnVuZWwgYW5kIG9wZW5lZCBpbiAxODM4LiIsCiAgICAgICAgIm5hbWUiOiAiUGFkZGluZ3RvbiBTdGF0aW9uIgogICAgICB9LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgImNvb3JkaW5hdGVzIjogWwogICAgICAgICAgLTAuMTc2NiwKICAgICAgICAgIDUxLjUxNjMKICAgICAgICBdLAogICAgICAgICJ0eXBlIjogIlBvaW50IgogICAgICB9CiAgICB9LAogICAgewogICAgICAiaWQiOiAyLAogICAgICAidHlwZSI6ICJGZWF0dXJlIiwKICAgICAgInByb3BlcnRpZXMiOiB7CiAgICAgICAgIm5hbWUiOiAiTWFyeWxlYm9uZSBTdGF0aW9uIgogICAgICB9LAogICAgICAiZ2VvbWV0cnkiOiB7CiAgICAgICAgImNvb3JkaW5hdGVzIjogWwogICAgICAgICAgLTAuMTYzMiwKICAgICAgICAgIDUxLjUyMjQKICAgICAgICBdLAogICAgICAgICJ0eXBlIjogIlBvaW50IgogICAgICB9CiAgICB9CiAgXQp9Cg==
+      zoom: 13
+      centre:
+      - -0.17
+      - 51.52
