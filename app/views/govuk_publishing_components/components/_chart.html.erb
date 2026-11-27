@@ -42,7 +42,9 @@
           heading_level: heading_level,
           margin_bottom: 2,
         } %>
-        <%= content_tag :p, description, class: "gem-c-chart__a11y-note-1 govuk-body" %>
+        <% unless description.empty? %>
+          <%= content_tag :p, description, class: "gem-c-chart__a11y-note-1 govuk-body" %>
+        <% end %>
     </div>
 
     <%= content_tag :div, class: "gem-c-chart__chart" do %>
