@@ -91,15 +91,4 @@ describe "Organisation logo", type: :view do
     render_component(organisation: { name: "Name", url: "/some-link" }, hide_underline: true)
     assert_select "a.gem-c-organisation-logo__link-hide-underline"
   end
-
-  it "renders on a dark background" do
-    render_component(organisation: { name: "Name", url: "/some-link" }, inverse: true)
-    assert_select ".gem-c-organisation-logo.gem-c-organisation-logo--inverse"
-  end
-
-  it "does not add the --inverse modifier when the inverse option is omitted" do
-    render_component(organisation: { name: "Name", url: "/some-link" })
-    assert_select ".gem-c-organisation-logo.gem-c-organisation-logo"
-    assert_select ".gem-c-organisation-logo.gem-c-organisation-logo--inverse", false
-  end
 end

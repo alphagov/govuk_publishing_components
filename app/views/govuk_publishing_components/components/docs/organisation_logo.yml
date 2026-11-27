@@ -195,13 +195,4 @@ examples:
         brand: cabinet-office
         crest: 'single-identity'
       hide_underline: true
-  on_a_dark_background:
-    data:
-      organisation:
-        name: "Prime Minister's Office,<br>10 Downing Street"
-        url: '/government/organisations/prime-ministers-office-10-downing-street'
-        brand: 'prime-ministers-office-10-downing-street'
-        crest: 'eo'
-      inverse: true
-    context:
-      dark_background: true
+      

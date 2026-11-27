@@ -5,7 +5,6 @@
   organisation ||= {}
   heading_level ||= false
   inline ||= false
-  inverse ||= false
 
   # Check if `heading_level` is an appropriate number:
   use_heading = [*1..6].include?(heading_level)
@@ -15,7 +14,6 @@
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-organisation-logo")
   component_helper.add_class(brand_helper.brand_class)
-  component_helper.add_class("gem-c-organisation-logo--inverse") if inverse
 
   container_classes = [
     logo_helper.logo_container_class,
