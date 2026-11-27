@@ -28,13 +28,13 @@ module GovukPublishingComponents
         @v_axis_format = "£#" if options[:v_axis_format] == "currency"
         @v_axis_format = "#'\%'" if options[:v_axis_format] == "percent"
 
-        @chart_area_width = options[:chart_area_width] || "auto"
+        @chart_area_left = options[:chart_area_left] || "auto"
       end
 
       # config options are here: https://developers.google.com/chart/interactive/docs/gallery/linechart
       def chart_options
         {
-          chartArea: { width: @chart_area_width, height: "auto" },
+          chartArea: { width: "auto", height: "auto", left: @chart_area_left },
           crosshair: { orientation: "vertical", trigger: "both", color: "#ccc" },
           curveType: "none",
           enableInteractivity: @enable_interactivity,
