@@ -45,22 +45,126 @@ GovukPublishingComponents.configure do |c|
 end
 ```
 
-## 4. Include Sass
+## 4. Loading Sass
 
-### Import Sass for specific components (recommended)
+GOV.UK Publishing Components uses the Sass module system following the GOV.UK Frontend 6.2 upgrade. Stylesheets should now be loaded with `@use` statements (as opposed to `@import`, which is deprecated and will be removed in a future release of Dart Sass).
 
-This technique only includes the Sass for components used by an application. In order for this to work you must first import some generic Sass files that include `govuk-frontend` and some gem specific mixins and variables.
+For more information, see the resources below.
 
-**Note that you will need to keep this up to date if you add or remove components from your application.**
+- [GOV.UK Design System v6.2 Release Notes](https://github.com/alphagov/govuk-frontend/releases/tag/v6.2.0) - See "Use `@use` to include GOV.UK Frontend styles in Sass" to include GOV.UK Frontend styles in Sass
+- [`@import` is Deprecated](https://sass-lang.com/blog/import-is-deprecated/) - Sass blog post
+- [The Sass module system](https://sass-lang.com/blog/the-module-system-is-launched/)
 
-For example:
+### Configuring your stylesheets
+
+#### Base and core
+
+When configuring your stylesheets, you'll need to load the GOV.UK Publishing Components `base` and `core` files, while `lib` is an optional module that's currently required by Frontend applications, but not needed by all applications (see the [`lib`](#lib) section below).
+
+You now load these using `@use`:
 
 ```scss
-// supporting sass
-@import "govuk_publishing_components/specific_components";
-// component specific sass
-@import "govuk_publishing_components/components/back-link";
+@use "govuk_publishing_components/base";
+@use "govuk_publishing_components/core";
 ```
+```scss
+@use "govuk_publishing_components/lib";
+```
+
+#### Base
+
+`base` loads `govuk/base`, which contains GOV.UK Frontend's settings, tools and helpers. It also configures fonts and asset paths. **No CSS is generated when loading base**.
+
+> [!NOTE]
+> For most application stylesheets, base should be the first thing you load.
+> You don't need to namespace base (for example, using `@use "govuk_publishing_components/base" as *;`) **unless** you're directly referencing GOV.UK Frontend settings, tools or helpers in your application stylesheet, such as the `govuk-colour` mixin (see [loading settings and helpers where they're needed](#loading-settings-and-helpers-where-theyre-needed) below).
+
+#### Configuring base
+
+You can configure base by passing in settings to override the default values provided by GOV.UK Frontend. Configuration must happen the first-time `base` is loaded. You can't change these settings in subsequent `@use` statements.
+
+To pass in settings, use the `with` keyword, followed by the variables you want to override:
+
+```scss
+@use "govuk_publishing_components/base" with (
+  $govuk-page-width: 1140px
+);
+```
+
+#### Core
+
+`core` loads core, objects, utilities and overrides from GOV.UK Frontend. This includes the basic styles used for typography, links and other common elements.
+
+The classes defined in these layers generally correspond to HTML elements, such as paragraphs, headings, lists and links. These are the styles that generate CSS output.
+
+#### Lib
+
+Contains code specific to GOV.UK Publishing Components, such as brand colours, destructive link styles and print support.
+
+> [!NOTE]
+> Not every application will need to load `lib`, and its contents may be reorganised further in the future.
+
+### Load Sass for selected components (recommended)
+
+This approach only includes the Sass for components that your application needs, helping to keep the compiled CSS file size smaller.
+
+To use this approach, you must first load `base` and `core`:
+
+```scss
+@use "govuk_publishing_components/base";
+@use "govuk_publishing_components/core";
+@use "govuk_publishing_components/lib";
+
+// load only the required components
+@use "govuk_publishing_components/components/back-link";
+@use "govuk_publishing_components/components/breadcrumbs";
+@use "govuk_publishing_components/components/button";
+```
+
+> [!NOTE]
+> Note that you will need to keep this up to date if you add or remove components from your application.
+
+### Load Sass for all components
+
+Alternatively, you can load the Sass for all components. This is easier to manage, but results in a larger compiled CSS file. For this reason, it's not recommended for public-facing applications:
+
+```scss
+@use "govuk_publishing_components/base"; 
+@use "govuk_publishing_components/core"; 
+@use "govuk_publishing_components/lib";
+
+// load all components
+@use "govuk_publishing_components/all_components";
+```
+
+### Loading settings and helpers where they're needed
+
+One important difference with the Sass module system is that you must load settings (such as variables) and helpers (such as mixins and functions) in every file where they're used.
+
+Previously, you could "import" code into your application stylesheet and have it available throughout the other stylesheets. This is no longer the case with `@use`.
+
+For example, if a partial contains the following:
+
+```scss
+.app-c-header {
+  border-bottom: 3px solid govuk-colour("white");
+}
+```
+
+You'll now need to load `base` in that partial to make the `govuk-colour` helper available:
+
+```scss
+@use "govuk_publishing_components/base" as *;
+
+.app-c-header {
+  border-bottom: 3px solid govuk-colour("white");
+}
+```
+
+> [!NOTE]
+> In this case, `base` needs to be loaded with as `*` because the code references the GOV.UK Frontend helper directly, without a namespace.
+
+### Loading the component guide stylesheet
 
 If you load the component guide in the application the suggested Sass for it has been generated for you. Click the 'Suggested imports for this application' link, then copy and paste the output into your `application.scss` file.
 
@@ -73,15 +177,6 @@ APP_STYLESHEETS = {
 
 all_stylesheets = APP_STYLESHEETS.merge(GovukPublishingComponents::Config.component_guide_stylesheet)
 Rails.application.config.dartsass.builds = all_stylesheets
-```
-
-### Import Sass for all components
-
-Alternatively, you can simply import the Sass for all of the components. This is easier to manage but results in a larger compiled CSS file size, so it is not recommended for public facing applications.
-
-```scss
-// application.scss
-@import "govuk_publishing_components/all_components";
 ```
 
 ## 5. Include and configure JavaScript
